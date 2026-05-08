@@ -4,12 +4,20 @@ data/*.json
 !data/.gitkeep
 
 # Dev-only pages — not for public visitors
+# (kept individually for the existing tracked names; _legacy/ and
+# _admin/ patterns below cover future moves into private directories)
 old.html
 inventory.html
 inventory_source.html
 issues.html
 metadata_audit.html
 source_status.html
+
+# Convention: underscore-prefixed top-level dirs are private
+# (see workspace-hub/CONVENTIONS.md). _legacy holds retired surfaces;
+# _admin holds dev/admin pages not intended for the public Reading Room.
+_legacy/
+_admin/
 
 # Restricted/copyrighted texts — local only, never push
 data/dead-sea-scrolls-*.json

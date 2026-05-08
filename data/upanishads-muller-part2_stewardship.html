@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stewardship history — Upanishads (Muller, Part 2)</title>
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2c2c2c;
+    background: #faf8f5;
+    max-width: 720px;
+    margin: 2em auto;
+    padding: 0 1.5em 4em 1.5em;
+  }
+  h1, h2, h3 { font-weight: 600; line-height: 1.3; }
+  h1 { font-size: 1.5em; margin: 0.5em 0 0.6em 0; }
+  h2 { font-size: 1.15em; margin: 2em 0 0.6em 0; padding-top: 1em; border-top: 1px solid #d8d3cc; }
+  h3 { font-size: 1.05em; margin: 1.2em 0 0.4em 0; }
+  p, li { margin: 0.7em 0; }
+  blockquote {
+    margin: 0.7em 0;
+    padding: 0.4em 1em;
+    border-left: 2px solid #c0a878;
+    background: #f7f4ec;
+    color: #555;
+  }
+  code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: #efece5;
+    padding: 0.1em 0.3em;
+    border-radius: 2px;
+  }
+  pre code { background: none; padding: 0; }
+  pre { background: #efece5; padding: 0.8em 1em; overflow-x: auto; border-radius: 3px; font-size: 0.85em; }
+  hr { border: 0; border-top: 1px solid #d8d3cc; margin: 2em 0; }
+  table { border-collapse: collapse; margin: 1em 0; font-size: 0.95em; }
+  th, td { border: 1px solid #d8d3cc; padding: 0.4em 0.7em; text-align: left; vertical-align: top; }
+  th { background: #efece5; font-weight: 600; }
+  a { color: #5a4a2a; }
+  .nav-back {
+    display: block;
+    margin-bottom: 2em;
+    font-family: system-ui, sans-serif;
+    font-size: 0.85em;
+    color: #888;
+    text-decoration: none;
+  }
+  .nav-back:hover { color: #5a4a2a; text-decoration: underline; }
+</style>
+</head>
+<body>
+<a class="nav-back" href="../index.html?text=upanishads-muller-part2_muller-part2.json">← Back to reading</a>
+<h1>Stewardship Log: Upanishads (Müller, Part 2)</h1>
+<p>This file records every stewardship action and non-intervention performed against the canonical of <code>upanishads-muller-part2</code>. Entries are appended chronologically and are not edited in place; revisions appear as new entries.</p>
+<p>Each entry carries a stable id, a date, an action type, the witness layer touched, the legitimacy basis, the affected canonical objects, prior and posterior states quoted verbatim, a rationale, reversibility instructions, and visibility classification. Non-interventions are recorded with the same formality as interventions.</p>
+<p>The raw witness at <code>02_raw_sources/Library_/SacredTexts.com/Upanishads - Part 2_____Max Muller (1879).txt</code> is never modified by any entry in this log. Its sha256 (<code>93b255fb6ff3c2b58f6a78584e548354600c9d75b604e721db6308f873b4ea0d</code>) and byte count (<code>670125</code>) remain the chain-of-custody anchor against which any canonical divergence below is recoverable.</p>
+<h2>Index</h2>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Date</th>
+<th>Action</th>
+<th>Subject</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#stw-mun-000">STW-MUN-000</a></td>
+<td>2026-05-08</td>
+<td>log_initialization</td>
+<td>Stewardship log created; <code>text.json</code> pointer added</td>
+</tr>
+<tr>
+<td><a href="#stw-mun-001">STW-MUN-001</a></td>
+<td>2026-05-08</td>
+<td>repair_local</td>
+<td>Delete orphan numeral <code>9</code> in passage 5.84</td>
+</tr>
+<tr>
+<td><a href="#stw-mun-002">STW-MUN-002</a></td>
+<td>2026-05-08</td>
+<td>repair_local</td>
+<td>Delete orphan period in passage 5.140 (<code>divine.,</code> → <code>divine,</code>)</td>
+</tr>
+<tr>
+<td><a href="#stw-mun-003">STW-MUN-003</a></td>
+<td>2026-05-08</td>
+<td>non_intervention</td>
+<td><code>thine</code> in passage 5.130 preserved with reader-visible annotation</td>
+</tr>
+<tr>
+<td><a href="#stw-mun-004">STW-MUN-004</a></td>
+<td>2026-05-08</td>
+<td>metadata_annotation</td>
+<td>Year discrepancy 1879/1884 in raw filename and manifest path</td>
+</tr>
+<tr>
+<td><a href="#stw-mun-005">STW-MUN-005</a></td>
+<td>2026-05-08</td>
+<td>architectural</td>
+<td>Schema extension: <code>apparatus_file</code> field added to translation shape</td>
+</tr>
+<tr>
+<td><a href="#stw-mun-006">STW-MUN-006</a></td>
+<td>2026-05-08</td>
+<td>architectural</td>
+<td>Print-page mapping recovered from raw and preserved in apparatus file</td>
+</tr>
+<tr>
+<td><a href="#stw-mun-007">STW-MUN-007</a></td>
+<td>2026-05-08</td>
+<td>architectural</td>
+<td>Apparatus restoration: 42 footnote bodies recovered from raw to canonical</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>STW-MUN-000</h2>
+<p><strong>entry_id.</strong> STW-MUN-000
+<strong>date.</strong> 2026-05-08
+<strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
+<strong>action_type.</strong> log_initialization
+<strong>witness_layer.</strong> annotation; metadata
+<strong>legitimacy_basis.</strong> infrastructural
+<strong>affected.</strong> <code>stewardship.md</code> (this file, newly created); <code>text.json:stewardship_log</code> (new field).</p>
+<p><strong>prior_state.</strong></p>
+<blockquote>
+<p>n/a — <code>stewardship.md</code> did not exist; <code>text.json</code> had no <code>stewardship_log</code> field.</p>
+</blockquote>
+<p><strong>posterior_state.</strong></p>
+<blockquote>
+<p><code>stewardship.md</code> exists with this entry as its first record. <code>text.json</code> carries <code>"stewardship_log": "stewardship.md"</code>.</p>
+</blockquote>
+<p><strong>rationale.</strong>
+The cycle's prior analysis identified that no infrastructure existed to record stewardship actions or non-interventions. Without such infrastructure, every editorial decision would be either invisible (silent edit) or homeless (recorded nowhere stable). This entry creates the infrastructure and records its own creation as the first formal stewardship act.</p>
+<p>The discipline begins by recording its own beginning. No subsequent entry in this log would be possible without this one.</p>
+<p><strong>reversibility.</strong>
+Delete <code>stewardship.md</code>; remove the <code>stewardship_log</code> field from <code>text.json</code>. No raw witness or canonical passage state depends on this file's existence.</p>
+<p><strong>visibility.</strong> steward_only, metadata_visible</p>
+<p><strong>provenance_implications.</strong>
+None at the witness layer. The archive now carries an inspectable record of stewardship events for this text.</p>
+<p><strong>derivative_implications.</strong>
+None for this entry. Future Reading Room renderings may surface annotation entries marked <code>reading_room_hover</code> by reference to entry ids in this log.</p>
+<p><strong>steward_notes.</strong>
+The format used here follows the design proposed in the cycle's prior planning phase. If the format proves insufficient or burdensome in practice, future entries may evolve it; existing entries are not retroactively reformatted.</p>
+<hr />
+<h2>STW-MUN-001</h2>
+<p><strong>entry_id.</strong> STW-MUN-001
+<strong>date.</strong> 2026-05-08
+<strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
+<strong>action_type.</strong> repair_local
+<strong>witness_layer.</strong> canonical
+<strong>legitimacy_basis.</strong> internal_recoverability
+<strong>affected.</strong> <code>passages_muller-part2.json:5.84.text</code></p>
+<p><strong>prior_state.</strong></p>
+<blockquote>
+<p><code>"5. 9 The lower knowledge is the Rig-veda, Yagur-veda, Sama-veda, Atharva-veda, Siksha (phonetics), Kalpa (ceremonial), Vyakarana (grammar), Nirukta (etymology), Khandas (metre), Gyotisha (astronomy) [*2];"</code></p>
+</blockquote>
+<p><strong>posterior_state.</strong></p>
+<blockquote>
+<p><code>"5. The lower knowledge is the Rig-veda, Yagur-veda, Sama-veda, Atharva-veda, Siksha (phonetics), Kalpa (ceremonial), Vyakarana (grammar), Nirukta (etymology), Khandas (metre), Gyotisha (astronomy) [*2];"</code></p>
+</blockquote>
+<p><strong>rationale.</strong>
+The orphan numeral <code>9</code> between the verse number <code>5.</code> and the prose word <code>The</code> is unaccounted for by any pattern in the witness. The verse-numbering pattern across the First Khanda is <code>1.</code> <code>2.</code> <code>3.</code> <code>4.</code> <code>5.</code> <code>6.</code> <code>7.</code> <code>8.</code> <code>9.</code>, with single Arabic numerals followed by a period; verse 5 is correctly indexed by <code>5.</code> and admits no second numeral. The footnote-anchor pattern is <code>[*N]</code> (bracketed asterisk plus Arabic numeral); a bare <code>9</code> is not a valid anchor in this convention. Müller's footnote bodies for this Khanda (raw anchors <code>^27:1</code> and <code>^27:2</code>) include none keyed <code>9</code> for verse 5. The most probable origin of the orphan numeral is OCR or transcription noise at the Sacred-Texts layer.</p>
+<p>Internal recoverability supports deletion because the surrounding pattern — verse number followed by capitalized prose word — admits no other repair: substitution would require importing a character from outside the witness's own grammar, and the witness's grammar offers no candidate.</p>
+<p><strong>reversibility.</strong>
+The raw witness retains the orphan <code>9</code> byte-for-byte at the corresponding offset and is unchanged by this action. The manifest hash (<code>sha256: 93b255fb6ff3c2b58f6a78584e548354600c9d75b604e721db6308f873b4ea0d</code>) remains valid against the raw. To revert: copy the verbatim string from the prior_state field above into <code>passages_muller-part2.json</code> passage <code>5.84</code> <code>text</code> field. The change is local; no upstream pipeline depends on the orphan <code>9</code>.</p>
+<p><strong>visibility.</strong> steward_only, metadata_visible</p>
+<p><strong>provenance_implications.</strong>
+Canonical now diverges from raw at this passage by two characters (the digit <code>9</code> and the trailing space). The divergence is recorded here. Raw and manifest are unchanged.</p>
+<p><strong>derivative_implications.</strong>
+Reading Room rendering of passage 5.84 will read <code>5. The lower knowledge...</code> rather than <code>5. 9 The lower knowledge...</code>. No marker, footnote, or annotation is added to the rendered output. A reader who consults this log can find the prior state.</p>
+<p><strong>steward_notes.</strong>
+First worked execution of an internally-recoverable deletion under the cycle's articulated framework. The discipline test is procedural rather than deliberative — even a two-character deletion is recorded with the same care as a substantive change.</p>
+<p>A forward-pointing finding: this edit produces a canonical that is no longer a verbatim subsequence of raw at this passage. The archive's integrity tool <code>05_scripts/text_preservation_proof.py</code> verifies that passages are "a faithful subsequence of the raw source (modulo normalization)." Whether this edit's two-character deletion falls within the proof's normalization tolerance is unknown until the proof is run; if the proof now reports divergence, that divergence is itself a constitutional finding for a future cycle (the integrity tool's tolerance for stewardship divergences is currently undocumented). The edit is performed regardless because the user has authorized the cycle and the proof's possible failure is information, not a blocker.</p>
+<hr />
+<h2>STW-MUN-002</h2>
+<p><strong>entry_id.</strong> STW-MUN-002
+<strong>date.</strong> 2026-05-08
+<strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
+<strong>action_type.</strong> repair_local
+<strong>witness_layer.</strong> canonical
+<strong>legitimacy_basis.</strong> internal_recoverability
+<strong>affected.</strong> <code>passages_muller-part2.json:5.140.text</code></p>
+<p><strong>prior_state.</strong></p>
+<blockquote>
+<p><code>"7. That (true Brahman) shines forth grand, divine., inconceivable, smaller than small; it is far beyond what is far and yet near here, it is hidden in the cave (of the heart) among those who see it even here."</code></p>
+</blockquote>
+<p><strong>posterior_state.</strong></p>
+<blockquote>
+<p><code>"7. That (true Brahman) shines forth grand, divine, inconceivable, smaller than small; it is far beyond what is far and yet near here, it is hidden in the cave (of the heart) among those who see it even here."</code></p>
+</blockquote>
+<p><strong>rationale.</strong>
+The orphan period between <code>divine</code> and the comma is unaccounted for by Müller's enumerative grammar. The pattern within this verse — <code>grand, divine, inconceivable, smaller than small</code> — is comma-separated adjectives without internal periods. The pattern is consistent across surrounding verses (e.g., 5.86's "no eyes nor ears, no hands nor feet, the eternal, the omnipresent (all-pervading), infinitesimal"). The orphan period is most probably OCR or transcription noise at the Sacred-Texts layer.</p>
+<p>Deletion is internally derivable: removing the period restores the witness's own enumerative pattern. Substitution (e.g., comma-to-semicolon) would require external warrant the witness does not provide.</p>
+<p><strong>reversibility.</strong>
+The raw witness retains <code>divine.,</code> verbatim and is unchanged. To revert: copy the prior_state above into <code>passages_muller-part2.json</code> passage <code>5.140</code> <code>text</code> field. The change is local.</p>
+<p><strong>visibility.</strong> steward_only, metadata_visible</p>
+<p><strong>provenance_implications.</strong>
+Canonical now diverges from raw at this passage by one character (the orphan period). Raw and manifest unchanged.</p>
+<p><strong>derivative_implications.</strong>
+Reading Room rendering will read <code>...divine, inconceivable...</code> rather than <code>...divine., inconceivable...</code>. No marker added.</p>
+<p><strong>steward_notes.</strong>
+Same procedural shape as STW-MUN-001. Together, these two entries establish the pattern: small, internally-recoverable, fully recorded. The repairs themselves are minor; the discipline of recording them is the work.</p>
+<p>The same forward-pointing finding about <code>text_preservation_proof.py</code> applies: this edit further increases canonical-raw divergence by one character.</p>
+<hr />
+<h2>STW-MUN-003</h2>
+<p><strong>entry_id.</strong> STW-MUN-003
+<strong>date.</strong> 2026-05-08
+<strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
+<strong>action_type.</strong> non_intervention
+<strong>witness_layer.</strong> canonical (deliberately unchanged); annotation
+<strong>legitimacy_basis.</strong> non_intervention
+<strong>affected.</strong> <code>passages_muller-part2.json:5.130.text</code> (deliberately unchanged); reader-visible annotation hosted within this log entry.</p>
+<p><strong>prior_state.</strong></p>
+<blockquote>
+<p><code>"10. The [*2] sun does not thine there, nor the moon and the stars, nor these lightnings, and much less this fire. When he shines, everything shines after him; by his light all this is lighted [*3]."</code></p>
+</blockquote>
+<p><strong>posterior_state.</strong>
+unchanged</p>
+<p><strong>annotation_text.</strong></p>
+<blockquote>
+<p>The witness as held by the archive reads <em>thine</em> in this verse. Müller's 1884 print (which the archive does not currently hold) reads <em>shine</em>. The substitution is almost certainly an OCR or transcription error introduced at the Sacred-Texts transcription layer. The archive does not perform the correction, because the corrected reading is not derivable from this witness alone — it can only be supplied from external authority: the parallel verse at Katha Upanishad V.15 (Sanskrit <em>na tatra sūryo bhāti</em>, "the sun does not shine there"), or Müller's print itself. The corruption is preserved as evidence of the transmission stratum we hold. A future cycle that acquires Müller's 1884 print as an additional raw witness would be able to resolve this reading legitimately by adding a layer rather than editing the held one.</p>
+</blockquote>
+<p><strong>rationale.</strong>
+This passage is the cycle's central discipline-test. The corruption is small (one letter), unambiguous to anyone who reads the verse (no English reading of "the sun does not thine there" makes grammatical sense), and embarrassing to the witness's appearance. All three features make the editorial pressure to substitute <em>shine</em> for <em>thine</em> maximal.</p>
+<p>The legitimacy framework refuses the substitution because internal recoverability fails: the witness's grammar identifies <em>thine</em> as wrong (a possessive pronoun in verb position), but provides no internal pattern that determines the right word. Knowing <em>shine</em> is the correct reading requires knowing the parallel passage at Katha V.15, or knowing Müller's print, or knowing the Sanskrit. Each of these is external authority. Substituting the correct word would constitute reconstruction, not restoration.</p>
+<p>The annotation makes the discipline visible to readers: they encounter <em>thine</em>, see that an editorial note is attached, read the explanation, and understand both the corruption and the archive's choice. The witness is preserved; the reader is not deceived.</p>
+<p>The act of recording this non-intervention with the same formality as an intervention is itself a constitutional act. Without this entry, the cycle's most disciplined moment would be invisible to the future. A future steward inspecting passage 5.130 might see only the corruption and assume the archive overlooked it. This entry establishes that the archive saw, deliberated, and chose.</p>
+<p><strong>reversibility.</strong>
+No revert needed at the canonical level — the canonical was not changed. If the discipline is later judged to have been wrong (for example, if a future cycle's reasoning concludes that the archive's annotation surface itself constitutes external authority sufficient to support substitution, or if Müller's print is acquired and the substitution becomes a layer-comparison rather than a reconstruction), the annotation can be modified or removed and any Reading Room rendering will cease to surface it. The witness was never edited, so there is nothing to undo at the witness layer.</p>
+<p><strong>visibility.</strong> reading_room_hover, steward_only, metadata_visible</p>
+<p><strong>provenance_implications.</strong>
+Canonical-raw correspondence preserved exactly at this passage. Mediation-visibility is increased: the annotation surfaces the Sacred-Texts transmission stratum at the precise point of one of its visible artifacts.</p>
+<p><strong>derivative_implications.</strong>
+A future Reading Room rendering of passage 5.130 should display the verse with <code>thine</code> intact and a hover-or-click-visible marker that resolves to the annotation text above. The minimal implementation is: the renderer looks up annotations in this stewardship log keyed by passage id (<code>5.130</code>) and surfaces them as footnote-style notes.</p>
+<p>This cycle does <strong>not</strong> modify the Reading Room rendering pipeline. The annotation is recorded here; pipeline integration is a derivative-layer task for a future cycle. Until then, the annotation is steward-visible only and the Reading Room continues to display the verse as it currently does. The reader is not yet informed; the cycle accepts this gap as the cost of not over-architecting in a single pass. The annotation's reader-facing visibility is a known deferred obligation.</p>
+<p><strong>linked_entries.</strong>
+References Candidate 14 from the cycle's analytical ledger (wishlist: acquire Müller's 1884 print) — the proper resolution path for this corruption is layer acquisition, not within-layer editing.</p>
+<p><strong>steward_notes.</strong>
+This entry is more important than its visible scope suggests. It is the first record of <em>not changing something</em> held to the same formal standard as <em>changing something</em>. The discipline this entry establishes is the one most at risk of erosion in future cycles: the temptation to "just fix it" in cases where "it" is small and the fix is obvious. Recording the resistance to that temptation here, in full prose, gives the future a model of what restraint looks like as practice rather than as theory.</p>
+<p>If a future steward inherits this archive and reads only this entry from this cycle, they will know: the archive looked at <em>thine</em>, considered the substitution, refused it, and explained why. Looked, considered, refused, explained. That sequence is the archive's mode of attention in operation. The other entries in this log are easier; this one is the one that teaches.</p>
+<p>A note on the reader-visibility gap: the annotation is recorded at full strength here but is not yet surfaced in the Reading Room because the rendering pipeline is not modified in this cycle. A reader of passage 5.130 in the current Reading Room therefore encounters the corruption without the annotation. This is acceptable for one cycle but is an obligation: the next time Reading Room rendering is touched, this annotation should be wired through. Recording the gap explicitly is itself part of the discipline.</p>
+<hr />
+<h2>STW-MUN-004</h2>
+<p><strong>entry_id.</strong> STW-MUN-004
+<strong>date.</strong> 2026-05-08
+<strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
+<strong>action_type.</strong> metadata_annotation
+<strong>witness_layer.</strong> acquisition (filename / manifest path); metadata
+<strong>legitimacy_basis.</strong> mediation_visibility
+<strong>affected.</strong> none modified. Subjects of annotation: filename <code>Upanishads - Part 2_____Max Muller (1879).txt</code>; manifest entry for that file; <code>text.json:source.raw_file</code>; <code>text.json:source.year</code>.</p>
+<p><strong>prior_state.</strong></p>
+<blockquote>
+<p>filename: <code>Upanishads - Part 2_____Max Muller (1879).txt</code>
+manifest path: <code>Library_/SacredTexts.com/Upanishads - Part 2_____Max Muller (1879).txt</code>
+<code>text.json:source.raw_file</code>: <code>02_raw_sources/Library_/SacredTexts.com/Upanishads - Part 2_____Max Muller (1879).txt</code>
+<code>text.json:source.year</code>: <code>1884</code></p>
+</blockquote>
+<p><strong>posterior_state.</strong>
+unchanged</p>
+<p><strong>annotation_text.</strong></p>
+<blockquote>
+<p>The filename and manifest path embed the year <code>1879</code>. Müller's <em>Sacred Books of the East</em> Volume XV — which contains the Mundaka and is the work translated and transcribed in our holdings — was published at Oxford in <strong>1884</strong>. <em>Volume I</em> of the same series, published in 1879, is a different book containing different Upanishads. The misnaming originates in the Sacred-Texts boilerplate footer (<code>The Upanishads, Part 2 (SBE15), by Max Muller, [1879], at sacred-texts.com</code>), which appears six times in the raw witness between Khanda boundaries. At acquisition, the misnamed year was inherited into our filename and manifest path; from the manifest path it propagates into <code>text.json:source.raw_file</code>.</p>
+<p>The correct year is recorded in <code>text.json:source.year</code> as <code>1884</code>. The filename and path are not corrected, because their misnaming is the inline evidence that Sacred-Texts is the transmission stratum between Müller and us. Renaming would close the gap and erase the evidence simultaneously. The discipline is to leave the path and surface the discrepancy here.</p>
+</blockquote>
+<p><strong>rationale.</strong>
+Mediation must remain visible. The Sacred-Texts transcription layer is not directly named in our metadata schema as a transmission stratum: <code>text.json:source.publisher</code> records <code>"SacredTexts.com"</code> but does not articulate the layer's encoding choices, scrape date, or known limitations. The year discrepancy is currently the only inline artifact that signals Sacred-Texts as the layer between Müller and the archive. Renaming would erase it.</p>
+<p>A future cycle should consider extending the metadata schema to model transmission strata as first-class objects (Candidate 13 from the cycle's analytical ledger). Until that schema decision is made, this entry carries the mediation-visibility burden alone.</p>
+<p>A <code>provenance_notes</code> field on <code>text.json</code> was considered for surfacing this annotation at the metadata layer. It is deferred for this cycle: adding it would require coordination with the schema validator and would establish a precedent for further metadata-field additions that have not been deliberated. The full annotation lives here in the stewardship log for now. The archive's discipline is more important than metadata completeness.</p>
+<p><strong>reversibility.</strong>
+No state was changed by this entry. To reverse the annotation: remove this entry from the log. Any future schema extension that surfaces a <code>provenance_notes</code> field referencing this entry would be reversible by removing that field.</p>
+<p><strong>visibility.</strong> steward_only, metadata_visible</p>
+<p><strong>provenance_implications.</strong>
+None at the witness layer. The chain-of-custody is unchanged. The misnamed year is preserved as transmission-evidence rather than corrected.</p>
+<p><strong>derivative_implications.</strong>
+None. Reading Room readers do not encounter publication-year metadata at passage scale. If a future Reading Room rendering ever displays publication year, it should read <code>1884</code> from <code>source.year</code>; the filename's <code>1879</code> is internal stewardship matter only.</p>
+<p><strong>linked_entries.</strong>
+References Candidate 13 (transmission strata in metadata schema) and Candidate 14 (acquire Müller's print) from the cycle's analytical ledger.</p>
+<p><strong>steward_notes.</strong>
+This entry exemplifies an annotation that surfaces a transmission-layer feature without any state change. The full record lives in this log; the metadata schema is not extended in this cycle. The pattern preserves discipline (record fully) while respecting architectural caution (do not extend schema casually).</p>
+<p>The 1879/1884 case has a quietly instructive shape. The simplest "fix" — rename the file — would produce a tidier archive that hides its own history. The cycle's discipline is to prefer the messier archive that remembers how it got messy.</p>
+<hr />
+<h2>STW-MUN-005</h2>
+<p><strong>entry_id.</strong> STW-MUN-005
+<strong>date.</strong> 2026-05-08
+<strong>cycle.</strong> First architectural recovery cycle — apparatus restoration
+<strong>action_type.</strong> architectural
+<strong>witness_layer.</strong> schema; metadata
+<strong>legitimacy_basis.</strong> infrastructural
+<strong>affected.</strong> <code>01_library/library/SCHEMA.md</code> (translation shape, optional fields table; new <em>Apparatus file</em> section); <code>text.json:translations[0].apparatus_file</code> (new field).</p>
+<p><strong>prior_state.</strong></p>
+<blockquote>
+<p>SCHEMA.md did not document an <code>apparatus_file</code> field. <code>text.json:translations[0]</code> had only <code>passages_file</code> referencing a sibling JSON.</p>
+</blockquote>
+<p><strong>posterior_state.</strong></p>
+<blockquote>
+<p>SCHEMA.md documents <code>apparatus_file</code> as an optional sibling to <code>passages_file</code> within the translation shape, with a dedicated <em>Apparatus file</em> section specifying the file shape and the discipline of byte-faithful preservation without semantic typing. <code>text.json:translations[0]</code> carries <code>"apparatus_file": "apparatus_muller-part2.json"</code>.</p>
+</blockquote>
+<p><strong>rationale.</strong>
+The cycle's prior analysis (Phase 7) determined that Müller's footnote bodies — preserved in raw, anchored from canonical, but absent from canonical structure — represent a witness-constitutive apparatus that canonical formation silently amputated. The refined doctrine of internal recoverability over the held witness chain authorizes restoration: bodies are recoverable byte-faithfully from raw without consulting any source outside our holdings.</p>
+<p>The schema requires extension to admit apparatus as a first-class layer parallel to passages. The simplest legitimate extension is one new optional field on the translation shape: <code>apparatus_file</code>, parallel to the existing <code>passages_file</code>. The field points to a sibling JSON file holding the apparatus structure.</p>
+<p>The extension is intentionally thin. It introduces no semantic typing of footnotes, no ontology categories, no interpretation fields, no reader-oriented abstractions. The schema names a file location; the file's structure carries the witness. Pre-classifying footnotes by function would impose the archive's analytical scheme onto Müller's apparatus and would silently editorialize the witness — a danger named explicitly in Phase 7's ontology analysis.</p>
+<p><strong>reversibility.</strong>
+Remove <code>apparatus_file</code> from text.json. Remove the documentation entry and <em>Apparatus file</em> section from SCHEMA.md. The apparatus file itself can be deleted (see STW-MUN-007). No raw witness or canonical-passage state depends on this extension.</p>
+<p><strong>visibility.</strong> steward_only, metadata_visible</p>
+<p><strong>provenance_implications.</strong>
+None at the witness layer. The schema vocabulary now includes apparatus as an architectural concept, with the <em>Apparatus file</em> section recording the discipline (byte-faithful, no semantic typing, voice-separated structure).</p>
+<p><strong>derivative_implications.</strong>
+None in this cycle. Future Reading Room rendering may consume apparatus to surface footnote bodies for readers; no rendering pipeline change is performed here. The deferred-obligation pattern from STW-MUN-003 is now reinforced: schema extension precedes derivative integration; both are explicit acts.</p>
+<p><strong>linked_entries.</strong>
+STW-MUN-006 (page mapping recovery using this schema field). STW-MUN-007 (apparatus file creation populating the field).</p>
+<p><strong>steward_notes.</strong>
+The first <code>architectural</code> action_type in the log. Schema extensions are heavier than text edits because they ramify across all texts (any text may now declare an <code>apparatus_file</code>). The constitutional case for this extension is clean — Müller's apparatus is part of his witness, present in raw, recoverable internally to the held chain — but the precedent is significant. Future architectural extensions should be subjected to the same legitimacy framework: they must address a witness-narrowing that internal recoverability authorizes repair of, and they must not impose categorical structures the witness did not declare.</p>
+<p>The existing schema validator (<code>05_scripts/validate_metadata.py</code>) does not reject unknown text.json fields. The <code>apparatus_file</code> field will pass current validation silently. A future cycle could optionally add validator logic to check that, when present, <code>apparatus_file</code> points to an existing file with the apparatus shape. This is not implemented here because the user-facing instruction was to update validator logic only "if necessary," and the cycle's discipline is to defer non-essential architecture.</p>
+<hr />
+<h2>STW-MUN-006</h2>
+<p><strong>entry_id.</strong> STW-MUN-006
+<strong>date.</strong> 2026-05-08
+<strong>cycle.</strong> First architectural recovery cycle — apparatus restoration
+<strong>action_type.</strong> architectural
+<strong>witness_layer.</strong> canonical (apparatus-file structure)
+<strong>legitimacy_basis.</strong> internal_recoverability
+<strong>affected.</strong> <code>apparatus_muller-part2.json:page_boundaries</code> (16 entries, pages 27–42); <code>apparatus_muller-part2.json:apparatus[*].page</code> (42 entries).</p>
+<p><strong>prior_state.</strong></p>
+<blockquote>
+<p>The print-page mapping for Mundaka canonical passages was implicit in raw (via <code>[p. NN]</code> markers) but absent from canonical. Page-keying — the witness's apparatus-anchor convention — could not be operationalized in canonical without re-deriving page assignments from raw.</p>
+</blockquote>
+<p><strong>posterior_state.</strong></p>
+<blockquote>
+<p>The page mapping is recovered and preserved in <code>apparatus_muller-part2.json</code>. Two structures encode it: <code>page_boundaries</code> (a list of pages 27–42 with the canonical passage ids on each), and <code>page</code> fields on every apparatus record. The mapping is byte-faithful to the page boundaries observable in raw <code>[p. NN]</code> markers in the Mundaka body region.</p>
+</blockquote>
+<p><strong>rationale.</strong>
+Page-keying is part of Müller's apparatus grammar: his footnote anchor numbers reset per print page, and his footnote bodies are addressed by <code>^PAGE:N</code>. Reproducing the apparatus faithfully requires preserving the page-keying convention. Discarding it would force apparatus to use some non-witness numbering scheme, which would silently impose the archive's structure on Müller's.</p>
+<p>The mapping is internally recoverable: every <code>[p. NN]</code> marker in raw uniquely determines a page boundary, and the canonical passages between consecutive markers can be deterministically assigned to a page. The mapping is recovered by walking raw, identifying page-marker offsets, and matching the surrounding text to canonical passages.</p>
+<p>The mapping lives in the apparatus file rather than as separate per-passage metadata. Two reasons:
+1. Page-keying is constitutive of apparatus, not of passages. A passage's content is internally complete; only when an apparatus reference is being resolved does the page matter. Embedding the mapping in apparatus keeps the architectural concern co-located with its function.
+2. Modifying every passage to carry a <code>page</code> field would require editing <code>passages_muller-part2.json</code> more invasively than necessary. The apparatus file is new; passages can remain unchanged.</p>
+<p>The mapping is preserved as data, inspectable and reversible, rather than as a script that derives it on demand. This is by design: the cycle's discipline favors explicit recorded structure over implicit derivation, so a future steward can read the mapping without re-running tools.</p>
+<p><strong>reversibility.</strong>
+Remove the <code>page_boundaries</code> array and the <code>page</code> fields from <code>apparatus_muller-part2.json</code>. The mapping is then no longer present in canonical but remains recoverable from raw at any time.</p>
+<p><strong>visibility.</strong> steward_only, metadata_visible</p>
+<p><strong>provenance_implications.</strong>
+The mapping is named in apparatus metadata as recovered structure, not editorial imposition. The <code>page_keying</code> and <code>page_keying_note</code> fields in the apparatus file make the recovery's grounds inspectable: <code>muller-print-1884</code> names the convention's source.</p>
+<p><strong>derivative_implications.</strong>
+None in this cycle. A future Reading Room could use the mapping to offer "Müller's page X" navigation. Not implemented here.</p>
+<p><strong>linked_entries.</strong>
+STW-MUN-005 (the schema extension that made the apparatus file possible). STW-MUN-007 (the apparatus body restoration that uses the page mapping).</p>
+<p><strong>steward_notes.</strong>
+A subtle finding from the recovery: <code>[p. 39]</code> appears in raw twice — once as a primary page boundary (offset ~15831 in the Mundaka body region) and once <em>inside</em> a footnote body (the body of <code>^38:3</code>, which crosses page 38/39 in print and contains <code>[p. 39]</code> mid-body). The mapping recovery filters the latter as a sub-marker rather than a primary page boundary. Footnote-internal page markers are preserved verbatim within the body field; they are not promoted to structural page-keying. This is the minimum-classification discipline operating: Müller's print contained <code>[p. 39]</code> inside a footnote because his typesetter wrapped the footnote across pages, and the witness preserves that. Imposing structural meaning on the embedded marker would be over-classification.</p>
+<hr />
+<h2>STW-MUN-007</h2>
+<p><strong>entry_id.</strong> STW-MUN-007
+<strong>date.</strong> 2026-05-08
+<strong>cycle.</strong> First architectural recovery cycle — apparatus restoration
+<strong>action_type.</strong> architectural
+<strong>witness_layer.</strong> canonical (new file)
+<strong>legitimacy_basis.</strong> internal_recoverability
+<strong>affected.</strong> <code>apparatus_muller-part2.json:apparatus</code> (42 entries; new file).</p>
+<p><strong>prior_state.</strong></p>
+<blockquote>
+<p>Müller's 42 Mundaka footnote bodies were present in raw (at byte offsets ~130000–152300) but absent from canonical. Canonical preserved the in-text anchor markers <code>[*N]</code> but dangled them — they pointed to bodies the canonical did not contain.</p>
+</blockquote>
+<p><strong>posterior_state.</strong></p>
+<blockquote>
+<p>All 42 Mundaka footnote bodies are present in <code>apparatus_muller-part2.json:apparatus</code>, each as a structured record with id (page-keyed), page, index, body text (verbatim from raw), anchor references (passage_id and anchor_text), and source pointer (raw_file path and raw anchor key <code>^PAGE:N</code>). Every canonical anchor <code>[*N]</code> in passages 5.77–5.158 now resolves uniquely to an apparatus record via the page-keyed mapping. Zero anchors are dangling. Zero bodies are orphaned.</p>
+</blockquote>
+<p><strong>rationale.</strong>
+The cycle's central architectural recovery. Müller's apparatus was constitutionally amputated at canonical formation; the restoration returns the apparatus from raw to canonical without modification of body content. The refined doctrine of internal recoverability authorizes the restoration: bodies are recovered byte-faithfully from the held witness chain (raw), without consulting any external source.</p>
+<p>Body preservation discipline applied:
+- <strong>Verbatim text.</strong> Every body is copied character-for-character from the raw <code>^PAGE:N</code> block, including all punctuation, whitespace, and Sanskrit transliteration as Sacred-Texts encoded them.
+- <strong>No normalization.</strong> Diacritics not added; spelling not modernized; ASCII quotes not converted; capitalization not adjusted.
+- <strong>No categorization.</strong> No <code>kind</code>, <code>function</code>, or <code>category</code> field. The functional heterogeneity of Müller's apparatus (translation rationale, source-critical, cross-reference, interpretive gloss, commentator citation, etc.) is preserved as ambiguity at the canonical layer rather than resolved by editorial classification.
+- <strong>No editorial cleanup.</strong> Known transmission artifacts within bodies (e.g., the sentence-medial period in <code>^30:5</code>'s "There are. two oblations") are preserved as-is. Repairing them would be in-scope for a separate stewardship pass under the legitimacy framework; this cycle restores apparatus, not corrects it.
+- <strong>No semantic restructuring.</strong> Bodies are single text strings, not subdivided into sub-fields like "argument," "citation," or "commentator-quote."</p>
+<p>The structural fields (<code>page</code>, <code>index</code>, <code>id</code>, <code>anchors</code>, <code>source</code>) are the archive's voice; they describe the apparatus's position in the witness chain. The body field is Müller's voice; it carries his prose verbatim. The two voices are kept distinct by field separation: structural fields are archive-attributed, body field is Müller-attributed.</p>
+<p><strong>reversibility.</strong>
+Delete <code>apparatus_muller-part2.json</code>. Remove the <code>apparatus_file</code> field from text.json. The bodies remain in raw, byte-faithful, and can be re-derived by running the build script (<code>_build_apparatus.py</code>) against unchanged inputs (raw, manifest, passages_*.json) at any time.</p>
+<p><strong>visibility.</strong> steward_only, metadata_visible</p>
+<p><strong>provenance_implications.</strong>
+The canonical now contains apparatus alongside passages. Müller's scholarly voice is restored to the canonical layer for the first time since canonical formation. Mediation visibility is increased substantially: each apparatus record carries an explicit <code>source.raw_file</code> and <code>source.raw_anchor_key</code>, making the recovery path inspectable. The Sacred-Texts transcription's role as the layer through which we received Müller's apparatus is preserved in the bodies' encoding (ASCII quotes, no diacritics, anchor key form <code>^PAGE:N</code>).</p>
+<p><strong>derivative_implications.</strong>
+None in this cycle. Reading Room rendering is unchanged. Future Reading Room work (a separate cycle) can consume the apparatus file to surface footnote bodies to readers via hover, click, or footnote-style display. The deferred-obligation gap from STW-MUN-003 (the <em>thine</em> annotation needs reader-visible rendering) can be partially addressed by the same future cycle, since both apparatus and stewardship annotations now live as canonical-adjacent records.</p>
+<p><strong>linked_entries.</strong>
+STW-MUN-005 (schema extension). STW-MUN-006 (page mapping recovery). STW-MUN-003 (the <em>thine</em> non-intervention; its annotation surface awaits the same future Reading Room integration).</p>
+<p><strong>steward_notes.</strong>
+The cycle's most consequential single act. The canonical is no longer constitutionally amputated — the witness's full apparatus is restored. The discipline of restraint that has marked the cycle's prior actions does not apply here in the same way: this is restoration, not non-intervention. But the same care applies in different form: the discipline now is to restore <em>exactly what is in raw</em> and <em>no more</em>. Adding diacritics, classifying notes, or rewriting bodies for readability are all forms of going beyond what the held chain authorizes. The cycle's prior insight — that the steward's most dangerous instinct is the desire to improve — applies to architectural restoration as much as to textual non-intervention. The improvement temptation here would be to "polish" the apparatus on the way back into canonical. The discipline is not to.</p>
+<p>A note on the page-break case at canonical 5.93/5.94 (verse 3 of First Mundaka, Second Khanda, spanning pages 30/31): the anchor <code>[*5]</code> at end of 5.93 resolves to apparatus record <code>30.5</code>; the anchor <code>[*1]</code> at end of 5.94 resolves to apparatus record <code>31.1</code>. The page-resetting numbering convention is preserved exactly as Müller's print encoded it. The same Müllerian verse — split across pages by typesetter, split across canonical passages by canonical formation — now has its anchor-numbering reset honored across the page boundary in a structurally honest way. This was the cycle's stress-test for whether the page-keying convention survives recovery, and it does.</p>
+<p>A note on the build script: <code>_build_apparatus.py</code> was the deterministic mechanism by which the apparatus was extracted. It is not part of the canonical; it is the one-off transform that produced the canonical artifact. Whether to retain the script for transparency or discard it as ephemeral is itself a small stewardship question. For this cycle, the script remains in place at the project root; its disposition is recorded as a deferred decision.</p>
+</body>
+</html>

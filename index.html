@@ -1723,6 +1723,81 @@ mark.search-hl-active {
 
 .annotation-note.open { display: block; }
 
+/* ── Apparatus (Müller's voice — distinct from .annotation-note which is archive voice) ──── */
+
+.passage .apparatus-ref {
+  display: inline-block;
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 0;
+  color: #8a6a3a;
+  text-decoration: none;
+  margin: 0 1px;
+  padding: 0 2px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.passage .apparatus-ref:hover {
+  background: #f3ead8;
+  text-decoration: underline;
+}
+.apparatus-body {
+  display: none;
+  background: #f7f4ec;
+  border-left: 2px solid #c0a878;
+  padding: 8px 14px 10px 14px;
+  margin: 6px 0 4px 8px;
+  font-size: 0.86em;
+  line-height: 1.55;
+  color: #4a4a4a;
+  border-radius: 2px;
+}
+.apparatus-body.open { display: block; }
+.apparatus-body .apparatus-meta {
+  font-size: 0.85em;
+  color: #8a7a6a;
+  font-style: italic;
+  margin-bottom: 4px;
+  display: block;
+}
+.apparatus-body .apparatus-text {
+  font-family: var(--reader-font, Georgia, serif);
+}
+
+/* ── Page-level framing line (mediation acknowledgement, atmospheric) ──── */
+
+.framing-line {
+  font-size: 0.82em;
+  color: #8a7a6a;
+  font-style: italic;
+  margin: 6px 0 0 0;
+  letter-spacing: 0.01em;
+}
+
+/* ── Stewardship history link (discreet, in meta region) ──── */
+
+.stewardship-link {
+  display: inline-block;
+  font-size: 0.85em;
+  color: #6a5a3a;
+  text-decoration: none;
+  border-bottom: 1px dotted #aaa;
+  padding-bottom: 1px;
+}
+.stewardship-link:hover {
+  color: #2c2c2c;
+  border-bottom-color: #2c2c2c;
+}
+.cc-stewardship {
+  text-align: center;
+  margin: 1em 0 0.5em 0;
+}
+#continuous-cover .framing-line {
+  text-align: center;
+  margin: 0.4em auto 0 auto;
+  max-width: 480px;
+}
+
 /* ── Front matter (preface, intro, contents, etc.) ───────────────────────── */
 
 .front-matter {
@@ -2156,7 +2231,7 @@ mark.search-hl-active {
         <div id="welcome">
           <div id="welcome-home">
             <div id="home-header">
-              <a href="https://stevenfrye30.github.io/workspace-hub/" id="home-hub-link">&larr; Workspace</a>
+              <a href="https://stevenfrye30.github.io/Workspace/" id="home-hub-link">&larr; Workspace</a>
               <h1 id="home-title">Digital Archive</h1>
               <p id="home-subtitle">A verified digital library of sacred, philosophical, and literary texts</p>
             </div>
@@ -2826,6 +2901,7 @@ let currentEntry   = null;          // currently loaded index entry
 let indexGroups    = {};             // text_id → [entry, ...]
 const dataFileToEntry = {};           // data_file → {entry, li}
 let pendingPid     = null;            // passage id to jump to on enterReading
+let pendingSection = null;            // section name to jump to on loadText (cross-tradition deep link)
 let bookmarkTimer  = null;
 let entryToLi     = new Map();      // entry → sidebar <li> element
 
@@ -3089,6 +3165,58 @@ const RENDER_BATCH = 200;
 let _pendingPassages = [];
 let _pendingQuery = '';
 
+// ── Apparatus encounter helpers ─────────────────────────────────────────────
+//
+// Apparatus is Müller's voice — page-keyed footnote bodies preserved verbatim from
+// the raw witness. A canonical anchor [*N] in passage P resolves to the apparatus
+// record where (record.page == page-of-P) and (record.index == N). The page is
+// found via currentData.apparatus_page_boundaries.
+//
+// The apparatus body is rendered with class .apparatus-body (warm tan register,
+// distinct from the cooler .footnote-body and the blue .annotation-note). The
+// distinction is constitutional: Müller's voice and the archive's voice must
+// remain visually separable.
+
+function findApparatusForPassage(passageId, apparatusIndex) {
+  if (!currentData) return null;
+  const boundaries = currentData.apparatus_page_boundaries;
+  const apparatus  = currentData.apparatus;
+  if (!boundaries || !apparatus) return null;
+  let page = null;
+  for (const pb of boundaries) {
+    if (pb.passages && pb.passages.indexOf(passageId) !== -1) {
+      page = pb.page;
+      break;
+    }
+  }
+  if (page === null) return null;
+  return apparatus.find(function(a) {
+    return a.page === page && a.index === apparatusIndex;
+  }) || null;
+}
+
+function toggleApparatusBody(passageDiv, passageId, apparatusIndex) {
+  const ap = findApparatusForPassage(passageId, apparatusIndex);
+  if (!ap) return;
+  const id = 'ap-' + passageId.replace(/\./g, '-') + '-' + ap.page + '-' + ap.index;
+  let body = passageDiv.querySelector('#' + CSS.escape(id));
+  if (!body) {
+    body = document.createElement('div');
+    body.className = 'apparatus-body';
+    body.id = id;
+    const meta = document.createElement('span');
+    meta.className = 'apparatus-meta';
+    meta.textContent = 'Müller — page ' + ap.page + ', footnote ' + ap.index;
+    body.appendChild(meta);
+    const text = document.createElement('span');
+    text.className = 'apparatus-text';
+    text.textContent = ap.body;
+    body.appendChild(text);
+    passageDiv.appendChild(body);
+  }
+  body.classList.toggle('open');
+}
+
 function _renderBatch(passages, query, frag) {
   for (const p of passages) {
     const div = document.createElement('div');
@@ -3115,20 +3243,24 @@ function _renderBatch(passages, query, frag) {
       div.dataset.fnNumber = fnBodyMatch[1];
     }
 
-    // Render text with inline [N] references as clickable anchors
+    // Render text with inline [N] and [*N] references as clickable anchors.
+    // [N]  -> fn-ref (legacy footnote-body, in-stream as another passage)
+    // [*N] -> apparatus-ref (Müller's footnote bodies stored in currentData.apparatus,
+    //                        rendered inline below the passage on click)
     function renderTextWithFnRefs(targetNode, rawText) {
-      const parts = rawText.split(/(\[\d+\])/);
+      const parts = rawText.split(/(\[\*?\d+\])/);
       for (const part of parts) {
-        const m = part.match(/^\[(\d+)\]$/);
-        if (m && !fnBodyMatch) {
+        const fnMatch = part.match(/^\[(\d+)\]$/);
+        const apMatch = part.match(/^\[\*(\d+)\]$/);
+        if (fnMatch && !fnBodyMatch) {
           const a = document.createElement('a');
           a.className = 'fn-ref';
           a.href = '#';
           a.textContent = part;
-          a.dataset.fnTarget = m[1];
+          a.dataset.fnTarget = fnMatch[1];
           a.addEventListener('click', (e) => {
             e.preventDefault();
-            const target = $passages.querySelector(`.footnote-body[data-fn-number="${m[1]}"]`);
+            const target = $passages.querySelector(`.footnote-body[data-fn-number="${fnMatch[1]}"]`);
             if (target) {
               // Toggle visibility
               target.classList.toggle('fn-visible');
@@ -3138,6 +3270,17 @@ function _renderBatch(passages, query, frag) {
                 setTimeout(() => target.classList.remove('fn-flash'), 1500);
               }
             }
+          });
+          targetNode.appendChild(a);
+        } else if (apMatch) {
+          const a = document.createElement('a');
+          a.className = 'apparatus-ref';
+          a.href = '#';
+          a.textContent = part;
+          a.dataset.apparatusIndex = apMatch[1];
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleApparatusBody(div, p.id, parseInt(apMatch[1], 10));
           });
           targetNode.appendChild(a);
         } else {
@@ -3175,24 +3318,35 @@ function _renderBatch(passages, query, frag) {
         const textNodes = [];
         let n; while ((n = walker.nextNode())) textNodes.push(n);
         for (const tn of textNodes) {
-          if (!/\[\d+\]/.test(tn.nodeValue)) continue;
-          const parts = tn.nodeValue.split(/(\[\d+\])/);
+          if (!/\[\*?\d+\]/.test(tn.nodeValue)) continue;
+          const parts = tn.nodeValue.split(/(\[\*?\d+\])/);
           const frag2 = document.createDocumentFragment();
           for (const part of parts) {
-            const m = part.match(/^\[(\d+)\]$/);
-            if (m && !fnBodyMatch) {
+            const fnMatch = part.match(/^\[(\d+)\]$/);
+            const apMatch = part.match(/^\[\*(\d+)\]$/);
+            if (fnMatch && !fnBodyMatch) {
               const a = document.createElement('a');
               a.className = 'fn-ref';
               a.href = '#';
               a.textContent = part;
               a.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = $passages.querySelector(`.footnote-body[data-fn-number="${m[1]}"]`);
+                const target = $passages.querySelector(`.footnote-body[data-fn-number="${fnMatch[1]}"]`);
                 if (target) {
                   target.scrollIntoView({ behavior: 'smooth', block: 'center' });
                   target.classList.add('fn-flash');
                   setTimeout(() => target.classList.remove('fn-flash'), 1500);
                 }
+              });
+              frag2.appendChild(a);
+            } else if (apMatch) {
+              const a = document.createElement('a');
+              a.className = 'apparatus-ref';
+              a.href = '#';
+              a.textContent = part;
+              a.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleApparatusBody(div, p.id, parseInt(apMatch[1], 10));
               });
               frag2.appendChild(a);
             } else {
@@ -3667,6 +3821,7 @@ function showCover(data, entry) {
   if (trTxt)     html += `<div class="cc-translator">${escapeHTML(trTxt)}</div>`;
   if (dateParts.length) html += `<div class="cc-year">${escapeHTML(dateParts.join(' \u00b7 '))}</div>`;
   if (ssHtml)    html += `<div class="cc-source">${ssHtml}</div>`;
+  if (data.framing) html += `<div class="framing-line">${escapeHTML(data.framing)}</div>`;
   if (data.restricted) html += `<div class="cc-restricted">🔒 Restricted — copyrighted, local only. Not on public site.</div>`;
 
   // Generate MLA and APA citations
@@ -3689,6 +3844,10 @@ function showCover(data, entry) {
   html += `<div class="cc-cite"><span class="cc-cite-label">MLA</span> <span class="cc-cite-text">${mla}</span></div>`;
   html += `<div class="cc-cite"><span class="cc-cite-label">APA</span> <span class="cc-cite-text">${apa}</span></div>`;
   html += '</div>';
+
+  if (data.stewardship_history_url) {
+    html += `<div class="cc-stewardship"><a class="stewardship-link" href="${escapeHTML(data.stewardship_history_url)}">Stewardship history</a></div>`;
+  }
 
   html += '<div class="cc-rule"></div>';
   html += '</div>';
@@ -4206,6 +4365,18 @@ async function loadText(entry, listItem) {
         pendingPid = null;
         showCover(data, entry);
       }
+    } else if (pendingSection) {
+      const first = allPassages.find(
+        p => p.path && String(p.path[0]) === pendingSection);
+      if (first) {
+        currentBook = String(first.path[0]);
+        $infoBar.style.display = 'flex';
+        enterReading();
+        requestAnimationFrame(() => jumpToPassage(first.id, true));
+      } else {
+        showCover(data, entry);
+      }
+      pendingSection = null;
     } else {
       showCover(data, entry);
     }
@@ -4525,6 +4696,36 @@ function buildBrowseData() {
     if (!tree[bucket][trd]) tree[bucket][trd] = [];
     const rank = e.importance_rank ?? 9999;
     tree[bucket][trd].push({ id, entries, title: e.title, author: e.author, rank });
+
+    // Cross-tradition anthologies: for each (tradition, section) pair, surface
+    // one tile in that tradition's bucket that deep-links to the section.
+    // Falls back to a plain cover link when only cross_traditions is set.
+    const crossSections = e.cross_sections || null;
+    if (crossSections) {
+      for (const [xTrd, sections] of Object.entries(crossSections)) {
+        if (xTrd === trd) continue;
+        const xBucket = bucketFor(xTrd);
+        if (!tree[xBucket]) tree[xBucket] = {};
+        if (!tree[xBucket][xTrd]) tree[xBucket][xTrd] = [];
+        for (const section of sections) {
+          tree[xBucket][xTrd].push({
+            id, entries, title: e.title, author: e.author, rank,
+            crossFrom: trd, crossSection: section,
+          });
+        }
+      }
+    } else {
+      for (const xTrd of e.cross_traditions || []) {
+        if (xTrd === trd) continue;
+        const xBucket = bucketFor(xTrd);
+        if (!tree[xBucket]) tree[xBucket] = {};
+        if (!tree[xBucket][xTrd]) tree[xBucket][xTrd] = [];
+        tree[xBucket][xTrd].push({
+          id, entries, title: e.title, author: e.author, rank,
+          crossFrom: trd,
+        });
+      }
+    }
   }
   // Sort texts by importance (ranked first, then alphabetical)
   for (const bucket of Object.keys(tree)) {
@@ -4593,7 +4794,14 @@ function _textTileHTML(t, cat, trd) {
   const authorArr = (t.author || []).filter(a => a && a !== 'Anonymous');
   const authorStr = authorArr.join(', ');
   const yearVal = t.entries[0].year;
-  const meta = [authorStr, yearVal].filter(Boolean).join(' · ');
+  const crossNote = t.crossFrom ? `from ${t.crossFrom}` : '';
+  const meta = [authorStr, yearVal, crossNote].filter(Boolean).join(' · ');
+  const displayTitle = t.crossSection
+    ? `${t.title} \u2014 ${t.crossSection}`
+    : t.title;
+  const onclick = t.crossSection
+    ? `browseTextSection('${escH(cat)}','${escH(trd)}','${escH(t.id)}','${escH(t.crossSection)}')`
+    : `browseText('${escH(cat)}','${escH(trd)}','${escH(t.id)}')`;
   const badge = count > 1 ? `<span class="tt-badge">${count} trans.</span>` : '';
   const star = t.rank < 9999 ? '<span class="tt-star">★</span>' : '<span class="tt-star"></span>';
   const colorMode = document.getElementById('browse-color').value;
@@ -4602,10 +4810,10 @@ function _textTileHTML(t, cat, trd) {
   else if (colorMode === 'importance') colorClass = _impClass(t.rank);
   const progPct = getReadingProgress(t.entries[0].data_file);
   const progBadge = progPct > 0 ? `<span class="progress-badge">${progPct}%</span>` : '';
-  return `<div class="text-tile ${colorClass}" onclick="browseText('${escH(cat)}','${escH(trd)}','${escH(t.id)}')">
+  return `<div class="text-tile ${colorClass}" onclick="${onclick}">
     ${star}
     <div class="tt-info">
-      <div class="tt-title">${escH(t.title)}${progBadge}</div>
+      <div class="tt-title">${escH(displayTitle)}${progBadge}</div>
       ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
     </div>
     ${badge}
@@ -4640,30 +4848,36 @@ function _renderTextTiles() {
   const sortBy = document.getElementById('browse-sort').value;
   const viewMode = document.querySelector('.bt-btn.active').dataset.view;
 
-  // Sort
-  const sorted = texts.slice();
-  if (sortBy === 'alpha') {
-    sorted.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sortBy === 'year') {
-    sorted.sort((a, b) => (a.entries[0].year || 9999) - (b.entries[0].year || 9999));
-  } else if (sortBy === 'author') {
-    sorted.sort((a, b) => {
-      const aa = (a.author || []).join('') || 'zzz';
-      const ba = (b.author || []).join('') || 'zzz';
-      return aa.localeCompare(ba);
-    });
-  } else {
-    // importance (default)
-    sorted.sort((a, b) => {
-      if (a.rank !== b.rank) return a.rank - b.rank;
-      return a.title.localeCompare(b.title);
-    });
-  }
+  // Split native texts from cross-tradition anthologies; render anthologies
+  // separately at the bottom under a clear header.
+  const native = texts.filter(t => !t.crossFrom);
+  const cross = texts.filter(t => t.crossFrom);
+
+  const sortFn = (list) => {
+    if (sortBy === 'alpha') {
+      list.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortBy === 'year') {
+      list.sort((a, b) => (a.entries[0].year || 9999) - (b.entries[0].year || 9999));
+    } else if (sortBy === 'author') {
+      list.sort((a, b) => {
+        const aa = (a.author || []).join('') || 'zzz';
+        const ba = (b.author || []).join('') || 'zzz';
+        return aa.localeCompare(ba);
+      });
+    } else {
+      list.sort((a, b) => {
+        if (a.rank !== b.rank) return a.rank - b.rank;
+        return a.title.localeCompare(b.title);
+      });
+    }
+  };
+  const sorted = native.slice();  sortFn(sorted);
+  const sortedCross = cross.slice(); sortFn(sortedCross);
 
   // Set view class
   $browseTiles.className = viewMode === 'grid' ? 'tile-grid-cards' : 'tile-list';
 
-  // Split featured/rest for importance sort
+  // Split featured/rest for importance sort (native only)
   let html = '';
   if (sortBy === 'importance') {
     const featured = sorted.filter(t => t.rank < 9999);
@@ -4679,7 +4893,24 @@ function _renderTextTiles() {
   } else {
     for (const t of sorted) html += _textTileHTML(t, cat, trd);
   }
+
+  if (sortedCross.length) {
+    html += `<div class="tile-section-label">Anthologies covering ${escH(trd)}</div>`;
+    for (const t of sortedCross) html += _textTileHTML(t, cat, trd);
+  }
+
   $browseTiles.innerHTML = html;
+}
+
+/** Open a text with the reader scrolled to a named section (cross-tradition deep link). */
+function browseTextSection(cat, trd, textId, section) {
+  const group = indexGroups[textId];
+  if (!group || group.length === 0) return;
+  pendingSection = section;
+  $browse.style.display = 'none';
+  document.getElementById('controls').style.display = '';
+  document.getElementById('reader').style.overflow = '';
+  loadText(group[0]);
 }
 
 /** Level 3: show translations for a text, or open directly if only one */
