@@ -55,6 +55,9 @@ relates to this catalog — is recorded in:
 - **[STABILIZATION_EDITION_2026.md](STABILIZATION_EDITION_2026.md)** —
   the May 2026 institutional checkpoint, recording the moment the
   archive crossed into operational coherence.
+- **[QURAN_RESTORATION_2026.md](QURAN_RESTORATION_2026.md)** — the
+  first editorial restoration pass: notes on what was thought to be
+  wrong with the Qurʾān, what was actually wrong, and what was done.
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They

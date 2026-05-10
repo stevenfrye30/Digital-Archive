@@ -43,6 +43,11 @@ institutional checkpoint, not an executable bundle.
   registry, and integrity reports into the human-readable
   `TEXT_CLEANLINESS.md`. Run after refreshing the underlying reports
   if you want the cleanliness document to reflect the current corpus.
+- **`corpus_audit.py`** — the structural duplicate-id, front-matter,
+  and short-stub auditor. Reads `03_web_app/data/index.json` and the
+  per-translation passage files. As of the May 2026 Quran restoration,
+  groups by `(text_id, data_file)` so multi-translation works no
+  longer surface false-alarm dup-id totals.
 
 ## Refresh ritual
 

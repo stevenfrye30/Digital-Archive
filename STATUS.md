@@ -41,7 +41,7 @@ generated reader at `03_web_app/`.
 | Metric | Value | Report |
 |---|---:|---|
 | Texts with structural dup-ID issues | 48 | `logs/reports/corpus_audit_report.md` |
-| Total excess duplicates (parser) | 184,634 | same |
+| Total excess duplicates (parser) | 12,779 | same |
 | Texts missing front matter | 43 | same |
 | Short stubs classified | 163,632 | same |
 | — keep | 72,683 | same |
@@ -155,10 +155,16 @@ listed once with the link entering at the first chapter.
 - Schema validator emits 233 content-level warnings (missing
   `source.url`, `source_quality`, `original_*`). These need per-text
   review, not closed-set extension.
-- 48 texts have structural duplicate-ID issues; the top 10 (`quran`,
-  `jataka`, `ambrose-select-works`, `eusebius-church-history`,
-  `expositor-bible`, etc.) account for most of the 184,634 excess
-  passage-id duplicates and need parser work or manual restructuring.
+- 40 texts have structural duplicate-ID issues; the top 10
+  (`ambrose-select-works`, `eusebius-church-history`,
+  `augustine-confessions-enchiridion-ccel`, `jerome-letters-works`,
+  `athanasius-select-works`, etc. — the CCEL Christian patristic
+  cluster) account for most of the 12,779 excess passage-id duplicates
+  and need parser work or manual restructuring. The Quran's previously
+  reported 158,458 collisions turned out to be a measurement artifact
+  in `corpus_audit.py` and were resolved by the May 2026 restoration
+  (`QURAN_RESTORATION_2026.md`); the audit now groups per translation
+  so multi-translation works do not surface false alarms.
   Distinguished from legitimate directory-level shared `id`s in
   `01_library/library/DUPLICATE_IDS.md`.
 - `sappho-fragment-31` has no `library_id` — intentional; its body

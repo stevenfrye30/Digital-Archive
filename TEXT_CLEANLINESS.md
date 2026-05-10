@@ -1484,16 +1484,16 @@ The top ten texts from `corpus_audit.py`'s structural-duplicate priority queue. 
 
 | Rank | Text | Title | Issue family | Severity |
 |---:|---|---|---|---:|
-| 1 | `quran` | Quran | missing_book_level | 158,458 |
-| 2 | `jataka` | The Jātaka | missing_book_level | 8,895 |
-| 3 | `ambrose-select-works` | Select Works and Letters | unknown | 2,093 |
-| 4 | `eusebius-church-history` | Church History and Life of Constantine | front_matter_absorbed | 1,881 |
-| 5 | `expositor-bible` | The Expositor's Bible | regex_partial_detection | 1,720 |
-| 6 | `augustine-confessions-enchiridion-ccel` | Confessions and Enchiridion (CCEL) | front_matter_absorbed | 1,092 |
-| 7 | `calvin-letters` | Letters of John Calvin | missing_book_level | 1,022 |
-| 8 | `jerome-letters-works` | Letters and Select Works | unknown | 1,002 |
-| 9 | `athanasius-select-works` | Select Works and Letters | missing_book_level | 909 |
-| 10 | `cyril-nazianzus-select-works` | Select Works of Cyril of Jerusalem and Gregory of Nazianzus | missing_book_level | 820 |
+| 1 | `ambrose-select-works` | Select Works and Letters | unknown | 2,093 |
+| 2 | `eusebius-church-history` | Church History and Life of Constantine | front_matter_absorbed | 1,881 |
+| 3 | `augustine-confessions-enchiridion-ccel` | Confessions and Enchiridion (CCEL) | front_matter_absorbed | 1,092 |
+| 4 | `jerome-letters-works` | Letters and Select Works | unknown | 1,002 |
+| 5 | `athanasius-select-works` | Select Works and Letters | missing_book_level | 909 |
+| 6 | `cyril-nazianzus-select-works` | Select Works of Cyril of Jerusalem and Gregory of Nazianzus | missing_book_level | 820 |
+| 7 | `buddha-life-herold` | The Life of Buddha | missing_book_level | 775 |
+| 8 | `anf01-early-fathers` | Apostolic Fathers, Justin Martyr, Irenaeus | missing_book_level | 730 |
+| 9 | `manual-of-hadith` | A Manual of Hadith | missing_book_level | 542 |
+| 10 | `chrysostom-homilies-matthew` | Homilies on the Gospel of Matthew | missing_book_level | 465 |
 
 **Recurring patterns:**
 
