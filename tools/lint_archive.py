@@ -1,0 +1,230 @@
+#!/usr/bin/env python3
+"""
+lint_archive.py — A calm health check for the Digital Archive.
+
+Runs the existing read-only check scripts and assembles a single
+human-readable report. This is a maintenance instrument, not a CI
+gate. Run it when something feels off, or before publishing.
+
+Checks performed:
+  1. Canonical metadata schema (validate_metadata.py).
+  2. Reading Room ↔ canonical link integrity (validate_archive_links.py).
+  3. Reading Room shelves drift (check_shelves_drift.py).
+  4. Last passage-integrity proof summary (logs/passage_subsequence_proof.md).
+  5. Last full corpus validation summary (logs/reports/final_validation.md).
+
+The script does not modify content. It writes one report:
+
+    logs/reports/archive_health.md
+
+Usage:
+    python 05_scripts/lint_archive.py
+"""
+
+from __future__ import annotations
+
+import json
+import re
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SCRIPTS = ROOT / "05_scripts"
+LOGS = ROOT / "logs"
+REPORT = LOGS / "reports" / "archive_health.md"
+
+
+def run(cmd: list[str]) -> tuple[int, str]:
+    """Run a script and return (exit_code, last_few_lines_of_stdout)."""
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True,
+                           encoding="utf-8", errors="replace", cwd=str(ROOT))
+        out = (r.stdout or "") + (r.stderr or "")
+        tail = "\n".join(out.strip().splitlines()[-3:])
+        return r.returncode, tail
+    except Exception as e:
+        return -1, str(e)
+
+
+def read_md_summary(path: Path, max_lines: int = 12) -> str:
+    if not path.exists():
+        return f"*Report not found: `{path.relative_to(ROOT).as_posix()}`*"
+    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    head: list[str] = []
+    for ln in lines:
+        if len(head) >= max_lines:
+            break
+        head.append(ln)
+    return "\n".join(head).rstrip()
+
+
+def count_validation_warnings() -> tuple[int, int]:
+    """Read logs/ingestion_issues.json and count current validation entries."""
+    p = LOGS / "ingestion_issues.json"
+    if not p.exists():
+        return (0, 0)
+    issues = json.loads(p.read_text(encoding="utf-8"))
+    val = [i for i in issues if i.get("source") == "validation"]
+    errs = [i for i in issues if i.get("severity") == "error"]
+    return (len(val), len(errs))
+
+
+def count_canonical() -> dict:
+    p = ROOT / "01_library" / "library" / "metadata" / "registry.json"
+    if not p.exists():
+        return {"error": "registry.json not found"}
+    reg = json.loads(p.read_text(encoding="utf-8"))
+    ids = [t["id"] for t in reg.get("texts", [])]
+    return {
+        "text_count":    reg.get("text_count"),
+        "array_length":  len(ids),
+        "distinct_ids":  len(set(ids)),
+    }
+
+
+def count_web_app() -> dict:
+    p = ROOT / "03_web_app" / "data" / "index.json"
+    if not p.exists():
+        return {"error": "web app index.json not found"}
+    idx = json.loads(p.read_text(encoding="utf-8"))
+    ids = [t["id"] for t in idx.get("texts", [])]
+    return {
+        "translations_exposed": len(ids),
+        "distinct_text_ids":    len(set(ids)),
+    }
+
+
+def count_reading_room() -> dict:
+    rr = ROOT.parent / "workspace-hub" / "archive"
+    texts = rr / "texts"
+    if not texts.exists():
+        return {"error": "Reading Room texts/ not found"}
+    files = list(texts.glob("*.md"))
+    sis = sum(1 for f in files
+              if "## Primary Text" in f.read_text(encoding="utf-8",
+                                                  errors="replace"))
+    shelf_tagged = sum(1 for f in files
+                       if re.search(r"^status:\s*shelf",
+                                    f.read_text(encoding="utf-8", errors="replace"),
+                                    re.MULTILINE))
+    return {
+        "entries":             len(files),
+        "status_shelf_tagged": shelf_tagged,
+        "sis_v1_conforming":   sis,
+    }
+
+
+def main() -> int:
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+    # Run sub-checks. Each saves its own report file as a side effect;
+    # we just capture the one-line summaries.
+    link_code, link_tail = run([sys.executable,
+                                str(SCRIPTS / "validate_archive_links.py")])
+    drift_code, drift_tail = run([sys.executable,
+                                  str(SCRIPTS / "check_shelves_drift.py")])
+
+    canonical = count_canonical()
+    web = count_web_app()
+    rr = count_reading_room()
+    val_warnings, schema_errors = count_validation_warnings()
+
+    proof_md = LOGS / "passage_subsequence_proof.md"
+    final_validation_md = LOGS / "reports" / "final_validation.md"
+
+    out: list[str] = []
+    out.append(f"# Archive health")
+    out.append("")
+    out.append(f"*Run: {timestamp}*")
+    out.append("")
+    out.append("This report is generated by `lint_archive.py`. It is a")
+    out.append("snapshot of the underlying check reports. Each section")
+    out.append("links to the report it summarises.")
+    out.append("")
+    out.append("## At a glance")
+    out.append("")
+    out.append("| Surface | Measure | Value |")
+    out.append("|---|---|---:|")
+    if "error" not in canonical:
+        out.append(f"| Canonical library | `text.json` files | {canonical['array_length']} |")
+        out.append(f"| Canonical library | distinct ids | {canonical['distinct_ids']} |")
+        out.append(f"| Canonical library | registry text_count | {canonical['text_count']} |")
+        agree = (canonical["text_count"] == canonical["array_length"])
+        out.append(f"| Canonical library | counts agree | {'✓' if agree else '✗ — re-run build_registry.py'} |")
+    if "error" not in web:
+        out.append(f"| Web app | translations exposed | {web['translations_exposed']} |")
+        out.append(f"| Web app | distinct text ids | {web['distinct_text_ids']} |")
+    if "error" not in rr:
+        out.append(f"| Reading Room | entries | {rr['entries']} |")
+        out.append(f"| Reading Room | tagged `status: shelf` | {rr['status_shelf_tagged']} |")
+        out.append(f"| Reading Room | SIS v1 conforming | {rr['sis_v1_conforming']} |")
+    out.append(f"| Validation | schema warnings | {val_warnings} |")
+    out.append(f"| Validation | schema errors | {schema_errors} |")
+    out.append("")
+
+    out.append("## Reading Room ↔ canonical links")
+    out.append("")
+    out.append(f"`validate_archive_links.py` exit: {link_code}")
+    out.append("")
+    out.append("```")
+    out.append(link_tail)
+    out.append("```")
+    out.append("")
+    out.append("Full report: [`logs/reports/archive_link_audit.md`]"
+               "(./archive_link_audit.md)")
+    out.append("")
+
+    out.append("## Shelves drift")
+    out.append("")
+    out.append(f"`check_shelves_drift.py` exit: {drift_code}")
+    out.append("")
+    out.append("```")
+    out.append(drift_tail)
+    out.append("```")
+    out.append("")
+    out.append("Full report: [`logs/reports/shelves_drift.md`]"
+               "(./shelves_drift.md)")
+    out.append("")
+
+    out.append("## Passage integrity (last full run)")
+    out.append("")
+    out.append(read_md_summary(proof_md, max_lines=14))
+    out.append("")
+    out.append(f"Full report: [`logs/passage_subsequence_proof.md`]"
+               f"(../passage_subsequence_proof.md)")
+    out.append("")
+
+    out.append("## Corpus validation (last full run)")
+    out.append("")
+    out.append(read_md_summary(final_validation_md, max_lines=14))
+    out.append("")
+    out.append("Full report: [`logs/reports/final_validation.md`]"
+               "(./final_validation.md)")
+    out.append("")
+
+    out.append("---")
+    out.append("")
+    out.append("*Refresh tools that produce the inputs to this report:*")
+    out.append("")
+    out.append("```")
+    out.append("python 05_scripts/build_registry.py")
+    out.append("python 05_scripts/validate_metadata.py")
+    out.append("python 05_scripts/passage_subsequence_proof.py --save --min-pass 0")
+    out.append("python 05_scripts/build_integrity_report.py")
+    out.append("python 05_scripts/final_validation.py --out logs/reports/final_validation.md")
+    out.append("python 05_scripts/corpus_audit.py    --out logs/reports/corpus_audit_report.md")
+    out.append("python 05_scripts/lint_archive.py")
+    out.append("```")
+    out.append("")
+
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
+    REPORT.write_text("\n".join(out) + "\n", encoding="utf-8")
+    print(f"Health report saved to {REPORT.relative_to(ROOT)}")
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

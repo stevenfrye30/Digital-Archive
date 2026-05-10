@@ -34,3 +34,20 @@ data/think-grow-rich*.json.gz
 .claude/
 .DS_Store
 Thumbs.db
+
+# Python tooling
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Maintenance reports — only the human-readable Markdown summaries are
+# published; the full JSON outputs are local-only since they reproduce
+# from the canonical library on demand.
+reports/*.json
+reports/_flagged_text_ids.json
+reports/ingestion_issues.json
+reports/repair_analysis.json
+reports/unmatched_block_review.json
+reports/whitelist_*.json
