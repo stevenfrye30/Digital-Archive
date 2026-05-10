@@ -39,6 +39,10 @@ institutional checkpoint, not an executable bundle.
   `category`, `source_quality`, and the recognised publishers and URL
   domains. Worth reading as a snapshot of the corpus's working
   vocabulary.
+- **`build_cleanliness_report.py`** — joins the validation, audit,
+  registry, and integrity reports into the human-readable
+  `TEXT_CLEANLINESS.md`. Run after refreshing the underlying reports
+  if you want the cleanliness document to reflect the current corpus.
 
 ## Refresh ritual
 

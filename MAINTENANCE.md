@@ -55,9 +55,12 @@ python 05_scripts/validate_metadata.py
 python 05_scripts/passage_subsequence_proof.py --save --min-pass 0
 python 05_scripts/build_integrity_report.py
 python 05_scripts/final_validation.py --out logs/reports/final_validation.md
+python 05_scripts/final_validation.py --json --out logs/reports/final_validation.json
 python 05_scripts/corpus_audit.py    --out logs/reports/corpus_audit_report.md
+python 05_scripts/corpus_audit.py    --json --out logs/reports/corpus_audit_report.json
 python 05_scripts/gzip_web_data.py
 python 05_scripts/lint_archive.py
+python 05_scripts/build_cleanliness_report.py
 ```
 
 The passage proof is the slow one (~10 minutes for the full

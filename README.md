@@ -45,10 +45,16 @@ relates to this catalog — is recorded in:
 
 - **[STATUS.md](STATUS.md)** — current counts, validation state, what's
   canonical, what's legacy. The truth surface.
+- **[TEXT_CLEANLINESS.md](TEXT_CLEANLINESS.md)** — text-by-text condition:
+  which works are clean, which are acceptable, which need work, with
+  definitions. Read this before assuming "needs work" means damaged.
 - **[MAINTENANCE.md](MAINTENANCE.md)** — operating handbook. How
   refresh works, what should never be edited casually.
 - **[DUPLICATE_IDS.md](DUPLICATE_IDS.md)** — what counts as a duplicate
   in the corpus, and what does not.
+- **[STABILIZATION_EDITION_2026.md](STABILIZATION_EDITION_2026.md)** —
+  the May 2026 institutional checkpoint, recording the moment the
+  archive crossed into operational coherence.
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They
