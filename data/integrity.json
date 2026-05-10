@@ -1,21 +1,21 @@
 {
   "generated_at": "",
   "summary": {
-    "targets": 1069,
-    "pass_texts": 671,
-    "partial_texts": 381,
+    "targets": 1195,
+    "pass_texts": 706,
+    "partial_texts": 393,
     "fail_texts": 0,
-    "skip_texts": 17,
-    "passages_checked": 1970067,
-    "passages_verified": 1966859,
-    "overall_pass_rate": 0.9984,
-    "raw_files_hashed": 22647,
-    "raw_bytes_hashed": 1020418834,
-    "raw_manifest_generated_at": "2026-04-19T09:27:40Z",
+    "skip_texts": 96,
+    "passages_checked": 2663500,
+    "passages_verified": 2660212,
+    "overall_pass_rate": 0.9988,
+    "raw_files_hashed": 22651,
+    "raw_bytes_hashed": 1023363313,
+    "raw_manifest_generated_at": "2026-04-19T11:47:10Z",
     "buckets": {
-      "100%": 671,
-      "99-100%": 316,
-      "95-99%": 65,
+      "100%": 706,
+      "99-100%": 326,
+      "95-99%": 67,
       "80-95%": 0,
       "50-80%": 0,
       "<50%": 0
@@ -30,18 +30,18 @@
       "passages_pass": 1616
     },
     "Buddhist": {
-      "total": 60,
+      "total": 65,
       "verified_100": 45,
       "verified_95": 59,
       "passages_total": 101847,
       "passages_pass": 101700
     },
     "Celtic": {
-      "total": 33,
-      "verified_100": 19,
-      "verified_95": 33,
-      "passages_total": 56137,
-      "passages_pass": 56073
+      "total": 32,
+      "verified_100": 18,
+      "verified_95": 31,
+      "passages_total": 52477,
+      "passages_pass": 52417
     },
     "Chinese Strategy": {
       "total": 1,
@@ -51,32 +51,32 @@
       "passages_pass": 378
     },
     "Christian": {
-      "total": 132,
-      "verified_100": 94,
-      "verified_95": 130,
-      "passages_total": 719314,
-      "passages_pass": 719132
+      "total": 181,
+      "verified_100": 116,
+      "verified_95": 156,
+      "passages_total": 1246649,
+      "passages_pass": 1246441
     },
     "Comparative Religion": {
-      "total": 2,
+      "total": 3,
       "verified_100": 2,
-      "verified_95": 2,
-      "passages_total": 3907,
-      "passages_pass": 3907
+      "verified_95": 3,
+      "passages_total": 5119,
+      "passages_pass": 5100
     },
     "Confucian": {
-      "total": 22,
+      "total": 21,
       "verified_100": 13,
-      "verified_95": 22,
-      "passages_total": 12984,
-      "passages_pass": 12973
+      "verified_95": 21,
+      "passages_total": 12733,
+      "passages_pass": 12723
     },
     "Egyptian": {
       "total": 26,
-      "verified_100": 12,
+      "verified_100": 11,
       "verified_95": 25,
-      "passages_total": 21980,
-      "passages_pass": 21919
+      "passages_total": 22345,
+      "passages_pass": 22283
     },
     "Finnish": {
       "total": 1,
@@ -86,56 +86,56 @@
       "passages_pass": 1431
     },
     "Gnostic": {
-      "total": 3,
-      "verified_100": 0,
-      "verified_95": 3,
-      "passages_total": 9461,
-      "passages_pass": 9443
+      "total": 9,
+      "verified_100": 2,
+      "verified_95": 5,
+      "passages_total": 9717,
+      "passages_pass": 9699
     },
     "Greek": {
-      "total": 15,
-      "verified_100": 8,
+      "total": 16,
+      "verified_100": 7,
       "verified_95": 15,
-      "passages_total": 10487,
-      "passages_pass": 10468
+      "passages_total": 9502,
+      "passages_pass": 9481
     },
     "Greek Literature": {
-      "total": 91,
-      "verified_100": 52,
-      "verified_95": 91,
-      "passages_total": 141615,
-      "passages_pass": 140487
+      "total": 93,
+      "verified_100": 53,
+      "verified_95": 92,
+      "passages_total": 142326,
+      "passages_pass": 141198
     },
     "Greek Philosophy": {
       "total": 72,
-      "verified_100": 56,
+      "verified_100": 55,
       "verified_95": 72,
-      "passages_total": 67059,
-      "passages_pass": 67008
+      "passages_total": 68072,
+      "passages_pass": 68005
     },
     "Hermetic": {
-      "total": 60,
+      "total": 69,
       "verified_100": 28,
       "verified_95": 60,
-      "passages_total": 79582,
-      "passages_pass": 79351
+      "passages_total": 79515,
+      "passages_pass": 79285
     },
     "Hindu": {
-      "total": 78,
-      "verified_100": 49,
-      "verified_95": 77,
-      "passages_total": 136181,
-      "passages_pass": 135851
+      "total": 80,
+      "verified_100": 47,
+      "verified_95": 75,
+      "passages_total": 134713,
+      "passages_pass": 134381
     },
     "Islam": {
-      "total": 29,
-      "verified_100": 20,
-      "verified_95": 28,
-      "passages_total": 53302,
-      "passages_pass": 53274
+      "total": 52,
+      "verified_100": 31,
+      "verified_95": 41,
+      "passages_total": 127917,
+      "passages_pass": 127884
     },
     "Jain": {
-      "total": 1,
+      "total": 2,
       "verified_100": 0,
       "verified_95": 0,
       "passages_total": 0,
@@ -149,11 +149,11 @@
       "passages_pass": 393
     },
     "Jewish": {
-      "total": 42,
-      "verified_100": 22,
-      "verified_95": 41,
-      "passages_total": 44579,
-      "passages_pass": 44373
+      "total": 50,
+      "verified_100": 24,
+      "verified_95": 45,
+      "passages_total": 136979,
+      "passages_pass": 136744
     },
     "Mandaean": {
       "total": 1,
@@ -163,39 +163,46 @@
       "passages_pass": 7874
     },
     "Mesoamerican": {
-      "total": 26,
-      "verified_100": 15,
+      "total": 31,
+      "verified_100": 14,
       "verified_95": 26,
-      "passages_total": 28978,
-      "passages_pass": 28954
+      "passages_total": 29023,
+      "passages_pass": 28998
     },
     "Mesopotamian": {
       "total": 23,
       "verified_100": 10,
       "verified_95": 20,
-      "passages_total": 19650,
-      "passages_pass": 19622
+      "passages_total": 19675,
+      "passages_pass": 19647
     },
     "Modern Philosophy": {
-      "total": 223,
-      "verified_100": 148,
+      "total": 230,
+      "verified_100": 150,
       "verified_95": 218,
-      "passages_total": 235186,
-      "passages_pass": 234879
+      "passages_total": 232125,
+      "passages_pass": 231850
+    },
+    "Mohist": {
+      "total": 1,
+      "verified_100": 1,
+      "verified_95": 1,
+      "passages_total": 320,
+      "passages_pass": 320
     },
     "Norse": {
       "total": 12,
-      "verified_100": 6,
-      "verified_95": 12,
-      "passages_total": 21302,
-      "passages_pass": 21262
+      "verified_100": 5,
+      "verified_95": 11,
+      "passages_total": 20597,
+      "passages_pass": 20557
     },
     "Persian Literature": {
-      "total": 5,
-      "verified_100": 5,
-      "verified_95": 5,
-      "passages_total": 3165,
-      "passages_pass": 3165
+      "total": 6,
+      "verified_100": 6,
+      "verified_95": 6,
+      "passages_total": 5315,
+      "passages_pass": 5315
     },
     "Political Philosophy": {
       "total": 42,
@@ -215,15 +222,22 @@
       "total": 23,
       "verified_100": 11,
       "verified_95": 22,
-      "passages_total": 46893,
-      "passages_pass": 46868
+      "passages_total": 46891,
+      "passages_pass": 46866
+    },
+    "Secular / Other": {
+      "total": 1,
+      "verified_100": 0,
+      "verified_95": 0,
+      "passages_total": 0,
+      "passages_pass": 0
     },
     "Shinto": {
-      "total": 4,
+      "total": 7,
       "verified_100": 2,
-      "verified_95": 4,
-      "passages_total": 5106,
-      "passages_pass": 5092
+      "verified_95": 5,
+      "passages_total": 6975,
+      "passages_pass": 6956
     },
     "Sikh": {
       "total": 5,
@@ -233,18 +247,18 @@
       "passages_pass": 31151
     },
     "Slavic": {
-      "total": 1,
+      "total": 3,
       "verified_100": 0,
-      "verified_95": 1,
-      "passages_total": 3827,
-      "passages_pass": 3817
+      "verified_95": 3,
+      "passages_total": 5426,
+      "passages_pass": 5404
     },
     "Stoic": {
-      "total": 5,
-      "verified_100": 2,
-      "verified_95": 5,
-      "passages_total": 5540,
-      "passages_pass": 5533
+      "total": 7,
+      "verified_100": 4,
+      "verified_95": 7,
+      "passages_total": 6743,
+      "passages_pass": 6736
     },
     "Taoist": {
       "total": 13,
@@ -280,13 +294,6 @@
       "verified_95": 3,
       "passages_total": 13819,
       "passages_pass": 13802
-    },
-    "Secular / Other": {
-      "total": 1,
-      "verified_100": 1,
-      "verified_95": 1,
-      "passages_total": 1486,
-      "passages_pass": 1486
     }
   },
   "texts": [
@@ -492,6 +499,33 @@
       "note": ""
     },
     {
+      "title": "Dialogues of the Buddha",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "T.W. Rhys Davids",
+        "C.A.F. Rhys Davids"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/bud/dob/index.htm",
+      "year": 1899,
+      "source_title": "Dialogues of the Buddha",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "dialogues-buddha-rhys-davids",
+      "translation_id": "rhys-davids",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Discourse to Kātyāyana",
       "author": [],
       "translator": [
@@ -540,6 +574,32 @@
       "passages_checked": 495,
       "passages_total": 511,
       "note": ""
+    },
+    {
+      "title": "Esoteric Teachings of the Tibetan Tantra",
+      "author": [
+        "Various Tibetan masters"
+      ],
+      "translator": [
+        "Charles A. Muses"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/bud/tib/index.htm",
+      "year": 1961,
+      "source_title": "Esoteric Teachings of the Tibetan Tantra",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "tibetan-tantra-muses",
+      "translation_id": "muses",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Essays in Zen Buddhism (First Series)",
@@ -817,6 +877,32 @@
       "note": ""
     },
     {
+      "title": "Psalms of the Sisters (Therīgāthā)",
+      "author": [
+        "Various"
+      ],
+      "translator": [
+        "Caroline A.F. Rhys Davids"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/bud/psa/index.htm",
+      "year": 1909,
+      "source_title": "Psalms of the Sisters (Therīgāthā)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "therigatha-davids",
+      "translation_id": "rhys-davids",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Sayings of the Dhamma",
       "author": [],
       "translator": [
@@ -839,6 +925,58 @@
       "passages_checked": 424,
       "passages_total": 424,
       "note": ""
+    },
+    {
+      "title": "She-rab Dong-bu",
+      "author": [
+        "Nagarjuna - tr-WL-Campbell (1919) (NO)"
+      ],
+      "translator": [
+        "Nagarjuna - tr-WL-Campbell (1919) (NO)"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1900,
+      "source_title": "She-rab Dong-bu",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "she-rab-dong-bu-nagarjuna-tr-wl-camp",
+      "translation_id": "anonymous",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "She-rab Dong-bu (The Prajñādaṇḍa)",
+      "author": [
+        "Nāgārjuna (attributed)"
+      ],
+      "translator": [
+        "W.L. Campbell"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/bud/tib/srdb.htm",
+      "year": 1919,
+      "source_title": "She-rab Dong-bu (The Prajñādaṇḍa)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "sherab-dongbu-campbell",
+      "translation_id": "campbell",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Shinran and His Work",
@@ -1864,32 +2002,6 @@
       "note": ""
     },
     {
-      "title": "Carmina Gadelica, Vol 2",
-      "author": [
-        "Alexander Carmichael"
-      ],
-      "translator": [
-        "Alexander Carmichael"
-      ],
-      "publisher": "SacredTexts.com",
-      "url": "https://sacred-texts.com/neu/celt/cg2/index.htm",
-      "year": 1900,
-      "source_title": "Carmina Gadelica, Vol 2",
-      "tradition": "Celtic",
-      "collection": "sacred",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Carmina Gadelica - Vol 2_____Alexander Carmicheal (1900).txt",
-      "raw_sha256": "e27fbbc1bfa48e14009e89d3908efc7341c403d63a1959f185579cb0d1545383",
-      "text_id": "carmina-gadelica-vol2",
-      "translation_id": "carmichael",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 2839,
-      "passages_checked": 2839,
-      "passages_total": 3719,
-      "note": ""
-    },
-    {
       "title": "Celtic Fairy Tales",
       "author": [
         "Joseph Jacobs"
@@ -1910,9 +2022,9 @@
       "translation_id": "jacobs",
       "status": "PASS",
       "pass_rate": 1.0,
-      "passages_pass": 1751,
-      "passages_checked": 1751,
-      "passages_total": 1858,
+      "passages_pass": 1754,
+      "passages_checked": 1754,
+      "passages_total": 2140,
       "note": ""
     },
     {
@@ -1968,30 +2080,30 @@
       "note": ""
     },
     {
-      "title": "Georgian Folk Tales",
+      "title": "Folk Tales of Brittany",
       "author": [
-        "Various"
+        "Elsie Masson"
       ],
       "translator": [
-        "Marjory Wardrop"
+        "Elsie Masson"
       ],
       "publisher": "SacredTexts.com",
-      "url": "https://sacred-texts.com/asia/gft/index.htm",
-      "year": 1894,
-      "source_title": "Georgian Folk Tales",
+      "url": "https://sacred-texts.com/neu/celt/ftob/index.htm",
+      "year": 1929,
+      "source_title": "Folk Tales of Brittany",
       "tradition": "Celtic",
       "collection": "sacred",
       "category": "Folk Literature",
-      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Georgian Folk Tales_____Marjory Wardrop (1894).txt",
-      "raw_sha256": "16e8d3f423b1edb943268cf7bf884f2b53a2bf7c572ccf48143b2bf45b3f9c1d",
-      "text_id": "georgian-folktales-wardrop",
-      "translation_id": "wardrop",
-      "status": "PARTIAL",
-      "pass_rate": 0.9951456310679612,
-      "passages_pass": 820,
-      "passages_checked": 824,
-      "passages_total": 973,
-      "note": ""
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "folk-tales-brittany-spence",
+      "translation_id": "masson",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Gods and Fighting Men",
@@ -3017,6 +3129,268 @@
       "title": "Bible",
       "author": [],
       "translator": [
+        "John Nelson Darby"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/darby",
+      "year": 1890,
+      "source_title": "Darby Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/darby-bible.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "darby",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 31094,
+      "passages_checked": 31094,
+      "passages_total": 31099,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "Geneva Bible Translators"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/eng-Geneva1599",
+      "year": 1599,
+      "source_title": "Geneva Bible (1599)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/geneva-bible.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "geneva",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 31084,
+      "passages_checked": 31084,
+      "passages_total": 31090,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://github.com/ETCBC/peshitta",
+      "year": null,
+      "source_title": "Peshitta Old Testament (Syriac, ETCBC edition)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "peshitta",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "English Revised Version Committee"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/engRV",
+      "year": 1885,
+      "source_title": "Revised Version with Apocrypha",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/revised-version-with-apocrypha.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "rv",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 36830,
+      "passages_checked": 36830,
+      "passages_total": 36836,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "William Tyndale"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/engTNT",
+      "year": 1534,
+      "source_title": "Tyndale New Testament",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/tyndale-new-testament.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "tyndale",
+      "status": "PARTIAL",
+      "pass_rate": 0.999874229656647,
+      "passages_pass": 7950,
+      "passages_checked": 7951,
+      "passages_total": 7954,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "Jerome"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/latClementine",
+      "year": 1598,
+      "source_title": "Vulgate Clementina (Latin)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/vulgate-clementina.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "vulgate",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 35788,
+      "passages_checked": 35788,
+      "passages_total": 35809,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "Michael Paul Johnson"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/web",
+      "year": 2000,
+      "source_title": "World English Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/world-english-bible.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "web",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 38009,
+      "passages_checked": 38009,
+      "passages_total": 38029,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "John Wycliffe"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/engWycliffe",
+      "year": 1382,
+      "source_title": "Wycliffe Bible (selections)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/wycliffe-bible.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "wycliffe",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 9614,
+      "passages_checked": 9614,
+      "passages_total": 9622,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "Robert Young"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/engYLT",
+      "year": 1862,
+      "source_title": "Young's Literal Translation",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/youngs-literal-translation.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "ylt",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 31098,
+      "passages_checked": 31098,
+      "passages_total": 31102,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "ASV Revision Committee"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/asv",
+      "year": 1901,
+      "source_title": "American Standard Version",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/american-standard-version.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "asv",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 31081,
+      "passages_checked": 31081,
+      "passages_total": 31086,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
+        "Samuel Henry Hooke"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/bbe",
+      "year": 1949,
+      "source_title": "Bible in Basic English",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "03_web_app/data/bible/bible-in-basic-english.json",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "bbe",
+      "status": "PARTIAL",
+      "pass_rate": 0.9995171103885652,
+      "passages_pass": 31048,
+      "passages_checked": 31063,
+      "passages_total": 31085,
+      "note": ""
+    },
+    {
+      "title": "Bible",
+      "author": [],
+      "translator": [
         "Lancelot C. L. Brenton"
       ],
       "publisher": "eBible.org",
@@ -3104,9 +3478,9 @@
       "translation_id": "douay-rheims",
       "status": "PASS",
       "pass_rate": 1.0,
-      "passages_pass": 39290,
-      "passages_checked": 39290,
-      "passages_total": 40488,
+      "passages_pass": 39289,
+      "passages_checked": 39289,
+      "passages_total": 40487,
       "note": ""
     },
     {
@@ -3155,32 +3529,6 @@
       "passages_pass": 23142,
       "passages_checked": 23143,
       "passages_total": 23145,
-      "note": ""
-    },
-    {
-      "title": "Bible",
-      "author": [
-        "KJV"
-      ],
-      "translator": [
-        "KJV"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "",
-      "year": 1900,
-      "source_title": "Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "category": "Literature",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Bible_____KJV.txt",
-      "raw_sha256": "41f8f4533c61ad560f3a2be3d9184bdca8dd6f5ffb0cf3fd1852d7009a53fd47",
-      "text_id": "bible",
-      "translation_id": "kjv",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 24569,
-      "passages_checked": 24569,
-      "passages_total": 24609,
       "note": ""
     },
     {
@@ -3535,6 +3883,58 @@
       "note": ""
     },
     {
+      "title": "Church History and Life of Constantine",
+      "author": [
+        "Eusebius of Caesarea"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "publisher": "CCEL",
+      "url": "https://ccel.org/ccel/schaff/npnf201",
+      "year": 1890,
+      "source_title": "Church History and Life of Constantine",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF2-01 Eusebius - Church History + Life of Constantine_____Philip Schaff ed (1890).txt",
+      "raw_sha256": "b9104097771d6f5cc39fc630c396805b857f2ec27757fa154acce022b2e09613",
+      "text_id": "eusebius-church-history",
+      "translation_id": "ccel-schaff",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 9132,
+      "passages_checked": 9132,
+      "passages_total": 10157,
+      "note": ""
+    },
+    {
+      "title": "City of God and On Christian Doctrine (CCEL)",
+      "author": [
+        "Saint Augustine"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "publisher": "CCEL",
+      "url": "https://ccel.org/ccel/schaff/npnf102",
+      "year": 1887,
+      "source_title": "City of God and On Christian Doctrine (CCEL)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF1-02 Augustine - City of God + Christian Doctrine_____Philip Schaff ed (1887).txt",
+      "raw_sha256": "5c973feda803f3e58a88ed7df210b42d436f5466741eb8dbeae713ab56dedae4",
+      "text_id": "augustine-city-of-god-ccel",
+      "translation_id": "ccel-schaff",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 3848,
+      "passages_checked": 3848,
+      "passages_total": 5527,
+      "note": ""
+    },
+    {
       "title": "Commentary on Genesis, Vol 1",
       "author": [
         "Martin Luther"
@@ -3636,6 +4036,32 @@
       "passages_pass": 461,
       "passages_checked": 461,
       "passages_total": 462,
+      "note": ""
+    },
+    {
+      "title": "Confessions and Enchiridion (CCEL)",
+      "author": [
+        "Saint Augustine"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "publisher": "CCEL",
+      "url": "https://ccel.org/ccel/schaff/npnf101",
+      "year": 1887,
+      "source_title": "Confessions and Enchiridion (CCEL)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF1-01 Augustine - Confessions + Enchiridion_____Philip Schaff ed (1887).txt",
+      "raw_sha256": "210006964fc4eaae1706935a234b19a94a31c7adf048837fbf631d3c51e61549",
+      "text_id": "augustine-confessions-enchiridion-ccel",
+      "translation_id": "ccel-schaff",
+      "status": "PARTIAL",
+      "pass_rate": 0.9995993589743589,
+      "passages_pass": 4990,
+      "passages_checked": 4992,
+      "passages_total": 7681,
       "note": ""
     },
     {
@@ -3844,6 +4270,136 @@
       "passages_pass": 2109,
       "passages_checked": 2109,
       "passages_total": 2161,
+      "note": ""
+    },
+    {
+      "title": "Homilies on Acts and Romans",
+      "author": [
+        "John Chrysostom"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "publisher": "CCEL",
+      "url": "https://ccel.org/ccel/schaff/npnf111",
+      "year": 1889,
+      "source_title": "Homilies on Acts and Romans",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF1-11 Chrysostom - Homilies on Acts + Romans_____Philip Schaff ed (1889).txt",
+      "raw_sha256": "8bdb50c6fd132a9558cbd16808ae05000ddcc7059cfd6c1d282f4f734e539c15",
+      "text_id": "chrysostom-homilies-acts-romans",
+      "translation_id": "ccel-schaff",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 3284,
+      "passages_checked": 3284,
+      "passages_total": 3573,
+      "note": ""
+    },
+    {
+      "title": "Homilies on First and Second Corinthians",
+      "author": [
+        "John Chrysostom"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "publisher": "CCEL",
+      "url": "https://ccel.org/ccel/schaff/npnf112",
+      "year": 1889,
+      "source_title": "Homilies on First and Second Corinthians",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF1-12 Chrysostom - Homilies on Corinthians_____Philip Schaff ed (1889).txt",
+      "raw_sha256": "10a3454d6c08d52088837132f06ca07c5a1ec9d7264d909fa92c48aa3b2ddddc",
+      "text_id": "chrysostom-homilies-corinthians",
+      "translation_id": "ccel-schaff",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 3854,
+      "passages_checked": 3854,
+      "passages_total": 4698,
+      "note": ""
+    },
+    {
+      "title": "Homilies on Galatians, Ephesians, and more",
+      "author": [
+        "John Chrysostom"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "publisher": "CCEL",
+      "url": "https://ccel.org/ccel/schaff/npnf113",
+      "year": 1889,
+      "source_title": "Homilies on Galatians, Ephesians, and more",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF1-13 Chrysostom - Homilies on Galatians + Ephesians_____Philip Schaff ed (1889).txt",
+      "raw_sha256": "54274dd9aa73ca36e4da9e763e4a27d1818b09e42ffc73795529afec703a4210",
+      "text_id": "chrysostom-homilies-galatians-ephesians",
+      "translation_id": "ccel-schaff",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 5847,
+      "passages_checked": 5847,
+      "passages_total": 6402,
+      "note": ""
+    },
+    {
+      "title": "Homilies on the Gospel of Matthew",
+      "author": [
+        "John Chrysostom"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "publisher": "CCEL",
+      "url": "https://ccel.org/ccel/schaff/npnf110",
+      "year": 1888,
+      "source_title": "Homilies on the Gospel of Matthew",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF1-10 Chrysostom - Homilies on Matthew_____Philip Schaff ed (1888).txt",
+      "raw_sha256": "adb8f1c9a988c5050a20fb9fdbf75143dcb227e95e3dad2f560a63b757923648",
+      "text_id": "chrysostom-homilies-matthew",
+      "translation_id": "ccel-schaff",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6210,
+      "passages_checked": 6210,
+      "passages_total": 8333,
+      "note": ""
+    },
+    {
+      "title": "Homilies on Timothy, Titus, Philemon, and Hebrews",
+      "author": [
+        "John Chrysostom"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "publisher": "CCEL",
+      "url": "https://ccel.org/ccel/schaff/npnf114",
+      "year": 1889,
+      "source_title": "Homilies on Timothy, Titus, Philemon, and Hebrews",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Theology",
+      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF1-14 Chrysostom - Homilies on Philippians + more_____Philip Schaff ed (1889).txt",
+      "raw_sha256": "e26f55f8d0739c07d73d5b664e42efbd923a43230a22d93d55261c808e9cd458",
+      "text_id": "chrysostom-homilies-timothy-hebrews",
+      "translation_id": "ccel-schaff",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6157,
+      "passages_checked": 6157,
+      "passages_total": 8318,
       "note": ""
     },
     {
@@ -4577,30 +5133,56 @@
       "note": ""
     },
     {
-      "title": "Paradise Lost",
+      "title": "Pagan Regeneration",
       "author": [
-        "John Milton"
+        "Harold R. Willoughby"
       ],
       "translator": [
-        "John Milton"
+        "Harold R. Willoughby"
       ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/26",
-      "year": 1667,
-      "source_title": "Paradise Lost",
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/cla/pr/index.htm",
+      "year": 1929,
+      "source_title": "Pagan Regeneration",
       "tradition": "Christian",
       "collection": "sacred",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Paradise Lost_____John Milton.txt",
-      "raw_sha256": "21f90862510782e58b41e7449c5d9b9a0fcb8845d078a9289e1aad58c5e36a31",
-      "text_id": "milton-paradise-lost",
-      "translation_id": "milton",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 12,
-      "passages_checked": 12,
-      "passages_total": 12,
-      "note": ""
+      "category": "Scholarship",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "pagan-regeneration-willoughby",
+      "translation_id": "willoughby",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "Pageant of the Popes",
+      "author": [
+        "John Farrow"
+      ],
+      "translator": [
+        "John Farrow"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/chr/pgp/index.htm",
+      "year": 1942,
+      "source_title": "Pageant of the Popes",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "History",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "pageant-popes-farrow",
+      "translation_id": "farrow",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Philosophumena",
@@ -4681,6 +5263,32 @@
       "note": ""
     },
     {
+      "title": "Prayers of the Middle Ages",
+      "author": [
+        "Various"
+      ],
+      "translator": [
+        "J. Manning Potts"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/22225",
+      "year": 1953,
+      "source_title": "Prayers of the Middle Ages",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Devotional",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "prayers-middle-ages",
+      "translation_id": "potts",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Revelations of Divine Love",
       "author": [
         "Julian of Norwich"
@@ -4701,9 +5309,9 @@
       "translation_id": "warrack",
       "status": "PASS",
       "pass_rate": 1.0,
-      "passages_pass": 913,
-      "passages_checked": 913,
-      "passages_total": 1088,
+      "passages_pass": 1110,
+      "passages_checked": 1110,
+      "passages_total": 1292,
       "note": ""
     },
     {
@@ -4882,12 +5490,12 @@
       "raw_sha256": "fda6f83502bc7240fba4ca009b6a2591d53fb5dc9d97c3c57922181c283682b6",
       "text_id": "aquinas-summa-theologica",
       "translation_id": "english-dominicans",
-      "status": "SKIP",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
-      "passages_checked": 0,
-      "passages_total": 0,
-      "note": "no ingest config — cannot locate raw file"
+      "status": "PARTIAL",
+      "pass_rate": 0.9997662322482613,
+      "passages_pass": 34214,
+      "passages_checked": 34222,
+      "passages_total": 34334,
+      "note": ""
     },
     {
       "title": "Tertullian II, Minucius Felix, and Cyprian",
@@ -4942,6 +5550,32 @@
       "passages_checked": 684,
       "passages_total": 712,
       "note": ""
+    },
+    {
+      "title": "The Amish",
+      "author": [
+        "Elmer L. Smith"
+      ],
+      "translator": [
+        "Elmer L. Smith"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/chr/amish/index.htm",
+      "year": 1958,
+      "source_title": "The Amish",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "History",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "the-amish-smith",
+      "translation_id": "smith",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Aquarian Gospel of Jesus Christ",
@@ -5068,9 +5702,9 @@
       "translation_id": "lds",
       "status": "PASS",
       "pass_rate": 1.0,
-      "passages_pass": 6612,
-      "passages_checked": 6612,
-      "passages_total": 6847,
+      "passages_pass": 6597,
+      "passages_checked": 6597,
+      "passages_total": 6598,
       "note": ""
     },
     {
@@ -5540,6 +6174,658 @@
       "passages_checked": 449,
       "passages_total": 460,
       "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "KJV Translators"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/kjv",
+      "year": 1611,
+      "source_title": "King James Version with Apocrypha",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "kjv",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 36817,
+      "passages_checked": 36817,
+      "passages_total": 36822,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Lancelot C. L. Brenton"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/eng-Brenton",
+      "year": 1851,
+      "source_title": "Brenton Septuagint Translation",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "brenton",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 28980,
+      "passages_checked": 28980,
+      "passages_total": 29004,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/grc-Brenton",
+      "year": 1851,
+      "source_title": "Brenton Septuagint (Greek)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "brenton_greek",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 28563,
+      "passages_checked": 28563,
+      "passages_total": 28597,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Douay-Rheims Translators"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/engDRA",
+      "year": 1899,
+      "source_title": "Douay-Rheims Bible (1899)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "douay",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 35800,
+      "passages_checked": 35800,
+      "passages_total": 35811,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/engLXX2012",
+      "year": 2012,
+      "source_title": "The Septuagint (2012 English Translation)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "lxx_eng",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 28625,
+      "passages_checked": 28625,
+      "passages_total": 28637,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/grcMT",
+      "year": null,
+      "source_title": "Majority Text New Testament (Greek)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "majority_nt",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 7949,
+      "passages_checked": 7949,
+      "passages_total": 7953,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Isaac Salkinson",
+        "Christian David Ginsburg"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/hboSalkinson",
+      "year": 1885,
+      "source_title": "Salkinson-Ginsburg Hebrew New Testament",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "salkinson_nt",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 7955,
+      "passages_checked": 7955,
+      "passages_total": 7957,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Michael W. Holmes"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/grcSBL",
+      "year": 2010,
+      "source_title": "SBL Greek New Testament",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "sbl_nt",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 7933,
+      "passages_checked": 7933,
+      "passages_total": 7939,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Desiderius Erasmus"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/grcTR",
+      "year": 1516,
+      "source_title": "Textus Receptus (Greek New Testament)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "textus_receptus",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 7955,
+      "passages_checked": 7955,
+      "passages_total": 7957,
+      "note": ""
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Samuel Henry Hooke"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/bible-in-basic-english",
+      "year": 1949,
+      "source_title": "Bible in Basic English",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "bible-in-basic-english",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/brenton-septuagint-greek",
+      "year": null,
+      "source_title": "Brenton Septuagint (Greek)",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "brenton-septuagint-greek",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Lancelot Charles Lee Brenton"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/brenton-septuagint-translation",
+      "year": 1844,
+      "source_title": "Brenton Septuagint Translation",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "brenton-septuagint-translation",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Douay-Rheims Translators"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/douay-rheims-bible",
+      "year": 1899,
+      "source_title": "Douay-Rheims Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "douay-rheims-bible",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "William Whittingham"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/geneva-bible",
+      "year": 1599,
+      "source_title": "Geneva Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "geneva-bible",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Isaac Leeser"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/isaac-leeser-tanakh",
+      "year": 1853,
+      "source_title": "Isaac Leeser Tanakh",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "isaac-leeser-tanakh",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Jewish Publication Society"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/jps-tanakh",
+      "year": 1917,
+      "source_title": "JPS Tanakh",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "jps-tanakh",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/lxx-septuagint",
+      "year": 2012,
+      "source_title": "LXX Septuagint",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "lxx-septuagint",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/majority-text-new-testament",
+      "year": null,
+      "source_title": "Majority Text New Testament",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "majority-text-new-testament",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/masoretic-old-testament",
+      "year": null,
+      "source_title": "Masoretic Old Testament",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "masoretic-old-testament",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "RV Revision Committee"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/revised-version-with-apocrypha",
+      "year": 1885,
+      "source_title": "Revised Version with Apocrypha",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "revised-version-with-apocrypha",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Isaac Salkinson",
+        "Christian David Ginsburg"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/salkinson-new-testament",
+      "year": null,
+      "source_title": "Salkinson New Testament",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "salkinson-new-testament",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/sbl-greek-new-testament",
+      "year": null,
+      "source_title": "SBL Greek New Testament",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "sbl-greek-new-testament",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/textus-receptus",
+      "year": null,
+      "source_title": "Textus Receptus",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "textus-receptus",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "William Tyndale"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/tyndale-new-testament",
+      "year": 1526,
+      "source_title": "Tyndale New Testament",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "tyndale-new-testament",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/vulgate-clementina",
+      "year": 1598,
+      "source_title": "Vulgate Clementina",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "vulgate-clementina",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/westminster-leningrad-codex",
+      "year": null,
+      "source_title": "Westminster Leningrad Codex",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "westminster-leningrad-codex",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "John Wycliffe"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/wycliffe-bible",
+      "year": 1395,
+      "source_title": "Wycliffe Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "wycliffe-bible",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Bible",
+      "author": [],
+      "translator": [
+        "Robert Young"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/youngs-literal-translation",
+      "year": 1862,
+      "source_title": "Young's Literal Translation",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "bible",
+      "translation_id": "youngs-literal-translation",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Imitation of Christ",
@@ -6141,6 +7427,32 @@
       "note": ""
     },
     {
+      "title": "Folk-lore of the Holy Land",
+      "author": [
+        "J.E. Hanauer"
+      ],
+      "translator": [
+        "J.E. Hanauer"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1907,
+      "source_title": "",
+      "tradition": "Comparative Religion",
+      "collection": "sacred",
+      "category": "Folklore",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Folk-lore of the Holy Land - Moslem Christian & Jewish_____JE-Hanauer (1907).txt",
+      "raw_sha256": "373c05ed4a67b4a8eea0b1dcb959f2922b3dc9106cfa2945c399acae5e91c74d",
+      "text_id": "folklore-holy-land",
+      "translation_id": "hanauer",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 1206,
+      "passages_checked": 1206,
+      "passages_total": 1747,
+      "note": ""
+    },
+    {
       "title": "Sacred Books of the East (Wilson Anthology)",
       "author": [
         "Epiphanius Wilson (ed.)"
@@ -6159,11 +7471,11 @@
       "raw_sha256": "08a13907ee05ffef6172c025c1336876b31f9a6d3a92577968d98fc4b80eae5b",
       "text_id": "sacred-books-east-wilson",
       "translation_id": "wilson",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 1382,
-      "passages_checked": 1382,
-      "passages_total": 1530,
+      "status": "PARTIAL",
+      "pass_rate": 0.9863112391930836,
+      "passages_pass": 1369,
+      "passages_checked": 1388,
+      "passages_total": 1480,
       "note": ""
     },
     {
@@ -6244,32 +7556,6 @@
       "passages_pass": 1692,
       "passages_checked": 1694,
       "passages_total": 1717,
-      "note": ""
-    },
-    {
-      "title": "Confucian Canon - Chi & Eng",
-      "author": [
-        "Confucius - tr-James Legge (1893)"
-      ],
-      "translator": [
-        "Confucius - tr-James Legge (1893)"
-      ],
-      "publisher": "SacredTexts.com",
-      "url": "",
-      "year": 1900,
-      "source_title": "Confucian Canon - Chi & Eng",
-      "tradition": "Confucian",
-      "collection": "sacred",
-      "category": "Literature",
-      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Confucian Canon - Chi & Eng_____Confucius - tr-James Legge (1893).txt",
-      "raw_sha256": "a00779dc734ea6cdadf5ab9643096713aaed7bd827ec2ca4121883e741962973",
-      "text_id": "confucian-canon-chi-eng-confucius-tr-james-l",
-      "translation_id": "anonymous",
-      "status": "PARTIAL",
-      "pass_rate": 0.9960159362549801,
-      "passages_pass": 250,
-      "passages_checked": 251,
-      "passages_total": 256,
       "note": ""
     },
     {
@@ -6745,27 +8031,27 @@
     {
       "title": "Ancient Egyptian Legends",
       "author": [
-        "Margaret Alice Murray"
+        "Margaret Murray"
       ],
       "translator": [
-        "Margaret Alice Murray"
+        "Margaret Murray"
       ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/9332",
+      "publisher": "SacredTexts.com",
+      "url": "",
       "year": 1920,
-      "source_title": "Ancient Egyptian Legends",
+      "source_title": "",
       "tradition": "Egyptian",
       "collection": "sacred",
-      "category": "Folk Literature",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Ancient Egyptian legends_____Margaret Murray.txt",
-      "raw_sha256": "05d67d32b2c89ef9ed89b838e9ef9ab7cc0381dab068ab391fa7c4060012bdad",
-      "text_id": "murray-egyptian-legends",
+      "category": "Mythology",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Ancient Egyptian Legends_____MA-Murray (1920).txt",
+      "raw_sha256": "8e0b1f990a162d3c924fc58fc67b5aaf2ae2660de42f6d4ae63b5aabd1077bce",
+      "text_id": "ancient-egyptian-legends",
       "translation_id": "murray",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 399,
-      "passages_checked": 399,
-      "passages_total": 412,
+      "status": "PARTIAL",
+      "pass_rate": 0.9982547993019197,
+      "passages_pass": 572,
+      "passages_checked": 573,
+      "passages_total": 768,
       "note": ""
     },
     {
@@ -6792,32 +8078,32 @@
       "passages_pass": 0,
       "passages_checked": 0,
       "passages_total": 0,
-      "note": "raw source missing: C:\\Users\\steve\\Documents\\Claude Workspace\\projects\\Digital Archive\\02_raw_sources\\Library_\\Gutenberg.org\\Egyptian Ideas of the Future Life_____Wallis Budge.txt"
+      "note": "raw source missing: C:\\Users\\steve\\Documents\\Claude Workspace\\Digital-Archive\\02_raw_sources\\Library_\\Gutenberg.org\\Egyptian Ideas of the Future Life_____Wallis Budge.txt"
     },
     {
       "title": "Egyptian Myth and Legend",
       "author": [
-        "Donald A. Mackenzie"
+        "Donald Mackenzie"
       ],
       "translator": [
-        "Donald A. Mackenzie"
+        "Donald Mackenzie"
       ],
       "publisher": "SacredTexts.com",
-      "url": "https://sacred-texts.com/egy/eml/index.htm",
+      "url": "",
       "year": 1907,
-      "source_title": "Egyptian Myth and Legend",
+      "source_title": "",
       "tradition": "Egyptian",
       "collection": "sacred",
       "category": "Mythology",
       "raw_file": "02_raw_sources/Library_/SacredTexts.com/Egyptian Myth and Legend_____Donald Mackenzie (1907).txt",
       "raw_sha256": "b5a1c62dfaf4d0af4fa3842cd79817b99d9d0c0f36d8f0b141fa26980868c132",
-      "text_id": "egyptian-myth-legend-mackenzie",
+      "text_id": "egyptian-myth-legend",
       "translation_id": "mackenzie",
       "status": "PARTIAL",
-      "pass_rate": 0.9973118279569892,
-      "passages_pass": 1855,
-      "passages_checked": 1860,
-      "passages_total": 1899,
+      "pass_rate": 0.9975621647976597,
+      "passages_pass": 2046,
+      "passages_checked": 2051,
+      "passages_total": 2596,
       "note": ""
     },
     {
@@ -7472,6 +8758,32 @@
       "note": ""
     },
     {
+      "title": "Gospel of Thomas",
+      "author": [
+        "Various"
+      ],
+      "translator": [
+        "Various"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": null,
+      "source_title": "",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Gospel of Thomas_____Various (NO).txt",
+      "raw_sha256": "7b106309c4ceafb2604a6b4abf7aed5b500e548192c7bf9d38146f9e15af064b",
+      "text_id": "gospel-of-thomas",
+      "translation_id": "various",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 147,
+      "passages_checked": 147,
+      "passages_total": 148,
+      "note": ""
+    },
+    {
       "title": "Pistis Sophia",
       "author": [
         "Anonymous"
@@ -7498,6 +8810,32 @@
       "note": ""
     },
     {
+      "title": "The Apocryphon of John",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "Frederik Wisse"
+      ],
+      "publisher": "Nag Hammadi Library",
+      "url": "https://www.gnosis.org/naghamm/apocjn.html",
+      "year": 1977,
+      "source_title": "The Apocryphon of John",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "apocryphon-of-john",
+      "translation_id": "wisse",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Gnostics and Their Remains",
       "author": [
         "C.W. King"
@@ -7522,6 +8860,110 @@
       "passages_checked": 2844,
       "passages_total": 3192,
       "note": ""
+    },
+    {
+      "title": "The Gospel of Mary",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "Anonymous"
+      ],
+      "publisher": "Early Christian Writings",
+      "url": "https://www.earlychristianwritings.com/gospelmary.html",
+      "year": null,
+      "source_title": "The Gospel of Mary",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "gospel-of-mary",
+      "translation_id": "anonymous",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Gospel of Philip",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "Wesley W. Isenberg"
+      ],
+      "publisher": "gnosis.org",
+      "url": "http://www.gnosis.org/naghamm/gop.html",
+      "year": null,
+      "source_title": "The Gospel of Philip",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Gospel of Philip_____Nag Hammadi (gnosis.org).txt",
+      "raw_sha256": "318071a4a76c3a6dcd6f7b3c9cd639467dfb8dcdb05e23e7e615fd6c99242ca9",
+      "text_id": "gospel-of-philip",
+      "translation_id": "isenberg",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 109,
+      "passages_checked": 109,
+      "passages_total": 109,
+      "note": ""
+    },
+    {
+      "title": "The Gospel of Thomas",
+      "author": [
+        "Didymus Judas Thomas (attributed)"
+      ],
+      "translator": [
+        "Thomas Lambdin"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/chr/thomas.htm",
+      "year": 1977,
+      "source_title": "The Gospel of Thomas",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "gospel-of-thomas-various",
+      "translation_id": "lambdin",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Gospel of Truth",
+      "author": [
+        "Valentinus (attributed)"
+      ],
+      "translator": [
+        "Robert M. Grant"
+      ],
+      "publisher": "Early Christian Writings",
+      "url": "https://www.earlychristianwritings.com/text/gospeltruth.html",
+      "year": null,
+      "source_title": "The Gospel of Truth",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "gospel-of-truth",
+      "translation_id": "grant",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Astrology and Religion Among the Greeks and Romans",
@@ -7602,30 +9044,58 @@
       "note": ""
     },
     {
-      "title": "Hesiod, the Homeric Hymns, and Homerica",
+      "title": "Fairy Tales of Modern Greece",
       "author": [
-        "Hesiod"
+        "Theodore Gianakoulis",
+        "Georgia MacPherson"
       ],
       "translator": [
-        "Hugh G. Evelyn-White"
+        "Theodore Gianakoulis",
+        "Georgia MacPherson"
       ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/348",
-      "year": 1914,
-      "source_title": "Hesiod, the Homeric Hymns, and Homerica",
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1930,
+      "source_title": "",
       "tradition": "Greek",
       "collection": "sacred",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Hesiod & The Homeric Hymns & Homerica_____Hesiod.txt",
-      "raw_sha256": "16a02a65864da3ca3f241f70e078165d7de3c587c1bfa869e5061b33e270f53d",
-      "text_id": "hesiod-homerica",
-      "translation_id": "evelyn-white",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 1460,
-      "passages_checked": 1460,
-      "passages_total": 1485,
+      "category": "Folklore",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Fairy Tales of Modern Greece_____Theodore Gianakoulis & Georgia MacPherson (1930).txt",
+      "raw_sha256": "a4d8bb7f82a03056c22952849aff281d66ec8ba9c3d8bc9c705532406100692f",
+      "text_id": "fairy-tales-greece",
+      "translation_id": "gianakoulis",
+      "status": "PARTIAL",
+      "pass_rate": 0.9957894736842106,
+      "passages_pass": 473,
+      "passages_checked": 475,
+      "passages_total": 625,
       "note": ""
+    },
+    {
+      "title": "Greek Popular Religion",
+      "author": [
+        "Martin P. Nilsson"
+      ],
+      "translator": [
+        "Martin P. Nilsson"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/cla/gpr/index.htm",
+      "year": 1940,
+      "source_title": "Greek Popular Religion",
+      "tradition": "Greek",
+      "collection": "sacred",
+      "category": "Scholarship",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "greek-popular-religion-nilsson",
+      "translation_id": "nilsson",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Hesiodi Carmina (Latin)",
@@ -8643,6 +10113,32 @@
       "note": ""
     },
     {
+      "title": "Paradise Lost",
+      "author": [
+        "John Milton"
+      ],
+      "translator": [
+        "Anonymous"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/26",
+      "year": 1667,
+      "source_title": "Paradise Lost",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "category": "Poetry",
+      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Paradise Lost_____John Milton.txt",
+      "raw_sha256": "21f90862510782e58b41e7449c5d9b9a0fcb8845d078a9289e1aad58c5e36a31",
+      "text_id": "paradise-lost",
+      "translation_id": "anonymous",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 711,
+      "passages_checked": 711,
+      "passages_total": 711,
+      "note": ""
+    },
+    {
       "title": "Peace",
       "author": [
         "Aristophanes"
@@ -8953,6 +10449,32 @@
       "passages_checked": 675,
       "passages_total": 693,
       "note": ""
+    },
+    {
+      "title": "The Buddhavaṃsa and the Cariyā-piṭaka",
+      "author": [
+        "Richard Morris(NO)"
+      ],
+      "translator": [
+        "Richard Morris(NO)"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1900,
+      "source_title": "The Buddhavaṃsa and the Cariyā-piṭaka",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no",
+      "translation_id": "anonymous",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Burning Wheel",
@@ -10571,6 +12093,32 @@
       "note": ""
     },
     {
+      "title": "Early Greek Philosophy",
+      "author": [
+        "John Burnet"
+      ],
+      "translator": [
+        "John Burnet"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/46286",
+      "year": 1892,
+      "source_title": "Early Greek Philosophy",
+      "tradition": "Greek Philosophy",
+      "collection": "other",
+      "category": "Philosophy",
+      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Early Greek philosophy_____John Burnet.txt",
+      "raw_sha256": "14a22140431297dc707bb89dc3b7ad87bf9ff952919f55329161f02fe01ef79b",
+      "text_id": "burnet-early-greek",
+      "translation_id": "burnet",
+      "status": "PARTIAL",
+      "pass_rate": 0.9929203539823008,
+      "passages_pass": 2244,
+      "passages_checked": 2260,
+      "passages_total": 3441,
+      "note": ""
+    },
+    {
       "title": "Eryxias",
       "author": [
         "Plato"
@@ -11088,32 +12636,6 @@
       "passages_pass": 1246,
       "passages_checked": 1246,
       "passages_total": 1565,
-      "note": ""
-    },
-    {
-      "title": "On the Origin of Species",
-      "author": [
-        "Charles Darwin"
-      ],
-      "translator": [
-        "Charles Darwin"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/1228",
-      "year": 1859,
-      "source_title": "On the Origin of Species",
-      "tradition": "Greek Philosophy",
-      "collection": "other",
-      "category": "Science",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Origin of Species By Means of Natural Selection_____Darwin.txt",
-      "raw_sha256": "c8dea67f08d19467f28987d426f88bf5bf2acbf1e9a388cac4911f2154329550",
-      "text_id": "darwin-origin-species-full",
-      "translation_id": "darwin",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 1247,
-      "passages_checked": 1247,
-      "passages_total": 1322,
       "note": ""
     },
     {
@@ -12472,6 +13994,58 @@
       "note": ""
     },
     {
+      "title": "Initiation, Human and Solar",
+      "author": [
+        "Alice Bailey"
+      ],
+      "translator": [
+        "Alice Bailey"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/nth/ihs/index.htm",
+      "year": 1922,
+      "source_title": "Initiation, Human and Solar",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "initiation-bailey",
+      "translation_id": "bailey",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "Internet Book of Shadows",
+      "author": [
+        "Various"
+      ],
+      "translator": [
+        "Various"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/bos/index.htm",
+      "year": 1999,
+      "source_title": "Internet Book of Shadows",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "internet-book-shadows",
+      "translation_id": "various",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Knowledge of the Higher Worlds and Its Attainment",
       "author": [
         "Rudolf Steiner"
@@ -12517,10 +14091,10 @@
       "text_id": "demonology-witchcraft-scott",
       "translation_id": "scott",
       "status": "PARTIAL",
-      "pass_rate": 0.9818181818181818,
-      "passages_pass": 108,
-      "passages_checked": 110,
-      "passages_total": 132,
+      "pass_rate": 0.9767441860465116,
+      "passages_pass": 42,
+      "passages_checked": 43,
+      "passages_total": 54,
       "note": ""
     },
     {
@@ -12732,6 +14306,32 @@
       "note": ""
     },
     {
+      "title": "Self-Suggestion and the New Huna Theory of Mesmerism",
+      "author": [
+        "Max Freedom Long"
+      ],
+      "translator": [
+        "Max Freedom Long"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/nth/huna/index.htm",
+      "year": 1958,
+      "source_title": "Self-Suggestion and the New Huna Theory of Mesmerism",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "huna-theory-long",
+      "translation_id": "long",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Shamanism in Siberia",
       "author": [
         "Maria Czaplicka"
@@ -12782,6 +14382,32 @@
       "passages_checked": 1739,
       "passages_total": 2413,
       "note": ""
+    },
+    {
+      "title": "Stolen Legacy",
+      "author": [
+        "George G.M. James"
+      ],
+      "translator": [
+        "George G.M. James"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/afr/stle/index.htm",
+      "year": 1954,
+      "source_title": "Stolen Legacy",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "History",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "stolen-legacy-james",
+      "translation_id": "james",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Sun Lore of All Ages",
@@ -13073,6 +14699,32 @@
       "note": ""
     },
     {
+      "title": "The Flying Saucers Are Real",
+      "author": [
+        "Donald Keyhoe"
+      ],
+      "translator": [
+        "Donald Keyhoe"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/ufo/fsar/index.htm",
+      "year": 1950,
+      "source_title": "The Flying Saucers Are Real",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "History",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "flying-saucers-keyhoe",
+      "translation_id": "keyhoe",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Great Pyramid (A Miracle in Stone)",
       "author": [
         "Joseph A. Seiss"
@@ -13175,6 +14827,32 @@
       "passages_checked": 213,
       "passages_total": 219,
       "note": ""
+    },
+    {
+      "title": "The Lore of the Unicorn",
+      "author": [
+        "Odell Shepard"
+      ],
+      "translator": [
+        "Odell Shepard"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/etc/lou/index.htm",
+      "year": 1930,
+      "source_title": "The Lore of the Unicorn",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "Mythology",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "lore-unicorn-shepard",
+      "translation_id": "shepard",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Master Key System",
@@ -13385,6 +15063,32 @@
       "note": ""
     },
     {
+      "title": "The Sacred Symbols of Mu",
+      "author": [
+        "James Churchward"
+      ],
+      "translator": [
+        "James Churchward"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/mu/ssm/index.htm",
+      "year": 1933,
+      "source_title": "The Sacred Symbols of Mu",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "History",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "sacred-symbols-mu-churchward",
+      "translation_id": "churchward",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Science of Getting Rich",
       "author": [
         "Wallace D. Wattles"
@@ -13435,6 +15139,32 @@
       "passages_checked": 2598,
       "passages_total": 2870,
       "note": ""
+    },
+    {
+      "title": "The Secret Science Behind Miracles",
+      "author": [
+        "Max Freedom Long"
+      ],
+      "translator": [
+        "Max Freedom Long"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/nth/ssbm/index.htm",
+      "year": 1948,
+      "source_title": "The Secret Science Behind Miracles",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "secret-science-miracles-long",
+      "translation_id": "long",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Smoky God",
@@ -13670,6 +15400,32 @@
       "passages_checked": 3734,
       "passages_total": 4898,
       "note": ""
+    },
+    {
+      "title": "Wild Talents",
+      "author": [
+        "Charles Fort"
+      ],
+      "translator": [
+        "Charles Fort"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/fort/wt/index.htm",
+      "year": 1932,
+      "source_title": "Wild Talents",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "wild-talents-fort",
+      "translation_id": "fort",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "With the Adepts: An Adventure Among the Rosicrucians",
@@ -14272,6 +16028,32 @@
       "note": ""
     },
     {
+      "title": "Kundalini: The Mother of the Universe",
+      "author": [
+        "Rishi Singh Gherwal"
+      ],
+      "translator": [
+        "Rishi Singh Gherwal"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/hin/kmu/index.htm",
+      "year": 1930,
+      "source_title": "Kundalini: The Mother of the Universe",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "kundalini-gherwal",
+      "translation_id": "gherwal",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Mahabharata",
       "author": [
         "Romesh Dutt (1899)_"
@@ -14451,32 +16233,6 @@
       "passages_pass": 420,
       "passages_checked": 423,
       "passages_total": 489,
-      "note": ""
-    },
-    {
-      "title": "Sacred Books of the East",
-      "author": [
-        "Max Muller"
-      ],
-      "translator": [
-        "Max Muller"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "",
-      "year": 1900,
-      "source_title": "Sacred Books of the East",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "category": "Literature",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Sacred Books of the East_____Max Muller.txt",
-      "raw_sha256": "08a13907ee05ffef6172c025c1336876b31f9a6d3a92577968d98fc4b80eae5b",
-      "text_id": "sacred-books-of-the-east-max-muller",
-      "translation_id": "anonymous",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 1245,
-      "passages_checked": 1245,
-      "passages_total": 1289,
       "note": ""
     },
     {
@@ -14819,6 +16575,30 @@
       "note": ""
     },
     {
+      "title": "The Hymns of the Rigveda",
+      "author": [],
+      "translator": [
+        "Ralph T.H. Griffith"
+      ],
+      "publisher": "Internet Archive",
+      "url": "https://archive.org/details/hymnsrigveda02grifgoog",
+      "year": 1889,
+      "source_title": "The Hymns of the Rigveda",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "rig-veda-griffith",
+      "translation_id": "griffith",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Kama Sutra of Vatsyayana",
       "author": [
         "Vatsyayana"
@@ -14947,6 +16727,32 @@
       "passages_checked": 2098,
       "passages_total": 2163,
       "note": ""
+    },
+    {
+      "title": "The Sama Veda",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "Ralph T.H. Griffith"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/hin/sv.htm",
+      "year": 1895,
+      "source_title": "The Sama Veda",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "sama-veda-griffith",
+      "translation_id": "griffith",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Sanskrit Drama",
@@ -15096,8 +16902,8 @@
       "text_id": "upanishads-muller-part2",
       "translation_id": "muller-part2",
       "status": "PARTIAL",
-      "pass_rate": 0.9995442114858706,
-      "passages_pass": 2193,
+      "pass_rate": 0.9986326344576116,
+      "passages_pass": 2191,
       "passages_checked": 2194,
       "passages_total": 2461,
       "note": ""
@@ -15521,32 +17327,6 @@
       "note": ""
     },
     {
-      "title": "The Śikṣāpatrī of the Svāminārāyaṇa Sect",
-      "author": [
-        "Sahajanand Swami"
-      ],
-      "translator": [
-        "Monier Monier-Williams"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/56213",
-      "year": 1882,
-      "source_title": "The Śikṣāpatrī of the Svāminārāyaṇa Sect",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "category": "Scripture",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Siksha-Patri of the Svami-Narayana Sect_____Monier Williams.txt",
-      "raw_sha256": "c69314834d53833a95b8bf07eb666f827a92da29ed02e23cb63e3cad88c25f0c",
-      "text_id": "sikshapatri-svaminarayana",
-      "translation_id": "monier-williams",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 223,
-      "passages_checked": 223,
-      "passages_total": 225,
-      "note": ""
-    },
-    {
       "title": "The_Upanishads",
       "author": [
         "Max Muller (1879)"
@@ -15751,6 +17531,32 @@
       "note": ""
     },
     {
+      "title": "Yoga Vasishtha, or Heaven Found",
+      "author": [
+        "Valmiki (attributed)"
+      ],
+      "translator": [
+        "Rishi Singh Gherwal"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/hin/yvhf/index.htm",
+      "year": 1930,
+      "source_title": "Yoga Vasishtha, or Heaven Found",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "yoga-vasishtha-gherwal",
+      "translation_id": "gherwal",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "A Compendium on the Soul",
       "author": [
         "Avicenna"
@@ -15774,6 +17580,32 @@
       "passages_pass": 221,
       "passages_checked": 221,
       "passages_total": 236,
+      "note": ""
+    },
+    {
+      "title": "A Manual of Hadith",
+      "author": [
+        "Maulana Muhammad Ali"
+      ],
+      "translator": [
+        "Maulana Muhammad Ali"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/isl/hadith/",
+      "year": 1944,
+      "source_title": "A Manual of Hadith",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/A Manual of Hadith_____Maulana Muhammad Ali (1944).txt",
+      "raw_sha256": "8b50a17d092a91a2ee9cd4cdefc6ddb3aae5bfd03f3453a30163bd03ecf28c99",
+      "text_id": "manual-of-hadith",
+      "translation_id": "muhammad-ali",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 2207,
+      "passages_checked": 2207,
+      "passages_total": 3588,
       "note": ""
     },
     {
@@ -15855,6 +17687,32 @@
       "note": ""
     },
     {
+      "title": "Nahjul Balagha (Peak of Eloquence)",
+      "author": [
+        "Imam Ali ibn Abu Talib"
+      ],
+      "translator": [
+        "Yasin T. Al-Jibouri"
+      ],
+      "publisher": "Internet Archive",
+      "url": "https://archive.org/details/PeackOfEleganceNahjAlBalaghaByAli",
+      "year": null,
+      "source_title": "Nahjul Balagha (Peak of Eloquence)",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "nahjul-balagha",
+      "translation_id": "al-jibouri",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Oriental Mysticism",
       "author": [
         "E.H. Palmer"
@@ -15894,7 +17752,7 @@
       "source_title": "Quran",
       "tradition": "Islam",
       "collection": "sacred",
-      "category": "Literature",
+      "category": "Scripture",
       "raw_file": "02_raw_sources/Library_/Gutenberg.org/Quran_____(3) Yusuf Ali - Pickthall - MHShakir.txt",
       "raw_sha256": "68c0cf5b08c51b2ee2155937f6e6162d7f7abeb36fa479a57c4ffd8b755f903d",
       "text_id": "quran",
@@ -15920,7 +17778,7 @@
       "source_title": "Quran",
       "tradition": "Islam",
       "collection": "sacred",
-      "category": "Literature",
+      "category": "Scripture",
       "raw_file": "02_raw_sources/Library_/Gutenberg.org/Quran_____(3) Yusuf Ali - Pickthall - MHShakir.txt",
       "raw_sha256": "68c0cf5b08c51b2ee2155937f6e6162d7f7abeb36fa479a57c4ffd8b755f903d",
       "text_id": "quran",
@@ -15946,7 +17804,7 @@
       "source_title": "Quran",
       "tradition": "Islam",
       "collection": "sacred",
-      "category": "Literature",
+      "category": "Scripture",
       "raw_file": "02_raw_sources/Library_/Gutenberg.org/Quran_____(3) Yusuf Ali - Pickthall - MHShakir.txt",
       "raw_sha256": "68c0cf5b08c51b2ee2155937f6e6162d7f7abeb36fa479a57c4ffd8b755f903d",
       "text_id": "quran",
@@ -16089,6 +17947,33 @@
       "note": ""
     },
     {
+      "title": "The Conference of the Birds",
+      "author": [
+        "Farid ud-Din Attar"
+      ],
+      "translator": [
+        "Afkham Darbandi",
+        "Dick Davis"
+      ],
+      "publisher": "Internet Archive",
+      "url": "https://archive.org/details/theconferenceofthebirds_201911",
+      "year": 1984,
+      "source_title": "The Conference of the Birds",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "conference-of-the-birds",
+      "translation_id": "darbandi-davis",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Confessions of Al-Ghazzali",
       "author": [
         "Al-Ghazzali"
@@ -16192,6 +18077,486 @@
       "passages_checked": 87,
       "passages_total": 143,
       "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Saheeh International"
+      ],
+      "publisher": "Abul Qasim Publishing House",
+      "url": "https://tanzil.net",
+      "year": 1997,
+      "source_title": "Quran: English Translation",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "saheeh",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6197,
+      "passages_checked": 6197,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Arthur John Arberry"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 1955,
+      "source_title": "The Koran Interpreted",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "arberry",
+      "status": "PARTIAL",
+      "pass_rate": 0.9998378991732858,
+      "passages_pass": 6168,
+      "passages_checked": 6169,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Marmaduke Pickthall"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 1930,
+      "source_title": "The Meaning of the Glorious Quran",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "pickthall",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6175,
+      "passages_checked": 6175,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Abdullah Yusuf Ali"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 1934,
+      "source_title": "The Holy Quran: Text, Translation and Commentary",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "yusufali",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6211,
+      "passages_checked": 6211,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Talal Itani"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 2012,
+      "source_title": "Quran in English: Clear and Easy to Read",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "talal_itani",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6170,
+      "passages_checked": 6170,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Compilers of the Uthmanic codex"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Al-Qur'ān al-Karīm (Uthmani script)",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "uthmani",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6181,
+      "passages_checked": 6181,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Abul A'ala Maududi"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 1972,
+      "source_title": "Tafhim al-Quran",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "maududi",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6161,
+      "passages_checked": 6161,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Ahmed Raza Khan"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 1910,
+      "source_title": "Kanz ul-Iman (Urdu)",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "ahmed_raza_khan",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6124,
+      "passages_checked": 6124,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Indonesian Ministry of Religious Affairs"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Al-Qur'an dan Terjemahannya",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "bahasa_indonesia",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6210,
+      "passages_checked": 6210,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Elmalılı Hamdi Yazır"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 1935,
+      "source_title": "Hak Dini Kur'an Dili",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "elmalili",
+      "status": "PARTIAL",
+      "pass_rate": 0.9993515966931431,
+      "passages_pass": 6165,
+      "passages_checked": 6169,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Ma Jian"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 1981,
+      "source_title": "古蘭經 (The Qur'an in Chinese)",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "ma_jian",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 4511,
+      "passages_checked": 4511,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Mohammad Mahdi Fooladvand"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": 1994,
+      "source_title": "ترجمهٔ قرآن (Persian translation of the Qur'an)",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "fooladvand",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6130,
+      "passages_checked": 6130,
+      "passages_total": 6236,
+      "note": ""
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Abul A'ala Maududi"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Quran — Abul A'ala Maududi",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "abul-aala-maududi",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Ahmed Raza Khan"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Quran — Ahmed Raza Khan",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "ahmed-raza-khan-urdu",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Indonesian Ministry of Religious Affairs"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Quran — Indonesian Ministry of Religious Affairs",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "bahasa-indonesia-indonesian",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Elmalili Hamdi Yazir"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Quran — Elmalili Hamdi Yazir",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "elmalili-hamdi-yazir",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Ma Jian"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Quran — Ma Jian",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "ma-jian-chinese",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Mohammad Mahdi Fooladvand"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Quran — Mohammad Mahdi Fooladvand",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "mohammad-mahdi-fooladvand",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Talal Itani"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Quran — Talal Itani",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "talal-itani",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Holy Quran",
+      "author": [],
+      "translator": [
+        "Uthmani Script"
+      ],
+      "publisher": "Tanzil.net",
+      "url": "https://tanzil.net",
+      "year": null,
+      "source_title": "Quran — Uthmani Script",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "quran",
+      "translation_id": "uthmani-tanzil",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Kashf al-Mahjub",
@@ -16524,6 +18889,30 @@
       "raw_file": "",
       "raw_sha256": null,
       "text_id": "jaina-sutras-part2",
+      "translation_id": "jacobi",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "Uttaradhyayana Sutra",
+      "author": [],
+      "translator": [
+        "Hermann Jacobi"
+      ],
+      "publisher": "Internet Archive",
+      "url": "https://archive.org/details/wg945",
+      "year": 1895,
+      "source_title": "Uttaradhyayana Sutra",
+      "tradition": "Jain",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "uttaradhyayana-sutra",
       "translation_id": "jacobi",
       "status": "SKIP",
       "pass_rate": 0.0,
@@ -17159,6 +19548,58 @@
       "note": ""
     },
     {
+      "title": "Tales and Maxims from the Midrash",
+      "author": [
+        "Various"
+      ],
+      "translator": [
+        "Samuel Rapaport"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/jud/tmm/index.htm",
+      "year": 1907,
+      "source_title": "Tales and Maxims from the Midrash",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "category": "Folk Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "midrash-tales-maxims-rapaport",
+      "translation_id": "rapaport",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Babylonian Talmud",
+      "author": [
+        "Various"
+      ],
+      "translator": [
+        "Michael L. Rodkinson"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/jud/talmud.htm",
+      "year": 1903,
+      "source_title": "The Babylonian Talmud",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "babylonian-talmud-rodkinson",
+      "translation_id": "rodkinson",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Book of Delight and Other Papers",
       "author": [
         "Israel Abrahams"
@@ -17202,10 +19643,10 @@
       "text_id": "book-of-enoch",
       "translation_id": "charles",
       "status": "PARTIAL",
-      "pass_rate": 0.9744560075685903,
-      "passages_pass": 1030,
-      "passages_checked": 1057,
-      "passages_total": 1059,
+      "pass_rate": 0.9655172413793104,
+      "passages_pass": 728,
+      "passages_checked": 754,
+      "passages_total": 1001,
       "note": ""
     },
     {
@@ -17285,6 +19726,32 @@
       "passages_checked": 211,
       "passages_total": 217,
       "note": ""
+    },
+    {
+      "title": "The Golden Mountain",
+      "author": [
+        "Meyer Levin"
+      ],
+      "translator": [
+        "Meyer Levin"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/jud/gm/index.htm",
+      "year": 1932,
+      "source_title": "The Golden Mountain",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "category": "Folk Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "golden-mountain-levin",
+      "translation_id": "levin",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Guide for the Perplexed",
@@ -17625,6 +20092,102 @@
       "note": ""
     },
     {
+      "title": "The Tanakh",
+      "author": [],
+      "translator": [
+        "Isaac Leeser"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/engLeeser",
+      "year": 1853,
+      "source_title": "The Twenty-four Books of the Holy Scriptures",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "tanakh",
+      "translation_id": "leeser",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 23141,
+      "passages_checked": 23141,
+      "passages_total": 23143,
+      "note": ""
+    },
+    {
+      "title": "The Tanakh",
+      "author": [],
+      "translator": [
+        "Jewish Publication Society"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/engJPS",
+      "year": 1917,
+      "source_title": "JPS Tanakh (1917)",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "tanakh",
+      "translation_id": "jps",
+      "status": "PARTIAL",
+      "pass_rate": 0.9999567903901828,
+      "passages_pass": 23142,
+      "passages_checked": 23143,
+      "passages_total": 23145,
+      "note": ""
+    },
+    {
+      "title": "The Tanakh",
+      "author": [],
+      "translator": [
+        "The Masoretes"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/hboMT",
+      "year": null,
+      "source_title": "Masoretic Text (Biblia Hebraica)",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "tanakh",
+      "translation_id": "masoretic",
+      "status": "PARTIAL",
+      "pass_rate": 0.9987506462174737,
+      "passages_pass": 23183,
+      "passages_checked": 23212,
+      "passages_total": 23213,
+      "note": ""
+    },
+    {
+      "title": "The Tanakh",
+      "author": [],
+      "translator": [
+        "Westminster Theological Seminary"
+      ],
+      "publisher": "eBible.org",
+      "url": "https://ebible.org/hboWLC",
+      "year": 2016,
+      "source_title": "Westminster Leningrad Codex",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "tanakh",
+      "translation_id": "wlc",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 23207,
+      "passages_checked": 23207,
+      "passages_total": 23213,
+      "note": ""
+    },
+    {
       "title": "The Wars of the Jews",
       "author": [
         "Flavius Josephus"
@@ -17649,6 +20212,32 @@
       "passages_checked": 1014,
       "passages_total": 1016,
       "note": ""
+    },
+    {
+      "title": "The Wisdom of the Talmud",
+      "author": [
+        "Ben Zion Bokser"
+      ],
+      "translator": [
+        "Ben Zion Bokser"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/jud/wott/index.htm",
+      "year": 1951,
+      "source_title": "The Wisdom of the Talmud",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "category": "Scripture",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "wisdom-talmud-bokser",
+      "translation_id": "bokser",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Ginza Rabba (The Great Treasure)",
@@ -17784,28 +20373,54 @@
     {
       "title": "Creation Myths of Primitive America",
       "author": [
-        "Various California Indians"
+        "Jeremiah Curtin"
       ],
       "translator": [
         "Jeremiah Curtin"
       ],
       "publisher": "SacredTexts.com",
-      "url": "https://sacred-texts.com/nam/ca/cma/index.htm",
+      "url": "",
       "year": 1898,
-      "source_title": "Creation Myths of Primitive America",
+      "source_title": "",
       "tradition": "Mesoamerican",
       "collection": "sacred",
       "category": "Mythology",
       "raw_file": "02_raw_sources/Library_/SacredTexts.com/Creation Myths of Primitive America_____Jeremiah Curtin (1898).txt",
       "raw_sha256": "de8f7383db98d3ea00f5da42c9199929c6571c9186088c9c4e6bd082a01c7491",
-      "text_id": "creation-myths-curtin",
+      "text_id": "creation-myths-america",
       "translation_id": "curtin",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 3870,
-      "passages_checked": 3870,
-      "passages_total": 4057,
+      "status": "PARTIAL",
+      "pass_rate": 0.9997445721583652,
+      "passages_pass": 3914,
+      "passages_checked": 3915,
+      "passages_total": 4700,
       "note": ""
+    },
+    {
+      "title": "Dancing Gods",
+      "author": [
+        "Erna Fergusson"
+      ],
+      "translator": [
+        "Erna Fergusson"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/nam/sw/dg/index.htm",
+      "year": 1931,
+      "source_title": "Dancing Gods",
+      "tradition": "Mesoamerican",
+      "collection": "sacred",
+      "category": "Mythology",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "dancing-gods-fergusson",
+      "translation_id": "fergusson",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Hawaiian Folk Tales",
@@ -18068,6 +20683,84 @@
       "note": ""
     },
     {
+      "title": "Songs of the Tewa",
+      "author": [
+        "Various Tewa"
+      ],
+      "translator": [
+        "Herbert Spinden"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/nam/sw/sot/index.htm",
+      "year": 1933,
+      "source_title": "Songs of the Tewa",
+      "tradition": "Mesoamerican",
+      "collection": "sacred",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "tewa-songs-spinden",
+      "translation_id": "spinden",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "Spider Woman",
+      "author": [
+        "Gladys A. Reichard"
+      ],
+      "translator": [
+        "Gladys A. Reichard"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/nam/sw/index.htm",
+      "year": 1934,
+      "source_title": "Spider Woman",
+      "tradition": "Mesoamerican",
+      "collection": "sacred",
+      "category": "Scholarship",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "spider-woman-reichard",
+      "translation_id": "reichard",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "Tales of the North American Indians",
+      "author": [
+        "Various"
+      ],
+      "translator": [
+        "Stith Thompson"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/nam/nam/index.htm",
+      "year": 1929,
+      "source_title": "Tales of the North American Indians",
+      "tradition": "Mesoamerican",
+      "collection": "sacred",
+      "category": "Folk Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "nam-tales-thompson",
+      "translation_id": "thompson",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Algonquin Legends of New England",
       "author": [
         "Various Wabanaki"
@@ -18248,6 +20941,32 @@
       "passages_checked": 191,
       "passages_total": 191,
       "note": ""
+    },
+    {
+      "title": "The Thunder Bird Tootooch Legends",
+      "author": [
+        "W.J. Kirk"
+      ],
+      "translator": [
+        "W.J. Kirk"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/nam/nw/ttl/index.htm",
+      "year": 1937,
+      "source_title": "The Thunder Bird Tootooch Legends",
+      "tradition": "Mesoamerican",
+      "collection": "sacred",
+      "category": "Mythology",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "thunderbird-tootooch-kirk",
+      "translation_id": "kirk",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Traditions of the Hopi",
@@ -18633,10 +21352,10 @@
       "text_id": "babylonian-creation-king",
       "translation_id": "king",
       "status": "PARTIAL",
-      "pass_rate": 0.9987212276214834,
-      "passages_pass": 781,
-      "passages_checked": 782,
-      "passages_total": 799,
+      "pass_rate": 0.9987608426270136,
+      "passages_pass": 806,
+      "passages_checked": 807,
+      "passages_total": 821,
       "note": ""
     },
     {
@@ -20018,58 +22737,6 @@
       "note": ""
     },
     {
-      "title": "Early Greek Philosophy",
-      "author": [
-        "John Burnet"
-      ],
-      "translator": [
-        "John Burnet"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/63627",
-      "year": 1892,
-      "source_title": "Early Greek Philosophy",
-      "tradition": "Modern Philosophy",
-      "collection": "other",
-      "category": "Philosophy",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Early Greek philosophy_____John Burnet.txt",
-      "raw_sha256": "14a22140431297dc707bb89dc3b7ad87bf9ff952919f55329161f02fe01ef79b",
-      "text_id": "burnet-early-greek",
-      "translation_id": "burnet",
-      "status": "PARTIAL",
-      "pass_rate": 0.9929203539823008,
-      "passages_pass": 2244,
-      "passages_checked": 2260,
-      "passages_total": 3441,
-      "note": ""
-    },
-    {
-      "title": "Early Greek Philosophy",
-      "author": [
-        "John Burnet"
-      ],
-      "translator": [
-        "John Burnet"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/63627",
-      "year": 1892,
-      "source_title": "Early Greek Philosophy",
-      "tradition": "Modern Philosophy",
-      "collection": "other",
-      "category": "Philosophy",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Early Greek philosophy_____John Burnet.txt",
-      "raw_sha256": "14a22140431297dc707bb89dc3b7ad87bf9ff952919f55329161f02fe01ef79b",
-      "text_id": "burnet-early-greek",
-      "translation_id": "burnet",
-      "status": "PARTIAL",
-      "pass_rate": 0.9921722113502935,
-      "passages_pass": 2028,
-      "passages_checked": 2044,
-      "passages_total": 3186,
-      "note": ""
-    },
-    {
       "title": "Emile",
       "author": [
         "Jean-Jacques Rousseau"
@@ -20356,6 +23023,32 @@
       "note": ""
     },
     {
+      "title": "Essays, First Series",
+      "author": [
+        "Ralph Waldo Emerson"
+      ],
+      "translator": [
+        "Anonymous"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/2944",
+      "year": 1841,
+      "source_title": "Essays, First Series",
+      "tradition": "Modern Philosophy",
+      "collection": "sacred",
+      "category": "Philosophy",
+      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Essays First Series_____Ralph Waldo Emerson.txt",
+      "raw_sha256": "c38b1203b6acc456dc038279868649f656acd80eea90a8c8c92e2c3808cd91da",
+      "text_id": "emerson-essays-first",
+      "translation_id": "emerson",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 491,
+      "passages_checked": 491,
+      "passages_total": 496,
+      "note": ""
+    },
+    {
       "title": "Essays: Religion, A Dialogue, etc.",
       "author": [
         "Arthur Schopenhauer"
@@ -20509,6 +23202,32 @@
       "passages_pass": 1189,
       "passages_checked": 1197,
       "passages_total": 1278,
+      "note": ""
+    },
+    {
+      "title": "Fear and Trembling",
+      "author": [
+        "Søren Kierkegaard"
+      ],
+      "translator": [
+        "Anonymous"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/60333",
+      "year": 1843,
+      "source_title": "Fear and Trembling",
+      "tradition": "Modern Philosophy",
+      "collection": "sacred",
+      "category": "Philosophy",
+      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Fear and Trembling_____Kierkegaard.txt",
+      "raw_sha256": "f9c50fcaeef5a7f7b01dcd6ce1c5e7299eb79c3f25cd3399f2e5decc05231308",
+      "text_id": "kierkegaard-fear-trembling",
+      "translation_id": "lowrie",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 671,
+      "passages_checked": 671,
+      "passages_total": 689,
       "note": ""
     },
     {
@@ -21187,6 +23906,32 @@
       "passages_checked": 599,
       "passages_total": 760,
       "note": ""
+    },
+    {
+      "title": "Midrash Tanuma",
+      "author": [
+        "(NO)"
+      ],
+      "translator": [
+        "(NO)"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1900,
+      "source_title": "Midrash Tanuma",
+      "tradition": "Modern Philosophy",
+      "collection": "other",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "midrash-tanuma-no",
+      "translation_id": "anonymous",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "Monadology",
@@ -22952,9 +25697,9 @@
       "translation_id": "anonymous",
       "status": "PASS",
       "pass_rate": 1.0,
-      "passages_pass": 1475,
-      "passages_checked": 1475,
-      "passages_total": 1481,
+      "passages_pass": 1556,
+      "passages_checked": 1556,
+      "passages_total": 1565,
       "note": ""
     },
     {
@@ -23816,6 +26561,32 @@
       "note": ""
     },
     {
+      "title": "The Sickness Unto Death",
+      "author": [
+        "Søren Kierkegaard"
+      ],
+      "translator": [
+        "Walter Lowrie"
+      ],
+      "publisher": "Internet Archive",
+      "url": "https://archive.org/details/sickness-unto-death-kierkegaard",
+      "year": 1941,
+      "source_title": "The Sickness Unto Death",
+      "tradition": "Modern Philosophy",
+      "collection": "other",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "kierkegaard-sickness-unto-death",
+      "translation_id": "lowrie",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Siksha-Patri of the Svami-Narayana Sect",
       "author": [
         "Monier Williams"
@@ -23894,6 +26665,32 @@
       "note": ""
     },
     {
+      "title": "The Sutta-Nipata",
+      "author": [
+        "V-Fausboll 1881 (NO)"
+      ],
+      "translator": [
+        "V-Fausboll 1881 (NO)"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1900,
+      "source_title": "The Sutta-Nipata",
+      "tradition": "Modern Philosophy",
+      "collection": "other",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "the-sutta-nipata-v-fausboll-1881-no",
+      "translation_id": "anonymous",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Theory of Psychoanalysis",
       "author": [
         "C. G. Jung"
@@ -23918,6 +26715,32 @@
       "passages_checked": 423,
       "passages_total": 473,
       "note": ""
+    },
+    {
+      "title": "The Udana",
+      "author": [
+        "GM-Strong (1902) (NO)"
+      ],
+      "translator": [
+        "GM-Strong (1902) (NO)"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1900,
+      "source_title": "The Udana",
+      "tradition": "Modern Philosophy",
+      "collection": "other",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "the-udana-gm-strong-1902-no",
+      "translation_id": "anonymous",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Varieties of Religious Experience",
@@ -24547,6 +27370,33 @@
       "note": ""
     },
     {
+      "title": "Tractatus Logico-Philosophicus",
+      "author": [
+        "Ludwig Wittgenstein"
+      ],
+      "translator": [
+        "C. K. Ogden",
+        "F. P. Ramsey"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/5740",
+      "year": 1922,
+      "source_title": "Tractatus Logico-Philosophicus",
+      "tradition": "Modern Philosophy",
+      "collection": "other",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "wittgenstein-tractatus",
+      "translation_id": "ogden",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Twilight of the Idols",
       "author": [
         "Friedrich Nietzsche"
@@ -24703,6 +27553,58 @@
       "note": ""
     },
     {
+      "title": "Yajur Veda (black)",
+      "author": [
+        "Arthur Keith (1914)(NO)"
+      ],
+      "translator": [
+        "Arthur Keith (1914)(NO)"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1900,
+      "source_title": "Yajur Veda (black)",
+      "tradition": "Modern Philosophy",
+      "collection": "other",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "yajur-veda-black-arthur-keith-1914-no",
+      "translation_id": "anonymous",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "Yajur Veda (white)",
+      "author": [
+        "Ralph Griffith (1899)(NO)"
+      ],
+      "translator": [
+        "Ralph Griffith (1899)(NO)"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1900,
+      "source_title": "Yajur Veda (white)",
+      "tradition": "Modern Philosophy",
+      "collection": "other",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "yajur-veda-white-ralph-griffith-1899",
+      "translation_id": "anonymous",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "Yoga Vashisht or Heaven Found",
       "author": [
         "Rishi Singh Gherwal (1930)"
@@ -24755,29 +27657,29 @@
       "note": ""
     },
     {
-      "title": "Folk Tales from the Russian",
+      "title": "Mozi",
       "author": [
-        "Various"
+        "Mozi"
       ],
       "translator": [
-        "Peter Nikolaevich Polevoi"
+        "W.P. Mei"
       ],
-      "publisher": "SacredTexts.com",
-      "url": "https://sacred-texts.com/neu/rft/index.htm",
-      "year": 1903,
-      "source_title": "Folk Tales from the Russian",
-      "tradition": "Norse",
+      "publisher": "ctext.org",
+      "url": "https://ctext.org/mozi/ens",
+      "year": 1929,
+      "source_title": "The Ethical and Political Works of Motse",
+      "tradition": "Mohist",
       "collection": "sacred",
-      "category": "Folk Literature",
-      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Folk Tales From the Russian_____Verra de Blumenthal (1903).txt",
-      "raw_sha256": "17878d285ec980a8eaf20d02f2529e728c1766ce9bd80641117568cca6bafbcb",
-      "text_id": "folk-tales-russian-polevoi",
-      "translation_id": "polevoi",
+      "category": "Philosophy",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "mozi",
+      "translation_id": "mei",
       "status": "PASS",
       "pass_rate": 1.0,
-      "passages_pass": 705,
-      "passages_checked": 705,
-      "passages_total": 749,
+      "passages_pass": 320,
+      "passages_checked": 320,
+      "passages_total": 320,
       "note": ""
     },
     {
@@ -25043,6 +27945,32 @@
       "note": ""
     },
     {
+      "title": "The Prose Edda (Younger Edda)",
+      "author": [
+        "Snorri Sturluson"
+      ],
+      "translator": [
+        "Rasmus B. Anderson"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/18947",
+      "year": 1879,
+      "source_title": "The Prose Edda (Younger Edda)",
+      "tradition": "Norse",
+      "collection": "sacred",
+      "category": "Mythology",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "prose-edda",
+      "translation_id": "anderson",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "The Volsunga Saga",
       "author": [
         "Anonymous"
@@ -25067,6 +27995,32 @@
       "passages_pass": 1322,
       "passages_checked": 1324,
       "passages_total": 1344,
+      "note": ""
+    },
+    {
+      "title": "The Book of the Thousand Nights and a Night",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "Anonymous"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/34206",
+      "year": 1885,
+      "source_title": "The Book of the Thousand Nights and a Night",
+      "tradition": "Persian Literature",
+      "collection": "sacred",
+      "category": "Literature",
+      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Book of the Thousand Nights and a Night Vol 1_____Richard Burton.txt",
+      "raw_sha256": "48c289d55c645fc9e9ad4062229319538230c96c1a38a26c7c535975693d13d8",
+      "text_id": "arabian-nights-burton",
+      "translation_id": "burton",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 2150,
+      "passages_checked": 2150,
+      "passages_total": 2452,
       "note": ""
     },
     {
@@ -26343,10 +29297,10 @@
       "text_id": "cicero-brutus",
       "translation_id": "jones",
       "status": "PARTIAL",
-      "pass_rate": 0.9699248120300752,
-      "passages_pass": 258,
-      "passages_checked": 266,
-      "passages_total": 278,
+      "pass_rate": 0.9696969696969697,
+      "passages_pass": 256,
+      "passages_checked": 264,
+      "passages_total": 273,
       "note": ""
     },
     {
@@ -26929,6 +29883,32 @@
       "note": ""
     },
     {
+      "title": "Don Quixote",
+      "author": [
+        "Miguel de Cervantes"
+      ],
+      "translator": [
+        "John Ormsby"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/996",
+      "year": 1885,
+      "source_title": "Don Quixote",
+      "tradition": "Secular / Other",
+      "collection": "other",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "don-quixote",
+      "translation_id": "ormsby",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
       "title": "A Hundred Verses from Old Japan",
       "author": [
         "Various classical Japanese poets"
@@ -26952,6 +29932,32 @@
       "passages_pass": 562,
       "passages_checked": 562,
       "passages_total": 674,
+      "note": ""
+    },
+    {
+      "title": "Ancient Tales and Folk-lore of Japan",
+      "author": [
+        "Richard Smith"
+      ],
+      "translator": [
+        "Richard Smith"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1918,
+      "source_title": "",
+      "tradition": "Shinto",
+      "collection": "sacred",
+      "category": "Folklore",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Ancient Tales and Folk-lore of Japan_____Richard Smith (1918).txt",
+      "raw_sha256": "a6ffbef3e5732f04de62f22e4c8134265315a0c4eb7dddfdca7de35ada65f633",
+      "text_id": "folk-tales-japan",
+      "translation_id": "smith",
+      "status": "PARTIAL",
+      "pass_rate": 0.9973247726056714,
+      "passages_pass": 1864,
+      "passages_checked": 1869,
+      "passages_total": 2418,
       "note": ""
     },
     {
@@ -27031,6 +30037,58 @@
       "passages_checked": 1877,
       "passages_total": 3027,
       "note": ""
+    },
+    {
+      "title": "The Pillow-Book of Sei Shōnagon",
+      "author": [
+        "Sei Shōnagon"
+      ],
+      "translator": [
+        "Arthur Waley"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/55663",
+      "year": 1928,
+      "source_title": "The Pillow-Book of Sei Shōnagon",
+      "tradition": "Shinto",
+      "collection": "sacred",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "pillow-book-sei-shonagon",
+      "translation_id": "waley",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
+    },
+    {
+      "title": "The Tale of Genji (Abridged)",
+      "author": [
+        "Murasaki Shikibu"
+      ],
+      "translator": [
+        "Suematsu Kenchō"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "https://sacred-texts.com/shi/gm/index.htm",
+      "year": 1900,
+      "source_title": "The Tale of Genji (Abridged)",
+      "tradition": "Shinto",
+      "collection": "sacred",
+      "category": "Literature",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "genji-monogatari-suematsu",
+      "translation_id": "suematsu",
+      "status": "SKIP",
+      "pass_rate": 0.0,
+      "passages_pass": 0,
+      "passages_checked": 0,
+      "passages_total": 0,
+      "note": "no ingest config — cannot locate raw file"
     },
     {
       "title": "The Sikh Religion, Volume 1",
@@ -27163,6 +30221,58 @@
       "note": ""
     },
     {
+      "title": "Folk Tales From the Russian",
+      "author": [
+        "Verra de Blumenthal"
+      ],
+      "translator": [
+        "Verra de Blumenthal"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1903,
+      "source_title": "",
+      "tradition": "Slavic",
+      "collection": "sacred",
+      "category": "Folklore",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Folk Tales From the Russian_____Verra de Blumenthal (1903).txt",
+      "raw_sha256": "17878d285ec980a8eaf20d02f2529e728c1766ce9bd80641117568cca6bafbcb",
+      "text_id": "folk-tales-russian",
+      "translation_id": "blumenthal",
+      "status": "PARTIAL",
+      "pass_rate": 0.9985994397759104,
+      "passages_pass": 713,
+      "passages_checked": 714,
+      "passages_total": 915,
+      "note": ""
+    },
+    {
+      "title": "Georgian Folk Tales",
+      "author": [
+        "Marjory Wardrop"
+      ],
+      "translator": [
+        "Marjory Wardrop"
+      ],
+      "publisher": "SacredTexts.com",
+      "url": "",
+      "year": 1894,
+      "source_title": "",
+      "tradition": "Slavic",
+      "collection": "sacred",
+      "category": "Folklore",
+      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Georgian Folk Tales_____Marjory Wardrop (1894).txt",
+      "raw_sha256": "16e8d3f423b1edb943268cf7bf884f2b53a2bf7c572ccf48143b2bf45b3f9c1d",
+      "text_id": "georgian-folk-tales",
+      "translation_id": "wardrop",
+      "status": "PARTIAL",
+      "pass_rate": 0.9875706214689266,
+      "passages_pass": 874,
+      "passages_checked": 885,
+      "passages_total": 1206,
+      "note": ""
+    },
+    {
       "title": "The Songs of the Russian People",
       "author": [
         "William Ralston Shedden Ralston"
@@ -27290,6 +30400,58 @@
       "passages_pass": 652,
       "passages_checked": 653,
       "passages_total": 801,
+      "note": ""
+    },
+    {
+      "title": "Minor Dialogues and On Clemency",
+      "author": [
+        "Seneca"
+      ],
+      "translator": [
+        "Anonymous"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/",
+      "year": null,
+      "source_title": "Minor Dialogues and On Clemency",
+      "tradition": "Stoic",
+      "collection": "sacred",
+      "category": "Philosophy",
+      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Minor Dialogues - Together With the Dialogue on Clemency_____Lucius Seneca.txt",
+      "raw_sha256": "ed6f88191f9748d4e00c45b65c86b508677484d645d3bcb1061d43a6a947e07b",
+      "text_id": "seneca-minor-dialogues",
+      "translation_id": "stewart",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 695,
+      "passages_checked": 695,
+      "passages_total": 805,
+      "note": ""
+    },
+    {
+      "title": "Of a Happy Life, Benefits, Anger, and Clemency",
+      "author": [
+        "Seneca"
+      ],
+      "translator": [
+        "Anonymous"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/",
+      "year": null,
+      "source_title": "Of a Happy Life, Benefits, Anger, and Clemency",
+      "tradition": "Stoic",
+      "collection": "sacred",
+      "category": "Philosophy",
+      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Morals of a Happy Life & Benefits & Anger & Clemency_____Seneca.txt",
+      "raw_sha256": "a8c4ae177f822cd355abe7cbce676f7924d287ed9556ac0a3c2eddc45a317c57",
+      "text_id": "seneca-morals",
+      "translation_id": "aubrey-stewart",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 508,
+      "passages_checked": 508,
+      "passages_total": 514,
       "note": ""
     },
     {
@@ -28024,14 +31186,6 @@
       "passages_pass": 4298,
       "passages_checked": 4305,
       "passages_total": 5428,
-      "note": ""
-    },
-    {
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 1486,
-      "passages_checked": 1486,
-      "passages_total": 1494,
       "note": ""
     }
   ]

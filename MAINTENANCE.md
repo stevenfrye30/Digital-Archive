@@ -54,6 +54,7 @@ python 05_scripts/build_registry.py
 python 05_scripts/validate_metadata.py
 python 05_scripts/passage_subsequence_proof.py --save --min-pass 0
 python 05_scripts/build_integrity_report.py
+python 05_scripts/export_reader_data.py
 python 05_scripts/final_validation.py --out logs/reports/final_validation.md
 python 05_scripts/final_validation.py --json --out logs/reports/final_validation.json
 python 05_scripts/corpus_audit.py    --out logs/reports/corpus_audit_report.md
@@ -63,11 +64,28 @@ python 05_scripts/lint_archive.py
 python 05_scripts/build_cleanliness_report.py
 ```
 
-The passage proof is the slow one (~10 minutes for the full
-corpus). Everything else completes in seconds.
+`export_reader_data.py` is the bridge between the canonical library
+and the public web reader. It rewrites `03_web_app/data/index.json`,
+the per-translation merged files, and `source_manifest.json`. Without
+this step, canonical metadata changes (a corrected `category`, a new
+`description`, a re-classified `source_quality`) sit silently in the
+working tree and are never visible to public readers. The May 2026
+public-refresh pass added this step to the ritual after that
+divergence was detected.
 
-After a refresh, update `STATUS.md`'s *Last refreshed* date and
-any numbers that moved.
+`export_reader_data.py` runs `validate_metadata` internally before
+exporting and aborts on any error. Its pre-flight validation appends
+to `logs/ingestion_issues.json`, so if you run both `validate_metadata`
+and `export_reader_data` in the same refresh, validation entries
+double-count. Either run only one of them or trim the log between
+them — `lint_archive.py` reads the log and reports the inflated count
+otherwise.
+
+The passage proof is the slow one (~10 minutes for the full corpus).
+Everything else completes in seconds.
+
+After a refresh, update `STATUS.md`'s *Last refreshed* date and any
+numbers that moved.
 
 ---
 

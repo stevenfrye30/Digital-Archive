@@ -130,8 +130,13 @@ listed once with the link entering at the first chapter.
 - **Canonical corpus** — `Digital-Archive/01_library/library/`. Schema
   in `SCHEMA.md`. Source of truth for every passage.
 - **Web app reader** — `Digital-Archive/03_web_app/`. Browsable local
-  reader, generated from the canonical corpus. Started via
-  `Digital Archive.bat`.
+  reader, generated from the canonical corpus by
+  `05_scripts/export_reader_data.py`. Started via
+  `Digital Archive.bat`. The exact regeneration timestamp is recorded
+  inside `03_web_app/data/source_manifest.json` (the `generated` field);
+  if that timestamp is older than `Last refreshed` above, the public
+  reader is stale and the refresh ritual in `MAINTENANCE.md` should
+  be re-run.
 - **Daily Reader** — `Digital-Archive/04_landing/`. Landing page +
   Render.com cloud server that emails one passage per subscriber per
   day. Pulls from a ~198-text whitelist of audited translations.
