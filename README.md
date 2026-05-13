@@ -58,6 +58,10 @@ relates to this catalog — is recorded in:
 - **[QURAN_RESTORATION_2026.md](QURAN_RESTORATION_2026.md)** — the
   first editorial restoration pass: notes on what was thought to be
   wrong with the Qurʾān, what was actually wrong, and what was done.
+- **[JATAKA_RESTORATION_2026.md](JATAKA_RESTORATION_2026.md)** — the
+  second editorial restoration pass, on the Pāli Jātaka birth-story
+  corpus. Like the Qurʾān, mostly preservation work; the seven-volume
+  Cowell scholarly edition was already at edition quality.
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They
