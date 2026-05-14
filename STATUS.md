@@ -18,8 +18,8 @@ generated reader at `03_web_app/`.
 |---|---:|---|
 | Distinct texts (web app reader) | **1,091** | `03_web_app/data/index.json` (unique `id`) |
 | Translations published (web app reader) | **1,200** | `03_web_app/data/index.json` (entry count) |
-| `text.json` files on disk | 1,131 | `01_library/library/texts/**/text.json` |
-| Registry `text_count` and array length | 1,131 (agree) | `01_library/library/metadata/registry.json` |
+| `text.json` files on disk | 1,132 | `01_library/library/texts/**/text.json` |
+| Registry `text_count` and array length | 1,132 (agree) | `01_library/library/metadata/registry.json` |
 | Distinct ids in registry | 1,086 | same — 13 multi-translation works share ids legitimately |
 | Daily-reading whitelist | ~198 | `05_scripts/daily_passage.py` `WHITELIST` |
 | Restricted (copyrighted) | 6 | `01_library/_restricted/copyrighted/` |

@@ -48,26 +48,26 @@
 
 ## 3. Short-Stub Classification
 
-**Total stubs:** 163,282
+**Total stubs:** 163,387
 
 ### Global Recommendations
 
 | Action | Count |
 |---|---:|
-| keep | 72,592 |
-| review | 47,743 |
-| drop | 42,947 |
+| keep | 72,612 |
+| review | 47,815 |
+| drop | 42,960 |
 
 ### Category Distribution
 
 | Category | Count |
 |---|---:|
-| legitimate_dialogue | 72,592 |
-| uncertain | 22,067 |
-| roman_numeral_marker | 18,464 |
-| heading_fragment | 17,176 |
+| legitimate_dialogue | 72,612 |
+| uncertain | 22,118 |
+| roman_numeral_marker | 18,474 |
+| heading_fragment | 17,190 |
 | residual_artifact | 9,432 |
 | structural_label | 7,711 |
-| ocr_noise | 6,354 |
+| ocr_noise | 6,362 |
 | speaker_label | 5,249 |
-| separator_divider | 4,237 |
+| separator_divider | 4,239 |

@@ -60,8 +60,13 @@ relates to this catalog — is recorded in:
   wrong with the Qurʾān, what was actually wrong, and what was done.
 - **[JATAKA_RESTORATION_2026.md](JATAKA_RESTORATION_2026.md)** — the
   second editorial restoration pass, on the Pāli Jātaka birth-story
-  corpus. Like the Qurʾān, mostly preservation work; the seven-volume
-  Cowell scholarly edition was already at edition quality.
+  corpus. Like the Qurʾān, mostly preservation work; the existing
+  Cowell volumes were already at edition quality.
+- **[JATAKA_VOL6_ACQUISITION_2026.md](JATAKA_VOL6_ACQUISITION_2026.md)** —
+  acquisition of the missing Cowell Vol 6 (1907) from the Internet
+  Archive, closing the canonical six-volume scholarly set. The new
+  volume is honestly tagged `source_quality: provisional` because the
+  OCR is noisier than the SacredTexts cleanup of vols 1–5.
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They
