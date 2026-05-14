@@ -142,6 +142,22 @@ centuries — without silently rewriting their own history.
   the scripts at [`tools/resolve_urn.py`](tools/resolve_urn.py) and
   [`tools/verify_permanence.py`](tools/verify_permanence.py).
 
+### Reading Room constitutional audit
+
+- **[READING_ROOM_CONSTITUTIONAL_AUDIT_2026.md](READING_ROOM_CONSTITUTIONAL_AUDIT_2026.md)** —
+  May 2026 audit of the existing Reading Room against the May 2026
+  commentary, lifecycle, and permanence architecture. Determines
+  what is already compatible, what is silently incompatible, and the
+  short list of constitutionally dangerous things the Reading Room
+  should refuse to do. Not a redesign proposal.
+- **[APPARATUS_PROPAGATION_REPAIR_2026.md](APPARATUS_PROPAGATION_REPAIR_2026.md)** —
+  Narrow constitutional repair flowing from the audit: apparatus
+  bodies now propagate from canonical to deploy when they exist;
+  unresolved markers now fail honestly with a visible diagnostic
+  instead of silent inaction. Audit at
+  [`reports/apparatus_audit.md`](reports/apparatus_audit.md);
+  validator at [`tools/validate_apparatus.py`](tools/validate_apparatus.py).
+
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They
