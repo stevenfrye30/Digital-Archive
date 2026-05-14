@@ -130,6 +130,18 @@ centuries — without silently rewriting their own history.
   formal long-term policy for Layer-6 AI-generated content:
   retention, labeling, identity preservation, prompt provenance,
   the dual-authorship pattern, and the prohibited behaviors.
+
+### Operational permanence (first prototype)
+
+- **[PERMANENCE_PROTOTYPE_2026.md](PERMANENCE_PROTOTYPE_2026.md)** — the
+  May 2026 URN resolver prototype: what was built, what worked, where
+  the architecture is fragile, what should not scale. The first
+  operational counterpart to the constitutional permanence commitments.
+  Run artifacts live at [`reports/permanence_audit.md`](reports/permanence_audit.md)
+  and [`reports/permanence_audit.json`](reports/permanence_audit.json);
+  the scripts at [`tools/resolve_urn.py`](tools/resolve_urn.py) and
+  [`tools/verify_permanence.py`](tools/verify_permanence.py).
+
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They
