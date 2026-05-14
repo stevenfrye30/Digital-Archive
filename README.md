@@ -67,6 +67,31 @@ relates to this catalog — is recorded in:
   Archive, closing the canonical six-volume scholarly set. The new
   volume is honestly tagged `source_quality: provisional` because the
   OCR is noisier than the SacredTexts cleanup of vols 1–5.
+
+### Commentary architecture (constitutional, not yet implemented)
+
+In May 2026 the archive began designing the foundational rules under
+which commentary, annotation, scholarly apparatus, and interpretive
+overlays may eventually attach to the primary corpus. These documents
+define the law; no commentary engine is built yet.
+
+- **[COMMENTARY_CONSTITUTION.md](COMMENTARY_CONSTITUTION.md)** —
+  foundational law. What commentary is, what it is not, the bare-
+  canon guarantee, the refusal index.
+- **[COMMENTARY_ONTOLOGY.md](COMMENTARY_ONTOLOGY.md)** — categories
+  of commentary, with the careful argument for why the archive
+  imposes some classification and refuses other classification.
+- **[COMMENTARY_ATTACHMENT_MODEL.md](COMMENTARY_ATTACHMENT_MODEL.md)** —
+  how commentary attaches: anchor format, granularity, sub-locators,
+  resolution rules.
+- **[PROVENANCE_LAYERS.md](PROVENANCE_LAYERS.md)** — the seven
+  authorship layers (primary text, source apparatus, traditional
+  commentary, modern scholarship, archive editorial notes, AI
+  output, private annotations) and why they must never collapse.
+- **[INTERPRETIVE_BOUNDARIES.md](INTERPRETIVE_BOUNDARIES.md)** — what
+  the archive refuses to do, in detail.
+- **[COMMENTARY_SCHEMA_SKETCH.md](COMMENTARY_SCHEMA_SKETCH.md)** —
+  illustrative JSON sketches; not adopted yet.
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They
