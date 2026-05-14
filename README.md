@@ -92,6 +92,10 @@ define the law; no commentary engine is built yet.
   the archive refuses to do, in detail.
 - **[COMMENTARY_SCHEMA_SKETCH.md](COMMENTARY_SCHEMA_SKETCH.md)** —
   illustrative JSON sketches; not adopted yet.
+- **[COMMENTARY_PROTOTYPE_2026.md](COMMENTARY_PROTOTYPE_2026.md)** —
+  notes from pressure-testing the constitutional architecture against
+  a single tale (Apannaka-jātaka). Records what worked, what was
+  awkward, and the six implementation tensions surfaced before scale.
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They

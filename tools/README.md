@@ -48,6 +48,13 @@ institutional checkpoint, not an executable bundle.
   per-translation passage files. As of the May 2026 Quran restoration,
   groups by `(text_id, data_file)` so multi-translation works no
   longer surface false-alarm dup-id totals.
+- **`render_commentary_prototype.py`** — the May 2026 commentary-
+  prototype renderer. Reads canonical Apannaka-jātaka passages and
+  five hand-crafted sibling commentary records, emits a single
+  self-contained HTML page testing the constitutional architecture
+  (bare-canon byte-equivalence, layer non-collapse, AI quarantine,
+  bridge-gap honesty). Local-only artifact. Findings recorded in
+  `COMMENTARY_PROTOTYPE_2026.md`.
 
 ## Refresh ritual
 
