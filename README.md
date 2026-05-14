@@ -96,6 +96,40 @@ define the law; no commentary engine is built yet.
   notes from pressure-testing the constitutional architecture against
   a single tale (Apannaka-jātaka). Records what worked, what was
   awkward, and the six implementation tensions surfaced before scale.
+
+### Commentary lifecycle architecture (stewardship discipline, not yet implemented)
+
+After the May 2026 prototype, the archive turned to designing the
+long-term lifecycle of commentary as an archival object. These seven
+documents specify the discipline that future implementations of the
+commentary infrastructure must obey to survive archival time — decades,
+centuries — without silently rewriting their own history.
+
+- **[COMMENTARY_LIFECYCLE.md](COMMENTARY_LIFECYCLE.md)** — the eight
+  states a commentary record may occupy (drafted, provisional,
+  verified, deprecated, superseded, withdrawn, unresolved, orphaned)
+  and the legal transitions between them. The no-deletion principle.
+- **[COMMENTARY_VERSIONING.md](COMMENTARY_VERSIONING.md)** —
+  append-only sibling-record revisions, date-suffix identifiers,
+  bidirectional supersession pointers. Why diffs are not stored.
+- **[CITATION_PERMANENCE.md](CITATION_PERMANENCE.md)** — the URN
+  scheme, alias tables, schema-version pinning, the resolver's
+  contract, the 2126-resolves-2026 commitment.
+- **[COMMENTARY_MIGRATION.md](COMMENTARY_MIGRATION.md)** — the
+  migration manifest discipline, frozen-generation support,
+  reversibility classes, the no-silent-migration rule.
+- **[COMMENTARY_REPAIR_PROTOCOLS.md](COMMENTARY_REPAIR_PROTOCOLS.md)** —
+  the taxonomy of failures (broken anchor, layer-collapse, duplicate
+  id, damaged file, contradictory metadata, ...) and how each is
+  detected, quarantined, and repaired. The fail-honestly discipline.
+- **[PUBLIC_PRIVATE_BOUNDARIES.md](PUBLIC_PRIVATE_BOUNDARIES.md)** —
+  the five degrees of publication (canonical / public-cache /
+  working / experimental / reader-local) and the rules governing
+  transitions between them.
+- **[AI_STEWARDSHIP_POLICY.md](AI_STEWARDSHIP_POLICY.md)** — the
+  formal long-term policy for Layer-6 AI-generated content:
+  retention, labeling, identity preservation, prompt provenance,
+  the dual-authorship pattern, and the prohibited behaviors.
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They
