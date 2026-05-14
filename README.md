@@ -158,6 +158,15 @@ centuries — without silently rewriting their own history.
   [`reports/apparatus_audit.md`](reports/apparatus_audit.md);
   validator at [`tools/validate_apparatus.py`](tools/validate_apparatus.py).
 
+### Institutional state
+
+- **[STATE_OF_THE_ARCHIVE_2026.md](STATE_OF_THE_ARCHIVE_2026.md)** —
+  May 2026 institutional snapshot. What the archive is, structurally
+  and philosophically; the corpus state in real numbers; the twelve
+  constitutional principles synthesized; what is stable, experimental,
+  and prohibited; known unresolved tensions; lessons learned.
+  Successor stewards begin here.
+
 - **[`reports/`](reports/)** — periodic snapshots from the maintenance
   tooling: integrity proof, validation summary, link audits.
 - **[`tools/`](tools/)** — the maintenance scripts themselves. They
