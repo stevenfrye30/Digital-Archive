@@ -164,6 +164,16 @@ centuries — without silently rewriting their own history.
   occupies 79–86% of the viewport on entry, up from ~73–77%. Plain
   HTML retained; no framework introduced. Re-verification at
   [`tools/test_mobile_inhabitation.py`](tools/test_mobile_inhabitation.py).
+- **[MOBILE_READING_STATE_IMPLEMENTATION_2026.md](MOBILE_READING_STATE_IMPLEMENTATION_2026.md)** —
+  Second mobile pass: the Reading Room enters a true reading state on
+  small screens. Seven chrome bands consolidate into a single running
+  header (chapter title, prev/next, position+translation subtitle,
+  metadata `ⓘ`); browsing affordances (translation switcher, in-text
+  search, Compare, Contents, Home, Display) relocate via JS into the
+  existing `#text-meta` panel, which opens inline on demand. The first
+  passage now begins at y = 63–94px on a 390×844 viewport (text
+  occupies 89–92.5% of the viewport on entry). Desktop unchanged;
+  same DOM elements, different parents on mobile.
 
 ### Institutional state
 

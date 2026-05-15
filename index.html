@@ -2308,36 +2308,314 @@ mark.search-hl-active {
 }
 [data-theme="dark"] .progress-badge { background: rgba(196,160,96,0.15); }
 
-/* ── Mobile reading refinement (cascade-order corrective) ──────────────
-   The original mobile @media block lives high in the stylesheet (line
-   ~1280); some elements (#info-bar, #meta-toggle, #translation-bar,
-   #nav-bar) have their desktop definitions AFTER that block, so those
-   later rules silently overrode the mobile refinements. This trailing
-   block reaffirms the mobile chrome reductions after all desktop
-   definitions, restoring text sovereignty on small screens.
-   See MOBILE_READING_REFINEMENT_2026.md. */
+/* ── Mobile reading-state header (May 2026) ────────────────────────────
+   On mobile (≤720px), the Reading Room enters a true reading state.
+   The previous seven-band chrome stack (controls, info-bar,
+   translation-bar, nav-bar, in-passage chapter heading…) consolidates
+   into a single running header — the existing #nav-bar — restyled to
+   carry chapter identity, prev/next, and a metadata-retrieval handle.
+   Browsing affordances (translation switcher, in-text search, Compare,
+   Display, Home, Contents) relocate via JS into the existing
+   #text-meta panel, which opens inline on demand.
+
+   Desktop behavior is preserved entirely; everything below lives
+   inside @media (max-width: 720px). See
+   MOBILE_READING_STATE_IMPLEMENTATION_2026.md for the constitutional
+   rationale and uncertainties. */
 @media (max-width: 720px) {
-  /* Info-bar / About-this-text pill: quieter, smaller, less border weight */
-  #info-bar { padding: 4px 12px; }
-  #meta-toggle {
-    font-size: 11px;
-    padding: 3px 10px;
-    font-weight: 500;
-    gap: 6px;
-    box-shadow: none;
-    border-radius: 6px;
+
+  /* — Receded affordances: the always-visible chrome bars step out of
+       the viewport. Their functionality continues, retrievable through
+       the #text-meta panel (one tap on the running header's ⓘ). — */
+  #controls,
+  #info-bar,
+  #translation-bar {
+    display: none !important;
   }
-  #meta-toggle .info-icon { width: 14px; height: 14px; font-size: 10px; }
 
-  /* Translation bar — preserved when present, but slimmer */
-  #translation-bar { padding: 3px 12px; font-size: 11px; gap: 8px; }
-  #translation-select { max-width: 180px; font-size: 11px; padding: 2px 6px; }
+  /* — The in-passage chapter heading duplicates the running header's
+       chapter title on mobile. Suppress; the running header carries
+       canonical chapter identity now. — */
+  .chapter-heading { display: none; }
 
-  /* Chapter nav — canonical structure preserved, occupies less weight */
-  #nav-bar { padding: 3px 12px; gap: 6px; }
-  #nav-bar button { font-size: 11px; padding: 3px 9px; }
-  #nav-location { font-size: 11px; }
+  /* — The running header itself. #nav-bar is repurposed; it remains a
+       single row visually but takes on serif chapter typography in the
+       center, with a small subtitle line beneath. The display property
+       is left to JS (which sets style.display = 'flex' / 'none' on
+       enter/leave reading) so that nav-bar does not leak onto the
+       welcome page. — */
+  #nav-bar {
+    align-items: center;
+    justify-content: space-between;
+    background: var(--chrome-bg);
+    border-bottom: 1px solid var(--chrome-border);
+    padding: 8px 10px;
+    gap: 6px;
+    flex-shrink: 0;
+    position: relative;
+  }
+  /* Slim prev/next chevrons — restrained, no button-y feel */
+  #nav-bar #nav-prev,
+  #nav-bar #nav-next {
+    flex: 0 0 auto;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--chrome-active);
+    font-size: 14px;
+    line-height: 1;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    /* Replace verbose "◀ Prev" / "Next ▶" text with chevron-only */
+    font-size: 0;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #nav-bar #nav-prev::before { content: '\25C0'; font-size: 14px; }
+  #nav-bar #nav-next::before { content: '\25B6'; font-size: 14px; }
+  #nav-bar #nav-prev:hover,
+  #nav-bar #nav-next:hover { background: rgba(0,0,0,0.04); }
+  #nav-bar #nav-prev:disabled,
+  #nav-bar #nav-next:disabled { opacity: 0.3; cursor: default; }
+
+  /* The chapter title in the center. Serif, restrained scale, wraps
+     onto two lines for long chapter labels (Apannaka case). Tappable:
+     a relocated #ctrl-book <select> sits invisibly on top of it. */
+  #nav-bar #nav-location {
+    flex: 1 1 auto;
+    text-align: center;
+    color: var(--chrome-fg);
+    font-family: var(--reader-font, Georgia, serif);
+    font-weight: 600;
+    font-size: 15px;
+    font-style: normal;
+    line-height: 1.25;
+    padding: 0 4px;
+    position: relative;
+    min-height: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #nav-bar #nav-location::after {
+    /* Disclosure indicator: hints that the title is tappable when there
+       is a chapter picker available. Set via JS when applicable. */
+    content: '';
+  }
+  #nav-bar #nav-location.has-picker::after {
+    content: ' \25BE';
+    color: var(--chrome-muted);
+    font-size: 10px;
+    font-weight: normal;
+    margin-left: 4px;
+  }
+  /* Hide the parenthesized position from the chapter label on mobile —
+     the subtitle below already carries that information ("1 of 66"). */
+  #nav-bar #nav-location .nav-label-position { display: none; }
+
+  /* Subtitle line: position + translation short-label, restrained. */
+  #nav-bar #nav-subtitle {
+    display: block;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 10.5px;
+    color: var(--chrome-muted);
+    margin-top: 1px;
+    line-height: 1.2;
+  }
+  #nav-bar #nav-subtitle:empty { display: none; }
+
+  /* The chapter-picker select, relocated into #nav-location by JS.
+     Covers the location text invisibly so that taps open the native
+     OS picker. Preserves accessibility (it remains a real <select>). */
+  #nav-bar #nav-location > #ctrl-book-group {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    pointer-events: none;
+  }
+  #nav-bar #nav-location > #ctrl-book-group label { display: none; }
+  #nav-bar #nav-location > #ctrl-book-group select,
+  #nav-bar #nav-location > #ctrl-book-group #ctrl-book {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: transparent;
+    font-size: 16px; /* iOS does not auto-zoom into selects ≥16px */
+    opacity: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-appearance: none;
+  }
+
+  /* The ⓘ retrieval button on the right. Same visual register as the
+     prev/next chevrons — restrained, no app-toolbar feel. */
+  #nav-bar #nav-meta-toggle {
+    flex: 0 0 auto;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--chrome-active);
+    font-size: 18px;
+    line-height: 1;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #nav-bar #nav-meta-toggle:hover { background: rgba(0,0,0,0.04); }
+  #nav-bar #nav-meta-toggle.active {
+    background: rgba(0,0,0,0.06);
+    color: #5a4a1e;
+  }
+
+  /* Reader top padding tightens further now that the chrome is a single
+     band. The text begins almost immediately below the running header. */
+  #reader { padding: 8px 16px 60px; }
+
+  /* — Relocated affordances inside the meta panel. — */
+
+  /* When the meta panel is shown on mobile it contains the receded
+     browsing affordances. Style their wrappers as small meta sections
+     so they share the panel's quiet register. */
+  #text-meta {
+    /* On mobile, the panel may receive relocated children. Make it
+       a comfortable reading area for them. */
+    padding: 14px 16px 18px;
+  }
+
+  /* Translation switcher relocated into the meta panel: visible as a
+     small inline group rather than the desktop horizontal bar. */
+  #text-meta > #translation-bar {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border-bottom: none;
+    padding: 10px 0 0;
+    margin-top: 12px;
+    border-top: 1px solid var(--chrome-border);
+    font-size: 12px;
+  }
+  #text-meta > #translation-bar #translation-bar-title {
+    flex: 1 1 100%;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--chrome-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  #text-meta > #translation-bar #translation-select { max-width: 100%; flex: 1 1 auto; }
+  #text-meta > #translation-bar #compare-btn { font-size: 11px; }
+
+  /* In-text search relocated into the meta panel as its own section. */
+  #text-meta > #ctrl-search-group {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding-top: 10px;
+    padding-left: 0 !important;
+    border-top: 1px solid var(--chrome-border);
+    border-left: none !important;
+  }
+  #text-meta > #ctrl-search-group label {
+    display: inline-block !important;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--chrome-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex: 1 1 100%;
+    margin-bottom: 2px;
+  }
+  #text-meta > #ctrl-search-group #ctrl-search { flex: 1 1 auto; font-size: 13px; }
+
+  /* Display-options disclosure relocated into the meta panel. The
+     disclosure summary appears as its own labeled section. */
+  #text-meta > details.display-options {
+    display: block;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--chrome-border);
+    flex-basis: auto;
+  }
+  #text-meta > details.display-options > summary {
+    margin: 0 0 6px;
+  }
+  #text-meta > details.display-options[open] > .ctrl-group {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  /* Contents / Home actions inside the meta panel — only present on
+     mobile, where the desktop #controls Home / Contents buttons have
+     receded. Quiet pill buttons; literary register. */
+  #meta-mobile-actions {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--chrome-border);
+    justify-content: center;
+  }
+  #meta-mobile-actions .meta-action {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    color: var(--chrome-active);
+    background: var(--reader-bg);
+    border: 1px solid var(--chrome-border);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  #meta-mobile-actions .meta-action:hover {
+    background: #f0ece5;
+    border-color: var(--chrome-active);
+  }
+  #meta-mobile-actions .meta-action[hidden] { display: none !important; }
 }
+
+/* On desktop the mobile-only elements stay out of the way. Wrapped
+   in min-width so they do not override the mobile rules above when
+   both blocks have equal specificity. */
+@media (min-width: 721px) {
+  #meta-mobile-actions { display: none; }
+  #nav-bar #nav-meta-toggle { display: none; }
+  #nav-bar #nav-subtitle { display: none; }
+}
+
+/* Dark-mode pass for the new mobile elements */
+[data-theme="dark"] #nav-bar #nav-prev:hover,
+[data-theme="dark"] #nav-bar #nav-next:hover,
+[data-theme="dark"] #nav-bar #nav-meta-toggle:hover { background: rgba(255,255,255,0.06); }
+[data-theme="dark"] #nav-bar #nav-meta-toggle.active { background: rgba(255,255,255,0.08); color: var(--chrome-active); }
+[data-theme="dark"] #meta-mobile-actions .meta-action { background: #2a2a2e; border-color: var(--chrome-border); }
+[data-theme="dark"] #meta-mobile-actions .meta-action:hover { background: #303035; border-color: var(--chrome-active); }
 
   </style>
 </head>
@@ -2411,6 +2689,13 @@ mark.search-hl-active {
       <div class="meta-desc" id="meta-desc"></div>
       <div class="meta-grid" id="meta-grid"></div>
       <div class="meta-front-matter" id="meta-front-matter"></div>
+      <!-- Mobile-only navigation actions, surfaced once browsing
+           affordances have receded into this panel. Hidden on desktop
+           where the running header / controls bar already carries them. -->
+      <div id="meta-mobile-actions" class="meta-mobile-actions">
+        <button type="button" class="meta-action" data-meta-action="contents">&larr; Contents</button>
+        <button type="button" class="meta-action" data-meta-action="home">&larr; Home</button>
+      </div>
     </div>
 
     <div id="translation-bar">
@@ -2423,8 +2708,17 @@ mark.search-hl-active {
 
     <div id="nav-bar">
       <button id="nav-prev" disabled>&#9664; Prev</button>
-      <span id="nav-location"></span>
+      <span id="nav-location"><span class="nav-location-label"></span></span>
+      <!-- Mobile-only secondary line under the chapter title: position +
+           translation short-label. Populated by JS alongside #nav-location.
+           Hidden on desktop where the chrome row carries the same context
+           through separate elements. -->
+      <span id="nav-subtitle" aria-hidden="true"></span>
       <button id="nav-next" disabled>Next &#9654;</button>
+      <!-- Mobile-only metadata-access trigger. Opens the existing
+           #text-meta panel inline. Hidden on desktop, where the
+           #info-bar pill carries this affordance. -->
+      <button id="nav-meta-toggle" type="button" title="About this text, translation, and search">&#9432;</button>
     </div>
 
     <div id="status"></div>
@@ -2481,22 +2775,29 @@ mark.search-hl-active {
               <a href="wishlist.html">Wishlist</a>
               <button id="dark-toggle" onclick="toggleDarkMode()">Dark</button>
             </div>
-          </div>
-          <div id="home-recent-panel">
-            <div id="welcome-continue" style="display:none;">
-              <div class="welcome-section-label">Continue reading</div>
-              <button type="button" id="continue-btn"></button>
+            <!-- Recent-reads panel: lives inside #welcome-home so it
+                 participates in the flex column on mobile (where it would
+                 otherwise overlap because its desktop position:absolute
+                 cannot be cancelled cleanly from a sibling of an
+                 absolutely-positioned welcome-home). On desktop it
+                 continues to use position:absolute relative to
+                 #welcome-home (same containing block as before). -->
+            <div id="home-recent-panel">
+              <div id="welcome-continue" style="display:none;">
+                <div class="welcome-section-label">Continue reading</div>
+                <button type="button" id="continue-btn"></button>
+              </div>
+              <div id="welcome-recent" style="display:none;">
+                <div class="welcome-section-label">Recently read</div>
+                <ul id="recent-list"></ul>
+              </div>
             </div>
-            <div id="welcome-recent" style="display:none;">
-              <div class="welcome-section-label">Recently read</div>
-              <ul id="recent-list"></ul>
+            <div id="welcome-search" style="display:none;">
+              <div class="welcome-section-label">Search across the corpus</div>
+              <input type="search" id="global-search" placeholder="Find texts containing &hellip;" autocomplete="off">
+              <div id="global-search-status"></div>
+              <ul id="global-search-results"></ul>
             </div>
-          </div>
-          <div id="welcome-search" style="display:none;">
-            <div class="welcome-section-label">Search across the corpus</div>
-            <input type="search" id="global-search" placeholder="Find texts containing &hellip;" autocomplete="off">
-            <div id="global-search-status"></div>
-            <ul id="global-search-results"></ul>
           </div>
         </div>
 
@@ -3795,8 +4096,50 @@ function updateNav() {
   $navBar.style.display = 'flex';
   $navPrev.disabled = (groupIndex <= 0);
   $navNext.disabled = (groupIndex >= groupKeys.length - 1);
-  $navLocation.textContent =
-    `${groupName(groupKeys[groupIndex])} (${groupIndex + 1} of ${groupKeys.length})`;
+  // Desktop: single text line in #nav-location, as before.
+  // Mobile: the running header reads the chapter name from #nav-location
+  // and the position + translation short-label from #nav-subtitle.
+  const chapterName = groupName(groupKeys[groupIndex]);
+  const position    = `${groupIndex + 1} of ${groupKeys.length}`;
+  // Update only the inner label so that any sibling elements moved into
+  // #nav-location by the mobile-reading-state relocation (e.g.
+  // ctrl-book-group, which sits absolutely positioned for tap-to-open
+  // chapter picker) are not wiped by a textContent assignment.
+  // The label has two text spans: the chapter name (always shown) and
+  // the parenthesized position (hidden on mobile via CSS because the
+  // subtitle line already carries the position information).
+  const navLabel = $navLocation.querySelector('.nav-location-label') || $navLocation;
+  navLabel.innerHTML = '';
+  const chapSpan = document.createElement('span');
+  chapSpan.className = 'nav-label-chapter';
+  chapSpan.textContent = chapterName;
+  navLabel.appendChild(chapSpan);
+  const posSpan = document.createElement('span');
+  posSpan.className = 'nav-label-position';
+  posSpan.textContent = ` (${position})`;
+  navLabel.appendChild(posSpan);
+  _updateMobileNavSubtitle(position);
+}
+
+/** Compose the small subtitle line under the chapter title on mobile:
+ *  "<position> · <translation short-label>". Translation label falls
+ *  back to translator surname when no short label exists. Hidden when
+ *  the subtitle element is not part of the layout (desktop). */
+function _updateMobileNavSubtitle(position) {
+  const sub = document.getElementById('nav-subtitle');
+  if (!sub) return;
+  let trLabel = '';
+  if (currentEntry) {
+    trLabel = currentEntry.translation_short_label
+           || (currentEntry.translator && currentEntry.translator[0])
+           || currentEntry.translation_label
+           || '';
+    if (trLabel && trLabel.length > 32) trLabel = trLabel.slice(0, 30) + '…';
+  }
+  sub.textContent = position && trLabel ? `${position} · ${trLabel}`
+                  : position ? position
+                  : trLabel ? trLabel
+                  : '';
 }
 
 function navTo(idx) {
@@ -4230,7 +4573,9 @@ function enterReading(targetGroupKey) {
   } else {
     $navPrev.disabled = true;
     $navNext.disabled = true;
-    $navLocation.textContent = `${allPassages.filter(p => !p.fm).length} passages`;
+    const navLabelFlat = $navLocation.querySelector('.nav-location-label') || $navLocation;
+    navLabelFlat.textContent = `${allPassages.filter(p => !p.fm).length} passages`;
+    _updateMobileNavSubtitle(null);
   }
 
   filterAndRender();
@@ -4249,6 +4594,11 @@ function enterReading(targetGroupKey) {
   $searchGroup.style.display = 'flex';
   document.getElementById('ctrl-contents').style.display = '';
   $reader.scrollTop = 0;
+  // Notify the mobile reading-state layout that ctrl-book options,
+  // translation switcher, and ctrl-contents visibility have all just
+  // been updated. The mobile running header and meta panel re-derive
+  // their state from these.
+  window.dispatchEvent(new Event('reading-state:should-refresh'));
 }
 
 function showToc(data, entry) {
@@ -4905,6 +5255,153 @@ wire('ctrl-fg',      '--reader-fg',      'r-fg',      v => v,        null);
   else if (mq.addListener) mq.addListener(apply);
 })();
 
+// ── Mobile reading-state layout (May 2026) ────────────────────────────
+// On mobile (≤720px), the Reading Room consolidates browsing chrome
+// into a single running header (#nav-bar) plus the existing
+// #text-meta panel. This function relocates four element groups
+// between their desktop positions and their mobile positions at the
+// breakpoint:
+//
+//   #ctrl-book-group         desktop: #controls       mobile: #nav-location
+//   #translation-bar         desktop: #panel          mobile: #text-meta
+//   #ctrl-search-group       desktop: #controls       mobile: #text-meta
+//   details.display-options  desktop: #controls       mobile: #text-meta
+//
+// Same DOM elements either way — only the parent changes. Event
+// handlers, form state, and identity are preserved. Idempotent.
+//
+// See READING_STATE_PROPOSAL_2026.md (Approach C) and
+// MOBILE_READING_STATE_IMPLEMENTATION_2026.md.
+(function setupMobileReadingState() {
+  const mq = window.matchMedia('(max-width: 720px)');
+  const moves = [
+    { id: 'ctrl-book-group',     desktopAnchor: null,   mobileParent: 'nav-location'   },
+    { id: 'translation-bar',     desktopAnchor: null,   mobileParent: 'text-meta'      },
+    { id: 'ctrl-search-group',   desktopAnchor: null,   mobileParent: 'text-meta'      },
+  ];
+  // Display options is a query selector, not an id
+  const detailsEl = document.querySelector('details.display-options');
+
+  // Capture desktop home parents on first run so we can restore.
+  let desktopHomes = null;
+  function captureHomes() {
+    if (desktopHomes) return;
+    desktopHomes = {};
+    moves.forEach(m => {
+      const el = document.getElementById(m.id);
+      if (el && el.parentNode) {
+        desktopHomes[m.id] = { parent: el.parentNode, next: el.nextSibling };
+      }
+    });
+    if (detailsEl && detailsEl.parentNode) {
+      desktopHomes['__details__'] = { parent: detailsEl.parentNode, next: detailsEl.nextSibling };
+    }
+  }
+
+  function applyMobile() {
+    moves.forEach(m => {
+      const el = document.getElementById(m.id);
+      const newParent = document.getElementById(m.mobileParent);
+      if (el && newParent && el.parentNode !== newParent) {
+        newParent.appendChild(el);
+      }
+    });
+    // Display-options: append to text-meta if not already there
+    if (detailsEl) {
+      const tm = document.getElementById('text-meta');
+      if (tm && detailsEl.parentNode !== tm) tm.appendChild(detailsEl);
+    }
+    // Mark the chapter title as picker-tappable when chapter selector
+    // is present and has options.
+    const navLoc = document.getElementById('nav-location');
+    const ctrlBook = document.getElementById('ctrl-book');
+    if (navLoc) {
+      const hasPicker = !!(ctrlBook && ctrlBook.options.length > 1);
+      navLoc.classList.toggle('has-picker', hasPicker);
+    }
+  }
+
+  function applyDesktop() {
+    if (!desktopHomes) return;
+    moves.forEach(m => {
+      const el = document.getElementById(m.id);
+      const home = desktopHomes[m.id];
+      if (el && home && el.parentNode !== home.parent) {
+        if (home.next && home.next.parentNode === home.parent) {
+          home.parent.insertBefore(el, home.next);
+        } else {
+          home.parent.appendChild(el);
+        }
+      }
+    });
+    const detHome = desktopHomes['__details__'];
+    if (detailsEl && detHome && detailsEl.parentNode !== detHome.parent) {
+      if (detHome.next && detHome.next.parentNode === detHome.parent) {
+        detHome.parent.insertBefore(detailsEl, detHome.next);
+      } else {
+        detHome.parent.appendChild(detailsEl);
+      }
+    }
+    const navLoc = document.getElementById('nav-location');
+    if (navLoc) navLoc.classList.remove('has-picker');
+  }
+
+  function apply() {
+    captureHomes();
+    if (mq.matches) applyMobile();
+    else applyDesktop();
+  }
+
+  // Initial application
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply);
+  else if (mq.addListener) mq.addListener(apply);
+
+  // Re-apply after the translation switcher is rebuilt for a new text
+  // (the chapter-picker `has-picker` indicator depends on #ctrl-book's
+  // option count, which changes as books are loaded).
+  window.addEventListener('reading-state:should-refresh', apply);
+
+  // Wire the mobile metadata-access button to the same toggle as the
+  // desktop #meta-toggle. Single source of truth; no parallel state.
+  const navToggle = document.getElementById('nav-meta-toggle');
+  const metaToggle = document.getElementById('meta-toggle');
+  if (navToggle && metaToggle) {
+    navToggle.addEventListener('click', () => {
+      metaToggle.click();
+      navToggle.classList.toggle('active', metaToggle.classList.contains('active'));
+    });
+  }
+
+  // Wire the inline Home / Contents buttons in the meta panel.
+  document.querySelectorAll('#meta-mobile-actions .meta-action').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const action = btn.getAttribute('data-meta-action');
+      // Collapse the meta panel before navigating so we don't leave it
+      // open behind the new view.
+      const mt = document.getElementById('meta-toggle');
+      if (mt && mt.classList.contains('active')) mt.click();
+      if (action === 'home' && typeof browseHome === 'function') browseHome();
+      else if (action === 'contents' && typeof backToContents === 'function') backToContents();
+    });
+  });
+
+  // Show/hide the "Contents" button based on whether a text is loaded.
+  function updateContentsVisibility() {
+    const btn = document.querySelector('#meta-mobile-actions [data-meta-action="contents"]');
+    if (!btn) return;
+    // Mirror the desktop ctrl-contents button's visibility.
+    const ctrlContents = document.getElementById('ctrl-contents');
+    const ctrlVisible = ctrlContents && ctrlContents.style.display !== 'none';
+    btn.hidden = !ctrlVisible;
+  }
+  // Refresh contents visibility on user interaction with the reader
+  // and after navigation events. Lightweight: tied to existing
+  // ctrl-contents display.
+  window.addEventListener('reading-state:should-refresh', updateContentsVisibility);
+  updateContentsVisibility();
+})();
+
 // (Primary-only toggle removed — sidebar replaced by browse tiles)
 
 // ── Tools dropdown ────────────────────────────────────────────────────────────
@@ -5281,10 +5778,20 @@ function browseHome() {
   if (ctrlTr) ctrlTr.style.display = 'none';
   const navBar = document.getElementById('nav-bar');
   if (navBar) navBar.style.display = 'none';
-  const trBar = document.getElementById('tr-bar');
+  // The translation-bar element ID is "translation-bar" (the prior code
+  // looked for "tr-bar" which never existed, so the bar leaked onto the
+  // welcome page after a reading session). Repaired May 15 2026.
+  const trBar = document.getElementById('translation-bar');
   if (trBar) trBar.style.display = 'none';
   const infoBar = document.getElementById('info-bar');
   if (infoBar) infoBar.style.display = 'none';
+  // Collapse the inline meta panel if it was open while reading.
+  const metaPanel = document.getElementById('text-meta');
+  if (metaPanel) metaPanel.style.display = 'none';
+  const metaToggle = document.getElementById('meta-toggle');
+  if (metaToggle) metaToggle.classList.remove('active');
+  const navMetaToggle = document.getElementById('nav-meta-toggle');
+  if (navMetaToggle) navMetaToggle.classList.remove('active');
   const reader = document.getElementById('reader');
   reader.scrollTop = 0;
   reader.style.overflow = 'hidden';
