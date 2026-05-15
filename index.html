@@ -2738,17 +2738,6 @@ mark.search-hl-active {
               <h1 id="home-title">Digital Archive</h1>
               <p id="home-subtitle">A verified digital library of sacred, philosophical, and literary texts</p>
             </div>
-            <div id="home-paths" role="navigation" aria-label="Archive paths">
-              <button type="button" id="home-path-reading-room" class="home-path home-path-current" aria-current="page">
-                <span class="home-path-label">Reading Room</span>
-                <span class="home-path-sub">Read the texts directly.</span>
-              </button>
-              <a class="home-path home-path-atlas" href="https://stevenfrye30.github.io/Atlas/">
-                <span class="home-path-label">Enter Atlas &rarr;</span>
-                <span class="home-path-sub">Explore relationships across texts, traditions, symbols, places, and ideas.</span>
-              </a>
-            </div>
-            <p id="home-paths-note">The Reading Room is for sustained reading. Atlas is for relational exploration.</p>
             <div id="home-categories">
               <button class="home-cat" data-cat="Religion">
                 <span class="home-cat-label">Religion</span>
@@ -5951,19 +5940,6 @@ document.querySelectorAll('.home-cat').forEach(btn => {
   btn.addEventListener('click', () => browseCategory(btn.dataset.cat));
 });
 
-// Wire the "Reading Room" entrance card.
-// Always opens the library/corpus view — the four category tiles below.
-// Distinct from Continue Reading (which has its own button and resumes
-// the last passage). Reading Room is the library entry; Continue Reading
-// is the resume affordance.
-(function wireReadingRoomEntrance() {
-  const btn = document.getElementById('home-path-reading-room');
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    const categories = document.getElementById('home-categories');
-    if (categories) categories.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-})();
 
 // Wire browse back button
 document.getElementById('browse-back').addEventListener('click', () => {
