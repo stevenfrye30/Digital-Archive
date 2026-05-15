@@ -157,6 +157,13 @@ centuries — without silently rewriting their own history.
   instead of silent inaction. Audit at
   [`reports/apparatus_audit.md`](reports/apparatus_audit.md);
   validator at [`tools/validate_apparatus.py`](tools/validate_apparatus.py).
+- **[MOBILE_READING_REFINEMENT_2026.md](MOBILE_READING_REFINEMENT_2026.md)** —
+  Narrow mobile reading-surface refinement following inhabitation:
+  typographic controls move behind a native `<details>` disclosure on
+  small screens; chrome above the first passage tightens. The text
+  occupies 79–86% of the viewport on entry, up from ~73–77%. Plain
+  HTML retained; no framework introduced. Re-verification at
+  [`tools/test_mobile_inhabitation.py`](tools/test_mobile_inhabitation.py).
 
 ### Institutional state
 

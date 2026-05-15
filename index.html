@@ -1289,8 +1289,10 @@ body {
   #browse-toolbar { gap: 8px; font-size: 11px; }
   #browse-nav { gap: 8px; }
 
-  /* Reader */
-  #reader { padding: 24px 16px 60px; }
+  /* Reader — tightened top breathing room so the text rises into view
+     as soon as the chrome ends. Bottom padding kept generous so the
+     last passage clears the safe area. */
+  #reader { padding: 12px 16px 60px; }
   .passage { padding-left: 0; margin-bottom: 0.8em; }
   .passage .ref {
     position: static;
@@ -1302,7 +1304,7 @@ body {
   }
 
   /* Controls */
-  #controls { padding: 8px 12px; gap: 8px; font-size: 11px; }
+  #controls { padding: 6px 12px; gap: 8px; font-size: 11px; }
   #ctrl-home, #ctrl-contents { padding: 5px 8px; font-size: 11px; }
   .ctrl-group label { display: none; }
   #ctrl-search-group { padding-left: 8px !important; }
@@ -1314,21 +1316,88 @@ body {
   .cc-citations { padding: 0 4px; }
   .cc-cite { font-size: 11px; padding: 6px 8px; }
 
-  /* Nav bar */
-  #nav-bar { padding: 6px 12px; }
-  #nav-bar button { font-size: 12px; padding: 5px 10px; }
+  /* Nav bar — slimmer when reading so chapter prev/next sits quietly
+     above the text rather than competing with it. Canonical structure
+     navigation is preserved; it just occupies less vertical space. */
+  #nav-bar { padding: 4px 12px; gap: 6px; }
+  #nav-bar button { font-size: 11px; padding: 3px 9px; }
+  #nav-location { font-size: 11px; }
 
-  /* Info/meta */
-  #info-bar { padding: 6px 12px; }
-  #meta-toggle { font-size: 11px; padding: 5px 10px; }
+  /* Info/meta — the "About this text" affordance becomes a quiet
+     pill rather than a prominent button. Restraint preserves access
+     to text-meta without crowding the reading surface. */
+  #info-bar { padding: 4px 12px; }
+  #meta-toggle {
+    font-size: 11px;
+    padding: 3px 10px;
+    font-weight: 500;
+    box-shadow: none;
+  }
+  #meta-toggle .info-icon { width: 14px; height: 14px; font-size: 10px; }
   #text-meta { padding: 12px; }
 
   /* Translation bar */
   #translation-bar { padding: 4px 12px; font-size: 11px; }
   #translation-select { max-width: 180px; }
 
-  /* Chapter heading */
-  .chapter-heading { font-size: 1.3em; padding: 24px 0 20px; }
+  /* Chapter heading — calmer scale on mobile so it doesn't double as
+     a second chrome row. The heading is canonical structure (kept),
+     but its weight no longer competes with the passages themselves. */
+  .chapter-heading { font-size: 1.15em; padding: 12px 0 12px; }
+}
+
+/* ── Display-options disclosure ─────────────────────────────────────
+   On desktop the typographic controls (font, size, spacing, colors)
+   flow inline in #controls as before; the <details> wrapper is
+   structural only (display: contents) and its <summary> is hidden.
+   On mobile (≤720px) the wrapper becomes a real <details>: the
+   controls collapse behind a small "Display" pill so the reading
+   chrome shrinks to a single row of essentials.
+
+   Initial open state is set by a tiny matchMedia bridge in JS so
+   the controls are open on desktop and closed on mobile by default.
+
+   This is the only mobile inhabitation refinement and is deliberately
+   minimal. See MOBILE_READING_REFINEMENT_2026.md. */
+
+details.display-options {
+  display: contents;
+}
+details.display-options > summary {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  details.display-options {
+    display: block;
+    flex-basis: 100%;
+    margin: 0;
+  }
+  details.display-options > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 11px;
+    color: var(--chrome-active);
+    padding: 4px 9px;
+    border: 1px solid var(--chrome-border);
+    border-radius: 3px;
+    background: var(--reader-bg);
+  }
+  details.display-options > summary::-webkit-details-marker { display: none; }
+  details.display-options > summary::after {
+    content: '▾';
+    font-size: 9px;
+    color: var(--chrome-muted);
+  }
+  details.display-options[open] > summary { background: #e4e0d9; }
+  details.display-options[open] > summary::after { content: '▴'; }
+  details.display-options[open] > .ctrl-group {
+    display: flex;
+    margin-top: 6px;
+  }
 }
 
 #cover-source-summary {
@@ -2157,6 +2226,37 @@ mark.search-hl-active {
 }
 [data-theme="dark"] .progress-badge { background: rgba(196,160,96,0.15); }
 
+/* ── Mobile reading refinement (cascade-order corrective) ──────────────
+   The original mobile @media block lives high in the stylesheet (line
+   ~1280); some elements (#info-bar, #meta-toggle, #translation-bar,
+   #nav-bar) have their desktop definitions AFTER that block, so those
+   later rules silently overrode the mobile refinements. This trailing
+   block reaffirms the mobile chrome reductions after all desktop
+   definitions, restoring text sovereignty on small screens.
+   See MOBILE_READING_REFINEMENT_2026.md. */
+@media (max-width: 720px) {
+  /* Info-bar / About-this-text pill: quieter, smaller, less border weight */
+  #info-bar { padding: 4px 12px; }
+  #meta-toggle {
+    font-size: 11px;
+    padding: 3px 10px;
+    font-weight: 500;
+    gap: 6px;
+    box-shadow: none;
+    border-radius: 6px;
+  }
+  #meta-toggle .info-icon { width: 14px; height: 14px; font-size: 10px; }
+
+  /* Translation bar — preserved when present, but slimmer */
+  #translation-bar { padding: 3px 12px; font-size: 11px; gap: 8px; }
+  #translation-select { max-width: 180px; font-size: 11px; padding: 2px 6px; }
+
+  /* Chapter nav — canonical structure preserved, occupies less weight */
+  #nav-bar { padding: 3px 12px; gap: 6px; }
+  #nav-bar button { font-size: 11px; padding: 3px 9px; }
+  #nav-location { font-size: 11px; }
+}
+
   </style>
 </head>
 <body>
@@ -2173,34 +2273,37 @@ mark.search-hl-active {
     <div id="controls" style="display:none;">
       <button id="ctrl-home" type="button" onclick="browseHome()" title="Back to home">&larr; Home</button>
       <button id="ctrl-contents" type="button" onclick="backToContents()" title="Back to title &amp; contents" style="display:none;">&larr; Contents</button>
-      <div class="ctrl-group">
-        <label>Font</label>
-        <select id="ctrl-font">
-          <option value="Georgia, serif">Georgia</option>
-          <option value="'Palatino Linotype', Palatino, serif">Palatino</option>
-          <option value="'Times New Roman', Times, serif">Times New Roman</option>
-          <option value="system-ui, -apple-system, sans-serif">System Sans</option>
-          <option value="'Courier New', Courier, monospace">Courier</option>
-        </select>
-      </div>
-      <div class="ctrl-group">
-        <label>Size</label>
-        <input type="range" id="ctrl-size" min="12" max="30" step="1" value="18">
-        <span class="val" id="ctrl-size-val">18px</span>
-      </div>
-      <div class="ctrl-group">
-        <label>Spacing</label>
-        <input type="range" id="ctrl-spacing" min="1.2" max="3.0" step="0.1" value="1.9">
-        <span class="val" id="ctrl-spacing-val">1.9</span>
-      </div>
-      <div class="ctrl-group">
-        <label>Background</label>
-        <input type="color" id="ctrl-bg" value="#faf8f5">
-      </div>
-      <div class="ctrl-group">
-        <label>Text</label>
-        <input type="color" id="ctrl-fg" value="#2c2c2c">
-      </div>
+      <details class="display-options">
+        <summary>Display</summary>
+        <div class="ctrl-group">
+          <label>Font</label>
+          <select id="ctrl-font">
+            <option value="Georgia, serif">Georgia</option>
+            <option value="'Palatino Linotype', Palatino, serif">Palatino</option>
+            <option value="'Times New Roman', Times, serif">Times New Roman</option>
+            <option value="system-ui, -apple-system, sans-serif">System Sans</option>
+            <option value="'Courier New', Courier, monospace">Courier</option>
+          </select>
+        </div>
+        <div class="ctrl-group">
+          <label>Size</label>
+          <input type="range" id="ctrl-size" min="12" max="30" step="1" value="18">
+          <span class="val" id="ctrl-size-val">18px</span>
+        </div>
+        <div class="ctrl-group">
+          <label>Spacing</label>
+          <input type="range" id="ctrl-spacing" min="1.2" max="3.0" step="0.1" value="1.9">
+          <span class="val" id="ctrl-spacing-val">1.9</span>
+        </div>
+        <div class="ctrl-group">
+          <label>Background</label>
+          <input type="color" id="ctrl-bg" value="#faf8f5">
+        </div>
+        <div class="ctrl-group">
+          <label>Text</label>
+          <input type="color" id="ctrl-fg" value="#2c2c2c">
+        </div>
+      </details>
       <div class="ctrl-group" id="ctrl-book-group">
         <label>Book</label>
         <select id="ctrl-book"></select>
@@ -4693,6 +4796,21 @@ wire('ctrl-size',    '--reader-size',    'r-size',    v => v + 'px', 'ctrl-size-
 wire('ctrl-spacing', '--reader-leading', 'r-leading', v => v,        'ctrl-spacing-val');
 wire('ctrl-bg',      '--reader-bg',      'r-bg',      v => v,        null);
 wire('ctrl-fg',      '--reader-fg',      'r-fg',      v => v,        null);
+
+// Display-options disclosure: open by default on desktop so the
+// typographic controls flow inline; closed by default on mobile so
+// the reading surface is not crowded by chrome. See
+// MOBILE_READING_REFINEMENT_2026.md. The user can still freely
+// open the disclosure on mobile.
+(function syncDisplayOptionsToBreakpoint() {
+  const det = document.querySelector('details.display-options');
+  if (!det) return;
+  const mq = window.matchMedia('(max-width: 720px)');
+  const apply = () => { det.open = !mq.matches; };
+  apply();
+  if (mq.addEventListener) mq.addEventListener('change', apply);
+  else if (mq.addListener) mq.addListener(apply);
+})();
 
 // (Primary-only toggle removed — sidebar replaced by browse tiles)
 
