@@ -1291,6 +1291,57 @@ button.home-path {
 .browse-tile.trd-Greek-Literature   { background: linear-gradient(135deg, #3a5a6a, #4a7a8a); }
 .browse-tile.trd-Persian-Literature { background: linear-gradient(135deg, #5a4a3a, #7a6a4a); }
 
+/* Canonical shelf groups — a single expandable tile that contains
+   variant subentries. Proof of concept (KJV family only). */
+.shelf-group {
+  background: white;
+  border: 1px solid var(--chrome-border);
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.shelf-group:hover { border-color: var(--chrome-active); }
+.shelf-group[open] { background: #fdfaf6; }
+.shelf-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+  font-family: Georgia, serif;
+}
+.shelf-summary::-webkit-details-marker { display: none; }
+.shelf-summary::after {
+  content: '▾';
+  margin-left: auto;
+  color: var(--chrome-muted);
+  font-size: 11px;
+}
+.shelf-group[open] .shelf-summary::after { content: '▴'; }
+.shelf-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--chrome-fg);
+}
+.shelf-count {
+  font-size: 11px;
+  font-style: italic;
+  color: var(--chrome-muted);
+  margin-left: 8px;
+}
+.shelf-members {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 16px 12px 36px;
+}
+.shelf-members .text-tile.shelf-sub {
+  background: var(--reader-bg);
+  border-color: var(--chrome-border);
+  padding: 8px 12px;
+}
+.shelf-members .text-tile.shelf-sub .tt-title { font-size: 14px; }
+
 /* Text tiles — horizontal row with left-aligned info */
 .text-tile {
   display: flex;
@@ -5688,6 +5739,25 @@ function browseTextSection(cat, trd, textId, section) {
 }
 
 /** Level 3: show translations for a text, or open directly if only one */
+// Curated canonical shelves — group multiple flat entries under one
+// expandable canonical tile. Hardcoded proof-of-concept; KJV only.
+// To add a future variant (e.g. KJV standardized spelling, KJV
+// selections), append to members[] with the corresponding data_file.
+// See commit notes.
+const CANONICAL_SHELVES = [
+  {
+    id: 'kjv-family',
+    text_id: 'bible',
+    label: 'King James Bible',
+    members: [
+      { data_file: 'bible_kjv.json', sub_label: 'KJV (1611) with Apocrypha' }
+      // Future:
+      // { data_file: 'bible_kjv-standardized.json', sub_label: 'KJV standardized spelling' },
+      // { data_file: 'bible_kjv-selections.json',   sub_label: 'KJV selections' },
+    ]
+  }
+];
+
 function browseText(cat, trd, textId) {
   const group = indexGroups[textId];
   if (!group || group.length === 0) return;
@@ -5715,6 +5785,13 @@ function browseText(cat, trd, textId) {
     `<span class="sep">›</span>${escH(title)}`;
   $browseTitle.textContent = title;
 
+  // Determine which entries are claimed by a canonical shelf for this
+  // text. Shelf members are rendered grouped; remaining entries fall
+  // through to the normal flat list.
+  const shelvesForText = CANONICAL_SHELVES.filter(s => s.text_id === textId);
+  const claimedFiles = new Set();
+  for (const sh of shelvesForText) for (const m of sh.members) claimedFiles.add(m.data_file);
+
   // Sort: primary first, then by label
   const sorted = group.slice().sort((a, b) => {
     if (a.quality === 'primary' && b.quality !== 'primary') return -1;
@@ -5722,9 +5799,41 @@ function browseText(cat, trd, textId) {
     return (translationLabel(a) || '').localeCompare(translationLabel(b) || '');
   });
 
+  const byFile = {};
+  for (const e of group) byFile[e.data_file] = e;
+
   $browseTiles.className = 'tile-list';
   let html = '';
+
+  // Canonical shelves first (proof-of-concept curation).
+  for (const sh of shelvesForText) {
+    const present = sh.members.filter(m => byFile[m.data_file]);
+    if (!present.length) continue;
+    const subTiles = present.map(m => {
+      const e = byFile[m.data_file];
+      const tr = (e.translator || []).filter(t => t && t !== 'Anonymous').join(', ');
+      const yearStr = e.year || '';
+      const meta = [tr ? 'tr. ' + tr : '', yearStr].filter(Boolean).join(' · ');
+      return `<div class="text-tile shelf-sub" onclick="event.stopPropagation(); browseOpen('${escH(e.data_file)}')">
+        <span class="tt-star"></span>
+        <div class="tt-info">
+          <div class="tt-title">${escH(m.sub_label)}</div>
+          ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+    html += `<details class="shelf-group" data-shelf="${escH(sh.id)}">
+      <summary class="shelf-summary">
+        <span class="tt-star">★</span>
+        <span class="shelf-label">${escH(sh.label)}</span>
+        <span class="shelf-count">${present.length} variant${present.length === 1 ? '' : 's'}</span>
+      </summary>
+      <div class="shelf-members">${subTiles}</div>
+    </details>`;
+  }
+
   for (const entry of sorted) {
+    if (claimedFiles.has(entry.data_file)) continue;
     const label = translationLabel(entry) || entry.data_file;
     const star = entry.quality === 'primary'
       ? '<span class="tt-star">★</span>' : '<span class="tt-star"></span>';
