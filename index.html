@@ -2679,6 +2679,36 @@ mark.search-hl-active {
   /* Slim the remaining controls row a touch in compact mode. */
   body.reading-compact #controls { padding: 6px 20px; }
   body.reading-compact #nav-bar { padding: 4px 20px; }
+
+  /* Manual toggle for reading mode. Quiet text button, pushed to the
+     right end of the controls bar. Stays visible in both states. */
+  #reading-mode-toggle {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid var(--chrome-border);
+    color: var(--chrome-muted);
+    font-size: 12px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  #reading-mode-toggle:hover {
+    color: var(--chrome-active);
+    border-color: var(--chrome-active);
+  }
+  body.reading-compact #reading-mode-toggle {
+    color: var(--chrome-active);
+    border-color: var(--chrome-active);
+  }
+}
+
+/* Hide the toggle on mobile — the consolidated running header is
+   already the compact form there. */
+@media (max-width: 720px) {
+  #reading-mode-toggle { display: none; }
 }
 
 /* Dark-mode pass for the new mobile elements */
@@ -2747,6 +2777,7 @@ mark.search-hl-active {
         <button class="search-nav-btn" id="search-prev" disabled title="Previous match">&#9650;</button>
         <button class="search-nav-btn" id="search-next" disabled title="Next match">&#9660;</button>
       </div>
+      <button type="button" id="reading-mode-toggle" title="Collapse browsing controls" aria-pressed="false">Reading mode</button>
     </div>
 
     <div id="info-bar">
@@ -4662,7 +4693,6 @@ function enterReading(targetGroupKey) {
   // reader is stuck at the initial viewport height.
   $reader.style.overflow = '';
   $reader.scrollTop = 0;
-  document.body.classList.remove('reading-compact');
   // Notify the mobile reading-state layout that ctrl-book options,
   // translation switcher, and ctrl-contents visibility have all just
   // been updated. The mobile running header and meta panel re-derive
@@ -4900,16 +4930,22 @@ $reader.addEventListener('scroll', () => {
     $progressBar.style.width = '0';
   }
   $backToTop.classList.toggle('visible', scrollTop > 400);
-
-  // Compact reading mode (desktop). Body gains .reading-compact when
-  // the reader has scrolled past ~80px, restored when back under 30px.
-  // CSS hides browsing affordances in compact mode while leaving
-  // Home/Contents/Book/Prev-Next intact. Hysteresis avoids jitter.
-  // Mobile already has the consolidated running header — no-op there.
-  const compact = document.body.classList.contains('reading-compact');
-  if (!compact && scrollTop > 80) document.body.classList.add('reading-compact');
-  else if (compact && scrollTop < 30) document.body.classList.remove('reading-compact');
 }, { passive: true });
+
+// Manual reading-mode toggle (desktop). User explicitly enters
+// compact mode by clicking the button; explicitly leaves by clicking
+// again. No scroll-triggered behavior — the interface stays stable.
+// Mobile already has the consolidated running header; the toggle is
+// hidden there via CSS.
+(function wireReadingModeToggle() {
+  const btn = document.getElementById('reading-mode-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const compact = document.body.classList.toggle('reading-compact');
+    btn.textContent = compact ? 'Show controls' : 'Reading mode';
+    btn.setAttribute('aria-pressed', String(compact));
+  });
+})();
 
 // ── Global corpus search ─────────────────────────────────────────────────────
 
