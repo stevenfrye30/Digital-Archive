@@ -842,6 +842,67 @@ body {
   font-family: Georgia, serif;
   font-style: italic;
 }
+/* Two-path entrance: Reading Room (here) ↔ Atlas (relational exploration).
+   Sits between the title and the four-category Reading Room grid so the
+   archive/Atlas distinction is immediately legible without a separate
+   landing page. Conservative addition; nothing else in the welcome
+   layout changes. */
+#home-paths {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: min(580px, 84vw);
+  margin: clamp(6px, 1.5vh, 14px) 0 0;
+}
+.home-path {
+  display: block;
+  padding: 10px 14px;
+  border: 1px solid var(--chrome-border);
+  border-radius: 8px;
+  background: var(--reader-bg);
+  text-decoration: none;
+  color: var(--chrome-fg);
+  text-align: left;
+  font-family: Georgia, serif;
+  transition: background 0.15s, border-color 0.15s;
+}
+.home-path:hover {
+  background: #f0ece5;
+  border-color: var(--chrome-active);
+}
+.home-path-current {
+  background: #efe9da;
+  border-color: #c0a878;
+  cursor: default;
+}
+.home-path-current:hover {
+  background: #efe9da;
+  border-color: #c0a878;
+}
+.home-path-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--chrome-active);
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
+}
+.home-path-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--chrome-muted);
+  line-height: 1.35;
+}
+#home-paths-note {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--chrome-muted);
+  margin: clamp(6px, 1vh, 10px) 0 clamp(10px, 2vh, 20px);
+  max-width: min(580px, 84vw);
+  text-align: center;
+}
+
 #home-categories {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1048,6 +1109,23 @@ body {
 @media (max-width: 500px) {
   #home-categories { grid-template-columns: 1fr; width: min(260px, 80vw); }
   .home-cat { aspect-ratio: 2.5; }
+  #home-paths { grid-template-columns: 1fr; width: min(280px, 84vw); gap: 8px; }
+  .home-path { padding: 8px 12px; }
+  .home-path-label { font-size: 14px; }
+  .home-path-sub { font-size: 11px; }
+}
+
+/* When the welcome stack grows taller than the viewport (most phones,
+   especially after the Reading Room/Atlas paths were added), switch
+   from vertical centering to top-aligned with a scroll fallback. The
+   title and subtitle stay visible; content below scrolls into view. */
+@media (max-width: 720px) {
+  #welcome-home {
+    justify-content: flex-start;
+    padding-top: clamp(18px, 5vh, 40px);
+    padding-bottom: 24px;
+    overflow-y: auto;
+  }
 }
 @media (max-height: 600px) {
   #home-header { margin-bottom: 10px; }
@@ -2170,6 +2248,10 @@ mark.search-hl-active {
 }
 [data-theme="dark"] .tile-card { background: #2a2a2e; border-color: var(--chrome-border); }
 [data-theme="dark"] .tile-card:hover { border-color: var(--chrome-active); background: #303035; }
+[data-theme="dark"] .home-path { background: #2a2a2e; border-color: var(--chrome-border); }
+[data-theme="dark"] .home-path:hover { background: #303035; border-color: var(--chrome-active); }
+[data-theme="dark"] .home-path-current,
+[data-theme="dark"] .home-path-current:hover { background: #2e2a22; border-color: #6a5a3a; }
 [data-theme="dark"] .tile-list-item { border-color: var(--chrome-border); }
 [data-theme="dark"] .tile-list-item:hover { background: #2a2a2e; }
 [data-theme="dark"] .cc-section { background: var(--reader-bg); border-color: var(--chrome-border); }
@@ -2356,6 +2438,17 @@ mark.search-hl-active {
               <h1 id="home-title">Digital Archive</h1>
               <p id="home-subtitle">A verified digital library of sacred, philosophical, and literary texts</p>
             </div>
+            <div id="home-paths" role="navigation" aria-label="Archive paths">
+              <div class="home-path home-path-current" aria-current="page">
+                <span class="home-path-label">Reading Room</span>
+                <span class="home-path-sub">Read the texts directly.</span>
+              </div>
+              <a class="home-path home-path-atlas" href="https://stevenfrye30.github.io/Atlas/">
+                <span class="home-path-label">Enter Atlas &rarr;</span>
+                <span class="home-path-sub">Explore relationships across texts, traditions, symbols, places, and ideas.</span>
+              </a>
+            </div>
+            <p id="home-paths-note">The Reading Room is for sustained reading. Atlas is for relational exploration.</p>
             <div id="home-categories">
               <button class="home-cat" data-cat="Religion">
                 <span class="home-cat-label">Religion</span>
