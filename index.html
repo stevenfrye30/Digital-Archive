@@ -5952,29 +5952,17 @@ document.querySelectorAll('.home-cat').forEach(btn => {
 });
 
 // Wire the "Reading Room" entrance card.
-// If the user has a recent text (Continue Reading is shown), tapping the
-// card resumes that reading. Otherwise the four category cards below are
-// the entry points; scrolling them into focus makes that visible without
-// navigating away. Conservative repair — see commit notes.
+// Always opens the library/corpus view — the four category tiles below.
+// Distinct from Continue Reading (which has its own button and resumes
+// the last passage). Reading Room is the library entry; Continue Reading
+// is the resume affordance.
 (function wireReadingRoomEntrance() {
   const btn = document.getElementById('home-path-reading-room');
   if (!btn) return;
-  const enter = () => {
-    const continuePanel = document.getElementById('welcome-continue');
-    const continueBtn   = document.getElementById('continue-btn');
-    const continueVisible = continuePanel &&
-      window.getComputedStyle(continuePanel).display !== 'none' &&
-      continueBtn;
-    if (continueVisible) {
-      continueBtn.click();
-      return;
-    }
+  btn.addEventListener('click', () => {
     const categories = document.getElementById('home-categories');
-    if (categories) {
-      categories.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-  btn.addEventListener('click', enter);
+    if (categories) categories.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
 })();
 
 // Wire browse back button
