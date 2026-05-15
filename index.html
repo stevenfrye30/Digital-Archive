@@ -5740,22 +5740,49 @@ function browseTextSection(cat, trd, textId, section) {
 
 /** Level 3: show translations for a text, or open directly if only one */
 // Curated canonical shelves — group multiple flat entries under one
-// expandable canonical tile. Hardcoded proof-of-concept; KJV only.
-// To add a future variant (e.g. KJV standardized spelling, KJV
-// selections), append to members[] with the corresponding data_file.
-// See commit notes.
+// expandable canonical tile. Hardcoded; no automation.
+// Each member is either a string (data_file; sub_label derived from
+// translation_label) or {data_file, sub_label}. Files that aren't
+// in the index are silently skipped, so this list is forgiving.
 const CANONICAL_SHELVES = [
-  {
-    id: 'kjv-family',
-    text_id: 'bible',
-    label: 'King James Bible',
+  { id: 'kjv-family', text_id: 'bible', label: 'King James Bible',
+    members: [{ data_file: 'bible_kjv.json', sub_label: 'KJV (1611) with Apocrypha' }] },
+
+  { id: 'bbe-family', text_id: 'bible', label: 'Bible in Basic English',
+    members: ['bible_bbe.json', 'bible_bible-in-basic-english.json'] },
+
+  { id: 'brenton-family', text_id: 'bible', label: 'Brenton Septuagint',
     members: [
-      { data_file: 'bible_kjv.json', sub_label: 'KJV (1611) with Apocrypha' }
-      // Future:
-      // { data_file: 'bible_kjv-standardized.json', sub_label: 'KJV standardized spelling' },
-      // { data_file: 'bible_kjv-selections.json',   sub_label: 'KJV selections' },
-    ]
-  }
+      'bible_brenton-en.json', 'bible_brenton.json', 'bible_brenton-septuagint-translation.json',
+      'bible_brenton-gr.json', 'bible_brenton_greek.json', 'bible_brenton-septuagint-greek.json'
+    ] },
+
+  { id: 'douay-rheims-family', text_id: 'bible', label: 'Douay-Rheims',
+    members: ['bible_douay-rheims.json', 'bible_douay.json', 'bible_douay-rheims-bible.json'] },
+
+  { id: 'geneva-family', text_id: 'bible', label: 'Geneva Bible',
+    members: ['bible_geneva.json', 'bible_geneva-bible.json'] },
+
+  { id: 'darby-family', text_id: 'bible', label: 'Darby Bible',
+    members: ['bible_darby.json'] },
+
+  { id: 'tanakh-family', text_id: 'bible', label: 'JPS / Leeser Tanakh',
+    members: [
+      'bible_jps.json', 'bible_jps-tanakh.json',
+      'bible_leeser.json', 'bible_isaac-leeser-tanakh.json'
+    ] },
+
+  { id: 'sbl-gnt-family', text_id: 'bible', label: 'SBL Greek New Testament',
+    members: ['bible_sbl-nt.json', 'bible_sbl_nt.json', 'bible_sbl-greek-new-testament.json'] },
+
+  { id: 'textus-receptus-family', text_id: 'bible', label: 'Textus Receptus',
+    members: ['bible_tr.json', 'bible_textus_receptus.json', 'bible_textus-receptus.json'] },
+
+  { id: 'ylt-family', text_id: 'bible', label: "Young's Literal Translation",
+    members: ['bible_ylt.json', 'bible_youngs-literal-translation.json'] },
+
+  { id: 'wycliffe-family', text_id: 'bible', label: 'Wycliffe Bible',
+    members: ['bible_wycliffe.json', 'bible_wycliffe-bible.json'] },
 ];
 
 function browseText(cat, trd, textId) {
@@ -5788,7 +5815,11 @@ function browseText(cat, trd, textId) {
   // Determine which entries are claimed by a canonical shelf for this
   // text. Shelf members are rendered grouped; remaining entries fall
   // through to the normal flat list.
-  const shelvesForText = CANONICAL_SHELVES.filter(s => s.text_id === textId);
+  // Normalize shelf members: each becomes {data_file, sub_label?}.
+  const shelvesForText = CANONICAL_SHELVES.filter(s => s.text_id === textId).map(sh => ({
+    ...sh,
+    members: sh.members.map(m => typeof m === 'string' ? { data_file: m } : m)
+  }));
   const claimedFiles = new Set();
   for (const sh of shelvesForText) for (const m of sh.members) claimedFiles.add(m.data_file);
 
@@ -5814,10 +5845,11 @@ function browseText(cat, trd, textId) {
       const tr = (e.translator || []).filter(t => t && t !== 'Anonymous').join(', ');
       const yearStr = e.year || '';
       const meta = [tr ? 'tr. ' + tr : '', yearStr].filter(Boolean).join(' · ');
+      const sub = m.sub_label || translationLabel(e) || e.data_file;
       return `<div class="text-tile shelf-sub" onclick="event.stopPropagation(); browseOpen('${escH(e.data_file)}')">
         <span class="tt-star"></span>
         <div class="tt-info">
-          <div class="tt-title">${escH(m.sub_label)}</div>
+          <div class="tt-title">${escH(sub)}</div>
           ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
         </div>
       </div>`;
