@@ -5802,10 +5802,28 @@ const CANONICAL_SHELVES = [
   { id: 'web-family', text_id: 'bible', label: 'World English Bible',
     members: ['bible_web.json'] },
 
-  // Deliberately NOT grouped (textual traditions / source-lineages,
-  // not duplicate translation labels — may deserve a different
-  // representation later):
-  //   Septuagint / LXX, Masoretic Text, Majority Text, Peshitta.
+  { id: 'septuagint-family', text_id: 'bible', label: 'Septuagint (LXX)',
+    members: ['bible_lxx.json', 'bible_lxx_eng.json', 'bible_lxx-septuagint.json'] },
+
+  { id: 'majority-text-family', text_id: 'bible', label: 'Majority Text New Testament',
+    members: ['bible_majority-nt.json', 'bible_majority_nt.json', 'bible_majority-text-new-testament.json'] },
+
+  // Masoretic and Westminster Leningrad Codex are kept as TWO distinct
+  // shelves. They share the Masoretic textual tradition but are
+  // different editions: "Masoretic Old Testament" is a generic
+  // Hebrew-Bible label; the WLC is the specific scholarly digital
+  // edition of the Leningrad Codex (with vocalization and accents).
+  // Within each, the duplicate naming-convention entries are grouped.
+  { id: 'masoretic-family', text_id: 'bible', label: 'Masoretic Text',
+    members: ['bible_masoretic.json', 'bible_masoretic-old-testament.json'] },
+
+  { id: 'wlc-family', text_id: 'bible', label: 'Westminster Leningrad Codex',
+    members: ['bible_wlc.json', 'bible_westminster-leningrad-codex.json'] },
+
+  // Deliberately still NOT grouped — Peshitta. The two entries
+  // ("Peshitta (Syriac)" and "Peshitta Old Testament, ETCBC edition")
+  // are distinct enough to leave separate pending a richer model for
+  // textual witnesses.
 ];
 
 function browseText(cat, trd, textId) {
