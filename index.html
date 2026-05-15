@@ -2664,6 +2664,21 @@ mark.search-hl-active {
   #meta-mobile-actions { display: none; }
   #nav-bar #nav-meta-toggle { display: none; }
   #nav-bar #nav-subtitle { display: none; }
+
+  /* Compact reading mode (desktop only).
+     Once the reader scrolls past ~80px the body gains
+     .reading-compact. Browsing affordances (About pill, translation
+     switcher, Display, in-text search) hide so the page chrome
+     shrinks to: Home / Contents / Book selector / Prev | location |
+     Next. Mobile already has the consolidated running header.
+     Scrolling back to top (below 30px) restores full controls. */
+  body.reading-compact #info-bar { display: none !important; }
+  body.reading-compact #translation-bar { display: none !important; }
+  body.reading-compact details.display-options { display: none !important; }
+  body.reading-compact #ctrl-search-group { display: none !important; }
+  /* Slim the remaining controls row a touch in compact mode. */
+  body.reading-compact #controls { padding: 6px 20px; }
+  body.reading-compact #nav-bar { padding: 4px 20px; }
 }
 
 /* Dark-mode pass for the new mobile elements */
@@ -4647,6 +4662,7 @@ function enterReading(targetGroupKey) {
   // reader is stuck at the initial viewport height.
   $reader.style.overflow = '';
   $reader.scrollTop = 0;
+  document.body.classList.remove('reading-compact');
   // Notify the mobile reading-state layout that ctrl-book options,
   // translation switcher, and ctrl-contents visibility have all just
   // been updated. The mobile running header and meta panel re-derive
@@ -4884,6 +4900,15 @@ $reader.addEventListener('scroll', () => {
     $progressBar.style.width = '0';
   }
   $backToTop.classList.toggle('visible', scrollTop > 400);
+
+  // Compact reading mode (desktop). Body gains .reading-compact when
+  // the reader has scrolled past ~80px, restored when back under 30px.
+  // CSS hides browsing affordances in compact mode while leaving
+  // Home/Contents/Book/Prev-Next intact. Hysteresis avoids jitter.
+  // Mobile already has the consolidated running header — no-op there.
+  const compact = document.body.classList.contains('reading-compact');
+  if (!compact && scrollTop > 80) document.body.classList.add('reading-compact');
+  else if (compact && scrollTop < 30) document.body.classList.remove('reading-compact');
 }, { passive: true });
 
 // ── Global corpus search ─────────────────────────────────────────────────────
