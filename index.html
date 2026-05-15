@@ -5783,6 +5783,29 @@ const CANONICAL_SHELVES = [
 
   { id: 'wycliffe-family', text_id: 'bible', label: 'Wycliffe Bible',
     members: ['bible_wycliffe.json', 'bible_wycliffe-bible.json'] },
+
+  { id: 'asv-family', text_id: 'bible', label: 'American Standard Version',
+    members: ['bible_asv.json'] },
+
+  { id: 'rv-family', text_id: 'bible', label: 'Revised Version with Apocrypha',
+    members: ['bible_rv.json', 'bible_revised-version-with-apocrypha.json'] },
+
+  { id: 'salkinson-family', text_id: 'bible', label: 'Salkinson Hebrew New Testament',
+    members: ['bible_salkinson.json', 'bible_salkinson_nt.json', 'bible_salkinson-new-testament.json'] },
+
+  { id: 'tyndale-family', text_id: 'bible', label: 'Tyndale New Testament',
+    members: ['bible_tyndale.json', 'bible_tyndale-new-testament.json'] },
+
+  { id: 'vulgate-family', text_id: 'bible', label: 'Vulgate Clementina',
+    members: ['bible_vulgate.json', 'bible_vulgate-clementina.json'] },
+
+  { id: 'web-family', text_id: 'bible', label: 'World English Bible',
+    members: ['bible_web.json'] },
+
+  // Deliberately NOT grouped (textual traditions / source-lineages,
+  // not duplicate translation labels — may deserve a different
+  // representation later):
+  //   Septuagint / LXX, Masoretic Text, Majority Text, Peshitta.
 ];
 
 function browseText(cat, trd, textId) {
