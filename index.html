@@ -4395,6 +4395,7 @@ function showGroupCover(group, listItem) {
 
   $groupCover.style.display = 'block';
   $infoBar.style.display = 'flex';
+  $reader.style.overflow = '';
   $reader.scrollTop = 0;
 }
 
@@ -4551,6 +4552,7 @@ function showCover(data, entry) {
     });
   }
 
+  $reader.style.overflow = '';
   $reader.scrollTop = 0;
 }
 
@@ -4599,6 +4601,11 @@ function enterReading(targetGroupKey) {
 
   $searchGroup.style.display = 'flex';
   document.getElementById('ctrl-contents').style.display = '';
+  // Restore reader scrollability. #reader ships with inline
+  // overflow:hidden so the welcome view does not scroll inside it,
+  // and browseHome() re-sets it. Reading entry must clear it or the
+  // reader is stuck at the initial viewport height.
+  $reader.style.overflow = '';
   $reader.scrollTop = 0;
   // Notify the mobile reading-state layout that ctrl-book options,
   // translation switcher, and ctrl-contents visibility have all just
