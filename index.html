@@ -2200,24 +2200,23 @@ body.companion-mode #companion-toggle {
 .folio-chapter-header.has-next:hover { opacity: 1; }
 .folio-chapter-header:disabled { cursor: default; }
 
-/* Folio entries are <details> elements — collapsed witnesses by
-   default. The summary shows a sigil, an italic title, and a
-   small verse anchor on a second line. The body unfolds beneath
-   when the reader opens it. No chevrons, no borders, no cards. */
-.folio-entry {
-  margin-bottom: 0;
-  /* Native disclosure styling is removed; the entry is
-     typographic, not a widget. */
-}
-.folio-summary {
-  list-style: none;
-  cursor: pointer;
+/* Folio witnesses — quiet collapsed entries in the chapter's
+   list. Tapping summons the dedicated object leaf; the witness
+   itself does not expand. No accordions, no chevrons, no cards.
+   Typographic only. */
+.folio-witness {
   display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
   padding: 0;
+  cursor: pointer;
   transition: opacity 0.25s;
+  font: inherit;
+  color: inherit;
 }
-.folio-summary::-webkit-details-marker { display: none; }
-.folio-summary:hover { opacity: 0.92; }
+.folio-witness:hover { opacity: 0.78; }
 
 .folio-title {
   display: block;
@@ -2228,9 +2227,6 @@ body.companion-mode #companion-toggle {
   color: var(--reader-fg);
   opacity: 0.82;
 }
-/* A very quiet manuscript sigil leading the title — an aldus-leaf
-   in low opacity. Not an icon, not a badge; a typographic mark of
-   the scholastic tradition. */
 .folio-title::before {
   content: '\2766\00A0\00A0';
   opacity: 0.45;
@@ -2247,18 +2243,62 @@ body.companion-mode #companion-toggle {
   opacity: 0.78;
 }
 
-/* Body unfolds beneath the summary when the <details> is open.
-   Subtle opacity fade — no slide, no height animation, no
-   accordion choreography. Pure typographic reveal. */
-.folio-body-wrap {
-  margin-top: 14px;
-  animation: folio-unfold 0.28s ease-out;
+/* Folio object leaf — the temporary inhabitation. The folio
+   surface becomes a single object's manuscript leaf. Quiet
+   return link at top, generous breathing room, typography-first
+   hierarchy. No box, no border, no overlay, no backdrop. */
+.folio-leaf {
+  display: block;
+  animation: folio-leaf-arrive 0.32s ease-out;
 }
-@keyframes folio-unfold {
+@keyframes folio-leaf-arrive {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-.folio-entry[open] .folio-title { opacity: 0.95; }
+.folio-leaf-return {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 0 0 32px 0;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.8em;
+  color: var(--chrome-muted);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.25s;
+}
+.folio-leaf-return:hover { opacity: 1; }
+.folio-leaf-verse {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.85em;
+  color: var(--chrome-muted);
+  opacity: 0.78;
+  margin-bottom: 6px;
+}
+.folio-leaf-title {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.18em;
+  line-height: 1.35;
+  color: var(--reader-fg);
+  margin: 0 0 28px 0;
+  opacity: 0.92;
+}
+.folio-leaf-body { margin-top: 8px; }
+/* Per-kind atmospheres — currently genealogy renders via
+   _renderGenealogyVertical inside .folio-leaf-body. Future kinds
+   (map, image, commentary, note) can add their own selectors:
+     .folio-leaf[data-kind="map"]    { ... }
+     .folio-leaf[data-kind="image"]  { ... }
+   without touching the dispatcher. */
+.folio-leaf[data-kind="genealogy"] .folio-body-vertical {
+  font-size: 0.95em;
+  line-height: 1.75;
+  opacity: 0.86;
+}
 
 /* Vertical genealogy rendering — per-line blocks whose
    padding-left reflects tree-prefix depth. Wraps cleanly at the
@@ -5464,51 +5504,96 @@ $reader.addEventListener('scroll', () => {
 // chapter-bound refinement brief.
 let _currentFolioChapterKey = null;
 
-// Folio entry renderer — dispatches on rec.kind. Future kinds
-// (map, image, commentary, note) inherit the same outer shape:
-// a collapsed witness (sigil + title + verse anchor) that unfolds
-// to reveal the body when the reader chooses to open it.
-//
-// Each entry is a native <details> for accessibility and zero JS
-// toggling. The kind drives only the body renderer, leaving room
-// for future object-specific atmospheres without forcing every
-// object into the same visual structure.
-function _renderFolioEntry(rec, pid) {
-  const entry = document.createElement('details');
-  entry.className = 'folio-entry';
+// Folio has two modes:
+//   list   — quiet collapsed witnesses for the current chapter
+//   object — a single witness has been summoned; its dedicated
+//            manuscript leaf occupies the folio surface, with a
+//            small "return" link to dismiss it back to the list
+// The object mode is a TEMPORARY inhabitation, not a permanent
+// expansion — closing returns the folio to the witness list.
+let _folioMode = 'list';
+let _openFolioRecordId = null;
+function _openFolioObject(id) {
+  _openFolioRecordId = id;
+  _folioMode = 'object';
+  renderCompanionFolio();
+  const inner = document.getElementById('folio-inner');
+  if (inner) inner.scrollTop = 0;
+}
+function _closeFolioObject() {
+  _openFolioRecordId = null;
+  _folioMode = 'list';
+  renderCompanionFolio();
+}
+
+// Folio witness renderer (list mode) — a quiet collapsed entry
+// in the chapter's witness list. Tapping summons the dedicated
+// object leaf via _openFolioObject(rec.id). Not a <details>; the
+// reveal is a folio-mode transition, not an inline expansion.
+function _renderFolioWitness(rec, pid) {
+  const entry = document.createElement('button');
+  entry.type = 'button';
+  entry.className = 'folio-witness';
   entry.dataset.kind = rec.kind || 'genealogy';
-  // Verse-proportional vertical spacing within the chapter.
   const m = pid && pid.match(/^[a-z]+\.\d+\.(\d+)$/);
   if (m) entry.dataset.verse = m[1];
-
-  const summary = document.createElement('summary');
-  summary.className = 'folio-summary';
   const t = document.createElement('span');
   t.className = 'folio-title';
   t.textContent = rec.title || '';
   const v = document.createElement('span');
   v.className = 'folio-verse';
   v.textContent = _formatVerseRef(pid);
-  summary.appendChild(t);
-  summary.appendChild(v);
-  entry.appendChild(summary);
+  entry.appendChild(t);
+  entry.appendChild(v);
+  entry.addEventListener('click', () => _openFolioObject(rec.id));
+  return entry;
+}
 
-  const bodyWrap = document.createElement('div');
-  bodyWrap.className = 'folio-body-wrap';
+// Object-leaf renderer (object mode) — a single witness has been
+// summoned. The folio's surface becomes a dedicated manuscript
+// leaf for this object alone, with a quiet return-link to the
+// chapter's witness list. Per-kind body renderers; the outer
+// shape is uniform.
+function _renderFolioObjectLeaf(rec, pid) {
+  const leaf = document.createElement('article');
+  leaf.className = 'folio-leaf';
+  leaf.dataset.kind = rec.kind || 'genealogy';
+
+  // Quiet typographic return link at the top — small italic, low
+  // opacity. Manuscript register: not an X close button, not a
+  // chevron, not a modal dismiss.
+  const back = document.createElement('button');
+  back.type = 'button';
+  back.className = 'folio-leaf-return';
+  const chKey = _chapterKeyOf(pid);
+  back.textContent = '← ' + (chKey ? _formatChapterLabel(chKey) : 'folio');
+  back.addEventListener('click', _closeFolioObject);
+  leaf.appendChild(back);
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  const body = document.createElement('div');
+  body.className = 'folio-leaf-body';
   switch (rec.kind || 'genealogy') {
     case 'genealogy':
-      bodyWrap.appendChild(_renderGenealogyVertical(rec.body || ''));
+      body.appendChild(_renderGenealogyVertical(rec.body || ''));
       break;
     default:
-      // Future kinds gracefully fall back to the genealogy body
-      // renderer; placeholder for map/image/commentary/note. The
-      // per-kind data-kind attribute lets CSS later differentiate
-      // unfolding atmospheres without changing this dispatcher.
-      bodyWrap.appendChild(_renderGenealogyVertical(rec.body || ''));
+      // Future kinds (map / image / commentary / note) will dispatch
+      // their own leaf body renderers here. The outer shape stays.
+      body.appendChild(_renderGenealogyVertical(rec.body || ''));
       break;
   }
-  entry.appendChild(bodyWrap);
-  return entry;
+  leaf.appendChild(body);
+  return leaf;
 }
 
 // Transform tree-character body text into wrap-friendly indented
@@ -5590,6 +5675,9 @@ function _availableFolioChapters() {
 
 function _setFolioChapter(chapterKey) {
   _currentFolioChapterKey = chapterKey;
+  // Cycling chapters returns the folio to its quiet list state.
+  _folioMode = 'list';
+  _openFolioRecordId = null;
   renderCompanionFolio();
 }
 
@@ -5623,19 +5711,31 @@ function renderCompanionFolio() {
     inner.appendChild(empty);
     return;
   }
-  // Initialize current chapter if unset or out-of-scope.
   if (!_currentFolioChapterKey || !chapters.includes(_currentFolioChapterKey)) {
     _currentFolioChapterKey = chapters[0];
   }
+  // Object-leaf mode: a witness has been summoned. Render only
+  // its dedicated leaf; the chapter header and witness list step
+  // out of the way until the reader returns.
+  if (_folioMode === 'object' && _openFolioRecordId) {
+    const rec = (currentData.genealogy || []).find(r => r.id === _openFolioRecordId);
+    if (rec) {
+      const a = rec.anchors && rec.anchors[0] && rec.anchors[0].target;
+      const pid = a ? a.split('::').pop() : '';
+      inner.appendChild(_renderFolioObjectLeaf(rec, pid));
+      return;
+    }
+    // Record missing — fall back to list mode gracefully.
+    _folioMode = 'list';
+    _openFolioRecordId = null;
+  }
+  // List mode: chapter header + collapsed witnesses.
   const ch = _currentFolioChapterKey;
   const records = currentData.genealogy.filter(r => {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
     if (!a) return false;
     return _chapterKeyOf(a.split('::').pop()) === ch;
   });
-  // Header — chapter name, with a small advance affordance when
-  // more than one chapter is available. Tap the header to cycle to
-  // the next available chapter. No dropdown, no menu, no settings.
   const header = document.createElement('button');
   header.type = 'button';
   header.className = 'folio-chapter-header';
@@ -5650,20 +5750,14 @@ function renderCompanionFolio() {
     header.disabled = true;
   }
   inner.appendChild(header);
-  // Entries — each positioned with margin-top proportional to the
-  // gap (in verses) since the previous entry.
   let prevVerse = 0;
   for (const r of records) {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
     const pid = a ? a.split('::').pop() : '';
-    const entry = _renderFolioEntry(r, pid);
+    const entry = _renderFolioWitness(r, pid);
     const m = pid.match(/^[a-z]+\.\d+\.(\d+)$/);
     const v = m ? Number(m[1]) : 1;
     const gap = Math.max(0, v - prevVerse - 1);
-    // Collapsed witnesses take less vertical space than the
-    // earlier always-expanded entries, so the verse-proportional
-    // gap is smaller. Still preserves the "this entry sits where
-    // its verse would" feeling, just more compactly.
     if (gap > 0) entry.style.marginTop = (gap * 0.25 + 1.4) + 'em';
     else if (prevVerse > 0) entry.style.marginTop = '1.4em';
     prevVerse = v;
@@ -6775,6 +6869,8 @@ function browseHome() {
   const compSwap = document.getElementById('companion-swap');
   if (compSwap) compSwap.hidden = true;
   _currentFolioChapterKey = null;
+  _folioMode = 'list';
+  _openFolioRecordId = null;
   const reader = document.getElementById('reader');
   reader.scrollTop = 0;
   reader.style.overflow = 'hidden';
