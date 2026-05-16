@@ -2104,12 +2104,15 @@ mark.search-hl-active {
 #folio {
   display: none;
   overflow-y: auto;
-  background: var(--reader-bg);
+  /* Slight paper differentiation — the folio leaf is just barely
+     warmer than the primary text leaf. Enough to perceive as a
+     facing leaf, quiet enough not to feel like a panel. */
+  background: color-mix(in srgb, var(--reader-bg) 92%, #b08a4a 8%);
   color: var(--reader-fg);
   flex: 0 0 38%;
   max-width: 480px;
-  border-left: 1px solid rgba(0,0,0,0.06);
-  padding: 48px 32px 80px;
+  border-left: 1px solid rgba(0,0,0,0.04);
+  padding: 56px 36px 96px;
 }
 #folio-inner {
   max-width: 420px;
@@ -2167,21 +2170,36 @@ body.companion-mode #companion-toggle {
 /* Folio typography — manuscript companion leaf, not panel.
    Mirrors the chapter-appendix typographic register but without
    the top hairline; uses an internal chapter header instead. */
-.folio-chapter {
-  margin-bottom: 32px;
-}
-.folio-chapter:last-child { margin-bottom: 8px; }
+/* Chapter-bound folio: one chapter at a time. Header is a small
+   tap-able cycle button when other augmented chapters exist. */
 .folio-chapter-header {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 0 0 28px 0;
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 0.82em;
-  letter-spacing: 0.16em;
+  font-size: 0.78em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--chrome-muted);
-  margin-bottom: 22px;
+  cursor: default;
 }
-.folio-entry { margin-bottom: 24px; }
-.folio-entry:last-child { margin-bottom: 0; }
+.folio-chapter-header.has-next {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.folio-chapter-header.has-next::after {
+  content: ' \203A';
+  margin-left: 6px;
+  opacity: 0.55;
+}
+.folio-chapter-header.has-next:hover { color: var(--reader-fg); }
+.folio-chapter-header:disabled { cursor: default; }
+
+.folio-entry { margin-bottom: 0; }
 .folio-verse {
   font-family: Georgia, serif;
   font-style: italic;
@@ -2193,20 +2211,29 @@ body.companion-mode #companion-toggle {
   font-family: Georgia, serif;
   font-weight: 500;
   font-style: italic;
-  font-size: 0.94em;
+  font-size: 0.95em;
   color: var(--reader-fg);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  opacity: 0.92;
 }
-.folio-body {
+
+/* Vertical genealogy rendering — replaces the prior <pre> +
+   horizontal-scroll body. Each line is a block element whose
+   padding-left reflects its tree-prefix depth. Wraps cleanly at
+   the folio's width without breaking the visual hierarchy. */
+.folio-body-vertical {
   font-family: var(--reader-font, Georgia, serif);
-  font-size: 0.84em;
-  line-height: 1.6;
+  font-size: 0.86em;
+  line-height: 1.65;
   color: var(--reader-fg);
-  margin: 0;
-  white-space: pre;
-  overflow-x: auto;
-  opacity: 0.88;
+  opacity: 0.86;
 }
+.folio-body-line { display: block; }
+.folio-body-line.folio-body-spacer {
+  height: 0.6em;
+  display: block;
+}
+
 .folio-empty {
   font-family: Georgia, serif;
   font-style: italic;
@@ -5378,64 +5405,153 @@ $reader.addEventListener('scroll', () => {
 // Build the folio's contents from currentData.genealogy, filtered
 // to the prototype chapters. Static; not scroll-reactive. Called
 // when the reader enters companion mode and after loadText.
-function renderCompanionFolio() {
-  const inner = document.getElementById('folio-inner');
-  if (!inner) return;
-  inner.innerHTML = '';
-  if (!currentData || !currentData.genealogy || !currentData.genealogy.length) {
-    const empty = document.createElement('div');
-    empty.className = 'folio-empty';
-    empty.textContent = 'No augmentation for this text.';
-    inner.appendChild(empty);
-    return;
+// Chapter-bound folio state. Set explicitly by the reader via the
+// folio header cycler — never reactive to scroll, viewport, or
+// hover. See COMPANION_FOLIO_PROPOSAL_2026.md and the May 16
+// chapter-bound refinement brief.
+let _currentFolioChapterKey = null;
+
+// Folio entry renderer — dispatches on rec.kind. Future kinds
+// (map, image, commentary, note) follow the same shape. For the
+// prototype only "genealogy" is implemented; unknown kinds fall
+// through to a quiet placeholder.
+function _renderFolioEntry(rec, pid) {
+  const entry = document.createElement('article');
+  entry.className = 'folio-entry';
+  // Verse-proportional vertical spacing within the chapter:
+  // each entry's top margin reflects its anchor verse's offset
+  // since the previous entry. Set on a data attribute; CSS does
+  // the work via padding-top.
+  const m = pid && pid.match(/^[a-z]+\.\d+\.(\d+)$/);
+  if (m) entry.dataset.verse = m[1];
+  const v = document.createElement('div');
+  v.className = 'folio-verse';
+  v.textContent = _formatVerseRef(pid);
+  const t = document.createElement('div');
+  t.className = 'folio-title';
+  t.textContent = rec.title || '';
+  entry.appendChild(v);
+  entry.appendChild(t);
+  switch (rec.kind || 'genealogy') {
+    case 'genealogy':
+      entry.appendChild(_renderGenealogyVertical(rec.body || ''));
+      break;
+    default:
+      // Future kinds gracefully fall back to the genealogy body
+      // renderer; placeholder for map/image/commentary/note.
+      entry.appendChild(_renderGenealogyVertical(rec.body || ''));
+      break;
   }
-  // Group prototype-chapter records by chapter, in canonical order.
-  const groups = new Map();
+  return entry;
+}
+
+// Transform tree-character body text into wrap-friendly indented
+// HTML. Each line becomes its own block with padding-left
+// proportional to the line's leading tree-prefix length. Tree
+// characters themselves are stripped — visual hierarchy is carried
+// by indentation alone, so long lines wrap cleanly at the folio's
+// width without breaking visual structure. Replaces the previous
+// <pre> + horizontal scroll approach.
+function _renderGenealogyVertical(body) {
+  const wrap = document.createElement('div');
+  wrap.className = 'folio-body-vertical';
+  const lines = String(body).split('\n');
+  for (const line of lines) {
+    const row = document.createElement('div');
+    row.className = 'folio-body-line';
+    if (line.trim() === '') {
+      row.classList.add('folio-body-spacer');
+      wrap.appendChild(row);
+      continue;
+    }
+    const prefixMatch = line.match(/^([\s│├└─]*)/);
+    const prefix = prefixMatch ? prefixMatch[0] : '';
+    const content = line.slice(prefix.length);
+    // Depth metric — each prefix character contributes ~0.45em of
+    // left padding. Scale chosen empirically so two-level indents
+    // read as a clear hierarchy at the folio's font size without
+    // overflowing on narrow folio widths.
+    const depth = prefix.length;
+    if (depth > 0) row.style.paddingLeft = (depth * 0.45) + 'em';
+    row.textContent = content;
+    wrap.appendChild(row);
+  }
+  return wrap;
+}
+
+function _availableFolioChapters() {
+  if (!currentData || !currentData.genealogy) return [];
+  const seen = new Set();
   for (const r of currentData.genealogy) {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
     if (!a) continue;
     const pid = a.split('::').pop();
     const ch = _chapterKeyOf(pid);
     if (!ch || !APPENDIX_PROTOTYPE_CHAPTERS.has(ch)) continue;
-    if (!groups.has(ch)) groups.set(ch, []);
-    groups.get(ch).push({ rec: r, pid });
+    seen.add(ch);
   }
-  if (!groups.size) {
+  // Preserve insertion order of the prototype set.
+  return Array.from(APPENDIX_PROTOTYPE_CHAPTERS).filter(k => seen.has(k));
+}
+
+function _setFolioChapter(chapterKey) {
+  _currentFolioChapterKey = chapterKey;
+  renderCompanionFolio();
+}
+
+function renderCompanionFolio() {
+  const inner = document.getElementById('folio-inner');
+  if (!inner) return;
+  inner.innerHTML = '';
+  const chapters = _availableFolioChapters();
+  if (!chapters.length) {
     const empty = document.createElement('div');
     empty.className = 'folio-empty';
     empty.textContent = 'No augmentation in the companion-folio prototype scope.';
     inner.appendChild(empty);
     return;
   }
-  // Preserve chapter order — iterate prototype set as configured.
-  const orderedChapters = Array.from(APPENDIX_PROTOTYPE_CHAPTERS)
-    .filter(k => groups.has(k));
-  for (const ch of orderedChapters) {
-    const wrap = document.createElement('section');
-    wrap.className = 'folio-chapter';
-    const header = document.createElement('div');
-    header.className = 'folio-chapter-header';
-    const [book, num] = ch.split('.');
-    header.textContent = `${book.charAt(0).toUpperCase()+book.slice(1)} ${num}`;
-    wrap.appendChild(header);
-    for (const { rec, pid } of groups.get(ch)) {
-      const entry = document.createElement('article');
-      entry.className = 'folio-entry';
-      const v = document.createElement('div');
-      v.className = 'folio-verse';
-      v.textContent = _formatVerseRef(pid);
-      const t = document.createElement('div');
-      t.className = 'folio-title';
-      t.textContent = rec.title || '';
-      const body = document.createElement('pre');
-      body.className = 'folio-body';
-      body.textContent = rec.body || '';
-      entry.appendChild(v);
-      entry.appendChild(t);
-      entry.appendChild(body);
-      wrap.appendChild(entry);
-    }
-    inner.appendChild(wrap);
+  // Initialize current chapter if unset or out-of-scope.
+  if (!_currentFolioChapterKey || !chapters.includes(_currentFolioChapterKey)) {
+    _currentFolioChapterKey = chapters[0];
+  }
+  const ch = _currentFolioChapterKey;
+  const records = currentData.genealogy.filter(r => {
+    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
+    if (!a) return false;
+    return _chapterKeyOf(a.split('::').pop()) === ch;
+  });
+  // Header — chapter name, with a small advance affordance when
+  // more than one chapter is available. Tap the header to cycle to
+  // the next available chapter. No dropdown, no menu, no settings.
+  const header = document.createElement('button');
+  header.type = 'button';
+  header.className = 'folio-chapter-header';
+  const [book, num] = ch.split('.');
+  header.textContent = `${book.charAt(0).toUpperCase() + book.slice(1)} ${num}`;
+  if (chapters.length > 1) {
+    header.classList.add('has-next');
+    const idx = chapters.indexOf(ch);
+    const nextCh = chapters[(idx + 1) % chapters.length];
+    header.title = `Advance to ${nextCh.split('.')[0].toUpperCase()} ${nextCh.split('.')[1]}`;
+    header.addEventListener('click', () => _setFolioChapter(nextCh));
+  } else {
+    header.disabled = true;
+  }
+  inner.appendChild(header);
+  // Entries — each positioned with margin-top proportional to the
+  // gap (in verses) since the previous entry.
+  let prevVerse = 0;
+  for (const r of records) {
+    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
+    const pid = a ? a.split('::').pop() : '';
+    const entry = _renderFolioEntry(r, pid);
+    const m = pid.match(/^[a-z]+\.\d+\.(\d+)$/);
+    const v = m ? Number(m[1]) : 1;
+    const gap = Math.max(0, v - prevVerse - 1);
+    if (gap > 0) entry.style.marginTop = (gap * 0.45 + 1.6) + 'em';
+    prevVerse = v;
+    inner.appendChild(entry);
   }
 }
 
