@@ -2034,6 +2034,60 @@ mark.search-hl-active {
 [data-theme="dark"] .genealogy-body .genealogy-text { color: #d4c4a4; }
 [data-theme="dark"] .passage .genealogy-ref { color: #c4a060; }
 
+/* ── Chapter appendix (prototype) ───────────────────────────────────
+   A quiet section that appears after the last verse of a chapter
+   when records are anchored to that chapter and the chapter is in
+   the prototype set. Restrained typography only — no parchment box,
+   no heavy borders. The position below the chapter break does the
+   editorial work. See CHAPTER_APPENDIX_PROPOSAL_2026.md. */
+.chapter-appendix {
+  margin: 48px 0 24px;
+  max-width: 720px;
+  border-top: 1px solid var(--chrome-border);
+  padding-top: 28px;
+}
+.chapter-appendix .appendix-header {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.78em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--chrome-muted);
+  text-align: center;
+  margin-bottom: 28px;
+}
+.chapter-appendix .appendix-entry { margin-bottom: 26px; }
+.chapter-appendix .appendix-entry:last-child { margin-bottom: 0; }
+.chapter-appendix .appendix-verse {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.78em;
+  color: var(--chrome-muted);
+  margin-bottom: 3px;
+}
+.chapter-appendix .appendix-title {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 0.94em;
+  color: var(--reader-fg);
+  margin-bottom: 10px;
+}
+.chapter-appendix .appendix-body {
+  font-family: var(--reader-font, Georgia, serif);
+  font-size: 0.84em;
+  line-height: 1.6;
+  color: var(--reader-fg);
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+  opacity: 0.88;
+}
+@media (max-width: 720px) {
+  .chapter-appendix .appendix-body { font-size: 0.78em; }
+  .chapter-appendix { margin: 36px 0 18px; padding-top: 20px; }
+}
+
 /* Honest-gap rendering: the marker references an apparatus body that is
    not present in this deploy. Distinct from a resolved apparatus body —
    muted, italic, and explicitly labeled. See
@@ -3940,16 +3994,105 @@ function _toggleApparatusGap(passageDiv, passageId, apparatusIndex) {
 // Standoff records carried as currentData.genealogy. Each record's
 // anchors[] contains URNs of the form
 // "archive:passage:<text>::<trans>::<passage_id>"; only the trailing
-// passage_id is matched against the current passage. Click handler
-// toggles an inline .genealogy-body block below the passage. Same
-// shape as the apparatus overlay. See
-// GENESIS_GENEALOGY_PROTOTYPE_PROPOSAL_2026.md.
+// passage_id is matched against the current passage.
+//
+// Two render modes coexist during the chapter-appendix prototype:
+//   - Inline mode (default): a ❦ marker beside the verse ref;
+//     click toggles an inline .genealogy-body block.
+//   - Appendix mode (prototype chapters only — see
+//     APPENDIX_PROTOTYPE_CHAPTERS): inline markers are suppressed
+//     and all records anchored to that chapter render together as
+//     a quiet section after the chapter's last verse.
+//
+// See CHAPTER_APPENDIX_PROPOSAL_2026.md.
+
+const APPENDIX_PROTOTYPE_CHAPTERS = new Set(['gen.4', 'gen.11', 'gen.29']);
+
+// Precomputed set of passage ids that are the last in their chapter.
+// Refreshed from loadText after each text loads. Lets the renderer
+// detect chapter boundaries without scanning the whole passages
+// array per render.
+let _lastInChapterIds = new Set();
+function _recomputeChapterEnds() {
+  _lastInChapterIds = new Set();
+  if (!Array.isArray(allPassages)) return;
+  for (let i = 0; i < allPassages.length; i++) {
+    const p = allPassages[i];
+    const next = allPassages[i + 1];
+    if (!p || !p.path) continue;
+    const isLast = !next || !next.path ||
+                   next.path[0] !== p.path[0] ||
+                   next.path[1] !== p.path[1];
+    if (isLast) _lastInChapterIds.add(p.id);
+  }
+}
+
+function _chapterKeyOf(passageOrId) {
+  const p = typeof passageOrId === 'string'
+    ? allPassages.find(x => x.id === passageOrId)
+    : passageOrId;
+  if (!p || !p.path) return null;
+  return `${p.path[0]}.${p.path[1]}`;
+}
 
 function findGenealogyForPassage(passageId) {
   if (!currentData || !currentData.genealogy || !currentData.genealogy.length) return [];
+  // Suppress inline markers for prototype chapters — those records
+  // render in the chapter appendix instead.
+  const chKey = _chapterKeyOf(passageId);
+  if (chKey && APPENDIX_PROTOTYPE_CHAPTERS.has(chKey)) return [];
   return currentData.genealogy.filter(r =>
     (r.anchors || []).some(a => (a.target || '').split('::').pop() === passageId)
   );
+}
+
+function _findGenealogyForChapter(chapterKey) {
+  if (!currentData || !currentData.genealogy) return [];
+  return currentData.genealogy.filter(r =>
+    (r.anchors || []).some(a => {
+      const pid = (a.target || '').split('::').pop();
+      return _chapterKeyOf(pid) === chapterKey;
+    })
+  );
+}
+
+function _formatVerseRef(pid) {
+  // For Bible-shaped pids "gen.4.25" -> "for Gen 4:25".
+  // Falls back to the raw pid otherwise.
+  const m = pid && pid.match(/^([a-z]+)\.(\d+)\.(\d+)$/);
+  if (!m) return pid;
+  const book = m[1].charAt(0).toUpperCase() + m[1].slice(1);
+  return `for ${book} ${m[2]}:${m[3]}`;
+}
+
+function buildChapterAppendix(chapterKey) {
+  const records = _findGenealogyForChapter(chapterKey);
+  if (!records.length) return null;
+  const sec = document.createElement('section');
+  sec.className = 'chapter-appendix';
+  const header = document.createElement('div');
+  header.className = 'appendix-header';
+  header.textContent = 'Appendix';
+  sec.appendChild(header);
+  for (const r of records) {
+    const entry = document.createElement('article');
+    entry.className = 'appendix-entry';
+    const anchorPid = ((r.anchors && r.anchors[0] && r.anchors[0].target) || '').split('::').pop();
+    const verseRef = document.createElement('div');
+    verseRef.className = 'appendix-verse';
+    verseRef.textContent = _formatVerseRef(anchorPid);
+    const title = document.createElement('div');
+    title.className = 'appendix-title';
+    title.textContent = r.title || '';
+    const body = document.createElement('pre');
+    body.className = 'appendix-body';
+    body.textContent = r.body || '';
+    entry.appendChild(verseRef);
+    entry.appendChild(title);
+    entry.appendChild(body);
+    sec.appendChild(entry);
+  }
+  return sec;
 }
 
 function toggleGenealogyBody(passageDiv, rec) {
@@ -4158,6 +4301,19 @@ function _renderBatch(passages, query, frag) {
     }
 
     frag.appendChild(div);
+
+    // Chapter appendix (prototype): when the rendered passage is the
+    // last verse of a prototype chapter, render the chapter's
+    // augmentation as a quiet section after it. The inline ❦
+    // markers are already suppressed for these chapters in
+    // findGenealogyForPassage. See CHAPTER_APPENDIX_PROPOSAL_2026.md.
+    if (_lastInChapterIds.has(p.id)) {
+      const chKey = _chapterKeyOf(p);
+      if (chKey && APPENDIX_PROTOTYPE_CHAPTERS.has(chKey)) {
+        const appendix = buildChapterAppendix(chKey);
+        if (appendix) frag.appendChild(appendix);
+      }
+    }
   }
 }
 
@@ -5183,6 +5339,7 @@ async function loadText(entry, listItem) {
     currentMeta  = { hierarchy: data.hierarchy };
     allPassages  = data.passages;
     currentBook  = null;
+    _recomputeChapterEnds();
 
     showMeta(data);
 
