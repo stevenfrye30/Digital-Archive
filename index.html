@@ -2106,13 +2106,14 @@ mark.search-hl-active {
   overflow-y: auto;
   /* Slight paper differentiation — the folio leaf is just barely
      warmer than the primary text leaf. Enough to perceive as a
-     facing leaf, quiet enough not to feel like a panel. */
-  background: color-mix(in srgb, var(--reader-bg) 92%, #b08a4a 8%);
+     facing leaf, quiet enough not to feel like a panel. The
+     divider is now whitespace alone (no hairline) so the
+     transition between leaves is purely tonal. */
+  background: color-mix(in srgb, var(--reader-bg) 91%, #b08a4a 9%);
   color: var(--reader-fg);
-  flex: 0 0 38%;
-  max-width: 480px;
-  border-left: 1px solid rgba(0,0,0,0.04);
-  padding: 56px 36px 96px;
+  flex: 0 0 44%;
+  max-width: 520px;
+  padding: 60px 40px 100px;
 }
 #folio-inner {
   max-width: 420px;
@@ -2121,12 +2122,8 @@ mark.search-hl-active {
 /* Companion mode (desktop only — gated by min-width media below) */
 @media (min-width: 901px) {
   body.companion-mode #folio { display: block; }
-  body.companion-mode #reader { flex: 0 0 62%; }
+  body.companion-mode #reader { flex: 0 0 56%; }
   body.companion-mode.folio-left #reader-spread { flex-direction: row-reverse; }
-  body.companion-mode.folio-left #folio {
-    border-left: none;
-    border-right: 1px solid rgba(0,0,0,0.06);
-  }
   /* In companion mode, suppress the in-stream chapter appendix
      because the same content lives in the folio. */
   body.companion-mode .chapter-appendix { display: none; }
@@ -2171,32 +2168,36 @@ body.companion-mode #companion-toggle {
    Mirrors the chapter-appendix typographic register but without
    the top hairline; uses an internal chapter header instead. */
 /* Chapter-bound folio: one chapter at a time. Header is a small
-   tap-able cycle button when other augmented chapters exist. */
+   tap-able cycle affordance when other augmented chapters exist.
+   Mixed-case italic, no caps transformation, no letter-spacing —
+   reads as a manuscript page heading rather than a UI label. */
 .folio-chapter-header {
   display: block;
   width: 100%;
   text-align: left;
   background: transparent;
   border: none;
-  padding: 0 0 28px 0;
+  padding: 0 0 32px 0;
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 0.78em;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 0.95em;
   color: var(--chrome-muted);
   cursor: default;
+  opacity: 0.78;
 }
 .folio-chapter-header.has-next {
   cursor: pointer;
-  transition: color 0.2s;
+  transition: opacity 0.25s;
 }
 .folio-chapter-header.has-next::after {
-  content: ' \203A';
-  margin-left: 6px;
-  opacity: 0.55;
+  /* A small typographic catchword indicating advance. The mark
+     itself is a Latin small letter "next" gesture from manuscript
+     tradition; visually a quiet right-pointing dot. */
+  content: ' \00B7';
+  margin-left: 8px;
+  opacity: 0.5;
 }
-.folio-chapter-header.has-next:hover { color: var(--reader-fg); }
+.folio-chapter-header.has-next:hover { opacity: 1; }
 .folio-chapter-header:disabled { cursor: default; }
 
 .folio-entry { margin-bottom: 0; }
@@ -2205,28 +2206,37 @@ body.companion-mode #companion-toggle {
   font-style: italic;
   font-size: 0.78em;
   color: var(--chrome-muted);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
+  opacity: 0.85;
+}
+/* A very quiet manuscript sigil at the start of each entry's
+   verse-anchor line — an aldus-leaf in low opacity. Not an icon,
+   not a badge; a typographic mark of the scholastic tradition. */
+.folio-verse::before {
+  content: '\2766\00A0';
+  font-size: 0.85em;
+  opacity: 0.45;
 }
 .folio-title {
   font-family: Georgia, serif;
   font-weight: 500;
   font-style: italic;
-  font-size: 0.95em;
+  font-size: 0.96em;
   color: var(--reader-fg);
-  margin-bottom: 12px;
-  opacity: 0.92;
+  margin-bottom: 14px;
+  opacity: 0.86;
 }
 
-/* Vertical genealogy rendering — replaces the prior <pre> +
-   horizontal-scroll body. Each line is a block element whose
-   padding-left reflects its tree-prefix depth. Wraps cleanly at
-   the folio's width without breaking the visual hierarchy. */
+/* Vertical genealogy rendering — per-line blocks whose
+   padding-left reflects tree-prefix depth. Wraps cleanly at the
+   folio's width without breaking the visual hierarchy. Slightly
+   dimmer than primary text so the folio reads as secondary. */
 .folio-body-vertical {
   font-family: var(--reader-font, Georgia, serif);
   font-size: 0.86em;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--reader-fg);
-  opacity: 0.86;
+  opacity: 0.78;
 }
 .folio-body-line { display: block; }
 .folio-body-line.folio-body-spacer {
@@ -4679,6 +4689,14 @@ function navTo(idx) {
   updateNav();
   clearSearch();
   filterAndRender();
+  // Folio quietly follows intentional chapter-navigation events
+  // (prev/next, chapter picker). No scroll, no viewport detection.
+  // For texts where path[0] is the chapter unit (most non-Bible
+  // texts) this is a real chapter-turn. For Bible, navTo moves
+  // between books, so the folio resets to the first augmented
+  // chapter within the new book scope — which for the prototype
+  // means it has no effect unless future content is added.
+  _maybeRetuneFolioToCurrentBook();
 
   // Update chapter heading
   const existingHeader = $passages.querySelector('.chapter-heading');
@@ -5135,6 +5153,8 @@ function enterReading(targetGroupKey) {
   // been updated. The mobile running header and meta panel re-derive
   // their state from these.
   window.dispatchEvent(new Event('reading-state:should-refresh'));
+  // Folio quietly follows entry into reading.
+  _maybeRetuneFolioToCurrentBook();
 }
 
 function showToc(data, entry) {
@@ -5479,6 +5499,34 @@ function _renderGenealogyVertical(body) {
   return wrap;
 }
 
+// Format a chapter key ("gen.4") into a manuscript-style label
+// ("Genesis 4"). Bible book codes get a full name; other texts
+// fall back to the capitalized code. Used in folio chapter headers.
+const _BIBLE_BOOK_NAMES = {
+  gen: 'Genesis', exo: 'Exodus', lev: 'Leviticus', num: 'Numbers',
+  deu: 'Deuteronomy', jos: 'Joshua', jdg: 'Judges', rut: 'Ruth',
+  '1sa': '1 Samuel', '2sa': '2 Samuel', '1ki': '1 Kings', '2ki': '2 Kings',
+  '1ch': '1 Chronicles', '2ch': '2 Chronicles', ezr: 'Ezra', neh: 'Nehemiah',
+  est: 'Esther', job: 'Job', psa: 'Psalms', pro: 'Proverbs',
+  ecc: 'Ecclesiastes', sng: 'Song of Solomon', isa: 'Isaiah', jer: 'Jeremiah',
+  lam: 'Lamentations', ezk: 'Ezekiel', dan: 'Daniel', hos: 'Hosea',
+  jol: 'Joel', amo: 'Amos', oba: 'Obadiah', jon: 'Jonah',
+  mic: 'Micah', nam: 'Nahum', hab: 'Habakkuk', zep: 'Zephaniah',
+  hag: 'Haggai', zec: 'Zechariah', mal: 'Malachi',
+  mat: 'Matthew', mrk: 'Mark', luk: 'Luke', jhn: 'John',
+  act: 'Acts', rom: 'Romans', '1co': '1 Corinthians', '2co': '2 Corinthians',
+  gal: 'Galatians', eph: 'Ephesians', php: 'Philippians', col: 'Colossians',
+  '1th': '1 Thessalonians', '2th': '2 Thessalonians',
+  '1ti': '1 Timothy', '2ti': '2 Timothy', tit: 'Titus', phm: 'Philemon',
+  heb: 'Hebrews', jas: 'James', '1pe': '1 Peter', '2pe': '2 Peter',
+  '1jn': '1 John', '2jn': '2 John', '3jn': '3 John', jud: 'Jude', rev: 'Revelation'
+};
+function _formatChapterLabel(chapterKey) {
+  const [book, num] = chapterKey.split('.');
+  const name = _BIBLE_BOOK_NAMES[book] || (book.charAt(0).toUpperCase() + book.slice(1));
+  return `${name} ${num}`;
+}
+
 function _availableFolioChapters() {
   if (!currentData || !currentData.genealogy) return [];
   const seen = new Set();
@@ -5497,6 +5545,24 @@ function _availableFolioChapters() {
 function _setFolioChapter(chapterKey) {
   _currentFolioChapterKey = chapterKey;
   renderCompanionFolio();
+}
+
+// Quietly retune the folio's chapter when an intentional
+// navigation event fires (navTo via prev/next or chapter picker;
+// enterReading from a cover). Selects the first augmented chapter
+// whose book matches the new currentBook, if any. Falls back to
+// the first available augmented chapter overall. No scroll, no
+// viewport detection.
+function _maybeRetuneFolioToCurrentBook() {
+  if (!document.body.classList.contains('companion-mode')) return;
+  const chapters = _availableFolioChapters();
+  if (!chapters.length) return;
+  let target = null;
+  if (typeof currentBook === 'string' && currentBook) {
+    target = chapters.find(k => k.split('.')[0] === currentBook) || null;
+  }
+  if (!target) target = chapters[0];
+  if (target !== _currentFolioChapterKey) _setFolioChapter(target);
 }
 
 function renderCompanionFolio() {
@@ -5527,13 +5593,12 @@ function renderCompanionFolio() {
   const header = document.createElement('button');
   header.type = 'button';
   header.className = 'folio-chapter-header';
-  const [book, num] = ch.split('.');
-  header.textContent = `${book.charAt(0).toUpperCase() + book.slice(1)} ${num}`;
+  header.textContent = _formatChapterLabel(ch);
   if (chapters.length > 1) {
     header.classList.add('has-next');
     const idx = chapters.indexOf(ch);
     const nextCh = chapters[(idx + 1) % chapters.length];
-    header.title = `Advance to ${nextCh.split('.')[0].toUpperCase()} ${nextCh.split('.')[1]}`;
+    header.title = _formatChapterLabel(nextCh);
     header.addEventListener('click', () => _setFolioChapter(nextCh));
   } else {
     header.disabled = true;
