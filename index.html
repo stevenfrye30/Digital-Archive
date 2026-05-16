@@ -1968,6 +1968,64 @@ mark.search-hl-active {
   font-family: var(--reader-font, Georgia, serif);
 }
 
+/* ── Genealogy / orientation overlay (Layer 5 — archive editorial) ──
+   Standoff records anchored to specific passages. Register:
+   parchment cream, sepia ink, distinct from apparatus (warm tan).
+   Marker is a quiet aldus-leaf glyph beside the passage ref; click
+   opens an inline tree below the passage. Body is a <pre> so the
+   indented tree characters are preserved verbatim. See
+   GENESIS_GENEALOGY_PROTOTYPE_PROPOSAL_2026.md. */
+.passage .genealogy-ref {
+  display: inline-block;
+  font-size: 0.85em;
+  vertical-align: super;
+  line-height: 0;
+  color: #8c6a3a;
+  text-decoration: none;
+  margin: 0 2px 0 4px;
+  padding: 0 3px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.passage .genealogy-ref:hover { background: #f3ebda; }
+.genealogy-body {
+  display: none;
+  background: #f9f3e3;
+  border-left: 2px solid #a88c5e;
+  padding: 9px 14px 11px 14px;
+  margin: 8px 0 4px 8px;
+  font-size: 0.86em;
+  line-height: 1.55;
+  color: #4a3e2a;
+  border-radius: 2px;
+}
+.genealogy-body.open { display: block; }
+.genealogy-body .genealogy-meta {
+  font-size: 0.85em;
+  color: #7a6a4a;
+  font-style: italic;
+  margin-bottom: 6px;
+  display: block;
+}
+.genealogy-body .genealogy-text {
+  font-family: var(--reader-font, Georgia, serif);
+  font-size: 1em;
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+  color: #3a2e1a;
+}
+@media (max-width: 720px) {
+  .genealogy-body .genealogy-text { font-size: 0.85em; }
+}
+[data-theme="dark"] .genealogy-body {
+  background: #2a241a;
+  border-color: #8a6a3a;
+  color: #c4b48a;
+}
+[data-theme="dark"] .genealogy-body .genealogy-text { color: #d4c4a4; }
+[data-theme="dark"] .passage .genealogy-ref { color: #c4a060; }
+
 /* Honest-gap rendering: the marker references an apparatus body that is
    not present in this deploy. Distinct from a resolved apparatus body —
    muted, italic, and explicitly labeled. See
@@ -3870,6 +3928,42 @@ function _toggleApparatusGap(passageDiv, passageId, apparatusIndex) {
   body.classList.toggle('open');
 }
 
+// ── Genealogy overlay (Layer 5 — archive editorial) ─────────────────
+// Standoff records carried as currentData.genealogy. Each record's
+// anchors[] contains URNs of the form
+// "archive:passage:<text>::<trans>::<passage_id>"; only the trailing
+// passage_id is matched against the current passage. Click handler
+// toggles an inline .genealogy-body block below the passage. Same
+// shape as the apparatus overlay. See
+// GENESIS_GENEALOGY_PROTOTYPE_PROPOSAL_2026.md.
+
+function findGenealogyForPassage(passageId) {
+  if (!currentData || !currentData.genealogy || !currentData.genealogy.length) return [];
+  return currentData.genealogy.filter(r =>
+    (r.anchors || []).some(a => (a.target || '').split('::').pop() === passageId)
+  );
+}
+
+function toggleGenealogyBody(passageDiv, rec) {
+  const bodyId = 'gen-' + rec.id;
+  let body = passageDiv.querySelector('#' + CSS.escape(bodyId));
+  if (!body) {
+    body = document.createElement('div');
+    body.className = 'genealogy-body';
+    body.id = bodyId;
+    const meta = document.createElement('span');
+    meta.className = 'genealogy-meta';
+    meta.textContent = rec.title || 'Genealogy';
+    body.appendChild(meta);
+    const text = document.createElement('pre');
+    text.className = 'genealogy-text';
+    text.textContent = rec.body || '';
+    body.appendChild(text);
+    passageDiv.appendChild(body);
+  }
+  body.classList.toggle('open');
+}
+
 function _renderBatch(passages, query, frag) {
   for (const p of passages) {
     const div = document.createElement('div');
@@ -3886,6 +3980,22 @@ function _renderBatch(passages, query, frag) {
     });
 
     div.appendChild(ref);
+
+    // Genealogy markers — one per anchored record on this passage.
+    const geneRecords = findGenealogyForPassage(p.id);
+    for (const rec of geneRecords) {
+      const marker = document.createElement('a');
+      marker.className = 'genealogy-ref';
+      marker.href = '#';
+      marker.textContent = '❦'; // ❦ aldus leaf
+      marker.title = rec.title || 'Genealogy';
+      marker.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleGenealogyBody(div, rec);
+      });
+      div.appendChild(marker);
+    }
 
     const flatText = p.text.replace(/\n/g, ' ');
 
