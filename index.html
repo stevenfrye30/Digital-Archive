@@ -2111,22 +2111,47 @@ mark.search-hl-active {
      transition between leaves is purely tonal. */
   background: color-mix(in srgb, var(--reader-bg) 91%, #b08a4a 9%);
   color: var(--reader-fg);
-  flex: 0 0 44%;
-  max-width: 520px;
-  padding: 60px 40px 100px;
+  /* Resting folio is a quiet witness margin — narrower than a
+     companion workspace. The primary text holds clear sovereignty
+     when no witness is summoned. */
+  flex: 0 0 30%;
+  max-width: 340px;
+  padding: 60px 32px 100px;
 }
 #folio-inner {
-  max-width: 420px;
+  max-width: 320px;
 }
 
 /* Companion mode (desktop only — gated by min-width media below) */
 @media (min-width: 901px) {
   body.companion-mode #folio { display: block; }
-  body.companion-mode #reader { flex: 0 0 56%; }
+  body.companion-mode #reader { flex: 1 1 auto; }
   body.companion-mode.folio-left #reader-spread { flex-direction: row-reverse; }
   /* In companion mode, suppress the in-stream chapter appendix
      because the same content lives in the folio. */
   body.companion-mode .chapter-appendix { display: none; }
+}
+
+/* Manuscript encounter state — when a witness has been summoned,
+   the two-column spread itself dissolves. The primary text leaf
+   steps out of view; the witness becomes the central manuscript
+   encounter on the same paper, in a single centered measure.
+   Not a modal, not an overlay — a different leaf, briefly. */
+@media (min-width: 901px) {
+  body.companion-mode.folio-encounter #reader { display: none; }
+  body.companion-mode.folio-encounter #folio {
+    flex: 1 1 100%;
+    max-width: none;
+    /* Neutral paper — the warm folio tint recedes so the
+       encounter sits on the same surface as the primary text. */
+    background: var(--reader-bg);
+    padding: 64px 0 120px;
+  }
+  body.companion-mode.folio-encounter #folio-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 56px;
+  }
 }
 
 /* Below the companion breakpoint, hide companion controls entirely
@@ -2136,6 +2161,9 @@ mark.search-hl-active {
   #companion-toggle,
   #companion-swap { display: none !important; }
   #folio { display: none !important; }
+  /* Safety: if the body still carries .folio-encounter from a
+     desktop session, don't strand the reader on a hidden #reader. */
+  body.folio-encounter #reader { display: block !important; }
 }
 
 /* Companion toggle buttons in #controls — same quiet register as
@@ -2269,6 +2297,16 @@ body.companion-mode #companion-toggle {
   transition: opacity 0.25s;
 }
 .folio-leaf-return:hover { opacity: 1; }
+/* In the manuscript encounter state the return gains a little
+   more typographic weight — a chapter rubric set above the
+   witness, not a small dismiss link. Still italic, still
+   serif, still no chrome — just clearer cadence. */
+body.folio-encounter .folio-leaf-return {
+  font-size: 0.95em;
+  opacity: 0.82;
+  padding-bottom: 44px;
+  letter-spacing: 0.01em;
+}
 .folio-leaf-verse {
   font-family: Georgia, serif;
   font-style: italic;
@@ -2298,6 +2336,23 @@ body.companion-mode #companion-toggle {
   font-size: 0.95em;
   line-height: 1.75;
   opacity: 0.86;
+}
+/* Encounter-state typography — the witness leaf gains a little
+   more presence when it occupies the full spread. Title scales
+   up modestly; the body sits in a generous reading measure.
+   No new ornament, no new colors. */
+body.folio-encounter .folio-leaf-verse {
+  font-size: 0.9em;
+  opacity: 0.82;
+  margin-bottom: 8px;
+}
+body.folio-encounter .folio-leaf-title {
+  font-size: 1.4em;
+  margin-bottom: 36px;
+}
+body.folio-encounter .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
+  font-size: 1em;
+  line-height: 1.8;
 }
 
 /* Vertical genealogy rendering — per-line blocks whose
@@ -5488,7 +5543,15 @@ $reader.addEventListener('scroll', () => {
     toggle.setAttribute('aria-pressed', String(on));
     toggle.textContent = on ? 'Pure' : 'Folio';
     swap.hidden = !on;
-    if (on) renderCompanionFolio();
+    if (on) {
+      renderCompanionFolio();
+    } else {
+      // Leaving companion mode collapses any open encounter so the
+      // body class doesn't outlive the surface that justified it.
+      _folioMode = 'list';
+      _openFolioRecordId = null;
+      _setFolioEncounter(false);
+    }
   });
   swap.addEventListener('click', () => {
     document.body.classList.toggle('folio-left');
@@ -5513,9 +5576,17 @@ let _currentFolioChapterKey = null;
 // expansion — closing returns the folio to the witness list.
 let _folioMode = 'list';
 let _openFolioRecordId = null;
+// Toggling body.folio-encounter dissolves the two-column spread
+// (CSS hides #reader and lets #folio occupy the spread in a
+// centered measure). Always paired with _folioMode so DOM state
+// and atmosphere stay in lockstep.
+function _setFolioEncounter(on) {
+  document.body.classList.toggle('folio-encounter', !!on);
+}
 function _openFolioObject(id) {
   _openFolioRecordId = id;
   _folioMode = 'object';
+  _setFolioEncounter(true);
   renderCompanionFolio();
   const inner = document.getElementById('folio-inner');
   if (inner) inner.scrollTop = 0;
@@ -5523,6 +5594,7 @@ function _openFolioObject(id) {
 function _closeFolioObject() {
   _openFolioRecordId = null;
   _folioMode = 'list';
+  _setFolioEncounter(false);
   renderCompanionFolio();
 }
 
@@ -5678,6 +5750,7 @@ function _setFolioChapter(chapterKey) {
   // Cycling chapters returns the folio to its quiet list state.
   _folioMode = 'list';
   _openFolioRecordId = null;
+  _setFolioEncounter(false);
   renderCompanionFolio();
 }
 
@@ -5696,7 +5769,14 @@ function _maybeRetuneFolioToCurrentBook() {
     target = chapters.find(k => k.split('.')[0] === currentBook) || null;
   }
   if (!target) target = chapters[0];
-  if (target !== _currentFolioChapterKey) _setFolioChapter(target);
+  if (target !== _currentFolioChapterKey) {
+    _setFolioChapter(target);
+  } else if (_folioMode === 'object') {
+    // The augmented chapter didn't change, but the reader did
+    // intentionally navigate. Close any open encounter so the
+    // witness doesn't outlive the chapter that summoned it.
+    _closeFolioObject();
+  }
 }
 
 function renderCompanionFolio() {
@@ -5705,6 +5785,14 @@ function renderCompanionFolio() {
   inner.innerHTML = '';
   const chapters = _availableFolioChapters();
   if (!chapters.length) {
+    // No augmented chapters means no surface for an encounter.
+    // Reset any stranded encounter state from a previous text so
+    // #reader doesn't stay hidden under the empty notice.
+    if (_folioMode === 'object') {
+      _folioMode = 'list';
+      _openFolioRecordId = null;
+      _setFolioEncounter(false);
+    }
     const empty = document.createElement('div');
     empty.className = 'folio-empty';
     empty.textContent = 'No augmentation in the companion-folio prototype scope.';
@@ -5728,6 +5816,7 @@ function renderCompanionFolio() {
     // Record missing — fall back to list mode gracefully.
     _folioMode = 'list';
     _openFolioRecordId = null;
+    _setFolioEncounter(false);
   }
   // List mode: chapter header + collapsed witnesses.
   const ch = _currentFolioChapterKey;
