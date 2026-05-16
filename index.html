@@ -1984,14 +1984,15 @@ mark.search-hl-active {
   text-decoration: none;
   margin: 0 2px 0 4px;
   padding: 0 3px;
-  border-radius: 3px;
   cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.18s;
 }
-.passage .genealogy-ref:hover { background: #f3ebda; }
+.passage .genealogy-ref:hover { opacity: 0.9; }
 .genealogy-body {
   display: none;
   background: #f9f3e3;
-  border-left: 2px solid #a88c5e;
+  border-left: 1px solid #a88c5e;
   padding: 9px 14px 11px 14px;
   margin: 8px 0 4px 8px;
   font-size: 0.86em;
@@ -1999,7 +2000,14 @@ mark.search-hl-active {
   color: #4a3e2a;
   border-radius: 2px;
 }
-.genealogy-body.open { display: block; }
+.genealogy-body.open {
+  display: block;
+  animation: genealogy-reveal 0.22s ease-out;
+}
+@keyframes genealogy-reveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 .genealogy-body .genealogy-meta {
   font-size: 0.85em;
   color: #7a6a4a;
