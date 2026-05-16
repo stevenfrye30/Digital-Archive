@@ -2200,32 +2200,65 @@ body.companion-mode #companion-toggle {
 .folio-chapter-header.has-next:hover { opacity: 1; }
 .folio-chapter-header:disabled { cursor: default; }
 
-.folio-entry { margin-bottom: 0; }
-.folio-verse {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 0.78em;
-  color: var(--chrome-muted);
-  margin-bottom: 4px;
-  opacity: 0.85;
+/* Folio entries are <details> elements — collapsed witnesses by
+   default. The summary shows a sigil, an italic title, and a
+   small verse anchor on a second line. The body unfolds beneath
+   when the reader opens it. No chevrons, no borders, no cards. */
+.folio-entry {
+  margin-bottom: 0;
+  /* Native disclosure styling is removed; the entry is
+     typographic, not a widget. */
 }
-/* A very quiet manuscript sigil at the start of each entry's
-   verse-anchor line — an aldus-leaf in low opacity. Not an icon,
-   not a badge; a typographic mark of the scholastic tradition. */
-.folio-verse::before {
-  content: '\2766\00A0';
-  font-size: 0.85em;
-  opacity: 0.45;
+.folio-summary {
+  list-style: none;
+  cursor: pointer;
+  display: block;
+  padding: 0;
+  transition: opacity 0.25s;
 }
+.folio-summary::-webkit-details-marker { display: none; }
+.folio-summary:hover { opacity: 0.92; }
+
 .folio-title {
+  display: block;
   font-family: Georgia, serif;
   font-weight: 500;
   font-style: italic;
   font-size: 0.96em;
   color: var(--reader-fg);
-  margin-bottom: 14px;
-  opacity: 0.86;
+  opacity: 0.82;
 }
+/* A very quiet manuscript sigil leading the title — an aldus-leaf
+   in low opacity. Not an icon, not a badge; a typographic mark of
+   the scholastic tradition. */
+.folio-title::before {
+  content: '\2766\00A0\00A0';
+  opacity: 0.45;
+  font-size: 0.92em;
+}
+.folio-verse {
+  display: block;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.78em;
+  color: var(--chrome-muted);
+  margin-top: 3px;
+  padding-left: 1.4em;
+  opacity: 0.78;
+}
+
+/* Body unfolds beneath the summary when the <details> is open.
+   Subtle opacity fade — no slide, no height animation, no
+   accordion choreography. Pure typographic reveal. */
+.folio-body-wrap {
+  margin-top: 14px;
+  animation: folio-unfold 0.28s ease-out;
+}
+@keyframes folio-unfold {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.folio-entry[open] .folio-title { opacity: 0.95; }
 
 /* Vertical genealogy rendering — per-line blocks whose
    padding-left reflects tree-prefix depth. Wraps cleanly at the
@@ -5432,36 +5465,49 @@ $reader.addEventListener('scroll', () => {
 let _currentFolioChapterKey = null;
 
 // Folio entry renderer — dispatches on rec.kind. Future kinds
-// (map, image, commentary, note) follow the same shape. For the
-// prototype only "genealogy" is implemented; unknown kinds fall
-// through to a quiet placeholder.
+// (map, image, commentary, note) inherit the same outer shape:
+// a collapsed witness (sigil + title + verse anchor) that unfolds
+// to reveal the body when the reader chooses to open it.
+//
+// Each entry is a native <details> for accessibility and zero JS
+// toggling. The kind drives only the body renderer, leaving room
+// for future object-specific atmospheres without forcing every
+// object into the same visual structure.
 function _renderFolioEntry(rec, pid) {
-  const entry = document.createElement('article');
+  const entry = document.createElement('details');
   entry.className = 'folio-entry';
-  // Verse-proportional vertical spacing within the chapter:
-  // each entry's top margin reflects its anchor verse's offset
-  // since the previous entry. Set on a data attribute; CSS does
-  // the work via padding-top.
+  entry.dataset.kind = rec.kind || 'genealogy';
+  // Verse-proportional vertical spacing within the chapter.
   const m = pid && pid.match(/^[a-z]+\.\d+\.(\d+)$/);
   if (m) entry.dataset.verse = m[1];
-  const v = document.createElement('div');
-  v.className = 'folio-verse';
-  v.textContent = _formatVerseRef(pid);
-  const t = document.createElement('div');
+
+  const summary = document.createElement('summary');
+  summary.className = 'folio-summary';
+  const t = document.createElement('span');
   t.className = 'folio-title';
   t.textContent = rec.title || '';
-  entry.appendChild(v);
-  entry.appendChild(t);
+  const v = document.createElement('span');
+  v.className = 'folio-verse';
+  v.textContent = _formatVerseRef(pid);
+  summary.appendChild(t);
+  summary.appendChild(v);
+  entry.appendChild(summary);
+
+  const bodyWrap = document.createElement('div');
+  bodyWrap.className = 'folio-body-wrap';
   switch (rec.kind || 'genealogy') {
     case 'genealogy':
-      entry.appendChild(_renderGenealogyVertical(rec.body || ''));
+      bodyWrap.appendChild(_renderGenealogyVertical(rec.body || ''));
       break;
     default:
       // Future kinds gracefully fall back to the genealogy body
-      // renderer; placeholder for map/image/commentary/note.
-      entry.appendChild(_renderGenealogyVertical(rec.body || ''));
+      // renderer; placeholder for map/image/commentary/note. The
+      // per-kind data-kind attribute lets CSS later differentiate
+      // unfolding atmospheres without changing this dispatcher.
+      bodyWrap.appendChild(_renderGenealogyVertical(rec.body || ''));
       break;
   }
+  entry.appendChild(bodyWrap);
   return entry;
 }
 
@@ -5614,7 +5660,12 @@ function renderCompanionFolio() {
     const m = pid.match(/^[a-z]+\.\d+\.(\d+)$/);
     const v = m ? Number(m[1]) : 1;
     const gap = Math.max(0, v - prevVerse - 1);
-    if (gap > 0) entry.style.marginTop = (gap * 0.45 + 1.6) + 'em';
+    // Collapsed witnesses take less vertical space than the
+    // earlier always-expanded entries, so the verse-proportional
+    // gap is smaller. Still preserves the "this entry sits where
+    // its verse would" feeling, just more compactly.
+    if (gap > 0) entry.style.marginTop = (gap * 0.25 + 1.4) + 'em';
+    else if (prevVerse > 0) entry.style.marginTop = '1.4em';
     prevVerse = v;
     inner.appendChild(entry);
   }
@@ -6712,6 +6763,18 @@ function browseHome() {
   if (metaToggle) metaToggle.classList.remove('active');
   const navMetaToggle = document.getElementById('nav-meta-toggle');
   if (navMetaToggle) navMetaToggle.classList.remove('active');
+  // Folio is a reading posture, not a global app state. Dissolve
+  // companion mode and reset the cycler chapter when the reader
+  // leaves the Reading Room.
+  document.body.classList.remove('companion-mode', 'folio-left');
+  const compTog = document.getElementById('companion-toggle');
+  if (compTog) {
+    compTog.setAttribute('aria-pressed', 'false');
+    compTog.textContent = 'Folio';
+  }
+  const compSwap = document.getElementById('companion-swap');
+  if (compSwap) compSwap.hidden = true;
+  _currentFolioChapterKey = null;
   const reader = document.getElementById('reader');
   reader.scrollTop = 0;
   reader.style.overflow = 'hidden';
