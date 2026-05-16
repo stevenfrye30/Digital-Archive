@@ -2088,6 +2088,135 @@ mark.search-hl-active {
   .chapter-appendix { margin: 36px 0 18px; padding-top: 20px; }
 }
 
+/* ── Companion folio (prototype) ────────────────────────────────────
+   A facing manuscript leaf adjacent to the text column. Active only
+   when body.companion-mode is set AND viewport is wide enough.
+   Hidden by default. Same paper, same ink, same script. Nearly
+   invisible divider. See COMPANION_FOLIO_PROPOSAL_2026.md. */
+
+#reader-spread {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  min-height: 0;
+}
+#folio {
+  display: none;
+  overflow-y: auto;
+  background: var(--reader-bg);
+  color: var(--reader-fg);
+  flex: 0 0 38%;
+  max-width: 480px;
+  border-left: 1px solid rgba(0,0,0,0.06);
+  padding: 48px 32px 80px;
+}
+#folio-inner {
+  max-width: 420px;
+}
+
+/* Companion mode (desktop only — gated by min-width media below) */
+@media (min-width: 901px) {
+  body.companion-mode #folio { display: block; }
+  body.companion-mode #reader { flex: 0 0 62%; }
+  body.companion-mode.folio-left #reader-spread { flex-direction: row-reverse; }
+  body.companion-mode.folio-left #folio {
+    border-left: none;
+    border-right: 1px solid rgba(0,0,0,0.06);
+  }
+  /* In companion mode, suppress the in-stream chapter appendix
+     because the same content lives in the folio. */
+  body.companion-mode .chapter-appendix { display: none; }
+}
+
+/* Below the companion breakpoint, hide companion controls entirely
+   and force pure layout. Folio falls back to in-stream appendix
+   (which renders normally for prototype chapters). */
+@media (max-width: 900px) {
+  #companion-toggle,
+  #companion-swap { display: none !important; }
+  #folio { display: none !important; }
+}
+
+/* Companion toggle buttons in #controls — same quiet register as
+   the reading-mode toggle. */
+#companion-toggle,
+#companion-swap {
+  background: transparent;
+  border: 1px solid var(--chrome-border);
+  color: var(--chrome-muted);
+  font-size: 12px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: color 0.15s, border-color 0.15s;
+}
+#companion-toggle:hover,
+#companion-swap:hover {
+  color: var(--chrome-active);
+  border-color: var(--chrome-active);
+}
+body.companion-mode #companion-toggle {
+  color: var(--chrome-active);
+  border-color: var(--chrome-active);
+}
+
+/* Folio typography — manuscript companion leaf, not panel.
+   Mirrors the chapter-appendix typographic register but without
+   the top hairline; uses an internal chapter header instead. */
+.folio-chapter {
+  margin-bottom: 32px;
+}
+.folio-chapter:last-child { margin-bottom: 8px; }
+.folio-chapter-header {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.82em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--chrome-muted);
+  margin-bottom: 22px;
+}
+.folio-entry { margin-bottom: 24px; }
+.folio-entry:last-child { margin-bottom: 0; }
+.folio-verse {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.78em;
+  color: var(--chrome-muted);
+  margin-bottom: 3px;
+}
+.folio-title {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 0.94em;
+  color: var(--reader-fg);
+  margin-bottom: 10px;
+}
+.folio-body {
+  font-family: var(--reader-font, Georgia, serif);
+  font-size: 0.84em;
+  line-height: 1.6;
+  color: var(--reader-fg);
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+  opacity: 0.88;
+}
+.folio-empty {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.85em;
+  color: var(--chrome-muted);
+  text-align: center;
+  margin-top: 24px;
+}
+[data-theme="dark"] #folio { border-color: rgba(255,255,255,0.06); }
+
 /* Honest-gap rendering: the marker references an apparatus body that is
    not present in this deploy. Distinct from a resolved apparatus body —
    muted, italic, and explicitly labeled. See
@@ -2898,6 +3027,8 @@ mark.search-hl-active {
         <button class="search-nav-btn" id="search-next" disabled title="Next match">&#9660;</button>
       </div>
       <button type="button" id="reading-mode-toggle" title="Collapse browsing controls" aria-pressed="false">Reading mode</button>
+      <button type="button" id="companion-toggle" title="Show companion folio beside the text" aria-pressed="false">Folio</button>
+      <button type="button" id="companion-swap" title="Move folio to the other side" aria-pressed="false" hidden>&#8646;</button>
     </div>
 
     <div id="info-bar">
@@ -2946,6 +3077,7 @@ mark.search-hl-active {
 
     <div id="status"></div>
 
+    <div id="reader-spread">
     <div id="reader" style="overflow:hidden;">
       <div id="reader-inner">
         <div id="welcome">
@@ -3071,6 +3203,10 @@ mark.search-hl-active {
         <div id="text-header"></div>
         <div id="passages"></div>
       </div>
+    </div>
+    <aside id="folio" aria-label="Companion folio">
+      <div id="folio-inner"></div>
+    </aside>
     </div>
 
   </div>
@@ -5221,6 +5357,88 @@ $reader.addEventListener('scroll', () => {
   });
 })();
 
+// Companion folio prototype — desktop/tablet only.
+// See COMPANION_FOLIO_PROPOSAL_2026.md.
+(function wireCompanionFolio() {
+  const toggle = document.getElementById('companion-toggle');
+  const swap   = document.getElementById('companion-swap');
+  if (!toggle || !swap) return;
+  toggle.addEventListener('click', () => {
+    const on = document.body.classList.toggle('companion-mode');
+    toggle.setAttribute('aria-pressed', String(on));
+    toggle.textContent = on ? 'Pure' : 'Folio';
+    swap.hidden = !on;
+    if (on) renderCompanionFolio();
+  });
+  swap.addEventListener('click', () => {
+    document.body.classList.toggle('folio-left');
+  });
+})();
+
+// Build the folio's contents from currentData.genealogy, filtered
+// to the prototype chapters. Static; not scroll-reactive. Called
+// when the reader enters companion mode and after loadText.
+function renderCompanionFolio() {
+  const inner = document.getElementById('folio-inner');
+  if (!inner) return;
+  inner.innerHTML = '';
+  if (!currentData || !currentData.genealogy || !currentData.genealogy.length) {
+    const empty = document.createElement('div');
+    empty.className = 'folio-empty';
+    empty.textContent = 'No augmentation for this text.';
+    inner.appendChild(empty);
+    return;
+  }
+  // Group prototype-chapter records by chapter, in canonical order.
+  const groups = new Map();
+  for (const r of currentData.genealogy) {
+    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
+    if (!a) continue;
+    const pid = a.split('::').pop();
+    const ch = _chapterKeyOf(pid);
+    if (!ch || !APPENDIX_PROTOTYPE_CHAPTERS.has(ch)) continue;
+    if (!groups.has(ch)) groups.set(ch, []);
+    groups.get(ch).push({ rec: r, pid });
+  }
+  if (!groups.size) {
+    const empty = document.createElement('div');
+    empty.className = 'folio-empty';
+    empty.textContent = 'No augmentation in the companion-folio prototype scope.';
+    inner.appendChild(empty);
+    return;
+  }
+  // Preserve chapter order — iterate prototype set as configured.
+  const orderedChapters = Array.from(APPENDIX_PROTOTYPE_CHAPTERS)
+    .filter(k => groups.has(k));
+  for (const ch of orderedChapters) {
+    const wrap = document.createElement('section');
+    wrap.className = 'folio-chapter';
+    const header = document.createElement('div');
+    header.className = 'folio-chapter-header';
+    const [book, num] = ch.split('.');
+    header.textContent = `${book.charAt(0).toUpperCase()+book.slice(1)} ${num}`;
+    wrap.appendChild(header);
+    for (const { rec, pid } of groups.get(ch)) {
+      const entry = document.createElement('article');
+      entry.className = 'folio-entry';
+      const v = document.createElement('div');
+      v.className = 'folio-verse';
+      v.textContent = _formatVerseRef(pid);
+      const t = document.createElement('div');
+      t.className = 'folio-title';
+      t.textContent = rec.title || '';
+      const body = document.createElement('pre');
+      body.className = 'folio-body';
+      body.textContent = rec.body || '';
+      entry.appendChild(v);
+      entry.appendChild(t);
+      entry.appendChild(body);
+      wrap.appendChild(entry);
+    }
+    inner.appendChild(wrap);
+  }
+}
+
 // ── Global corpus search ─────────────────────────────────────────────────────
 
 async function ensureGlobalIndex() {
@@ -5340,6 +5558,7 @@ async function loadText(entry, listItem) {
     allPassages  = data.passages;
     currentBook  = null;
     _recomputeChapterEnds();
+    if (typeof renderCompanionFolio === 'function') renderCompanionFolio();
 
     showMeta(data);
 
