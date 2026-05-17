@@ -687,20 +687,16 @@ body {
 }
 
 /* ── Bible cover — compact title-leaf layout ─────────────────────── */
-/* Two-column codex: main column (title, metadata, contents grid)
-   plus a quiet side column (citations). All 80 books fit on a
-   single laptop viewport without scrolling; the page reads as an
-   archival title leaf rather than a long marketing page. */
+/* A single-column codex title leaf: title and metadata sovereign
+   at the top, contents grid spanning the full width beneath, with
+   the citation apparatus tucked as a small disclosure under the
+   metadata so it never competes with the title or the contents.
+   The whole leaf fits on a single laptop viewport. */
 .bible-cover-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
-  column-gap: 32px;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 18px 28px 14px;
-  align-items: start;
+  padding: 18px 36px 14px;
 }
-.bible-cover-layout .bcl-main { min-width: 0; }
 .bible-cover-layout #continuous-cover {
   max-width: none;
   margin: 0;
@@ -751,11 +747,13 @@ body {
   letter-spacing: 0.04em;
   opacity: 0.7;
 }
-/* Six-column contents grid — 80 books / 6 cols = ~14 rows.
-   Tight line-height keeps the whole leaf within a normal
-   laptop viewport without losing readability. */
+/* Seven-column contents grid — 80 books / 7 cols ≈ 12 rows.
+   The extra column gives each cell more horizontal room so long
+   names (1 Thessalonians, Song of Three Young Men) mostly stay
+   on one line. Tight line-height keeps the whole leaf within a
+   normal laptop viewport without losing readability. */
 .bible-cover-layout .cc-toc-list {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 0 14px;
 }
 .bible-cover-layout .cc-toc-list li {
@@ -784,48 +782,63 @@ body {
   font-size: 0.8em;
   line-height: 1.15;
 }
-/* Side panel — citations as a quiet archival aside, off the
-   center line, secondary in weight. */
-.bible-cover-layout .bcl-side {
+/* Citation apparatus — small scholarly disclosure tucked under
+   the metadata. Closed by default so the title leaf reads as
+   architectural rather than configurational; click to consult.
+   Italic summary, transparent ground, no border. */
+.bible-cover-layout .cite-disclosure {
+  margin: 6px 0 0;
   font-family: Georgia, serif;
-  padding: 4px 0 0 24px;
+}
+.bible-cover-layout .cite-disclosure > summary {
+  display: inline-block;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.72em;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: var(--chrome-muted);
+  opacity: 0.62;
+  padding: 2px 0;
+  transition: opacity 0.2s;
+}
+.bible-cover-layout .cite-disclosure > summary::-webkit-details-marker { display: none; }
+.bible-cover-layout .cite-disclosure > summary::after {
+  content: ' \203A';
+  display: inline-block;
+  margin-left: 4px;
+  transform: rotate(90deg) translateY(-1px);
+  transition: transform 0.15s;
+}
+.bible-cover-layout .cite-disclosure[open] > summary::after {
+  transform: rotate(-90deg);
+}
+.bible-cover-layout .cite-disclosure > summary:hover { opacity: 0.95; }
+.bible-cover-layout .cite-disclosure .cc-citations {
+  margin: 4px 0 0;
+  max-width: 640px;
+  text-align: left;
+  padding-left: 12px;
   border-left: 1px solid rgba(120, 90, 50, 0.15);
 }
-.bible-cover-layout .bcl-side .cc-citations {
-  margin: 0;
-  max-width: none;
-  text-align: left;
-  font-family: Georgia, serif;
-}
-.bible-cover-layout .bcl-side .cc-cite-heading {
-  text-align: left;
-  font-family: Georgia, serif;
-  font-style: italic;
-  text-transform: none;
-  letter-spacing: 0.04em;
-  font-size: 0.74em;
-  font-weight: 400;
-  margin-bottom: 8px;
-  opacity: 0.55;
-}
-.bible-cover-layout .bcl-side .cc-cite {
+.bible-cover-layout .cite-disclosure .cc-cite-heading { display: none; }
+.bible-cover-layout .cite-disclosure .cc-cite {
   background: transparent;
-  padding: 6px 0;
-  font-size: 11px;
-  line-height: 1.48;
+  padding: 3px 0;
+  font-size: 10.5px;
+  line-height: 1.5;
   border-radius: 0;
-  margin-bottom: 2px;
+  margin: 0;
 }
-.bible-cover-layout .bcl-side .cc-cite:hover { background: rgba(0,0,0,0.03); }
-.bible-cover-layout .bcl-side .cc-cite::after {
+.bible-cover-layout .cite-disclosure .cc-cite:hover { background: rgba(0,0,0,0.025); }
+.bible-cover-layout .cite-disclosure .cc-cite::after {
   right: 0;
   font-size: 9px;
 }
-.bible-cover-layout .bcl-side .cc-cite-label {
-  display: block;
-  margin: 0 0 2px 0;
+.bible-cover-layout .cite-disclosure .cc-cite-label {
   font-size: 8.5px;
   opacity: 0.65;
+  margin-right: 4px;
 }
 .bible-cover-layout .cc-fm-btn-wrap {
   text-align: left;
@@ -846,18 +859,10 @@ body {
 
 @media (max-width: 900px) {
   .bible-cover-layout {
-    grid-template-columns: 1fr;
-    column-gap: 0;
     padding: 24px 16px 16px;
   }
-  .bible-cover-layout .bcl-side {
-    border-left: none;
-    border-top: 1px solid rgba(120, 90, 50, 0.15);
-    padding: 14px 0 0;
-    margin-top: 16px;
-  }
   .bible-cover-layout .cc-toc-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 @media (max-width: 560px) {
@@ -2435,6 +2440,15 @@ body:not(.in-reading) #object-viewer {
   opacity: 0 !important;
 }
 
+/* Title leaf is a threshold, not a reading-apparatus surface.
+   The browsing chrome (controls bar, nav-bar prev/next, in-text
+   translation switcher) belongs only inside an active reading
+   room. Defense in depth — keeps these out even if a different
+   code path (buildBookSelector, etc.) tries to display them. */
+body:not(.in-reading) #controls { display: none !important; }
+body:not(.in-reading) #nav-bar { display: none !important; }
+body:not(.in-reading) #translation-bar { display: none !important; }
+
 /* Chapter-room mode fuses the folio into the chapter stream —
    the separate #folio surface, its companion-toggle "Folio"
    button label, and the swap control all step out of the way.
@@ -3621,28 +3635,34 @@ body.viewer-active .folio-leaf-colophon {
   body.reading-compact #controls { padding: 6px 20px; }
   body.reading-compact #nav-bar { padding: 4px 20px; }
 
-  /* Manual toggle for reading mode. Quiet text button, pushed to the
-     right end of the controls bar. Stays visible in both states. */
+  /* Formatting toggle — a quiet italic apparatus button, never
+     the loudest thing in the room. Borderless by default; gains
+     a hair-rule underline when the apparatus is out so the
+     reader can tell its state without text changes. Pushed to
+     the right end of the controls bar. */
   #reading-mode-toggle {
     margin-left: auto;
     background: transparent;
-    border: 1px solid var(--chrome-border);
+    border: none;
     color: var(--chrome-muted);
     font-size: 12px;
     font-family: Georgia, serif;
     font-style: italic;
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: 3px 4px;
+    border-radius: 0;
     cursor: pointer;
-    transition: color 0.15s, border-color 0.15s;
+    opacity: 0.6;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s;
   }
   #reading-mode-toggle:hover {
     color: var(--chrome-active);
-    border-color: var(--chrome-active);
+    opacity: 1;
   }
-  body.reading-compact #reading-mode-toggle {
+  body:not(.reading-compact) #reading-mode-toggle {
     color: var(--chrome-active);
-    border-color: var(--chrome-active);
+    opacity: 1;
+    border-bottom: 1px solid currentColor;
   }
 }
 
@@ -3718,7 +3738,7 @@ body.viewer-active .folio-leaf-colophon {
         <button class="search-nav-btn" id="search-prev" disabled title="Previous match">&#9650;</button>
         <button class="search-nav-btn" id="search-next" disabled title="Next match">&#9660;</button>
       </div>
-      <button type="button" id="reading-mode-toggle" title="Collapse browsing controls" aria-pressed="false">Reading mode</button>
+      <button type="button" id="reading-mode-toggle" title="Summon formatting controls" aria-pressed="false">Formatting</button>
       <button type="button" id="companion-toggle" title="Show companion folio beside the text" aria-pressed="false">Folio</button>
       <button type="button" id="companion-swap" title="Move folio to the other side" aria-pressed="false" hidden>&#8646;</button>
     </div>
@@ -5814,7 +5834,7 @@ function showCover(data, entry) {
                                       && data.hierarchy[1] === 'chapter';
 
   let html = '';
-  if (isBibleCover) html += '<div class="bible-cover-layout"><div class="bcl-main">';
+  if (isBibleCover) html += '<div class="bible-cover-layout">';
   html += '<div id="continuous-cover">';
   html += `<div class="cc-title">${escapeHTML(data.title || '')}</div>`;
   if (authorTxt) html += `<div class="cc-author">${escapeHTML(authorTxt)}</div>`;
@@ -5846,8 +5866,18 @@ function showCover(data, entry) {
     `<div class="cc-cite"><span class="cc-cite-label">APA</span> <span class="cc-cite-text">${apa}</span></div>` +
     '</div>';
 
-  // Non-Bible texts keep citations centered in the cover block.
-  if (!isBibleCover) html += citationsHTML;
+  // Citation placement differs by hierarchy.
+  //   Non-Bible: centered inline beneath the title, as before.
+  //   Bible: a small <details> apparatus tucked under the
+  //   metadata so the title and contents stay sovereign.
+  if (!isBibleCover) {
+    html += citationsHTML;
+  } else {
+    html += '<details class="cite-disclosure">' +
+            '<summary>Cite this text</summary>' +
+            citationsHTML +
+            '</details>';
+  }
 
   if (data.stewardship_history_url) {
     html += `<div class="cc-stewardship"><a class="stewardship-link" href="${escapeHTML(data.stewardship_history_url)}">Stewardship history</a></div>`;
@@ -5898,13 +5928,7 @@ function showCover(data, entry) {
   }
   html += '</div>';
 
-  // Bible cover: close the main column and emit the side panel
-  // carrying the citations + stewardship link as a quieter aside.
-  if (isBibleCover) {
-    html += '</div><aside class="bcl-side">';
-    html += citationsHTML;
-    html += '</aside></div>';
-  }
+  if (isBibleCover) html += '</div>';
 
   $textHeader.innerHTML = html;
   $textHeader.style.display = 'block';
@@ -6047,6 +6071,11 @@ function enterReading(targetGroupKey) {
 
   $searchGroup.style.display = 'flex';
   document.getElementById('ctrl-contents').style.display = '';
+  // Ensure the controls bar is present in the reading room.
+  // Url-deep-link paths (?text=…&p=…) reach enterReading without
+  // first traversing browseHome/browseText, where the controls
+  // were previously enabled, so we enable here too.
+  document.getElementById('controls').style.display = '';
   // Restore reader scrollability. #reader ships with inline
   // overflow:hidden so the welcome view does not scroll inside it,
   // and browseHome() re-sets it. Reading entry must clear it or the
@@ -6061,6 +6090,11 @@ function enterReading(targetGroupKey) {
   // Reading context — folio + viewer may exist here. Orientation
   // surfaces (Home, Contents) clear this class to remove them.
   document.body.classList.add('in-reading');
+  // Reading is the default ontology of the room. Apparatus
+  // (display options, search, translation switcher, about-pill)
+  // recedes immediately; the reader can summon formatting via
+  // the quiet "Formatting" button when needed.
+  document.body.classList.add('reading-compact');
   // Folio quietly follows entry into reading — first to the book's
   // default augmented chapter, then refined to whichever chapter
   // the reader actually lands on (e.g. when jumping to a specific
@@ -6368,18 +6402,23 @@ $reader.addEventListener('scroll', () => {
   $backToTop.classList.toggle('visible', scrollTop > 400);
 }, { passive: true });
 
-// Manual reading-mode toggle (desktop). User explicitly enters
-// compact mode by clicking the button; explicitly leaves by clicking
-// again. No scroll-triggered behavior — the interface stays stable.
-// Mobile already has the consolidated running header; the toggle is
-// hidden there via CSS.
+// Formatting toggle (desktop). The reading room defaults to a
+// compact reading posture; this button summons the formatting
+// apparatus (Display, translation switcher, in-text search) on
+// demand and hides it again. No scroll-triggered behavior — the
+// interface stays stable. Mobile already has the consolidated
+// running header; the toggle is hidden there via CSS.
 (function wireReadingModeToggle() {
   const btn = document.getElementById('reading-mode-toggle');
   if (!btn) return;
+  btn.textContent = 'Formatting';
+  btn.title = 'Summon formatting controls';
   btn.addEventListener('click', () => {
     const compact = document.body.classList.toggle('reading-compact');
-    btn.textContent = compact ? 'Show controls' : 'Reading mode';
-    btn.setAttribute('aria-pressed', String(compact));
+    // The label stays the same; aria-pressed conveys state, and
+    // CSS quietly shifts the active style when the apparatus is
+    // out. The button is never the loudest thing in the room.
+    btn.setAttribute('aria-pressed', String(!compact));
   });
 })();
 
