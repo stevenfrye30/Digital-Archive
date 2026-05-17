@@ -470,6 +470,32 @@ body {
   line-height: 1.2;
 }
 
+/* Chapter-room mode — two-line manuscript header: book title
+   sovereign in a large hand, chapter mark subordinate beneath
+   in a quieter italic. The room itself frames the chapter, so
+   nothing else needs to repeat the context. */
+.chapter-heading.chapter-room-heading {
+  padding: 64px 0 56px;
+  font-weight: 500;
+}
+.chapter-room-heading .ch-title {
+  font-family: Georgia, serif;
+  font-size: 1em;
+  letter-spacing: 0.015em;
+  font-weight: 500;
+}
+.chapter-room-heading .ch-sub {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.46em;
+  letter-spacing: 0.18em;
+  margin-top: 14px;
+  opacity: 0.58;
+  text-transform: lowercase;
+  color: var(--chrome-muted);
+}
+
 /* ── Text title page + TOC (separate view from reading) ──────────── */
 
 #text-header { display: none; }
@@ -2227,6 +2253,129 @@ body:not(.in-reading) #folio { display: none !important; }
 body:not(.in-reading) #object-viewer {
   visibility: hidden !important;
   opacity: 0 !important;
+}
+
+/* Chapter-room mode fuses the folio into the chapter stream —
+   the separate #folio surface, its companion-toggle "Folio"
+   button label, and the swap control all step out of the way.
+   The companion toggle still controls inline witness visibility
+   via body.companion-mode. */
+body.chapter-room #folio { display: none !important; }
+body.chapter-room.companion-mode #folio { display: none !important; }
+body.chapter-room #companion-swap { display: none !important; }
+
+/* Chapter-room — codex two-column flow.
+   Each verse occupies its own grid row: the passage in the text
+   column, anchored witnesses in a quiet margin column to the
+   right. When the companion toggle is off (or no witness is
+   anchored to this verse) the margin column simply remains
+   empty and the text reads as a plain manuscript. */
+body.chapter-room .cr-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  column-gap: 36px;
+  align-items: start;
+}
+body.chapter-room:not(.companion-mode) .cr-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+body.chapter-room .cr-margin-witness {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 6px 0 6px 0;
+  text-align: left;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.78em;
+  line-height: 1.5;
+  color: var(--chrome-muted);
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  align-self: start;
+  /* Settle the witness near the verse's typographic baseline
+     rather than the row's grid edge, so the witness reads as a
+     marginal annotation beside the passage rather than aligned
+     to a UI grid. */
+  margin-top: 0.35em;
+  letter-spacing: 0.01em;
+}
+body.chapter-room.companion-mode .cr-margin-witness { display: block; }
+body.chapter-room .cr-margin-witness:hover { opacity: 0.95; }
+body.chapter-room .cr-margin-witness[data-kind="plate"] .cr-mw-title::before {
+  content: '\25AB\00A0\00A0';
+  opacity: 0.7;
+}
+body.chapter-room .cr-margin-witness[data-kind="genealogy"] .cr-mw-title::before {
+  content: '\2766\00A0\00A0';
+  opacity: 0.55;
+}
+@media (max-width: 800px) {
+  body.chapter-room .cr-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  body.chapter-room.companion-mode .cr-margin-witness {
+    margin: 6px 0 14px 110px;
+    padding-left: 0;
+  }
+}
+
+/* Chapter-room — bottom traversal rubric. A quiet threshold to
+   the next room: small italic, hair-rule above, no chrome. Reads
+   as a manuscript catchword, not a pagination control. */
+.chapter-traverse {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 32px;
+  margin: 96px auto 64px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(120, 90, 50, 0.18);
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--chrome-muted);
+  max-width: 880px;
+}
+.ch-traverse {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 0;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  font: inherit;
+  font-style: italic;
+  color: inherit;
+  opacity: 0.62;
+  transition: opacity 0.3s;
+  letter-spacing: 0.02em;
+}
+.ch-traverse:hover { opacity: 1; }
+.ch-traverse-direction {
+  font-size: 0.78em;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  opacity: 0.62;
+}
+.ch-traverse-target {
+  font-size: 0.94em;
+  letter-spacing: 0.02em;
+}
+.ch-traverse-mark {
+  font-size: 1.1em;
+  opacity: 0.6;
+}
+.ch-traverse-filler { width: 1px; }
+@media (max-width: 800px) {
+  .chapter-traverse {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin: 64px 20px 48px;
+  }
+  .ch-next { justify-content: flex-end; }
 }
 
 /* Below the companion breakpoint, hide companion controls and
@@ -4277,7 +4426,16 @@ function formatRef(p) {
 
 function groupName(key) {
   const level = topLevel();
-  if (level === 'book')      return BOOK_NAMES[key] || key;
+  if (level === 'book') {
+    // Chapter-scoped Bible groups are "book.chapter" — render as
+    // "Genesis 1". Plain book keys keep their friendly name.
+    if (_isChapterScopedHierarchy() && typeof key === 'string' && key.includes('.')) {
+      const [bk, ch] = key.split('.');
+      const name = BOOK_NAMES[bk] || bk;
+      return `${name} ${ch}`;
+    }
+    return BOOK_NAMES[key] || key;
+  }
   if (level === 'surah')     return SURAH_NAMES[Number(key)] || `Surah ${key}`;
   if (level === 'upanishad') return UPANISHAD_NAMES[key] || key;
   if (level === 'sutta') {
@@ -4556,6 +4714,17 @@ function findGenealogyForPassage(passageId) {
   );
 }
 
+// Unsuppressed witness lookup — returns every witness record
+// anchored to a passage, regardless of prototype-chapter status.
+// Used by chapter-room mode where margin witnesses replace both
+// the inline ❦ marker and the chapter appendix.
+function _witnessesForPassage(passageId) {
+  if (!currentData || !currentData.genealogy) return [];
+  return currentData.genealogy.filter(r =>
+    (r.anchors || []).some(a => (a.target || '').split('::').pop() === passageId)
+  );
+}
+
 function _findGenealogyForChapter(chapterKey) {
   if (!currentData || !currentData.genealogy) return [];
   return currentData.genealogy.filter(r =>
@@ -4626,6 +4795,7 @@ function toggleGenealogyBody(passageDiv, rec) {
 }
 
 function _renderBatch(passages, query, frag) {
+  const chapterRoom = _isChapterScopedHierarchy() && document.body.classList.contains('chapter-room');
   for (const p of passages) {
     const div = document.createElement('div');
     div.className = 'passage';
@@ -4633,7 +4803,11 @@ function _renderBatch(passages, query, frag) {
 
     const ref = document.createElement('span');
     ref.className   = 'ref clickable-ref';
-    ref.textContent = formatRef(p);
+    // In chapter-room mode the room title already establishes
+    // book + chapter, so the verse label is just the numeral.
+    ref.textContent = (chapterRoom && p.path && p.path.length === 3)
+      ? String(p.path[2])
+      : formatRef(p);
     ref.title       = 'Click to copy link to this passage';
     ref.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -4643,19 +4817,23 @@ function _renderBatch(passages, query, frag) {
     div.appendChild(ref);
 
     // Genealogy markers — one per anchored record on this passage.
-    const geneRecords = findGenealogyForPassage(p.id);
-    for (const rec of geneRecords) {
-      const marker = document.createElement('a');
-      marker.className = 'genealogy-ref';
-      marker.href = '#';
-      marker.textContent = '❦'; // ❦ aldus leaf
-      marker.title = rec.title || 'Genealogy';
-      marker.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleGenealogyBody(div, rec);
-      });
-      div.appendChild(marker);
+    // Chapter-room mode renders witnesses as margin entries beside
+    // the verse instead of the inline ❦ marker.
+    if (!chapterRoom) {
+      const geneRecords = findGenealogyForPassage(p.id);
+      for (const rec of geneRecords) {
+        const marker = document.createElement('a');
+        marker.className = 'genealogy-ref';
+        marker.href = '#';
+        marker.textContent = '❦'; // ❦ aldus leaf
+        marker.title = rec.title || 'Genealogy';
+        marker.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleGenealogyBody(div, rec);
+        });
+        div.appendChild(marker);
+      }
     }
 
     const flatText = p.text.replace(/\n/g, ' ');
@@ -4810,21 +4988,59 @@ function _renderBatch(passages, query, frag) {
       }
     }
 
-    frag.appendChild(div);
+    if (chapterRoom) {
+      // Chapter-room layout — each verse gets its own grid row
+      // containing the passage in the text column and (when
+      // companion mode is on) any anchored witnesses in the
+      // margin column. The wrapper participates in the chapter
+      // stream as one row; the .passage itself keeps its own
+      // structure intact.
+      const row = document.createElement('div');
+      row.className = 'cr-row';
+      row.dataset.pid = p.id;
+      row.appendChild(div);
+      const witnesses = _witnessesForPassage(p.id);
+      for (const rec of witnesses) {
+        row.appendChild(_renderMarginWitness(rec, p.id));
+      }
+      if (witnesses.length) row.classList.add('has-witness');
+      frag.appendChild(row);
+    } else {
+      frag.appendChild(div);
 
-    // Chapter appendix (prototype): when the rendered passage is the
-    // last verse of a prototype chapter, render the chapter's
-    // augmentation as a quiet section after it. The inline ❦
-    // markers are already suppressed for these chapters in
-    // findGenealogyForPassage. See CHAPTER_APPENDIX_PROPOSAL_2026.md.
-    if (_lastInChapterIds.has(p.id)) {
-      const chKey = _chapterKeyOf(p);
-      if (chKey && APPENDIX_PROTOTYPE_CHAPTERS.has(chKey)) {
-        const appendix = buildChapterAppendix(chKey);
-        if (appendix) frag.appendChild(appendix);
+      // Chapter appendix (prototype): when the rendered passage is
+      // the last verse of a prototype chapter, render the chapter's
+      // augmentation as a quiet section after it. Suppressed in
+      // chapter-room mode where margin witnesses replace it.
+      if (_lastInChapterIds.has(p.id)) {
+        const chKey = _chapterKeyOf(p);
+        if (chKey && APPENDIX_PROTOTYPE_CHAPTERS.has(chKey)) {
+          const appendix = buildChapterAppendix(chKey);
+          if (appendix) frag.appendChild(appendix);
+        }
       }
     }
   }
+}
+
+// Margin witness renderer for chapter-room mode — a quiet
+// typographic anchor in the margin column. Clicking opens the
+// existing consultation chamber via _openFolioObject(rec.id).
+// Kind ornaments mirror the previous folio register so the
+// visual register stays familiar.
+function _renderMarginWitness(rec, pid) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'cr-margin-witness';
+  btn.dataset.kind = rec.kind || 'genealogy';
+  btn.dataset.recid = rec.id;
+  btn.dataset.pid = pid;
+  const t = document.createElement('span');
+  t.className = 'cr-mw-title';
+  t.textContent = rec.title || '';
+  btn.appendChild(t);
+  btn.addEventListener('click', () => _openFolioObject(rec.id));
+  return btn;
 }
 
 function render(passages, query) {
@@ -4846,6 +5062,55 @@ function render(passages, query) {
     $passages.appendChild(frag);
     _addLoadMoreBtn();
   }
+
+  // Chapter-room: append a quiet bottom rubric for moving to the
+  // previous/next chapter — turning a folio, not paginating.
+  if (_isChapterScopedHierarchy() && document.body.classList.contains('chapter-room')) {
+    _appendChapterTraverse();
+  }
+}
+
+// Quiet bottom-of-chapter prev/next. Restrained typographic
+// rubric: small italic "Previous: Genesis Ch N" on the left and
+// "Next: Genesis Ch M" on the right, separated by a thin rule.
+// Not a pagination control; reads as a manuscript threshold.
+function _appendChapterTraverse() {
+  const idx = groupKeys.indexOf(currentBook);
+  if (idx < 0) return;
+  const prevKey = idx > 0 ? groupKeys[idx - 1] : null;
+  const nextKey = idx < groupKeys.length - 1 ? groupKeys[idx + 1] : null;
+  if (!prevKey && !nextKey) return;
+  const wrap = document.createElement('nav');
+  wrap.className = 'chapter-traverse';
+  const labelFor = (k) => {
+    const [bk, ch] = String(k).split('.');
+    return `${BOOK_NAMES[bk] || bk} Ch ${ch}`;
+  };
+  if (prevKey) {
+    const a = document.createElement('button');
+    a.type = 'button';
+    a.className = 'ch-traverse ch-prev';
+    a.innerHTML = `<span class="ch-traverse-mark">←</span><span class="ch-traverse-direction">Previous</span><span class="ch-traverse-target">${escapeHTML(labelFor(prevKey))}</span>`;
+    a.addEventListener('click', () => navTo(idx - 1));
+    wrap.appendChild(a);
+  } else {
+    const filler = document.createElement('span');
+    filler.className = 'ch-traverse-filler';
+    wrap.appendChild(filler);
+  }
+  if (nextKey) {
+    const a = document.createElement('button');
+    a.type = 'button';
+    a.className = 'ch-traverse ch-next';
+    a.innerHTML = `<span class="ch-traverse-direction">Next</span><span class="ch-traverse-target">${escapeHTML(labelFor(nextKey))}</span><span class="ch-traverse-mark">→</span>`;
+    a.addEventListener('click', () => navTo(idx + 1));
+    wrap.appendChild(a);
+  } else {
+    const filler = document.createElement('span');
+    filler.className = 'ch-traverse-filler';
+    wrap.appendChild(filler);
+  }
+  $passages.appendChild(wrap);
 }
 
 function _addLoadMoreBtn() {
@@ -4881,6 +5146,32 @@ function needsGroupSelector() {
       || t === 'section' || t === 'volume' || t === 'treatise';
 }
 
+// Chapter-room mode — for Bible-shaped texts (book.chapter.verse),
+// the reading room is bounded to a single chapter. The "group" in
+// groupKeys / navTo / filterAndRender is the compound book.chapter
+// key (e.g. "gen.1"), so prev/next walks chapter by chapter rather
+// than book by book, and the chapter sits in its own room with
+// witnesses integrated into the same scroll. Non-Bible texts are
+// untouched.
+function _isChapterScopedHierarchy() {
+  const h = currentMeta && currentMeta.hierarchy;
+  return Array.isArray(h) && h[0] === 'book' && h[1] === 'chapter';
+}
+// Compute the first chapter group key for a book code (e.g.
+// 'gen' -> 'gen.1'). Scans data.passages so it works before
+// groupKeys has been built (e.g. when wiring TOC clicks from
+// the cover view). Defaults to '.1' if the book has no entries
+// (shouldn't happen in practice).
+function _firstChapterOfBook(bookKey, data) {
+  const ps = (data && data.passages) || allPassages || [];
+  for (const p of ps) {
+    if (p.path && String(p.path[0]) === String(bookKey)) {
+      return `${bookKey}.${p.path[1]}`;
+    }
+  }
+  return `${bookKey}.1`;
+}
+
 function toRoman(n) {
   const map = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],
                [50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];
@@ -4908,8 +5199,13 @@ function buildBookSelector() {
 
   const seen = new Set();
   groupKeys  = [];
+  // For Bible-shaped texts the group is book.chapter so prev/next
+  // and filterAndRender treat each chapter as its own room.
+  const chapterScoped = _isChapterScopedHierarchy();
   for (const p of allPassages) {
-    const k = String(p.path[0]);
+    const k = chapterScoped
+      ? `${p.path[0]}.${p.path[1]}`
+      : String(p.path[0]);
     if (!seen.has(k)) { seen.add(k); groupKeys.push(k); }
   }
 
@@ -4965,6 +5261,12 @@ function buildBookSelector() {
 // ── Navigation ───────────────────────────────────────────────────────────────
 
 function updateNav() {
+  // Chapter-room mode owns its own traversal at the foot of the
+  // room — the top nav-bar stays out of the way.
+  if (document.body.classList.contains('chapter-room')) {
+    $navBar.style.display = 'none';
+    return;
+  }
   if (!needsGroupSelector() || groupKeys.length === 0) {
     $navBar.style.display = 'none';
     return;
@@ -5040,7 +5342,21 @@ function navTo(idx) {
   if (existingHeader) existingHeader.remove();
   const heading = document.createElement('div');
   heading.className = 'chapter-heading';
-  heading.textContent = groupName(currentBook);
+  if (_isChapterScopedHierarchy() && currentBook && currentBook.includes('.')) {
+    const [bk, ch] = String(currentBook).split('.');
+    const bookName = BOOK_NAMES[bk] || bk;
+    const title = document.createElement('div');
+    title.className = 'ch-title';
+    title.textContent = bookName;
+    const sub = document.createElement('div');
+    sub.className = 'ch-sub';
+    sub.textContent = `Ch ${ch}`;
+    heading.classList.add('chapter-room-heading');
+    heading.appendChild(title);
+    heading.appendChild(sub);
+  } else {
+    heading.textContent = groupName(currentBook);
+  }
   $passages.prepend(heading);
 
   $reader.scrollTop = 0;
@@ -5085,8 +5401,15 @@ function filterAndRender() {
     // Show only front-matter passages
     passages = allPassages.filter(p => p.fm);
   } else if (needsGroupSelector() && currentBook) {
-    // Show chapter, exclude front matter
-    passages = allPassages.filter(p => String(p.path[0]) === currentBook && !p.fm);
+    if (_isChapterScopedHierarchy()) {
+      // Bible-shaped: currentBook is a "book.chapter" key.
+      passages = allPassages.filter(p =>
+        !p.fm && p.path && `${p.path[0]}.${p.path[1]}` === currentBook
+      );
+    } else {
+      // Show chapter, exclude front matter
+      passages = allPassages.filter(p => String(p.path[0]) === currentBook && !p.fm);
+    }
   } else {
     // Show all, exclude front matter
     passages = allPassages.filter(p => !p.fm);
@@ -5406,7 +5729,13 @@ function showCover(data, entry) {
     fmBtn.addEventListener('click', () => enterReading('__fm__'));
   }
 
-  // Wire TOC clicks — each opens the reading view
+  // Wire TOC clicks — each opens the reading view.
+  // For Bible-shaped texts the click on a book enters that book's
+  // first chapter (e.g. clicking Genesis → Genesis 1 room), not the
+  // whole book as one stream.
+  const chapterScoped = (currentMeta && currentMeta.hierarchy &&
+                         currentMeta.hierarchy[0] === 'book' &&
+                         currentMeta.hierarchy[1] === 'chapter');
   $textHeader.querySelectorAll('.cc-toc-list li').forEach(li => {
     li.addEventListener('click', () => {
       const book = li.dataset.book;
@@ -5414,6 +5743,10 @@ function showCover(data, entry) {
         enterReading('__fm__');
       } else if (book === '__all__') {
         enterReading();
+      } else if (chapterScoped) {
+        const ch = _firstChapterOfBook(book, currentData);
+        currentBook = ch;
+        enterReading(ch);
       } else {
         currentBook = book;
         enterReading(book);
@@ -5425,8 +5758,11 @@ function showCover(data, entry) {
   const beginBtn = document.getElementById('cc-begin-btn');
   if (beginBtn) {
     beginBtn.addEventListener('click', () => {
-      currentBook = keys[0];
-      enterReading(keys[0]);
+      const k = chapterScoped
+        ? _firstChapterOfBook(keys[0], currentData)
+        : keys[0];
+      currentBook = k;
+      enterReading(k);
     });
   }
 
@@ -5447,21 +5783,33 @@ function enterReading(targetGroupKey) {
   buildBookSelector();
   buildTranslationSwitcher(currentEntry);
 
-  // Always show nav bar
-  $navBar.style.display = 'flex';
-  if (needsGroupSelector() && currentBook && currentBook !== '__fm__') {
-    // Structured text with chapters — enable prev/next
+  const chapterRoom = _isChapterScopedHierarchy() && currentBook && currentBook !== '__fm__';
+  document.body.classList.toggle('chapter-room', !!chapterRoom);
+
+  if (chapterRoom) {
+    // Chapter-room mode — the reading room is bounded to one
+    // chapter. No top nav bar / book selector — traversal happens
+    // via the quiet bottom rubric appended after the chapter body.
+    $navBar.style.display = 'none';
     const idx = groupKeys.indexOf(currentBook);
-    if (idx >= 0) {
-      groupIndex = idx;
-      updateNav();
-    }
+    if (idx >= 0) groupIndex = idx;
   } else {
-    $navPrev.disabled = true;
-    $navNext.disabled = true;
-    const navLabelFlat = $navLocation.querySelector('.nav-location-label') || $navLocation;
-    navLabelFlat.textContent = `${allPassages.filter(p => !p.fm).length} passages`;
-    _updateMobileNavSubtitle(null);
+    // Always show nav bar
+    $navBar.style.display = 'flex';
+    if (needsGroupSelector() && currentBook && currentBook !== '__fm__') {
+      // Structured text with chapters — enable prev/next
+      const idx = groupKeys.indexOf(currentBook);
+      if (idx >= 0) {
+        groupIndex = idx;
+        updateNav();
+      }
+    } else {
+      $navPrev.disabled = true;
+      $navNext.disabled = true;
+      const navLabelFlat = $navLocation.querySelector('.nav-location-label') || $navLocation;
+      navLabelFlat.textContent = `${allPassages.filter(p => !p.fm).length} passages`;
+      _updateMobileNavSubtitle(null);
+    }
   }
 
   filterAndRender();
@@ -5473,7 +5821,26 @@ function enterReading(targetGroupKey) {
   if (showHeading) {
     const heading = document.createElement('div');
     heading.className = 'chapter-heading';
-    heading.textContent = currentBook === '__fm__' ? 'Front Matter' : groupName(currentBook);
+    if (currentBook === '__fm__') {
+      heading.textContent = 'Front Matter';
+    } else if (chapterRoom) {
+      // Two-line manuscript header: book title sovereign, chapter
+      // mark subordinate beneath. The room itself establishes the
+      // chapter context — verse labels can stay simple numerals.
+      const [bk, ch] = String(currentBook).split('.');
+      const bookName = BOOK_NAMES[bk] || bk;
+      const title = document.createElement('div');
+      title.className = 'ch-title';
+      title.textContent = bookName;
+      const sub = document.createElement('div');
+      sub.className = 'ch-sub';
+      sub.textContent = `Ch ${ch}`;
+      heading.classList.add('chapter-room-heading');
+      heading.appendChild(title);
+      heading.appendChild(sub);
+    } else {
+      heading.textContent = groupName(currentBook);
+    }
     $passages.prepend(heading);
   }
 
@@ -5528,6 +5895,8 @@ function showToc(data, entry) {
     : `${data.passages.length.toLocaleString()} passages`;
 
   $tocList.innerHTML = '';
+  const chapterScoped = (data.hierarchy && data.hierarchy[0] === 'book'
+                                        && data.hierarchy[1] === 'chapter');
   if (grouped) {
     keys.forEach((k, i) => {
       const li = document.createElement('li');
@@ -5536,10 +5905,21 @@ function showToc(data, entry) {
       num.textContent = String(i + 1);
       const name = document.createElement('span');
       name.className = 'toc-name';
-      name.textContent = groupName(k);
+      // In chapter-scoped mode keys are book codes — render with
+      // the book's friendly name even though groupName now expects
+      // compound keys for chapter-scoped texts.
+      name.textContent = chapterScoped
+        ? (BOOK_NAMES[k] || k)
+        : groupName(k);
       li.appendChild(num);
       li.appendChild(name);
-      li.addEventListener('click', () => enterReading(k));
+      li.addEventListener('click', () => {
+        if (chapterScoped) {
+          enterReading(_firstChapterOfBook(k, data));
+        } else {
+          enterReading(k);
+        }
+      });
       $tocList.appendChild(li);
     });
   } else {
@@ -5735,6 +6115,9 @@ $reader.addEventListener('scroll', scheduleBookmark, { passive: true });
 // to follow again.
 let _chapterTrackTimer = null;
 function _trackReadingChapter() {
+  // Chapter-room mode fuses the folio into the chapter stream;
+  // no separate folio panel to retune.
+  if (document.body.classList.contains('chapter-room')) return;
   clearTimeout(_chapterTrackTimer);
   _chapterTrackTimer = setTimeout(() => {
     if (!document.body.classList.contains('companion-mode')) return;
@@ -6151,6 +6534,9 @@ function _setFolioChapter(chapterKey) {
 // the first available augmented chapter overall. No scroll, no
 // viewport detection.
 function _maybeRetuneFolioToCurrentBook() {
+  // Chapter-room mode owns the witness ecology — no separate
+  // folio surface to retune.
+  if (document.body.classList.contains('chapter-room')) return;
   if (!document.body.classList.contains('companion-mode')) return;
   // An intentional reading-context shift (book change, entering a
   // text, etc.) re-engages auto-tracking. The reader is starting
@@ -6183,6 +6569,25 @@ function renderCompanionFolio() {
   if (!inner) return;
   inner.innerHTML = '';
   if (encInner) encInner.innerHTML = '';
+  // Chapter-room mode owns the folio surface inline within the
+  // chapter stream. The standalone #folio is hidden; here we only
+  // need to render the consultation chamber when a witness is
+  // summoned.
+  if (document.body.classList.contains('chapter-room')) {
+    if (_folioMode === 'object' && _openFolioRecordId && encInner) {
+      const rec = (currentData.genealogy || []).find(r => r.id === _openFolioRecordId);
+      if (rec) {
+        const a = rec.anchors && rec.anchors[0] && rec.anchors[0].target;
+        const pid = a ? a.split('::').pop() : '';
+        encInner.appendChild(_renderFolioObjectLeaf(rec, pid));
+      } else {
+        _folioMode = 'list';
+        _openFolioRecordId = null;
+        _setViewerActive(false);
+      }
+    }
+    return;
+  }
   const chapters = _availableFolioChapters();
   if (!chapters.length) {
     // No augmented chapters means no surface for an encounter.
@@ -6437,12 +6842,18 @@ async function loadText(entry, listItem) {
     if (!pendingPid) url.searchParams.delete('p');
     history.replaceState(null, '', url);
 
+    const chapterScoped = data.hierarchy && data.hierarchy[0] === 'book'
+                                         && data.hierarchy[1] === 'chapter';
     if (pendingPid) {
       const target = passageById(pendingPid);
       if (target) {
-        // Jump past the cover, honor the group the passage lives in
+        // Jump past the cover, honor the group the passage lives in.
+        // For chapter-scoped Bible texts the group is book.chapter
+        // so the room opens directly to the right chapter.
         if (target.path && target.path.length) {
-          currentBook = String(target.path[0]);
+          currentBook = chapterScoped
+            ? `${target.path[0]}.${target.path[1]}`
+            : String(target.path[0]);
         }
         $infoBar.style.display = 'flex';
         enterReading();
@@ -6456,7 +6867,9 @@ async function loadText(entry, listItem) {
       const first = allPassages.find(
         p => p.path && String(p.path[0]) === pendingSection);
       if (first) {
-        currentBook = String(first.path[0]);
+        currentBook = chapterScoped
+          ? `${first.path[0]}.${first.path[1]}`
+          : String(first.path[0]);
         $infoBar.style.display = 'flex';
         enterReading();
         requestAnimationFrame(() => jumpToPassage(first.id, true));
@@ -7373,6 +7786,7 @@ function backToContents() {
     _closeFolioObject();
   }
   document.body.classList.remove('in-reading');
+  document.body.classList.remove('chapter-room');
   showCover(currentData, currentEntry);
   document.getElementById('ctrl-contents').style.display = 'none';
 }
@@ -7385,6 +7799,7 @@ function browseHome() {
     _closeFolioObject();
   }
   document.body.classList.remove('in-reading');
+  document.body.classList.remove('chapter-room');
   $browse.style.display = 'none';
   document.getElementById('controls').style.display = 'none';
   document.getElementById('welcome').style.display = '';
