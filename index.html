@@ -2385,16 +2385,17 @@ body.companion-mode #companion-toggle {
   transition: opacity 0.25s;
 }
 .folio-leaf-return:hover { opacity: 1; }
-/* In the manuscript encounter state the return gains a little
-   more typographic weight — a chapter rubric set above the
-   witness, not a small dismiss link. Still italic, still
-   serif, still no chrome — just clearer cadence. */
+/* In the consultation chamber the return rubric becomes a quiet
+   archival presence — a small italic chapter mark, not a dismiss
+   link. Dismissal is spatial (click outside the object); the
+   rubric is a courtesy, not a requirement. */
 body.viewer-active .folio-leaf-return {
-  font-size: 0.95em;
-  opacity: 0.82;
-  padding-bottom: 44px;
+  font-size: 0.82em;
+  opacity: 0.52;
+  padding-bottom: 36px;
   letter-spacing: 0.01em;
 }
+body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
 .folio-leaf-verse {
   font-family: Georgia, serif;
   font-style: italic;
@@ -2464,13 +2465,25 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
   align-items: center;
 }
 /* The engraving dominates: only the return rubric above and the
-   plaque + provenance below claim vertical space. ~220px reserve
-   for the viewer padding, return rubric, plaque, and a small
-   buffer — the rest is the plate. */
+   plaque + also-in register below claim vertical space. The mat
+   holds the image with a thin warm hairline and a slight inner
+   mount tone — restrained passe-partout, no frame, no bevel, no
+   shadow. The mount reads as material presence, not decoration. */
+.folio-leaf[data-kind="plate"] .folio-plate-mat {
+  background: rgba(245, 235, 215, 0.025);
+  border: 1px solid rgba(245, 235, 215, 0.16);
+  padding: 14px;
+  display: inline-block;
+  line-height: 0;
+}
 .folio-leaf[data-kind="plate"] .folio-plate {
   display: block;
   max-width: 100%;
-  max-height: calc(100vh - 220px);
+  /* Slightly more vertical room — the mat adds ~30px of chrome,
+     but the engraving still claims most of the chamber height.
+     230px reserve accounts for viewer padding, return rubric, mat
+     border, plaque, and the also-in register beneath. */
+  max-height: calc(100vh - 230px);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -2539,6 +2552,62 @@ body.viewer-active .folio-leaf-colophon {
   color: var(--chrome-muted);
   opacity: 0.55;
   letter-spacing: 0.04em;
+}
+
+/* Also-in register — other witnesses in the same chapter, sitting
+   quietly beneath the consulted object. The chamber becomes a
+   witness field: the reader can move between witnesses without
+   leaving. Restrained typographic cross-reference, manuscript-like.
+   Not a carousel, not arrows, not thumbnails. */
+.folio-also-in {
+  display: block;
+  margin: 48px auto 0;
+  max-width: 520px;
+  text-align: center;
+  font-family: Georgia, serif;
+}
+.folio-also-in-heading {
+  font-style: italic;
+  font-size: 0.72em;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  opacity: 0.42;
+  margin-bottom: 14px;
+}
+.folio-also-in-heading::before { content: '\00B7  '; }
+.folio-also-in-heading::after  { content: '  \00B7'; }
+.folio-also-in-entry {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  font: inherit;
+  font-style: italic;
+  font-size: 0.88em;
+  color: inherit;
+  opacity: 0.62;
+  transition: opacity 0.3s;
+  line-height: 1.5;
+}
+.folio-also-in-entry:hover { opacity: 0.92; }
+.folio-also-in-entry[data-kind="plate"]::before {
+  content: '\25AB\00A0\00A0';
+  opacity: 0.7;
+}
+.folio-also-in-entry[data-kind="genealogy"]::before {
+  content: '\2766\00A0\00A0';
+  opacity: 0.55;
+}
+/* On the dark plate chamber, register reads in cream-ink against
+   the charcoal backdrop, in keeping with the plaque. On the text
+   leaf, it inherits the warm paper ink. */
+.folio-leaf[data-kind="plate"] .folio-also-in {
+  color: rgba(245, 235, 215, 0.7);
+}
+.folio-leaf[data-kind="plate"] .folio-also-in-entry {
+  color: rgba(245, 235, 215, 0.7);
 }
 
 /* Vertical genealogy rendering — per-line blocks whose
@@ -5820,16 +5889,34 @@ $reader.addEventListener('scroll', () => {
   });
 })();
 
-// Click-outside dismissal for the object viewer. A click that
-// lands on the viewer's backdrop (not on the inner leaf or any
-// of its children) closes the viewer and returns to the reading
-// state beneath. Escape is wired separately on the global
-// keydown listener.
+// Spatial dismissal — the dark chamber is a room, not a modal.
+// Any click that lands outside the consulted object closes the
+// viewer and returns to the reading room. The "consulted object"
+// differs by witness kind:
+//   - plate: the plate-wrap (engraving + plaque)
+//   - text:  the paper leaf itself (anywhere inside the parchment)
+// In every kind, the return rubric and the also-in register also
+// count as on-object surfaces. Escape is wired separately on the
+// global keydown listener.
 (function wireViewerDismiss() {
   const viewer = document.getElementById('object-viewer');
   if (!viewer) return;
   viewer.addEventListener('click', (e) => {
-    if (e.target === viewer) _closeFolioObject();
+    const leaf = e.target.closest('.folio-leaf');
+    if (!leaf) { _closeFolioObject(); return; }
+    if (leaf.dataset.kind === 'plate') {
+      // For plate chambers the leaf is transparent; only the wrap,
+      // the return rubric, and the also-in register are on-object.
+      // Clicks in the dark around the engraving dismiss.
+      if (!e.target.closest('.folio-plate-wrap, .folio-leaf-return, .folio-also-in')) {
+        _closeFolioObject();
+      }
+      return;
+    }
+    // Text witnesses: the paper leaf is the object. Clicks land on
+    // parchment, paper margin, or any internal element — all
+    // on-object. Dismiss only fires when the click misses the leaf
+    // entirely, handled by the early-return above.
   });
 })();
 
@@ -5931,6 +6018,7 @@ function _renderFolioObjectLeaf(rec, pid) {
     // verse/title block above. The engraving sits in the dark with
     // a compact plaque (title · verse · provenance) directly beneath.
     leaf.appendChild(_renderPlate(rec, pid, chKey));
+    _appendAlsoInRegister(leaf, rec.id, chKey);
     return leaf;
   }
 
@@ -5965,7 +6053,50 @@ function _renderFolioObjectLeaf(rec, pid) {
   colophon.className = 'folio-leaf-colophon';
   colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
   leaf.appendChild(colophon);
+  _appendAlsoInRegister(leaf, rec.id, chKey);
   return leaf;
+}
+
+// Other witnesses in the same chapter — rendered as a quiet
+// typographic register beneath the consulted object. The chamber
+// becomes a witness field: the reader can move between witnesses
+// without leaving. Restrained, manuscript-like cross-reference;
+// not a gallery, not a carousel, not arrows. Clicking an entry
+// transitions the chamber to that witness without closing the
+// viewer, so the chamber persists as a consultation space rather
+// than a per-object modal.
+function _appendAlsoInRegister(leaf, currentId, chKey) {
+  if (!chKey || !currentData || !currentData.genealogy) return;
+  const records = currentData.genealogy.filter(r => {
+    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
+    if (!a) return false;
+    return _chapterKeyOf(a.split('::').pop()) === chKey;
+  });
+  records.sort((a, b) => _verseOf(a) - _verseOf(b));
+  const others = records.filter(r => r.id !== currentId);
+  if (!others.length) return;
+  const wrap = document.createElement('nav');
+  wrap.className = 'folio-also-in';
+  const h = document.createElement('div');
+  h.className = 'folio-also-in-heading';
+  h.textContent = 'also in ' + _formatChapterLabel(chKey);
+  wrap.appendChild(h);
+  for (const r of others) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'folio-also-in-entry';
+    btn.dataset.kind = r.kind || 'genealogy';
+    const t = document.createElement('span');
+    t.className = 'folio-also-in-title';
+    t.textContent = r.title || '';
+    btn.appendChild(t);
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      _openFolioObject(r.id);
+    });
+    wrap.appendChild(btn);
+  }
+  leaf.appendChild(wrap);
 }
 
 // Transform tree-character body text into wrap-friendly indented
@@ -6020,11 +6151,17 @@ function _renderGenealogyVertical(body) {
 function _renderPlate(rec, pid, chKey) {
   const wrap = document.createElement('div');
   wrap.className = 'folio-plate-wrap';
+  // The mat holds the engraving — a thin warm hairline and a
+  // slight inner mount tone, restrained as a passe-partout.
+  // The mat is part of the consulted object; clicks on it stay.
+  const mat = document.createElement('div');
+  mat.className = 'folio-plate-mat';
   const img = document.createElement('img');
   img.className = 'folio-plate';
   img.src = (rec.plate && rec.plate.url) || '';
   img.alt = rec.title || '';
-  wrap.appendChild(img);
+  mat.appendChild(img);
+  wrap.appendChild(mat);
 
   const plaque = document.createElement('div');
   plaque.className = 'folio-plate-plaque';
