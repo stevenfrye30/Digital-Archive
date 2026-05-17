@@ -2147,47 +2147,55 @@ mark.search-hl-active {
 }
 
 /* Object viewer — the unified invocation surface for every
-   witness kind. When active it covers the viewport with a warm
-   paper wash; the reading state beneath recedes (lower opacity,
-   faintest blur) but stays perceptible. The viewer's inner leaf
-   is the prepared paper on which any witness type renders.
-   Closed by Escape, by clicking outside the leaf, or by the
-   leaf's own return rubric. Not a modal, not a card — a
-   consultation laid over the open codex. */
+   witness kind. When active, a warm charcoal field fills the
+   viewport; a single paper leaf sits at its center. The reading
+   state beneath recedes but remains faintly perceptible through
+   the translucent dark. The viewer fades in and fades out so
+   the threshold is page-like, not modal. Closed by Escape, by
+   clicking outside the leaf, or by the leaf's own return rubric.
+   Not a modal, not a lightbox — a quieted consultation chamber. */
 #object-viewer {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  /* Warm parchment wash, intentionally translucent so the
-     recessed reading state remains faintly perceptible behind.
-     Not a dark backdrop, not opaque — a quieted chamber. */
-  background-color: rgba(243, 234, 217, 0.94);
-  overflow-y: auto;
-  padding: 56px 24px;
-  color: var(--reader-fg);
-  animation: viewer-arrive 0.4s ease-out;
-}
-@keyframes viewer-arrive {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-#viewer-inner {
-  max-width: 880px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 56px;
-}
-body.viewer-active #object-viewer {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  /* Warm charcoal — archival reading-room darkness, not pure
+     black, translucent enough that the recessed manuscript and
+     folio are sensed through it. */
+  background-color: rgba(28, 22, 16, 0.93);
+  overflow-y: auto;
+  padding: 48px 24px;
+  color: var(--reader-fg);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.45s ease-out, visibility 0s linear 0.45s;
+}
+body.viewer-active #object-viewer {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.45s ease-out, visibility 0s;
+}
+#viewer-inner {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+/* The leaf is the prepared examination surface — a manuscript
+   page laid on the dark archival table. The dark chamber around
+   it is its only frame; no border, no shadow, no rounded corners,
+   no card aesthetic. Slight warm tint relative to the reader's
+   paper so it reads as a separately prepared sheet. */
+.folio-leaf {
+  background: color-mix(in srgb, var(--reader-bg) 95%, #b08a4a 5%);
+  color: var(--reader-fg);
+  padding: 56px 64px;
 }
 /* Background recession — the reading state quietly steps back
-   while the viewer is up. Opacity + a sub-pixel blur are enough
-   to subordinate without removing. Pointer events are disabled
-   so any click on the recessed background hits the viewer
-   backdrop and closes. */
+   while the viewer is up. Opacity + a sub-pixel blur subordinate
+   without erasing. Pointer events disabled so clicks pass to the
+   viewer's backdrop, which closes on bare-backdrop hits. */
 body.viewer-active #reader,
 body.viewer-active #folio {
   opacity: 0.32;
@@ -2196,6 +2204,17 @@ body.viewer-active #folio {
 }
 #reader, #folio {
   transition: opacity 0.45s ease-out, filter 0.45s ease-out;
+}
+
+/* Witness ecology belongs only to primary reading. In any other
+   context (Home, Contents, navigation, cover, TOC) the folio and
+   the viewer are absent entirely — orientation space is not
+   consultation space. The body.in-reading class is set on
+   enterReading and cleared by browseHome / backToContents. */
+body:not(.in-reading) #folio { display: none !important; }
+body:not(.in-reading) #object-viewer {
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 /* Below the companion breakpoint, hide companion controls and
@@ -2435,13 +2454,15 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
   margin: 8px 0 0;
 }
 /* Viewport discipline — the plate fits inside a single visual
-   field whenever possible. max-height is sized so the plate
-   shares the encounter with title, caption, and colophon without
-   forcing vertical scroll on a standard desktop viewport. */
+   field whenever possible. The 460px reserve accounts for the
+   viewer padding, leaf padding, and the leaf's surrounding
+   chrome (return rubric, verse anchor, title, caption, colophon)
+   so a standard desktop viewport never has to scroll to consult
+   the engraving. */
 .folio-leaf[data-kind="plate"] .folio-plate {
   display: block;
   max-width: 100%;
-  max-height: calc(100vh - 340px);
+  max-height: calc(100vh - 460px);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -5425,6 +5446,9 @@ function enterReading(targetGroupKey) {
   // been updated. The mobile running header and meta panel re-derive
   // their state from these.
   window.dispatchEvent(new Event('reading-state:should-refresh'));
+  // Reading context — folio + viewer may exist here. Orientation
+  // surfaces (Home, Contents) clear this class to remove them.
+  document.body.classList.add('in-reading');
   // Folio quietly follows entry into reading.
   _maybeRetuneFolioToCurrentBook();
 }
@@ -6035,6 +6059,14 @@ function renderCompanionFolio() {
   }
 }
 
+function _verseOf(rec) {
+  const a = rec && rec.anchors && rec.anchors[0] && rec.anchors[0].target;
+  if (!a) return 0;
+  const pid = a.split('::').pop();
+  const m = pid.match(/^[a-z]+\.\d+\.(\d+)$/);
+  return m ? Number(m[1]) : 0;
+}
+
 function _renderFolioWitnessList(inner, chapters) {
   const ch = _currentFolioChapterKey;
   const records = currentData.genealogy.filter(r => {
@@ -6042,6 +6074,12 @@ function _renderFolioWitnessList(inner, chapters) {
     if (!a) return false;
     return _chapterKeyOf(a.split('::').pop()) === ch;
   });
+  // Sort by verse so mixed-kind witnesses (genealogy, plate, and
+  // future kinds) appear in the order they occur in the chapter,
+  // regardless of source order in the data file. The folio is a
+  // heterogeneous register; verse position is the only organizing
+  // principle that scales across witness kinds.
+  records.sort((a, b) => _verseOf(a) - _verseOf(b));
   const header = document.createElement('button');
   header.type = 'button';
   header.className = 'folio-chapter-header';
@@ -6056,18 +6094,17 @@ function _renderFolioWitnessList(inner, chapters) {
     header.disabled = true;
   }
   inner.appendChild(header);
-  let prevVerse = 0;
+  // Uniform spacing between witnesses — no verse-proportional
+  // gap, which used to push the second witness off-screen on
+  // mixed-kind chapters where records weren't in verse order.
+  let i = 0;
   for (const r of records) {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
     const pid = a ? a.split('::').pop() : '';
     const entry = _renderFolioWitness(r, pid);
     if (r.id === _openFolioRecordId) entry.classList.add('active');
-    const m = pid.match(/^[a-z]+\.\d+\.(\d+)$/);
-    const v = m ? Number(m[1]) : 1;
-    const gap = Math.max(0, v - prevVerse - 1);
-    if (gap > 0) entry.style.marginTop = (gap * 0.25 + 1.4) + 'em';
-    else if (prevVerse > 0) entry.style.marginTop = '1.4em';
-    prevVerse = v;
+    if (i > 0) entry.style.marginTop = '1.4em';
+    i++;
     inner.appendChild(entry);
   }
 }
@@ -6167,6 +6204,13 @@ async function loadText(entry, listItem) {
   if (activeItem) activeItem.classList.remove('active');
   if (listItem) { listItem.classList.add('active'); activeItem = listItem; }
   currentEntry = entry;
+  // Exit reading context until enterReading re-establishes it.
+  // Loading a text begins in orientation (cover/TOC); folio + viewer
+  // should not appear during that transition.
+  if (typeof _closeFolioObject === 'function' && _folioMode === 'object') {
+    _closeFolioObject();
+  }
+  document.body.classList.remove('in-reading');
 
   $welcome.style.display     = 'none';
   $passages.innerHTML        = '';
@@ -7133,23 +7177,25 @@ function browseOpen(dataFile) {
 /** Return to title page + TOC for current text */
 function backToContents() {
   if (!currentData || !currentEntry) return;
-  // Leaving the reader closes any open witness encounter so the
-  // reader is never trapped in an active leaf when returning to
-  // the cover. Defensive even if _folioMode says 'list'.
+  // Leaving the reader closes any open witness and exits the
+  // reading context entirely — Contents is orientation space,
+  // not consultation space. Folio and viewer are gone here.
   if (typeof _closeFolioObject === 'function' && _folioMode === 'object') {
     _closeFolioObject();
   }
+  document.body.classList.remove('in-reading');
   showCover(currentData, currentEntry);
   document.getElementById('ctrl-contents').style.display = 'none';
 }
 
 /** Return to home (show welcome) */
 function browseHome() {
-  // Returning home must dissolve any active encounter — the home
-  // surface is not a place for a summoned witness.
+  // Returning home dissolves any active witness and exits the
+  // reading context — home is not a place for the witness ecology.
   if (typeof _closeFolioObject === 'function' && _folioMode === 'object') {
     _closeFolioObject();
   }
+  document.body.classList.remove('in-reading');
   $browse.style.display = 'none';
   document.getElementById('controls').style.display = 'none';
   document.getElementById('welcome').style.display = '';
