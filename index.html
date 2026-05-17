@@ -2178,19 +2178,31 @@ body.viewer-active #object-viewer {
   transition: opacity 0.45s ease-out, visibility 0s;
 }
 #viewer-inner {
-  max-width: 800px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 }
-/* The leaf is the prepared examination surface — a manuscript
-   page laid on the dark archival table. The dark chamber around
-   it is its only frame; no border, no shadow, no rounded corners,
-   no card aesthetic. Slight warm tint relative to the reader's
-   paper so it reads as a separately prepared sheet. */
+/* The default leaf — for text witnesses (genealogy, future
+   commentary). A manuscript page laid on the dark archival table.
+   The dark chamber around it is its only frame; no border, no
+   shadow, no rounded corners, no card aesthetic. Slight warm tint
+   relative to the reader's paper so it reads as a separately
+   prepared sheet. Constrained to ~800px so reading measure stays
+   sane even when #viewer-inner is wider for plates. */
 .folio-leaf {
   background: color-mix(in srgb, var(--reader-bg) 95%, #b08a4a 5%);
   color: var(--reader-fg);
   padding: 56px 64px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+/* Plate leaves dominate the chamber — no paper, no padding, the
+   engraving sits directly on the dark with a compact plaque
+   beneath. The dark chamber is the frame; nothing else is needed. */
+.folio-leaf[data-kind="plate"] {
+  background: transparent;
+  padding: 0;
+  max-width: 1100px;
 }
 /* Background recession — the reading state quietly steps back
    while the viewer is up. Opacity + a sub-pixel blur subordinate
@@ -2442,44 +2454,64 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
   margin-top: 0.5em;
 }
 
-/* Plate witnesses — engraved visual witnesses. In the encounter
-   the engraving sits centered on the prepared leaf with a single
-   restrained caption line below: artist · year · source. No frame,
-   no shadow, no zoom widget, no gallery affordance. The slightly
-   warmer encounter paper holds the plate in place. */
+/* Plate witnesses — the engraving is the consulted object. It
+   sits directly on the dark, with a compact plaque (title, verse,
+   provenance) beneath. The dark chamber is the frame; no shadow,
+   no border, no gallery affordance. */
 .folio-leaf[data-kind="plate"] .folio-plate-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 8px 0 0;
 }
-/* Viewport discipline — the plate fits inside a single visual
-   field whenever possible. The 460px reserve accounts for the
-   viewer padding, leaf padding, and the leaf's surrounding
-   chrome (return rubric, verse anchor, title, caption, colophon)
-   so a standard desktop viewport never has to scroll to consult
-   the engraving. */
+/* The engraving dominates: only the return rubric above and the
+   plaque + provenance below claim vertical space. ~220px reserve
+   for the viewer padding, return rubric, plaque, and a small
+   buffer — the rest is the plate. */
 .folio-leaf[data-kind="plate"] .folio-plate {
   display: block;
   max-width: 100%;
-  max-height: calc(100vh - 460px);
+  max-height: calc(100vh - 220px);
   width: auto;
   height: auto;
   object-fit: contain;
-  margin: 0 auto;
 }
-.folio-leaf[data-kind="plate"] .folio-plate-caption {
-  display: block;
-  margin: 32px auto 0;
-  max-width: 520px;
+/* Plaque — compact curatorial label directly under the engraving.
+   Centered, dignified, on the dark backdrop; cream-ink so it sits
+   quietly against the charcoal field. */
+.folio-leaf[data-kind="plate"] .folio-plate-plaque {
   text-align: center;
+  margin: 24px auto 0;
+  max-width: 600px;
   font-family: Georgia, serif;
+  color: rgba(245, 235, 215, 0.86);
+}
+.folio-leaf[data-kind="plate"] .folio-plate-title {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.08em;
+  letter-spacing: 0.02em;
+}
+.folio-leaf[data-kind="plate"] .folio-plate-verse {
   font-style: italic;
   font-size: 0.82em;
-  line-height: 1.6;
-  color: var(--chrome-muted);
+  margin-top: 4px;
   opacity: 0.72;
-  letter-spacing: 0.02em;
+}
+.folio-leaf[data-kind="plate"] .folio-plate-prov {
+  font-style: italic;
+  font-size: 0.78em;
+  margin-top: 14px;
+  opacity: 0.6;
+  letter-spacing: 0.03em;
+}
+/* In the dark chamber, the return rubric must read against the
+   charcoal field rather than the paper leaf. Cream-ink, slightly
+   stronger weight, same italic register. */
+.folio-leaf[data-kind="plate"] .folio-leaf-return {
+  color: rgba(245, 235, 215, 0.78);
+}
+.folio-leaf[data-kind="plate"] .folio-leaf-return:hover {
+  color: rgba(245, 235, 215, 1);
 }
 /* Latent presence in the resting list — plate witnesses use a
    small open-square ornament (an awaiting frame) instead of the
@@ -5449,8 +5481,12 @@ function enterReading(targetGroupKey) {
   // Reading context — folio + viewer may exist here. Orientation
   // surfaces (Home, Contents) clear this class to remove them.
   document.body.classList.add('in-reading');
-  // Folio quietly follows entry into reading.
+  // Folio quietly follows entry into reading — first to the book's
+  // default augmented chapter, then refined to whichever chapter
+  // the reader actually lands on (e.g. when jumping to a specific
+  // verse via URL).
   _maybeRetuneFolioToCurrentBook();
+  _trackReadingChapter();
 }
 
 function showToc(data, entry) {
@@ -5670,6 +5706,57 @@ function renderWelcome() {
 
 $reader.addEventListener('scroll', scheduleBookmark, { passive: true });
 
+// Folio chapter tracker — when the reader scrolls into a new
+// augmented chapter, the folio quietly retunes to that chapter.
+// Debounced, and updates the folio only when the chapter actually
+// changes — not on every scroll event. This is not "scroll
+// reactivity" in the dashboard sense; it's a single transition
+// per chapter boundary, the equivalent of turning to a new spread
+// in a codex. Within a chapter the folio is static.
+//
+// Consultation lock: while the reader is consulting a chapter
+// other than the one they're reading (set via the chapter-header
+// cycle), this tracker stops retuning. The lock dissolves the
+// moment the reader's scroll catches up to the consulted chapter
+// — silently, without any UI affordance. The folio respects
+// intentional consultation and reads natural alignment as consent
+// to follow again.
+let _chapterTrackTimer = null;
+function _trackReadingChapter() {
+  clearTimeout(_chapterTrackTimer);
+  _chapterTrackTimer = setTimeout(() => {
+    if (!document.body.classList.contains('companion-mode')) return;
+    if (!document.body.classList.contains('in-reading')) return;
+    if (_folioMode === 'object') return; // don't disturb open viewer
+    const chapters = _availableFolioChapters();
+    if (!chapters.length) return;
+    const readerTop = $reader.getBoundingClientRect().top;
+    const threshold = readerTop + 80;
+    let topPid = null;
+    const passages = $passages.querySelectorAll('.passage[data-pid]');
+    for (const p of passages) {
+      const r = p.getBoundingClientRect();
+      if (r.bottom > threshold) { topPid = p.dataset.pid; break; }
+    }
+    if (!topPid) return;
+    const ch = _chapterKeyOf(topPid);
+    if (!ch || !chapters.includes(ch)) return;
+    // Natural re-alignment — if the reader has scrolled into the
+    // chapter they were consulting, lift the lock silently. No
+    // re-render is needed; intention and position have rejoined.
+    if (!_folioFollowsReader && ch === _currentFolioChapterKey) {
+      _folioFollowsReader = true;
+      return;
+    }
+    if (!_folioFollowsReader) return;
+    if (ch !== _currentFolioChapterKey) {
+      _currentFolioChapterKey = ch;
+      renderCompanionFolio();
+    }
+  }, 180);
+}
+$reader.addEventListener('scroll', _trackReadingChapter, { passive: true });
+
 // Reading progress bar + back-to-top
 const $progressBar = document.getElementById('reading-progress');
 const $backToTop = document.getElementById('back-to-top');
@@ -5712,7 +5799,14 @@ $reader.addEventListener('scroll', () => {
     toggle.textContent = on ? 'Pure' : 'Folio';
     swap.hidden = !on;
     if (on) {
+      // Activating companion mode starts in follow state — no
+      // prior consultation has occurred in this session of the
+      // folio surface.
+      _folioFollowsReader = true;
       renderCompanionFolio();
+      // Pick up the reader's current chapter so the folio matches
+      // what's actually on screen when companion mode toggles on.
+      _trackReadingChapter();
     } else {
       // Leaving companion mode collapses any open encounter so the
       // body class doesn't outlive the surface that justified it.
@@ -5742,11 +5836,18 @@ $reader.addEventListener('scroll', () => {
 // Build the folio's contents from currentData.genealogy, filtered
 // to the prototype chapters. Static; not scroll-reactive. Called
 // when the reader enters companion mode and after loadText.
-// Chapter-bound folio state. Set explicitly by the reader via the
-// folio header cycler — never reactive to scroll, viewport, or
-// hover. See COMPANION_FOLIO_PROPOSAL_2026.md and the May 16
-// chapter-bound refinement brief.
+// Chapter-bound folio state. The folio quietly follows the
+// reading chapter by default, but a manual cycle on the chapter
+// header suspends that following — the folio respects intentional
+// consultation and stops being moved by scroll. The lock dissolves
+// silently when the reading position eventually re-aligns with the
+// consulted chapter. See COMPANION_FOLIO_PROPOSAL_2026.md and the
+// May 17 consultation-lock refinement.
 let _currentFolioChapterKey = null;
+// True when auto-tracking may retune the folio to the reader's
+// current chapter; false while the reader is consulting a chapter
+// other than the one they're reading.
+let _folioFollowsReader = true;
 
 // Folio has two modes:
 //   list   — quiet collapsed witnesses for the current chapter
@@ -5825,6 +5926,16 @@ function _renderFolioObjectLeaf(rec, pid) {
   back.addEventListener('click', _closeFolioObject);
   leaf.appendChild(back);
 
+  if (rec.kind === 'plate') {
+    // Plates dominate the chamber: no paper leaf around them, no
+    // verse/title block above. The engraving sits in the dark with
+    // a compact plaque (title · verse · provenance) directly beneath.
+    leaf.appendChild(_renderPlate(rec, pid, chKey));
+    return leaf;
+  }
+
+  // Text witnesses (genealogy, future commentary/notes): paper leaf
+  // with verse, title, body, and a closing chapter rubric.
   const v = document.createElement('div');
   v.className = 'folio-leaf-verse';
   v.textContent = _formatVerseRef(pid);
@@ -5841,19 +5952,15 @@ function _renderFolioObjectLeaf(rec, pid) {
     case 'genealogy':
       body.appendChild(_renderGenealogyVertical(rec.body || ''));
       break;
-    case 'plate':
-      body.appendChild(_renderPlate(rec));
-      break;
     default:
-      // Future kinds (map / commentary / note) will dispatch
-      // their own leaf body renderers here. The outer shape stays.
+      // Future text kinds (commentary / note) dispatch here.
       body.appendChild(_renderGenealogyVertical(rec.body || ''));
       break;
   }
   leaf.appendChild(body);
 
-  // Closing colophon — a small italic chapter rubric at the foot
-  // of the prepared leaf. CSS reveals it only in encounter state.
+  // Closing colophon — small italic chapter rubric at the foot of
+  // the prepared leaf. CSS reveals it only in viewer-active state.
   const colophon = document.createElement('div');
   colophon.className = 'folio-leaf-colophon';
   colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
@@ -5905,11 +6012,12 @@ function _renderGenealogyVertical(body) {
   return wrap;
 }
 
-// Plate body renderer — a single archival engraving centered on
-// the prepared leaf, with a restrained provenance caption below.
-// No frame, no zoom, no gallery affordance. The image is the page;
-// the caption is a small hand-set credit, not a metadata block.
-function _renderPlate(rec) {
+// Plate body renderer — the engraving dominates the dark chamber;
+// a compact plaque sits directly beneath it carrying title, verse
+// anchor, and provenance. No paper frame, no card, no gallery
+// affordance. The dark is the frame; the plaque is the curatorial
+// label.
+function _renderPlate(rec, pid, chKey) {
   const wrap = document.createElement('div');
   wrap.className = 'folio-plate-wrap';
   const img = document.createElement('img');
@@ -5917,18 +6025,34 @@ function _renderPlate(rec) {
   img.src = (rec.plate && rec.plate.url) || '';
   img.alt = rec.title || '';
   wrap.appendChild(img);
+
+  const plaque = document.createElement('div');
+  plaque.className = 'folio-plate-plaque';
+  if (rec.title) {
+    const t = document.createElement('div');
+    t.className = 'folio-plate-title';
+    t.textContent = rec.title;
+    plaque.appendChild(t);
+  }
+  if (pid) {
+    const v = document.createElement('div');
+    v.className = 'folio-plate-verse';
+    v.textContent = 'for ' + _formatVerseRef(pid);
+    plaque.appendChild(v);
+  }
   if (rec.plate) {
     const parts = [];
     if (rec.plate.artist) parts.push(rec.plate.artist);
     if (rec.plate.year)   parts.push(rec.plate.year);
     if (rec.plate.source) parts.push(rec.plate.source);
     if (parts.length) {
-      const cap = document.createElement('div');
-      cap.className = 'folio-plate-caption';
-      cap.textContent = parts.join(' · ');
-      wrap.appendChild(cap);
+      const prov = document.createElement('div');
+      prov.className = 'folio-plate-prov';
+      prov.textContent = parts.join(' · ');
+      plaque.appendChild(prov);
     }
   }
+  wrap.appendChild(plaque);
   return wrap;
 }
 
@@ -5992,6 +6116,10 @@ function _setFolioChapter(chapterKey) {
 // viewport detection.
 function _maybeRetuneFolioToCurrentBook() {
   if (!document.body.classList.contains('companion-mode')) return;
+  // An intentional reading-context shift (book change, entering a
+  // text, etc.) re-engages auto-tracking. The reader is starting
+  // fresh; any prior consultation lock no longer applies.
+  _folioFollowsReader = true;
   const chapters = _availableFolioChapters();
   if (!chapters.length) return;
   let target = null;
@@ -6089,7 +6217,13 @@ function _renderFolioWitnessList(inner, chapters) {
     const idx = chapters.indexOf(ch);
     const nextCh = chapters[(idx + 1) % chapters.length];
     header.title = _formatChapterLabel(nextCh);
-    header.addEventListener('click', () => _setFolioChapter(nextCh));
+    header.addEventListener('click', () => {
+      // Manual cycle = intentional consultation. Suspend automatic
+      // tracking; the lock dissolves silently when the reader's
+      // scroll later catches up to the consulted chapter.
+      _folioFollowsReader = false;
+      _setFolioChapter(nextCh);
+    });
   } else {
     header.disabled = true;
   }
