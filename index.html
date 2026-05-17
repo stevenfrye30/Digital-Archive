@@ -2465,10 +2465,10 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
   align-items: center;
 }
 /* The engraving dominates: only the return rubric above and the
-   plaque + also-in register below claim vertical space. The mat
-   holds the image with a thin warm hairline and a slight inner
-   mount tone — restrained passe-partout, no frame, no bevel, no
-   shadow. The mount reads as material presence, not decoration. */
+   plaque below claim vertical space. The mat holds the image with
+   a thin warm hairline and a slight inner mount tone — restrained
+   passe-partout, no frame, no bevel, no shadow. The mount reads
+   as material presence, not decoration. */
 .folio-leaf[data-kind="plate"] .folio-plate-mat {
   background: rgba(245, 235, 215, 0.025);
   border: 1px solid rgba(245, 235, 215, 0.16);
@@ -2479,11 +2479,9 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
 .folio-leaf[data-kind="plate"] .folio-plate {
   display: block;
   max-width: 100%;
-  /* Slightly more vertical room — the mat adds ~30px of chrome,
-     but the engraving still claims most of the chamber height.
-     230px reserve accounts for viewer padding, return rubric, mat
-     border, plaque, and the also-in register beneath. */
-  max-height: calc(100vh - 230px);
+  /* ~250px reserve accounts for viewer padding, return rubric,
+     mat border + padding, and plaque. The rest is the plate. */
+  max-height: calc(100vh - 250px);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -2554,61 +2552,6 @@ body.viewer-active .folio-leaf-colophon {
   letter-spacing: 0.04em;
 }
 
-/* Also-in register — other witnesses in the same chapter, sitting
-   quietly beneath the consulted object. The chamber becomes a
-   witness field: the reader can move between witnesses without
-   leaving. Restrained typographic cross-reference, manuscript-like.
-   Not a carousel, not arrows, not thumbnails. */
-.folio-also-in {
-  display: block;
-  margin: 48px auto 0;
-  max-width: 520px;
-  text-align: center;
-  font-family: Georgia, serif;
-}
-.folio-also-in-heading {
-  font-style: italic;
-  font-size: 0.72em;
-  letter-spacing: 0.14em;
-  text-transform: lowercase;
-  opacity: 0.42;
-  margin-bottom: 14px;
-}
-.folio-also-in-heading::before { content: '\00B7  '; }
-.folio-also-in-heading::after  { content: '  \00B7'; }
-.folio-also-in-entry {
-  display: block;
-  width: 100%;
-  background: transparent;
-  border: none;
-  padding: 6px 12px;
-  cursor: pointer;
-  font: inherit;
-  font-style: italic;
-  font-size: 0.88em;
-  color: inherit;
-  opacity: 0.62;
-  transition: opacity 0.3s;
-  line-height: 1.5;
-}
-.folio-also-in-entry:hover { opacity: 0.92; }
-.folio-also-in-entry[data-kind="plate"]::before {
-  content: '\25AB\00A0\00A0';
-  opacity: 0.7;
-}
-.folio-also-in-entry[data-kind="genealogy"]::before {
-  content: '\2766\00A0\00A0';
-  opacity: 0.55;
-}
-/* On the dark plate chamber, register reads in cream-ink against
-   the charcoal backdrop, in keeping with the plaque. On the text
-   leaf, it inherits the warm paper ink. */
-.folio-leaf[data-kind="plate"] .folio-also-in {
-  color: rgba(245, 235, 215, 0.7);
-}
-.folio-leaf[data-kind="plate"] .folio-also-in-entry {
-  color: rgba(245, 235, 215, 0.7);
-}
 
 /* Vertical genealogy rendering — per-line blocks whose
    padding-left reflects tree-prefix depth. Wraps cleanly at the
@@ -5905,10 +5848,10 @@ $reader.addEventListener('scroll', () => {
     const leaf = e.target.closest('.folio-leaf');
     if (!leaf) { _closeFolioObject(); return; }
     if (leaf.dataset.kind === 'plate') {
-      // For plate chambers the leaf is transparent; only the wrap,
-      // the return rubric, and the also-in register are on-object.
-      // Clicks in the dark around the engraving dismiss.
-      if (!e.target.closest('.folio-plate-wrap, .folio-leaf-return, .folio-also-in')) {
+      // For plate chambers the leaf is transparent; only the wrap
+      // and the return rubric are on-object. Clicks in the dark
+      // around the engraving dismiss.
+      if (!e.target.closest('.folio-plate-wrap, .folio-leaf-return')) {
         _closeFolioObject();
       }
       return;
@@ -6018,7 +5961,6 @@ function _renderFolioObjectLeaf(rec, pid) {
     // verse/title block above. The engraving sits in the dark with
     // a compact plaque (title · verse · provenance) directly beneath.
     leaf.appendChild(_renderPlate(rec, pid, chKey));
-    _appendAlsoInRegister(leaf, rec.id, chKey);
     return leaf;
   }
 
@@ -6053,50 +5995,7 @@ function _renderFolioObjectLeaf(rec, pid) {
   colophon.className = 'folio-leaf-colophon';
   colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
   leaf.appendChild(colophon);
-  _appendAlsoInRegister(leaf, rec.id, chKey);
   return leaf;
-}
-
-// Other witnesses in the same chapter — rendered as a quiet
-// typographic register beneath the consulted object. The chamber
-// becomes a witness field: the reader can move between witnesses
-// without leaving. Restrained, manuscript-like cross-reference;
-// not a gallery, not a carousel, not arrows. Clicking an entry
-// transitions the chamber to that witness without closing the
-// viewer, so the chamber persists as a consultation space rather
-// than a per-object modal.
-function _appendAlsoInRegister(leaf, currentId, chKey) {
-  if (!chKey || !currentData || !currentData.genealogy) return;
-  const records = currentData.genealogy.filter(r => {
-    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
-    if (!a) return false;
-    return _chapterKeyOf(a.split('::').pop()) === chKey;
-  });
-  records.sort((a, b) => _verseOf(a) - _verseOf(b));
-  const others = records.filter(r => r.id !== currentId);
-  if (!others.length) return;
-  const wrap = document.createElement('nav');
-  wrap.className = 'folio-also-in';
-  const h = document.createElement('div');
-  h.className = 'folio-also-in-heading';
-  h.textContent = 'also in ' + _formatChapterLabel(chKey);
-  wrap.appendChild(h);
-  for (const r of others) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'folio-also-in-entry';
-    btn.dataset.kind = r.kind || 'genealogy';
-    const t = document.createElement('span');
-    t.className = 'folio-also-in-title';
-    t.textContent = r.title || '';
-    btn.appendChild(t);
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      _openFolioObject(r.id);
-    });
-    wrap.appendChild(btn);
-  }
-  leaf.appendChild(wrap);
 }
 
 // Transform tree-character body text into wrap-friendly indented
@@ -6365,16 +6264,35 @@ function _renderFolioWitnessList(inner, chapters) {
     header.disabled = true;
   }
   inner.appendChild(header);
-  // Uniform spacing between witnesses — no verse-proportional
-  // gap, which used to push the second witness off-screen on
-  // mixed-kind chapters where records weren't in verse order.
+  // Verse-proportional spacing — the folio is a manuscript
+  // margin: witnesses sit roughly where they emerge in the text.
+  // Each entry's margin-top reflects the verse distance from the
+  // previous witness (or from the chapter top for the first),
+  // scaled gently. A minimum gap keeps adjacent witnesses
+  // readable. This is approximate manuscript correspondence —
+  // not pixel-perfect scroll-sync, not reactive coordinate
+  // tracking. Sparse chapters stay quiet; dense chapters become
+  // rich; the folio reads as a parallel archival margin.
+  const VERSE_PX = 5;   // gentle scale — keeps the chapter column
+                        // compact enough to stay in folio viewport
+                        // for typical chapters while preserving
+                        // visible vertical relation between
+                        // witnesses anchored to distant verses.
+  const MIN_GAP = 22;   // ~1.4em at folio font size — preserves
+                        // readability when two witnesses sit on
+                        // adjacent or near-adjacent verses.
+  let prevVerse = 0;
   let i = 0;
   for (const r of records) {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
     const pid = a ? a.split('::').pop() : '';
     const entry = _renderFolioWitness(r, pid);
     if (r.id === _openFolioRecordId) entry.classList.add('active');
-    if (i > 0) entry.style.marginTop = '1.4em';
+    const v = _verseOf(r);
+    const verseDelta = i === 0 ? v : (v - prevVerse);
+    const gap = Math.max(MIN_GAP, verseDelta * VERSE_PX);
+    entry.style.marginTop = gap + 'px';
+    prevVerse = v;
     i++;
     inner.appendChild(entry);
   }
