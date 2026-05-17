@@ -101,44 +101,40 @@ body {
 /* ── Controls bar ─────────────────────────────────────────────────────────────── */
 
 #controls {
-  background: #e4e0d9;
-  border-bottom: 1px solid var(--chrome-border);
-  padding: 11px 20px;
+  background: var(--reader-bg);
+  border-bottom: 1px solid rgba(120, 90, 50, 0.12);
+  padding: 7px 22px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
   flex-wrap: wrap;
-  font-size: 13px;
+  font-size: 12px;
   flex-shrink: 0;
 }
 
-#ctrl-home {
-  padding: 6px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: system-ui, sans-serif;
-  color: white;
-  background: var(--chrome-active);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 4px;
-  transition: background 0.15s;
-}
-#ctrl-home:hover { background: #5a3a1a; }
+#ctrl-home,
 #ctrl-contents {
-  padding: 6px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: system-ui, sans-serif;
-  color: var(--chrome-active);
-  background: var(--reader-bg);
-  border: 1px solid var(--chrome-border);
-  border-radius: 5px;
+  padding: 3px 6px;
+  font-size: 12px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: normal;
+  color: var(--chrome-muted);
+  background: transparent;
+  border: none;
+  border-radius: 0;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  margin-right: 2px;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
 }
-#ctrl-contents:hover { background: #f0ece5; border-color: var(--chrome-active); }
+#ctrl-home:hover,
+#ctrl-contents:hover {
+  background: transparent;
+  color: var(--chrome-active);
+  opacity: 1;
+}
 
 .ctrl-group {
   display: flex;
@@ -240,11 +236,36 @@ body {
   font-size: var(--reader-size);
   line-height: var(--reader-leading);
 }
+body.chapter-room #reader { padding-top: 20px; }
 
 #reader-inner {
   max-width: 1100px;
   margin: 0 auto;
 }
+
+/* ── Reading column modes (folio layout switching) ────────────────
+   The reader-inner column can be switched between three manuscript
+   layouts. Default is single. The control appears only inside an
+   active reading room (body.in-reading) and only on desktop. */
+body.cols-single #reader-inner { max-width: 720px; column-count: 1; }
+body.cols-wide   #reader-inner { max-width: 1100px; column-count: 1; }
+body.cols-dual   #reader-inner {
+  max-width: 1100px;
+  column-count: 2;
+  column-gap: 56px;
+  column-rule: 1px solid rgba(120, 90, 50, 0.08);
+}
+/* Verses break cleanly across columns; chapter headings span both. */
+body.cols-dual .passage { break-inside: avoid-column; }
+body.cols-dual .chapter-heading { column-span: all; }
+/* In dual-column mode, chapter-room's per-verse margin witness grid
+   would collide with the multi-column flow; collapse to plain
+   passages so the dual column reads as a single codex spread. */
+body.cols-dual.chapter-room .cr-row {
+  display: block;
+  grid-template-columns: none;
+}
+body.cols-dual.chapter-room .cr-margin-witness { display: none !important; }
 
 /* ── Welcome / empty state ─────────────────────────────────────────────────── */
 
@@ -473,9 +494,11 @@ body {
 /* Chapter-room mode — two-line manuscript header: book title
    sovereign in a large hand, chapter mark subordinate beneath
    in a quieter italic. The room itself frames the chapter, so
-   nothing else needs to repeat the context. */
+   nothing else needs to repeat the context. The top padding
+   is tuned so the room does not feel empty above the title
+   while still preserving manuscript breathing room. */
 .chapter-heading.chapter-room-heading {
-  padding: 64px 0 56px;
+  padding: 28px 0 40px;
   font-weight: 500;
 }
 .chapter-room-heading .ch-title {
@@ -688,49 +711,50 @@ body {
 
 /* ── Bible cover — compact title-leaf layout ─────────────────────── */
 /* A single-column codex title leaf: title and metadata sovereign
-   at the top, contents grid spanning the full width beneath, with
-   the citation apparatus tucked as a small disclosure under the
-   metadata so it never competes with the title or the contents.
+   at the top, contents grid spanning the full width beneath. The
+   citation apparatus is tucked as a quiet italic disclosure in the
+   top-right corner so it never competes with the title or contents.
    The whole leaf fits on a single laptop viewport. */
 .bible-cover-layout {
   max-width: 1180px;
   margin: 0 auto;
   padding: 18px 36px 14px;
+  position: relative;
 }
 .bible-cover-layout #continuous-cover {
   max-width: 720px;
   margin: 0 auto;
-  padding: 2px 0 6px;
+  padding: 0 0 4px;
   text-align: center;
 }
 .bible-cover-layout .cc-title {
-  font-size: 1.5em;
+  font-size: 1.42em;
   font-weight: 500;
-  line-height: 1.1;
-  margin-bottom: 0.14em;
+  line-height: 1.08;
+  margin-bottom: 0.1em;
   letter-spacing: 0.02em;
   text-align: center;
 }
 .bible-cover-layout .cc-author,
 .bible-cover-layout .cc-translator,
 .bible-cover-layout .cc-year {
-  font-size: 0.82em;
-  margin-bottom: 0.06em;
+  font-size: 0.8em;
+  margin-bottom: 0.04em;
   text-align: center;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 .bible-cover-layout .cc-year {
-  font-size: 0.74em;
-  margin-top: 0.2em;
+  font-size: 0.72em;
+  margin-top: 0.16em;
   opacity: 0.8;
   letter-spacing: 0.03em;
 }
 .bible-cover-layout .cc-source {
-  font-size: 0.72em;
+  font-size: 0.7em;
   max-width: 560px;
-  margin: 0.4em auto 0;
+  margin: 0.3em auto 0;
   text-align: center;
-  line-height: 1.45;
+  line-height: 1.4;
   font-style: italic;
   color: var(--chrome-muted);
 }
@@ -740,19 +764,19 @@ body {
   padding: 0;
 }
 .bible-cover-layout .cc-toc-heading {
-  font-size: 0.88em;
+  font-size: 0.82em;
   font-weight: 500;
   text-align: left;
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   letter-spacing: 0.02em;
   color: var(--chrome-active);
   border-top: 1px solid rgba(120, 90, 50, 0.15);
-  padding-top: 10px;
+  padding-top: 8px;
 }
 .bible-cover-layout .cc-toc-sub {
-  font-size: 0.68em;
+  font-size: 0.66em;
   text-align: left;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   letter-spacing: 0.04em;
   opacity: 0.7;
 }
@@ -762,35 +786,37 @@ body {
    loud labels. Six columns within each section gives most book
    names enough horizontal room to sit on a single line. */
 .bible-cover-layout .bcl-canon-section {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 .bible-cover-layout .bcl-canon-section:first-of-type {
-  margin-top: 6px;
+  margin-top: 4px;
   border-top: 1px solid rgba(120, 90, 50, 0.18);
-  padding-top: 8px;
+  padding-top: 6px;
 }
 .bible-cover-layout .bcl-canon-label {
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 0.7em;
-  letter-spacing: 0.14em;
+  font-size: 0.66em;
+  letter-spacing: 0.16em;
   color: var(--chrome-muted);
-  opacity: 0.55;
-  margin-bottom: 4px;
+  opacity: 0.5;
+  margin-bottom: 3px;
   text-align: left;
 }
 .bible-cover-layout .cc-toc-list,
 .bible-cover-layout .bcl-canon-list {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0 16px;
+  gap: 0 10px;
+  align-items: baseline;
 }
 .bible-cover-layout .cc-toc-list li,
 .bible-cover-layout .bcl-canon-list li {
-  padding: 0 4px 0 0;
-  border-radius: 3px;
-  gap: 6px;
-  line-height: 1.05;
-  min-height: 21px;
+  padding: 0 2px 0 0;
+  border-radius: 2px;
+  gap: 4px;
+  line-height: 1.08;
+  min-height: 18px;
+  align-items: baseline;
 }
 /* Tonal differentiation — Apocrypha steps back a touch (the
    reader feels these as deuterocanonical without being told).
@@ -809,62 +835,62 @@ body {
 }
 .bible-cover-layout .cc-toc-num {
   width: auto;
-  min-width: 18px;
+  min-width: 14px;
   height: auto;
   background: transparent;
-  font-size: 0.66em;
+  font-size: 0.6em;
   text-align: right;
   font-family: Georgia, serif;
   font-style: italic;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 .bible-cover-layout .cc-toc-name {
-  font-size: 0.8em;
-  line-height: 1.15;
+  font-size: 0.74em;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  word-spacing: -0.04em;
 }
-/* Citation apparatus — a small scholarly disclosure beneath the
-   centered metadata. Even quieter than before — a single italic
-   word with a small chevron — so it never competes with the
-   title or the contents. Click to consult; closed by default. */
-.bible-cover-layout .cite-disclosure {
-  margin: 8px auto 0;
+/* Citation apparatus — a quiet italic disclosure anchored to the
+   top-right corner of the title leaf. Reads as a marginal scholarly
+   note, never competes with the sovereign title block. Closed by
+   default; opens as a small panel hanging below its summary. */
+.bible-cover-layout .cite-corner {
+  position: absolute;
+  top: 22px;
+  right: 36px;
   font-family: Georgia, serif;
-  text-align: center;
+  text-align: right;
+  z-index: 2;
 }
-.bible-cover-layout .cite-disclosure > summary {
+.bible-cover-layout .cite-corner > summary {
   display: inline-block;
   cursor: pointer;
   list-style: none;
-  font-size: 0.66em;
+  font-size: 11px;
   font-style: italic;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   color: var(--chrome-muted);
-  opacity: 0.45;
+  opacity: 0.4;
   padding: 2px 0;
   transition: opacity 0.2s;
 }
-.bible-cover-layout .cite-disclosure > summary::-webkit-details-marker { display: none; }
-.bible-cover-layout .cite-disclosure > summary::after {
-  content: ' \203A';
-  display: inline-block;
-  margin-left: 4px;
-  transform: rotate(90deg) translateY(-1px);
-  transition: transform 0.15s;
-}
-.bible-cover-layout .cite-disclosure[open] > summary::after {
-  transform: rotate(-90deg);
-}
-.bible-cover-layout .cite-disclosure > summary:hover { opacity: 0.95; }
-.bible-cover-layout .cite-disclosure .cc-citations {
-  margin: 6px auto 0;
-  max-width: 580px;
+.bible-cover-layout .cite-corner > summary::-webkit-details-marker { display: none; }
+.bible-cover-layout .cite-corner > summary:hover { opacity: 0.9; }
+.bible-cover-layout .cite-corner[open] > summary { opacity: 0.85; }
+.bible-cover-layout .cite-corner .cc-citations {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 360px;
+  margin: 0;
+  background: var(--reader-bg);
+  border: 1px solid rgba(120, 90, 50, 0.18);
+  padding: 10px 14px;
   text-align: left;
-  padding: 8px 16px;
-  border-left: 1px solid rgba(120, 90, 50, 0.15);
-  border-right: 1px solid rgba(120, 90, 50, 0.15);
+  font-family: Georgia, serif;
 }
-.bible-cover-layout .cite-disclosure .cc-cite-heading { display: none; }
-.bible-cover-layout .cite-disclosure .cc-cite {
+.bible-cover-layout .cite-corner .cc-cite-heading { display: none; }
+.bible-cover-layout .cite-corner .cc-cite {
   background: transparent;
   padding: 3px 0;
   font-size: 10.5px;
@@ -872,12 +898,12 @@ body {
   border-radius: 0;
   margin: 0;
 }
-.bible-cover-layout .cite-disclosure .cc-cite:hover { background: rgba(0,0,0,0.025); }
-.bible-cover-layout .cite-disclosure .cc-cite::after {
-  right: 0;
+.bible-cover-layout .cite-corner .cc-cite:hover { background: rgba(0,0,0,0.03); }
+.bible-cover-layout .cite-corner .cc-cite::after {
+  right: 4px;
   font-size: 9px;
 }
-.bible-cover-layout .cite-disclosure .cc-cite-label {
+.bible-cover-layout .cite-corner .cc-cite-label {
   font-size: 8.5px;
   opacity: 0.65;
   margin-right: 4px;
@@ -904,15 +930,15 @@ body {
    never clipping. */
 .bible-cover-layout .bcl-enter-wrap {
   text-align: center;
-  margin: 12px auto 2px;
+  margin: 10px auto 2px;
 }
 .bible-cover-layout .bcl-enter-btn {
   display: inline-block;
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 0.78em;
   letter-spacing: 0.06em;
-  padding: 6px 28px;
+  padding: 5px 26px;
   color: var(--chrome-active);
   background: transparent;
   border: 1px solid rgba(120, 90, 50, 0.32);
@@ -2656,30 +2682,34 @@ body.chapter-room .cr-margin-witness[data-kind="genealogy"] .cr-mw-title::before
   }
 }
 
-/* Companion toggle buttons in #controls — same quiet register as
-   the reading-mode toggle. */
+/* Companion toggle buttons in #controls — quiet italic manuscript
+   apparatus, never the loudest thing in the room. Borderless by
+   default; a hair-rule underline marks the active state. */
 #companion-toggle,
 #companion-swap {
   background: transparent;
-  border: 1px solid var(--chrome-border);
+  border: none;
   color: var(--chrome-muted);
   font-size: 12px;
   font-family: Georgia, serif;
   font-style: italic;
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 3px 4px;
+  border-radius: 0;
   cursor: pointer;
-  margin-left: 6px;
-  transition: color 0.15s, border-color 0.15s;
+  margin-left: 10px;
+  opacity: 0.6;
+  letter-spacing: 0.02em;
+  transition: color 0.2s, opacity 0.2s;
 }
 #companion-toggle:hover,
 #companion-swap:hover {
   color: var(--chrome-active);
-  border-color: var(--chrome-active);
+  opacity: 1;
 }
 body.companion-mode #companion-toggle {
   color: var(--chrome-active);
-  border-color: var(--chrome-active);
+  opacity: 1;
+  border-bottom: 1px solid currentColor;
 }
 
 /* Folio typography — manuscript companion leaf, not panel.
@@ -3732,6 +3762,41 @@ body.viewer-active .folio-leaf-colophon {
     opacity: 1;
     border-bottom: 1px solid currentColor;
   }
+
+  /* Reading-column switcher — three quiet italic options
+     (single · dual · wide) that select the folio layout. Visible
+     only inside an active reading room; hidden on title leaf and
+     on mobile. Same register as the other apparatus controls. */
+  #ctrl-columns {
+    display: none;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--chrome-muted);
+    opacity: 0.6;
+    letter-spacing: 0.02em;
+    align-items: baseline;
+    gap: 6px;
+    margin-left: 6px;
+  }
+  body.in-reading #ctrl-columns { display: inline-flex; }
+  #ctrl-columns .col-opt {
+    cursor: pointer;
+    padding: 1px 1px;
+    color: inherit;
+    transition: color 0.2s, opacity 0.2s;
+  }
+  #ctrl-columns .col-opt:hover { color: var(--chrome-active); }
+  #ctrl-columns .col-opt.active {
+    color: var(--chrome-active);
+    opacity: 1;
+    border-bottom: 1px solid currentColor;
+  }
+  #ctrl-columns .col-sep { opacity: 0.4; padding: 0 1px; }
+}
+
+@media (max-width: 720px) {
+  #ctrl-columns { display: none !important; }
 }
 
 /* Hide the toggle on mobile — the consolidated running header is
@@ -3806,6 +3871,13 @@ body.viewer-active .folio-leaf-colophon {
         <button class="search-nav-btn" id="search-prev" disabled title="Previous match">&#9650;</button>
         <button class="search-nav-btn" id="search-next" disabled title="Next match">&#9660;</button>
       </div>
+      <span id="ctrl-columns" role="group" aria-label="Reading column layout">
+        <span class="col-opt active" data-cols="single" role="button" tabindex="0" title="Single column">single</span>
+        <span class="col-sep" aria-hidden="true">·</span>
+        <span class="col-opt" data-cols="dual" role="button" tabindex="0" title="Dual column">dual</span>
+        <span class="col-sep" aria-hidden="true">·</span>
+        <span class="col-opt" data-cols="wide" role="button" tabindex="0" title="Wide reading">wide</span>
+      </span>
       <button type="button" id="reading-mode-toggle" title="Summon formatting controls" aria-pressed="false">Formatting</button>
       <button type="button" id="companion-toggle" title="Show companion folio beside the text" aria-pressed="false">Folio</button>
       <button type="button" id="companion-swap" title="Move folio to the other side" aria-pressed="false" hidden>&#8646;</button>
@@ -5936,15 +6008,10 @@ function showCover(data, entry) {
 
   // Citation placement differs by hierarchy.
   //   Non-Bible: centered inline beneath the title, as before.
-  //   Bible: a small <details> apparatus tucked under the
-  //   metadata so the title and contents stay sovereign.
+  //   Bible: a quiet italic disclosure anchored to the top-right
+  //   corner of the title leaf (added after #continuous-cover closes).
   if (!isBibleCover) {
     html += citationsHTML;
-  } else {
-    html += '<details class="cite-disclosure">' +
-            '<summary>Cite this text</summary>' +
-            citationsHTML +
-            '</details>';
   }
 
   if (data.stewardship_history_url) {
@@ -5953,6 +6020,13 @@ function showCover(data, entry) {
 
   if (!isBibleCover) html += '<div class="cc-rule"></div>';
   html += '</div>';
+
+  if (isBibleCover) {
+    html += '<details class="cite-corner">' +
+            '<summary>Cite this text</summary>' +
+            citationsHTML +
+            '</details>';
+  }
 
   // Build TOC
   const hier = data.hierarchy || [];
@@ -6501,6 +6575,35 @@ $reader.addEventListener('scroll', () => {
   }
   $backToTop.classList.toggle('visible', scrollTop > 400);
 }, { passive: true });
+
+// Reading-column switcher (desktop). Toggles between single /
+// dual / wide folio layouts via body.cols-* classes. The control
+// itself only appears in the reading room (body.in-reading) via
+// CSS, so it never shows up on the title leaf. Default is single
+// (set once at startup; never persisted, so each new room begins
+// in the most readerly state).
+(function wireColumnSwitcher() {
+  const root = document.getElementById('ctrl-columns');
+  if (!root) return;
+  const APPLY_CLASSES = ['cols-single', 'cols-dual', 'cols-wide'];
+  function apply(mode) {
+    APPLY_CLASSES.forEach(c => document.body.classList.remove(c));
+    document.body.classList.add('cols-' + mode);
+    root.querySelectorAll('.col-opt').forEach(el => {
+      el.classList.toggle('active', el.dataset.cols === mode);
+    });
+  }
+  apply('single');
+  root.querySelectorAll('.col-opt').forEach(el => {
+    el.addEventListener('click', () => apply(el.dataset.cols));
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        apply(el.dataset.cols);
+      }
+    });
+  });
+})();
 
 // Formatting toggle (desktop). The reading room defaults to a
 // compact reading posture; this button summons the formatting
