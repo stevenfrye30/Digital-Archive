@@ -698,32 +698,41 @@ body {
   padding: 18px 36px 14px;
 }
 .bible-cover-layout #continuous-cover {
-  max-width: none;
-  margin: 0;
-  padding: 0 0 6px;
-  text-align: left;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2px 0 6px;
+  text-align: center;
 }
 .bible-cover-layout .cc-title {
-  font-size: 1.45em;
+  font-size: 1.5em;
+  font-weight: 500;
   line-height: 1.1;
-  margin-bottom: 0.1em;
-  letter-spacing: 0.01em;
-  text-align: left;
+  margin-bottom: 0.14em;
+  letter-spacing: 0.02em;
+  text-align: center;
 }
 .bible-cover-layout .cc-author,
 .bible-cover-layout .cc-translator,
 .bible-cover-layout .cc-year {
-  font-size: 0.8em;
-  margin-bottom: 0.04em;
-  text-align: left;
+  font-size: 0.82em;
+  margin-bottom: 0.06em;
+  text-align: center;
   line-height: 1.3;
+}
+.bible-cover-layout .cc-year {
+  font-size: 0.74em;
+  margin-top: 0.2em;
+  opacity: 0.8;
+  letter-spacing: 0.03em;
 }
 .bible-cover-layout .cc-source {
   font-size: 0.72em;
-  max-width: none;
-  margin: 0.4em 0 0;
-  text-align: left;
+  max-width: 560px;
+  margin: 0.4em auto 0;
+  text-align: center;
   line-height: 1.45;
+  font-style: italic;
+  color: var(--chrome-muted);
 }
 .bible-cover-layout #continuous-toc {
   max-width: none;
@@ -747,21 +756,52 @@ body {
   letter-spacing: 0.04em;
   opacity: 0.7;
 }
-/* Seven-column contents grid — 80 books / 7 cols ≈ 12 rows.
-   The extra column gives each cell more horizontal room so long
-   names (1 Thessalonians, Song of Three Young Men) mostly stay
-   on one line. Tight line-height keeps the whole leaf within a
-   normal laptop viewport without losing readability. */
-.bible-cover-layout .cc-toc-list {
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0 14px;
+/* Canon-segmented contents — each canon section is its own grid
+   so the reader feels canonical movement (Old Testament,
+   Apocrypha, New Testament) through rhythmic shift rather than
+   loud labels. Six columns within each section gives most book
+   names enough horizontal room to sit on a single line. */
+.bible-cover-layout .bcl-canon-section {
+  margin-top: 10px;
 }
-.bible-cover-layout .cc-toc-list li {
+.bible-cover-layout .bcl-canon-section:first-of-type {
+  margin-top: 6px;
+  border-top: 1px solid rgba(120, 90, 50, 0.18);
+  padding-top: 8px;
+}
+.bible-cover-layout .bcl-canon-label {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.7em;
+  letter-spacing: 0.14em;
+  color: var(--chrome-muted);
+  opacity: 0.55;
+  margin-bottom: 4px;
+  text-align: left;
+}
+.bible-cover-layout .cc-toc-list,
+.bible-cover-layout .bcl-canon-list {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0 16px;
+}
+.bible-cover-layout .cc-toc-list li,
+.bible-cover-layout .bcl-canon-list li {
   padding: 0 4px 0 0;
   border-radius: 3px;
   gap: 6px;
-  line-height: 1.1;
-  min-height: 22px;
+  line-height: 1.05;
+  min-height: 21px;
+}
+/* Tonal differentiation — Apocrypha steps back a touch (the
+   reader feels these as deuterocanonical without being told).
+   New Testament keeps the full register; Old Testament is the
+   default. No color, no loud separators — just opacity and
+   subtle weight. */
+.bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .bcl-canon-list li {
+  opacity: 0.78;
+}
+.bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .cc-toc-name {
+  font-style: italic;
 }
 .bible-cover-layout .cc-toc-list li:hover {
   background: rgba(0, 0, 0, 0.035);
@@ -782,23 +822,24 @@ body {
   font-size: 0.8em;
   line-height: 1.15;
 }
-/* Citation apparatus — small scholarly disclosure tucked under
-   the metadata. Closed by default so the title leaf reads as
-   architectural rather than configurational; click to consult.
-   Italic summary, transparent ground, no border. */
+/* Citation apparatus — a small scholarly disclosure beneath the
+   centered metadata. Even quieter than before — a single italic
+   word with a small chevron — so it never competes with the
+   title or the contents. Click to consult; closed by default. */
 .bible-cover-layout .cite-disclosure {
-  margin: 6px 0 0;
+  margin: 8px auto 0;
   font-family: Georgia, serif;
+  text-align: center;
 }
 .bible-cover-layout .cite-disclosure > summary {
   display: inline-block;
   cursor: pointer;
   list-style: none;
-  font-size: 0.72em;
+  font-size: 0.66em;
   font-style: italic;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   color: var(--chrome-muted);
-  opacity: 0.62;
+  opacity: 0.45;
   padding: 2px 0;
   transition: opacity 0.2s;
 }
@@ -815,11 +856,12 @@ body {
 }
 .bible-cover-layout .cite-disclosure > summary:hover { opacity: 0.95; }
 .bible-cover-layout .cite-disclosure .cc-citations {
-  margin: 4px 0 0;
-  max-width: 640px;
+  margin: 6px auto 0;
+  max-width: 580px;
   text-align: left;
-  padding-left: 12px;
+  padding: 8px 16px;
   border-left: 1px solid rgba(120, 90, 50, 0.15);
+  border-right: 1px solid rgba(120, 90, 50, 0.15);
 }
 .bible-cover-layout .cite-disclosure .cc-cite-heading { display: none; }
 .bible-cover-layout .cite-disclosure .cc-cite {
@@ -855,6 +897,32 @@ body {
 .bible-cover-layout .cc-begin {
   font-size: 0.8em;
   padding: 4px 10px;
+}
+/* Ceremonial bottom-center Enter — the concluding action of the
+   leaf. Wide understated pill, italic, thin border. Reads as
+   "cross the threshold" rather than "submit". Centered and
+   never clipping. */
+.bible-cover-layout .bcl-enter-wrap {
+  text-align: center;
+  margin: 12px auto 2px;
+}
+.bible-cover-layout .bcl-enter-btn {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+  padding: 6px 28px;
+  color: var(--chrome-active);
+  background: transparent;
+  border: 1px solid rgba(120, 90, 50, 0.32);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.bible-cover-layout .bcl-enter-btn:hover {
+  background: rgba(120, 90, 50, 0.06);
+  border-color: rgba(120, 90, 50, 0.55);
 }
 
 @media (max-width: 900px) {
@@ -5901,12 +5969,13 @@ function showCover(data, entry) {
   const bodyCount = data.passages.filter(p => !p.fm).length;
 
   html += '<div id="continuous-toc">';
-  html += `<div class="cc-toc-heading">Contents</div>`;
-
-  if (grouped) {
-    html += `<div class="cc-toc-sub">${keys.length} ${hier[0] || 'section'}s \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
-  } else {
-    html += `<div class="cc-toc-sub">${bodyCount.toLocaleString()} passages</div>`;
+  if (!isBibleCover) {
+    html += `<div class="cc-toc-heading">Contents</div>`;
+    if (grouped) {
+      html += `<div class="cc-toc-sub">${keys.length} ${hier[0] || 'section'}s \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
+    } else {
+      html += `<div class="cc-toc-sub">${bodyCount.toLocaleString()} passages</div>`;
+    }
   }
 
   // Front Matter button — always first if it exists
@@ -5914,17 +5983,48 @@ function showCover(data, entry) {
     html += '<div class="cc-fm-btn-wrap"><div class="cc-fm-btn" data-book="__fm__">✦ Front Matter</div></div>';
   }
 
-  html += '<ul class="cc-toc-list">';
-  if (grouped) {
-    keys.forEach((k, i) => {
-      html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
-    });
+  if (isBibleCover && grouped) {
+    // Canonical sections — Old Testament, Apocrypha, New Testament.
+    // Books 1-39 are OT, 40-53 are deuterocanonical (Apocrypha in
+    // the KJV-with-Apocrypha edition), 54-80 are NT. Each section
+    // has its own grid with a small italic Roman label; Apocrypha
+    // is tonally muted to honor its deuterocanonical status without
+    // hiding it. Numbering is continuous across the canon so the
+    // leaf still reads as a single Scripture index, not three tabs.
+    const sections = [
+      { canon: 'old-testament', label: 'i · Old Testament',  from: 0,  to: 39 },
+      { canon: 'apocrypha',     label: 'ii · Apocrypha',      from: 39, to: 53 },
+      { canon: 'new-testament', label: 'iii · New Testament', from: 53, to: 80 },
+    ];
+    for (const sec of sections) {
+      const books = keys.slice(sec.from, sec.to);
+      if (!books.length) continue;
+      html += `<section class="bcl-canon-section" data-canon="${sec.canon}">`;
+      html += `<div class="bcl-canon-label">${sec.label}</div>`;
+      html += '<ul class="cc-toc-list bcl-canon-list">';
+      books.forEach((k, j) => {
+        const i = sec.from + j;
+        html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+      });
+      html += '</ul>';
+      html += '</section>';
+    }
   } else {
-    html += `<li data-book="__all__"><span class="cc-toc-num">&rarr;</span><span class="cc-toc-name">Read the full text</span></li>`;
+    html += '<ul class="cc-toc-list">';
+    if (grouped) {
+      keys.forEach((k, i) => {
+        html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+      });
+    } else {
+      html += `<li data-book="__all__"><span class="cc-toc-num">&rarr;</span><span class="cc-toc-name">Read the full text</span></li>`;
+    }
+    html += '</ul>';
   }
-  html += '</ul>';
   if (grouped) {
-    html += '<div class="cc-begin-wrap"><div class="cc-begin" id="cc-begin-btn">Read from beginning &rarr;</div></div>';
+    const label = isBibleCover ? 'Enter the Reading Room' : 'Read from beginning &rarr;';
+    const cls   = isBibleCover ? 'cc-begin bcl-enter-btn' : 'cc-begin';
+    const wrap  = isBibleCover ? 'cc-begin-wrap bcl-enter-wrap' : 'cc-begin-wrap';
+    html += `<div class="${wrap}"><div class="${cls}" id="cc-begin-btn">${label}</div></div>`;
   }
   html += '</div>';
 
