@@ -2109,12 +2109,12 @@ mark.search-hl-active {
      facing leaf, quiet enough not to feel like a panel. The
      divider is now whitespace alone (no hairline) so the
      transition between leaves is purely tonal. */
-  background: color-mix(in srgb, var(--reader-bg) 94%, #b08a4a 6%);
+  background: color-mix(in srgb, var(--reader-bg) 92%, #b08a4a 8%);
   color: var(--reader-fg);
   /* Resting folio is a quiet witness margin — narrower than a
-     companion workspace, with a quieter tint and more breathing
-     room above so it reads as latent presence rather than a
-     habitation. */
+     companion workspace, with its own paper register and more
+     breathing room above. It persists during encounters so the
+     witness ecology remains visible alongside the active leaf. */
   flex: 0 0 26%;
   max-width: 300px;
   padding: 72px 28px 100px;
@@ -2131,40 +2131,52 @@ mark.search-hl-active {
   /* In companion mode, suppress the in-stream chapter appendix
      because the same content lives in the folio. */
   body.companion-mode .chapter-appendix { display: none; }
+  /* Stronger territorial separation — a barely-visible darker
+     band on the inside edge of the folio, evoking the compressed
+     paper of a codex gutter. No border, no shadow. */
+  body.companion-mode #folio {
+    background-image: linear-gradient(to left,
+      transparent 0, transparent 94%,
+      rgba(80,55,30,0.045) 100%);
+  }
+  body.companion-mode.folio-left #folio {
+    background-image: linear-gradient(to right,
+      transparent 0, transparent 94%,
+      rgba(80,55,30,0.045) 100%);
+  }
 }
 
-/* Manuscript encounter state — when a witness has been summoned,
-   the two-column spread itself dissolves. The primary text leaf
-   steps out of view; the witness becomes the central manuscript
-   encounter on the same paper, in a single centered measure.
-   Not a modal, not an overlay — a different leaf, briefly. */
+/* Encounter field — sits between the manuscript and the folio.
+   When a witness is summoned, the manuscript yields here while
+   the folio continues quietly at its resting width. The folio's
+   witness register persists, so the ecology is never replaced
+   by a single object. Same paper as the prepared-leaf wash. */
+#encounter {
+  display: none;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  background: color-mix(in srgb, var(--reader-bg) 96%, #b08a4a 4%);
+  color: var(--reader-fg);
+  padding: 64px 0 96px;
+}
+#encounter-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 56px;
+}
 @media (min-width: 901px) {
   body.companion-mode.folio-encounter #reader { display: none; }
-  body.companion-mode.folio-encounter #folio {
-    flex: 1 1 100%;
-    max-width: none;
-    /* Prepared-leaf paper — a barely-warmer wash than the
-       primary text leaf. Sub-threshold, but enough to feel
-       like a different sheet has been laid upon the desk. */
-    background: color-mix(in srgb, var(--reader-bg) 96%, #b08a4a 4%);
-    padding: 72px 0 120px;
-  }
-  body.companion-mode.folio-encounter #folio-inner {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 56px;
-  }
+  body.companion-mode.folio-encounter #encounter { display: block; }
 }
 
 /* Below the companion breakpoint, hide companion controls entirely
-   and force pure layout. Folio falls back to in-stream appendix
-   (which renders normally for prototype chapters). */
+   and force pure layout. Folio + encounter both fall away; the
+   reader returns. */
 @media (max-width: 900px) {
   #companion-toggle,
   #companion-swap { display: none !important; }
   #folio { display: none !important; }
-  /* Safety: if the body still carries .folio-encounter from a
-     desktop session, don't strand the reader on a hidden #reader. */
+  #encounter { display: none !important; }
   body.folio-encounter #reader { display: block !important; }
 }
 
@@ -2247,6 +2259,12 @@ body.companion-mode #companion-toggle {
   color: inherit;
 }
 .folio-witness:hover { opacity: 0.78; }
+/* Active witness — quietly stronger in the resting list while
+   its leaf is open in the encounter field. Typography-only. */
+.folio-witness.active .folio-title {
+  opacity: 1;
+  color: var(--reader-fg);
+}
 
 .folio-title {
   display: block;
@@ -2377,13 +2395,22 @@ body.folio-encounter .folio-body-line[data-generation="transition"] {
    no shadow, no zoom widget, no gallery affordance. The slightly
    warmer encounter paper holds the plate in place. */
 .folio-leaf[data-kind="plate"] .folio-plate-wrap {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 8px 0 0;
 }
+/* Viewport discipline — the plate fits inside a single visual
+   field whenever possible. max-height is sized so the plate
+   shares the encounter with title, caption, and colophon without
+   forcing vertical scroll on a standard desktop viewport. */
 .folio-leaf[data-kind="plate"] .folio-plate {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  max-height: calc(100vh - 340px);
+  width: auto;
   height: auto;
+  object-fit: contain;
   margin: 0 auto;
 }
 .folio-leaf[data-kind="plate"] .folio-plate-caption {
@@ -3441,6 +3468,9 @@ body.folio-encounter .folio-leaf-colophon {
         <div id="passages"></div>
       </div>
     </div>
+    <section id="encounter" aria-label="Witness encounter">
+      <div id="encounter-inner"></div>
+    </section>
     <aside id="folio" aria-label="Companion folio">
       <div id="folio-inner"></div>
     </aside>
@@ -5662,8 +5692,11 @@ function _openFolioObject(id) {
   _folioMode = 'object';
   _setFolioEncounter(true);
   renderCompanionFolio();
-  const inner = document.getElementById('folio-inner');
-  if (inner) inner.scrollTop = 0;
+  // The encounter is the new field; scroll it to top so the
+  // arriving leaf is whole. The folio's own scroll is left alone
+  // — the witness ecology stays where the reader last saw it.
+  const enc = document.getElementById('encounter');
+  if (enc) enc.scrollTop = 0;
 }
 function _closeFolioObject() {
   _openFolioRecordId = null;
@@ -5900,15 +5933,20 @@ function _maybeRetuneFolioToCurrentBook() {
   }
 }
 
+// Always render the witness register into the folio. Additionally,
+// when a witness is summoned, render its leaf into the separate
+// encounter field. The folio is never replaced by a single object —
+// the witness ecology stays visible alongside the active encounter.
 function renderCompanionFolio() {
   const inner = document.getElementById('folio-inner');
+  const encInner = document.getElementById('encounter-inner');
   if (!inner) return;
   inner.innerHTML = '';
+  if (encInner) encInner.innerHTML = '';
   const chapters = _availableFolioChapters();
   if (!chapters.length) {
     // No augmented chapters means no surface for an encounter.
-    // Reset any stranded encounter state from a previous text so
-    // #reader doesn't stay hidden under the empty notice.
+    // Reset any stranded encounter state from a previous text.
     if (_folioMode === 'object') {
       _folioMode = 'list';
       _openFolioRecordId = null;
@@ -5923,23 +5961,29 @@ function renderCompanionFolio() {
   if (!_currentFolioChapterKey || !chapters.includes(_currentFolioChapterKey)) {
     _currentFolioChapterKey = chapters[0];
   }
-  // Object-leaf mode: a witness has been summoned. Render only
-  // its dedicated leaf; the chapter header and witness list step
-  // out of the way until the reader returns.
-  if (_folioMode === 'object' && _openFolioRecordId) {
+  _renderFolioWitnessList(inner, chapters);
+  // Object mode: render the summoned witness into the encounter
+  // field. The folio's list above remains untouched, marking the
+  // active witness with a quiet highlight.
+  if (_folioMode === 'object' && _openFolioRecordId && encInner) {
     const rec = (currentData.genealogy || []).find(r => r.id === _openFolioRecordId);
     if (rec) {
       const a = rec.anchors && rec.anchors[0] && rec.anchors[0].target;
       const pid = a ? a.split('::').pop() : '';
-      inner.appendChild(_renderFolioObjectLeaf(rec, pid));
-      return;
+      encInner.appendChild(_renderFolioObjectLeaf(rec, pid));
+    } else {
+      // Record missing — close encounter gracefully and re-render
+      // the list so the active mark is removed.
+      _folioMode = 'list';
+      _openFolioRecordId = null;
+      _setFolioEncounter(false);
+      inner.innerHTML = '';
+      _renderFolioWitnessList(inner, chapters);
     }
-    // Record missing — fall back to list mode gracefully.
-    _folioMode = 'list';
-    _openFolioRecordId = null;
-    _setFolioEncounter(false);
   }
-  // List mode: chapter header + collapsed witnesses.
+}
+
+function _renderFolioWitnessList(inner, chapters) {
   const ch = _currentFolioChapterKey;
   const records = currentData.genealogy.filter(r => {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
@@ -5965,6 +6009,7 @@ function renderCompanionFolio() {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
     const pid = a ? a.split('::').pop() : '';
     const entry = _renderFolioWitness(r, pid);
+    if (r.id === _openFolioRecordId) entry.classList.add('active');
     const m = pid.match(/^[a-z]+\.\d+\.(\d+)$/);
     const v = m ? Number(m[1]) : 1;
     const gap = Math.max(0, v - prevVerse - 1);
@@ -7033,12 +7078,23 @@ function browseOpen(dataFile) {
 /** Return to title page + TOC for current text */
 function backToContents() {
   if (!currentData || !currentEntry) return;
+  // Leaving the reader closes any open witness encounter so the
+  // reader is never trapped in an active leaf when returning to
+  // the cover. Defensive even if _folioMode says 'list'.
+  if (typeof _closeFolioObject === 'function' && _folioMode === 'object') {
+    _closeFolioObject();
+  }
   showCover(currentData, currentEntry);
   document.getElementById('ctrl-contents').style.display = 'none';
 }
 
 /** Return to home (show welcome) */
 function browseHome() {
+  // Returning home must dissolve any active encounter — the home
+  // surface is not a place for a summoned witness.
+  if (typeof _closeFolioObject === 'function' && _folioMode === 'object') {
+    _closeFolioObject();
+  }
   $browse.style.display = 'none';
   document.getElementById('controls').style.display = 'none';
   document.getElementById('welcome').style.display = '';
