@@ -2146,38 +2146,72 @@ mark.search-hl-active {
   }
 }
 
-/* Encounter field — sits between the manuscript and the folio.
-   When a witness is summoned, the manuscript yields here while
-   the folio continues quietly at its resting width. The folio's
-   witness register persists, so the ecology is never replaced
-   by a single object. Same paper as the prepared-leaf wash. */
-#encounter {
+/* Object viewer — the unified invocation surface for every
+   witness kind. When active it covers the viewport with a warm
+   paper wash; the reading state beneath recedes (lower opacity,
+   faintest blur) but stays perceptible. The viewer's inner leaf
+   is the prepared paper on which any witness type renders.
+   Closed by Escape, by clicking outside the leaf, or by the
+   leaf's own return rubric. Not a modal, not a card — a
+   consultation laid over the open codex. */
+#object-viewer {
   display: none;
-  flex: 1 1 auto;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  /* Warm parchment wash, intentionally translucent so the
+     recessed reading state remains faintly perceptible behind.
+     Not a dark backdrop, not opaque — a quieted chamber. */
+  background-color: rgba(243, 234, 217, 0.94);
   overflow-y: auto;
-  background: color-mix(in srgb, var(--reader-bg) 96%, #b08a4a 4%);
+  padding: 56px 24px;
   color: var(--reader-fg);
-  padding: 64px 0 96px;
+  animation: viewer-arrive 0.4s ease-out;
 }
-#encounter-inner {
-  max-width: 760px;
+@keyframes viewer-arrive {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+#viewer-inner {
+  max-width: 880px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 56px;
 }
-@media (min-width: 901px) {
-  body.companion-mode.folio-encounter #reader { display: none; }
-  body.companion-mode.folio-encounter #encounter { display: block; }
+body.viewer-active #object-viewer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+/* Background recession — the reading state quietly steps back
+   while the viewer is up. Opacity + a sub-pixel blur are enough
+   to subordinate without removing. Pointer events are disabled
+   so any click on the recessed background hits the viewer
+   backdrop and closes. */
+body.viewer-active #reader,
+body.viewer-active #folio {
+  opacity: 0.32;
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+#reader, #folio {
+  transition: opacity 0.45s ease-out, filter 0.45s ease-out;
 }
 
-/* Below the companion breakpoint, hide companion controls entirely
-   and force pure layout. Folio + encounter both fall away; the
-   reader returns. */
+/* Below the companion breakpoint, hide companion controls and
+   the viewer entirely. The reader returns even if a viewer-active
+   class was carried over from a desktop session. */
 @media (max-width: 900px) {
   #companion-toggle,
   #companion-swap { display: none !important; }
   #folio { display: none !important; }
-  #encounter { display: none !important; }
-  body.folio-encounter #reader { display: block !important; }
+  #object-viewer { display: none !important; }
+  body.viewer-active #reader {
+    display: block !important;
+    opacity: 1 !important;
+    filter: none !important;
+    pointer-events: auto !important;
+  }
 }
 
 /* Companion toggle buttons in #controls — same quiet register as
@@ -2324,7 +2358,7 @@ body.companion-mode #companion-toggle {
    more typographic weight — a chapter rubric set above the
    witness, not a small dismiss link. Still italic, still
    serif, still no chrome — just clearer cadence. */
-body.folio-encounter .folio-leaf-return {
+body.viewer-active .folio-leaf-return {
   font-size: 0.95em;
   opacity: 0.82;
   padding-bottom: 44px;
@@ -2364,16 +2398,16 @@ body.folio-encounter .folio-leaf-return {
    more presence when it occupies the full spread. Title scales
    up modestly; the body sits in a generous reading measure.
    No new ornament, no new colors. */
-body.folio-encounter .folio-leaf-verse {
+body.viewer-active .folio-leaf-verse {
   font-size: 0.9em;
   opacity: 0.82;
   margin-bottom: 8px;
 }
-body.folio-encounter .folio-leaf-title {
+body.viewer-active .folio-leaf-title {
   font-size: 1.4em;
   margin-bottom: 36px;
 }
-body.folio-encounter .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
+body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   font-size: 1em;
   line-height: 1.8;
 }
@@ -2382,10 +2416,10 @@ body.folio-encounter .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    generation transition gets a quiet breath above it. Rendered
    only when the lines carry [data-depth] / [data-generation],
    so resting-mode renders remain untouched. */
-body.folio-encounter .folio-body-line[data-depth="0"] {
+body.viewer-active .folio-body-line[data-depth="0"] {
   opacity: 1;
 }
-body.folio-encounter .folio-body-line[data-generation="transition"] {
+body.viewer-active .folio-body-line[data-generation="transition"] {
   margin-top: 0.5em;
 }
 
@@ -2442,7 +2476,7 @@ body.folio-encounter .folio-body-line[data-generation="transition"] {
    of the leaf. Visible only in encounter; reads as a hand-set
    editorial mark, not a footer. Bookends the prepared page. */
 .folio-leaf-colophon { display: none; }
-body.folio-encounter .folio-leaf-colophon {
+body.viewer-active .folio-leaf-colophon {
   display: block;
   margin: 56px auto 0;
   text-align: center;
@@ -3468,12 +3502,18 @@ body.folio-encounter .folio-leaf-colophon {
         <div id="passages"></div>
       </div>
     </div>
-    <section id="encounter" aria-label="Witness encounter">
-      <div id="encounter-inner"></div>
-    </section>
     <aside id="folio" aria-label="Companion folio">
       <div id="folio-inner"></div>
     </aside>
+    </div>
+
+    <!-- Object viewer — unified invocation surface for every
+         witness kind. Sits as an overlay above the reading state;
+         the manuscript and folio recede beneath it but persist.
+         Closed by Escape, by clicking outside the leaf, or by the
+         leaf's own return rubric. -->
+    <div id="object-viewer" role="dialog" aria-modal="true" aria-label="Witness viewer">
+      <div id="viewer-inner"></div>
     </div>
 
   </div>
@@ -5654,11 +5694,24 @@ $reader.addEventListener('scroll', () => {
       // body class doesn't outlive the surface that justified it.
       _folioMode = 'list';
       _openFolioRecordId = null;
-      _setFolioEncounter(false);
+      _setViewerActive(false);
     }
   });
   swap.addEventListener('click', () => {
     document.body.classList.toggle('folio-left');
+  });
+})();
+
+// Click-outside dismissal for the object viewer. A click that
+// lands on the viewer's backdrop (not on the inner leaf or any
+// of its children) closes the viewer and returns to the reading
+// state beneath. Escape is wired separately on the global
+// keydown listener.
+(function wireViewerDismiss() {
+  const viewer = document.getElementById('object-viewer');
+  if (!viewer) return;
+  viewer.addEventListener('click', (e) => {
+    if (e.target === viewer) _closeFolioObject();
   });
 })();
 
@@ -5680,28 +5733,27 @@ let _currentFolioChapterKey = null;
 // expansion — closing returns the folio to the witness list.
 let _folioMode = 'list';
 let _openFolioRecordId = null;
-// Toggling body.folio-encounter dissolves the two-column spread
-// (CSS hides #reader and lets #folio occupy the spread in a
-// centered measure). Always paired with _folioMode so DOM state
+// Toggling body.viewer-active brings the object viewer up over
+// the reading state. Always paired with _folioMode so DOM state
 // and atmosphere stay in lockstep.
-function _setFolioEncounter(on) {
-  document.body.classList.toggle('folio-encounter', !!on);
+function _setViewerActive(on) {
+  document.body.classList.toggle('viewer-active', !!on);
 }
 function _openFolioObject(id) {
   _openFolioRecordId = id;
   _folioMode = 'object';
-  _setFolioEncounter(true);
+  _setViewerActive(true);
   renderCompanionFolio();
-  // The encounter is the new field; scroll it to top so the
-  // arriving leaf is whole. The folio's own scroll is left alone
-  // — the witness ecology stays where the reader last saw it.
-  const enc = document.getElementById('encounter');
-  if (enc) enc.scrollTop = 0;
+  // Scroll the viewer to the top so the arriving leaf is whole.
+  // The folio's own scroll is left alone — the witness register
+  // stays where the reader last saw it, recessed beneath.
+  const viewer = document.getElementById('object-viewer');
+  if (viewer) viewer.scrollTop = 0;
 }
 function _closeFolioObject() {
   _openFolioRecordId = null;
   _folioMode = 'list';
-  _setFolioEncounter(false);
+  _setViewerActive(false);
   renderCompanionFolio();
 }
 
@@ -5904,7 +5956,7 @@ function _setFolioChapter(chapterKey) {
   // Cycling chapters returns the folio to its quiet list state.
   _folioMode = 'list';
   _openFolioRecordId = null;
-  _setFolioEncounter(false);
+  _setViewerActive(false);
   renderCompanionFolio();
 }
 
@@ -5939,7 +5991,7 @@ function _maybeRetuneFolioToCurrentBook() {
 // the witness ecology stays visible alongside the active encounter.
 function renderCompanionFolio() {
   const inner = document.getElementById('folio-inner');
-  const encInner = document.getElementById('encounter-inner');
+  const encInner = document.getElementById('viewer-inner');
   if (!inner) return;
   inner.innerHTML = '';
   if (encInner) encInner.innerHTML = '';
@@ -5950,7 +6002,7 @@ function renderCompanionFolio() {
     if (_folioMode === 'object') {
       _folioMode = 'list';
       _openFolioRecordId = null;
-      _setFolioEncounter(false);
+      _setViewerActive(false);
     }
     const empty = document.createElement('div');
     empty.className = 'folio-empty';
@@ -5976,7 +6028,7 @@ function renderCompanionFolio() {
       // the list so the active mark is removed.
       _folioMode = 'list';
       _openFolioRecordId = null;
-      _setFolioEncounter(false);
+      _setViewerActive(false);
       inner.innerHTML = '';
       _renderFolioWitnessList(inner, chapters);
     }
@@ -6095,6 +6147,9 @@ document.addEventListener('keydown', (e) => {
     return;
   }
   if (e.key === 'Escape') {
+    // Active viewer takes priority — Escape dismisses the
+    // summoned witness and returns to the reading state behind.
+    if (_folioMode === 'object') { _closeFolioObject(); return; }
     if (document.activeElement === $search) { $search.value = ''; $search.blur(); filterAndRender(); }
     // (sidebar search removed)
     return;
