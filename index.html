@@ -2109,17 +2109,18 @@ mark.search-hl-active {
      facing leaf, quiet enough not to feel like a panel. The
      divider is now whitespace alone (no hairline) so the
      transition between leaves is purely tonal. */
-  background: color-mix(in srgb, var(--reader-bg) 91%, #b08a4a 9%);
+  background: color-mix(in srgb, var(--reader-bg) 94%, #b08a4a 6%);
   color: var(--reader-fg);
   /* Resting folio is a quiet witness margin — narrower than a
-     companion workspace. The primary text holds clear sovereignty
-     when no witness is summoned. */
-  flex: 0 0 30%;
-  max-width: 340px;
-  padding: 60px 32px 100px;
+     companion workspace, with a quieter tint and more breathing
+     room above so it reads as latent presence rather than a
+     habitation. */
+  flex: 0 0 26%;
+  max-width: 300px;
+  padding: 72px 28px 100px;
 }
 #folio-inner {
-  max-width: 320px;
+  max-width: 280px;
 }
 
 /* Companion mode (desktop only — gated by min-width media below) */
@@ -2142,10 +2143,11 @@ mark.search-hl-active {
   body.companion-mode.folio-encounter #folio {
     flex: 1 1 100%;
     max-width: none;
-    /* Neutral paper — the warm folio tint recedes so the
-       encounter sits on the same surface as the primary text. */
-    background: var(--reader-bg);
-    padding: 64px 0 120px;
+    /* Prepared-leaf paper — a barely-warmer wash than the
+       primary text leaf. Sub-threshold, but enough to feel
+       like a different sheet has been laid upon the desk. */
+    background: color-mix(in srgb, var(--reader-bg) 96%, #b08a4a 4%);
+    padding: 72px 0 120px;
   }
   body.companion-mode.folio-encounter #folio-inner {
     max-width: 640px;
@@ -2277,11 +2279,14 @@ body.companion-mode #companion-toggle {
    hierarchy. No box, no border, no overlay, no backdrop. */
 .folio-leaf {
   display: block;
-  animation: folio-leaf-arrive 0.32s ease-out;
+  /* Page-settle threshold — the leaf arrives with a small
+     downward settle rather than a flat fade, so opening a
+     witness feels like a single page laid upon the desk. */
+  animation: folio-leaf-settle 0.5s ease-out;
 }
-@keyframes folio-leaf-arrive {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+@keyframes folio-leaf-settle {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .folio-leaf-return {
   display: inline-block;
@@ -2353,6 +2358,73 @@ body.folio-encounter .folio-leaf-title {
 body.folio-encounter .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   font-size: 1em;
   line-height: 1.8;
+}
+/* Lineage cadence — in the encounter the trunk (depth 0) reads
+   with a touch more presence than its descendants, and each
+   generation transition gets a quiet breath above it. Rendered
+   only when the lines carry [data-depth] / [data-generation],
+   so resting-mode renders remain untouched. */
+body.folio-encounter .folio-body-line[data-depth="0"] {
+  opacity: 1;
+}
+body.folio-encounter .folio-body-line[data-generation="transition"] {
+  margin-top: 0.5em;
+}
+
+/* Plate witnesses — engraved visual witnesses. In the encounter
+   the engraving sits centered on the prepared leaf with a single
+   restrained caption line below: artist · year · source. No frame,
+   no shadow, no zoom widget, no gallery affordance. The slightly
+   warmer encounter paper holds the plate in place. */
+.folio-leaf[data-kind="plate"] .folio-plate-wrap {
+  display: block;
+  margin: 8px 0 0;
+}
+.folio-leaf[data-kind="plate"] .folio-plate {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.folio-leaf[data-kind="plate"] .folio-plate-caption {
+  display: block;
+  margin: 32px auto 0;
+  max-width: 520px;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.82em;
+  line-height: 1.6;
+  color: var(--chrome-muted);
+  opacity: 0.72;
+  letter-spacing: 0.02em;
+}
+/* Latent presence in the resting list — plate witnesses use a
+   small open-square ornament (an awaiting frame) instead of the
+   genealogy fleuron, with a quiet 'plate' suffix on the verse
+   line. Typography-only; no thumbnail. */
+.folio-witness[data-kind="plate"] .folio-title::before {
+  content: '\25AB\00A0\00A0';
+}
+.folio-witness[data-kind="plate"] .folio-verse::after {
+  content: ' \00B7 plate';
+  opacity: 0.7;
+}
+
+/* Closing colophon — a small italic chapter rubric at the foot
+   of the leaf. Visible only in encounter; reads as a hand-set
+   editorial mark, not a footer. Bookends the prepared page. */
+.folio-leaf-colophon { display: none; }
+body.folio-encounter .folio-leaf-colophon {
+  display: block;
+  margin: 56px auto 0;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.78em;
+  color: var(--chrome-muted);
+  opacity: 0.55;
+  letter-spacing: 0.04em;
 }
 
 /* Vertical genealogy rendering — per-line blocks whose
@@ -4307,7 +4379,9 @@ function _toggleApparatusGap(passageDiv, passageId, apparatusIndex) {
 //
 // See CHAPTER_APPENDIX_PROPOSAL_2026.md.
 
-const APPENDIX_PROTOTYPE_CHAPTERS = new Set(['gen.4', 'gen.11', 'gen.29']);
+const APPENDIX_PROTOTYPE_CHAPTERS = new Set([
+  'gen.1', 'gen.3', 'gen.4', 'gen.7', 'gen.11', 'gen.29'
+]);
 
 // Precomputed set of passage ids that are the last in their chapter.
 // Refreshed from loadText after each text loads. Lets the renderer
@@ -5658,13 +5732,23 @@ function _renderFolioObjectLeaf(rec, pid) {
     case 'genealogy':
       body.appendChild(_renderGenealogyVertical(rec.body || ''));
       break;
+    case 'plate':
+      body.appendChild(_renderPlate(rec));
+      break;
     default:
-      // Future kinds (map / image / commentary / note) will dispatch
+      // Future kinds (map / commentary / note) will dispatch
       // their own leaf body renderers here. The outer shape stays.
       body.appendChild(_renderGenealogyVertical(rec.body || ''));
       break;
   }
   leaf.appendChild(body);
+
+  // Closing colophon — a small italic chapter rubric at the foot
+  // of the prepared leaf. CSS reveals it only in encounter state.
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
   return leaf;
 }
 
@@ -5679,6 +5763,7 @@ function _renderGenealogyVertical(body) {
   const wrap = document.createElement('div');
   wrap.className = 'folio-body-vertical';
   const lines = String(body).split('\n');
+  let prevDepth = -1;
   for (const line of lines) {
     const row = document.createElement('div');
     row.className = 'folio-body-line';
@@ -5696,8 +5781,44 @@ function _renderGenealogyVertical(body) {
     // overflowing on narrow folio widths.
     const depth = prefix.length;
     if (depth > 0) row.style.paddingLeft = (depth * 0.45) + 'em';
+    // Lineage cadence — record depth and mark generation
+    // transitions so the encounter-state CSS can give the trunk
+    // a touch more presence and let each new generation breathe.
+    // Inert unless body.folio-encounter is set.
+    row.dataset.depth = String(depth);
+    if (prevDepth !== -1 && depth !== prevDepth) {
+      row.dataset.generation = 'transition';
+    }
+    prevDepth = depth;
     row.textContent = content;
     wrap.appendChild(row);
+  }
+  return wrap;
+}
+
+// Plate body renderer — a single archival engraving centered on
+// the prepared leaf, with a restrained provenance caption below.
+// No frame, no zoom, no gallery affordance. The image is the page;
+// the caption is a small hand-set credit, not a metadata block.
+function _renderPlate(rec) {
+  const wrap = document.createElement('div');
+  wrap.className = 'folio-plate-wrap';
+  const img = document.createElement('img');
+  img.className = 'folio-plate';
+  img.src = (rec.plate && rec.plate.url) || '';
+  img.alt = rec.title || '';
+  wrap.appendChild(img);
+  if (rec.plate) {
+    const parts = [];
+    if (rec.plate.artist) parts.push(rec.plate.artist);
+    if (rec.plate.year)   parts.push(rec.plate.year);
+    if (rec.plate.source) parts.push(rec.plate.source);
+    if (parts.length) {
+      const cap = document.createElement('div');
+      cap.className = 'folio-plate-caption';
+      cap.textContent = parts.join(' · ');
+      wrap.appendChild(cap);
+    }
   }
   return wrap;
 }
