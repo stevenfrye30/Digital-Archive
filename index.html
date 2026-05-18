@@ -2680,12 +2680,18 @@ body.viewer-active #reader {
 }
 /* Plate leaves dominate the chamber — no paper, no padding, the
    engraving sits directly on the dark with a compact plaque
-   beneath. The dark chamber is the frame; nothing else is needed. */
+   beneath. The leaf itself is a flex centering box: the visible
+   object (.folio-plate-wrap) shrinks to its own content, so the
+   dimmed manuscript region around it falls OUTSIDE the wrap's
+   hit-test and dismisses on click. */
 .folio-leaf[data-kind="plate"] {
   background: transparent;
   padding: 0;
   max-width: 1500px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* Background recession — the reading state quietly steps back
    while the viewer is up. Opacity + a sub-pixel blur subordinate
@@ -3149,12 +3155,16 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
 
 /* Plate witnesses — the engraving is the consulted object. It
    sits directly on the dark, with a compact plaque (title, verse,
-   provenance) beneath. The dark chamber is the frame; no shadow,
-   no border, no gallery affordance. */
+   provenance) beneath. The wrap shrinks to the engraving's
+   width — the dimmed manuscript area to either side falls
+   outside this hit zone and dismisses on click. */
 .folio-leaf[data-kind="plate"] .folio-plate-wrap {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
+  width: auto;
+  max-width: 100%;
+  flex: 0 0 auto;
 }
 /* The engraving dominates: only the return rubric above and the
    plaque below claim vertical space. The mat holds the image with
@@ -6951,24 +6961,12 @@ $reader.addEventListener('scroll', () => {
 (function wireViewerDismiss() {
   const viewer = document.getElementById('object-viewer');
   if (!viewer) return;
-  viewer.addEventListener('click', (e) => {
-    const leaf = e.target.closest('.folio-leaf');
-    if (!leaf) { _closeFolioObject(); return; }
-    if (leaf.dataset.kind === 'plate') {
-      // For plate chambers the leaf is transparent; only the
-      // wrap (engraving + plaque) is on-object. Any click in
-      // the dark surrounding field — including the leaf's own
-      // empty padding — collapses the encounter.
-      if (!e.target.closest('.folio-plate-wrap')) {
-        _closeFolioObject();
-      }
-      return;
-    }
-    // Text witnesses: the paper leaf is the object. Clicks land on
-    // parchment, paper margin, or any internal element — all
-    // on-object. Dismiss only fires when the click misses the leaf
-    // entirely, handled by the early-return above.
-  });
+  // Radical simplification: every click that reaches the viewer
+  // dismisses. The consulted object stops propagation on its own
+  // (.folio-plate-wrap for plates, .folio-leaf for text witnesses)
+  // so clicks that land on the actual object never reach here.
+  // No geometry checks, no closest() lookups, no per-kind branches.
+  viewer.addEventListener('click', _closeFolioObject);
 })();
 
 // Build the folio's contents from currentData.genealogy, filtered
@@ -7059,9 +7057,17 @@ function _renderFolioObjectLeaf(rec, pid) {
     // Plates dominate the chamber: no paper leaf around them, no
     // verse/title block above. The engraving sits in the dark with
     // a compact plaque (title · verse · provenance) directly beneath.
+    // The plate-wrap is the only on-object surface — it absorbs
+    // its own clicks below.
     leaf.appendChild(_renderPlate(rec, pid, chKey));
     return leaf;
   }
+
+  // Text witnesses: the paper leaf itself is the consulted object,
+  // so clicks anywhere on the leaf stop propagation and the viewer
+  // does not dismiss. Clicks outside the leaf hit #object-viewer
+  // and close.
+  leaf.addEventListener('click', e => e.stopPropagation());
 
   // Text witnesses (genealogy, future commentary/notes): paper leaf
   // with verse, title, body, and a closing chapter rubric.
@@ -7149,9 +7155,12 @@ function _renderGenealogyVertical(body) {
 function _renderPlate(rec, pid, chKey) {
   const wrap = document.createElement('div');
   wrap.className = 'folio-plate-wrap';
+  // The wrap (engraving + plaque) is the consulted object. It
+  // absorbs its own clicks; every other click in the viewer
+  // collapses the encounter via the viewer's delegated handler.
+  wrap.addEventListener('click', e => e.stopPropagation());
   // The mat holds the engraving — a thin warm hairline and a
   // slight inner mount tone, restrained as a passe-partout.
-  // The mat is part of the consulted object; clicks on it stay.
   const mat = document.createElement('div');
   mat.className = 'folio-plate-mat';
   const img = document.createElement('img');
