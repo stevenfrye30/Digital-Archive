@@ -808,30 +808,32 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   border-top: 1px solid rgba(120, 90, 50, 0.18);
   padding-top: 3px;
 }
-/* Canon label as manuscript rubrication — a faint warm rubric
-   mark, small-caps, calligraphic italic, set just above the
-   section's plates. Reads as scribal section indicator, not as
-   a UI header. */
+/* Canon label as manuscript rubrication — a true canon-division
+   header carrying scribal authority: small-caps italic in a warm
+   rubric tone, preceded by a hair-rule. Larger and more legible
+   than a marginal annotation, but still tonally below "The Holy
+   Bible". This is the voice of the canon table announcing its
+   sections, not a UI label. */
 .bible-cover-layout .bcl-canon-label {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
-  font-size: 0.62em;
-  letter-spacing: 0.24em;
-  color: rgba(125, 70, 30, 0.68);
-  opacity: 0.85;
-  margin: 0 0 3px 2px;
+  font-size: 0.78em;
+  letter-spacing: 0.2em;
+  color: rgba(120, 65, 25, 0.88);
+  opacity: 1;
+  margin: 0 0 5px 2px;
   text-align: left;
 }
 .bible-cover-layout .bcl-canon-label::before {
   content: '';
   display: inline-block;
-  width: 14px;
+  width: 20px;
   height: 1px;
   background: currentColor;
   vertical-align: middle;
-  margin-right: 10px;
-  opacity: 0.55;
+  margin-right: 12px;
+  opacity: 0.72;
 }
 .bible-cover-layout .cc-toc-list,
 .bible-cover-layout .bcl-canon-list {
