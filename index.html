@@ -2612,16 +2612,27 @@ mark.search-hl-active {
 #object-viewer {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   position: fixed;
   inset: 0;
   z-index: 100;
-  /* Warm charcoal — archival reading-room darkness, not pure
-     black, translucent enough that the recessed manuscript and
-     folio are sensed through it. */
-  background-color: rgba(28, 22, 16, 0.93);
-  overflow-y: auto;
-  padding: 48px 24px;
+  /* Warm charcoal with a soft central vignette — archival
+     reading-room darkness, never pure black. The radial gradient
+     concentrates focus on the consulted object while the outer
+     field deepens to nearly opaque so the manuscript behind is
+     barely perceptible. */
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(28, 22, 16, 0.88) 0%,
+      rgba(14, 10, 6, 0.97) 75%,
+      rgba(8, 6, 4, 0.99) 100%
+    );
+  /* No scroll — the viewport is locked. The object is sized to
+     fit (max-height: 100vh - chrome). If it would overflow, it
+     simply scales down. */
+  overflow: hidden;
+  padding: 32px 32px;
   color: var(--reader-fg);
   visibility: hidden;
   opacity: 0;
@@ -2632,10 +2643,26 @@ body.viewer-active #object-viewer {
   opacity: 1;
   transition: opacity 0.45s ease-out, visibility 0s;
 }
+/* Lock the room behind the viewer. body already has height: 100vh
+   so document.scroll is unmoved, but additional belt-and-suspenders
+   ensures no chrome bar or sub-container can introduce drift. */
+body.viewer-active {
+  overflow: hidden;
+}
+body.viewer-active #reader {
+  /* Reader is the sole scrollable container; freeze its scroll
+     while the viewer is active so any subtle layout shift in the
+     overlay cannot trigger a wheel/touch propagation. */
+  overflow: hidden !important;
+}
 #viewer-inner {
-  max-width: 1200px;
+  max-width: 1500px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 /* The default leaf — for text witnesses (genealogy, future
    commentary). A manuscript page laid on the dark archival table.
@@ -2657,7 +2684,8 @@ body.viewer-active #object-viewer {
 .folio-leaf[data-kind="plate"] {
   background: transparent;
   padding: 0;
-  max-width: 1100px;
+  max-width: 1500px;
+  width: 100%;
 }
 /* Background recession — the reading state quietly steps back
    while the viewer is up. Opacity + a sub-pixel blur subordinate
@@ -3136,16 +3164,23 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
 .folio-leaf[data-kind="plate"] .folio-plate-mat {
   background: rgba(245, 235, 215, 0.025);
   border: 1px solid rgba(245, 235, 215, 0.16);
-  padding: 14px;
+  padding: 16px;
   display: inline-block;
   line-height: 0;
+  /* The mat carries the engraving's material weight — a deep
+     diffuse shadow grounds it in the dark chamber and reads as
+     museum object presence, not card stack. */
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.55),
+    0 4px 16px rgba(0, 0, 0, 0.35);
 }
 .folio-leaf[data-kind="plate"] .folio-plate {
   display: block;
   max-width: 100%;
-  /* ~250px reserve accounts for viewer padding, return rubric,
-     mat border + padding, and plaque. The rest is the plate. */
-  max-height: calc(100vh - 250px);
+  /* Reserve enough room for viewer padding (32px ×2), mat border
+     and padding (~34px), plaque (~120px). The rest of the
+     viewport height belongs to the engraving. */
+  max-height: calc(100vh - 220px);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -6920,10 +6955,11 @@ $reader.addEventListener('scroll', () => {
     const leaf = e.target.closest('.folio-leaf');
     if (!leaf) { _closeFolioObject(); return; }
     if (leaf.dataset.kind === 'plate') {
-      // For plate chambers the leaf is transparent; only the wrap
-      // and the return rubric are on-object. Clicks in the dark
-      // around the engraving dismiss.
-      if (!e.target.closest('.folio-plate-wrap, .folio-leaf-return')) {
+      // For plate chambers the leaf is transparent; only the
+      // wrap (engraving + plaque) is on-object. Any click in
+      // the dark surrounding field — including the leaf's own
+      // empty padding — collapses the encounter.
+      if (!e.target.closest('.folio-plate-wrap')) {
         _closeFolioObject();
       }
       return;
@@ -7009,24 +7045,15 @@ function _renderFolioWitness(rec, pid) {
 
 // Object-leaf renderer (object mode) — a single witness has been
 // summoned. The folio's surface becomes a dedicated manuscript
-// leaf for this object alone, with a quiet return-link to the
-// chapter's witness list. Per-kind body renderers; the outer
-// shape is uniform.
+// leaf for this object alone. Dismissal is spatial: clicking
+// outside the object (in the dark surrounding field) collapses
+// the encounter and returns the reader to their place.
+// Per-kind body renderers; the outer shape is uniform.
 function _renderFolioObjectLeaf(rec, pid) {
   const leaf = document.createElement('article');
   leaf.className = 'folio-leaf';
   leaf.dataset.kind = rec.kind || 'genealogy';
-
-  // Quiet typographic return link at the top — small italic, low
-  // opacity. Manuscript register: not an X close button, not a
-  // chevron, not a modal dismiss.
-  const back = document.createElement('button');
-  back.type = 'button';
-  back.className = 'folio-leaf-return';
   const chKey = _chapterKeyOf(pid);
-  back.textContent = '← ' + (chKey ? _formatChapterLabel(chKey) : 'folio');
-  back.addEventListener('click', _closeFolioObject);
-  leaf.appendChild(back);
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
