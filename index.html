@@ -2865,15 +2865,30 @@ body.chapter-room .cr-margin-witness { display: none !important; }
 body.cols-single.chapter-room.companion-mode #reader-inner {
   max-width: 1330px;
 }
+/* When the spread is active, the reader's side padding shrinks
+   from 40px to 20px so common laptop viewports (1280-1366) can
+   host the full 1330px composition without the folio getting
+   squeezed out by chrome padding. */
+body.cols-single.chapter-room.companion-mode #reader {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 body.cols-single.chapter-room.companion-mode .chapter-spread {
   display: grid;
-  grid-template-columns: 960px 50px 320px;  /* scripture | gap | folio */
+  /* Scripture is sovereign at 960; folio flexes between 160
+     and 320 depending on available width. The spread itself
+     fills the reader-inner up to its 1330 cap; below ~1170
+     viewport (where folio would shrink below readability), the
+     media query at the bottom of this block collapses to
+     scripture-only. */
+  grid-template-columns: 960px 50px minmax(160px, 320px);
   grid-template-rows: auto;
-  width: 1330px;
+  width: 100%;
+  max-width: 1330px;
   margin: 0 auto;
 }
 body.cols-single.chapter-room.companion-mode.folio-left .chapter-spread {
-  grid-template-columns: 320px 50px 960px;
+  grid-template-columns: minmax(160px, 320px) 50px 960px;
 }
 body.cols-single.chapter-room.companion-mode .chapter-spread .scripture-column {
   grid-column: 1; grid-row: 1;
@@ -2937,11 +2952,12 @@ body.cols-dual #companion-swap {
   cursor: not-allowed !important;
   border-bottom-color: transparent !important;
 }
-/* If the viewport is so narrow that the 1330px spread cannot
-   fit comfortably (reader padding 40px each = needs ≥ 1410px
-   viewport), the chapter-spread falls back to scripture-only.
-   Folio gone; scripture remains sovereign at 960px. */
-@media (max-width: 1410px) {
+/* If the viewport cannot host a readable folio next to the
+   sovereign 960px scripture column, the chapter-spread falls
+   back to scripture-only. Minimum viable spread = 960 + 50
+   + 160 = 1170 + 40 (reader padding 20×2) = 1210 viewport.
+   Below this, scripture remains sovereign and folio collapses. */
+@media (max-width: 1209px) {
   body.cols-single.chapter-room.companion-mode .chapter-spread {
     display: block;
     width: auto;
@@ -2952,6 +2968,10 @@ body.cols-dual #companion-swap {
   }
   body.cols-single.chapter-room.companion-mode #reader-inner {
     max-width: 960px;
+  }
+  body.cols-single.chapter-room.companion-mode #reader {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 /* Right-align witness titles in folio-left so they hug the
