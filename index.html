@@ -732,13 +732,13 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .bible-cover-layout {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 18px 40px 14px;
+  padding: 14px 40px 10px;
   position: relative;
 }
 .bible-cover-layout #continuous-cover {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 0 4px;
+  padding: 0 0 2px;
   text-align: center;
 }
 .bible-cover-layout .cc-title {
@@ -764,11 +764,11 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   letter-spacing: 0.03em;
 }
 .bible-cover-layout .cc-source {
-  font-size: 0.7em;
+  font-size: 0.68em;
   max-width: 560px;
-  margin: 0.3em auto 0;
+  margin: 0.2em auto 0;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.35;
   font-style: italic;
   color: var(--chrome-muted);
 }
@@ -801,38 +801,65 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
    plate: a deliberate carved index object that responds to
    touch, not plain text. Section tint distinguishes canonicity. */
 .bible-cover-layout .bcl-canon-section {
-  margin-top: 9px;
+  margin-top: 6px;
 }
 .bible-cover-layout .bcl-canon-section:first-of-type {
-  margin-top: 4px;
+  margin-top: 2px;
   border-top: 1px solid rgba(120, 90, 50, 0.18);
-  padding-top: 6px;
+  padding-top: 4px;
 }
+/* Canon label as manuscript rubrication — a faint warm rubric
+   mark, small-caps, calligraphic italic, set just above the
+   section's plates. Reads as scribal section indicator, not as
+   a UI header. */
 .bible-cover-layout .bcl-canon-label {
-  font-family: Georgia, serif;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
-  font-size: 0.68em;
-  letter-spacing: 0.18em;
-  color: var(--chrome-muted);
-  opacity: 0.55;
-  margin-bottom: 4px;
+  font-variant: small-caps;
+  font-size: 0.62em;
+  letter-spacing: 0.24em;
+  color: rgba(125, 70, 30, 0.68);
+  opacity: 0.85;
+  margin: 0 0 3px 2px;
   text-align: left;
+}
+.bible-cover-layout .bcl-canon-label::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 10px;
+  opacity: 0.55;
 }
 .bible-cover-layout .cc-toc-list,
 .bible-cover-layout .bcl-canon-list {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 3px 10px;
+  gap: 2px 8px;
   align-items: stretch;
+}
+/* Asymmetric canon column distribution: OT and NT carry shorter
+   book names so they sit at 7 columns each, compressing the
+   vertical rhythm. Apocrypha keeps 6 wider columns because its
+   deuterocanonical titles are the longest in the canon
+   ("Song of Three Young Men", "Wisdom of Solomon"). */
+.bible-cover-layout .bcl-canon-section[data-canon="old-testament"] .bcl-canon-list,
+.bible-cover-layout .bcl-canon-section[data-canon="new-testament"] .bcl-canon-list {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .bcl-canon-list {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 .bible-cover-layout .cc-toc-list li,
 .bible-cover-layout .bcl-canon-list li {
   display: flex;
   align-items: baseline;
-  gap: 6px;
-  padding: 3px 8px 3px 6px;
+  gap: 5px;
+  padding: 2px 7px 2px 5px;
   border: 1px solid transparent;
   border-radius: 2px;
-  line-height: 1.1;
+  line-height: 1.08;
   cursor: pointer;
   transition:
     background-color 0.18s ease-out,
@@ -999,7 +1026,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   align-items: center;
   justify-content: center;
   gap: 18px;
-  margin: 16px auto 4px;
+  margin: 10px auto 2px;
 }
 .bible-cover-layout .bcl-enter-wrap::before,
 .bible-cover-layout .bcl-enter-wrap::after {
