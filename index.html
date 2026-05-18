@@ -101,8 +101,11 @@ body {
 /* ── Controls bar ─────────────────────────────────────────────────────────────── */
 
 #controls {
-  background: var(--reader-bg);
-  border-bottom: 1px solid rgba(120, 90, 50, 0.12);
+  /* The controls strip is the apparatus, not the page. A
+     visibly cooler/grayer tint distinguishes it from the warm
+     reading paper without ever competing with the manuscript. */
+  background: #e8e3d6;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.22);
   padding: 9px 40px;
   display: flex;
   align-items: center;
@@ -240,7 +243,7 @@ body.chapter-room #reader { padding-top: 20px; }
 /* Wide and dual measures push the reader's inner padding closer to
    the page edge so the codex spread breathes to the room's edges
    rather than sitting in a narrow centered band. */
-body.cols-wide #reader { padding-left: 28px; padding-right: 28px; }
+body.cols-wide #reader { padding-left: 14px; padding-right: 14px; }
 body.cols-dual #reader { padding-left: 32px; padding-right: 32px; }
 
 #reader-inner {
@@ -257,16 +260,16 @@ body.cols-dual #reader { padding-left: 32px; padding-right: 32px; }
    (body.in-reading); on the title leaf the bible-cover-layout uses
    the wider base #reader-inner measure for its canon grid. */
 body.in-reading.cols-single #reader-inner {
-  /* Single — the elegant codex column. Wider than a minimalist
-     web column so the reading room feels architectural and the
-     codex uses most of the screen width, while still leaving
-     reasonable margins for inhabited folio territory. */
-  max-width: 1280px;
+  /* Single — the comfortable centered codex column. Generous
+     enough to feel architectural, with breathing room on both
+     sides for inhabited folio territory. */
+  max-width: 1100px;
   column-count: 1;
 }
 body.in-reading.cols-wide #reader-inner {
-  /* Wide — the immersive illuminated page. Approaches the
-     viewport edges (modulated by #reader's 28px side padding). */
+  /* Wide — the immersive illuminated page. Reaches near the
+     viewport's outer edges (only #reader's 14px side cushion
+     stands between the column and the room's walls). */
   max-width: 1640px;
   column-count: 1;
 }
@@ -525,7 +528,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 .chapter-room-heading .ch-title {
   font-family: Georgia, serif;
-  font-size: 1em;
+  font-size: 1.2em;
   letter-spacing: 0.015em;
   font-weight: 500;
 }
@@ -533,12 +536,12 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   font-family: Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 0.46em;
-  letter-spacing: 0.18em;
-  margin-top: 14px;
-  opacity: 0.58;
+  font-size: 0.58em;
+  letter-spacing: 0.16em;
+  margin-top: 16px;
+  opacity: 0.92;
   text-transform: lowercase;
-  color: var(--chrome-muted);
+  color: rgba(120, 70, 30, 0.78);
 }
 
 /* ── Text title page + TOC (separate view from reading) ──────────── */
@@ -2747,13 +2750,25 @@ body:not(.in-reading) #reader {
 }
 
 /* Chapter-room mode fuses the folio into the chapter stream —
-   the separate #folio surface, its companion-toggle "Folio"
-   button label, and the swap control all step out of the way.
-   The companion toggle still controls inline witness visibility
-   via body.companion-mode. */
+   the separate #folio surface steps out of the way and inline
+   margin witnesses appear next to each verse. The "Folio side"
+   swap remains visible because the witness column can still be
+   placed on either side of the passage. */
 body.chapter-room #folio { display: none !important; }
 body.chapter-room.companion-mode #folio { display: none !important; }
-body.chapter-room #companion-swap { display: none !important; }
+/* When body.folio-left is set in chapter-room companion mode,
+   the margin witness column moves to the left of the passage
+   so the codex spread can mirror to either side of the reader. */
+body.chapter-room.companion-mode.folio-left .cr-row {
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+body.chapter-room.companion-mode.folio-left .cr-row > :first-child {
+  grid-column: 2;
+}
+body.chapter-room.companion-mode.folio-left .cr-row > .cr-margin-witness {
+  grid-column: 1;
+  text-align: right;
+}
 
 /* Chapter-room — codex two-column flow.
    Each verse occupies its own grid row: the passage in the text
@@ -2910,6 +2925,11 @@ body.chapter-room .cr-margin-witness[data-kind="genealogy"] .cr-mw-title::before
   opacity: 1;
 }
 body.companion-mode #companion-toggle {
+  color: var(--chrome-active);
+  opacity: 1;
+  border-bottom: 1px solid currentColor;
+}
+body.folio-left #companion-swap {
   color: var(--chrome-active);
   opacity: 1;
   border-bottom: 1px solid currentColor;
@@ -3996,6 +4016,15 @@ body.viewer-active .folio-leaf-colophon {
     border-bottom: 1px solid currentColor;
   }
   #ctrl-columns .col-sep { opacity: 0.4; padding: 0 1px; }
+  /* The dual geometry was retired; if a stale cached copy of
+     the page still renders the data-cols="dual" option, hide
+     it (and its preceding separator) so the switcher reads
+     cleanly as "single · wide". */
+  #ctrl-columns .col-opt[data-cols="dual"],
+  #ctrl-columns .col-opt[data-cols="dual"] + .col-sep,
+  #ctrl-columns .col-opt[data-cols="dual"] ~ .col-sep:nth-of-type(1) {
+    display: none;
+  }
 }
 
 @media (max-width: 720px) {
@@ -4075,15 +4104,13 @@ body.viewer-active .folio-leaf-colophon {
         <button class="search-nav-btn" id="search-next" disabled title="Next match">&#9660;</button>
       </div>
       <span id="ctrl-columns" role="group" aria-label="Reading column layout">
-        <span class="col-opt active" data-cols="single" role="button" tabindex="0" title="Single column">single</span>
+        <span class="col-opt active" data-cols="single" role="button" tabindex="0" title="Codex reading column">single</span>
         <span class="col-sep" aria-hidden="true">·</span>
-        <span class="col-opt" data-cols="dual" role="button" tabindex="0" title="Dual column">dual</span>
-        <span class="col-sep" aria-hidden="true">·</span>
-        <span class="col-opt" data-cols="wide" role="button" tabindex="0" title="Wide reading">wide</span>
+        <span class="col-opt" data-cols="wide" role="button" tabindex="0" title="Wide illuminated page">wide</span>
       </span>
       <button type="button" id="reading-mode-toggle" title="Summon formatting controls" aria-pressed="false">Formatting</button>
       <button type="button" id="companion-toggle" title="Show companion folio beside the text" aria-pressed="false">Folio</button>
-      <button type="button" id="companion-swap" title="Move folio to the other side" aria-pressed="false" hidden>&#8646;</button>
+      <button type="button" id="companion-swap" title="Switch folio to the other side of the manuscript" aria-pressed="false">&#8646; Folio side</button>
     </div>
 
     <div id="info-bar">
@@ -6779,12 +6806,13 @@ $reader.addEventListener('scroll', () => {
   $backToTop.classList.toggle('visible', scrollTop > 400);
 }, { passive: true });
 
-// Reading-column switcher (desktop). Toggles between single /
-// dual / wide folio layouts via body.cols-* classes. The control
-// itself only appears in the reading room (body.in-reading) via
-// CSS, so it never shows up on the title leaf. Default is single
-// (set once at startup; never persisted, so each new room begins
-// in the most readerly state).
+// Reading-column switcher (desktop). Toggles between single and
+// wide folio layouts via body.cols-* classes. The control itself
+// only appears in the reading room (body.in-reading) via CSS, so
+// it never shows up on the title leaf. Default is single (set
+// once at startup; never persisted, so each new room begins in
+// the most readerly state). cols-dual is preserved internally
+// for legacy CSS but no longer exposed in the UI.
 (function wireColumnSwitcher() {
   const root = document.getElementById('ctrl-columns');
   if (!root) return;
@@ -6830,34 +6858,49 @@ $reader.addEventListener('scroll', () => {
 
 // Companion folio prototype — desktop/tablet only.
 // See COMPANION_FOLIO_PROPOSAL_2026.md.
+//
+// Two controls share the apparatus strip:
+//   #companion-toggle  ("Folio" / "Pure") — show / hide the folio.
+//   #companion-swap    ("⇄ Folio side")    — switch the folio's
+//     orientation between the right and left side of the
+//     manuscript. Always visible in the reading room. If the
+//     folio is currently off, clicking it summons the folio
+//     first (on the side currently encoded by body.folio-left).
 (function wireCompanionFolio() {
   const toggle = document.getElementById('companion-toggle');
   const swap   = document.getElementById('companion-swap');
   if (!toggle || !swap) return;
+  function activateFolio() {
+    if (document.body.classList.contains('companion-mode')) return;
+    document.body.classList.add('companion-mode');
+    toggle.setAttribute('aria-pressed', 'true');
+    toggle.textContent = 'Pure';
+    _folioFollowsReader = true;
+    renderCompanionFolio();
+    _trackReadingChapter();
+  }
+  function deactivateFolio() {
+    if (!document.body.classList.contains('companion-mode')) return;
+    document.body.classList.remove('companion-mode');
+    toggle.setAttribute('aria-pressed', 'false');
+    toggle.textContent = 'Folio';
+    _folioMode = 'list';
+    _openFolioRecordId = null;
+    _setViewerActive(false);
+  }
   toggle.addEventListener('click', () => {
-    const on = document.body.classList.toggle('companion-mode');
-    toggle.setAttribute('aria-pressed', String(on));
-    toggle.textContent = on ? 'Pure' : 'Folio';
-    swap.hidden = !on;
-    if (on) {
-      // Activating companion mode starts in follow state — no
-      // prior consultation has occurred in this session of the
-      // folio surface.
-      _folioFollowsReader = true;
-      renderCompanionFolio();
-      // Pick up the reader's current chapter so the folio matches
-      // what's actually on screen when companion mode toggles on.
-      _trackReadingChapter();
+    if (document.body.classList.contains('companion-mode')) {
+      deactivateFolio();
     } else {
-      // Leaving companion mode collapses any open encounter so the
-      // body class doesn't outlive the surface that justified it.
-      _folioMode = 'list';
-      _openFolioRecordId = null;
-      _setViewerActive(false);
+      activateFolio();
     }
   });
   swap.addEventListener('click', () => {
-    document.body.classList.toggle('folio-left');
+    // Always toggles side. If the folio is off, summon it first
+    // so the click produces a visible change.
+    activateFolio();
+    const onLeft = document.body.classList.toggle('folio-left');
+    swap.setAttribute('aria-pressed', String(onLeft));
   });
 })();
 
@@ -8484,7 +8527,7 @@ function browseHome() {
     compTog.textContent = 'Folio';
   }
   const compSwap = document.getElementById('companion-swap');
-  if (compSwap) compSwap.hidden = true;
+  if (compSwap) compSwap.setAttribute('aria-pressed', 'false');
   _currentFolioChapterKey = null;
   _folioMode = 'list';
   _openFolioRecordId = null;
