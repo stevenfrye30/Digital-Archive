@@ -257,14 +257,22 @@ body.cols-dual #reader { padding-left: 32px; padding-right: 32px; }
    (body.in-reading); on the title leaf the bible-cover-layout uses
    the wider base #reader-inner measure for its canon grid. */
 body.in-reading.cols-single #reader-inner {
-  max-width: 1050px;
+  /* Single — the elegant codex column. Wider than a minimalist
+     web column so the reading room feels architectural and the
+     codex uses most of the screen width, while still leaving
+     reasonable margins for inhabited folio territory. */
+  max-width: 1280px;
   column-count: 1;
 }
 body.in-reading.cols-wide #reader-inner {
+  /* Wide — the immersive illuminated page. Approaches the
+     viewport edges (modulated by #reader's 28px side padding). */
   max-width: 1640px;
   column-count: 1;
 }
 body.in-reading.cols-dual #reader-inner {
+  /* Dual — the scholarly folio spread. Two reading columns with
+     a generous gutter and a hair rule down the binding. */
   max-width: 1440px;
   column-count: 2;
   column-gap: 80px;
