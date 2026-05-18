@@ -2869,32 +2869,39 @@ body.chapter-room.companion-mode #folio {
   overflow-y: auto;
   /* Warmer parchment than the reading paper so the sidebar
      reads as a companion register, not the same surface. The
-     tint is strong enough to be visually unambiguous (the
-     previous 0.04-0.06 alpha was below the perception
-     threshold against #faf8f5 paper) while still feeling
-     archival rather than chrome. */
+     gradient direction places the strongest tint on the
+     binding edge (the side touching scripture) — a codex
+     gutter cue. The previous gradient ran the opposite way,
+     putting the saturated end at the outer viewport edge,
+     which made the binding side visually almost identical
+     to the reading paper and obscured the boundary.
+
+     Default (folio on right): binding edge is LEFT, outer is
+     RIGHT. Strong-to-faint runs left → right. */
   background: linear-gradient(
-    to left,
-    rgba(140, 105, 55, 0.16) 0%,
-    rgba(140, 105, 55, 0.11) 100%
+    to right,
+    rgba(140, 105, 55, 0.20) 0%,
+    rgba(140, 105, 55, 0.10) 100%
   );
-  border-left: 1px solid rgba(120, 90, 50, 0.42);
+  border-left: 1px solid rgba(120, 90, 50, 0.48);
   border-right: none;
   /* A deeper inner shadow on the binding edge — codex gutter
      definition the reader can perceive. */
-  box-shadow: inset 18px 0 32px -20px rgba(120, 90, 50, 0.36);
+  box-shadow: inset 18px 0 32px -20px rgba(120, 90, 50, 0.4);
   z-index: 5;
   flex: none;
 }
 body.chapter-room.companion-mode.folio-left #folio {
+  /* folio on left: binding edge is RIGHT, outer is LEFT.
+     Strong-to-faint runs right → left. */
   background: linear-gradient(
-    to right,
-    rgba(140, 105, 55, 0.16) 0%,
-    rgba(140, 105, 55, 0.11) 100%
+    to left,
+    rgba(140, 105, 55, 0.20) 0%,
+    rgba(140, 105, 55, 0.10) 100%
   );
   border-left: none;
-  border-right: 1px solid rgba(120, 90, 50, 0.42);
-  box-shadow: inset -18px 0 32px -20px rgba(120, 90, 50, 0.36);
+  border-right: 1px solid rgba(120, 90, 50, 0.48);
+  box-shadow: inset -18px 0 32px -20px rgba(120, 90, 50, 0.4);
 }
 /* Below this viewport width the available margin (~180px each
    side) is too narrow to host the folio without intruding on
@@ -7224,6 +7231,25 @@ $reader.addEventListener('scroll', () => {
   // so clicks that land on the actual object never reach here.
   // No geometry checks, no closest() lookups, no per-kind branches.
   viewer.addEventListener('click', _closeFolioObject);
+})();
+
+// Citation drawer (Bible title leaf) — close on outside click
+// and Escape. The drawer is a <details> element, so the summary
+// toggles open/closed natively; this handler adds the two
+// dismiss paths the user expects.
+(function wireCiteCornerDismiss() {
+  document.addEventListener('click', (e) => {
+    const cite = document.querySelector('.bible-cover-layout .cite-corner[open]');
+    if (!cite) return;
+    // Click is inside the drawer (summary or panel) — leave it open.
+    if (e.target.closest('.cite-corner')) return;
+    cite.open = false;
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const cite = document.querySelector('.bible-cover-layout .cite-corner[open]');
+    if (cite) cite.open = false;
+  });
 })();
 
 // Build the folio's contents from currentData.genealogy, filtered
