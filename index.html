@@ -2848,83 +2848,83 @@ body:not(.in-reading) #reader {
 body.chapter-room .cr-row { display: block; }
 body.chapter-room .cr-margin-witness { display: none !important; }
 
-/* Folio sidebar in chapter-room — a fixed scholarly margin
-   anchored to the viewport. The scripture beneath is
-   completely undisturbed. The sidebar appears only when
-   companion mode is on; clicking the Folio side button moves
-   it from right edge to left edge. */
-body.chapter-room #folio { display: none; }
-/* Folio is a single-mode apparatus. In wide / dual mode the
-   reading column already approaches the viewport edges, so a
-   margin sidebar has no room. The folio is hidden and its
-   controls are disabled there. */
-body.cols-single.chapter-room.companion-mode #folio {
+/* ── Chapter spread — shared-scroll two-column architecture ──
+   Scripture and folio live as two columns inside the SAME
+   scroll container (the reader). They scroll together because
+   their grid parent scrolls; the folio column hosts
+   absolutely-positioned witness entries whose top is set by
+   JS to match the y-position of their anchor verse. No
+   position: fixed; no detached scrolling. */
+.chapter-spread {
   display: block;
-  position: fixed;
-  top: 64px;      /* clears the controls + nav chrome */
-  bottom: 0;
-  /* Folio is a fixed-width manuscript margin on the viewport
-     edge. The reader's padding shifts (below) to exclude the
-     folio's space from the scripture's centering area, so
-     scripture stays centered in the REMAINING zone — folio
-     and scripture can never overlap. */
-  right: 0;
-  left: auto;
-  width: 320px;
-  /* Override the base #folio rule's max-width: 300px which
-     clamps the chapter-room folio below the intended width. */
-  max-width: 320px;
-  padding: 36px 26px 80px;
-  overflow-y: auto;
-  /* A warmer parchment register with the saturated tint on
-     the binding edge (the side touching scripture). The
-     contrast is now strong enough to read as a distinct
-     surface against the page paper, not a marginal whisper. */
-  background: linear-gradient(
-    to right,
-    rgba(150, 110, 60, 0.28) 0%,
-    rgba(150, 110, 60, 0.14) 100%
-  );
-  border-left: 1px solid rgba(120, 80, 35, 0.55);
-  border-right: none;
-  /* Inner shadow on the binding edge — a codex gutter cue. */
-  box-shadow: inset 22px 0 36px -22px rgba(120, 80, 35, 0.48);
-  z-index: 5;
+  margin: 0 auto;
+  position: relative;
 }
-body.cols-single.chapter-room.companion-mode.folio-left #folio {
-  /* folio on left: same width, mirrored geometry. */
-  left: 0;
-  right: auto;
-  background: linear-gradient(
-    to left,
-    rgba(150, 110, 60, 0.28) 0%,
-    rgba(150, 110, 60, 0.14) 100%
-  );
+.chapter-spread .scripture-column { position: relative; }
+.chapter-spread .folio-column { display: none; }
+body.cols-single.chapter-room.companion-mode #reader-inner {
+  max-width: 1330px;
+}
+body.cols-single.chapter-room.companion-mode .chapter-spread {
+  display: grid;
+  grid-template-columns: 960px 50px 320px;  /* scripture | gap | folio */
+  grid-template-rows: auto;
+  width: 1330px;
+  margin: 0 auto;
+}
+body.cols-single.chapter-room.companion-mode.folio-left .chapter-spread {
+  grid-template-columns: 320px 50px 960px;
+}
+body.cols-single.chapter-room.companion-mode .chapter-spread .scripture-column {
+  grid-column: 1; grid-row: 1;
+}
+body.cols-single.chapter-room.companion-mode .chapter-spread .folio-column {
+  display: block;
+  grid-column: 3; grid-row: 1;
+  position: relative;
+  background: linear-gradient(to right,
+    rgba(150, 110, 60, 0.18), rgba(150, 110, 60, 0.08));
+  border-left: 1px solid rgba(120, 80, 35, 0.42);
+  padding: 0 22px 80px;
+  min-height: 100%;
+}
+body.cols-single.chapter-room.companion-mode.folio-left
+  .chapter-spread .scripture-column { grid-column: 3; }
+body.cols-single.chapter-room.companion-mode.folio-left
+  .chapter-spread .folio-column {
+  grid-column: 1;
+  background: linear-gradient(to left,
+    rgba(150, 110, 60, 0.18), rgba(150, 110, 60, 0.08));
   border-left: none;
-  border-right: 1px solid rgba(120, 80, 35, 0.55);
-  box-shadow: inset -22px 0 36px -22px rgba(120, 80, 35, 0.48);
+  border-right: 1px solid rgba(120, 80, 35, 0.42);
 }
-/* Two-zone composition: when folio is active in single mode,
-   the reader's horizontal padding zeros out toward the folio
-   side and reserves the folio's width on the opposite side.
-   Reader-inner (max-width 960, margin: 0 auto) then centers
-   naturally within the remaining zone, so scripture sits
-   balanced inside the leftover viewport rather than blindly
-   centered against the full viewport. Scripture WIDTH is
-   unchanged (still 960). */
-body.cols-single.chapter-room.companion-mode:not(.folio-left) #reader {
-  padding-left: 0;
-  padding-right: 320px;
+.chapter-spread .folio-column .cr-folio-header {
+  position: absolute;
+  top: 32px;
+  left: 22px;
+  right: 22px;
+  margin-bottom: 0;
 }
-body.cols-single.chapter-room.companion-mode.folio-left #reader {
-  padding-left: 320px;
-  padding-right: 0;
+.chapter-spread .folio-column .cr-folio-entry {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  margin: 0;
+  padding: 0 0 12px;
+  border-top: none;
 }
-/* In wide mode the folio cannot exist; controls disable. */
-body.cols-wide #folio,
-body.cols-dual #folio {
-  display: none !important;
+body.cols-single.chapter-room.companion-mode .chapter-spread .folio-column {
+  /* Folio-column own padding zeroed because entries position
+     themselves absolutely with left/right inset. */
+  padding: 0;
+  min-height: 100%;
 }
+
+/* The standalone #folio surface (legacy companion folio) is
+   hidden in chapter-room mode — the new spread architecture
+   above renders witnesses inline inside the chapter scroll
+   container. The element still exists in the DOM as a no-op. */
+body.chapter-room #folio { display: none !important; }
 body.cols-wide #companion-toggle,
 body.cols-wide #companion-swap,
 body.cols-dual #companion-toggle,
@@ -2937,20 +2937,27 @@ body.cols-dual #companion-swap {
   cursor: not-allowed !important;
   border-bottom-color: transparent !important;
 }
-/* If the viewport is so narrow that even the scripture-edge
-   anchoring leaves less than ~120px for folio content, the
-   folio collapses entirely. This is well below the 1440-class
-   desktop the archive targets — desktop users always see it. */
-@media (max-width: 1200px) {
-  body.cols-single.chapter-room.companion-mode #folio { display: none !important; }
+/* If the viewport is so narrow that the 1330px spread cannot
+   fit comfortably (reader padding 40px each = needs ≥ 1410px
+   viewport), the chapter-spread falls back to scripture-only.
+   Folio gone; scripture remains sovereign at 960px. */
+@media (max-width: 1410px) {
+  body.cols-single.chapter-room.companion-mode .chapter-spread {
+    display: block;
+    width: auto;
+    max-width: 960px;
+  }
+  body.cols-single.chapter-room.companion-mode .chapter-spread .folio-column {
+    display: none;
+  }
+  body.cols-single.chapter-room.companion-mode #reader-inner {
+    max-width: 960px;
+  }
 }
 /* Right-align witness titles in folio-left so they hug the
-   manuscript edge rather than the page edge. */
-body.chapter-room.companion-mode.folio-left #folio-inner {
+   binding edge. */
+body.chapter-room.companion-mode.folio-left .chapter-spread .folio-column {
   text-align: right;
-}
-body.chapter-room.companion-mode #folio-inner {
-  max-width: none;
 }
 /* Chapter-room folio register — a scholarly witness margin,
    internally coherent like a manuscript cabinet drawer.
@@ -5923,12 +5930,33 @@ function _renderMarginWitness(rec, pid) {
 
 function render(passages, query) {
   $passages.innerHTML = '';
-  const existing = $passages.querySelector('.chapter-heading');
+
+  // Chapter-room uses a chapter-spread wrapper: scripture and
+  // folio live as grid columns inside the same scroll
+  // container, so they scroll together but never affect each
+  // other's layout flow. When companion-mode is off, the
+  // spread collapses to a single scripture column.
+  const chapterRoom = _isChapterScopedHierarchy() &&
+                      document.body.classList.contains('chapter-room');
+  let scriptureTarget = $passages;
+  let folioColumn = null;
+  if (chapterRoom) {
+    const spread = document.createElement('div');
+    spread.className = 'chapter-spread';
+    const scrCol = document.createElement('div');
+    scrCol.className = 'scripture-column';
+    spread.appendChild(scrCol);
+    folioColumn = document.createElement('div');
+    folioColumn.className = 'folio-column';
+    spread.appendChild(folioColumn);
+    $passages.appendChild(spread);
+    scriptureTarget = scrCol;
+  }
 
   if (passages.length <= RENDER_BATCH) {
     const frag = document.createDocumentFragment();
     _renderBatch(passages, query, frag);
-    $passages.appendChild(frag);
+    scriptureTarget.appendChild(frag);
     _pendingPassages = [];
   } else {
     // Render first batch, keep rest pending
@@ -5937,8 +5965,17 @@ function render(passages, query) {
     _pendingQuery = query;
     const frag = document.createDocumentFragment();
     _renderBatch(first, query, frag);
-    $passages.appendChild(frag);
+    scriptureTarget.appendChild(frag);
     _addLoadMoreBtn();
+  }
+  // Folio column gets refilled after each render — the spread
+  // is rebuilt every time, so folio entries need re-rendering
+  // and re-positioning. Deferred via RAF so the chapter heading
+  // (prepended after this) is in place before measuring.
+  if (chapterRoom && document.body.classList.contains('companion-mode')) {
+    requestAnimationFrame(() => {
+      if (typeof renderCompanionFolio === 'function') renderCompanionFolio();
+    });
   }
 
   // Chapter-room: append a quiet bottom rubric for moving to the
@@ -6235,7 +6272,11 @@ function navTo(idx) {
   } else {
     heading.textContent = groupName(currentBook);
   }
-  $passages.prepend(heading);
+  // Chapter heading goes inside the scripture column when the
+  // chapter-spread is in use, so it aligns with scripture only
+  // (not centered across the folio-bearing spread).
+  const scrCol = $passages.querySelector('.scripture-column');
+  (scrCol || $passages).prepend(heading);
 
   $reader.scrollTop = 0;
 }
@@ -6778,7 +6819,11 @@ function enterReading(targetGroupKey) {
     } else {
       heading.textContent = groupName(currentBook);
     }
-    $passages.prepend(heading);
+    // Chapter heading goes inside the scripture column when the
+  // chapter-spread is in use, so it aligns with scripture only
+  // (not centered across the folio-bearing spread).
+  const scrCol = $passages.querySelector('.scripture-column');
+  (scrCol || $passages).prepend(heading);
   }
 
   $searchGroup.style.display = 'flex';
@@ -7743,18 +7788,23 @@ function _renderFolioWitnessList(inner, chapters) {
   }
 }
 
-// Chapter-room folio render — a scholarly witness register
-// rendered into the fixed manuscript margin. Internally coherent:
-// rubric header, then a stack of witness plaques (thumbnail when
-// the record carries an image, italic title, kind/anchor
-// metadata), separated by hairlines. Scripture is never given
-// alignment gaps; entries sit by verse order at a uniform rhythm
-// inside the sidebar's own scroll.
-function _renderChapterRoomFolio(inner) {
+// Chapter-room folio render — pours witness entries into the
+// folio column of the current chapter-spread. The entries are
+// positioned via _positionFolioEntries() so each lines up with
+// the y-position of its anchor verse, with collision-aware
+// stacking. Scripture flow is never touched.
+function _renderChapterRoomFolio(_legacyInner) {
+  // _legacyInner is the old #folio-inner; ignored. The new
+  // architecture writes into the chapter-spread's folio-column.
+  const folioColumn = document.querySelector(
+    '#passages .chapter-spread .folio-column'
+  );
+  if (!folioColumn) return;
+  folioColumn.innerHTML = '';
+
+  if (!document.body.classList.contains('companion-mode')) return;
+
   const chKey = _chapterKeyOf(currentBook || '');
-    // currentBook is already "gen.1" form in chapter-scoped texts,
-    // so _chapterKeyOf may return null when passed a chapter key
-    // (which already has 2 segments). Fall back to currentBook.
   const ch = chKey || currentBook || '';
   if (!ch || !currentData || !currentData.genealogy) return;
   const records = currentData.genealogy.filter(r => {
@@ -7768,19 +7818,65 @@ function _renderChapterRoomFolio(inner) {
     const empty = document.createElement('div');
     empty.className = 'cr-folio-empty';
     empty.textContent = 'No witnesses anchored to this chapter.';
-    inner.appendChild(empty);
+    folioColumn.appendChild(empty);
     return;
   }
 
   const header = document.createElement('div');
   header.className = 'cr-folio-header';
   header.textContent = _formatChapterLabel(ch);
-  inner.appendChild(header);
+  folioColumn.appendChild(header);
 
   for (const r of records) {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
     const pid = a ? a.split('::').pop() : '';
-    inner.appendChild(_renderChapterRoomWitness(r, pid));
+    const entry = _renderChapterRoomWitness(r, pid);
+    entry.dataset.anchorPid = pid;
+    folioColumn.appendChild(entry);
+  }
+
+  // After entries are in the DOM, position them by anchor verse.
+  // RAF lets the browser flush layout once before measurement.
+  requestAnimationFrame(() => _positionFolioEntries());
+}
+
+// Position each folio entry at the y-coordinate of its anchor
+// verse within the chapter-spread, with collision-avoidance
+// stacking. Called after render, after content settles, and on
+// window resize.
+function _positionFolioEntries() {
+  const spread = document.querySelector('#passages .chapter-spread');
+  if (!spread) return;
+  const folioColumn = spread.querySelector('.folio-column');
+  if (!folioColumn) return;
+  const header = folioColumn.querySelector('.cr-folio-header');
+  const entries = folioColumn.querySelectorAll('.cr-folio-entry');
+  if (!entries.length) return;
+
+  // Header sits at top: 28px (set by CSS); track its bottom so
+  // the first entry never collides with it.
+  const headerBottom = header
+    ? header.offsetTop + header.offsetHeight + 12
+    : 28;
+
+  let prevBottom = headerBottom;
+  const COLLISION_GAP = 18;
+  for (const entry of entries) {
+    const anchorPid = entry.dataset.anchorPid;
+    let verseTop = headerBottom;
+    if (anchorPid) {
+      const verse = spread.querySelector(
+        `.scripture-column [data-pid="${anchorPid}"]`
+      );
+      if (verse) {
+        // offsetTop relative to the spread (a positioned ancestor).
+        verseTop = verse.offsetTop;
+      }
+    }
+    const top = Math.max(verseTop, prevBottom + COLLISION_GAP);
+    entry.style.top = top + 'px';
+    // Force layout so offsetHeight is current.
+    prevBottom = top + entry.offsetHeight;
   }
 }
 
@@ -7821,6 +7917,18 @@ function _renderChapterRoomWitness(rec, pid) {
   entry.addEventListener('click', () => _openFolioObject(rec.id));
   return entry;
 }
+
+// Folio entry positions depend on verse offsetTop, which can
+// shift on viewport resize (line wrapping changes verse heights).
+// Recompute on resize and after font load.
+let _folioRepositionRAF = 0;
+window.addEventListener('resize', () => {
+  if (_folioRepositionRAF) cancelAnimationFrame(_folioRepositionRAF);
+  _folioRepositionRAF = requestAnimationFrame(() => {
+    _folioRepositionRAF = 0;
+    if (typeof _positionFolioEntries === 'function') _positionFolioEntries();
+  });
+});
 
 // ── Global corpus search ─────────────────────────────────────────────────────
 
