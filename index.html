@@ -243,7 +243,9 @@ body.chapter-room #reader { padding-top: 20px; }
 /* Wide and dual measures push the reader's inner padding closer to
    the page edge so the codex spread breathes to the room's edges
    rather than sitting in a narrow centered band. */
-body.cols-wide #reader { padding-left: 14px; padding-right: 14px; }
+/* Wide and dual keep the reader's default 40px side padding
+   so the column sits with equal breathing margins instead of
+   hugging the viewport edge. */
 body.cols-dual #reader { padding-left: 32px; padding-right: 32px; }
 
 #reader-inner {
@@ -269,10 +271,12 @@ body.in-reading.cols-single #reader-inner {
   column-count: 1;
 }
 body.in-reading.cols-wide #reader-inner {
-  /* Wide — the immersive illuminated page. Reaches near the
-     viewport's outer edges (only #reader's 14px side cushion
-     stands between the column and the room's walls). */
-  max-width: 1640px;
+  /* Wide — the immersive illuminated page. Substantially wider
+     than the single-mode codex column (960 → 1320), but
+     centered with equal left/right breathing room rather than
+     hugging the viewport edge. At 1440 viewport: scripture
+     1320 centered with 60px each side. */
+  max-width: 1320px;
   column-count: 1;
 }
 body.in-reading.cols-dual #reader-inner {
@@ -2859,19 +2863,18 @@ body.cols-single.chapter-room.companion-mode #folio {
   position: fixed;
   top: 64px;      /* clears the controls + nav chrome */
   bottom: 0;
-  /* Anchor the folio's binding edge to the OUTER edge of the
-     scripture column itself, not to the viewport edge. The
-     scripture column is 960px wide and centered in the
-     viewport, so its outer edge sits at calc(50% + 480px).
-     Folio therefore lives in the viewport margin BEYOND
-     scripture's edge — it can never overlap scripture
-     regardless of viewport width. */
-  left: calc(50% + 480px);
+  /* Folio is a fixed-width manuscript margin on the viewport
+     edge. The reader's padding shifts (below) to exclude the
+     folio's space from the scripture's centering area, so
+     scripture stays centered in the REMAINING zone — folio
+     and scripture can never overlap. */
   right: 0;
-  /* Cap width so the folio never grows past a comfortable
-     codex margin on very wide viewports. */
-  max-width: 280px;
-  padding: 36px 22px 80px;
+  left: auto;
+  width: 320px;
+  /* Override the base #folio rule's max-width: 300px which
+     clamps the chapter-room folio below the intended width. */
+  max-width: 320px;
+  padding: 36px 26px 80px;
   overflow-y: auto;
   /* A warmer parchment register with the saturated tint on
      the binding edge (the side touching scripture). The
@@ -2889,10 +2892,9 @@ body.cols-single.chapter-room.companion-mode #folio {
   z-index: 5;
 }
 body.cols-single.chapter-room.companion-mode.folio-left #folio {
-  /* folio on left: binding edge is RIGHT, outer is LEFT.
-     Same edge-anchored geometry mirrored to the other side. */
+  /* folio on left: same width, mirrored geometry. */
   left: 0;
-  right: calc(50% + 480px);
+  right: auto;
   background: linear-gradient(
     to left,
     rgba(150, 110, 60, 0.28) 0%,
@@ -2901,6 +2903,22 @@ body.cols-single.chapter-room.companion-mode.folio-left #folio {
   border-left: none;
   border-right: 1px solid rgba(120, 80, 35, 0.55);
   box-shadow: inset -22px 0 36px -22px rgba(120, 80, 35, 0.48);
+}
+/* Two-zone composition: when folio is active in single mode,
+   the reader's horizontal padding zeros out toward the folio
+   side and reserves the folio's width on the opposite side.
+   Reader-inner (max-width 960, margin: 0 auto) then centers
+   naturally within the remaining zone, so scripture sits
+   balanced inside the leftover viewport rather than blindly
+   centered against the full viewport. Scripture WIDTH is
+   unchanged (still 960). */
+body.cols-single.chapter-room.companion-mode:not(.folio-left) #reader {
+  padding-left: 0;
+  padding-right: 320px;
+}
+body.cols-single.chapter-room.companion-mode.folio-left #reader {
+  padding-left: 320px;
+  padding-right: 0;
 }
 /* In wide mode the folio cannot exist; controls disable. */
 body.cols-wide #folio,
@@ -2925,12 +2943,6 @@ body.cols-dual #companion-swap {
    desktop the archive targets — desktop users always see it. */
 @media (max-width: 1200px) {
   body.cols-single.chapter-room.companion-mode #folio { display: none !important; }
-}
-body.chapter-room.companion-mode.folio-left #folio {
-  right: auto;
-  left: 0;
-  border-left: none;
-  border-right: 1px solid rgba(120, 90, 50, 0.16);
 }
 /* Right-align witness titles in folio-left so they hug the
    manuscript edge rather than the page edge. */
