@@ -796,11 +796,12 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 /* Canon-segmented contents — each canon section is its own grid
    so the reader feels canonical movement (Old Testament,
-   Apocrypha, New Testament) through rhythmic shift rather than
-   loud labels. Six columns within each section gives most book
-   names enough horizontal room to sit on a single line. */
+   Apocrypha, New Testament) through rhythmic shift. Six columns
+   within each section. Every entry is a small tactile manuscript
+   plate: a deliberate carved index object that responds to
+   touch, not plain text. Section tint distinguishes canonicity. */
 .bible-cover-layout .bcl-canon-section {
-  margin-top: 8px;
+  margin-top: 9px;
 }
 .bible-cover-layout .bcl-canon-section:first-of-type {
   margin-top: 4px;
@@ -810,58 +811,105 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .bible-cover-layout .bcl-canon-label {
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 0.66em;
-  letter-spacing: 0.16em;
+  font-size: 0.68em;
+  letter-spacing: 0.18em;
   color: var(--chrome-muted);
-  opacity: 0.5;
-  margin-bottom: 3px;
+  opacity: 0.55;
+  margin-bottom: 4px;
   text-align: left;
 }
 .bible-cover-layout .cc-toc-list,
 .bible-cover-layout .bcl-canon-list {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0 14px;
-  align-items: baseline;
+  gap: 3px 10px;
+  align-items: stretch;
 }
 .bible-cover-layout .cc-toc-list li,
 .bible-cover-layout .bcl-canon-list li {
-  padding: 0 2px 0 0;
-  border-radius: 2px;
-  gap: 5px;
-  line-height: 1.1;
-  min-height: 19px;
+  display: flex;
   align-items: baseline;
+  gap: 6px;
+  padding: 3px 8px 3px 6px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  line-height: 1.1;
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease-out,
+    border-color 0.18s ease-out,
+    color 0.18s ease-out;
 }
-/* Tonal differentiation — Apocrypha steps back a touch (the
-   reader feels these as deuterocanonical without being told).
-   New Testament keeps the full register; Old Testament is the
-   default. No color, no loud separators — just opacity and
-   subtle weight. */
+/* Canonical section tinting — three different parchment registers:
+     Old Testament — warm parchment, the base manuscript tone.
+     Apocrypha     — a quieter intermediary, fainter and softer.
+     New Testament — a clean brighter parchment with cool linen.
+   The tints are well below loud color; they read as paper-stock
+   shift, not category labels. */
+.bible-cover-layout .bcl-canon-section[data-canon="old-testament"] .bcl-canon-list li {
+  background: rgba(140, 105, 55, 0.045);
+  border-color: rgba(140, 105, 55, 0.08);
+}
+.bible-cover-layout .bcl-canon-section[data-canon="old-testament"] .bcl-canon-list li:hover {
+  background: rgba(140, 105, 55, 0.13);
+  border-color: rgba(120, 90, 50, 0.32);
+}
 .bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .bcl-canon-list li {
-  opacity: 0.78;
+  background: rgba(120, 100, 70, 0.025);
+  border-color: rgba(120, 100, 70, 0.06);
+  opacity: 0.82;
+}
+.bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .bcl-canon-list li:hover {
+  background: rgba(120, 100, 70, 0.085);
+  border-color: rgba(120, 100, 70, 0.28);
+  opacity: 1;
 }
 .bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .cc-toc-name {
   font-style: italic;
 }
+.bible-cover-layout .bcl-canon-section[data-canon="new-testament"] .bcl-canon-list li {
+  background: rgba(190, 175, 130, 0.06);
+  border-color: rgba(170, 155, 110, 0.10);
+}
+.bible-cover-layout .bcl-canon-section[data-canon="new-testament"] .bcl-canon-list li:hover {
+  background: rgba(190, 175, 130, 0.16);
+  border-color: rgba(150, 130, 80, 0.34);
+}
+/* The plain (non-canon) TOC list — same tactile register, neutral
+   warm tint. Used for non-Bible texts that happen to use this
+   layout. */
+.bible-cover-layout .cc-toc-list li {
+  background: rgba(120, 90, 50, 0.04);
+  border-color: rgba(120, 90, 50, 0.08);
+}
 .bible-cover-layout .cc-toc-list li:hover {
-  background: rgba(0, 0, 0, 0.035);
-  border-color: transparent;
+  background: rgba(120, 90, 50, 0.12);
+  border-color: rgba(120, 90, 50, 0.3);
 }
 .bible-cover-layout .cc-toc-num {
+  flex: none;
   width: auto;
-  min-width: 14px;
+  min-width: 16px;
   height: auto;
   background: transparent;
-  font-size: 0.6em;
+  font-size: 0.62em;
   text-align: right;
   font-family: Georgia, serif;
   font-style: italic;
   opacity: 0.5;
 }
+/* The book name is the carved face of each plate. white-space:
+   nowrap is a covenant: no title may break across two lines under
+   any rendering. Overflow stays inside the plate via min-width:0
+   on the flex item plus a generous-but-bounded font measure. */
 .bible-cover-layout .cc-toc-name {
-  font-size: 0.78em;
-  line-height: 1.12;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.76em;
+  line-height: 1.1;
   letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 /* Citation apparatus — a quiet italic disclosure anchored to the
    top-right corner of the title leaf. Reads as a marginal scholarly
@@ -941,27 +989,59 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
    leaf. Wide understated pill, italic, thin border. Reads as
    "cross the threshold" rather than "submit". Centered and
    never clipping. */
+/* Enter the Reading Room — an engraved manuscript plate, not a
+   web CTA. Wide and flat, with a hair-rule frame, an inset paper
+   gradient, and small ornamental flourishes (· · ·) flanking the
+   inscription. Hover lifts the engraving with a faint warm glow.
+   This is the threshold of the codex chamber, not a submit button. */
 .bible-cover-layout .bcl-enter-wrap {
-  text-align: center;
-  margin: 10px auto 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 16px auto 4px;
+}
+.bible-cover-layout .bcl-enter-wrap::before,
+.bible-cover-layout .bcl-enter-wrap::after {
+  content: '· · ·';
+  font-family: Georgia, serif;
+  font-size: 0.66em;
+  letter-spacing: 0.6em;
+  color: var(--chrome-muted);
+  opacity: 0.45;
 }
 .bible-cover-layout .bcl-enter-btn {
   display: inline-block;
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 0.78em;
-  letter-spacing: 0.06em;
-  padding: 5px 26px;
+  font-size: 0.8em;
+  letter-spacing: 0.14em;
+  padding: 8px 64px;
   color: var(--chrome-active);
-  background: transparent;
-  border: 1px solid rgba(120, 90, 50, 0.32);
-  border-radius: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 245, 0.55) 0%,
+    rgba(140, 105, 55, 0.04) 100%
+  );
+  border: 1px solid rgba(120, 90, 50, 0.36);
+  border-radius: 1px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 245, 0.55),
+    inset 0 -1px 0 rgba(120, 90, 50, 0.06);
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.25s ease-out, border-color 0.25s ease-out, box-shadow 0.25s ease-out;
 }
 .bible-cover-layout .bcl-enter-btn:hover {
-  background: rgba(120, 90, 50, 0.06);
-  border-color: rgba(120, 90, 50, 0.55);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 246, 220, 0.7) 0%,
+    rgba(140, 105, 55, 0.08) 100%
+  );
+  border-color: rgba(120, 90, 50, 0.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 245, 0.75),
+    inset 0 -1px 0 rgba(120, 90, 50, 0.1),
+    0 0 18px rgba(200, 165, 95, 0.18);
 }
 
 @media (max-width: 900px) {
