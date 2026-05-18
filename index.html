@@ -2850,65 +2850,81 @@ body.chapter-room .cr-margin-witness { display: none !important; }
    companion mode is on; clicking the Folio side button moves
    it from right edge to left edge. */
 body.chapter-room #folio { display: none; }
-body.chapter-room.companion-mode #folio {
+/* Folio is a single-mode apparatus. In wide / dual mode the
+   reading column already approaches the viewport edges, so a
+   margin sidebar has no room. The folio is hidden and its
+   controls are disabled there. */
+body.cols-single.chapter-room.companion-mode #folio {
   display: block;
   position: fixed;
   top: 64px;      /* clears the controls + nav chrome */
   bottom: 0;
+  /* Anchor the folio's binding edge to the OUTER edge of the
+     scripture column itself, not to the viewport edge. The
+     scripture column is 960px wide and centered in the
+     viewport, so its outer edge sits at calc(50% + 480px).
+     Folio therefore lives in the viewport margin BEYOND
+     scripture's edge — it can never overlap scripture
+     regardless of viewport width. */
+  left: calc(50% + 480px);
   right: 0;
-  left: auto;
-  /* The folio occupies the available viewport margin beside the
-     scripture column (which is mathematically fixed at 960px).
-     width = (viewport - scripture) / 2, clamped between a
-     readable floor and a generous codex-margin ceiling. The
-     scripture column itself is never compressed; if the
-     viewport is too narrow for a useful margin, the folio
-     collapses entirely (media query below). */
-  width: clamp(180px, calc((100vw - 960px) / 2), 280px);
+  /* Cap width so the folio never grows past a comfortable
+     codex margin on very wide viewports. */
+  max-width: 280px;
   padding: 36px 22px 80px;
   overflow-y: auto;
-  /* Warmer parchment than the reading paper so the sidebar
-     reads as a companion register, not the same surface. The
-     gradient direction places the strongest tint on the
-     binding edge (the side touching scripture) — a codex
-     gutter cue. The previous gradient ran the opposite way,
-     putting the saturated end at the outer viewport edge,
-     which made the binding side visually almost identical
-     to the reading paper and obscured the boundary.
-
-     Default (folio on right): binding edge is LEFT, outer is
-     RIGHT. Strong-to-faint runs left → right. */
+  /* A warmer parchment register with the saturated tint on
+     the binding edge (the side touching scripture). The
+     contrast is now strong enough to read as a distinct
+     surface against the page paper, not a marginal whisper. */
   background: linear-gradient(
     to right,
-    rgba(140, 105, 55, 0.20) 0%,
-    rgba(140, 105, 55, 0.10) 100%
+    rgba(150, 110, 60, 0.28) 0%,
+    rgba(150, 110, 60, 0.14) 100%
   );
-  border-left: 1px solid rgba(120, 90, 50, 0.48);
+  border-left: 1px solid rgba(120, 80, 35, 0.55);
   border-right: none;
-  /* A deeper inner shadow on the binding edge — codex gutter
-     definition the reader can perceive. */
-  box-shadow: inset 18px 0 32px -20px rgba(120, 90, 50, 0.4);
+  /* Inner shadow on the binding edge — a codex gutter cue. */
+  box-shadow: inset 22px 0 36px -22px rgba(120, 80, 35, 0.48);
   z-index: 5;
-  flex: none;
 }
-body.chapter-room.companion-mode.folio-left #folio {
+body.cols-single.chapter-room.companion-mode.folio-left #folio {
   /* folio on left: binding edge is RIGHT, outer is LEFT.
-     Strong-to-faint runs right → left. */
+     Same edge-anchored geometry mirrored to the other side. */
+  left: 0;
+  right: calc(50% + 480px);
   background: linear-gradient(
     to left,
-    rgba(140, 105, 55, 0.20) 0%,
-    rgba(140, 105, 55, 0.10) 100%
+    rgba(150, 110, 60, 0.28) 0%,
+    rgba(150, 110, 60, 0.14) 100%
   );
   border-left: none;
-  border-right: 1px solid rgba(120, 90, 50, 0.48);
-  box-shadow: inset -18px 0 32px -20px rgba(120, 90, 50, 0.4);
+  border-right: 1px solid rgba(120, 80, 35, 0.55);
+  box-shadow: inset -22px 0 36px -22px rgba(120, 80, 35, 0.48);
 }
-/* Below this viewport width the available margin (~180px each
-   side) is too narrow to host the folio without intruding on
-   the scripture column. The folio collapses; scripture remains
-   sovereign at its 960px measure. */
-@media (max-width: 1320px) {
-  body.chapter-room.companion-mode #folio { display: none !important; }
+/* In wide mode the folio cannot exist; controls disable. */
+body.cols-wide #folio,
+body.cols-dual #folio {
+  display: none !important;
+}
+body.cols-wide #companion-toggle,
+body.cols-wide #companion-swap,
+body.cols-dual #companion-toggle,
+body.cols-dual #companion-swap {
+  /* !important is needed because body.companion-mode's active
+     state rule on these buttons sets opacity: 1 with the same
+     selector specificity. Wide mode wins. */
+  opacity: 0.32 !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+  border-bottom-color: transparent !important;
+}
+/* If the viewport is so narrow that even the scripture-edge
+   anchoring leaves less than ~120px for folio content, the
+   folio collapses entirely. This is well below the 1440-class
+   desktop the archive targets — desktop users always see it. */
+@media (max-width: 1200px) {
+  body.cols-single.chapter-room.companion-mode #folio { display: none !important; }
 }
 body.chapter-room.companion-mode.folio-left #folio {
   right: auto;
@@ -3168,7 +3184,7 @@ body.chapter-room .cr-margin-witness[data-kind="genealogy"] .cr-mw-title::before
   border-radius: 0;
   cursor: pointer;
   margin-left: 10px;
-  opacity: 0.6;
+  opacity: 0.85;
   letter-spacing: 0.02em;
   transition: color 0.2s, opacity 0.2s;
 }
