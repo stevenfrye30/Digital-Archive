@@ -2790,11 +2790,39 @@ body:not(.in-reading) #reader {
    placed on either side of the passage. */
 body.chapter-room #folio { display: none !important; }
 body.chapter-room.companion-mode #folio { display: none !important; }
-/* When body.folio-left is set in chapter-room companion mode,
-   the margin witness column moves to the left of the passage
-   so the codex spread can mirror to either side of the reader. */
+
+/* Chapter-room — two distinct zones: primary scripture column
+   and a dedicated witness margin. The scripture column has a
+   stable width that never changes when the folio is toggled,
+   so the verse text never reflows, never indents, and never
+   loses space to the folio. The reading room reads as one
+   clean column when folio is off; when folio is on, the page
+   gains a margin zone alongside, never inside, the scripture.
+
+   Default (companion off): cr-row is a single column whose
+   width is the reader-inner width. The verse fills its zone
+   cleanly with no reserved margin space.
+
+   Companion on: cr-row becomes a two-zone grid — a fixed
+   1100px scripture column plus a 240px witness margin. The
+   scripture column width is constant; reader-inner is widened
+   below so the witness fits alongside without shrinking the
+   text. */
+body.chapter-room .cr-row {
+  display: block;
+}
+body.chapter-room.companion-mode .cr-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1100px) 240px;
+  column-gap: 36px;
+  align-items: start;
+  justify-content: center;
+}
+/* When body.folio-left is set, the witness margin moves to the
+   left of the scripture column. The scripture column itself
+   keeps its 1100px width; the layout simply mirrors. */
 body.chapter-room.companion-mode.folio-left .cr-row {
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: 240px minmax(0, 1100px);
 }
 body.chapter-room.companion-mode.folio-left .cr-row > :first-child {
   grid-column: 2;
@@ -2803,21 +2831,31 @@ body.chapter-room.companion-mode.folio-left .cr-row > .cr-margin-witness {
   grid-column: 1;
   text-align: right;
 }
-
-/* Chapter-room — codex two-column flow.
-   Each verse occupies its own grid row: the passage in the text
-   column, anchored witnesses in a quiet margin column to the
-   right. When the companion toggle is off (or no witness is
-   anchored to this verse) the margin column simply remains
-   empty and the text reads as a plain manuscript. */
-body.chapter-room .cr-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
-  column-gap: 36px;
-  align-items: start;
+/* Reader-inner widens when companion mode is on so the witness
+   fits beside the scripture without reducing the text column.
+   1100 (scripture) + 36 (gap) + 240 (witness) = 1376. The
+   reader's horizontal padding is also tightened from 40px to
+   32px so the inner content area is wide enough to hold the
+   full 1376px without clipping the scripture column. */
+body.cols-single.chapter-room.companion-mode #reader {
+  padding-left: 32px;
+  padding-right: 32px;
 }
-body.chapter-room:not(.companion-mode) .cr-row {
-  grid-template-columns: minmax(0, 1fr);
+body.cols-single.chapter-room.companion-mode #reader-inner {
+  max-width: 1376px;
+}
+/* The chapter heading ("Genesis · ch 1") aligns with the
+   scripture column rather than the full reader-inner, so its
+   center sits above the scripture column's center on either
+   side. */
+body.chapter-room.companion-mode .chapter-heading {
+  max-width: 1100px;
+  margin-left: 0;
+  margin-right: auto;
+}
+body.chapter-room.companion-mode.folio-left .chapter-heading {
+  margin-left: auto;
+  margin-right: 0;
 }
 body.chapter-room .cr-margin-witness {
   display: none;
