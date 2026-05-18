@@ -2783,79 +2783,93 @@ body:not(.in-reading) #reader {
   overflow: hidden;
 }
 
-/* Chapter-room mode fuses the folio into the chapter stream —
-   the separate #folio surface steps out of the way and inline
-   margin witnesses appear next to each verse. The "Folio side"
-   swap remains visible because the witness column can still be
-   placed on either side of the passage. */
-body.chapter-room #folio { display: none !important; }
-body.chapter-room.companion-mode #folio { display: none !important; }
+/* Chapter-room — scripture is sovereign.
+   The scripture column has a fixed location, a fixed width,
+   and a fixed vertical flow that NEVER changes when the folio
+   toggles. cr-row is a plain block; verses flow uninterrupted.
+   Witnesses live entirely in the folio sidebar (see below),
+   which floats beside scripture as a separate scholarly
+   apparatus and never reserves vertical space inside the
+   scripture stream. */
+body.chapter-room .cr-row { display: block; }
+body.chapter-room .cr-margin-witness { display: none !important; }
 
-/* Chapter-room — two distinct zones: primary scripture column
-   and a dedicated witness margin. The scripture column has a
-   stable width that never changes when the folio is toggled,
-   so the verse text never reflows, never indents, and never
-   loses space to the folio. The reading room reads as one
-   clean column when folio is off; when folio is on, the page
-   gains a margin zone alongside, never inside, the scripture.
-
-   Default (companion off): cr-row is a single column whose
-   width is the reader-inner width. The verse fills its zone
-   cleanly with no reserved margin space.
-
-   Companion on: cr-row becomes a two-zone grid — a fixed
-   1100px scripture column plus a 240px witness margin. The
-   scripture column width is constant; reader-inner is widened
-   below so the witness fits alongside without shrinking the
-   text. */
-body.chapter-room .cr-row {
+/* Folio sidebar in chapter-room — a fixed scholarly margin
+   anchored to the viewport. The scripture beneath is
+   completely undisturbed. The sidebar appears only when
+   companion mode is on; clicking the Folio side button moves
+   it from right edge to left edge. */
+body.chapter-room #folio { display: none; }
+body.chapter-room.companion-mode #folio {
   display: block;
+  position: fixed;
+  top: 64px;      /* clears the controls + nav chrome */
+  bottom: 0;
+  right: 0;
+  left: auto;
+  width: 150px;
+  max-width: 150px;
+  padding: 28px 16px 80px;
+  overflow-y: auto;
+  background: rgba(140, 105, 55, 0.035);
+  border-left: 1px solid rgba(120, 90, 50, 0.14);
+  border-right: none;
+  z-index: 5;
+  flex: none;
 }
-body.chapter-room.companion-mode .cr-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1100px) 240px;
-  column-gap: 36px;
-  align-items: start;
-  justify-content: center;
+body.chapter-room.companion-mode.folio-left #folio {
+  right: auto;
+  left: 0;
+  border-left: none;
+  border-right: 1px solid rgba(120, 90, 50, 0.16);
 }
-/* When body.folio-left is set, the witness margin moves to the
-   left of the scripture column. The scripture column itself
-   keeps its 1100px width; the layout simply mirrors. */
-body.chapter-room.companion-mode.folio-left .cr-row {
-  grid-template-columns: 240px minmax(0, 1100px);
-}
-body.chapter-room.companion-mode.folio-left .cr-row > :first-child {
-  grid-column: 2;
-}
-body.chapter-room.companion-mode.folio-left .cr-row > .cr-margin-witness {
-  grid-column: 1;
+/* Right-align witness titles in folio-left so they hug the
+   manuscript edge rather than the page edge. */
+body.chapter-room.companion-mode.folio-left #folio-inner {
   text-align: right;
 }
-/* Reader-inner widens when companion mode is on so the witness
-   fits beside the scripture without reducing the text column.
-   1100 (scripture) + 36 (gap) + 240 (witness) = 1376. The
-   reader's horizontal padding is also tightened from 40px to
-   32px so the inner content area is wide enough to hold the
-   full 1376px without clipping the scripture column. */
-body.cols-single.chapter-room.companion-mode #reader {
-  padding-left: 32px;
-  padding-right: 32px;
+body.chapter-room.companion-mode #folio-inner {
+  max-width: none;
 }
-body.cols-single.chapter-room.companion-mode #reader-inner {
-  max-width: 1376px;
+/* Chapter-room folio register — a quiet rubric header naming the
+   chapter, followed by witnesses stacked at a uniform manuscript
+   rhythm. Scripture is sovereign; the folio does not align
+   verse-by-verse against it. */
+.cr-folio-header {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  color: rgba(120, 65, 25, 0.78);
+  margin: 0 0 18px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.16);
 }
-/* The chapter heading ("Genesis · ch 1") aligns with the
-   scripture column rather than the full reader-inner, so its
-   center sits above the scripture column's center on either
-   side. */
-body.chapter-room.companion-mode .chapter-heading {
-  max-width: 1100px;
-  margin-left: 0;
-  margin-right: auto;
+body.chapter-room.companion-mode #folio .folio-witness {
+  display: block;
+  margin: 0 0 14px 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  width: 100%;
 }
-body.chapter-room.companion-mode.folio-left .chapter-heading {
-  margin-left: auto;
-  margin-right: 0;
+body.chapter-room.companion-mode #folio .folio-title {
+  font-size: 0.86em;
+}
+body.chapter-room.companion-mode #folio .folio-verse {
+  font-size: 0.72em;
+}
+.cr-folio-empty {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.74em;
+  color: var(--chrome-muted);
+  opacity: 0.6;
 }
 body.chapter-room .cr-margin-witness {
   display: none;
@@ -5647,21 +5661,15 @@ function _renderBatch(passages, query, frag) {
     }
 
     if (chapterRoom) {
-      // Chapter-room layout — each verse gets its own grid row
-      // containing the passage in the text column and (when
-      // companion mode is on) any anchored witnesses in the
-      // margin column. The wrapper participates in the chapter
-      // stream as one row; the .passage itself keeps its own
-      // structure intact.
+      // Chapter-room layout — scripture is sovereign. cr-row is a
+      // plain block carrying only the passage; witnesses are
+      // rendered entirely in the folio sidebar (a fixed-position
+      // scholarly margin) so scripture flow is identical whether
+      // companion mode is on or off.
       const row = document.createElement('div');
       row.className = 'cr-row';
       row.dataset.pid = p.id;
       row.appendChild(div);
-      const witnesses = _witnessesForPassage(p.id);
-      for (const rec of witnesses) {
-        row.appendChild(_renderMarginWitness(rec, p.id));
-      }
-      if (witnesses.length) row.classList.add('has-witness');
       frag.appendChild(row);
     } else {
       frag.appendChild(div);
@@ -7337,10 +7345,11 @@ function renderCompanionFolio() {
   if (!inner) return;
   inner.innerHTML = '';
   if (encInner) encInner.innerHTML = '';
-  // Chapter-room mode owns the folio surface inline within the
-  // chapter stream. The standalone #folio is hidden; here we only
-  // need to render the consultation chamber when a witness is
-  // summoned.
+  // Chapter-room mode: render the current chapter's witnesses
+  // into the folio sidebar. Scripture is unaffected — the sidebar
+  // is a fixed-position scholarly margin beside the manuscript,
+  // not a layout sibling. Witnesses stack quietly; the sidebar
+  // scrolls independently.
   if (document.body.classList.contains('chapter-room')) {
     if (_folioMode === 'object' && _openFolioRecordId && encInner) {
       const rec = (currentData.genealogy || []).find(r => r.id === _openFolioRecordId);
@@ -7353,6 +7362,9 @@ function renderCompanionFolio() {
         _openFolioRecordId = null;
         _setViewerActive(false);
       }
+    }
+    if (document.body.classList.contains('companion-mode')) {
+      _renderChapterRoomFolio(inner);
     }
     return;
   }
@@ -7467,6 +7479,47 @@ function _renderFolioWitnessList(inner, chapters) {
     entry.style.marginTop = gap + 'px';
     prevVerse = v;
     i++;
+    inner.appendChild(entry);
+  }
+}
+
+// Chapter-room folio render — a stacked list of the current
+// chapter's witnesses, scrolling independently in the fixed
+// sidebar. No verse-anchored vertical spacing: scripture flow
+// is sovereign and is never given gaps to align witnesses
+// against. Witnesses sit by verse order at a uniform rhythm.
+function _renderChapterRoomFolio(inner) {
+  const chKey = _chapterKeyOf(currentBook || '');
+    // currentBook is already "gen.1" form in chapter-scoped texts,
+    // so _chapterKeyOf may return null when passed a chapter key
+    // (which already has 2 segments). Fall back to currentBook.
+  const ch = chKey || currentBook || '';
+  if (!ch || !currentData || !currentData.genealogy) return;
+  const records = currentData.genealogy.filter(r => {
+    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
+    if (!a) return false;
+    return _chapterKeyOf(a.split('::').pop()) === ch;
+  });
+  records.sort((a, b) => _verseOf(a) - _verseOf(b));
+
+  if (!records.length) {
+    const empty = document.createElement('div');
+    empty.className = 'cr-folio-empty';
+    empty.textContent = 'No witnesses anchored to this chapter.';
+    inner.appendChild(empty);
+    return;
+  }
+
+  const header = document.createElement('div');
+  header.className = 'cr-folio-header';
+  header.textContent = _formatChapterLabel(ch);
+  inner.appendChild(header);
+
+  for (const r of records) {
+    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
+    const pid = a ? a.split('::').pop() : '';
+    const entry = _renderFolioWitness(r, pid);
+    if (r.id === _openFolioRecordId) entry.classList.add('active');
     inner.appendChild(entry);
   }
 }
