@@ -801,12 +801,12 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
    plate: a deliberate carved index object that responds to
    touch, not plain text. Section tint distinguishes canonicity. */
 .bible-cover-layout .bcl-canon-section {
-  margin-top: 6px;
+  margin-top: 4px;
 }
 .bible-cover-layout .bcl-canon-section:first-of-type {
   margin-top: 2px;
   border-top: 1px solid rgba(120, 90, 50, 0.18);
-  padding-top: 4px;
+  padding-top: 3px;
 }
 /* Canon label as manuscript rubrication — a faint warm rubric
    mark, small-caps, calligraphic italic, set just above the
@@ -861,10 +861,27 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   border-radius: 2px;
   line-height: 1.08;
   cursor: pointer;
+  /* Subtle engraved relief — a paper-pale top highlight and a
+     hair-line shadow at the foot make each plate read as a
+     carved object embedded in the parchment, not a flat tag. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 245, 0.55),
+    inset 0 -1px 0 rgba(120, 90, 50, 0.045);
   transition:
     background-color 0.18s ease-out,
     border-color 0.18s ease-out,
-    color 0.18s ease-out;
+    box-shadow 0.18s ease-out,
+    color 0.18s ease-out,
+    transform 0.18s ease-out;
+}
+.bible-cover-layout .bcl-canon-list li:hover {
+  /* On hover the plate lifts a hair off the page — stronger
+     inset highlight + a faint warm halo. Never more than a
+     suggestion of touch. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 245, 0.75),
+    inset 0 -1px 0 rgba(120, 90, 50, 0.09),
+    0 1px 3px rgba(120, 90, 50, 0.08);
 }
 /* Canonical section tinting — three different parchment registers:
      Old Testament — warm parchment, the base manuscript tone.
@@ -1026,7 +1043,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   align-items: center;
   justify-content: center;
   gap: 18px;
-  margin: 10px auto 2px;
+  margin: 7px auto 0;
 }
 .bible-cover-layout .bcl-enter-wrap::before,
 .bible-cover-layout .bcl-enter-wrap::after {
@@ -2662,6 +2679,51 @@ body:not(.in-reading) #object-viewer {
 body:not(.in-reading) #controls { display: none !important; }
 body:not(.in-reading) #nav-bar { display: none !important; }
 body:not(.in-reading) #translation-bar { display: none !important; }
+
+/* On the title leaf the "About this text" affordance is recast as
+   a quiet pill rather than a top-of-page toolbar so it does not
+   compete with the sovereign title block. The leaf reads as one
+   continuous composition from edge to edge. */
+body:not(.in-reading) #info-bar {
+  padding: 4px 24px 2px;
+  background: transparent;
+  border-bottom: none;
+}
+body:not(.in-reading) #meta-toggle {
+  font-family: Georgia, serif;
+  font-size: 11px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  padding: 3px 12px;
+  background: transparent;
+  border: 1px solid rgba(120, 90, 50, 0.2);
+  color: var(--chrome-muted);
+  box-shadow: none;
+  opacity: 0.7;
+  transition: opacity 0.2s, border-color 0.2s, color 0.2s;
+}
+body:not(.in-reading) #meta-toggle:hover {
+  opacity: 1;
+  background: transparent;
+  border-color: rgba(120, 90, 50, 0.4);
+  color: var(--chrome-active);
+  box-shadow: none;
+}
+body:not(.in-reading) #meta-toggle .info-icon {
+  width: 13px;
+  height: 13px;
+  font-size: 10px;
+  background: transparent;
+  border: 1px solid currentColor;
+  color: inherit;
+}
+/* Title-leaf reader padding — calibrated so the manuscript leaf
+   sits in a balanced vertical position: title near the upper
+   third, generous codex margin below the Enter plate. Lifts the
+   composition ~12px relative to the prior pass without making
+   the leaf top-heavy. */
+body:not(.in-reading) #reader { padding-top: 70px; }
 
 /* Chapter-room mode fuses the folio into the chapter stream —
    the separate #folio surface, its companion-toggle "Folio"
