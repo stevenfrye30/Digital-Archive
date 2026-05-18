@@ -2720,10 +2720,21 @@ body:not(.in-reading) #meta-toggle .info-icon {
 }
 /* Title-leaf reader padding — calibrated so the manuscript leaf
    sits in a balanced vertical position: title near the upper
-   third, generous codex margin below the Enter plate. Lifts the
-   composition ~12px relative to the prior pass without making
-   the leaf top-heavy. */
-body:not(.in-reading) #reader { padding-top: 70px; }
+   third, generous codex margin below the Enter plate.
+
+   The title leaf is sized to fit a 1440x900 viewport exactly,
+   so its #reader uses overflow: hidden to prevent any
+   subpixel-rounding scrollbar from appearing on Windows Chrome
+   (where a 0.5px overflow is enough to trigger one). The
+   reduced padding-bottom (24px instead of the default 100px)
+   gives a 76px clipping buffer for line-height accumulation
+   across the leaf's many text rows — invisible, mechanical
+   defense against the microscopic scrollbar. */
+body:not(.in-reading) #reader {
+  padding-top: 70px;
+  padding-bottom: 24px;
+  overflow: hidden;
+}
 
 /* Chapter-room mode fuses the folio into the chapter stream —
    the separate #folio surface, its companion-toggle "Folio"
