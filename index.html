@@ -2632,7 +2632,7 @@ mark.search-hl-active {
      fit (max-height: 100vh - chrome). If it would overflow, it
      simply scales down. */
   overflow: hidden;
-  padding: 32px 32px;
+  padding: 16px 24px;
   color: var(--reader-fg);
   visibility: hidden;
   opacity: 0;
@@ -3174,7 +3174,7 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
 .folio-leaf[data-kind="plate"] .folio-plate-mat {
   background: rgba(245, 235, 215, 0.025);
   border: 1px solid rgba(245, 235, 215, 0.16);
-  padding: 16px;
+  padding: 12px;
   display: inline-block;
   line-height: 0;
   /* The mat carries the engraving's material weight — a deep
@@ -3187,20 +3187,25 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
 .folio-leaf[data-kind="plate"] .folio-plate {
   display: block;
   max-width: 100%;
-  /* Reserve enough room for viewer padding (32px ×2), mat border
-     and padding (~34px), plaque (~120px). The rest of the
-     viewport height belongs to the engraving. */
-  max-height: calc(100vh - 220px);
+  /* The engraving fills the chamber's vertical measure regardless
+     of source resolution. Some Doré scans in the archive are
+     stored at a smaller pixel size than the chamber affords; we
+     prefer the museum-scale presentation and accept a modest
+     upscale-softening, which engraving texture handles well.
+     Reserve = 16px×2 viewer padding + 12px×2 mat padding +
+     ~75px plaque/margin. */
+  height: calc(100vh - 140px);
   width: auto;
-  height: auto;
   object-fit: contain;
+  /* Keeps engraving line work as crisp as the upscale allows. */
+  image-rendering: -webkit-optimize-contrast;
 }
 /* Plaque — compact curatorial label directly under the engraving.
    Centered, dignified, on the dark backdrop; cream-ink so it sits
    quietly against the charcoal field. */
 .folio-leaf[data-kind="plate"] .folio-plate-plaque {
   text-align: center;
-  margin: 24px auto 0;
+  margin: 14px auto 0;
   max-width: 600px;
   font-family: Georgia, serif;
   color: rgba(245, 235, 215, 0.86);
