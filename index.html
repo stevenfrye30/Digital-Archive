@@ -998,9 +998,17 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .bible-cover-layout .cite-corner > summary:hover { opacity: 0.9; }
 .bible-cover-layout .cite-corner[open] > summary { opacity: 0.85; }
 .bible-cover-layout .cite-corner .cc-citations {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
+  /* Anchored in the upper-right of the viewport, well above the
+     canon grid (which begins around y=217 at 1440×900). The
+     summary stays in its corner inside the title leaf; the
+     panel hangs above the canon as a separate scholarly slip
+     in the empty chrome territory. fixed positioning means
+     this stays robust regardless of layout shifts. */
+  position: fixed;
+  top: 8px;
+  right: 36px;
+  left: auto;
+  bottom: auto;
   width: 380px;
   margin: 0;
   /* Apparatus drawer — a slightly cooler scholarly slip layered
@@ -2859,28 +2867,34 @@ body.chapter-room.companion-mode #folio {
   width: clamp(180px, calc((100vw - 960px) / 2), 280px);
   padding: 36px 22px 80px;
   overflow-y: auto;
-  /* Slightly warmer parchment than the reading paper so the
-     sidebar reads as a companion register, not the same surface. */
+  /* Warmer parchment than the reading paper so the sidebar
+     reads as a companion register, not the same surface. The
+     tint is strong enough to be visually unambiguous (the
+     previous 0.04-0.06 alpha was below the perception
+     threshold against #faf8f5 paper) while still feeling
+     archival rather than chrome. */
   background: linear-gradient(
     to left,
-    rgba(140, 105, 55, 0.06) 0%,
-    rgba(140, 105, 55, 0.04) 100%
+    rgba(140, 105, 55, 0.16) 0%,
+    rgba(140, 105, 55, 0.11) 100%
   );
-  border-left: 1px solid rgba(120, 90, 50, 0.22);
+  border-left: 1px solid rgba(120, 90, 50, 0.42);
   border-right: none;
-  /* A small inner shadow on the binding edge — a quiet codex
-     gutter cue, never a UI panel border. */
-  box-shadow: inset 12px 0 24px -16px rgba(120, 90, 50, 0.18);
+  /* A deeper inner shadow on the binding edge — codex gutter
+     definition the reader can perceive. */
+  box-shadow: inset 18px 0 32px -20px rgba(120, 90, 50, 0.36);
   z-index: 5;
   flex: none;
 }
 body.chapter-room.companion-mode.folio-left #folio {
   background: linear-gradient(
     to right,
-    rgba(140, 105, 55, 0.06) 0%,
-    rgba(140, 105, 55, 0.04) 100%
+    rgba(140, 105, 55, 0.16) 0%,
+    rgba(140, 105, 55, 0.11) 100%
   );
-  box-shadow: inset -12px 0 24px -16px rgba(120, 90, 50, 0.18);
+  border-left: none;
+  border-right: 1px solid rgba(120, 90, 50, 0.42);
+  box-shadow: inset -18px 0 32px -20px rgba(120, 90, 50, 0.36);
 }
 /* Below this viewport width the available margin (~180px each
    side) is too narrow to host the folio without intruding on
