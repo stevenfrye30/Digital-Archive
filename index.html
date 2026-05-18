@@ -2863,32 +2863,29 @@ body.chapter-room .cr-margin-witness { display: none !important; }
 .chapter-spread .scripture-column { position: relative; }
 .chapter-spread .folio-column { display: none; }
 body.cols-single.chapter-room.companion-mode #reader-inner {
-  max-width: 1330px;
+  max-width: 1380px;
 }
-/* When the spread is active, the reader's side padding shrinks
-   from 40px to 20px so common laptop viewports (1280-1366) can
-   host the full 1330px composition without the folio getting
-   squeezed out by chrome padding. */
+/* When the spread is active, reader's side padding shrinks
+   from 40px to 30px so the 1380px composition fits on common
+   laptop viewports while still leaving outer breathing room. */
 body.cols-single.chapter-room.companion-mode #reader {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 body.cols-single.chapter-room.companion-mode .chapter-spread {
   display: grid;
-  /* Scripture is sovereign at 960; folio flexes between 160
-     and 320 depending on available width. The spread itself
-     fills the reader-inner up to its 1330 cap; below ~1170
-     viewport (where folio would shrink below readability), the
-     media query at the bottom of this block collapses to
-     scripture-only. */
-  grid-template-columns: 960px 50px minmax(160px, 320px);
+  /* Scripture is sovereign at 960; the folio is now sized as
+     a true manuscript witness margin (220-360px), with a
+     generous 60px gap so the two columns read as a composed
+     codex spread rather than a sidebar. */
+  grid-template-columns: 960px 60px minmax(220px, 360px);
   grid-template-rows: auto;
   width: 100%;
-  max-width: 1330px;
+  max-width: 1380px;
   margin: 0 auto;
 }
 body.cols-single.chapter-room.companion-mode.folio-left .chapter-spread {
-  grid-template-columns: minmax(160px, 320px) 50px 960px;
+  grid-template-columns: minmax(220px, 360px) 60px 960px;
 }
 body.cols-single.chapter-room.companion-mode .chapter-spread .scripture-column {
   grid-column: 1; grid-row: 1;
@@ -2916,17 +2913,32 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .chapter-spread .folio-column .cr-folio-header {
   position: absolute;
   top: 32px;
-  left: 22px;
-  right: 22px;
+  left: 28px;
+  right: 28px;
   margin-bottom: 0;
 }
 .chapter-spread .folio-column .cr-folio-entry {
   position: absolute;
-  left: 22px;
-  right: 22px;
+  left: 28px;
+  right: 28px;
   margin: 0;
-  padding: 0 0 12px;
+  padding: 0 0 14px;
   border-top: none;
+  line-height: 1.42;
+}
+/* Inside-entry typography tuned for the wider column —
+   manuscript breathing, no awkward wraps. */
+.chapter-spread .folio-column .cr-folio-title {
+  line-height: 1.36;
+  word-spacing: 0.01em;
+}
+.chapter-spread .folio-column .cr-folio-meta {
+  margin-top: 10px;
+  line-height: 1.4;
+  word-spacing: 0.02em;
+}
+.chapter-spread .folio-column .cr-folio-kind {
+  margin-bottom: 6px;
 }
 body.cols-single.chapter-room.companion-mode .chapter-spread .folio-column {
   /* Folio-column own padding zeroed because entries position
@@ -2954,10 +2966,10 @@ body.cols-dual #companion-swap {
 }
 /* If the viewport cannot host a readable folio next to the
    sovereign 960px scripture column, the chapter-spread falls
-   back to scripture-only. Minimum viable spread = 960 + 50
-   + 160 = 1170 + 40 (reader padding 20×2) = 1210 viewport.
+   back to scripture-only. Minimum viable spread = 960 + 60 +
+   220 = 1240 + 60 (reader padding 30×2) = 1300 viewport.
    Below this, scripture remains sovereign and folio collapses. */
-@media (max-width: 1209px) {
+@media (max-width: 1299px) {
   body.cols-single.chapter-room.companion-mode .chapter-spread {
     display: block;
     width: auto;
