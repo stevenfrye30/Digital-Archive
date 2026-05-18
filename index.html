@@ -999,34 +999,71 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .bible-cover-layout .cite-corner[open] > summary { opacity: 0.85; }
 .bible-cover-layout .cite-corner .cc-citations {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 8px);
   right: 0;
-  width: 360px;
+  width: 380px;
   margin: 0;
-  background: var(--reader-bg);
-  border: 1px solid rgba(120, 90, 50, 0.18);
-  padding: 10px 14px;
+  /* Apparatus drawer — a slightly cooler scholarly slip layered
+     above the parchment. The faint shadow gives it edge
+     definition without ever feeling like a UI panel; the inner
+     highlight reads as a separately prepared sheet. */
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--reader-bg) 92%, #faf4e0 8%) 0%,
+    color-mix(in srgb, var(--reader-bg) 96%, #6a4a20 4%) 100%
+  );
+  border: 1px solid rgba(120, 90, 50, 0.32);
+  border-top-color: rgba(120, 90, 50, 0.42);
+  box-shadow:
+    0 12px 28px rgba(80, 55, 25, 0.16),
+    0 2px 6px rgba(80, 55, 25, 0.10),
+    inset 0 1px 0 rgba(255, 250, 240, 0.55);
+  padding: 14px 18px 12px;
   text-align: left;
   font-family: Georgia, serif;
+}
+/* A small ornamental rubric above the entries — "Cite" — so the
+   drawer reads as a labeled scholarly slip rather than two raw
+   lines of bibliography. */
+.bible-cover-layout .cite-corner .cc-citations::before {
+  content: 'Citation';
+  display: block;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(120, 65, 25, 0.78);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.18);
 }
 .bible-cover-layout .cite-corner .cc-cite-heading { display: none; }
 .bible-cover-layout .cite-corner .cc-cite {
   background: transparent;
-  padding: 3px 0;
+  padding: 4px 0;
   font-size: 10.5px;
-  line-height: 1.5;
+  line-height: 1.55;
   border-radius: 0;
   margin: 0;
+  color: rgba(45, 35, 25, 0.92);
 }
-.bible-cover-layout .cite-corner .cc-cite:hover { background: rgba(0,0,0,0.03); }
+.bible-cover-layout .cite-corner .cc-cite + .cc-cite {
+  border-top: 1px solid rgba(120, 90, 50, 0.10);
+  margin-top: 2px;
+  padding-top: 6px;
+}
+.bible-cover-layout .cite-corner .cc-cite:hover { background: rgba(120, 90, 50, 0.045); }
 .bible-cover-layout .cite-corner .cc-cite::after {
   right: 4px;
   font-size: 9px;
 }
 .bible-cover-layout .cite-corner .cc-cite-label {
   font-size: 8.5px;
-  opacity: 0.65;
-  margin-right: 4px;
+  opacity: 0.75;
+  margin-right: 6px;
+  font-style: italic;
+  letter-spacing: 0.08em;
 }
 .bible-cover-layout .cc-fm-btn-wrap {
   text-align: left;
@@ -2618,32 +2655,35 @@ mark.search-hl-active {
   position: fixed;
   inset: 0;
   z-index: 100;
-  /* Warm charcoal with a soft central vignette — archival
-     reading-room darkness, never pure black. The radial gradient
-     concentrates focus on the consulted object while the outer
-     field deepens to nearly opaque so the manuscript behind is
-     barely perceptible. */
+  /* Warm charcoal vignette — archival darkness, deeper than
+     pure black at the edges so the chamber feels enclosed.
+     The radial focus concentrates light on the consulted
+     object while the room walls fall into near-opacity. */
   background:
     radial-gradient(
-      ellipse at center,
-      rgba(28, 22, 16, 0.88) 0%,
-      rgba(14, 10, 6, 0.97) 75%,
-      rgba(8, 6, 4, 0.99) 100%
+      ellipse 75% 80% at center,
+      rgba(32, 24, 16, 0.86) 0%,
+      rgba(20, 14, 8, 0.94) 35%,
+      rgba(10, 7, 4, 0.985) 75%,
+      rgba(4, 3, 2, 1) 100%
     );
   /* No scroll — the viewport is locked. The object is sized to
      fit (max-height: 100vh - chrome). If it would overflow, it
      simply scales down. */
   overflow: hidden;
-  padding: 16px 24px;
+  padding: 12px 24px;
   color: var(--reader-fg);
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.45s ease-out, visibility 0s linear 0.45s;
+  /* Slower, more ceremonial entry/exit — never flashy, never
+     spring. A simple ease so the chamber feels like a door
+     swinging open at archival pace. */
+  transition: opacity 0.6s ease-out, visibility 0s linear 0.6s;
 }
 body.viewer-active #object-viewer {
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.45s ease-out, visibility 0s;
+  transition: opacity 0.65s ease-out, visibility 0s;
 }
 /* Lock the room behind the viewer. body already has height: 100vh
    so document.scroll is unmoved, but additional belt-and-suspenders
@@ -2809,8 +2849,14 @@ body.chapter-room.companion-mode #folio {
   bottom: 0;
   right: 0;
   left: auto;
-  width: 240px;
-  max-width: 240px;
+  /* The folio occupies the available viewport margin beside the
+     scripture column (which is mathematically fixed at 960px).
+     width = (viewport - scripture) / 2, clamped between a
+     readable floor and a generous codex-margin ceiling. The
+     scripture column itself is never compressed; if the
+     viewport is too narrow for a useful margin, the folio
+     collapses entirely (media query below). */
+  width: clamp(180px, calc((100vw - 960px) / 2), 280px);
   padding: 36px 22px 80px;
   overflow-y: auto;
   /* Slightly warmer parchment than the reading paper so the
@@ -2835,6 +2881,13 @@ body.chapter-room.companion-mode.folio-left #folio {
     rgba(140, 105, 55, 0.04) 100%
   );
   box-shadow: inset -12px 0 24px -16px rgba(120, 90, 50, 0.18);
+}
+/* Below this viewport width the available margin (~180px each
+   side) is too narrow to host the folio without intruding on
+   the scripture column. The folio collapses; scripture remains
+   sovereign at its 960px measure. */
+@media (max-width: 1320px) {
+  body.chapter-room.companion-mode #folio { display: none !important; }
 }
 body.chapter-room.companion-mode.folio-left #folio {
   right: auto;
@@ -3337,9 +3390,9 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
      stored at a smaller pixel size than the chamber affords; we
      prefer the museum-scale presentation and accept a modest
      upscale-softening, which engraving texture handles well.
-     Reserve = 16px×2 viewer padding + 12px×2 mat padding +
-     ~75px plaque/margin. */
-  height: calc(100vh - 140px);
+     Reserve = viewer padding 12+12, mat padding 12+12 + border,
+     plaque margin 20 + padding-top 14 + ~60 height ≈ 150. */
+  height: calc(100vh - 150px);
   width: auto;
   object-fit: contain;
   /* Keeps engraving line work as crisp as the upscale allows. */
@@ -6691,7 +6744,29 @@ function enterReading(targetGroupKey) {
   // and browseHome() re-sets it. Reading entry must clear it or the
   // reader is stuck at the initial viewport height.
   $reader.style.overflow = '';
-  $reader.scrollTop = 0;
+  // If the reader is re-entering the same chapter they just stepped
+  // out of (via Contents), restore the scroll and folio state so
+  // the room feels continuous. Otherwise begin at the chapter top.
+  const memo = (typeof _lastReadingMemo !== 'undefined') ? _lastReadingMemo : null;
+  if (memo && memo.book === currentBook) {
+    $reader.scrollTop = memo.scrollTop || 0;
+    if (memo.companionMode && !document.body.classList.contains('companion-mode')) {
+      document.body.classList.add('companion-mode');
+      const compTog = document.getElementById('companion-toggle');
+      if (compTog) { compTog.setAttribute('aria-pressed', 'true'); compTog.textContent = 'Pure'; }
+    }
+    if (memo.folioLeft && !document.body.classList.contains('folio-left')) {
+      document.body.classList.add('folio-left');
+      const compSwap = document.getElementById('companion-swap');
+      if (compSwap) compSwap.setAttribute('aria-pressed', 'true');
+    }
+    _lastReadingMemo = null;
+  } else {
+    $reader.scrollTop = 0;
+    // Discard the memo once the reader has moved to a different
+    // chapter — the memo only applies to its original room.
+    _lastReadingMemo = null;
+  }
   // Notify the mobile reading-state layout that ctrl-book options,
   // translation switcher, and ctrl-contents visibility have all just
   // been updated. The mobile running header and meta panel re-derive
@@ -6711,6 +6786,13 @@ function enterReading(targetGroupKey) {
   // verse via URL).
   _maybeRetuneFolioToCurrentBook();
   _trackReadingChapter();
+  // If companion mode is on, the chapter-room folio sidebar needs
+  // an explicit render after re-entry since enterReading didn't
+  // trigger the standard companion-toggle flow.
+  if (document.body.classList.contains('chapter-room') &&
+      document.body.classList.contains('companion-mode')) {
+    renderCompanionFolio();
+  }
 }
 
 function showToc(data, entry) {
@@ -7641,19 +7723,11 @@ function _renderChapterRoomWitness(rec, pid) {
   entry.dataset.kind = rec.kind || 'genealogy';
   if (rec.id === _openFolioRecordId) entry.classList.add('active');
 
-  // Thumbnail — visible for plate records that carry an image
-  // URL. A small framed glimpse, restrained and archival.
-  if (rec.kind === 'plate' && rec.plate && rec.plate.url) {
-    const tw = document.createElement('div');
-    tw.className = 'cr-folio-thumb-wrap';
-    const img = document.createElement('img');
-    img.className = 'cr-folio-thumb';
-    img.src = rec.plate.url;
-    img.alt = rec.title || '';
-    img.loading = 'lazy';
-    tw.appendChild(img);
-    entry.appendChild(tw);
-  }
+  // No thumbnail. The folio is a catalog of witness references,
+  // not a presentation of the witnesses themselves. The actual
+  // artwork is reserved for the chamber viewer so opening an
+  // object remains a meaningful threshold, not a confirmation
+  // of something already seen.
 
   // Small kind ornament — "plate" / "genealogy" / "map" etc.
   const kind = document.createElement('span');
@@ -8754,6 +8828,14 @@ function browseOpen(dataFile) {
 }
 
 /** Return to title page + TOC for current text */
+// Reading-state memo — the last position the reader inhabited
+// before stepping out to Contents. Restored on return if the
+// reader re-enters the same chapter, so navigation feels like
+// walking between chambers of the same archive rather than
+// reopening a fresh book each time. Folio side and companion
+// mode survive on the body classes; this only memos the values
+// that are otherwise discarded.
+let _lastReadingMemo = null;
 function backToContents() {
   if (!currentData || !currentEntry) return;
   // Leaving the reader closes any open witness and exits the
@@ -8762,6 +8844,15 @@ function backToContents() {
   if (typeof _closeFolioObject === 'function' && _folioMode === 'object') {
     _closeFolioObject();
   }
+  // Memo the room the reader is leaving so re-entering the
+  // same chapter restores scroll and folio state.
+  const reader = document.getElementById('reader');
+  _lastReadingMemo = {
+    book: currentBook,
+    scrollTop: reader ? reader.scrollTop : 0,
+    companionMode: document.body.classList.contains('companion-mode'),
+    folioLeft: document.body.classList.contains('folio-left'),
+  };
   document.body.classList.remove('in-reading');
   document.body.classList.remove('chapter-room');
   showCover(currentData, currentEntry);
