@@ -2917,28 +2917,154 @@ body.cols-single.chapter-room.companion-mode.folio-left
   right: 28px;
   margin-bottom: 0;
 }
-.chapter-spread .folio-column .cr-folio-entry {
+
+/* ── Symbolic folio markers — compact witness chips ────────────
+   Each cluster sits at its anchor verse's y-coordinate inside
+   the folio column. Markers within a cluster flow horizontally
+   (wrap if many). The marker IS the witness presence; hover or
+   focus reveals a plaque with title + metadata; click opens the
+   object chamber. Manuscript apparatus aesthetic — typographic
+   glyphs, never iconography. */
+.chapter-spread .folio-column .cr-folio-cluster {
   position: absolute;
   left: 28px;
   right: 28px;
-  margin: 0;
-  padding: 0 0 14px;
-  border-top: none;
-  line-height: 1.42;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
 }
-/* Inside-entry typography tuned for the wider column —
-   manuscript breathing, no awkward wraps. */
-.chapter-spread .folio-column .cr-folio-title {
-  line-height: 1.36;
-  word-spacing: 0.01em;
+
+/* Marker — a small parchment chip carrying a glyph that names
+   the witness's kind. Restrained at rest; warms on hover/focus.
+   Position: relative so the plaque (absolute child) anchors to
+   the marker rather than the folio column. */
+.cr-folio-marker {
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(150, 110, 60, 0.12);
+  border: 1px solid rgba(120, 80, 35, 0.32);
+  border-radius: 3px;
+  color: rgba(110, 55, 20, 0.82);
+  cursor: pointer;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 15px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.78;
+  transition:
+    opacity 0.18s ease-out,
+    background-color 0.18s ease-out,
+    border-color 0.18s ease-out,
+    color 0.18s ease-out;
 }
-.chapter-spread .folio-column .cr-folio-meta {
-  margin-top: 10px;
-  line-height: 1.4;
-  word-spacing: 0.02em;
+.cr-folio-marker:hover,
+.cr-folio-marker:focus-visible {
+  opacity: 1;
+  background: rgba(150, 110, 60, 0.24);
+  border-color: rgba(120, 80, 35, 0.58);
+  color: rgba(95, 45, 15, 1);
+  outline: none;
 }
-.chapter-spread .folio-column .cr-folio-kind {
+.cr-folio-marker:focus-visible {
+  box-shadow: 0 0 0 2px rgba(120, 80, 35, 0.32);
+}
+.cr-folio-marker.active {
+  opacity: 1;
+  background: rgba(150, 110, 60, 0.32);
+  border-color: rgba(120, 80, 35, 0.72);
+  color: rgba(80, 35, 10, 1);
+}
+
+/* Type → glyph mapping. The default rule covers any kind not
+   listed (and acts as the fallback for unrecognized data). The
+   per-kind rules below override. Add a new kind by appending one
+   line; no JS change needed. */
+.cr-folio-marker::before                          { content: '·'; }
+.cr-folio-marker[data-kind="plate"]::before       { content: '▣'; }
+.cr-folio-marker[data-kind="genealogy"]::before   { content: '❦'; }
+.cr-folio-marker[data-kind="map"]::before         { content: '✥'; }
+.cr-folio-marker[data-kind="commentary"]::before  { content: '❡'; }
+.cr-folio-marker[data-kind="manuscript"]::before  { content: '▦'; }
+.cr-folio-marker[data-kind="linguistic"]::before  { content: 'ℵ'; }
+.cr-folio-marker[data-kind="timeline"]::before    { content: '⧖'; }
+
+/* Hover/focus plaque — a quiet manuscript marginal note revealed
+   beside the marker. Right-folio markers open the plaque
+   leftward into the gutter; left-folio markers open rightward.
+   Reveal on :hover and :focus-visible so keyboard users see the
+   same plaque mouse users see. */
+.cr-folio-plaque {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 240px;
+  padding: 12px 16px;
+  background: color-mix(in srgb, var(--reader-bg) 92%, #fff 8%);
+  border: 1px solid rgba(120, 80, 35, 0.36);
+  border-radius: 2px;
+  box-shadow:
+    0 12px 28px rgba(80, 55, 25, 0.16),
+    0 2px 6px rgba(80, 55, 25, 0.10),
+    inset 0 1px 0 rgba(255, 250, 240, 0.6);
+  font-family: Georgia, serif;
+  color: var(--reader-fg);
+  text-align: left;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.24s ease-out, visibility 0s linear 0.24s;
+  z-index: 8;
+}
+.cr-folio-marker:hover .cr-folio-plaque,
+.cr-folio-marker:focus-visible .cr-folio-plaque {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.18s ease-out, visibility 0s;
+}
+/* Right-side folio: plaque opens to the LEFT (away from the
+   viewport edge, into the gutter beside scripture). */
+body.cols-single.chapter-room.companion-mode:not(.folio-left)
+  .cr-folio-plaque {
+  right: calc(100% + 10px);
+}
+/* Left-side folio: plaque opens to the RIGHT. */
+body.cols-single.chapter-room.companion-mode.folio-left
+  .cr-folio-plaque {
+  left: calc(100% + 10px);
+}
+
+.cr-folio-plaque-kind {
+  display: block;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.62em;
+  letter-spacing: 0.22em;
+  color: rgba(120, 65, 25, 0.78);
   margin-bottom: 6px;
+}
+.cr-folio-plaque-title {
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.98em;
+  line-height: 1.34;
+  color: var(--reader-fg);
+}
+.cr-folio-plaque-meta {
+  display: block;
+  margin-top: 8px;
+  font-style: italic;
+  font-size: 0.76em;
+  line-height: 1.4;
+  color: rgba(120, 65, 25, 0.68);
+  letter-spacing: 0.02em;
 }
 body.cols-single.chapter-room.companion-mode .chapter-spread .folio-column {
   /* Folio-column own padding zeroed because entries position
@@ -7820,14 +7946,14 @@ function _renderFolioWitnessList(inner, chapters) {
   }
 }
 
-// Chapter-room folio render — pours witness entries into the
-// folio column of the current chapter-spread. The entries are
-// positioned via _positionFolioEntries() so each lines up with
-// the y-position of its anchor verse, with collision-aware
-// stacking. Scripture flow is never touched.
+// Chapter-room folio render — pours symbolic witness markers
+// into the folio column of the current chapter-spread. Records
+// sharing an anchor verse are grouped into a single positioned
+// cluster (flex-wrap container). Each cluster's top is set by
+// _positionFolioEntries() to the y-position of its anchor verse,
+// with collision-avoidance stacking. Scripture is never touched.
 function _renderChapterRoomFolio(_legacyInner) {
-  // _legacyInner is the old #folio-inner; ignored. The new
-  // architecture writes into the chapter-spread's folio-column.
+  // _legacyInner is the old #folio-inner; ignored.
   const folioColumn = document.querySelector(
     '#passages .chapter-spread .folio-column'
   );
@@ -7859,95 +7985,125 @@ function _renderChapterRoomFolio(_legacyInner) {
   header.textContent = _formatChapterLabel(ch);
   folioColumn.appendChild(header);
 
+  // Group records by anchor verse pid → one cluster per verse.
+  const byVerse = new Map();
+  const order = [];
   for (const r of records) {
     const a = r.anchors && r.anchors[0] && r.anchors[0].target;
     const pid = a ? a.split('::').pop() : '';
-    const entry = _renderChapterRoomWitness(r, pid);
-    entry.dataset.anchorPid = pid;
-    folioColumn.appendChild(entry);
+    if (!byVerse.has(pid)) {
+      byVerse.set(pid, []);
+      order.push(pid);
+    }
+    byVerse.get(pid).push(r);
   }
 
-  // After entries are in the DOM, position them by anchor verse.
-  // RAF lets the browser flush layout once before measurement.
+  for (const pid of order) {
+    const cluster = document.createElement('div');
+    cluster.className = 'cr-folio-cluster';
+    cluster.dataset.anchorPid = pid;
+    for (const r of byVerse.get(pid)) {
+      cluster.appendChild(_renderFolioMarker(r, pid));
+    }
+    folioColumn.appendChild(cluster);
+  }
+
+  // After clusters are in the DOM, position them by anchor verse.
   requestAnimationFrame(() => _positionFolioEntries());
 }
 
-// Position each folio entry at the y-coordinate of its anchor
+// Position each folio cluster at the y-coordinate of its anchor
 // verse within the chapter-spread, with collision-avoidance
-// stacking. Called after render, after content settles, and on
-// window resize.
+// stacking. Called after render and on window resize.
 function _positionFolioEntries() {
   const spread = document.querySelector('#passages .chapter-spread');
   if (!spread) return;
   const folioColumn = spread.querySelector('.folio-column');
   if (!folioColumn) return;
   const header = folioColumn.querySelector('.cr-folio-header');
-  const entries = folioColumn.querySelectorAll('.cr-folio-entry');
-  if (!entries.length) return;
+  const clusters = folioColumn.querySelectorAll('.cr-folio-cluster');
+  if (!clusters.length) return;
 
-  // Header sits at top: 28px (set by CSS); track its bottom so
-  // the first entry never collides with it.
   const headerBottom = header
-    ? header.offsetTop + header.offsetHeight + 12
+    ? header.offsetTop + header.offsetHeight + 14
     : 28;
 
   let prevBottom = headerBottom;
-  const COLLISION_GAP = 18;
-  for (const entry of entries) {
-    const anchorPid = entry.dataset.anchorPid;
+  const COLLISION_GAP = 14;
+  for (const cluster of clusters) {
+    const anchorPid = cluster.dataset.anchorPid;
     let verseTop = headerBottom;
     if (anchorPid) {
       const verse = spread.querySelector(
         `.scripture-column [data-pid="${anchorPid}"]`
       );
-      if (verse) {
-        // offsetTop relative to the spread (a positioned ancestor).
-        verseTop = verse.offsetTop;
-      }
+      if (verse) verseTop = verse.offsetTop;
     }
     const top = Math.max(verseTop, prevBottom + COLLISION_GAP);
-    entry.style.top = top + 'px';
-    // Force layout so offsetHeight is current.
-    prevBottom = top + entry.offsetHeight;
+    cluster.style.top = top + 'px';
+    prevBottom = top + cluster.offsetHeight;
   }
 }
 
-function _renderChapterRoomWitness(rec, pid) {
-  const entry = document.createElement('button');
-  entry.type = 'button';
-  entry.className = 'cr-folio-entry';
-  entry.dataset.kind = rec.kind || 'genealogy';
-  if (rec.id === _openFolioRecordId) entry.classList.add('active');
+// Type → symbol map (CSS-driven via [data-kind]::before).
+// The full set lives in CSS; this list documents the canonical
+// kinds the folio system speaks. Adding a new kind is a one-line
+// CSS addition; no JS change required.
+//   plate ▣  genealogy ❦  map ✥  commentary ❡
+//   manuscript ▦  linguistic ℵ  timeline ⧖  default ·
 
-  // No thumbnail. The folio is a catalog of witness references,
-  // not a presentation of the witnesses themselves. The actual
-  // artwork is reserved for the chamber viewer so opening an
-  // object remains a meaningful threshold, not a confirmation
-  // of something already seen.
+function _renderFolioMarker(rec, pid) {
+  const marker = document.createElement('button');
+  marker.type = 'button';
+  marker.className = 'cr-folio-marker';
+  marker.dataset.kind = rec.kind || 'witness';
+  marker.dataset.recordId = rec.id;
+  if (rec.id === _openFolioRecordId) marker.classList.add('active');
 
-  // Small kind ornament — "plate" / "genealogy" / "map" etc.
-  const kind = document.createElement('span');
-  kind.className = 'cr-folio-kind';
-  kind.textContent = rec.kind || 'witness';
-  entry.appendChild(kind);
+  // Plaque content — title, kind, verse, optional plate
+  // provenance. Composed as a single string for aria-label
+  // (screen reader) and also rendered into a visible plaque
+  // child element revealed on :hover / :focus-visible.
+  const verseLabel = _formatVerseRef(pid).replace(/^for\s+/i, '');
+  const metaParts = [];
+  metaParts.push(verseLabel);
+  if (rec.plate && rec.plate.artist) metaParts.push(rec.plate.artist);
+  if (rec.plate && rec.plate.year) metaParts.push(rec.plate.year);
+  const metaStr = metaParts.filter(Boolean).join(' · ');
+  const kindLabel = rec.kind || 'witness';
 
-  // Title — the witness's manuscript name.
+  marker.setAttribute(
+    'aria-label',
+    `${kindLabel}: ${rec.title || 'witness'} — ${metaStr}`
+  );
+  marker.setAttribute('title', `${rec.title || ''} — ${metaStr}`);
+
+  // Visible plaque (CSS reveals on hover/focus). Built as DOM
+  // so the typographic hierarchy is intact and selectable.
+  const plaque = document.createElement('span');
+  plaque.className = 'cr-folio-plaque';
+  plaque.setAttribute('aria-hidden', 'true');
+
+  const k = document.createElement('span');
+  k.className = 'cr-folio-plaque-kind';
+  k.textContent = kindLabel;
+  plaque.appendChild(k);
+
   const t = document.createElement('span');
-  t.className = 'cr-folio-title';
+  t.className = 'cr-folio-plaque-title';
   t.textContent = rec.title || '';
-  entry.appendChild(t);
+  plaque.appendChild(t);
 
-  // Metadata — verse anchor, then optional plate provenance.
-  const meta = document.createElement('span');
-  meta.className = 'cr-folio-meta';
-  const parts = [_formatVerseRef(pid)];
-  if (rec.plate && rec.plate.artist) parts.push(rec.plate.artist);
-  if (rec.plate && rec.plate.year) parts.push(rec.plate.year);
-  meta.textContent = parts.filter(Boolean).join(' · ');
-  entry.appendChild(meta);
+  if (metaStr) {
+    const m = document.createElement('span');
+    m.className = 'cr-folio-plaque-meta';
+    m.textContent = metaStr;
+    plaque.appendChild(m);
+  }
 
-  entry.addEventListener('click', () => _openFolioObject(rec.id));
-  return entry;
+  marker.appendChild(plaque);
+  marker.addEventListener('click', () => _openFolioObject(rec.id));
+  return marker;
 }
 
 // Folio entry positions depend on verse offsetTop, which can
