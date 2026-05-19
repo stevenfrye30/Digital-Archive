@@ -3937,6 +3937,250 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   font-size: 1em;
   line-height: 1.8;
 }
+
+/* ── Cosmology Chamber (Genesis 1) ──────────────────────────────
+   The first deep consultation chamber. Sections sit in a single
+   reading column with manuscript margins — restrained sepia
+   typography, hairline rules between sections, a small italic
+   roman-numeral marginalia at each section head, and a
+   clearly-differentiated archive-commentary panel at the foot.
+   No dashboard cards, no bright surfaces. */
+.folio-leaf.cosmology-chamber {
+  /* Inherits .folio-leaf base. Chamber-specific layout below. */
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.cosmology-chamber .cc-lede {
+  margin: 6px 0 28px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.86);
+}
+.folio-leaf.cosmology-chamber .cc-lede p {
+  margin: 0 0 0.9em 0;
+  line-height: 1.65;
+  font-size: 0.96em;
+}
+.folio-leaf.cosmology-chamber .cc-lede p:last-child { margin-bottom: 0; }
+
+/* Section heading — roman numeral + italic title, soft hairline
+   rule above. Reads as a manuscript marginalia, not a tab/anchor. */
+.folio-leaf.cosmology-chamber .cc-section-heading {
+  margin: 36px 0 14px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(120, 90, 50, 0.18);
+}
+.folio-leaf.cosmology-chamber .cc-section-numeral {
+  display: inline-block;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.82em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.78);
+  margin-right: 8px;
+}
+.folio-leaf.cosmology-chamber .cc-section-title {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.96em;
+  letter-spacing: 0.14em;
+  color: rgba(85, 50, 18, 0.92);
+}
+.folio-leaf.cosmology-chamber .cc-section-subtitle {
+  display: block;
+  margin-top: 4px;
+  font-style: italic;
+  font-size: 0.78em;
+  color: rgba(110, 90, 60, 0.7);
+  letter-spacing: 0.02em;
+}
+
+/* Diagram — line-art plate in a quiet parchment frame. */
+.folio-leaf.cosmology-chamber .cc-diagram {
+  margin: 12px 0 4px;
+  padding: 18px 22px 14px;
+  background: linear-gradient(180deg,
+    rgba(250, 245, 232, 0.6),
+    rgba(245, 238, 222, 0.45));
+  border: 1px solid rgba(120, 90, 50, 0.22);
+  border-radius: 2px;
+}
+.folio-leaf.cosmology-chamber .cc-diagram-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.folio-leaf.cosmology-chamber .cc-d-label {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  fill: rgba(85, 50, 18, 0.86);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+.folio-leaf.cosmology-chamber .cc-d-label-major {
+  font-size: 12px;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+}
+.folio-leaf.cosmology-chamber .cc-d-sublabel {
+  fill: rgba(110, 90, 60, 0.68);
+  font-size: 10px;
+}
+.folio-leaf.cosmology-chamber .cc-d-glyph {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  fill: rgba(110, 65, 25, 0.7);
+  text-anchor: middle;
+}
+.folio-leaf.cosmology-chamber .cc-diagram-caption {
+  margin-top: 14px;
+  font-style: italic;
+  font-size: 0.78em;
+  line-height: 1.5;
+  color: rgba(95, 75, 50, 0.7);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* Hebrew terminology — definition list. Hebrew sits in its own
+   register (right-to-left, slightly larger); transliteration and
+   gloss follow in roman italic. */
+.folio-leaf.cosmology-chamber .cc-terms {
+  margin: 8px 0;
+  padding: 0;
+}
+.folio-leaf.cosmology-chamber .cc-term-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 14px 24px;
+  padding: 14px 0;
+  border-top: 1px dotted rgba(120, 90, 50, 0.18);
+}
+.folio-leaf.cosmology-chamber .cc-term-row:first-child {
+  border-top: none;
+  padding-top: 6px;
+}
+.folio-leaf.cosmology-chamber .cc-term-head {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.folio-leaf.cosmology-chamber .cc-term-hebrew {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.4em;
+  line-height: 1.1;
+  direction: rtl;
+  color: rgba(50, 28, 8, 0.92);
+}
+.folio-leaf.cosmology-chamber .cc-term-translit {
+  font-style: italic;
+  font-size: 0.86em;
+  color: rgba(110, 65, 25, 0.85);
+  letter-spacing: 0.02em;
+}
+.folio-leaf.cosmology-chamber .cc-term-body {
+  margin: 0;
+  font-size: 0.92em;
+  line-height: 1.55;
+  color: rgba(55, 40, 22, 0.88);
+}
+.folio-leaf.cosmology-chamber .cc-term-gloss {
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.folio-leaf.cosmology-chamber .cc-term-note {
+  font-size: 0.86em;
+  color: rgba(95, 75, 50, 0.75);
+  line-height: 1.5;
+}
+
+/* Comparative ANE — section blocks with italic titles, restrained
+   prose. The final block — "A note on dependence" — reads as the
+   archive's epistemic posture inside the comparative section,
+   without leaving it. */
+.folio-leaf.cosmology-chamber .cc-comparative {
+  margin: 4px 0;
+}
+.folio-leaf.cosmology-chamber .cc-comp-item {
+  margin: 16px 0;
+}
+.folio-leaf.cosmology-chamber .cc-comp-title {
+  margin: 0 0 6px 0;
+  font-style: italic;
+  font-size: 0.94em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgba(85, 50, 18, 0.92);
+}
+.folio-leaf.cosmology-chamber .cc-comp-body {
+  margin: 0;
+  font-size: 0.94em;
+  line-height: 1.66;
+  color: rgba(55, 40, 22, 0.88);
+}
+
+/* Archive synthesis — visually separated. The reader must never
+   mistake this for primary witness or scholarly consensus. The
+   frame is the structural commitment to that distinction.
+   - Distinct background register (cool gray-tan, faintly tinted
+     so it reads as marginalia stock, not parchment).
+   - Italic small-caps rubric naming the epistemic class.
+   - Closing note explicitly identifying the panel as archive
+     editorial framing. */
+.folio-leaf.cosmology-chamber .cc-archive {
+  margin: 36px 0 8px;
+  padding: 22px 24px 20px;
+  background: rgba(118, 116, 110, 0.07);
+  border: 1px solid rgba(110, 95, 75, 0.28);
+  border-left: 3px solid rgba(110, 95, 75, 0.55);
+  border-radius: 1px;
+}
+.folio-leaf.cosmology-chamber .cc-archive-rubric {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.22em;
+  color: rgba(110, 95, 75, 0.82);
+  margin-bottom: 6px;
+}
+.folio-leaf.cosmology-chamber .cc-archive-heading {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 1em;
+  font-weight: 500;
+  color: rgba(70, 55, 35, 0.92);
+  margin-bottom: 12px;
+}
+.folio-leaf.cosmology-chamber .cc-archive-body {
+  margin: 0;
+  font-size: 0.94em;
+  line-height: 1.66;
+  color: rgba(55, 40, 22, 0.86);
+}
+.folio-leaf.cosmology-chamber .cc-archive-note {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dotted rgba(110, 95, 75, 0.28);
+  font-style: italic;
+  font-size: 0.78em;
+  line-height: 1.55;
+  color: rgba(95, 75, 50, 0.7);
+}
+
+/* Encounter (viewer-active) — the chamber gains a touch more
+   presence at full-spread, matching the existing leaf rhythm. */
+body.viewer-active .folio-leaf.cosmology-chamber .cc-lede p {
+  font-size: 1.02em;
+  line-height: 1.7;
+}
+body.viewer-active .folio-leaf.cosmology-chamber .cc-section-heading {
+  margin-top: 42px;
+}
+
 /* Lineage cadence — in the encounter the trunk (depth 0) reads
    with a touch more presence than its descendants, and each
    generation transition gets a quiet breath above it. Rendered
@@ -7992,6 +8236,18 @@ function _renderFolioObjectLeaf(rec, pid) {
   leaf.dataset.authority = rec.authority || 'tertiary';
   const chKey = _chapterKeyOf(pid);
 
+  // Deep-chamber dispatch — selected records open into bespoke
+  // multi-section consultation chambers (provenance · diagram ·
+  // terminology · comparative · archive synthesis). Each chamber
+  // is a single record's full apparatus, not a redesign of the
+  // folio system. See _COSMOLOGY_CHAMBER for the first prototype.
+  if (rec.id === 'gen1-cosmology-firmament') {
+    leaf.classList.add('cosmology-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderCosmologyChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
+
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
     // verse/title block above. The engraving sits in the dark with
@@ -8091,6 +8347,302 @@ function _renderProvenanceHeader(rec) {
     header.appendChild(cf);
   }
   return header;
+}
+
+// ── Genesis 1 Cosmology Chamber ─────────────────────────────────
+// First prototype of a deep consultation chamber. Demonstrates
+// the Atlas's posture toward serious civilizational apparatus:
+//   - provenance-aware scholarship (header declares epistemic class)
+//   - source hierarchy (primary witness · secondary scholarship ·
+//     tertiary archive synthesis are visually separated, never
+//     conflated)
+//   - comparative restraint (ANE parallels are hedged, not asserted
+//     as genealogical dependence)
+//   - manuscript atmosphere (restrained typography, sepia ink,
+//     no dashboard chrome)
+//   - archive transparency (the archive's own synthesis sits in
+//     a clearly differentiated register so the reader can never
+//     mistake it for direct evidence)
+//
+// The chamber attaches to a single existing folio record
+// (gen1-cosmology-firmament) and is rendered in place of the
+// default text-witness leaf.
+
+const _COSMOLOGY_HEBREW_TERMS = [
+  {
+    hebrew: 'תְּהוֹם',
+    transliteration: 'tehôm',
+    gloss: 'the primeval deep — the watery chaos beneath and around the cosmos',
+    note: 'Cognate with Akkadian Tiāmat. The biblical use is impersonal — no goddess, no battle — but the vocabulary belongs to the wider regional cosmology.',
+  },
+  {
+    hebrew: 'רָקִיעַ',
+    transliteration: 'rāqîaʿ',
+    gloss: 'firmament — a hammered-out solid dome holding back the upper waters',
+    note: 'The root r-q-ʿ describes metal-beating. Modern translations soften this to "expanse" or "sky"; the Hebrew picture is physical and tangible.',
+  },
+  {
+    hebrew: 'שָׁמַיִם',
+    transliteration: 'shāmayim',
+    gloss: 'heavens — the named space above the firmament',
+    note: 'A grammatical dual or plural form; the same word covers what we would distinguish as "sky" and "heavens."',
+  },
+  {
+    hebrew: 'מַיִם',
+    transliteration: 'mayim',
+    gloss: 'waters — divided into upper (above the firmament) and lower (below it)',
+    note: 'Always plural in form. Whether the duality is grammatical or substantive is debated.',
+  },
+  {
+    hebrew: 'אֶרֶץ',
+    transliteration: 'ʾereṣ',
+    gloss: 'earth — the dry land gathered out from the lower waters',
+    note: 'Pictured in other texts as resting on pillars (1 Samuel 2:8; Psalm 75:3); the cosmos is a layered architecture, not a globe.',
+  },
+];
+
+const _COSMOLOGY_ANE_PARALLELS = [
+  {
+    title: 'Enūma Eliš (Babylon)',
+    text: 'Marduk splits the body of Tiāmat — the primeval saltwater — into upper and lower halves, forming sky and earth. The vocabulary of cosmic waters and the act of cosmogonic division resonates with Genesis 1 :2 – 8. The biblical text retains the vocabulary of tehôm and the division of waters while removing the theomachy: there is no rival deity, no slain monster, no battle. The picture is the same; the theological frame is not.',
+  },
+  {
+    title: 'Nun and Nut (Egypt)',
+    text: 'Egyptian cosmologies begin with Nun, the primordial watery abyss out of which the sun-creator emerges. The sky-goddess Nut arches over the earth as a vaulted dome studded with stars. The dome-over-disc picture is widely shared across the region; Genesis presupposes that picture rather than describing it.',
+  },
+  {
+    title: 'A note on dependence',
+    text: 'These resonances do not establish direct literary dependence. They show that Genesis 1 speaks the cosmological vocabulary of its Iron Age world. The author neither argues for the picture nor invents it. The interesting question is not whether biblical and Mesopotamian texts share inherited imagery — they do — but how Genesis bends that imagery toward its own theological order: a single creator, an unstruck creation, a peopled and blessed cosmos.',
+  },
+];
+
+const _COSMOLOGY_ARCHIVE_COMMENTARY =
+  'Across the ancient Near East, the cosmos is imagined as a layered architecture: a flat earth-disc resting on pillars over the abyss, domed by a solid sky-vault that holds back the upper waters. Genesis 1 inherits this picture rather than describing or arguing for it. The text’s interest is not the geometry of the sky but the speaker behind it. The cosmological language is taken for granted; the theological commitments are not. Modern translations that render rāqîaʿ as "expanse" do not so much correct the ancient picture as obscure it — the picture, intact, is part of how the text intends to be read.';
+
+
+function _renderCosmologyChamber(leaf, rec, pid, chKey) {
+  // Provenance + verse + title — reuse the same architecture every
+  // text-witness chamber uses, so the reader's orientation is
+  // preserved across kinds.
+  leaf.appendChild(_renderProvenanceHeader(rec));
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  // Restrained opening — the existing record body, rendered as
+  // calm prose. Anchors the rest of the chamber.
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'cc-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §1 — Diagram
+  leaf.appendChild(_renderCCSectionHeading('i', 'Diagram', 'Three-tier cosmos — reconstructed'));
+  leaf.appendChild(_renderCCDiagram());
+
+  // §2 — Hebrew terminology
+  leaf.appendChild(_renderCCSectionHeading('ii', 'Terminology', 'Hebrew terms · lexicographic survey'));
+  leaf.appendChild(_renderCCHebrewTerms());
+
+  // §3 — Comparative ANE context
+  leaf.appendChild(_renderCCSectionHeading('iii', 'Comparative Context', 'Ancient Near Eastern parallels'));
+  leaf.appendChild(_renderCCComparative());
+
+  // §4 — Archive commentary — visually separated from the
+  // previous sections so the reader cannot mistake archive
+  // synthesis for primary witness material.
+  leaf.appendChild(_renderCCArchiveCommentary());
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+function _renderCCSectionHeading(numeral, name, subtitle) {
+  const wrap = document.createElement('div');
+  wrap.className = 'cc-section-heading';
+  const num = document.createElement('span');
+  num.className = 'cc-section-numeral';
+  num.textContent = numeral + ' ·';
+  const ttl = document.createElement('span');
+  ttl.className = 'cc-section-title';
+  ttl.textContent = name;
+  wrap.appendChild(num);
+  wrap.appendChild(ttl);
+  if (subtitle) {
+    const sub = document.createElement('div');
+    sub.className = 'cc-section-subtitle';
+    sub.textContent = subtitle;
+    wrap.appendChild(sub);
+  }
+  return wrap;
+}
+
+function _renderCCDiagram() {
+  const wrap = document.createElement('figure');
+  wrap.className = 'cc-diagram';
+  // Inline SVG — restrained sepia linework, manuscript register.
+  // Three tiers: upper waters above the dome, earth-disc on pillars,
+  // tehôm below. Labels are small italic Georgia; everything is
+  // line art (no fills, no colors). Aspect 480x360.
+  wrap.innerHTML = `
+    <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg"
+         class="cc-diagram-svg" role="img"
+         aria-label="Three-tier cosmos reconstructed from Genesis 1">
+      <defs>
+        <pattern id="cc-water" patternUnits="userSpaceOnUse" width="24" height="6">
+          <path d="M 0 3 Q 6 0 12 3 T 24 3" fill="none"
+                stroke="rgba(70, 90, 120, 0.42)" stroke-width="0.7"/>
+        </pattern>
+      </defs>
+      <!-- Upper waters band -->
+      <rect x="20" y="22" width="440" height="50" fill="url(#cc-water)"/>
+      <text x="240" y="48" class="cc-d-label cc-d-label-major"
+            text-anchor="middle">mayim mēʿal lā-rāqîaʿ</text>
+      <text x="240" y="64" class="cc-d-label cc-d-sublabel"
+            text-anchor="middle">— the waters above —</text>
+      <!-- Firmament dome -->
+      <path d="M 40 200 A 200 110 0 0 1 440 200" fill="none"
+            stroke="rgba(110, 65, 25, 0.72)" stroke-width="1.4"/>
+      <text x="240" y="105" class="cc-d-label cc-d-label-major"
+            text-anchor="middle">rāqîaʿ — the firmament</text>
+      <!-- Sun, moon, stars on the firmament -->
+      <circle cx="120" cy="160" r="6" fill="none"
+              stroke="rgba(110, 65, 25, 0.78)" stroke-width="1"/>
+      <path d="M 360 156 a 6 6 0 1 0 -0.1 8" fill="none"
+            stroke="rgba(110, 65, 25, 0.78)" stroke-width="1"/>
+      <text x="200" y="158" class="cc-d-glyph">✦</text>
+      <text x="270" y="170" class="cc-d-glyph">✦</text>
+      <text x="320" y="146" class="cc-d-glyph">✦</text>
+      <!-- Earth disc with pillars -->
+      <line x1="40" y1="200" x2="440" y2="200"
+            stroke="rgba(110, 65, 25, 0.88)" stroke-width="1.6"/>
+      <text x="240" y="220" class="cc-d-label cc-d-label-major"
+            text-anchor="middle">ʾereṣ — the earth</text>
+      <!-- Lower waters -->
+      <rect x="20" y="232" width="440" height="38" fill="url(#cc-water)"/>
+      <text x="240" y="258" class="cc-d-label cc-d-sublabel"
+            text-anchor="middle">mayim mittaḥat lā-rāqîaʿ · the lower waters</text>
+      <!-- Pillars descending -->
+      <path d="M 90 200 L 100 268 M 380 200 L 390 268" fill="none"
+            stroke="rgba(110, 65, 25, 0.55)" stroke-width="1"
+            stroke-dasharray="3 3"/>
+      <!-- Tehom -->
+      <path d="M 30 320 Q 60 308 90 320 T 150 320 T 210 320 T 270 320 T 330 320 T 390 320 T 450 320"
+            fill="none" stroke="rgba(50, 70, 100, 0.55)" stroke-width="0.9"/>
+      <path d="M 30 332 Q 60 320 90 332 T 150 332 T 210 332 T 270 332 T 330 332 T 390 332 T 450 332"
+            fill="none" stroke="rgba(50, 70, 100, 0.42)" stroke-width="0.7"/>
+      <text x="240" y="304" class="cc-d-label cc-d-label-major"
+            text-anchor="middle">tehôm — the deep</text>
+    </svg>
+    <figcaption class="cc-diagram-caption">
+      Reconstructed three-tier cosmos as presupposed by Genesis 1.
+      Diagrammatic only — no single ancient source draws this
+      picture in full; it is composited from biblical and
+      comparative ANE evidence.
+    </figcaption>
+  `;
+  return wrap;
+}
+
+function _renderCCHebrewTerms() {
+  const wrap = document.createElement('dl');
+  wrap.className = 'cc-terms';
+  for (const term of _COSMOLOGY_HEBREW_TERMS) {
+    const row = document.createElement('div');
+    row.className = 'cc-term-row';
+    const dt = document.createElement('dt');
+    dt.className = 'cc-term-head';
+    const heb = document.createElement('span');
+    heb.className = 'cc-term-hebrew';
+    heb.lang = 'he';
+    heb.textContent = term.hebrew;
+    const tr = document.createElement('span');
+    tr.className = 'cc-term-translit';
+    tr.textContent = term.transliteration;
+    dt.appendChild(heb);
+    dt.appendChild(tr);
+    const dd = document.createElement('dd');
+    dd.className = 'cc-term-body';
+    const gloss = document.createElement('div');
+    gloss.className = 'cc-term-gloss';
+    gloss.textContent = term.gloss;
+    dd.appendChild(gloss);
+    if (term.note) {
+      const note = document.createElement('div');
+      note.className = 'cc-term-note';
+      note.textContent = term.note;
+      dd.appendChild(note);
+    }
+    row.appendChild(dt);
+    row.appendChild(dd);
+    wrap.appendChild(row);
+  }
+  return wrap;
+}
+
+function _renderCCComparative() {
+  const wrap = document.createElement('div');
+  wrap.className = 'cc-comparative';
+  for (const item of _COSMOLOGY_ANE_PARALLELS) {
+    const block = document.createElement('section');
+    block.className = 'cc-comp-item';
+    const h = document.createElement('h3');
+    h.className = 'cc-comp-title';
+    h.textContent = item.title;
+    block.appendChild(h);
+    const p = document.createElement('p');
+    p.className = 'cc-comp-body';
+    p.textContent = item.text;
+    block.appendChild(p);
+    wrap.appendChild(block);
+  }
+  return wrap;
+}
+
+function _renderCCArchiveCommentary() {
+  // Clearly differentiated tertiary register — its own framed
+  // panel with an explicit "Archive Synthesis · Tertiary" rubric
+  // so the reader can never mistake this for primary witness or
+  // for secondary scholarly consensus. The frame is the
+  // structural commitment to "archive transparency."
+  const wrap = document.createElement('aside');
+  wrap.className = 'cc-archive';
+  wrap.setAttribute('data-authority', 'tertiary');
+  const rubric = document.createElement('div');
+  rubric.className = 'cc-archive-rubric';
+  rubric.textContent = 'Archive Synthesis · Tertiary';
+  wrap.appendChild(rubric);
+  const heading = document.createElement('div');
+  heading.className = 'cc-archive-heading';
+  heading.textContent = 'Archive Commentary';
+  wrap.appendChild(heading);
+  const body = document.createElement('p');
+  body.className = 'cc-archive-body';
+  body.textContent = _COSMOLOGY_ARCHIVE_COMMENTARY;
+  wrap.appendChild(body);
+  const note = document.createElement('div');
+  note.className = 'cc-archive-note';
+  note.textContent =
+    'This panel records the archive’s own synthesizing reading. ' +
+    'It is not a primary source, not a scholarly consensus, and not ' +
+    'a creedal statement — it is an editorial framing offered for ' +
+    'orientation and identified as such.';
+  wrap.appendChild(note);
+  return wrap;
 }
 
 // Transform tree-character body text into wrap-friendly indented
