@@ -752,6 +752,34 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   padding: 14px 40px 10px;
   position: relative;
 }
+/* Back-to-reading affordance — quiet italic pill in the top-left
+   of the title leaf, mirroring the cite-corner disclosure in the
+   top-right. Reads as marginal navigation, not a primary control. */
+.bible-cover-layout .bcl-back-to-reading {
+  position: absolute;
+  top: 18px;
+  left: 28px;
+  z-index: 2;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  background: transparent;
+  border: 1px solid rgba(120, 90, 50, 0.22);
+  border-radius: 3px;
+  color: rgba(110, 65, 25, 0.78);
+  cursor: pointer;
+  transition: color 0.18s ease-out, border-color 0.18s ease-out,
+              background 0.18s ease-out;
+}
+.bible-cover-layout .bcl-back-to-reading:hover,
+.bible-cover-layout .bcl-back-to-reading:focus-visible {
+  color: rgba(120, 65, 25, 0.98);
+  border-color: rgba(120, 65, 25, 0.5);
+  background: rgba(150, 110, 60, 0.06);
+  outline: none;
+}
 .bible-cover-layout #continuous-cover {
   max-width: 720px;
   margin: 0 auto;
@@ -2790,6 +2818,11 @@ body:not(.in-reading) #info-bar {
   background: transparent;
   border-bottom: none;
 }
+/* The About-this-text pill belongs to the title leaf only —
+   inside the reading room the metadata is one click away on
+   the contents page, so the pill is suppressed to keep the
+   reader's chrome quiet. */
+body.in-reading #info-bar { display: none !important; }
 body:not(.in-reading) #meta-toggle {
   font-family: Georgia, serif;
   font-size: 11px;
@@ -3138,6 +3171,134 @@ body.cols-single.chapter-room.companion-mode.folio-left
   line-height: 1.4;
   color: rgba(95, 75, 50, 0.62);
   letter-spacing: 0.02em;
+}
+
+/* ── Folio depth — CORE / STUDY / ARCHIVE ─────────────────────
+   The folio carries three layers of apparatus depth. The reader
+   moves between them via the rubric at the top of the folio
+   column. Internally these map to authority class:
+     CORE     = primary only
+     STUDY    = primary + secondary
+     ARCHIVE  = all (primary + secondary + tertiary)
+   The default is CORE — sparse, authoritative, manuscript-like.
+   The reader must intentionally step deeper. */
+body.folio-depth-core .cr-folio-marker[data-authority="secondary"],
+body.folio-depth-core .cr-folio-marker[data-authority="tertiary"] {
+  display: none;
+}
+body.folio-depth-study .cr-folio-marker[data-authority="tertiary"] {
+  display: none;
+}
+/* When a whole cluster has no visible markers it should not
+   reserve vertical space in the folio column. JS adds
+   .cr-folio-cluster-empty when a positioning pass finds zero
+   visible markers. */
+.cr-folio-cluster-empty {
+  display: none !important;
+}
+
+/* Depth rubric — a quiet manuscript-style control at the top of
+   the folio column. Three labels, italic small-caps, joined by
+   thin dot separators. The active label is in warm rubric color
+   with a hair-rule underline; the others are faded. Never a
+   segmented control, never a tab bar. */
+.cr-folio-depth-rubric {
+  position: absolute;
+  top: 32px;
+  left: 28px;
+  right: 28px;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 0 0 8px 0;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.10);
+}
+.cr-folio-depth-rubric .crd-prefix {
+  flex: 0 0 auto;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(110, 95, 75, 0.7);
+  margin-right: 4px;
+  user-select: none;
+  pointer-events: none;
+}
+.cr-folio-depth-rubric .crd-label {
+  flex: 0 0 auto;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.82em;
+  letter-spacing: 0.14em;
+  background: transparent;
+  border: none;
+  padding: 2px 4px;
+  cursor: pointer;
+  color: rgba(110, 95, 75, 0.78);
+  transition: color 0.18s ease-out, opacity 0.18s ease-out,
+              border-color 0.18s ease-out;
+}
+.cr-folio-depth-rubric .crd-label:hover {
+  color: rgba(120, 65, 25, 0.95);
+}
+.cr-folio-depth-rubric .crd-label.active {
+  color: rgba(120, 50, 15, 1);
+  font-weight: 600;
+  border-bottom: 1.5px solid rgba(120, 50, 15, 0.7);
+}
+.cr-folio-depth-rubric .crd-sep {
+  color: rgba(110, 95, 75, 0.5);
+  font-style: italic;
+  font-size: 0.82em;
+  user-select: none;
+  pointer-events: none;
+}
+/* Reduce hover/focus marker opacity when no rubric click yet */
+.cr-folio-depth-rubric .crd-label:focus-visible {
+  outline: 1px solid rgba(120, 80, 35, 0.4);
+  outline-offset: 2px;
+}
+
+/* Push the cluster grid down so the rubric clears the chapter
+   header. The Genesis 1 header (.cr-folio-header) currently
+   sits at top: 32px; the rubric sits above it now. Shift the
+   chapter header down. */
+body.cols-single.chapter-room.companion-mode .chapter-spread
+  .folio-column .cr-folio-header {
+  top: 76px;  /* leaves room above for the depth rubric */
+}
+
+/* Hidden-count indicator — appears beside a cluster when records
+   exist at deeper tiers than the current depth. Subtle italic
+   "+N" carrying the count. Clicking advances the depth one step.
+   Reads as a scholar's marginal note ("there is more here"),
+   not a UI badge. */
+.cr-folio-cluster .cr-folio-deeper {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 6px;
+  background: transparent;
+  border: none;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(110, 95, 75, 0.62);
+  cursor: pointer;
+  transition: color 0.18s ease-out, opacity 0.18s ease-out;
+}
+.cr-folio-cluster .cr-folio-deeper:hover,
+.cr-folio-cluster .cr-folio-deeper:focus-visible {
+  color: rgba(120, 65, 25, 0.92);
+  outline: none;
+}
+.cr-folio-cluster .cr-folio-deeper:focus-visible {
+  box-shadow: 0 0 0 1px rgba(120, 80, 35, 0.32);
 }
 
 /* ── DEBUG_FOLIO mode ──────────────────────────────────────────
@@ -6912,6 +7073,23 @@ function showCover(data, entry) {
 
   let html = '';
   if (isBibleCover) html += '<div class="bible-cover-layout">';
+  // Back-to-reading-room affordance — only on the Bible cover.
+  // If the reader has a remembered chapter (just stepped out via
+  // Contents), the button returns there; otherwise it opens
+  // Genesis 1. Visible only on the title leaf; the in-reading
+  // chrome already carries its own Contents-back button.
+  if (isBibleCover) {
+    const memo = (typeof _lastReadingMemo !== 'undefined') ? _lastReadingMemo : null;
+    const targetBook = (memo && memo.book) ? memo.book
+                     : (currentBook && currentBook !== '__fm__') ? currentBook
+                     : 'gen.1';
+    const targetLabel = (memo && memo.book) ? 'Return to Reading' : 'Reading Room';
+    html += `<button type="button" class="bcl-back-to-reading" `
+          + `data-target-book="${escapeHTML(targetBook)}" `
+          + `title="Open the reading room at ${escapeHTML(targetBook.replace('.', ' '))}">` +
+          `&larr; ${targetLabel}` +
+          `</button>`;
+  }
   html += '<div id="continuous-cover">';
   html += `<div class="cc-title">${escapeHTML(data.title || '')}</div>`;
   if (authorTxt) html += `<div class="cc-author">${escapeHTML(authorTxt)}</div>`;
@@ -7063,6 +7241,23 @@ function showCover(data, entry) {
   const fmBtn = $textHeader.querySelector('.cc-fm-btn');
   if (fmBtn) {
     fmBtn.addEventListener('click', () => enterReading('__fm__'));
+  }
+
+  // Wire the back-to-reading button (Bible cover only). When a
+  // _lastReadingMemo exists, enterReading() with no arg resumes the
+  // same chapter and scroll position (memo handling is already in
+  // enterReading). Otherwise jump to the recorded target book.
+  const backBtn = $textHeader.querySelector('.bcl-back-to-reading');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      const memo = (typeof _lastReadingMemo !== 'undefined') ? _lastReadingMemo : null;
+      if (memo && memo.book) {
+        currentBook = memo.book;
+        enterReading();
+      } else {
+        enterReading(backBtn.dataset.targetBook || 'gen.1');
+      }
+    });
   }
 
   // Wire TOC clicks — each opens the reading view.
@@ -8241,6 +8436,11 @@ function _renderChapterRoomFolio(_legacyInner) {
     return;
   }
 
+  // Depth rubric — manuscript-style controls at the top of the
+  // folio column letting the reader step between CORE / STUDY /
+  // ARCHIVE apparatus depths. Sits above the chapter header.
+  folioColumn.appendChild(_renderDepthRubric());
+
   const header = document.createElement('div');
   header.className = 'cr-folio-header';
   header.textContent = _formatChapterLabel(ch);
@@ -8263,9 +8463,17 @@ function _renderChapterRoomFolio(_legacyInner) {
     const cluster = document.createElement('div');
     cluster.className = 'cr-folio-cluster';
     cluster.dataset.anchorPid = pid;
+    // Track per-cluster tier distribution so the hidden-count
+    // indicator can compute "+N" at the current depth.
+    const tierCounts = { primary: 0, secondary: 0, tertiary: 0 };
     for (const r of byVerse.get(pid)) {
       cluster.appendChild(_renderFolioMarker(r, pid));
+      const a = r.authority || 'tertiary';
+      tierCounts[a] = (tierCounts[a] || 0) + 1;
     }
+    cluster.dataset.tierPrimary = String(tierCounts.primary);
+    cluster.dataset.tierSecondary = String(tierCounts.secondary);
+    cluster.dataset.tierTertiary = String(tierCounts.tertiary);
     folioColumn.appendChild(cluster);
   }
 
@@ -8273,9 +8481,76 @@ function _renderChapterRoomFolio(_legacyInner) {
   requestAnimationFrame(() => _positionFolioEntries());
 }
 
+// Depth rubric — three small italic small-caps labels naming the
+// apparatus depths. Active label gets a hair-rule underline.
+// Click switches body.folio-depth-{core|study|archive}.
+const FOLIO_DEPTHS = ['core', 'study', 'archive'];
+let _folioDepth = 'core';
+function _renderDepthRubric() {
+  const wrap = document.createElement('div');
+  wrap.className = 'cr-folio-depth-rubric';
+  wrap.setAttribute('role', 'group');
+  wrap.setAttribute('aria-label', 'Apparatus depth');
+  // Quiet italic prefix telling the reader what the three labels
+  // are. Reads as a rubric ("Apparatus —") not a UI heading.
+  const prefix = document.createElement('span');
+  prefix.className = 'crd-prefix';
+  prefix.textContent = 'Apparatus —';
+  prefix.setAttribute('aria-hidden', 'true');
+  wrap.appendChild(prefix);
+  FOLIO_DEPTHS.forEach((d, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'crd-label';
+    btn.dataset.depth = d;
+    btn.textContent = d;
+    btn.setAttribute('aria-pressed', d === _folioDepth ? 'true' : 'false');
+    if (d === _folioDepth) btn.classList.add('active');
+    btn.addEventListener('click', () => _setFolioDepth(d));
+    wrap.appendChild(btn);
+    if (i < FOLIO_DEPTHS.length - 1) {
+      const sep = document.createElement('span');
+      sep.className = 'crd-sep';
+      sep.textContent = '·';
+      sep.setAttribute('aria-hidden', 'true');
+      wrap.appendChild(sep);
+    }
+  });
+  return wrap;
+}
+function _setFolioDepth(d) {
+  if (!FOLIO_DEPTHS.includes(d)) return;
+  _folioDepth = d;
+  // Toggle the body class set
+  for (const x of FOLIO_DEPTHS) {
+    document.body.classList.toggle('folio-depth-' + x, x === d);
+  }
+  // Update rubric active state
+  document.querySelectorAll('.cr-folio-depth-rubric .crd-label').forEach(el => {
+    const on = el.dataset.depth === d;
+    el.classList.toggle('active', on);
+    el.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  // Re-run positioning so clusters reflow after marker visibility
+  // changes (some clusters may now be empty and collapse).
+  if (typeof _positionFolioEntries === 'function') {
+    requestAnimationFrame(() => _positionFolioEntries());
+  }
+}
+// Initialize default depth class on body so the CSS hides the
+// secondary/tertiary markers on first paint.
+if (typeof document !== 'undefined' && document.body) {
+  document.body.classList.add('folio-depth-' + _folioDepth);
+} else if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('folio-depth-' + _folioDepth);
+  });
+}
+
 // Position each folio cluster at the y-coordinate of its anchor
 // verse within the chapter-spread, with collision-avoidance
-// stacking. Called after render and on window resize.
+// stacking. Called after render, on window resize, and after
+// depth changes (since marker visibility shifts cluster heights).
 function _positionFolioEntries() {
   const spread = document.querySelector('#passages .chapter-spread');
   if (!spread) return;
@@ -8292,6 +8567,17 @@ function _positionFolioEntries() {
   let prevBottom = headerBottom;
   const COLLISION_GAP = 14;
   for (const cluster of clusters) {
+    // Refresh the hidden-count indicator and the cluster-empty
+    // collapse based on the current depth and tier distribution.
+    _refreshClusterDepthState(cluster);
+
+    if (cluster.classList.contains('cr-folio-cluster-empty')) {
+      // Collapsed clusters take zero vertical space and skip
+      // positioning. CSS sets display: none.
+      cluster.style.top = '';
+      continue;
+    }
+
     const anchorPid = cluster.dataset.anchorPid;
     let verseTop = headerBottom;
     let verse = null;
@@ -8303,18 +8589,77 @@ function _positionFolioEntries() {
     }
     const top = Math.max(verseTop, prevBottom + COLLISION_GAP);
     cluster.style.top = top + 'px';
-    // Debug instrumentation — only consumed when body.debug-folio
-    // is set. Carries: marker count, target verse, actual top,
-    // anchor offsetTop, collision-induced offset (Δ).
-    const markerCount = cluster.querySelectorAll('.cr-folio-marker').length;
+    // Debug instrumentation — surfaces depth mode, visible/total
+    // marker count, tier distribution (P/S/T), and collision offset.
+    const visibleCount = Array.from(
+      cluster.querySelectorAll('.cr-folio-marker')
+    ).filter(m => getComputedStyle(m).display !== 'none').length;
+    const totalCount = cluster.querySelectorAll('.cr-folio-marker').length;
+    const tP = cluster.dataset.tierPrimary || 0;
+    const tS = cluster.dataset.tierSecondary || 0;
+    const tT = cluster.dataset.tierTertiary || 0;
     const delta = top - verseTop;
     cluster.dataset.debug =
-      `${anchorPid} ×${markerCount} top=${top} anchor=${Math.round(verseTop)} Δ=${Math.round(delta)}`;
+      `${anchorPid} ${_folioDepth} ×${visibleCount}/${totalCount} ` +
+      `P${tP}/S${tS}/T${tT} Δ=${Math.round(delta)}`;
     if (verse) {
-      verse.dataset.debugAnchor = `← ${anchorPid} (×${markerCount})`;
+      verse.dataset.debugAnchor = `← ${anchorPid} (×${visibleCount}/${totalCount})`;
     }
     prevBottom = top + cluster.offsetHeight;
   }
+}
+
+// Compute and apply the cluster's visible/hidden state at the
+// current depth. Adds .cr-folio-cluster-empty if no markers
+// would show; otherwise adds/refreshes the "+N" indicator showing
+// how many records exist below the current depth.
+function _refreshClusterDepthState(cluster) {
+  const tP = Number(cluster.dataset.tierPrimary || 0);
+  const tS = Number(cluster.dataset.tierSecondary || 0);
+  const tT = Number(cluster.dataset.tierTertiary || 0);
+  let visible = 0;
+  let deeper = 0;
+  if (_folioDepth === 'core') {
+    visible = tP;
+    deeper = tS + tT;
+  } else if (_folioDepth === 'study') {
+    visible = tP + tS;
+    deeper = tT;
+  } else {
+    visible = tP + tS + tT;
+    deeper = 0;
+  }
+  // Empty-cluster collapse only when there's nothing AT ALL to
+  // surface — neither visible markers nor a deeper-indicator.
+  // If there are deeper records, we still want to show the
+  // "+N" indicator so the reader knows depth exists here.
+  cluster.classList.toggle('cr-folio-cluster-empty',
+                            visible === 0 && deeper === 0);
+  // Update the deeper-indicator
+  let indicator = cluster.querySelector(':scope > .cr-folio-deeper');
+  if (deeper > 0) {
+    if (!indicator) {
+      indicator = document.createElement('button');
+      indicator.type = 'button';
+      indicator.className = 'cr-folio-deeper';
+      indicator.addEventListener('click', _advanceFolioDepth);
+      cluster.appendChild(indicator);
+    }
+    indicator.textContent = `+${deeper}`;
+    const nextDepth = _folioDepth === 'core' ? 'study' : 'archive';
+    indicator.setAttribute(
+      'aria-label',
+      `${deeper} more witness${deeper === 1 ? '' : 'es'} available at ${nextDepth} depth`
+    );
+  } else if (indicator) {
+    indicator.remove();
+  }
+}
+
+// Advance the depth one step (core → study → archive).
+function _advanceFolioDepth() {
+  if (_folioDepth === 'core') _setFolioDepth('study');
+  else if (_folioDepth === 'study') _setFolioDepth('archive');
 }
 
 // Type → symbol map (CSS-driven via [data-kind]::before).
