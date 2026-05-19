@@ -4767,6 +4767,179 @@ body.viewer-active .folio-leaf.lineage-chamber .lc-section-heading {
   margin-top: 42px;
 }
 
+/* ── AO · 004 — Sabbath Chamber (Consecrated Time) ─────────────
+   Cyclical, liturgical, slow. Six identical creation-act rows
+   carry a steady cadence, separated by hairlines. The seventh
+   row breaks the formula: more breath, quieter tint, centered
+   text, and a consecration rubric in italic. A small threshold
+   ornament marks the entry into consecrated time. */
+.folio-leaf.sabbath-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.sabbath-chamber .sc-lede {
+  margin: 6px 0 22px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+}
+.folio-leaf.sabbath-chamber .sc-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.94em;
+}
+
+/* Sevenfold rhythm container */
+.folio-leaf.sabbath-chamber .sc-rhythm {
+  margin: 14px 0 4px;
+}
+.folio-leaf.sabbath-chamber .sc-day {
+  position: relative;
+  padding: 14px 16px 14px 56px;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.18);
+}
+.folio-leaf.sabbath-chamber .sc-day:first-child {
+  border-top: 1px solid rgba(120, 90, 50, 0.18);
+}
+.folio-leaf.sabbath-chamber .sc-day-numeral {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 44px;
+  text-align: right;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.74em;
+  letter-spacing: 0.22em;
+  color: rgba(110, 65, 25, 0.7);
+}
+.folio-leaf.sabbath-chamber .sc-day-act {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 1.02em;
+  line-height: 1.5;
+  color: rgba(45, 30, 12, 0.92);
+}
+.folio-leaf.sabbath-chamber .sc-day-refrain {
+  margin-top: 6px;
+  font-style: italic;
+  font-size: 0.84em;
+  line-height: 1.5;
+  color: rgba(110, 90, 60, 0.74);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.sabbath-chamber .sc-day-witness {
+  margin-top: 6px;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.2em;
+  color: rgba(120, 65, 25, 0.58);
+}
+
+/* The threshold — a small centered ornament that marks the
+   move from the sixfold cadence into consecrated time. */
+.folio-leaf.sabbath-chamber .sc-threshold {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.5em;
+  color: rgba(120, 65, 25, 0.45);
+  margin: 22px 0 18px;
+  padding: 0;
+  line-height: 1;
+}
+
+/* The seventh day — visibly set apart inside the rhythm.
+   Wider breath, quieter tint, centered text, no refrain. The
+   consecration rubric replaces the formulaic refrain. */
+.folio-leaf.sabbath-chamber .sc-day[data-consecrated="true"] {
+  padding: 28px 16px 30px 16px;
+  background: rgba(252, 247, 235, 0.6);
+  border: 1px solid rgba(120, 90, 50, 0.22);
+  text-align: center;
+}
+.folio-leaf.sabbath-chamber .sc-day[data-consecrated="true"] .sc-day-numeral {
+  position: static;
+  width: auto;
+  text-align: center;
+  display: block;
+  margin-bottom: 10px;
+}
+.folio-leaf.sabbath-chamber .sc-day[data-consecrated="true"] .sc-day-act {
+  font-style: italic;
+  font-size: 1.04em;
+  color: rgba(40, 24, 8, 0.94);
+}
+.folio-leaf.sabbath-chamber .sc-day-consecration {
+  margin: 14px auto 6px;
+  padding: 10px 16px;
+  max-width: 540px;
+  font-style: italic;
+  font-size: 1.04em;
+  line-height: 1.6;
+  color: rgba(85, 50, 18, 0.94);
+  border-top: 1px dotted rgba(120, 65, 25, 0.36);
+  border-bottom: 1px dotted rgba(120, 65, 25, 0.36);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+.folio-leaf.sabbath-chamber .sc-day[data-consecrated="true"] .sc-day-witness {
+  text-align: center;
+  margin-top: 10px;
+  color: rgba(120, 65, 25, 0.65);
+}
+
+/* Recurrence fragments — each a small italic block carrying a
+   later anchoring of the same interval. Vertical stack. */
+.folio-leaf.sabbath-chamber .sc-recurrence {
+  margin: 6px 0;
+}
+.folio-leaf.sabbath-chamber .sc-fragment {
+  margin: 18px 0;
+  padding: 0 0 0 16px;
+  border-left: 1px solid rgba(120, 90, 50, 0.28);
+}
+.folio-leaf.sabbath-chamber .sc-fragment-header {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.74em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.78);
+  margin-bottom: 6px;
+}
+.folio-leaf.sabbath-chamber .sc-fragment-sep {
+  color: rgba(110, 95, 75, 0.45);
+  letter-spacing: 0;
+}
+.folio-leaf.sabbath-chamber .sc-fragment-tradition {
+  color: rgba(95, 75, 50, 0.78);
+}
+.folio-leaf.sabbath-chamber .sc-fragment-quote {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+  font-size: 0.96em;
+  line-height: 1.65;
+  color: rgba(55, 40, 22, 0.88);
+  letter-spacing: 0.01em;
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.sabbath-chamber .sc-day-act {
+  font-size: 1.08em;
+}
+body.viewer-active .folio-leaf.sabbath-chamber .sc-day[data-consecrated="true"] {
+  padding: 36px 22px 36px 22px;
+}
+body.viewer-active .folio-leaf.sabbath-chamber .sc-day-consecration {
+  font-size: 1.1em;
+  padding: 14px 18px;
+}
+body.viewer-active .folio-leaf.sabbath-chamber .sc-section-heading {
+  margin-top: 42px;
+}
+
 /* Lineage cadence — in the encounter the trunk (depth 0) reads
    with a touch more presence than its descendants, and each
    generation transition gets a quiet breath above it. Rendered
@@ -8880,6 +9053,20 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderLineageChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 004  sacred-time              gen2-sabbath-pattern
+  //             sevenfold rhythm — six creation-act rows in a
+  //             repeating cadence and a seventh consecrated row
+  //             set apart with breath. Then a recurrence column
+  //             carrying short fragments of the pattern as it
+  //             returns through Exodus, Leviticus, Isaiah, and
+  //             Hebrews.
+  if (rec.id === 'gen2-sabbath-pattern') {
+    leaf.classList.add('sabbath-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderSabbathChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -10021,6 +10208,196 @@ function _renderLCStemma(generations) {
     years.textContent = `${g.birth_year}–${g.death_year}`;
     row.appendChild(years);
     wrap.appendChild(row);
+  }
+  return wrap;
+}
+
+
+// ── AO · 004 — The Sabbath Pattern (Consecrated Time) ──────────
+// A ritual / sacred-time Atlas Object. The chamber's form
+// inhabits the form of the Sabbath itself: six identical
+// movements, then a seventh that breaks the cadence and is set
+// apart. Then a column of recurrence fragments showing how the
+// same interval re-anchors through later tradition.
+//
+//   §i  Sevenfold Rhythm — six creation-act rows in a steady
+//       cadence (numeral · act · refrain), then a threshold
+//       ornament, then a seventh row visibly different: more
+//       breath, quieter tint, centered text, no refrain — the
+//       consecration rubric ("And God blessed the seventh day,
+//       and sanctified it") in its place.
+//
+//   §ii Recurrence Through Tradition — five short witness
+//       fragments, one per later passage, each with the
+//       canonical reference + tradition rubric + a brief quote
+//       in italic. Quiet vertical stack — no comparative essay.
+//
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary — what is consecrated is an interval.
+
+function _renderSabbathChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — shared
+  // pipeline with the prior three chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'sc-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — The sevenfold rhythm.
+  if (Array.isArray(rec.sevenfold_rhythm) && rec.sevenfold_rhythm.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Sevenfold Rhythm',
+      'Six movements · one consecrated day'));
+    leaf.appendChild(_renderSCRhythm(rec.sevenfold_rhythm));
+  }
+
+  // §ii — Recurrence through tradition.
+  if (Array.isArray(rec.recurrence_fragments) && rec.recurrence_fragments.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Recurrence Through Tradition',
+      'The interval returning'));
+    leaf.appendChild(_renderSCRecurrenceFragments(rec.recurrence_fragments));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where this interval is also kept'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// Sevenfold rhythm — six steady rows (creation-act + refrain),
+// then a threshold ornament, then the seventh consecrated row.
+// The seventh row is visibly different: more breath, quieter
+// tint, centered, no refrain. The structural break is the
+// content.
+function _renderSCRhythm(rhythm) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sc-rhythm';
+  for (const m of rhythm) {
+    if (m.consecrated) {
+      // The threshold ornament — a small centered asterism
+      // between day six and day seven so the move into
+      // consecrated time is felt in the connector tissue.
+      const threshold = document.createElement('div');
+      threshold.className = 'sc-threshold';
+      threshold.setAttribute('aria-hidden', 'true');
+      threshold.textContent = '⁘';
+      wrap.appendChild(threshold);
+    }
+    wrap.appendChild(_renderSCDay(m));
+  }
+  return wrap;
+}
+
+function _renderSCDay(m) {
+  const row = document.createElement('article');
+  row.className = 'sc-day';
+  if (m.consecrated) row.dataset.consecrated = 'true';
+
+  const num = document.createElement('div');
+  num.className = 'sc-day-numeral';
+  num.textContent = m.numeral || '';
+  row.appendChild(num);
+
+  if (m.act) {
+    const act = document.createElement('div');
+    act.className = 'sc-day-act';
+    act.textContent = m.act;
+    row.appendChild(act);
+  }
+
+  if (m.consecrated && m.consecration) {
+    // The consecration rubric stands in for the refrain — the
+    // formula is broken; in its place, the blessing.
+    const cons = document.createElement('blockquote');
+    cons.className = 'sc-day-consecration';
+    cons.textContent = m.consecration;
+    row.appendChild(cons);
+  } else if (m.refrain) {
+    const refrain = document.createElement('div');
+    refrain.className = 'sc-day-refrain';
+    refrain.textContent = m.refrain;
+    row.appendChild(refrain);
+  }
+
+  if (m.ref) {
+    const ref = document.createElement('div');
+    ref.className = 'sc-day-witness';
+    ref.textContent = m.ref;
+    row.appendChild(ref);
+  }
+  return row;
+}
+
+// Recurrence fragments — a vertical stack of small witness
+// blocks, each one showing the same interval re-anchored in a
+// later passage. Quiet italic register; the form is repetition.
+function _renderSCRecurrenceFragments(fragments) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sc-recurrence';
+  for (const fr of fragments) {
+    const item = document.createElement('article');
+    item.className = 'sc-fragment';
+    const hdr = document.createElement('header');
+    hdr.className = 'sc-fragment-header';
+    const ref = document.createElement('span');
+    ref.className = 'sc-fragment-ref';
+    ref.textContent = fr.ref || '';
+    hdr.appendChild(ref);
+    if (fr.tradition) {
+      const sep = document.createElement('span');
+      sep.className = 'sc-fragment-sep';
+      sep.textContent = ' · ';
+      sep.setAttribute('aria-hidden', 'true');
+      hdr.appendChild(sep);
+      const trad = document.createElement('span');
+      trad.className = 'sc-fragment-tradition';
+      trad.textContent = fr.tradition;
+      hdr.appendChild(trad);
+    }
+    item.appendChild(hdr);
+    const quote = document.createElement('blockquote');
+    quote.className = 'sc-fragment-quote';
+    quote.textContent = fr.quote || '';
+    item.appendChild(quote);
+    wrap.appendChild(item);
   }
   return wrap;
 }
