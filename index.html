@@ -3130,12 +3130,32 @@ body.cols-dual #companion-swap {
   cursor: not-allowed !important;
   border-bottom-color: transparent !important;
 }
-/* If the viewport cannot host a readable folio next to the
-   sovereign 960px scripture column, the chapter-spread falls
-   back to scripture-only. Minimum viable spread = 960 + 60 +
-   220 = 1240 + 60 (reader padding 30×2) = 1300 viewport.
-   Below this, scripture remains sovereign and folio collapses. */
-@media (max-width: 1299px) {
+/* Narrow viewport — folio flexes down rather than disappears.
+   At 1150-1299px (common 13" laptops, partial-width windows,
+   browser zoom): tighten the gap and folio min so the spread
+   still fits beside the sovereign 960px scripture. Reader
+   padding shrinks to 14px each side to maximize available
+   width. Folio is functional, if a bit tighter, down to
+   viewport 1150. */
+@media (max-width: 1299px) and (min-width: 1150px) {
+  body.cols-single.chapter-room.companion-mode #reader {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  body.cols-single.chapter-room.companion-mode .chapter-spread {
+    grid-template-columns: 960px 32px minmax(160px, 320px);
+  }
+  body.cols-single.chapter-room.companion-mode.folio-left .chapter-spread {
+    grid-template-columns: minmax(160px, 320px) 32px 960px;
+  }
+}
+
+/* True collapse — below 1150px the spread cannot fit a
+   readable folio beside the sovereign scripture. Folio
+   hidden; scripture remains at 960px with default padding.
+   Companion controls disabled so the toggle does not appear
+   to do nothing when clicked. */
+@media (max-width: 1149px) {
   body.cols-single.chapter-room.companion-mode .chapter-spread {
     display: block;
     width: auto;
@@ -3150,6 +3170,15 @@ body.cols-dual #companion-swap {
   body.cols-single.chapter-room.companion-mode #reader {
     padding-left: 40px;
     padding-right: 40px;
+  }
+  /* Disable companion controls at this viewport so the toggle
+     does not appear broken — it visibly cannot be activated. */
+  body.chapter-room #companion-toggle,
+  body.chapter-room #companion-swap {
+    opacity: 0.32 !important;
+    pointer-events: none !important;
+    cursor: not-allowed !important;
+    border-bottom-color: transparent !important;
   }
 }
 /* Right-align witness titles in folio-left so they hug the
