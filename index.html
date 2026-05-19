@@ -3124,6 +3124,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="reconstruction"]::before  { content: '✦'; }
 .cr-folio-marker[data-kind="audio"]::before           { content: '♪'; }
 .cr-folio-marker[data-kind="cross-reference"]::before { content: '§'; }
+.cr-folio-marker[data-kind="translation-tradition"]::before { content: '‡'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -4301,6 +4302,239 @@ body.viewer-active .folio-leaf.cosmology-chamber .cc-lede p {
   line-height: 1.7;
 }
 body.viewer-active .folio-leaf.cosmology-chamber .cc-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 002 — Translation Tradition Chamber ──────────────────
+   Materially different rhythm from the cosmology chamber.
+   Witness fragments dominate visually; the chamber's centre of
+   gravity sits on primary scripts, not on archive prose. Tight
+   philological notes and a stacked manuscript-lineage strip
+   carry the philological texture without leaning on diagrams. */
+.folio-leaf.translation-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.translation-chamber .tc-lede {
+  margin: 6px 0 20px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.82);
+}
+.folio-leaf.translation-chamber .tc-lede p {
+  margin: 0;
+  line-height: 1.55;
+  font-size: 0.92em;
+}
+
+/* Witness slips — the heart. Each slip is a parchment-toned
+   panel: small italic header naming the tradition and witness,
+   then the original-language text in its native script at a
+   prominent size, then a small focus-term line, then a quiet
+   English gloss. The script must visually outweigh the prose
+   around it. */
+.folio-leaf.translation-chamber .tc-witnesses {
+  margin: 6px 0 0;
+}
+.folio-leaf.translation-chamber .tc-witness {
+  position: relative;
+  margin: 14px 0;
+  padding: 16px 18px 14px;
+  background: linear-gradient(180deg,
+    rgba(250, 245, 232, 0.62),
+    rgba(245, 238, 222, 0.46));
+  border: 1px solid rgba(120, 90, 50, 0.24);
+  border-left: 3px solid rgba(120, 80, 35, 0.55);
+  border-radius: 1px;
+}
+.folio-leaf.translation-chamber .tc-witness-header {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.74em;
+  letter-spacing: 0.16em;
+  color: rgba(120, 65, 25, 0.78);
+}
+.folio-leaf.translation-chamber .tc-witness-sep {
+  color: rgba(110, 95, 75, 0.45);
+  letter-spacing: 0;
+}
+.folio-leaf.translation-chamber .tc-witness-id {
+  color: rgba(95, 75, 50, 0.82);
+}
+.folio-leaf.translation-chamber .tc-witness-date {
+  display: block;
+  margin-top: 2px;
+  font-variant: normal;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  font-size: 0.92em;
+  color: rgba(110, 95, 75, 0.7);
+}
+.folio-leaf.translation-chamber .tc-witness-script {
+  margin: 10px 0 8px;
+  padding: 0;
+  font-size: 1.16em;
+  line-height: 1.5;
+  color: rgba(30, 20, 8, 0.96);
+  font-style: normal;
+  letter-spacing: 0.01em;
+}
+.folio-leaf.translation-chamber .tc-witness[data-lang="he"] .tc-witness-script {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.36em;
+  line-height: 1.55;
+  text-align: right;
+}
+.folio-leaf.translation-chamber .tc-witness[data-lang="el"] .tc-witness-script {
+  font-family: "SBL Greek", "Cardo", "GFS Didot", "Times New Roman", serif;
+  font-size: 1.24em;
+}
+.folio-leaf.translation-chamber .tc-witness[data-lang="la"] .tc-witness-script,
+.folio-leaf.translation-chamber .tc-witness[data-lang="en"] .tc-witness-script {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+}
+.folio-leaf.translation-chamber .tc-witness-focus {
+  margin-top: 4px;
+  font-size: 0.92em;
+  color: rgba(95, 60, 25, 0.88);
+}
+.folio-leaf.translation-chamber .tc-witness-term {
+  font-weight: 500;
+}
+.folio-leaf.translation-chamber .tc-witness[data-lang="he"] .tc-witness-term {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.1em;
+}
+.folio-leaf.translation-chamber .tc-witness[data-lang="el"] .tc-witness-term {
+  font-family: "SBL Greek", "Cardo", "GFS Didot", "Times New Roman", serif;
+}
+.folio-leaf.translation-chamber .tc-witness-translit {
+  font-style: italic;
+  color: rgba(110, 65, 25, 0.78);
+}
+.folio-leaf.translation-chamber .tc-witness-gloss {
+  margin-top: 6px;
+  font-size: 0.84em;
+  line-height: 1.5;
+  font-style: italic;
+  color: rgba(75, 60, 38, 0.78);
+}
+
+/* Semantic-shift notes — small philological observations. The
+   head reads as a register entry; the body is a single tight
+   sentence-or-two block. Not a paragraph stack. */
+.folio-leaf.translation-chamber .tc-shift {
+  margin: 8px 0;
+}
+.folio-leaf.translation-chamber .tc-shift-item {
+  margin: 12px 0;
+  padding: 0 0 0 14px;
+  border-left: 1px dotted rgba(120, 90, 50, 0.32);
+}
+.folio-leaf.translation-chamber .tc-shift-head {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.92em;
+  color: rgba(85, 50, 18, 0.92);
+  margin-bottom: 3px;
+}
+.folio-leaf.translation-chamber .tc-shift-body {
+  margin: 0;
+  font-size: 0.88em;
+  line-height: 1.6;
+  color: rgba(55, 40, 22, 0.82);
+}
+
+/* Lineage strip — vertical sequence of small label panels, each
+   one a transmission stop. Hairline ↓ connectors with quiet
+   italic transition lines naming the human moment between stops.
+   Not infographic UI — a stacked codex succession. */
+.folio-leaf.translation-chamber .tc-lineage {
+  margin: 10px 0 4px;
+  padding: 16px 18px;
+  background: rgba(245, 238, 222, 0.32);
+  border: 1px solid rgba(120, 90, 50, 0.16);
+  border-radius: 1px;
+}
+.folio-leaf.translation-chamber .tc-lineage-stop {
+  text-align: center;
+  padding: 10px 8px;
+  border: 1px solid rgba(120, 90, 50, 0.2);
+  background: rgba(252, 247, 235, 0.6);
+  max-width: 280px;
+  margin: 0 auto;
+}
+.folio-leaf.translation-chamber .tc-lineage-tradition {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(110, 65, 25, 0.78);
+  margin-bottom: 4px;
+}
+.folio-leaf.translation-chamber .tc-lineage-term {
+  font-size: 1.18em;
+  color: rgba(30, 20, 8, 0.96);
+  line-height: 1.2;
+}
+.folio-leaf.translation-chamber .tc-lineage-stop[data-lang="he"] .tc-lineage-term {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.4em;
+}
+.folio-leaf.translation-chamber .tc-lineage-stop[data-lang="el"] .tc-lineage-term {
+  font-family: "SBL Greek", "Cardo", "Times New Roman", serif;
+  font-size: 1.28em;
+}
+.folio-leaf.translation-chamber .tc-lineage-stop[data-lang="la"] .tc-lineage-term,
+.folio-leaf.translation-chamber .tc-lineage-stop[data-lang="en"] .tc-lineage-term {
+  font-style: italic;
+}
+.folio-leaf.translation-chamber .tc-lineage-translit {
+  margin-top: 2px;
+  font-style: italic;
+  font-size: 0.82em;
+  color: rgba(110, 65, 25, 0.72);
+}
+.folio-leaf.translation-chamber .tc-lineage-date {
+  margin-top: 4px;
+  font-style: italic;
+  font-size: 0.74em;
+  letter-spacing: 0.04em;
+  color: rgba(95, 75, 50, 0.7);
+}
+.folio-leaf.translation-chamber .tc-lineage-connector {
+  text-align: center;
+  margin: 4px 0;
+}
+.folio-leaf.translation-chamber .tc-lineage-stem {
+  display: block;
+  font-size: 14px;
+  color: rgba(110, 65, 25, 0.45);
+  line-height: 1.1;
+}
+.folio-leaf.translation-chamber .tc-lineage-transition {
+  display: block;
+  margin: 2px auto 0;
+  max-width: 320px;
+  font-style: italic;
+  font-size: 0.78em;
+  line-height: 1.45;
+  color: rgba(95, 75, 50, 0.7);
+  letter-spacing: 0.01em;
+}
+
+/* Encounter atmosphere — the slips and lineage stops gain just
+   a touch more presence at full-spread, matching the existing
+   chamber rhythm. */
+body.viewer-active .folio-leaf.translation-chamber .tc-witness-script {
+  font-size: 1.22em;
+}
+body.viewer-active .folio-leaf.translation-chamber .tc-witness[data-lang="he"] .tc-witness-script {
+  font-size: 1.46em;
+}
+body.viewer-active .folio-leaf.translation-chamber .tc-section-heading {
   margin-top: 42px;
 }
 
@@ -8380,14 +8614,29 @@ function _renderFolioObjectLeaf(rec, pid) {
   const chKey = _chapterKeyOf(pid);
 
   // Deep-chamber dispatch — selected records open into bespoke
-  // multi-section consultation chambers (provenance · diagram ·
-  // terminology · comparative · archive synthesis). Each chamber
-  // is a single record's full apparatus, not a redesign of the
-  // folio system. See _COSMOLOGY_CHAMBER for the first prototype.
+  // consultation chambers, each one shaped to the intellectual
+  // texture of its Atlas Object class. Adding a new Object class
+  // means adding a new branch here; the rest of the folio
+  // pipeline does not change.
+  //
+  //   AO · 001  cosmological-motif        gen1-cosmology-firmament
+  //             comparative cosmology with diagram + terminology
+  //             + ANE parallels + archive synthesis.
+  //
+  //   AO · 002  translation-tradition     gen1-firmament-translation-tradition
+  //             manuscript-witness encounter with aligned
+  //             Hebrew / Greek / Latin / English fragments and
+  //             a philological lineage.
   if (rec.id === 'gen1-cosmology-firmament') {
     leaf.classList.add('cosmology-chamber');
     leaf.addEventListener('click', e => e.stopPropagation());
     _renderCosmologyChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
+  if (rec.id === 'gen1-firmament-translation-tradition') {
+    leaf.classList.add('translation-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderTranslationTraditionChamber(leaf, rec, pid, chKey);
     return leaf;
   }
 
@@ -8976,6 +9225,305 @@ function _renderCCArchiveCommentary() {
     'It is not a primary source, not a scholarly consensus, and not ' +
     'a creedal statement — it is an editorial framing offered for ' +
     'orientation and identified as such.';
+  wrap.appendChild(note);
+  return wrap;
+}
+
+
+// ── AO · 002 — The Firmament Translation Tradition ─────────────
+// A textual-witness / translation-tradition Atlas Object. The
+// chamber rhythm is materially different from AO · 001's
+// comparative-cosmology cadence: witness fragments dominate, the
+// archive prose recedes, the visual centre of gravity sits on
+// the primary texts themselves (MT, LXX, Vulgate, KJV) rather
+// than on archive synthesis.
+//
+// Reuses where the architecture is shared:
+//   - the encounter-memory pipeline (records + recurrence rubric)
+//   - the atlas-object rubric (siglum + class + civilizations)
+//   - the provenance header
+//   - _renderCCSectionHeading, _renderCCAnchorings,
+//     _renderCCArchiveCommentary
+//
+// Adds where the object's texture is distinct:
+//   - witness fragments (parchment slips with original scripts)
+//   - semantic-shift notes (tight philological observations)
+//   - lineage strip (manuscript transmission chain)
+
+function _renderTranslationTraditionChamber(leaf, rec, pid, chKey) {
+  // Encounter memory — same pipeline as AO · 001.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  // Restrained lede — the chamber's own short framing prose, kept
+  // small so the witness slips that follow can dominate.
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'tc-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Witness fragments. The heart of the chamber. Each slip
+  // is a small parchment surface carrying the actual original-
+  // language reading from a named textual tradition. Slips are
+  // stacked vertically; the eye lands on the primary script
+  // before any archive commentary.
+  if (Array.isArray(rec.witness_fragments) && rec.witness_fragments.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Witness Fragments',
+      'Aligned excerpts · primary textual witnesses'));
+    leaf.appendChild(_renderTCWitnesses(rec.witness_fragments));
+  }
+
+  // §ii — Semantic-shift notes. Tight philological observations,
+  // intentionally short. The chamber should not become a essay.
+  if (Array.isArray(rec.semantic_shift) && rec.semantic_shift.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Semantic Shift',
+      'rāqîaʿ → stereōma → firmamentum → firmament'));
+    leaf.appendChild(_renderTCSemanticShift(rec.semantic_shift));
+  }
+
+  // §iii — Lineage strip. A manuscript-style transmission chain.
+  // Not infographic UI — a stacked sequence of small label boxes
+  // with hairline connectors carrying the human moments of
+  // transmission (Alexandrian translators, Jerome, Wycliffe →
+  // Tyndale → Geneva → KJV).
+  if (Array.isArray(rec.lineage_stops) && rec.lineage_stops.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Transmission Lineage',
+      'Codex succession across four traditions'));
+    leaf.appendChild(_renderTCLineage(rec.lineage_stops,
+                                       rec.lineage_transitions || []));
+  }
+
+  // §iv — Other anchorings. Reuses the existing anchorings
+  // renderer; the section heading numeral simply advances.
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iv', 'Anchorings',
+      'where this object is also encountered'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §v — Archive commentary. Same tertiary-register frame as
+  // AO · 001; intentionally short here so the chamber's centre
+  // of gravity stays on the witness material above. Pass a
+  // record-specific commentary body if provided; otherwise fall
+  // back to the cosmology-chamber wording (which doesn't apply
+  // here — so the explicit body matters).
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// Witness slips. Each slip is a small parchment-toned surface
+// bearing one textual witness:
+//   header  — tradition · witness identifier · date
+//   script  — the actual original-language text
+//   gloss   — small italic English rendering / note
+function _renderTCWitnesses(fragments) {
+  const wrap = document.createElement('div');
+  wrap.className = 'tc-witnesses';
+  for (const f of fragments) {
+    const slip = document.createElement('article');
+    slip.className = 'tc-witness';
+    slip.dataset.lang = f.lang || '';
+    const hdr = document.createElement('header');
+    hdr.className = 'tc-witness-header';
+    const trad = document.createElement('span');
+    trad.className = 'tc-witness-tradition';
+    trad.textContent = f.tradition || '';
+    hdr.appendChild(trad);
+    if (f.witness) {
+      const sep1 = document.createElement('span');
+      sep1.className = 'tc-witness-sep';
+      sep1.textContent = ' · ';
+      sep1.setAttribute('aria-hidden', 'true');
+      hdr.appendChild(sep1);
+      const w = document.createElement('span');
+      w.className = 'tc-witness-id';
+      w.textContent = f.witness;
+      hdr.appendChild(w);
+    }
+    if (f.date) {
+      const dt = document.createElement('div');
+      dt.className = 'tc-witness-date';
+      dt.textContent = f.date;
+      hdr.appendChild(dt);
+    }
+    slip.appendChild(hdr);
+
+    const body = document.createElement('blockquote');
+    body.className = 'tc-witness-script';
+    if (f.lang) body.lang = f.lang;
+    if (f.lang === 'he') body.dir = 'rtl';
+    body.textContent = f.script || '';
+    slip.appendChild(body);
+
+    // Focus term inline beneath the script — the one word the
+    // tradition contributes to the lineage.
+    if (f.term || f.translit) {
+      const focus = document.createElement('div');
+      focus.className = 'tc-witness-focus';
+      if (f.term) {
+        const term = document.createElement('span');
+        term.className = 'tc-witness-term';
+        if (f.lang) term.lang = f.lang;
+        if (f.lang === 'he') term.dir = 'rtl';
+        term.textContent = f.term;
+        focus.appendChild(term);
+      }
+      if (f.translit && f.term && f.translit !== f.term) {
+        const tr = document.createElement('span');
+        tr.className = 'tc-witness-translit';
+        tr.textContent = ' — ' + f.translit;
+        focus.appendChild(tr);
+      } else if (f.translit && !f.term) {
+        const tr = document.createElement('span');
+        tr.className = 'tc-witness-translit';
+        tr.textContent = f.translit;
+        focus.appendChild(tr);
+      }
+      slip.appendChild(focus);
+    }
+    if (f.gloss) {
+      const gloss = document.createElement('div');
+      gloss.className = 'tc-witness-gloss';
+      gloss.textContent = f.gloss;
+      slip.appendChild(gloss);
+    }
+    wrap.appendChild(slip);
+  }
+  return wrap;
+}
+
+// Semantic shift — a compact list of philological notes. Each
+// entry has a small italic head and a brief body. Not a paragraph
+// stack; not bullet-points either. A manuscript register entry.
+function _renderTCSemanticShift(notes) {
+  const wrap = document.createElement('div');
+  wrap.className = 'tc-shift';
+  for (const n of notes) {
+    const item = document.createElement('div');
+    item.className = 'tc-shift-item';
+    const head = document.createElement('div');
+    head.className = 'tc-shift-head';
+    head.textContent = n.head || '';
+    const body = document.createElement('p');
+    body.className = 'tc-shift-body';
+    body.textContent = n.body || '';
+    item.appendChild(head);
+    item.appendChild(body);
+    wrap.appendChild(item);
+  }
+  return wrap;
+}
+
+// Manuscript transmission lineage. A stacked sequence of four
+// small label panels (one per tradition), connected by hairline
+// stems that carry a quiet italic note about the human moment
+// of transmission. Not infographic UI.
+function _renderTCLineage(stops, transitions) {
+  const wrap = document.createElement('div');
+  wrap.className = 'tc-lineage';
+  stops.forEach((s, i) => {
+    const stop = document.createElement('div');
+    stop.className = 'tc-lineage-stop';
+    if (s.lang) stop.dataset.lang = s.lang;
+    const trad = document.createElement('div');
+    trad.className = 'tc-lineage-tradition';
+    trad.textContent = s.tradition || '';
+    stop.appendChild(trad);
+    const term = document.createElement('div');
+    term.className = 'tc-lineage-term';
+    if (s.lang) term.lang = s.lang;
+    if (s.lang === 'he') term.dir = 'rtl';
+    term.textContent = s.term || '';
+    stop.appendChild(term);
+    if (s.translit && s.translit !== s.term) {
+      const tr = document.createElement('div');
+      tr.className = 'tc-lineage-translit';
+      tr.textContent = s.translit;
+      stop.appendChild(tr);
+    }
+    if (s.date) {
+      const dt = document.createElement('div');
+      dt.className = 'tc-lineage-date';
+      dt.textContent = s.date;
+      stop.appendChild(dt);
+    }
+    wrap.appendChild(stop);
+    // Connector between stops, carrying a small italic note.
+    if (i < stops.length - 1) {
+      const conn = document.createElement('div');
+      conn.className = 'tc-lineage-connector';
+      const stem = document.createElement('div');
+      stem.className = 'tc-lineage-stem';
+      stem.textContent = '↓';
+      stem.setAttribute('aria-hidden', 'true');
+      conn.appendChild(stem);
+      if (transitions[i]) {
+        const trn = document.createElement('div');
+        trn.className = 'tc-lineage-transition';
+        trn.textContent = transitions[i];
+        conn.appendChild(trn);
+      }
+      wrap.appendChild(conn);
+    }
+  });
+  return wrap;
+}
+
+// Archive commentary — shares the tertiary-panel treatment with
+// AO · 001 so the reader's eye reads the same "this is editorial
+// framing" signal across chambers. Intentionally short here.
+function _renderTCArchive(body) {
+  const wrap = document.createElement('aside');
+  wrap.className = 'cc-archive';
+  wrap.setAttribute('data-authority', 'tertiary');
+  const rubric = document.createElement('div');
+  rubric.className = 'cc-archive-rubric';
+  rubric.textContent = 'Archive Synthesis · Tertiary';
+  wrap.appendChild(rubric);
+  const heading = document.createElement('div');
+  heading.className = 'cc-archive-heading';
+  heading.textContent = 'Archive Commentary';
+  wrap.appendChild(heading);
+  const p = document.createElement('p');
+  p.className = 'cc-archive-body';
+  p.textContent = body ||
+    'This panel records the archive’s own synthesizing reading.';
+  wrap.appendChild(p);
+  const note = document.createElement('div');
+  note.className = 'cc-archive-note';
+  note.textContent =
+    'Editorial framing offered alongside the witness material above; ' +
+    'not a primary source, not a scholarly consensus.';
   wrap.appendChild(note);
   return wrap;
 }
