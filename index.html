@@ -755,7 +755,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 /* Back-to-reading affordance — quiet italic pill in the top-left
    of the title leaf, mirroring the cite-corner disclosure in the
    top-right. Reads as marginal navigation, not a primary control. */
-.bible-cover-layout .bcl-back-to-reading {
+.bible-cover-layout .bcl-back-to-versions {
   position: absolute;
   top: 18px;
   left: 28px;
@@ -773,8 +773,8 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   transition: color 0.18s ease-out, border-color 0.18s ease-out,
               background 0.18s ease-out;
 }
-.bible-cover-layout .bcl-back-to-reading:hover,
-.bible-cover-layout .bcl-back-to-reading:focus-visible {
+.bible-cover-layout .bcl-back-to-versions:hover,
+.bible-cover-layout .bcl-back-to-versions:focus-visible {
   color: rgba(120, 65, 25, 0.98);
   border-color: rgba(120, 65, 25, 0.5);
   background: rgba(150, 110, 60, 0.06);
@@ -3010,29 +3010,34 @@ body.cols-single.chapter-room.companion-mode.folio-left
 
 /* PRIMARY — direct artifacts, manuscript texts, canonical
    citations, direct cultural recordings. Solid warm border,
-   warm tint. The strongest visual register. */
+   warm saturated tint, full opacity, slightly bolder glyph.
+   The strongest, most stable visual register. */
 .cr-folio-marker[data-authority="primary"] {
-  background: rgba(160, 115, 60, 0.18);
-  border: 1px solid rgba(120, 70, 25, 0.58);
-  color: rgba(95, 45, 15, 0.92);
+  background: rgba(160, 110, 55, 0.28);
+  border: 1px solid rgba(110, 60, 18, 0.78);
+  color: rgba(85, 35, 8, 1);
+  opacity: 0.96;
+  font-weight: 500;
 }
 
 /* SECONDARY — scholarly theses, reconstructions, comparative
-   interpretation. Dashed cooler border, medium tint. */
+   interpretation. Dashed cooler border, mid tint, mid opacity —
+   reads as analytic apparatus rather than direct witness. */
 .cr-folio-marker[data-authority="secondary"] {
-  background: rgba(140, 115, 80, 0.10);
-  border: 1px dashed rgba(85, 65, 45, 0.55);
-  color: rgba(75, 55, 30, 0.85);
+  background: rgba(140, 115, 80, 0.11);
+  border: 1px dashed rgba(85, 65, 45, 0.6);
+  color: rgba(75, 55, 30, 0.82);
+  opacity: 0.78;
 }
 
 /* TERTIARY — archive editorial synthesis. Dotted faded border,
-   lightest tint. Most transparent register so the apparatus
-   shows its nature as orientation/explanation, not primary
-   witness. */
+   barely-tinted background, lower opacity. Reads as the faintest
+   marginal note — orientation/explanation, never primary witness. */
 .cr-folio-marker[data-authority="tertiary"] {
-  background: rgba(140, 120, 90, 0.07);
-  border: 1px dotted rgba(110, 95, 75, 0.5);
-  color: rgba(95, 75, 50, 0.78);
+  background: rgba(140, 120, 95, 0.05);
+  border: 1px dotted rgba(110, 95, 75, 0.42);
+  color: rgba(95, 78, 55, 0.68);
+  opacity: 0.6;
 }
 
 .cr-folio-marker:hover,
@@ -3044,18 +3049,21 @@ body.cols-single.chapter-room.companion-mode.folio-left
 }
 .cr-folio-marker[data-authority="primary"]:hover,
 .cr-folio-marker[data-authority="primary"]:focus-visible {
-  background: rgba(160, 115, 60, 0.32);
-  border-color: rgba(120, 70, 25, 0.82);
+  background: rgba(160, 110, 55, 0.42);
+  border-color: rgba(110, 60, 18, 0.95);
+  opacity: 1;
 }
 .cr-folio-marker[data-authority="secondary"]:hover,
 .cr-folio-marker[data-authority="secondary"]:focus-visible {
-  background: rgba(140, 115, 80, 0.20);
-  border-color: rgba(85, 65, 45, 0.78);
+  background: rgba(140, 115, 80, 0.22);
+  border-color: rgba(85, 65, 45, 0.82);
+  opacity: 1;
 }
 .cr-folio-marker[data-authority="tertiary"]:hover,
 .cr-folio-marker[data-authority="tertiary"]:focus-visible {
-  background: rgba(140, 120, 90, 0.16);
-  border-color: rgba(110, 95, 75, 0.75);
+  background: rgba(140, 120, 95, 0.16);
+  border-color: rgba(110, 95, 75, 0.72);
+  opacity: 0.95;
 }
 .cr-folio-marker:focus-visible {
   box-shadow: 0 0 0 2px rgba(120, 80, 35, 0.32);
@@ -3204,38 +3212,46 @@ body.folio-depth-study .cr-folio-marker[data-authority="tertiary"] {
    segmented control, never a tab bar. */
 .cr-folio-depth-rubric {
   position: absolute;
-  top: 32px;
-  left: 28px;
-  right: 28px;
-  display: flex;
-  align-items: baseline;
-  justify-content: flex-start;
-  gap: 8px;
+  top: 28px;
+  left: 22px;
+  right: 22px;
+  display: block;
   margin: 0;
-  padding: 0 0 8px 0;
+  padding: 0 0 6px 0;
   border-bottom: 1px solid rgba(120, 90, 50, 0.10);
 }
+/* Prefix sits on its own line above the three labels — like a
+   manuscript rubric naming the choice list that follows. Keeps the
+   word "Apparatus" without stealing horizontal room from the
+   labels, which need to fit inside the (220-360px) folio. */
 .cr-folio-depth-rubric .crd-prefix {
-  flex: 0 0 auto;
+  display: block;
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: rgba(110, 95, 75, 0.7);
-  margin-right: 4px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(110, 95, 75, 0.62);
+  margin-bottom: 1px;
   user-select: none;
   pointer-events: none;
+}
+.cr-folio-depth-rubric .crd-labels {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 3px;
+  white-space: nowrap;
 }
 .cr-folio-depth-rubric .crd-label {
   flex: 0 0 auto;
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
-  font-size: 0.82em;
-  letter-spacing: 0.14em;
+  font-size: 12px;
+  letter-spacing: 0.06em;
   background: transparent;
   border: none;
-  padding: 2px 4px;
+  padding: 0 1px;
   cursor: pointer;
   color: rgba(110, 95, 75, 0.78);
   transition: color 0.18s ease-out, opacity 0.18s ease-out,
@@ -3252,7 +3268,8 @@ body.folio-depth-study .cr-folio-marker[data-authority="tertiary"] {
 .cr-folio-depth-rubric .crd-sep {
   color: rgba(110, 95, 75, 0.5);
   font-style: italic;
-  font-size: 0.82em;
+  font-size: 12px;
+  padding: 0 1px;
   user-select: none;
   pointer-events: none;
 }
@@ -3268,7 +3285,7 @@ body.folio-depth-study .cr-folio-marker[data-authority="tertiary"] {
    chapter header down. */
 body.cols-single.chapter-room.companion-mode .chapter-spread
   .folio-column .cr-folio-header {
-  top: 76px;  /* leaves room above for the depth rubric */
+  top: 76px;  /* leaves room above for the two-line depth rubric */
 }
 
 /* Hidden-count indicator — appears beside a cluster when records
@@ -7073,22 +7090,17 @@ function showCover(data, entry) {
 
   let html = '';
   if (isBibleCover) html += '<div class="bible-cover-layout">';
-  // Back-to-reading-room affordance — only on the Bible cover.
-  // If the reader has a remembered chapter (just stepped out via
-  // Contents), the button returns there; otherwise it opens
-  // Genesis 1. Visible only on the title leaf; the in-reading
-  // chrome already carries its own Contents-back button.
+  // Back-up-the-hierarchy affordance — only on the Bible cover.
+  // The conceptual order is Home → Religion → Christian → Bible
+  // Versions → KJV title leaf → Reading Room. From the title leaf
+  // the back button goes UP one step (to Bible Versions), not
+  // DOWN into the Reading Room — the "Enter the Reading Room"
+  // plate already opens Genesis 1.
   if (isBibleCover) {
-    const memo = (typeof _lastReadingMemo !== 'undefined') ? _lastReadingMemo : null;
-    const targetBook = (memo && memo.book) ? memo.book
-                     : (currentBook && currentBook !== '__fm__') ? currentBook
-                     : 'gen.1';
-    const targetLabel = (memo && memo.book) ? 'Return to Reading' : 'Reading Room';
-    html += `<button type="button" class="bcl-back-to-reading" `
-          + `data-target-book="${escapeHTML(targetBook)}" `
-          + `title="Open the reading room at ${escapeHTML(targetBook.replace('.', ' '))}">` +
-          `&larr; ${targetLabel}` +
-          `</button>`;
+    html += '<button type="button" class="bcl-back-to-versions" ' +
+            'title="Back to Bible versions">' +
+            '&larr; Bible Versions' +
+            '</button>';
   }
   html += '<div id="continuous-cover">';
   html += `<div class="cc-title">${escapeHTML(data.title || '')}</div>`;
@@ -7243,20 +7255,23 @@ function showCover(data, entry) {
     fmBtn.addEventListener('click', () => enterReading('__fm__'));
   }
 
-  // Wire the back-to-reading button (Bible cover only). When a
-  // _lastReadingMemo exists, enterReading() with no arg resumes the
-  // same chapter and scroll position (memo handling is already in
-  // enterReading). Otherwise jump to the recorded target book.
-  const backBtn = $textHeader.querySelector('.bcl-back-to-reading');
+  // Wire the back-to-versions button (Bible cover only). Returns
+  // the reader to the Bible versions/library list (browseTradition
+  // for the current category and tradition), one step up the
+  // navigation hierarchy.
+  const backBtn = $textHeader.querySelector('.bcl-back-to-versions');
   if (backBtn) {
     backBtn.addEventListener('click', () => {
-      const memo = (typeof _lastReadingMemo !== 'undefined') ? _lastReadingMemo : null;
-      if (memo && memo.book) {
-        currentBook = memo.book;
-        enterReading();
-      } else {
-        enterReading(backBtn.dataset.targetBook || 'gen.1');
-      }
+      const trd = (currentEntry && currentEntry.tradition) || 'Christian';
+      const cat = (typeof bucketFor === 'function') ? bucketFor(trd) : 'Religion';
+      // Tear down cover-leaf scaffolding so the browse view is clean
+      const th = document.getElementById('text-header');
+      if (th) { th.innerHTML = ''; th.style.display = 'none'; }
+      document.body.classList.remove('in-reading');
+      document.body.classList.remove('chapter-room');
+      const ctrlContents = document.getElementById('ctrl-contents');
+      if (ctrlContents) ctrlContents.style.display = 'none';
+      browseTradition(cat, trd);
     });
   }
 
@@ -8491,13 +8506,16 @@ function _renderDepthRubric() {
   wrap.className = 'cr-folio-depth-rubric';
   wrap.setAttribute('role', 'group');
   wrap.setAttribute('aria-label', 'Apparatus depth');
-  // Quiet italic prefix telling the reader what the three labels
-  // are. Reads as a rubric ("Apparatus —") not a UI heading.
+  // Two-line manuscript rubric: italic prefix above, three labels
+  // beneath. Keeps the word "Apparatus" without crowding the
+  // narrow folio column.
   const prefix = document.createElement('span');
   prefix.className = 'crd-prefix';
-  prefix.textContent = 'Apparatus —';
+  prefix.textContent = 'Apparatus';
   prefix.setAttribute('aria-hidden', 'true');
   wrap.appendChild(prefix);
+  const row = document.createElement('div');
+  row.className = 'crd-labels';
   FOLIO_DEPTHS.forEach((d, i) => {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -8507,15 +8525,16 @@ function _renderDepthRubric() {
     btn.setAttribute('aria-pressed', d === _folioDepth ? 'true' : 'false');
     if (d === _folioDepth) btn.classList.add('active');
     btn.addEventListener('click', () => _setFolioDepth(d));
-    wrap.appendChild(btn);
+    row.appendChild(btn);
     if (i < FOLIO_DEPTHS.length - 1) {
       const sep = document.createElement('span');
       sep.className = 'crd-sep';
       sep.textContent = '·';
       sep.setAttribute('aria-hidden', 'true');
-      wrap.appendChild(sep);
+      row.appendChild(sep);
     }
   });
+  wrap.appendChild(row);
   return wrap;
 }
 function _setFolioDepth(d) {
@@ -9838,9 +9857,29 @@ function browseText(cat, trd, textId) {
   let html = '';
 
   // Canonical shelves first (proof-of-concept curation).
+  // When a shelf has only ONE variant present, render it as a
+  // plain text-tile that opens directly — the expand-to-reveal
+  // affordance only earns its keep when there is something to
+  // choose between. Multi-variant shelves keep the <details>
+  // wrapper.
   for (const sh of shelvesForText) {
     const present = sh.members.filter(m => byFile[m.data_file]);
     if (!present.length) continue;
+    if (present.length === 1) {
+      const e = byFile[present[0].data_file];
+      const tr = (e.translator || []).filter(t => t && t !== 'Anonymous').join(', ');
+      const yearStr = e.year || '';
+      const meta = [tr ? 'tr. ' + tr : '', yearStr].filter(Boolean).join(' · ');
+      html += `<div class="text-tile" data-shelf="${escH(sh.id)}" ` +
+              `onclick="browseOpen('${escH(e.data_file)}')">
+        <span class="tt-star">★</span>
+        <div class="tt-info">
+          <div class="tt-title">${escH(sh.label)}</div>
+          ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
+        </div>
+      </div>`;
+      continue;
+    }
     const subTiles = present.map(m => {
       const e = byFile[m.data_file];
       const tr = (e.translator || []).filter(t => t && t !== 'Anonymous').join(', ');
@@ -9859,7 +9898,7 @@ function browseText(cat, trd, textId) {
       <summary class="shelf-summary">
         <span class="tt-star">★</span>
         <span class="shelf-label">${escH(sh.label)}</span>
-        <span class="shelf-count">${present.length} variant${present.length === 1 ? '' : 's'}</span>
+        <span class="shelf-count">${present.length} variants</span>
       </summary>
       <div class="shelf-members">${subTiles}</div>
     </details>`;
