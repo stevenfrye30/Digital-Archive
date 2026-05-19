@@ -3938,6 +3938,34 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   line-height: 1.8;
 }
 
+/* ── Recurrence rubric (chamber head) ──────────────────────────
+   Quiet manuscript continuity note. Appears at the very top of
+   the chamber only when the reader has met this Atlas Object
+   before AND the present anchoring differs from the first.
+   Italic, sub-rubric size, the "first encountered" lead in
+   small-caps; the reference in normal italic. No icons, no
+   timestamps, no notification chrome. */
+.folio-leaf .cc-recurrence-rubric {
+  margin: 0 0 12px;
+  padding: 0;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 0.76em;
+  letter-spacing: 0.02em;
+  color: rgba(110, 95, 75, 0.78);
+}
+.folio-leaf .ccr-lead {
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  color: rgba(110, 65, 25, 0.7);
+}
+.folio-leaf .ccr-sep {
+  color: rgba(110, 95, 75, 0.5);
+}
+.folio-leaf .ccr-where {
+  color: rgba(85, 50, 18, 0.86);
+}
+
 /* ── Atlas Object rubric (chamber top) ──────────────────────────
    A small italic-small-caps line at the head of an object
    chamber. The chamber begins with this notation so the reader
@@ -8288,6 +8316,26 @@ function _openFolioObject(id) {
   const viewer = document.getElementById('object-viewer');
   if (viewer) viewer.scrollTop = 0;
 }
+// Pick the anchor whose chapter matches the reader's current
+// chapter. A record with multiple anchors (e.g., an Atlas Object
+// recurring across the canon) must open into the chamber from
+// the anchoring the reader is actually standing on, so that
+// the verse line and the encounter memory both reflect the
+// present encounter — not the record's first-listed anchor.
+function _pidForCurrentEncounter(rec) {
+  if (!rec || !Array.isArray(rec.anchors) || !rec.anchors.length) return '';
+  const ch = typeof currentBook === 'string'
+           ? _chapterKeyOf(currentBook) || currentBook
+           : '';
+  for (const an of rec.anchors) {
+    const target = an && an.target;
+    if (!target) continue;
+    const pid = target.split('::').pop();
+    if (ch && _chapterKeyOf(pid) === ch) return pid;
+  }
+  // Fallback: the first declared anchor.
+  return (rec.anchors[0].target || '').split('::').pop();
+}
 function _closeFolioObject() {
   _openFolioRecordId = null;
   _folioMode = 'list';
@@ -8516,6 +8564,22 @@ const _COSMOLOGY_ARCHIVE_COMMENTARY =
 
 
 function _renderCosmologyChamber(leaf, rec, pid, chKey) {
+  // Encounter memory — record the present encounter and look up
+  // whether the reader has met this object before. If they have,
+  // and the present anchoring differs from the first one, prepend
+  // a quiet recurrence rubric. This is the only place the
+  // archive speaks the language of continuity to the reader.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) {
+    leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  }
   // If the record carries Atlas Object identity (siglum + class),
   // open the chamber with a quiet manuscript-style object rubric
   // above the provenance — so the reader senses an encountered
@@ -8725,6 +8789,97 @@ function _renderCCComparative() {
     block.appendChild(p);
     wrap.appendChild(block);
   }
+  return wrap;
+}
+
+// ── Atlas Object encounter memory ───────────────────────────────
+// A very lightweight persistence layer that lets the archive
+// quietly remember which Atlas Objects the reader has
+// encountered, where they were first met, and which other
+// passages they have been re-encountered through. This is not
+// analytics, not a progress system, not an achievement layer —
+// it is archival memory: the small recognition that "this
+// object has been here before."
+//
+// Storage: a single localStorage entry keyed by object id.
+//
+//   {
+//     "atlas:object:cosmology:ane-three-tier": {
+//       first:  { pid, ref, ts },
+//       seenAt: { "gen.1.6": <ts>, "psa.104.5": <ts>, ... }
+//     },
+//     ...
+//   }
+//
+// All operations are best-effort and silently degrade if
+// localStorage is unavailable (private mode, full quota).
+const _ATLAS_ENCOUNTERS_KEY = 'atlas:encounters:v1';
+
+function _loadAtlasEncounters() {
+  try {
+    return JSON.parse(localStorage.getItem(_ATLAS_ENCOUNTERS_KEY) || '{}');
+  } catch (_) { return {}; }
+}
+function _saveAtlasEncounters(map) {
+  try {
+    localStorage.setItem(_ATLAS_ENCOUNTERS_KEY, JSON.stringify(map));
+  } catch (_) { /* quota / private mode — accept silently */ }
+}
+// Record an encounter and return the first-encounter record (if
+// any) plus a flag indicating whether the current encounter is
+// the first the archive has known. Idempotent for repeat visits
+// to the same anchoring.
+function _recordAtlasEncounter(objectId, pid, ref) {
+  if (!objectId) return null;
+  const map = _loadAtlasEncounters();
+  const now = Date.now();
+  let entry = map[objectId];
+  if (!entry || !entry.first) {
+    entry = { first: { pid, ref, ts: now }, seenAt: { [pid]: now } };
+    map[objectId] = entry;
+    _saveAtlasEncounters(map);
+    return { isFirst: true, first: entry.first };
+  }
+  // Subsequent encounter — update last-seen for this anchoring.
+  if (!entry.seenAt) entry.seenAt = {};
+  entry.seenAt[pid] = now;
+  _saveAtlasEncounters(map);
+  return { isFirst: false, first: entry.first };
+}
+
+// Format a pid like "gen.1.6" → "Genesis 1:6" for archival
+// citations (recurrence rubric, future anchorings UI). Uses
+// the canonical BOOK_NAMES map; falls back to the raw pid.
+function _formatArchivalRef(pid) {
+  const m = pid && pid.match(/^([a-z]+)\.(\d+)\.(\d+)$/);
+  if (!m) return pid || '';
+  const book = (typeof BOOK_NAMES === 'object' && BOOK_NAMES[m[1]])
+             || (m[1].charAt(0).toUpperCase() + m[1].slice(1));
+  return `${book} ${m[2]}:${m[3]}`;
+}
+
+// Quiet recurrence rubric — appears at the head of a chamber
+// only when the reader has encountered this Atlas Object before
+// AND the current anchoring differs from the first one. Reads
+// as a manuscriptal continuity note ("first encountered —
+// Genesis 1:6"), never as a progress notification.
+function _renderRecurrenceRubric(first) {
+  const wrap = document.createElement('div');
+  wrap.className = 'cc-recurrence-rubric';
+  const lead = document.createElement('span');
+  lead.className = 'ccr-lead';
+  lead.textContent = 'First encountered';
+  const sep = document.createElement('span');
+  sep.className = 'ccr-sep';
+  sep.textContent = ' — ';
+  sep.setAttribute('aria-hidden', 'true');
+  const where = document.createElement('span');
+  where.className = 'ccr-where';
+  where.textContent = _formatArchivalRef(first.pid || '')
+                   || first.ref || '';
+  wrap.appendChild(lead);
+  wrap.appendChild(sep);
+  wrap.appendChild(where);
   return wrap;
 }
 
@@ -9034,8 +9189,7 @@ function renderCompanionFolio() {
     if (_folioMode === 'object' && _openFolioRecordId && encInner) {
       const rec = (currentData.genealogy || []).find(r => r.id === _openFolioRecordId);
       if (rec) {
-        const a = rec.anchors && rec.anchors[0] && rec.anchors[0].target;
-        const pid = a ? a.split('::').pop() : '';
+        const pid = _pidForCurrentEncounter(rec);
         encInner.appendChild(_renderFolioObjectLeaf(rec, pid));
       } else {
         _folioMode = 'list';
@@ -9073,8 +9227,7 @@ function renderCompanionFolio() {
   if (_folioMode === 'object' && _openFolioRecordId && encInner) {
     const rec = (currentData.genealogy || []).find(r => r.id === _openFolioRecordId);
     if (rec) {
-      const a = rec.anchors && rec.anchors[0] && rec.anchors[0].target;
-      const pid = a ? a.split('::').pop() : '';
+      const pid = _pidForCurrentEncounter(rec);
       encInner.appendChild(_renderFolioObjectLeaf(rec, pid));
     } else {
       // Record missing — close encounter gracefully and re-render
@@ -9214,12 +9367,31 @@ function _renderChapterRoomFolio(_legacyInner) {
   const chKey = _chapterKeyOf(currentBook || '');
   const ch = chKey || currentBook || '';
   if (!ch || !currentData || !currentData.genealogy) return;
-  const records = currentData.genealogy.filter(r => {
-    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
-    if (!a) return false;
-    return _chapterKeyOf(a.split('::').pop()) === ch;
+  // Iterate over ALL anchors of each record (not only the first):
+  // an Atlas Object may be anchored to multiple passages, so a
+  // single record may surface markers in multiple chapters. The
+  // record is included in this chapter render once per anchor
+  // that falls in the current chapter — typically one, but the
+  // architecture no longer assumes that.
+  const records = [];
+  for (const r of currentData.genealogy) {
+    if (!r.anchors || !Array.isArray(r.anchors)) continue;
+    for (const an of r.anchors) {
+      const a = an && an.target;
+      if (!a) continue;
+      const pid = a.split('::').pop();
+      if (_chapterKeyOf(pid) !== ch) continue;
+      // Stamp the in-chapter anchor pid on a per-anchor view so
+      // grouping uses *this* anchor, not anchors[0]. The record
+      // object itself is untouched.
+      records.push({ rec: r, anchorPid: pid });
+    }
+  }
+  records.sort((a, b) => {
+    const va = Number((a.anchorPid.match(/\.(\d+)$/) || [, 0])[1]);
+    const vb = Number((b.anchorPid.match(/\.(\d+)$/) || [, 0])[1]);
+    return va - vb;
   });
-  records.sort((a, b) => _verseOf(a) - _verseOf(b));
 
   if (!records.length) {
     const empty = document.createElement('div');
@@ -9240,16 +9412,18 @@ function _renderChapterRoomFolio(_legacyInner) {
   folioColumn.appendChild(header);
 
   // Group records by anchor verse pid → one cluster per verse.
+  // Each entry in `records` is a {rec, anchorPid} view, so a
+  // record with multiple anchors in this chapter naturally
+  // contributes to multiple clusters.
   const byVerse = new Map();
   const order = [];
-  for (const r of records) {
-    const a = r.anchors && r.anchors[0] && r.anchors[0].target;
-    const pid = a ? a.split('::').pop() : '';
+  for (const view of records) {
+    const pid = view.anchorPid;
     if (!byVerse.has(pid)) {
       byVerse.set(pid, []);
       order.push(pid);
     }
-    byVerse.get(pid).push(r);
+    byVerse.get(pid).push(view.rec);
   }
 
   for (const pid of order) {

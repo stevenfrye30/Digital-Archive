@@ -105,11 +105,25 @@ def main():
     if not target:
         raise SystemExit("gen1-cosmology-firmament record not found")
     target["atlas_object"] = COSMOLOGY_OBJECT
+
+    # Multi-anchor: the Atlas Object recurs across the canon, so the
+    # record now carries anchorings on Psalm 104:5 and Job 38:4 in
+    # addition to the canonical Genesis 1:6 anchoring. The folio
+    # render iterates all anchors, so a single record contributes
+    # markers wherever it is encountered.
+    target["anchors"] = [
+        {"target": "archive:passage:bible::kjv::gen.1.6"},
+        {"target": "archive:passage:bible::kjv::psa.104.5"},
+        {"target": "archive:passage:bible::kjv::job.38.4"},
+    ]
     print("stamped atlas_object onto gen1-cosmology-firmament")
     print(f"  siglum: {COSMOLOGY_OBJECT['siglum']}")
     print(f"  class:  {COSMOLOGY_OBJECT['class']}")
-    print(f"  anchorings: {len(COSMOLOGY_OBJECT['anchorings'])}")
-    print(f"  linked:     {len(COSMOLOGY_OBJECT['linked'])}")
+    print(f"  anchors (canon recurrence): {len(target['anchors'])}")
+    for a in target["anchors"]:
+        print(f"    - {a['target']}")
+    print(f"  anchorings (declared, may be wider): {len(COSMOLOGY_OBJECT['anchorings'])}")
+    print(f"  linked Atlas Objects:               {len(COSMOLOGY_OBJECT['linked'])}")
 
     with DATA.open("w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
