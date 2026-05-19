@@ -2932,6 +2932,13 @@ body.cols-single.chapter-room.companion-mode .chapter-spread .folio-column {
   border-left: 1px solid rgba(120, 80, 35, 0.42);
   padding: 0 22px 80px;
   min-height: 100%;
+  /* The folio is formatted scholarly apparatus — typography is
+     fixed so the reader's scripture-size and leading controls
+     never reshape the margin. All em-based children below scale
+     against this stable 18px base, not against the scripture's
+     --reader-size. */
+  font-size: 18px;
+  line-height: 1.5;
 }
 body.cols-single.chapter-room.companion-mode.folio-left
   .chapter-spread .scripture-column { grid-column: 3; }
@@ -3220,21 +3227,6 @@ body.folio-depth-study .cr-folio-marker[data-authority="tertiary"] {
   padding: 0 0 6px 0;
   border-bottom: 1px solid rgba(120, 90, 50, 0.10);
 }
-/* Prefix sits on its own line above the three labels — like a
-   manuscript rubric naming the choice list that follows. Keeps the
-   word "Apparatus" without stealing horizontal room from the
-   labels, which need to fit inside the (220-360px) folio. */
-.cr-folio-depth-rubric .crd-prefix {
-  display: block;
-  font-family: Georgia, "Palatino Linotype", Palatino, serif;
-  font-style: italic;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  color: rgba(110, 95, 75, 0.62);
-  margin-bottom: 1px;
-  user-select: none;
-  pointer-events: none;
-}
 .cr-folio-depth-rubric .crd-labels {
   display: flex;
   flex-wrap: nowrap;
@@ -3285,7 +3277,7 @@ body.folio-depth-study .cr-folio-marker[data-authority="tertiary"] {
    chapter header down. */
 body.cols-single.chapter-room.companion-mode .chapter-spread
   .folio-column .cr-folio-header {
-  top: 76px;  /* leaves room above for the two-line depth rubric */
+  top: 60px;  /* leaves room above for the single-line depth rubric */
 }
 
 /* Hidden-count indicator — appears beside a cluster when records
@@ -8506,14 +8498,9 @@ function _renderDepthRubric() {
   wrap.className = 'cr-folio-depth-rubric';
   wrap.setAttribute('role', 'group');
   wrap.setAttribute('aria-label', 'Apparatus depth');
-  // Two-line manuscript rubric: italic prefix above, three labels
-  // beneath. Keeps the word "Apparatus" without crowding the
-  // narrow folio column.
-  const prefix = document.createElement('span');
-  prefix.className = 'crd-prefix';
-  prefix.textContent = 'Apparatus';
-  prefix.setAttribute('aria-hidden', 'true');
-  wrap.appendChild(prefix);
+  // Just the three depth labels — the controls are mature enough
+  // that the reader no longer needs the "Apparatus" rubric heading
+  // to know what the choices govern.
   const row = document.createElement('div');
   row.className = 'crd-labels';
   FOLIO_DEPTHS.forEach((d, i) => {
@@ -9263,6 +9250,17 @@ function wire(id, prop, storageKey, toCSS, displayId) {
     root.style.setProperty(prop, cssVal);
     localStorage.setItem(storageKey, el.value);
     if (displayId) document.getElementById(displayId).textContent = cssVal;
+    // Scripture typography changes (font, size, leading) shift
+    // verse offsetTop. The folio is anchored to verse positions,
+    // so its marker clusters must reflow to stay aligned with
+    // the scripture column. Run after layout settles.
+    if (prop === '--reader-size'
+        || prop === '--reader-leading'
+        || prop === '--reader-font') {
+      if (typeof _positionFolioEntries === 'function') {
+        requestAnimationFrame(() => _positionFolioEntries());
+      }
+    }
   });
 }
 
