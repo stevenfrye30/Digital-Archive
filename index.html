@@ -4538,6 +4538,235 @@ body.viewer-active .folio-leaf.translation-chamber .tc-section-heading {
   margin-top: 42px;
 }
 
+/* ── AO · 003 — Lineage Chamber (Antediluvian Line) ────────────
+   A recursive, generational rhythm. The descent register is a
+   vertical column of generation rows joined by hairline stems.
+   The Enoch row carries a quiet rupture — different cadence,
+   dotted stems on either side, his rubric quoted in display
+   italic. A small "stemma temporis" beneath the register shows
+   overlapping lifespans in a restrained manuscript register
+   (hairline bars, no grid). */
+.folio-leaf.lineage-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.lineage-chamber .lc-lede {
+  margin: 6px 0 18px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+}
+.folio-leaf.lineage-chamber .lc-lede p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 0.94em;
+}
+
+/* Descent register — vertical stack of generation rows with
+   hairline stems between them. The left edge of each row
+   carries a small italic small-caps generation numeral; the
+   right edge carries the witness reference. No card chrome. */
+.folio-leaf.lineage-chamber .lc-descent {
+  margin: 14px 0 4px;
+  padding-left: 8px;
+}
+.folio-leaf.lineage-chamber .lc-generation {
+  position: relative;
+  padding: 10px 14px 12px 56px;
+  background: transparent;
+}
+.folio-leaf.lineage-chamber .lc-gen-numeral {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 44px;
+  text-align: right;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.22em;
+  color: rgba(110, 65, 25, 0.7);
+}
+.folio-leaf.lineage-chamber .lc-gen-head {
+  font-size: 1.04em;
+  line-height: 1.3;
+  color: rgba(40, 28, 12, 0.94);
+}
+.folio-leaf.lineage-chamber .lc-gen-name-en {
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+.folio-leaf.lineage-chamber .lc-gen-sep {
+  color: rgba(110, 95, 75, 0.4);
+}
+.folio-leaf.lineage-chamber .lc-gen-name-he {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.18em;
+  color: rgba(40, 24, 8, 0.95);
+}
+.folio-leaf.lineage-chamber .lc-gen-translit {
+  font-style: italic;
+  font-size: 0.86em;
+  color: rgba(110, 65, 25, 0.78);
+}
+.folio-leaf.lineage-chamber .lc-gen-lifespan {
+  margin-top: 4px;
+  font-style: italic;
+  font-size: 0.88em;
+  line-height: 1.55;
+  color: rgba(75, 60, 38, 0.86);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.lineage-chamber .lc-gen-note {
+  margin-top: 4px;
+  font-style: italic;
+  font-size: 0.82em;
+  color: rgba(110, 90, 60, 0.74);
+  line-height: 1.5;
+}
+.folio-leaf.lineage-chamber .lc-gen-witness {
+  margin-top: 6px;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.6);
+}
+
+/* Hairline descent stem between generations — a thin vertical
+   line, indented to align under the numeral column. Carries the
+   visual sense of succession through generations. */
+.folio-leaf.lineage-chamber .lc-descent-stem {
+  position: relative;
+  height: 18px;
+  margin-left: 22px;
+  border-left: 1px solid rgba(120, 90, 50, 0.32);
+}
+/* On either side of a rupture (Enoch), the stem becomes dotted
+   so the connector tissue itself feels altered. */
+.folio-leaf.lineage-chamber .lc-stem-rupture {
+  border-left-style: dotted;
+  border-left-color: rgba(120, 90, 50, 0.45);
+  height: 24px;
+}
+
+/* Enoch — the interruption row. Same column structure but a
+   quieter tint, a small ornament above the row, and his rubric
+   displayed in larger italic as the focal moment of the rupture. */
+.folio-leaf.lineage-chamber .lc-generation[data-special="interruption"] {
+  background: rgba(252, 247, 235, 0.55);
+  border-top: 1px solid rgba(120, 90, 50, 0.22);
+  border-bottom: 1px solid rgba(120, 90, 50, 0.22);
+  margin: 4px 0;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.folio-leaf.lineage-chamber .lc-generation[data-special="interruption"]::before {
+  content: '⁘';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  letter-spacing: 0.4em;
+  color: rgba(120, 65, 25, 0.5);
+  background: var(--reader-bg, #faf8f5);
+  padding: 0 8px;
+}
+.folio-leaf.lineage-chamber .lc-gen-rupture {
+  margin: 12px 12px 8px;
+  padding: 8px 12px;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.04em;
+  line-height: 1.5;
+  color: rgba(85, 50, 18, 0.92);
+  border-top: 1px dotted rgba(120, 65, 25, 0.32);
+  border-bottom: 1px dotted rgba(120, 65, 25, 0.32);
+  letter-spacing: 0.01em;
+}
+
+/* Stemma temporis — overlapping lifespan bars. Each row is a
+   horizontal track containing one hairline bar (left:width
+   computed in JS by birth_year / death_year). A small death
+   tick marks where the line ends. Generational label sits on
+   the left, year range on the right. No axis labels. */
+.folio-leaf.lineage-chamber .lc-stemma {
+  margin: 12px 0 4px;
+  padding: 16px 18px 10px;
+  background: rgba(245, 238, 222, 0.32);
+  border: 1px solid rgba(120, 90, 50, 0.16);
+  border-radius: 1px;
+}
+.folio-leaf.lineage-chamber .lc-stemma-caption {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(110, 65, 25, 0.68);
+  margin-bottom: 10px;
+}
+.folio-leaf.lineage-chamber .lc-stemma-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 88px 1fr 86px;
+  gap: 10px;
+  align-items: center;
+  margin: 4px 0;
+}
+.folio-leaf.lineage-chamber .lc-stemma-label {
+  font-style: italic;
+  font-size: 0.82em;
+  color: rgba(60, 42, 20, 0.86);
+  text-align: right;
+  padding-right: 4px;
+}
+.folio-leaf.lineage-chamber .lc-stemma-track {
+  position: relative;
+  height: 14px;
+}
+.folio-leaf.lineage-chamber .lc-stemma-bar {
+  position: absolute;
+  height: 1.5px;
+  top: 6px;
+  background: rgba(110, 65, 25, 0.72);
+  border-radius: 0;
+}
+.folio-leaf.lineage-chamber .lc-stemma-tick {
+  position: absolute;
+  width: 1px;
+  height: 8px;
+  top: 3px;
+  background: rgba(110, 65, 25, 0.85);
+}
+.folio-leaf.lineage-chamber
+  .lc-stemma-row[data-special="interruption"] .lc-stemma-bar {
+  /* The Enoch bar is dotted — visibly the anomaly inside the
+     temporal frame. */
+  background: none;
+  border-top: 1.5px dotted rgba(120, 65, 25, 0.85);
+  height: 0;
+}
+.folio-leaf.lineage-chamber
+  .lc-stemma-row[data-special="interruption"] .lc-stemma-tick {
+  background: rgba(120, 50, 15, 0.85);
+}
+.folio-leaf.lineage-chamber .lc-stemma-years {
+  font-style: italic;
+  font-size: 0.74em;
+  letter-spacing: 0.04em;
+  color: rgba(95, 75, 50, 0.72);
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.lineage-chamber .lc-gen-head {
+  font-size: 1.1em;
+}
+body.viewer-active .folio-leaf.lineage-chamber .lc-section-heading {
+  margin-top: 42px;
+}
+
 /* Lineage cadence — in the encounter the trunk (depth 0) reads
    with a touch more presence than its descendants, and each
    generation transition gets a quiet breath above it. Rendered
@@ -8639,6 +8868,18 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderTranslationTraditionChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 003  genealogical-lineage     gen5-antediluvian-line
+  //             a Sethite descent register from Adam to Noah,
+  //             with a temporal-continuity strip and the Enoch
+  //             interruption rendered as a quiet rupture inside
+  //             the descent rhythm.
+  if (rec.id === 'gen5-antediluvian-line') {
+    leaf.classList.add('lineage-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderLineageChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -9525,6 +9766,262 @@ function _renderTCArchive(body) {
     'Editorial framing offered alongside the witness material above; ' +
     'not a primary source, not a scholarly consensus.';
   wrap.appendChild(note);
+  return wrap;
+}
+
+
+// ── AO · 003 — The Antediluvian Line ────────────────────────────
+// A genealogical / lineage Atlas Object. The chamber rhythm is
+// recursive and generational, not essay-like:
+//
+//   §i   Descent register — ten generation rows stacked
+//        vertically, hairline descent stems between them. Each
+//        row carries name (English + Hebrew + transliteration),
+//        an italic lifespan inscription, and the witness verse.
+//        The Enoch row is rendered as a quiet rupture inside the
+//        rhythm (different tint, dotted descent stems, his
+//        rubric quoted in display italic).
+//
+//   §ii  Temporal continuity — a small "stemma temporis": ten
+//        horizontal hairline lifespan bars stacked vertically,
+//        each spanning that generation's years from creation.
+//        The reader sees deep-time continuity (Adam still alive
+//        when Lamech is born) and the Enoch anomaly at a glance.
+//
+//   §iii Anchorings (reused).
+//   §iv  Archive commentary (reused, brief).
+//
+// No graph chrome. No family-tree UI. The register IS the form.
+
+function _renderLineageChamber(leaf, rec, pid, chKey) {
+  // Encounter memory — same pipeline as AO · 001 and AO · 002.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'lc-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Generational descent register.
+  if (Array.isArray(rec.generations) && rec.generations.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Descent',
+      'Generations from Adam — the Sethite line'));
+    leaf.appendChild(_renderLCDescent(rec.generations));
+
+    // §ii — Temporal continuity stemma. Same data, different
+    // register — horizontal lifespan bars rather than vertical
+    // descent rows.
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Temporal Continuity',
+      'Lifespans, Anno Mundi · overlapping descent'));
+    leaf.appendChild(_renderLCStemma(rec.generations));
+  }
+
+  // §iii — Anchorings (reused from AO · 001).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where this lineage continues'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// Descent register — a vertical stack of generation rows with
+// hairline stems between them. Each row carries the canonical
+// triad: name (English / Hebrew / translit), lifespan
+// inscription, witness reference. The row marked special:
+// "interruption" (Enoch) receives a quieter cadence — dotted
+// stems above and below it, a faint background, and the Enoch
+// rubric displayed in italic.
+function _renderLCDescent(generations) {
+  const wrap = document.createElement('div');
+  wrap.className = 'lc-descent';
+  const ROMANS = ['i','ii','iii','iv','v','vi','vii','viii','ix','x',
+                  'xi','xii','xiii','xiv','xv','xvi','xvii','xviii','xix','xx'];
+  generations.forEach((g, i) => {
+    if (i > 0) {
+      // Descent stem between previous and current generation.
+      const stem = document.createElement('div');
+      stem.className = 'lc-descent-stem';
+      // Dotted stem on either side of an interruption row, so
+      // the rupture is felt in the connector tissue.
+      const here = g.special === 'interruption';
+      const prev = generations[i - 1].special === 'interruption';
+      if (here || prev) stem.classList.add('lc-stem-rupture');
+      wrap.appendChild(stem);
+    }
+    wrap.appendChild(_renderLCGeneration(g, ROMANS[i] || String(i + 1)));
+  });
+  return wrap;
+}
+
+function _renderLCGeneration(g, numeral) {
+  const row = document.createElement('article');
+  row.className = 'lc-generation';
+  if (g.special) row.dataset.special = g.special;
+
+  const num = document.createElement('div');
+  num.className = 'lc-gen-numeral';
+  num.textContent = numeral;
+  row.appendChild(num);
+
+  const head = document.createElement('div');
+  head.className = 'lc-gen-head';
+  const nameEn = document.createElement('span');
+  nameEn.className = 'lc-gen-name-en';
+  nameEn.textContent = g.name_en || '';
+  head.appendChild(nameEn);
+  if (g.name_he) {
+    const sep = document.createElement('span');
+    sep.className = 'lc-gen-sep';
+    sep.textContent = ' · ';
+    sep.setAttribute('aria-hidden', 'true');
+    head.appendChild(sep);
+    const heb = document.createElement('span');
+    heb.className = 'lc-gen-name-he';
+    heb.lang = 'he';
+    heb.dir = 'rtl';
+    heb.textContent = g.name_he;
+    head.appendChild(heb);
+  }
+  if (g.translit) {
+    const tr = document.createElement('span');
+    tr.className = 'lc-gen-translit';
+    tr.textContent = ' (' + g.translit + ')';
+    head.appendChild(tr);
+  }
+  row.appendChild(head);
+
+  // Lifespan inscription — the canonical "lived X, begat Y; all
+  // his days Z years" rhythm. Spelled out so the descent reads
+  // as a register, not a stat block.
+  if (g.age_at_begat && g.lifespan) {
+    const span = document.createElement('div');
+    span.className = 'lc-gen-lifespan';
+    const begat = g.special === 'interruption'
+      ? `lived ${g.age_at_begat} years, begat Methuselah`
+      : `lived ${g.age_at_begat} years and begat`;
+    span.textContent =
+      `${begat} — all his days, ${g.lifespan} years.`;
+    row.appendChild(span);
+  }
+
+  // The Enoch quote — displayed inside his row as a centered
+  // italic rubric. The interruption is not annotated; it is
+  // simply present.
+  if (g.special === 'interruption' && g.note) {
+    const quote = document.createElement('blockquote');
+    quote.className = 'lc-gen-rupture';
+    quote.textContent = g.note;
+    row.appendChild(quote);
+  } else if (g.note) {
+    // Non-rupture marginalia — a small italic note, smaller
+    // weight than the lifespan inscription.
+    const note = document.createElement('div');
+    note.className = 'lc-gen-note';
+    note.textContent = g.note;
+    row.appendChild(note);
+  }
+
+  if (g.witness_ref) {
+    const ref = document.createElement('div');
+    ref.className = 'lc-gen-witness';
+    ref.textContent = g.witness_ref;
+    row.appendChild(ref);
+  }
+  return row;
+}
+
+// Temporal stemma — a stacked sequence of horizontal lifespan
+// bars (one per generation). Each bar is a hairline sepia rule
+// spanning the generation's birth → death across an AM (Anno
+// Mundi) axis. The axis is implicit: bars are positioned by
+// percent of the antediluvian frame. Restrained — no axis
+// labels, no gridlines. Only the bars themselves and a small
+// generational label at the left.
+function _renderLCStemma(generations) {
+  const wrap = document.createElement('div');
+  wrap.className = 'lc-stemma';
+  // Compute the year range covered. End at the latest death
+  // year (Methuselah, 1656 AM); the flood traditionally falls
+  // the same year, so this frames the antediluvian period.
+  let minYear = 0;
+  let maxYear = 0;
+  for (const g of generations) {
+    if (typeof g.birth_year === 'number') minYear = Math.min(minYear, g.birth_year);
+    if (typeof g.death_year === 'number') maxYear = Math.max(maxYear, g.death_year);
+  }
+  const range = Math.max(1, maxYear - minYear);
+  // Header — small italic axis caption.
+  const cap = document.createElement('div');
+  cap.className = 'lc-stemma-caption';
+  cap.textContent = `Anno Mundi ${minYear} — ${maxYear} (antediluvian frame)`;
+  wrap.appendChild(cap);
+  for (const g of generations) {
+    const row = document.createElement('div');
+    row.className = 'lc-stemma-row';
+    if (g.special) row.dataset.special = g.special;
+    const label = document.createElement('span');
+    label.className = 'lc-stemma-label';
+    label.textContent = g.name_en || '';
+    row.appendChild(label);
+    const track = document.createElement('div');
+    track.className = 'lc-stemma-track';
+    const bar = document.createElement('span');
+    bar.className = 'lc-stemma-bar';
+    const left = ((g.birth_year - minYear) / range) * 100;
+    const width = (g.lifespan / range) * 100;
+    bar.style.left = left.toFixed(2) + '%';
+    bar.style.width = width.toFixed(2) + '%';
+    bar.title = `${g.name_en}: AM ${g.birth_year} – ${g.death_year} (${g.lifespan} years)`;
+    track.appendChild(bar);
+    // Death tick — a small vertical hairline at the bar's right
+    // edge, so each generation's terminus is legible inside the
+    // succession even when bars overlap.
+    const tick = document.createElement('span');
+    tick.className = 'lc-stemma-tick';
+    tick.style.left = (left + width).toFixed(2) + '%';
+    track.appendChild(tick);
+    row.appendChild(track);
+    const years = document.createElement('span');
+    years.className = 'lc-stemma-years';
+    years.textContent = `${g.birth_year}–${g.death_year}`;
+    row.appendChild(years);
+    wrap.appendChild(row);
+  }
   return wrap;
 }
 
