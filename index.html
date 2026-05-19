@@ -751,6 +751,14 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin: 0 auto;
   padding: 14px 40px 10px;
   position: relative;
+  /* The contents/title leaf is a fixed codex page — navigation,
+     not primary reading prose. Reader typography controls (font
+     family, size, line spacing) govern only the scripture column;
+     the title leaf locks to its designed measure so every return
+     from the Reading Room shows the same composed page. */
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 18px;
+  line-height: 1.4;
 }
 /* Back-to-reading affordance — quiet italic pill in the top-left
    of the title leaf, mirroring the cite-corner disclosure in the
@@ -2922,6 +2930,20 @@ body.cols-single.chapter-room.companion-mode.folio-left .chapter-spread {
 }
 body.cols-single.chapter-room.companion-mode .chapter-spread .scripture-column {
   grid-column: 1; grid-row: 1;
+  /* Inner left margin pushes the scripture body away from the
+     reader's left edge so the verses feel centered on a page,
+     not pressed against the chrome. Folio markers position by
+     verse offsetTop, which is unaffected by horizontal padding,
+     so cluster alignment is preserved. */
+  padding-left: 60px;
+  box-sizing: border-box;
+}
+body.cols-single.chapter-room.companion-mode.folio-left
+  .chapter-spread .scripture-column {
+  /* Mirror in folio-left mode: breathing room sits on the right
+     edge of the scripture so it again feels page-centered. */
+  padding-left: 0;
+  padding-right: 60px;
 }
 body.cols-single.chapter-room.companion-mode .chapter-spread .folio-column {
   display: block;
