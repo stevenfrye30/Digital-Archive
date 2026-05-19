@@ -2985,25 +2985,35 @@ body.cols-single.chapter-room.companion-mode.folio-left
    listed (and acts as the fallback for unrecognized data). The
    per-kind rules below override. Add a new kind by appending one
    line; no JS change needed. */
-.cr-folio-marker::before                          { content: '·'; }
-.cr-folio-marker[data-kind="plate"]::before       { content: '▣'; }
-.cr-folio-marker[data-kind="genealogy"]::before   { content: '❦'; }
-.cr-folio-marker[data-kind="map"]::before         { content: '✥'; }
-.cr-folio-marker[data-kind="commentary"]::before  { content: '❡'; }
-.cr-folio-marker[data-kind="manuscript"]::before  { content: '▦'; }
-.cr-folio-marker[data-kind="linguistic"]::before  { content: 'ℵ'; }
-.cr-folio-marker[data-kind="timeline"]::before    { content: '⧖'; }
+.cr-folio-marker::before                              { content: '·'; }
+.cr-folio-marker[data-kind="plate"]::before           { content: '▣'; }
+.cr-folio-marker[data-kind="genealogy"]::before       { content: '❦'; }
+.cr-folio-marker[data-kind="map"]::before             { content: '✥'; }
+.cr-folio-marker[data-kind="commentary"]::before      { content: '❡'; }
+.cr-folio-marker[data-kind="manuscript"]::before      { content: '▦'; }
+.cr-folio-marker[data-kind="linguistic"]::before      { content: 'ℵ'; }
+.cr-folio-marker[data-kind="timeline"]::before        { content: '⧖'; }
+.cr-folio-marker[data-kind="cosmology"]::before       { content: '⊕'; }
+.cr-folio-marker[data-kind="ritual"]::before          { content: '⁂'; }
+.cr-folio-marker[data-kind="architecture"]::before    { content: '⌂'; }
+.cr-folio-marker[data-kind="artifact"]::before        { content: '⚱'; }
+.cr-folio-marker[data-kind="reception-history"]::before { content: '◈'; }
+.cr-folio-marker[data-kind="reconstruction"]::before  { content: '✦'; }
+.cr-folio-marker[data-kind="audio"]::before           { content: '♪'; }
+.cr-folio-marker[data-kind="cross-reference"]::before { content: '§'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
-   beside the marker. Right-folio markers open the plaque
-   leftward into the gutter; left-folio markers open rightward.
-   Reveal on :hover and :focus-visible so keyboard users see the
-   same plaque mouse users see. */
+   beside the marker. Position computed by JS on hover/focus so
+   the plaque sits within the folio column (never overlapping
+   scripture, never clipped by viewport). Plaque uses fixed
+   positioning so overflow:hidden ancestors cannot clip it.
+   Reveal on :hover / :focus-visible. */
 .cr-folio-plaque {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 240px;
+  position: fixed;
+  /* top, left set by _positionPlaque() on hover/focus */
+  top: 0;
+  left: 0;
+  width: 260px;
   padding: 12px 16px;
   background: color-mix(in srgb, var(--reader-bg) 92%, #fff 8%);
   border: 1px solid rgba(120, 80, 35, 0.36);
@@ -3026,17 +3036,6 @@ body.cols-single.chapter-room.companion-mode.folio-left
   opacity: 1;
   visibility: visible;
   transition: opacity 0.18s ease-out, visibility 0s;
-}
-/* Right-side folio: plaque opens to the LEFT (away from the
-   viewport edge, into the gutter beside scripture). */
-body.cols-single.chapter-room.companion-mode:not(.folio-left)
-  .cr-folio-plaque {
-  right: calc(100% + 10px);
-}
-/* Left-side folio: plaque opens to the RIGHT. */
-body.cols-single.chapter-room.companion-mode.folio-left
-  .cr-folio-plaque {
-  left: calc(100% + 10px);
 }
 
 .cr-folio-plaque-kind {
@@ -3065,6 +3064,47 @@ body.cols-single.chapter-room.companion-mode.folio-left
   line-height: 1.4;
   color: rgba(120, 65, 25, 0.68);
   letter-spacing: 0.02em;
+}
+
+/* ── DEBUG_FOLIO mode ──────────────────────────────────────────
+   Toggled by adding body.debug-folio (via URL ?debug=folio or
+   window.toggleFolioDebug()). Surfaces cluster bounds, anchor
+   verse lines, collision offsets, and marker counts. Calibration
+   tool only — never visible in normal reading. */
+body.debug-folio .cr-folio-cluster {
+  outline: 1px dashed rgba(0, 120, 200, 0.55);
+  outline-offset: -1px;
+}
+body.debug-folio .cr-folio-cluster::after {
+  content: attr(data-debug);
+  position: absolute;
+  top: -14px;
+  left: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 9px;
+  color: rgba(0, 120, 200, 0.85);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 1px 4px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+body.debug-folio .scripture-column [data-pid][data-debug-anchor] {
+  outline: 1px dashed rgba(200, 60, 0, 0.5);
+  outline-offset: -1px;
+  background: rgba(200, 60, 0, 0.03);
+}
+body.debug-folio .scripture-column [data-pid][data-debug-anchor]::after {
+  content: attr(data-debug-anchor);
+  position: absolute;
+  right: -90px;
+  top: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 9px;
+  color: rgba(200, 60, 0, 0.85);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 1px 4px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 body.cols-single.chapter-room.companion-mode .chapter-spread .folio-column {
   /* Folio-column own padding zeroed because entries position
@@ -8033,14 +8073,25 @@ function _positionFolioEntries() {
   for (const cluster of clusters) {
     const anchorPid = cluster.dataset.anchorPid;
     let verseTop = headerBottom;
+    let verse = null;
     if (anchorPid) {
-      const verse = spread.querySelector(
+      verse = spread.querySelector(
         `.scripture-column [data-pid="${anchorPid}"]`
       );
       if (verse) verseTop = verse.offsetTop;
     }
     const top = Math.max(verseTop, prevBottom + COLLISION_GAP);
     cluster.style.top = top + 'px';
+    // Debug instrumentation — only consumed when body.debug-folio
+    // is set. Carries: marker count, target verse, actual top,
+    // anchor offsetTop, collision-induced offset (Δ).
+    const markerCount = cluster.querySelectorAll('.cr-folio-marker').length;
+    const delta = top - verseTop;
+    cluster.dataset.debug =
+      `${anchorPid} ×${markerCount} top=${top} anchor=${Math.round(verseTop)} Δ=${Math.round(delta)}`;
+    if (verse) {
+      verse.dataset.debugAnchor = `← ${anchorPid} (×${markerCount})`;
+    }
     prevBottom = top + cluster.offsetHeight;
   }
 }
@@ -8103,7 +8154,60 @@ function _renderFolioMarker(rec, pid) {
 
   marker.appendChild(plaque);
   marker.addEventListener('click', () => _openFolioObject(rec.id));
+  // Compute plaque position on hover/focus so it stays inside
+  // the folio column (never overlapping scripture, never
+  // clipped by viewport).
+  const reposition = () => _positionMarkerPlaque(marker);
+  marker.addEventListener('mouseenter', reposition);
+  marker.addEventListener('focus', reposition);
   return marker;
+}
+
+// Position a marker's plaque inside the folio column, anchored
+// to the column's outer edge (the one AWAY from scripture).
+// Plaque is position:fixed so overflow:hidden ancestors cannot
+// clip it. Vertical: below the marker by default; flips above
+// if it would clip the viewport bottom.
+function _positionMarkerPlaque(marker) {
+  const plaque = marker.querySelector('.cr-folio-plaque');
+  if (!plaque) return;
+  const folioColumn = marker.closest('.folio-column');
+  if (!folioColumn) return;
+
+  const mRect = marker.getBoundingClientRect();
+  const fRect = folioColumn.getBoundingClientRect();
+  const isLeftFolio = document.body.classList.contains('folio-left');
+
+  // Width: fits inside the folio column with 14px breathing on
+  // each side. Capped at 280px.
+  const width = Math.min(280, Math.floor(fRect.width - 28));
+  plaque.style.width = width + 'px';
+
+  // Horizontal anchor:
+  //   folio-RIGHT: plaque's RIGHT edge sits 14px inside the
+  //                folio's right edge (away from scripture).
+  //   folio-LEFT:  plaque's LEFT edge sits 14px inside the
+  //                folio's left edge.
+  let left;
+  if (isLeftFolio) {
+    left = fRect.left + 14;
+  } else {
+    left = fRect.right - width - 14;
+  }
+
+  // Vertical: below the marker. If that would clip viewport
+  // bottom, place above the marker instead.
+  // First force a layout read for current plaque height.
+  // Use offsetHeight; falls back to a sensible default if 0.
+  const estimatedHeight = plaque.offsetHeight || 100;
+  let top = mRect.bottom + 8;
+  if (top + estimatedHeight > innerHeight - 12) {
+    top = mRect.top - estimatedHeight - 8;
+  }
+  if (top < 12) top = 12;
+
+  plaque.style.left = left + 'px';
+  plaque.style.top = top + 'px';
 }
 
 // Folio entry positions depend on verse offsetTop, which can
@@ -8117,6 +8221,25 @@ window.addEventListener('resize', () => {
     if (typeof _positionFolioEntries === 'function') _positionFolioEntries();
   });
 });
+
+// DEBUG_FOLIO mode — visualizes cluster bounds, anchor verses,
+// collision offsets, and marker counts. Enabled by:
+//   - URL parameter ?debug=folio (or ?debug=1)
+//   - window.toggleFolioDebug() at runtime
+window.toggleFolioDebug = function () {
+  document.body.classList.toggle('debug-folio');
+  if (typeof _positionFolioEntries === 'function') _positionFolioEntries();
+  return document.body.classList.contains('debug-folio');
+};
+(function _initFolioDebug() {
+  try {
+    const params = new URLSearchParams(location.search);
+    const v = params.get('debug');
+    if (v && (v === 'folio' || v === '1' || v === 'true')) {
+      document.body.classList.add('debug-folio');
+    }
+  } catch (_) { /* ignore */ }
+})();
 
 // ── Global corpus search ─────────────────────────────────────────────────────
 
