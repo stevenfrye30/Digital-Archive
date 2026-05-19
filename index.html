@@ -3938,6 +3938,101 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   line-height: 1.8;
 }
 
+/* ── Atlas Object rubric (chamber top) ──────────────────────────
+   A small italic-small-caps line at the head of an object
+   chamber. The chamber begins with this notation so the reader
+   meets the object before its verse-anchoring. Manuscriptal
+   registry tone — never a UI badge. */
+.folio-leaf .cc-atlas-object-rubric {
+  margin: 0 0 14px;
+  padding: 0 0 8px;
+  border-bottom: 1px dotted rgba(120, 90, 50, 0.18);
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 0.72em;
+  color: rgba(120, 65, 25, 0.78);
+}
+.folio-leaf .cc-aor-siglum {
+  font-weight: 500;
+}
+.folio-leaf .cc-aor-sep {
+  color: rgba(110, 95, 75, 0.45);
+  letter-spacing: 0;
+}
+.folio-leaf .cc-aor-class {
+  color: rgba(110, 95, 75, 0.78);
+}
+.folio-leaf .cc-aor-civilizations {
+  display: block;
+  margin-top: 3px;
+  font-variant: normal;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  font-size: 0.92em;
+  color: rgba(110, 95, 75, 0.7);
+}
+
+/* ── Anchorings (the object's wider field of encounter) ─────────
+   Quiet italic list. Each line is a passage or external text
+   where the same Atlas Object may also be reached. The reader's
+   current anchoring is gently marked so they can locate
+   themselves inside the object's wider field. */
+.folio-leaf .cc-anchorings {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+}
+.folio-leaf .cc-anchoring {
+  position: relative;
+  padding: 5px 0 5px 18px;
+  font-style: italic;
+  font-size: 0.9em;
+  line-height: 1.55;
+  color: rgba(70, 55, 35, 0.85);
+  letter-spacing: 0.01em;
+}
+.folio-leaf .cc-anchoring::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  color: rgba(110, 65, 25, 0.55);
+  font-size: 1.2em;
+  line-height: 1.2;
+}
+.folio-leaf .cc-anchoring-ref {
+  color: rgba(85, 50, 18, 0.92);
+  font-weight: 500;
+}
+.folio-leaf .cc-anchoring-note {
+  color: rgba(95, 75, 50, 0.78);
+}
+.folio-leaf .cc-anchoring-external .cc-anchoring-ref {
+  /* External texts (non-canonical, e.g. ANE parallels) sit in a
+     cooler register so the reader feels the move outside scripture. */
+  color: rgba(85, 60, 35, 0.82);
+}
+.folio-leaf .cc-anchoring-external::before { content: '⁞'; }
+.folio-leaf .cc-anchoring-here {
+  /* Current verse — quietly marked. Italic siglum + thin rule
+     so the reader sees their position without UI pop. */
+}
+.folio-leaf .cc-anchoring-here::before {
+  content: '◦';
+  color: rgba(120, 50, 15, 0.85);
+}
+.folio-leaf .cc-anchoring-here .cc-anchoring-ref::after {
+  content: ' — here';
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.78em;
+  letter-spacing: 0.16em;
+  color: rgba(120, 50, 15, 0.7);
+  margin-left: 6px;
+}
+
 /* ── Cosmology Chamber (Genesis 1) ──────────────────────────────
    The first deep consultation chamber. Sections sit in a single
    reading column with manuscript margins — restrained sepia
@@ -8421,6 +8516,14 @@ const _COSMOLOGY_ARCHIVE_COMMENTARY =
 
 
 function _renderCosmologyChamber(leaf, rec, pid, chKey) {
+  // If the record carries Atlas Object identity (siglum + class),
+  // open the chamber with a quiet manuscript-style object rubric
+  // above the provenance — so the reader senses an encountered
+  // object before the verse-anchored framing. Records without an
+  // atlas_object block render the chamber unchanged.
+  if (rec.atlas_object) {
+    leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  }
   // Provenance + verse + title — reuse the same architecture every
   // text-witness chamber uses, so the reader's orientation is
   // preserved across kinds.
@@ -8460,7 +8563,19 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
   leaf.appendChild(_renderCCSectionHeading('iii', 'Comparative Context', 'Ancient Near Eastern parallels'));
   leaf.appendChild(_renderCCComparative());
 
-  // §4 — Archive commentary — visually separated from the
+  // §4 — Other anchorings of the same Atlas Object — quiet list,
+  // small italic register. The architectural commitment to
+  // "object, not annotation": the same object is encountered
+  // through multiple passages and external texts. Rendered only
+  // when the record carries atlas_object.anchorings.
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length > 0) {
+    leaf.appendChild(_renderCCSectionHeading('iv', 'Anchorings',
+      'where this object is also encountered'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §5 — Archive commentary — visually separated from the
   // previous sections so the reader cannot mistake archive
   // synthesis for primary witness material.
   leaf.appendChild(_renderCCArchiveCommentary());
@@ -8609,6 +8724,71 @@ function _renderCCComparative() {
     p.textContent = item.text;
     block.appendChild(p);
     wrap.appendChild(block);
+  }
+  return wrap;
+}
+
+// Quiet object rubric — a small italic small-caps line at the
+// top of a chamber that names the encountered Atlas Object by
+// its siglum and class. Reads as a manuscriptal registry
+// notation, never as a database badge. The reader senses
+// "this is an object I have encountered through this verse"
+// without any UI language being spoken aloud.
+function _renderAtlasObjectRubric(ao) {
+  const wrap = document.createElement('div');
+  wrap.className = 'cc-atlas-object-rubric';
+  const sig = document.createElement('span');
+  sig.className = 'cc-aor-siglum';
+  sig.textContent = ao.siglum || '';
+  const sep = document.createElement('span');
+  sep.className = 'cc-aor-sep';
+  sep.textContent = ' · ';
+  sep.setAttribute('aria-hidden', 'true');
+  const cls = document.createElement('span');
+  cls.className = 'cc-aor-class';
+  cls.textContent = (ao.class || '').replace(/-/g, ' ');
+  wrap.appendChild(sig);
+  if (ao.siglum && ao.class) wrap.appendChild(sep);
+  wrap.appendChild(cls);
+  // Civilizations span — quietly tucked beneath; sometimes empty.
+  if (Array.isArray(ao.civilizations) && ao.civilizations.length) {
+    const civ = document.createElement('div');
+    civ.className = 'cc-aor-civilizations';
+    civ.textContent = ao.civilizations.join(' · ');
+    wrap.appendChild(civ);
+  }
+  return wrap;
+}
+
+// Anchorings — the architectural face of "object, not annotation."
+// A small italic list of passages and external texts where the
+// same Atlas Object may also be encountered. The current
+// anchoring (the verse the reader is on) is marked, so the
+// reader sees their own position inside the object's wider field.
+function _renderCCAnchorings(anchorings, currentPid) {
+  const wrap = document.createElement('ol');
+  wrap.className = 'cc-anchorings';
+  for (const a of anchorings) {
+    const item = document.createElement('li');
+    item.className = 'cc-anchoring';
+    if (a.external) item.classList.add('cc-anchoring-external');
+    // Highlight the present passage so the reader can locate
+    // themselves inside the object's anchoring set.
+    if (a.citation && currentPid &&
+        a.citation.endsWith('::' + currentPid)) {
+      item.classList.add('cc-anchoring-here');
+    }
+    const ref = document.createElement('span');
+    ref.className = 'cc-anchoring-ref';
+    ref.textContent = a.ref || '';
+    item.appendChild(ref);
+    if (a.note) {
+      const note = document.createElement('span');
+      note.className = 'cc-anchoring-note';
+      note.textContent = ' — ' + a.note;
+      item.appendChild(note);
+    }
+    wrap.appendChild(item);
   }
   return wrap;
 }
@@ -8983,12 +9163,44 @@ function _renderFolioWitnessList(inner, chapters) {
   }
 }
 
-// Chapter-room folio render — pours symbolic witness markers
-// into the folio column of the current chapter-spread. Records
-// sharing an anchor verse are grouped into a single positioned
-// cluster (flex-wrap container). Each cluster's top is set by
-// _positionFolioEntries() to the y-position of its anchor verse,
-// with collision-avoidance stacking. Scripture is never touched.
+// ── Atlas Object Field — the folio as encounter surface ──────
+//
+// The folio is not a "commentary margin" attached to a verse.
+// It is an Atlas Object Field: a discovery surface through which
+// the reader meets autonomous knowledge entities — Atlas Objects.
+//
+// In this model:
+//   - An Atlas Object is an autonomous knowledge entity, with an
+//     identity, an authority class, civilizational/tradition
+//     associations, and (potentially) many anchorings across the
+//     archive. Examples: "Ancient Hebrew Cosmology", "Flood
+//     Cosmology", "Temple Mountain Symbolism", "Divine Council
+//     Motifs".
+//   - A passage is one anchoring surface among many. The same
+//     object may be encountered through Genesis 1, Psalm 104,
+//     Job 38, Enūma Eliš, and so on.
+//   - A folio marker, then, is not "a note about this verse."
+//     It is a signal that an Atlas Object is encounterable here.
+//
+// Each record in the data stream that carries an `atlas_object`
+// block (id, class, siglum, civilizations, anchorings, linked)
+// is treated as a first-class Atlas Object encountered here.
+// Records without that block remain ordinary apparatus witnesses;
+// the architecture allows both kinds to coexist as the archive
+// grows. The cosmology chamber (gen1-cosmology-firmament) is the
+// first promoted record.
+//
+// The rendering pipeline below is therefore an object-encounter
+// pipeline. Visual atmosphere (codex, manuscript margin,
+// scripture sovereignty) is unchanged; what shifts is the
+// conceptual frame.
+
+// Chapter-room folio render — pours object signals into the
+// margin of the current chapter-spread. Records sharing an
+// anchor verse are grouped into a single positioned cluster.
+// Each cluster's top is set by _positionFolioEntries() to the
+// y-position of its anchor verse, with collision-avoidance
+// stacking. Scripture is never touched.
 function _renderChapterRoomFolio(_legacyInner) {
   // _legacyInner is the old #folio-inner; ignored.
   const folioColumn = document.querySelector(
