@@ -3651,67 +3651,52 @@ body.viewer-active .folio-leaf-return {
 body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
 
 /* ── Chamber provenance header ─────────────────────────────────
-   Sits at the top of every chamber's content. Declares the
-   object's epistemic class (PRIMARY · KIND), tradition, source
-   basis, and confidence — so the reader cannot mistake archive
-   editorial synthesis for direct textual evidence. Manuscript
-   register: small-caps italic for the authority line; italic
-   for tradition / source; faded italic for confidence. */
+   Sits at the top of every text-witness chamber. Declares the
+   object's epistemic class, tradition, source basis, confidence
+   — compact rubric block, not a dossier. */
 .folio-leaf-provenance {
-  margin-bottom: 22px;
-  padding-bottom: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(120, 90, 50, 0.22);
 }
 .folio-leaf-provenance .flp-authority {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
-  font-size: 0.78em;
+  font-size: 0.72em;
   letter-spacing: 0.22em;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 .folio-leaf-provenance[data-authority="primary"]   .flp-authority { color: rgba(120, 70, 25, 0.92); }
 .folio-leaf-provenance[data-authority="secondary"] .flp-authority { color: rgba(85, 65, 45, 0.85); }
 .folio-leaf-provenance[data-authority="tertiary"]  .flp-authority { color: rgba(110, 95, 75, 0.82); }
-.folio-leaf-provenance .flp-tradition {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 0.84em;
-  line-height: 1.42;
-  color: rgba(80, 60, 40, 0.78);
-  margin-bottom: 4px;
-}
-.folio-leaf-provenance .flp-source {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 0.78em;
-  line-height: 1.45;
-  color: rgba(95, 75, 50, 0.7);
-  margin-bottom: 4px;
-}
+.folio-leaf-provenance .flp-tradition,
+.folio-leaf-provenance .flp-source,
 .folio-leaf-provenance .flp-confidence {
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: 0.74em;
-  line-height: 1.4;
-  color: rgba(110, 90, 60, 0.6);
-  letter-spacing: 0.02em;
+  font-size: 0.76em;
+  line-height: 1.36;
+  letter-spacing: 0.01em;
+  margin: 0;
 }
+.folio-leaf-provenance .flp-tradition  { color: rgba(80, 60, 40, 0.78); }
+.folio-leaf-provenance .flp-source     { color: rgba(95, 75, 50, 0.66); }
+.folio-leaf-provenance .flp-confidence { color: rgba(110, 90, 60, 0.58); }
 
 /* Plate chamber: authority line inside the curatorial plaque,
-   in the same cream-on-charcoal register as the rest of the
-   plaque, but with the small-caps rubric so the reader sees
-   the class before the artist line. */
+   tucked beneath the verse/provenance line with minimal vertical
+   weight. Small-caps italic so the epistemic class reads as a
+   museum classification tag rather than another caption line. */
 .folio-leaf[data-kind="plate"] .folio-plate-authority {
+  display: block;
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
-  font-size: 0.7em;
-  letter-spacing: 0.2em;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(245, 235, 215, 0.22);
-  color: rgba(245, 235, 215, 0.72);
+  font-size: 0.6em;
+  letter-spacing: 0.18em;
+  margin-top: 6px;
+  color: rgba(245, 235, 215, 0.5);
 }
 .folio-leaf-verse {
   font-family: Georgia, serif;
@@ -3807,31 +3792,26 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
   display: block;
   max-width: 100%;
   /* The engraving fills the chamber's vertical measure regardless
-     of source resolution. Some Doré scans in the archive are
-     stored at a smaller pixel size than the chamber affords; we
-     prefer the museum-scale presentation and accept a modest
-     upscale-softening, which engraving texture handles well.
-     Reserve = viewer padding 12+12, mat padding 12+12 + border,
-     plaque margin 20 + padding-top 14 + ~60 height ≈ 150. */
-  height: calc(100vh - 150px);
+     of source resolution. Reserve trimmed since the plaque is
+     now compact: viewer padding 12+12, mat 12+12 + border,
+     plaque ~80 height ≈ 130. */
+  height: calc(100vh - 130px);
   width: auto;
   object-fit: contain;
-  /* Keeps engraving line work as crisp as the upscale allows. */
   image-rendering: -webkit-optimize-contrast;
 }
 /* Plaque — compact curatorial label directly under the engraving.
    Centered, dignified, on the dark backdrop; cream-ink so it sits
-   quietly against the charcoal field. */
+   quietly against the charcoal field. Tightened vertical rhythm
+   so the image remains dominant — the plaque is a museum label,
+   not a card. */
 .folio-leaf[data-kind="plate"] .folio-plate-plaque {
   text-align: center;
-  margin: 20px auto 0;
-  max-width: 640px;
+  margin: 12px auto 0;
+  max-width: 680px;
   font-family: Georgia, serif;
   color: rgba(245, 235, 215, 0.88);
-  /* A faint hair-rule above the plaque, mirroring the museum
-     plaque tradition of a delimited curatorial label below the
-     object. */
-  padding-top: 14px;
+  padding-top: 9px;
   position: relative;
 }
 .folio-leaf[data-kind="plate"] .folio-plate-plaque::before {
@@ -3839,7 +3819,7 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
   position: absolute;
   left: 50%;
   top: 0;
-  width: 56px;
+  width: 48px;
   height: 1px;
   background: rgba(245, 235, 215, 0.28);
   transform: translateX(-50%);
@@ -3847,23 +3827,36 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
 .folio-leaf[data-kind="plate"] .folio-plate-title {
   font-style: italic;
   font-weight: 500;
-  font-size: 1.16em;
+  font-size: 1.04em;
   letter-spacing: 0.025em;
-  line-height: 1.3;
+  line-height: 1.22;
 }
 .folio-leaf[data-kind="plate"] .folio-plate-verse {
+  display: inline;
   font-style: italic;
-  font-size: 0.84em;
-  margin-top: 6px;
+  font-size: 0.8em;
+  margin: 0;
   opacity: 0.74;
   letter-spacing: 0.04em;
 }
 .folio-leaf[data-kind="plate"] .folio-plate-prov {
+  display: inline;
   font-style: italic;
-  font-size: 0.78em;
-  margin-top: 16px;
-  opacity: 0.62;
-  letter-spacing: 0.06em;
+  font-size: 0.8em;
+  margin: 0;
+  opacity: 0.74;
+  letter-spacing: 0.04em;
+}
+/* Combine verse + provenance into a single elegant line via JS
+   concatenation; if both are rendered they sit on one line at
+   the same register beneath the title. */
+.folio-leaf[data-kind="plate"] .folio-plate-verse,
+.folio-leaf[data-kind="plate"] .folio-plate-prov {
+  margin-top: 4px;
+}
+.folio-leaf[data-kind="plate"] .folio-plate-prov::before {
+  content: ' · ';
+  opacity: 0.5;
 }
 /* In the dark chamber, the return rubric must read against the
    charcoal field rather than the paper leaf. Cream-ink, slightly
@@ -8362,10 +8355,9 @@ function _renderFolioMarker(rec, pid) {
     'aria-label',
     `${authorityLabel} ${kindLabel}: ${rec.title || 'witness'} — ${metaStr}`
   );
-  marker.setAttribute(
-    'title',
-    `[${authorityLabel}] ${rec.title || ''} — ${metaStr}`
-  );
+  // No native `title` attribute — the browser would render a
+  // duplicate native tooltip on top of the custom plaque. The
+  // aria-label above carries the same content for screen readers.
 
   // Visible plaque (CSS reveals on hover/focus).
   const plaque = document.createElement('span');
