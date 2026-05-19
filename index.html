@@ -2936,9 +2936,13 @@ body.cols-single.chapter-room.companion-mode.folio-left
 }
 
 /* Marker — a small parchment chip carrying a glyph that names
-   the witness's kind. Restrained at rest; warms on hover/focus.
-   Position: relative so the plaque (absolute child) anchors to
-   the marker rather than the folio column. */
+   the witness's kind. The CHIP itself is shared; AUTHORITY
+   class (primary / secondary / tertiary) is encoded via border
+   pattern + tint register. The reader can therefore parse two
+   independent variables — kind via glyph, authority via chip —
+   at a glance.
+
+   Default (unclassified or kind only): base register. */
 .cr-folio-marker {
   position: relative;
   flex: 0 0 auto;
@@ -2963,21 +2967,70 @@ body.cols-single.chapter-room.companion-mode.folio-left
     border-color 0.18s ease-out,
     color 0.18s ease-out;
 }
+
+/* ── Authority classes — three visual registers ────────────
+   Border style (solid / dashed / dotted) and tint warmth
+   communicate epistemic class. Solid+warm = primary witness;
+   dashed+cooler = secondary scholarship; dotted+faded = tertiary
+   archive synthesis. The kind glyph (set via ::before) is
+   orthogonal and unchanged. */
+
+/* PRIMARY — direct artifacts, manuscript texts, canonical
+   citations, direct cultural recordings. Solid warm border,
+   warm tint. The strongest visual register. */
+.cr-folio-marker[data-authority="primary"] {
+  background: rgba(160, 115, 60, 0.18);
+  border: 1px solid rgba(120, 70, 25, 0.58);
+  color: rgba(95, 45, 15, 0.92);
+}
+
+/* SECONDARY — scholarly theses, reconstructions, comparative
+   interpretation. Dashed cooler border, medium tint. */
+.cr-folio-marker[data-authority="secondary"] {
+  background: rgba(140, 115, 80, 0.10);
+  border: 1px dashed rgba(85, 65, 45, 0.55);
+  color: rgba(75, 55, 30, 0.85);
+}
+
+/* TERTIARY — archive editorial synthesis. Dotted faded border,
+   lightest tint. Most transparent register so the apparatus
+   shows its nature as orientation/explanation, not primary
+   witness. */
+.cr-folio-marker[data-authority="tertiary"] {
+  background: rgba(140, 120, 90, 0.07);
+  border: 1px dotted rgba(110, 95, 75, 0.5);
+  color: rgba(95, 75, 50, 0.78);
+}
+
 .cr-folio-marker:hover,
 .cr-folio-marker:focus-visible {
   opacity: 1;
-  background: rgba(150, 110, 60, 0.24);
-  border-color: rgba(120, 80, 35, 0.58);
-  color: rgba(95, 45, 15, 1);
+  background: rgba(150, 110, 60, 0.26);
+  color: rgba(80, 35, 10, 1);
   outline: none;
+}
+.cr-folio-marker[data-authority="primary"]:hover,
+.cr-folio-marker[data-authority="primary"]:focus-visible {
+  background: rgba(160, 115, 60, 0.32);
+  border-color: rgba(120, 70, 25, 0.82);
+}
+.cr-folio-marker[data-authority="secondary"]:hover,
+.cr-folio-marker[data-authority="secondary"]:focus-visible {
+  background: rgba(140, 115, 80, 0.20);
+  border-color: rgba(85, 65, 45, 0.78);
+}
+.cr-folio-marker[data-authority="tertiary"]:hover,
+.cr-folio-marker[data-authority="tertiary"]:focus-visible {
+  background: rgba(140, 120, 90, 0.16);
+  border-color: rgba(110, 95, 75, 0.75);
 }
 .cr-folio-marker:focus-visible {
   box-shadow: 0 0 0 2px rgba(120, 80, 35, 0.32);
 }
 .cr-folio-marker.active {
   opacity: 1;
-  background: rgba(150, 110, 60, 0.32);
-  border-color: rgba(120, 80, 35, 0.72);
+  background: rgba(150, 110, 60, 0.34);
+  border-color: rgba(120, 80, 35, 0.78);
   color: rgba(80, 35, 10, 1);
 }
 
@@ -3038,16 +3091,24 @@ body.cols-single.chapter-room.companion-mode.folio-left
   transition: opacity 0.18s ease-out, visibility 0s;
 }
 
-.cr-folio-plaque-kind {
+/* Authority rubric — leads the plaque. Small-caps italic, the
+   tint shifts by class so the eye reads the epistemic register
+   before the title. */
+.cr-folio-plaque-authority {
   display: block;
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
-  font-size: 0.62em;
+  font-size: 0.64em;
   letter-spacing: 0.22em;
-  color: rgba(120, 65, 25, 0.78);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.18);
 }
+.cr-folio-plaque-authority[data-authority="primary"]   { color: rgba(120, 70, 25, 0.92); }
+.cr-folio-plaque-authority[data-authority="secondary"] { color: rgba(85, 65, 45, 0.85); }
+.cr-folio-plaque-authority[data-authority="tertiary"]  { color: rgba(110, 95, 75, 0.82); }
+
 .cr-folio-plaque-title {
   display: block;
   font-style: italic;
@@ -3063,6 +3124,19 @@ body.cols-single.chapter-room.companion-mode.folio-left
   font-size: 0.76em;
   line-height: 1.4;
   color: rgba(120, 65, 25, 0.68);
+  letter-spacing: 0.02em;
+}
+/* Source/tradition footer — quieter than meta. The provenance
+   detail line: tradition · source · confidence. */
+.cr-folio-plaque-source {
+  display: block;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(120, 90, 50, 0.12);
+  font-style: italic;
+  font-size: 0.72em;
+  line-height: 1.4;
+  color: rgba(95, 75, 50, 0.62);
   letter-spacing: 0.02em;
 }
 
@@ -3575,6 +3649,70 @@ body.viewer-active .folio-leaf-return {
   letter-spacing: 0.01em;
 }
 body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
+
+/* ── Chamber provenance header ─────────────────────────────────
+   Sits at the top of every chamber's content. Declares the
+   object's epistemic class (PRIMARY · KIND), tradition, source
+   basis, and confidence — so the reader cannot mistake archive
+   editorial synthesis for direct textual evidence. Manuscript
+   register: small-caps italic for the authority line; italic
+   for tradition / source; faded italic for confidence. */
+.folio-leaf-provenance {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.22);
+}
+.folio-leaf-provenance .flp-authority {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.78em;
+  letter-spacing: 0.22em;
+  margin-bottom: 8px;
+}
+.folio-leaf-provenance[data-authority="primary"]   .flp-authority { color: rgba(120, 70, 25, 0.92); }
+.folio-leaf-provenance[data-authority="secondary"] .flp-authority { color: rgba(85, 65, 45, 0.85); }
+.folio-leaf-provenance[data-authority="tertiary"]  .flp-authority { color: rgba(110, 95, 75, 0.82); }
+.folio-leaf-provenance .flp-tradition {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.84em;
+  line-height: 1.42;
+  color: rgba(80, 60, 40, 0.78);
+  margin-bottom: 4px;
+}
+.folio-leaf-provenance .flp-source {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.78em;
+  line-height: 1.45;
+  color: rgba(95, 75, 50, 0.7);
+  margin-bottom: 4px;
+}
+.folio-leaf-provenance .flp-confidence {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.74em;
+  line-height: 1.4;
+  color: rgba(110, 90, 60, 0.6);
+  letter-spacing: 0.02em;
+}
+
+/* Plate chamber: authority line inside the curatorial plaque,
+   in the same cream-on-charcoal register as the rest of the
+   plaque, but with the small-caps rubric so the reader sees
+   the class before the artist line. */
+.folio-leaf[data-kind="plate"] .folio-plate-authority {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.2em;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(245, 235, 215, 0.22);
+  color: rgba(245, 235, 215, 0.72);
+}
 .folio-leaf-verse {
   font-family: Georgia, serif;
   font-style: italic;
@@ -7634,6 +7772,7 @@ function _renderFolioObjectLeaf(rec, pid) {
   const leaf = document.createElement('article');
   leaf.className = 'folio-leaf';
   leaf.dataset.kind = rec.kind || 'genealogy';
+  leaf.dataset.authority = rec.authority || 'tertiary';
   const chKey = _chapterKeyOf(pid);
 
   if (rec.kind === 'plate') {
@@ -7651,6 +7790,14 @@ function _renderFolioObjectLeaf(rec, pid) {
   // does not dismiss. Clicks outside the leaf hit #object-viewer
   // and close.
   leaf.addEventListener('click', e => e.stopPropagation());
+
+  // ── Provenance header — declares the object's epistemic class
+  // before its content. The reader sees AUTHORITY · KIND first,
+  // then the source basis and confidence statement, then a
+  // hairline rule, then the actual content. The archive must
+  // never present interpretive scholarship as direct textual
+  // fact; this header is the structural commitment to that. */
+  leaf.appendChild(_renderProvenanceHeader(rec));
 
   // Text witnesses (genealogy, future commentary/notes): paper leaf
   // with verse, title, body, and a closing chapter rubric.
@@ -7684,6 +7831,49 @@ function _renderFolioObjectLeaf(rec, pid) {
   colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
   leaf.appendChild(colophon);
   return leaf;
+}
+
+// Provenance header — the small museum-plaque-style rubric that
+// declares an object's epistemic class before its content. Used
+// in both the text-witness leaf and (via insertion in _renderPlate)
+// the plate chamber.
+//
+//   AUTHORITY · KIND
+//   tradition
+//   source basis
+//   confidence statement
+//
+// Each line is small-caps italic / italic, in the manuscript
+// register — never a UI badge.
+function _renderProvenanceHeader(rec) {
+  const header = document.createElement('div');
+  header.className = 'folio-leaf-provenance';
+  header.dataset.authority = rec.authority || 'tertiary';
+
+  const auth = document.createElement('div');
+  auth.className = 'flp-authority';
+  auth.textContent = `${rec.authority || 'tertiary'} · ${rec.kind || 'witness'}`;
+  header.appendChild(auth);
+
+  if (rec.tradition) {
+    const tr = document.createElement('div');
+    tr.className = 'flp-tradition';
+    tr.textContent = rec.tradition;
+    header.appendChild(tr);
+  }
+  if (rec.source_basis) {
+    const sb = document.createElement('div');
+    sb.className = 'flp-source';
+    sb.textContent = rec.source_basis;
+    header.appendChild(sb);
+  }
+  if (rec.confidence) {
+    const cf = document.createElement('div');
+    cf.className = 'flp-confidence';
+    cf.textContent = rec.confidence;
+    header.appendChild(cf);
+  }
+  return header;
 }
 
 // Transform tree-character body text into wrap-friendly indented
@@ -7778,6 +7968,15 @@ function _renderPlate(rec, pid, chKey) {
       prov.textContent = parts.join(' · ');
       plaque.appendChild(prov);
     }
+  }
+  // Authority class line — primary/secondary/tertiary, in the
+  // same museum-plaque register as the rest of the plaque.
+  if (rec.authority) {
+    const auth = document.createElement('div');
+    auth.className = 'folio-plate-authority';
+    auth.dataset.authority = rec.authority;
+    auth.textContent = `${rec.authority} · ${rec.confidence || rec.kind}`;
+    plaque.appendChild(auth);
   }
   wrap.appendChild(plaque);
   return wrap;
@@ -8138,36 +8337,48 @@ function _renderFolioMarker(rec, pid) {
   marker.className = 'cr-folio-marker';
   marker.dataset.kind = rec.kind || 'witness';
   marker.dataset.recordId = rec.id;
+  // Authority class drives the marker's visual register
+  // (primary / secondary / tertiary). Defaults to tertiary if
+  // the record lacks classification, since unclassified content
+  // is necessarily archive-synthesis until verified otherwise.
+  marker.dataset.authority = rec.authority || 'tertiary';
   if (rec.id === _openFolioRecordId) marker.classList.add('active');
 
-  // Plaque content — title, kind, verse, optional plate
-  // provenance. Composed as a single string for aria-label
-  // (screen reader) and also rendered into a visible plaque
-  // child element revealed on :hover / :focus-visible.
+  // Plaque content — authority class header above title, then
+  // kind, verse, optional source provenance. Composed as a
+  // single string for aria-label and rendered into a visible
+  // plaque child element revealed on :hover / :focus-visible.
   const verseLabel = _formatVerseRef(pid).replace(/^for\s+/i, '');
-  const metaParts = [];
-  metaParts.push(verseLabel);
+  const kindLabel = rec.kind || 'witness';
+  const authorityLabel = rec.authority || 'tertiary';
+
+  // Compact metadata line for the plaque
+  const metaParts = [verseLabel];
   if (rec.plate && rec.plate.artist) metaParts.push(rec.plate.artist);
   if (rec.plate && rec.plate.year) metaParts.push(rec.plate.year);
   const metaStr = metaParts.filter(Boolean).join(' · ');
-  const kindLabel = rec.kind || 'witness';
 
   marker.setAttribute(
     'aria-label',
-    `${kindLabel}: ${rec.title || 'witness'} — ${metaStr}`
+    `${authorityLabel} ${kindLabel}: ${rec.title || 'witness'} — ${metaStr}`
   );
-  marker.setAttribute('title', `${rec.title || ''} — ${metaStr}`);
+  marker.setAttribute(
+    'title',
+    `[${authorityLabel}] ${rec.title || ''} — ${metaStr}`
+  );
 
-  // Visible plaque (CSS reveals on hover/focus). Built as DOM
-  // so the typographic hierarchy is intact and selectable.
+  // Visible plaque (CSS reveals on hover/focus).
   const plaque = document.createElement('span');
   plaque.className = 'cr-folio-plaque';
   plaque.setAttribute('aria-hidden', 'true');
 
-  const k = document.createElement('span');
-  k.className = 'cr-folio-plaque-kind';
-  k.textContent = kindLabel;
-  plaque.appendChild(k);
+  // Authority rubric — small-caps italic, identifies the
+  // epistemic class up front.
+  const a = document.createElement('span');
+  a.className = 'cr-folio-plaque-authority';
+  a.dataset.authority = authorityLabel;
+  a.textContent = `${authorityLabel} · ${kindLabel}`;
+  plaque.appendChild(a);
 
   const t = document.createElement('span');
   t.className = 'cr-folio-plaque-title';
@@ -8179,6 +8390,14 @@ function _renderFolioMarker(rec, pid) {
     m.className = 'cr-folio-plaque-meta';
     m.textContent = metaStr;
     plaque.appendChild(m);
+  }
+  // Tradition / source / confidence as a quieter footer line
+  if (rec.tradition || rec.source_basis || rec.confidence) {
+    const f = document.createElement('span');
+    f.className = 'cr-folio-plaque-source';
+    f.textContent = [rec.tradition, rec.source_basis, rec.confidence]
+      .filter(Boolean).join(' · ');
+    plaque.appendChild(f);
   }
 
   marker.appendChild(plaque);
