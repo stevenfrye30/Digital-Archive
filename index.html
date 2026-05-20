@@ -3126,6 +3126,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="cross-reference"]::before { content: '§'; }
 .cr-folio-marker[data-kind="translation-tradition"]::before { content: '‡'; }
 .cr-folio-marker[data-kind="symbolic-motif"]::before { content: '△'; }
+.cr-folio-marker[data-kind="covenant-formula"]::before { content: '⊟'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -5128,6 +5129,169 @@ body.viewer-active .folio-leaf.mountain-chamber .mc-layer[data-summit="true"] .m
   font-size: 1.06em;
 }
 body.viewer-active .folio-leaf.mountain-chamber .mc-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 006 — Covenant Chamber ───────────────────────────────
+   Declarative, clause-based, recursive. The chamber's heart is
+   a vertical column of bipartite covenant pivots — each one a
+   centered God-side / pivot / People-side / full-quote block.
+   The seventh occurrence (the apocalyptic consummation) is
+   visibly set apart by a warm parchment background. A witness/
+   seal column beneath gathers the formal clauses that surround
+   the covenant in scripture. */
+.folio-leaf.covenant-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.covenant-chamber .vc-lede {
+  margin: 6px 0 22px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+}
+.folio-leaf.covenant-chamber .vc-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.94em;
+}
+
+/* Bipartite formula occurrences */
+.folio-leaf.covenant-chamber .vc-formula {
+  margin: 14px 0 4px;
+}
+.folio-leaf.covenant-chamber .vc-occurrence {
+  padding: 22px 18px 22px 18px;
+  border-top: 1px solid rgba(120, 90, 50, 0.22);
+}
+.folio-leaf.covenant-chamber .vc-occurrence:last-child {
+  border-bottom: 1px solid rgba(120, 90, 50, 0.22);
+}
+.folio-leaf.covenant-chamber .vc-occurrence-head {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  color: rgba(110, 65, 25, 0.72);
+  margin-bottom: 16px;
+}
+.folio-leaf.covenant-chamber .vc-occurrence-numeral {
+  font-weight: 500;
+}
+.folio-leaf.covenant-chamber .vc-occurrence-sep {
+  color: rgba(110, 95, 75, 0.4);
+  letter-spacing: 0;
+}
+.folio-leaf.covenant-chamber .vc-occurrence-era {
+  color: rgba(110, 65, 25, 0.86);
+}
+.folio-leaf.covenant-chamber .vc-occurrence-ref {
+  color: rgba(120, 65, 25, 0.6);
+}
+
+/* The bipartite pivot — declaration · pivot · response. Both
+   sides centered italic; the central pivot is a small "·" on a
+   hairline. The two voices speak across the pivot. */
+.folio-leaf.covenant-chamber .vc-bipartite {
+  text-align: center;
+  margin: 0 auto 14px;
+  max-width: 560px;
+}
+.folio-leaf.covenant-chamber .vc-god-side,
+.folio-leaf.covenant-chamber .vc-people-side {
+  font-style: italic;
+  font-size: 1.04em;
+  line-height: 1.5;
+  color: rgba(45, 28, 8, 0.94);
+  letter-spacing: 0.01em;
+  padding: 0 12px;
+}
+.folio-leaf.covenant-chamber .vc-pivot {
+  margin: 6px auto;
+  width: 32px;
+  height: 16px;
+  position: relative;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(120, 65, 25, 0.7);
+  letter-spacing: 0;
+}
+.folio-leaf.covenant-chamber .vc-pivot::before,
+.folio-leaf.covenant-chamber .vc-pivot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 70px;
+  height: 1px;
+  background: rgba(120, 90, 50, 0.32);
+}
+.folio-leaf.covenant-chamber .vc-pivot::before { right: 100%; margin-right: 4px; }
+.folio-leaf.covenant-chamber .vc-pivot::after  { left: 100%;  margin-left: 4px; }
+
+.folio-leaf.covenant-chamber .vc-occurrence-quote {
+  margin: 8px auto 0;
+  padding: 10px 16px 0;
+  max-width: 640px;
+  border-top: 1px dotted rgba(120, 90, 50, 0.22);
+  font-style: italic;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: rgba(75, 58, 32, 0.84);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* The consummation — the seventh and last occurrence. The
+   chamber's culminating air. Warm parchment gradient, hairline
+   borders. Restrained: only this row is so marked. */
+.folio-leaf.covenant-chamber .vc-occurrence[data-consummation="true"] {
+  background: linear-gradient(180deg,
+    rgba(252, 244, 220, 0.55),
+    rgba(248, 240, 215, 0.32));
+  border-top: 1px solid rgba(150, 110, 45, 0.32);
+  border-bottom: 1px solid rgba(150, 110, 45, 0.32);
+}
+.folio-leaf.covenant-chamber .vc-occurrence[data-consummation="true"] .vc-god-side,
+.folio-leaf.covenant-chamber .vc-occurrence[data-consummation="true"] .vc-people-side {
+  color: rgba(35, 22, 4, 0.96);
+}
+
+/* Witness clauses — short italic phrases stacked vertically.
+   Each carries a small italic small-caps reference beneath. */
+.folio-leaf.covenant-chamber .vc-witnesses {
+  margin: 6px 0;
+}
+.folio-leaf.covenant-chamber .vc-witness {
+  margin: 18px 0;
+  padding: 0 0 0 18px;
+  border-left: 1px solid rgba(120, 90, 50, 0.28);
+}
+.folio-leaf.covenant-chamber .vc-witness-quote {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+  font-size: 0.96em;
+  line-height: 1.65;
+  color: rgba(50, 35, 18, 0.92);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.covenant-chamber .vc-witness-ref {
+  margin-top: 4px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.62);
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.covenant-chamber .vc-god-side,
+body.viewer-active .folio-leaf.covenant-chamber .vc-people-side {
+  font-size: 1.08em;
+}
+body.viewer-active .folio-leaf.covenant-chamber .vc-section-heading {
   margin-top: 42px;
 }
 
@@ -9273,6 +9437,20 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderSacredMountainChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 006  covenant-formula         gen17-covenant-formula
+  //             bipartite recurrence column — each occurrence of
+  //             the "I will be your God; you shall be my people"
+  //             formula rendered as a centered pivot
+  //             (declaration · response · full quote), repeating
+  //             across Abrahamic / Mosaic / Priestly / Prophetic /
+  //             Apocalyptic anchorings.
+  if (rec.id === 'gen17-covenant-formula') {
+    leaf.classList.add('covenant-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderCovenantChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -10794,6 +10972,198 @@ function _renderMCFragments(fragments) {
       ref.className = 'mc-fragment-ref';
       ref.textContent = f.ref;
       item.appendChild(ref);
+    }
+    wrap.appendChild(item);
+  }
+  return wrap;
+}
+
+
+// ── AO · 006 — The Covenant Formula ─────────────────────────────
+// A covenantal / legal Atlas Object. The chamber's form is the
+// form of the covenant: a reciprocal call-and-response that
+// recurs across the canon. Seven occurrences of the same formula
+// rendered as bipartite pivots; five witness clauses surrounding
+// them; the seventh occurrence — the apocalyptic consummation —
+// visibly set apart.
+//
+//   §i  Covenant Formula — bipartite recurrence column. Each row:
+//       era label + reference (small italic small-caps); centered
+//       God-side declaration; centered hairline pivot; centered
+//       People-side response; below, the full quote in italic.
+//
+//   §ii Witness and Seal — five short formal clauses sealing the
+//       covenant before heaven, earth, the people, the tables.
+//
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary — what is binding is not a law but a
+//       relationship under the form of law.
+
+function _renderCovenantChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — shared
+  // pipeline with the prior five chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'vc-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Bipartite recurrence column.
+  if (Array.isArray(rec.formula_occurrences) && rec.formula_occurrences.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Covenant Formula',
+      'The reciprocal sentence, recurring'));
+    leaf.appendChild(_renderVCFormula(rec.formula_occurrences));
+  }
+
+  // §ii — Witness and Seal.
+  if (Array.isArray(rec.witness_clauses) && rec.witness_clauses.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Witness and Seal',
+      'Sealed before heaven, earth, and the people'));
+    leaf.appendChild(_renderVCWitnesses(rec.witness_clauses));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where the covenant is also declared'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// Bipartite formula recurrence column. Each occurrence is a
+// vertically centered "pivot": era + reference above, declaration
+// (the LORD's side) centered, a hairline pivot mark, response
+// (the people's side) centered, then the full quote in italic
+// below. The seventh occurrence — the apocalyptic consummation —
+// carries a warm parchment background so the chamber's
+// culminating air is visible without overdrama.
+function _renderVCFormula(occurrences) {
+  const wrap = document.createElement('div');
+  wrap.className = 'vc-formula';
+  for (const o of occurrences) {
+    const row = document.createElement('article');
+    row.className = 'vc-occurrence';
+    if (o.consummation) row.dataset.consummation = 'true';
+
+    const head = document.createElement('div');
+    head.className = 'vc-occurrence-head';
+    const num = document.createElement('span');
+    num.className = 'vc-occurrence-numeral';
+    num.textContent = o.numeral || '';
+    head.appendChild(num);
+    if (o.era) {
+      const sep = document.createElement('span');
+      sep.className = 'vc-occurrence-sep';
+      sep.textContent = ' · ';
+      sep.setAttribute('aria-hidden', 'true');
+      head.appendChild(sep);
+      const era = document.createElement('span');
+      era.className = 'vc-occurrence-era';
+      era.textContent = o.era;
+      head.appendChild(era);
+    }
+    if (o.ref) {
+      const sep2 = document.createElement('span');
+      sep2.className = 'vc-occurrence-sep';
+      sep2.textContent = ' · ';
+      sep2.setAttribute('aria-hidden', 'true');
+      head.appendChild(sep2);
+      const ref = document.createElement('span');
+      ref.className = 'vc-occurrence-ref';
+      ref.textContent = o.ref;
+      head.appendChild(ref);
+    }
+    row.appendChild(head);
+
+    // The bipartite pivot — declaration · centred pivot · response.
+    // Both sides centered italic; the pivot itself a small "·"
+    // glyph on a hairline.
+    const bipartite = document.createElement('div');
+    bipartite.className = 'vc-bipartite';
+    if (o.god_side) {
+      const gs = document.createElement('div');
+      gs.className = 'vc-god-side';
+      gs.textContent = o.god_side;
+      bipartite.appendChild(gs);
+    }
+    const pivot = document.createElement('div');
+    pivot.className = 'vc-pivot';
+    pivot.setAttribute('aria-hidden', 'true');
+    pivot.textContent = '·';
+    bipartite.appendChild(pivot);
+    if (o.people_side) {
+      const ps = document.createElement('div');
+      ps.className = 'vc-people-side';
+      ps.textContent = o.people_side;
+      bipartite.appendChild(ps);
+    }
+    row.appendChild(bipartite);
+
+    if (o.full_quote) {
+      const q = document.createElement('blockquote');
+      q.className = 'vc-occurrence-quote';
+      q.textContent = o.full_quote;
+      row.appendChild(q);
+    }
+    wrap.appendChild(row);
+  }
+  return wrap;
+}
+
+// Witness clauses — short formal phrases that surround the
+// covenant in scripture. Vertical stack, each phrase italic;
+// reference small-caps italic beneath. The form is the seal.
+function _renderVCWitnesses(clauses) {
+  const wrap = document.createElement('div');
+  wrap.className = 'vc-witnesses';
+  for (const c of clauses) {
+    const item = document.createElement('article');
+    item.className = 'vc-witness';
+    const q = document.createElement('blockquote');
+    q.className = 'vc-witness-quote';
+    q.textContent = c.text || '';
+    item.appendChild(q);
+    if (c.ref) {
+      const r = document.createElement('div');
+      r.className = 'vc-witness-ref';
+      r.textContent = c.ref;
+      item.appendChild(r);
     }
     wrap.appendChild(item);
   }
