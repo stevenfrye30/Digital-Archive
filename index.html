@@ -3129,6 +3129,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="covenant-formula"]::before { content: '⊟'; }
 .cr-folio-marker[data-kind="wisdom-saying"]::before { content: '⁕'; }
 .cr-folio-marker[data-kind="revelatory-vision"]::before { content: '◎'; }
+.cr-folio-marker[data-kind="lament-structure"]::before { content: '▾'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -5618,6 +5619,193 @@ body.viewer-active .folio-leaf.revelation-chamber .rc-vision[data-consummation="
   font-size: 1.12em;
 }
 body.viewer-active .folio-leaf.revelation-chamber .rc-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 009 — Lament Chamber ─────────────────────────────────
+   Suspended, wounded, repetitive. Six lament cries held in a
+   single vertical column by a broken-but-unsevered dotted axis
+   of address. The Lamentations cry is rendered as three Hebrew-
+   letter triplets (א ב ג) — the alphabet structure holding the
+   grief. Psalm 88 carries an italic marginal note acknowledging
+   that this cry does not turn. No melodrama, no theatrics: the
+   text is allowed to mean what it says. */
+.folio-leaf.lament-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.lament-chamber .lm-lede {
+  margin: 6px 0 22px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+}
+.folio-leaf.lament-chamber .lm-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.94em;
+}
+
+/* The axis of address — a dotted vertical hairline running the
+   full height of the cries column. Drawn by the wrapper's
+   ::before. Broken (dotted, not solid) — the form holds, but
+   not without rupture. */
+.folio-leaf.lament-chamber .lm-axis {
+  position: relative;
+  margin: 16px 0 4px;
+  padding-left: 38px;
+}
+.folio-leaf.lament-chamber .lm-axis::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 14px;
+  width: 0;
+  border-left: 1.5px dotted rgba(80, 60, 40, 0.5);
+}
+
+/* Each lament cry — a panel hung off the axis. */
+.folio-leaf.lament-chamber .lm-cry {
+  position: relative;
+  padding: 16px 14px 16px 0;
+  margin: 6px 0;
+}
+.folio-leaf.lament-chamber .lm-cry-head {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.18em;
+  color: rgba(95, 70, 45, 0.78);
+  margin-bottom: 10px;
+}
+.folio-leaf.lament-chamber .lm-cry-numeral {
+  font-weight: 500;
+  color: rgba(80, 55, 28, 0.85);
+}
+.folio-leaf.lament-chamber .lm-cry-sep {
+  color: rgba(110, 95, 75, 0.4);
+  letter-spacing: 0;
+}
+.folio-leaf.lament-chamber .lm-cry-ref {
+  color: rgba(95, 60, 30, 0.78);
+}
+.folio-leaf.lament-chamber .lm-cry-tradition {
+  color: rgba(95, 75, 50, 0.72);
+}
+
+/* The cry text — italic Georgia at full intensity. The cry is
+   the loud part of the chamber; the surrounding tissue is
+   muted. Slight indentation off the axis with a hairline
+   left margin to honour the axis. */
+.folio-leaf.lament-chamber .lm-cry-text {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+  font-size: 1em;
+  line-height: 1.7;
+  color: rgba(40, 26, 8, 0.94);
+  letter-spacing: 0.01em;
+}
+
+/* The Lamentations acrostic — three triads of three lines, each
+   triad headed by its Hebrew letter. The form's argument with
+   itself: the alphabet carries the grief. */
+.folio-leaf.lament-chamber .lm-acrostic {
+  margin: 4px 0;
+}
+.folio-leaf.lament-chamber .lm-acrostic-triad {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 12px 18px;
+  margin: 10px 0;
+}
+.folio-leaf.lament-chamber .lm-acrostic-letter {
+  text-align: center;
+  padding-top: 2px;
+}
+.folio-leaf.lament-chamber .lm-acrostic-letter-he {
+  display: block;
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.5em;
+  line-height: 1.2;
+  color: rgba(40, 24, 8, 0.94);
+}
+.folio-leaf.lament-chamber .lm-acrostic-letter-translit {
+  display: block;
+  margin-top: 2px;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.66em;
+  letter-spacing: 0.16em;
+  color: rgba(110, 90, 60, 0.7);
+}
+.folio-leaf.lament-chamber .lm-acrostic-lines {
+  font-style: italic;
+}
+.folio-leaf.lament-chamber .lm-acrostic-line {
+  margin: 4px 0;
+  font-size: 0.94em;
+  line-height: 1.6;
+  color: rgba(45, 30, 12, 0.92);
+  letter-spacing: 0.01em;
+}
+
+/* Margin note — a small italic line set off from the cry,
+   acknowledging the structural fact (acrostic / unresolved)
+   without commentary. */
+.folio-leaf.lament-chamber .lm-cry-margin-note {
+  margin: 12px 0 0;
+  padding: 8px 0 0;
+  border-top: 1px dotted rgba(120, 90, 50, 0.22);
+  font-style: italic;
+  font-size: 0.8em;
+  line-height: 1.55;
+  color: rgba(110, 85, 55, 0.7);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.lament-chamber .lm-cry-unresolved {
+  color: rgba(95, 65, 40, 0.74);
+}
+
+/* Echo refrains — phrases that return. Each italic, hairline
+   dotted left rule echoing the axis above. Vertical stack;
+   the form is recurrence. */
+.folio-leaf.lament-chamber .lm-refrains {
+  margin: 6px 0;
+}
+.folio-leaf.lament-chamber .lm-refrain {
+  margin: 16px 0;
+  padding: 0 0 0 18px;
+  border-left: 1.5px dotted rgba(95, 65, 40, 0.45);
+}
+.folio-leaf.lament-chamber .lm-refrain-text {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+  font-size: 0.98em;
+  line-height: 1.65;
+  color: rgba(50, 35, 18, 0.92);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.lament-chamber .lm-refrain-ref {
+  margin-top: 4px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.6);
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.lament-chamber .lm-cry-text {
+  font-size: 1.04em;
+}
+body.viewer-active .folio-leaf.lament-chamber .lm-acrostic-line {
+  font-size: 0.98em;
+}
+body.viewer-active .folio-leaf.lament-chamber .lm-section-heading {
   margin-top: 42px;
 }
 
@@ -9805,6 +9993,20 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderRevelationChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 009  lament-structure         psa13-lament-cry
+  //             vertical column of cries held by a broken-but-
+  //             unsevered axis of address (dotted hairline rule);
+  //             the Lamentations cry rendered with its acrostic
+  //             triplets (א ב ג) so the alphabet structure
+  //             carries the grief; Psalm 88 explicitly marked as
+  //             the cry that does not turn.
+  if (rec.id === 'psa13-lament-cry') {
+    leaf.classList.add('lament-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderLamentChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -11897,6 +12099,228 @@ function _renderRCFragments(fragments) {
       const ref = document.createElement('div');
       ref.className = 'rc-fragment-ref';
       ref.textContent = f.ref;
+      item.appendChild(ref);
+    }
+    wrap.appendChild(item);
+  }
+  return wrap;
+}
+
+
+// ── AO · 009 — How Long, O LORD? (Lament Before Heaven) ───────
+// A lament / suffering Atlas Object. The chamber's form is the
+// form of lament itself: a column of cries held together by a
+// broken-but-unsevered vertical axis of address. The Lamentations
+// acrostic is rendered as Hebrew-letter triplets so the
+// alphabet's structural endurance carries the grief that would
+// dissolve it. Psalm 88 is marked as the cry that does not turn.
+//
+//   §i  Cries — six lament utterances, each a panel held to the
+//       axis of address.
+//
+//   §ii Echo Refrains — six short phrases that return across
+//       the canon's lament register.
+//
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary — lament is what fidelity sounds
+//       like under pressure.
+
+function _renderLamentChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — shared
+  // pipeline with the prior eight chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'lm-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Cries (the heart).
+  if (Array.isArray(rec.lament_cries) && rec.lament_cries.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Cries',
+      'Six addresses under rupture — the form holds'));
+    leaf.appendChild(_renderLMCries(rec.lament_cries));
+  }
+
+  // §ii — Echo Refrains.
+  if (Array.isArray(rec.echo_refrains) && rec.echo_refrains.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Echo Refrains',
+      'Phrases returning because resolution has not yet come'));
+    leaf.appendChild(_renderLMRefrains(rec.echo_refrains));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where the cry has also been raised'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// The cries column. A dotted hairline vertical rule (drawn by
+// the wrapper's ::before) runs the full height — the broken-
+// but-unsevered axis of address. Each cry is a panel hung off
+// this rule. Lamentations 3 is special: its content is rendered
+// as three Hebrew-letter triplets (א ב ג) showing the acrostic
+// structure that holds the grief through the alphabet. Psalm 88
+// receives a small italic marginal note acknowledging that this
+// cry does not turn.
+function _renderLMCries(cries) {
+  const wrap = document.createElement('div');
+  wrap.className = 'lm-axis';
+  for (const c of cries) {
+    wrap.appendChild(_renderLMCry(c));
+  }
+  return wrap;
+}
+
+function _renderLMCry(c) {
+  const cry = document.createElement('article');
+  cry.className = 'lm-cry';
+  if (c.acrostic) cry.dataset.acrostic = 'true';
+  if (c.unresolved_note) cry.dataset.unresolved = 'true';
+
+  const head = document.createElement('div');
+  head.className = 'lm-cry-head';
+  const num = document.createElement('span');
+  num.className = 'lm-cry-numeral';
+  num.textContent = c.numeral || '';
+  head.appendChild(num);
+  if (c.ref) {
+    const sep = document.createElement('span');
+    sep.className = 'lm-cry-sep';
+    sep.textContent = ' · ';
+    sep.setAttribute('aria-hidden', 'true');
+    head.appendChild(sep);
+    const ref = document.createElement('span');
+    ref.className = 'lm-cry-ref';
+    ref.textContent = c.ref;
+    head.appendChild(ref);
+  }
+  if (c.tradition) {
+    const sep2 = document.createElement('span');
+    sep2.className = 'lm-cry-sep';
+    sep2.textContent = ' · ';
+    sep2.setAttribute('aria-hidden', 'true');
+    head.appendChild(sep2);
+    const trad = document.createElement('span');
+    trad.className = 'lm-cry-tradition';
+    trad.textContent = c.tradition;
+    head.appendChild(trad);
+  }
+  cry.appendChild(head);
+
+  if (Array.isArray(c.acrostic) && c.acrostic.length) {
+    // The Lamentations acrostic — three triads, each a Hebrew
+    // letter introducing three lines. The structure IS the
+    // endurance.
+    const ac = document.createElement('div');
+    ac.className = 'lm-acrostic';
+    for (const triad of c.acrostic) {
+      const row = document.createElement('div');
+      row.className = 'lm-acrostic-triad';
+      const letter = document.createElement('div');
+      letter.className = 'lm-acrostic-letter';
+      const heb = document.createElement('span');
+      heb.className = 'lm-acrostic-letter-he';
+      heb.lang = 'he';
+      heb.dir = 'rtl';
+      heb.textContent = triad.letter_he || '';
+      letter.appendChild(heb);
+      if (triad.letter_translit) {
+        const tr = document.createElement('span');
+        tr.className = 'lm-acrostic-letter-translit';
+        tr.textContent = triad.letter_translit;
+        letter.appendChild(tr);
+      }
+      row.appendChild(letter);
+      const lines = document.createElement('div');
+      lines.className = 'lm-acrostic-lines';
+      for (const line of (triad.lines || [])) {
+        const ln = document.createElement('div');
+        ln.className = 'lm-acrostic-line';
+        ln.textContent = line;
+        lines.appendChild(ln);
+      }
+      row.appendChild(lines);
+      ac.appendChild(row);
+    }
+    cry.appendChild(ac);
+    if (c.acrostic_note) {
+      const an = document.createElement('div');
+      an.className = 'lm-cry-margin-note';
+      an.textContent = c.acrostic_note;
+      cry.appendChild(an);
+    }
+  } else if (c.text) {
+    const body = document.createElement('blockquote');
+    body.className = 'lm-cry-text';
+    body.textContent = c.text;
+    cry.appendChild(body);
+  }
+
+  if (c.unresolved_note) {
+    const un = document.createElement('div');
+    un.className = 'lm-cry-margin-note lm-cry-unresolved';
+    un.textContent = c.unresolved_note;
+    cry.appendChild(un);
+  }
+  return cry;
+}
+
+// Echo refrains — short phrases that return across the canon's
+// lament register. Hairline dotted left rule echoing the axis
+// of address above. Each refrain is its own line; the form is
+// recurrence.
+function _renderLMRefrains(refrains) {
+  const wrap = document.createElement('div');
+  wrap.className = 'lm-refrains';
+  for (const r of refrains) {
+    const item = document.createElement('article');
+    item.className = 'lm-refrain';
+    const q = document.createElement('blockquote');
+    q.className = 'lm-refrain-text';
+    q.textContent = r.text || '';
+    item.appendChild(q);
+    if (r.ref) {
+      const ref = document.createElement('div');
+      ref.className = 'lm-refrain-ref';
+      ref.textContent = r.ref;
       item.appendChild(ref);
     }
     wrap.appendChild(item);
