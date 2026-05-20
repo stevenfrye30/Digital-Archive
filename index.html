@@ -3713,19 +3713,27 @@ body.chapter-room.companion-mode.folio-left .chapter-spread .folio-column {
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(120, 90, 50, 0.28);
   position: relative;
+  text-align: center;
+  /* Compensate the trailing tracking so the optical centre
+     matches the divider rule beneath. */
+  padding-left: 0.24em;
 }
+/* Short manuscript rule beneath the header label, centred. */
 .cr-folio-header::before {
   content: '';
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: -3px;
   width: 32px;
   height: 1px;
   background: rgba(120, 65, 25, 0.55);
 }
 body.chapter-room.companion-mode.folio-left .cr-folio-header::before {
-  left: auto;
-  right: 0;
+  /* Centred in both rail positions — no longer anchored to an edge. */
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
 }
 /* Each witness entry is a small archival plaque — thumbnail
    (if present) + title + metadata. Separated by hairlines so
@@ -3868,6 +3876,18 @@ body.chapter-room .cr-margin-witness[data-kind="genealogy"] .cr-mw-title::before
   font-style: italic;
   color: var(--chrome-muted);
   max-width: 880px;
+}
+/* Top variant — same typographic feel, lighter spacing so the
+   chapter-plate immediately below remains the eye's first
+   landing. The rule now sits beneath the traverse, between
+   it and the chapter-plate, so the manuscript order reads:
+   traverse → rule → plate → first verse. */
+.chapter-traverse.chapter-traverse-top {
+  margin: 20px auto 0;
+  padding-top: 0;
+  padding-bottom: 20px;
+  border-top: none;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.14);
 }
 .ch-traverse {
   background: transparent;
@@ -9792,18 +9812,25 @@ function render(passages, query) {
   }
 }
 
-// Quiet bottom-of-chapter prev/next. Restrained typographic
-// rubric: small italic "Previous: Genesis Ch N" on the left and
-// "Next: Genesis Ch M" on the right, separated by a thin rule.
-// Not a pagination control; reads as a manuscript threshold.
-function _appendChapterTraverse() {
+// Quiet chapter-to-chapter prev/next traverse. Restrained
+// typographic rubric: small italic "Previous: Genesis Ch N" on
+// the left and "Next: Genesis Ch M" on the right, separated by
+// a thin rule. Not a pagination control; reads as a manuscript
+// threshold. Used at the bottom of the chapter body (the
+// turning-the-page moment) AND at the top above the chapter
+// plate (so the reader can move chapter-to-chapter without
+// scrolling). Both positions share this builder so they remain
+// visually and behaviourally identical.
+function _buildChapterTraverse(position) {
   const idx = groupKeys.indexOf(currentBook);
-  if (idx < 0) return;
+  if (idx < 0) return null;
   const prevKey = idx > 0 ? groupKeys[idx - 1] : null;
   const nextKey = idx < groupKeys.length - 1 ? groupKeys[idx + 1] : null;
-  if (!prevKey && !nextKey) return;
+  if (!prevKey && !nextKey) return null;
   const wrap = document.createElement('nav');
   wrap.className = 'chapter-traverse';
+  if (position === 'top') wrap.classList.add('chapter-traverse-top');
+  wrap.dataset.position = position || 'bottom';
   const labelFor = (k) => {
     const [bk, ch] = String(k).split('.');
     return `${BOOK_NAMES[bk] || bk} Ch ${ch}`;
@@ -9813,7 +9840,8 @@ function _appendChapterTraverse() {
     a.type = 'button';
     a.className = 'ch-traverse ch-prev';
     a.innerHTML = `<span class="ch-traverse-mark">←</span><span class="ch-traverse-direction">Previous</span><span class="ch-traverse-target">${escapeHTML(labelFor(prevKey))}</span>`;
-    a.addEventListener('click', () => navTo(idx - 1));
+    const prevIdx = idx - 1;
+    a.addEventListener('click', () => navTo(prevIdx));
     wrap.appendChild(a);
   } else {
     const filler = document.createElement('span');
@@ -9825,14 +9853,45 @@ function _appendChapterTraverse() {
     a.type = 'button';
     a.className = 'ch-traverse ch-next';
     a.innerHTML = `<span class="ch-traverse-direction">Next</span><span class="ch-traverse-target">${escapeHTML(labelFor(nextKey))}</span><span class="ch-traverse-mark">→</span>`;
-    a.addEventListener('click', () => navTo(idx + 1));
+    const nextIdx = idx + 1;
+    a.addEventListener('click', () => navTo(nextIdx));
     wrap.appendChild(a);
   } else {
     const filler = document.createElement('span');
     filler.className = 'ch-traverse-filler';
     wrap.appendChild(filler);
   }
-  $passages.appendChild(wrap);
+  return wrap;
+}
+
+function _appendChapterTraverse() {
+  const wrap = _buildChapterTraverse('bottom');
+  if (wrap) $passages.appendChild(wrap);
+}
+
+// Top chapter-traverse sits above the chapter-plate so the
+// reader can move forward or back without scrolling to the
+// bottom of the chapter. Same builder as the bottom rubric,
+// just a different placement and one CSS modifier.
+function _installChapterTraverseTop() {
+  // Only the chapter-scoped hierarchy in chapter-room mode gets
+  // a top traverse — front matter and flat texts don't need it.
+  if (!_isChapterScopedHierarchy()) return;
+  if (!document.body.classList.contains('chapter-room')) return;
+  const scrCol = $passages.querySelector('.scripture-column');
+  const target = scrCol || $passages;
+  const existing = target.querySelector('.chapter-traverse-top');
+  if (existing) existing.remove();
+  const wrap = _buildChapterTraverse('top');
+  if (!wrap) return;
+  // Place ABOVE the chapter-heading so the manuscript order is
+  //   top traverse → chapter plate → first verse.
+  const heading = target.querySelector('.chapter-heading');
+  if (heading) {
+    target.insertBefore(wrap, heading);
+  } else {
+    target.prepend(wrap);
+  }
 }
 
 function _addLoadMoreBtn() {
@@ -10131,6 +10190,7 @@ function navTo(idx) {
   _stampCanonGenre();
 
   _installChapterHeading();
+  _installChapterTraverseTop();
 
   $reader.scrollTop = 0;
 }
@@ -10227,6 +10287,7 @@ $bookSelect.addEventListener('change', () => {
   _maybeRetuneFolioToCurrentBook();
   _stampCanonGenre();
   _installChapterHeading();
+  _installChapterTraverseTop();
   $reader.scrollTop = 0;
 });
 
@@ -10713,6 +10774,10 @@ function enterReading(targetGroupKey) {
   // navTo and the dropdown handler, so all navigation paths
   // produce the same manuscript chapter-plate.
   _installChapterHeading();
+  // Top chapter-traverse — same prev/next rubric as the bottom,
+  // installed above the chapter-plate so the reader can move
+  // chapter-to-chapter without scrolling to the bottom.
+  _installChapterTraverseTop();
 
   $searchGroup.style.display = 'flex';
   document.getElementById('ctrl-contents').style.display = '';
