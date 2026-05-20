@@ -10042,6 +10042,76 @@ function _updateMobileNavSubtitle(position) {
                   : '';
 }
 
+// Canonical chapter-heading builder — single source of truth for
+// the scripture-column header. Called by every navigation path
+// (enterReading, navTo, dropdown change) so the heading rendered
+// at fresh load matches the heading rendered after the reader
+// moves between chapters. Returns a DOM element or null when the
+// current context does not warrant a heading.
+function _buildChapterHeading() {
+  if (!currentBook) return null;
+  const showHeading = currentBook === '__fm__' ||
+                      (currentBook && needsGroupSelector());
+  if (!showHeading) return null;
+
+  const heading = document.createElement('div');
+  heading.className = 'chapter-heading';
+
+  if (currentBook === '__fm__') {
+    heading.textContent = 'Front Matter';
+    return heading;
+  }
+
+  // Body class is the canonical chapter-room signal — set in
+  // enterReading and never written elsewhere. Reading it here
+  // means dropdown / prev-next / arrow-key navigation all share
+  // the same chapter-room test the initial render used.
+  const chapterRoom = document.body.classList.contains('chapter-room');
+  if (chapterRoom && currentBook.includes('.')) {
+    // Manuscript chapter-plate: small-caps book name, hairline
+    // rule, Roman numeral chapter. The reader feels the textual
+    // witness open before the first verse begins.
+    const [bk, ch] = String(currentBook).split('.');
+    const bookName = BOOK_NAMES[bk] || bk;
+    const title = document.createElement('div');
+    title.className = 'ch-title';
+    title.textContent = bookName;
+    const rule = document.createElement('div');
+    rule.className = 'ch-rule';
+    rule.setAttribute('aria-hidden', 'true');
+    const sub = document.createElement('div');
+    sub.className = 'ch-sub';
+    const chNum = parseInt(ch, 10);
+    sub.textContent = Number.isFinite(chNum)
+      ? _romanNumeral(chNum)
+      : ch;
+    heading.classList.add('chapter-room-heading');
+    heading.appendChild(title);
+    heading.appendChild(rule);
+    heading.appendChild(sub);
+    return heading;
+  }
+
+  // Non-chapter-room fallback for unstructured texts.
+  heading.textContent = groupName(currentBook);
+  return heading;
+}
+
+// Single canonical install path — removes any prior heading and
+// prepends the freshly-built one into the scripture column when
+// the chapter-spread is in use (so it aligns with scripture only,
+// not centred across the folio-bearing spread). Always pair calls
+// of filterAndRender / render with this so the heading and body
+// re-render together.
+function _installChapterHeading() {
+  const existing = $passages.querySelector('.chapter-heading');
+  if (existing) existing.remove();
+  const heading = _buildChapterHeading();
+  if (!heading) return;
+  const scrCol = $passages.querySelector('.scripture-column');
+  (scrCol || $passages).prepend(heading);
+}
+
 function navTo(idx) {
   if (idx < 0 || idx >= groupKeys.length) return;
   groupIndex  = idx;
@@ -10058,32 +10128,9 @@ function navTo(idx) {
   // chapter within the new book scope — which for the prototype
   // means it has no effect unless future content is added.
   _maybeRetuneFolioToCurrentBook();
+  _stampCanonGenre();
 
-  // Update chapter heading
-  const existingHeader = $passages.querySelector('.chapter-heading');
-  if (existingHeader) existingHeader.remove();
-  const heading = document.createElement('div');
-  heading.className = 'chapter-heading';
-  if (_isChapterScopedHierarchy() && currentBook && currentBook.includes('.')) {
-    const [bk, ch] = String(currentBook).split('.');
-    const bookName = BOOK_NAMES[bk] || bk;
-    const title = document.createElement('div');
-    title.className = 'ch-title';
-    title.textContent = bookName;
-    const sub = document.createElement('div');
-    sub.className = 'ch-sub';
-    sub.textContent = `Ch ${ch}`;
-    heading.classList.add('chapter-room-heading');
-    heading.appendChild(title);
-    heading.appendChild(sub);
-  } else {
-    heading.textContent = groupName(currentBook);
-  }
-  // Chapter heading goes inside the scripture column when the
-  // chapter-spread is in use, so it aligns with scripture only
-  // (not centered across the folio-bearing spread).
-  const scrCol = $passages.querySelector('.scripture-column');
-  (scrCol || $passages).prepend(heading);
+  _installChapterHeading();
 
   $reader.scrollTop = 0;
 }
@@ -10177,6 +10224,9 @@ $bookSelect.addEventListener('change', () => {
   updateNav();
   clearSearch();
   filterAndRender();
+  _maybeRetuneFolioToCurrentBook();
+  _stampCanonGenre();
+  _installChapterHeading();
   $reader.scrollTop = 0;
 });
 
@@ -10659,47 +10709,10 @@ function enterReading(targetGroupKey) {
 
   filterAndRender();
 
-  // Add chapter title header above passages
-  const existingHeader = $passages.querySelector('.chapter-heading');
-  if (existingHeader) existingHeader.remove();
-  const showHeading = currentBook === '__fm__' || (currentBook && needsGroupSelector());
-  if (showHeading) {
-    const heading = document.createElement('div');
-    heading.className = 'chapter-heading';
-    if (currentBook === '__fm__') {
-      heading.textContent = 'Front Matter';
-    } else if (chapterRoom) {
-      // Manuscript chapter-plate: small-caps book name, a thin
-      // centred rule, then the chapter as a Roman numeral. The
-      // textual witness is opened — the reader should feel the
-      // first leaf turn, not simply scroll into text.
-      const [bk, ch] = String(currentBook).split('.');
-      const bookName = BOOK_NAMES[bk] || bk;
-      const title = document.createElement('div');
-      title.className = 'ch-title';
-      title.textContent = bookName;
-      const rule = document.createElement('div');
-      rule.className = 'ch-rule';
-      rule.setAttribute('aria-hidden', 'true');
-      const sub = document.createElement('div');
-      sub.className = 'ch-sub';
-      const chNum = parseInt(ch, 10);
-      sub.textContent = Number.isFinite(chNum)
-        ? _romanNumeral(chNum)
-        : `Ch ${ch}`;
-      heading.classList.add('chapter-room-heading');
-      heading.appendChild(title);
-      heading.appendChild(rule);
-      heading.appendChild(sub);
-    } else {
-      heading.textContent = groupName(currentBook);
-    }
-    // Chapter heading goes inside the scripture column when the
-  // chapter-spread is in use, so it aligns with scripture only
-  // (not centered across the folio-bearing spread).
-  const scrCol = $passages.querySelector('.scripture-column');
-  (scrCol || $passages).prepend(heading);
-  }
+  // Chapter heading — uses the canonical builder shared with
+  // navTo and the dropdown handler, so all navigation paths
+  // produce the same manuscript chapter-plate.
+  _installChapterHeading();
 
   $searchGroup.style.display = 'flex';
   document.getElementById('ctrl-contents').style.display = '';
