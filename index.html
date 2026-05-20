@@ -4335,6 +4335,46 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   color: rgba(110, 95, 75, 0.7);
 }
 
+/* ── Codex reading consolidation ───────────────────────────────
+   The archive carries twelve chambers and many cross-chamber
+   systems. These rules establish a consistent comfortable
+   reading measure across all chambers, soften the visual
+   weight of footer systems so the primary text remains
+   central, and add responsive + print-readiness behaviour for
+   sustained long-form reading. Chamber-specific overrides
+   remain in force where they were intentional. */
+
+/* Lede paragraphs read at a comfortable manuscript measure
+   regardless of chamber. The italic introduction never stretches
+   to the visual edges of the leaf. Chambers that set a narrower
+   max-width on their lede (e.g. sanctuary 580px, resurrection
+   600px, incarnation 540px) override this via specificity, as
+   does the originating-gravity inwardness rule (540px). */
+.folio-leaf [class*="-lede"] {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Anchorings list — long lists of recurrence references should
+   not stretch the full leaf width. Centred at a comfortable
+   measure so the reader's eye does not chase the line. */
+.folio-leaf .cc-anchorings {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Archive commentary — the body prose already has padding
+   inside its panel, but the panel itself benefits from a
+   constrained outer measure so it does not visually compete
+   with the primary content above. */
+.folio-leaf .cc-archive {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* ── Kindred encounter (civilizational resonance) ──────────────
    A quiet italic small-caps line at the chamber's foot, naming
    other Atlas Objects also anchored at the current verse. Each
@@ -4368,7 +4408,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   font: inherit;
   font-variant: small-caps;
   letter-spacing: 0.16em;
-  color: rgba(120, 65, 25, 0.85);
+  color: rgba(120, 65, 25, 0.78);
   cursor: pointer;
   display: inline;
   text-align: inherit;
@@ -4431,7 +4471,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   font: inherit;
   font-variant: small-caps;
   letter-spacing: 0.16em;
-  color: rgba(95, 80, 60, 0.82);
+  color: rgba(95, 80, 60, 0.74);
   cursor: pointer;
   display: inline-block;
   text-align: inherit;
@@ -6977,6 +7017,112 @@ body.viewer-active .folio-leaf.sanctuary-chamber
 }
 body.viewer-active .folio-leaf.sanctuary-chamber .sa-section-heading {
   margin-top: 42px;
+}
+
+/* ── Narrow-width refinement (≤ 600px viewports) ──────────────
+   The codex retains its manuscript character at small widths
+   — no app-style layout switch. A few targeted rules keep
+   vocabulary grids, concentric layers, and hover plaques
+   gracefully placed when the leaf becomes narrow. */
+@media (max-width: 600px) {
+  /* Vocabulary grids stack vertically: the script/term head
+     sits above its gloss block rather than beside it, so the
+     gloss has full reading width on small screens. */
+  .folio-leaf .cc-terms .cc-term-row,
+  .folio-leaf .in-vocabulary .in-term-row,
+  .folio-leaf .rs-vocabulary .rs-term-row,
+  .folio-leaf .sa-vocabulary .sa-term-row {
+    grid-template-columns: 1fr;
+    gap: 6px 0;
+  }
+  /* Sanctuary concentric layers narrow proportionally to the
+     viewport so the inward narrowing is preserved without
+     overflow. The widest layer caps at the viewport's inner
+     width; deeper layers retain their relative compression. */
+  .folio-leaf.sanctuary-chamber .sa-layer[data-depth="1"] {
+    max-width: 100%;
+  }
+  .folio-leaf.sanctuary-chamber .sa-layer[data-depth="2"] { max-width: 92%; }
+  .folio-leaf.sanctuary-chamber .sa-layer[data-depth="3"] { max-width: 80%; }
+  .folio-leaf.sanctuary-chamber .sa-layer[data-depth="4"] { max-width: 70%; }
+  .folio-leaf.sanctuary-chamber .sa-layer[data-depth="5"] { max-width: 62%; }
+  /* Resonance plaques: cap their width and re-anchor so they
+     never overflow the viewport when triggered at the edge.
+     Keep the upward placement; widen the breakable text. */
+  .folio-leaf .cc-resonance-plaque {
+    max-width: 240px;
+    left: 0;
+    transform: none;
+  }
+  .folio-leaf .cc-resonance-plaque::before,
+  .folio-leaf .cc-resonance-plaque::after {
+    left: 30px;
+    transform: none;
+  }
+  /* Mountain chamber axis-mundi padding reduces on narrow
+     screens so the layer content has room to breathe. */
+  .folio-leaf.mountain-chamber .mc-axis {
+    padding-left: 28px;
+  }
+  /* Incarnation chamber dwellings expand to viewport on
+     narrow screens — the intimate measure is now the screen
+     itself. */
+  .folio-leaf.incarnation-chamber .in-dwelling {
+    padding: 14px 16px;
+  }
+}
+
+/* ── Print-readiness (basic stabilization) ────────────────────
+   Not a build of export tooling — only structural defences so
+   the codex prints sensibly when a reader chooses to. Chambers
+   stay together on the page where possible; the dark scrim and
+   chrome that have no print meaning collapse. Backgrounds and
+   tints are printed as designed. */
+@media print {
+  body.viewer-active {
+    background: white;
+  }
+  #object-viewer {
+    position: static !important;
+    background: white !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .folio-leaf {
+    animation: none !important;
+    background: white !important;
+    box-shadow: none !important;
+    color: black;
+  }
+  /* Keep chamber sections together on a page where the
+     content is small enough to fit. Long chambers will still
+     break naturally; this prevents awkward orphaning of
+     headings and one-line panels. */
+  .folio-leaf .cc-section-heading,
+  .folio-leaf .cc-archive,
+  .folio-leaf .cc-kindred,
+  .folio-leaf .cc-resonance,
+  .folio-leaf .folio-leaf-colophon {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  /* Hover-only plaques and folio-side controls have no print
+     meaning. Suppress them so the printed page reads as text. */
+  .folio-leaf .cc-resonance-plaque,
+  #folio,
+  #controls,
+  #nav-bar,
+  #info-bar,
+  .cr-folio-cluster {
+    display: none !important;
+  }
+  /* Honour designed parchment tints where the printer can,
+     so chamber atmosphere survives translation to paper. */
+  .folio-leaf,
+  .folio-leaf * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 }
 
 /* Lineage cadence — in the encounter the trunk (depth 0) reads
