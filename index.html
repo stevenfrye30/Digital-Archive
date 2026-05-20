@@ -3130,6 +3130,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="wisdom-saying"]::before { content: '⁕'; }
 .cr-folio-marker[data-kind="revelatory-vision"]::before { content: '◎'; }
 .cr-folio-marker[data-kind="lament-structure"]::before { content: '▾'; }
+.cr-folio-marker[data-kind="incarnational-presence"]::before { content: '⊙'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -5806,6 +5807,201 @@ body.viewer-active .folio-leaf.lament-chamber .lm-acrostic-line {
   font-size: 0.98em;
 }
 body.viewer-active .folio-leaf.lament-chamber .lm-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 010 — Incarnation Chamber ────────────────────────────
+   Intimate, near, embodied. Six compressed dwelling blocks
+   stacked closely (small vertical gap — proximity is the form),
+   each on a narrow centered measure (max-width 460-500px). Warm
+   parchment palette (cream / honey rather than gray) carrying
+   intimacy without coziness. The sixth block (eschatological
+   tabernacle) is the chamber's culminating air, slightly warmer
+   still. */
+.folio-leaf.incarnation-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.94);
+}
+.folio-leaf.incarnation-chamber .in-lede {
+  margin: 6px auto 22px;
+  max-width: 540px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+  text-align: center;
+}
+.folio-leaf.incarnation-chamber .in-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.94em;
+}
+
+/* Dwellings — six compressed intimate blocks. The vertical gap
+   between blocks is intentionally small (proximity is the form)
+   relative to the wider gaps in other chambers (lament, mountain,
+   wisdom). */
+.folio-leaf.incarnation-chamber .in-dwellings {
+  margin: 12px 0 4px;
+}
+.folio-leaf.incarnation-chamber .in-dwelling {
+  margin: 10px auto;
+  max-width: 500px;
+  padding: 18px 22px 18px;
+  background: linear-gradient(180deg,
+    rgba(252, 245, 224, 0.5),
+    rgba(248, 240, 215, 0.32));
+  border: 1px solid rgba(170, 130, 70, 0.22);
+  border-radius: 2px;
+  text-align: center;
+}
+.folio-leaf.incarnation-chamber .in-dwelling-head {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(110, 65, 25, 0.7);
+  margin-bottom: 6px;
+}
+.folio-leaf.incarnation-chamber .in-dwelling-numeral {
+  font-weight: 500;
+  color: rgba(85, 50, 18, 0.86);
+}
+.folio-leaf.incarnation-chamber .in-dwelling-sep {
+  color: rgba(110, 95, 75, 0.4);
+  letter-spacing: 0;
+}
+.folio-leaf.incarnation-chamber .in-dwelling-ref {
+  color: rgba(120, 65, 25, 0.78);
+}
+.folio-leaf.incarnation-chamber .in-dwelling-tradition {
+  color: rgba(95, 75, 50, 0.72);
+}
+
+/* Rubric — the small italic phrase naming the dwelling's
+   place/form ("by the oaks of Mamre", "the sanctuary in the
+   wilderness"). Warmer italic, slightly larger than the head. */
+.folio-leaf.incarnation-chamber .in-dwelling-rubric {
+  font-style: italic;
+  font-size: 0.94em;
+  color: rgba(110, 65, 25, 0.86);
+  letter-spacing: 0.02em;
+  margin: 0 auto 12px;
+  max-width: 380px;
+}
+
+/* The presence text — italic Georgia centered, full intensity,
+   slightly compressed line-height to honour the intimacy. */
+.folio-leaf.incarnation-chamber .in-dwelling-text {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 440px;
+  font-style: italic;
+  font-size: 1.02em;
+  line-height: 1.65;
+  color: rgba(35, 22, 4, 0.96);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.incarnation-chamber .in-dwelling-footnote {
+  margin-top: 10px;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 0.82em;
+  line-height: 1.55;
+  color: rgba(110, 75, 35, 0.72);
+  letter-spacing: 0.01em;
+}
+
+/* The consummation — the sixth and last dwelling. Warmer
+   parchment, slightly fuller border. The chamber's culminating
+   air; restrained — only this block is so marked. */
+.folio-leaf.incarnation-chamber .in-dwelling[data-consummation="true"] {
+  background: linear-gradient(180deg,
+    rgba(254, 244, 210, 0.65),
+    rgba(250, 238, 205, 0.42));
+  border: 1px solid rgba(180, 135, 50, 0.36);
+  border-top: 2px solid rgba(190, 140, 50, 0.55);
+  padding: 22px 22px 22px;
+  margin-top: 18px;
+}
+.folio-leaf.incarnation-chamber .in-dwelling[data-consummation="true"] .in-dwelling-text {
+  color: rgba(28, 18, 2, 0.98);
+  font-size: 1.06em;
+}
+
+/* Dwelling vocabulary — Hebrew and Greek terms in a compressed
+   definition list. Script + transliteration on the left,
+   gloss + note on the right. The continuity of the lexicon
+   carrying the theme. */
+.folio-leaf.incarnation-chamber .in-vocabulary {
+  margin: 14px 0 4px;
+  padding: 0;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.folio-leaf.incarnation-chamber .in-term-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px 22px;
+  padding: 14px 0;
+  border-top: 1px dotted rgba(170, 130, 70, 0.28);
+}
+.folio-leaf.incarnation-chamber .in-term-row:first-child {
+  border-top: none;
+  padding-top: 6px;
+}
+.folio-leaf.incarnation-chamber .in-term-head {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.folio-leaf.incarnation-chamber .in-term-script {
+  font-size: 1.36em;
+  line-height: 1.15;
+  color: rgba(40, 24, 8, 0.94);
+}
+.folio-leaf.incarnation-chamber .in-term-row[data-lang="he"] .in-term-script {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.46em;
+  direction: rtl;
+}
+.folio-leaf.incarnation-chamber .in-term-row[data-lang="el"] .in-term-script {
+  font-family: "SBL Greek", "Cardo", "GFS Didot", "Times New Roman", serif;
+  font-size: 1.28em;
+}
+.folio-leaf.incarnation-chamber .in-term-translit {
+  font-style: italic;
+  font-size: 0.86em;
+  color: rgba(110, 65, 25, 0.84);
+  letter-spacing: 0.02em;
+}
+.folio-leaf.incarnation-chamber .in-term-body {
+  margin: 0;
+  font-size: 0.92em;
+  line-height: 1.55;
+  color: rgba(55, 40, 22, 0.88);
+}
+.folio-leaf.incarnation-chamber .in-term-gloss {
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.folio-leaf.incarnation-chamber .in-term-note {
+  font-size: 0.85em;
+  color: rgba(95, 75, 50, 0.78);
+  line-height: 1.5;
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.incarnation-chamber .in-dwelling-text {
+  font-size: 1.06em;
+}
+body.viewer-active .folio-leaf.incarnation-chamber
+  .in-dwelling[data-consummation="true"] .in-dwelling-text {
+  font-size: 1.12em;
+}
+body.viewer-active .folio-leaf.incarnation-chamber .in-section-heading {
   margin-top: 42px;
 }
 
@@ -10007,6 +10203,19 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderLamentChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 010  incarnational-presence   joh1-incarnation-dwelling
+  //             six compressed indwelling moments — visitation,
+  //             tabernacle, named child, Word made flesh, kenosis,
+  //             eschatological dwelling. Narrow content column,
+  //             warm parchment, intimate spacing — the chamber's
+  //             form is the form of nearness itself.
+  if (rec.id === 'joh1-incarnation-dwelling') {
+    leaf.classList.add('incarnation-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderIncarnationChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -12324,6 +12533,222 @@ function _renderLMRefrains(refrains) {
       item.appendChild(ref);
     }
     wrap.appendChild(item);
+  }
+  return wrap;
+}
+
+
+// ── AO · 010 — The Word Became Flesh (Tent, Temple, Flesh) ─────
+// An incarnational / indwelling Atlas Object. The chamber's
+// form is the form of incarnation itself: a compressed,
+// narrow, intimate column of dwellings, each closer than the
+// last. The reader does not read about divine presence; they
+// enter a sequence of dwellings — visitation, tabernacle, name,
+// flesh, kenosis, tabernacle restored — held by warm parchment
+// and a narrow measure.
+//
+//   §i  Dwellings — six indwelling moments in canonical
+//       sequence; the sixth (eschatological) is the chamber's
+//       luminous summit.
+//
+//   §ii Vocabulary — five Hebrew/Greek words of indwelling
+//       (shakhan / mishkan / ʿImmānû ʾĒl / skēnoō / skēnē) that
+//       travel across the canon; the linguistic continuity
+//       carries the thematic continuity.
+//
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary — divinity inhabiting locality, not
+//       as exception but as form.
+
+function _renderIncarnationChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — shared
+  // pipeline with the prior nine chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'in-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Dwellings (the heart).
+  if (Array.isArray(rec.indwelling_moments) && rec.indwelling_moments.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Dwellings',
+      'Six moments — each closer than the last'));
+    leaf.appendChild(_renderINDwellings(rec.indwelling_moments));
+  }
+
+  // §ii — Vocabulary.
+  if (Array.isArray(rec.dwelling_vocabulary) && rec.dwelling_vocabulary.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Dwelling Vocabulary',
+      'shakhan · mishkan · ʿImmānû ʾĒl · skēnoō'));
+    leaf.appendChild(_renderINVocabulary(rec.dwelling_vocabulary));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where presence has also taken up residence'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// Indwelling moments — each one a small intimate dwelling block.
+// Narrow max-width, warm parchment, italic centered text. The
+// chamber's form is compression: the divine entering a smaller
+// and smaller space until it inhabits flesh, then opening out
+// again at the eschatological tabernacle.
+function _renderINDwellings(moments) {
+  const wrap = document.createElement('div');
+  wrap.className = 'in-dwellings';
+  for (const m of moments) {
+    const dw = document.createElement('article');
+    dw.className = 'in-dwelling';
+    if (m.consummation) dw.dataset.consummation = 'true';
+
+    // Header — numeral · reference · tradition (small italic
+    // small-caps, centered)
+    const head = document.createElement('div');
+    head.className = 'in-dwelling-head';
+    const num = document.createElement('span');
+    num.className = 'in-dwelling-numeral';
+    num.textContent = m.numeral || '';
+    head.appendChild(num);
+    if (m.ref) {
+      const sep = document.createElement('span');
+      sep.className = 'in-dwelling-sep';
+      sep.textContent = ' · ';
+      sep.setAttribute('aria-hidden', 'true');
+      head.appendChild(sep);
+      const ref = document.createElement('span');
+      ref.className = 'in-dwelling-ref';
+      ref.textContent = m.ref;
+      head.appendChild(ref);
+    }
+    if (m.tradition) {
+      const sep2 = document.createElement('span');
+      sep2.className = 'in-dwelling-sep';
+      sep2.textContent = ' · ';
+      sep2.setAttribute('aria-hidden', 'true');
+      head.appendChild(sep2);
+      const trad = document.createElement('span');
+      trad.className = 'in-dwelling-tradition';
+      trad.textContent = m.tradition;
+      head.appendChild(trad);
+    }
+    dw.appendChild(head);
+
+    // Rubric — a small italic phrase naming the dwelling's
+    // location/form ("by the oaks of Mamre")
+    if (m.rubric) {
+      const r = document.createElement('div');
+      r.className = 'in-dwelling-rubric';
+      r.textContent = m.rubric;
+      dw.appendChild(r);
+    }
+
+    // The text — italic Georgia centered, the canonical phrase
+    // at full intensity
+    if (m.text) {
+      const tx = document.createElement('blockquote');
+      tx.className = 'in-dwelling-text';
+      tx.textContent = m.text;
+      dw.appendChild(tx);
+    }
+
+    // Footnote — small italic line carrying a translation or
+    // linguistic remark (e.g., ʿImmānû ʾĒl translated, or the
+    // Greek verb in John 1:14)
+    if (m.footnote) {
+      const fn = document.createElement('div');
+      fn.className = 'in-dwelling-footnote';
+      fn.textContent = m.footnote;
+      dw.appendChild(fn);
+    }
+
+    wrap.appendChild(dw);
+  }
+  return wrap;
+}
+
+// Dwelling vocabulary — Hebrew and Greek terms that travel
+// across the canon, carrying the indwelling theme through the
+// lexicon itself. Compressed grid: script + transliteration +
+// gloss + brief note.
+function _renderINVocabulary(terms) {
+  const wrap = document.createElement('dl');
+  wrap.className = 'in-vocabulary';
+  for (const term of terms) {
+    const row = document.createElement('div');
+    row.className = 'in-term-row';
+    row.dataset.lang = term.lang || '';
+    const dt = document.createElement('dt');
+    dt.className = 'in-term-head';
+    const script = document.createElement('span');
+    script.className = 'in-term-script';
+    if (term.lang) {
+      script.lang = term.lang;
+      if (term.lang === 'he') script.dir = 'rtl';
+    }
+    script.textContent = term.script || '';
+    dt.appendChild(script);
+    if (term.translit) {
+      const tr = document.createElement('span');
+      tr.className = 'in-term-translit';
+      tr.textContent = term.translit;
+      dt.appendChild(tr);
+    }
+    const dd = document.createElement('dd');
+    dd.className = 'in-term-body';
+    if (term.gloss) {
+      const g = document.createElement('div');
+      g.className = 'in-term-gloss';
+      g.textContent = term.gloss;
+      dd.appendChild(g);
+    }
+    if (term.note) {
+      const n = document.createElement('div');
+      n.className = 'in-term-note';
+      n.textContent = term.note;
+      dd.appendChild(n);
+    }
+    row.appendChild(dt);
+    row.appendChild(dd);
+    wrap.appendChild(row);
   }
   return wrap;
 }
