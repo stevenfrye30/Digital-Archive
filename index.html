@@ -3128,6 +3128,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="symbolic-motif"]::before { content: '△'; }
 .cr-folio-marker[data-kind="covenant-formula"]::before { content: '⊟'; }
 .cr-folio-marker[data-kind="wisdom-saying"]::before { content: '⁕'; }
+.cr-folio-marker[data-kind="revelatory-vision"]::before { content: '◎'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -5459,6 +5460,164 @@ body.viewer-active .folio-leaf.wisdom-chamber .ws-saying {
   padding: 28px 14px;
 }
 body.viewer-active .folio-leaf.wisdom-chamber .ws-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 008 — Revelation Chamber ─────────────────────────────
+   Threshold → unveiled. Five paired vision blocks, each carrying
+   a dim portico of partial sight (reduced opacity italic rubric)
+   above the canonical vision text. Each block sits in a faint
+   parchment panel with a gold-toned upper rule — illumination
+   without fantasy chrome. The fifth block (consummation) is the
+   chamber's most luminous air. */
+.folio-leaf.revelation-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.revelation-chamber .rc-lede {
+  margin: 6px 0 22px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+}
+.folio-leaf.revelation-chamber .rc-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.94em;
+}
+
+/* Threshold vision blocks — the heart. Each is a small framed
+   panel with a gold-toned upper rule. */
+.folio-leaf.revelation-chamber .rc-visions {
+  margin: 16px 0 4px;
+}
+.folio-leaf.revelation-chamber .rc-vision {
+  position: relative;
+  margin: 22px 0;
+  padding: 22px 22px 20px;
+  background: linear-gradient(180deg,
+    rgba(248, 240, 218, 0.32),
+    rgba(245, 236, 215, 0.18));
+  border: 1px solid rgba(120, 90, 50, 0.18);
+  border-top: 2px solid rgba(170, 130, 50, 0.45);
+  border-radius: 1px;
+}
+.folio-leaf.revelation-chamber .rc-vision-head {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  color: rgba(110, 65, 25, 0.7);
+  margin-bottom: 14px;
+}
+.folio-leaf.revelation-chamber .rc-vision-numeral {
+  font-weight: 500;
+}
+.folio-leaf.revelation-chamber .rc-vision-sep {
+  color: rgba(110, 95, 75, 0.4);
+  letter-spacing: 0;
+}
+.folio-leaf.revelation-chamber .rc-vision-ref {
+  color: rgba(120, 65, 25, 0.78);
+}
+.folio-leaf.revelation-chamber .rc-vision-tradition {
+  color: rgba(95, 75, 50, 0.75);
+}
+
+/* The threshold — the dim portico. Partial sight: reduced
+   opacity italic, hairline dashes on either side, centered.
+   The reader feels the veil before it lifts. */
+.folio-leaf.revelation-chamber .rc-vision-threshold {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.86em;
+  line-height: 1.5;
+  color: rgba(75, 55, 28, 0.5);
+  letter-spacing: 0.04em;
+  margin: 0 auto 16px;
+  max-width: 460px;
+}
+.folio-leaf.revelation-chamber .rc-vision-threshold::before {
+  content: '— ';
+  color: rgba(120, 90, 50, 0.42);
+  letter-spacing: 0;
+}
+.folio-leaf.revelation-chamber .rc-vision-threshold::after {
+  content: ' —';
+  color: rgba(120, 90, 50, 0.42);
+  letter-spacing: 0;
+}
+
+/* The unveiled — full intensity. Italic Georgia, centered,
+   larger than the threshold. The threshold is glimpsed; the
+   unveiled is given. */
+.folio-leaf.revelation-chamber .rc-vision-unveiled {
+  margin: 0 auto;
+  padding: 0 12px;
+  max-width: 580px;
+  font-style: italic;
+  font-size: 1.02em;
+  line-height: 1.7;
+  color: rgba(35, 22, 4, 0.96);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* The consummation — the chamber's most luminous air. Warmer
+   parchment gradient, fuller gold upper rule, slightly deeper
+   text. Restrained: only the fifth block is so marked. */
+.folio-leaf.revelation-chamber .rc-vision[data-consummation="true"] {
+  background: linear-gradient(180deg,
+    rgba(252, 240, 198, 0.55),
+    rgba(248, 238, 200, 0.32));
+  border-top: 2.5px solid rgba(180, 135, 45, 0.62);
+  border-left: 1px solid rgba(150, 110, 45, 0.28);
+  border-right: 1px solid rgba(150, 110, 45, 0.28);
+  border-bottom: 1px solid rgba(150, 110, 45, 0.28);
+  padding: 28px 22px 26px;
+}
+.folio-leaf.revelation-chamber .rc-vision[data-consummation="true"] .rc-vision-unveiled {
+  color: rgba(28, 18, 2, 0.98);
+  font-size: 1.06em;
+}
+
+/* Vision fragments — short luminous phrases, hairline left rule. */
+.folio-leaf.revelation-chamber .rc-fragments {
+  margin: 6px 0;
+}
+.folio-leaf.revelation-chamber .rc-fragment {
+  margin: 18px 0;
+  padding: 0 0 0 18px;
+  border-left: 1px solid rgba(170, 130, 50, 0.34);
+}
+.folio-leaf.revelation-chamber .rc-fragment-quote {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+  font-size: 0.98em;
+  line-height: 1.65;
+  color: rgba(50, 35, 18, 0.92);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.revelation-chamber .rc-fragment-ref {
+  margin-top: 4px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.62);
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.revelation-chamber .rc-vision-unveiled {
+  font-size: 1.08em;
+}
+body.viewer-active .folio-leaf.revelation-chamber .rc-vision[data-consummation="true"] .rc-vision-unveiled {
+  font-size: 1.12em;
+}
+body.viewer-active .folio-leaf.revelation-chamber .rc-section-heading {
   margin-top: 42px;
 }
 
@@ -9631,6 +9790,21 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderWisdomChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 008  revelatory-vision        isa6-opened-heavens
+  //             threshold-then-unveiled paired vision blocks
+  //             carrying the dim portico of partial sight above
+  //             and the canonical vision text below; gold-toned
+  //             upper rule on each block evokes illumination
+  //             without fantasy chrome; the fifth (eschatological
+  //             consummation) is visibly the chamber's most
+  //             luminous air.
+  if (rec.id === 'isa6-opened-heavens') {
+    leaf.classList.add('revelation-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderRevelationChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -11554,6 +11728,178 @@ function _renderWSCompression(c) {
       trail.appendChild(t);
     }
     wrap.appendChild(trail);
+  }
+  return wrap;
+}
+
+
+// ── AO · 008 — The Opened Heavens (Visionary Disclosure) ───────
+// A revelatory / apocalyptic Atlas Object. The chamber's form
+// is the form of unveiling itself: five paired vision blocks,
+// each carrying a dim THRESHOLD rubric above (partial sight,
+// reduced opacity) and the UNVEILED canonical text below (full
+// intensity, italic). Each block sits in a faint parchment
+// panel with a gold-toned upper rule — illumination without
+// fantasy chrome. The fifth and last vision (the eschatological
+// consummation) carries a richer luminance: the chamber's
+// culminating air.
+//
+//   §i  Threshold Visions — five paired blocks.
+//   §ii Vision Fragments — five short luminous phrases.
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary — apocalypse as uncovering, not
+//       catastrophe; revelation as what knowledge becomes when
+//       its object is more than the seer can hold.
+
+function _renderRevelationChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — shared
+  // pipeline with the prior seven chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'rc-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Threshold visions (the heart).
+  if (Array.isArray(rec.threshold_visions) && rec.threshold_visions.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Threshold Visions',
+      'Five openings — the veil lifted by degrees'));
+    leaf.appendChild(_renderRCVisions(rec.threshold_visions));
+  }
+
+  // §ii — Vision fragments (the revelatory register's voice).
+  if (Array.isArray(rec.vision_fragments) && rec.vision_fragments.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Vision Fragments',
+      'Luminous phrases gathered across the canon'));
+    leaf.appendChild(_renderRCFragments(rec.vision_fragments));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where the heavens have also opened'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// Threshold visions — five paired blocks. Each block carries:
+//   header (numeral · ref · tradition)
+//   threshold rubric (small italic, reduced opacity — partial sight)
+//   unveiled text (full italic intensity — the canonical vision)
+//   small reference at the foot
+// The block itself sits in a faint parchment panel with a gold-
+// toned upper rule. The fifth block (consummation) carries
+// a warmer luminance.
+function _renderRCVisions(visions) {
+  const wrap = document.createElement('div');
+  wrap.className = 'rc-visions';
+  for (const v of visions) {
+    const block = document.createElement('article');
+    block.className = 'rc-vision';
+    if (v.consummation) block.dataset.consummation = 'true';
+
+    const head = document.createElement('div');
+    head.className = 'rc-vision-head';
+    const num = document.createElement('span');
+    num.className = 'rc-vision-numeral';
+    num.textContent = v.numeral || '';
+    head.appendChild(num);
+    if (v.ref) {
+      const sep = document.createElement('span');
+      sep.className = 'rc-vision-sep';
+      sep.textContent = ' · ';
+      sep.setAttribute('aria-hidden', 'true');
+      head.appendChild(sep);
+      const ref = document.createElement('span');
+      ref.className = 'rc-vision-ref';
+      ref.textContent = v.ref;
+      head.appendChild(ref);
+    }
+    if (v.tradition) {
+      const sep2 = document.createElement('span');
+      sep2.className = 'rc-vision-sep';
+      sep2.textContent = ' · ';
+      sep2.setAttribute('aria-hidden', 'true');
+      head.appendChild(sep2);
+      const trad = document.createElement('span');
+      trad.className = 'rc-vision-tradition';
+      trad.textContent = v.tradition;
+      head.appendChild(trad);
+    }
+    block.appendChild(head);
+
+    if (v.threshold) {
+      const th = document.createElement('div');
+      th.className = 'rc-vision-threshold';
+      th.textContent = v.threshold;
+      block.appendChild(th);
+    }
+    if (v.unveiled) {
+      const un = document.createElement('blockquote');
+      un.className = 'rc-vision-unveiled';
+      un.textContent = v.unveiled;
+      block.appendChild(un);
+    }
+    wrap.appendChild(block);
+  }
+  return wrap;
+}
+
+// Vision fragments — short luminous phrases. Quiet vertical
+// stack with hairline left rule echoing the vision blocks.
+function _renderRCFragments(fragments) {
+  const wrap = document.createElement('div');
+  wrap.className = 'rc-fragments';
+  for (const f of fragments) {
+    const item = document.createElement('article');
+    item.className = 'rc-fragment';
+    const q = document.createElement('blockquote');
+    q.className = 'rc-fragment-quote';
+    q.textContent = f.text || '';
+    item.appendChild(q);
+    if (f.ref) {
+      const ref = document.createElement('div');
+      ref.className = 'rc-fragment-ref';
+      ref.textContent = f.ref;
+      item.appendChild(ref);
+    }
+    wrap.appendChild(item);
   }
   return wrap;
 }
