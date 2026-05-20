@@ -4423,6 +4423,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   letter-spacing: 0.18em;
 }
 .folio-leaf .cc-resonance-item {
+  position: relative;
   background: transparent;
   border: none;
   padding: 2px 4px;
@@ -4432,7 +4433,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   letter-spacing: 0.16em;
   color: rgba(95, 80, 60, 0.82);
   cursor: pointer;
-  display: inline;
+  display: inline-block;
   text-align: inherit;
 }
 .folio-leaf .cc-resonance-item:hover,
@@ -4442,6 +4443,79 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-color: rgba(95, 80, 60, 0.4);
+}
+
+/* Resonance plaque — a small italic parchment gloss positioned
+   above the resonance item, revealed only on :hover and
+   :focus-visible. Carries the pair's manuscriptal note about
+   the angle of kinship between the two objects. Not UI help
+   text — marginal gloss. */
+.folio-leaf .cc-resonance-plaque {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 280px;
+  padding: 8px 14px;
+  background: linear-gradient(180deg,
+    rgba(252, 247, 235, 0.98),
+    rgba(248, 240, 220, 0.95));
+  border: 1px solid rgba(120, 90, 50, 0.32);
+  border-radius: 1px;
+  color: rgba(75, 55, 30, 0.86);
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: normal;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: none;
+  white-space: normal;
+  z-index: 8;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  box-shadow:
+    0 6px 18px rgba(60, 40, 15, 0.20),
+    inset 0 1px 0 rgba(255, 250, 240, 0.6);
+  transition: opacity 0.18s ease-out,
+              visibility 0s linear 0.18s;
+}
+.folio-leaf .cc-resonance-item:hover .cc-resonance-plaque,
+.folio-leaf .cc-resonance-item:focus-visible .cc-resonance-plaque {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.18s ease-out;
+}
+/* Small tail beneath the plaque so it reads as anchored to the
+   resonance item below — a quiet manuscriptal pointer, not a
+   tooltip arrow. */
+.folio-leaf .cc-resonance-plaque::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(120, 90, 50, 0.32);
+}
+.folio-leaf .cc-resonance-plaque::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-1px);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(250, 244, 226, 0.97);
+  z-index: 1;
 }
 .folio-leaf .cc-resonance-glyph {
   font-style: normal;
@@ -12242,88 +12316,138 @@ function _renderChamberKindred(rec, pid) {
 // curated pairs span the twelve Atlas Objects; not every object
 // belongs to a pair, and that is part of the form.
 
+// Each resonance entry carries the peer's object id AND a short
+// gloss naming the kinship — a phrase fragment, never a full
+// sentence. The gloss is revealed only on hover or keyboard
+// focus of the resonance item; the chamber footer stays clean.
+// Glosses are symmetric between paired objects (the pair-phrase
+// reads the same from either direction).
 const _ATLAS_RESONANCE = {
   // Temple → Incarnation, Apocalypse, Mountain
-  // (presence inhabiting place; throne disclosed; elevation
-  //  crystallized into architecture)
   'atlas:object:sanctuary:house-of-glory': [
-    'atlas:object:incarnation:dwelling-presence',
-    'atlas:object:revelation:opened-heavens',
-    'atlas:object:symbol:sacred-mountain',
+    {
+      id: 'atlas:object:incarnation:dwelling-presence',
+      gloss: 'presence inhabiting place / presence inhabiting flesh',
+    },
+    {
+      id: 'atlas:object:revelation:opened-heavens',
+      gloss: 'sanctuary disclosed in vision',
+    },
+    {
+      id: 'atlas:object:symbol:sacred-mountain',
+      gloss: 'elevation crystallized into sacred architecture',
+    },
   ],
   // Incarnation → Temple
   'atlas:object:incarnation:dwelling-presence': [
-    'atlas:object:sanctuary:house-of-glory',
+    {
+      id: 'atlas:object:sanctuary:house-of-glory',
+      gloss: 'presence inhabiting place / presence inhabiting flesh',
+    },
   ],
   // Apocalypse → Temple, Cosmology
   'atlas:object:revelation:opened-heavens': [
-    'atlas:object:sanctuary:house-of-glory',
-    'atlas:object:cosmology:ane-three-tier',
+    {
+      id: 'atlas:object:sanctuary:house-of-glory',
+      gloss: 'sanctuary disclosed in vision',
+    },
+    {
+      id: 'atlas:object:cosmology:ane-three-tier',
+      gloss: 'world structure disclosed, ruptured, renewed',
+    },
   ],
   // Mountain → Temple
   'atlas:object:symbol:sacred-mountain': [
-    'atlas:object:sanctuary:house-of-glory',
+    {
+      id: 'atlas:object:sanctuary:house-of-glory',
+      gloss: 'elevation crystallized into sacred architecture',
+    },
   ],
   // Lament → Resurrection, Wisdom
-  // (rupture held vs rupture transformed; contemplation under
-  //  unresolved suffering)
   'atlas:object:lament:how-long': [
-    'atlas:object:resurrection:bones-and-breath',
-    'atlas:object:wisdom:fear-of-the-lord',
+    {
+      id: 'atlas:object:resurrection:bones-and-breath',
+      gloss: 'rupture held / rupture transformed',
+    },
+    {
+      id: 'atlas:object:wisdom:fear-of-the-lord',
+      gloss: 'contemplation under unresolved suffering',
+    },
   ],
   // Resurrection → Lament
   'atlas:object:resurrection:bones-and-breath': [
-    'atlas:object:lament:how-long',
+    {
+      id: 'atlas:object:lament:how-long',
+      gloss: 'rupture held / rupture transformed',
+    },
   ],
   // Wisdom → Lament
   'atlas:object:wisdom:fear-of-the-lord': [
-    'atlas:object:lament:how-long',
+    {
+      id: 'atlas:object:lament:how-long',
+      gloss: 'contemplation under unresolved suffering',
+    },
   ],
   // Covenant → Ritual, Transmission
-  // (binding relation embodied through repeated sacred time;
-  //  witnessed words preserved as binding memory)
   'atlas:object:covenant:formula': [
-    'atlas:object:ritual:sabbath-pattern',
-    'atlas:object:translation:firmament',
+    {
+      id: 'atlas:object:ritual:sabbath-pattern',
+      gloss: 'binding relation embodied through sacred time',
+    },
+    {
+      id: 'atlas:object:translation:firmament',
+      gloss: 'witnessed words preserved as binding memory',
+    },
   ],
   // Ritual → Covenant
   'atlas:object:ritual:sabbath-pattern': [
-    'atlas:object:covenant:formula',
+    {
+      id: 'atlas:object:covenant:formula',
+      gloss: 'binding relation embodied through sacred time',
+    },
   ],
   // Cosmology → Apocalypse
-  // (world structure disclosed, ruptured, renewed)
   'atlas:object:cosmology:ane-three-tier': [
-    'atlas:object:revelation:opened-heavens',
+    {
+      id: 'atlas:object:revelation:opened-heavens',
+      gloss: 'world structure disclosed, ruptured, renewed',
+    },
   ],
   // Transmission → Covenant
   'atlas:object:translation:firmament': [
-    'atlas:object:covenant:formula',
+    {
+      id: 'atlas:object:covenant:formula',
+      gloss: 'witnessed words preserved as binding memory',
+    },
   ],
   // (Genealogy belongs to no constellation pair — the archive
   // does not force every object into a relation.)
 };
 
-// Resolve the current record's resonant peers — other Atlas
-// Object records the curated map lists for this object's id.
+// Resolve the current record's resonant peers — the curated
+// map's entries (each {id, gloss}) resolved against the live
+// genealogy. Returns [{rec, gloss}, ...] so the renderer has
+// both the peer record AND the pair-gloss to display.
 function _findResonantObjects(rec) {
   if (!rec || !rec.atlas_object || !rec.atlas_object.id) return [];
-  const ids = _ATLAS_RESONANCE[rec.atlas_object.id];
-  if (!Array.isArray(ids) || !ids.length) return [];
+  const entries = _ATLAS_RESONANCE[rec.atlas_object.id];
+  if (!Array.isArray(entries) || !entries.length) return [];
   if (!currentData || !Array.isArray(currentData.genealogy)) return [];
   const out = [];
-  for (const id of ids) {
+  for (const e of entries) {
     const target = currentData.genealogy.find(
-      r => r && r.atlas_object && r.atlas_object.id === id
+      r => r && r.atlas_object && r.atlas_object.id === e.id
     );
-    if (target) out.push(target);
+    if (target) out.push({ rec: target, gloss: e.gloss || '' });
   }
   return out;
 }
 
 // Render the chamber-foot resonance line. Same skeleton as the
-// kindred line but with a "held in resonance" lead, a slightly
-// cooler colour, and the resonance map's curated peers (not
-// the current verse's co-anchored neighbours).
+// kindred line but with a "held in resonance" lead, a cooler
+// colour, and a small manuscript plaque revealed on hover or
+// keyboard focus carrying the pair's gloss — the angle of
+// kinship between the two objects.
 function _renderChamberResonance(rec) {
   const resonant = _findResonantObjects(rec);
   if (!resonant.length) return null;
@@ -12333,16 +12457,22 @@ function _renderChamberResonance(rec) {
   lead.className = 'cc-resonance-lead';
   lead.textContent = 'held in resonance · ';
   wrap.appendChild(lead);
-  resonant.forEach((k, i) => {
+  resonant.forEach(({ rec: k, gloss }, i) => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'cc-resonance-item';
     if (k.atlas_object && k.atlas_object.siglum) {
       btn.dataset.siglum = k.atlas_object.siglum;
     }
-    btn.title = (k.atlas_object && k.atlas_object.siglum)
-              ? `${k.atlas_object.siglum} — ${k.title || ''}`
-              : (k.title || '');
+    if (gloss) btn.dataset.gloss = gloss;
+    // aria-label combines title + gloss so screen readers and
+    // keyboard users receive the same information as sighted
+    // hover users.
+    const aria = (k.atlas_object && k.atlas_object.siglum)
+               ? `${k.atlas_object.siglum} — ${k.title || ''}`
+               : (k.title || '');
+    btn.setAttribute('aria-label',
+      gloss ? `${aria} — ${gloss}` : aria);
     const glyph = document.createElement('span');
     glyph.className = 'cc-resonance-glyph';
     glyph.textContent = _ATLAS_KIND_GLYPHS[k.kind] || '·';
@@ -12351,6 +12481,16 @@ function _renderChamberResonance(rec) {
     title.textContent = k.title || '';
     btn.appendChild(glyph);
     btn.appendChild(title);
+    // The plaque — a small italic parchment note revealed only
+    // on :hover and :focus-visible. Marginal gloss, not UI
+    // tooltip.
+    if (gloss) {
+      const plaque = document.createElement('span');
+      plaque.className = 'cc-resonance-plaque';
+      plaque.setAttribute('aria-hidden', 'true');
+      plaque.textContent = gloss;
+      btn.appendChild(plaque);
+    }
     btn.addEventListener('click', e => {
       e.stopPropagation();
       if (typeof _openFolioObject === 'function') {
@@ -16590,7 +16730,10 @@ const _CODEX_PREFACE_RUBRICS = [
       'live in each other’s orbits. The codex notes the resonance ' +
       'the way a careful editor leaves a hairline gloss in the ' +
       'margin — there is more here, when you are ready to look ' +
-      'for it.'
+      'for it. Where a kinship is curated, a brief gloss waits ' +
+      'beside it, revealed only when the reader pauses on the name. ' +
+      'The gloss does not prove the relation. It only turns the ' +
+      'object slightly, so its kinship catches the light.'
     ),
   },
 ];
