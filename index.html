@@ -3320,6 +3320,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="lament-structure"]::before { content: '▾'; }
 .cr-folio-marker[data-kind="incarnational-presence"]::before { content: '⊙'; }
 .cr-folio-marker[data-kind="resurrection-renewal"]::before { content: '⊛'; }
+.cr-folio-marker[data-kind="sacred-space"]::before { content: '⊞'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -6636,6 +6637,209 @@ body.viewer-active .folio-leaf.resurrection-chamber
   font-size: 1.12em;
 }
 body.viewer-active .folio-leaf.resurrection-chamber .rs-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 012 — Sanctuary Chamber ───────────────────────────────
+   Five concentrically narrowing enclosures. The chamber's form
+   is the form of sacred approach: each successive layer is
+   narrower than the previous (560 → 480 → 400 → 320 → 260px),
+   joined by small italic threshold rubrics that name what one
+   passes through to enter the next depth. The fifth and last
+   layer — the Glory — carries no threshold above it; one does
+   not pass into the glory. The glory enters the room. */
+.folio-leaf.sanctuary-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.sanctuary-chamber .sa-lede {
+  margin: 6px auto 24px;
+  max-width: 580px;
+  font-style: italic;
+  text-align: center;
+  color: rgba(55, 40, 22, 0.84);
+}
+.folio-leaf.sanctuary-chamber .sa-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.96em;
+}
+
+/* The Approach — concentrically narrowing layers. */
+.folio-leaf.sanctuary-chamber .sa-approach {
+  margin: 16px 0 4px;
+  padding-bottom: 12px;
+}
+.folio-leaf.sanctuary-chamber .sa-layer {
+  margin: 22px auto;
+  padding: 18px 22px 18px;
+  text-align: center;
+  background: linear-gradient(180deg,
+    rgba(248, 244, 232, 0.32),
+    rgba(250, 246, 236, 0.42));
+  border: 1px solid rgba(120, 90, 55, 0.22);
+  border-radius: 2px;
+  transition: max-width 0.4s ease-out;
+}
+.folio-leaf.sanctuary-chamber .sa-layer[data-depth="1"] { max-width: 560px; }
+.folio-leaf.sanctuary-chamber .sa-layer[data-depth="2"] { max-width: 480px; }
+.folio-leaf.sanctuary-chamber .sa-layer[data-depth="3"] { max-width: 400px; }
+.folio-leaf.sanctuary-chamber .sa-layer[data-depth="4"] { max-width: 340px; }
+.folio-leaf.sanctuary-chamber .sa-layer[data-depth="5"] { max-width: 280px; }
+
+.folio-leaf.sanctuary-chamber .sa-layer-name {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.84em;
+  letter-spacing: 0.2em;
+  color: rgba(110, 65, 25, 0.86);
+  margin-bottom: 10px;
+}
+.folio-leaf.sanctuary-chamber .sa-layer-hebrew {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.3em;
+  line-height: 1.2;
+  color: rgba(40, 24, 8, 0.96);
+  margin-bottom: 4px;
+}
+.folio-leaf.sanctuary-chamber .sa-layer-translit {
+  font-style: italic;
+  font-size: 0.88em;
+  letter-spacing: 0.02em;
+  color: rgba(120, 65, 25, 0.82);
+  margin-bottom: 6px;
+}
+.folio-leaf.sanctuary-chamber .sa-layer-gloss {
+  font-style: italic;
+  font-size: 0.86em;
+  color: rgba(95, 75, 50, 0.78);
+  margin-bottom: 12px;
+}
+.folio-leaf.sanctuary-chamber .sa-layer-witness {
+  margin: 8px 0 0;
+  padding: 8px 0 0;
+  border-top: 1px dotted rgba(120, 90, 50, 0.28);
+  font-style: italic;
+  font-size: 0.94em;
+  line-height: 1.65;
+  color: rgba(45, 28, 8, 0.94);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.sanctuary-chamber .sa-layer-witness-ref {
+  margin-top: 10px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.68);
+}
+
+/* Threshold rubrics — small italic centred lines between
+   successive layers naming what one passes through. */
+.folio-leaf.sanctuary-chamber .sa-threshold {
+  text-align: center;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.22em;
+  color: rgba(110, 65, 25, 0.6);
+  margin: 6px auto;
+  padding: 4px 0;
+  letter-spacing: 0.16em;
+}
+
+/* The Glory — depth 5, the indwelling. No threshold rubric
+   leads into it (the glory enters the room rather than being
+   entered). A wider breath above. The parchment well is
+   slightly warmer — gold-toned — to suggest the weight of
+   presence without resorting to radiance or spectacle. */
+.folio-leaf.sanctuary-chamber .sa-layer[data-indwelling="true"] {
+  margin-top: 48px;
+  background: linear-gradient(180deg,
+    rgba(252, 244, 218, 0.55),
+    rgba(248, 240, 215, 0.36));
+  border-top: 2px solid rgba(170, 130, 50, 0.55);
+}
+.folio-leaf.sanctuary-chamber .sa-layer[data-indwelling="true"] .sa-layer-witness {
+  font-size: 1em;
+  color: rgba(28, 18, 2, 0.98);
+  border-top-color: rgba(170, 130, 50, 0.36);
+}
+
+/* Vocabulary of nearness — same compressed two-column grid as
+   the other vocabulary sections, with sanctuary's own prefix. */
+.folio-leaf.sanctuary-chamber .sa-vocabulary {
+  margin: 14px auto 4px;
+  padding: 0;
+  max-width: 620px;
+}
+.folio-leaf.sanctuary-chamber .sa-term-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px 22px;
+  padding: 14px 0;
+  border-top: 1px dotted rgba(120, 90, 50, 0.24);
+}
+.folio-leaf.sanctuary-chamber .sa-term-row:first-child {
+  border-top: none;
+  padding-top: 6px;
+}
+.folio-leaf.sanctuary-chamber .sa-term-head {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.folio-leaf.sanctuary-chamber .sa-term-script {
+  font-size: 1.36em;
+  line-height: 1.15;
+  color: rgba(40, 24, 8, 0.94);
+}
+.folio-leaf.sanctuary-chamber .sa-term-row[data-lang="he"] .sa-term-script {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.46em;
+  direction: rtl;
+}
+.folio-leaf.sanctuary-chamber .sa-term-row[data-lang="el"] .sa-term-script {
+  font-family: "SBL Greek", "Cardo", "GFS Didot", "Times New Roman", serif;
+  font-size: 1.28em;
+}
+.folio-leaf.sanctuary-chamber .sa-term-translit {
+  font-style: italic;
+  font-size: 0.86em;
+  color: rgba(110, 65, 25, 0.84);
+  letter-spacing: 0.02em;
+}
+.folio-leaf.sanctuary-chamber .sa-term-body {
+  margin: 0;
+  font-size: 0.92em;
+  line-height: 1.55;
+  color: rgba(55, 40, 22, 0.88);
+}
+.folio-leaf.sanctuary-chamber .sa-term-gloss {
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.folio-leaf.sanctuary-chamber .sa-term-note {
+  font-size: 0.85em;
+  color: rgba(95, 75, 50, 0.78);
+  line-height: 1.5;
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread.
+   The narrowing layers stay narrow; the witness verses gain
+   slight body weight; the Glory layer breathes a little wider. */
+body.viewer-active .folio-leaf.sanctuary-chamber .sa-layer-witness {
+  font-size: 0.98em;
+}
+body.viewer-active .folio-leaf.sanctuary-chamber
+  .sa-layer[data-indwelling="true"] .sa-layer-witness {
+  font-size: 1.04em;
+}
+body.viewer-active .folio-leaf.sanctuary-chamber .sa-section-heading {
   margin-top: 42px;
 }
 
@@ -10889,6 +11093,21 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderResurrectionChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 012  sacred-space             exo40-sanctuary-glory
+  //             five concentrically narrowing enclosures —
+  //             outer gate, court, holy place, holy of holies —
+  //             with threshold rubrics between, and at the
+  //             centre, the indwelling glory rendered as a
+  //             quiet recessed panel that one does not pass
+  //             into but is admitted to. The reader walks
+  //             inward through the codex itself.
+  if (rec.id === 'exo40-sanctuary-glory') {
+    leaf.classList.add('sanctuary-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderSanctuaryChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -13839,6 +14058,219 @@ function _renderRSVocabulary(terms) {
     if (term.note) {
       const n = document.createElement('div');
       n.className = 'rs-term-note';
+      n.textContent = term.note;
+      dd.appendChild(n);
+    }
+    row.appendChild(dt);
+    row.appendChild(dd);
+    wrap.appendChild(row);
+  }
+  return wrap;
+}
+
+
+// ── AO · 012 — The House Filled With Glory ────────────────────
+// A sacred-space Atlas Object. The chamber's form is the form
+// of sacred approach: five concentric enclosures each
+// successively narrower in measure, joined by small italic
+// threshold rubrics, with the fifth and last appearing without
+// an inward threshold — the indwelling glory does not admit
+// passage; the glory itself enters the room.
+//
+//   §i  The Approach — five layered enclosures, depths 1-5,
+//       measured at 560 → 480 → 400 → 320 → 260px. Each
+//       carries: name, Hebrew term + transliteration + gloss,
+//       canonical witness verse, witness reference. Layers
+//       2-4 carry a small "— through X —" threshold rubric
+//       above; the fifth carries none.
+//
+//   §ii Vocabulary of Nearness — five Hebrew/Greek terms
+//       (qodesh, parocheth, kavod, keruvim, doxa).
+//
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary — sacred space as graded nearness.
+
+function _renderSanctuaryChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — shared
+  // pipeline with the prior eleven chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'sa-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — The Approach (the heart).
+  if (Array.isArray(rec.approach_layers) && rec.approach_layers.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'The Approach',
+      'Five enclosures · graded nearness'));
+    leaf.appendChild(_renderSAApproach(rec.approach_layers));
+  }
+
+  // §ii — Vocabulary of Nearness.
+  if (Array.isArray(rec.sacred_vocabulary) && rec.sacred_vocabulary.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Vocabulary of Nearness',
+      'qodesh · parocheth · kavod · keruvim · doxa'));
+    leaf.appendChild(_renderSAVocabulary(rec.sacred_vocabulary));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where the house has also stood'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  // Kindred and colophon follow via the dispatcher's existing
+  // post-render injection.
+  const _kindred = _renderChamberKindred(rec, pid);
+  if (_kindred) leaf.appendChild(_kindred);
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// The Approach — five layered enclosures rendered as
+// concentrically narrowing centred blocks. Between layers, a
+// small italic threshold rubric ("— through the first veil —")
+// names what one passes through to enter the next depth. The
+// fifth and last layer carries no threshold rubric: one does
+// not pass into the glory; the glory enters the room. That
+// last layer is rendered as a faintly warmer parchment well —
+// the inmost air.
+function _renderSAApproach(layers) {
+  const wrap = document.createElement('div');
+  wrap.className = 'sa-approach';
+  layers.forEach((L, i) => {
+    // Threshold rubric BEFORE the current layer (except for
+    // the first — there is no "before"), unless the current
+    // layer is the indwelling (no rubric leads into the glory).
+    if (i > 0 && L.threshold) {
+      const th = document.createElement('div');
+      th.className = 'sa-threshold';
+      th.setAttribute('aria-hidden', 'true');
+      th.textContent = '— ' + L.threshold + ' —';
+      wrap.appendChild(th);
+    }
+    wrap.appendChild(_renderSALayer(L));
+  });
+  return wrap;
+}
+
+function _renderSALayer(L) {
+  const layer = document.createElement('article');
+  layer.className = 'sa-layer';
+  if (typeof L.depth === 'number') layer.dataset.depth = String(L.depth);
+  if (L.indwelling) layer.dataset.indwelling = 'true';
+
+  const name = document.createElement('div');
+  name.className = 'sa-layer-name';
+  name.textContent = L.name || '';
+  layer.appendChild(name);
+
+  if (L.hebrew) {
+    const heb = document.createElement('div');
+    heb.className = 'sa-layer-hebrew';
+    heb.lang = 'he';
+    heb.dir = 'rtl';
+    heb.textContent = L.hebrew;
+    layer.appendChild(heb);
+  }
+  if (L.translit) {
+    const tr = document.createElement('div');
+    tr.className = 'sa-layer-translit';
+    tr.textContent = L.translit;
+    layer.appendChild(tr);
+  }
+  if (L.gloss) {
+    const g = document.createElement('div');
+    g.className = 'sa-layer-gloss';
+    g.textContent = L.gloss;
+    layer.appendChild(g);
+  }
+  if (L.witness) {
+    const w = document.createElement('blockquote');
+    w.className = 'sa-layer-witness';
+    w.textContent = L.witness;
+    layer.appendChild(w);
+  }
+  if (L.witness_ref) {
+    const r = document.createElement('div');
+    r.className = 'sa-layer-witness-ref';
+    r.textContent = L.witness_ref;
+    layer.appendChild(r);
+  }
+  return layer;
+}
+
+// Sacred vocabulary — same compressed two-column grid used by
+// the incarnation and resurrection chambers. Script +
+// transliteration on the left, gloss + note on the right.
+function _renderSAVocabulary(terms) {
+  const wrap = document.createElement('dl');
+  wrap.className = 'sa-vocabulary';
+  for (const term of terms) {
+    const row = document.createElement('div');
+    row.className = 'sa-term-row';
+    row.dataset.lang = term.lang || '';
+    const dt = document.createElement('dt');
+    dt.className = 'sa-term-head';
+    const script = document.createElement('span');
+    script.className = 'sa-term-script';
+    if (term.lang) {
+      script.lang = term.lang;
+      if (term.lang === 'he') script.dir = 'rtl';
+    }
+    script.textContent = term.script || '';
+    dt.appendChild(script);
+    if (term.translit) {
+      const tr = document.createElement('span');
+      tr.className = 'sa-term-translit';
+      tr.textContent = term.translit;
+      dt.appendChild(tr);
+    }
+    const dd = document.createElement('dd');
+    dd.className = 'sa-term-body';
+    if (term.gloss) {
+      const g = document.createElement('div');
+      g.className = 'sa-term-gloss';
+      g.textContent = term.gloss;
+      dd.appendChild(g);
+    }
+    if (term.note) {
+      const n = document.createElement('div');
+      n.className = 'sa-term-note';
       n.textContent = term.note;
       dd.appendChild(n);
     }
