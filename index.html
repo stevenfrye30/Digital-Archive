@@ -3127,6 +3127,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="translation-tradition"]::before { content: '‡'; }
 .cr-folio-marker[data-kind="symbolic-motif"]::before { content: '△'; }
 .cr-folio-marker[data-kind="covenant-formula"]::before { content: '⊟'; }
+.cr-folio-marker[data-kind="wisdom-saying"]::before { content: '⁕'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -5292,6 +5293,172 @@ body.viewer-active .folio-leaf.covenant-chamber .vc-people-side {
   font-size: 1.08em;
 }
 body.viewer-active .folio-leaf.covenant-chamber .vc-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 007 — Wisdom Chamber ─────────────────────────────────
+   Sparse, contemplative, recursive. Six wisdom sayings stacked
+   vertically, each centered on its own meditative ground. A
+   small middle-dot pause between sayings — the silence is the
+   form. Beneath, a compression layer that surfaces the depth
+   of yirʾat YHWH without resolving it. */
+.folio-leaf.wisdom-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.wisdom-chamber .ws-lede {
+  margin: 6px 0 26px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+}
+.folio-leaf.wisdom-chamber .ws-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.94em;
+}
+
+/* Sayings — the heart. Each saying sits centered on its own
+   ground with generous padding so the eye rests on it before
+   moving to the next. No card chrome; just italic Georgia
+   centered on quiet space. */
+.folio-leaf.wisdom-chamber .ws-sayings {
+  margin: 18px 0 4px;
+}
+.folio-leaf.wisdom-chamber .ws-saying {
+  padding: 22px 14px;
+  text-align: center;
+}
+.folio-leaf.wisdom-chamber .ws-saying-numeral {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.22em;
+  color: rgba(110, 65, 25, 0.7);
+  margin-bottom: 14px;
+}
+.folio-leaf.wisdom-chamber .ws-saying-text {
+  margin: 0 auto;
+  max-width: 580px;
+  padding: 0 14px;
+  font-style: italic;
+  font-size: 1.12em;
+  line-height: 1.7;
+  color: rgba(40, 26, 8, 0.96);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.wisdom-chamber .ws-saying-ref {
+  margin-top: 14px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.62);
+}
+
+/* The pause between sayings — a small middle-dot on extra
+   whitespace. The silence is the form's commitment. */
+.folio-leaf.wisdom-chamber .ws-pause {
+  text-align: center;
+  margin: 12px 0;
+  padding: 0;
+  font-size: 14px;
+  color: rgba(120, 90, 50, 0.34);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+/* Compression layer — the central phrase pressed open. Hebrew
+   script at top (large, RTL), transliteration and English
+   beneath, then three short lexical observations indented from
+   a hairline left rule, then a small LXX / Vulgate trail. */
+.folio-leaf.wisdom-chamber .ws-compression {
+  margin: 12px 0 4px;
+  padding: 22px 22px 18px;
+  background: rgba(248, 244, 232, 0.36);
+  border: 1px solid rgba(120, 90, 50, 0.16);
+  border-radius: 1px;
+}
+.folio-leaf.wisdom-chamber .ws-comp-head {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.folio-leaf.wisdom-chamber .ws-comp-hebrew {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.7em;
+  line-height: 1.3;
+  color: rgba(35, 22, 4, 0.96);
+  margin-bottom: 6px;
+}
+.folio-leaf.wisdom-chamber .ws-comp-translit {
+  font-style: italic;
+  font-size: 0.95em;
+  color: rgba(120, 65, 25, 0.8);
+  letter-spacing: 0.02em;
+}
+.folio-leaf.wisdom-chamber .ws-comp-english {
+  margin-top: 4px;
+  font-style: italic;
+  font-size: 0.84em;
+  color: rgba(110, 90, 60, 0.78);
+  letter-spacing: 0.04em;
+}
+
+.folio-leaf.wisdom-chamber .ws-comp-notes {
+  margin: 10px 0 0;
+}
+.folio-leaf.wisdom-chamber .ws-comp-note {
+  margin: 14px 0;
+  padding: 0 0 0 16px;
+  border-left: 1px dotted rgba(120, 90, 50, 0.32);
+}
+.folio-leaf.wisdom-chamber .ws-comp-note-head {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 0.92em;
+  color: rgba(85, 50, 18, 0.92);
+  margin-bottom: 3px;
+}
+.folio-leaf.wisdom-chamber .ws-comp-note-body {
+  margin: 0;
+  font-size: 0.88em;
+  line-height: 1.6;
+  color: rgba(55, 40, 22, 0.84);
+}
+
+.folio-leaf.wisdom-chamber .ws-comp-trail {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dotted rgba(120, 90, 50, 0.28);
+  text-align: center;
+}
+.folio-leaf.wisdom-chamber .ws-comp-trail-line {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.74em;
+  letter-spacing: 0.14em;
+  color: rgba(110, 65, 25, 0.72);
+  margin: 2px 0;
+}
+.folio-leaf.wisdom-chamber .ws-comp-trail-body {
+  margin: 8px auto 0;
+  max-width: 560px;
+  font-style: italic;
+  font-size: 0.84em;
+  line-height: 1.55;
+  color: rgba(90, 70, 45, 0.78);
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.wisdom-chamber .ws-saying-text {
+  font-size: 1.18em;
+}
+body.viewer-active .folio-leaf.wisdom-chamber .ws-saying {
+  padding: 28px 14px;
+}
+body.viewer-active .folio-leaf.wisdom-chamber .ws-section-heading {
   margin-top: 42px;
 }
 
@@ -9451,6 +9618,19 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderCovenantChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 007  wisdom-saying            prov1-wisdom-fear
+  //             sparse vertical column of compressed sayings,
+  //             each one centred with generous whitespace around
+  //             it; a small middle-dot pause between sayings;
+  //             beneath, a compression layer that surfaces the
+  //             depth of yirʾat YHWH without solving it.
+  if (rec.id === 'prov1-wisdom-fear') {
+    leaf.classList.add('wisdom-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderWisdomChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -11166,6 +11346,214 @@ function _renderVCWitnesses(clauses) {
       item.appendChild(r);
     }
     wrap.appendChild(item);
+  }
+  return wrap;
+}
+
+
+// ── AO · 007 — The Fear of the LORD (Wisdom's Beginning) ───────
+// A wisdom / contemplative Atlas Object. The chamber's form is
+// the form of wisdom itself: short sayings surrounded by
+// silence. Six aphorisms stacked vertically, each centered and
+// generously padded so the eye rests on one before moving to
+// the next. A small middle-dot pause sits between them. Below,
+// a compression layer that surfaces the depth of yirʾat YHWH
+// without resolving it.
+//
+//   §i  Sayings — six wisdom utterances in sequence, each on
+//       its own meditative ground.
+//
+//   §ii Compression — the Hebrew phrase yirʾat YHWH with three
+//       short lexical observations and a LXX/Vulgate trail.
+//
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary — wisdom is entered, not solved.
+
+function _renderWisdomChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — shared
+  // pipeline with the prior six chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'ws-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Sayings (the heart).
+  if (Array.isArray(rec.wisdom_sayings) && rec.wisdom_sayings.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Sayings',
+      'A single sentence returning, slightly differently angled'));
+    leaf.appendChild(_renderWSSayings(rec.wisdom_sayings));
+  }
+
+  // §ii — Compression (the central phrase).
+  if (rec.compression && (rec.compression.phrase_he || rec.compression.notes)) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Compression',
+      'The phrase pressed — and what it holds'));
+    leaf.appendChild(_renderWSCompression(rec.compression));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where the saying returns'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// The sayings column. Each saying is centered on its own ground
+// with generous padding. Between sayings: a small middle-dot
+// "pause" element sitting on extra whitespace. No card chrome,
+// no quote marks, no decorative dividers — the silence between
+// sayings is the form's commitment.
+function _renderWSSayings(sayings) {
+  const wrap = document.createElement('div');
+  wrap.className = 'ws-sayings';
+  sayings.forEach((s, i) => {
+    if (i > 0) {
+      const pause = document.createElement('div');
+      pause.className = 'ws-pause';
+      pause.setAttribute('aria-hidden', 'true');
+      pause.textContent = '·';
+      wrap.appendChild(pause);
+    }
+    wrap.appendChild(_renderWSSaying(s));
+  });
+  return wrap;
+}
+
+function _renderWSSaying(s) {
+  const item = document.createElement('article');
+  item.className = 'ws-saying';
+  if (s.numeral) {
+    const num = document.createElement('div');
+    num.className = 'ws-saying-numeral';
+    num.textContent = s.numeral;
+    item.appendChild(num);
+  }
+  const text = document.createElement('blockquote');
+  text.className = 'ws-saying-text';
+  text.textContent = s.text || '';
+  item.appendChild(text);
+  if (s.ref) {
+    const ref = document.createElement('div');
+    ref.className = 'ws-saying-ref';
+    ref.textContent = s.ref;
+    item.appendChild(ref);
+  }
+  return item;
+}
+
+// Compression — the central phrase pressed open. Hebrew script
+// at top (large, RTL), transliteration beneath, then three short
+// lexical observations indented from a hairline left rule, then
+// a small LXX / Vulgate trail at the foot. The chamber surfaces
+// the depth; it does not resolve it.
+function _renderWSCompression(c) {
+  const wrap = document.createElement('div');
+  wrap.className = 'ws-compression';
+  const head = document.createElement('div');
+  head.className = 'ws-comp-head';
+  if (c.phrase_he) {
+    const heb = document.createElement('div');
+    heb.className = 'ws-comp-hebrew';
+    heb.lang = 'he';
+    heb.dir = 'rtl';
+    heb.textContent = c.phrase_he;
+    head.appendChild(heb);
+  }
+  if (c.translit) {
+    const tr = document.createElement('div');
+    tr.className = 'ws-comp-translit';
+    tr.textContent = c.translit;
+    head.appendChild(tr);
+  }
+  if (c.english) {
+    const en = document.createElement('div');
+    en.className = 'ws-comp-english';
+    en.textContent = '— ' + c.english + ' —';
+    head.appendChild(en);
+  }
+  wrap.appendChild(head);
+
+  if (Array.isArray(c.notes) && c.notes.length) {
+    const notes = document.createElement('div');
+    notes.className = 'ws-comp-notes';
+    for (const n of c.notes) {
+      const note = document.createElement('div');
+      note.className = 'ws-comp-note';
+      const h = document.createElement('div');
+      h.className = 'ws-comp-note-head';
+      h.textContent = n.head || '';
+      const body = document.createElement('p');
+      body.className = 'ws-comp-note-body';
+      body.textContent = n.body || '';
+      note.appendChild(h);
+      note.appendChild(body);
+      notes.appendChild(note);
+    }
+    wrap.appendChild(notes);
+  }
+
+  // Translation trail — the same phrase carried into LXX and
+  // Vulgate, a small italic footer.
+  if (c.lxx || c.vulgate || c.trail) {
+    const trail = document.createElement('div');
+    trail.className = 'ws-comp-trail';
+    if (c.lxx) {
+      const lxx = document.createElement('div');
+      lxx.className = 'ws-comp-trail-line';
+      lxx.textContent = 'LXX · ' + c.lxx;
+      trail.appendChild(lxx);
+    }
+    if (c.vulgate) {
+      const v = document.createElement('div');
+      v.className = 'ws-comp-trail-line';
+      v.textContent = 'Vulgate · ' + c.vulgate;
+      trail.appendChild(v);
+    }
+    if (c.trail) {
+      const t = document.createElement('p');
+      t.className = 'ws-comp-trail-body';
+      t.textContent = c.trail;
+      trail.appendChild(t);
+    }
+    wrap.appendChild(trail);
   }
   return wrap;
 }
