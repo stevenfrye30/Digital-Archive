@@ -2428,6 +2428,17 @@ details.display-options > summary {
   margin-bottom: 1.1em;
 }
 
+/* Canonical genre cadence. The Bible is not a uniform document.
+   A psalm breathes between verses; a prophet packs density; an
+   apocalyptic vision pauses between symbols. These deltas are
+   *felt*, not displayed — no labels, no UI, only spacing. */
+body[data-canon-genre="wisdom"]      .passage { margin-bottom: 1.3em; }
+body[data-canon-genre="prophets"]    .passage { margin-bottom: 1.0em; }
+body[data-canon-genre="apocalypse"]  .passage { margin-bottom: 1.35em; }
+/* torah, historical, gospel, acts, epistle remain at the
+   baseline 1.1em — these are the narrative/argumentative
+   registers that set the codex's reading metronome. */
+
 /* Compare (parallel translations) view */
 #compare-btn {
   background: #f5efdd;
@@ -7123,6 +7134,27 @@ body.viewer-active .folio-leaf.sanctuary-chamber .sa-section-heading {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+  /* Scripture printworthiness. The codex must print as a
+     legible reading copy. A verse-paragraph should not split
+     across a page break, a chapter heading should not strand
+     at the bottom of a page, and the folio sidebar drops out
+     so scripture occupies the full measure. */
+  .passage {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .chapter-heading {
+    page-break-after: avoid;
+    break-after: avoid-page;
+  }
+  /* In chapter-room mode the folio column is collapsed off
+     the printed page; scripture reclaims the full width. */
+  #passages .chapter-spread {
+    display: block !important;
+  }
+  #passages .chapter-spread .folio-column {
+    display: none !important;
+  }
 }
 
 /* Lineage cadence — in the encounter the trunk (depth 0) reads
@@ -10668,6 +10700,7 @@ function enterReading(targetGroupKey) {
   // the reader actually lands on (e.g. when jumping to a specific
   // verse via URL).
   _maybeRetuneFolioToCurrentBook();
+  _stampCanonGenre();
   _trackReadingChapter();
   // If companion mode is on, the chapter-room folio sidebar needs
   // an explicit render after re-entry since enterReading didn't
@@ -12378,7 +12411,59 @@ const _ATLAS_KIND_GLYPHS = {
   'lament-structure':       '▾',
   'incarnational-presence': '⊙',
   'resurrection-renewal':   '⊛',
+  'sacred-space':           '⊞',
 };
+
+// Canonical genre map. The Bible is not a uniform document — a
+// psalm should not settle like a chronicle, John should not pace
+// like Judges. The reader is stamped with `data-canon-genre` per
+// book class so scripture CSS can apply subtle cadence deltas.
+// Felt, not displayed: no labels, no UI; only spacing.
+const _CANON_GENRES = {
+  // Torah
+  gen: 'torah', exo: 'torah', lev: 'torah', num: 'torah', deu: 'torah',
+  // Historical
+  jos: 'historical', jdg: 'historical', rut: 'historical',
+  '1sa': 'historical', '2sa': 'historical',
+  '1ki': 'historical', '2ki': 'historical',
+  '1ch': 'historical', '2ch': 'historical',
+  ezr: 'historical', neh: 'historical', est: 'historical',
+  // Wisdom + poetry
+  job: 'wisdom', psa: 'wisdom', pro: 'wisdom',
+  ecc: 'wisdom', sng: 'wisdom',
+  // Prophets
+  isa: 'prophets', jer: 'prophets', lam: 'prophets',
+  eze: 'prophets', dan: 'prophets',
+  hos: 'prophets', joe: 'prophets', amo: 'prophets', oba: 'prophets',
+  jon: 'prophets', mic: 'prophets', nah: 'prophets', hab: 'prophets',
+  zep: 'prophets', hag: 'prophets', zec: 'prophets', mal: 'prophets',
+  // Gospels
+  mat: 'gospel', mrk: 'gospel', luk: 'gospel', jhn: 'gospel',
+  // Acts
+  act: 'acts',
+  // Epistles
+  rom: 'epistle', '1co': 'epistle', '2co': 'epistle',
+  gal: 'epistle', eph: 'epistle', php: 'epistle', col: 'epistle',
+  '1th': 'epistle', '2th': 'epistle',
+  '1ti': 'epistle', '2ti': 'epistle', tit: 'epistle', phm: 'epistle',
+  heb: 'epistle', jas: 'epistle',
+  '1pe': 'epistle', '2pe': 'epistle',
+  '1jo': 'epistle', '2jo': 'epistle', '3jo': 'epistle',
+  jud: 'epistle',
+  // Apocalypse
+  rev: 'apocalypse',
+};
+
+function _stampCanonGenre() {
+  // currentBook holds either a book code ("gen") or a chapter
+  // key ("gen.1") depending on hierarchy mode; only the leading
+  // segment is the book code.
+  const raw = (typeof currentBook === 'string' ? currentBook : '').toLowerCase();
+  const code = raw.split('.')[0];
+  const genre = _CANON_GENRES[code] || '';
+  if (genre) document.body.dataset.canonGenre = genre;
+  else delete document.body.dataset.canonGenre;
+}
 
 // Collect every other record (besides the active one) that
 // carries Atlas Object metadata AND anchors to the same pid.
@@ -15209,6 +15294,8 @@ function _renderChapterRoomFolio(_legacyInner) {
 
   if (!document.body.classList.contains('companion-mode')) return;
 
+  _stampCanonGenre();
+
   const chKey = _chapterKeyOf(currentBook || '');
   const ch = chKey || currentBook || '';
   if (!ch || !currentData || !currentData.genealogy) return;
@@ -15239,10 +15326,9 @@ function _renderChapterRoomFolio(_legacyInner) {
   });
 
   if (!records.length) {
-    const empty = document.createElement('div');
-    empty.className = 'cr-folio-empty';
-    empty.textContent = 'No witnesses anchored to this chapter.';
-    folioColumn.appendChild(empty);
+    // Empty parchment — no message, no rubric. A chapter without
+    // anchored witnesses should feel like undisturbed scripture
+    // during long reading. Absence is a state, not a notice.
     return;
   }
 
