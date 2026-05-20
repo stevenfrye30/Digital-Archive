@@ -3254,6 +3254,44 @@ body.cols-single.chapter-room.companion-mode.folio-left
   opacity: 0.78;
 }
 
+/* Anchor weight — within each authority class, markers at the
+   object's ORIGINATING anchor carry slight warmth; markers at
+   ECHO anchors quietly fade. Subtle within authority. The
+   canonical centres of each Atlas Object radiate without any
+   label naming them. */
+.cr-folio-marker[data-anchor-weight="originating"][data-authority="primary"] {
+  border-color: rgba(95, 50, 12, 0.92);
+}
+.cr-folio-marker[data-anchor-weight="originating"][data-authority="secondary"] {
+  border-color: rgba(75, 50, 28, 0.78);
+}
+.cr-folio-marker[data-anchor-weight="originating"][data-authority="tertiary"] {
+  border-color: rgba(95, 75, 50, 0.62);
+}
+.cr-folio-marker[data-anchor-weight="echo"] {
+  opacity: 0.66;
+}
+.cr-folio-marker[data-anchor-weight="echo"][data-authority="primary"] {
+  opacity: 0.86;
+}
+.cr-folio-marker[data-anchor-weight="echo"][data-authority="secondary"] {
+  opacity: 0.7;
+}
+.cr-folio-marker[data-anchor-weight="echo"][data-authority="tertiary"] {
+  opacity: 0.54;
+}
+/* Visited echoes — slightly recovered presence; the object has
+   been met, the echo is no longer peripheral. */
+.cr-folio-marker[data-anchor-weight="echo"][data-visited="true"] {
+  opacity: 0.78;
+}
+.cr-folio-marker[data-anchor-weight="echo"][data-visited="true"][data-authority="primary"] {
+  opacity: 0.96;
+}
+.cr-folio-marker[data-anchor-weight="echo"][data-visited="true"][data-authority="tertiary"] {
+  opacity: 0.68;
+}
+
 /* Type → glyph mapping. The default rule covers any kind not
    listed (and acts as the fallback for unrecognized data). The
    per-kind rules below override. Add a new kind by appending one
@@ -3974,6 +4012,36 @@ body.folio-left #companion-swap {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Anchor gravity — felt, not labelled. An ORIGINATING chamber
+   (opened at the object's canonical first anchor) settles more
+   slowly and carries a subtle inset warmth at its head, as if
+   the page is heavier at its formative centre. An ECHO chamber
+   (opened at a recurrence) settles more quickly — the reader
+   has, in a manner of speaking, been here before. No labels,
+   no badges; the difference is in the cadence and the warmth
+   of the air at the page-head. */
+.folio-leaf[data-gravity="originating"] {
+  animation: folio-leaf-settle 0.72s ease-out;
+}
+.folio-leaf[data-gravity="originating"] > .folio-leaf-provenance,
+.folio-leaf[data-gravity="originating"] > .cc-atlas-object-rubric {
+  /* The chamber's head reads through a faint warm wash —
+     subliminal gravity from the page above it. */
+  background: linear-gradient(180deg,
+    rgba(170, 130, 50, 0.06) 0%,
+    rgba(170, 130, 50, 0.02) 60%,
+    rgba(0, 0, 0, 0) 100%);
+  padding-top: 14px;
+  margin-top: -14px;
+  margin-left: -18px;
+  margin-right: -18px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.folio-leaf[data-gravity="echo"] {
+  animation: folio-leaf-settle 0.42s ease-out;
+}
 .folio-leaf-return {
   display: inline-block;
   background: transparent;
@@ -4261,6 +4329,19 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   color: rgba(85, 60, 35, 0.82);
 }
 .folio-leaf .cc-anchoring-external::before { content: '⁞'; }
+
+/* Originating anchoring — the canonical first entry. Subtly
+   heavier weight on the reference; the reader senses the
+   foundation without any label declaring it. */
+.folio-leaf .cc-anchoring[data-anchor-weight="originating"] .cc-anchoring-ref {
+  color: rgba(75, 38, 8, 0.96);
+  font-weight: 600;
+}
+.folio-leaf .cc-anchoring[data-anchor-weight="originating"]::before {
+  /* Deeper centre-dot at the canonical anchor. */
+  color: rgba(110, 60, 18, 0.85);
+}
+
 .folio-leaf .cc-anchoring-here {
   /* Current verse — quietly marked. Italic siglum + thin rule
      so the reader sees their position without UI pop. */
@@ -10544,6 +10625,12 @@ function _renderFolioObjectLeaf(rec, pid) {
   leaf.className = 'folio-leaf';
   leaf.dataset.kind = rec.kind || 'genealogy';
   leaf.dataset.authority = rec.authority || 'tertiary';
+  // Anchor gravity — originating chambers settle more slowly and
+  // carry a subtle inset warmth at the top; echoes settle
+  // quicker. Felt, not labelled.
+  if (rec.atlas_object && typeof _anchorGravity === 'function') {
+    leaf.dataset.gravity = _anchorGravity(rec, pid);
+  }
   const chKey = _chapterKeyOf(pid);
 
   // Deep-chamber dispatch — selected records open into bespoke
@@ -11237,10 +11324,15 @@ function _renderAtlasObjectRubric(ao) {
 function _renderCCAnchorings(anchorings, currentPid) {
   const wrap = document.createElement('ol');
   wrap.className = 'cc-anchorings';
-  for (const a of anchorings) {
+  anchorings.forEach((a, idx) => {
     const item = document.createElement('li');
     item.className = 'cc-anchoring';
     if (a.external) item.classList.add('cc-anchoring-external');
+    // The first listed anchoring is the object's canonical
+    // originating anchor — slightly heavier weight, slightly
+    // warmer reference colour. No "originating" label; the
+    // form's first entry already names itself.
+    if (idx === 0) item.dataset.anchorWeight = 'originating';
     // Highlight the present passage so the reader can locate
     // themselves inside the object's anchoring set.
     if (a.citation && currentPid &&
@@ -11258,7 +11350,7 @@ function _renderCCAnchorings(anchorings, currentPid) {
       item.appendChild(note);
     }
     wrap.appendChild(item);
-  }
+  });
   return wrap;
 }
 
@@ -11614,6 +11706,43 @@ function _renderTCArchive(body) {
 // to switch chambers. Recurrence is no longer "this object
 // appears elsewhere"; it has begun to be "objects accompany
 // each other here."
+
+// ── Anchor gravity ─────────────────────────────────────────────
+//
+// Each Atlas Object's anchors form a hierarchy by canonical
+// position: the FIRST anchor in the record is the originating
+// anchor (the canonical centre of the object's formation); the
+// rest are echoes (later anchorings carrying the object as
+// recurrence rather than origin). The archive uses this
+// distinction atmospherically — it never labels it, never
+// ranks it, never exposes a score. The reader senses heavier
+// gravity at originating anchors and lighter cadence at
+// echoes; the codex behaves more slowly where it formed and
+// more quickly where it recurs.
+
+// Return the canonical "originating" pid for a record — the
+// first anchor's verse id — or null if the record has no
+// anchors.
+function _originatingPid(rec) {
+  if (!rec || !Array.isArray(rec.anchors) || !rec.anchors.length) return null;
+  const a = rec.anchors[0];
+  if (!a || !a.target) return null;
+  return a.target.split('::').pop();
+}
+
+// True iff the given pid is the record's originating anchor.
+function _isOriginatingPid(rec, pid) {
+  if (!rec || !pid) return false;
+  return _originatingPid(rec) === pid;
+}
+
+// Return the gravity name for the given (rec, pid) — "originating"
+// if pid is the record's first anchor, "echo" otherwise. Used to
+// stamp data-gravity on the chamber leaf and data-anchor-weight
+// on markers.
+function _anchorGravity(rec, pid) {
+  return _isOriginatingPid(rec, pid) ? 'originating' : 'echo';
+}
 
 // Marker-glyph lookup, mirroring the CSS [data-kind]::before
 // content rules. The chamber needs the glyph in JS to render
@@ -14281,6 +14410,13 @@ function _renderFolioMarker(rec, pid) {
   // is necessarily archive-synthesis until verified otherwise.
   marker.dataset.authority = rec.authority || 'tertiary';
   if (rec.id === _openFolioRecordId) marker.classList.add('active');
+  // Anchor gravity — markers at the object's originating anchor
+  // carry slight warmth; markers at echo anchors quietly fade.
+  // Within authority class, never replacing it. The reader's
+  // eye lands on canonical centres more readily.
+  if (rec.atlas_object && typeof _anchorGravity === 'function') {
+    marker.dataset.anchorWeight = _anchorGravity(rec, pid);
+  }
   // Visited-state — for records that carry Atlas Object identity,
   // the marker quietly warms when the object has been encountered
   // before (any anchoring). The change is subtle: a slightly
@@ -15607,6 +15743,20 @@ const _CODEX_PREFACE_RUBRICS = [
       'passed through death; so with every form of memory the ' +
       'archive carries. What was, is held. What was broken, is ' +
       'held. What returns, is held.'
+    ),
+  },
+  {
+    head: 'On memory’s gravity',
+    body: (
+      'The same object encountered through different verses is not ' +
+      'encountered in the same way. The form’s first verse — the ' +
+      'originating anchor — carries a weight the later passages ' +
+      'bear as echo. The archive does not say so. It lets the page ' +
+      'settle more slowly at a canonical centre, and lighter at an ' +
+      'echo; lets the marker stand more firmly where the form first ' +
+      'formed, and recede a touch where it recurs. The reader who ' +
+      'notices is not navigating. They are reading by the codex’s ' +
+      'grain.'
     ),
   },
 ];
