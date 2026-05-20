@@ -4062,6 +4062,32 @@ body.viewer-active .folio-leaf[data-gravity="originating"] > .folio-leaf-title {
   animation: folio-leaf-settle 0.42s ease-out;
 }
 
+/* Inward measure — at canonical centres, the lede narrows to a
+   smaller measure (max-width 540px, centred), so the text
+   recedes inward. The reader feels they have walked closer to
+   the centre of the room. Echo chambers keep the chamber's
+   native lede width. The selector targets every chamber's
+   lede class regardless of its prefix (cc-lede, tc-lede, etc.). */
+.folio-leaf[data-gravity="originating"] [class*="-lede"] {
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Layered emergence — at canonical centres, the section
+   headings fade in slightly after the leaf has begun settling.
+   The chamber arrives in layers: head and title first, then
+   the sections; the codex does not expose itself all at once.
+   Echo chambers reveal at once — the reader has been here. */
+@keyframes acp-emerge {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.folio-leaf[data-gravity="originating"] .cc-section-heading {
+  animation: acp-emerge 0.5s ease-out backwards;
+  animation-delay: 0.42s;
+}
+
 /* ── Per-class spatial signatures ──────────────────────────────
    Eleven chamber rhythms now share the leaf. Some imply spatial
    reverence by their content — apocalyptic vision is
@@ -15850,6 +15876,17 @@ const _CODEX_PREFACE_RUBRICS = [
       'There never is. Some places are simply approached differently, ' +
       'and the manuscript that knows this is older than the archive ' +
       'that records it.'
+    ),
+  },
+  {
+    head: 'On inwardness',
+    body: (
+      'The codex does not place its centres on its surface. Some ' +
+      'pages lie deeper inside the form — not hidden, only inward. ' +
+      'To approach them is to feel the measure narrow, the head ' +
+      'pause, the section content settle a beat after the leaf. The ' +
+      'reader does not pass through a door. They walk closer to the ' +
+      'centre of the room. The room knows.'
     ),
   },
 ];
