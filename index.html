@@ -3131,6 +3131,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="revelatory-vision"]::before { content: '◎'; }
 .cr-folio-marker[data-kind="lament-structure"]::before { content: '▾'; }
 .cr-folio-marker[data-kind="incarnational-presence"]::before { content: '⊙'; }
+.cr-folio-marker[data-kind="resurrection-renewal"]::before { content: '⊛'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -6002,6 +6003,242 @@ body.viewer-active .folio-leaf.incarnation-chamber
   font-size: 1.12em;
 }
 body.viewer-active .folio-leaf.incarnation-chamber .in-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 011 — Resurrection Chamber ───────────────────────────
+   Interrupted-then-returning. Each return-moment is a rupture-
+   then-return pair: the dim "before" sits above a hairline scar
+   mark; the renewed "after" sits below at full intensity. The
+   wounds remain — the before is not erased, only dimmed. The
+   sixth pair (consummation) glows slightly warmer; the fourth
+   pair (John 20) carries a small italic small-caps wound rubric
+   beneath the after-text. Restrained luminance throughout — no
+   spectacle. */
+.folio-leaf.resurrection-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.resurrection-chamber .rs-lede {
+  margin: 6px 0 22px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.folio-leaf.resurrection-chamber .rs-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.94em;
+}
+
+/* Returns — rupture-then-return pairs. Each panel holds the
+   before/scar/after triad. */
+.folio-leaf.resurrection-chamber .rs-returns {
+  margin: 16px 0 4px;
+}
+.folio-leaf.resurrection-chamber .rs-return {
+  position: relative;
+  margin: 28px auto;
+  max-width: 560px;
+  padding: 22px 24px 22px;
+  background: linear-gradient(180deg,
+    rgba(248, 244, 232, 0.32),
+    rgba(250, 246, 236, 0.42));
+  border: 1px solid rgba(120, 90, 55, 0.18);
+  border-radius: 1px;
+}
+.folio-leaf.resurrection-chamber .rs-return-head {
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  color: rgba(110, 65, 25, 0.72);
+  margin-bottom: 14px;
+}
+.folio-leaf.resurrection-chamber .rs-return-numeral {
+  font-weight: 500;
+  color: rgba(85, 50, 18, 0.86);
+}
+.folio-leaf.resurrection-chamber .rs-return-sep {
+  color: rgba(110, 95, 75, 0.4);
+  letter-spacing: 0;
+}
+.folio-leaf.resurrection-chamber .rs-return-ref {
+  color: rgba(120, 65, 25, 0.78);
+}
+.folio-leaf.resurrection-chamber .rs-return-tradition {
+  color: rgba(95, 75, 50, 0.72);
+}
+
+/* The BEFORE — dim, smaller italic. The rupture state. The
+   text is kept legible (not hidden) — the chamber's commitment
+   is that the rupture remains, dimmed but not erased. */
+.folio-leaf.resurrection-chamber .rs-before {
+  margin: 0 auto;
+  padding: 0 8px;
+  max-width: 460px;
+  font-style: italic;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: rgba(95, 75, 50, 0.48);
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+/* The SCAR — a hairline mark between rupture and return. A
+   single thin horizontal line, slightly darker than the page
+   ground, centered. Visible memory of the rupture. */
+.folio-leaf.resurrection-chamber .rs-scar {
+  width: 80px;
+  height: 0;
+  margin: 16px auto 16px;
+  border-top: 1px solid rgba(120, 85, 45, 0.5);
+}
+
+/* The AFTER — full intensity italic. The return. Slightly
+   larger than the before to carry the "breath returning"
+   movement in the type itself. */
+.folio-leaf.resurrection-chamber .rs-after {
+  margin: 0 auto;
+  padding: 0 8px;
+  max-width: 500px;
+  font-style: italic;
+  font-size: 1.02em;
+  line-height: 1.7;
+  color: rgba(35, 22, 4, 0.96);
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+/* The WOUND MARK — small italic small-caps rubric, beneath the
+   after-text on the John 20 moment. The chamber's structural
+   claim made explicit at the moment where it is also the
+   theological content. */
+.folio-leaf.resurrection-chamber .rs-wound-mark {
+  margin: 14px auto 0;
+  padding-top: 10px;
+  border-top: 1px dotted rgba(120, 85, 45, 0.4);
+  text-align: center;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  color: rgba(110, 65, 25, 0.65);
+}
+
+/* Footnote — small italic linguistic note. */
+.folio-leaf.resurrection-chamber .rs-return-footnote {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dotted rgba(120, 90, 50, 0.2);
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 0.82em;
+  line-height: 1.55;
+  color: rgba(110, 75, 35, 0.74);
+  text-align: center;
+}
+
+/* The consummation — the sixth and last return. Slightly warmer
+   parchment, fuller borders. The chamber's culminating air;
+   restrained — only this block is so marked. */
+.folio-leaf.resurrection-chamber .rs-return[data-consummation="true"] {
+  background: linear-gradient(180deg,
+    rgba(252, 244, 218, 0.52),
+    rgba(250, 244, 222, 0.36));
+  border-top: 2px solid rgba(170, 130, 50, 0.45);
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+.folio-leaf.resurrection-chamber .rs-return[data-consummation="true"] .rs-after {
+  font-size: 1.06em;
+  color: rgba(28, 18, 2, 0.98);
+}
+
+/* Wound-bearing panels (John 20) carry a slightly stronger
+   scar — the dotted upper rule on the wound-mark already
+   signals this; the panel itself is otherwise unchanged. */
+.folio-leaf.resurrection-chamber .rs-return[data-wound="true"] .rs-scar {
+  border-top-color: rgba(120, 50, 25, 0.55);
+}
+
+/* Breath vocabulary — same compressed two-column grid as the
+   incarnation chamber's vocabulary. Script + transliteration on
+   the left, gloss + note on the right. */
+.folio-leaf.resurrection-chamber .rs-vocabulary {
+  margin: 14px auto 4px;
+  padding: 0;
+  max-width: 620px;
+}
+.folio-leaf.resurrection-chamber .rs-term-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px 22px;
+  padding: 14px 0;
+  border-top: 1px dotted rgba(120, 90, 50, 0.24);
+}
+.folio-leaf.resurrection-chamber .rs-term-row:first-child {
+  border-top: none;
+  padding-top: 6px;
+}
+.folio-leaf.resurrection-chamber .rs-term-head {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.folio-leaf.resurrection-chamber .rs-term-script {
+  font-size: 1.36em;
+  line-height: 1.15;
+  color: rgba(40, 24, 8, 0.94);
+}
+.folio-leaf.resurrection-chamber .rs-term-row[data-lang="he"] .rs-term-script {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.46em;
+  direction: rtl;
+}
+.folio-leaf.resurrection-chamber .rs-term-row[data-lang="el"] .rs-term-script {
+  font-family: "SBL Greek", "Cardo", "GFS Didot", "Times New Roman", serif;
+  font-size: 1.28em;
+}
+.folio-leaf.resurrection-chamber .rs-term-translit {
+  font-style: italic;
+  font-size: 0.86em;
+  color: rgba(110, 65, 25, 0.84);
+  letter-spacing: 0.02em;
+}
+.folio-leaf.resurrection-chamber .rs-term-body {
+  margin: 0;
+  font-size: 0.92em;
+  line-height: 1.55;
+  color: rgba(55, 40, 22, 0.88);
+}
+.folio-leaf.resurrection-chamber .rs-term-gloss {
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.folio-leaf.resurrection-chamber .rs-term-note {
+  font-size: 0.85em;
+  color: rgba(95, 75, 50, 0.78);
+  line-height: 1.5;
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.resurrection-chamber .rs-after {
+  font-size: 1.08em;
+}
+body.viewer-active .folio-leaf.resurrection-chamber
+  .rs-return[data-consummation="true"] .rs-after {
+  font-size: 1.12em;
+}
+body.viewer-active .folio-leaf.resurrection-chamber .rs-section-heading {
   margin-top: 42px;
 }
 
@@ -10216,6 +10453,20 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderIncarnationChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 011  resurrection-renewal     eze37-bones-breath
+  //             rupture-then-return pairings — each moment shows
+  //             the silence/corruption state (dimmed, smaller
+  //             italic) above a hairline scar mark, then the
+  //             return at full intensity. The wounds remain.
+  //             A breath-vocabulary layer carries ruach/pneuma/
+  //             anastasis across the testaments.
+  if (rec.id === 'eze37-bones-breath') {
+    leaf.classList.add('resurrection-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderResurrectionChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -12743,6 +12994,239 @@ function _renderINVocabulary(terms) {
     if (term.note) {
       const n = document.createElement('div');
       n.className = 'in-term-note';
+      n.textContent = term.note;
+      dd.appendChild(n);
+    }
+    row.appendChild(dt);
+    row.appendChild(dd);
+    wrap.appendChild(row);
+  }
+  return wrap;
+}
+
+
+// ── AO · 011 — Bones Clothed With Breath ──────────────────────
+// A resurrection / renewal Atlas Object. The chamber's form is
+// the form of resurrection itself: each return-moment renders
+// the silence/corruption state ABOVE the renewed text — dimmed,
+// smaller, kept legible — so the reader's eye sees life come
+// back through typography itself. The "before" is not erased.
+// The wounds remain.
+//
+//   §i  Returns — six rupture-then-return pairings. Each
+//       carries: head (numeral · ref · tradition), the dim
+//       "before" (silence / corruption / death), a hairline
+//       scar mark, then the "after" (return / breath / risen)
+//       at full intensity, and optional footnotes / wound mark.
+//
+//   §ii Breath Vocabulary — five Hebrew/Greek terms
+//       (ruach, neshamah, pneuma, anastasis, egeirō) that
+//       travel across the testaments. The same word, the same
+//       work — breath returning.
+//
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary — what returns is recognizable;
+//       what returns is altered; the wounds remain.
+
+function _renderResurrectionChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — shared
+  // pipeline with the prior ten chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'rs-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Returns (the heart).
+  if (Array.isArray(rec.return_moments) && rec.return_moments.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Returns',
+      'Six passings-through — the dim before, the renewed after'));
+    leaf.appendChild(_renderRSReturns(rec.return_moments));
+  }
+
+  // §ii — Breath Vocabulary.
+  if (Array.isArray(rec.breath_vocabulary) && rec.breath_vocabulary.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Breath Vocabulary',
+      'ruach · neshamah · pneuma · anastasis · egeirō'));
+    leaf.appendChild(_renderRSVocabulary(rec.breath_vocabulary));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where the breath has also returned'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// Return moments — each one a rupture-then-return pair. The
+// "before" sits dim and smaller above a hairline scar; the
+// "after" sits below at full intensity. The wounds remain (the
+// before doesn't disappear). For the John 20 moment, a small
+// wound mark is added beneath the after-text to make the
+// chamber's structural claim explicit at the moment where it is
+// also the theological content.
+function _renderRSReturns(moments) {
+  const wrap = document.createElement('div');
+  wrap.className = 'rs-returns';
+  for (const m of moments) {
+    const r = document.createElement('article');
+    r.className = 'rs-return';
+    if (m.consummation) r.dataset.consummation = 'true';
+    if (m.wound_mark) r.dataset.wound = 'true';
+
+    const head = document.createElement('div');
+    head.className = 'rs-return-head';
+    const num = document.createElement('span');
+    num.className = 'rs-return-numeral';
+    num.textContent = m.numeral || '';
+    head.appendChild(num);
+    if (m.ref) {
+      const sep = document.createElement('span');
+      sep.className = 'rs-return-sep';
+      sep.textContent = ' · ';
+      sep.setAttribute('aria-hidden', 'true');
+      head.appendChild(sep);
+      const ref = document.createElement('span');
+      ref.className = 'rs-return-ref';
+      ref.textContent = m.ref;
+      head.appendChild(ref);
+    }
+    if (m.tradition) {
+      const sep2 = document.createElement('span');
+      sep2.className = 'rs-return-sep';
+      sep2.textContent = ' · ';
+      sep2.setAttribute('aria-hidden', 'true');
+      head.appendChild(sep2);
+      const trad = document.createElement('span');
+      trad.className = 'rs-return-tradition';
+      trad.textContent = m.tradition;
+      head.appendChild(trad);
+    }
+    r.appendChild(head);
+
+    // The "before" — dim, smaller italic. The rupture state.
+    if (m.before) {
+      const b = document.createElement('blockquote');
+      b.className = 'rs-before';
+      b.textContent = m.before;
+      r.appendChild(b);
+    }
+
+    // The scar — a hairline mark between rupture and return.
+    // CSS draws a thin line; this element just holds the breath
+    // gap. The scar is the visible memory of the rupture.
+    const scar = document.createElement('div');
+    scar.className = 'rs-scar';
+    scar.setAttribute('aria-hidden', 'true');
+    r.appendChild(scar);
+
+    // The "after" — full italic intensity. The return.
+    if (m.after) {
+      const a = document.createElement('blockquote');
+      a.className = 'rs-after';
+      a.textContent = m.after;
+      r.appendChild(a);
+    }
+
+    // The wound mark — a small italic small-caps rubric beneath
+    // the after-text, present only on the John 20 moment, where
+    // the chamber's claim is the theology of the passage itself.
+    if (m.wound_mark) {
+      const wm = document.createElement('div');
+      wm.className = 'rs-wound-mark';
+      wm.textContent = '— wounds remain —';
+      r.appendChild(wm);
+    }
+
+    // Footnote — small italic linguistic / philological note,
+    // surfacing the Hebrew or Greek term that carries the theme.
+    if (m.footnote) {
+      const fn = document.createElement('div');
+      fn.className = 'rs-return-footnote';
+      fn.textContent = m.footnote;
+      r.appendChild(fn);
+    }
+
+    wrap.appendChild(r);
+  }
+  return wrap;
+}
+
+// Breath vocabulary — Hebrew and Greek terms traveling across
+// testaments. Same compressed two-column grid as the
+// incarnation chamber's vocabulary — script + transliteration
+// on the left, gloss + note on the right.
+function _renderRSVocabulary(terms) {
+  const wrap = document.createElement('dl');
+  wrap.className = 'rs-vocabulary';
+  for (const term of terms) {
+    const row = document.createElement('div');
+    row.className = 'rs-term-row';
+    row.dataset.lang = term.lang || '';
+    const dt = document.createElement('dt');
+    dt.className = 'rs-term-head';
+    const script = document.createElement('span');
+    script.className = 'rs-term-script';
+    if (term.lang) {
+      script.lang = term.lang;
+      if (term.lang === 'he') script.dir = 'rtl';
+    }
+    script.textContent = term.script || '';
+    dt.appendChild(script);
+    if (term.translit) {
+      const tr = document.createElement('span');
+      tr.className = 'rs-term-translit';
+      tr.textContent = term.translit;
+      dt.appendChild(tr);
+    }
+    const dd = document.createElement('dd');
+    dd.className = 'rs-term-body';
+    if (term.gloss) {
+      const g = document.createElement('div');
+      g.className = 'rs-term-gloss';
+      g.textContent = term.gloss;
+      dd.appendChild(g);
+    }
+    if (term.note) {
+      const n = document.createElement('div');
+      n.className = 'rs-term-note';
       n.textContent = term.note;
       dd.appendChild(n);
     }
