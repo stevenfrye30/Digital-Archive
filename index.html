@@ -4022,7 +4022,13 @@ body.folio-left #companion-swap {
    no badges; the difference is in the cadence and the warmth
    of the air at the page-head. */
 .folio-leaf[data-gravity="originating"] {
+  /* Threshold pre-pause — the leaf is held invisible for 180ms
+     before settling. A small silence before the canonical
+     centre admits the reader. The scrim is already dark; this
+     becomes a held breath, not a loading state. */
   animation: folio-leaf-settle 0.72s ease-out;
+  animation-delay: 0.18s;
+  animation-fill-mode: backwards;
 }
 .folio-leaf[data-gravity="originating"] > .folio-leaf-provenance,
 .folio-leaf[data-gravity="originating"] > .cc-atlas-object-rubric {
@@ -4039,8 +4045,82 @@ body.folio-left #companion-swap {
   padding-left: 18px;
   padding-right: 18px;
 }
+/* Sanctuary breath — the title and verse sit with extra rest
+   around them at canonical centres. The page breathes wider
+   where the form formed. */
+.folio-leaf[data-gravity="originating"] > .folio-leaf-verse {
+  margin-bottom: 10px;
+}
+.folio-leaf[data-gravity="originating"] > .folio-leaf-title {
+  margin-bottom: 38px;
+}
+body.viewer-active .folio-leaf[data-gravity="originating"] > .folio-leaf-title {
+  margin-bottom: 46px;
+}
 .folio-leaf[data-gravity="echo"] {
+  /* No pre-pause; the reader has been here before. */
   animation: folio-leaf-settle 0.42s ease-out;
+}
+
+/* ── Per-class spatial signatures ──────────────────────────────
+   Eleven chamber rhythms now share the leaf. Some imply spatial
+   reverence by their content — apocalyptic vision is
+   thresholded, wisdom is contemplative and recessed, lament is
+   interrupted. These small deltas sharpen the spatial
+   phenomenology that the chamber rhythm already implies, only
+   at the originating anchor (where the form first formed).
+   At echo anchors the cadence is plain — the reader does not
+   need ceremony on a return visit. */
+
+/* Apocalyptic — thresholded. Extra breath above the first
+   section, as if the reader crosses a portal into the visions.
+   Targets via sibling combinator so we catch the first
+   cc-section-heading (which follows the chamber's lede). */
+.folio-leaf.revelation-chamber[data-gravity="originating"]
+  .rc-lede + .cc-section-heading,
+.folio-leaf.revelation-chamber[data-gravity="originating"]
+  .folio-leaf-title + .cc-section-heading {
+  padding-top: 32px;
+  margin-top: 32px;
+}
+
+/* Wisdom — recessed. The chamber breathes wider at its
+   originating centre; the contemplative silence is
+   slightly deeper. */
+.folio-leaf.wisdom-chamber[data-gravity="originating"] .ws-lede {
+  margin-top: 18px;
+  margin-bottom: 36px;
+}
+.folio-leaf.wisdom-chamber[data-gravity="originating"]
+  .ws-lede + .cc-section-heading,
+.folio-leaf.wisdom-chamber[data-gravity="originating"]
+  .folio-leaf-title + .cc-section-heading {
+  margin-top: 36px;
+}
+
+/* Lament — interrupted. A small irregularity in the lede
+   spacing at originating, echoing the dotted axis below. */
+.folio-leaf.lament-chamber[data-gravity="originating"] .lm-lede {
+  padding-top: 10px;
+  border-top: 1px dotted rgba(120, 90, 50, 0.18);
+}
+
+/* Incarnation — already compressed and intimate by design;
+   at originating, the rest above the dwellings deepens
+   slightly so the reader feels the descent into nearness. */
+.folio-leaf.incarnation-chamber[data-gravity="originating"]
+  .in-lede + .cc-section-heading,
+.folio-leaf.incarnation-chamber[data-gravity="originating"]
+  .folio-leaf-title + .cc-section-heading {
+  padding-top: 22px;
+}
+
+/* Resurrection — at originating the leaf's first return-moment
+   carries a deeper breath above its head, matching the
+   gravity of the form's first opening. */
+.folio-leaf.resurrection-chamber[data-gravity="originating"]
+  .rs-returns {
+  margin-top: 28px;
 }
 .folio-leaf-return {
   display: inline-block;
@@ -15757,6 +15837,19 @@ const _CODEX_PREFACE_RUBRICS = [
       'formed, and recede a touch where it recurs. The reader who ' +
       'notices is not navigating. They are reading by the codex’s ' +
       'grain.'
+    ),
+  },
+  {
+    head: 'On threshold',
+    body: (
+      'Not every page is entered the same way. At a canonical ' +
+      'centre, the codex holds itself a moment before opening — a ' +
+      'small silence before the leaf admits the reader. The title ' +
+      'reads with more rest beneath it, the page settles more ' +
+      'slowly, the head breathes wider. There is no announcement. ' +
+      'There never is. Some places are simply approached differently, ' +
+      'and the manuscript that knows this is older than the archive ' +
+      'that records it.'
     ),
   },
 ];
