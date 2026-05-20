@@ -3188,23 +3188,26 @@ body.cols-single.chapter-room.companion-mode.folio-left
 }
 
 /* SECONDARY — scholarly theses, reconstructions, comparative
-   interpretation. Dashed cooler border, mid tint, mid opacity —
-   reads as analytic apparatus rather than direct witness. */
+   interpretation. Dashed cooler border, mid tint. Reads as
+   analytic apparatus rather than direct witness; ink is clearly
+   darker than tertiary, parchment slightly warmer. */
 .cr-folio-marker[data-authority="secondary"] {
-  background: rgba(140, 115, 80, 0.11);
-  border: 1px dashed rgba(85, 65, 45, 0.6);
-  color: rgba(75, 55, 30, 0.82);
-  opacity: 0.78;
+  background: rgba(140, 115, 80, 0.14);
+  border: 1px dashed rgba(85, 65, 45, 0.70);
+  color: rgba(75, 55, 30, 0.94);
+  opacity: 0.88;
 }
 
-/* TERTIARY — archive editorial synthesis. Dotted faded border,
-   barely-tinted background, lower opacity. Reads as the faintest
-   marginal note — orientation/explanation, never primary witness. */
+/* TERTIARY — archive editorial synthesis. Dotted faint border,
+   barely-tinted parchment. Reads as a quiet marginal gloss —
+   orientation/explanation, never primary witness. Fully legible
+   at rest; the dotted border + cooler ink mark it as the lightest
+   manuscript register, not as inactive UI. */
 .cr-folio-marker[data-authority="tertiary"] {
-  background: rgba(140, 120, 95, 0.05);
-  border: 1px dotted rgba(110, 95, 75, 0.42);
-  color: rgba(95, 78, 55, 0.68);
-  opacity: 0.6;
+  background: rgba(140, 120, 95, 0.10);
+  border: 1px dotted rgba(110, 95, 75, 0.56);
+  color: rgba(95, 78, 55, 0.86);
+  opacity: 0.82;
 }
 
 .cr-folio-marker:hover,
@@ -3216,21 +3219,30 @@ body.cols-single.chapter-room.companion-mode.folio-left
 }
 .cr-folio-marker[data-authority="primary"]:hover,
 .cr-folio-marker[data-authority="primary"]:focus-visible {
-  background: rgba(160, 110, 55, 0.42);
-  border-color: rgba(110, 60, 18, 0.95);
+  background: rgba(160, 110, 55, 0.44);
+  border-color: rgba(110, 60, 18, 1);
+  color: rgba(70, 25, 5, 1);
   opacity: 1;
 }
+/* Hover on secondary lifts ink to near-full but preserves the
+   dashed border so the tier remains distinguishable while focused. */
 .cr-folio-marker[data-authority="secondary"]:hover,
 .cr-folio-marker[data-authority="secondary"]:focus-visible {
-  background: rgba(140, 115, 80, 0.22);
-  border-color: rgba(85, 65, 45, 0.82);
+  background: rgba(140, 115, 80, 0.26);
+  border-color: rgba(85, 65, 45, 0.92);
+  color: rgba(60, 38, 12, 1);
   opacity: 1;
 }
+/* Hover on tertiary CLARIFIES the gloss — the dotted border
+   sharpens, the parchment warms, and the ink resolves to a
+   readable mid-register. It does not pretend to be primary;
+   it shows the reader the marginal note in full focus. */
 .cr-folio-marker[data-authority="tertiary"]:hover,
 .cr-folio-marker[data-authority="tertiary"]:focus-visible {
-  background: rgba(140, 120, 95, 0.16);
-  border-color: rgba(110, 95, 75, 0.72);
-  opacity: 0.95;
+  background: rgba(140, 120, 95, 0.22);
+  border-color: rgba(110, 95, 75, 0.85);
+  color: rgba(85, 58, 28, 1);
+  opacity: 1;
 }
 .cr-folio-marker:focus-visible {
   box-shadow: 0 0 0 2px rgba(120, 80, 35, 0.32);
@@ -3257,12 +3269,12 @@ body.cols-single.chapter-room.companion-mode.folio-left
   opacity: 1;
 }
 .cr-folio-marker[data-authority="secondary"][data-visited="true"] {
-  border-color: rgba(75, 50, 28, 0.78);
-  opacity: 0.92;
+  border-color: rgba(75, 50, 28, 0.84);
+  opacity: 0.96;
 }
 .cr-folio-marker[data-authority="tertiary"][data-visited="true"] {
-  border-color: rgba(95, 78, 55, 0.62);
-  opacity: 0.78;
+  border-color: rgba(95, 78, 55, 0.72);
+  opacity: 0.92;
 }
 
 /* Anchor weight — within each authority class, markers at the
@@ -3280,27 +3292,27 @@ body.cols-single.chapter-room.companion-mode.folio-left
   border-color: rgba(95, 75, 50, 0.62);
 }
 .cr-folio-marker[data-anchor-weight="echo"] {
-  opacity: 0.66;
+  opacity: 0.74;
 }
 .cr-folio-marker[data-anchor-weight="echo"][data-authority="primary"] {
-  opacity: 0.86;
+  opacity: 0.88;
 }
 .cr-folio-marker[data-anchor-weight="echo"][data-authority="secondary"] {
-  opacity: 0.7;
+  opacity: 0.80;
 }
 .cr-folio-marker[data-anchor-weight="echo"][data-authority="tertiary"] {
-  opacity: 0.54;
+  opacity: 0.70;
 }
 /* Visited echoes — slightly recovered presence; the object has
    been met, the echo is no longer peripheral. */
 .cr-folio-marker[data-anchor-weight="echo"][data-visited="true"] {
-  opacity: 0.78;
+  opacity: 0.86;
 }
 .cr-folio-marker[data-anchor-weight="echo"][data-visited="true"][data-authority="primary"] {
-  opacity: 0.96;
+  opacity: 1;
 }
 .cr-folio-marker[data-anchor-weight="echo"][data-visited="true"][data-authority="tertiary"] {
-  opacity: 0.68;
+  opacity: 0.82;
 }
 
 /* Type → glyph mapping. The default rule covers any kind not
