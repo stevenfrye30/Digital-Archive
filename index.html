@@ -3176,38 +3176,45 @@ body.cols-single.chapter-room.companion-mode.folio-left
    orthogonal and unchanged. */
 
 /* PRIMARY — direct artifacts, manuscript texts, canonical
-   citations, direct cultural recordings. Solid warm border,
-   warm saturated tint, full opacity, slightly bolder glyph.
-   The strongest, most stable visual register. */
+   citations, direct cultural recordings. Solid warm border at
+   confident weight, warm saturated tint, bolder glyph at full
+   size. The strongest, most stable silhouette. */
 .cr-folio-marker[data-authority="primary"] {
-  background: rgba(160, 110, 55, 0.28);
-  border: 1px solid rgba(110, 60, 18, 0.78);
+  background: rgba(160, 110, 55, 0.30);
+  border: 1.5px solid rgba(110, 60, 18, 0.82);
   color: rgba(85, 35, 8, 1);
   opacity: 0.96;
+  font-size: 16px;
   font-weight: 500;
 }
 
 /* SECONDARY — scholarly theses, reconstructions, comparative
-   interpretation. Dashed cooler border, mid tint. Reads as
-   analytic apparatus rather than direct witness; ink is clearly
-   darker than tertiary, parchment slightly warmer. */
+   interpretation. Dashed warm-cool border at the same heavy
+   weight as primary so the box feels equally anchored; baseline
+   glyph size; warmer parchment than tertiary. Reads as analytic
+   apparatus that still belongs in the manuscript stratum. */
 .cr-folio-marker[data-authority="secondary"] {
-  background: rgba(140, 115, 80, 0.14);
-  border: 1px dashed rgba(85, 65, 45, 0.70);
+  background: rgba(150, 115, 75, 0.18);
+  border: 1.5px dashed rgba(85, 65, 45, 0.74);
   color: rgba(75, 55, 30, 0.94);
   opacity: 0.88;
+  font-size: 15px;
 }
 
-/* TERTIARY — archive editorial synthesis. Dotted faint border,
-   barely-tinted parchment. Reads as a quiet marginal gloss —
-   orientation/explanation, never primary witness. Fully legible
-   at rest; the dotted border + cooler ink mark it as the lightest
-   manuscript register, not as inactive UI. */
+/* TERTIARY — archive editorial synthesis. Smaller box (26×26),
+   smaller glyph (13px), single-pixel dotted border, distinctly
+   cooler parchment (less red, more grey). The silhouette mass
+   is intentionally lighter so the eye reads it as a marginal
+   gloss orbiting the larger secondary/primary marks rather
+   than as a competing item in the same row. Fully legible. */
 .cr-folio-marker[data-authority="tertiary"] {
-  background: rgba(140, 120, 95, 0.10);
-  border: 1px dotted rgba(110, 95, 75, 0.56);
+  width: 26px;
+  height: 26px;
+  background: rgba(130, 128, 118, 0.08);
+  border: 1px dotted rgba(110, 95, 75, 0.58);
   color: rgba(95, 78, 55, 0.86);
   opacity: 0.82;
+  font-size: 13px;
 }
 
 .cr-folio-marker:hover,
@@ -10514,14 +10521,18 @@ function showCover(data, entry) {
   }
 
   // Wire the back-to-versions button (Bible cover only). Returns
-  // the reader to the Bible versions/library list (browseTradition
-  // for the current category and tradition), one step up the
-  // navigation hierarchy.
+  // the reader to the IMMEDIATE conceptual parent of this cover —
+  // the Bible Versions translation picker (browseText) when the
+  // text has multiple translations, otherwise the broader tradition
+  // listing. Skipping the Bible Versions intermediate would jump
+  // two levels at once and break the spatial coherence of the
+  // codex.
   const backBtn = $textHeader.querySelector('.bcl-back-to-versions');
   if (backBtn) {
     backBtn.addEventListener('click', () => {
       const trd = (currentEntry && currentEntry.tradition) || 'Christian';
       const cat = (typeof bucketFor === 'function') ? bucketFor(trd) : 'Religion';
+      const textId = currentEntry && currentEntry.id;
       // Tear down cover-leaf scaffolding so the browse view is clean
       const th = document.getElementById('text-header');
       if (th) { th.innerHTML = ''; th.style.display = 'none'; }
@@ -10529,7 +10540,12 @@ function showCover(data, entry) {
       document.body.classList.remove('chapter-room');
       const ctrlContents = document.getElementById('ctrl-contents');
       if (ctrlContents) ctrlContents.style.display = 'none';
-      browseTradition(cat, trd);
+      const group = textId ? indexGroups[textId] : null;
+      if (group && group.length > 1) {
+        browseText(cat, trd, textId);
+      } else {
+        browseTradition(cat, trd);
+      }
     });
   }
 
@@ -15475,6 +15491,11 @@ function _positionFolioEntries() {
 
   let prevBottom = headerBottom;
   const COLLISION_GAP = 14;
+  // Tertiary-only clusters carry extra vertical breath so the
+  // eye reads them as quiet marginal glosses orbiting the verse
+  // rather than competing with the heavier primary/secondary
+  // marks in adjacent rows.
+  const TERTIARY_ONLY_GAP = 24;
   for (const cluster of clusters) {
     // Refresh the hidden-count indicator and the cluster-empty
     // collapse based on the current depth and tier distribution.
@@ -15496,7 +15517,12 @@ function _positionFolioEntries() {
       );
       if (verse) verseTop = verse.offsetTop;
     }
-    const top = Math.max(verseTop, prevBottom + COLLISION_GAP);
+    const tPN = Number(cluster.dataset.tierPrimary || 0);
+    const tSN = Number(cluster.dataset.tierSecondary || 0);
+    const tTN = Number(cluster.dataset.tierTertiary || 0);
+    const isTertiaryOnly = (tPN === 0 && tSN === 0 && tTN > 0);
+    const gap = isTertiaryOnly ? TERTIARY_ONLY_GAP : COLLISION_GAP;
+    const top = Math.max(verseTop, prevBottom + gap);
     cluster.style.top = top + 'px';
     // Debug instrumentation — surfaces depth mode, visible/total
     // marker count, tier distribution (P/S/T), and collision offset.
