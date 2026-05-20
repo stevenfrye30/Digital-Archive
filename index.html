@@ -3125,6 +3125,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 .cr-folio-marker[data-kind="audio"]::before           { content: '♪'; }
 .cr-folio-marker[data-kind="cross-reference"]::before { content: '§'; }
 .cr-folio-marker[data-kind="translation-tradition"]::before { content: '‡'; }
+.cr-folio-marker[data-kind="symbolic-motif"]::before { content: '△'; }
 
 /* Hover/focus plaque — a quiet manuscript marginal note revealed
    beside the marker. Position computed by JS on hover/focus so
@@ -4937,6 +4938,196 @@ body.viewer-active .folio-leaf.sabbath-chamber .sc-day-consecration {
   padding: 14px 18px;
 }
 body.viewer-active .folio-leaf.sabbath-chamber .sc-section-heading {
+  margin-top: 42px;
+}
+
+/* ── AO · 005 — Sacred Mountain Chamber ────────────────────────
+   Layered, elevated, recursive. The chamber's heart is a single
+   vertical column of mountain encounters joined by a continuous
+   hairline rule (the axis mundi). Each layer is a small
+   inscription hanging off the rule; small italic ↑ ascent marks
+   sit on the rule between layers. The seventh and last layer is
+   the eschatological summit — visibly the chamber's highest air. */
+.folio-leaf.mountain-chamber {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: rgba(50, 38, 22, 0.92);
+}
+.folio-leaf.mountain-chamber .mc-lede {
+  margin: 6px 0 22px;
+  font-style: italic;
+  color: rgba(55, 40, 22, 0.84);
+}
+.folio-leaf.mountain-chamber .mc-lede p {
+  margin: 0;
+  line-height: 1.65;
+  font-size: 0.94em;
+}
+
+/* The axis mundi — a continuous hairline vertical rule running
+   the full height of the column, drawn by the wrapper's
+   ::before. Each mountain layer hangs off this rule via its
+   left indentation. */
+.folio-leaf.mountain-chamber .mc-axis {
+  position: relative;
+  margin: 14px 0 4px;
+  padding-left: 36px;
+}
+.folio-leaf.mountain-chamber .mc-axis::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 14px;
+  width: 1px;
+  background: rgba(120, 90, 50, 0.42);
+}
+/* The mountain layer itself. */
+.folio-leaf.mountain-chamber .mc-layer {
+  position: relative;
+  padding: 16px 14px 16px 0;
+}
+.folio-leaf.mountain-chamber .mc-layer-numeral {
+  position: absolute;
+  left: -28px;
+  top: 18px;
+  width: 22px;
+  text-align: right;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.2em;
+  color: rgba(110, 65, 25, 0.72);
+  background: var(--reader-bg, #faf8f5);
+  padding: 1px 0;
+}
+.folio-leaf.mountain-chamber .mc-layer-head {
+  font-size: 1.06em;
+  line-height: 1.3;
+  color: rgba(40, 28, 12, 0.94);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.mountain-chamber .mc-layer-name {
+  font-style: italic;
+  font-weight: 500;
+}
+.folio-leaf.mountain-chamber .mc-layer-sep {
+  color: rgba(110, 95, 75, 0.45);
+}
+.folio-leaf.mountain-chamber .mc-layer-name-he {
+  font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", serif;
+  font-size: 1.16em;
+  color: rgba(40, 24, 8, 0.94);
+}
+.folio-leaf.mountain-chamber .mc-layer-translit {
+  font-style: italic;
+  font-size: 0.86em;
+  color: rgba(110, 65, 25, 0.78);
+}
+.folio-leaf.mountain-chamber .mc-layer-epithet {
+  margin-top: 5px;
+  font-style: italic;
+  font-size: 0.9em;
+  color: rgba(110, 65, 25, 0.82);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.mountain-chamber .mc-layer-fragment {
+  margin: 8px 0 0 0;
+  padding: 6px 0 0;
+  font-style: italic;
+  font-size: 0.96em;
+  line-height: 1.65;
+  color: rgba(55, 40, 22, 0.92);
+  border-top: 1px dotted rgba(120, 90, 50, 0.22);
+}
+.folio-leaf.mountain-chamber .mc-layer-witness {
+  margin-top: 6px;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.58);
+}
+/* Ascent mark between layers — small italic ↑ sitting on the
+   axis rule. The reader feels the climb without infographic UI. */
+.folio-leaf.mountain-chamber .mc-ascent {
+  position: relative;
+  margin: 4px 0 4px -28px;
+  width: 22px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(110, 65, 25, 0.52);
+  background: var(--reader-bg, #faf8f5);
+  padding: 2px 0;
+}
+
+/* The summit — the chamber's highest air. Visibly set apart:
+   the layer holds a faint warm-gold tint and a small ornament
+   above its numeral, so the reader senses arrival at the
+   eschatological peak. */
+.folio-leaf.mountain-chamber .mc-layer[data-summit="true"] {
+  background: linear-gradient(180deg,
+    rgba(252, 244, 220, 0.55),
+    rgba(248, 240, 215, 0.32));
+  border-top: 1px solid rgba(150, 110, 45, 0.32);
+  border-bottom: 1px solid rgba(150, 110, 45, 0.24);
+  padding: 22px 14px 22px 0;
+  margin-top: 6px;
+}
+.folio-leaf.mountain-chamber .mc-layer[data-summit="true"]::before {
+  content: '△';
+  position: absolute;
+  left: -32px;
+  top: -10px;
+  font-size: 14px;
+  color: rgba(150, 110, 45, 0.7);
+  background: var(--reader-bg, #faf8f5);
+  padding: 0 4px;
+  line-height: 1;
+}
+.folio-leaf.mountain-chamber .mc-layer[data-summit="true"] .mc-layer-fragment {
+  font-size: 1em;
+  color: rgba(45, 28, 8, 0.95);
+}
+
+/* Encounter fragments — short italic phrases stacked vertically.
+   Each is its own utterance; no surrounding chrome. The block's
+   left border is a hairline rule echoing the axis mundi above. */
+.folio-leaf.mountain-chamber .mc-fragments {
+  margin: 8px 0;
+}
+.folio-leaf.mountain-chamber .mc-fragment {
+  margin: 14px 0;
+  padding: 0 0 0 18px;
+  border-left: 1px solid rgba(120, 90, 50, 0.28);
+}
+.folio-leaf.mountain-chamber .mc-fragment-quote {
+  margin: 0;
+  padding: 0;
+  font-style: italic;
+  font-size: 1em;
+  line-height: 1.65;
+  color: rgba(50, 35, 18, 0.92);
+  letter-spacing: 0.01em;
+}
+.folio-leaf.mountain-chamber .mc-fragment-ref {
+  margin-top: 4px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.65);
+}
+
+/* Encounter atmosphere — a touch more presence at full-spread. */
+body.viewer-active .folio-leaf.mountain-chamber .mc-layer-fragment {
+  font-size: 1em;
+}
+body.viewer-active .folio-leaf.mountain-chamber .mc-layer[data-summit="true"] .mc-layer-fragment {
+  font-size: 1.06em;
+}
+body.viewer-active .folio-leaf.mountain-chamber .mc-section-heading {
   margin-top: 42px;
 }
 
@@ -9067,6 +9258,21 @@ function _renderFolioObjectLeaf(rec, pid) {
     _renderSabbathChamber(leaf, rec, pid, chKey);
     return leaf;
   }
+  //
+  //   AO · 005  symbolic-motif           gen2-sacred-mountain
+  //             vertical axis-mundi layer stack — seven canonical
+  //             mountain encounters in sequence (Eden → Ararat →
+  //             Moriah → Sinai → Zion → Transfiguration →
+  //             eschatological summit), with small ↑ ascent marks
+  //             between layers and a hairline rule running through
+  //             all of them. Then encounter fragments — short
+  //             italic phrases that are the motif's own voice.
+  if (rec.id === 'gen2-sacred-mountain') {
+    leaf.classList.add('mountain-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderSacredMountainChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
 
   if (rec.kind === 'plate') {
     // Plates dominate the chamber: no paper leaf around them, no
@@ -10397,6 +10603,198 @@ function _renderSCRecurrenceFragments(fragments) {
     quote.className = 'sc-fragment-quote';
     quote.textContent = fr.quote || '';
     item.appendChild(quote);
+    wrap.appendChild(item);
+  }
+  return wrap;
+}
+
+
+// ── AO · 005 — The Sacred Mountain (Elevation and Encounter) ──
+// A symbolic / imaginal Atlas Object. The chamber's heart is a
+// vertical column of canonical mountain encounters connected by
+// a hairline axis-mundi rule. Each layer is a single encounter
+// inscription; between layers, small italic ascent marks signal
+// the symbolic climb. The seventh and last layer is the
+// eschatological summit — visibly the chamber's highest air.
+//
+//   §i  Vertical Layer — seven mountain encounters in canonical
+//       sequence, joined by a continuous hairline rule
+//       (the axis mundi). Each layer carries: numeral, name
+//       (English + Hebrew where applicable), italic epithet,
+//       italic verse fragment, witness reference.
+//
+//   §ii Encounter Fragments — five short italic phrases. The
+//       motif's own voice; not tied to a single mountain but
+//       to elevation as a vocabulary.
+//
+//   §iii Anchorings (reused).
+//   §iv Archive Commentary (reused).
+
+function _renderSacredMountainChamber(leaf, rec, pid, chKey) {
+  // Encounter memory + Atlas rubric + provenance — same pipeline
+  // as the prior four chambers.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+  if (recurrence) leaf.appendChild(_renderRecurrenceRubric(recurrence));
+  if (rec.atlas_object) leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  leaf.appendChild(_renderProvenanceHeader(rec));
+
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  leaf.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  leaf.appendChild(t);
+
+  if (rec.body) {
+    const lede = document.createElement('div');
+    lede.className = 'mc-lede';
+    String(rec.body).split('\n').forEach(line => {
+      if (!line.trim()) return;
+      const p = document.createElement('p');
+      p.textContent = line;
+      lede.appendChild(p);
+    });
+    leaf.appendChild(lede);
+  }
+
+  // §i — Vertical Layer (the axis mundi).
+  if (Array.isArray(rec.mountain_layers) && rec.mountain_layers.length) {
+    leaf.appendChild(_renderCCSectionHeading('i', 'Vertical Layer',
+      'Canonical mountain encounters, ascending'));
+    leaf.appendChild(_renderMCAxis(rec.mountain_layers));
+  }
+
+  // §ii — Encounter Fragments (the motif's own voice).
+  if (Array.isArray(rec.encounter_fragments) && rec.encounter_fragments.length) {
+    leaf.appendChild(_renderCCSectionHeading('ii', 'Encounter Fragments',
+      'The motif speaks across the canon'));
+    leaf.appendChild(_renderMCFragments(rec.encounter_fragments));
+  }
+
+  // §iii — Anchorings (reused).
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length) {
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+      'where this elevation also opens'));
+    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+  }
+
+  // §iv — Archive Commentary.
+  leaf.appendChild(_renderTCArchive(rec.archive_commentary));
+
+  const colophon = document.createElement('div');
+  colophon.className = 'folio-leaf-colophon';
+  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
+  leaf.appendChild(colophon);
+}
+
+// The axis-mundi vertical layer stack. A hairline rule (drawn by
+// the wrapper's ::before in CSS) runs the full height of the
+// column; each mountain layer hangs off the rule via its left
+// indentation. Between layers, small italic ↑ ascent marks sit
+// on the rule itself.
+function _renderMCAxis(layers) {
+  const wrap = document.createElement('div');
+  wrap.className = 'mc-axis';
+  layers.forEach((m, i) => {
+    if (i > 0) {
+      const ascent = document.createElement('div');
+      ascent.className = 'mc-ascent';
+      ascent.setAttribute('aria-hidden', 'true');
+      ascent.textContent = '↑';
+      wrap.appendChild(ascent);
+    }
+    wrap.appendChild(_renderMCLayer(m));
+  });
+  return wrap;
+}
+
+function _renderMCLayer(m) {
+  const layer = document.createElement('article');
+  layer.className = 'mc-layer';
+  if (m.summit) layer.dataset.summit = 'true';
+
+  const num = document.createElement('span');
+  num.className = 'mc-layer-numeral';
+  num.textContent = m.numeral || '';
+  layer.appendChild(num);
+
+  const head = document.createElement('div');
+  head.className = 'mc-layer-head';
+  const nameEn = document.createElement('span');
+  nameEn.className = 'mc-layer-name';
+  nameEn.textContent = m.name_en || '';
+  head.appendChild(nameEn);
+  if (m.name_he) {
+    const sep = document.createElement('span');
+    sep.className = 'mc-layer-sep';
+    sep.textContent = ' · ';
+    sep.setAttribute('aria-hidden', 'true');
+    head.appendChild(sep);
+    const heb = document.createElement('span');
+    heb.className = 'mc-layer-name-he';
+    heb.lang = 'he';
+    heb.dir = 'rtl';
+    heb.textContent = m.name_he;
+    head.appendChild(heb);
+  }
+  if (m.translit) {
+    const tr = document.createElement('span');
+    tr.className = 'mc-layer-translit';
+    tr.textContent = ' (' + m.translit + ')';
+    head.appendChild(tr);
+  }
+  layer.appendChild(head);
+
+  if (m.epithet) {
+    const ep = document.createElement('div');
+    ep.className = 'mc-layer-epithet';
+    ep.textContent = m.epithet;
+    layer.appendChild(ep);
+  }
+  if (m.fragment) {
+    const fr = document.createElement('blockquote');
+    fr.className = 'mc-layer-fragment';
+    fr.textContent = m.fragment;
+    layer.appendChild(fr);
+  }
+  if (m.ref) {
+    const ref = document.createElement('div');
+    ref.className = 'mc-layer-witness';
+    ref.textContent = m.ref;
+    layer.appendChild(ref);
+  }
+  return layer;
+}
+
+// Encounter fragments — short italic phrases that are the
+// motif's own voice. Quiet vertical stack, each its own
+// resonant utterance.
+function _renderMCFragments(fragments) {
+  const wrap = document.createElement('div');
+  wrap.className = 'mc-fragments';
+  for (const f of fragments) {
+    const item = document.createElement('article');
+    item.className = 'mc-fragment';
+    const quote = document.createElement('blockquote');
+    quote.className = 'mc-fragment-quote';
+    quote.textContent = f.text || '';
+    item.appendChild(quote);
+    if (f.ref) {
+      const ref = document.createElement('div');
+      ref.className = 'mc-fragment-ref';
+      ref.textContent = f.ref;
+      item.appendChild(ref);
+    }
     wrap.appendChild(item);
   }
   return wrap;
