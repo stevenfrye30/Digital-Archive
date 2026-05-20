@@ -522,33 +522,51 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   line-height: 1.2;
 }
 
-/* Chapter-room mode — two-line manuscript header: book title
-   sovereign in a large hand, chapter mark subordinate beneath
-   in a quieter italic. The room itself frames the chapter, so
-   nothing else needs to repeat the context. The top padding
-   is tuned so the room does not feel empty above the title
-   while still preserving manuscript breathing room. */
+/* Chapter-room mode — manuscript chapter-plate. Three elements:
+   the book name in small-caps as the canonical label, a thin
+   centred rule as ornament, the chapter as a Roman numeral as
+   the focal mark. The reader feels the textual witness open
+   before the first verse begins. */
 .chapter-heading.chapter-room-heading {
-  padding: 28px 0 40px;
-  font-weight: 500;
+  padding: 36px 0 44px;
+  font-weight: 400;
+  /* The .chapter-heading parent declares font-size 1.8em; the
+     child elements size relative to that. */
 }
 .chapter-room-heading .ch-title {
-  font-family: Georgia, serif;
-  font-size: 1.2em;
-  letter-spacing: 0.015em;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 0.62em;          /* small-caps label, quiet but stable */
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.36em;     /* the small-caps rhythm */
+  color: rgba(80, 45, 18, 0.92);
+  /* The trailing tracking pushes the centred line off-centre
+     by the width of one letter; nudge back so the optical
+     centre matches the rule and numeral. */
+  padding-left: 0.36em;
+}
+.chapter-room-heading .ch-rule {
+  width: 44px;
+  height: 0;
+  border-top: 1px solid rgba(120, 80, 40, 0.42);
+  margin: 20px auto 18px;
 }
 .chapter-room-heading .ch-sub {
-  font-family: Georgia, serif;
-  font-style: italic;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: normal;
   font-weight: 400;
-  font-size: 0.58em;
-  letter-spacing: 0.16em;
-  margin-top: 16px;
-  opacity: 0.92;
-  text-transform: lowercase;
-  color: rgba(120, 70, 30, 0.78);
+  font-size: 0.92em;          /* the Roman numeral as the focal mark */
+  letter-spacing: 0.10em;     /* a touch of breath between numeral strokes */
+  color: rgba(95, 55, 22, 0.88);
+  text-transform: none;
+  /* Optical centring for the Roman numeral, which carries no
+     natural visual mass on its right side. */
+  padding-left: 0.10em;
 }
+
+[data-theme="dark"] .chapter-room-heading .ch-title { color: var(--chrome-active); }
+[data-theme="dark"] .chapter-room-heading .ch-rule { border-top-color: var(--chrome-border); }
+[data-theme="dark"] .chapter-room-heading .ch-sub { color: var(--chrome-active); opacity: 0.88; }
 
 /* ── Text title page + TOC (separate view from reading) ──────────── */
 
@@ -10651,19 +10669,27 @@ function enterReading(targetGroupKey) {
     if (currentBook === '__fm__') {
       heading.textContent = 'Front Matter';
     } else if (chapterRoom) {
-      // Two-line manuscript header: book title sovereign, chapter
-      // mark subordinate beneath. The room itself establishes the
-      // chapter context — verse labels can stay simple numerals.
+      // Manuscript chapter-plate: small-caps book name, a thin
+      // centred rule, then the chapter as a Roman numeral. The
+      // textual witness is opened — the reader should feel the
+      // first leaf turn, not simply scroll into text.
       const [bk, ch] = String(currentBook).split('.');
       const bookName = BOOK_NAMES[bk] || bk;
       const title = document.createElement('div');
       title.className = 'ch-title';
       title.textContent = bookName;
+      const rule = document.createElement('div');
+      rule.className = 'ch-rule';
+      rule.setAttribute('aria-hidden', 'true');
       const sub = document.createElement('div');
       sub.className = 'ch-sub';
-      sub.textContent = `Ch ${ch}`;
+      const chNum = parseInt(ch, 10);
+      sub.textContent = Number.isFinite(chNum)
+        ? _romanNumeral(chNum)
+        : `Ch ${ch}`;
       heading.classList.add('chapter-room-heading');
       heading.appendChild(title);
+      heading.appendChild(rule);
       heading.appendChild(sub);
     } else {
       heading.textContent = groupName(currentBook);
@@ -15070,6 +15096,28 @@ function _formatChapterLabel(chapterKey) {
   const [book, num] = chapterKey.split('.');
   const name = _BIBLE_BOOK_NAMES[book] || (book.charAt(0).toUpperCase() + book.slice(1));
   return `${name} ${num}`;
+}
+
+// Manuscript chapter numerals — used on the chapter-plate above
+// scripture. Covers the canonical range cleanly (Psalms 150,
+// 1 Chronicles 29, etc.). Returns the arabic string if the
+// input is non-positive or out of range — the codex always
+// degrades gracefully to legibility.
+function _romanNumeral(n) {
+  n = Number(n);
+  if (!Number.isFinite(n) || n <= 0 || n >= 4000) return String(n);
+  const pairs = [
+    [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+    [100,  'C'], [90,  'XC'], [50,  'L'], [40,  'XL'],
+    [10,   'X'], [9,   'IX'], [5,   'V'], [4,   'IV'],
+    [1,    'I'],
+  ];
+  let out = '';
+  let r = Math.floor(n);
+  for (const [v, sym] of pairs) {
+    while (r >= v) { out += sym; r -= v; }
+  }
+  return out;
 }
 
 function _availableFolioChapters() {
