@@ -3283,11 +3283,19 @@ body:not(.in-reading) #meta-toggle .info-icon {
    reduced padding-bottom (24px instead of the default 100px)
    gives a 76px clipping buffer for line-height accumulation
    across the leaf's many text rows — invisible, mechanical
-   defense against the microscopic scrollbar. */
-body:not(.in-reading) #reader {
+   defense against the microscopic scrollbar.
+
+   The Atlas Index is exempt — it is a long printable appendix
+   that must scroll naturally inside the reader column. */
+body:not(.in-reading):not(.atlas-index-active) #reader {
   padding-top: 70px;
   padding-bottom: 24px;
   overflow: hidden;
+}
+body.atlas-index-active #reader {
+  padding-top: 48px;
+  padding-bottom: 64px;
+  overflow-y: auto;
 }
 
 /* Chapter-room — scripture is sovereign.
@@ -17634,6 +17642,13 @@ function _openAtlasIndex(data, entry) {
   if (ctrls) ctrls.style.display = '';
   const ctrlContents = document.getElementById('ctrl-contents');
   if (ctrlContents) ctrlContents.style.display = 'none';
+  // The Atlas Index is a long appendix; the reader column must
+  // scroll. #reader ships with an inline `overflow:hidden` so the
+  // welcome screen does not scroll inside it, and the CSS rule
+  // is `overflow-y: auto`. Clearing the inline style restores
+  // the auto-scroll behaviour for this view.
+  $reader.style.overflow = '';
+  $reader.scrollTop = 0;
 
   const tree = _buildAtlasIndexTree(data);
 
@@ -17750,7 +17765,9 @@ function _openAtlasIndex(data, entry) {
     });
   });
 
-  window.scrollTo({ top: 0 });
+  // Atlas Index scrolls inside the reader column; ensure it
+  // opens at the top regardless of any prior scroll position.
+  $reader.scrollTop = 0;
 }
 
 
