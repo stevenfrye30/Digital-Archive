@@ -112,23 +112,35 @@ def main():
         print(f"Genesis 1 verse anchors: {gen1_count}")
         assert gen1_count >= 10, gen1_count
 
-        # Genesis 22 carries only the Nahor-house genealogy at
-        # 22:20 (predates wave one). The Akedah, Moriah, hineni,
-        # ram-thicket, and YHWH-jireh records are reserved for
-        # wave three — none of them should appear in the index.
-        gen22_records = [
+        # Genesis 22 now carries the Akedah cluster from Wave
+        # Three (six records as commentary/linguistic/architecture/
+        # reception-history) plus the pre-existing Nahor-house
+        # genealogy. The cluster must NOT have acquired Atlas
+        # Object metadata — it is editorial coherence, not a
+        # chamber or new AO. We assert that no Akedah-cluster
+        # record carries the "Atlas Object · …" classification.
+        akedah_records = [
             r for r in page_state["records"]
             if any(
                 term in r["title"].lower()
                 for term in ["akedah", "moriah", "hineni",
-                             "ram thicket", "yhwh-jireh",
-                             "yhwh jireh", "binding"]
+                             "ram caught", "yhwh-yireh", "binding"]
             )
         ]
-        assert not gen22_records, (
-            f"Akedah-chamber records unexpectedly present: {gen22_records}"
+        # Cluster present.
+        assert len(akedah_records) >= 5, (
+            f"Akedah cluster missing or incomplete: {akedah_records}"
         )
-        print("  OK — Akedah chamber records remain absent (wave 3 reserved)")
+        # None carries Atlas Object classification.
+        ao_intrusions = [
+            r for r in akedah_records
+            if r["cls"].startswith("Atlas Object")
+        ]
+        assert not ao_intrusions, (
+            f"Akedah records acquired AO metadata: {ao_intrusions}"
+        )
+        print(f"  OK — Akedah cluster present ({len(akedah_records)} records)"
+              ", none carry AO metadata (no chamber, no AO·014)")
 
         # The Genesis Silent Chapters list must be non-empty —
         # Genesis has many silent chapters (Gen 3, 8-11 partially,
