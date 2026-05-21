@@ -799,30 +799,277 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   transition: color 0.18s ease-out, border-color 0.18s ease-out,
               background 0.18s ease-out;
 }
-/* Codex-preface entry — a small italic line at the foot of the
-   title leaf. Quiet manuscriptal entry to the archive's brief
-   self-reflection. */
-.bible-cover-layout .bcl-codex-preface-link-wrap {
+/* Atlas Index — quiet manuscript utility sitting beneath the
+   contents and above the Reading Room threshold. Same family as
+   the enter-plate but lighter: hairline border, transparent
+   parchment, small-caps italic, no engraved gradient, no
+   ornament. Reads as "view the codex's witness structure", not
+   as a primary action. */
+.bible-cover-layout .bcl-atlas-index-wrap {
+  display: flex;
+  justify-content: center;
   margin: 18px auto 0;
-  text-align: center;
 }
-.bible-cover-layout .bcl-codex-preface-link {
-  background: transparent;
-  border: none;
-  padding: 4px 8px;
+.bible-cover-layout .bcl-atlas-index-btn {
+  display: inline-block;
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: rgba(110, 95, 75, 0.62);
+  font-size: 0.66em;
+  letter-spacing: 0.20em;
+  padding: 6px 36px;
+  background: transparent;
+  color: rgba(110, 65, 25, 0.78);
+  border: 1px solid rgba(120, 90, 50, 0.26);
+  border-radius: 1px;
   cursor: pointer;
+  transition: color 0.2s ease-out, border-color 0.2s ease-out,
+              background 0.2s ease-out;
+}
+.bible-cover-layout .bcl-atlas-index-btn:hover,
+.bible-cover-layout .bcl-atlas-index-btn:focus-visible {
+  color: rgba(85, 35, 8, 1);
+  border-color: rgba(120, 90, 50, 0.5);
+  background: rgba(255, 252, 245, 0.36);
+  outline: none;
+}
+
+/* ── Atlas Index page — a manuscript witness ledger ──────────
+   Sparse, elegant, printable. No cards, tables, or grids — a
+   paragraph-shaped register where each chapter section breathes
+   on its own. Reads as a hidden appendix at the back of a sacred
+   critical edition. */
+.atlas-index-page {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 48px 64px 80px;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  color: var(--chrome-fg);
+  line-height: 1.55;
+}
+.aix-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 64px;
+}
+.aix-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(110, 65, 25, 0.78);
+  cursor: pointer;
+  padding: 4px 12px;
+  border: 1px solid rgba(120, 90, 50, 0.22);
+  border-radius: 3px;
+  transition: color 0.18s, border-color 0.18s, background 0.18s;
+}
+.aix-back:hover,
+.aix-back:focus-visible {
+  color: rgba(85, 35, 8, 1);
+  border-color: rgba(120, 90, 50, 0.5);
+  background: rgba(255, 252, 245, 0.36);
+  outline: none;
+}
+.aix-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.aix-text-name {
+  font-family: inherit;
+  font-size: 0.78em;
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.32em;
+  padding-left: 0.32em;       /* optical centring against tracking */
+  color: rgba(120, 65, 25, 0.78);
+  margin-bottom: 14px;
+}
+.aix-title {
+  font-family: inherit;
+  font-size: 1.4em;
+  font-style: italic;
+  color: rgba(80, 45, 18, 0.92);
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+.aix-rule {
+  width: 44px;
+  height: 0;
+  border-top: 1px solid rgba(120, 80, 40, 0.42);
+  margin: 0 auto 20px;
+}
+.aix-preface {
+  max-width: 520px;
+  margin: 0 auto;
+  font-style: italic;
+  font-size: 0.86em;
+  color: rgba(95, 80, 60, 0.78);
+  line-height: 1.6;
+}
+.aix-preface em {
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  color: rgba(120, 65, 25, 0.86);
+}
+
+.aix-empty {
+  text-align: center;
+  font-style: italic;
+  color: rgba(95, 80, 60, 0.72);
+  margin: 40px auto;
+}
+
+.aix-book {
+  margin: 56px 0 0;
+}
+.aix-book-name {
+  font-family: inherit;
+  font-size: 1.6em;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  color: rgba(80, 45, 18, 0.92);
+  margin: 0 0 28px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(120, 80, 40, 0.18);
+}
+.aix-chapter {
+  margin: 32px 0 0;
+}
+.aix-chapter-num {
+  font-family: inherit;
+  font-size: 0.92em;
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.82);
+  margin: 0 0 14px;
+  font-weight: 400;
+}
+.aix-verse {
+  margin: 0 0 20px;
+  padding-left: 8px;
+}
+.aix-verse-ref {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-style: italic;
+  font-size: 0.95em;
+  color: rgba(95, 50, 18, 0.82);
+  cursor: pointer;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
   transition: color 0.18s ease-out;
 }
-.bible-cover-layout .bcl-codex-preface-link:hover,
-.bible-cover-layout .bcl-codex-preface-link:focus-visible {
-  color: rgba(120, 65, 25, 0.92);
+.aix-verse-ref:hover,
+.aix-verse-ref:focus-visible {
+  color: rgba(70, 25, 5, 1);
+  text-decoration: underline;
+  text-decoration-color: rgba(120, 80, 40, 0.4);
+  text-underline-offset: 3px;
   outline: none;
+}
+.aix-record {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 6px 0 6px 22px;
+}
+.aix-glyph {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 1.05em;
+  color: rgba(120, 65, 25, 0.78);
+  width: 18px;
+  display: inline-block;
+  text-align: center;
+  flex-shrink: 0;
+}
+.aix-record-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aix-record-title {
+  font-family: inherit;
+  font-size: 0.98em;
+  color: var(--chrome-fg);
+}
+.aix-record-class {
+  font-family: inherit;
+  font-style: italic;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+  color: rgba(110, 85, 55, 0.74);
+}
+
+.aix-silent {
+  margin: 40px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(120, 80, 40, 0.16);
+}
+.aix-silent-name {
+  font-family: inherit;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.82em;
+  letter-spacing: 0.16em;
+  color: rgba(110, 75, 35, 0.78);
+  margin-bottom: 10px;
+}
+.aix-silent-list {
+  font-family: inherit;
+  font-style: normal;
+  font-size: 0.94em;
+  letter-spacing: 0.08em;
+  color: rgba(110, 85, 55, 0.78);
+  line-height: 1.7;
+}
+
+[data-theme="dark"] .aix-text-name,
+[data-theme="dark"] .aix-title,
+[data-theme="dark"] .aix-chapter-num,
+[data-theme="dark"] .aix-verse-ref,
+[data-theme="dark"] .aix-glyph {
+  color: var(--chrome-active);
+}
+[data-theme="dark"] .aix-book-name {
+  color: var(--chrome-active);
+  border-bottom-color: var(--chrome-border);
+}
+[data-theme="dark"] .aix-record-class,
+[data-theme="dark"] .aix-silent-name,
+[data-theme="dark"] .aix-silent-list,
+[data-theme="dark"] .aix-preface {
+  color: var(--chrome-muted);
+}
+
+/* Printable — the index reads cleanly on paper. Drop chrome
+   that has no meaning in print. */
+@media print {
+  .atlas-index-page { padding: 24px 0; }
+  .aix-back, .aix-preface { display: none; }
+  .aix-verse-ref { color: rgba(0,0,0,0.85); }
+}
+
+/* Mobile — single column with tighter padding. */
+@media (max-width: 720px) {
+  .atlas-index-page { padding: 32px 18px 64px; }
+  .aix-header { margin-bottom: 36px; }
+  .aix-book { margin-top: 32px; }
+  .aix-book-name { font-size: 1.3em; }
+  .aix-chapter { margin-top: 24px; }
+  .aix-back { position: static; margin-bottom: 24px; }
 }
 
 /* Codex preface overlay — a centred manuscript panel on a dark
@@ -1036,8 +1283,17 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .bible-cover-layout .cc-toc-list,
 .bible-cover-layout .bcl-canon-list {
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 2px 8px;
+  gap: 3px 14px;
   align-items: stretch;
+}
+/* On wider viewports the contents page can breathe — the
+   column gap widens so the canon columns sit further apart
+   without expanding the grid to more columns. */
+@media (min-width: 1280px) {
+  .bible-cover-layout .cc-toc-list,
+  .bible-cover-layout .bcl-canon-list {
+    gap: 4px 22px;
+  }
 }
 /* Asymmetric canon column distribution: OT and NT carry shorter
    book names so they sit at 7 columns each, compressing the
@@ -10603,6 +10859,18 @@ function showCover(data, entry) {
     }
     html += '</ul>';
   }
+  // Atlas Index — quiet manuscriptal utility above the Reading
+  // Room threshold. Same family as the enter plate but lighter:
+  // no gradient, no ornament, no flourish. Reads as "view the
+  // codex's witness structure", not as an action.
+  if (isBibleCover) {
+    html += '<div class="bcl-atlas-index-wrap">' +
+            '<button type="button" class="bcl-atlas-index-btn" ' +
+            'id="cc-atlas-index-btn">' +
+            'Atlas Index' +
+            '</button></div>';
+  }
+
   if (grouped) {
     const label = isBibleCover ? 'Enter the Reading Room' : 'Read from beginning &rarr;';
     const cls   = isBibleCover ? 'cc-begin bcl-enter-btn' : 'cc-begin';
@@ -10610,18 +10878,6 @@ function showCover(data, entry) {
     html += `<div class="${wrap}"><div class="${cls}" id="cc-begin-btn">${label}</div></div>`;
   }
   html += '</div>';
-
-  // Codex preface — a quiet italic line at the foot of the
-  // Bible title leaf. Restrained entry to the archive's own
-  // brief manuscriptal reflection on what an Atlas Object is,
-  // what recurrence means, what the form holds.
-  if (isBibleCover) {
-    html += '<div class="bcl-codex-preface-link-wrap">' +
-            '<button type="button" class="bcl-codex-preface-link" ' +
-            'title="On the form of this archive">' +
-            'on the form of this archive' +
-            '</button></div>';
-  }
 
   if (isBibleCover) html += '</div>';
 
@@ -10678,11 +10934,12 @@ function showCover(data, entry) {
     });
   }
 
-  // Wire the codex-preface entry — opens a small manuscriptal
-  // overlay reflecting on the form of the archive itself.
-  const prefaceLink = $textHeader.querySelector('.bcl-codex-preface-link');
-  if (prefaceLink) {
-    prefaceLink.addEventListener('click', () => _openCodexPreface());
+  // Wire the Atlas Index — opens the witness ledger for this
+  // text (chapter → verse → objects).
+  const atlasIndexBtn = $textHeader.querySelector('.bcl-atlas-index-btn');
+  if (atlasIndexBtn) {
+    atlasIndexBtn.addEventListener('click', () =>
+      _openAtlasIndex(data, entry));
   }
 
   // Wire TOC clicks — each opens the reading view.
@@ -12532,6 +12789,7 @@ function _anchorGravity(rec, pid) {
 // content rules. The chamber needs the glyph in JS to render
 // the kindred line.
 const _ATLAS_KIND_GLYPHS = {
+  // Atlas Object classes — mirror per-kind CSS glyph rules
   'cosmology':              '⊕',
   'translation-tradition':  '‡',
   'genealogy':              '❦',
@@ -12544,6 +12802,20 @@ const _ATLAS_KIND_GLYPHS = {
   'incarnational-presence': '⊙',
   'resurrection-renewal':   '⊛',
   'sacred-space':           '⊞',
+  // Non-AO commentary kinds — mirror the marker-glyph CSS so
+  // the Atlas Index can resolve any kind in one place.
+  'plate':                  '▣',
+  'map':                    '✥',
+  'commentary':             '❡',
+  'manuscript':             '▦',
+  'linguistic':             'ℵ',
+  'timeline':               '⧖',
+  'architecture':           '⌂',
+  'artifact':               '⚱',
+  'reception-history':      '◈',
+  'reconstruction':         '✦',
+  'audio':                  '♪',
+  'cross-reference':        '§',
 };
 
 // Canonical genre map. The Bible is not a uniform document — a
@@ -17199,6 +17471,286 @@ function _closeCodexPreface() {
   if (!backdrop) return;
   if (backdrop._onKey) document.removeEventListener('keydown', backdrop._onKey);
   backdrop.remove();
+}
+
+
+// ──────────────────────────────────────────────────────────────
+// Atlas Index — a manuscript witness ledger for the current text.
+// Renders into $textHeader (the same surface the cover uses), so
+// returning to Contents is a single re-render of the cover.
+// Hierarchy: book → chapter → verse → records. No tables, cards,
+// or grids — paragraph-shaped manuscript prose throughout.
+// ──────────────────────────────────────────────────────────────
+
+const _ATLAS_INDEX_KIND_NAMES = {
+  'plate':              'Plate',
+  'genealogy':          'Genealogy',
+  'map':                'Map',
+  'commentary':         'Commentary',
+  'manuscript':         'Manuscript',
+  'linguistic':         'Linguistic',
+  'timeline':           'Timeline',
+  'cosmology':          'Cosmology',
+  'ritual':             'Ritual',
+  'architecture':       'Architecture',
+  'artifact':           'Artifact',
+  'reception-history':  'Reception',
+  'reconstruction':     'Reconstruction',
+  'audio':              'Audio',
+  'cross-reference':    'Cross-Reference',
+  'translation-tradition':  'Translation Tradition',
+  'symbolic-motif':         'Symbolic Motif',
+  'covenant-formula':       'Covenant Formula',
+  'wisdom-saying':          'Wisdom Saying',
+  'revelatory-vision':      'Revelatory Vision',
+  'lament-structure':       'Lament Structure',
+  'incarnational-presence': 'Incarnational Presence',
+  'resurrection-renewal':   'Resurrection / Renewal',
+  'sacred-space':           'Sacred Space',
+};
+
+function _atlasIndexClassification(rec) {
+  // Atlas Object records carry their siglum on the classification
+  // line. Other records carry "Authority · Kind".
+  if (rec && rec.atlas_object && rec.atlas_object.siglum) {
+    return `Atlas Object · ${rec.atlas_object.siglum}`;
+  }
+  const auth = (rec && rec.authority) || 'tertiary';
+  const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const kind = (rec && rec.kind) || 'witness';
+  const human = _ATLAS_INDEX_KIND_NAMES[kind] || cap(kind);
+  return `${cap(auth)} · ${human}`;
+}
+
+function _atlasIndexGlyph(rec) {
+  const k = (rec && rec.kind) || '';
+  return _ATLAS_KIND_GLYPHS[k] || '·';
+}
+
+function _buildAtlasIndexTree(data) {
+  // Discover every chapter that exists in this text's passage
+  // list so we can detect which chapters carry zero records.
+  const allChaptersPerBook = new Map();
+  for (const p of (data.passages || [])) {
+    if (!p.path || p.path.length < 2 || p.fm) continue;
+    const bk = p.path[0];
+    const ch = Number(p.path[1]);
+    if (!Number.isFinite(ch)) continue;
+    if (!allChaptersPerBook.has(bk)) allChaptersPerBook.set(bk, new Set());
+    allChaptersPerBook.get(bk).add(ch);
+  }
+
+  // Canonical book ordering — derived from the order the
+  // passages themselves appear, so the index follows whatever
+  // canonical sequence the witness uses.
+  const bookOrder = [];
+  const seen = new Set();
+  for (const p of (data.passages || [])) {
+    const bk = p.path && p.path[0];
+    if (bk && !seen.has(bk)) { seen.add(bk); bookOrder.push(bk); }
+  }
+
+  // Group records by (book, chapter, verse). The same record may
+  // appear under multiple verses if it has multiple anchors.
+  const byKey = new Map();   // "bk.ch" -> Map(verse -> [{rec, pid}])
+  for (const rec of (data.genealogy || [])) {
+    for (const a of (rec.anchors || [])) {
+      const target = (a && a.target) || '';
+      const pid = target.split('::').pop();
+      if (!pid) continue;
+      const parts = pid.split('.');
+      if (parts.length < 2) continue;
+      const bk = parts[0];
+      const ch = Number(parts[1]);
+      const v = parts.length >= 3 ? Number(parts[2]) : 0;
+      if (!Number.isFinite(ch)) continue;
+      const key = `${bk}.${ch}`;
+      if (!byKey.has(key)) byKey.set(key, new Map());
+      const verses = byKey.get(key);
+      if (!verses.has(v)) verses.set(v, []);
+      // Defensive dedup: skip if the same record is already
+      // present at this exact verse (data could carry a record
+      // anchored twice to one pid).
+      const slot = verses.get(v);
+      if (!slot.some(x => x.rec.id === rec.id)) {
+        slot.push({ rec, pid });
+      }
+    }
+  }
+
+  const result = [];
+  for (const bk of bookOrder) {
+    const chapterKeys = [...byKey.keys()]
+      .filter(k => k.startsWith(bk + '.'))
+      .sort((a, b) => Number(a.split('.')[1]) - Number(b.split('.')[1]));
+    if (chapterKeys.length === 0) continue;
+
+    const chapters = chapterKeys.map(key => {
+      const ch = Number(key.split('.')[1]);
+      const verses = [...byKey.get(key).entries()]
+        .sort((a, b) => a[0] - b[0])
+        .map(([v, recs]) => ({ v, records: recs }));
+      return { ch, verses };
+    });
+
+    const all = allChaptersPerBook.get(bk) || new Set();
+    const touched = new Set(chapters.map(c => c.ch));
+    const silent = [...all].filter(c => !touched.has(c))
+                            .sort((a, b) => a - b);
+
+    result.push({
+      bookCode: bk,
+      bookName: (BOOK_NAMES && BOOK_NAMES[bk]) || bk,
+      chapters,
+      silentChapters: silent,
+    });
+  }
+  return result;
+}
+
+function _openAtlasIndex(data, entry) {
+  if (!data || !entry) return;
+  // $textHeader is declared locally inside showCover; resolve
+  // here from the DOM so this function can run independently.
+  const $textHeader = document.getElementById('text-header');
+  if (!$textHeader) return;
+  // Mark that we are now in the Atlas Index view so other render
+  // paths can read it.
+  document.body.classList.add('atlas-index-active');
+  document.body.classList.remove('in-reading');
+  document.body.classList.remove('chapter-room');
+  // Tear down folio + companion state so the index renders on a
+  // calm surface.
+  document.body.classList.remove('companion-mode');
+  document.body.classList.remove('viewer-active');
+  $cover.style.display    = 'none';
+  $toc.style.display      = 'none';
+  $passages.style.display = 'none';
+  if ($navBar) $navBar.style.display = 'none';
+  $searchGroup.style.display = 'none';
+  $bookGroup.style.display   = 'none';
+  $trBar.style.display       = 'none';
+  const ctrls = document.getElementById('controls');
+  if (ctrls) ctrls.style.display = '';
+  const ctrlContents = document.getElementById('ctrl-contents');
+  if (ctrlContents) ctrlContents.style.display = 'none';
+
+  const tree = _buildAtlasIndexTree(data);
+
+  const parts = [];
+  const push = s => parts.push(s);
+
+  push('<article class="atlas-index-page">');
+  push('  <header class="aix-header">');
+  push('    <button type="button" class="aix-back" id="aix-back-btn">' +
+       '&larr; Contents' +
+       '</button>');
+  push('    <div class="aix-title-block">');
+  push(`      <div class="aix-text-name">${escapeHTML(data.title || entry.title || '')}</div>`);
+  push('      <div class="aix-title">Atlas Index</div>');
+  push('      <div class="aix-rule" aria-hidden="true"></div>');
+  push('    </div>');
+  push('    <div class="aix-preface">' +
+       'A witness ledger — every folio object currently anchored ' +
+       'to this text, in the order the canon presents them. ' +
+       'Authority follows the rail: <em>primary</em> · <em>secondary</em> · ' +
+       '<em>tertiary</em>. The silence between entries is intentional.' +
+       '</div>');
+  push('  </header>');
+
+  if (tree.length === 0) {
+    push('  <section class="aix-empty">');
+    push('    <p>No folio objects are anchored to this text.</p>');
+    push('  </section>');
+  }
+
+  for (const book of tree) {
+    push('  <section class="aix-book">');
+    push(`    <h2 class="aix-book-name">${escapeHTML(book.bookName)}</h2>`);
+    for (const chap of book.chapters) {
+      const roman = _romanNumeral(chap.ch);
+      push(`    <section class="aix-chapter">`);
+      push(`      <h3 class="aix-chapter-num">Chapter ${escapeHTML(roman)}</h3>`);
+      for (const verse of chap.verses) {
+        const pid = `${book.bookCode}.${chap.ch}.${verse.v}`;
+        const verseLabel = `${escapeHTML(book.bookName)} ${chap.ch}:${verse.v}`;
+        push(`      <div class="aix-verse">`);
+        push(`        <button type="button" class="aix-verse-ref" ` +
+             `data-pid="${escapeHTML(pid)}">${verseLabel}</button>`);
+        for (const { rec } of verse.records) {
+          const glyph = _atlasIndexGlyph(rec);
+          const title = (rec.title || '').trim();
+          const cls = _atlasIndexClassification(rec);
+          push(`        <div class="aix-record">`);
+          push(`          <span class="aix-glyph" aria-hidden="true">${escapeHTML(glyph)}</span>`);
+          push(`          <span class="aix-record-body">`);
+          push(`            <span class="aix-record-title">${escapeHTML(title)}</span>`);
+          push(`            <span class="aix-record-class">${escapeHTML(cls)}</span>`);
+          push(`          </span>`);
+          push(`        </div>`);
+        }
+        push(`      </div>`);
+      }
+      push(`    </section>`);
+    }
+    if (book.silentChapters.length) {
+      const list = book.silentChapters
+        .map(n => _romanNumeral(n))
+        .join(' · ');
+      push('    <section class="aix-silent">');
+      push(`      <div class="aix-silent-name">${escapeHTML(book.bookName)} · Silent Chapters</div>`);
+      push(`      <div class="aix-silent-list">${escapeHTML(list)}</div>`);
+      push('    </section>');
+    }
+  }
+
+  push('</article>');
+
+  $textHeader.innerHTML = parts.join('\n');
+  $textHeader.style.display = 'block';
+
+  const backBtn = document.getElementById('aix-back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      document.body.classList.remove('atlas-index-active');
+      showCover(data, entry);
+    });
+  }
+
+  // Wire each verse anchor to enter the reading room at that
+  // verse. We mirror the deep-link pipeline: set currentBook to
+  // the chapter key, then enterReading() and jumpToPassage().
+  const verseRefs = $textHeader.querySelectorAll('.aix-verse-ref');
+  verseRefs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const pid = btn.dataset.pid || '';
+      if (!pid) return;
+      document.body.classList.remove('atlas-index-active');
+      const chapterScoped = data.hierarchy &&
+                            data.hierarchy[0] === 'book' &&
+                            data.hierarchy[1] === 'chapter';
+      const parts = pid.split('.');
+      if (chapterScoped && parts.length >= 2) {
+        currentBook = `${parts[0]}.${parts[1]}`;
+      } else if (parts.length >= 1) {
+        currentBook = parts[0];
+      }
+      $textHeader.innerHTML = '';
+      $textHeader.style.display = 'none';
+      $passages.style.display = '';
+      enterReading();
+      requestAnimationFrame(() => {
+        if (typeof jumpToPassage === 'function') {
+          jumpToPassage(pid, true);
+        }
+      });
+      // Mirror the deep-link URL state so reloads honour the
+      // jump.
+      if (typeof setUrlPassage === 'function') setUrlPassage(pid);
+    });
+  });
+
+  window.scrollTo({ top: 0 });
 }
 
 
