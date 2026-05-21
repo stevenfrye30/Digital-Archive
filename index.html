@@ -4574,6 +4574,53 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   opacity: 0.92;
 }
 .folio-leaf-body { margin-top: 8px; }
+
+/* ── Witness-family identity (see WITNESS_FAMILY_CONSTITUTION.md)
+   Family typography lives on the leaf via the existing
+   data-kind attribute. No new metadata, no new renderer, no
+   new HTML — just kind-targeted refinements so two records
+   of the same family feel like the same kind of witness. */
+
+/* Commentary witnesses — archival marginalia. Title lighter
+   than the AO rubric voice, a thin centred manuscript rule
+   between title and body, narrower paragraph column with
+   slightly larger reading prose for sustained argument. */
+.folio-leaf[data-kind="commentary"] .folio-leaf-title {
+  font-weight: 400;
+}
+.folio-leaf[data-kind="commentary"] .folio-leaf-title::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: rgba(120, 80, 40, 0.22);
+  margin: 14px auto 0;
+}
+.folio-leaf[data-kind="commentary"] .folio-body-vertical {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 0.92em;
+  line-height: 1.74;
+}
+
+/* Linguistic / philological witnesses — gloss register. Title
+   in roman (not italic) so the transliterated word reads as
+   the lexeme; slightly smaller; narrower body measure (a
+   gloss is more enclosed than a commentary argument);
+   tighter line-spacing for dense philological reading. */
+.folio-leaf[data-kind="linguistic"] .folio-leaf-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.08em;
+  letter-spacing: 0.01em;
+  margin-bottom: 22px;
+}
+.folio-leaf[data-kind="linguistic"] .folio-body-vertical {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 0.88em;
+  line-height: 1.66;
+}
 /* Per-kind atmospheres — currently genealogy renders via
    _renderGenealogyVertical inside .folio-leaf-body. Future kinds
    (map, image, commentary, note) can add their own selectors:
