@@ -5036,7 +5036,12 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
    (540px), tightest line-height (1.54), narrow spacers
    (0.45em). Each cross-reference is one short line; the
    list reads vertically like a study-Bible marginal
-   column rather than an essay. */
+   column rather than an essay.
+   v81 echo-register move: a quiet dotted hairline runs the
+   body's left edge (the canonical-resonance axis); each
+   echoed passage hangs off this axis like marginal notes
+   from a vertical column. Scripture reverberates rather
+   than links. */
 .folio-leaf[data-kind="cross-reference"] .folio-leaf-title {
   font-size: 1.06em;
   margin-bottom: 18px;
@@ -5047,6 +5052,8 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   font-size: 0.87em;
   line-height: 1.54;
   opacity: 0.92;
+  border-left: 1px dotted rgba(120, 80, 40, 0.22);
+  padding-left: 18px;
 }
 .folio-leaf[data-kind="cross-reference"] .folio-body-vertical .folio-body-spacer {
   height: 0.45em;
@@ -5058,7 +5065,14 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
    higher body opacity so the explanatory description reads
    with presence rather than recession. Excludes the
    Firmament chamber (AO·001), which renders through its
-   own bespoke cosmology-chamber renderer. */
+   own bespoke cosmology-chamber renderer.
+   v81 manuscript-cosmogram move: spacer pushed to 1.2em so
+   each cosmographic stratum (above firmament / firmament /
+   earth-disc / below earth) breathes with cosmic distance
+   between layers. The body's prose has been editorially
+   restructured into descending strata; the wider spacer
+   lets the reader's eye descend through the cosmos rather
+   than reading a single paragraph. */
 .folio-leaf[data-kind="cosmology"]:not(.cosmology-chamber) .folio-leaf-title {
   font-size: 1.14em;
 }
@@ -5070,7 +5084,7 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   opacity: 0.92;
 }
 .folio-leaf[data-kind="cosmology"]:not(.cosmology-chamber) .folio-body-vertical .folio-body-spacer {
-  height: 0.75em;
+  height: 1.2em;
 }
 
 /* Per-kind atmospheres — currently genealogy renders via
