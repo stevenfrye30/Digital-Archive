@@ -3201,6 +3201,20 @@ body.viewer-active #reader {
   max-width: 800px;
   margin: 0 auto;
 }
+/* Manuscript leaf identity — ceremonial proportions for the
+   text-witness leaves. The reading-room uses one set of margins
+   for flowing scripture; the witness leaf adopts a different
+   compositional rhythm: wider top entrance silence, footer
+   closure descent, so the leaf reads as a preserved archival
+   sheet rather than a rectangular continuation of the page.
+
+   Excluded: Atlas Object chambers (which carry their own bespoke
+   compositional architecture) and Doré plates (which override
+   padding entirely). The padding change is for text witnesses
+   only. See FOLIO_OBJECT_ARCHITECTURE.md. */
+.folio-leaf:not([class*="-chamber"]):not([data-kind="plate"]) {
+  padding: 88px 64px 104px;
+}
 /* Plate leaves dominate the chamber — no paper, no padding, the
    engraving sits directly on the dark with a compact plaque
    beneath. The leaf itself is a flex centering box: the visible
@@ -4566,13 +4580,12 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
    object's epistemic class, tradition, source basis, confidence
    — compact rubric block, not a dossier. */
 .folio-leaf-provenance {
-  /* margin-bottom raised from 16 → 22 so the verse-ref and
-     title land more clearly as separate from the header block.
-     In long object-hopping sessions this single change makes
-     the header recede one degree and the title carry more of
-     the leaf's first-glance weight. (Reading-Flow
-     Consolidation, Seam C.) */
-  margin-bottom: 22px;
+  /* margin-bottom 22 → 32 — provenance now sits in a deeper
+     staging breath before the verse-ref and title arrive.
+     Manuscript Architecture pass (v77): the leaf's compositional
+     rhythm slows; the header becomes a ceremonial entrance rather
+     than a modal-density block. */
+  margin-bottom: 32px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(120, 90, 50, 0.22);
 }
@@ -4621,7 +4634,11 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   font-size: 0.85em;
   color: var(--chrome-muted);
   opacity: 0.78;
-  margin-bottom: 6px;
+  /* margin-bottom 6 → 14 — the citation sits with a small
+     ceremonial pause before the manuscript title. Reads as
+     attribution staged, not breadcrumb-stacked. Manuscript
+     Architecture pass (v77). */
+  margin-bottom: 14px;
 }
 .folio-leaf-title {
   font-family: Georgia, serif;
@@ -4905,7 +4922,10 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
 body.viewer-active .folio-leaf-verse {
   font-size: 0.9em;
   opacity: 0.82;
-  margin-bottom: 8px;
+  /* margin-bottom 8 → 16 — the ceremonial citation pause
+     between verse-ref and title. Manuscript Architecture
+     pass (v77). */
+  margin-bottom: 16px;
 }
 body.viewer-active .folio-leaf-title {
   /* Viewer-active default title size lowered from 1.4em →
@@ -7955,7 +7975,12 @@ body.viewer-active .folio-body-line[data-generation="transition"] {
 .folio-leaf-colophon { display: none; }
 body.viewer-active .folio-leaf-colophon {
   display: block;
-  margin: 56px auto 0;
+  /* margin-top 56 → 80 — codex closure descent. The colophon
+     drops through a longer silence before the leaf's bottom
+     edge. Combined with the leaf's 104px footer padding, the
+     bottom region carries substantial archival quietness.
+     Manuscript Architecture pass (v77). */
+  margin: 80px auto 0;
   text-align: center;
   font-family: Georgia, serif;
   font-style: italic;
