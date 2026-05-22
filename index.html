@@ -5652,22 +5652,61 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 }
 
 /* Diagram — line-art plate in a quiet parchment frame. */
+/* The Cosmogram (v84 masterpiece prototype) — the cosmology
+   chamber's centerpiece artifact. A tall vertically-descending
+   manuscript cosmogram showing the five-strata cosmos. No
+   background gradient, no border — the cosmogram sits on the
+   parchment as a preserved figure, not as an inset card. */
 .folio-leaf.cosmology-chamber .cc-diagram {
-  margin: 12px 0 4px;
-  padding: 18px 22px 14px;
-  background: linear-gradient(180deg,
-    rgba(250, 245, 232, 0.6),
-    rgba(245, 238, 222, 0.45));
-  border: 1px solid rgba(120, 90, 50, 0.22);
-  border-radius: 2px;
+  margin: 24px auto 8px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  max-width: 480px;
 }
 .folio-leaf.cosmology-chamber .cc-diagram-svg {
   display: block;
   width: 100%;
   height: auto;
-  max-width: 520px;
+  max-width: 480px;
   margin: 0 auto;
 }
+/* Stratum name — Hebrew transliteration in small-caps, italic,
+   carrying the named domain of the cosmographic layer. */
+.folio-leaf.cosmology-chamber .cc-d-name {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  fill: rgba(85, 50, 18, 0.88);
+  font-size: 12.5px;
+  letter-spacing: 0.18em;
+}
+/* Stratum gloss — quiet English description beneath the name. */
+.folio-leaf.cosmology-chamber .cc-d-gloss {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  fill: rgba(110, 90, 60, 0.74);
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+}
+/* Inter-stratum mark — a tiny centred dot between stratum
+   bands, marking the cosmic-axis pause. */
+.folio-leaf.cosmology-chamber .cc-d-mark {
+  font-family: Georgia, serif;
+  font-size: 11px;
+  fill: rgba(110, 80, 40, 0.42);
+  font-weight: 400;
+}
+/* Deep glyph — the threefold-dot mark closing the descent into
+   the unfigured depths. */
+.folio-leaf.cosmology-chamber .cc-d-deep {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  fill: rgba(80, 50, 20, 0.6);
+  font-style: italic;
+}
+/* Legacy cc-d-label classes preserved for backward compatibility
+   (no longer used by the new vertical cosmogram). */
 .folio-leaf.cosmology-chamber .cc-d-label {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
@@ -5691,13 +5730,16 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   text-anchor: middle;
 }
 .folio-leaf.cosmology-chamber .cc-diagram-caption {
-  margin-top: 14px;
+  margin-top: 18px;
   font-style: italic;
   font-size: 0.78em;
   line-height: 1.5;
   color: rgba(95, 75, 50, 0.7);
   text-align: center;
   letter-spacing: 0.01em;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Hebrew terminology — definition list. Hebrew sits in its own
@@ -12794,65 +12836,136 @@ function _renderCCSectionHeading(numeral, name, subtitle) {
 function _renderCCDiagram() {
   const wrap = document.createElement('figure');
   wrap.className = 'cc-diagram';
-  // Inline SVG — restrained sepia linework, manuscript register.
-  // Three tiers: upper waters above the dome, earth-disc on pillars,
-  // tehôm below. Labels are small italic Georgia; everything is
-  // line art (no fills, no colors). Aspect 480x360.
+  // ── The Cosmogram (v84) ────────────────────────────────────────
+  // A tall vertically-descending manuscript cosmogram. Five
+  // strata stacked top-to-bottom, each carrying a transliterated
+  // Hebrew name in small-caps, a quiet English gloss, and a
+  // symbolic typographic mark (water pattern, firmament dome,
+  // earth disc + pillars, lower waters, descent into Sheol).
+  // A faint dashed cosmic axis runs the full height down the
+  // centre — the axis mundi.
+  //
+  // ViewBox 480 × 880 (portrait). The composition reads top
+  // to bottom: upper waters / firmament / earth / lower waters
+  // / sheol. Each stratum named in Hebrew, glossed in English,
+  // visually symbolized in restrained sepia line art.
+  //
+  // This is the codex's first masterpiece object prototype.
+  // It is not infographic, not educational diagram, not
+  // chart — it is a manuscript cosmogram in the same line-and-
+  // type register the codex uses elsewhere. The reader's eye
+  // descends through the cosmos. See OBJECT_ARTIFACT_AUDIT.md.
   wrap.innerHTML = `
-    <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg"
+    <svg viewBox="0 0 480 880" xmlns="http://www.w3.org/2000/svg"
          class="cc-diagram-svg" role="img"
-         aria-label="Three-tier cosmos reconstructed from Genesis 1">
+         aria-label="A vertical manuscript cosmogram of the
+                     three-tier cosmos presupposed by Genesis 1.">
       <defs>
-        <pattern id="cc-water" patternUnits="userSpaceOnUse" width="24" height="6">
+        <pattern id="cc-water" patternUnits="userSpaceOnUse"
+                 width="24" height="6">
           <path d="M 0 3 Q 6 0 12 3 T 24 3" fill="none"
                 stroke="rgba(70, 90, 120, 0.42)" stroke-width="0.7"/>
         </pattern>
+        <pattern id="cc-deep" patternUnits="userSpaceOnUse"
+                 width="24" height="8">
+          <path d="M 0 4 Q 6 1 12 4 T 24 4" fill="none"
+                stroke="rgba(50, 65, 95, 0.46)" stroke-width="0.8"/>
+        </pattern>
       </defs>
-      <!-- Upper waters band -->
-      <rect x="20" y="22" width="440" height="50" fill="url(#cc-water)"/>
-      <text x="240" y="48" class="cc-d-label cc-d-label-major"
-            text-anchor="middle">mayim mēʿal lā-rāqîaʿ</text>
-      <text x="240" y="64" class="cc-d-label cc-d-sublabel"
-            text-anchor="middle">— the waters above —</text>
-      <!-- Firmament dome -->
-      <path d="M 40 200 A 200 110 0 0 1 440 200" fill="none"
-            stroke="rgba(110, 65, 25, 0.72)" stroke-width="1.4"/>
-      <text x="240" y="105" class="cc-d-label cc-d-label-major"
-            text-anchor="middle">rāqîaʿ — the firmament</text>
-      <!-- Sun, moon, stars on the firmament -->
-      <circle cx="120" cy="160" r="6" fill="none"
+
+      <!-- Cosmic axis — runs full height down the centre, the
+           axis mundi. Dashed at very low alpha; the eye reads
+           it as continuity, not chrome. -->
+      <line x1="240" y1="56" x2="240" y2="836"
+            stroke="rgba(110, 80, 40, 0.16)" stroke-width="0.6"
+            stroke-dasharray="2 6"/>
+
+      <!-- ╶─── STRATUM I — WATERS ABOVE ───╴ -->
+      <text x="240" y="42" class="cc-d-name" text-anchor="middle">
+        MAYIM MĒʿAL LĀ-RĀQÎAʿ
+      </text>
+      <text x="240" y="60" class="cc-d-gloss" text-anchor="middle">
+        the upper cosmic waters
+      </text>
+      <rect x="64" y="86" width="352" height="56" fill="url(#cc-water)"/>
+      <text x="240" y="166" class="cc-d-mark" text-anchor="middle">·</text>
+
+      <!-- ╶─── STRATUM II — FIRMAMENT ───╴ -->
+      <text x="240" y="208" class="cc-d-name" text-anchor="middle">
+        RĀQÎAʿ
+      </text>
+      <text x="240" y="226" class="cc-d-gloss" text-anchor="middle">
+        the firmament — sky-vault hammered out
+      </text>
+      <!-- The dome itself -->
+      <path d="M 80 348 A 160 92 0 0 1 400 348" fill="none"
+            stroke="rgba(110, 65, 25, 0.78)" stroke-width="1.4"/>
+      <!-- Celestial bodies set into the dome -->
+      <circle cx="140" cy="310" r="7" fill="none"
               stroke="rgba(110, 65, 25, 0.78)" stroke-width="1"/>
-      <path d="M 360 156 a 6 6 0 1 0 -0.1 8" fill="none"
+      <path d="M 348 304 a 7 7 0 1 0 -0.1 9" fill="none"
             stroke="rgba(110, 65, 25, 0.78)" stroke-width="1"/>
-      <text x="200" y="158" class="cc-d-glyph">✦</text>
-      <text x="270" y="170" class="cc-d-glyph">✦</text>
-      <text x="320" y="146" class="cc-d-glyph">✦</text>
-      <!-- Earth disc with pillars -->
-      <line x1="40" y1="200" x2="440" y2="200"
+      <text x="200" y="296" class="cc-d-glyph">✦</text>
+      <text x="240" y="282" class="cc-d-glyph">✦</text>
+      <text x="288" y="298" class="cc-d-glyph">✦</text>
+      <text x="174" y="276" class="cc-d-glyph">✦</text>
+      <text x="310" y="276" class="cc-d-glyph">✦</text>
+      <text x="240" y="376" class="cc-d-mark" text-anchor="middle">·</text>
+
+      <!-- ╶─── STRATUM III — EARTH ───╴ -->
+      <text x="240" y="418" class="cc-d-name" text-anchor="middle">
+        ʾEREṢ
+      </text>
+      <text x="240" y="436" class="cc-d-gloss" text-anchor="middle">
+        the earth — a disc resting on pillars
+      </text>
+      <!-- Earth horizon line — the boundary that separates the
+           upper world (firmament + waters above) from the lower
+           (waters below + sheol). -->
+      <line x1="64" y1="462" x2="416" y2="462"
             stroke="rgba(110, 65, 25, 0.88)" stroke-width="1.6"/>
-      <text x="240" y="220" class="cc-d-label cc-d-label-major"
-            text-anchor="middle">ʾereṣ — the earth</text>
-      <!-- Lower waters -->
-      <rect x="20" y="232" width="440" height="38" fill="url(#cc-water)"/>
-      <text x="240" y="258" class="cc-d-label cc-d-sublabel"
-            text-anchor="middle">mayim mittaḥat lā-rāqîaʿ · the lower waters</text>
-      <!-- Pillars descending -->
-      <path d="M 90 200 L 100 268 M 380 200 L 390 268" fill="none"
-            stroke="rgba(110, 65, 25, 0.55)" stroke-width="1"
-            stroke-dasharray="3 3"/>
-      <!-- Tehom -->
-      <path d="M 30 320 Q 60 308 90 320 T 150 320 T 210 320 T 270 320 T 330 320 T 390 320 T 450 320"
-            fill="none" stroke="rgba(50, 70, 100, 0.55)" stroke-width="0.9"/>
-      <path d="M 30 332 Q 60 320 90 332 T 150 332 T 210 332 T 270 332 T 330 332 T 390 332 T 450 332"
-            fill="none" stroke="rgba(50, 70, 100, 0.42)" stroke-width="0.7"/>
-      <text x="240" y="304" class="cc-d-label cc-d-label-major"
-            text-anchor="middle">tehôm — the deep</text>
+      <!-- Pillars descending into the abyss -->
+      <line x1="110" y1="462" x2="110" y2="522"
+            stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
+      <line x1="170" y1="462" x2="170" y2="534"
+            stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
+      <line x1="240" y1="462" x2="240" y2="548"
+            stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
+      <line x1="310" y1="462" x2="310" y2="534"
+            stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
+      <line x1="370" y1="462" x2="370" y2="522"
+            stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
+      <text x="240" y="582" class="cc-d-mark" text-anchor="middle">·</text>
+
+      <!-- ╶─── STRATUM IV — WATERS BELOW · TĚHÔM ───╴ -->
+      <text x="240" y="622" class="cc-d-name" text-anchor="middle">
+        MAYIM MITTAḤAT LĀ-RĀQÎAʿ
+      </text>
+      <text x="240" y="640" class="cc-d-gloss" text-anchor="middle">
+        the lower waters — tehôm, the deep
+      </text>
+      <rect x="64" y="664" width="352" height="56" fill="url(#cc-deep)"/>
+      <text x="240" y="744" class="cc-d-mark" text-anchor="middle">·</text>
+
+      <!-- ╶─── STRATUM V — SHEOL ───╴ -->
+      <text x="240" y="786" class="cc-d-name" text-anchor="middle">
+        SHEOL
+      </text>
+      <text x="240" y="804" class="cc-d-gloss" text-anchor="middle">
+        the depths — the shadow-land
+      </text>
+      <!-- A descending hairline well into the unfigured depths -->
+      <line x1="240" y1="822" x2="240" y2="858"
+            stroke="rgba(80, 50, 20, 0.5)" stroke-width="0.8"/>
+      <text x="240" y="876" class="cc-d-deep" text-anchor="middle">
+        ∴
+      </text>
     </svg>
     <figcaption class="cc-diagram-caption">
-      Reconstructed three-tier cosmos as presupposed by Genesis 1.
-      Diagrammatic only — no single ancient source draws this
-      picture in full; it is composited from biblical and
-      comparative ANE evidence.
+      The three-tier cosmos presupposed by Genesis 1.
+      Composited from biblical and comparative Ancient Near
+      Eastern witnesses; no single ancient source draws the
+      picture in full.
     </figcaption>
   `;
   return wrap;
