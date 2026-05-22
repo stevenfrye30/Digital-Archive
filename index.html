@@ -564,9 +564,29 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   padding-left: 0.10em;
 }
 
+/* Canonical stratum rubric — civilizational position. A single
+   small-caps italic line beneath the Roman numeral declaring
+   where the chapter sits in the larger preserved structure:
+   Torah · Primeval History / Hebrew Bible · Wisdom & Hymnody /
+   New Testament · Gospel / etc. The line is sized smaller than
+   the book-name rubric and dimmer, so the eye registers it as
+   stratigraphic context rather than as another heading.
+   (Codex Orientation pass, v79.) */
+.chapter-room-heading .ch-stratum {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 0.42em;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  color: rgba(110, 75, 35, 0.50);
+  margin-top: 22px;
+  padding-left: 0.18em;
+}
+
 [data-theme="dark"] .chapter-room-heading .ch-title { color: var(--chrome-active); }
 [data-theme="dark"] .chapter-room-heading .ch-rule { border-top-color: var(--chrome-border); }
 [data-theme="dark"] .chapter-room-heading .ch-sub { color: var(--chrome-active); opacity: 0.88; }
+[data-theme="dark"] .chapter-room-heading .ch-stratum { color: var(--chrome-active); opacity: 0.42; }
 
 /* ── Text title page + TOC (separate view from reading) ──────────── */
 
@@ -10862,6 +10882,23 @@ function _buildChapterHeading() {
     heading.appendChild(title);
     heading.appendChild(rule);
     heading.appendChild(sub);
+    // Canonical stratum — civilizational position rubric. A
+    // single quiet small-caps line beneath the Roman numeral
+    // naming the canonical corpus + sub-section. The reader
+    // opens a chapter and quietly knows where it sits in the
+    // larger preserved structure (Torah, The Twelve, Gospel,
+    // Apocalypse, etc.). Not a breadcrumb; no navigation; the
+    // chapter belongs somewhere larger.
+    const stratumText =
+      typeof _canonicalStratumOf === 'function'
+        ? _canonicalStratumOf(bk, chNum)
+        : '';
+    if (stratumText) {
+      const stratum = document.createElement('div');
+      stratum.className = 'ch-stratum';
+      stratum.textContent = stratumText;
+      heading.appendChild(stratum);
+    }
     return heading;
   }
 
@@ -13286,6 +13323,85 @@ function _markRecordSeen(recId) {
       localStorage.setItem(_RECORD_SEEN_KEY, JSON.stringify(seen));
     }
   } catch { /* localStorage unavailable; in-memory tracking holds */ }
+}
+
+// ── Canonical stratum — civilizational position rubric ──────────
+// Returns a quiet two-segment "Macro · Section" string for the
+// chapter heading's canonical position rubric. The reader opens
+// a chapter and quietly knows where it sits in the larger
+// structure: Torah, Latter Prophets, Gospel, Apocalypse, etc.
+//
+// Two-tier Genesis subsection: Primeval (1-11) vs Patriarchal
+// (12-50). Two-tier Exodus subsection: The Going Out (1-18) vs
+// Sinai Covenant (19-40). Other books use the canonical corpus
+// name alone or with a single sub-section.
+//
+// Hebrew terminology where it's the native tradition's name
+// (Torah, The Twelve, Apocalypse); Christian-canonical
+// terminology for NT corpora. The codex respects both
+// traditions without privileging either as the framing rubric.
+// See READING_CHOREOGRAPHY.md and CODEX_ORIENTATION_AUDIT.md.
+function _canonicalStratumOf(bookKey, chapterNum) {
+  if (!bookKey) return '';
+  if (bookKey === 'gen') {
+    return chapterNum <= 11
+      ? 'Torah · Primeval History'
+      : 'Torah · Patriarchal History';
+  }
+  if (bookKey === 'exo') {
+    return chapterNum <= 18
+      ? 'Torah · The Going Out'
+      : 'Torah · Sinai Covenant';
+  }
+  if (bookKey === 'lev') return 'Torah · Priestly Code';
+  if (bookKey === 'num') return 'Torah · Wilderness';
+  if (bookKey === 'deu') return 'Torah · Deuteronomy';
+
+  if (['jos','jdg','rut','1sa','2sa','1ki','2ki','1ch','2ch',
+       'ezr','neh','est'].includes(bookKey)) {
+    return 'Hebrew Bible · Historical Books';
+  }
+  if (['job','psa','pro','ecc','sng'].includes(bookKey)) {
+    return 'Hebrew Bible · Wisdom & Hymnody';
+  }
+  if (['isa','jer','lam','eze','dan'].includes(bookKey)) {
+    return 'Hebrew Bible · Latter Prophets';
+  }
+  if (['hos','joe','amo','oba','jon','mic','nah','hab','zep',
+       'hag','zec','mal'].includes(bookKey)) {
+    return 'Hebrew Bible · The Twelve';
+  }
+
+  if (['mat','mrk','luk','jhn'].includes(bookKey)) {
+    return 'New Testament · Gospel';
+  }
+  if (bookKey === 'act') return 'New Testament · Apostolic Acts';
+  if (['rom','1co','2co','gal','eph','php','col','1th','2th',
+       '1ti','2ti','tit','phm'].includes(bookKey)) {
+    return 'New Testament · Pauline Letters';
+  }
+  if (['heb','jas','1pe','2pe','1jn','2jn','3jn','jud'].includes(bookKey)) {
+    return 'New Testament · Catholic Letters';
+  }
+  if (bookKey === 'rev') return 'New Testament · Apocalypse';
+
+  // Deuterocanonical books carried in the data file. The canon
+  // distinction is itself part of orientation — readers in a
+  // Protestant tradition see these as Apocrypha, in a Catholic
+  // tradition as Old Testament. The neutral rubric names the
+  // tradition without resolving the question.
+  if (['1es','2es','1ma','2ma','tob','jdt','esth','bar','s3y',
+       'sus','bel','man','sir','wis'].includes(bookKey)) {
+    if (['1ma','2ma','1es','2es'].includes(bookKey)) {
+      return 'Deuterocanon · Historical';
+    }
+    if (['wis','sir'].includes(bookKey)) {
+      return 'Deuterocanon · Wisdom';
+    }
+    return 'Deuterocanon · Additions';
+  }
+
+  return '';
 }
 
 // Marker-glyph lookup, mirroring the CSS [data-kind]::before
