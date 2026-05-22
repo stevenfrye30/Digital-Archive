@@ -588,6 +588,58 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 [data-theme="dark"] .chapter-room-heading .ch-sub { color: var(--chrome-active); opacity: 0.88; }
 [data-theme="dark"] .chapter-room-heading .ch-stratum { color: var(--chrome-active); opacity: 0.42; }
 
+/* Civilizational geography (v82) — chapter density register.
+   The chapter heading takes a data-density attribute set in
+   JS (silent / standard / center) reflecting whether the
+   chapter is wilderness, ordinary inhabited terrain, or a
+   canonical center of gravity. Each register adjusts the
+   heading's ceremonial weight quietly.
+
+   The reader walking through chapters feels regions form:
+   some chapters are wilderness (no marks, expansive breath),
+   some are inhabited (standard heading + rail marks), and a
+   few are centers of gravity (heading rule lengthens and
+   intensifies). No labels, no maps, no chrome — only the
+   chapter-heading's own register. See
+   CIVILIZATIONAL_GEOGRAPHY_AUDIT.md. */
+
+/* Silent — wilderness. No witnesses anchored to this chapter.
+   The heading widens its breath; the rule and stratum lines
+   recede. The reader feels they have crossed terrain the codex
+   has not colonized. The page is undisturbed scripture. */
+.chapter-room-heading[data-density="silent"] {
+  padding-top: 56px;       /* was 36 */
+  padding-bottom: 64px;    /* was 44 */
+}
+.chapter-room-heading[data-density="silent"] .ch-rule {
+  border-top-color: rgba(120, 80, 40, 0.28);  /* was 0.42 */
+  width: 36px;                                  /* was 44 */
+}
+.chapter-room-heading[data-density="silent"] .ch-stratum {
+  opacity: 0.6;
+}
+
+/* Center — canonical gravity. Creation, Akedah, Sinai, Day of
+   Atonement, Shema, Lament, Throne Vision, Suffering Servant,
+   Sermon on Mount, Incarnation, Apocalypse. The heading's rule
+   lengthens (44 → 64 px) and slightly intensifies. The reader
+   feels architectural centrality without label. */
+.chapter-room-heading[data-density="center"] .ch-rule {
+  width: 64px;                                  /* was 44 */
+  border-top-color: rgba(120, 80, 40, 0.58);  /* was 0.42 */
+  margin: 22px auto 20px;                       /* was 20 auto 18 */
+}
+.chapter-room-heading[data-density="center"] .ch-stratum {
+  opacity: 0.65;                                /* slightly more present */
+}
+
+[data-theme="dark"] .chapter-room-heading[data-density="silent"] .ch-rule {
+  border-top-color: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .chapter-room-heading[data-density="center"] .ch-rule {
+  border-top-color: rgba(255, 240, 200, 0.32);
+}
+
 /* ── Text title page + TOC (separate view from reading) ──────────── */
 
 #text-header { display: none; }
@@ -10969,6 +11021,14 @@ function _buildChapterHeading() {
       ? _romanNumeral(chNum)
       : ch;
     heading.classList.add('chapter-room-heading');
+    // Civilizational geography — density register. The chapter
+    // heading takes a data-density attribute that the CSS uses
+    // to tune the chapter-plate atmosphere: wilderness register
+    // for silent chapters; slightly stronger rule for canonical
+    // centers; standard otherwise.
+    if (typeof _chapterDensity === 'function') {
+      heading.dataset.density = _chapterDensity(bk, chNum);
+    }
     heading.appendChild(title);
     heading.appendChild(rule);
     heading.appendChild(sub);
@@ -13431,6 +13491,64 @@ function _markRecordSeen(recId) {
 // terminology for NT corpora. The codex respects both
 // traditions without privileging either as the framing rubric.
 // See READING_CHOREOGRAPHY.md and CODEX_ORIENTATION_AUDIT.md.
+// ── Chapter density — civilizational geography ─────────────────
+// Returns 'silent' | 'center' | 'standard' for the chapter's
+// witness-density register. The codex's chapter-heading carries
+// slightly different ceremonial weight per register:
+//
+//   · silent   — no records anchored; the chapter is wilderness,
+//                undisturbed scripture. The heading widens its
+//                breath; the rule fades. The reader feels they
+//                have crossed terrain the codex has not colonized.
+//   · center   — a canonical center of gravity (creation, Akedah,
+//                Sinai, Day of Atonement, Shema, Lament, Throne
+//                Vision, Suffering Servant, Sermon on Mount,
+//                Incarnation, Apocalypse). The heading's rule
+//                lengthens and slightly intensifies. The reader
+//                feels architectural centrality.
+//   · standard — the default; chapters that carry one or more
+//                records but are not on the canonical-center list.
+//
+// The result is a quiet geographic gradient across the codex.
+// Some chapters read as wilderness; some as inhabited terrain;
+// some as gravitational centers. No labels, no maps, no chrome —
+// only the chapter-heading's own register.
+// See CIVILIZATIONAL_GEOGRAPHY_AUDIT.md.
+const _CANONICAL_CENTERS = new Set([
+  // Torah centers
+  'gen.1', 'gen.22',
+  'exo.3', 'exo.19', 'exo.20', 'exo.40',
+  'lev.16',
+  'deu.6',
+  // Wisdom & Prophets centers
+  'psa.13', 'psa.22', 'psa.23',
+  'isa.6', 'isa.53',
+  // NT centers
+  'mat.5',
+  'jhn.1',
+  'rev.4', 'rev.21', 'rev.22',
+]);
+
+function _chapterDensity(bookKey, chapterNum) {
+  if (!bookKey || !Number.isFinite(chapterNum)) return 'standard';
+  const key = `${bookKey}.${chapterNum}`;
+  if (_CANONICAL_CENTERS.has(key)) return 'center';
+  // Count records anchored to this chapter.
+  const recs = (typeof currentData === 'object' && currentData &&
+                currentData.genealogy) || [];
+  for (const r of recs) {
+    const anchors = (r && r.anchors) || [];
+    for (const a of anchors) {
+      const t = (a && a.target) || '';
+      const m = t.match(/bible::kjv::([a-z0-9]+)\.(\d+)\.\d+/);
+      if (m && m[1] === bookKey && parseInt(m[2], 10) === chapterNum) {
+        return 'standard';
+      }
+    }
+  }
+  return 'silent';
+}
+
 function _canonicalStratumOf(bookKey, chapterNum) {
   if (!bookKey) return '';
   if (bookKey === 'gen') {
