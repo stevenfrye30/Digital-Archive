@@ -12423,7 +12423,15 @@ function _renderFolioObjectLeaf(rec, pid) {
   //             manuscript-witness encounter with aligned
   //             Hebrew / Greek / Latin / English fragments and
   //             a philological lineage.
-  if (rec.id === 'gen1-cosmology-firmament') {
+  // Cosmogram-chamber dispatch — both gen1-cosmology-firmament
+  // (the AO·001 chamber at gen.1.6) AND gen1-cosmology-ane (the
+  // ANE Cosmology record at gen.1.1) open into the cosmogram
+  // chamber. The reader encountering ANE Cosmology at Gen 1:1
+  // sees the manuscript cosmogram as the centerpiece of the
+  // encounter, with the record's own body as supporting witness-
+  // text. Same renderer, same cosmogram artifact.
+  if (rec.id === 'gen1-cosmology-firmament' ||
+      rec.id === 'gen1-cosmology-ane') {
     leaf.classList.add('cosmology-chamber');
     leaf.addEventListener('click', e => e.stopPropagation());
     _renderCosmologyChamber(leaf, rec, pid, chKey);
