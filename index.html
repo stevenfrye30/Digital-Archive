@@ -3137,13 +3137,31 @@ mark.search-hl-active {
   opacity: 0;
   /* Slower, more ceremonial entry/exit — never flashy, never
      spring. A simple ease so the chamber feels like a door
-     swinging open at archival pace. */
-  transition: opacity 0.6s ease-out, visibility 0s linear 0.6s;
+     swinging open at archival pace.
+     v78: exit fade extended from 0.6s → 0.9s. The chamber
+     releases gradually; the reader returns to scripture
+     atmosphere rather than collapsing a modal. */
+  transition: opacity 0.9s ease-out, visibility 0s linear 0.9s;
 }
 body.viewer-active #object-viewer {
   visibility: visible;
   opacity: 1;
   transition: opacity 0.65s ease-out, visibility 0s;
+}
+/* Plate chamber — slightly deeper darkness when a Doré plate is
+   summoned. Cathedral isolation: the surrounding chamber dims
+   marginally further so the engraving holds the room more
+   completely. The :has() selector fires only when a plate leaf
+   exists in the viewer. (v78 reading-choreography.) */
+body.viewer-active:has(.folio-leaf[data-kind="plate"]) #object-viewer {
+  background:
+    radial-gradient(
+      ellipse 75% 80% at center,
+      rgba(20, 14, 8, 0.92) 0%,
+      rgba(14, 10, 6, 0.97) 35%,
+      rgba(6, 4, 2, 1) 75%,
+      rgba(2, 1, 0, 1) 100%
+    );
 }
 /* Lock the room behind the viewer. body already has height: 100vh
    so document.scroll is unmoved, but additional belt-and-suspenders
@@ -4463,6 +4481,51 @@ body.viewer-active .folio-leaf[data-gravity="originating"] > .folio-leaf-title {
   animation: folio-leaf-settle 0.42s ease-out;
 }
 
+/* ── Reading Choreography (v78) — entry pacing per kind ─────────
+   Witness leaves arrive at different cadences based on what
+   they are. The three-tier gradient:
+
+     · Text witness (default)      — 0.72s settle, translateY 10px
+     · AO chamber (originating)    — 0.92s settle (substantial)
+     · AO chamber (echo)           — 0.42s (quicker; return)
+     · Doré plate                  — 1.2s + 0.32s held breath,
+                                      translateY 20px, scale .985→1
+                                      (cathedral pacing)
+
+   The reader feels the kind before the content loads.
+   See READING_CHOREOGRAPHY.md. */
+
+/* AO chambers at canonical centres — slightly more breath at
+   originating anchors. The chamber's bespoke composition earns
+   a longer entry. Echo chambers retain the existing 0.42s
+   quick-return cadence (a return to a known place is faster).
+   The compound selector beats the originating-gravity rule
+   above on specificity (0,0,3,0 vs 0,0,2,0). */
+.folio-leaf[class*="-chamber"][data-gravity="originating"] {
+  animation-duration: 0.92s;
+}
+
+/* Doré plates — cathedral entry. Held breath (0.32s) followed
+   by slow descent (1.2s) from a deeper translateY with a faint
+   scale-up. The plate does not appear; it becomes present.
+   Plates are not AOs and so carry no data-gravity; the
+   originating/echo rules do not apply to them. */
+.folio-leaf[data-kind="plate"] {
+  animation: folio-leaf-plate-arrive 1.2s cubic-bezier(0.16, 0.7, 0.3, 1);
+  animation-delay: 0.32s;
+  animation-fill-mode: backwards;
+}
+@keyframes folio-leaf-plate-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Inward measure — at canonical centres, the lede narrows to a
    smaller measure (max-width 540px, centred), so the text
    recedes inward. The reader feels they have walked closer to
@@ -4588,6 +4651,16 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   margin-bottom: 32px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(120, 90, 50, 0.22);
+}
+
+/* Codex memory (v78) — visited-leaf trace. The provenance
+   hairline warms slightly when the reader re-encounters a
+   record. Almost imperceptible per encounter; over a session
+   the leaf carries the quiet manuscript-trace of having been
+   touched. Not a "visited link" — a manuscript trace, in the
+   same register as the visited rail-marker treatment. */
+.folio-leaf[data-visited="true"] .folio-leaf-provenance {
+  border-bottom-color: rgba(120, 75, 30, 0.36);
 }
 .folio-leaf-provenance .flp-authority {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
@@ -12030,6 +12103,16 @@ function _renderFolioObjectLeaf(rec, pid) {
   if (rec.atlas_object && typeof _anchorGravity === 'function') {
     leaf.dataset.gravity = _anchorGravity(rec, pid);
   }
+  // Codex memory — has this specific record been seen before?
+  // If so, mark the leaf so its provenance hairline warms slightly
+  // on re-encounter. Then record the visit. The archive
+  // quietly remembers; the reader does not consciously perceive
+  // the trace per encounter, but the manuscript carries the
+  // memory of having been touched. See READING_CHOREOGRAPHY.md.
+  if (rec && rec.id && _hasRecordBeenSeen(rec.id)) {
+    leaf.dataset.visited = 'true';
+  }
+  if (rec && rec.id) _markRecordSeen(rec.id);
   const chKey = _chapterKeyOf(pid);
 
   // Deep-chamber dispatch — selected records open into bespoke
@@ -13168,6 +13251,41 @@ function _isOriginatingPid(rec, pid) {
 // on markers.
 function _anchorGravity(rec, pid) {
   return _isOriginatingPid(rec, pid) ? 'originating' : 'echo';
+}
+
+// ── Codex memory — per-record encounter trace ───────────────────
+// Records every record ID the reader has summoned in this session
+// (and across sessions if localStorage is available). The leaf
+// renderer reads this set to decide whether to set
+// data-visited="true" on the leaf, which lets CSS warm the
+// provenance hairline slightly on re-encounter. The archive
+// quietly remembers what has been seen — manuscript trace, not
+// web-style visited-link. No badges, no notifications, no UI
+// state. Falls back to in-memory if localStorage is denied.
+const _RECORD_SEEN_KEY = 'archive:records-seen:v1';
+const _recordSeenMem = new Set();
+function _hasRecordBeenSeen(recId) {
+  if (!recId) return false;
+  if (_recordSeenMem.has(recId)) return true;
+  try {
+    const seen = JSON.parse(localStorage.getItem(_RECORD_SEEN_KEY) || '[]');
+    if (Array.isArray(seen) && seen.includes(recId)) {
+      _recordSeenMem.add(recId);
+      return true;
+    }
+  } catch { /* localStorage unavailable */ }
+  return false;
+}
+function _markRecordSeen(recId) {
+  if (!recId) return;
+  _recordSeenMem.add(recId);
+  try {
+    const seen = JSON.parse(localStorage.getItem(_RECORD_SEEN_KEY) || '[]');
+    if (Array.isArray(seen) && !seen.includes(recId)) {
+      seen.push(recId);
+      localStorage.setItem(_RECORD_SEEN_KEY, JSON.stringify(seen));
+    }
+  } catch { /* localStorage unavailable; in-memory tracking holds */ }
 }
 
 // Marker-glyph lookup, mirroring the CSS [data-kind]::before
