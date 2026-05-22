@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v87-cosmogram-visible-gen1-public">
+  <meta name="atlas-build" content="v88-object-behavior-pass-public">
   <title>Digital Archive</title>
   <style>
 
@@ -3184,7 +3184,7 @@ mark.search-hl-active {
 #object-viewer {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -3200,17 +3200,16 @@ mark.search-hl-active {
       rgba(10, 7, 4, 0.985) 75%,
       rgba(4, 3, 2, 1) 100%
     );
-  /* Long chambers (cosmogram, sanctuary, etc.) exceed the
-     viewport. The viewer scrolls vertically when needed —
-     manuscript folios are walked through, not scaled to a
-     fixed frame. Horizontal locked.
-     v85: changed from `overflow: hidden` + `align-items:
-     center` to `overflow-y: auto` + `align-items: flex-start`
-     so the chamber anchors at the top and the reader descends
-     through it. */
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 48px 24px 96px;
+  /* v88 — Viewer reverts to non-scrolling, centered. Short
+     witness leaves (commentary, linguistic, architecture,
+     manuscript, ritual, cross-reference, Doré plates) fit the
+     viewport and read as contained artifacts, not scrolling
+     pages. Tall chambers (cosmogram, sanctuary, etc.) carry
+     their OWN internal scroll envelope via class-scoped CSS
+     below, so they remain walkable without forcing every
+     leaf into document-page behavior. */
+  overflow: hidden;
+  padding: 12px 24px;
   color: var(--reader-fg);
   visibility: hidden;
   opacity: 0;
@@ -3285,7 +3284,14 @@ body.viewer-active #reader {
      while R and G drop) so the parchment reads as an archival
      sheet rather than a warm-cream UI panel. Warmth retained.
      See LEAF_MATERIAL_INDEPENDENCE_AUDIT.md. */
-  --reader-bg: #ede3cc;
+  /* v88 — Leaf parchment cooled / dried further so the
+     opened artifact reads visibly distinct from the main
+     reading-page background in companion mode. Previous
+     v76 vellum (#ede3cc) sat too close to the reading-room
+     parchment; the new value is a slightly cooler bone tone
+     (less yellow saturation, R/G drop, B holds). Warmth
+     retained. */
+  --reader-bg: #e6dac0;
   /* Ink slightly warmer than pure dark — text feels impressed
      into the parchment surface rather than digitally stamped
      onto a CSS background. The hue stays in the parchment's
@@ -4499,8 +4505,41 @@ body.folio-left #companion-swap {
      See LEAF_MATERIAL_INDEPENDENCE_AUDIT.md. */
   box-shadow:
     0 6px 28px -8px rgba(0, 0, 0, 0.55),
-    0 0 100px 16px rgba(0, 0, 0, 0.42);
+    0 0 100px 16px rgba(0, 0, 0, 0.42),
+    /* v88 — barely-visible warm inset hairline. Reads as a
+       quiet plate edge: the artifact is materially bounded
+       relative to the chamber, without becoming a card.
+       Alpha 0.10 keeps it almost subliminal. */
+    inset 0 0 0 1px rgba(120, 80, 40, 0.10);
 }
+
+/* v88 — Chamber scroll envelope. Tall AO chambers (cosmogram,
+   sanctuary, etc.) exceed the viewport. Rather than making the
+   whole viewer scroll like a document (which spreads scrolling
+   behavior to every short witness), each chamber carries its
+   own scroll envelope: max-height pinned just below the viewer
+   chrome, internal overflow-y auto. Short witnesses are
+   unaffected — their leaves fit, the viewer remains a
+   contained centered artifact. */
+.folio-leaf[class*="-chamber"] {
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+/* Hide the scrollbar visually without breaking scroll. The
+   chamber feels like a self-contained artifact even while
+   walkable. */
+.folio-leaf[class*="-chamber"]::-webkit-scrollbar {
+  width: 6px;
+}
+.folio-leaf[class*="-chamber"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+.folio-leaf[class*="-chamber"]::-webkit-scrollbar-thumb {
+  background: rgba(120, 80, 40, 0.20);
+  border-radius: 3px;
+}
+
 @keyframes folio-leaf-settle {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -5671,21 +5710,63 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   border: 0;
   max-width: 480px;
 }
-/* Cosmogram staging (v85) — the chamber's compositional
-   sequence inverts the usual article rhythm. The cosmogram
-   itself becomes the first encounter, surrounded by dramatic
-   vertical silence above and below. The reader's eye crosses
-   into preserved cosmological space before reading any
-   explanatory prose.
-
-   The cc-cosmogram-frame wrapper carries the ceremonial
-   vertical breath that separates the chamber's opening rubric
-   (provenance + verse + title) from the cosmogram artifact —
-   and separates the cosmogram from the supporting witness-
-   text that follows. */
+/* Cosmogram staging (v85, refined v88) — the chamber's
+   compositional sequence inverts the usual article rhythm.
+   The cosmogram itself becomes the first encounter. With the
+   SVG now scaling to fit viewport (v88), the surrounding
+   breath is reduced — the goal is "fits on one screen,"
+   not "ceremonial scrolling descent." */
 .folio-leaf.cosmology-chamber .cc-cosmogram-frame {
-  margin: 120px auto 96px;
+  margin: 32px auto 56px;
   padding: 0;
+}
+
+/* v88 — Chamber navigation rubric. A small marginal-style
+   row of section labels at the top of the cosmology chamber.
+   The reader can move quickly between Cosmogram, Witness Text,
+   Terminology, etc. without scrolling through the whole
+   chamber. Click smooth-scrolls within the chamber to the
+   target anchor.
+
+   Rubric register: italic small-caps, low alpha, separator
+   middle-dots. Manuscript-marginal feel; not modern app tabs.
+   No background, no border, no hover swell — just type. */
+.folio-leaf.cosmology-chamber .cc-chamber-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 0;
+  margin: 18px auto 0;
+  padding: 8px 0 0;
+  max-width: 540px;
+  border-top: 1px solid rgba(120, 80, 40, 0.18);
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+}
+.folio-leaf.cosmology-chamber .cc-chamber-nav-item {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.66em;
+  letter-spacing: 0.14em;
+  color: rgba(95, 70, 40, 0.72);
+  cursor: pointer;
+  padding: 4px 10px;
+  user-select: none;
+  background: none;
+  border: 0;
+  font-family: inherit;
+  transition: color 0.22s ease-out, opacity 0.22s ease-out;
+}
+.folio-leaf.cosmology-chamber .cc-chamber-nav-item:hover,
+.folio-leaf.cosmology-chamber .cc-chamber-nav-item:focus-visible {
+  color: rgba(75, 45, 18, 0.92);
+  outline: none;
+}
+.folio-leaf.cosmology-chamber .cc-chamber-nav-sep {
+  font-style: italic;
+  color: rgba(120, 80, 40, 0.35);
+  align-self: center;
+  font-size: 0.7em;
+  padding: 0 2px;
 }
 /* Post-cosmogram cc-lede — the prose body now appears after
    the cosmogram, in supporting-witness register: slightly
@@ -5706,7 +5787,15 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   display: block;
   width: 100%;
   height: auto;
+  /* v88 — Cosmogram scales to fit viewport in default Full
+     View. Tall portrait SVG (480 × 880) shrinks proportionally
+     when the chamber doesn't have full vertical room. At
+     900px viewport with chamber chrome ~200px the SVG renders
+     ~700px tall × ~380px wide — the reader sees the whole
+     descent at a glance without scrolling. At 1440+ viewports
+     the SVG renders at natural size. */
   max-width: 480px;
+  max-height: calc(100vh - 240px);
   margin: 0 auto;
 }
 /* Stratum name — Hebrew transliteration in small-caps, italic,
@@ -12802,38 +12891,83 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
   t.textContent = rec.title || '';
   leaf.appendChild(t);
 
-  // ── Cosmogram-first staging (v85) ────────────────────────────
+  // ── Cosmogram-first staging (v85, refined v88) ──────────────
   // The chamber's compositional sequence inverts the usual
-  // article rhythm: the cosmogram itself becomes the first
-  // encounter, not a figure inside an essay. Provenance + verse
-  // + title remain at the top (constitutional rubric), but the
-  // reader's eye then crosses dramatic vertical silence into
-  // the cosmogram. Only after the artifact has been encountered
-  // does the supporting witness-text appear below.
-  //
-  // The reader's eye flows:
-  //   rubric → silence → cosmogram → silence → witness-text
-  //
-  // The cosmogram is no longer §I in a numbered list of sections.
-  // It is the chamber's centerpiece artifact. The Hebrew
-  // terminology, comparative context, anchorings, and archive
-  // commentary continue as §I, §II, §III, §IV below.
+  // article rhythm: the cosmogram itself is the first encounter.
+  // v88 adds a quiet manuscript-rubric navigation row below the
+  // title so the reader can jump between Cosmogram / Witness /
+  // Terminology / Comparative / Anchorings without scrolling
+  // through the whole chamber. Each section gets an anchor id
+  // and the nav's click handlers smooth-scroll within the
+  // chamber's own scroll envelope.
 
-  // Step 1 — vertical silence threshold before the cosmogram
-  // arrives. CSS class .cc-cosmogram-threshold renders generous
-  // padding above and below the SVG; the reader feels they have
-  // crossed into preserved cosmological space.
+  // Anchor ids attached to each section's anchor element so the
+  // nav can smooth-scroll to them. Defined inline rather than
+  // imported because the cosmogram chamber is the only one
+  // using this navigation today.
+  const ANCHORS = {
+    cosmogram:    'cc-anchor-cosmogram',
+    witness:      'cc-anchor-witness',
+    terminology:  'cc-anchor-terminology',
+    comparative:  'cc-anchor-comparative',
+    anchorings:   'cc-anchor-anchorings',
+    commentary:   'cc-anchor-commentary',
+  };
+
+  // Build the nav rubric. Each item is a button (keyboard-
+  // reachable) that scrolls the chamber to its anchor.
+  const nav = document.createElement('div');
+  nav.className = 'cc-chamber-nav';
+  nav.setAttribute('role', 'navigation');
+  nav.setAttribute('aria-label', 'Sections within this cosmology chamber');
+  const navSections = [
+    ['Cosmogram',    ANCHORS.cosmogram],
+    ['Witness',      ANCHORS.witness],
+    ['Terminology',  ANCHORS.terminology],
+    ['Comparative',  ANCHORS.comparative],
+  ];
+  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
+      rec.atlas_object.anchorings.length > 0) {
+    navSections.push(['Anchorings', ANCHORS.anchorings]);
+  }
+  navSections.push(['Commentary', ANCHORS.commentary]);
+  navSections.forEach(([label, anchorId], i) => {
+    if (i > 0) {
+      const sep = document.createElement('span');
+      sep.className = 'cc-chamber-nav-sep';
+      sep.textContent = '·';
+      sep.setAttribute('aria-hidden', 'true');
+      nav.appendChild(sep);
+    }
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'cc-chamber-nav-item';
+    btn.textContent = label;
+    btn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      const target = leaf.querySelector('#' + anchorId);
+      if (!target) return;
+      const offsetTop = target.offsetTop - 8;
+      leaf.scrollTo({ top: offsetTop, behavior: 'smooth' });
+    });
+    nav.appendChild(btn);
+  });
+  leaf.appendChild(nav);
+
+  // Cosmogram (the centerpiece) — wrapped so its anchor id
+  // can target the section start.
   const cosmogramFrame = document.createElement('div');
   cosmogramFrame.className = 'cc-cosmogram-frame';
+  cosmogramFrame.id = ANCHORS.cosmogram;
   cosmogramFrame.appendChild(_renderCCDiagram());
   leaf.appendChild(cosmogramFrame);
 
-  // Step 2 — the lede prose now appears BELOW the cosmogram, in
-  // the supporting-witness register. Reads as marginal scholar's
-  // commentary on the artifact rather than as the article body.
+  // Witness Text — the lede prose, in supporting register
+  // beneath the artifact.
   if (rec.body) {
     const lede = document.createElement('div');
     lede.className = 'cc-lede';
+    lede.id = ANCHORS.witness;
     String(rec.body).split('\n').forEach(line => {
       if (!line.trim()) return;
       const p = document.createElement('p');
@@ -12843,33 +12977,37 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
     leaf.appendChild(lede);
   }
 
-  // §I — Hebrew terminology (renumbered; the diagram is no
-  // longer numbered because it IS the chamber's centerpiece).
-  leaf.appendChild(_renderCCSectionHeading('i', 'Terminology',
-    'Hebrew terms · lexicographic survey'));
+  // §I Terminology (renumbered v85; v88 adds anchor)
+  const termHeading = _renderCCSectionHeading('i', 'Terminology',
+    'Hebrew terms · lexicographic survey');
+  termHeading.id = ANCHORS.terminology;
+  leaf.appendChild(termHeading);
   leaf.appendChild(_renderCCHebrewTerms());
 
-  // §II — Comparative ANE context
-  leaf.appendChild(_renderCCSectionHeading('ii', 'Comparative Context',
-    'Ancient Near Eastern parallels'));
+  // §II Comparative ANE context
+  const compHeading = _renderCCSectionHeading('ii', 'Comparative Context',
+    'Ancient Near Eastern parallels');
+  compHeading.id = ANCHORS.comparative;
+  leaf.appendChild(compHeading);
   leaf.appendChild(_renderCCComparative());
 
-  // §III — Other anchorings of the same Atlas Object — quiet
-  // list, small italic register. The architectural commitment
-  // to "object, not annotation": the same object is encountered
-  // through multiple passages and external texts. Rendered only
-  // when the record carries atlas_object.anchorings.
+  // §III Other anchorings (only if present on the AO)
   if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
       rec.atlas_object.anchorings.length > 0) {
-    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
-      'where this object is also encountered'));
+    const anchHeading = _renderCCSectionHeading('iii', 'Anchorings',
+      'where this object is also encountered');
+    anchHeading.id = ANCHORS.anchorings;
+    leaf.appendChild(anchHeading);
     leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
   }
 
-  // §IV — Archive commentary — visually separated from the
-  // previous sections so the reader cannot mistake archive
-  // synthesis for primary witness material.
-  leaf.appendChild(_renderCCArchiveCommentary());
+  // §IV Archive commentary
+  const commentaryNode = _renderCCArchiveCommentary();
+  // _renderCCArchiveCommentary returns a wrapper that itself
+  // contains a heading + body; attach the anchor to the wrapper
+  // so smooth-scroll lands at the section start.
+  commentaryNode.id = ANCHORS.commentary;
+  leaf.appendChild(commentaryNode);
 
   // Kindred — quiet line naming other Atlas Objects also
   // anchored at this verse, if any. Civilizational resonance.
