@@ -3183,7 +3183,7 @@ mark.search-hl-active {
 #object-viewer {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -3199,11 +3199,17 @@ mark.search-hl-active {
       rgba(10, 7, 4, 0.985) 75%,
       rgba(4, 3, 2, 1) 100%
     );
-  /* No scroll — the viewport is locked. The object is sized to
-     fit (max-height: 100vh - chrome). If it would overflow, it
-     simply scales down. */
-  overflow: hidden;
-  padding: 12px 24px;
+  /* Long chambers (cosmogram, sanctuary, etc.) exceed the
+     viewport. The viewer scrolls vertically when needed —
+     manuscript folios are walked through, not scaled to a
+     fixed frame. Horizontal locked.
+     v85: changed from `overflow: hidden` + `align-items:
+     center` to `overflow-y: auto` + `align-items: flex-start`
+     so the chamber anchors at the top and the reader descends
+     through it. */
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 48px 24px 96px;
   color: var(--reader-fg);
   visibility: hidden;
   opacity: 0;
@@ -5663,6 +5669,37 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   background: transparent;
   border: 0;
   max-width: 480px;
+}
+/* Cosmogram staging (v85) — the chamber's compositional
+   sequence inverts the usual article rhythm. The cosmogram
+   itself becomes the first encounter, surrounded by dramatic
+   vertical silence above and below. The reader's eye crosses
+   into preserved cosmological space before reading any
+   explanatory prose.
+
+   The cc-cosmogram-frame wrapper carries the ceremonial
+   vertical breath that separates the chamber's opening rubric
+   (provenance + verse + title) from the cosmogram artifact —
+   and separates the cosmogram from the supporting witness-
+   text that follows. */
+.folio-leaf.cosmology-chamber .cc-cosmogram-frame {
+  margin: 120px auto 96px;
+  padding: 0;
+}
+/* Post-cosmogram cc-lede — the prose body now appears after
+   the cosmogram, in supporting-witness register: slightly
+   smaller, slightly recessed, narrower, italic. Reads as a
+   scholar's marginal commentary on the cosmographic artifact
+   above, not as the article body. */
+.folio-leaf.cosmology-chamber .cc-cosmogram-frame ~ .cc-lede {
+  max-width: 520px;
+  margin: 0 auto 32px;
+  font-style: italic;
+  opacity: 0.84;
+}
+.folio-leaf.cosmology-chamber .cc-cosmogram-frame ~ .cc-lede p {
+  font-size: 0.94em;
+  line-height: 1.68;
 }
 .folio-leaf.cosmology-chamber .cc-diagram-svg {
   display: block;
@@ -12756,8 +12793,35 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
   t.textContent = rec.title || '';
   leaf.appendChild(t);
 
-  // Restrained opening — the existing record body, rendered as
-  // calm prose. Anchors the rest of the chamber.
+  // ── Cosmogram-first staging (v85) ────────────────────────────
+  // The chamber's compositional sequence inverts the usual
+  // article rhythm: the cosmogram itself becomes the first
+  // encounter, not a figure inside an essay. Provenance + verse
+  // + title remain at the top (constitutional rubric), but the
+  // reader's eye then crosses dramatic vertical silence into
+  // the cosmogram. Only after the artifact has been encountered
+  // does the supporting witness-text appear below.
+  //
+  // The reader's eye flows:
+  //   rubric → silence → cosmogram → silence → witness-text
+  //
+  // The cosmogram is no longer §I in a numbered list of sections.
+  // It is the chamber's centerpiece artifact. The Hebrew
+  // terminology, comparative context, anchorings, and archive
+  // commentary continue as §I, §II, §III, §IV below.
+
+  // Step 1 — vertical silence threshold before the cosmogram
+  // arrives. CSS class .cc-cosmogram-threshold renders generous
+  // padding above and below the SVG; the reader feels they have
+  // crossed into preserved cosmological space.
+  const cosmogramFrame = document.createElement('div');
+  cosmogramFrame.className = 'cc-cosmogram-frame';
+  cosmogramFrame.appendChild(_renderCCDiagram());
+  leaf.appendChild(cosmogramFrame);
+
+  // Step 2 — the lede prose now appears BELOW the cosmogram, in
+  // the supporting-witness register. Reads as marginal scholar's
+  // commentary on the artifact rather than as the article body.
   if (rec.body) {
     const lede = document.createElement('div');
     lede.className = 'cc-lede';
@@ -12770,31 +12834,30 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
     leaf.appendChild(lede);
   }
 
-  // §1 — Diagram
-  leaf.appendChild(_renderCCSectionHeading('i', 'Diagram', 'Three-tier cosmos — reconstructed'));
-  leaf.appendChild(_renderCCDiagram());
-
-  // §2 — Hebrew terminology
-  leaf.appendChild(_renderCCSectionHeading('ii', 'Terminology', 'Hebrew terms · lexicographic survey'));
+  // §I — Hebrew terminology (renumbered; the diagram is no
+  // longer numbered because it IS the chamber's centerpiece).
+  leaf.appendChild(_renderCCSectionHeading('i', 'Terminology',
+    'Hebrew terms · lexicographic survey'));
   leaf.appendChild(_renderCCHebrewTerms());
 
-  // §3 — Comparative ANE context
-  leaf.appendChild(_renderCCSectionHeading('iii', 'Comparative Context', 'Ancient Near Eastern parallels'));
+  // §II — Comparative ANE context
+  leaf.appendChild(_renderCCSectionHeading('ii', 'Comparative Context',
+    'Ancient Near Eastern parallels'));
   leaf.appendChild(_renderCCComparative());
 
-  // §4 — Other anchorings of the same Atlas Object — quiet list,
-  // small italic register. The architectural commitment to
-  // "object, not annotation": the same object is encountered
+  // §III — Other anchorings of the same Atlas Object — quiet
+  // list, small italic register. The architectural commitment
+  // to "object, not annotation": the same object is encountered
   // through multiple passages and external texts. Rendered only
   // when the record carries atlas_object.anchorings.
   if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
       rec.atlas_object.anchorings.length > 0) {
-    leaf.appendChild(_renderCCSectionHeading('iv', 'Anchorings',
+    leaf.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
       'where this object is also encountered'));
     leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
   }
 
-  // §5 — Archive commentary — visually separated from the
+  // §IV — Archive commentary — visually separated from the
   // previous sections so the reader cannot mistake archive
   // synthesis for primary witness material.
   leaf.appendChild(_renderCCArchiveCommentary());
