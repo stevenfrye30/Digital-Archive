@@ -5136,7 +5136,24 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   opacity: 0.92;
 }
 .folio-leaf[data-kind="cosmology"]:not(.cosmology-chamber) .folio-body-vertical .folio-body-spacer {
-  height: 1.2em;
+  /* Cosmogram register (v83) — each inter-stratum spacer
+     carries a tiny centered hairline mark. The body reads as
+     a vertically-stacked cosmogram of cosmic strata separated
+     by horizontal rules rather than as flowing essay prose.
+     Spacer height pushed 1.2em → 1.4em for additional cosmic
+     breath between layers. See OBJECT_ARTIFACT_AUDIT.md. */
+  height: 1.4em;
+  position: relative;
+}
+.folio-leaf[data-kind="cosmology"]:not(.cosmology-chamber) .folio-body-vertical .folio-body-spacer::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1px;
+  background: rgba(120, 80, 40, 0.22);
+  transform: translate(-50%, -50%);
 }
 
 /* Per-kind atmospheres — currently genealogy renders via
@@ -5149,6 +5166,17 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   font-size: 0.95em;
   line-height: 1.75;
   opacity: 0.86;
+}
+/* Lineage architecture (v83) — generation-transition rows in
+   genealogy bodies carry slight extra margin-top. The descent
+   reads as architecturally banded by generation: each
+   generation forms its own band; the dynastic axis is felt
+   vertically. The renderer already sets data-generation
+   ="transition" on rows that change depth from the prior row;
+   the CSS here just gives those rows a faint extra breath.
+   See OBJECT_ARTIFACT_AUDIT.md §genealogy. */
+.folio-leaf[data-kind="genealogy"] .folio-body-vertical .folio-body-line[data-generation="transition"] {
+  margin-top: 0.3em;
 }
 /* Encounter-state typography — the witness leaf gains a little
    more presence when it occupies the full spread. Title scales
