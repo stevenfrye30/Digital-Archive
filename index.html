@@ -4682,6 +4682,82 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
 .folio-leaf[data-visited="true"] .folio-leaf-provenance {
   border-bottom-color: rgba(120, 75, 30, 0.36);
 }
+
+/* ── Witness Temporality (v80) — transmission rubric ──────────
+   Each witness family declares its temporal posture through a
+   single small italic small-caps phrase appended to the
+   provenance block. The rubric implies how the witness has
+   come to us through time:
+
+     · manuscript          preserved through transmission
+     · commentary          inherited through interpretation
+     · linguistic          witnessed in philology
+     · architecture        held in land-memory
+     · ritual              carried through generations
+     · reception-history   layered across centuries
+     · cross-reference     echoing through scripture
+     · cosmology           read against the world-picture
+
+   The rubric is a standalone phrase, not a prefix; it does
+   NOT interact grammatically with the tradition string above
+   it. The reader registers it subliminally as a transmission-
+   posture marker.
+
+   Doré plates are excluded — the plaque already carries
+   year/artist/source which IS the plate's temporality. Adding
+   a rubric would duplicate it.
+   See CODEX_ORIENTATION_AUDIT.md and the v80 audit. */
+.folio-leaf-provenance::after {
+  display: block;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.66em;
+  letter-spacing: 0.16em;
+  margin-top: 8px;
+  opacity: 0.62;
+  color: rgba(95, 70, 40, 0.78);
+}
+.folio-leaf[data-kind="manuscript"]
+  .folio-leaf-provenance::after {
+  content: 'preserved through transmission';
+}
+.folio-leaf[data-kind="commentary"]
+  .folio-leaf-provenance::after {
+  content: 'inherited through interpretation';
+}
+.folio-leaf[data-kind="linguistic"]
+  .folio-leaf-provenance::after {
+  content: 'witnessed in philology';
+}
+.folio-leaf[data-kind="architecture"]
+  .folio-leaf-provenance::after {
+  content: 'held in land-memory';
+}
+.folio-leaf[data-kind="ritual"]
+  .folio-leaf-provenance::after {
+  content: 'carried through generations';
+}
+.folio-leaf[data-kind="reception-history"]
+  .folio-leaf-provenance::after {
+  content: 'layered across centuries';
+}
+.folio-leaf[data-kind="cross-reference"]
+  .folio-leaf-provenance::after {
+  content: 'echoing through scripture';
+}
+.folio-leaf[data-kind="cosmology"]
+  .folio-leaf-provenance::after {
+  content: 'read against the world-picture';
+}
+/* Doré plates render through a bespoke plaque (artist · year
+   · source) which already carries the plate's temporal
+   posture. The rubric is suppressed so it does not duplicate
+   the plaque's information. */
+.folio-leaf[data-kind="plate"]
+  .folio-leaf-provenance::after {
+  content: none;
+}
 .folio-leaf-provenance .flp-authority {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
