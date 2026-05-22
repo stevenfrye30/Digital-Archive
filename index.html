@@ -3174,7 +3174,28 @@ body.viewer-active #reader {
    prepared sheet. Constrained to ~800px so reading measure stays
    sane even when #viewer-inner is wider for plates. */
 .folio-leaf {
-  background: color-mix(in srgb, var(--reader-bg) 95%, #b08a4a 5%);
+  /* Stable archival parchment — the witness leaf is a separately
+     prepared sheet, not a tinted panel of the reading-room paper.
+     The leaf must read as a manuscript surface regardless of the
+     reader's chosen background/theme. We re-scope --reader-bg and
+     --reader-fg inside the leaf so the warm parchment + dark ink
+     pair is inherited by every descendant that reads those
+     variables (chamber sub-elements, plaque tints, hairline
+     rules), without touching the reading-room theme controls. */
+  /* Vellum-shift parchment — moved away from saturated warm
+     cream toward dry vellum / bone. Subtle desaturation
+     (HSL 64% → 41%) and a faint cooling (B channel rises
+     while R and G drop) so the parchment reads as an archival
+     sheet rather than a warm-cream UI panel. Warmth retained.
+     See LEAF_MATERIAL_INDEPENDENCE_AUDIT.md. */
+  --reader-bg: #ede3cc;
+  /* Ink slightly warmer than pure dark — text feels impressed
+     into the parchment surface rather than digitally stamped
+     onto a CSS background. The hue stays in the parchment's
+     warm family; the value is high-contrast for readability,
+     low enough not to read as digital black. */
+  --reader-fg: #2e2418;
+  background: var(--reader-bg);
   color: var(--reader-fg);
   padding: 56px 64px;
   max-width: 800px;
@@ -4338,12 +4359,45 @@ body.folio-left #companion-swap {
   display: block;
   /* Page-settle threshold — the leaf arrives with a small
      downward settle rather than a flat fade, so opening a
-     witness feels like a single page laid upon the desk. */
-  animation: folio-leaf-settle 0.5s ease-out;
+     witness feels like a single page laid upon the desk.
+     The Leaf Constitution (Phase 6) lengthens the settle to
+     0.72s on a gentler curve so the leaf EMERGES from the
+     chamber rather than APPEARING as a popup. */
+  animation: folio-leaf-settle 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* Material independence — two-layer DARK shadow stack that
+     pulls the chamber back from the leaf's perimeter, breaking
+     the prior "warm fog + warm paper" continuity. The chamber
+     recedes into darkness near the manuscript surface; the
+     parchment reads as the only stable bright zone in a
+     quietened pocket of dark chamber.
+
+       1) Quiet weight beneath — narrow dark shadow giving
+          the leaf perceptible mass without card elevation.
+
+       2) Chamber attenuation — a dark absorption around the
+          manuscript perimeter. The chamber's warm vignette
+          quietens HERE (locally darker pocket) so the leaf
+          is no longer fused with the surrounding warm fog.
+          The shadow is dark (not warm), so it does NOT paint
+          warm light into the chamber as the prior warm halo
+          did.
+
+     Internal luminosity comes from contrast with this darker
+     surround, not from emitted glow. The parchment is the
+     bright zone; the chamber is the absorption.
+     See LEAF_MATERIAL_INDEPENDENCE_AUDIT.md. */
+  box-shadow:
+    0 6px 28px -8px rgba(0, 0, 0, 0.55),
+    0 0 100px 16px rgba(0, 0, 0, 0.42);
 }
 @keyframes folio-leaf-settle {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+/* Doré plates retain their own museum-chamber framing —
+   no parchment-illumination halo around the engraving. */
+.folio-leaf[data-kind="plate"] {
+  box-shadow: none;
 }
 
 /* Anchor gravity — felt, not labelled. An ORIGINATING chamber
@@ -4512,7 +4566,13 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
    object's epistemic class, tradition, source basis, confidence
    — compact rubric block, not a dossier. */
 .folio-leaf-provenance {
-  margin-bottom: 16px;
+  /* margin-bottom raised from 16 → 22 so the verse-ref and
+     title land more clearly as separate from the header block.
+     In long object-hopping sessions this single change makes
+     the header recede one degree and the title carry more of
+     the leaf's first-glance weight. (Reading-Flow
+     Consolidation, Seam C.) */
+  margin-bottom: 22px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(120, 90, 50, 0.22);
 }
@@ -4584,9 +4644,20 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
 /* Commentary witnesses — archival marginalia. Title lighter
    than the AO rubric voice, a thin centred manuscript rule
    between title and body, narrower paragraph column with
-   slightly larger reading prose for sustained argument. */
+   slightly larger reading prose for sustained argument.
+   The Leaf Constitution (Phase 2) adds:
+     · Explicit title font-size so commentary does NOT inherit
+       viewer-active's 1.4em jump (the lighter 400 weight
+       reads correctly at 1.18em; commentary's restraint is
+       preserved on encounter).
+     · Paragraph rhythm — 1.1em between paragraphs, slight
+       breath above the first paragraph.
+     · Ending cadence — extra bottom margin on the body so the
+       argument closes with a beat before the colophon.
+   See LEAF_CONSTITUTION_AUDIT.md §Phase 2. */
 .folio-leaf[data-kind="commentary"] .folio-leaf-title {
   font-weight: 400;
+  font-size: 1.18em;
 }
 .folio-leaf[data-kind="commentary"] .folio-leaf-title::after {
   content: '';
@@ -4602,18 +4673,40 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   font-size: 0.92em;
   line-height: 1.74;
 }
+/* Paragraph rhythm — the body renderer emits .folio-body-line
+   divs (one per source line) with .folio-body-spacer divs
+   for blank-line gaps. Commentary's spacers carry slightly
+   more breath than the default 0.6em so the argument's
+   paragraph rhythm sits closer to manuscript-prose cadence
+   (the spacers ARE the paragraph breaks). */
+.folio-leaf[data-kind="commentary"] .folio-body-vertical .folio-body-spacer {
+  height: 0.85em;
+}
+.folio-leaf[data-kind="commentary"] .folio-leaf-body {
+  margin-bottom: 32px;
+}
 
 /* Linguistic / philological witnesses — gloss register. Title
    in roman (not italic) so the transliterated word reads as
    the lexeme; slightly smaller; narrower body measure (a
    gloss is more enclosed than a commentary argument);
-   tighter line-spacing for dense philological reading. */
+   tighter line-spacing for dense philological reading.
+   The Leaf Constitution (Phase 3) adds:
+     · Tighter title margin — the gloss sits closer to its
+       lexeme than an argument to its position.
+     · Lexicon-shorthand citation — verse reference renders
+       at 0.76em, the marginal-lexicon-mark register.
+     · Denser paragraph rhythm — 0.85em between paragraphs.
+   See LEAF_CONSTITUTION_AUDIT.md §Phase 3. */
 .folio-leaf[data-kind="linguistic"] .folio-leaf-title {
   font-style: normal;
   font-weight: 500;
   font-size: 1.08em;
   letter-spacing: 0.01em;
-  margin-bottom: 22px;
+  margin-bottom: 16px;
+}
+.folio-leaf[data-kind="linguistic"] .folio-leaf-verse {
+  font-size: 0.76em;
 }
 .folio-leaf[data-kind="linguistic"] .folio-body-vertical {
   max-width: 560px;
@@ -4621,6 +4714,179 @@ body.viewer-active .folio-leaf-return:hover { opacity: 0.85; }
   font-size: 0.88em;
   line-height: 1.66;
 }
+/* Denser paragraph rhythm — linguistic spacers tighter than
+   commentary's. Gloss prose holds closer. */
+.folio-leaf[data-kind="linguistic"] .folio-body-vertical .folio-body-spacer {
+  height: 0.5em;
+}
+
+/* Architecture / sacred-site witnesses — stone-inscription
+   register. Narrowest measure of the three formalized text-
+   witness families (480px vs commentary's 640 and linguistic's
+   560); slightly smaller title with the faintest inscriptional
+   letter-spacing; denser line-height than either of the other
+   two families. The sacred-site witnesses across Genesis
+   (Shechem, Bethel, Beersheba, Moriah, Machpelah, Isaac's
+   wells, the Bethel pillar) now share a single recognizable
+   leaf register — the manuscript inscription, held in small
+   voice. See WITNESS_FAMILY_CONSTITUTION.md §III and
+   GENESIS_HARMONIZATION_PASS.md.
+   The Leaf Constitution (Phase 4) deepens the inscription
+   feel with:
+     · Small-caps title — quiet inscriptional voice; the
+       site's name carved in small capitals rather than
+       declared as a heading.
+     · Engraved-attribution citation — letter-spacing on the
+       verse-ref so the citation reads as stone-engraved.
+     · Sealing-line typography — the final paragraph of an
+       architecture record (almost always a one-line sealing
+       statement like "The first stone in the patriarchal
+       landscape.") renders centred, italic, and at slight
+       remove — the inscription's closing chisel mark.
+     · Tighter paragraph rhythm — 0.9em between paragraphs.
+   See LEAF_CONSTITUTION_AUDIT.md §Phase 4. */
+.folio-leaf[data-kind="architecture"] .folio-leaf-title {
+  font-size: 1.10em;
+  letter-spacing: 0.015em;
+  margin-bottom: 24px;
+  font-variant-caps: small-caps;
+}
+.folio-leaf[data-kind="architecture"] .folio-leaf-verse {
+  letter-spacing: 0.04em;
+}
+.folio-leaf[data-kind="architecture"] .folio-body-vertical {
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 0.90em;
+  line-height: 1.60;
+}
+/* Architecture spacer height between linguistic (0.5em) and
+   commentary (0.85em). The stone holds; it does not breathe
+   wide, but it does not crowd either. */
+.folio-leaf[data-kind="architecture"] .folio-body-vertical .folio-body-spacer {
+  height: 0.65em;
+}
+
+/* ── Reception-history witnesses — historical afterlife
+   register. The chronology of a passage's readings across
+   traditions (Patristic, Rabbinic, Islamic, modern). Body
+   sits between commentary and linguistic in measure;
+   substantive but contained. The signature move is wider
+   spacers between paragraphs — each spacer reads as a
+   tradition divider; each paragraph as an era speaking.
+   See OBJECT_FAMILY_CONSTITUTION.md §III. */
+.folio-leaf[data-kind="reception-history"] .folio-leaf-title {
+  font-size: 1.14em;
+  margin-bottom: 28px;
+}
+.folio-leaf[data-kind="reception-history"] .folio-body-vertical {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 0.90em;
+  line-height: 1.68;
+  opacity: 0.88;
+}
+.folio-leaf[data-kind="reception-history"] .folio-body-vertical .folio-body-spacer {
+  height: 1.0em;
+}
+
+/* ── Manuscript witnesses — textual-evidence apparatus
+   register. The critical-apparatus tradition: variants,
+   vocalization, manuscript readings. Smallest measure of
+   any text-witness family (500px) and smallest font
+   (0.84em) — the apparatus is dense and precise, not
+   discursive. Title in roman with faint letter-spacing
+   reads as an apparatus heading rather than an article
+   title. Verse-ref at 0.70em — apparatus citations are
+   tiny by tradition. */
+.folio-leaf[data-kind="manuscript"] .folio-leaf-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.04em;
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+.folio-leaf[data-kind="manuscript"] .folio-leaf-verse {
+  font-size: 0.70em;
+}
+.folio-leaf[data-kind="manuscript"] .folio-body-vertical {
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 0.84em;
+  line-height: 1.55;
+  opacity: 0.92;
+}
+.folio-leaf[data-kind="manuscript"] .folio-body-vertical .folio-body-spacer {
+  height: 0.45em;
+}
+
+/* ── Ritual / liturgical witnesses — lived register. The
+   blessing, the festival, the daily practice the verse
+   generates. Widest line-height in the codex (1.78) —
+   prayer is spoken, has breath between lines. Title
+   weight lighter (italic 400) so the rubric does not
+   claim ownership of the practice; the body carries the
+   prayer. Excludes the Sabbath chamber (AO·004), which
+   renders through its own bespoke chamber renderer. */
+.folio-leaf[data-kind="ritual"]:not(.sabbath-chamber) .folio-leaf-title {
+  font-weight: 400;
+  font-size: 1.10em;
+  margin-bottom: 28px;
+}
+.folio-leaf[data-kind="ritual"]:not(.sabbath-chamber) .folio-body-vertical {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 0.89em;
+  line-height: 1.78;
+  opacity: 0.88;
+}
+.folio-leaf[data-kind="ritual"]:not(.sabbath-chamber) .folio-body-vertical .folio-body-spacer {
+  height: 0.85em;
+}
+
+/* ── Cross-reference witnesses — canonical-resonance
+   register. The list of other passages a verse touches.
+   List-shaped rather than paragraph-shaped: narrow column
+   (540px), tightest line-height (1.54), narrow spacers
+   (0.45em). Each cross-reference is one short line; the
+   list reads vertically like a study-Bible marginal
+   column rather than an essay. */
+.folio-leaf[data-kind="cross-reference"] .folio-leaf-title {
+  font-size: 1.06em;
+  margin-bottom: 18px;
+}
+.folio-leaf[data-kind="cross-reference"] .folio-body-vertical {
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 0.87em;
+  line-height: 1.54;
+  opacity: 0.92;
+}
+.folio-leaf[data-kind="cross-reference"] .folio-body-vertical .folio-body-spacer {
+  height: 0.45em;
+}
+
+/* ── Cosmology (non-chamber) witnesses — world-model
+   register. The cosmos this verse assumes. Wider measure
+   than commentary so the prose can paint a world; slightly
+   higher body opacity so the explanatory description reads
+   with presence rather than recession. Excludes the
+   Firmament chamber (AO·001), which renders through its
+   own bespoke cosmology-chamber renderer. */
+.folio-leaf[data-kind="cosmology"]:not(.cosmology-chamber) .folio-leaf-title {
+  font-size: 1.14em;
+}
+.folio-leaf[data-kind="cosmology"]:not(.cosmology-chamber) .folio-body-vertical {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 0.91em;
+  line-height: 1.70;
+  opacity: 0.92;
+}
+.folio-leaf[data-kind="cosmology"]:not(.cosmology-chamber) .folio-body-vertical .folio-body-spacer {
+  height: 0.75em;
+}
+
 /* Per-kind atmospheres — currently genealogy renders via
    _renderGenealogyVertical inside .folio-leaf-body. Future kinds
    (map, image, commentary, note) can add their own selectors:
@@ -4642,12 +4908,36 @@ body.viewer-active .folio-leaf-verse {
   margin-bottom: 8px;
 }
 body.viewer-active .folio-leaf-title {
-  font-size: 1.4em;
+  /* Viewer-active default title size lowered from 1.4em →
+     1.18em so the un-formalized leaves (reception-history,
+     manuscript, ritual, audio, etc.) read with the same
+     restrained dignity that commentary now holds explicitly.
+     The codex's title voice across un-formalized families
+     becomes archival-quiet rather than headline-loud.
+     Formalized families (commentary 1.18em explicit, linguistic
+     1.08em, architecture 1.10em) still override at higher
+     specificity; chambers' bespoke renderers are unaffected. */
+  font-size: 1.18em;
   margin-bottom: 36px;
 }
 body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   font-size: 1em;
   line-height: 1.8;
+}
+
+/* Default-family polish — the un-formalized leaves still in
+   default chrome (audio, artifact, reconstruction, timeline,
+   map, and any other emerging-but-not-yet-formalized kind)
+   inherit slightly improved body presence so they read as
+   intentionally archival rather than unfinished. The :not()
+   chain explicitly leaves every constitutionally-formalized
+   family alone, plus genealogy chains and plates. As new
+   families graduate (when their record count crosses five),
+   they are added to this chain. */
+.folio-leaf:not([data-kind="commentary"]):not([data-kind="linguistic"]):not([data-kind="architecture"]):not([data-kind="plate"]):not([data-kind="genealogy"]):not([data-kind="reception-history"]):not([data-kind="manuscript"]):not([data-kind="ritual"]):not([data-kind="cross-reference"]):not([data-kind="cosmology"]) .folio-body-vertical {
+  font-size: 0.89em;
+  line-height: 1.72;
+  opacity: 0.86;
 }
 
 /* ── Recurrence rubric (chamber head) ──────────────────────────
@@ -7679,13 +7969,25 @@ body.viewer-active .folio-leaf-colophon {
 /* Vertical genealogy rendering — per-line blocks whose
    padding-left reflects tree-prefix depth. Wraps cleanly at the
    folio's width without breaking the visual hierarchy. Slightly
-   dimmer than primary text so the folio reads as secondary. */
+   dimmer than primary text so the folio reads as secondary.
+
+   max-width 700px caps the default measure so un-formalized
+   text-witness families (reception-history, manuscript, ritual,
+   audio, cosmology non-chamber, etc.) sit visibly above the
+   formalized-family gradient (640 / 560 / 480) without
+   appearing unbounded against the 800 px leaf. The four-step
+   measure cadence reads from widest to narrowest in the
+   constitutional order: default 700 → commentary 640 →
+   linguistic 560 → architecture 480. (Reading-Flow
+   Consolidation, Seam B.) */
 .folio-body-vertical {
   font-family: var(--reader-font, Georgia, serif);
   font-size: 0.86em;
   line-height: 1.7;
   color: var(--reader-fg);
   opacity: 0.78;
+  max-width: 700px;
+  margin: 0 auto;
 }
 .folio-body-line { display: block; }
 .folio-body-line.folio-body-spacer {
@@ -9765,12 +10067,15 @@ function _findGenealogyForChapter(chapterKey) {
 }
 
 function _formatVerseRef(pid) {
-  // For Bible-shaped pids "gen.4.25" -> "for Gen 4:25".
-  // Falls back to the raw pid otherwise.
+  // For Bible-shaped pids "gen.4.25" -> "Gen 4:25" (manuscript
+  // attribution, not a UI "for"-clause). The verse-ref line on
+  // every text-witness leaf reads as a citation; the historical
+  // "for " preface read as a software label and has been removed
+  // (Reading-Flow Consolidation, Seam A).
   const m = pid && pid.match(/^([a-z]+)\.(\d+)\.(\d+)$/);
   if (!m) return pid;
   const book = m[1].charAt(0).toUpperCase() + m[1].slice(1);
-  return `for ${book} ${m[2]}:${m[3]}`;
+  return `${book} ${m[2]}:${m[3]}`;
 }
 
 function buildChapterAppendix(chapterKey) {
@@ -15447,7 +15752,7 @@ function _renderPlate(rec, pid, chKey) {
   if (pid) {
     const v = document.createElement('div');
     v.className = 'folio-plate-verse';
-    v.textContent = 'for ' + _formatVerseRef(pid);
+    v.textContent = _formatVerseRef(pid);
     plaque.appendChild(v);
   }
   if (rec.plate) {
@@ -16096,7 +16401,9 @@ function _renderFolioMarker(rec, pid) {
   // kind, verse, optional source provenance. Composed as a
   // single string for aria-label and rendered into a visible
   // plaque child element revealed on :hover / :focus-visible.
-  const verseLabel = _formatVerseRef(pid).replace(/^for\s+/i, '');
+  // (_formatVerseRef no longer prepends "for "; the workaround
+  // that stripped it is now unnecessary.)
+  const verseLabel = _formatVerseRef(pid);
   const kindLabel = rec.kind || 'witness';
   const authorityLabel = rec.authority || 'tertiary';
 
