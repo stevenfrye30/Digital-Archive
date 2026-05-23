@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v89-panel-chamber-public">
+  <meta name="atlas-build" content="v90-static-object-architecture">
   <title>Digital Archive</title>
   <style>
 
@@ -5657,20 +5657,199 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    roman-numeral marginalia at each section head, and a
    clearly-differentiated archive-commentary panel at the foot.
    No dashboard cards, no bright surfaces. */
+/* ════════════════════════════════════════════════════════════
+   ATLAS OBJECT ARCHITECTURE (v90 — constitutional rule)
+   ════════════════════════════════════════════════════════════
+   Default Atlas Object experience is STATIC, not scrolling.
+
+   - Each object is a contained artifact view, fitted to the
+     viewer at common viewport sizes.
+   - If an object contains more than one screen of material,
+     it must use exactly ONE layer of tabs/panels. No nested
+     tabs. No accordions inside panels. No "read more"
+     rabbit holes. No secondary menus.
+   - Each panel must fit the available object frame without
+     scrolling. If a panel cannot fit, compress, rewrite, or
+     split it into a separate related object — never solve
+     overflow by adding another layer of navigation.
+   - Scroll is an emergency development fallback, not the
+     intended finished design. Finished objects do not rely
+     on scroll as a primary access mechanism.
+   - Objects must be visually independent from the reading
+     room — distinct frame, distinct vellum or chamber
+     absorption, object-specific layout. Opening an object
+     should never look like the same verse parchment with
+     different content.
+   - Tabs (when present) must be visibly tabs — manuscript
+     register, but obvious. The active tab is unmistakable.
+
+   This rule governs cosmology (the prototype), genealogy,
+   commentary, sacred geography, ritual, manuscript, and any
+   future Atlas Object family. The cosmology chamber below
+   is the first implementation.
+   ════════════════════════════════════════════════════════════ */
 .folio-leaf.cosmology-chamber {
-  /* Inherits .folio-leaf base. Chamber-specific layout below. */
+  /* v90 — Static, non-scrolling object frame. Override the
+     v77 chamber scroll envelope (max-height + overflow-y:auto
+     defined on .folio-leaf[class*="-chamber"]) so this object
+     never scrolls at the chamber level. Content fits or is
+     compressed. The chamber's own max-height pins the artifact
+     to the viewer height; padding moves to the inner header
+     and stage so the plate boundary sits at the leaf edge. */
+  max-height: calc(100vh - 36px);
+  height: calc(100vh - 36px);
+  overflow: hidden;
+  padding: 0;
+  max-width: 920px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   color: rgba(50, 38, 22, 0.92);
+  /* Distinct object vellum — slightly cooler / drier than the
+     reading-room parchment, with a soft top/bottom plate
+     gradient so the opened object reads as a separately
+     prepared object surface, not as the verse-page parchment.
+     The inner box-shadow rules carry a hairline plate-edge
+     inset that frames the artifact without becoming chrome. */
+  background:
+    linear-gradient(180deg,
+      rgba(40, 24, 10, 0.05) 0%,
+      rgba(40, 24, 10, 0.0) 56px,
+      rgba(40, 24, 10, 0.0) calc(100% - 56px),
+      rgba(40, 24, 10, 0.05) 100%),
+    #e3d6b9;
+  box-shadow:
+    inset 0 0 0 1px rgba(60, 40, 20, 0.20),
+    inset 0 0 0 9px transparent,
+    inset 0 0 0 10px rgba(80, 50, 25, 0.12),
+    0 28px 64px rgba(8, 6, 4, 0.55);
+}
+/* Suppress the witness-leaf footer entirely for this object.
+   The closure register belongs to text witnesses; an artifact
+   object closes with its tabbed frame. */
+.folio-leaf.cosmology-chamber .folio-leaf-kindred,
+.folio-leaf.cosmology-chamber .folio-leaf-resonance,
+.folio-leaf.cosmology-chamber .folio-leaf-colophon {
+  display: none;
+}
+/* ── Object header (compact rubric + verse + title) ─────────
+   Sits above the tabbed frame; never scrolls. Tightened
+   from witness-leaf register so the artifact frame gets the
+   majority of vertical real estate. */
+.folio-leaf.cosmology-chamber .cc-object-header {
+  flex: 0 0 auto;
+  padding: 22px 44px 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(80, 50, 25, 0.16);
+  background: linear-gradient(180deg,
+    rgba(80, 50, 25, 0.03) 0%, rgba(80, 50, 25, 0) 100%);
+}
+.folio-leaf.cosmology-chamber .cc-object-header .folio-leaf-provenance {
+  margin: 0 0 6px;
+  font-size: 0.7em;
+}
+.folio-leaf.cosmology-chamber .cc-object-header .cc-atlas-object-rubric {
+  margin: 0 0 4px;
+}
+.folio-leaf.cosmology-chamber .cc-object-header .folio-leaf-verse {
+  margin: 4px 0 2px;
+  font-size: 0.76em;
+  letter-spacing: 0.06em;
+}
+.folio-leaf.cosmology-chamber .cc-object-header .folio-leaf-title {
+  margin: 4px 0 0;
+  font-size: 1.18em;
+}
+/* ── Object frame (left tab rail + right artifact panel) ────
+   The frame fills the remaining chamber height. Never scrolls.
+   Grid columns: rail | panel. */
+.folio-leaf.cosmology-chamber .cc-object-frame {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 188px 1fr;
+  min-height: 0;
+  overflow: hidden;
+}
+/* Vertical tab rail — obvious tabs in manuscript register.
+   Each item carries an inscribed left rule + italic small-caps
+   label. The active tab is unmistakable: warmer ink, a thicker
+   ruled rule, and a faint vellum wash carrying the inscription
+   into the rail's edge. */
+.folio-leaf.cosmology-chamber .cc-tab-rail {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0 28px 18px;
+  gap: 2px;
+  background:
+    linear-gradient(90deg,
+      rgba(40, 24, 10, 0.06) 0%,
+      rgba(40, 24, 10, 0.00) 92%);
+  border-right: 1px solid rgba(80, 50, 25, 0.16);
+  min-height: 0;
+  overflow: hidden;
+}
+.folio-leaf.cosmology-chamber .cc-tab-rail-item {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
+  font-size: 0.78em;
+  color: rgba(95, 70, 40, 0.7);
+  padding: 13px 16px 13px 14px;
+  border: 0;
+  background: transparent;
+  border-left: 2px solid rgba(80, 50, 25, 0.20);
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.22s ease-out, background 0.22s ease-out,
+    border-color 0.22s ease-out;
+  user-select: none;
+}
+.folio-leaf.cosmology-chamber .cc-tab-rail-item:hover,
+.folio-leaf.cosmology-chamber .cc-tab-rail-item:focus-visible {
+  color: rgba(60, 35, 12, 0.95);
+  background: rgba(80, 50, 25, 0.04);
+  outline: none;
+}
+.folio-leaf.cosmology-chamber .cc-tab-rail-item--active {
+  color: rgba(40, 22, 6, 0.98);
+  font-weight: 600;
+  background:
+    linear-gradient(90deg,
+      rgba(80, 50, 25, 0.12) 0%,
+      rgba(80, 50, 25, 0.02) 100%);
+  border-left: 3px solid rgba(120, 70, 25, 0.80);
+}
+/* Right artifact panel — large, never scrolls. The cosmogram
+   dominates its tab; text panels are compressed to fit. */
+.folio-leaf.cosmology-chamber .cc-tab-stage {
+  position: relative;
+  padding: 22px 36px 24px;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+}
+.folio-leaf.cosmology-chamber .cc-panel {
+  display: none;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+.folio-leaf.cosmology-chamber .cc-panel--active {
+  display: flex;
+  flex-direction: column;
+  animation: cc-panel-arrive 0.32s ease-out;
 }
 .folio-leaf.cosmology-chamber .cc-lede {
-  margin: 6px 0 28px;
+  margin: 6px 0 0;
   font-style: italic;
   color: rgba(55, 40, 22, 0.86);
 }
 .folio-leaf.cosmology-chamber .cc-lede p {
-  margin: 0 0 0.9em 0;
-  line-height: 1.65;
-  font-size: 0.96em;
+  margin: 0 0 0.85em 0;
+  line-height: 1.6;
+  font-size: 0.94em;
 }
 .folio-leaf.cosmology-chamber .cc-lede p:last-child { margin-bottom: 0; }
 
@@ -5706,166 +5885,54 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   letter-spacing: 0.02em;
 }
 
-/* Diagram — line-art plate in a quiet parchment frame. */
-/* The Cosmogram (v84 masterpiece prototype) — the cosmology
-   chamber's centerpiece artifact. A tall vertically-descending
-   manuscript cosmogram showing the five-strata cosmos. No
-   background gradient, no border — the cosmogram sits on the
-   parchment as a preserved figure, not as an inset card. */
+/* The Cosmogram (v84 prototype, v90 architecture) — the
+   cosmology chamber's centerpiece artifact. A tall vertically-
+   descending manuscript cosmogram showing the five-strata
+   cosmos. In v90 the cosmogram dominates its tab: the SVG
+   fills the artifact panel, height-bounded by the available
+   space, never scrolls. */
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="cosmogram"] {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.folio-leaf.cosmology-chamber .cc-cosmogram-frame {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .folio-leaf.cosmology-chamber .cc-diagram {
-  margin: 24px auto 8px;
+  margin: 0;
   padding: 0;
   background: transparent;
   border: 0;
-  max-width: 480px;
-}
-/* Cosmogram-frame margins — v89 panel mode reduces them
-   further. The cosmogram is the centerpiece of its panel; no
-   need for dramatic scrolling-silence above and below. */
-.folio-leaf.cosmology-chamber .cc-cosmogram-frame {
-  margin: 4px auto 4px;
-  padding: 0;
-}
-/* v89 — Hide the figcaption inside the cosmogram panel. The
-   cosmogram is its own caption; the prose caption belongs in
-   the Witness or Commentary panel. */
-.folio-leaf.cosmology-chamber .cc-panel[data-panel="cosmogram"]
-  .cc-diagram-caption {
-  display: none;
-}
-/* v89 — Hide the chamber footer (kindred / resonance /
-   colophon) when the cosmogram panel is the active artifact
-   view. The reader's first encounter is the cosmogram itself,
-   not the surrounding paratext. Footer reappears when any
-   other panel is active. */
-.folio-leaf.cosmology-chamber:has(.cc-panel[data-panel="cosmogram"].cc-panel--active) .folio-leaf-kindred,
-.folio-leaf.cosmology-chamber:has(.cc-panel[data-panel="cosmogram"].cc-panel--active) .folio-leaf-resonance,
-.folio-leaf.cosmology-chamber:has(.cc-panel[data-panel="cosmogram"].cc-panel--active) .folio-leaf-colophon {
-  display: none;
-}
-
-/* Chamber navigation rubric (v88 → v89 panels).
-   Manuscript-marginal row of section labels at the head of
-   the cosmology chamber. v89: clicking switches the active
-   panel rather than scrolling. The active label is visibly
-   the strongest of the row (no underline, no card, no chip
-   — just type weight and color). */
-.folio-leaf.cosmology-chamber .cc-chamber-nav {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 4px 0;
-  margin: 18px auto 12px;
-  padding: 8px 0 8px;
-  max-width: 540px;
-  border-top: 1px solid rgba(120, 80, 40, 0.18);
-  border-bottom: 1px solid rgba(120, 80, 40, 0.18);
-  font-family: Georgia, "Palatino Linotype", Palatino, serif;
 }
-.folio-leaf.cosmology-chamber .cc-chamber-nav-item {
-  font-style: italic;
-  font-variant: small-caps;
-  font-size: 0.7em;
-  letter-spacing: 0.16em;
-  color: rgba(95, 70, 40, 0.62);
-  cursor: pointer;
-  padding: 4px 10px;
-  user-select: none;
-  background: none;
-  border: 0;
-  font-family: inherit;
-  transition: color 0.22s ease-out;
-}
-.folio-leaf.cosmology-chamber .cc-chamber-nav-item:hover,
-.folio-leaf.cosmology-chamber .cc-chamber-nav-item:focus-visible {
-  color: rgba(75, 45, 18, 0.92);
-  outline: none;
-}
-/* Active panel — the selected nav label reads as the chamber's
-   current state: darker ink, slightly heavier (but still small-
-   caps italic). The neighbouring labels fade slightly so the
-   active one carries gentle gravity. No background, no chip. */
-.folio-leaf.cosmology-chamber .cc-chamber-nav-item--active {
-  color: rgba(55, 30, 10, 0.96);
-  font-weight: 500;
-}
-.folio-leaf.cosmology-chamber .cc-chamber-nav-sep {
-  font-style: italic;
-  color: rgba(120, 80, 40, 0.35);
-  align-self: center;
-  font-size: 0.7em;
-  padding: 0 2px;
-}
-
-/* Panel stage and panels (v89) — only the active panel is
-   visible. The chamber's vertical extent is determined by the
-   currently-active panel, so the chamber stops being a long
-   stacked article and behaves as a contained artifact with
-   switchable supporting panels.
-
-   Text-heavy panels (witness, terminology, comparative,
-   anchorings, commentary) may scroll internally if their
-   content exceeds the available space inside the chamber.
-   The cosmogram panel never scrolls — the SVG scales to fit. */
-.folio-leaf.cosmology-chamber .cc-panel-stage {
-  position: relative;
-  /* No min-height. The active panel's content determines
-     visible height. Chambers contract on text-light panels
-     and expand to fit the cosmogram on the cosmogram panel.
-     The chamber's own scroll envelope is the fallback if
-     text-heavy panels need it. */
-}
-.folio-leaf.cosmology-chamber .cc-panel {
+/* Suppress the figcaption — the cosmogram is its own caption. */
+.folio-leaf.cosmology-chamber .cc-diagram-caption {
   display: none;
-}
-.folio-leaf.cosmology-chamber .cc-panel--active {
-  display: block;
-  animation: cc-panel-arrive 0.32s ease-out;
 }
 @keyframes cc-panel-arrive {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-/* Per-panel sizing rules — the cosmogram panel hosts the SVG
-   centered; text panels keep their existing typography but
-   don't push the chamber into a long article. */
-.folio-leaf.cosmology-chamber .cc-panel[data-panel="cosmogram"] {
-  /* No scroll. The SVG scales to fit. */
-  padding-top: 4px;
-}
-.folio-leaf.cosmology-chamber .cc-panel[data-panel="witness"],
-.folio-leaf.cosmology-chamber .cc-panel[data-panel="terminology"],
-.folio-leaf.cosmology-chamber .cc-panel[data-panel="comparative"],
-.folio-leaf.cosmology-chamber .cc-panel[data-panel="anchorings"],
-.folio-leaf.cosmology-chamber .cc-panel[data-panel="commentary"] {
-  padding-top: 16px;
-}
-/* Post-cosmogram cc-lede — the prose body now appears after
-   the cosmogram, in supporting-witness register: slightly
-   smaller, slightly recessed, narrower, italic. Reads as a
-   scholar's marginal commentary on the cosmographic artifact
-   above, not as the article body. */
-.folio-leaf.cosmology-chamber .cc-cosmogram-frame ~ .cc-lede {
-  max-width: 520px;
-  margin: 0 auto 32px;
-  font-style: italic;
-  opacity: 0.84;
-}
-.folio-leaf.cosmology-chamber .cc-cosmogram-frame ~ .cc-lede p {
-  font-size: 0.94em;
-  line-height: 1.68;
-}
 .folio-leaf.cosmology-chamber .cc-diagram-svg {
   display: block;
-  /* v89 panel mode — width:auto + height:auto lets the SVG
-     shrink proportionally from its 480×880 viewBox under the
-     max-width / max-height constraints. At 900vh the SVG
-     renders ~316px wide × ~580px tall (aspect preserved). At
-     1080-1200vh the SVG reaches near-natural 480×880. */
+  /* v90 — SVG fills its artifact panel. width:auto + height
+     bounded by panel preserves the 480×880 portrait aspect
+     ratio. The cosmogram is large and dominant on its tab. */
   width: auto;
-  height: auto;
-  max-width: 480px;
-  max-height: calc(100vh - 410px);
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0 auto;
 }
 /* Stratum name — Hebrew transliteration in small-caps, italic,
@@ -6067,14 +6134,70 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   color: rgba(95, 75, 50, 0.7);
 }
 
-/* Encounter (viewer-active) — the chamber gains a touch more
-   presence at full-spread, matching the existing leaf rhythm. */
-body.viewer-active .folio-leaf.cosmology-chamber .cc-lede p {
-  font-size: 1.02em;
-  line-height: 1.7;
+/* v90 — Text panels (witness / terminology / comparative /
+   commentary) are tightened so each fits one static screen of
+   the artifact panel. No panel scrolls; if content cannot fit,
+   the rendered material is compressed in the chamber's JS
+   builders, not the CSS. */
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="witness"] .cc-lede {
+  margin: 6px 0 0;
 }
-body.viewer-active .folio-leaf.cosmology-chamber .cc-section-heading {
-  margin-top: 42px;
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="witness"] .cc-lede p {
+  font-size: 0.98em;
+  line-height: 1.65;
+  margin: 0 0 0.85em;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="terminology"] .cc-terms {
+  margin: 0;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="terminology"] .cc-term-row {
+  padding: 9px 0;
+  gap: 8px 18px;
+  grid-template-columns: 116px 1fr;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="terminology"] .cc-term-hebrew {
+  font-size: 1.18em;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="terminology"] .cc-term-body {
+  font-size: 0.86em;
+  line-height: 1.45;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="terminology"] .cc-term-note {
+  font-size: 0.78em;
+  line-height: 1.4;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="comparative"] .cc-comparative {
+  margin: 0;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="comparative"] .cc-comp-item {
+  margin: 0 0 18px;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="comparative"] .cc-comp-item:last-child {
+  margin-bottom: 0;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="comparative"] .cc-comp-body {
+  font-size: 0.90em;
+  line-height: 1.55;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="commentary"] .cc-archive {
+  margin: 0;
+  padding: 18px 22px 16px;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="commentary"] .cc-archive-body {
+  font-size: 0.94em;
+  line-height: 1.6;
+}
+/* Each panel may carry a small panel heading at the top. */
+.folio-leaf.cosmology-chamber .cc-panel-heading {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.76em;
+  letter-spacing: 0.22em;
+  color: rgba(110, 65, 25, 0.7);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dotted rgba(110, 90, 50, 0.24);
 }
 
 /* ── AO · 002 — Translation Tradition Chamber ──────────────────
@@ -12924,11 +13047,27 @@ const _COSMOLOGY_ARCHIVE_COMMENTARY =
 
 
 function _renderCosmologyChamber(leaf, rec, pid, chKey) {
+  // ── Atlas Object Architecture (v90 constitutional rule) ─────
+  // The cosmology chamber is the prototype implementation of the
+  // static, single-tab-layer object frame. Layout:
+  //
+  //   .folio-leaf.cosmology-chamber
+  //     ├─ .cc-object-header   (rubric + verse + title, compact)
+  //     └─ .cc-object-frame    (grid: rail | stage, never scrolls)
+  //         ├─ .cc-tab-rail    (vertical tab buttons, left)
+  //         └─ .cc-tab-stage   (artifact panel, right)
+  //             └─ .cc-panel--active (current artifact view)
+  //
+  // Rules enforced by this builder:
+  //   - Default panel = Cosmogram (the dominant artifact).
+  //   - Exactly one tab layer; no nested tabs.
+  //   - Content per panel is compressed to fit one static
+  //     screen at common viewport sizes (1440×900+).
+  //   - No kindred / resonance / colophon footer — those belong
+  //     to text-witness leaves, not Atlas Object artifacts.
+
   // Encounter memory — record the present encounter and look up
-  // whether the reader has met this object before. If they have,
-  // and the present anchoring differs from the first one, prepend
-  // a quiet recurrence rubric. This is the only place the
-  // archive speaks the language of continuity to the reader.
+  // whether the reader has met this object before.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
     const ref = _formatArchivalRef(pid);
@@ -12937,48 +13076,32 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
       recurrence = enc.first;
     }
   }
+
+  // ── Object header (compact) ─────────────────────────────────
+  const header = document.createElement('div');
+  header.className = 'cc-object-header';
   if (recurrence) {
-    leaf.appendChild(_renderRecurrenceRubric(recurrence));
+    header.appendChild(_renderRecurrenceRubric(recurrence));
   }
-  // If the record carries Atlas Object identity (siglum + class),
-  // open the chamber with a quiet manuscript-style object rubric
-  // above the provenance — so the reader senses an encountered
-  // object before the verse-anchored framing. Records without an
-  // atlas_object block render the chamber unchanged.
   if (rec.atlas_object) {
-    leaf.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+    header.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
   }
-  // Provenance + verse + title — reuse the same architecture every
-  // text-witness chamber uses, so the reader's orientation is
-  // preserved across kinds.
-  leaf.appendChild(_renderProvenanceHeader(rec));
+  header.appendChild(_renderProvenanceHeader(rec));
   const v = document.createElement('div');
   v.className = 'folio-leaf-verse';
   v.textContent = _formatVerseRef(pid);
-  leaf.appendChild(v);
+  header.appendChild(v);
   const t = document.createElement('h2');
   t.className = 'folio-leaf-title';
   t.textContent = rec.title || '';
-  leaf.appendChild(t);
+  header.appendChild(t);
+  leaf.appendChild(header);
 
-  // ── Panel-switching chamber (v89) ────────────────────────────
-  // The cosmology chamber no longer stacks all its sections in
-  // one long scroll. Instead, each section is a panel; the nav
-  // row at the head switches which panel is visible. The
-  // chamber header (rubric / verse / title / nav) and footer
-  // (kindred / resonance / colophon) stay stable; only the
-  // middle panel changes.
-  //
-  // Default panel = Cosmogram. The reader opens the chamber and
-  // sees a contained artifact view: the constitutional rubric
-  // above, the cosmogram large and centered, the supporting
-  // sections accessible through quiet rubric labels — but not
-  // stacked underneath as a long article.
+  // ── Object frame (rail | stage) ─────────────────────────────
+  const frame = document.createElement('div');
+  frame.className = 'cc-object-frame';
 
-  // Panel registry — each entry pairs a nav label with a
-  // builder function that returns the panel's content. The
-  // builder is called lazily so panels are only built when
-  // first activated (small perf win + cleaner DOM).
+  // Panel registry — five tabs (one layer only).
   const panels = [
     {
       key: 'cosmogram',
@@ -12994,17 +13117,28 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
       key: 'witness',
       label: 'Witness',
       build: () => {
+        // v90 — Compressed witness: a short summary lede instead
+        // of the full body. The full body is preserved in the
+        // record's `body` field but only the first paragraph is
+        // displayed here. Reading the full body in this panel
+        // would force scrolling, which the architecture forbids.
+        const frag = document.createDocumentFragment();
+        const head = document.createElement('div');
+        head.className = 'cc-panel-heading';
+        head.textContent = 'Witness';
+        frag.appendChild(head);
         const lede = document.createElement('div');
         lede.className = 'cc-lede';
-        if (rec.body) {
-          String(rec.body).split('\n').forEach(line => {
-            if (!line.trim()) return;
-            const p = document.createElement('p');
-            p.textContent = line;
-            lede.appendChild(p);
-          });
+        const bodyText = rec.body ? String(rec.body) : '';
+        // First paragraph (or first ~3 sentences) only.
+        const firstPara = bodyText.split(/\n\s*\n/)[0] || '';
+        if (firstPara.trim()) {
+          const p = document.createElement('p');
+          p.textContent = firstPara.trim();
+          lede.appendChild(p);
         }
-        return lede;
+        frag.appendChild(lede);
+        return frag;
       },
     },
     {
@@ -13012,8 +13146,10 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
       label: 'Terminology',
       build: () => {
         const frag = document.createDocumentFragment();
-        frag.appendChild(_renderCCSectionHeading('i', 'Terminology',
-          'Hebrew terms · lexicographic survey'));
+        const head = document.createElement('div');
+        head.className = 'cc-panel-heading';
+        head.textContent = 'Hebrew terminology';
+        frag.appendChild(head);
         frag.appendChild(_renderCCHebrewTerms());
         return frag;
       },
@@ -13022,53 +13158,41 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
       key: 'comparative',
       label: 'Comparative',
       build: () => {
+        // v90 — Compressed comparative: keep Enuma Eliš + Egypt
+        // only. The closing "note on dependence" is folded into
+        // the commentary panel as the archive's synthesizing
+        // posture; including it here would overflow the static
+        // panel at 1440×900 viewport.
         const frag = document.createDocumentFragment();
-        frag.appendChild(_renderCCSectionHeading('ii', 'Comparative Context',
-          'Ancient Near Eastern parallels'));
-        frag.appendChild(_renderCCComparative());
+        const head = document.createElement('div');
+        head.className = 'cc-panel-heading';
+        head.textContent = 'Ancient Near Eastern parallels';
+        frag.appendChild(head);
+        frag.appendChild(_renderCCComparativeCompact());
         return frag;
       },
     },
+    {
+      key: 'commentary',
+      label: 'Commentary',
+      build: () => _renderCCArchiveCommentary(),
+    },
   ];
-  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
-      rec.atlas_object.anchorings.length > 0) {
-    panels.push({
-      key: 'anchorings',
-      label: 'Anchorings',
-      build: () => {
-        const frag = document.createDocumentFragment();
-        frag.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
-          'where this object is also encountered'));
-        frag.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
-        return frag;
-      },
-    });
-  }
-  panels.push({
-    key: 'commentary',
-    label: 'Commentary',
-    build: () => _renderCCArchiveCommentary(),
-  });
 
-  // Build the nav rubric. Each item toggles which panel is
-  // active. Default-active = cosmogram.
-  const nav = document.createElement('div');
-  nav.className = 'cc-chamber-nav';
-  nav.setAttribute('role', 'tablist');
-  nav.setAttribute('aria-label',
-    'Sections within this cosmology chamber');
-
-  // Panel stage — holds the active panel content. Each panel
-  // is built lazily and cached in a Map keyed by panel.key.
+  // ── Tab stage (right) ───────────────────────────────────────
   const stage = document.createElement('div');
-  stage.className = 'cc-panel-stage';
-  // Stage holds one panel element per key; panels are created
-  // on first activation. Their data-panel attribute selects
-  // the right one via CSS / JS.
+  stage.className = 'cc-tab-stage';
   const builtPanels = new Map();
 
+  // ── Tab rail (left) ─────────────────────────────────────────
+  const rail = document.createElement('div');
+  rail.className = 'cc-tab-rail';
+  rail.setAttribute('role', 'tablist');
+  rail.setAttribute('aria-orientation', 'vertical');
+  rail.setAttribute('aria-label',
+    'Sections within this cosmology object');
+
   function activatePanel(key) {
-    // Build the panel on first activation.
     if (!builtPanels.has(key)) {
       const panelSpec = panels.find(p => p.key === key);
       if (!panelSpec) return;
@@ -13081,33 +13205,21 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
       stage.appendChild(panel);
       builtPanels.set(key, panel);
     }
-    // Toggle active state on all built panels.
     stage.querySelectorAll('.cc-panel').forEach(p => {
       p.classList.toggle('cc-panel--active', p.dataset.panel === key);
     });
-    // Toggle active state on all nav items.
-    nav.querySelectorAll('.cc-chamber-nav-item').forEach(btn => {
+    rail.querySelectorAll('.cc-tab-rail-item').forEach(btn => {
       const isActive = btn.dataset.panelKey === key;
-      btn.classList.toggle('cc-chamber-nav-item--active', isActive);
+      btn.classList.toggle('cc-tab-rail-item--active', isActive);
       btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      btn.tabIndex = isActive ? 0 : -1;
     });
-    // Reset scroll on the newly-activated panel so the reader
-    // sees its top.
-    const active = builtPanels.get(key);
-    if (active) active.scrollTop = 0;
   }
 
-  panels.forEach((spec, i) => {
-    if (i > 0) {
-      const sep = document.createElement('span');
-      sep.className = 'cc-chamber-nav-sep';
-      sep.textContent = '·';
-      sep.setAttribute('aria-hidden', 'true');
-      nav.appendChild(sep);
-    }
+  panels.forEach(spec => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'cc-chamber-nav-item';
+    btn.className = 'cc-tab-rail-item';
     btn.dataset.panelKey = spec.key;
     btn.id = 'cc-tab-' + spec.key;
     btn.setAttribute('role', 'tab');
@@ -13117,27 +13229,39 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
       ev.stopPropagation();
       activatePanel(spec.key);
     });
-    nav.appendChild(btn);
+    btn.addEventListener('keydown', (ev) => {
+      // Arrow-key keyboard navigation across the vertical rail.
+      const items = Array.from(rail.querySelectorAll('.cc-tab-rail-item'));
+      const idx = items.indexOf(btn);
+      if (ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
+        ev.preventDefault();
+        const next = items[(idx + 1) % items.length];
+        next.focus();
+        activatePanel(next.dataset.panelKey);
+      } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') {
+        ev.preventDefault();
+        const prev = items[(idx - 1 + items.length) % items.length];
+        prev.focus();
+        activatePanel(prev.dataset.panelKey);
+      } else if (ev.key === 'Home') {
+        ev.preventDefault();
+        items[0].focus();
+        activatePanel(items[0].dataset.panelKey);
+      } else if (ev.key === 'End') {
+        ev.preventDefault();
+        items[items.length - 1].focus();
+        activatePanel(items[items.length - 1].dataset.panelKey);
+      }
+    });
+    rail.appendChild(btn);
   });
 
-  leaf.appendChild(nav);
-  leaf.appendChild(stage);
+  frame.appendChild(rail);
+  frame.appendChild(stage);
+  leaf.appendChild(frame);
 
-  // Default activation: open with the Cosmogram visible.
+  // Default activation: Cosmogram.
   activatePanel('cosmogram');
-
-  // Kindred — quiet line naming other Atlas Objects also
-  // anchored at this verse, if any. Civilizational resonance.
-  const _kindred = _renderChamberKindred(rec, pid);
-  if (_kindred) leaf.appendChild(_kindred);
-  // Resonance — civilizational affinity across the archive
-  // (not co-anchored, but kindred in form).
-  const _resonance = _renderChamberResonance(rec);
-  if (_resonance) leaf.appendChild(_resonance);
-  const colophon = document.createElement('div');
-  colophon.className = 'folio-leaf-colophon';
-  colophon.textContent = chKey ? _formatChapterLabel(chKey) : '';
-  leaf.appendChild(colophon);
 }
 
 function _renderCCSectionHeading(numeral, name, subtitle) {
@@ -13338,6 +13462,40 @@ function _renderCCComparative() {
   const wrap = document.createElement('div');
   wrap.className = 'cc-comparative';
   for (const item of _COSMOLOGY_ANE_PARALLELS) {
+    const block = document.createElement('section');
+    block.className = 'cc-comp-item';
+    const h = document.createElement('h3');
+    h.className = 'cc-comp-title';
+    h.textContent = item.title;
+    block.appendChild(h);
+    const p = document.createElement('p');
+    p.className = 'cc-comp-body';
+    p.textContent = item.text;
+    block.appendChild(p);
+    wrap.appendChild(block);
+  }
+  return wrap;
+}
+
+// v90 — Compact comparative for the static cosmology panel:
+// Enuma Eliš + Egypt only, with shorter prose. The closing
+// "note on dependence" is omitted here (it would overflow the
+// static panel); the archive's synthesizing posture is carried
+// by the Commentary tab.
+function _renderCCComparativeCompact() {
+  const wrap = document.createElement('div');
+  wrap.className = 'cc-comparative';
+  const compact = [
+    {
+      title: 'Enūma Eliš (Babylon)',
+      text: 'Marduk splits Tiāmat — the primeval saltwater — into upper and lower halves, forming sky and earth. Genesis retains the vocabulary of tehôm and the division of waters while removing the theomachy: no rival deity, no slain monster, no battle. The picture is the same; the theological frame is not.',
+    },
+    {
+      title: 'Nun & Nut (Egypt)',
+      text: 'Egyptian cosmology begins with Nun, the primordial watery abyss. The sky-goddess Nut arches over the earth as a vaulted dome studded with stars. The dome-over-disc picture is widely shared across the region; Genesis presupposes it rather than describing it.',
+    },
+  ];
+  for (const item of compact) {
     const block = document.createElement('section');
     block.className = 'cc-comp-item';
     const h = document.createElement('h3');
