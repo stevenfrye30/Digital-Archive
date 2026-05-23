@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v88-object-behavior-pass-public">
+  <meta name="atlas-build" content="v89-panel-chamber-public">
   <title>Digital Archive</title>
   <style>
 
@@ -4526,6 +4526,15 @@ body.folio-left #companion-swap {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+/* v89 — Cosmology chamber overrides the v77 ceremonial leaf
+   padding (88/64/104) to reclaim vertical room for the
+   cosmogram panel. The chamber has its own header (nav rubric
+   + title + provenance) so the ceremonial outer padding isn't
+   needed; the cosmogram itself is the centerpiece. */
+.folio-leaf.cosmology-chamber {
+  padding: 32px 56px 32px;
+}
 /* Hide the scrollbar visually without breaking scroll. The
    chamber feels like a self-contained artifact even while
    walkable. */
@@ -5710,56 +5719,75 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   border: 0;
   max-width: 480px;
 }
-/* Cosmogram staging (v85, refined v88) — the chamber's
-   compositional sequence inverts the usual article rhythm.
-   The cosmogram itself becomes the first encounter. With the
-   SVG now scaling to fit viewport (v88), the surrounding
-   breath is reduced — the goal is "fits on one screen,"
-   not "ceremonial scrolling descent." */
+/* Cosmogram-frame margins — v89 panel mode reduces them
+   further. The cosmogram is the centerpiece of its panel; no
+   need for dramatic scrolling-silence above and below. */
 .folio-leaf.cosmology-chamber .cc-cosmogram-frame {
-  margin: 32px auto 56px;
+  margin: 4px auto 4px;
   padding: 0;
 }
+/* v89 — Hide the figcaption inside the cosmogram panel. The
+   cosmogram is its own caption; the prose caption belongs in
+   the Witness or Commentary panel. */
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="cosmogram"]
+  .cc-diagram-caption {
+  display: none;
+}
+/* v89 — Hide the chamber footer (kindred / resonance /
+   colophon) when the cosmogram panel is the active artifact
+   view. The reader's first encounter is the cosmogram itself,
+   not the surrounding paratext. Footer reappears when any
+   other panel is active. */
+.folio-leaf.cosmology-chamber:has(.cc-panel[data-panel="cosmogram"].cc-panel--active) .folio-leaf-kindred,
+.folio-leaf.cosmology-chamber:has(.cc-panel[data-panel="cosmogram"].cc-panel--active) .folio-leaf-resonance,
+.folio-leaf.cosmology-chamber:has(.cc-panel[data-panel="cosmogram"].cc-panel--active) .folio-leaf-colophon {
+  display: none;
+}
 
-/* v88 — Chamber navigation rubric. A small marginal-style
-   row of section labels at the top of the cosmology chamber.
-   The reader can move quickly between Cosmogram, Witness Text,
-   Terminology, etc. without scrolling through the whole
-   chamber. Click smooth-scrolls within the chamber to the
-   target anchor.
-
-   Rubric register: italic small-caps, low alpha, separator
-   middle-dots. Manuscript-marginal feel; not modern app tabs.
-   No background, no border, no hover swell — just type. */
+/* Chamber navigation rubric (v88 → v89 panels).
+   Manuscript-marginal row of section labels at the head of
+   the cosmology chamber. v89: clicking switches the active
+   panel rather than scrolling. The active label is visibly
+   the strongest of the row (no underline, no card, no chip
+   — just type weight and color). */
 .folio-leaf.cosmology-chamber .cc-chamber-nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 4px 0;
-  margin: 18px auto 0;
-  padding: 8px 0 0;
+  margin: 18px auto 12px;
+  padding: 8px 0 8px;
   max-width: 540px;
   border-top: 1px solid rgba(120, 80, 40, 0.18);
+  border-bottom: 1px solid rgba(120, 80, 40, 0.18);
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
 }
 .folio-leaf.cosmology-chamber .cc-chamber-nav-item {
   font-style: italic;
   font-variant: small-caps;
-  font-size: 0.66em;
-  letter-spacing: 0.14em;
-  color: rgba(95, 70, 40, 0.72);
+  font-size: 0.7em;
+  letter-spacing: 0.16em;
+  color: rgba(95, 70, 40, 0.62);
   cursor: pointer;
   padding: 4px 10px;
   user-select: none;
   background: none;
   border: 0;
   font-family: inherit;
-  transition: color 0.22s ease-out, opacity 0.22s ease-out;
+  transition: color 0.22s ease-out;
 }
 .folio-leaf.cosmology-chamber .cc-chamber-nav-item:hover,
 .folio-leaf.cosmology-chamber .cc-chamber-nav-item:focus-visible {
   color: rgba(75, 45, 18, 0.92);
   outline: none;
+}
+/* Active panel — the selected nav label reads as the chamber's
+   current state: darker ink, slightly heavier (but still small-
+   caps italic). The neighbouring labels fade slightly so the
+   active one carries gentle gravity. No background, no chip. */
+.folio-leaf.cosmology-chamber .cc-chamber-nav-item--active {
+  color: rgba(55, 30, 10, 0.96);
+  font-weight: 500;
 }
 .folio-leaf.cosmology-chamber .cc-chamber-nav-sep {
   font-style: italic;
@@ -5767,6 +5795,50 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   align-self: center;
   font-size: 0.7em;
   padding: 0 2px;
+}
+
+/* Panel stage and panels (v89) — only the active panel is
+   visible. The chamber's vertical extent is determined by the
+   currently-active panel, so the chamber stops being a long
+   stacked article and behaves as a contained artifact with
+   switchable supporting panels.
+
+   Text-heavy panels (witness, terminology, comparative,
+   anchorings, commentary) may scroll internally if their
+   content exceeds the available space inside the chamber.
+   The cosmogram panel never scrolls — the SVG scales to fit. */
+.folio-leaf.cosmology-chamber .cc-panel-stage {
+  position: relative;
+  /* No min-height. The active panel's content determines
+     visible height. Chambers contract on text-light panels
+     and expand to fit the cosmogram on the cosmogram panel.
+     The chamber's own scroll envelope is the fallback if
+     text-heavy panels need it. */
+}
+.folio-leaf.cosmology-chamber .cc-panel {
+  display: none;
+}
+.folio-leaf.cosmology-chamber .cc-panel--active {
+  display: block;
+  animation: cc-panel-arrive 0.32s ease-out;
+}
+@keyframes cc-panel-arrive {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+/* Per-panel sizing rules — the cosmogram panel hosts the SVG
+   centered; text panels keep their existing typography but
+   don't push the chamber into a long article. */
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="cosmogram"] {
+  /* No scroll. The SVG scales to fit. */
+  padding-top: 4px;
+}
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="witness"],
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="terminology"],
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="comparative"],
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="anchorings"],
+.folio-leaf.cosmology-chamber .cc-panel[data-panel="commentary"] {
+  padding-top: 16px;
 }
 /* Post-cosmogram cc-lede — the prose body now appears after
    the cosmogram, in supporting-witness register: slightly
@@ -5785,17 +5857,15 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 }
 .folio-leaf.cosmology-chamber .cc-diagram-svg {
   display: block;
-  width: 100%;
+  /* v89 panel mode — width:auto + height:auto lets the SVG
+     shrink proportionally from its 480×880 viewBox under the
+     max-width / max-height constraints. At 900vh the SVG
+     renders ~316px wide × ~580px tall (aspect preserved). At
+     1080-1200vh the SVG reaches near-natural 480×880. */
+  width: auto;
   height: auto;
-  /* v88 — Cosmogram scales to fit viewport in default Full
-     View. Tall portrait SVG (480 × 880) shrinks proportionally
-     when the chamber doesn't have full vertical room. At
-     900px viewport with chamber chrome ~200px the SVG renders
-     ~700px tall × ~380px wide — the reader sees the whole
-     descent at a glance without scrolling. At 1440+ viewports
-     the SVG renders at natural size. */
   max-width: 480px;
-  max-height: calc(100vh - 240px);
+  max-height: calc(100vh - 410px);
   margin: 0 auto;
 }
 /* Stratum name — Hebrew transliteration in small-caps, italic,
@@ -12891,47 +12961,143 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
   t.textContent = rec.title || '';
   leaf.appendChild(t);
 
-  // ── Cosmogram-first staging (v85, refined v88) ──────────────
-  // The chamber's compositional sequence inverts the usual
-  // article rhythm: the cosmogram itself is the first encounter.
-  // v88 adds a quiet manuscript-rubric navigation row below the
-  // title so the reader can jump between Cosmogram / Witness /
-  // Terminology / Comparative / Anchorings without scrolling
-  // through the whole chamber. Each section gets an anchor id
-  // and the nav's click handlers smooth-scroll within the
-  // chamber's own scroll envelope.
+  // ── Panel-switching chamber (v89) ────────────────────────────
+  // The cosmology chamber no longer stacks all its sections in
+  // one long scroll. Instead, each section is a panel; the nav
+  // row at the head switches which panel is visible. The
+  // chamber header (rubric / verse / title / nav) and footer
+  // (kindred / resonance / colophon) stay stable; only the
+  // middle panel changes.
+  //
+  // Default panel = Cosmogram. The reader opens the chamber and
+  // sees a contained artifact view: the constitutional rubric
+  // above, the cosmogram large and centered, the supporting
+  // sections accessible through quiet rubric labels — but not
+  // stacked underneath as a long article.
 
-  // Anchor ids attached to each section's anchor element so the
-  // nav can smooth-scroll to them. Defined inline rather than
-  // imported because the cosmogram chamber is the only one
-  // using this navigation today.
-  const ANCHORS = {
-    cosmogram:    'cc-anchor-cosmogram',
-    witness:      'cc-anchor-witness',
-    terminology:  'cc-anchor-terminology',
-    comparative:  'cc-anchor-comparative',
-    anchorings:   'cc-anchor-anchorings',
-    commentary:   'cc-anchor-commentary',
-  };
-
-  // Build the nav rubric. Each item is a button (keyboard-
-  // reachable) that scrolls the chamber to its anchor.
-  const nav = document.createElement('div');
-  nav.className = 'cc-chamber-nav';
-  nav.setAttribute('role', 'navigation');
-  nav.setAttribute('aria-label', 'Sections within this cosmology chamber');
-  const navSections = [
-    ['Cosmogram',    ANCHORS.cosmogram],
-    ['Witness',      ANCHORS.witness],
-    ['Terminology',  ANCHORS.terminology],
-    ['Comparative',  ANCHORS.comparative],
+  // Panel registry — each entry pairs a nav label with a
+  // builder function that returns the panel's content. The
+  // builder is called lazily so panels are only built when
+  // first activated (small perf win + cleaner DOM).
+  const panels = [
+    {
+      key: 'cosmogram',
+      label: 'Cosmogram',
+      build: () => {
+        const wrap = document.createElement('div');
+        wrap.className = 'cc-cosmogram-frame';
+        wrap.appendChild(_renderCCDiagram());
+        return wrap;
+      },
+    },
+    {
+      key: 'witness',
+      label: 'Witness',
+      build: () => {
+        const lede = document.createElement('div');
+        lede.className = 'cc-lede';
+        if (rec.body) {
+          String(rec.body).split('\n').forEach(line => {
+            if (!line.trim()) return;
+            const p = document.createElement('p');
+            p.textContent = line;
+            lede.appendChild(p);
+          });
+        }
+        return lede;
+      },
+    },
+    {
+      key: 'terminology',
+      label: 'Terminology',
+      build: () => {
+        const frag = document.createDocumentFragment();
+        frag.appendChild(_renderCCSectionHeading('i', 'Terminology',
+          'Hebrew terms · lexicographic survey'));
+        frag.appendChild(_renderCCHebrewTerms());
+        return frag;
+      },
+    },
+    {
+      key: 'comparative',
+      label: 'Comparative',
+      build: () => {
+        const frag = document.createDocumentFragment();
+        frag.appendChild(_renderCCSectionHeading('ii', 'Comparative Context',
+          'Ancient Near Eastern parallels'));
+        frag.appendChild(_renderCCComparative());
+        return frag;
+      },
+    },
   ];
   if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
       rec.atlas_object.anchorings.length > 0) {
-    navSections.push(['Anchorings', ANCHORS.anchorings]);
+    panels.push({
+      key: 'anchorings',
+      label: 'Anchorings',
+      build: () => {
+        const frag = document.createDocumentFragment();
+        frag.appendChild(_renderCCSectionHeading('iii', 'Anchorings',
+          'where this object is also encountered'));
+        frag.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
+        return frag;
+      },
+    });
   }
-  navSections.push(['Commentary', ANCHORS.commentary]);
-  navSections.forEach(([label, anchorId], i) => {
+  panels.push({
+    key: 'commentary',
+    label: 'Commentary',
+    build: () => _renderCCArchiveCommentary(),
+  });
+
+  // Build the nav rubric. Each item toggles which panel is
+  // active. Default-active = cosmogram.
+  const nav = document.createElement('div');
+  nav.className = 'cc-chamber-nav';
+  nav.setAttribute('role', 'tablist');
+  nav.setAttribute('aria-label',
+    'Sections within this cosmology chamber');
+
+  // Panel stage — holds the active panel content. Each panel
+  // is built lazily and cached in a Map keyed by panel.key.
+  const stage = document.createElement('div');
+  stage.className = 'cc-panel-stage';
+  // Stage holds one panel element per key; panels are created
+  // on first activation. Their data-panel attribute selects
+  // the right one via CSS / JS.
+  const builtPanels = new Map();
+
+  function activatePanel(key) {
+    // Build the panel on first activation.
+    if (!builtPanels.has(key)) {
+      const panelSpec = panels.find(p => p.key === key);
+      if (!panelSpec) return;
+      const panel = document.createElement('section');
+      panel.className = 'cc-panel';
+      panel.dataset.panel = key;
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', 'cc-tab-' + key);
+      panel.appendChild(panelSpec.build());
+      stage.appendChild(panel);
+      builtPanels.set(key, panel);
+    }
+    // Toggle active state on all built panels.
+    stage.querySelectorAll('.cc-panel').forEach(p => {
+      p.classList.toggle('cc-panel--active', p.dataset.panel === key);
+    });
+    // Toggle active state on all nav items.
+    nav.querySelectorAll('.cc-chamber-nav-item').forEach(btn => {
+      const isActive = btn.dataset.panelKey === key;
+      btn.classList.toggle('cc-chamber-nav-item--active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    // Reset scroll on the newly-activated panel so the reader
+    // sees its top.
+    const active = builtPanels.get(key);
+    if (active) active.scrollTop = 0;
+  }
+
+  panels.forEach((spec, i) => {
     if (i > 0) {
       const sep = document.createElement('span');
       sep.className = 'cc-chamber-nav-sep';
@@ -12942,72 +13108,23 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'cc-chamber-nav-item';
-    btn.textContent = label;
+    btn.dataset.panelKey = spec.key;
+    btn.id = 'cc-tab-' + spec.key;
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-controls', 'cc-panel-' + spec.key);
+    btn.textContent = spec.label;
     btn.addEventListener('click', (ev) => {
       ev.stopPropagation();
-      const target = leaf.querySelector('#' + anchorId);
-      if (!target) return;
-      const offsetTop = target.offsetTop - 8;
-      leaf.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      activatePanel(spec.key);
     });
     nav.appendChild(btn);
   });
+
   leaf.appendChild(nav);
+  leaf.appendChild(stage);
 
-  // Cosmogram (the centerpiece) — wrapped so its anchor id
-  // can target the section start.
-  const cosmogramFrame = document.createElement('div');
-  cosmogramFrame.className = 'cc-cosmogram-frame';
-  cosmogramFrame.id = ANCHORS.cosmogram;
-  cosmogramFrame.appendChild(_renderCCDiagram());
-  leaf.appendChild(cosmogramFrame);
-
-  // Witness Text — the lede prose, in supporting register
-  // beneath the artifact.
-  if (rec.body) {
-    const lede = document.createElement('div');
-    lede.className = 'cc-lede';
-    lede.id = ANCHORS.witness;
-    String(rec.body).split('\n').forEach(line => {
-      if (!line.trim()) return;
-      const p = document.createElement('p');
-      p.textContent = line;
-      lede.appendChild(p);
-    });
-    leaf.appendChild(lede);
-  }
-
-  // §I Terminology (renumbered v85; v88 adds anchor)
-  const termHeading = _renderCCSectionHeading('i', 'Terminology',
-    'Hebrew terms · lexicographic survey');
-  termHeading.id = ANCHORS.terminology;
-  leaf.appendChild(termHeading);
-  leaf.appendChild(_renderCCHebrewTerms());
-
-  // §II Comparative ANE context
-  const compHeading = _renderCCSectionHeading('ii', 'Comparative Context',
-    'Ancient Near Eastern parallels');
-  compHeading.id = ANCHORS.comparative;
-  leaf.appendChild(compHeading);
-  leaf.appendChild(_renderCCComparative());
-
-  // §III Other anchorings (only if present on the AO)
-  if (rec.atlas_object && Array.isArray(rec.atlas_object.anchorings) &&
-      rec.atlas_object.anchorings.length > 0) {
-    const anchHeading = _renderCCSectionHeading('iii', 'Anchorings',
-      'where this object is also encountered');
-    anchHeading.id = ANCHORS.anchorings;
-    leaf.appendChild(anchHeading);
-    leaf.appendChild(_renderCCAnchorings(rec.atlas_object.anchorings, pid));
-  }
-
-  // §IV Archive commentary
-  const commentaryNode = _renderCCArchiveCommentary();
-  // _renderCCArchiveCommentary returns a wrapper that itself
-  // contains a heading + body; attach the anchor to the wrapper
-  // so smooth-scroll lands at the section start.
-  commentaryNode.id = ANCHORS.commentary;
-  leaf.appendChild(commentaryNode);
+  // Default activation: open with the Cosmogram visible.
+  activatePanel('cosmogram');
 
   // Kindred — quiet line naming other Atlas Objects also
   // anchored at this verse, if any. Civilizational resonance.
