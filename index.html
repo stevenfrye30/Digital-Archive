@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v90-static-object-architecture">
+  <meta name="atlas-build" content="v91-rail-masthead-bigger-cosmogram">
   <title>Digital Archive</title>
   <style>
 
@@ -5733,61 +5733,94 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 .folio-leaf.cosmology-chamber .folio-leaf-colophon {
   display: none;
 }
-/* ── Object header (compact rubric + verse + title) ─────────
-   Sits above the tabbed frame; never scrolls. Tightened
-   from witness-leaf register so the artifact frame gets the
-   majority of vertical real estate. */
-.folio-leaf.cosmology-chamber .cc-object-header {
-  flex: 0 0 auto;
-  padding: 22px 44px 16px;
-  text-align: center;
-  border-bottom: 1px solid rgba(80, 50, 25, 0.16);
-  background: linear-gradient(180deg,
-    rgba(80, 50, 25, 0.03) 0%, rgba(80, 50, 25, 0) 100%);
-}
-.folio-leaf.cosmology-chamber .cc-object-header .folio-leaf-provenance {
-  margin: 0 0 6px;
-  font-size: 0.7em;
-}
-.folio-leaf.cosmology-chamber .cc-object-header .cc-atlas-object-rubric {
-  margin: 0 0 4px;
-}
-.folio-leaf.cosmology-chamber .cc-object-header .folio-leaf-verse {
-  margin: 4px 0 2px;
-  font-size: 0.76em;
-  letter-spacing: 0.06em;
-}
-.folio-leaf.cosmology-chamber .cc-object-header .folio-leaf-title {
-  margin: 4px 0 0;
-  font-size: 1.18em;
-}
 /* ── Object frame (left tab rail + right artifact panel) ────
-   The frame fills the remaining chamber height. Never scrolls.
-   Grid columns: rail | panel. */
+   v91 — Masthead relocated INTO the rail. The frame is now a
+   single grid row that fills the entire chamber (no top header
+   band consuming the artifact panel's vertical space). Grid
+   columns: rail (carries rubric + verse + title + tabs) |
+   artifact panel. */
 .folio-leaf.cosmology-chamber .cc-object-frame {
   flex: 1 1 auto;
   display: grid;
-  grid-template-columns: 188px 1fr;
+  grid-template-columns: 224px 1fr;
   min-height: 0;
   overflow: hidden;
 }
-/* Vertical tab rail — obvious tabs in manuscript register.
-   Each item carries an inscribed left rule + italic small-caps
-   label. The active tab is unmistakable: warmer ink, a thicker
-   ruled rule, and a faint vellum wash carrying the inscription
-   into the rail's edge. */
+/* Vertical tab rail — now carries the object masthead at the
+   top + the layer tabs below. Obvious tabs in manuscript
+   register. Each item carries an inscribed left rule + italic
+   small-caps label. The active tab is unmistakable: warmer
+   ink, a thicker ruled rule, and a faint vellum wash carrying
+   the inscription into the rail's edge. */
 .folio-leaf.cosmology-chamber .cc-tab-rail {
   display: flex;
   flex-direction: column;
-  padding: 28px 0 28px 18px;
-  gap: 2px;
+  padding: 26px 0 22px 0;
+  gap: 0;
   background:
     linear-gradient(90deg,
-      rgba(40, 24, 10, 0.06) 0%,
-      rgba(40, 24, 10, 0.00) 92%);
-  border-right: 1px solid rgba(80, 50, 25, 0.16);
+      rgba(40, 24, 10, 0.07) 0%,
+      rgba(40, 24, 10, 0.00) 96%);
+  border-right: 1px solid rgba(80, 50, 25, 0.18);
   min-height: 0;
   overflow: hidden;
+}
+/* Rail masthead — orientation block at the top of the rail.
+   Compact: rubric (siglum + class) → verse → title. The
+   masthead reads as the object's inscribed plate in the
+   margin of the artifact, not as a centered article header.
+   Margin echoes the rail's left inscription gutter. */
+.folio-leaf.cosmology-chamber .cc-rail-masthead {
+  padding: 0 18px 22px 22px;
+  border-bottom: 1px solid rgba(80, 50, 25, 0.18);
+  margin-bottom: 18px;
+}
+.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-provenance {
+  margin: 0 0 8px;
+  font-size: 0.66em;
+  text-align: left;
+  line-height: 1.45;
+}
+.folio-leaf.cosmology-chamber .cc-rail-masthead .cc-atlas-object-rubric {
+  margin: 0 0 10px;
+  text-align: left;
+  font-size: 0.92em;
+}
+.folio-leaf.cosmology-chamber .cc-rail-masthead .cc-aor-civilizations {
+  text-align: left;
+  font-size: 0.92em;
+}
+.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-verse {
+  margin: 6px 0 4px;
+  font-size: 0.72em;
+  letter-spacing: 0.10em;
+  text-align: left;
+  color: rgba(110, 65, 25, 0.78);
+  font-style: italic;
+  font-variant: small-caps;
+}
+.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-title {
+  margin: 4px 0 0;
+  font-size: 1.04em;
+  line-height: 1.25;
+  text-align: left;
+  font-style: italic;
+  color: rgba(40, 22, 6, 0.94);
+  letter-spacing: 0.005em;
+}
+/* Quiet eyebrow above the tab set — declares the rail's lower
+   section as object layers/witnesses, in manuscript register.
+   No icon, no chip — a small italic small-caps label with a
+   hairline rule beneath. */
+.folio-leaf.cosmology-chamber .cc-rail-eyebrow {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.66em;
+  letter-spacing: 0.22em;
+  color: rgba(110, 65, 25, 0.62);
+  padding: 0 18px 8px 22px;
+  margin-bottom: 2px;
 }
 .folio-leaf.cosmology-chamber .cc-tab-rail-item {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
@@ -13077,25 +13110,10 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
     }
   }
 
-  // ── Object header (compact) ─────────────────────────────────
-  const header = document.createElement('div');
-  header.className = 'cc-object-header';
-  if (recurrence) {
-    header.appendChild(_renderRecurrenceRubric(recurrence));
-  }
-  if (rec.atlas_object) {
-    header.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
-  }
-  header.appendChild(_renderProvenanceHeader(rec));
-  const v = document.createElement('div');
-  v.className = 'folio-leaf-verse';
-  v.textContent = _formatVerseRef(pid);
-  header.appendChild(v);
-  const t = document.createElement('h2');
-  t.className = 'folio-leaf-title';
-  t.textContent = rec.title || '';
-  header.appendChild(t);
-  leaf.appendChild(header);
+  // v91 — Masthead moved into the rail (see cc-rail-masthead
+  // below). The leaf's top no longer carries a horizontal
+  // header band; the artifact panel uses the full chamber
+  // height.
 
   // ── Object frame (rail | stage) ─────────────────────────────
   const frame = document.createElement('div');
@@ -13187,10 +13205,47 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
   // ── Tab rail (left) ─────────────────────────────────────────
   const rail = document.createElement('div');
   rail.className = 'cc-tab-rail';
-  rail.setAttribute('role', 'tablist');
-  rail.setAttribute('aria-orientation', 'vertical');
-  rail.setAttribute('aria-label',
-    'Sections within this cosmology object');
+
+  // v91 — Rail masthead: rubric / provenance / verse / title
+  // live INSIDE the rail's top section. Frees the artifact
+  // panel of any top-band consumption.
+  const masthead = document.createElement('div');
+  masthead.className = 'cc-rail-masthead';
+  if (recurrence) {
+    masthead.appendChild(_renderRecurrenceRubric(recurrence));
+  }
+  if (rec.atlas_object) {
+    masthead.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  }
+  masthead.appendChild(_renderProvenanceHeader(rec));
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  masthead.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  masthead.appendChild(t);
+  rail.appendChild(masthead);
+
+  // Small eyebrow above the tab set so the lower rail reads
+  // as the object's switchable layers rather than as
+  // continuation of the masthead.
+  const eyebrow = document.createElement('div');
+  eyebrow.className = 'cc-rail-eyebrow';
+  eyebrow.textContent = 'Object layers';
+  rail.appendChild(eyebrow);
+
+  // The tablist semantics belong to the lower section only —
+  // a wrapper carries role=tablist around the actual tabs so
+  // screen readers don't include the masthead.
+  const tablistAttrs = {
+    role: 'tablist',
+    'aria-orientation': 'vertical',
+    'aria-label': 'Sections within this cosmology object',
+  };
+  Object.entries(tablistAttrs).forEach(([k, val]) =>
+    rail.setAttribute(k, val));
 
   function activatePanel(key) {
     if (!builtPanels.has(key)) {
