@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v91-rail-masthead-bigger-cosmogram">
+  <meta name="atlas-build" content="v92-cosmogram-legibility">
   <title>Digital Archive</title>
   <style>
 
@@ -5969,37 +5969,43 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   margin: 0 auto;
 }
 /* Stratum name — Hebrew transliteration in small-caps, italic,
-   carrying the named domain of the cosmographic layer. */
+   carrying the named domain of the cosmographic layer. v92:
+   bumped from 12.5px to 17px and ink-alpha lifted from 0.88 to
+   0.92 so the named strata read clearly at laptop distance
+   without losing manuscript register. */
 .folio-leaf.cosmology-chamber .cc-d-name {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
-  fill: rgba(85, 50, 18, 0.88);
-  font-size: 12.5px;
+  fill: rgba(85, 50, 18, 0.92);
+  font-size: 17px;
   letter-spacing: 0.18em;
 }
-/* Stratum gloss — quiet English description beneath the name. */
+/* Stratum gloss — quiet English description beneath the name.
+   v92: bumped from 10.5px to 13.5px and alpha lifted from 0.74
+   to 0.82. Still visibly subordinate to the named stratum but
+   now legible. */
 .folio-leaf.cosmology-chamber .cc-d-gloss {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
-  fill: rgba(110, 90, 60, 0.74);
-  font-size: 10.5px;
+  fill: rgba(110, 90, 60, 0.82);
+  font-size: 13.5px;
   letter-spacing: 0.02em;
 }
 /* Inter-stratum mark — a tiny centred dot between stratum
-   bands, marking the cosmic-axis pause. */
+   bands, marking the cosmic-axis pause. v92: 11px → 13px. */
 .folio-leaf.cosmology-chamber .cc-d-mark {
   font-family: Georgia, serif;
-  font-size: 11px;
-  fill: rgba(110, 80, 40, 0.42);
+  font-size: 13px;
+  fill: rgba(110, 80, 40, 0.48);
   font-weight: 400;
 }
 /* Deep glyph — the threefold-dot mark closing the descent into
-   the unfigured depths. */
+   the unfigured depths. v92: 12px → 16px. */
 .folio-leaf.cosmology-chamber .cc-d-deep {
   font-family: Georgia, serif;
-  font-size: 12px;
-  fill: rgba(80, 50, 20, 0.6);
+  font-size: 16px;
+  fill: rgba(80, 50, 20, 0.66);
   font-style: italic;
 }
 /* Legacy cc-d-label classes preserved for backward compatibility
@@ -13387,20 +13393,22 @@ function _renderCCDiagram() {
             stroke-dasharray="2 6"/>
 
       <!-- ╶─── STRATUM I — WATERS ABOVE ───╴ -->
-      <text x="240" y="42" class="cc-d-name" text-anchor="middle">
+      <!-- v92 — Gloss y nudged from 60 → 66 for breathing room
+           under the enlarged 17px stratum name. -->
+      <text x="240" y="44" class="cc-d-name" text-anchor="middle">
         MAYIM MĒʿAL LĀ-RĀQÎAʿ
       </text>
-      <text x="240" y="60" class="cc-d-gloss" text-anchor="middle">
+      <text x="240" y="66" class="cc-d-gloss" text-anchor="middle">
         the upper cosmic waters
       </text>
-      <rect x="64" y="86" width="352" height="56" fill="url(#cc-water)"/>
-      <text x="240" y="166" class="cc-d-mark" text-anchor="middle">·</text>
+      <rect x="64" y="90" width="352" height="56" fill="url(#cc-water)"/>
+      <text x="240" y="170" class="cc-d-mark" text-anchor="middle">·</text>
 
       <!-- ╶─── STRATUM II — FIRMAMENT ───╴ -->
       <text x="240" y="208" class="cc-d-name" text-anchor="middle">
         RĀQÎAʿ
       </text>
-      <text x="240" y="226" class="cc-d-gloss" text-anchor="middle">
+      <text x="240" y="230" class="cc-d-gloss" text-anchor="middle">
         the firmament — sky-vault hammered out
       </text>
       <!-- The dome itself -->
@@ -13422,24 +13430,26 @@ function _renderCCDiagram() {
       <text x="240" y="418" class="cc-d-name" text-anchor="middle">
         ʾEREṢ
       </text>
-      <text x="240" y="436" class="cc-d-gloss" text-anchor="middle">
+      <text x="240" y="440" class="cc-d-gloss" text-anchor="middle">
         the earth — a disc resting on pillars
       </text>
       <!-- Earth horizon line — the boundary that separates the
            upper world (firmament + waters above) from the lower
-           (waters below + sheol). -->
-      <line x1="64" y1="462" x2="416" y2="462"
+           (waters below + sheol). v92 — horizon y nudged from
+           462 → 466 for breathing room under enlarged gloss. -->
+      <line x1="64" y1="466" x2="416" y2="466"
             stroke="rgba(110, 65, 25, 0.88)" stroke-width="1.6"/>
-      <!-- Pillars descending into the abyss -->
-      <line x1="110" y1="462" x2="110" y2="522"
+      <!-- Pillars descending into the abyss (start from new
+           horizon y=466) -->
+      <line x1="110" y1="466" x2="110" y2="522"
             stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
-      <line x1="170" y1="462" x2="170" y2="534"
+      <line x1="170" y1="466" x2="170" y2="534"
             stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
-      <line x1="240" y1="462" x2="240" y2="548"
+      <line x1="240" y1="466" x2="240" y2="548"
             stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
-      <line x1="310" y1="462" x2="310" y2="534"
+      <line x1="310" y1="466" x2="310" y2="534"
             stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
-      <line x1="370" y1="462" x2="370" y2="522"
+      <line x1="370" y1="466" x2="370" y2="522"
             stroke="rgba(110, 65, 25, 0.6)" stroke-width="1"/>
       <text x="240" y="582" class="cc-d-mark" text-anchor="middle">·</text>
 
@@ -13447,17 +13457,17 @@ function _renderCCDiagram() {
       <text x="240" y="622" class="cc-d-name" text-anchor="middle">
         MAYIM MITTAḤAT LĀ-RĀQÎAʿ
       </text>
-      <text x="240" y="640" class="cc-d-gloss" text-anchor="middle">
+      <text x="240" y="644" class="cc-d-gloss" text-anchor="middle">
         the lower waters — tehôm, the deep
       </text>
-      <rect x="64" y="664" width="352" height="56" fill="url(#cc-deep)"/>
-      <text x="240" y="744" class="cc-d-mark" text-anchor="middle">·</text>
+      <rect x="64" y="668" width="352" height="56" fill="url(#cc-deep)"/>
+      <text x="240" y="748" class="cc-d-mark" text-anchor="middle">·</text>
 
       <!-- ╶─── STRATUM V — SHEOL ───╴ -->
       <text x="240" y="786" class="cc-d-name" text-anchor="middle">
         SHEOL
       </text>
-      <text x="240" y="804" class="cc-d-gloss" text-anchor="middle">
+      <text x="240" y="808" class="cc-d-gloss" text-anchor="middle">
         the depths — the shadow-land
       </text>
       <!-- A descending hairline well into the unfigured depths -->
