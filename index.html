@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v92-object-material-independence">
+  <meta name="atlas-build" content="v93-genealogy-lineage-prototype">
   <title>Digital Archive</title>
   <style>
 
@@ -5691,7 +5691,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    future Atlas Object family. The cosmology chamber below
    is the first implementation.
    ════════════════════════════════════════════════════════════ */
-.folio-leaf.cosmology-chamber {
+.folio-leaf.cosmology-chamber,
+.folio-leaf.promise-chamber {
   /* v92 — Atlas Object material independence. The opened object
      now reads as a museum object card, not as another sheet of
      the warm-cream reading-room parchment or the warm-bone
@@ -5746,7 +5747,10 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    object closes with its tabbed frame. */
 .folio-leaf.cosmology-chamber .folio-leaf-kindred,
 .folio-leaf.cosmology-chamber .folio-leaf-resonance,
-.folio-leaf.cosmology-chamber .folio-leaf-colophon {
+.folio-leaf.cosmology-chamber .folio-leaf-colophon,
+.folio-leaf.promise-chamber .folio-leaf-kindred,
+.folio-leaf.promise-chamber .folio-leaf-resonance,
+.folio-leaf.promise-chamber .folio-leaf-colophon {
   display: none;
 }
 /* ── Object frame (left tab rail + right artifact panel) ────
@@ -5755,7 +5759,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    band consuming the artifact panel's vertical space). Grid
    columns: rail (carries rubric + verse + title + tabs) |
    artifact panel. */
-.folio-leaf.cosmology-chamber .cc-object-frame {
+.folio-leaf.cosmology-chamber .cc-object-frame,
+.folio-leaf.promise-chamber .cc-object-frame {
   flex: 1 1 auto;
   display: grid;
   grid-template-columns: 224px 1fr;
@@ -5768,7 +5773,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    small-caps label. The active tab is unmistakable: warmer
    ink, a thicker ruled rule, and a faint vellum wash carrying
    the inscription into the rail's edge. */
-.folio-leaf.cosmology-chamber .cc-tab-rail {
+.folio-leaf.cosmology-chamber .cc-tab-rail,
+.folio-leaf.promise-chamber .cc-tab-rail {
   display: flex;
   flex-direction: column;
   padding: 26px 0 22px 0;
@@ -5792,27 +5798,32 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    masthead reads as the object's inscribed plate in the
    margin of the artifact, not as a centered article header.
    Margin echoes the rail's left inscription gutter. */
-.folio-leaf.cosmology-chamber .cc-rail-masthead {
+.folio-leaf.cosmology-chamber .cc-rail-masthead,
+.folio-leaf.promise-chamber .cc-rail-masthead {
   padding: 0 18px 22px 22px;
   border-bottom: 1px solid var(--ao-edge);
   margin-bottom: 18px;
 }
-.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-provenance {
+.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-provenance,
+.folio-leaf.promise-chamber .cc-rail-masthead .folio-leaf-provenance {
   margin: 0 0 8px;
   font-size: 0.66em;
   text-align: left;
   line-height: 1.45;
 }
-.folio-leaf.cosmology-chamber .cc-rail-masthead .cc-atlas-object-rubric {
+.folio-leaf.cosmology-chamber .cc-rail-masthead .cc-atlas-object-rubric,
+.folio-leaf.promise-chamber .cc-rail-masthead .cc-atlas-object-rubric {
   margin: 0 0 10px;
   text-align: left;
   font-size: 0.92em;
 }
-.folio-leaf.cosmology-chamber .cc-rail-masthead .cc-aor-civilizations {
+.folio-leaf.cosmology-chamber .cc-rail-masthead .cc-aor-civilizations,
+.folio-leaf.promise-chamber .cc-rail-masthead .cc-aor-civilizations {
   text-align: left;
   font-size: 0.92em;
 }
-.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-verse {
+.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-verse,
+.folio-leaf.promise-chamber .cc-rail-masthead .folio-leaf-verse {
   margin: 6px 0 4px;
   font-size: 0.72em;
   letter-spacing: 0.10em;
@@ -5821,7 +5832,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   font-style: italic;
   font-variant: small-caps;
 }
-.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-title {
+.folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-title,
+.folio-leaf.promise-chamber .cc-rail-masthead .folio-leaf-title {
   margin: 4px 0 0;
   font-size: 1.04em;
   line-height: 1.25;
@@ -5834,7 +5846,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    section as object layers/witnesses, in manuscript register.
    No icon, no chip — a small italic small-caps label with a
    hairline rule beneath. */
-.folio-leaf.cosmology-chamber .cc-rail-eyebrow {
+.folio-leaf.cosmology-chamber .cc-rail-eyebrow,
+.folio-leaf.promise-chamber .cc-rail-eyebrow {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
@@ -5844,7 +5857,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   padding: 0 18px 8px 22px;
   margin-bottom: 2px;
 }
-.folio-leaf.cosmology-chamber .cc-tab-rail-item {
+.folio-leaf.cosmology-chamber .cc-tab-rail-item,
+.folio-leaf.promise-chamber .cc-tab-rail-item {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
@@ -5862,12 +5876,15 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   user-select: none;
 }
 .folio-leaf.cosmology-chamber .cc-tab-rail-item:hover,
-.folio-leaf.cosmology-chamber .cc-tab-rail-item:focus-visible {
+.folio-leaf.cosmology-chamber .cc-tab-rail-item:focus-visible,
+.folio-leaf.promise-chamber .cc-tab-rail-item:hover,
+.folio-leaf.promise-chamber .cc-tab-rail-item:focus-visible {
   color: rgba(50, 30, 10, 0.96);
   background: rgba(60, 42, 22, 0.05);
   outline: none;
 }
-.folio-leaf.cosmology-chamber .cc-tab-rail-item--active {
+.folio-leaf.cosmology-chamber .cc-tab-rail-item--active,
+.folio-leaf.promise-chamber .cc-tab-rail-item--active {
   color: rgba(34, 18, 4, 1);
   font-weight: 600;
   /* v92 — Active tab on the new cool-bone rail. The wash now
@@ -5881,7 +5898,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 }
 /* Right artifact panel — large, never scrolls. The cosmogram
    dominates its tab; text panels are compressed to fit. */
-.folio-leaf.cosmology-chamber .cc-tab-stage {
+.folio-leaf.cosmology-chamber .cc-tab-stage,
+.folio-leaf.promise-chamber .cc-tab-stage {
   position: relative;
   padding: 22px 36px 24px;
   min-height: 0;
@@ -5899,37 +5917,44 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
     inset 0 -1px 0 var(--ao-edge-inner),
     inset 0  1px 0 var(--ao-edge-inner);
 }
-.folio-leaf.cosmology-chamber .cc-panel {
+.folio-leaf.cosmology-chamber .cc-panel,
+.folio-leaf.promise-chamber .cc-panel {
   display: none;
   width: 100%;
   min-height: 0;
   overflow: hidden;
 }
-.folio-leaf.cosmology-chamber .cc-panel--active {
+.folio-leaf.cosmology-chamber .cc-panel--active,
+.folio-leaf.promise-chamber .cc-panel--active {
   display: flex;
   flex-direction: column;
   animation: cc-panel-arrive 0.32s ease-out;
 }
-.folio-leaf.cosmology-chamber .cc-lede {
+.folio-leaf.cosmology-chamber .cc-lede,
+.folio-leaf.promise-chamber .cc-lede {
   margin: 6px 0 0;
   font-style: italic;
   color: rgba(55, 40, 22, 0.86);
 }
-.folio-leaf.cosmology-chamber .cc-lede p {
+.folio-leaf.cosmology-chamber .cc-lede p,
+.folio-leaf.promise-chamber .cc-lede p {
   margin: 0 0 0.85em 0;
   line-height: 1.6;
   font-size: 0.94em;
 }
-.folio-leaf.cosmology-chamber .cc-lede p:last-child { margin-bottom: 0; }
+.folio-leaf.cosmology-chamber .cc-lede p:last-child,
+.folio-leaf.promise-chamber .cc-lede p:last-child { margin-bottom: 0; }
 
 /* Section heading — roman numeral + italic title, soft hairline
    rule above. Reads as a manuscript marginalia, not a tab/anchor. */
-.folio-leaf.cosmology-chamber .cc-section-heading {
+.folio-leaf.cosmology-chamber .cc-section-heading,
+.folio-leaf.promise-chamber .cc-section-heading {
   margin: 36px 0 14px;
   padding-top: 18px;
   border-top: 1px solid rgba(120, 90, 50, 0.18);
 }
-.folio-leaf.cosmology-chamber .cc-section-numeral {
+.folio-leaf.cosmology-chamber .cc-section-numeral,
+.folio-leaf.promise-chamber .cc-section-numeral {
   display: inline-block;
   font-style: italic;
   font-variant: small-caps;
@@ -5938,14 +5963,16 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   color: rgba(120, 65, 25, 0.78);
   margin-right: 8px;
 }
-.folio-leaf.cosmology-chamber .cc-section-title {
+.folio-leaf.cosmology-chamber .cc-section-title,
+.folio-leaf.promise-chamber .cc-section-title {
   font-style: italic;
   font-variant: small-caps;
   font-size: 0.96em;
   letter-spacing: 0.14em;
   color: rgba(85, 50, 18, 0.92);
 }
-.folio-leaf.cosmology-chamber .cc-section-subtitle {
+.folio-leaf.cosmology-chamber .cc-section-subtitle,
+.folio-leaf.promise-chamber .cc-section-subtitle {
   display: block;
   margin-top: 4px;
   font-style: italic;
@@ -6168,7 +6195,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    - Italic small-caps rubric naming the epistemic class.
    - Closing note explicitly identifying the panel as archive
      editorial framing. */
-.folio-leaf.cosmology-chamber .cc-archive {
+.folio-leaf.cosmology-chamber .cc-archive,
+.folio-leaf.promise-chamber .cc-archive {
   margin: 36px 0 8px;
   padding: 22px 24px 20px;
   /* v92 — Faintly cooler gray wash so the archive block reads as
@@ -6180,7 +6208,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   border-left: 3px solid rgba(110, 95, 75, 0.6);
   border-radius: 1px;
 }
-.folio-leaf.cosmology-chamber .cc-archive-rubric {
+.folio-leaf.cosmology-chamber .cc-archive-rubric,
+.folio-leaf.promise-chamber .cc-archive-rubric {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
@@ -6189,7 +6218,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   color: rgba(110, 95, 75, 0.82);
   margin-bottom: 6px;
 }
-.folio-leaf.cosmology-chamber .cc-archive-heading {
+.folio-leaf.cosmology-chamber .cc-archive-heading,
+.folio-leaf.promise-chamber .cc-archive-heading {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-size: 1em;
@@ -6197,13 +6227,15 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   color: rgba(70, 55, 35, 0.92);
   margin-bottom: 12px;
 }
-.folio-leaf.cosmology-chamber .cc-archive-body {
+.folio-leaf.cosmology-chamber .cc-archive-body,
+.folio-leaf.promise-chamber .cc-archive-body {
   margin: 0;
   font-size: 0.94em;
   line-height: 1.66;
   color: rgba(55, 40, 22, 0.86);
 }
-.folio-leaf.cosmology-chamber .cc-archive-note {
+.folio-leaf.cosmology-chamber .cc-archive-note,
+.folio-leaf.promise-chamber .cc-archive-note {
   margin-top: 14px;
   padding-top: 10px;
   border-top: 1px dotted rgba(110, 95, 75, 0.28);
@@ -6267,7 +6299,8 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   line-height: 1.6;
 }
 /* Each panel may carry a small panel heading at the top. */
-.folio-leaf.cosmology-chamber .cc-panel-heading {
+.folio-leaf.cosmology-chamber .cc-panel-heading,
+.folio-leaf.promise-chamber .cc-panel-heading {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
   font-variant: small-caps;
@@ -6277,6 +6310,219 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   margin: 0 0 12px;
   padding-bottom: 8px;
   border-bottom: 1px dotted rgba(110, 90, 50, 0.24);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   AO · 013 — The Promise Line (Patriarchal Lineage)
+   ────────────────────────────────────────────────────────────────
+   Second instance of the v92 Atlas Object architecture. Inherits
+   the entire shell (material tokens, frame, rail, masthead, tabs,
+   panel envelope, archive block) via the shared
+   .cosmology-chamber / .promise-chamber selector groups above.
+   Adds promise-line-specific visuals only:
+     · Lineage  — SVG covenant axis with rupture branches
+     · Promise  — canonical promise passages, stacked
+     · Rupture  — parallel non-promise branches (Lot, Ishmael,
+                  Esau), each given a witness and a fate
+     · Commentary — archive synthesis (shared .cc-archive block)
+
+   All four panels fit a single static screen at 1440×900+ ; the
+   chamber and panel envelopes carry overflow:hidden, the
+   compression lives in this CSS and in the JS builder.
+   ════════════════════════════════════════════════════════════════ */
+.folio-leaf.promise-chamber {
+  color: rgba(48, 36, 22, 0.94);
+}
+
+/* ── Lineage panel — the SVG covenant axis ────────────────────── */
+.folio-leaf.promise-chamber .cc-panel[data-panel="lineage"] {
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.folio-leaf.promise-chamber .pl-diagram-frame {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.folio-leaf.promise-chamber .pl-diagram {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.folio-leaf.promise-chamber .pl-diagram-svg {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+/* Axial generation name — Hebrew-bible patriarch, set as a small-
+   caps italic inscription on the axis. */
+.folio-leaf.promise-chamber .pl-name {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  fill: rgba(85, 50, 18, 0.94);
+  font-size: 17px;
+  letter-spacing: 0.18em;
+}
+/* The Call — Abraham gets visibly heavier ink than the other
+   axial nodes. Not a label; just the eye-weight of the originating
+   moment. */
+.folio-leaf.promise-chamber .pl-name--call {
+  fill: rgba(50, 22, 4, 1);
+  font-weight: 600;
+  font-size: 19px;
+}
+/* Quiet role descriptor beneath each axial name (the call, the
+   binding, the wrestling, the people). */
+.folio-leaf.promise-chamber .pl-role {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  fill: rgba(110, 90, 60, 0.84);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+}
+/* The subscript list of the twelve tribes beneath the final
+   node — set smaller, in a single italic line per band. */
+.folio-leaf.promise-chamber .pl-subscript {
+  font-family: Georgia, serif;
+  font-style: italic;
+  fill: rgba(95, 70, 35, 0.78);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+}
+
+/* Branch line — a dotted hairline forking off the axis. The
+   non-covenant branch is rendered as the connector tissue itself
+   becoming intermittent. */
+.folio-leaf.promise-chamber .pl-branch-line {
+  stroke: rgba(110, 80, 40, 0.45);
+  stroke-width: 0.7;
+  stroke-dasharray: 2 3;
+  fill: none;
+}
+/* Branch name — italic small-caps, lighter than the axial name. */
+.folio-leaf.promise-chamber .pl-branch-name {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  fill: rgba(110, 75, 35, 0.80);
+  font-size: 12.5px;
+  letter-spacing: 0.10em;
+}
+
+/* Node markers on the axis. Open ring for the receiving
+   generations; filled rhombus for the originating moments
+   (the Call, the people-name). */
+.folio-leaf.promise-chamber .pl-node {
+  fill: none;
+  stroke: rgba(110, 65, 25, 0.85);
+  stroke-width: 1.2;
+}
+.folio-leaf.promise-chamber .pl-node--mark {
+  fill: rgba(50, 22, 4, 0.95);
+  stroke: none;
+}
+
+/* ── Promise panel — canonical promise passages stacked ──────── */
+.folio-leaf.promise-chamber .pl-promises {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.folio-leaf.promise-chamber .pl-promise-item {
+  margin: 0;
+  padding: 12px 0 12px;
+  border-top: 1px dotted rgba(120, 90, 50, 0.20);
+}
+.folio-leaf.promise-chamber .pl-promise-item:first-child {
+  border-top: none;
+  padding-top: 4px;
+}
+.folio-leaf.promise-chamber .pl-promise-ref {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.72em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.78);
+  margin-bottom: 5px;
+}
+.folio-leaf.promise-chamber .pl-promise-text {
+  margin: 0 0 4px;
+  font-style: italic;
+  font-size: 0.92em;
+  line-height: 1.52;
+  color: rgba(50, 36, 18, 0.92);
+}
+.folio-leaf.promise-chamber .pl-promise-note {
+  font-size: 0.76em;
+  font-style: italic;
+  color: rgba(110, 90, 60, 0.72);
+  letter-spacing: 0.01em;
+}
+
+/* ── Rupture panel — the parallel non-promise branches ───────── */
+.folio-leaf.promise-chamber .pl-ruptures {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.folio-leaf.promise-chamber .pl-rupture-item {
+  margin: 0;
+  padding: 14px 0 12px;
+  border-top: 1px dotted rgba(120, 90, 50, 0.22);
+}
+.folio-leaf.promise-chamber .pl-rupture-item:first-child {
+  border-top: none;
+  padding-top: 4px;
+}
+.folio-leaf.promise-chamber .pl-rupture-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.folio-leaf.promise-chamber .pl-rupture-name {
+  font-style: italic;
+  font-size: 0.98em;
+  font-weight: 500;
+  color: rgba(85, 50, 18, 0.94);
+  letter-spacing: 0.02em;
+}
+.folio-leaf.promise-chamber .pl-rupture-branchof {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.66em;
+  letter-spacing: 0.18em;
+  color: rgba(110, 90, 60, 0.72);
+}
+.folio-leaf.promise-chamber .pl-rupture-ref {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.68em;
+  letter-spacing: 0.18em;
+  color: rgba(120, 65, 25, 0.72);
+  margin-bottom: 5px;
+}
+.folio-leaf.promise-chamber .pl-rupture-fate {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.52;
+  color: rgba(55, 40, 22, 0.88);
 }
 
 /* ── AO · 002 — Translation Tradition Chamber ──────────────────
@@ -12818,6 +13064,23 @@ function _renderFolioObjectLeaf(rec, pid) {
     return leaf;
   }
   //
+  //   AO · 013  patriarchal-promise-lineage   gen12-promise-line
+  //             Second instance of the v92 Atlas Object architec-
+  //             ture (the cosmology chamber was AO · 001's v92
+  //             refit). A static rail+tabs object whose central
+  //             panel is a covenant axis (Terah → Abraham → Isaac
+  //             → Jacob → The Twelve) with parallel rupture
+  //             branches forking off at each generation. Promise
+  //             and Rupture tabs carry the canonical promise texts
+  //             and the parallel non-promise branches; Commentary
+  //             carries the archive synthesis.
+  if (rec.id === 'gen12-promise-line') {
+    leaf.classList.add('promise-chamber');
+    leaf.addEventListener('click', e => e.stopPropagation());
+    _renderPromiseChamber(leaf, rec, pid, chKey);
+    return leaf;
+  }
+  //
   //   AO · 004  sacred-time              gen2-sabbath-pattern
   //             sevenfold rhythm — six creation-act rows in a
   //             repeating cadence and a seventh consecrated row
@@ -13829,6 +14092,400 @@ function _renderCCArchiveCommentary() {
 //   - witness fragments (parchment slips with original scripts)
 //   - semantic-shift notes (tight philological observations)
 //   - lineage strip (manuscript transmission chain)
+
+// ── AO · 013 — The Promise Line (Patriarchal Lineage) ──────────
+// Second instance of the v92 Atlas Object architecture. Inherits
+// the entire static rail+tabs shell from AO · 001 (cosmology) via
+// the shared CSS selector groups; renders four panels:
+//
+//   · Lineage   — SVG covenant axis (Terah → Abraham → Isaac →
+//                 Jacob → The Twelve) with parallel rupture
+//                 branches forking off at each generation
+//   · Promise   — the canonical promise passages (Gen 12:1-3,
+//                 15:5, 17:7-8, 22:17-18), compressed
+//   · Rupture   — the parallel non-promise branches (Lot,
+//                 Ishmael, Esau), each with a witness and a fate
+//   · Commentary — archive synthesis (shared .cc-archive block)
+//
+// No nested tabs, no scrolling, no rabbit holes. The lineage
+// drawing IS the form.
+
+function _renderPromiseChamber(leaf, rec, pid, chKey) {
+  // Encounter memory — same pipeline as AO · 001 and AO · 003.
+  let recurrence = null;
+  if (rec.atlas_object && rec.atlas_object.id) {
+    const ref = _formatArchivalRef(pid);
+    const enc = _recordAtlasEncounter(rec.atlas_object.id, pid, ref);
+    if (enc && !enc.isFirst && enc.first && enc.first.pid && enc.first.pid !== pid) {
+      recurrence = enc.first;
+    }
+  }
+
+  // ── Object frame (rail | stage) ─────────────────────────────
+  const frame = document.createElement('div');
+  frame.className = 'cc-object-frame';
+
+  // Panel registry — four tabs, one layer only.
+  const panels = [
+    {
+      key: 'lineage',
+      label: 'Lineage',
+      build: () => {
+        const wrap = document.createElement('div');
+        wrap.className = 'pl-diagram-frame';
+        wrap.appendChild(_renderPLDiagram(rec.generations || []));
+        return wrap;
+      },
+    },
+    {
+      key: 'promise',
+      label: 'Promise',
+      build: () => {
+        const frag = document.createDocumentFragment();
+        const head = document.createElement('div');
+        head.className = 'cc-panel-heading';
+        head.textContent = 'Promise — the covenant repeated';
+        frag.appendChild(head);
+        frag.appendChild(_renderPLPromises(rec.promise_texts || []));
+        return frag;
+      },
+    },
+    {
+      key: 'rupture',
+      label: 'Rupture',
+      build: () => {
+        const frag = document.createDocumentFragment();
+        const head = document.createElement('div');
+        head.className = 'cc-panel-heading';
+        head.textContent = 'Rupture — the parallel branches';
+        frag.appendChild(head);
+        frag.appendChild(_renderPLRuptures(rec.rupture_branches || []));
+        return frag;
+      },
+    },
+    {
+      key: 'commentary',
+      label: 'Commentary',
+      build: () => _renderPLCommentary(rec.archive_commentary || ''),
+    },
+  ];
+
+  // ── Tab stage (right) ───────────────────────────────────────
+  const stage = document.createElement('div');
+  stage.className = 'cc-tab-stage';
+  const builtPanels = new Map();
+
+  // ── Tab rail (left) ─────────────────────────────────────────
+  const rail = document.createElement('div');
+  rail.className = 'cc-tab-rail';
+
+  // Rail masthead — same composition as cosmology: optional
+  // recurrence rubric, atlas-object rubric, provenance, verse,
+  // title. The masthead inherits all its styling from the
+  // shared .cc-rail-masthead selector group above.
+  const masthead = document.createElement('div');
+  masthead.className = 'cc-rail-masthead';
+  if (recurrence) {
+    masthead.appendChild(_renderRecurrenceRubric(recurrence));
+  }
+  if (rec.atlas_object) {
+    masthead.appendChild(_renderAtlasObjectRubric(rec.atlas_object));
+  }
+  masthead.appendChild(_renderProvenanceHeader(rec));
+  const v = document.createElement('div');
+  v.className = 'folio-leaf-verse';
+  v.textContent = _formatVerseRef(pid);
+  masthead.appendChild(v);
+  const t = document.createElement('h2');
+  t.className = 'folio-leaf-title';
+  t.textContent = rec.title || '';
+  masthead.appendChild(t);
+  rail.appendChild(masthead);
+
+  const eyebrow = document.createElement('div');
+  eyebrow.className = 'cc-rail-eyebrow';
+  eyebrow.textContent = 'Object layers';
+  rail.appendChild(eyebrow);
+
+  const tablistAttrs = {
+    role: 'tablist',
+    'aria-orientation': 'vertical',
+    'aria-label': 'Sections within this lineage object',
+  };
+  Object.entries(tablistAttrs).forEach(([k, val]) =>
+    rail.setAttribute(k, val));
+
+  function activatePanel(key) {
+    if (!builtPanels.has(key)) {
+      const panelSpec = panels.find(p => p.key === key);
+      if (!panelSpec) return;
+      const panel = document.createElement('section');
+      panel.className = 'cc-panel';
+      panel.dataset.panel = key;
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', 'pl-tab-' + key);
+      panel.appendChild(panelSpec.build());
+      stage.appendChild(panel);
+      builtPanels.set(key, panel);
+    }
+    stage.querySelectorAll('.cc-panel').forEach(p => {
+      p.classList.toggle('cc-panel--active', p.dataset.panel === key);
+    });
+    rail.querySelectorAll('.cc-tab-rail-item').forEach(btn => {
+      const isActive = btn.dataset.panelKey === key;
+      btn.classList.toggle('cc-tab-rail-item--active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      btn.tabIndex = isActive ? 0 : -1;
+    });
+  }
+
+  panels.forEach(spec => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'cc-tab-rail-item';
+    btn.dataset.panelKey = spec.key;
+    btn.id = 'pl-tab-' + spec.key;
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-controls', 'pl-panel-' + spec.key);
+    btn.textContent = spec.label;
+    btn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      activatePanel(spec.key);
+    });
+    btn.addEventListener('keydown', (ev) => {
+      const items = Array.from(rail.querySelectorAll('.cc-tab-rail-item'));
+      const idx = items.indexOf(btn);
+      if (ev.key === 'ArrowDown' || ev.key === 'ArrowRight') {
+        ev.preventDefault();
+        const next = items[(idx + 1) % items.length];
+        next.focus();
+        activatePanel(next.dataset.panelKey);
+      } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowLeft') {
+        ev.preventDefault();
+        const prev = items[(idx - 1 + items.length) % items.length];
+        prev.focus();
+        activatePanel(prev.dataset.panelKey);
+      } else if (ev.key === 'Home') {
+        ev.preventDefault();
+        items[0].focus();
+        activatePanel(items[0].dataset.panelKey);
+      } else if (ev.key === 'End') {
+        ev.preventDefault();
+        items[items.length - 1].focus();
+        activatePanel(items[items.length - 1].dataset.panelKey);
+      }
+    });
+    rail.appendChild(btn);
+  });
+
+  frame.appendChild(rail);
+  frame.appendChild(stage);
+  leaf.appendChild(frame);
+
+  // Default activation: Lineage (the visual centerpiece).
+  activatePanel('lineage');
+}
+
+// ── The Promise-Line Diagram (covenant axis + rupture branches) ─
+// A tall vertical manuscript drawing. The covenant axis runs the
+// full height down the centre. Five axial nodes are inscribed on
+// it: Terah, Abraham (the Call — heavier ink), Isaac, Jacob /
+// Israel, The Twelve. Parallel rupture branches fork off as
+// dotted hairlines, each labelled in italic small-caps.
+//
+// ViewBox 480 × 760. The composition reads top-to-bottom — the
+// promise narrows generation by generation. No graph chrome, no
+// family-tree UI; the drawing IS the form.
+function _renderPLDiagram(/* generations -- unused; layout is fixed */) {
+  const wrap = document.createElement('figure');
+  wrap.className = 'pl-diagram';
+  wrap.innerHTML = `
+    <svg viewBox="0 0 480 760" xmlns="http://www.w3.org/2000/svg"
+         class="pl-diagram-svg" role="img"
+         aria-label="A vertical manuscript drawing of the Abrahamic
+                     covenant axis from Terah to the Twelve tribes,
+                     with parallel rupture branches at each
+                     generation.">
+      <!-- Covenant axis — runs full height down the centre. The
+           reader's eye descends through the generations. -->
+      <line x1="240" y1="44" x2="240" y2="716"
+            stroke="rgba(110, 80, 40, 0.32)" stroke-width="0.8"
+            stroke-dasharray="3 5"/>
+
+      <!-- ╶─── BAND I — TERAH ───╴ -->
+      <text x="240" y="68" class="pl-name" text-anchor="middle">
+        TERAH
+      </text>
+      <text x="240" y="86" class="pl-role" text-anchor="middle">
+        patriarchal ancestor — the line is gathered before it is sent
+      </text>
+      <!-- Node mark on the axis -->
+      <circle cx="240" cy="108" r="4" class="pl-node"/>
+      <!-- Branch 1 — Nahor (left) -->
+      <line x1="232" y1="108" x2="126" y2="108"
+            class="pl-branch-line"/>
+      <text x="120" y="111" class="pl-branch-name" text-anchor="end">
+        NAHOR
+      </text>
+      <!-- Branch 2 — Haran → Lot (left, slightly lower) -->
+      <line x1="232" y1="132" x2="100" y2="132"
+            class="pl-branch-line"/>
+      <text x="94" y="135" class="pl-branch-name" text-anchor="end">
+        HARAN — LOT
+      </text>
+
+      <!-- ╶─── BAND II — ABRAHAM · THE CALL ───╴ -->
+      <text x="240" y="208" class="pl-name pl-name--call" text-anchor="middle">
+        ABRAHAM
+      </text>
+      <text x="240" y="228" class="pl-role" text-anchor="middle">
+        the call — land · seed · blessing
+      </text>
+      <!-- Filled rhombus marker — the originating moment -->
+      <path d="M 240 246 L 248 254 L 240 262 L 232 254 Z"
+            class="pl-node pl-node--mark"/>
+      <!-- Branch — Ishmael (right) -->
+      <line x1="248" y1="254" x2="368" y2="254"
+            class="pl-branch-line"/>
+      <text x="374" y="257" class="pl-branch-name" text-anchor="start">
+        ISHMAEL
+      </text>
+
+      <!-- ╶─── BAND III — ISAAC · THE BINDING ───╴ -->
+      <text x="240" y="332" class="pl-name" text-anchor="middle">
+        ISAAC
+      </text>
+      <text x="240" y="350" class="pl-role" text-anchor="middle">
+        the binding — the covenant is tested and confirmed
+      </text>
+      <circle cx="240" cy="372" r="4" class="pl-node"/>
+      <!-- Branch — Esau / Edom (left) -->
+      <line x1="232" y1="372" x2="120" y2="372"
+            class="pl-branch-line"/>
+      <text x="114" y="375" class="pl-branch-name" text-anchor="end">
+        ESAU — EDOM
+      </text>
+
+      <!-- ╶─── BAND IV — JACOB / ISRAEL · THE WRESTLING ───╴ -->
+      <text x="240" y="452" class="pl-name" text-anchor="middle">
+        JACOB · ISRAEL
+      </text>
+      <text x="240" y="470" class="pl-role" text-anchor="middle">
+        the wrestling — the line receives its people-name
+      </text>
+      <circle cx="240" cy="492" r="4" class="pl-node"/>
+
+      <!-- ╶─── BAND V — THE TWELVE · ISRAEL AS A PEOPLE ───╴ -->
+      <text x="240" y="572" class="pl-name" text-anchor="middle">
+        THE TWELVE
+      </text>
+      <text x="240" y="590" class="pl-role" text-anchor="middle">
+        the people of Israel — the promise becomes a nation
+      </text>
+      <!-- Filled rhombus marker — the people-name is given form -->
+      <path d="M 240 608 L 248 616 L 240 624 L 232 616 Z"
+            class="pl-node pl-node--mark"/>
+      <text x="240" y="652" class="pl-subscript" text-anchor="middle">
+        Reuben · Simeon · Levi · Judah · Dan · Naphtali
+      </text>
+      <text x="240" y="672" class="pl-subscript" text-anchor="middle">
+        Gad · Asher · Issachar · Zebulun · Joseph · Benjamin
+      </text>
+    </svg>
+  `;
+  return wrap;
+}
+
+// Promise tab — the canonical covenant passages, stacked. Each
+// item carries a small italic small-caps ref, the passage in
+// italic, and a quiet annotating note.
+function _renderPLPromises(items) {
+  const ul = document.createElement('ul');
+  ul.className = 'pl-promises';
+  items.forEach(p => {
+    const li = document.createElement('li');
+    li.className = 'pl-promise-item';
+    const ref = document.createElement('div');
+    ref.className = 'pl-promise-ref';
+    ref.textContent = p.ref || '';
+    li.appendChild(ref);
+    const body = document.createElement('p');
+    body.className = 'pl-promise-text';
+    body.textContent = p.passage || '';
+    li.appendChild(body);
+    if (p.note) {
+      const note = document.createElement('div');
+      note.className = 'pl-promise-note';
+      note.textContent = p.note;
+      li.appendChild(note);
+    }
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+// Rupture tab — the parallel non-promise branches. Each item
+// names the branch, the line it forked from, the witness
+// reference, and the fate.
+function _renderPLRuptures(items) {
+  const ul = document.createElement('ul');
+  ul.className = 'pl-ruptures';
+  items.forEach(b => {
+    const li = document.createElement('li');
+    li.className = 'pl-rupture-item';
+    const head = document.createElement('div');
+    head.className = 'pl-rupture-head';
+    const name = document.createElement('span');
+    name.className = 'pl-rupture-name';
+    name.textContent = b.name_en || '';
+    head.appendChild(name);
+    if (b.branch_of) {
+      const bo = document.createElement('span');
+      bo.className = 'pl-rupture-branchof';
+      bo.textContent = '— branch of ' + b.branch_of;
+      head.appendChild(bo);
+    }
+    li.appendChild(head);
+    if (b.ref) {
+      const ref = document.createElement('div');
+      ref.className = 'pl-rupture-ref';
+      ref.textContent = b.ref;
+      li.appendChild(ref);
+    }
+    const fate = document.createElement('p');
+    fate.className = 'pl-rupture-fate';
+    fate.textContent = b.fate || '';
+    li.appendChild(fate);
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+// Commentary tab — archive synthesis, in the shared .cc-archive
+// block (declared by the cosmology-chamber selector group, also
+// applied to .promise-chamber via the shared selector list).
+function _renderPLCommentary(body) {
+  const wrap = document.createElement('aside');
+  wrap.className = 'cc-archive';
+  const rubric = document.createElement('div');
+  rubric.className = 'cc-archive-rubric';
+  rubric.textContent = 'Archive synthesis';
+  wrap.appendChild(rubric);
+  const heading = document.createElement('div');
+  heading.className = 'cc-archive-heading';
+  heading.textContent = 'On reading this object';
+  wrap.appendChild(heading);
+  const text = document.createElement('p');
+  text.className = 'cc-archive-body';
+  text.textContent = body;
+  wrap.appendChild(text);
+  const note = document.createElement('div');
+  note.className = 'cc-archive-note';
+  note.textContent =
+    'This object is the archive’s editorial framing of the patriarchal lineage, not a primary witness. Consult the cited passages for the canonical text.';
+  wrap.appendChild(note);
+  return wrap;
+}
 
 function _renderTranslationTraditionChamber(leaf, rec, pid, chKey) {
   // Encounter memory — same pipeline as AO · 001.
