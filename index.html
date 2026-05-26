@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v99-upanishads-by-text-index">
+  <meta name="atlas-build" content="v100-upanishads-contents-cleanup">
   <title>Digital Archive</title>
   <style>
 
@@ -1642,6 +1642,33 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   color: rgba(110, 65, 25, 0.72);
   text-align: center;
   margin: -4px 0 8px;
+}
+/* v100 — Per-text contents note. Sits above the contents grid as
+   a quiet italic paragraph; used to declare "source-volume",
+   "thematic", or "legacy" without hiding the record. Tinted softer
+   for legacy / source-volume records so they recede visually
+   compared to a clean primary collection's note. */
+.bible-cover-layout .bcl-contents-note {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 0.86em;
+  line-height: 1.55;
+  color: rgba(95, 75, 50, 0.86);
+  background: rgba(120, 90, 50, 0.06);
+  border-left: 2px solid rgba(120, 90, 50, 0.28);
+  padding: 8px 14px;
+  margin: 6px auto 14px;
+  max-width: 880px;
+  text-align: left;
+}
+.bible-cover-layout .bcl-contents-note em {
+  font-style: normal;
+  color: rgba(110, 65, 25, 0.92);
+}
+.bible-cover-layout .bcl-contents-note[data-mode="source-volume"],
+.bible-cover-layout .bcl-contents-note[data-mode="legacy"] {
+  background: rgba(120, 95, 60, 0.05);
+  color: rgba(110, 90, 60, 0.78);
 }
 /* Citation apparatus — a quiet italic disclosure anchored to the
    top-right corner of the title leaf. Reads as a marginal scholarly
@@ -12623,8 +12650,31 @@ function showCover(data, entry) {
   }
   const grouped = needsGroupSelector() && keys.length > 1 && keys.length <= 200;
   const useCodexLayout = isBibleCover || grouped;
-  const hasFrontMatter = data.passages.some(p => p.fm);
+  let hasFrontMatter = data.passages.some(p => p.fm);
   const bodyCount = data.passages.filter(p => !p.fm).length;
+
+  // v100 — Apply per-text contents overrides BEFORE downstream
+  // ranges/labels are computed. An override may:
+  //   · suppress the Front Matter button (hideFrontMatter)
+  //   · replace the title (titleOverride)
+  //   · replace the L1 key list with an explicit entries[] set,
+  //     using each entry's display name as the button label
+  //   · render an italic prose note above the contents grid
+  // Source data is never mutated; this is presentation only.
+  const _override = (typeof _contentsOverrideFor === 'function')
+    ? _contentsOverrideFor(entry) : null;
+  let _overrideLabelMap = null;
+  if (_override) {
+    if (_override.hideFrontMatter) hasFrontMatter = false;
+    if (Array.isArray(_override.entries) && _override.entries.length) {
+      keys.length = 0;
+      _overrideLabelMap = new Map();
+      for (const e of _override.entries) {
+        keys.push(String(e.key));
+        _overrideLabelMap.set(String(e.key), e.name);
+      }
+    }
+  }
   // v95 — range chips for long contents pages (> 40 buttons). Four
   // ranges max so the chip strip stays single-row. Bible keeps its
   // canon segmentation instead (handled in the isBibleCover branch).
@@ -12676,7 +12726,11 @@ function showCover(data, entry) {
             '</button>';
   }
   html += '<div id="continuous-cover">';
-  html += `<div class="cc-title">${escapeHTML(data.title || '')}</div>`;
+  // v100 — Allow per-text titleOverride to clean up source-quirky
+  // titles ("The_Upanishads" → "The Upanishads — legacy reprint").
+  const _displayTitle = (_override && _override.titleOverride)
+    ? _override.titleOverride : (data.title || '');
+  html += `<div class="cc-title">${escapeHTML(_displayTitle)}</div>`;
   if (authorTxt) html += `<div class="cc-author">${escapeHTML(authorTxt)}</div>`;
   if (trTxt)     html += `<div class="cc-translator">${escapeHTML(trTxt)}</div>`;
   if (dateParts.length) html += `<div class="cc-year">${escapeHTML(dateParts.join(' \u00b7 '))}</div>`;
@@ -12747,7 +12801,17 @@ function showCover(data, entry) {
     html += `<div class="cc-toc-sub bcl-codex-sub">${keys.length} ${plural} \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
   }
 
-  // Front Matter button — always first if it exists
+  // v100 — Per-text contents note (italic, restrained). Appears
+  // above the contents grid and below the sub-rubric. Used to
+  // declare source-volume / thematic / legacy status without
+  // hiding the record. May contain <em> for inline emphasis.
+  if (_override && _override.note) {
+    html += `<div class="bcl-contents-note" data-mode="${escapeHTML(_override.mode || '')}">${_override.note}</div>`;
+  }
+
+  // Front Matter button — always first if it exists, UNLESS a
+  // per-text override has suppressed it (because its fm passages
+  // are editorial boilerplate, not a meaningful reader entry).
   if (hasFrontMatter) {
     html += '<div class="cc-fm-btn-wrap"><div class="cc-fm-btn" data-book="__fm__">✦ Front Matter</div></div>';
   }
@@ -12802,7 +12866,12 @@ function showCover(data, entry) {
     keys.forEach((k, i) => {
       const hidden = useRanges && i >= ranges[0].to;
       const styleAttr = hidden ? ' style="display:none"' : '';
-      html += `<li data-book="${escapeHTML(k)}" data-rangepos="${i}"${styleAttr}><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+      // v100 — per-text override may provide an explicit display
+      // label for each entry (used to surface clean Upanishad names
+      // instead of "Chapter N — Sarvasara-Upanishad of ...").
+      const labelText = (_overrideLabelMap && _overrideLabelMap.get(k))
+        || groupName(k);
+      html += `<li data-book="${escapeHTML(k)}" data-rangepos="${i}"${styleAttr}><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(labelText)}</span></li>`;
     });
     html += '</ul>';
     html += '</section>';
@@ -20042,20 +20111,10 @@ function browseTextFamily(familyId) {
   if (fam.description) {
     html += `<div class="family-description">${escH(fam.description)}</div>`;
   }
-  // ── Section A — Browse by collection (v98) ─────────────────
-  html += '<div class="family-section-heading">Browse by collection</div>';
-  for (const role of roleOrder) {
-    const items = buckets[role];
-    if (!items || !items.length) continue;
-    html += `<div class="tile-section-label">${escH(roleLabels[role] || role)}</div>`;
-    for (const { m, t } of items) {
-      html += _familyMemberTileHTML(t, m, cat, trd);
-    }
-  }
-  // ── Section B — Browse by individual Upanishad (v99) ────────
-  // Only rendered when the family has a byUpanishad inventory.
-  // Each card carries inline credit (translator + edition + year)
-  // so the reader never sees an anonymous "Upanishad N" route.
+  // v100 — Browse by Upanishad now comes FIRST (it is the reader-
+  // facing path); Browse by collection follows as the bibliographic
+  // / source path. Only families with a byUpanishad inventory get
+  // the reader-facing section.
   if (Array.isArray(fam.byUpanishad) && fam.byUpanishad.length) {
     html += '<div class="family-section-heading">Browse by Upanishad</div>';
     const principal = fam.byUpanishad.filter(u => u.cls === 'principal');
@@ -20076,6 +20135,17 @@ function browseTextFamily(familyId) {
       html += `<div class="byupn-note">${fam.byUpanishadNote}</div>`;
     }
   }
+  // Browse by collection — bibliographic path. Comes after the
+  // reader-facing route. Still shows all members grouped by role.
+  html += '<div class="family-section-heading">Browse by collection</div>';
+  for (const role of roleOrder) {
+    const items = buckets[role];
+    if (!items || !items.length) continue;
+    html += `<div class="tile-section-label">${escH(roleLabels[role] || role)}</div>`;
+    for (const { m, t } of items) {
+      html += _familyMemberTileHTML(t, m, cat, trd);
+    }
+  }
   $browseTiles.innerHTML = html;
 }
 
@@ -20092,7 +20162,6 @@ function _byUpanishadTileHTML(u) {
     : '';
   const onclick = `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
   return `<div class="text-tile byupn-tile" onclick="${onclick}">
-    <span class="tt-star byupn-glyph" aria-hidden="true">·</span>
     <div class="tt-info">
       <div class="tt-title">${escH(u.name)} <span class="byupn-up">Upanishad</span></div>
       <div class="tt-meta byupn-credit">${escH(w.sourceLabel)}</div>
@@ -20195,10 +20264,9 @@ const TEXT_FAMILIES = [
     category: 'Religion',
     tradition: 'Hindu',
     description:
-      'The archive holds several distinct editions and collections of the Upanishads — ' +
-      'Müller’s complete two-volume translation, Charles Johnston’s edition, Aiyar’s ' +
-      'Thirty Minor Upanishads, and the individual SBE volumes — preserved separately ' +
-      'rather than collapsed into one stream.',
+      'Browse the family either by individual Upanishad or by collection / edition. ' +
+      'Each route preserves its source witness — every card credits its translator, ' +
+      'edition, and year. No source files were merged.',
     members: [
       { textId: 'upanishads',                role: 'primary', note: 'Müller — complete (SBE Vol. I + XV, merged)' },
       { textId: 'upanishads-johnson',        role: 'primary', note: 'Charles Johnston edition' },
@@ -20255,6 +20323,87 @@ const _TEXT_FAMILY_BY_TEXTID = (() => {
   }
   return map;
 })();
+
+// ════════════════════════════════════════════════════════════════
+//  TEXT CONTENTS OVERRIDES (v100 doctrine)
+// ────────────────────────────────────────────────────────────────
+//  Some source files carry uneven internal sectioning — sub-chapter
+//  headings ("Adhyaya I", "Khanda IV"), editorial chrome ("Program
+//  of a Translation", "(Total)"), or thematic ordering — which made
+//  their v97 codex-leaf contents page read as a list of source
+//  fragments rather than a clean entry index.
+//
+//  TEXT_CONTENTS_OVERRIDES lets a record opt into:
+//    · hideFrontMatter   suppress the ✦ Front Matter button when
+//                        the fm passages are editorial boilerplate
+//    · titleOverride     replace the display title (used to clean
+//                        "The_Upanishads" → "The Upanishads —
+//                        legacy reprint")
+//    · note              prose annotation rendered above the
+//                        contents grid (italic, restrained)
+//    · entries           explicit list of cleanly-routable L1 keys
+//                        with display names. When present, the
+//                        cover renders ONLY these entries; the
+//                        source file is preserved untouched.
+//    · mode              advisory label only (clean-upanishad-list
+//                        / minor-upanishad-list / source-volume /
+//                        thematic / legacy)
+//
+//  The key is the catalog `entry.id` (one entry per data_file).
+//  Records without an override fall through to the standard v95-v99
+//  rendering path.
+//
+//  No source files are merged, rewritten, or deleted — this is pure
+//  presentation config.
+const TEXT_CONTENTS_OVERRIDES = {
+  'upanishads': {
+    mode: 'clean-upanishad-list',
+    hideFrontMatter: true,
+    note: 'Müller’s complete merged translation. The contents below are the ten principal Upanishads in source order. Each entry routes to the start of that Upanishad.',
+  },
+  'upanishads-30-minor-aiyar': {
+    mode: 'minor-upanishad-list',
+    hideFrontMatter: true,
+    note: 'Aiyar’s collection of thirty lesser Upanishads. The entries below are the Upanishads whose internal sectioning is clean enough for direct routing. Some other Upanishads named in the table of contents have their text split across following sub-section keys — they remain reachable by reading through the collection, but are not yet cleanly indexed individually.',
+    entries: [
+      { key: '4',  name: 'Sarvasara Upanishad' },
+      { key: '5',  name: 'Niralamba Upanishad' },
+      { key: '17', name: 'Adhyatma Upanishad' },
+      { key: '35', name: 'Vajrasuchi Upanishad' },
+      { key: '37', name: 'Garbha Upanishad' },
+      { key: '38', name: 'Tarasara Upanishad' },
+      { key: '55', name: 'Yogatattva Upanishad' },
+      { key: '56', name: 'Dhyanabindu Upanishad' },
+      { key: '57', name: 'Hamsa Upanishad' },
+      { key: '68', name: 'Nadabindu Upanishad' },
+    ],
+  },
+  'upanishads-muller-part1': {
+    mode: 'source-volume',
+    hideFrontMatter: true,
+    note: 'Source-volume witness — Sacred Books of the East, Vol. I (Müller, 1879). The internal divisions below are the source file’s own sectioning (with editorial chrome). For clean per-Upanishad reading, open <em>The Upanishads — Müller, complete</em> from the family page.',
+  },
+  'upanishads-muller-part2': {
+    mode: 'source-volume',
+    hideFrontMatter: true,
+    note: 'Source-volume witness — Sacred Books of the East, Vol. XV (Müller, 1884). The internal divisions below are the source file’s own sectioning (with editorial chrome). For clean per-Upanishad reading, open <em>The Upanishads — Müller, complete</em> from the family page.',
+  },
+  'upanishads-johnson': {
+    mode: 'thematic',
+    note: 'This edition is organised thematically by Charles Johnston, not as a simple Upanishad-by-Upanishad sequence. Section labels reflect the translator’s own structure.',
+  },
+  'the-upanishads-max-muller-1879': {
+    mode: 'legacy',
+    titleOverride: 'The Upanishads — legacy reprint',
+    hideFrontMatter: true,
+    note: 'Legacy duplicate / source-ingestion record (1900 reprint of Müller, 1879/1884). For the clean reader-facing collection, use <em>The Upanishads — Müller, complete</em> from the family page. This record is preserved for scholarly continuity.',
+  },
+};
+
+function _contentsOverrideFor(entry) {
+  if (!entry || !entry.id) return null;
+  return TEXT_CONTENTS_OVERRIDES[entry.id] || null;
+}
 
 function _familyForTextId(textId) {
   return _TEXT_FAMILY_BY_TEXTID[textId] || null;
