@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v93-genealogy-lineage-prototype">
+  <meta name="atlas-build" content="v94-static-contents-pages">
   <title>Digital Archive</title>
   <style>
 
@@ -1483,6 +1483,67 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+}
+/* ── Codex-leaf (non-Bible) contents grid ────────────────────────
+   Non-Bible enumerable texts (Tao Te Ching, Bhagavad Gita, Analects,
+   Quran, etc.) share the same title-leaf composition as the Bible
+   but emit a single generic grid section (data-canon="codex"). They
+   need a more generous per-plate width than Bible's 6/7 columns
+   because their L1 buttons carry chapter titles ("Chapter 1 —
+   Embodying the Tao") instead of short book names ("Genesis").
+
+   The grid auto-fills based on viewport — 4 wide columns at laptop,
+   2 on tablet, 1 on narrow phones — so chapter titles always read
+   without clipping or pushing the leaf below the fold. Plate labels
+   wrap to up to two lines (codex titles are longer than book names
+   but still bounded). v94 — static-contents-pages. */
+.bible-cover-layout.codex-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list,
+.bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 4px 14px;
+}
+@media (min-width: 1280px) {
+  .bible-cover-layout.codex-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list,
+  .bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 5px 20px;
+  }
+}
+.bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list li {
+  background: rgba(120, 90, 50, 0.04);
+  border-color: rgba(120, 90, 50, 0.08);
+  padding: 5px 9px 5px 6px;
+  line-height: 1.2;
+}
+.bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list li:hover {
+  background: rgba(120, 90, 50, 0.12);
+  border-color: rgba(120, 90, 50, 0.3);
+}
+.bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list .cc-toc-name {
+  /* Codex chapter titles may wrap to a second line — bounded so
+     no plate grows past two lines of measured ink. */
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.78em;
+  line-height: 1.22;
+}
+.bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list .cc-toc-num {
+  align-self: flex-start;
+  padding-top: 2px;
+}
+/* Codex sub-rubric — italic line under the title declaring count
+   + L1 type. Matches the Bible's silent canon-rubric tone. */
+.bible-cover-layout .bcl-codex-sub {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+  color: rgba(110, 65, 25, 0.72);
+  text-align: center;
+  margin: -8px 0 14px;
 }
 /* Citation apparatus — a quiet italic disclosure anchored to the
    top-right corner of the title leaf. Reads as a marginal scholarly
@@ -10740,7 +10801,19 @@ function groupName(key) {
       const name = BOOK_NAMES[bk] || bk;
       return `${name} ${ch}`;
     }
-    return BOOK_NAMES[key] || key;
+    // Bible-shaped texts: use the BOOK_NAMES atlas for friendly
+    // names. Non-Bible texts with a `book` L1 (e.g., Analects)
+    // have no BOOK_NAMES entry — surface chapter_titles if present,
+    // else fall back to "Book N". Never expose a bare numeric key
+    // as the contents-page button label.
+    const mapped = BOOK_NAMES[key];
+    if (mapped) return mapped;
+    const titles = currentData && currentData.chapter_titles;
+    const t = titles && (titles[key] || titles[Number(key)]);
+    if (t) return `Book ${key} — ${t}`;
+    // Numeric-keyed non-Bible book — render as labelled button.
+    if (/^\d+$/.test(String(key))) return `Book ${key}`;
+    return key;
   }
   if (level === 'surah')     return SURAH_NAMES[Number(key)] || `Surah ${key}`;
   if (level === 'upanishad') return UPANISHAD_NAMES[key] || key;
@@ -10792,6 +10865,20 @@ function groupName(key) {
   }
   if (level === 'rule') {
     return String(key);
+  }
+  // \u2500\u2500 Generic codex-cover labelling \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+  // For every other L1 type (book non-Bible, section, part, volume,
+  // treatise, question, article, \u2026) produce a labelled button rather
+  // than a bare numeric key. The label is `<Capitalised level> <key>`
+  // with an optional ` \u2014 <title>` appended when chapter_titles carries
+  // one for this key. This is what makes non-Bible TOC pages read as a
+  // codex index rather than a list of integers.
+  if (typeof level === 'string' && level.length) {
+    const titles = currentData && currentData.chapter_titles;
+    const t = titles && (titles[key] || titles[Number(key)]);
+    const labelWord = level.charAt(0).toUpperCase() + level.slice(1);
+    const base = `${labelWord} ${key}`;
+    return t ? `${base} \u2014 ${t}` : base;
   }
   return key;
 }
@@ -12083,11 +12170,47 @@ function showCover(data, entry) {
   // metadata in a left column, citations as a quiet side panel,
   // contents in a multi-column grid so all 80 books fit on one
   // normal laptop viewport without scrolling.
+  //
+  // v94 — Every text with an enumerable L1 (Bible, Tao, Gita, Quran,
+  // Analects, Aquinas, etc.) now gets the same codex-leaf shell. The
+  // class name `.bible-cover-layout` predates this generalisation; an
+  // alias `.codex-cover-layout` rides alongside on non-Bible texts so
+  // future styling can address only the broader case. Bible-only
+  // affordances (canon segmentation, Atlas Index, Bible-Versions
+  // back-arrow) remain gated on `isBibleCover`. See
+  // STATIC_CONTENTS_PAGES.md.
   const isBibleCover = data.hierarchy && data.hierarchy[0] === 'book'
                                       && data.hierarchy[1] === 'chapter';
 
+  // ── Pre-compute TOC keys + grouping ──────────────────────────
+  // Hoisted before HTML assembly so the codex-leaf shell decision
+  // (useCodexLayout) can be made up-front instead of patched in
+  // later. `grouped` is true when the text has between 2 and 200
+  // enumerable L1 entries — the band where a button grid reads as
+  // a contents page rather than a wall of links.
+  const hier = data.hierarchy || [];
+  const seen = new Set();
+  const keys = [];
+  for (const p of data.passages) {
+    const k = String(p.path[0]);
+    if (!seen.has(k)) { seen.add(k); keys.push(k); }
+  }
+  const grouped = needsGroupSelector() && keys.length > 1 && keys.length <= 200;
+  const useCodexLayout = isBibleCover || grouped;
+  const hasFrontMatter = data.passages.some(p => p.fm);
+  const bodyCount = data.passages.filter(p => !p.fm).length;
+
   let html = '';
-  if (isBibleCover) html += '<div class="bible-cover-layout">';
+  if (useCodexLayout) {
+    // Codex-leaf shell for every enumerable text. Bible carries
+    // canon segmentation + Atlas Index + back-to-versions; other
+    // codex texts get one generic grid + a single "Read from
+    // beginning" CTA. Both share the same composition.
+    const layoutClasses = isBibleCover
+      ? 'bible-cover-layout'
+      : 'bible-cover-layout codex-cover-layout';
+    html += `<div class="${layoutClasses}">`;
+  }
   // Back-up-the-hierarchy affordance — only on the Bible cover.
   // The conceptual order is Home → Religion → Christian → Bible
   // Versions → KJV title leaf → Reading Room. From the title leaf
@@ -12131,11 +12254,13 @@ function showCover(data, entry) {
     `<div class="cc-cite"><span class="cc-cite-label">APA</span> <span class="cc-cite-text">${apa}</span></div>` +
     '</div>';
 
-  // Citation placement differs by hierarchy.
-  //   Non-Bible: centered inline beneath the title, as before.
-  //   Bible: a quiet italic disclosure anchored to the top-right
-  //   corner of the title leaf (added after #continuous-cover closes).
-  if (!isBibleCover) {
+  // Citation placement.
+  //   Codex-leaf texts (Bible AND any other enumerable text): a
+  //   quiet disclosure anchored to the top-right corner of the
+  //   title leaf, added after #continuous-cover closes.
+  //   Flat / non-enumerable texts: citations are centered inline
+  //   beneath the title, as before.
+  if (!useCodexLayout) {
     html += citationsHTML;
   }
 
@@ -12143,38 +12268,31 @@ function showCover(data, entry) {
     html += `<div class="cc-stewardship"><a class="stewardship-link" href="${escapeHTML(data.stewardship_history_url)}">Stewardship history</a></div>`;
   }
 
-  if (!isBibleCover) html += '<div class="cc-rule"></div>';
+  if (!useCodexLayout) html += '<div class="cc-rule"></div>';
   html += '</div>';
 
-  if (isBibleCover) {
+  if (useCodexLayout) {
     html += '<details class="cite-corner">' +
             '<summary>Cite this text</summary>' +
             citationsHTML +
             '</details>';
   }
 
-  // Build TOC
-  const hier = data.hierarchy || [];
-  const seen = new Set();
-  const keys = [];
-  for (const p of data.passages) {
-    const k = String(p.path[0]);
-    if (!seen.has(k)) { seen.add(k); keys.push(k); }
-  }
-  const grouped = needsGroupSelector() && keys.length > 1 && keys.length <= 200;
-
-  // Check for front-matter passages
-  const hasFrontMatter = data.passages.some(p => p.fm);
-  const bodyCount = data.passages.filter(p => !p.fm).length;
-
   html += '<div id="continuous-toc">';
-  if (!isBibleCover) {
+  if (!useCodexLayout) {
     html += `<div class="cc-toc-heading">Contents</div>`;
     if (grouped) {
       html += `<div class="cc-toc-sub">${keys.length} ${hier[0] || 'section'}s \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
     } else {
       html += `<div class="cc-toc-sub">${bodyCount.toLocaleString()} passages</div>`;
     }
+  } else if (!isBibleCover) {
+    // Codex-leaf sub-rubric — quiet italic line under the title
+    // declaring the count + the L1 type ("18 chapters · 295
+    // passages"). Mirrors the Bible's silent canon-rubric tone.
+    const labelWord = hier[0] || 'section';
+    const plural = labelWord + (labelWord.endsWith('s') ? '' : 's');
+    html += `<div class="cc-toc-sub bcl-codex-sub">${keys.length} ${plural} \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
   }
 
   // Front Matter button — always first if it exists
@@ -12208,21 +12326,27 @@ function showCover(data, entry) {
       html += '</ul>';
       html += '</section>';
     }
+  } else if (useCodexLayout && grouped) {
+    // Non-Bible codex — one generic grid using the same
+    // .bcl-canon-list styling as the Bible's canon grids (pill
+    // number badges, multi-column auto-flow). No canon segmentation.
+    html += '<section class="bcl-canon-section" data-canon="codex">';
+    html += '<ul class="cc-toc-list bcl-canon-list">';
+    keys.forEach((k, i) => {
+      html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+    });
+    html += '</ul>';
+    html += '</section>';
   } else {
+    // Flat / non-enumerable text — a single "Read the full text"
+    // plate (no codex shell wrapping this branch).
     html += '<ul class="cc-toc-list">';
-    if (grouped) {
-      keys.forEach((k, i) => {
-        html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
-      });
-    } else {
-      html += `<li data-book="__all__"><span class="cc-toc-num">&rarr;</span><span class="cc-toc-name">Read the full text</span></li>`;
-    }
+    html += `<li data-book="__all__"><span class="cc-toc-num">&rarr;</span><span class="cc-toc-name">Read the full text</span></li>`;
     html += '</ul>';
   }
   // Atlas Index — quiet manuscriptal utility above the Reading
-  // Room threshold. Same family as the enter plate but lighter:
-  // no gradient, no ornament, no flourish. Reads as "view the
-  // codex's witness structure", not as an action.
+  // Room threshold. Bible only — the Atlas Index ledger is wired
+  // to the Bible's chapter/verse witness structure.
   if (isBibleCover) {
     html += '<div class="bcl-atlas-index-wrap">' +
             '<button type="button" class="bcl-atlas-index-btn" ' +
@@ -12232,14 +12356,18 @@ function showCover(data, entry) {
   }
 
   if (grouped) {
+    // Same "Enter / Read from beginning" CTA in the codex-leaf
+    // family for every enumerable text. Bible uses the explicit
+    // Reading-Room threshold label; other codex texts use a
+    // plainer rubric.
     const label = isBibleCover ? 'Enter the Reading Room' : 'Read from beginning &rarr;';
-    const cls   = isBibleCover ? 'cc-begin bcl-enter-btn' : 'cc-begin';
-    const wrap  = isBibleCover ? 'cc-begin-wrap bcl-enter-wrap' : 'cc-begin-wrap';
+    const cls   = useCodexLayout ? 'cc-begin bcl-enter-btn' : 'cc-begin';
+    const wrap  = useCodexLayout ? 'cc-begin-wrap bcl-enter-wrap' : 'cc-begin-wrap';
     html += `<div class="${wrap}"><div class="${cls}" id="cc-begin-btn">${label}</div></div>`;
   }
   html += '</div>';
 
-  if (isBibleCover) html += '</div>';
+  if (useCodexLayout) html += '</div>';
 
   $textHeader.innerHTML = html;
   $textHeader.style.display = 'block';
