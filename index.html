@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v100-upanishads-contents-cleanup">
+  <meta name="atlas-build" content="v101-upanishads-witness-picker">
   <title>Digital Archive</title>
   <style>
 
@@ -2747,6 +2747,160 @@ button.home-path {
 .byupn-note em {
   font-style: normal;
   color: rgba(110, 65, 25, 0.92);
+}
+
+/* ── v101 — "Named but not yet routable" disclosure on the family
+   page. Collapsed by default; reveals the inactive Upanishads with
+   their reason (Mandukya / Aitareya / Upadeśā I–IX). Quiet italic
+   register so it sits beneath the active grid rather than competing
+   with it. */
+.byupn-inactive {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  margin: 14px 0 6px;
+  font-size: 13px;
+  color: rgba(95, 75, 50, 0.78);
+}
+.byupn-inactive > summary {
+  cursor: pointer;
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  color: rgba(110, 75, 35, 0.78);
+  list-style: none;
+  padding: 4px 0;
+  outline: none;
+}
+.byupn-inactive > summary::before {
+  content: '› ';
+  color: rgba(110, 75, 35, 0.55);
+}
+.byupn-inactive[open] > summary::before { content: '⌄ '; }
+.byupn-inactive ul {
+  margin: 6px 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+.byupn-inactive li {
+  margin: 6px 0;
+  line-height: 1.5;
+  font-style: italic;
+}
+.byupn-inactive-name {
+  font-style: normal;
+  color: rgba(60, 30, 10, 0.92);
+  font-weight: 500;
+}
+
+/* ── v101 — Witness picker (Upanishad detail view) ─────────────
+   Replaces the family-page grid when the reader clicks an
+   Upanishad card. Lives inside the same browse / on-shelf-page
+   scaffold so it scrolls naturally and keeps the breadcrumb. */
+.upn-detail {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.upn-back {
+  display: inline-block;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  padding: 4px 14px;
+  background: transparent;
+  border: 1px solid rgba(120, 90, 50, 0.26);
+  border-radius: 2px;
+  color: rgba(110, 65, 25, 0.78);
+  cursor: pointer;
+  margin: 0 0 14px;
+  transition: color 0.18s ease-out, border-color 0.18s ease-out,
+              background 0.18s ease-out;
+}
+.upn-back:hover, .upn-back:focus-visible {
+  color: rgba(60, 30, 10, 0.96);
+  border-color: rgba(120, 70, 25, 0.55);
+  background: rgba(150, 110, 60, 0.06);
+  outline: none;
+}
+.upn-detail-intro {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(95, 75, 50, 0.86);
+  margin: 0 0 18px;
+}
+.upn-detail-intro em {
+  font-style: normal;
+  color: rgba(110, 65, 25, 0.92);
+}
+.upn-detail-empty {
+  font-style: italic;
+  color: rgba(95, 75, 50, 0.7);
+  padding: 12px 0;
+}
+.byupn-witness-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.byupn-witness-card {
+  background: var(--shelf-card-surface, #f6f0e2);
+  border: 1px solid var(--shelf-card-edge, rgba(120, 95, 60, 0.20));
+  border-radius: 4px;
+  padding: 12px 16px;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(60, 42, 22, 0.04);
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s,
+              transform 0.12s;
+  outline: none;
+}
+.byupn-witness-card:hover, .byupn-witness-card:focus-visible {
+  border-color: rgba(120, 70, 25, 0.5);
+  background: var(--shelf-card-surface-hover, #fbf6ea);
+  box-shadow: 0 2px 6px rgba(60, 42, 22, 0.10);
+  transform: translateY(-1px);
+}
+.byupn-witness-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.byupn-witness-role {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: rgba(110, 75, 35, 0.78);
+}
+.byupn-witness-title {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 15px;
+  color: rgba(40, 22, 6, 0.95);
+  letter-spacing: 0.01em;
+}
+.byupn-witness-credit {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(110, 75, 35, 0.85);
+  margin-top: 2px;
+}
+.byupn-witness-note {
+  margin-top: 4px;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(95, 75, 50, 0.7);
+  line-height: 1.4;
+}
+.upn-witness-startroute {
+  font-style: italic;
+  color: rgba(95, 75, 50, 0.65);
 }
 
 /* Section dividers within text lists */
@@ -20111,28 +20265,37 @@ function browseTextFamily(familyId) {
   if (fam.description) {
     html += `<div class="family-description">${escH(fam.description)}</div>`;
   }
-  // v100 — Browse by Upanishad now comes FIRST (it is the reader-
-  // facing path); Browse by collection follows as the bibliographic
-  // / source path. Only families with a byUpanishad inventory get
-  // the reader-facing section.
+  // v101 — Browse by Upanishad is the default / reader-facing view.
+  // Cards are sorted by `order` (traditional principal sequence,
+  // then Aiyar order for minors). Click → inline witness picker
+  // (showUpanishadDetail) that replaces the family-page grid with
+  // a single Upanishad's witness list + back affordance.
   if (Array.isArray(fam.byUpanishad) && fam.byUpanishad.length) {
     html += '<div class="family-section-heading">Browse by Upanishad</div>';
-    const principal = fam.byUpanishad.filter(u => u.cls === 'principal');
-    const minor     = fam.byUpanishad.filter(u => u.cls === 'minor');
+    const sorted = fam.byUpanishad.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+    const principal = sorted.filter(u => u.importance === 'principal');
+    const minor     = sorted.filter(u => u.importance === 'minor');
     if (principal.length) {
       html += `<div class="tile-section-label">Principal Upanishads</div>`;
       html += '<div class="byupn-grid">';
-      for (const u of principal) html += _byUpanishadTileHTML(u);
+      for (const u of principal) html += _byUpanishadTileHTML(u, fam.id);
       html += '</div>';
     }
     if (minor.length) {
       html += `<div class="tile-section-label">Minor Upanishads (Aiyar collection)</div>`;
       html += '<div class="byupn-grid">';
-      for (const u of minor) html += _byUpanishadTileHTML(u);
+      for (const u of minor) html += _byUpanishadTileHTML(u, fam.id);
       html += '</div>';
     }
-    if (fam.byUpanishadNote) {
-      html += `<div class="byupn-note">${fam.byUpanishadNote}</div>`;
+    if (Array.isArray(fam.byUpanishadInactive) && fam.byUpanishadInactive.length) {
+      html += '<details class="byupn-inactive">';
+      html += '<summary>Named but not yet individually routable</summary>';
+      html += '<ul>';
+      for (const it of fam.byUpanishadInactive) {
+        html += `<li><span class="byupn-inactive-name">${escH(it.name)}</span> — ${escH(it.reason)}</li>`;
+      }
+      html += '</ul>';
+      html += '</details>';
     }
   }
   // Browse by collection — bibliographic path. Comes after the
@@ -20149,25 +20312,106 @@ function browseTextFamily(familyId) {
   $browseTiles.innerHTML = html;
 }
 
-// v99 — A single Upanishad card on the "Browse by Upanishad"
-// section. Carries the normalised name, witness-count badge, and an
-// italic credit line (translator + edition + year). Click routes
-// directly into the reading room at the witness's source section.
-function _byUpanishadTileHTML(u) {
-  const w = u.witnesses && u.witnesses[0];
-  if (!w) return '';
-  const witnessCount = u.witnesses.length;
-  const witnessBadge = witnessCount > 1
-    ? `<span class="tt-badge">${witnessCount} witnesses</span>`
+// v101 — A single Upanishad card on the "Browse by Upanishad"
+// section. Click opens the witness picker (showUpanishadDetail).
+// The card carries the normalised name, an italic small-caps
+// importance badge, a witness count when >1, and a quiet credit
+// preview of the primary witness so the user can see which edition
+// they would land in before clicking.
+function _byUpanishadTileHTML(u, familyId) {
+  const witnesses = (u.witnesses || []).filter(
+    w => w.routeQuality === 'safe' || w.routeQuality === 'safe-start');
+  if (!witnesses.length) return '';
+  const primary = witnesses[0];
+  const witnessBadge = witnesses.length > 1
+    ? `<span class="tt-badge byupn-witness-count">${witnesses.length} witnesses</span>`
     : '';
-  const onclick = `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
+  const credit = primary.translator + ' · ' + primary.year;
+  const onclick = `showUpanishadDetail('${escH(familyId)}','${escH(u.key)}')`;
   return `<div class="text-tile byupn-tile" onclick="${onclick}">
     <div class="tt-info">
-      <div class="tt-title">${escH(u.name)} <span class="byupn-up">Upanishad</span></div>
-      <div class="tt-meta byupn-credit">${escH(w.sourceLabel)}</div>
+      <div class="tt-title">${escH(u.displayTitle || (u.name + ' Upanishad'))}</div>
+      <div class="tt-meta byupn-credit">${escH(credit)}</div>
     </div>
     ${witnessBadge}
   </div>`;
+}
+
+// v101 — Witness picker. Replaces the family-page grid with a
+// detail view for one Upanishad: title, witness list (each card
+// crediting translator + edition + year + role + route-quality
+// note), and a back link returning to the full family page.
+//
+// Lives inside the same showBrowse() scaffold so the page-type
+// state stays on-shelf-page (scrolls naturally) and the breadcrumb
+// keeps the family-page context.
+function showUpanishadDetail(familyId, upnKey) {
+  const fam = TEXT_FAMILIES.find(f => f.id === familyId);
+  if (!fam || !Array.isArray(fam.byUpanishad)) return;
+  const u = fam.byUpanishad.find(x => x.key === upnKey);
+  if (!u) return;
+
+  // Update breadcrumb to add the Upanishad as the deepest rung.
+  const cat = fam.category, trd = fam.tradition;
+  $browseCrumb.innerHTML =
+    `<a onclick="browseHome()">Home</a><span class="sep">›</span>` +
+    `<a onclick="browseCategory('${escH(cat)}')">${escH(cat)}</a>` +
+    `<span class="sep">›</span>` +
+    `<a onclick="browseTradition('${escH(cat)}','${escH(trd)}')">${escH(trd)}</a>` +
+    `<span class="sep">›</span>` +
+    `<a onclick="browseTextFamily('${escH(familyId)}')">${escH(fam.title)}</a>` +
+    `<span class="sep">›</span>${escH(u.displayTitle || u.name)}`;
+  $browseTitle.textContent = u.displayTitle || (u.name + ' Upanishad');
+  document.getElementById('browse-toolbar').style.display = 'none';
+
+  // Reset reader scroll so the detail view starts at the top.
+  $reader.scrollTop = 0;
+
+  let html = '';
+  html += `<div class="upn-detail">`;
+  html += `<button type="button" class="upn-back" onclick="browseTextFamily('${escH(familyId)}')">&larr; All Upanishads</button>`;
+  html += `<div class="upn-detail-intro">Available witnesses for the <em>${escH(u.displayTitle || u.name)}</em>. Each route preserves its source credit.</div>`;
+
+  const safeWitnesses = (u.witnesses || []).filter(
+    w => w.routeQuality === 'safe' || w.routeQuality === 'safe-start');
+  if (safeWitnesses.length) {
+    html += '<div class="tile-section-label">Witnesses</div>';
+    html += '<ul class="byupn-witness-list">';
+    for (const w of safeWitnesses) {
+      html += _witnessTileHTML(w);
+    }
+    html += '</ul>';
+  } else {
+    html += '<div class="upn-detail-empty">No routable witness available yet.</div>';
+  }
+
+  html += `</div>`;
+  $browseTiles.className = 'upn-detail-wrap';
+  $browseTiles.innerHTML = html;
+}
+
+function _witnessTileHTML(w) {
+  const roleLabel = ({
+    'primary':       'Primary reading witness',
+    'source-volume': 'Source-volume witness',
+    'thematic':      'Thematic edition',
+    'legacy':        'Legacy / duplicate record',
+    'anthology':     'Anthology / extract',
+  })[w.role] || w.role || '';
+  const note = w.note || '';
+  const startRouteHint = (w.routeQuality === 'safe-start')
+    ? ' <span class="upn-witness-startroute">enters at the Upanishad’s starting passage; content continues across following sections</span>'
+    : '';
+  const onclick = `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
+  return `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0">
+    <div class="byupn-witness-head">
+      <span class="byupn-witness-role">${escH(roleLabel)}</span>
+    </div>
+    <div class="byupn-witness-title">${escH(w.sourceTitle || '')}</div>
+    <div class="byupn-witness-credit">${escH(w.translator || '')} · ${escH(w.year || '')}</div>
+    ${note ? `<div class="byupn-witness-note">${escH(note)}${startRouteHint}</div>`
+           : (startRouteHint ? `<div class="byupn-witness-note">${startRouteHint}</div>` : '')}
+  </li>`;
 }
 
 // v99 — Routing helper. The reader's existing pendingSection
@@ -20276,40 +20520,298 @@ const TEXT_FAMILIES = [
       { textId: 'the-upanishads-max-muller-1879', role: 'legacy', note: '1900 reprint — legacy duplicate' },
     ],
     primaryMemberId: 'upanishads',
-    // v99 — per-Upanishad witnesses. Only Upanishads with a verified
-    // clean L1 entry in a source file appear here. The audit lives in
-    // reports/v99_upanishads_inventory.md; routing uses pendingSection
-    // (a flag the existing loadText() already honours).
+    // v101 — Richer per-Upanishad index with witness records.
+    //
+    // Each entry carries:
+    //   key           stable id used by the witness picker
+    //   name          short reader-facing name (no "Upanishad" suffix)
+    //   displayTitle  full reader-facing title
+    //   importance    'principal' | 'minor'
+    //   order         numeric sort key (traditional ordering)
+    //   witnesses[]   array of { textId, groupKey, sourceTitle,
+    //                            translator, year, role, routeQuality }
+    //                 - role: 'primary' | 'source-volume' | 'thematic'
+    //                         | 'legacy' | 'anthology'
+    //                 - routeQuality: 'safe' | 'safe-start' | 'uncertain'
+    //                   ('safe-start' = title L1 is clean and the
+    //                    Upanishad's content continues across following
+    //                    sub-section L1 keys until the next named
+    //                    Upanishad; the reader lands at the right
+    //                    starting point and can read forward.)
+    //
+    // Only routeQuality === 'safe' or 'safe-start' witnesses are
+    // rendered as active. Uncertain ones live in `byUpanishadInactive`
+    // below for transparency.
+    //
+    // Principal order follows the traditional sequence (Isha → Kena →
+    // Katha → Prasna → Mundaka → Mandukya → Taittiriya → Aitareya →
+    // Chandogya → Brihadaranyaka → Svetasvatara → Kaushitaki). Minor
+    // order follows Aiyar's source order.
     byUpanishad: [
-      // Principal Upanishads (Müller complete; one witness each)
-      { name: 'Isha',           cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'isha',           sourceLabel: 'Müller, complete · 1879' }] },
-      { name: 'Kena',           cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'kena',           sourceLabel: 'Müller, complete · 1879' }] },
-      { name: 'Katha',          cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'katha',          sourceLabel: 'Müller, complete · 1884' }] },
-      { name: 'Prasna',         cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'prasna',         sourceLabel: 'Müller, complete · 1884' }] },
-      { name: 'Mundaka',        cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'mundaka',        sourceLabel: 'Müller, complete · 1884' }] },
-      { name: 'Taittiriya',     cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'taittiriya',     sourceLabel: 'Müller, complete · 1884' }] },
-      { name: 'Chandogya',      cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'chandogya',      sourceLabel: 'Müller, complete · 1879' }] },
-      { name: 'Brihadaranyaka', cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'brihadaranyaka', sourceLabel: 'Müller, complete · 1884' }] },
-      { name: 'Svetasvatara',   cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'svetasvatara',   sourceLabel: 'Müller, complete · 1884' }] },
-      { name: 'Kaushitaki',     cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'kaushitaki',     sourceLabel: 'Müller, complete · 1879' }] },
-      // Minor Upanishads (Aiyar; clean L1 entries only)
-      { name: 'Sarvasara',  cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '4',  sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Niralamba',  cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '5',  sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Adhyatma',   cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '17', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Vajrasuchi', cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '35', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Garbha',     cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '37', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Tarasara',   cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '38', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Yogatattva', cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '55', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Dhyanabindu',cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '56', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Hamsa',      cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '57', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
-      { name: 'Nadabindu',  cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '68', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      // ── Principal Upanishads (Müller complete; one witness each) ──
+      { key: 'isha', name: 'Isha', displayTitle: 'Isha Upanishad',
+        importance: 'principal', order: 10,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'isha',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1879',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'kena', name: 'Kena', displayTitle: 'Kena Upanishad',
+        importance: 'principal', order: 20,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'kena',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1879',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'katha', name: 'Katha', displayTitle: 'Katha Upanishad',
+        importance: 'principal', order: 30,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'katha',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1884',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'prasna', name: 'Prasna', displayTitle: 'Prasna Upanishad',
+        importance: 'principal', order: 40,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'prasna',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1884',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'mundaka', name: 'Mundaka', displayTitle: 'Mundaka Upanishad',
+        importance: 'principal', order: 50,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'mundaka',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1884',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'taittiriya', name: 'Taittiriya', displayTitle: 'Taittiriya Upanishad',
+        importance: 'principal', order: 70,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'taittiriya',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1884',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'chandogya', name: 'Chandogya', displayTitle: 'Chandogya Upanishad',
+        importance: 'principal', order: 90,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'chandogya',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1879',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'brihadaranyaka', name: 'Brihadaranyaka', displayTitle: 'Brihadaranyaka Upanishad',
+        importance: 'principal', order: 100,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'brihadaranyaka',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1884',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'svetasvatara', name: 'Svetasvatara', displayTitle: 'Svetasvatara Upanishad',
+        importance: 'principal', order: 110,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'svetasvatara',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1884',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'kaushitaki', name: 'Kaushitaki', displayTitle: 'Kaushitaki Upanishad',
+        importance: 'principal', order: 120,
+        witnesses: [
+          { textId: 'upanishads', groupKey: 'kaushitaki',
+            sourceTitle: 'The Upanishads — Müller, complete',
+            translator: 'F. Max Müller', year: '1879',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      // ── Minor Upanishads (Aiyar, Thirty Minor; safe + safe-start) ──
+      { key: 'maitreya', name: 'Maitreya', displayTitle: 'Maitreya Upanishad',
+        importance: 'minor', order: 210,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '6',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Content continues across following Adhyaya sections.' },
+        ] },
+      { key: 'sarvasara', name: 'Sarvasara', displayTitle: 'Sarvasara Upanishad',
+        importance: 'minor', order: 220,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '4',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'niralamba', name: 'Niralamba', displayTitle: 'Niralamba Upanishad',
+        importance: 'minor', order: 230,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '5',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'kaivalya', name: 'Kaivalya', displayTitle: 'Kaivalya Upanishad',
+        importance: 'minor', order: 240,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '9',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'amrtabindu', name: 'Amrtabindu', displayTitle: 'Amrtabindu Upanishad',
+        importance: 'minor', order: 250,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '10',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'atmabodha', name: 'Atmabodha', displayTitle: 'Atmabodha Upanishad',
+        importance: 'minor', order: 260,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '11',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'skanda', name: 'Skanda', displayTitle: 'Skanda Upanishad',
+        importance: 'minor', order: 270,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '12',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Content continues across four following Adhyaya sections.' },
+        ] },
+      { key: 'adhyatma', name: 'Adhyatma', displayTitle: 'Adhyatma Upanishad',
+        importance: 'minor', order: 280,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '17',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'brahmopanishad', name: 'Brahmopanishad', displayTitle: 'Brahma Upanishad',
+        importance: 'minor', order: 290,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '34',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'vajrasuchi', name: 'Vajrasuchi', displayTitle: 'Vajrasuchi Upanishad',
+        importance: 'minor', order: 300,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '35',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'sariraka', name: "S'Ariraka", displayTitle: "S'Ariraka Upanishad",
+        importance: 'minor', order: 310,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '36',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'garbha', name: 'Garbha', displayTitle: 'Garbha Upanishad',
+        importance: 'minor', order: 320,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '37',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'tarasara', name: 'Tarasara', displayTitle: 'Tarasara Upanishad',
+        importance: 'minor', order: 330,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '38',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'narayana', name: 'Narayana', displayTitle: 'Narayana Upanishad',
+        importance: 'minor', order: 340,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '39',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'kalisantarana', name: 'Kalisantarana', displayTitle: 'Kalisantarana Upanishad',
+        importance: 'minor', order: 350,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '40',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'bhikshuka', name: 'Bhikshuka', displayTitle: 'Bhikshuka Upanishad',
+        importance: 'minor', order: 360,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '41',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'yogatattva', name: 'Yogatattva', displayTitle: 'Yogatattva Upanishad',
+        importance: 'minor', order: 370,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '55',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'dhyanabindu', name: 'Dhyanabindu', displayTitle: 'Dhyanabindu Upanishad',
+        importance: 'minor', order: 380,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '56',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'hamsa', name: 'Hamsa', displayTitle: 'Hamsa Upanishad',
+        importance: 'minor', order: 390,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '57',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
+      { key: 'amrtanada', name: 'Amrtanada', displayTitle: 'Amrtanada Upanishad',
+        importance: 'minor', order: 400,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '58',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start' },
+        ] },
+      { key: 'nadabindu', name: 'Nadabindu', displayTitle: 'Nadabindu Upanishad',
+        importance: 'minor', order: 410,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '68',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe' },
+        ] },
     ],
-    byUpanishadNote:
-      'Other minor Upanishads (Maitreya, Kaivalya, Amrtabindu, Atmabodha, Skanda, Kalisantarana, ' +
-      'Brahmopanishad, S’Ariraka, Narayana, Bhikshuka, Amrtanada, Upadeśā, and others) ' +
-      'are present in Aiyar’s collection but their internal sectioning is not yet clean enough ' +
-      'for per-Upanishad routing. Open ' +
-      '<em>Thirty Minor Upanishads</em> from the collection list above to read them in context.',
+    // Named in tradition or in the source files but not yet
+    // individually routable. Surfaced as a quiet note below the
+    // active grid so the reader knows they're not silently omitted.
+    byUpanishadInactive: [
+      { name: 'Mandukya',  importance: 'principal',
+        reason: 'Not found as a separately-keyed text in any audited source file in this archive. (Müller’s complete merge does not surface it; Aiyar’s Thirty Minor does not include it.)' },
+      { name: 'Aitareya',  importance: 'principal',
+        reason: 'Present in Müller Part 1 (Aitareya-Aranyaka, including the Aitareya Upanishad) but interleaved with Khandogya / Kaushitaki / Vagasaneyi-Samhita at the same source L1 key. Sub-key routing requires parser repair before an individual entry-point can be exposed.' },
+      { name: 'Upadeśā I–IX (Aiyar L1=42–50)', importance: 'minor',
+        reason: 'Nine sub-Brahmana “Upadeśā” sections in Aiyar without a clean Xxx-Upanishad boundary; cannot be safely surfaced as separate Upanishads without parser repair.' },
+    ],
   },
 ];
 
@@ -20364,7 +20866,7 @@ const TEXT_CONTENTS_OVERRIDES = {
   'upanishads-30-minor-aiyar': {
     mode: 'minor-upanishad-list',
     hideFrontMatter: true,
-    note: 'Aiyar’s collection of thirty lesser Upanishads. The entries below are the Upanishads whose internal sectioning is clean enough for direct routing. Some other Upanishads named in the table of contents have their text split across following sub-section keys — they remain reachable by reading through the collection, but are not yet cleanly indexed individually.',
+    note: 'Aiyar’s collection of thirty lesser Upanishads. For the organised by-Upanishad index across all sources, open <em>The Upanishads</em> family page (Hindu shelf).',
     entries: [
       { key: '4',  name: 'Sarvasara Upanishad' },
       { key: '5',  name: 'Niralamba Upanishad' },
