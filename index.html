@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v92-cosmogram-legibility">
+  <meta name="atlas-build" content="v92-object-material-independence">
   <title>Digital Archive</title>
   <style>
 
@@ -3191,14 +3191,17 @@ mark.search-hl-active {
   /* Warm charcoal vignette — archival darkness, deeper than
      pure black at the edges so the chamber feels enclosed.
      The radial focus concentrates light on the consulted
-     object while the room walls fall into near-opacity. */
+     object while the room walls fall into near-opacity. v92:
+     stops shifted one notch darker so the new ivory Atlas
+     Object plates read as lit objects in a darker chamber
+     rather than warm panels on warm air. */
   background:
     radial-gradient(
       ellipse 75% 80% at center,
-      rgba(32, 24, 16, 0.86) 0%,
-      rgba(20, 14, 8, 0.94) 35%,
-      rgba(10, 7, 4, 0.985) 75%,
-      rgba(4, 3, 2, 1) 100%
+      rgba(26, 18, 12, 0.90) 0%,
+      rgba(16, 11, 6, 0.96) 35%,
+      rgba(8, 5, 3, 0.99) 75%,
+      rgba(3, 2, 1, 1) 100%
     );
   /* v88 — Viewer reverts to non-scrolling, centered. Short
      witness leaves (commentary, linguistic, architecture,
@@ -5689,13 +5692,29 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    is the first implementation.
    ════════════════════════════════════════════════════════════ */
 .folio-leaf.cosmology-chamber {
-  /* v90 — Static, non-scrolling object frame. Override the
-     v77 chamber scroll envelope (max-height + overflow-y:auto
-     defined on .folio-leaf[class*="-chamber"]) so this object
-     never scrolls at the chamber level. Content fits or is
-     compressed. The chamber's own max-height pins the artifact
-     to the viewer height; padding moves to the inner header
-     and stage so the plate boundary sits at the leaf edge. */
+  /* v92 — Atlas Object material independence. The opened object
+     now reads as a museum object card, not as another sheet of
+     the warm-cream reading-room parchment or the warm-bone
+     witness vellum. Three material tokens scoped to the
+     chamber:
+       --ao-surface  — the outer plate (museum ivory)
+       --ao-panel    — the inner artifact field (cleaner ivory)
+       --ao-rail     — the inscribed margin (slightly cooler)
+     The plate boundary is stronger (1px outer ring + 1px
+     inner-frame hairline) and the drop shadow is deeper so the
+     plate visibly sits inside its chamber rather than floating
+     on the same paper. See OBJECT_MATERIAL_INDEPENDENCE.md. */
+  --ao-surface:    #efeadd;
+  --ao-panel:      #f4efe3;
+  --ao-rail:       #e6ddc9;
+  --ao-edge:       rgba(60, 42, 22, 0.34);
+  --ao-edge-inner: rgba(60, 42, 22, 0.10);
+  --ao-shadow:     0 34px 78px rgba(6, 4, 2, 0.66);
+
+  /* v90 — Static, non-scrolling object frame. The chamber's own
+     max-height pins the artifact to the viewer height; padding
+     moves to the inner header and stage so the plate boundary
+     sits at the leaf edge. */
   max-height: calc(100vh - 36px);
   height: calc(100vh - 36px);
   overflow: hidden;
@@ -5705,25 +5724,22 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   display: flex;
   flex-direction: column;
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
-  color: rgba(50, 38, 22, 0.92);
-  /* Distinct object vellum — slightly cooler / drier than the
-     reading-room parchment, with a soft top/bottom plate
-     gradient so the opened object reads as a separately
-     prepared object surface, not as the verse-page parchment.
-     The inner box-shadow rules carry a hairline plate-edge
-     inset that frames the artifact without becoming chrome. */
+  color: rgba(48, 36, 22, 0.94);
+  /* Outer plate — museum ivory with a near-imperceptible top/
+     bottom edge wash so the plate has a faint sense of depth at
+     its head and foot. */
   background:
     linear-gradient(180deg,
-      rgba(40, 24, 10, 0.05) 0%,
-      rgba(40, 24, 10, 0.0) 56px,
-      rgba(40, 24, 10, 0.0) calc(100% - 56px),
-      rgba(40, 24, 10, 0.05) 100%),
-    #e3d6b9;
+      rgba(40, 24, 10, 0.045) 0%,
+      rgba(40, 24, 10, 0.0)  64px,
+      rgba(40, 24, 10, 0.0)  calc(100% - 64px),
+      rgba(40, 24, 10, 0.045) 100%),
+    var(--ao-surface);
   box-shadow:
-    inset 0 0 0 1px rgba(60, 40, 20, 0.20),
-    inset 0 0 0 9px transparent,
-    inset 0 0 0 10px rgba(80, 50, 25, 0.12),
-    0 28px 64px rgba(8, 6, 4, 0.55);
+    inset 0 0 0 1px var(--ao-edge),
+    inset 0 0 0 7px transparent,
+    inset 0 0 0 8px var(--ao-edge-inner),
+    var(--ao-shadow);
 }
 /* Suppress the witness-leaf footer entirely for this object.
    The closure register belongs to text witnesses; an artifact
@@ -5757,11 +5773,17 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   flex-direction: column;
   padding: 26px 0 22px 0;
   gap: 0;
+  /* v92 — Rail carries a distinct inscribed-margin tone (slightly
+     darker / cooler than the outer plate), so the rail reads as
+     a margin against the artifact field rather than blending into
+     a single bone sheet. The right edge is firmer to declare the
+     boundary between margin and field. */
   background:
     linear-gradient(90deg,
-      rgba(40, 24, 10, 0.07) 0%,
-      rgba(40, 24, 10, 0.00) 96%);
-  border-right: 1px solid rgba(80, 50, 25, 0.18);
+      rgba(40, 24, 10, 0.05) 0%,
+      rgba(40, 24, 10, 0.0)  100%),
+    var(--ao-rail);
+  border-right: 1px solid var(--ao-edge);
   min-height: 0;
   overflow: hidden;
 }
@@ -5772,7 +5794,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
    Margin echoes the rail's left inscription gutter. */
 .folio-leaf.cosmology-chamber .cc-rail-masthead {
   padding: 0 18px 22px 22px;
-  border-bottom: 1px solid rgba(80, 50, 25, 0.18);
+  border-bottom: 1px solid var(--ao-edge);
   margin-bottom: 18px;
 }
 .folio-leaf.cosmology-chamber .cc-rail-masthead .folio-leaf-provenance {
@@ -5828,11 +5850,11 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   font-variant: small-caps;
   letter-spacing: 0.18em;
   font-size: 0.78em;
-  color: rgba(95, 70, 40, 0.7);
+  color: rgba(90, 66, 36, 0.72);
   padding: 13px 16px 13px 14px;
   border: 0;
   background: transparent;
-  border-left: 2px solid rgba(80, 50, 25, 0.20);
+  border-left: 2px solid rgba(60, 42, 22, 0.22);
   cursor: pointer;
   text-align: left;
   transition: color 0.22s ease-out, background 0.22s ease-out,
@@ -5841,18 +5863,21 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 }
 .folio-leaf.cosmology-chamber .cc-tab-rail-item:hover,
 .folio-leaf.cosmology-chamber .cc-tab-rail-item:focus-visible {
-  color: rgba(60, 35, 12, 0.95);
-  background: rgba(80, 50, 25, 0.04);
+  color: rgba(50, 30, 10, 0.96);
+  background: rgba(60, 42, 22, 0.05);
   outline: none;
 }
 .folio-leaf.cosmology-chamber .cc-tab-rail-item--active {
-  color: rgba(40, 22, 6, 0.98);
+  color: rgba(34, 18, 4, 1);
   font-weight: 600;
+  /* v92 — Active tab on the new cool-bone rail. The wash now
+     bleeds rightward onto the artifact field edge so the active
+     layer reads as continuous with the panel it controls. */
   background:
     linear-gradient(90deg,
-      rgba(80, 50, 25, 0.12) 0%,
-      rgba(80, 50, 25, 0.02) 100%);
-  border-left: 3px solid rgba(120, 70, 25, 0.80);
+      rgba(60, 42, 22, 0.14) 0%,
+      rgba(60, 42, 22, 0.02) 100%);
+  border-left: 3px solid rgba(120, 70, 25, 0.85);
 }
 /* Right artifact panel — large, never scrolls. The cosmogram
    dominates its tab; text panels are compressed to fit. */
@@ -5862,6 +5887,17 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   min-height: 0;
   overflow: hidden;
   display: flex;
+  /* v92 — Artifact field. A cleaner ivory than the outer plate
+     so the panel reads as the lit object surface inside the
+     plate. No outer border; the rail's right edge already
+     declares the boundary on the left. A barely-there inset
+     hairline on the top/right/bottom marks the interior frame
+     without becoming chrome. */
+  background: var(--ao-panel);
+  box-shadow:
+    inset -1px 0 0 var(--ao-edge-inner),
+    inset 0 -1px 0 var(--ao-edge-inner),
+    inset 0  1px 0 var(--ao-edge-inner);
 }
 .folio-leaf.cosmology-chamber .cc-panel {
   display: none;
@@ -6135,9 +6171,13 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 .folio-leaf.cosmology-chamber .cc-archive {
   margin: 36px 0 8px;
   padding: 22px 24px 20px;
-  background: rgba(118, 116, 110, 0.07);
-  border: 1px solid rgba(110, 95, 75, 0.28);
-  border-left: 3px solid rgba(110, 95, 75, 0.55);
+  /* v92 — Faintly cooler gray wash so the archive block reads as
+     editorial marginalia stock against the new ivory artifact
+     field (the prior 0.07 wash disappeared on the cleaner
+     surface). */
+  background: rgba(100, 98, 92, 0.10);
+  border: 1px solid rgba(110, 95, 75, 0.32);
+  border-left: 3px solid rgba(110, 95, 75, 0.6);
   border-radius: 1px;
 }
 .folio-leaf.cosmology-chamber .cc-archive-rubric {
