@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v97-archive-path-formatting">
+  <meta name="atlas-build" content="v98-upanishads-family-grouping">
   <title>Digital Archive</title>
   <style>
 
@@ -245,11 +245,20 @@ body.chapter-room #reader { padding-top: 20px; }
    sits high in the viewport (~10-12px from the top), reader padding
    is compacted, and #reader is overflow-locked. Range chips handle
    long contents in lieu of scrolling. Shelf/category pages
-   (showBrowse) and reading pages (.in-reading) are untouched. */
+   (showBrowse) and reading pages (.in-reading) are untouched.
+   v98 — top padding trimmed further so the codex leaf nearly
+   touches the page chrome; the leaf's own border keeps it visually
+   floating. */
 body.on-text-contents #reader {
-  padding: 12px 32px 14px;
+  padding: 4px 32px 10px;
   overflow: hidden;
 }
+/* v98 — On the specific text contents page the metadata is already
+   on the leaf itself; the "About this text" info-bar above it is
+   redundant chrome that pushes the leaf down by ~52px. Hide it
+   while on-text-contents; the reading room and other surfaces are
+   untouched. */
+body.on-text-contents #info-bar { display: none !important; }
 /* Wide and dual measures push the reader's inner padding closer to
    the page edge so the codex spread breathes to the room's edges
    rather than sitting in a narrow centered band. */
@@ -870,12 +879,13 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 .bible-cover-layout {
   max-width: 1280px;
-  /* v96 — Pinned high. The codex leaf sits ~6-8px below the top of
-     #reader so the contents grid fits a normal laptop viewport
-     without scrolling. Side and bottom margins keep a small breath
-     so the plate still floats rather than touches the chrome. */
-  margin: 6px auto 14px;
-  padding: 18px 40px 22px;
+  /* v98 — Pinned higher. The codex leaf now nearly touches the top
+     of the #reader column (only a 2px breath between page chrome
+     and the leaf's plate edge). The leaf's own 1px ring and inner
+     hairline keep it from feeling jammed against the bezel. Bottom
+     margin preserved so the leaf still floats. */
+  margin: 2px auto 14px;
+  padding: 14px 40px 20px;
   position: relative;
   background: var(--codex-leaf-surface);
   border: 1px solid var(--codex-leaf-edge);
@@ -2571,6 +2581,78 @@ button.home-path {
   padding: 3px 8px;
   border-radius: 10px;
   font-family: system-ui, sans-serif;
+}
+
+/* ── v98 — Text-family tiles (Hindu → "The Upanishads" prototype)
+   A family card replaces multiple member tiles on the tradition
+   shelf. Visually it shares the same shelf-card material
+   (--shelf-card-surface) so the reader still feels "this is the
+   Hindu shelf"; the small italic "family" badge + ⧉ glyph signal
+   that this card opens into another shelf-level listing rather
+   than a single text.
+
+   Family-member tiles (inside the family page) drop the star
+   glyph slot and use the family role as a quiet badge. */
+.text-tile.family-tile {
+  border-color: rgba(120, 70, 25, 0.32);
+  background: linear-gradient(180deg,
+    var(--shelf-card-surface-hover, #fbf6ea) 0%,
+    var(--shelf-card-surface, #f6f0e2) 100%);
+}
+.text-tile.family-tile:hover {
+  border-color: rgba(120, 70, 25, 0.55);
+  background: linear-gradient(180deg,
+    #fbf6ea 0%,
+    #f6efde 100%);
+}
+.text-tile.family-tile .family-glyph {
+  color: rgba(120, 70, 25, 0.75);
+  font-size: 17px;
+  letter-spacing: 0;
+}
+.text-tile.family-tile .tt-title {
+  letter-spacing: 0.01em;
+}
+.text-tile .tt-badge.family-badge {
+  background: rgba(120, 70, 25, 0.10);
+  color: rgba(110, 65, 25, 0.85);
+  border: 1px solid rgba(120, 70, 25, 0.30);
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  border-radius: 2px;
+}
+
+/* Family page (browseTextFamily) — lives at one rung deeper than
+   the tradition shelf. The description sits above the grouped
+   member sections as a quiet italic note. */
+.family-description {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(95, 75, 50, 0.86);
+  max-width: 720px;
+  margin: -4px 0 18px;
+}
+#browse-tiles.family-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+.text-tile.family-member-tile {
+  /* Member cards sit in a single-column list inside the family
+     page so role labels stay aligned and titles get full measure
+     for their editor/year/note line. */
+}
+.text-tile .tt-badge.family-role-badge {
+  background: rgba(120, 95, 60, 0.10);
+  color: rgba(110, 75, 35, 0.85);
+  border: 1px solid rgba(120, 95, 60, 0.28);
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.10em;
+  border-radius: 2px;
 }
 
 /* Section dividers within text lists */
@@ -12513,9 +12595,17 @@ function showCover(data, entry) {
             '&larr; Bible Versions' +
             '</button>';
   } else if (useCodexLayout) {
+    // v98 — If this text is a family member, label the back
+    // button with the family title so the user can see exactly
+    // where it returns to ("← The Upanishads" rather than the
+    // generic "← All Texts").
+    const _famHere = (typeof _familyForTextId === 'function' && entry && entry.id)
+      ? _familyForTextId(entry.id) : null;
+    const backLabel = _famHere ? _famHere.title : 'All Texts';
+    const backTitle = _famHere ? ('Back to ' + _famHere.title) : 'Back to all texts';
     html += '<button type="button" class="bcl-back-to-versions bcl-back-to-library" ' +
-            'title="Back to all texts">' +
-            '&larr; All Texts' +
+            'title="' + escapeHTML(backTitle) + '">' +
+            '&larr; ' + escapeHTML(backLabel) +
             '</button>';
   }
   html += '<div id="continuous-cover">';
@@ -12736,8 +12826,16 @@ function showCover(data, entry) {
       document.body.classList.remove('on-shelf-page');
       const ctrlContents = document.getElementById('ctrl-contents');
       if (ctrlContents) ctrlContents.style.display = 'none';
+      // v98 — If this text is a family member, "back" returns to the
+      // family page (the rung between the tradition shelf and this
+      // contents leaf). Otherwise the original Bible-versions /
+      // tradition-shelf fallback chain applies.
+      const fam = (typeof _familyForTextId === 'function' && textId)
+        ? _familyForTextId(textId) : null;
       const group = textId ? indexGroups[textId] : null;
-      if (group && group.length > 1 && cat && trd) {
+      if (fam) {
+        browseTextFamily(fam.id);
+      } else if (group && group.length > 1 && cat && trd) {
         browseText(cat, trd, textId);
       } else if (cat && trd) {
         browseTradition(cat, trd);
@@ -19710,10 +19808,32 @@ function _renderTextTiles() {
   const sortBy = document.getElementById('browse-sort').value;
   const viewMode = document.querySelector('.bt-btn.active').dataset.view;
 
+  // v98 — Suppress family members from the shelf list. Each
+  // tradition that owns a TEXT_FAMILIES entry shows a single family
+  // card in place of its members; the family page enumerates the
+  // members. Families whose tradition matches the current shelf are
+  // collected here so we can inject family cards alongside the
+  // non-suppressed texts.
+  const activeFamilies = TEXT_FAMILIES.filter(
+    fam => fam.category === cat && fam.tradition === trd
+  ).map(fam => {
+    // A family is only renderable if at least one member exists in
+    // the current shelf's texts list.
+    const memberIdSet = new Set(fam.members.map(m => m.textId));
+    const presentMembers = texts.filter(t => memberIdSet.has(t.id));
+    return { fam, presentMembers };
+  }).filter(x => x.presentMembers.length > 0);
+
+  const suppressedIds = new Set();
+  for (const { presentMembers } of activeFamilies) {
+    for (const t of presentMembers) suppressedIds.add(t.id);
+  }
+  const visibleTexts = texts.filter(t => !suppressedIds.has(t.id));
+
   // Split native texts from cross-tradition anthologies; render anthologies
   // separately at the bottom under a clear header.
-  const native = texts.filter(t => !t.crossFrom);
-  const cross = texts.filter(t => t.crossFrom);
+  const native = visibleTexts.filter(t => !t.crossFrom);
+  const cross = visibleTexts.filter(t => t.crossFrom);
 
   const sortFn = (list) => {
     if (sortBy === 'alpha') {
@@ -19739,8 +19859,19 @@ function _renderTextTiles() {
   // Set view class
   $browseTiles.className = viewMode === 'grid' ? 'tile-grid-cards' : 'tile-list';
 
-  // Split featured/rest for importance sort (native only)
+  // v98 — Family cards render above the regular shelf tiles, in
+  // their own "Text families" section. The reader sees one card
+  // per family ("The Upanishads"), not the individual members.
+  // The members live on the family page (browseTextFamily).
   let html = '';
+  if (activeFamilies.length) {
+    html += '<div class="tile-section-label">Text families</div>';
+    for (const { fam, presentMembers } of activeFamilies) {
+      html += _familyTileHTML(fam, presentMembers);
+    }
+  }
+
+  // Split featured/rest for importance sort (native only)
   if (sortBy === 'importance') {
     const featured = sorted.filter(t => t.rank < 9999);
     const rest = sorted.filter(t => t.rank >= 9999);
@@ -19764,6 +19895,125 @@ function _renderTextTiles() {
   $browseTiles.innerHTML = html;
 }
 
+// ── v98 — Family-card + family-page rendering ───────────────────
+//
+// _familyTileHTML produces a card visually distinct from regular
+// text tiles: the same shelf-card material, but a small italic
+// "family" badge and a member-count subtitle so the reader sees at
+// a glance that this is a cluster, not one text.
+function _familyTileHTML(fam, presentMembers) {
+  const count = presentMembers.length;
+  const subtitle = fam.subtitle || '';
+  const countLabel = count + ' edition' + (count !== 1 ? 's' : '');
+  const meta = subtitle ? `${subtitle} · ${countLabel}` : countLabel;
+  return `<div class="text-tile family-tile" onclick="browseTextFamily('${escH(fam.id)}')">
+    <span class="tt-star family-glyph" aria-hidden="true">⧉</span>
+    <div class="tt-info">
+      <div class="tt-title">${escH(fam.title)}</div>
+      <div class="tt-meta">${escH(meta)}</div>
+    </div>
+    <span class="tt-badge family-badge">family</span>
+  </div>`;
+}
+
+// Family page — a shelf-style scrollable view that lives at one
+// level deeper than the tradition shelf. Reachable by clicking a
+// family card; back-navigates to its tradition shelf.
+//
+// Page-type doctrine: this IS a shelf/path page (on-shelf-page is
+// set by showBrowse), so it scrolls naturally if the member list
+// grows. It is NOT the museum-ivory specific-text contents leaf.
+function browseTextFamily(familyId) {
+  const fam = TEXT_FAMILIES.find(f => f.id === familyId);
+  if (!fam) return;
+  if (!browseTree) browseTree = buildBrowseData();
+  showBrowse();
+  const cat = fam.category;
+  const trd = fam.tradition;
+
+  browseHistory = [
+    {fn: browseHome},
+    {fn: browseCategory, args: [cat]},
+    {fn: browseTradition, args: [cat, trd]},
+  ];
+
+  $browseCrumb.innerHTML =
+    `<a onclick="browseHome()">Home</a><span class="sep">›</span>` +
+    `<a onclick="browseCategory('${escH(cat)}')">${escH(cat)}</a>` +
+    `<span class="sep">›</span>` +
+    `<a onclick="browseTradition('${escH(cat)}','${escH(trd)}')">${escH(trd)}</a>` +
+    `<span class="sep">›</span>${escH(fam.title)}`;
+  $browseTitle.textContent = fam.title;
+
+  // Toolbar (grid/list/sort/color) doesn't apply to family pages.
+  document.getElementById('browse-toolbar').style.display = 'none';
+  $browseTiles.className = 'tile-list family-page';
+
+  // Resolve members to indexGroups entries (textGroup objects).
+  // Skip members not present in the catalog.
+  const traditionTexts = (browseTree[cat] || {})[trd] || [];
+  const byId = {};
+  for (const t of traditionTexts) byId[t.id] = t;
+
+  // Group by role for an archival reading order.
+  const roleOrder = ['primary', 'collection', 'part', 'anthology', 'legacy'];
+  const roleLabels = {
+    primary:    'Primary collections',
+    collection: 'Specialised collections',
+    part:       'Volumes and parts',
+    anthology:  'Anthologies and extracts',
+    legacy:     'Legacy / duplicate records',
+  };
+  const buckets = {};
+  for (const m of fam.members) {
+    const t = byId[m.textId];
+    if (!t) continue;
+    (buckets[m.role] = buckets[m.role] || []).push({ m, t });
+  }
+
+  let html = '';
+  if (fam.description) {
+    html += `<div class="family-description">${escH(fam.description)}</div>`;
+  }
+  for (const role of roleOrder) {
+    const items = buckets[role];
+    if (!items || !items.length) continue;
+    html += `<div class="tile-section-label">${escH(roleLabels[role] || role)}</div>`;
+    for (const { m, t } of items) {
+      html += _familyMemberTileHTML(t, m, cat, trd);
+    }
+  }
+  $browseTiles.innerHTML = html;
+}
+
+// Member card inside the family page. Renders like a text-tile
+// but uses the family-supplied `note` for context (e.g., "Müller,
+// Part 1 (SBE Vol. I)") instead of the bare author/year line.
+function _familyMemberTileHTML(t, member, cat, trd) {
+  const authorArr = (t.author || []).filter(a => a && a !== 'Anonymous');
+  const authorStr = authorArr.join(', ');
+  const yearVal = t.entries[0].year;
+  const lineParts = [];
+  if (member.note) lineParts.push(member.note);
+  if (authorStr) lineParts.push(authorStr);
+  if (yearVal) lineParts.push(String(yearVal));
+  const meta = lineParts.join(' · ');
+  const roleLabel = member.role || '';
+  const count = t.entries.length;
+  const badge = count > 1
+    ? `<span class="tt-badge">${count} trans.</span>`
+    : (roleLabel ? `<span class="tt-badge family-role-badge">${escH(roleLabel)}</span>` : '');
+  const onclick = `browseText('${escH(cat)}','${escH(trd)}','${escH(t.id)}')`;
+  return `<div class="text-tile family-member-tile" onclick="${onclick}">
+    <span class="tt-star"></span>
+    <div class="tt-info">
+      <div class="tt-title">${escH(t.title)}</div>
+      ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
+    </div>
+    ${badge}
+  </div>`;
+}
+
 /** Open a text with the reader scrolled to a named section (cross-tradition deep link). */
 function browseTextSection(cat, trd, textId, section) {
   const group = indexGroups[textId];
@@ -19773,6 +20023,78 @@ function browseTextSection(cat, trd, textId, section) {
   document.getElementById('controls').style.display = '';
   document.getElementById('reader').style.overflow = '';
   loadText(group[0]);
+}
+
+// ════════════════════════════════════════════════════════════════
+//  TEXT FAMILIES (v98 doctrine)
+// ────────────────────────────────────────────────────────────────
+//  Some entries in the catalog are not single texts but text
+//  *families* — clusters of collections, translations, volumes, or
+//  anthologies that the reader experiences as one tradition-thread
+//  with multiple witnesses. The Upanishads are the prototype: one
+//  Vedic / Vedānta family with several distinct editions in the
+//  archive (Müller complete, Müller Part 1, Müller Part 2, Johnston,
+//  Aiyar's Thirty Minor, plus a 1900-reprint legacy duplicate).
+//
+//  Cataloging doctrine for v98:
+//    · The shelf (e.g., Hindu) shows ONE family card per family.
+//      Member text-ids are suppressed from the shelf list.
+//    · Clicking the family card opens a family page — a shelf-
+//      style scrollable view with the members grouped by role
+//      (Primary collections / Parts / Anthologies / Legacy).
+//    · Clicking a member opens that member's normal specific-text
+//      contents page (and from there, the reading room).
+//    · No JSON files are deleted, merged, or rewritten. This is
+//      pure catalog grouping.
+//
+//  To register a new family, add an entry below. Member textIds are
+//  the keys of `indexGroups` (the catalog id; one id per textGroup,
+//  not per data_file). The system is forgiving: members that don't
+//  exist in indexGroups are silently skipped.
+const TEXT_FAMILIES = [
+  {
+    id: 'upanishads',
+    title: 'The Upanishads',
+    subtitle: 'Vedic / Vedānta textual family',
+    category: 'Religion',
+    tradition: 'Hindu',
+    description:
+      'The archive holds several distinct editions and collections of the Upanishads — ' +
+      'Müller’s complete two-volume translation, Charles Johnston’s edition, Aiyar’s ' +
+      'Thirty Minor Upanishads, and the individual SBE volumes — preserved separately ' +
+      'rather than collapsed into one stream.',
+    members: [
+      { textId: 'upanishads',                role: 'primary', note: 'Müller — complete (SBE Vol. I + XV, merged)' },
+      { textId: 'upanishads-johnson',        role: 'primary', note: 'Charles Johnston edition' },
+      { textId: 'upanishads-30-minor-aiyar', role: 'collection', note: 'Thirty lesser-known Upanishads' },
+      { textId: 'upanishads-muller-part1',   role: 'part', note: 'SBE Vol. I (Müller Part 1)' },
+      { textId: 'upanishads-muller-part2',   role: 'part', note: 'SBE Vol. XV (Müller Part 2)' },
+      { textId: 'the-upanishads-max-muller-1879', role: 'legacy', note: '1900 reprint — legacy duplicate' },
+    ],
+    primaryMemberId: 'upanishads',
+  },
+];
+
+// Index: textId → family (built once at load time). Used by
+// _renderTextTiles to suppress member tiles, and by browseText to
+// recognise when a click belongs to a family member.
+const _TEXT_FAMILY_BY_TEXTID = (() => {
+  const map = {};
+  for (const fam of TEXT_FAMILIES) {
+    for (const m of fam.members) map[m.textId] = fam;
+  }
+  return map;
+})();
+
+function _familyForTextId(textId) {
+  return _TEXT_FAMILY_BY_TEXTID[textId] || null;
+}
+
+// Set of textIds that are suppressed from their tradition shelf
+// because they're represented by a family card instead.
+function _isFamilyMemberSuppressed(textId) {
+  const fam = _familyForTextId(textId);
+  return !!fam;
 }
 
 /** Level 3: show translations for a text, or open directly if only one */
