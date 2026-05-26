@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v94-static-contents-pages">
+  <meta name="atlas-build" content="v95-contents-entry-pages">
   <title>Digital Archive</title>
   <style>
 
@@ -836,12 +836,30 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
    at the top, contents grid spanning the full width beneath. The
    citation apparatus is tucked as a quiet italic disclosure in the
    top-right corner so it never competes with the title or contents.
-   The whole leaf fits on a single laptop viewport. */
+   The whole leaf fits on a single laptop viewport.
+   v95 — The title leaf is now visibly independent from the
+   reading-room parchment. The leaf carries the same museum-ivory
+   material as the v92 Atlas Object surface, with a hairline plate
+   edge and a soft drop shadow, so opening a text reads as
+   "entering" rather than "already reading". The Bible reading
+   room (warm cream parchment) is preserved unchanged. */
+:root {
+  --codex-leaf-surface: #efeadd;
+  --codex-leaf-edge: rgba(60, 42, 22, 0.22);
+  --codex-leaf-edge-inner: rgba(60, 42, 22, 0.10);
+  --codex-leaf-shadow: 0 18px 42px rgba(6, 4, 2, 0.28);
+}
 .bible-cover-layout {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 14px 40px 10px;
+  max-width: 1280px;
+  margin: 22px auto 36px;
+  padding: 28px 48px 32px;
   position: relative;
+  background: var(--codex-leaf-surface);
+  border: 1px solid var(--codex-leaf-edge);
+  box-shadow:
+    inset 0 0 0 7px transparent,
+    inset 0 0 0 8px var(--codex-leaf-edge-inner),
+    var(--codex-leaf-shadow);
   /* The contents/title leaf is a fixed codex page — navigation,
      not primary reading prose. Reader typography controls (font
      family, size, line spacing) govern only the scripture column;
@@ -1252,6 +1270,48 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   border-color: rgba(120, 65, 25, 0.5);
   background: rgba(150, 110, 60, 0.06);
   outline: none;
+}
+/* ── Codex range chips (v95) ─────────────────────────────────────
+   For non-Bible codex texts with more than ~40 entries, a single
+   row of italic small-caps chips sits above the grid. Clicking a
+   chip filters the visible plates so the contents page stays
+   single-screen — no long scroll, no nested tabs. The chips read
+   as manuscript-style numeric ranges (1–24, 25–48, ...). */
+.bible-cover-layout .bcl-codex-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 0;
+}
+.bible-cover-layout .bcl-codex-range {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  padding: 5px 14px;
+  background: transparent;
+  border: 1px solid rgba(120, 90, 50, 0.24);
+  border-radius: 2px;
+  color: rgba(110, 65, 25, 0.78);
+  cursor: pointer;
+  transition: color 0.18s ease-out, border-color 0.18s ease-out,
+              background 0.18s ease-out;
+}
+.bible-cover-layout .bcl-codex-range:hover,
+.bible-cover-layout .bcl-codex-range:focus-visible {
+  color: rgba(60, 30, 10, 0.96);
+  border-color: rgba(120, 70, 25, 0.55);
+  background: rgba(150, 110, 60, 0.06);
+  outline: none;
+}
+.bible-cover-layout .bcl-codex-range--active {
+  color: rgba(40, 20, 4, 1);
+  border-color: rgba(120, 70, 25, 0.78);
+  background: rgba(150, 110, 60, 0.12);
+  font-weight: 600;
 }
 .bible-cover-layout #continuous-cover {
   max-width: 720px;
@@ -10791,6 +10851,106 @@ function formatRef(p) {
 
 // ── Group name helper ─────────────────────────────────────────────────────────
 
+// ── Codex-cover label helpers (v95) ───────────────────────────
+// The data feeding our contents pages is heterogeneous: some texts
+// carry useful `chapter_titles`, others carry placeholders ("Chapter 1",
+// "Book I"), and a handful carry actual front-matter strings ("Translated
+// from Pali", "F. Max Muller", "To India") mistakenly indexed by chapter
+// number. These helpers normalise that mess so the cover-page button
+// labels read consistently — never a bare integer, never a redundant
+// "Chapter 1 — Chapter 1", and never a fragment of someone's preface.
+//
+// Used by groupName() for any L1 level whose keys are numeric.
+const _CODEX_L1_WORDS = [
+  'chapter','book','section','part','verse','sutta','surah','ayah',
+  'rune','parva','volume','treatise','question','article','paragraph',
+  'canto','act','scene','epistle','letter','discourse',
+];
+
+// True if `t` is literally just "<L1-word> <number-or-roman>" with no
+// further content — pure placeholder data, never a real title.
+function _isPlaceholderTitle(t) {
+  if (!t) return true;
+  const s = String(t).trim();
+  if (!s) return true;
+  const re = new RegExp(
+    '^(?:' + _CODEX_L1_WORDS.join('|') + ')\\s+[IVXLCDM\\d]+\\s*$', 'i');
+  return re.test(s);
+}
+
+// True if `t` is plainly not a chapter title — front-matter strings,
+// concatenated junk, names of translators, very long captions, etc.
+// Conservative: only flags clear-cut noise, never real titles.
+function _isJunkTitle(t) {
+  if (!t) return true;
+  const s = String(t).trim();
+  if (!s) return true;
+  if (s.length > 90) return true;            // titles are short
+  if (s.includes(' / ')) return true;         // concatenated junk
+  // Front-matter indicators at start of string
+  if (/^(translated|preface|introduction|page\b|contents\b|table of contents|copyright|index of)\b/i.test(s)) return true;
+  // Personal-name pattern ("F. Max Muller", "V. Fausboll")
+  if (/^[A-Z]\.\s+[A-Z]/.test(s)) return true;
+  // Bare "To India" / "Preface / Contents" type captions
+  if (/^to [A-Z]/.test(s) && s.length < 16) return true;
+  return false;
+}
+
+// Discard placeholders and junk; strip "<word> <key> — " redundancy
+// from real titles. Returns a cleaned title string or null if the
+// chapter_titles entry should not be used at all.
+function _refineChapterTitle(raw, key, levelWord) {
+  if (!raw) return null;
+  const s = String(raw).trim();
+  if (!s) return null;
+  if (_isPlaceholderTitle(s)) return null;
+  if (_isJunkTitle(s)) return null;
+  // Strip redundant leading "<level-word> <key> [—|-|:|·] " if present,
+  // so "Book 1 — The Wrath of Achilles" becomes "The Wrath of Achilles"
+  // (the button already shows "Book 1" before the em dash).
+  if (levelWord) {
+    const re = new RegExp(
+      '^' + levelWord + '\\s+[IVXLCDM\\d]+\\s*[—\\-:·]\\s*', 'i');
+    const stripped = s.replace(re, '').trim();
+    return stripped || null;
+  }
+  return s;
+}
+
+// Inspect chapter_titles for a consistent leading word ("Book I",
+// "Book II", "Book III" → "Book"). Used when a text's declared
+// hierarchy level (e.g. "chapter") does not match the canonical L1
+// label the editions actually use (e.g. epics traditionally call
+// their divisions "Books"). Returns null if no consistent prefix.
+function _detectLabelWord(defaultLevel) {
+  const titles = currentData && currentData.chapter_titles;
+  if (titles) {
+    const counts = {};
+    let total = 0;
+    for (const v of Object.values(titles)) {
+      if (!v) continue;
+      const s = String(v).trim();
+      const m = /^([A-Za-z]+)\s+[IVXLCDM\d]+/i.exec(s);
+      if (m) {
+        const w = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+        if (_CODEX_L1_WORDS.includes(w.toLowerCase())) {
+          counts[w] = (counts[w] || 0) + 1;
+          total++;
+        }
+      }
+    }
+    const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    if (entries.length && entries[0][1] >= 3 &&
+        entries[0][1] / total >= 0.5) {
+      return entries[0][0];
+    }
+  }
+  if (typeof defaultLevel === 'string' && defaultLevel.length) {
+    return defaultLevel.charAt(0).toUpperCase() + defaultLevel.slice(1);
+  }
+  return 'Section';
+}
+
 function groupName(key) {
   const level = topLevel();
   if (level === 'book') {
@@ -10803,17 +10963,18 @@ function groupName(key) {
     }
     // Bible-shaped texts: use the BOOK_NAMES atlas for friendly
     // names. Non-Bible texts with a `book` L1 (e.g., Analects)
-    // have no BOOK_NAMES entry — surface chapter_titles if present,
-    // else fall back to "Book N". Never expose a bare numeric key
-    // as the contents-page button label.
+    // have no BOOK_NAMES entry — route through the helpers so
+    // placeholder / junk chapter_titles are dropped before being
+    // appended. Never expose a bare numeric key as the button label.
     const mapped = BOOK_NAMES[key];
     if (mapped) return mapped;
     const titles = currentData && currentData.chapter_titles;
-    const t = titles && (titles[key] || titles[Number(key)]);
-    if (t) return `Book ${key} — ${t}`;
-    // Numeric-keyed non-Bible book — render as labelled button.
-    if (/^\d+$/.test(String(key))) return `Book ${key}`;
-    return key;
+    const raw = titles && (titles[key] || titles[Number(key)]);
+    const t = _refineChapterTitle(raw, key, 'Book');
+    if (/^\d+$/.test(String(key))) {
+      return t ? `Book ${key} — ${t}` : `Book ${key}`;
+    }
+    return t || key;
   }
   if (level === 'surah')     return SURAH_NAMES[Number(key)] || `Surah ${key}`;
   if (level === 'upanishad') return UPANISHAD_NAMES[key] || key;
@@ -10844,20 +11005,20 @@ function groupName(key) {
     return `Sutta ${key}`;
   }
   if (level === 'rune') {
+    // Rune-keyed texts (Kalevala) \u2014 use the parva/chapter_titles store
+    // but pre-filter for placeholders, and render keys as Roman numerals
+    // per their manuscript convention.
     const titles = currentData && currentData.chapter_titles;
-    const t = titles && (titles[key] || titles[Number(key)]);
+    const raw = titles && (titles[key] || titles[Number(key)]);
+    const t = _refineChapterTitle(raw, key, 'Rune');
     const r = toRoman(Number(key));
     return t ? `Rune ${r} \u2014 ${t}` : `Rune ${r}`;
   }
   if (level === 'parva') {
     const titles = currentData && currentData.chapter_titles;
-    const t = titles && (titles[key] || titles[Number(key)]);
+    const raw = titles && (titles[key] || titles[Number(key)]);
+    const t = _refineChapterTitle(raw, key, 'Parva');
     return t || `Parva ${key}`;
-  }
-  if (level === 'chapter') {
-    const titles = currentData && currentData.chapter_titles;
-    const t = titles && (titles[key] || titles[Number(key)]);
-    return t ? `Chapter ${key} \u2014 ${t}` : `Chapter ${key}`;
   }
   if (level === 'biography') {
     // Path keys are slugs like "alkibiades" or "alkibiades-and-coriolanus"
@@ -10866,18 +11027,22 @@ function groupName(key) {
   if (level === 'rule') {
     return String(key);
   }
-  // \u2500\u2500 Generic codex-cover labelling \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-  // For every other L1 type (book non-Bible, section, part, volume,
-  // treatise, question, article, \u2026) produce a labelled button rather
-  // than a bare numeric key. The label is `<Capitalised level> <key>`
-  // with an optional ` \u2014 <title>` appended when chapter_titles carries
-  // one for this key. This is what makes non-Bible TOC pages read as a
-  // codex index rather than a list of integers.
+  // \u2500\u2500 Generic codex-cover labelling (v95) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+  // For every numeric L1 type (chapter, section, part, book non-Bible,
+  // volume, treatise, question, article, \u2026) produce a clean labelled
+  // button. The label word comes from _detectLabelWord(), which falls
+  // back to the hierarchy level but can override it (e.g. epics with
+  // hierarchy=[chapter, verse] whose chapter_titles consistently say
+  // "Book I", "Book II" \u2192 label word becomes "Book"). Placeholder
+  // and junk chapter_titles are discarded; real titles are stripped
+  // of redundant "<word> <key> \u2014 " prefixes. The button never reads
+  // "Chapter 1 \u2014 Chapter 1".
   if (typeof level === 'string' && level.length) {
+    const word = _detectLabelWord(level);
     const titles = currentData && currentData.chapter_titles;
-    const t = titles && (titles[key] || titles[Number(key)]);
-    const labelWord = level.charAt(0).toUpperCase() + level.slice(1);
-    const base = `${labelWord} ${key}`;
+    const raw = titles && (titles[key] || titles[Number(key)]);
+    const t = _refineChapterTitle(raw, key, word);
+    const base = `${word} ${key}`;
     return t ? `${base} \u2014 ${t}` : base;
   }
   return key;
@@ -12188,17 +12353,41 @@ function showCover(data, entry) {
   // later. `grouped` is true when the text has between 2 and 200
   // enumerable L1 entries — the band where a button grid reads as
   // a contents page rather than a wall of links.
+  //
+  // v95: front-matter passages are skipped when computing the L1
+  // index. Some texts (Odyssey-Pope, Iliad-anonymous) place fm
+  // entries with non-canonical path[0] values that polluted the
+  // first button position. Numerically-keyed L1s are also explicitly
+  // sorted so the grid reads 1, 2, 3 … regardless of passage order
+  // in the source file.
   const hier = data.hierarchy || [];
   const seen = new Set();
   const keys = [];
   for (const p of data.passages) {
+    if (p.fm) continue;
     const k = String(p.path[0]);
     if (!seen.has(k)) { seen.add(k); keys.push(k); }
+  }
+  if (keys.every(k => /^\d+$/.test(k))) {
+    keys.sort((a, b) => Number(a) - Number(b));
   }
   const grouped = needsGroupSelector() && keys.length > 1 && keys.length <= 200;
   const useCodexLayout = isBibleCover || grouped;
   const hasFrontMatter = data.passages.some(p => p.fm);
   const bodyCount = data.passages.filter(p => !p.fm).length;
+  // v95 — range chips for long contents pages (> 40 buttons). Four
+  // ranges max so the chip strip stays single-row. Bible keeps its
+  // canon segmentation instead (handled in the isBibleCover branch).
+  const RANGE_THRESHOLD = 40;
+  const useRanges = !isBibleCover && grouped && keys.length > RANGE_THRESHOLD;
+  let ranges = [];
+  if (useRanges) {
+    const rangeCount = Math.min(4, Math.ceil(keys.length / 30));
+    const rangeSize = Math.ceil(keys.length / rangeCount);
+    for (let i = 0; i < keys.length; i += rangeSize) {
+      ranges.push({ from: i, to: Math.min(keys.length, i + rangeSize) });
+    }
+  }
 
   let html = '';
   if (useCodexLayout) {
@@ -12211,16 +12400,21 @@ function showCover(data, entry) {
       : 'bible-cover-layout codex-cover-layout';
     html += `<div class="${layoutClasses}">`;
   }
-  // Back-up-the-hierarchy affordance — only on the Bible cover.
-  // The conceptual order is Home → Religion → Christian → Bible
-  // Versions → KJV title leaf → Reading Room. From the title leaf
-  // the back button goes UP one step (to Bible Versions), not
-  // DOWN into the Reading Room — the "Enter the Reading Room"
-  // plate already opens Genesis 1.
+  // Back-up-the-hierarchy affordance.
+  //   Bible: → Bible Versions (the translation-picker rung directly
+  //          above the title leaf).
+  //   Other codex texts: → All Texts (the library/shelf view the
+  //          reader came from). Same visual register, slightly
+  //          different label.
   if (isBibleCover) {
     html += '<button type="button" class="bcl-back-to-versions" ' +
             'title="Back to Bible versions">' +
             '&larr; Bible Versions' +
+            '</button>';
+  } else if (useCodexLayout) {
+    html += '<button type="button" class="bcl-back-to-versions bcl-back-to-library" ' +
+            'title="Back to all texts">' +
+            '&larr; All Texts' +
             '</button>';
   }
   html += '<div id="continuous-cover">';
@@ -12329,11 +12523,28 @@ function showCover(data, entry) {
   } else if (useCodexLayout && grouped) {
     // Non-Bible codex — one generic grid using the same
     // .bcl-canon-list styling as the Bible's canon grids (pill
-    // number badges, multi-column auto-flow). No canon segmentation.
+    // number badges, multi-column auto-flow). When the text has
+    // more than RANGE_THRESHOLD entries, a single-row strip of
+    // range chips sits above the grid; clicking a chip filters
+    // the visible buttons to that range so the contents page
+    // stays static (no long scroll).
     html += '<section class="bcl-canon-section" data-canon="codex">';
+    if (useRanges) {
+      html += '<nav class="bcl-codex-ranges" role="tablist" aria-label="Chapter ranges">';
+      ranges.forEach((r, i) => {
+        const fromKey = keys[r.from];
+        const toKey   = keys[r.to - 1];
+        const active = (i === 0) ? ' bcl-codex-range--active' : '';
+        html += `<button type="button" class="bcl-codex-range${active}" role="tab"` +
+                ` data-from="${r.from}" data-to="${r.to}">${escapeHTML(fromKey)}–${escapeHTML(toKey)}</button>`;
+      });
+      html += '</nav>';
+    }
     html += '<ul class="cc-toc-list bcl-canon-list">';
     keys.forEach((k, i) => {
-      html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+      const hidden = useRanges && i >= ranges[0].to;
+      const styleAttr = hidden ? ' style="display:none"' : '';
+      html += `<li data-book="${escapeHTML(k)}" data-rangepos="${i}"${styleAttr}><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
     });
     html += '</ul>';
     html += '</section>';
@@ -12393,20 +12604,22 @@ function showCover(data, entry) {
     fmBtn.addEventListener('click', () => enterReading('__fm__'));
   }
 
-  // Wire the back-to-versions button (Bible cover only). Returns
-  // the reader to the IMMEDIATE conceptual parent of this cover —
-  // the Bible Versions translation picker (browseText) when the
-  // text has multiple translations, otherwise the broader tradition
-  // listing. Skipping the Bible Versions intermediate would jump
-  // two levels at once and break the spatial coherence of the
-  // codex.
+  // Wire the back-up affordance — present on Bible covers
+  // (.bcl-back-to-versions) and every other codex cover
+  // (.bcl-back-to-library, which carries both classes so this
+  // selector matches both).
+  //
+  // The Bible version returns to the translation picker (one rung
+  // above the title leaf in the codex hierarchy). Other texts
+  // return to their tradition's shelf when the tradition is known,
+  // or to the Home / All-Texts view as a safe fallback. Tearing
+  // down the cover scaffold first keeps the browse view clean.
   const backBtn = $textHeader.querySelector('.bcl-back-to-versions');
   if (backBtn) {
     backBtn.addEventListener('click', () => {
-      const trd = (currentEntry && currentEntry.tradition) || 'Christian';
-      const cat = (typeof bucketFor === 'function') ? bucketFor(trd) : 'Religion';
+      const trd = currentEntry && currentEntry.tradition;
+      const cat = (trd && typeof bucketFor === 'function') ? bucketFor(trd) : null;
       const textId = currentEntry && currentEntry.id;
-      // Tear down cover-leaf scaffolding so the browse view is clean
       const th = document.getElementById('text-header');
       if (th) { th.innerHTML = ''; th.style.display = 'none'; }
       document.body.classList.remove('in-reading');
@@ -12414,11 +12627,35 @@ function showCover(data, entry) {
       const ctrlContents = document.getElementById('ctrl-contents');
       if (ctrlContents) ctrlContents.style.display = 'none';
       const group = textId ? indexGroups[textId] : null;
-      if (group && group.length > 1) {
+      if (group && group.length > 1 && cat && trd) {
         browseText(cat, trd, textId);
-      } else {
+      } else if (cat && trd) {
         browseTradition(cat, trd);
+      } else if (typeof browseHome === 'function') {
+        browseHome();
       }
+    });
+  }
+
+  // Wire range chips (long codex contents only). Clicking a chip
+  // hides every grid item outside that range and marks the chip
+  // active. The cover stays single-screen — no scroll, no nested
+  // tabs.
+  const rangeChips = $textHeader.querySelectorAll('.bcl-codex-range');
+  if (rangeChips.length) {
+    rangeChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const from = Number(chip.dataset.from);
+        const to   = Number(chip.dataset.to);
+        rangeChips.forEach(c => c.classList.remove('bcl-codex-range--active'));
+        chip.classList.add('bcl-codex-range--active');
+        $textHeader.querySelectorAll(
+          '.bcl-canon-section[data-canon="codex"] .bcl-canon-list li'
+        ).forEach((li) => {
+          const i = Number(li.dataset.rangepos);
+          li.style.display = (i >= from && i < to) ? '' : 'none';
+        });
+      });
     });
   }
 
