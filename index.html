@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v96-contents-card-fit">
+  <meta name="atlas-build" content="v97-archive-path-formatting">
   <title>Digital Archive</title>
   <style>
 
@@ -246,7 +246,7 @@ body.chapter-room #reader { padding-top: 20px; }
    is compacted, and #reader is overflow-locked. Range chips handle
    long contents in lieu of scrolling. Shelf/category pages
    (showBrowse) and reading pages (.in-reading) are untouched. */
-body.on-cover #reader {
+body.on-text-contents #reader {
   padding: 12px 32px 14px;
   overflow: hidden;
 }
@@ -853,10 +853,20 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
    "entering" rather than "already reading". The Bible reading
    room (warm cream parchment) is preserved unchanged. */
 :root {
+  /* Codex-leaf material — used on the specific-text contents page
+     (museum-ivory plate; the v95 doctrine). */
   --codex-leaf-surface: #efeadd;
   --codex-leaf-edge: rgba(60, 42, 22, 0.22);
   --codex-leaf-edge-inner: rgba(60, 42, 22, 0.10);
   --codex-leaf-shadow: 0 18px 42px rgba(6, 4, 2, 0.28);
+
+  /* Shelf-card material — used on Browse text tiles. Paler bone
+     than the codex leaf so the reader can tell the two surfaces
+     apart by texture alone: codex leaf is one heavier museum plate;
+     shelf cards are many lighter catalog cards. (v97 doctrine.) */
+  --shelf-card-surface: #f6f0e2;
+  --shelf-card-surface-hover: #fbf6ea;
+  --shelf-card-edge: rgba(120, 95, 60, 0.20);
 }
 .bible-cover-layout {
   max-width: 1280px;
@@ -2499,22 +2509,32 @@ button.home-path {
 }
 .shelf-members .text-tile.shelf-sub .tt-title { font-size: 14px; }
 
-/* Text tiles — horizontal row with left-aligned info */
+/* Text tiles — horizontal row with left-aligned info.
+   v97 archive-path formatting: shelf cards now read as catalog
+   cards, not generic dashboard tiles. Soft bone surface, hairline
+   warm-gray edge, calm low shadow. Distinct from:
+     · the reading-room parchment (--reader-bg, warm cream)
+     · the codex-leaf material (--codex-leaf-surface, museum ivory)
+   so the reader can feel which page-type they are on by material
+   alone. */
 .text-tile {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: white;
-  border: 1px solid var(--chrome-border);
-  border-radius: 8px;
+  background: var(--shelf-card-surface, #f6f0e2);
+  border: 1px solid var(--shelf-card-edge, rgba(120, 95, 60, 0.20));
+  border-radius: 4px;
   padding: 12px 16px;
   cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  box-shadow: 0 1px 0 rgba(60, 42, 22, 0.04);
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s,
+              transform 0.12s;
 }
 .text-tile:hover {
-  border-color: var(--chrome-active);
-  background: #fdfaf6;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  border-color: rgba(120, 70, 25, 0.45);
+  background: var(--shelf-card-surface-hover, #fbf6ea);
+  box-shadow: 0 2px 6px rgba(60, 42, 22, 0.10);
+  transform: translateY(-1px);
 }
 .text-tile:active { box-shadow: none; }
 .text-tile .tt-star {
@@ -3568,8 +3588,16 @@ body:not(.in-reading) #meta-toggle .info-icon {
    defense against the microscopic scrollbar.
 
    The Atlas Index is exempt — it is a long printable appendix
-   that must scroll naturally inside the reader column. */
-body:not(.in-reading):not(.atlas-index-active) #reader {
+   that must scroll naturally inside the reader column.
+
+   v97 (page-type doctrine) — shelf / category / path browsing
+   pages are ALSO exempt. Their content (tile lists, translation
+   pickers) routinely exceeds one viewport and they need #reader
+   to scroll naturally. The exclusion is gated on the body class
+   `on-shelf-page`, which showBrowse() sets and every exit path
+   clears. See the DIGITAL ARCHIVE PAGE TYPES block near
+   showCover() for the full doctrine. */
+body:not(.in-reading):not(.atlas-index-active):not(.on-shelf-page) #reader {
   padding-top: 70px;
   padding-bottom: 24px;
   overflow: hidden;
@@ -12325,6 +12353,59 @@ function showGroupCover(group, listItem) {
   $reader.scrollTop = 0;
 }
 
+// ════════════════════════════════════════════════════════════════
+//  DIGITAL ARCHIVE PAGE TYPES (v97 doctrine)
+// ────────────────────────────────────────────────────────────────
+//  The archive is a path: the reader moves through shelves and
+//  catalog cards, chooses a text, enters a formal title leaf, and
+//  only then enters the reading room. Each page type has its own
+//  purpose, scroll behaviour, material, and state class.
+//
+//   1. HOME / MAIN ENTRY        body has no state class
+//      · Archive identity, category buttons, recent reads.
+//      · STABLE — no scroll under normal viewports.
+//      · Background: chrome-bg.
+//
+//   2. SHELF / CATEGORY / PATH  body.on-shelf-page
+//      · Religion, Literature, Greek Literature, Christian,
+//        Bible Versions translation picker, Norse, Hindu, etc.
+//      · MAY SCROLL — these are catalog browsing surfaces; the
+//        list of cards can be long.
+//      · Material: archive catalog cards (soft ivory tile,
+//        restrained border, calm shadow). Distinct from both the
+//        text contents leaf and the reading-room parchment.
+//      · Set by showBrowse(); cleared at every exit.
+//
+//   3. SPECIFIC TEXT CONTENTS   body.on-text-contents
+//      · Bible KJV / Tao / Gita / Iliad / Odyssey / Quran title
+//        leaf — the formal entry into one chosen text.
+//      · STATIC OR STAGED — fits one viewport. Long contents use
+//        range chips (~24-29 buttons per range) rather than
+//        scrolling.
+//      · Material: museum ivory codex-leaf (v95/v96), with the
+//        plate-edge ring + drop shadow. Distinct from shelf
+//        cards and from reading-room parchment.
+//      · Set by showCover(); cleared at every exit.
+//
+//   4. READING ROOM             body.in-reading [+ chapter-room]
+//      · Actual text reading view. Scroll is the substrate of
+//        reading itself.
+//      · Material: reading-room parchment (--reader-bg, warm
+//        cream by default; theme-able).
+//      · Folio / Atlas Object / companion-mode machinery belongs
+//        here and nowhere else.
+//
+//  Cross-cutting CSS gate (line ~3572):
+//
+//    body:not(.in-reading):not(.atlas-index-active):not(.on-shelf-page)
+//      #reader { overflow: hidden; ... }
+//
+//  This locks #reader for the Home and Text Contents page types
+//  while leaving Shelf, Reading Room, and Atlas Index free to
+//  scroll. Whenever a new "static" page type is added, route it
+//  through this rule (not into a new exception).
+// ════════════════════════════════════════════════════════════════
+
 function showCover(data, entry) {
   // ── Title page + TOC as separate view from reading ──
   const $textHeader = document.getElementById('text-header');
@@ -12602,10 +12683,13 @@ function showCover(data, entry) {
 
   $textHeader.innerHTML = html;
   $textHeader.style.display = 'block';
-  // v96 — Mark the body as being on a specific-text contents page.
-  // CSS uses this to compact #reader padding and enforce no-scroll
-  // (range chips handle long contents instead of scrolling).
-  document.body.classList.add('on-cover');
+  // v97 — Mark the body as on a specific text contents page.
+  // CSS uses this to compact #reader padding (the broader title-leaf
+  // overflow:hidden rule applies via :not(.in-reading):not(.atlas-
+  // index-active):not(.on-shelf-page)). Clear the shelf-page flag
+  // since we've moved past the catalog into a specific text.
+  document.body.classList.add('on-text-contents');
+  document.body.classList.remove('on-shelf-page');
 
   // Set up translation switcher in background
   buildBookSelector();
@@ -12648,7 +12732,8 @@ function showCover(data, entry) {
       if (th) { th.innerHTML = ''; th.style.display = 'none'; }
       document.body.classList.remove('in-reading');
       document.body.classList.remove('chapter-room');
-      document.body.classList.remove('on-cover');
+      document.body.classList.remove('on-text-contents');
+      document.body.classList.remove('on-shelf-page');
       const ctrlContents = document.getElementById('ctrl-contents');
       if (ctrlContents) ctrlContents.style.display = 'none';
       const group = textId ? indexGroups[textId] : null;
@@ -12739,7 +12824,8 @@ function enterReading(targetGroupKey) {
   // Hide title/TOC view, show reading view
   const $th = document.getElementById('text-header');
   if ($th) $th.style.display = 'none';
-  document.body.classList.remove('on-cover');
+  document.body.classList.remove('on-text-contents');
+  document.body.classList.remove('on-shelf-page');
   $cover.style.display    = 'none';
   $toc.style.display      = 'none';
   $passages.style.display = '';
@@ -12830,6 +12916,12 @@ function enterReading(targetGroupKey) {
   // Reading context — folio + viewer may exist here. Orientation
   // surfaces (Home, Contents) clear this class to remove them.
   document.body.classList.add('in-reading');
+  // v97 page-type doctrine — entering the reading room. Clear any
+  // catalog / contents-leaf flags so the broader CSS rules resolve
+  // cleanly to reading-room behaviour (reader scrolls, parchment
+  // material, folio + Atlas Object machinery available).
+  document.body.classList.remove('on-shelf-page');
+  document.body.classList.remove('on-text-contents');
   // Reading is the default ontology of the room. Apparatus
   // (display options, search, translation switcher, about-pill)
   // recedes immediately; the reader can summon formatting via
@@ -18896,7 +18988,8 @@ async function loadText(entry, listItem) {
   $passages.innerHTML        = '';
   document.getElementById('text-header').innerHTML = '';
   document.getElementById('text-header').style.display = 'none';
-  document.body.classList.remove('on-cover');
+  document.body.classList.remove('on-text-contents');
+  document.body.classList.remove('on-shelf-page');
   $cover.style.display       = 'none';
   if ($groupCover) $groupCover.style.display = 'none';
   $toc.style.display         = 'none';
@@ -19430,7 +19523,13 @@ function showBrowse() {
   document.getElementById('text-toc').style.display    = 'none';
   const _th = document.getElementById('text-header');
   if (_th) { _th.innerHTML = ''; _th.style.display = 'none'; }
-  document.body.classList.remove('on-cover');
+  // v97 page-type doctrine — entering a shelf / path / translation
+  // picker page. Clear any specific-text-contents flag and set the
+  // shelf-page flag so the broader static-title-leaf overflow:hidden
+  // rule does NOT lock #reader here. Shelf pages always scroll
+  // naturally — they're catalog browsing, not a sized title leaf.
+  document.body.classList.remove('on-text-contents');
+  document.body.classList.add('on-shelf-page');
   document.getElementById('passages').innerHTML        = '';
   $browse.style.display = 'flex';
   // Hide reading controls
@@ -20231,7 +20330,8 @@ function _openAtlasIndex(data, entry) {
   document.body.classList.add('atlas-index-active');
   document.body.classList.remove('in-reading');
   document.body.classList.remove('chapter-room');
-  document.body.classList.remove('on-cover');
+  document.body.classList.remove('on-text-contents');
+  document.body.classList.remove('on-shelf-page');
   // Tear down folio + companion state so the index renders on a
   // calm surface.
   document.body.classList.remove('companion-mode');
@@ -20357,7 +20457,8 @@ function _openAtlasIndex(data, entry) {
       }
       $textHeader.innerHTML = '';
       $textHeader.style.display = 'none';
-      document.body.classList.remove('on-cover');
+      document.body.classList.remove('on-text-contents');
+      document.body.classList.remove('on-shelf-page');
       $passages.style.display = '';
       enterReading();
       requestAnimationFrame(() => {
@@ -20409,7 +20510,8 @@ function browseHome() {
   }
   document.body.classList.remove('in-reading');
   document.body.classList.remove('chapter-room');
-  document.body.classList.remove('on-cover');
+  document.body.classList.remove('on-text-contents');
+  document.body.classList.remove('on-shelf-page');
   $browse.style.display = 'none';
   document.getElementById('controls').style.display = 'none';
   document.getElementById('welcome').style.display = '';
