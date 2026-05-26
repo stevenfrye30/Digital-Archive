@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v98-upanishads-family-grouping">
+  <meta name="atlas-build" content="v99-upanishads-by-text-index">
   <title>Digital Archive</title>
   <style>
 
@@ -2653,6 +2653,73 @@ button.home-path {
   font-variant: small-caps;
   letter-spacing: 0.10em;
   border-radius: 2px;
+}
+
+/* ── v99 — Browse by Upanishad (per-text-family second section)
+   The family page now carries two side-by-side modes: Browse by
+   collection (v98) and Browse by Upanishad (v99). Each gets a
+   manuscript-style heading; the by-Upanishad section uses a
+   2-3 column grid of compact catalog cards (smaller than the
+   collection cards because per-Upanishad cards are denser). */
+.family-section-heading {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  color: rgba(110, 65, 25, 0.88);
+  margin: 22px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(120, 90, 50, 0.22);
+}
+.family-section-heading:first-child {
+  margin-top: 2px;
+}
+.byupn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.text-tile.byupn-tile {
+  padding: 10px 14px;
+  background: var(--shelf-card-surface, #f6f0e2);
+}
+.text-tile.byupn-tile .byupn-glyph {
+  color: rgba(120, 90, 50, 0.55);
+  font-size: 18px;
+}
+.text-tile.byupn-tile .tt-title {
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+.text-tile.byupn-tile .byupn-up {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.7em;
+  letter-spacing: 0.16em;
+  color: rgba(110, 65, 25, 0.6);
+  margin-left: 4px;
+}
+.text-tile.byupn-tile .byupn-credit {
+  font-style: italic;
+  font-size: 0.78em;
+  color: rgba(110, 75, 35, 0.78);
+  letter-spacing: 0.02em;
+  margin-top: 3px;
+}
+.byupn-note {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(95, 75, 50, 0.82);
+  max-width: 760px;
+  margin: 10px 0 6px;
+}
+.byupn-note em {
+  font-style: normal;
+  color: rgba(110, 65, 25, 0.92);
 }
 
 /* Section dividers within text lists */
@@ -19975,6 +20042,8 @@ function browseTextFamily(familyId) {
   if (fam.description) {
     html += `<div class="family-description">${escH(fam.description)}</div>`;
   }
+  // ── Section A — Browse by collection (v98) ─────────────────
+  html += '<div class="family-section-heading">Browse by collection</div>';
   for (const role of roleOrder) {
     const items = buckets[role];
     if (!items || !items.length) continue;
@@ -19983,7 +20052,74 @@ function browseTextFamily(familyId) {
       html += _familyMemberTileHTML(t, m, cat, trd);
     }
   }
+  // ── Section B — Browse by individual Upanishad (v99) ────────
+  // Only rendered when the family has a byUpanishad inventory.
+  // Each card carries inline credit (translator + edition + year)
+  // so the reader never sees an anonymous "Upanishad N" route.
+  if (Array.isArray(fam.byUpanishad) && fam.byUpanishad.length) {
+    html += '<div class="family-section-heading">Browse by Upanishad</div>';
+    const principal = fam.byUpanishad.filter(u => u.cls === 'principal');
+    const minor     = fam.byUpanishad.filter(u => u.cls === 'minor');
+    if (principal.length) {
+      html += `<div class="tile-section-label">Principal Upanishads</div>`;
+      html += '<div class="byupn-grid">';
+      for (const u of principal) html += _byUpanishadTileHTML(u);
+      html += '</div>';
+    }
+    if (minor.length) {
+      html += `<div class="tile-section-label">Minor Upanishads (Aiyar collection)</div>`;
+      html += '<div class="byupn-grid">';
+      for (const u of minor) html += _byUpanishadTileHTML(u);
+      html += '</div>';
+    }
+    if (fam.byUpanishadNote) {
+      html += `<div class="byupn-note">${fam.byUpanishadNote}</div>`;
+    }
+  }
   $browseTiles.innerHTML = html;
+}
+
+// v99 — A single Upanishad card on the "Browse by Upanishad"
+// section. Carries the normalised name, witness-count badge, and an
+// italic credit line (translator + edition + year). Click routes
+// directly into the reading room at the witness's source section.
+function _byUpanishadTileHTML(u) {
+  const w = u.witnesses && u.witnesses[0];
+  if (!w) return '';
+  const witnessCount = u.witnesses.length;
+  const witnessBadge = witnessCount > 1
+    ? `<span class="tt-badge">${witnessCount} witnesses</span>`
+    : '';
+  const onclick = `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
+  return `<div class="text-tile byupn-tile" onclick="${onclick}">
+    <span class="tt-star byupn-glyph" aria-hidden="true">·</span>
+    <div class="tt-info">
+      <div class="tt-title">${escH(u.name)} <span class="byupn-up">Upanishad</span></div>
+      <div class="tt-meta byupn-credit">${escH(w.sourceLabel)}</div>
+    </div>
+    ${witnessBadge}
+  </div>`;
+}
+
+// v99 — Routing helper. The reader's existing pendingSection
+// mechanism jumps past the cover and enters the reading room at
+// the first passage whose path[0] matches the given key. So
+// "open the Isha Upanishad in Müller complete" is just:
+//   pendingSection = 'isha'; loadText(muller-complete-entry);
+// loadText then resolves the first matching passage and calls
+// enterReading(). No new dispatch surface needed.
+function openUpanishadAt(textId, groupKey) {
+  const group = indexGroups[textId];
+  if (!group || !group.length) return;
+  const entry = group[0];
+  pendingSection = String(groupKey);
+  // Tear down browse scaffolding before loadText so the reading
+  // room enters clean (mirrors browseTextSection's pattern).
+  $browse.style.display = 'none';
+  document.body.classList.remove('on-shelf-page');
+  document.getElementById('controls').style.display = '';
+  document.getElementById('reader').style.overflow = '';
+  loadText(entry);
 }
 
 // Member card inside the family page. Renders like a text-tile
@@ -20072,6 +20208,40 @@ const TEXT_FAMILIES = [
       { textId: 'the-upanishads-max-muller-1879', role: 'legacy', note: '1900 reprint — legacy duplicate' },
     ],
     primaryMemberId: 'upanishads',
+    // v99 — per-Upanishad witnesses. Only Upanishads with a verified
+    // clean L1 entry in a source file appear here. The audit lives in
+    // reports/v99_upanishads_inventory.md; routing uses pendingSection
+    // (a flag the existing loadText() already honours).
+    byUpanishad: [
+      // Principal Upanishads (Müller complete; one witness each)
+      { name: 'Isha',           cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'isha',           sourceLabel: 'Müller, complete · 1879' }] },
+      { name: 'Kena',           cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'kena',           sourceLabel: 'Müller, complete · 1879' }] },
+      { name: 'Katha',          cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'katha',          sourceLabel: 'Müller, complete · 1884' }] },
+      { name: 'Prasna',         cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'prasna',         sourceLabel: 'Müller, complete · 1884' }] },
+      { name: 'Mundaka',        cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'mundaka',        sourceLabel: 'Müller, complete · 1884' }] },
+      { name: 'Taittiriya',     cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'taittiriya',     sourceLabel: 'Müller, complete · 1884' }] },
+      { name: 'Chandogya',      cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'chandogya',      sourceLabel: 'Müller, complete · 1879' }] },
+      { name: 'Brihadaranyaka', cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'brihadaranyaka', sourceLabel: 'Müller, complete · 1884' }] },
+      { name: 'Svetasvatara',   cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'svetasvatara',   sourceLabel: 'Müller, complete · 1884' }] },
+      { name: 'Kaushitaki',     cls: 'principal', witnesses: [{ textId: 'upanishads', groupKey: 'kaushitaki',     sourceLabel: 'Müller, complete · 1879' }] },
+      // Minor Upanishads (Aiyar; clean L1 entries only)
+      { name: 'Sarvasara',  cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '4',  sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Niralamba',  cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '5',  sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Adhyatma',   cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '17', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Vajrasuchi', cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '35', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Garbha',     cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '37', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Tarasara',   cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '38', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Yogatattva', cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '55', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Dhyanabindu',cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '56', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Hamsa',      cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '57', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+      { name: 'Nadabindu',  cls: 'minor', witnesses: [{ textId: 'upanishads-30-minor-aiyar', groupKey: '68', sourceLabel: 'Aiyar, Thirty Minor · 1914' }] },
+    ],
+    byUpanishadNote:
+      'Other minor Upanishads (Maitreya, Kaivalya, Amrtabindu, Atmabodha, Skanda, Kalisantarana, ' +
+      'Brahmopanishad, S’Ariraka, Narayana, Bhikshuka, Amrtanada, Upadeśā, and others) ' +
+      'are present in Aiyar’s collection but their internal sectioning is not yet clean enough ' +
+      'for per-Upanishad routing. Open ' +
+      '<em>Thirty Minor Upanishads</em> from the collection list above to read them in context.',
   },
 ];
 
