@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v111-varaha-variant-added">
+  <meta name="atlas-build" content="v112-dual-muktika-canon-map">
   <title>Digital Archive</title>
   <style>
 
@@ -20586,7 +20586,7 @@ function _renderUpanishadsByVeda(fam) {
   const muktika = (typeof _muktikaProgress === 'function') ? _muktikaProgress(fam) : null;
   let html = '';
   html += '<div class="family-section-heading">Browse by Veda</div>';
-  html += '<div class="byveda-note">Each Upanishad is grouped under its associated Veda. Principal Upanishads first; minor Upanishads after. <em>Curated traditional metadata</em> = Muktikā assignment; <em>source heading</em> = read directly from the source file’s own chapter title. Per-Veda counts compare the archive against the traditional Muktikā 108 list.</div>';
+  html += '<div class="byveda-note">Each Upanishad is grouped under its associated Veda. Principal Upanishads first; minor Upanishads after. <em>Curated traditional metadata</em> = Muktikā assignment; <em>source heading</em> = read directly from the source file’s own chapter title. Per-Veda counts compare the archive against the traditional Muktikā 108 list. <span class="byveda-canon-note">The archive tracks two Muktikā lists in parallel: the primary 108 (shown in the counts here) and the Aiyar source-derived 108 (extracted from the in-archive Muktikā Upanishad text); see <code>reports/v112_muktika_canon_reconciliation.md</code> for the variant-canon audit.</span></div>';
   for (const v of vedaOrder) {
     const items = (buckets[v] || []);
     const missing = (missingByVeda[v] || []);
@@ -21705,6 +21705,142 @@ const MUKTIKA_108 = [
   { n:108,key:null,                name:'Mahāvākya',       veda:'Atharvaveda', cls:'V', variants:['Mahavakya-Upanishad'] },
 ];
 
+// v112 — Aiyar source-derived Muktikā 108 list, extracted faithfully
+// from Aiyar 1914 *Thirty Minor Upanishads* (in archive since v100 as
+// upanishads-30-minor-aiyar). The Muktikā Upanishad text (recovered
+// as a route in v107 at L1=2-3) enumerates the 108 in its own verses
+// 2.11-2.17; this constant mirrors that enumeration faithfully.
+//
+// Same shape as MUKTIKA_108 above so the same helpers work.
+// `key` is set when an active byUpanishad route exists; it is null
+// for Aiyar-list entries with no English text route yet in the
+// archive (e.g. Gaṇapati, Hayagrīva, Bhasma-Jābāla, Atharvaśiras).
+//
+// v112 chooses Model C — dual canon-map architecture:
+//   * MUKTIKA_108 above is the PRIMARY public-facing target. The
+//     "X / 108 in Muktikā 108" badge on the family page is computed
+//     against this list (preserves the 42 / 108 figure that has
+//     been the count since v107).
+//   * MUKTIKA_108_AIYAR is tracked alongside for honest variant-
+//     canon reporting. Reports compute coverage against this list
+//     too, so divergences (Varāha, the AV Vaishnava cluster, the
+//     Mahā-Nārāyaṇa Veda assignment, the apparent duplicates in
+//     local MUKTIKA_108 at #91/#93/#94/#104/#105/#106/#107) are
+//     visible without silently rewriting the canonical-list array.
+//   * See reports/v112_muktika_canon_reconciliation.md for the full
+//     architectural rationale and the v113+ migration recommendation
+//     (toward eventually switching primary to Aiyar's ordering).
+const MUKTIKA_108_AIYAR = [
+  { n:  1, key:'aitareya',              name:'Aitareya'                  , veda:'Rigveda', cls:'M' },
+  { n:  2, key:'kaushitaki',            name:'Kauṣītaki'                 , veda:'Rigveda', cls:'M' },
+  { n:  3, key:'nadabindu',             name:'Nāda-bindu'                , veda:'Rigveda', cls:'Y' },
+  { n:  4, key:'atmabodha',             name:'Ātma-bodha'                , veda:'Rigveda', cls:'V' },
+  { n:  5, key:null,                    name:'Nirvāṇa'                   , veda:'Rigveda', cls:'S' },
+  { n:  6, key:null,                    name:'Mudgala'                   , veda:'Rigveda', cls:'V' },
+  { n:  7, key:null,                    name:'Akṣamālā'                  , veda:'Rigveda', cls:'Sh' },
+  { n:  8, key:null,                    name:'Tripurā'                   , veda:'Rigveda', cls:'Sk' },
+  { n:  9, key:null,                    name:'Saubhāgya'                 , veda:'Rigveda', cls:'Sk' },
+  { n: 10, key:null,                    name:'Bahvṛca'                   , veda:'Rigveda', cls:'Sk' },
+  { n: 11, key:'isha',                  name:'Īśā'                       , veda:'Shukla Yajurveda', cls:'M' },
+  { n: 12, key:'brihadaranyaka',        name:'Bṛhadāraṇyaka'             , veda:'Shukla Yajurveda', cls:'M' },
+  { n: 13, key:null,                    name:'Jābāla'                    , veda:'Shukla Yajurveda', cls:'S' },
+  { n: 14, key:'hamsa',                 name:'Haṃsa'                     , veda:'Shukla Yajurveda', cls:'Y' },
+  { n: 15, key:null,                    name:'Paramahaṃsa'               , veda:'Shukla Yajurveda', cls:'S' },
+  { n: 16, key:'subala',                name:'Subāla'                    , veda:'Shukla Yajurveda', cls:'V' },
+  { n: 17, key:null,                    name:'Mantrikā'                  , veda:'Shukla Yajurveda', cls:'V' },
+  { n: 18, key:'niralamba',             name:'Nirālamba'                 , veda:'Shukla Yajurveda', cls:'V' },
+  { n: 19, key:null,                    name:'Trīśikhi-brāhmaṇa'         , veda:'Shukla Yajurveda', cls:'Y' },
+  { n: 20, key:'mandalabrahmana',       name:'Maṇḍala-brāhmaṇa'          , veda:'Shukla Yajurveda', cls:'Y' },
+  { n: 21, key:null,                    name:'Advaya-tāraka'             , veda:'Shukla Yajurveda', cls:'S' },
+  { n: 22, key:'paingala',              name:'Pāiṅgala'                  , veda:'Shukla Yajurveda', cls:'V' },
+  { n: 23, key:'bhikshuka',             name:'Bhikṣu'                    , veda:'Shukla Yajurveda', cls:'S' },
+  { n: 24, key:null,                    name:'Turīyātīta'                , veda:'Shukla Yajurveda', cls:'S' },
+  { n: 25, key:'adhyatma',              name:'Adhyātmā'                  , veda:'Shukla Yajurveda', cls:'V' },
+  { n: 26, key:'tarasara',              name:'Tārasāra'                  , veda:'Shukla Yajurveda', cls:'V' },
+  { n: 27, key:null,                    name:'Yājñavalkya'               , veda:'Shukla Yajurveda', cls:'S' },
+  { n: 28, key:null,                    name:'Sātyāyanī'                 , veda:'Shukla Yajurveda', cls:'S' },
+  { n: 29, key:'muktika',               name:'Muktikā'                   , veda:'Shukla Yajurveda', cls:'M' },
+  { n: 30, key:'katha',                 name:'Kaṭha'                     , veda:'Krishna Yajurveda', cls:'M' },
+  { n: 31, key:'taittiriya',            name:'Taittirīya'                , veda:'Krishna Yajurveda', cls:'M' },
+  { n: 32, key:'brahmopanishad',        name:'Brahma'                    , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 33, key:'kaivalya',              name:'Kaivalya'                  , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 34, key:'svetasvatara',          name:'Śvetāśvatara'              , veda:'Krishna Yajurveda', cls:'M' },
+  { n: 35, key:'garbha',                name:'Garbha'                    , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 36, key:'narayana',              name:'Nārāyaṇa'                  , veda:'Krishna Yajurveda', cls:'Vs' },
+  { n: 37, key:'amrtabindu',            name:'Amṛta-bindu'               , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 38, key:'amrtanada',             name:'Amṛta-nāda'                , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 39, key:null,                    name:'Kālāgnirudra'              , veda:'Krishna Yajurveda', cls:'Sh' },
+  { n: 40, key:null,                    name:'Kṣurikā'                   , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 41, key:'sarvasara',             name:'Sarvasāra'                 , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 42, key:null,                    name:'Śukarahasya'               , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 43, key:'tejobindu',             name:'Tejo-bindu'                , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 44, key:'dhyanabindu',           name:'Dhyāna-bindu'              , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 45, key:null,                    name:'Brahmavidyā'               , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 46, key:'yogatattva',            name:'Yogatattva'                , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 47, key:null,                    name:'Dakṣiṇāmūrti'              , veda:'Krishna Yajurveda', cls:'Sh' },
+  { n: 48, key:'skanda',                name:'Skanda'                    , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 49, key:'sariraka',              name:'Śārīraka'                  , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 50, key:null,                    name:'Yogaśikhā'                 , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 51, key:null,                    name:'Ekākṣara'                  , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 52, key:null,                    name:'Akṣi'                      , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 53, key:null,                    name:'Avadhūta'                  , veda:'Krishna Yajurveda', cls:'S' },
+  { n: 54, key:null,                    name:'Kara'                      , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 55, key:null,                    name:'Rudra-hṛdaya'              , veda:'Krishna Yajurveda', cls:'Sh' },
+  { n: 56, key:'yogakundalini',         name:'Yoga-kuṇḍalinī'            , veda:'Krishna Yajurveda', cls:'Y' },
+  { n: 57, key:null,                    name:'Pañcabrahma'               , veda:'Krishna Yajurveda', cls:'Sh' },
+  { n: 58, key:null,                    name:'Prāṇāgnihotra'             , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 59, key:'varaha',                name:'Varāha'                    , veda:'Krishna Yajurveda', cls:'V' },
+  { n: 60, key:'kalisantarana',         name:'Kalisantaraṇa'             , veda:'Krishna Yajurveda', cls:'Vs' },
+  { n: 61, key:null,                    name:'Sarasvatī-rahasya'         , veda:'Krishna Yajurveda', cls:'Sk' },
+  { n: 62, key:'kena',                  name:'Kena'                      , veda:'Samaveda', cls:'M' },
+  { n: 63, key:'chandogya',             name:'Chāndogya'                 , veda:'Samaveda', cls:'M' },
+  { n: 64, key:null,                    name:'Āruṇi'                     , veda:'Samaveda', cls:'S' },
+  { n: 65, key:'maitri',                name:'Maitrāyaṇi'                , veda:'Samaveda', cls:'M' },
+  { n: 66, key:null,                    name:'Maitreyī'                  , veda:'Samaveda', cls:'S' },
+  { n: 67, key:'vajrasuchi',            name:'Vajrasūcikā'               , veda:'Samaveda', cls:'V' },
+  { n: 68, key:null,                    name:'Yoga-cūḍāmaṇi'             , veda:'Samaveda', cls:'Y' },
+  { n: 69, key:null,                    name:'Vāsudeva'                  , veda:'Samaveda', cls:'Vs' },
+  { n: 70, key:null,                    name:'Mahat-Sannyāsa'            , veda:'Samaveda', cls:'S' },
+  { n: 71, key:null,                    name:'Avyakta'                   , veda:'Samaveda', cls:'Vs' },
+  { n: 72, key:null,                    name:'Kuṇḍikā'                   , veda:'Samaveda', cls:'S' },
+  { n: 73, key:null,                    name:'Sāvitrī'                   , veda:'Samaveda', cls:'V' },
+  { n: 74, key:null,                    name:'Rudrākṣa'                  , veda:'Samaveda', cls:'Sh' },
+  { n: 75, key:null,                    name:'Jābāla (Sāmaveda)'         , veda:'Samaveda', cls:'S' },
+  { n: 76, key:null,                    name:'Darśana'                   , veda:'Samaveda', cls:'Y' },
+  { n: 77, key:null,                    name:'Jābāli'                    , veda:'Samaveda', cls:'Sh' },
+  { n: 78, key:'prasna',                name:'Praśna'                    , veda:'Atharvaveda', cls:'M' },
+  { n: 79, key:'mundaka',               name:'Muṇḍaka'                   , veda:'Atharvaveda', cls:'M' },
+  { n: 80, key:'mandukya',              name:'Māṇḍūkya'                  , veda:'Atharvaveda', cls:'M' },
+  { n: 81, key:null,                    name:'Atharvaśiras'              , veda:'Atharvaveda', cls:'Sh' },
+  { n: 82, key:null,                    name:'Atharvaśikhā'              , veda:'Atharvaveda', cls:'Sh' },
+  { n: 83, key:null,                    name:'Bṛhad-Jābāla'              , veda:'Atharvaveda', cls:'Sh' },
+  { n: 84, key:null,                    name:'Nṛsiṃha-tāpanī'            , veda:'Atharvaveda', cls:'Vs' },
+  { n: 85, key:'narada-parivrajaka',    name:'Nārada-parivrājaka'        , veda:'Atharvaveda', cls:'S' },
+  { n: 86, key:null,                    name:'Sītā'                      , veda:'Atharvaveda', cls:'Sk' },
+  { n: 87, key:null,                    name:'Śarabha'                   , veda:'Atharvaveda', cls:'Sh' },
+  { n: 88, key:null,                    name:'Mahā-Nārāyaṇa'             , veda:'Atharvaveda', cls:'Vs' },
+  { n: 89, key:null,                    name:'Rāma-rahasya'              , veda:'Atharvaveda', cls:'Vs' },
+  { n: 90, key:null,                    name:'Rāma-tāpanī'               , veda:'Atharvaveda', cls:'Vs' },
+  { n: 91, key:'sandilya',              name:'Śāṇḍilya'                  , veda:'Atharvaveda', cls:'Y' },
+  { n: 92, key:null,                    name:'Paramahaṃsa-parivrājaka'   , veda:'Atharvaveda', cls:'S' },
+  { n: 93, key:null,                    name:'Annapūrṇā'                 , veda:'Atharvaveda', cls:'Sk' },
+  { n: 94, key:null,                    name:'Sūrya'                     , veda:'Atharvaveda', cls:'V' },
+  { n: 95, key:null,                    name:'Ātmā'                      , veda:'Atharvaveda', cls:'V' },
+  { n: 96, key:null,                    name:'Pāśupata-brahma'           , veda:'Atharvaveda', cls:'Sh' },
+  { n: 97, key:null,                    name:'Parabrahma'                , veda:'Atharvaveda', cls:'V' },
+  { n: 98, key:null,                    name:'Tripura-tāpinī'            , veda:'Atharvaveda', cls:'Sk' },
+  { n: 99, key:null,                    name:'Devī'                      , veda:'Atharvaveda', cls:'Sk' },
+  { n:100, key:null,                    name:'Bhāvanā'                   , veda:'Atharvaveda', cls:'Sk' },
+  { n:101, key:null,                    name:'Bhasma-Jābāla'             , veda:'Atharvaveda', cls:'Sh' },
+  { n:102, key:null,                    name:'Gaṇapati'                  , veda:'Atharvaveda', cls:'Sh' },
+  { n:103, key:null,                    name:'Mahāvākya'                 , veda:'Atharvaveda', cls:'V' },
+  { n:104, key:null,                    name:'Gopāla-tāpanī'             , veda:'Atharvaveda', cls:'Vs' },
+  { n:105, key:null,                    name:'Kṛṣṇa'                     , veda:'Atharvaveda', cls:'Vs' },
+  { n:106, key:null,                    name:'Hayagrīva'                 , veda:'Atharvaveda', cls:'Vs' },
+  { n:107, key:null,                    name:'Dattātreya'                , veda:'Atharvaveda', cls:'Vs' },
+  { n:108, key:null,                    name:'Garuḍa'                    , veda:'Atharvaveda', cls:'Vs' },
+];
+
 // Pre-compute per-Veda counts (active vs target) for the UI. Active
 // is determined by matching MUKTIKA_108 entries whose `key` exists
 // in the active byUpanishad array.
@@ -21717,6 +21853,26 @@ function _muktikaProgress(fam) {
     if (m.key && activeKeys.has(m.key)) slot.active++;
     else slot.missing.push(m);
   }
+  return byVeda;
+}
+
+// v112 — Mirror of _muktikaProgress that tracks against the Aiyar
+// source-derived MUKTIKA_108_AIYAR list. Used by reports and by the
+// (optional) dual-count display path. UI currently still renders the
+// primary count via _muktikaProgress; this helper is here so future
+// passes can surface Aiyar coverage without re-implementing the
+// counting logic.
+function _muktikaProgressAiyar(fam) {
+  const activeKeys = new Set((fam.byUpanishad || []).map(u => u.key));
+  const byVeda = {};
+  let totalActive = 0;
+  for (const m of MUKTIKA_108_AIYAR) {
+    const slot = byVeda[m.veda] = byVeda[m.veda] || { target: 0, active: 0, missing: [] };
+    slot.target++;
+    if (m.key && activeKeys.has(m.key)) { slot.active++; totalActive++; }
+    else slot.missing.push(m);
+  }
+  byVeda._total = totalActive;
   return byVeda;
 }
 
