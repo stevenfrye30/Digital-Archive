@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v118-sankara-commentary-set-complete">
+  <meta name="atlas-build" content="v119-brihadaranyaka-roer-added">
   <title>Digital Archive</title>
   <style>
 
@@ -20965,6 +20965,13 @@ const TEXT_FAMILIES = [
       { textId: 'upanishads-sankara-sastri-vol3', role: 'source-volume', note: 'Sastri 1899 — Chandogya parts 1-4 with Sri Sankara\'s commentary; V.C. Seshacharri / Natesan, Madras; IA in.ernet.dli.2015.106211' },
       { textId: 'upanishads-sankara-sastri-vol4', role: 'source-volume', note: 'Sastri 1899 — Chandogya parts 5-8 with Sri Sankara\'s commentary; V.C. Seshacharri / Natesan, Madras; IA in.ernet.dli.2015.106212' },
       { textId: 'upanishads-sankara-sastri-vol5', role: 'source-volume', note: 'Sastri 1901 — Aitareya, Taittiriya with Sri Sankara\'s commentary; V.C. Seshacharri / India Printing Works, Madras; IA in.ernet.dli.2015.57841' },
+      // v119 — Roer 1856 Brihadaranyaka (Bibliotheca Indica, Calcutta /
+      // Asiatic Society of Bengal). Pre-1929 PD-safe. Full English
+      // translation of the Brihadaranyaka Upanishad + Sankara commentary
+      // on Chapter 1 only (selected portions for Chapters 2-6). Added
+      // as alternative after confirming Sastri's 5-volume set never
+      // extended to a Vol 6 Brihadaranyaka — see v119 report.
+      { textId: 'upanishads-brihadaranyaka-roer', role: 'source-volume', note: 'Roer 1856 — Brihadaranyaka Upanishad with Sankara commentary on Chapter 1 only; Bibliotheca Indica / Asiatic Society of Bengal, Calcutta; IA The_Brihad_aranyaka_upanishad_Sankarabhashya_English' },
     ],
     primaryMemberId: 'upanishads',
     // v101 — Richer per-Upanishad index with witness records.
@@ -21157,6 +21164,11 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Thirteen Principal Upanishads — Hume',
             translator: 'Robert Ernest Hume', year: '1921',
             role: 'source-volume', routeQuality: 'safe' },
+          { textId: 'upanishads-brihadaranyaka-roer', groupKey: 'brihadaranyaka',
+            sourceTitle: 'The Brihad Aranyaka Upanishad — Roer (Bibliotheca Indica)',
+            translator: 'Eduard Roer', year: '1856',
+            role: 'source-volume', routeQuality: 'safe',
+            note: 'Earliest English translation of the Brihadaranyaka Upanishad (Asiatic Society of Bengal, Calcutta). Includes Sankara\'s commentary translated in full for Chapter 1 only; selected commentary portions for chapters 2-6. v119 alternative after confirming no Sastri Brihadaranyaka volume exists.' },
         ] },
       { key: 'svetasvatara', name: 'Svetasvatara', displayTitle: 'Svetasvatara Upanishad',
         importance: 'principal', order: 110,
