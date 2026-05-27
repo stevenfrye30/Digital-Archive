@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v103-principal-upanishads-completion">
+  <meta name="atlas-build" content="v104-upanishads-108-gap-phase2-repair">
   <title>Digital Archive</title>
   <style>
 
@@ -3040,6 +3040,79 @@ button.home-path {
   font-size: 12.5px;
   line-height: 1.45;
   color: rgba(95, 75, 50, 0.72);
+}
+
+/* ── v104 — Muktikā 108 progress + gap UI ────────────────────────
+   By Veda group labels gain a small "(X / Y in Muktikā 108)" count
+   so the reader sees archive coverage per Veda. The Traditional
+   view gets a collapsed disclosure listing missing entries grouped
+   by Veda. Quiet typographic register — these are bookkeeping
+   notes, not a primary reading surface. */
+.byveda-progress {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.62em;
+  letter-spacing: 0.16em;
+  color: rgba(110, 75, 35, 0.62);
+  margin-left: 10px;
+  font-weight: 400;
+}
+.muktika-gap-veda {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: rgba(120, 70, 25, 0.78);
+  margin: 10px 0 4px;
+}
+.muktika-gap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2px 16px;
+}
+.muktika-gap-list li {
+  font-family: Georgia, serif;
+  font-size: 12.5px;
+  color: rgba(80, 60, 30, 0.82);
+  line-height: 1.5;
+}
+.muktika-gap-n {
+  display: inline-block;
+  width: 28px;
+  text-align: right;
+  margin-right: 4px;
+  color: rgba(110, 90, 60, 0.65);
+  font-style: italic;
+}
+.muktika-gap-name {
+  font-style: italic;
+}
+.muktika-gap-cls {
+  display: inline-block;
+  margin-left: 4px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: rgba(120, 70, 25, 0.55);
+}
+.muktika-gap-legend {
+  margin-top: 10px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: rgba(95, 75, 50, 0.70);
+}
+.muktika-gap-legend em {
+  font-style: normal;
+  color: rgba(120, 70, 25, 0.78);
 }
 
 /* Witness picker — v102 metadata band */
@@ -20509,14 +20582,22 @@ function _renderUpanishadsByVeda(fam) {
     const v = mi.associatedVeda || 'Uncertain / needs verification';
     (missingByVeda[v] = missingByVeda[v] || []).push(mi);
   }
+  // v104 — Muktikā 108 per-Veda progress counts (active / target).
+  const muktika = (typeof _muktikaProgress === 'function') ? _muktikaProgress(fam) : null;
   let html = '';
   html += '<div class="family-section-heading">Browse by Veda</div>';
-  html += '<div class="byveda-note">Each Upanishad is grouped under its associated Veda. Principal Upanishads first; minor Upanishads after. <em>Curated traditional metadata</em> = Muktikā assignment; <em>source heading</em> = read directly from the source file’s own chapter title.</div>';
+  html += '<div class="byveda-note">Each Upanishad is grouped under its associated Veda. Principal Upanishads first; minor Upanishads after. <em>Curated traditional metadata</em> = Muktikā assignment; <em>source heading</em> = read directly from the source file’s own chapter title. Per-Veda counts compare the archive against the traditional Muktikā 108 list.</div>';
   for (const v of vedaOrder) {
     const items = (buckets[v] || []);
     const missing = (missingByVeda[v] || []);
     if (!items.length && !missing.length) continue;
-    html += `<div class="tile-section-label byveda-label">${escH(v)}</div>`;
+    // Header with progress count when this Veda is part of the
+    // Muktikā 108 (skips "Uncertain / needs verification").
+    let progressLabel = '';
+    if (muktika && muktika[v]) {
+      progressLabel = ` <span class="byveda-progress">${muktika[v].active} / ${muktika[v].target} in Muktikā 108</span>`;
+    }
+    html += `<div class="tile-section-label byveda-label">${escH(v)}${progressLabel}</div>`;
     if (items.length) {
       html += '<div class="byupn-grid">';
       const p = items.filter(u => u.importance === 'principal');
@@ -20583,6 +20664,38 @@ function _renderUpanishadsByTraditional(fam) {
     html += '<div class="byupn-grid">';
     for (const u of minor) html += _byUpanishadTileHTML(u, fam.id);
     html += '</div>';
+  }
+  // v104 — Collapsed "Traditional 108 — not yet in archive"
+  // disclosure. Lists every MUKTIKA_108 entry without an active
+  // archive route, grouped by Veda. Honest gap map without
+  // cluttering the active grid with dead cards.
+  if (typeof _muktikaProgress === 'function') {
+    const muktika = _muktikaProgress(fam);
+    const allMissing = [];
+    for (const v of Object.keys(muktika)) {
+      for (const m of muktika[v].missing) allMissing.push(m);
+    }
+    if (allMissing.length) {
+      const totalActive = MUKTIKA_108.length - allMissing.length;
+      html += '<details class="byupn-inactive muktika-gap">';
+      html += `<summary>Traditional Muktikā 108 — ${totalActive} active in archive · ${allMissing.length} not yet in archive</summary>`;
+      // Group missing by Veda for readability
+      const missingByVeda = {};
+      for (const m of allMissing) (missingByVeda[m.veda] = missingByVeda[m.veda] || []).push(m);
+      const vedaOrder = ['Rigveda','Samaveda','Shukla Yajurveda','Krishna Yajurveda','Atharvaveda'];
+      for (const v of vedaOrder) {
+        const list = missingByVeda[v];
+        if (!list || !list.length) continue;
+        html += `<div class="muktika-gap-veda">${escH(v)} (${list.length})</div>`;
+        html += '<ul class="muktika-gap-list">';
+        for (const m of list) {
+          html += `<li><span class="muktika-gap-n">${m.n}.</span> <span class="muktika-gap-name">${escH(m.name)}</span> <span class="muktika-gap-cls">${escH(m.cls)}</span></li>`;
+        }
+        html += '</ul>';
+      }
+      html += '<div class="muktika-gap-legend">Class: <em>M</em> = mukhya / principal · <em>V</em> = sāmānya Vedānta · <em>S</em> = sannyāsa · <em>Y</em> = yoga · <em>Sh</em> = shaiva · <em>Vs</em> = vaishnava · <em>Sk</em> = shakta. Not all 108 are present in the current archive sources; acquisition is required for the missing entries.</div>';
+      html += '</details>';
+    }
   }
   return html;
 }
@@ -21162,6 +21275,34 @@ const TEXT_FAMILIES = [
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
         ] },
+      // v104 — Subāla and Tejobindu recovered from Aiyar L1=18-33
+      // via deep audit. v103's "unidentified Khanda/Chapter block"
+      // was actually two complete minor Upanishads with safe-start
+      // routes. Subāla closes at L1=27 with "This Subala-Bija-
+      // Brahma-Upanishad should neither be given out…" — confirmed
+      // by closing-passage textual evidence. Tejobindu spans L1=28-
+      // 33, closing at L1=33 with "Tejobindu-Upanishad always with
+      // delight… Thus ends the sixth chapter."
+      { key: 'subala', name: 'Subāla', displayTitle: 'Subāla Upanishad',
+        importance: 'minor', order: 285,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '18',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Opens at the first of sixteen Khandas in Aiyar (L1=18); content continues across L1=18-27 ("Khanda I"-"Khanda XVI") before closing with the Subala-Bija-Brahma-Upanishad sealing rubric.' },
+        ] },
+      { key: 'tejobindu', name: 'Tejobindu', displayTitle: 'Tejobindu Upanishad',
+        importance: 'minor', order: 295,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '28',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Opens at "param-dhyana upon tejo bindu" in Aiyar (L1=28); content continues across six chapters (L1=28-33) before closing with the Tejobindu-Upanishad sealing rubric.' },
+        ] },
       { key: 'amrtanada', name: 'Amrtanada', displayTitle: 'Amrtanada Upanishad',
         importance: 'minor', order: 400,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
@@ -21225,11 +21366,171 @@ const TEXT_FAMILIES = [
     byUpanishadInactive: [
       { name: 'Mandukya',  importance: 'principal',
         reason: 'Repo-wide v103 audit (not only the Upanishads family files): searched passage bodies across the entire Hindu data corpus. Mandukya appears only in editorial commentary (Brahma Knowledge’s "List of the Chief Upanishads" appendix; MacDonell’s History of Sanskrit Literature description; the Yoga-Vasishtha and Hermes-Trismegistos incidental mentions; Müller Part 1 / Part 2 / Aiyar editor notes). No translation passages exist in the archive. Acquisition needed: candidate sources include Nikhilananda’s translation of the Mandukya with Gaudapada’s Karika, Hume’s Thirteen Principal Upanishads, or any Sacred Books of the East volume containing the Mandukya proper. Mandukya Karika commentary alone is not a substitute for the Upanishad text.' },
-      { name: 'Aiyar L1=18–33 (Khanda I–XVI and Chapter I–VI)', importance: 'minor',
-        reason: 'Sub-section headings without identifiable Upanishad titles in chapter_titles. Could belong to one or more named Upanishads (likely Tejobindu / Yogashikha / similar minor texts) but boundary detection requires parser repair.' },
     ],
   },
 ];
+
+// ════════════════════════════════════════════════════════════════
+//  MUKTIKĀ 108 CANONICAL TARGET MAP (v104 doctrine)
+// ────────────────────────────────────────────────────────────────
+//  The Muktikā Upanishad's own list (Muktikā 1.30-39) names 108
+//  Upanishads classified by Veda. Used here as a TARGET / GAP
+//  reference — never as a claim that the archive contains all 108.
+//
+//  Class abbreviations (Muktikā tradition + later commentators):
+//    M  = Mukhya / principal (10–11 canonical)
+//    V  = Sāmānya Vedānta (general Vedanta)
+//    S  = Sannyāsa
+//    Y  = Yoga
+//    Sh = Shaiva
+//    Vs = Vaishnava
+//    Sk = Shakta
+//
+//  `key` matches the active `byUpanishad[].key` exactly when the
+//  archive holds that Upanishad. `name` is the canonical English
+//  rendering; `variants` lists common alternate spellings used
+//  during the v103/v104 audits. Veda assignment follows the
+//  Muktikā list; some Upanishads appear under multiple Vedas in
+//  different traditions — only the Muktikā primary assignment is
+//  recorded here.
+//
+//  This config drives the v104 "108-aware" UI elements:
+//   · per-Veda counts on the By Veda view (active / total)
+//   · the collapsed "Traditional 108 — not yet in archive"
+//     disclosure on the Traditional view
+//  It does NOT change route logic. Acquisitions add entries to
+//  byUpanishad; absence of an entry here would just mean a
+//  Upanishad outside the Muktikā 108.
+const MUKTIKA_108 = [
+  // ── Rigveda (10) ──
+  { n:1,  key:'aitareya',         name:'Aitareya',        veda:'Rigveda', cls:'M', variants:['Aitareya-Upanishad'] },
+  { n:2,  key:'atmabodha',        name:'Ātmabodha',       veda:'Rigveda', cls:'V', variants:['Atmabodha-Upanishad'] },
+  { n:3,  key:'kaushitaki',       name:'Kauṣītaki',       veda:'Rigveda', cls:'M', variants:['Kaushitaki-Brahmana-Upanishad'] },
+  { n:4,  key:null,                name:'Mudgala',         veda:'Rigveda', cls:'V', variants:['Mudgala-Upanishad'] },
+  { n:5,  key:null,                name:'Nirvāṇa',         veda:'Rigveda', cls:'S', variants:['Nirvana-Upanishad'] },
+  { n:6,  key:'nadabindu',        name:'Nādabindu',       veda:'Rigveda', cls:'Y', variants:['Nadabindu-Upanishad'] },
+  { n:7,  key:null,                name:'Akṣamālā',        veda:'Rigveda', cls:'Sh', variants:['Akshamala-Upanishad'] },
+  { n:8,  key:null,                name:'Tripura',         veda:'Rigveda', cls:'Sk', variants:['Tripura-Upanishad'] },
+  { n:9,  key:null,                name:'Saubhāgyalakṣmī', veda:'Rigveda', cls:'Sk', variants:['Saubhagyalakshmi-Upanishad'] },
+  { n:10, key:null,                name:'Bahvṛca',         veda:'Rigveda', cls:'Sk', variants:['Bahvrcha-Upanishad','Bahvrca-Upanishad'] },
+  // ── Shukla Yajurveda (19) ──
+  { n:11, key:'isha',             name:'Īśa',             veda:'Shukla Yajurveda', cls:'M', variants:['Isha-Upanishad','Isavasya'] },
+  { n:12, key:'brihadaranyaka',   name:'Bṛhadāraṇyaka',   veda:'Shukla Yajurveda', cls:'M', variants:['Brihadaranyaka-Upanishad'] },
+  { n:13, key:null,                name:'Jābāla',          veda:'Shukla Yajurveda', cls:'S', variants:['Jabala-Upanishad'] },
+  { n:14, key:'hamsa',            name:'Haṃsa',           veda:'Shukla Yajurveda', cls:'Y', variants:['Hamsa-Upanishad'] },
+  { n:15, key:null,                name:'Paramahaṃsa',     veda:'Shukla Yajurveda', cls:'S', variants:['Paramahamsa-Upanishad'] },
+  { n:16, key:'subala',           name:'Subāla',          veda:'Shukla Yajurveda', cls:'V', variants:['Subala-Upanishad'] },
+  { n:17, key:null,                name:'Mantrikā',        veda:'Shukla Yajurveda', cls:'V', variants:['Mantrika-Upanishad'] },
+  { n:18, key:'niralamba',        name:'Niralamba',       veda:'Shukla Yajurveda', cls:'V', variants:['Niralamba-Upanishad'] },
+  { n:19, key:null,                name:'Trīśikhibrāhmaṇa',veda:'Shukla Yajurveda', cls:'Y', variants:['Trisikhibrahmana-Upanishad','Trishikhi-Upanishad'] },
+  { n:20, key:null,                name:'Maṇḍalabrāhmaṇa', veda:'Shukla Yajurveda', cls:'Y', variants:['Mandalabrahmana-Upanishad'] },
+  { n:21, key:null,                name:'Advayatāraka',    veda:'Shukla Yajurveda', cls:'S', variants:['Advayataraka-Upanishad'] },
+  { n:22, key:null,                name:'Pāingala',        veda:'Shukla Yajurveda', cls:'V', variants:['Paingala-Upanishad'] },
+  { n:23, key:'bhikshuka',        name:'Bhikṣu',          veda:'Shukla Yajurveda', cls:'S', variants:['Bhikshuka-Upanishad'] },
+  { n:24, key:null,                name:'Turīyātīta',      veda:'Shukla Yajurveda', cls:'S', variants:['Turiyatita-Upanishad'] },
+  { n:25, key:'adhyatma',         name:'Adhyātmā',        veda:'Shukla Yajurveda', cls:'V', variants:['Adhyatma-Upanishad'] },
+  { n:26, key:'tarasara',         name:'Tārasāra',        veda:'Shukla Yajurveda', cls:'Vs', variants:['Tarasara-Upanishad'] },
+  { n:27, key:null,                name:'Yājñavalkya',     veda:'Shukla Yajurveda', cls:'S', variants:['Yajnavalkya-Upanishad'] },
+  { n:28, key:null,                name:'Sātyāyanī',       veda:'Shukla Yajurveda', cls:'S', variants:['Satyayani-Upanishad'] },
+  { n:29, key:null,                name:'Muktikā',         veda:'Shukla Yajurveda', cls:'M', variants:['Muktika-Upanishad'] },
+  // ── Krishna Yajurveda (32) ──
+  { n:30, key:'katha',            name:'Kaṭha',           veda:'Krishna Yajurveda', cls:'M', variants:['Katha-Upanishad'] },
+  { n:31, key:'taittiriya',       name:'Taittirīya',      veda:'Krishna Yajurveda', cls:'M', variants:['Taittiriya-Upanishad'] },
+  { n:32, key:'brahmopanishad',   name:'Brahma',          veda:'Krishna Yajurveda', cls:'S', variants:['Brahma-Upanishad','Brahmopanishad'] },
+  { n:33, key:'kaivalya',         name:'Kaivalya',        veda:'Krishna Yajurveda', cls:'V', variants:['Kaivalya-Upanishad'] },
+  { n:34, key:'svetasvatara',     name:'Śvetāśvatara',    veda:'Krishna Yajurveda', cls:'M', variants:['Svetasvatara-Upanishad'] },
+  { n:35, key:'garbha',           name:'Garbha',          veda:'Krishna Yajurveda', cls:'V', variants:['Garbha-Upanishad'] },
+  { n:36, key:'narayana',         name:'Nārāyaṇa',        veda:'Krishna Yajurveda', cls:'Vs', variants:['Narayana-Upanishad'] },
+  { n:37, key:'amrtabindu',       name:'Amṛtabindu',      veda:'Krishna Yajurveda', cls:'Y', variants:['Amrtabindu-Upanishad','Amritabindu-Upanishad'] },
+  { n:38, key:'amrtanada',        name:'Amṛtanāda',       veda:'Krishna Yajurveda', cls:'Y', variants:['Amrtanada-Upanishad'] },
+  { n:39, key:null,                name:'Kālāgnirudra',    veda:'Krishna Yajurveda', cls:'Sh', variants:['Kalagnirudra-Upanishad'] },
+  { n:40, key:null,                name:'Kṣurikā',         veda:'Krishna Yajurveda', cls:'Y', variants:['Kshurika-Upanishad'] },
+  { n:41, key:'sarvasara',        name:'Sarvasāra',       veda:'Krishna Yajurveda', cls:'V', variants:['Sarvasara-Upanishad'] },
+  { n:42, key:null,                name:'Śukarahasya',     veda:'Krishna Yajurveda', cls:'V', variants:['Sukarahasya-Upanishad'] },
+  { n:43, key:'tejobindu',        name:'Tejobindu',       veda:'Krishna Yajurveda', cls:'Y', variants:['Tejobindu-Upanishad'] },
+  { n:44, key:'dhyanabindu',      name:'Dhyānabindu',     veda:'Krishna Yajurveda', cls:'Y', variants:['Dhyanabindu-Upanishad'] },
+  { n:45, key:null,                name:'Brahmavidyā',     veda:'Krishna Yajurveda', cls:'Y', variants:['Brahmavidya-Upanishad'] },
+  { n:46, key:'yogatattva',       name:'Yogatattva',      veda:'Krishna Yajurveda', cls:'Y', variants:['Yogatattva-Upanishad'] },
+  { n:47, key:null,                name:'Dakṣiṇāmūrti',    veda:'Krishna Yajurveda', cls:'Sh', variants:['Dakshinamurti-Upanishad'] },
+  { n:48, key:'skanda',           name:'Skanda',          veda:'Krishna Yajurveda', cls:'V', variants:['Skanda-Upanishad'] },
+  { n:49, key:'sariraka',         name:'Śārīraka',        veda:'Krishna Yajurveda', cls:'V', variants:['Sariraka-Upanishad'] },
+  { n:50, key:null,                name:'Yogaśikhā',       veda:'Krishna Yajurveda', cls:'Y', variants:['Yogasikha-Upanishad','Yogashikha-Upanishad'] },
+  { n:51, key:null,                name:'Ekākṣara',        veda:'Krishna Yajurveda', cls:'V', variants:['Ekakshara-Upanishad'] },
+  { n:52, key:null,                name:'Akṣi',            veda:'Krishna Yajurveda', cls:'V', variants:['Akshi-Upanishad','Aksi-Upanishad'] },
+  { n:53, key:null,                name:'Avadhūta',        veda:'Krishna Yajurveda', cls:'S', variants:['Avadhuta-Upanishad'] },
+  { n:54, key:null,                name:'Kaṭharudra',      veda:'Krishna Yajurveda', cls:'S', variants:['Katharudra-Upanishad'] },
+  { n:55, key:'maitri',           name:'Maitrāyaṇi',      veda:'Krishna Yajurveda', cls:'M', variants:['Maitri-Upanishad','Maitrayana-Brahmana-Upanishad','Maitrayaniya'] },
+  { n:56, key:null,                name:'Rudrahṛdaya',     veda:'Krishna Yajurveda', cls:'Sh', variants:['Rudrahridaya-Upanishad'] },
+  { n:57, key:null,                name:'Pañcabrahma',     veda:'Krishna Yajurveda', cls:'Sh', variants:['Pancabrahma-Upanishad'] },
+  { n:58, key:null,                name:'Prāṇāgnihotra',   veda:'Krishna Yajurveda', cls:'V', variants:['Pranagnihotra-Upanishad'] },
+  { n:59, key:null,                name:'Mahā-Nārāyaṇa',   veda:'Krishna Yajurveda', cls:'Vs', variants:['Mahanarayana-Upanishad'] },
+  { n:60, key:null,                name:'Yogakuṇḍalinī',   veda:'Krishna Yajurveda', cls:'Y', variants:['Yogakundalini-Upanishad'] },
+  { n:61, key:'kalisantarana',    name:'Kalisantaraṇa',   veda:'Krishna Yajurveda', cls:'Vs', variants:['Kalisantarana-Upanishad'] },
+  { n:62, key:null,                name:'Sarasvatī-rahasya',veda:'Krishna Yajurveda', cls:'Sk', variants:['Saraswatirahasya-Upanishad','Saraswatirahasya'] },
+  // ── Samaveda (16) ──
+  { n:63, key:'kena',             name:'Kena',            veda:'Samaveda', cls:'M', variants:['Kena-Upanishad','Talavakara-Upanishad'] },
+  { n:64, key:'chandogya',        name:'Chāndogya',       veda:'Samaveda', cls:'M', variants:['Chandogya-Upanishad','Khandogya-Upanishad'] },
+  { n:65, key:null,                name:'Āruṇi',           veda:'Samaveda', cls:'S', variants:['Aruni-Upanishad'] },
+  { n:66, key:'maitreya',         name:'Maitreya',        veda:'Samaveda', cls:'S', variants:['Maitreya-Upanishad'] },
+  { n:67, key:null,                name:'Maitreyī',        veda:'Samaveda', cls:'S', variants:['Maitreyi-Upanishad'] },
+  { n:68, key:'vajrasuchi',       name:'Vajrasūcikā',     veda:'Samaveda', cls:'V', variants:['Vajrasuchi-Upanishad','Vajrasucika-Upanishad'] },
+  { n:69, key:null,                name:'Yogachūḍāmaṇi',   veda:'Samaveda', cls:'Y', variants:['Yogachudamani-Upanishad'] },
+  { n:70, key:null,                name:'Vāsudeva',        veda:'Samaveda', cls:'Vs', variants:['Vasudeva-Upanishad'] },
+  { n:71, key:null,                name:'Mahā',            veda:'Samaveda', cls:'V', variants:['Maha-Upanishad'] },
+  { n:72, key:null,                name:'Sannyāsa',        veda:'Samaveda', cls:'S', variants:['Sannyasa-Upanishad'] },
+  { n:73, key:null,                name:'Avyakta',         veda:'Samaveda', cls:'Vs', variants:['Avyakta-Upanishad'] },
+  { n:74, key:null,                name:'Kuṇḍikā',         veda:'Samaveda', cls:'S', variants:['Kundika-Upanishad'] },
+  { n:75, key:null,                name:'Sāvitrī',         veda:'Samaveda', cls:'V', variants:['Savitri-Upanishad'] },
+  { n:76, key:null,                name:'Rudrākṣajābāla',  veda:'Samaveda', cls:'Sh', variants:['Rudrakshajabala-Upanishad'] },
+  { n:77, key:null,                name:'Jābāli',          veda:'Samaveda', cls:'Sh', variants:['Jabali-Upanishad'] },
+  { n:78, key:null,                name:'Darśana',         veda:'Samaveda', cls:'Y', variants:['Darshana-Upanishad'] },
+  // ── Atharvaveda (31) ──
+  { n:79, key:'prasna',           name:'Praśna',          veda:'Atharvaveda', cls:'M', variants:['Prasna-Upanishad'] },
+  { n:80, key:'mundaka',          name:'Muṇḍaka',         veda:'Atharvaveda', cls:'M', variants:['Mundaka-Upanishad'] },
+  { n:81, key:null,                name:'Māṇḍūkya',        veda:'Atharvaveda', cls:'M', variants:['Mandukya-Upanishad','Mandukyopanishad'] },
+  { n:82, key:null,                name:'Atharvaśiras',    veda:'Atharvaveda', cls:'Sh', variants:['Atharvasiras-Upanishad'] },
+  { n:83, key:null,                name:'Atharvaśikha',    veda:'Atharvaveda', cls:'Sh', variants:['Atharvasikha-Upanishad'] },
+  { n:84, key:null,                name:'Bṛhajjābāla',     veda:'Atharvaveda', cls:'Sh', variants:['Brhajjabala-Upanishad'] },
+  { n:85, key:null,                name:'Nṛsiṃhatāpani',   veda:'Atharvaveda', cls:'Vs', variants:['Nrisimhatapani-Upanishad','Nrsimha-Upanishad'] },
+  { n:86, key:'narada-parivrajaka',name:'Nāradaparivrājaka',veda:'Atharvaveda', cls:'S', variants:['Narada-Parivrajaka-Upanishad'] },
+  { n:87, key:null,                name:'Sītā',            veda:'Atharvaveda', cls:'Sk', variants:['Sita-Upanishad'] },
+  { n:88, key:null,                name:'Śarabha',         veda:'Atharvaveda', cls:'Sh', variants:['Sarabha-Upanishad'] },
+  { n:89, key:null,                name:'Tripurātapani',   veda:'Atharvaveda', cls:'Sk', variants:['Tripuratapani-Upanishad'] },
+  { n:90, key:null,                name:'Devī',            veda:'Atharvaveda', cls:'Sk', variants:['Devi-Upanishad'] },
+  { n:91, key:null,                name:'Tripurā',         veda:'Atharvaveda', cls:'Sk', variants:['Tripura-Upanishad'] },
+  { n:92, key:null,                name:'Bhāvanā',         veda:'Atharvaveda', cls:'Sk', variants:['Bhavana-Upanishad'] },
+  { n:93, key:null,                name:'Saubhāgya',       veda:'Atharvaveda', cls:'Sk', variants:['Saubhagya-Upanishad'] },
+  { n:94, key:null,                name:'Sarasvatī-rahasya',veda:'Atharvaveda', cls:'Sk', variants:[] },
+  { n:95, key:null,                name:'Rāmarahasya',     veda:'Atharvaveda', cls:'Vs', variants:['Ramarahasya-Upanishad'] },
+  { n:96, key:null,                name:'Rāmatāpaṇi',      veda:'Atharvaveda', cls:'Vs', variants:['Ramatapani-Upanishad'] },
+  { n:97, key:'sandilya',         name:'Śāṇḍilya',        veda:'Atharvaveda', cls:'Y', variants:['Sandilya-Upanishad'] },
+  { n:98, key:null,                name:'Paramahaṃsa-parivrājaka',veda:'Atharvaveda', cls:'S', variants:['Paramahamsa-parivrajaka-Upanishad'] },
+  { n:99, key:null,                name:'Annapūrṇā',       veda:'Atharvaveda', cls:'Sk', variants:['Annapurna-Upanishad'] },
+  { n:100,key:null,                name:'Sūrya',           veda:'Atharvaveda', cls:'V', variants:['Surya-Upanishad'] },
+  { n:101,key:null,                name:'Ātmā',            veda:'Atharvaveda', cls:'V', variants:['Atma-Upanishad'] },
+  { n:102,key:null,                name:'Pāśupatabrahma',  veda:'Atharvaveda', cls:'Sh', variants:['Pashupata-Upanishad'] },
+  { n:103,key:null,                name:'Parabrahma',      veda:'Atharvaveda', cls:'V', variants:['Parabrahma-Upanishad'] },
+  { n:104,key:null,                name:'Avadhūta',        veda:'Atharvaveda', cls:'S', variants:['Avadhuta-Upanishad'] },
+  { n:105,key:null,                name:'Tripurā-tāpinī',  veda:'Atharvaveda', cls:'Sk', variants:[] },
+  { n:106,key:null,                name:'Devī',            veda:'Atharvaveda', cls:'Sk', variants:[] },
+  { n:107,key:null,                name:'Bhāvanā',         veda:'Atharvaveda', cls:'Sk', variants:[] },
+  { n:108,key:null,                name:'Mahāvākya',       veda:'Atharvaveda', cls:'V', variants:['Mahavakya-Upanishad'] },
+];
+
+// Pre-compute per-Veda counts (active vs target) for the UI. Active
+// is determined by matching MUKTIKA_108 entries whose `key` exists
+// in the active byUpanishad array.
+function _muktikaProgress(fam) {
+  const activeKeys = new Set((fam.byUpanishad || []).map(u => u.key));
+  const byVeda = {};
+  for (const m of MUKTIKA_108) {
+    const slot = byVeda[m.veda] = byVeda[m.veda] || { target: 0, active: 0, missing: [] };
+    slot.target++;
+    if (m.key && activeKeys.has(m.key)) slot.active++;
+    else slot.missing.push(m);
+  }
+  return byVeda;
+}
 
 // Index: textId → family (built once at load time). Used by
 // _renderTextTiles to suppress member tiles, and by browseText to
