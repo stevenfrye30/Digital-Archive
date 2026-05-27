@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v120-missing-64-acquisition-strategy">
+  <meta name="atlas-build" content="v121-restricted-upanishad-placeholders">
   <title>Digital Archive</title>
   <style>
 
@@ -3066,6 +3066,96 @@ button.home-path {
   letter-spacing: 0.16em;
   color: rgba(120, 70, 25, 0.78);
   margin: 10px 0 4px;
+}
+
+/* ── v121 — Restricted / future-public-domain source placeholders ──
+   Distinct from normal text tiles: muted border, no hover lift, no
+   reader-room link. The reader sees the source family, expected
+   public-domain year, rights holder, and what Upanishads will be
+   activated when the source becomes safely usable. The placeholder
+   is informational only — clicking does not open the reading room. */
+.restricted-source-section {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(120, 80, 35, 0.30);
+}
+.restricted-source-heading {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  color: rgba(95, 55, 20, 0.82);
+  margin: 4px 0 6px;
+}
+.restricted-source-note {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(80, 50, 25, 0.62);
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+.restricted-source-tile {
+  display: block;
+  border: 1px dashed rgba(120, 80, 35, 0.40);
+  background: rgba(245, 235, 215, 0.30);
+  border-radius: 6px;
+  padding: 12px 14px 10px;
+  margin: 8px 0;
+  cursor: default;
+  opacity: 0.82;
+}
+.restricted-source-tile:hover { /* explicitly no lift / no shadow */
+  background: rgba(245, 235, 215, 0.40);
+}
+.restricted-source-tile .rs-status {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: rgba(120, 50, 20, 0.86);
+  background: rgba(220, 180, 140, 0.32);
+  padding: 1px 8px;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+.restricted-source-tile .rs-pd-year {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(80, 50, 25, 0.78);
+}
+.restricted-source-tile .rs-title {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: rgba(60, 40, 20, 0.88);
+  margin-top: 4px;
+}
+.restricted-source-tile .rs-meta {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: rgba(95, 65, 30, 0.72);
+  margin-top: 3px;
+  line-height: 1.45;
+}
+.restricted-source-tile .rs-coverage {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(120, 70, 20, 0.78);
+  margin-top: 5px;
+}
+.restricted-source-tile .rs-rights {
+  font-family: Georgia, serif;
+  font-size: 11px;
+  color: rgba(110, 75, 35, 0.65);
+  margin-top: 3px;
+  font-style: italic;
 }
 .muktika-gap-list {
   list-style: none;
@@ -20530,6 +20620,28 @@ function browseTextFamily(familyId) {
         html += _familyMemberTileHTML(t, m, cat, trd);
       }
     }
+    // v121 — Restricted / future-public-domain source placeholders.
+    // Metadata-only cards for sources that will (eventually) become
+    // ingestible when their copyright expires. No public route to
+    // restricted text; clicking does nothing visible.
+    if (typeof RESTRICTED_SOURCES !== 'undefined' && RESTRICTED_SOURCES.length) {
+      const famRestricted = RESTRICTED_SOURCES.filter(rs =>
+        rs.category === 'Upanishads' && rs.tradition === fam.tradition);
+      if (famRestricted.length) {
+        html += '<div class="restricted-source-section">';
+        html += '<div class="restricted-source-heading">Restricted / Future Public-Domain Sources</div>';
+        html += '<div class="restricted-source-note">' +
+          'These source families would close substantial portions of the missing ' +
+          'Muktikā 108 when their US copyright eventually expires. Each card is ' +
+          'metadata only — the archive does not commit or route any copyrighted ' +
+          'text. See <code>reports/v121_restricted_upanishads_architecture.md</code> ' +
+          'for the doctrine.</div>';
+        for (const rs of famRestricted) {
+          html += _restrictedSourceTileHTML(rs);
+        }
+        html += '</div>';
+      }
+    }
   }
 
   // Inactive disclosure (visible in all views) — keeps the family's
@@ -20858,6 +20970,50 @@ function openUpanishadAt(textId, keyOrPid, isPid) {
 // Member card inside the family page. Renders like a text-tile
 // but uses the family-supplied `note` for context (e.g., "Müller,
 // Part 1 (SBE Vol. I)") instead of the bare author/year line.
+// v121 — Restricted-source placeholder tile (metadata-only).
+// Renders distinct from normal text tiles: dashed border, muted
+// styling, no onclick to a reading-room route. The reader sees
+// status, expected PD year, translator, rights holder, coverage
+// summary — all metadata only. No copyrighted text is rendered.
+function _restrictedSourceTileHTML(rs) {
+  const statusLabel = rs.availabilityStatus === 'copyrighted-unavailable'
+    ? 'Copyrighted — unavailable'
+    : (rs.availabilityStatus === 'public-domain-deferred'
+        ? 'Public-domain deferred'
+        : 'Restricted');
+  const pdYear = rs.expectedPublicDomainYear
+    ? `Expected public-domain entry: ${rs.expectedPublicDomainYear}`
+    : '';
+  const translatorBits = [];
+  if (rs.translator) translatorBits.push(rs.translator);
+  if (rs.editor && rs.editor !== rs.translator) translatorBits.push('ed. ' + rs.editor);
+  if (rs.publicationYear) translatorBits.push(String(rs.publicationYear));
+  const metaLine = translatorBits.join(' · ');
+  const cov = Array.isArray(rs.coveredUpanishads) ? rs.coveredUpanishads.length : 0;
+  const coverageLine = cov > 0
+    ? `When activated: ${rs.expectedCoverageGain || cov} of the missing Muktikā 108 closed (${cov} Upanishad${cov === 1 ? '' : 's'})`
+    : (rs.expectedCoverageGain ? `When activated: ${rs.expectedCoverageGain}` : '');
+  const rightsLine = rs.rightsHolder
+    ? `Rights holder: ${rs.rightsHolder}`
+    : '';
+  return `<div class="restricted-source-tile" title="Metadata only — restricted/future source">
+    <div>
+      <span class="rs-status">${escH(statusLabel)}</span>
+      ${pdYear ? `<span class="rs-pd-year">${escH(pdYear)}</span>` : ''}
+    </div>
+    <div class="rs-title">${escH(rs.displayTitle)}</div>
+    ${metaLine ? `<div class="rs-meta">${escH(metaLine)}</div>` : ''}
+    ${coverageLine ? `<div class="rs-coverage">${escH(coverageLine)}</div>` : ''}
+    ${rightsLine ? `<div class="rs-rights">${escH(rightsLine)}</div>` : ''}
+  </div>`;
+}
+
+// v121 — Local restricted-source mode is OFF by default. The public
+// build NEVER references restricted text. A future local build can
+// enable this and load `data/_restricted/restricted_index.local.json`,
+// but the default (and the only deployed-Pages mode) is fail-closed.
+function isRestrictedLocalModeEnabled() { return false; }
+
 function _familyMemberTileHTML(t, member, cat, trd) {
   const authorArr = (t.author || []).filter(a => a && a !== 'Anonymous');
   const authorStr = authorArr.join(', ');
@@ -22065,6 +22221,165 @@ function _muktikaProgressLegacy(fam) {
   byVeda._total = totalActive;
   return byVeda;
 }
+
+// ════════════════════════════════════════════════════════════════
+//  RESTRICTED-SOURCE REGISTER (v121 doctrine — metadata only)
+// ────────────────────────────────────────────────────────────────
+//  Metadata-only inventory of copyrighted / public-domain-deferred
+//  source families that COULD close substantial portions of the
+//  missing Muktikā 108 when their US copyright eventually expires.
+//
+//  CRITICAL: this constant contains NO copyrighted full text. Only
+//  bibliographic metadata + expected public-domain dates + coverage
+//  targets + rights-holder attributions.
+//
+//  The placeholder UI (`_restrictedSourceTileHTML`) renders these
+//  records as distinct muted cards in the By-text view of each
+//  family page. Cards are NOT clickable — there is no reading-room
+//  route. The reader sees what would be available, when, and from
+//  whom — but the public app commits and serves zero restricted
+//  text.
+//
+//  Detailed per-source metadata also lives in
+//  `data/restricted_sources_register.json` for tooling that prefers
+//  a separate JSON file. The two structures are intentionally
+//  consistent.
+//
+//  Source: v120 acquisition-strategy report §3.A (Adyar Library
+//  English Series 1935–1978) + §6 (other restricted/deferred).
+//  Architecture doctrine: reports/v121_restricted_upanishads_architecture.md.
+const RESTRICTED_SOURCES = [
+  {
+    id: 'adyar-saiva-upanishads-1935',
+    displayTitle: 'Saiva Upanishads (Adyar Library)',
+    sourceFamily: 'Adyar Library English Series',
+    tradition: 'Hindu',
+    category: 'Upanishads',
+    availabilityStatus: 'public-domain-deferred',
+    translator: 'T. R. Srinivasa Ayyangar',
+    editor: 'G. Srinivasa Murti',
+    publicationYear: 1935,
+    expectedPublicDomainYear: 2031,
+    rightsHolder: 'Adyar Library and Research Centre, Chennai (likely)',
+    copyrightOwnerConfidence: 'likely',
+    expectedCoverageGain: 13,
+    coveredUpanishads: 13,
+    publicRouteAllowed: false,
+  },
+  {
+    id: 'adyar-yoga-upanishads-1938',
+    displayTitle: 'Yoga Upanishads (Adyar Library)',
+    sourceFamily: 'Adyar Library English Series',
+    tradition: 'Hindu',
+    category: 'Upanishads',
+    availabilityStatus: 'public-domain-deferred',
+    translator: 'T. R. Srinivasa Ayyangar',
+    publicationYear: 1938,
+    expectedPublicDomainYear: 2034,
+    rightsHolder: 'Adyar Library and Research Centre, Chennai (likely)',
+    copyrightOwnerConfidence: 'likely',
+    expectedCoverageGain: 7,
+    coveredUpanishads: 7,
+    publicRouteAllowed: false,
+  },
+  {
+    id: 'adyar-samanya-vedanta-upanishads-1941',
+    displayTitle: 'Sāmānya Vedānta Upanishads (Adyar Library)',
+    sourceFamily: 'Adyar Library English Series',
+    tradition: 'Hindu',
+    category: 'Upanishads',
+    availabilityStatus: 'public-domain-deferred',
+    translator: 'T. R. Srinivasa Ayyangar',
+    publicationYear: 1941,
+    expectedPublicDomainYear: 2037,
+    rightsHolder: 'Adyar Library and Research Centre, Chennai (likely)',
+    copyrightOwnerConfidence: 'likely',
+    expectedCoverageGain: 11,
+    coveredUpanishads: 11,
+    publicRouteAllowed: false,
+  },
+  {
+    id: 'adyar-vaishnava-upanishads-1945',
+    displayTitle: 'Vaishnava Upanishads (Adyar Library)',
+    sourceFamily: 'Adyar Library English Series',
+    tradition: 'Hindu',
+    category: 'Upanishads',
+    availabilityStatus: 'public-domain-deferred',
+    translator: 'T. R. Srinivasa Ayyangar (likely; requires verification)',
+    publicationYear: 1945,
+    expectedPublicDomainYear: 2041,
+    rightsHolder: 'Adyar Library and Research Centre, Chennai (likely)',
+    copyrightOwnerConfidence: 'likely',
+    expectedCoverageGain: 11,
+    coveredUpanishads: 11,
+    publicRouteAllowed: false,
+  },
+  {
+    id: 'adyar-shakta-upanishads-1950',
+    displayTitle: 'Shakta Upanishads (Adyar Library)',
+    sourceFamily: 'Adyar Library English Series',
+    tradition: 'Hindu',
+    category: 'Upanishads',
+    availabilityStatus: 'public-domain-deferred',
+    translator: 'A. G. Krishna Warrier',
+    publicationYear: 1950,
+    expectedPublicDomainYear: 2046,
+    rightsHolder: 'Adyar Library and Research Centre, Chennai (likely)',
+    copyrightOwnerConfidence: 'likely',
+    expectedCoverageGain: 9,
+    coveredUpanishads: 9,
+    publicRouteAllowed: false,
+  },
+  {
+    id: 'adyar-samnyasa-upanishads-1978',
+    displayTitle: 'Samnyāsa Upanishads (Adyar Library)',
+    sourceFamily: 'Adyar Library English Series',
+    tradition: 'Hindu',
+    category: 'Upanishads',
+    availabilityStatus: 'copyrighted-unavailable',
+    translator: 'A. A. Ramanathan',
+    publicationYear: 1978,
+    expectedPublicDomainYear: 2074,
+    rightsHolder: 'Adyar Library and Research Centre, Chennai (per copyright notice; requires verification)',
+    copyrightOwnerConfidence: 'likely',
+    expectedCoverageGain: 13,
+    coveredUpanishads: 13,
+    publicRouteAllowed: false,
+  },
+  {
+    id: 'bedekar-palsule-sixty-upanishads-1980',
+    displayTitle: 'Sixty Upanishads of the Veda (Eng. of Deussen 1897)',
+    sourceFamily: 'Modern translation',
+    tradition: 'Hindu',
+    category: 'Upanishads',
+    availabilityStatus: 'copyrighted-unavailable',
+    translator: 'V. M. Bedekar, G. B. Palsule',
+    originalAuthor: 'Paul Deussen',
+    publicationYear: 1980,
+    expectedPublicDomainYear: 2076,
+    rightsHolder: 'Motilal Banarsidass, Delhi',
+    copyrightOwnerConfidence: 'known',
+    expectedCoverageGain: 'wide (60 Upanishads incl. many missing-64)',
+    coveredUpanishads: 60,
+    publicRouteAllowed: false,
+  },
+  {
+    id: 'marabathina-108-upanishads-2024',
+    displayTitle: '108 Upanishads — text + commentary',
+    sourceFamily: 'Modern translation',
+    tradition: 'Hindu',
+    category: 'Upanishads',
+    availabilityStatus: 'copyrighted-unavailable',
+    translator: 'Dr. Prabhakara Rao Marabathina',
+    publicationYear: 2024,
+    expectedPublicDomainYear: 2120,
+    rightsHolder: 'Author / publisher (Marabathina, 2024)',
+    copyrightOwnerConfidence: 'known',
+    expectedCoverageGain: 'full 108 (all missing-64 + principals)',
+    coveredUpanishads: 108,
+    publicRouteAllowed: false,
+  },
+];
 
 // Index: textId → family (built once at load time). Used by
 // _renderTextTiles to suppress member tiles, and by browseText to

@@ -2,6 +2,8 @@
 data/*.json
 !data/integrity.json
 !data/.gitkeep
+# v121 — metadata-only restricted-source register (no copyrighted text)
+!data/restricted_sources_register.json
 
 # Dev-only pages — not for public visitors
 # (kept individually for the existing tracked names; _legacy/ and
