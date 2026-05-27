@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v114-periodical-acquisition-needed">
+  <meta name="atlas-build" content="v115-primary-muktika-audit">
   <title>Digital Archive</title>
   <style>
 
@@ -21622,6 +21622,41 @@ const TEXT_FAMILIES = [
 //  It does NOT change route logic. Acquisitions add entries to
 //  byUpanishad; absence of an entry here would just mean a
 //  Upanishad outside the Muktikā 108.
+//
+//  v115 AUDIT FINDINGS — known anomalies in this primary list:
+//    * 5 exact duplicate normalized names (avadhuta #53/#104,
+//      bhavana #92/#107, devi #90/#106, sarasvatirahasya #62/#94,
+//      trpura #8/#91 with #91 being "Tripurā" again).
+//    * 5+ Veda mismatches vs Aiyar source-derived list:
+//      Maitrāyaṇi (#55 KY in primary, SV in Aiyar);
+//      Mahā-Nārāyaṇa (#59 KY in primary, AV in Aiyar);
+//      Sarasvatī-rahasya (#62/#94 split between KY and AV in
+//        primary, KY-only in Aiyar);
+//      Saubhāgya (#93 AV in primary, RV in Aiyar);
+//      Avadhūta (#53/#104 split between KY and AV, KY-only in Aiyar).
+//    * 8 primary-only entries (no Aiyar equivalent): #9
+//      Saubhāgyalakṣmī (= Aiyar's Saubhāgya); #54 Kaṭharudra; #66
+//      Maitreya (likely confused with Maitreyī); #71 Mahā + #72
+//      Sannyāsa (= Aiyar's #70 Mahat-Sannyāsa as split); #76
+//      Rudrākṣajābāla; #84 Bṛhajjābāla (sandhi form of Aiyar's
+//      Bṛhad-Jābāla); #89 Tripurātapani (= Aiyar's #98 with
+//      different spelling).
+//    * 13 Aiyar entries primary lacks: Kara, Varāha, Mahat-
+//      Sannyāsa, Rudrākṣa, Jābāla (Sāmaveda), Bṛhad-Jābāla,
+//      Bhasma-Jābāla, Gaṇapati, Gopāla-tāpanī, Kṛṣṇa, Hayagrīva,
+//      Dattātreya, Garuḍa.
+//
+//  These anomalies make this list a SUSPECTED FLAWED LOCAL
+//  CONSTRUCTION rather than a clean canonical recension. The
+//  parallel MUKTIKA_108_AIYAR (declared after this array) is
+//  internally consistent (108 distinct names from Aiyar's own
+//  enumeration).
+//
+//  v115 doctrine: KEEP this primary array unchanged to preserve
+//  the public 43 / 108 count's stability. The v116 migration plan
+//  (in reports/v115_primary_muktika_map_audit.md §6) provides the
+//  detailed steps for switching primary to Aiyar's ordering as a
+//  single deliberate change set when the user approves.
 const MUKTIKA_108 = [
   // ── Rigveda (10) ──
   { n:1,  key:'aitareya',         name:'Aitareya',        veda:'Rigveda', cls:'M', variants:['Aitareya-Upanishad'] },
