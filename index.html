@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v105-upanishads-missing-74-plan">
+  <meta name="atlas-build" content="v106-mandukya-hume-witness">
   <title>Digital Archive</title>
   <style>
 
@@ -20938,6 +20938,10 @@ const TEXT_FAMILIES = [
       { textId: 'upanishads-muller-part1',   role: 'part', note: 'SBE Vol. I (Müller Part 1)' },
       { textId: 'upanishads-muller-part2',   role: 'part', note: 'SBE Vol. XV (Müller Part 2)' },
       { textId: 'the-upanishads-max-muller-1879', role: 'legacy', note: '1900 reprint — legacy duplicate' },
+      // v106 — Hume 1921 Mandukya excerpt joins the collection list
+      // as a single-Upanishad source-volume witness. The full Hume
+      // edition (13 principals) is not yet ingested; only Mandukya.
+      { textId: 'upanishads-hume-mandukya', role: 'collection', note: 'Hume 1921 — Mandukya only (Hume edition of the 13 principals)' },
     ],
     primaryMemberId: 'upanishads',
     // v101 — Richer per-Upanishad index with witness records.
@@ -21015,6 +21019,25 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1884',
             role: 'primary', routeQuality: 'safe' },
+        ] },
+      // v106 — Mandukya recovered via Hume 1921 acquisition. The
+      // SBE volumes Müller edited (Parts I/II already in the
+      // archive) explicitly omit Mandukya; Hume's Thirteen
+      // Principal Upanishads (Oxford University Press, 1921,
+      // public domain in the US) supplies the canonical 12 verses
+      // proper, without Gaudapada's Karika. Source TXT cached in
+      // 02_raw_sources/Library_/InternetArchive/. Ingested to
+      // upanishads-hume-mandukya_hume.json via
+      // 05_scripts/ingest_hume_mandukya.py (idempotent).
+      { key: 'mandukya', name: 'Mandukya', displayTitle: 'Mandukya Upanishad',
+        importance: 'principal', order: 60,
+        associatedVeda: 'Atharvaveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-hume-mandukya', groupKey: '1',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'primary', routeQuality: 'safe',
+            note: 'Hume’s edition of the 12-verse Mandukya proper; Gaudapada’s Karika commentary is not included.' },
         ] },
       { key: 'taittiriya', name: 'Taittiriya', displayTitle: 'Taittiriya Upanishad',
         importance: 'principal', order: 70,
@@ -21358,14 +21381,14 @@ const TEXT_FAMILIES = [
     // of the Principal Upanishads block (in Traditional view) so
     // the gap is visible without burying it. Distinct from
     // byUpanishadInactive (which can list any class of entry).
-    principalMissing: [
-      { name: 'Mandukya', displayTitle: 'Mandukya Upanishad',
-        associatedVeda: 'Atharvaveda',
-        acquisitionNote: 'Not present in current archive sources. Acquisition needed (candidate sources: Nikhilananda’s Mandukya with Gaudapada-Karika; Hume’s Thirteen Principal Upanishads).' },
-    ],
+    // v106 — Mandukya recovered from Hume 1921; principalMissing
+    // list is now empty. All 13 target principal Upanishads
+    // (Isha, Kena, Katha, Prasna, Mundaka, Mandukya, Taittiriya,
+    // Aitareya, Chandogya, Brihadaranyaka, Svetasvatara, Kaushitaki,
+    // Maitri) are active in the archive.
+    principalMissing: [],
     byUpanishadInactive: [
-      { name: 'Mandukya',  importance: 'principal',
-        reason: 'Repo-wide v103 audit (not only the Upanishads family files): searched passage bodies across the entire Hindu data corpus. Mandukya appears only in editorial commentary (Brahma Knowledge’s "List of the Chief Upanishads" appendix; MacDonell’s History of Sanskrit Literature description; the Yoga-Vasishtha and Hermes-Trismegistos incidental mentions; Müller Part 1 / Part 2 / Aiyar editor notes). No translation passages exist in the archive. Acquisition needed: candidate sources include Nikhilananda’s translation of the Mandukya with Gaudapada’s Karika, Hume’s Thirteen Principal Upanishads, or any Sacred Books of the East volume containing the Mandukya proper. Mandukya Karika commentary alone is not a substitute for the Upanishad text.' },
+      // v106 — Mandukya entry removed; recovered via Hume 1921 ingestion.
     ],
   },
 ];
@@ -21487,7 +21510,7 @@ const MUKTIKA_108 = [
   // ── Atharvaveda (31) ──
   { n:79, key:'prasna',           name:'Praśna',          veda:'Atharvaveda', cls:'M', variants:['Prasna-Upanishad'] },
   { n:80, key:'mundaka',          name:'Muṇḍaka',         veda:'Atharvaveda', cls:'M', variants:['Mundaka-Upanishad'] },
-  { n:81, key:null,                name:'Māṇḍūkya',        veda:'Atharvaveda', cls:'M', variants:['Mandukya-Upanishad','Mandukyopanishad'] },
+  { n:81, key:'mandukya',          name:'Māṇḍūkya',        veda:'Atharvaveda', cls:'M', variants:['Mandukya-Upanishad','Mandukyopanishad'] },
   { n:82, key:null,                name:'Atharvaśiras',    veda:'Atharvaveda', cls:'Sh', variants:['Atharvasiras-Upanishad'] },
   { n:83, key:null,                name:'Atharvaśikha',    veda:'Atharvaveda', cls:'Sh', variants:['Atharvasikha-Upanishad'] },
   { n:84, key:null,                name:'Bṛhajjābāla',     veda:'Atharvaveda', cls:'Sh', variants:['Brhajjabala-Upanishad'] },
