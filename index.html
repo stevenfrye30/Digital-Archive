@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v115-primary-muktika-audit">
+  <meta name="atlas-build" content="v116-aiyar-primary-muktika">
   <title>Digital Archive</title>
   <style>
 
@@ -20586,7 +20586,7 @@ function _renderUpanishadsByVeda(fam) {
   const muktika = (typeof _muktikaProgress === 'function') ? _muktikaProgress(fam) : null;
   let html = '';
   html += '<div class="family-section-heading">Browse by Veda</div>';
-  html += '<div class="byveda-note">Each Upanishad is grouped under its associated Veda. Principal Upanishads first; minor Upanishads after. <em>Curated traditional metadata</em> = Muktikā assignment; <em>source heading</em> = read directly from the source file’s own chapter title. Per-Veda counts compare the archive against the traditional Muktikā 108 list. <span class="byveda-canon-note">The archive tracks two Muktikā lists in parallel: the primary 108 (shown in the counts here) and the Aiyar source-derived 108 (extracted from the in-archive Muktikā Upanishad text); see <code>reports/v112_muktika_canon_reconciliation.md</code> for the variant-canon audit.</span></div>';
+  html += '<div class="byveda-note">Each Upanishad is grouped under its associated Veda. Principal Upanishads first; minor Upanishads after. <em>Curated traditional metadata</em> = Muktikā assignment; <em>source heading</em> = read directly from the source file’s own chapter title. Per-Veda counts compare the archive against the traditional Muktikā 108 list. <span class="byveda-canon-note">The 108 target now follows Aiyar’s Muktikā list as preserved in the archive’s <em>Thirty Minor Upanishads</em> source (Aiyar 1914, L1=2 verses 2.11–2.17). A legacy local map is retained in the source for audit history; see <code>reports/v116_aiyar_primary_muktika_migration.md</code>.</span></div>';
   for (const v of vedaOrder) {
     const items = (buckets[v] || []);
     const missing = (missingByVeda[v] || []);
@@ -21487,16 +21487,19 @@ const TEXT_FAMILIES = [
       //   (a) reconcile MUKTIKA_108 to follow the Aiyar/Adyar
       //       ordering (which would re-count Varāha as #N), or
       //   (b) introduce an explicit MUKTIKA_VARIANTS crosswalk.
+      // v111: added as variant-canon (inMuktika108: false) because the
+      // legacy primary map omitted Varāha.
+      // v116: variant-canon flag removed; Varāha is now natively in
+      // the public primary canon (Aiyar-derived MUKTIKA_108 #59 KY).
       { key: 'varaha', name: 'Varāha', displayTitle: 'Varāha Upanishad',
         importance: 'minor', order: 296,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
-        inMuktika108: false,
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '59',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
-            note: 'Aiyar labels this Upanishad’s five chapters as "Chapter I"–"Chapter V"; the text begins at L1=59 (Rbhu’s twelve-year penance, the Lord appearing as a boar to grant a boon) and continues through L1=63. Variant-canon: present in Aiyar’s own Muktikā list (Krishna Yajurveda #30) but not in the local MUKTIKA_108 target array, which follows a different recension — see reports/v111_muktika_map_varaha_audit.md.' },
+            note: 'Aiyar labels this Upanishad’s five chapters as "Chapter I"–"Chapter V"; the text begins at L1=59 (Rbhu’s twelve-year penance, the Lord appearing as a boar to grant a boon) and continues through L1=63.' },
         ] },
       // v113 — Dakshinamurti Upanishad recovered via dual-canon
       // missing-in-both acquisition pass. The Upanishad is missing
@@ -21592,8 +21595,31 @@ const TEXT_FAMILIES = [
 ];
 
 // ════════════════════════════════════════════════════════════════
-//  MUKTIKĀ 108 CANONICAL TARGET MAP (v104 doctrine)
+//  MUKTIKĀ 108 — LEGACY LOCAL MAP (v104–v115 doctrine, deprecated v116)
 // ────────────────────────────────────────────────────────────────
+//  ★ DEPRECATION NOTICE (v116) ★
+//
+//  Until v115 this constant was the PUBLIC PRIMARY canonical target
+//  for the family page's Muktikā 108 count. The v115 audit found
+//  serious internal anomalies (5 exact duplicates, 5+ Veda
+//  mismatches, the Mahā/Sannyāsa split that should be one entry,
+//  the non-standard "Rudrākṣajābāla", the omitted AV Vaishnava
+//  cluster Gopāla-tāpanī/Kṛṣṇa/Hayagrīva/Dattātreya/Garuḍa) — see
+//  reports/v115_primary_muktika_map_audit.md.
+//
+//  v116 makes Aiyar's source-derived Muktikā list the new public
+//  primary (see `const MUKTIKA_108 = [...]` immediately below this
+//  array). This LEGACY LOCAL map is preserved for:
+//    · audit history — every divergence is documented and code
+//      readers can verify what used to be public-counted;
+//    · the parallel helper `_muktikaProgressLegacy(fam)` which
+//      computes coverage against this legacy map for reports that
+//      need historical comparison.
+//
+//  It does NOT drive the public family-page count anymore. It is
+//  not deleted because the v112 protocol "preserve old fields where
+//  needed" — keeping it explicit makes any future reversal trivial.
+//
 //  The Muktikā Upanishad's own list (Muktikā 1.30-39) names 108
 //  Upanishads classified by Veda. Used here as a TARGET / GAP
 //  reference — never as a claim that the archive contains all 108.
@@ -21657,7 +21683,10 @@ const TEXT_FAMILIES = [
 //  (in reports/v115_primary_muktika_map_audit.md §6) provides the
 //  detailed steps for switching primary to Aiyar's ordering as a
 //  single deliberate change set when the user approves.
-const MUKTIKA_108 = [
+//
+//  v116 doctrine: switch complete. This is now the LEGACY LOCAL
+//  map — see reports/v116_aiyar_primary_muktika_migration.md.
+const MUKTIKA_108_LEGACY_LOCAL = [
   // ── Rigveda (10) ──
   { n:1,  key:'aitareya',         name:'Aitareya',        veda:'Rigveda', cls:'M', variants:['Aitareya-Upanishad'] },
   { n:2,  key:'atmabodha',        name:'Ātmabodha',       veda:'Rigveda', cls:'V', variants:['Atmabodha-Upanishad'] },
@@ -21773,32 +21802,49 @@ const MUKTIKA_108 = [
   { n:108,key:null,                name:'Mahāvākya',       veda:'Atharvaveda', cls:'V', variants:['Mahavakya-Upanishad'] },
 ];
 
-// v112 — Aiyar source-derived Muktikā 108 list, extracted faithfully
-// from Aiyar 1914 *Thirty Minor Upanishads* (in archive since v100 as
-// upanishads-30-minor-aiyar). The Muktikā Upanishad text (recovered
-// as a route in v107 at L1=2-3) enumerates the 108 in its own verses
-// 2.11-2.17; this constant mirrors that enumeration faithfully.
+// ════════════════════════════════════════════════════════════════
+//  MUKTIKĀ 108 — PUBLIC PRIMARY CANONICAL TARGET MAP (v116 doctrine)
+// ────────────────────────────────────────────────────────────────
+//  v116 — This Aiyar source-derived Muktikā 108 list is now the
+//  PUBLIC PRIMARY canonical target. It is extracted faithfully from
+//  Aiyar 1914 *Thirty Minor Upanishads* (in archive since v100 as
+//  `upanishads-30-minor-aiyar`). The Muktikā Upanishad text
+//  (recovered as a route in v107 at L1=2-3) enumerates the 108 in
+//  its own verses 2.11-2.17; this constant mirrors that enumeration
+//  faithfully (with one minor correction at #66 SV — see below).
 //
-// Same shape as MUKTIKA_108 above so the same helpers work.
-// `key` is set when an active byUpanishad route exists; it is null
-// for Aiyar-list entries with no English text route yet in the
-// archive (e.g. Gaṇapati, Hayagrīva, Bhasma-Jābāla, Atharvaśiras).
+//  Same shape as `MUKTIKA_108_LEGACY_LOCAL` above so the same helper
+//  (`_muktikaProgress`) works against either; the helper iterates
+//  whichever array is named `MUKTIKA_108`.
 //
-// v112 chooses Model C — dual canon-map architecture:
-//   * MUKTIKA_108 above is the PRIMARY public-facing target. The
-//     "X / 108 in Muktikā 108" badge on the family page is computed
-//     against this list (preserves the 42 / 108 figure that has
-//     been the count since v107).
-//   * MUKTIKA_108_AIYAR is tracked alongside for honest variant-
-//     canon reporting. Reports compute coverage against this list
-//     too, so divergences (Varāha, the AV Vaishnava cluster, the
-//     Mahā-Nārāyaṇa Veda assignment, the apparent duplicates in
-//     local MUKTIKA_108 at #91/#93/#94/#104/#105/#106/#107) are
-//     visible without silently rewriting the canonical-list array.
-//   * See reports/v112_muktika_canon_reconciliation.md for the full
-//     architectural rationale and the v113+ migration recommendation
-//     (toward eventually switching primary to Aiyar's ordering).
-const MUKTIKA_108_AIYAR = [
+//  `key` is set when an active byUpanishad route exists; it is null
+//  for entries with no English text route yet in the archive (e.g.
+//  Gaṇapati, Hayagrīva, Bhasma-Jābāla, Atharvaśiras).
+//
+//  v116 migration history (see
+//  reports/v116_aiyar_primary_muktika_migration.md):
+//   * Promoted from `MUKTIKA_108_AIYAR` to public primary
+//     `MUKTIKA_108`.
+//   * Entry #66 (SV) renamed from "Maitreyī" to "Maitreya" to match
+//     the Aiyar source's own chapter title at L1=6
+//     ("Maitreya-Upanishad of Samaveda") and the actual text content
+//     (King Brhadratha + Sakayanya / sage Maitreya + Mahadeva
+//     dialogue). Aiyar's own Muktikā-list enumeration verse spelt
+//     this "Maitreyī" but the chapter heading and text both use
+//     "Maitreya" — the chapter-heading naming is taken as the more
+//     authoritative source signal. `key='maitreya'` route is
+//     preserved.
+//   * Varāha (Aiyar #59 KY) is natively included in the new primary;
+//     the v111 variant-canon `inMuktika108: false` flag on its
+//     byUpanishad entry is removed in v116.
+//   * Per-Veda totals change: KY total target 33 → 32 (legacy had
+//     duplicates), AV total target 30 → 31 (legacy omitted the
+//     Vaishnava cluster). RV/SY/SV unchanged at 10/19/16.
+//
+//  Counts after v116 switch: 43 / 108 active in this primary
+//  (verified at migration time; same as legacy 43 / 108 because the
+//  count happens to be symmetric — see v112 §4.2).
+const MUKTIKA_108 = [
   { n:  1, key:'aitareya',              name:'Aitareya'                  , veda:'Rigveda', cls:'M' },
   { n:  2, key:'kaushitaki',            name:'Kauṣītaki'                 , veda:'Rigveda', cls:'M' },
   { n:  3, key:'nadabindu',             name:'Nāda-bindu'                , veda:'Rigveda', cls:'Y' },
@@ -21864,7 +21910,7 @@ const MUKTIKA_108_AIYAR = [
   { n: 63, key:'chandogya',             name:'Chāndogya'                 , veda:'Samaveda', cls:'M' },
   { n: 64, key:null,                    name:'Āruṇi'                     , veda:'Samaveda', cls:'S' },
   { n: 65, key:'maitri',                name:'Maitrāyaṇi'                , veda:'Samaveda', cls:'M' },
-  { n: 66, key:null,                    name:'Maitreyī'                  , veda:'Samaveda', cls:'S' },
+  { n: 66, key:'maitreya',              name:'Maitreya'                  , veda:'Samaveda', cls:'S' },
   { n: 67, key:'vajrasuchi',            name:'Vajrasūcikā'               , veda:'Samaveda', cls:'V' },
   { n: 68, key:null,                    name:'Yoga-cūḍāmaṇi'             , veda:'Samaveda', cls:'Y' },
   { n: 69, key:null,                    name:'Vāsudeva'                  , veda:'Samaveda', cls:'Vs' },
@@ -21924,17 +21970,22 @@ function _muktikaProgress(fam) {
   return byVeda;
 }
 
-// v112 — Mirror of _muktikaProgress that tracks against the Aiyar
-// source-derived MUKTIKA_108_AIYAR list. Used by reports and by the
-// (optional) dual-count display path. UI currently still renders the
-// primary count via _muktikaProgress; this helper is here so future
-// passes can surface Aiyar coverage without re-implementing the
-// counting logic.
-function _muktikaProgressAiyar(fam) {
+// v116 — Mirror of _muktikaProgress against the LEGACY local
+// canon-map (`MUKTIKA_108_LEGACY_LOCAL`). The legacy map remains in
+// the source for audit history (see the deprecation notice above
+// the array). Reports and historical-comparison code can use this
+// helper; the family-page UI uses `_muktikaProgress` only, which
+// now iterates the new Aiyar-derived `MUKTIKA_108`.
+//
+// Pre-v116 this helper was named `_muktikaProgressAiyar` and pointed
+// at what is now the primary. The rename is consistent with the
+// canon-switch semantics: "Aiyar-derived" is now the default, and
+// the "alternate" we audit against is the legacy local list.
+function _muktikaProgressLegacy(fam) {
   const activeKeys = new Set((fam.byUpanishad || []).map(u => u.key));
   const byVeda = {};
   let totalActive = 0;
-  for (const m of MUKTIKA_108_AIYAR) {
+  for (const m of MUKTIKA_108_LEGACY_LOCAL) {
     const slot = byVeda[m.veda] = byVeda[m.veda] || { target: 0, active: 0, missing: [] };
     slot.target++;
     if (m.key && activeKeys.has(m.key)) { slot.active++; totalActive++; }
