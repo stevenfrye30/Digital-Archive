@@ -29,6 +29,11 @@ data/gospel-ramakrishna*.json.gz
 data/think-grow-rich*.json
 data/think-grow-rich*.json.gz
 
+# v109 — Restricted-source directory pattern. Any text whose copyright
+# status is unclear or known-restricted is ingested into _restricted/
+# and never committed. See reports/v109_restricted_source_protocol.md.
+data/_restricted/
+
 # Local runtime
 .server.pid
 .claude/

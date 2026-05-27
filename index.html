@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v108-yoga-acquisition-needed">
+  <meta name="atlas-build" content="v109-hume-principal-witnesses">
   <title>Digital Archive</title>
   <style>
 
@@ -20938,10 +20938,12 @@ const TEXT_FAMILIES = [
       { textId: 'upanishads-muller-part1',   role: 'part', note: 'SBE Vol. I (Müller Part 1)' },
       { textId: 'upanishads-muller-part2',   role: 'part', note: 'SBE Vol. XV (Müller Part 2)' },
       { textId: 'the-upanishads-max-muller-1879', role: 'legacy', note: '1900 reprint — legacy duplicate' },
-      // v106 — Hume 1921 Mandukya excerpt joins the collection list
-      // as a single-Upanishad source-volume witness. The full Hume
-      // edition (13 principals) is not yet ingested; only Mandukya.
-      { textId: 'upanishads-hume-mandukya', role: 'collection', note: 'Hume 1921 — Mandukya only (Hume edition of the 13 principals)' },
+      // v109 — Hume 1921 full *Thirteen Principal Upanishads* joins the
+      // collection list as a single source-volume witness covering all
+      // 13 principals. Supersedes v106's Mandukya-only excerpt as the
+      // active Hume source. (The v106 file is retained on disk but no
+      // longer surfaced in this list; see v109 report for migration.)
+      { textId: 'upanishads-hume-1921', role: 'collection', note: 'Hume 1921 — The Thirteen Principal Upanishads (Oxford University Press), all 13 principals' },
     ],
     primaryMemberId: 'upanishads',
     // v101 — Richer per-Upanishad index with witness records.
@@ -20983,6 +20985,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1879',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'isha',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       { key: 'kena', name: 'Kena', displayTitle: 'Kena Upanishad',
         importance: 'principal', order: 20,
@@ -20992,6 +20998,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1879',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'kena',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       { key: 'katha', name: 'Katha', displayTitle: 'Katha Upanishad',
         importance: 'principal', order: 30,
@@ -21001,6 +21011,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1884',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'katha',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       { key: 'prasna', name: 'Prasna', displayTitle: 'Prasna Upanishad',
         importance: 'principal', order: 40,
@@ -21010,6 +21024,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1884',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'prasna',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       { key: 'mundaka', name: 'Mundaka', displayTitle: 'Mundaka Upanishad',
         importance: 'principal', order: 50,
@@ -21019,25 +21037,26 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1884',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'mundaka',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
-      // v106 — Mandukya recovered via Hume 1921 acquisition. The
-      // SBE volumes Müller edited (Parts I/II already in the
-      // archive) explicitly omit Mandukya; Hume's Thirteen
-      // Principal Upanishads (Oxford University Press, 1921,
-      // public domain in the US) supplies the canonical 12 verses
-      // proper, without Gaudapada's Karika. Source TXT cached in
-      // 02_raw_sources/Library_/InternetArchive/. Ingested to
-      // upanishads-hume-mandukya_hume.json via
-      // 05_scripts/ingest_hume_mandukya.py (idempotent).
+      // v106 → v109 — Mandukya now routes through the full Hume 1921
+      // edition (upanishads-hume-1921) at L1='mandukya'. The v106
+      // standalone Mandukya-only file is retained on disk but is no
+      // longer the active witness target; the new full-Hume source
+      // also supplies the other 12 principals as second witnesses
+      // (see entries below).
       { key: 'mandukya', name: 'Mandukya', displayTitle: 'Mandukya Upanishad',
         importance: 'principal', order: 60,
         associatedVeda: 'Atharvaveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-hume-mandukya', groupKey: '1',
+          { textId: 'upanishads-hume-1921', groupKey: 'mandukya',
             sourceTitle: 'The Thirteen Principal Upanishads — Hume',
             translator: 'Robert Ernest Hume', year: '1921',
             role: 'primary', routeQuality: 'safe',
-            note: 'Hume’s edition of the 12-verse Mandukya proper; Gaudapada’s Karika commentary is not included.' },
+            note: 'Hume’s 12-verse Mandukya proper; Gaudapada’s Karika commentary is not included.' },
         ] },
       { key: 'taittiriya', name: 'Taittiriya', displayTitle: 'Taittiriya Upanishad',
         importance: 'principal', order: 70,
@@ -21047,6 +21066,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1884',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'taittiriya',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       { key: 'chandogya', name: 'Chandogya', displayTitle: 'Chandogya Upanishad',
         importance: 'principal', order: 90,
@@ -21056,6 +21079,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1879',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'chandogya',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       { key: 'brihadaranyaka', name: 'Brihadaranyaka', displayTitle: 'Brihadaranyaka Upanishad',
         importance: 'principal', order: 100,
@@ -21065,6 +21092,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1884',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'brihadaranyaka',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       { key: 'svetasvatara', name: 'Svetasvatara', displayTitle: 'Svetasvatara Upanishad',
         importance: 'principal', order: 110,
@@ -21074,6 +21105,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1884',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'svetasvatara',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       { key: 'kaushitaki', name: 'Kaushitaki', displayTitle: 'Kaushitaki Upanishad',
         importance: 'principal', order: 120,
@@ -21083,6 +21118,10 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1879',
             role: 'primary', routeQuality: 'safe' },
+          { textId: 'upanishads-hume-1921', groupKey: 'kaushitaki',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       // v102 — Aitareya routes via pendingPid to the AITAREYA-
       // ARANYAKA section header in Müller Part 1 (id='11.51', the
@@ -21104,6 +21143,11 @@ const TEXT_FAMILIES = [
             translator: 'F. Max Müller', year: '1879',
             role: 'source-volume', routeQuality: 'safe-start',
             note: 'Opens at the AITAREYA-ARANYAKA section header in Müller Part 1; the Aitareya Upanishad sits within the second Aranyaka and reads forward from there.' },
+          { textId: 'upanishads-hume-1921', groupKey: 'aitareya',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe',
+            note: 'Hume\'s direct translation of the Aitareya Upanishad proper (without the embedding Aranyaka).' },
         ] },
       // v103 — Maitri (Maitrayana / Maitrayaniya / Maitrayani)
       // recovered from Müller Part 2 via deep audit. The repo-wide
@@ -21123,6 +21167,10 @@ const TEXT_FAMILIES = [
             translator: 'F. Max Müller', year: '1884',
             role: 'source-volume', routeQuality: 'safe-start',
             note: 'Opens at the MAITRAYANA-BRAHMANA-UPANISHAD section header in Müller Part 2; the Upanishad continues across seven Prapathakas from there.' },
+          { textId: 'upanishads-hume-1921', groupKey: 'maitri',
+            sourceTitle: 'The Thirteen Principal Upanishads — Hume',
+            translator: 'Robert Ernest Hume', year: '1921',
+            role: 'source-volume', routeQuality: 'safe' },
         ] },
       // ── Minor Upanishads (Aiyar, Thirty Minor; safe + safe-start) ──
       { key: 'maitreya', name: 'Maitreya', displayTitle: 'Maitreya Upanishad',
