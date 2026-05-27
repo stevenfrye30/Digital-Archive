@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v101-upanishads-witness-picker">
+  <meta name="atlas-build" content="v102-upanishads-veda-views">
   <title>Digital Archive</title>
   <style>
 
@@ -2901,6 +2901,113 @@ button.home-path {
 .upn-witness-startroute {
   font-style: italic;
   color: rgba(95, 75, 50, 0.65);
+}
+
+/* ── v102 — Family-page view switcher (By Veda / By text /
+   Traditional order). Single-row segmented control near the top
+   of the family page. */
+.family-view-switch {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 18px;
+  padding: 4px;
+  background: rgba(120, 90, 50, 0.06);
+  border: 1px solid rgba(120, 90, 50, 0.20);
+  border-radius: 4px;
+}
+.family-view-btn {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  padding: 5px 16px;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  color: rgba(110, 65, 25, 0.74);
+  cursor: pointer;
+  transition: color 0.18s, background 0.18s;
+}
+.family-view-btn:hover, .family-view-btn:focus-visible {
+  color: rgba(50, 30, 10, 0.96);
+  background: rgba(150, 110, 60, 0.08);
+  outline: none;
+}
+.family-view-btn--active {
+  color: rgba(40, 20, 4, 1);
+  background: rgba(150, 110, 60, 0.18);
+  font-weight: 600;
+}
+
+/* By-Veda group labels and intro note */
+.byveda-label {
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 12.5px;
+  letter-spacing: 0.20em;
+  color: rgba(120, 65, 25, 0.86);
+}
+.byveda-note {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(95, 75, 50, 0.82);
+  max-width: 760px;
+  margin: 4px 0 14px;
+}
+.byveda-note em {
+  font-style: normal;
+  color: rgba(110, 65, 25, 0.92);
+}
+
+/* By-Upanishad tile — small importance pill + Veda micro-line */
+.byupn-importance {
+  display: inline-block;
+  margin-left: 8px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 0.62em;
+  letter-spacing: 0.18em;
+  padding: 2px 7px;
+  border-radius: 2px;
+  vertical-align: 1px;
+}
+.byupn-importance--principal {
+  background: rgba(120, 70, 25, 0.10);
+  color: rgba(110, 65, 25, 0.92);
+  border: 1px solid rgba(120, 70, 25, 0.28);
+}
+.byupn-importance--minor {
+  background: rgba(120, 95, 60, 0.06);
+  color: rgba(110, 90, 60, 0.82);
+  border: 1px solid rgba(120, 95, 60, 0.22);
+}
+.byupn-veda-line {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: rgba(120, 90, 50, 0.68);
+  margin-top: 4px;
+}
+
+/* Witness picker — v102 metadata band */
+.upn-detail-meta {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  color: rgba(110, 75, 35, 0.85);
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  background: rgba(120, 90, 50, 0.06);
+  border-left: 2px solid rgba(120, 70, 25, 0.36);
 }
 
 /* Section dividers within text lists */
@@ -20261,55 +20368,142 @@ function browseTextFamily(familyId) {
     (buckets[m.role] = buckets[m.role] || []).push({ m, t });
   }
 
+  // v102 — Three viewing modes selectable via a segmented control
+  // near the top of the family page. Default = By Veda (reader-
+  // facing). One layer only — no nested tabs.
+  const viewMode = (typeof _familyViewMode === 'string' && _familyViewMode)
+    ? _familyViewMode : 'by-veda';
+  _familyViewMode = viewMode;
+
   let html = '';
   if (fam.description) {
     html += `<div class="family-description">${escH(fam.description)}</div>`;
   }
-  // v101 — Browse by Upanishad is the default / reader-facing view.
-  // Cards are sorted by `order` (traditional principal sequence,
-  // then Aiyar order for minors). Click → inline witness picker
-  // (showUpanishadDetail) that replaces the family-page grid with
-  // a single Upanishad's witness list + back affordance.
+
+  // View switcher
   if (Array.isArray(fam.byUpanishad) && fam.byUpanishad.length) {
-    html += '<div class="family-section-heading">Browse by Upanishad</div>';
-    const sorted = fam.byUpanishad.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
-    const principal = sorted.filter(u => u.importance === 'principal');
-    const minor     = sorted.filter(u => u.importance === 'minor');
-    if (principal.length) {
-      html += `<div class="tile-section-label">Principal Upanishads</div>`;
-      html += '<div class="byupn-grid">';
-      for (const u of principal) html += _byUpanishadTileHTML(u, fam.id);
-      html += '</div>';
+    const modes = [
+      { id: 'by-veda',        label: 'By Veda' },
+      { id: 'by-collection',  label: 'By text' },
+      { id: 'by-traditional', label: 'Traditional order' },
+    ];
+    html += '<nav class="family-view-switch" role="tablist">';
+    for (const m of modes) {
+      const active = (m.id === viewMode) ? ' family-view-btn--active' : '';
+      html += `<button type="button" class="family-view-btn${active}" role="tab" ` +
+              `onclick="setFamilyViewMode('${escH(fam.id)}','${escH(m.id)}')">${escH(m.label)}</button>`;
     }
-    if (minor.length) {
-      html += `<div class="tile-section-label">Minor Upanishads (Aiyar collection)</div>`;
-      html += '<div class="byupn-grid">';
-      for (const u of minor) html += _byUpanishadTileHTML(u, fam.id);
-      html += '</div>';
-    }
-    if (Array.isArray(fam.byUpanishadInactive) && fam.byUpanishadInactive.length) {
-      html += '<details class="byupn-inactive">';
-      html += '<summary>Named but not yet individually routable</summary>';
-      html += '<ul>';
-      for (const it of fam.byUpanishadInactive) {
-        html += `<li><span class="byupn-inactive-name">${escH(it.name)}</span> — ${escH(it.reason)}</li>`;
+    html += '</nav>';
+  }
+
+  if (viewMode === 'by-veda' && Array.isArray(fam.byUpanishad)) {
+    html += _renderUpanishadsByVeda(fam);
+  } else if (viewMode === 'by-traditional' && Array.isArray(fam.byUpanishad)) {
+    html += _renderUpanishadsByTraditional(fam);
+  } else {
+    // by-collection (the v98/v100 bibliographic path)
+    html += '<div class="family-section-heading">Collections / source witnesses</div>';
+    for (const role of roleOrder) {
+      const items = buckets[role];
+      if (!items || !items.length) continue;
+      html += `<div class="tile-section-label">${escH(roleLabels[role] || role)}</div>`;
+      for (const { m, t } of items) {
+        html += _familyMemberTileHTML(t, m, cat, trd);
       }
-      html += '</ul>';
-      html += '</details>';
     }
   }
-  // Browse by collection — bibliographic path. Comes after the
-  // reader-facing route. Still shows all members grouped by role.
-  html += '<div class="family-section-heading">Browse by collection</div>';
-  for (const role of roleOrder) {
-    const items = buckets[role];
-    if (!items || !items.length) continue;
-    html += `<div class="tile-section-label">${escH(roleLabels[role] || role)}</div>`;
-    for (const { m, t } of items) {
-      html += _familyMemberTileHTML(t, m, cat, trd);
+
+  // Inactive disclosure (visible in all views) — keeps the family's
+  // honesty about Mandukya and uncertain L1=18-33 sections.
+  if (Array.isArray(fam.byUpanishadInactive) && fam.byUpanishadInactive.length) {
+    html += '<details class="byupn-inactive">';
+    html += '<summary>Named but not yet individually routable</summary>';
+    html += '<ul>';
+    for (const it of fam.byUpanishadInactive) {
+      html += `<li><span class="byupn-inactive-name">${escH(it.name)}</span> — ${escH(it.reason)}</li>`;
     }
+    html += '</ul>';
+    html += '</details>';
   }
+
   $browseTiles.innerHTML = html;
+}
+
+// v102 — view-mode state. Lives at module scope so a click on a
+// view button persists across re-renders of the family page.
+let _familyViewMode = 'by-veda';
+
+function setFamilyViewMode(familyId, mode) {
+  _familyViewMode = mode;
+  browseTextFamily(familyId);
+  // Bring the family page back to the top after a view switch.
+  $reader.scrollTop = 0;
+}
+
+// View 1 — By Veda. Cards are grouped under their associated Veda,
+// with principal Upanishads first within each group, then minor.
+// "Uncertain / needs verification" group catches anything without a
+// Veda assignment (currently empty — every active entry has Veda
+// metadata, but the group exists for future entries).
+function _renderUpanishadsByVeda(fam) {
+  const sorted = fam.byUpanishad.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+  const vedaOrder = ['Rigveda', 'Samaveda', 'Shukla Yajurveda',
+                     'Krishna Yajurveda', 'Atharvaveda',
+                     'Uncertain / needs verification'];
+  const buckets = {};
+  for (const u of sorted) {
+    const v = u.associatedVeda || 'Uncertain / needs verification';
+    (buckets[v] = buckets[v] || []).push(u);
+  }
+  let html = '';
+  html += '<div class="family-section-heading">Browse by Veda</div>';
+  html += '<div class="byveda-note">Each Upanishad is grouped under its associated Veda. Principal Upanishads first; minor Upanishads after. <em>Curated traditional metadata</em> = Muktikā assignment; <em>source heading</em> = read directly from the source file’s own chapter title.</div>';
+  for (const v of vedaOrder) {
+    const items = (buckets[v] || []);
+    if (!items.length) continue;
+    html += `<div class="tile-section-label byveda-label">${escH(v)}</div>`;
+    html += '<div class="byupn-grid">';
+    // Principal first, then minor — both already order-sorted.
+    const p = items.filter(u => u.importance === 'principal');
+    const m = items.filter(u => u.importance === 'minor');
+    for (const u of p) html += _byUpanishadTileHTML(u, fam.id);
+    for (const u of m) html += _byUpanishadTileHTML(u, fam.id);
+    html += '</div>';
+  }
+  return html;
+}
+
+// View 3 — Traditional / canonical order. Uses the curated `order`
+// field, which puts principal Upanishads first (Muktikā-style
+// sequence: Isha → Kena → Katha → Prasna → Mundaka → Aitareya →
+// Taittiriya → Chandogya → Brihadaranyaka → Svetasvatara →
+// Kaushitaki), then minor Upanishads in Aiyar source order.
+//
+// Labelled "Traditional order" rather than "Historical order"
+// because reliable absolute chronology of the Upanishads is
+// scholarly contested — most principal dates fall in 800–200 BCE
+// but exact ordering is conjectural. v102 declines to invent
+// chronological certainty.
+function _renderUpanishadsByTraditional(fam) {
+  const sorted = fam.byUpanishad.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+  let html = '';
+  html += '<div class="family-section-heading">Traditional order</div>';
+  html += '<div class="byveda-note">Principal Upanishads in Muktikā-style sequence, then minor Upanishads in Aiyar source order. Historical chronology of the Upanishads is scholarly contested; this archive uses traditional rather than dated order.</div>';
+  const principal = sorted.filter(u => u.importance === 'principal');
+  const minor     = sorted.filter(u => u.importance === 'minor');
+  if (principal.length) {
+    html += `<div class="tile-section-label">Principal Upanishads</div>`;
+    html += '<div class="byupn-grid">';
+    for (const u of principal) html += _byUpanishadTileHTML(u, fam.id);
+    html += '</div>';
+  }
+  if (minor.length) {
+    html += `<div class="tile-section-label">Minor Upanishads</div>`;
+    html += '<div class="byupn-grid">';
+    for (const u of minor) html += _byUpanishadTileHTML(u, fam.id);
+    html += '</div>';
+  }
+  return html;
 }
 
 // v101 — A single Upanishad card on the "Browse by Upanishad"
@@ -20326,12 +20520,21 @@ function _byUpanishadTileHTML(u, familyId) {
   const witnessBadge = witnesses.length > 1
     ? `<span class="tt-badge byupn-witness-count">${witnesses.length} witnesses</span>`
     : '';
-  const credit = primary.translator + ' · ' + primary.year;
+  // v102 — credit + Veda micro-line. The Veda is whispered in italic
+  // small-caps so the By-Veda grouping is reinforced even on the
+  // card itself.
+  const credit = (primary.translator || '') + ' · ' + (primary.year || '');
+  const vedaLine = u.associatedVeda
+    ? `<div class="byupn-veda-line">${escH(u.associatedVeda)}</div>` : '';
+  const impLine = u.importance
+    ? `<span class="byupn-importance byupn-importance--${u.importance}">${u.importance === 'principal' ? 'Principal' : 'Minor'}</span>`
+    : '';
   const onclick = `showUpanishadDetail('${escH(familyId)}','${escH(u.key)}')`;
   return `<div class="text-tile byupn-tile" onclick="${onclick}">
     <div class="tt-info">
-      <div class="tt-title">${escH(u.displayTitle || (u.name + ' Upanishad'))}</div>
+      <div class="tt-title">${escH(u.displayTitle || (u.name + ' Upanishad'))} ${impLine}</div>
       <div class="tt-meta byupn-credit">${escH(credit)}</div>
+      ${vedaLine}
     </div>
     ${witnessBadge}
   </div>`;
@@ -20370,10 +20573,24 @@ function showUpanishadDetail(familyId, upnKey) {
   let html = '';
   html += `<div class="upn-detail">`;
   html += `<button type="button" class="upn-back" onclick="browseTextFamily('${escH(familyId)}')">&larr; All Upanishads</button>`;
-  html += `<div class="upn-detail-intro">Available witnesses for the <em>${escH(u.displayTitle || u.name)}</em>. Each route preserves its source credit.</div>`;
 
+  // v102 — Metadata band: importance · Veda · veda source · active
+  // witness count. Reinforces source transparency before the user
+  // routes into the reading room.
   const safeWitnesses = (u.witnesses || []).filter(
     w => w.routeQuality === 'safe' || w.routeQuality === 'safe-start');
+  const metaBits = [];
+  if (u.importance) {
+    metaBits.push((u.importance === 'principal' ? 'Principal' : 'Minor') + ' Upanishad');
+  }
+  if (u.associatedVeda) {
+    const src = u.vedaSource ? (' (' + u.vedaSource + ')') : '';
+    metaBits.push('Associated Veda: ' + u.associatedVeda + src);
+  }
+  metaBits.push(safeWitnesses.length + ' active witness' + (safeWitnesses.length !== 1 ? 'es' : ''));
+  html += `<div class="upn-detail-meta">${escH(metaBits.join(' · '))}</div>`;
+  html += `<div class="upn-detail-intro">Available witnesses for the <em>${escH(u.displayTitle || u.name)}</em>. Each route preserves its source credit.</div>`;
+
   if (safeWitnesses.length) {
     html += '<div class="tile-section-label">Witnesses</div>';
     html += '<ul class="byupn-witness-list">';
@@ -20402,7 +20619,11 @@ function _witnessTileHTML(w) {
   const startRouteHint = (w.routeQuality === 'safe-start')
     ? ' <span class="upn-witness-startroute">enters at the Upanishad’s starting passage; content continues across following sections</span>'
     : '';
-  const onclick = `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
+  // v102 — pid-mode routing for sub-L1 entry points (e.g. Aitareya
+  // in Müller Part 1 routes to id='11.51' rather than L1='11').
+  const onclick = w.pid
+    ? `openUpanishadAt('${escH(w.textId)}','${escH(w.pid)}',true)`
+    : `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
   return `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0">
     <div class="byupn-witness-head">
       <span class="byupn-witness-role">${escH(roleLabel)}</span>
@@ -20414,18 +20635,23 @@ function _witnessTileHTML(w) {
   </li>`;
 }
 
-// v99 — Routing helper. The reader's existing pendingSection
-// mechanism jumps past the cover and enters the reading room at
-// the first passage whose path[0] matches the given key. So
-// "open the Isha Upanishad in Müller complete" is just:
-//   pendingSection = 'isha'; loadText(muller-complete-entry);
-// loadText then resolves the first matching passage and calls
-// enterReading(). No new dispatch surface needed.
-function openUpanishadAt(textId, groupKey) {
+// v99 / v102 — Routing helper. Two modes:
+//   · pendingSection (default): jump to the first passage whose
+//     path[0] matches the given key. Used for clean L1-level
+//     routes (most witnesses).
+//   · pendingPid (when isPid === true): jump to a specific
+//     passage id. Used for sub-L1 routes — e.g. Aitareya in
+//     Müller Part 1 lives within a merged L1 key, so we route to
+//     id='11.51' (the AITAREYA-ARANYAKA section header) instead.
+function openUpanishadAt(textId, keyOrPid, isPid) {
   const group = indexGroups[textId];
   if (!group || !group.length) return;
   const entry = group[0];
-  pendingSection = String(groupKey);
+  if (isPid) {
+    pendingPid = String(keyOrPid);
+  } else {
+    pendingSection = String(keyOrPid);
+  }
   // Tear down browse scaffolding before loadText so the reading
   // room enters clean (mirrors browseTextSection's pattern).
   $browse.style.display = 'none';
@@ -20548,9 +20774,12 @@ const TEXT_FAMILIES = [
     // Chandogya → Brihadaranyaka → Svetasvatara → Kaushitaki). Minor
     // order follows Aiyar's source order.
     byUpanishad: [
-      // ── Principal Upanishads (Müller complete; one witness each) ──
+      // ── Principal Upanishads (10 Müller-complete + Aitareya via
+      //    Müller Part 1 pid-route). Veda associations are CURATED
+      //    TRADITIONAL METADATA (Muktikā assignment). ──
       { key: 'isha', name: 'Isha', displayTitle: 'Isha Upanishad',
         importance: 'principal', order: 10,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'isha',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20559,6 +20788,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'kena', name: 'Kena', displayTitle: 'Kena Upanishad',
         importance: 'principal', order: 20,
+        associatedVeda: 'Samaveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'kena',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20567,6 +20797,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'katha', name: 'Katha', displayTitle: 'Katha Upanishad',
         importance: 'principal', order: 30,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'katha',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20575,6 +20806,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'prasna', name: 'Prasna', displayTitle: 'Prasna Upanishad',
         importance: 'principal', order: 40,
+        associatedVeda: 'Atharvaveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'prasna',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20583,6 +20815,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'mundaka', name: 'Mundaka', displayTitle: 'Mundaka Upanishad',
         importance: 'principal', order: 50,
+        associatedVeda: 'Atharvaveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'mundaka',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20591,6 +20824,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'taittiriya', name: 'Taittiriya', displayTitle: 'Taittiriya Upanishad',
         importance: 'principal', order: 70,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'taittiriya',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20599,6 +20833,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'chandogya', name: 'Chandogya', displayTitle: 'Chandogya Upanishad',
         importance: 'principal', order: 90,
+        associatedVeda: 'Samaveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'chandogya',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20607,6 +20842,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'brihadaranyaka', name: 'Brihadaranyaka', displayTitle: 'Brihadaranyaka Upanishad',
         importance: 'principal', order: 100,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'brihadaranyaka',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20615,6 +20851,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'svetasvatara', name: 'Svetasvatara', displayTitle: 'Svetasvatara Upanishad',
         importance: 'principal', order: 110,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'svetasvatara',
             sourceTitle: 'The Upanishads — Müller, complete',
@@ -20623,15 +20860,38 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'kaushitaki', name: 'Kaushitaki', displayTitle: 'Kaushitaki Upanishad',
         importance: 'principal', order: 120,
+        associatedVeda: 'Rigveda', vedaSource: 'curated traditional metadata',
         witnesses: [
           { textId: 'upanishads', groupKey: 'kaushitaki',
             sourceTitle: 'The Upanishads — Müller, complete',
             translator: 'F. Max Müller', year: '1879',
             role: 'primary', routeQuality: 'safe' },
         ] },
+      // v102 — Aitareya routes via pendingPid to the AITAREYA-
+      // ARANYAKA section header in Müller Part 1 (id='11.51', the
+      // "AITAREYA-ARANYAKA." fm marker). Müller's translation of
+      // the proper Aitareya Upanishad sits within the Aranyaka,
+      // starting at the second Aranyaka (around L1=14 in the
+      // source). Routing to the section header opens the
+      // document at the Aitareya material's first marker; the
+      // reader's nav advances through the editor's introduction
+      // into the translation. This is what is safely possible
+      // without parser-level sub-section repair of the merged
+      // Part 1 L1.
+      { key: 'aitareya', name: 'Aitareya', displayTitle: 'Aitareya Upanishad',
+        importance: 'principal', order: 80,
+        associatedVeda: 'Rigveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-muller-part1', pid: '11.51',
+            sourceTitle: 'The Upanishads (Müller, Part 1) — SBE Vol. I',
+            translator: 'F. Max Müller', year: '1879',
+            role: 'source-volume', routeQuality: 'safe-start',
+            note: 'Opens at the AITAREYA-ARANYAKA section header in Müller Part 1; the Aitareya Upanishad sits within the second Aranyaka and reads forward from there.' },
+        ] },
       // ── Minor Upanishads (Aiyar, Thirty Minor; safe + safe-start) ──
       { key: 'maitreya', name: 'Maitreya', displayTitle: 'Maitreya Upanishad',
         importance: 'minor', order: 210,
+        associatedVeda: 'Samaveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '6',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20641,6 +20901,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'sarvasara', name: 'Sarvasara', displayTitle: 'Sarvasara Upanishad',
         importance: 'minor', order: 220,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '4',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20649,6 +20910,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'niralamba', name: 'Niralamba', displayTitle: 'Niralamba Upanishad',
         importance: 'minor', order: 230,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '5',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20657,6 +20919,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'kaivalya', name: 'Kaivalya', displayTitle: 'Kaivalya Upanishad',
         importance: 'minor', order: 240,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '9',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20665,6 +20928,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'amrtabindu', name: 'Amrtabindu', displayTitle: 'Amrtabindu Upanishad',
         importance: 'minor', order: 250,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '10',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20673,6 +20937,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'atmabodha', name: 'Atmabodha', displayTitle: 'Atmabodha Upanishad',
         importance: 'minor', order: 260,
+        associatedVeda: 'Rigveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '11',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20681,6 +20946,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'skanda', name: 'Skanda', displayTitle: 'Skanda Upanishad',
         importance: 'minor', order: 270,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '12',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20690,6 +20956,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'adhyatma', name: 'Adhyatma', displayTitle: 'Adhyatma Upanishad',
         importance: 'minor', order: 280,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '17',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20698,6 +20965,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'brahmopanishad', name: 'Brahmopanishad', displayTitle: 'Brahma Upanishad',
         importance: 'minor', order: 290,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '34',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20706,6 +20974,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'vajrasuchi', name: 'Vajrasuchi', displayTitle: 'Vajrasuchi Upanishad',
         importance: 'minor', order: 300,
+        associatedVeda: 'Samaveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '35',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20714,6 +20983,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'sariraka', name: "S'Ariraka", displayTitle: "S'Ariraka Upanishad",
         importance: 'minor', order: 310,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '36',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20722,6 +20992,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'garbha', name: 'Garbha', displayTitle: 'Garbha Upanishad',
         importance: 'minor', order: 320,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '37',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20730,6 +21001,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'tarasara', name: 'Tarasara', displayTitle: 'Tarasara Upanishad',
         importance: 'minor', order: 330,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '38',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20738,6 +21010,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'narayana', name: 'Narayana', displayTitle: 'Narayana Upanishad',
         importance: 'minor', order: 340,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '39',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20746,6 +21019,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'kalisantarana', name: 'Kalisantarana', displayTitle: 'Kalisantarana Upanishad',
         importance: 'minor', order: 350,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '40',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20754,6 +21028,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'bhikshuka', name: 'Bhikshuka', displayTitle: 'Bhikshuka Upanishad',
         importance: 'minor', order: 360,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '41',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20762,6 +21037,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'yogatattva', name: 'Yogatattva', displayTitle: 'Yogatattva Upanishad',
         importance: 'minor', order: 370,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '55',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20770,6 +21046,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'dhyanabindu', name: 'Dhyanabindu', displayTitle: 'Dhyanabindu Upanishad',
         importance: 'minor', order: 380,
+        associatedVeda: 'Samaveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '56',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20778,6 +21055,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'hamsa', name: 'Hamsa', displayTitle: 'Hamsa Upanishad',
         importance: 'minor', order: 390,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '57',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20786,6 +21064,7 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'amrtanada', name: 'Amrtanada', displayTitle: 'Amrtanada Upanishad',
         importance: 'minor', order: 400,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '58',
             sourceTitle: 'Thirty Minor Upanishads',
@@ -20794,11 +21073,39 @@ const TEXT_FAMILIES = [
         ] },
       { key: 'nadabindu', name: 'Nadabindu', displayTitle: 'Nadabindu Upanishad',
         importance: 'minor', order: 410,
+        associatedVeda: 'Rigveda', vedaSource: 'source heading',
         witnesses: [
           { textId: 'upanishads-30-minor-aiyar', groupKey: '68',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
+        ] },
+      // v102 — Two further minor Upanishads recovered from Aiyar
+      // via deep-text audit. Aiyar's chapter_titles labelled their
+      // content with sub-section headings (Upadeśā I-IX, Chapter
+      // I-VI) rather than the Upanishad names, but the actual
+      // text bodies are clearly Narada-Parivrajaka and Sandilya.
+      { key: 'narada-parivrajaka', name: 'Narada-Parivrajaka',
+        displayTitle: 'Narada-Parivrajaka Upanishad',
+        importance: 'minor', order: 405,
+        associatedVeda: 'Atharvaveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '42',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Aiyar labels this Upanishad’s nine teachings as “Upadeśā I–IX”; the text begins at Upadeśā I and continues across L1=42–50.' },
+        ] },
+      { key: 'sandilya', name: 'Sandilya',
+        displayTitle: 'Sandilya Upanishad',
+        importance: 'minor', order: 415,
+        associatedVeda: 'Atharvaveda', vedaSource: 'source heading',
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '51',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Sandilya/Atharvan dialogue on the eight angas of yoga; text begins at Chapter I and continues across L1=51–53.' },
         ] },
     ],
     // Named in tradition or in the source files but not yet
@@ -20806,11 +21113,9 @@ const TEXT_FAMILIES = [
     // active grid so the reader knows they're not silently omitted.
     byUpanishadInactive: [
       { name: 'Mandukya',  importance: 'principal',
-        reason: 'Not found as a separately-keyed text in any audited source file in this archive. (Müller’s complete merge does not surface it; Aiyar’s Thirty Minor does not include it.)' },
-      { name: 'Aitareya',  importance: 'principal',
-        reason: 'Present in Müller Part 1 (Aitareya-Aranyaka, including the Aitareya Upanishad) but interleaved with Khandogya / Kaushitaki / Vagasaneyi-Samhita at the same source L1 key. Sub-key routing requires parser repair before an individual entry-point can be exposed.' },
-      { name: 'Upadeśā I–IX (Aiyar L1=42–50)', importance: 'minor',
-        reason: 'Nine sub-Brahmana “Upadeśā” sections in Aiyar without a clean Xxx-Upanishad boundary; cannot be safely surfaced as separate Upanishads without parser repair.' },
+        reason: 'Searched all six audited source files in v102 — only mentioned in editor commentary (Müller, Aiyar) as part of Upanishad lists; no translation passages are present. Not in the current archive.' },
+      { name: 'Aiyar L1=18–33 (Khanda I–XVI and Chapter I–VI)', importance: 'minor',
+        reason: 'Sub-section headings without identifiable Upanishad titles in chapter_titles. Could belong to one or more named Upanishads (likely Tejobindu / Yogashikha / similar minor texts) but boundary detection requires parser repair.' },
     ],
   },
 ];
