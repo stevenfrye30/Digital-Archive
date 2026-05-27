@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v109-hume-principal-witnesses">
+  <meta name="atlas-build" content="v110-aiyar-deep-audit-batch">
   <title>Digital Archive</title>
   <style>
 
@@ -21400,6 +21400,59 @@ const TEXT_FAMILIES = [
             role: 'primary', routeQuality: 'safe-start',
             note: 'Opens at "param-dhyana upon tejo bindu" in Aiyar (L1=28); content continues across six chapters (L1=28-33) before closing with the Tejobindu-Upanishad sealing rubric.' },
         ] },
+      // v110 — Three more Muktikā Upanishads recovered from Aiyar
+      // 1914 via deep audit (extending the v104 Subāla/Tejobindu and
+      // v107 Muktikā pattern). Each one was hidden behind generic
+      // "Adhyaya/Brahmana/Chapter" L1 labels in Aiyar's source.
+      //
+      // Pāingala (#22, Shukla Yajurveda, V-class) — L1=13-16:
+      //   Yajnavalkya-Paingala dialogue across four Adhyayas opening
+      //   with "OM. Paingala, having served under Yajnavalkya for
+      //   twelve years, asked him to initiate him into the supreme
+      //   mysteries of Kaivalya."
+      //
+      // Maṇḍalabrāhmaṇa (#20, Shukla Yajurveda, Y-class) — L1=64-67:
+      //   Yajnavalkya-Aditya dialogue across five Brahmanas opening
+      //   with "OM. The great muni Yajnavalkya went to Adityaloka …
+      //   describe to me the Atma-tattva." The Purusha of the sun
+      //   (Narayana) replies on the eightfold yoga.
+      //
+      // Yogakuṇḍalinī (#60, Krishna Yajurveda, Y-class) — L1=69-71:
+      //   Discourse on chitta, vāsanās, prāṇa-vāyu, khechari and
+      //   melanamantra across three chapters.
+      //
+      // All three are safe-start routes — content continues across
+      // following Aiyar L1 keys until the next named Upanishad.
+      { key: 'paingala', name: 'Pāingala', displayTitle: 'Pāingala Upanishad',
+        importance: 'minor', order: 297,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '13',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Aiyar labels this Upanishad’s four adhyāyas as "Adhyaya I"–"Adhyaya IV"; the text begins at L1=13 (Paingala’s opening request to Yajnavalkya about Kaivalya) and continues through L1=16.' },
+        ] },
+      { key: 'mandalabrahmana', name: 'Maṇḍalabrāhmaṇa', displayTitle: 'Maṇḍalabrāhmaṇa Upanishad',
+        importance: 'minor', order: 298,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '64',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Aiyar labels this Upanishad’s five brahmaṇas as "Brahmana I"–"Brahmana V"; the text begins at L1=64 (Yajnavalkya’s journey to Adityaloka and request to the Purusha of the sun for the Atma-tattva) and continues through L1=67.' },
+        ] },
+      { key: 'yogakundalini', name: 'Yogakuṇḍalinī', displayTitle: 'Yogakuṇḍalinī Upanishad',
+        importance: 'minor', order: 299,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '69',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Aiyar labels this Upanishad’s three chapters as "Chapter I"–"Chapter III"; the text begins at L1=69 (the two causes of chitta — vāsanās and prāṇa-vāyu) and continues through L1=71 (the Melana-mantra).' },
+        ] },
       { key: 'amrtanada', name: 'Amrtanada', displayTitle: 'Amrtanada Upanishad',
         importance: 'minor', order: 400,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
@@ -21520,9 +21573,9 @@ const MUKTIKA_108 = [
   { n:17, key:null,                name:'Mantrikā',        veda:'Shukla Yajurveda', cls:'V', variants:['Mantrika-Upanishad'] },
   { n:18, key:'niralamba',        name:'Niralamba',       veda:'Shukla Yajurveda', cls:'V', variants:['Niralamba-Upanishad'] },
   { n:19, key:null,                name:'Trīśikhibrāhmaṇa',veda:'Shukla Yajurveda', cls:'Y', variants:['Trisikhibrahmana-Upanishad','Trishikhi-Upanishad'] },
-  { n:20, key:null,                name:'Maṇḍalabrāhmaṇa', veda:'Shukla Yajurveda', cls:'Y', variants:['Mandalabrahmana-Upanishad'] },
+  { n:20, key:'mandalabrahmana',  name:'Maṇḍalabrāhmaṇa', veda:'Shukla Yajurveda', cls:'Y', variants:['Mandalabrahmana-Upanishad'] },
   { n:21, key:null,                name:'Advayatāraka',    veda:'Shukla Yajurveda', cls:'S', variants:['Advayataraka-Upanishad'] },
-  { n:22, key:null,                name:'Pāingala',        veda:'Shukla Yajurveda', cls:'V', variants:['Paingala-Upanishad'] },
+  { n:22, key:'paingala',         name:'Pāingala',        veda:'Shukla Yajurveda', cls:'V', variants:['Paingala-Upanishad'] },
   { n:23, key:'bhikshuka',        name:'Bhikṣu',          veda:'Shukla Yajurveda', cls:'S', variants:['Bhikshuka-Upanishad'] },
   { n:24, key:null,                name:'Turīyātīta',      veda:'Shukla Yajurveda', cls:'S', variants:['Turiyatita-Upanishad'] },
   { n:25, key:'adhyatma',         name:'Adhyātmā',        veda:'Shukla Yajurveda', cls:'V', variants:['Adhyatma-Upanishad'] },
@@ -21561,7 +21614,7 @@ const MUKTIKA_108 = [
   { n:57, key:null,                name:'Pañcabrahma',     veda:'Krishna Yajurveda', cls:'Sh', variants:['Pancabrahma-Upanishad'] },
   { n:58, key:null,                name:'Prāṇāgnihotra',   veda:'Krishna Yajurveda', cls:'V', variants:['Pranagnihotra-Upanishad'] },
   { n:59, key:null,                name:'Mahā-Nārāyaṇa',   veda:'Krishna Yajurveda', cls:'Vs', variants:['Mahanarayana-Upanishad'] },
-  { n:60, key:null,                name:'Yogakuṇḍalinī',   veda:'Krishna Yajurveda', cls:'Y', variants:['Yogakundalini-Upanishad'] },
+  { n:60, key:'yogakundalini',    name:'Yogakuṇḍalinī',   veda:'Krishna Yajurveda', cls:'Y', variants:['Yogakundalini-Upanishad'] },
   { n:61, key:'kalisantarana',    name:'Kalisantaraṇa',   veda:'Krishna Yajurveda', cls:'Vs', variants:['Kalisantarana-Upanishad'] },
   { n:62, key:null,                name:'Sarasvatī-rahasya',veda:'Krishna Yajurveda', cls:'Sk', variants:['Saraswatirahasya-Upanishad','Saraswatirahasya'] },
   // ── Samaveda (16) ──
