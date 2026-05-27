@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v102-upanishads-veda-views">
+  <meta name="atlas-build" content="v103-principal-upanishads-completion">
   <title>Digital Archive</title>
   <style>
 
@@ -2994,6 +2994,52 @@ button.home-path {
   letter-spacing: 0.18em;
   color: rgba(120, 90, 50, 0.68);
   margin-top: 4px;
+}
+
+/* ── v103 — Principal Upanishads acknowledged-missing card.
+   Renders as a non-clickable status line in the active grid's
+   visual space, so the reader sees "this exists in tradition but
+   isn't yet in the archive" without confusing it with a clickable
+   route. Quieter background + dashed left bar; no hover-lift. */
+.byupn-missing {
+  margin: 6px 0;
+  padding: 10px 14px;
+  background: rgba(120, 95, 60, 0.03);
+  border: 1px dashed rgba(120, 95, 60, 0.30);
+  border-radius: 3px;
+  cursor: default;
+  opacity: 0.85;
+}
+.byupn-missing-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+.byupn-missing-name {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 14px;
+  color: rgba(80, 60, 30, 0.85);
+  font-style: italic;
+}
+.byupn-missing-flag {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: rgba(120, 70, 25, 0.62);
+  padding: 1px 6px;
+  border: 1px solid rgba(120, 70, 25, 0.30);
+  border-radius: 2px;
+}
+.byupn-missing-note {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(95, 75, 50, 0.72);
 }
 
 /* Witness picker — v102 metadata band */
@@ -20455,22 +20501,50 @@ function _renderUpanishadsByVeda(fam) {
     const v = u.associatedVeda || 'Uncertain / needs verification';
     (buckets[v] = buckets[v] || []).push(u);
   }
+  // v103 — Bucket the principalMissing list by Veda too, so each
+  // group surfaces "still missing" principal Upanishads where they
+  // would belong.
+  const missingByVeda = {};
+  for (const mi of (fam.principalMissing || [])) {
+    const v = mi.associatedVeda || 'Uncertain / needs verification';
+    (missingByVeda[v] = missingByVeda[v] || []).push(mi);
+  }
   let html = '';
   html += '<div class="family-section-heading">Browse by Veda</div>';
   html += '<div class="byveda-note">Each Upanishad is grouped under its associated Veda. Principal Upanishads first; minor Upanishads after. <em>Curated traditional metadata</em> = Muktikā assignment; <em>source heading</em> = read directly from the source file’s own chapter title.</div>';
   for (const v of vedaOrder) {
     const items = (buckets[v] || []);
-    if (!items.length) continue;
+    const missing = (missingByVeda[v] || []);
+    if (!items.length && !missing.length) continue;
     html += `<div class="tile-section-label byveda-label">${escH(v)}</div>`;
-    html += '<div class="byupn-grid">';
-    // Principal first, then minor — both already order-sorted.
-    const p = items.filter(u => u.importance === 'principal');
-    const m = items.filter(u => u.importance === 'minor');
-    for (const u of p) html += _byUpanishadTileHTML(u, fam.id);
-    for (const u of m) html += _byUpanishadTileHTML(u, fam.id);
-    html += '</div>';
+    if (items.length) {
+      html += '<div class="byupn-grid">';
+      const p = items.filter(u => u.importance === 'principal');
+      const m = items.filter(u => u.importance === 'minor');
+      for (const u of p) html += _byUpanishadTileHTML(u, fam.id);
+      for (const u of m) html += _byUpanishadTileHTML(u, fam.id);
+      html += '</div>';
+    }
+    for (const mi of missing) {
+      html += _principalMissingHTML(mi);
+    }
   }
   return html;
+}
+
+// v103 — Quiet non-clickable status card for principal Upanishads
+// that are acknowledged-missing from the archive. Distinct visual
+// register from active cards (no border-card, no hover lift) so
+// the reader sees "this exists in tradition but is not yet here"
+// without thinking they can click.
+function _principalMissingHTML(mi) {
+  return `<div class="byupn-missing">
+    <div class="byupn-missing-head">
+      <span class="byupn-missing-name">${escH(mi.displayTitle || (mi.name + ' Upanishad'))}</span>
+      <span class="byupn-missing-flag">not yet in archive</span>
+    </div>
+    <div class="byupn-missing-note">${escH(mi.acquisitionNote || '')}</div>
+  </div>`;
 }
 
 // View 3 — Traditional / canonical order. Uses the curated `order`
@@ -20491,11 +20565,18 @@ function _renderUpanishadsByTraditional(fam) {
   html += '<div class="byveda-note">Principal Upanishads in Muktikā-style sequence, then minor Upanishads in Aiyar source order. Historical chronology of the Upanishads is scholarly contested; this archive uses traditional rather than dated order.</div>';
   const principal = sorted.filter(u => u.importance === 'principal');
   const minor     = sorted.filter(u => u.importance === 'minor');
+  const missing   = fam.principalMissing || [];
   if (principal.length) {
     html += `<div class="tile-section-label">Principal Upanishads</div>`;
     html += '<div class="byupn-grid">';
     for (const u of principal) html += _byUpanishadTileHTML(u, fam.id);
     html += '</div>';
+  }
+  // v103 — Missing principal Upanishads (e.g. Mandukya) shown at
+  // the end of the Principal block as quiet non-clickable status
+  // lines, so the completion gap is visible to the reader.
+  for (const mi of missing) {
+    html += _principalMissingHTML(mi);
   }
   if (minor.length) {
     html += `<div class="tile-section-label">Minor Upanishads</div>`;
@@ -20888,6 +20969,25 @@ const TEXT_FAMILIES = [
             role: 'source-volume', routeQuality: 'safe-start',
             note: 'Opens at the AITAREYA-ARANYAKA section header in Müller Part 1; the Aitareya Upanishad sits within the second Aranyaka and reads forward from there.' },
         ] },
+      // v103 — Maitri (Maitrayana / Maitrayaniya / Maitrayani)
+      // recovered from Müller Part 2 via deep audit. The repo-wide
+      // search for Maitri/Maitrayani text in passage bodies found
+      // 21 hits in upanishads-muller-part2; the actual Maitrayana-
+      // Brahmana-Upanishad translation lives at L1=6 starting at
+      // id='6.348' (the "Maitrayana-Brahmana-Upanishad" section
+      // header, immediately preceding "FIRST PRAPATHAKA." at
+      // '6.349'). The Upanishad runs across seven Prapathakas
+      // (6.349-6.566) in the source. Pid-route, safe-start.
+      { key: 'maitri', name: 'Maitri', displayTitle: 'Maitri Upanishad',
+        importance: 'principal', order: 75,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-muller-part2', pid: '6.348',
+            sourceTitle: 'The Upanishads (Müller, Part 2) — SBE Vol. XV',
+            translator: 'F. Max Müller', year: '1884',
+            role: 'source-volume', routeQuality: 'safe-start',
+            note: 'Opens at the MAITRAYANA-BRAHMANA-UPANISHAD section header in Müller Part 2; the Upanishad continues across seven Prapathakas from there.' },
+        ] },
       // ── Minor Upanishads (Aiyar, Thirty Minor; safe + safe-start) ──
       { key: 'maitreya', name: 'Maitreya', displayTitle: 'Maitreya Upanishad',
         importance: 'minor', order: 210,
@@ -21111,9 +21211,20 @@ const TEXT_FAMILIES = [
     // Named in tradition or in the source files but not yet
     // individually routable. Surfaced as a quiet note below the
     // active grid so the reader knows they're not silently omitted.
+    // v103 — Principal Upanishads acknowledged as missing from the
+    // current archive. Rendered as a quiet non-clickable status line
+    // under their associated Veda (in By-Veda view) and at the end
+    // of the Principal Upanishads block (in Traditional view) so
+    // the gap is visible without burying it. Distinct from
+    // byUpanishadInactive (which can list any class of entry).
+    principalMissing: [
+      { name: 'Mandukya', displayTitle: 'Mandukya Upanishad',
+        associatedVeda: 'Atharvaveda',
+        acquisitionNote: 'Not present in current archive sources. Acquisition needed (candidate sources: Nikhilananda’s Mandukya with Gaudapada-Karika; Hume’s Thirteen Principal Upanishads).' },
+    ],
     byUpanishadInactive: [
       { name: 'Mandukya',  importance: 'principal',
-        reason: 'Searched all six audited source files in v102 — only mentioned in editor commentary (Müller, Aiyar) as part of Upanishad lists; no translation passages are present. Not in the current archive.' },
+        reason: 'Repo-wide v103 audit (not only the Upanishads family files): searched passage bodies across the entire Hindu data corpus. Mandukya appears only in editorial commentary (Brahma Knowledge’s "List of the Chief Upanishads" appendix; MacDonell’s History of Sanskrit Literature description; the Yoga-Vasishtha and Hermes-Trismegistos incidental mentions; Müller Part 1 / Part 2 / Aiyar editor notes). No translation passages exist in the archive. Acquisition needed: candidate sources include Nikhilananda’s translation of the Mandukya with Gaudapada’s Karika, Hume’s Thirteen Principal Upanishads, or any Sacred Books of the East volume containing the Mandukya proper. Mandukya Karika commentary alone is not a substitute for the Upanishad text.' },
       { name: 'Aiyar L1=18–33 (Khanda I–XVI and Chapter I–VI)', importance: 'minor',
         reason: 'Sub-section headings without identifiable Upanishad titles in chapter_titles. Could belong to one or more named Upanishads (likely Tejobindu / Yogashikha / similar minor texts) but boundary detection requires parser repair.' },
     ],
