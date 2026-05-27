@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v106-mandukya-hume-witness">
+  <meta name="atlas-build" content="v107-muktika-extracted-sannyasa-acquisition-needed">
   <title>Digital Archive</title>
   <style>
 
@@ -21298,6 +21298,32 @@ const TEXT_FAMILIES = [
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
         ] },
+      // v107 — Muktikā Upanishad recovered from Aiyar's Thirty
+      // Minor at L1=2-3. Aiyar labels these as "Adhyaya I" and
+      // "Adhyaya II" — but the actual text IS the Muktikā: Hanuman
+      // questions Sri Rama about emancipation, Rama enumerates the
+      // 108 Upanishads across the four Vedas (verses 2.14-2.17 list
+      // every canonical name). v105 had recommended acquiring a
+      // dedicated Aiyar 1914 Sannyāsa Upanishads volume — that
+      // volume turned out to be a misattribution (Aiyar's only
+      // 1914 Upanishads work IS the Thirty Minor, already in the
+      // archive). The deep audit instead uncovered Muktikā hidden
+      // inside the same source. Adyar Library's English Sannyāsa
+      // Upanishads compilations (Mahadeva Sastri 1925, Chintamani
+      // Dikshit 1929) are Sanskrit-only with Sanskrit commentary;
+      // post-1929 English compilations (Ramanathan 1978, Marabathina
+      // 2024) are still copyrighted. See v107 report for the full
+      // acquisition audit. Muktikā here is safe-start (L1=2 → L1=3).
+      { key: 'muktika', name: 'Muktikā', displayTitle: 'Muktikā Upanishad',
+        importance: 'principal', order: 130,
+        associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '2',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Aiyar labels this Upanishad’s two adhyāyas as "Adhyaya I" / "Adhyaya II"; the text begins at L1=2 (Hanuman’s opening question to Sri Rama) and continues through L1=3, including the canonical enumeration of the 108 Upanishads at verses 2.14–2.17.' },
+        ] },
       // v104 — Subāla and Tejobindu recovered from Aiyar L1=18-33
       // via deep audit. v103's "unidentified Khanda/Chapter block"
       // was actually two complete minor Upanishads with safe-start
@@ -21455,7 +21481,7 @@ const MUKTIKA_108 = [
   { n:26, key:'tarasara',         name:'Tārasāra',        veda:'Shukla Yajurveda', cls:'Vs', variants:['Tarasara-Upanishad'] },
   { n:27, key:null,                name:'Yājñavalkya',     veda:'Shukla Yajurveda', cls:'S', variants:['Yajnavalkya-Upanishad'] },
   { n:28, key:null,                name:'Sātyāyanī',       veda:'Shukla Yajurveda', cls:'S', variants:['Satyayani-Upanishad'] },
-  { n:29, key:null,                name:'Muktikā',         veda:'Shukla Yajurveda', cls:'M', variants:['Muktika-Upanishad'] },
+  { n:29, key:'muktika',           name:'Muktikā',         veda:'Shukla Yajurveda', cls:'M', variants:['Muktika-Upanishad'] },
   // ── Krishna Yajurveda (32) ──
   { n:30, key:'katha',            name:'Kaṭha',           veda:'Krishna Yajurveda', cls:'M', variants:['Katha-Upanishad'] },
   { n:31, key:'taittiriya',       name:'Taittirīya',      veda:'Krishna Yajurveda', cls:'M', variants:['Taittiriya-Upanishad'] },
