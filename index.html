@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v117-sankara-commentary-witnesses">
+  <meta name="atlas-build" content="v118-sankara-commentary-set-complete">
   <title>Digital Archive</title>
   <style>
 
@@ -20960,6 +20960,11 @@ const TEXT_FAMILIES = [
       // Aitareya+Taittiriya) remain v118+ acquisition targets.
       { textId: 'upanishads-sankara-sastri-vol1', role: 'source-volume', note: 'Sastri 1905 (reprint of 1898) — Isa, Kena, Mundaka with Sri Sankara\'s commentary; Adyar / Natesan, Madras; IA upanishadssrisan00sita' },
       { textId: 'upanishads-sankara-sastri-vol2', role: 'source-volume', note: 'Sastri 1898 — Katha, Prasna with Sri Sankara\'s commentary; V.C. Seshacharri / Natesan, Madras; IA upanishadsandsr00agoog' },
+      // v118 — Sastri Vols 3, 4, 5 completing the 5-volume Sankara-
+      // commentary set (all five PD-safe pre-1929 Madras publications):
+      { textId: 'upanishads-sankara-sastri-vol3', role: 'source-volume', note: 'Sastri 1899 — Chandogya parts 1-4 with Sri Sankara\'s commentary; V.C. Seshacharri / Natesan, Madras; IA in.ernet.dli.2015.106211' },
+      { textId: 'upanishads-sankara-sastri-vol4', role: 'source-volume', note: 'Sastri 1899 — Chandogya parts 5-8 with Sri Sankara\'s commentary; V.C. Seshacharri / Natesan, Madras; IA in.ernet.dli.2015.106212' },
+      { textId: 'upanishads-sankara-sastri-vol5', role: 'source-volume', note: 'Sastri 1901 — Aitareya, Taittiriya with Sri Sankara\'s commentary; V.C. Seshacharri / India Printing Works, Madras; IA in.ernet.dli.2015.57841' },
     ],
     primaryMemberId: 'upanishads',
     // v101 — Richer per-Upanishad index with witness records.
@@ -21111,6 +21116,11 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Thirteen Principal Upanishads — Hume',
             translator: 'Robert Ernest Hume', year: '1921',
             role: 'source-volume', routeQuality: 'safe' },
+          { textId: 'upanishads-sankara-sastri-vol5', groupKey: 'taittiriya',
+            sourceTitle: 'The Upanishads and Sri Sankara\'s Commentary (Vol 5) — Sastri',
+            translator: 'S. Sitarama Sastri', year: '1901',
+            role: 'commentary-witness', routeQuality: 'safe',
+            note: 'Vol 5: Taittiriya Upanishad with Sankaracharya\'s commentary interleaved.' },
         ] },
       { key: 'chandogya', name: 'Chandogya', displayTitle: 'Chandogya Upanishad',
         importance: 'principal', order: 90,
@@ -21124,6 +21134,16 @@ const TEXT_FAMILIES = [
             sourceTitle: 'The Thirteen Principal Upanishads — Hume',
             translator: 'Robert Ernest Hume', year: '1921',
             role: 'source-volume', routeQuality: 'safe' },
+          { textId: 'upanishads-sankara-sastri-vol3', groupKey: 'chandogya',
+            sourceTitle: 'The Upanishads and Sri Sankara\'s Commentary (Vol 3) — Sastri',
+            translator: 'S. Sitarama Sastri', year: '1899',
+            role: 'commentary-witness', routeQuality: 'safe',
+            note: 'Vol 3: Chandogya parts 1-4 with Sankaracharya\'s commentary interleaved. Vol 4 (parts 5-8) is the continuation witness below.' },
+          { textId: 'upanishads-sankara-sastri-vol4', groupKey: 'chandogya',
+            sourceTitle: 'The Upanishads and Sri Sankara\'s Commentary (Vol 4) — Sastri',
+            translator: 'S. Sitarama Sastri', year: '1899',
+            role: 'commentary-witness', routeQuality: 'safe',
+            note: 'Vol 4: Chandogya parts 5-8 with Sankaracharya\'s commentary interleaved. Continues from Vol 3 (parts 1-4).' },
         ] },
       { key: 'brihadaranyaka', name: 'Brihadaranyaka', displayTitle: 'Brihadaranyaka Upanishad',
         importance: 'principal', order: 100,
@@ -21189,6 +21209,11 @@ const TEXT_FAMILIES = [
             translator: 'Robert Ernest Hume', year: '1921',
             role: 'source-volume', routeQuality: 'safe',
             note: 'Hume\'s direct translation of the Aitareya Upanishad proper (without the embedding Aranyaka).' },
+          { textId: 'upanishads-sankara-sastri-vol5', groupKey: 'aitareya',
+            sourceTitle: 'The Upanishads and Sri Sankara\'s Commentary (Vol 5) — Sastri',
+            translator: 'S. Sitarama Sastri', year: '1901',
+            role: 'commentary-witness', routeQuality: 'safe',
+            note: 'Vol 5: Aitareya Upanishad with Sankaracharya\'s commentary interleaved.' },
         ] },
       // v103 — Maitri (Maitrayana / Maitrayaniya / Maitrayani)
       // recovered from Müller Part 2 via deep audit. The repo-wide
