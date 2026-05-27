@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v110-aiyar-deep-audit-batch">
+  <meta name="atlas-build" content="v111-varaha-variant-added">
   <title>Digital Archive</title>
   <style>
 
@@ -21452,6 +21452,44 @@ const TEXT_FAMILIES = [
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
             note: 'Aiyar labels this Upanishad’s three chapters as "Chapter I"–"Chapter III"; the text begins at L1=69 (the two causes of chitta — vāsanās and prāṇa-vāyu) and continues through L1=71 (the Melana-mantra).' },
+        ] },
+      // v111 — Varāha Upanishad surfaced as a VARIANT-CANON entry
+      // outside the local MUKTIKA_108 array.
+      //
+      // Provenance: Aiyar 1914 *Thirty Minor Upanishads*, L1=59-63
+      // (Rbhu-Varāha dialogue: the sage Rbhu's twelve-year penance,
+      // the Lord appearing as a boar, the tattva-enumeration —
+      // 24/36/96 — and the path of Yoga).
+      //
+      // Why "variant-canon": Aiyar's own Muktikā enumeration (L1=2,
+      // verses 2.11-2.17) lists Varāha as Krishna Yajurveda #30 of
+      // 32. However, the local MUKTIKA_108 array follows a DIFFERENT
+      // canonical recension that omits Varāha and assigns several
+      // other Upanishads to different Vedas (e.g. Mahā-Nārāyaṇa to
+      // KY rather than AV; Saubhāgya to AV rather than RV). A v111
+      // audit (see reports/v111_muktika_map_varaha_audit.md) found
+      // ~10-15 such per-Veda divergences. Modifying MUKTIKA_108
+      // here would be a multi-entry rewrite of a canonical-list
+      // assignment, which is out of scope for v111.
+      //
+      // v111 surfaces Varāha as an active Upanishad in the family
+      // page — it has real Aiyar-translated text and a clean safe-
+      // start route — while explicitly noting it does NOT count
+      // toward the 42 / 108 Muktikā coverage figure. A future v112
+      // pass may either:
+      //   (a) reconcile MUKTIKA_108 to follow the Aiyar/Adyar
+      //       ordering (which would re-count Varāha as #N), or
+      //   (b) introduce an explicit MUKTIKA_VARIANTS crosswalk.
+      { key: 'varaha', name: 'Varāha', displayTitle: 'Varāha Upanishad',
+        importance: 'minor', order: 296,
+        associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
+        inMuktika108: false,
+        witnesses: [
+          { textId: 'upanishads-30-minor-aiyar', groupKey: '59',
+            sourceTitle: 'Thirty Minor Upanishads',
+            translator: 'K. Narayanasvami Aiyar', year: '1914',
+            role: 'primary', routeQuality: 'safe-start',
+            note: 'Aiyar labels this Upanishad’s five chapters as "Chapter I"–"Chapter V"; the text begins at L1=59 (Rbhu’s twelve-year penance, the Lord appearing as a boar to grant a boon) and continues through L1=63. Variant-canon: present in Aiyar’s own Muktikā list (Krishna Yajurveda #30) but not in the local MUKTIKA_108 target array, which follows a different recension — see reports/v111_muktika_map_varaha_audit.md.' },
         ] },
       { key: 'amrtanada', name: 'Amrtanada', displayTitle: 'Amrtanada Upanishad',
         importance: 'minor', order: 400,
