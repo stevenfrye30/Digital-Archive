@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v123-muktika-map-usability">
+  <meta name="atlas-build" content="v124a-muktika-map-overflow-fix">
   <title>Digital Archive</title>
   <style>
 
@@ -3189,7 +3189,8 @@ button.home-path {
   cursor: pointer;
 }
 .map108-launch:hover { background: rgba(225, 200, 155, 0.62); }
-.map108-panel { margin: 4px 0 18px; }
+.map108-panel { margin: 4px 0 18px; max-width: 100%; box-sizing: border-box; overflow-x: hidden; }
+.map108-groups { max-width: 100%; box-sizing: border-box; overflow-x: hidden; }
 .map108-head {
   display: flex;
   justify-content: space-between;
@@ -3253,8 +3254,12 @@ button.home-path {
 }
 .map108-chip-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  /* v124a — auto-fit + safe minmax so tracks never exceed the parent. */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 6px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 .map108-chip {
   border: 1px solid rgba(150, 110, 60, 0.26);
@@ -3266,6 +3271,10 @@ button.home-path {
   align-items: baseline;
   gap: 7px;
   min-height: 22px;
+  /* v124a — allow the chip to shrink inside its grid cell. */
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .map108-chip--active { cursor: pointer; background: rgba(236, 244, 232, 0.6); border-color: rgba(90, 130, 80, 0.4); }
 .map108-chip--active:hover { background: rgba(220, 238, 214, 0.85); }
@@ -3281,6 +3290,11 @@ button.home-path {
   font-size: 13px;
   color: rgba(55, 35, 15, 0.9);
   flex: 1;
+  /* v124a — truncate long names instead of forcing the chip wider. */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .map108-badge {
   font-family: Georgia, serif;
@@ -3291,10 +3305,20 @@ button.home-path {
   padding: 1px 6px;
   border-radius: 3px;
   white-space: nowrap;
+  /* v124a — badge keeps its size but the name (flex:1) absorbs slack;
+     in compact mode the future badge swaps to a short "PD YYYY" form. */
+  flex: 0 0 auto;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .map108-badge--active   { color: rgba(30, 90, 40, 0.92); background: rgba(150, 200, 150, 0.30); }
 .map108-badge--missing  { color: rgba(120, 70, 30, 0.78); background: rgba(210, 180, 140, 0.28); }
 .map108-badge--future   { color: rgba(120, 50, 20, 0.86); background: rgba(220, 175, 130, 0.32); }
+/* v124a — full vs compact future-badge text (CSS-toggled, no re-render) */
+.map108-badge-compact { display: none; }
+.map108-panel--compact .map108-badge-full { display: none; }
+.map108-panel--compact .map108-badge-compact { display: inline; }
 
 /* v123 — 108 Map usability controls (legend, search, filters, sort,
    compact density). All display-only — no canon data changes. */
@@ -3322,10 +3346,14 @@ button.home-path {
   border-radius: 5px;
   background: rgba(252, 248, 238, 0.85);
   color: rgba(55, 35, 15, 0.92);
-  min-width: 230px;
-  flex: 1 1 230px;
+  /* v124a — allow the search box to shrink on narrow widths so it
+     never forces horizontal overflow. */
+  min-width: 0;
+  flex: 1 1 200px;
   max-width: 360px;
+  box-sizing: border-box;
 }
+.map108-controls { max-width: 100%; }
 .map108-search:focus { outline: none; border-color: rgba(140, 95, 45, 0.7); background: #fff; }
 .map108-count {
   font-family: Georgia, serif;
@@ -3384,7 +3412,8 @@ button.home-path {
 
 /* Compact density */
 .map108-panel--compact .map108-chip-grid {
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  /* v124a — auto-fit + 180px minmax keeps compact tracks within parent. */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 4px;
 }
 .map108-panel--compact .map108-chip {
@@ -21191,9 +21220,13 @@ const _MAP108_CLASS_ORDER = ['M', 'V', 'S', 'Y', 'Sh', 'Vs', 'Sk', '?'];
 
 // Short source-family hint for a restricted source ("Adyar Saiva",
 // "Adyar Yoga", …). Falls back to classLabel or the display title.
+// v124a — shorten the longest class label so the comfortable badge
+// ("Future PD 2037 · Adyar Vedānta") doesn't force horizontal overflow.
 function _restrictedShortHint(fs) {
-  if (fs.classLabel && /Adyar/i.test(fs.sourceFamily || '')) return 'Adyar ' + fs.classLabel;
-  if (fs.classLabel) return fs.classLabel;
+  let cl = fs.classLabel || '';
+  if (cl === 'Sāmānya Vedānta') cl = 'Vedānta';
+  if (cl && /Adyar/i.test(fs.sourceFamily || '')) return 'Adyar ' + cl;
+  if (cl) return cl;
   return fs.displayTitle || 'restricted';
 }
 
@@ -21232,12 +21265,21 @@ function _map108ChipHTML(e, familyId) {
   if (e.futureSource) {
     const fs = e.futureSource;
     const yr = fs.expectedPublicDomainYear || '';
-    // Full label: "Future PD 2031 · Adyar Saiva"; compact CSS shrinks it.
-    const badgeText = (yr ? ('Future PD ' + yr) : 'Future') + (futureHint ? (' · ' + futureHint) : '');
-    const badge = `<span class="map108-badge map108-badge--future">${escH(badgeText)}</span>`;
+    // v124a — two badge forms: full ("Future PD 2037 · Adyar Vedānta")
+    // for comfortable mode, short ("PD 2037") for compact mode. CSS
+    // toggles which is shown via .map108-panel--compact, so no
+    // re-render is needed when density changes. Compact's short badge
+    // is what removes the horizontal overflow.
+    const fullText = (yr ? ('Future PD ' + yr) : 'Future') + (futureHint ? (' · ' + futureHint) : '');
+    const compactText = yr ? ('PD ' + yr) : 'PD';
+    const fsYear = fs.publicationYear ? (', ' + fs.publicationYear) : '';
+    const titleText = (fs.displayTitle || 'restricted') + fsYear + ' — metadata only';
+    const badge = `<span class="map108-badge map108-badge--future">` +
+      `<span class="map108-badge-full">${escH(fullText)}</span>` +
+      `<span class="map108-badge-compact">${escH(compactText)}</span></span>`;
     const onclick = `openRestrictedDossier('${escH(familyId)}','${escH(fs.id)}')`;
     return `<div class="map108-chip map108-chip--future" ${dataAttrs} onclick="${onclick}" ` +
-      `title="${escH(fs.displayTitle)} — metadata only">` +
+      `title="${escH(titleText)}">` +
       `<span class="map108-chip-num">${e.n}</span>` +
       `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
   }
