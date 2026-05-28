@@ -36,6 +36,22 @@ data/think-grow-rich*.json.gz
 # and never committed. See reports/v109_restricted_source_protocol.md.
 data/_restricted/
 
+# v124 — Local-only restricted loader. NEVER commit local restricted
+# text, the activated local config, or the real local index. Only the
+# committed metadata-only register (above) and the committed *template*
+# files (in data/restricted_templates/, which contain no copyrighted
+# text) ship publicly. See reports/v124_local_restricted_loader_architecture.md.
+**/_restricted/
+*.restricted.json
+restricted_index.local.json
+restricted_sources.local.json
+local_restricted_config.json
+restricted_local_config.json
+# (Templates are explicitly allowed — they contain metadata only and
+#  live in data/restricted_templates/, which `data/*.json` does not
+#  match. The patterns above target the *real* local files by exact
+#  name, never the *.template.json variants.)
+
 # Local runtime
 .server.pid
 .claude/

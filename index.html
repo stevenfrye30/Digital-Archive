@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v124a-muktika-map-overflow-fix">
+  <meta name="atlas-build" content="v124-local-restricted-loader">
   <title>Digital Archive</title>
   <style>
 
@@ -3488,6 +3488,50 @@ button.home-path {
   border-left: 3px solid rgba(150, 90, 40, 0.5);
   padding: 8px 12px;
   margin-top: 16px;
+}
+/* v124 — local-only restricted access UI (never shown on public deploy) */
+.dossier-local-note {
+  font-family: Georgia, serif;
+  font-size: 12.5px;
+  color: rgba(70, 45, 20, 0.82);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+.dossier-local-note--public { font-style: italic; color: rgba(95, 65, 35, 0.7); }
+.dossier-local-btn {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  color: rgba(40, 70, 35, 0.95);
+  background: rgba(200, 225, 195, 0.55);
+  border: 1px solid rgba(90, 130, 80, 0.5);
+  border-radius: 5px;
+  padding: 6px 16px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.dossier-local-btn:hover { background: rgba(190, 222, 184, 0.8); }
+.local-restricted-banner {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: rgba(120, 40, 15, 0.92);
+  background: rgba(235, 200, 160, 0.42);
+  border: 1px solid rgba(160, 90, 40, 0.55);
+  border-left: 4px solid rgba(150, 70, 25, 0.7);
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin: 4px 0 14px;
+  line-height: 1.55;
+}
+.local-restricted-body { max-width: 100%; }
+.local-restricted-passage {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(45, 30, 15, 0.9);
+  margin: 0 0 12px;
 }
 .muktika-gap-list {
   list-style: none;
@@ -19601,6 +19645,16 @@ if (typeof document !== 'undefined' && document.body) {
 } else if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('folio-depth-' + _folioDepth);
+    // v124 — preload the local restricted index ONLY when local mode is
+    // explicitly enabled on a local host. No-op on the public deploy
+    // (isRestrictedLocalModeEnabled() is false → fail-closed).
+    try {
+      if (typeof isRestrictedLocalModeEnabled === 'function'
+          && isRestrictedLocalModeEnabled()
+          && typeof loadLocalRestrictedIndex === 'function') {
+        loadLocalRestrictedIndex();
+      }
+    } catch (e) { /* fail closed */ }
   });
 }
 
@@ -21500,6 +21554,38 @@ function _renderRestrictedDossier(fam, sourceId) {
           'This dossier is metadata only. The source will become readable here only after its ' +
           'copyright expires (expected ' + escH(String(rs.expectedPublicDomainYear || 'a future year')) +
           ') and a rights re-verification is performed.</div>';
+
+  // v124 — Local-only restricted access. On the public deploy
+  // isRestrictedLocalModeEnabled() is false, so this whole block is
+  // skipped and the dossier stays metadata-only. Locally (opt-in), if
+  // a matching local source exists, offer an explicit local-only button.
+  if (isRestrictedLocalModeEnabled()) {
+    if (!_localRestrictedIndexTried) {
+      // Kick off a one-time lazy load, then re-render this dossier.
+      html += '<div class="dossier-local-note">Local restricted mode enabled — checking for a local copy…</div>';
+      loadLocalRestrictedIndex().then(() => {
+        if (_activeDossierId === sourceId) browseTextFamily(fam.id);
+      });
+    } else {
+      const localSrc = _localRestrictedSource(sourceId);
+      if (localSrc && localSrc.localRouteAllowed && localSrc.localDataPath) {
+        html += '<div class="dossier-local-note">' +
+          '<b>Local restricted copy detected.</b> You may open it in this private local session. ' +
+          'It is not part of the public GitHub archive.</div>';
+        html += `<button type="button" class="dossier-local-btn" ` +
+          `onclick="openLocalRestrictedCopy('${escH(fam.id)}','${escH(sourceId)}')">` +
+          'Open local restricted copy ›</button>';
+      } else {
+        html += '<div class="dossier-local-note">' +
+          'Local restricted mode is enabled, but no local copy was found for this source.</div>';
+      }
+    }
+  } else {
+    html += '<div class="dossier-local-note dossier-local-note--public">' +
+      'This source is metadata-only in the public archive. The full text is not included because ' +
+      'it is copyrighted or public-domain deferred.</div>';
+  }
+
   html += '</div>';
   return html;
 }
@@ -21850,11 +21936,107 @@ function _restrictedSourceTileHTML(rs, familyId) {
   </div>`;
 }
 
-// v121 — Local restricted-source mode is OFF by default. The public
-// build NEVER references restricted text. A future local build can
-// enable this and load `data/_restricted/restricted_index.local.json`,
-// but the default (and the only deployed-Pages mode) is fail-closed.
-function isRestrictedLocalModeEnabled() { return false; }
+// v121→v124 — Local restricted-source mode. FAIL-CLOSED by default.
+// Returns true ONLY when ALL hold:
+//   1. host is local (localhost / 127.0.0.1 / ::1 / file://), AND
+//   2. github.io is HARD-BLOCKED (never local mode on Pages), AND
+//   3. explicit opt-in: ?localRestricted=1 in the URL, OR
+//      localStorage 'digitalArchive.localRestricted' === 'true'.
+// The actual loading of any restricted file additionally requires the
+// local index + the local data file to be present (see
+// loadLocalRestrictedIndex / openLocalRestrictedCopy). Nothing loads
+// on the public deploy because this returns false there.
+function isRestrictedLocalModeEnabled() {
+  try {
+    const host = (location.hostname || '').toLowerCase();
+    // Hard block: never enable on GitHub Pages or any github.io host.
+    if (host.indexOf('github.io') !== -1) return false;
+    const isLocal = host === 'localhost' || host === '127.0.0.1'
+      || host === '::1' || host === '';  // '' = file:// protocol
+    if (!isLocal) return false;
+    let optIn = false;
+    if (/[?&]localRestricted=1(?:&|$)/.test(location.search)) optIn = true;
+    if (!optIn && window.localStorage
+        && localStorage.getItem('digitalArchive.localRestricted') === 'true') {
+      optIn = true;
+    }
+    // Persist a URL opt-in so it survives navigation within the session.
+    if (optIn && window.localStorage) {
+      try { localStorage.setItem('digitalArchive.localRestricted', 'true'); } catch (e) {}
+    }
+    return optIn;
+  } catch (e) {
+    return false;  // any error → fail closed
+  }
+}
+
+// v124 — Lazily load the local restricted index (metadata pointing at
+// local data files). Only runs when local mode is enabled; on the
+// public deploy isRestrictedLocalModeEnabled() is false so this is a
+// no-op. Fails closed (returns null, no thrown error) if the index is
+// absent — the dossier then shows the metadata-only message.
+let _localRestrictedIndex = null;
+let _localRestrictedIndexTried = false;
+async function loadLocalRestrictedIndex() {
+  if (!isRestrictedLocalModeEnabled()) { _localRestrictedIndexTried = true; return null; }
+  try {
+    const resp = await fetch('data/_restricted/restricted_index.local.json', { cache: 'no-store' });
+    if (!resp.ok) throw new Error('local index not found (' + resp.status + ')');
+    _localRestrictedIndex = await resp.json();
+    console.info('[local-restricted] local index loaded:',
+      (_localRestrictedIndex.sources || []).length, 'source(s).');
+  } catch (e) {
+    _localRestrictedIndex = null;
+    console.info('[local-restricted] no local index (fail-closed):', e.message);
+  }
+  _localRestrictedIndexTried = true;
+  return _localRestrictedIndex;
+}
+
+// Look up a local restricted source record by id (null if none).
+function _localRestrictedSource(sourceId) {
+  if (!_localRestrictedIndex || !Array.isArray(_localRestrictedIndex.sources)) return null;
+  return _localRestrictedIndex.sources.find(s => s.id === sourceId) || null;
+}
+
+// v124 — Open a lawfully-obtained local restricted copy. LOCAL ONLY:
+// guarded by isRestrictedLocalModeEnabled(); never reachable on the
+// public deploy. Renders the fetched local passages into the family
+// scaffold with a prominent "Local restricted copy" warning banner.
+// Does NOT touch indexGroups / MUKTIKA_108 / counts.
+async function openLocalRestrictedCopy(familyId, sourceId) {
+  if (!isRestrictedLocalModeEnabled()) return;  // hard guard
+  const meta = _localRestrictedSource(sourceId);
+  const fam = TEXT_FAMILIES.find(f => f.id === familyId);
+  if (!fam || !meta || !meta.localRouteAllowed || !meta.localDataPath) return;
+  let data = null;
+  try {
+    const resp = await fetch(meta.localDataPath, { cache: 'no-store' });
+    if (!resp.ok) throw new Error('local data not found (' + resp.status + ')');
+    data = await resp.json();
+  } catch (e) {
+    console.info('[local-restricted] local data fetch failed (fail-closed):', e.message);
+  }
+  let html = '';
+  html += `<button type="button" class="dossier-back" onclick="closeRestrictedDossier('${escH(familyId)}')">‹ Back</button>`;
+  html += '<div class="local-restricted-banner">' +
+    '<b>Local restricted copy.</b> This text is loaded only from your private local files and is ' +
+    'not part of the public GitHub archive. It is copyrighted / public-domain deferred ' +
+    `(expected public-domain year ${escH(String(meta.expectedPublicDomainYear || '—'))}). ` +
+    `Rights holder: ${escH(meta.rightsHolder || 'unknown')}. Not counted in the public Muktikā 108.</div>`;
+  html += `<div class="dossier-title">${escH(meta.displayTitle || sourceId)}</div>`;
+  if (!data || !Array.isArray(data.passages) || !data.passages.length) {
+    html += '<div class="dossier-field">Local restricted file not found or empty. Metadata only is available — press Back.</div>';
+  } else {
+    html += '<div class="local-restricted-body">';
+    for (const p of data.passages) {
+      html += `<p class="local-restricted-passage">${escH(p.text || '')}</p>`;
+    }
+    html += '</div>';
+  }
+  $browseTiles.innerHTML = html;
+  $reader.scrollTop = 0;
+}
 
 function _familyMemberTileHTML(t, member, cat, trd) {
   const authorArr = (t.author || []).filter(a => a && a !== 'Anonymous');

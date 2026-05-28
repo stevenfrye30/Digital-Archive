@@ -1,0 +1,18 @@
+{
+  "_template": true,
+  "_doc": "v124 LOCAL-ONLY restricted-loader config TEMPLATE. This file is safe to commit (it contains no private paths and no copyrighted text). To use the local restricted loader on your OWN machine: copy this file to data/_restricted/restricted_local_config.json (that path is gitignored), set `enabled` to true, and place lawfully-obtained restricted source files under data/_restricted/. NEVER commit the activated config or any restricted text. The public GitHub Pages archive ignores all of this and stays metadata-only.",
+  "enabled": false,
+  "mode": "local-only",
+  "restrictedIndexPath": "data/_restricted/restricted_index.local.json",
+  "activation": {
+    "hostMustBeLocal": true,
+    "requireOptIn": "Set localStorage 'digitalArchive.localRestricted' = 'true' OR open the app with ?localRestricted=1. GitHub Pages (github.io) is hard-blocked and can never enable local mode.",
+    "failClosed": "If this config is absent, disabled, or the host is not local, the app behaves exactly like the public metadata-only archive."
+  },
+  "notes": [
+    "Copy to data/_restricted/restricted_local_config.json locally; do not commit it.",
+    "Restricted source text lives only under data/_restricted/ (gitignored).",
+    "Public archive never includes restricted text, OCR, PDFs, or scans.",
+    "Local restricted text is always visually marked 'Local restricted copy' and is never counted toward the public Muktikā 108 figure."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_template": true,
+  "version": 1,
+  "description": "v124 TEMPLATE ONLY (metadata, no copyrighted text). Copy to data/_restricted/restricted_index.local.json for local use (that path is gitignored). The local loader reads the real file only when local restricted mode is enabled on a local host. Each entry points to a local data file you produce from a lawfully-obtained source; those files live under data/_restricted/ and are never committed.",
+  "sources": [
+    {
+      "id": "adyar-saiva-upanishads-1935",
+      "status": "local-restricted-available",
+      "displayTitle": "Saiva Upanishads (Adyar Library)",
+      "translator": "T. R. Srinivasa Ayyangar",
+      "editor": "G. Srinivasa Murti",
+      "publicationYear": 1935,
+      "expectedPublicDomainYear": 2031,
+      "rightsHolder": "Adyar Library and Research Centre, Chennai (likely)",
+      "localDataPath": "data/_restricted/generated/adyar-saiva-upanishads-1935.local.json",
+      "localRawPath": "data/_restricted/sources/adyar-saiva-upanishads-1935.txt",
+      "publicRouteAllowed": false,
+      "localRouteAllowed": true,
+      "coveredUpanishads": [
+        { "key": "atharvasiras", "muktikaNumber": 81, "veda": "Atharvaveda", "class": "Sh" }
+      ]
+    }
+  ],
+  "localSourceShape": {
+    "_doc": "Expected shape of each data/_restricted/generated/<id>.local.json file. Commit NONE of these. In this template the text field is a placeholder — never put real copyrighted text in a committed file.",
+    "id": "adyar-saiva-upanishads-1935",
+    "restricted": true,
+    "availabilityStatus": "local-restricted-available",
+    "displayTitle": "Saiva Upanishads (Adyar Library)",
+    "translator": "T. R. Srinivasa Ayyangar",
+    "publicationYear": 1935,
+    "expectedPublicDomainYear": 2031,
+    "rightsHolder": "Adyar Library and Research Centre, Chennai (likely)",
+    "sourceType": "restricted-local-text",
+    "publicRouteAllowed": false,
+    "localRouteAllowed": true,
+    "hierarchy": ["upanishad", "passage"],
+    "passages": [
+      {
+        "id": "atharvasiras.1",
+        "text": "[restricted local text omitted from template]"
+      }
+    ]
+  }
+}
