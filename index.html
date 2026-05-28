@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v121-restricted-upanishad-placeholders">
+  <meta name="atlas-build" content="v122-muktika-108-map">
   <title>Digital Archive</title>
   <style>
 
@@ -3156,6 +3156,208 @@ button.home-path {
   color: rgba(110, 75, 35, 0.65);
   margin-top: 3px;
   font-style: italic;
+}
+.restricted-source-tile.rs-clickable { cursor: pointer; }
+.restricted-source-tile .rs-view-meta {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(120, 70, 25, 0.70);
+  margin-top: 6px;
+}
+
+/* ── v122 — Muktikā 108 Map ──────────────────────────────────────
+   Canon-level overview: all 108 entries as compact chips, grouped
+   by Veda / class / status / traditional sequence. Active entries
+   clickable to the witness picker; missing & future entries are
+   muted metadata only (no reading-room route). */
+.map108-launch {
+  display: inline-block;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 13px;
+  color: rgba(80, 45, 15, 0.92);
+  background: rgba(225, 200, 155, 0.40);
+  border: 1px solid rgba(140, 95, 45, 0.42);
+  border-radius: 5px;
+  padding: 6px 16px;
+  margin: 4px 0 16px;
+  cursor: pointer;
+}
+.map108-launch:hover { background: rgba(225, 200, 155, 0.62); }
+.map108-panel { margin: 4px 0 18px; }
+.map108-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.map108-title {
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.16em;
+  font-size: 17px;
+  color: rgba(60, 35, 12, 0.92);
+}
+.map108-close {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(110, 60, 20, 0.8);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.map108-summary {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 13px;
+  color: rgba(80, 50, 25, 0.7);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.map108-modes { margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 4px; }
+.map108-mode-btn {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(90, 55, 25, 0.85);
+  background: rgba(240, 230, 210, 0.5);
+  border: 1px solid rgba(150, 110, 60, 0.3);
+  border-radius: 4px;
+  padding: 3px 11px;
+  cursor: pointer;
+}
+.map108-mode-btn--active {
+  background: rgba(200, 165, 110, 0.5);
+  color: rgba(55, 30, 8, 0.95);
+  border-color: rgba(140, 95, 45, 0.55);
+}
+.map108-group-label {
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 13px;
+  color: rgba(95, 55, 20, 0.85);
+  margin: 16px 0 7px;
+  border-bottom: 1px solid rgba(150, 110, 60, 0.22);
+  padding-bottom: 3px;
+}
+.map108-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px;
+}
+.map108-chip {
+  border: 1px solid rgba(150, 110, 60, 0.26);
+  border-radius: 5px;
+  padding: 6px 9px;
+  background: rgba(248, 242, 228, 0.5);
+  font-family: Georgia, serif;
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  min-height: 22px;
+}
+.map108-chip--active { cursor: pointer; background: rgba(236, 244, 232, 0.6); border-color: rgba(90, 130, 80, 0.4); }
+.map108-chip--active:hover { background: rgba(220, 238, 214, 0.85); }
+.map108-chip--missing { opacity: 0.66; border-style: dashed; }
+.map108-chip--future  { opacity: 0.78; border-style: dashed; border-color: rgba(150, 110, 60, 0.42); }
+.map108-chip-num {
+  font-size: 10px;
+  font-variant: small-caps;
+  color: rgba(120, 90, 50, 0.6);
+  min-width: 22px;
+}
+.map108-chip-name {
+  font-size: 13px;
+  color: rgba(55, 35, 15, 0.9);
+  flex: 1;
+}
+.map108-badge {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.map108-badge--active   { color: rgba(30, 90, 40, 0.92); background: rgba(150, 200, 150, 0.30); }
+.map108-badge--missing  { color: rgba(120, 70, 30, 0.78); background: rgba(210, 180, 140, 0.28); }
+.map108-badge--future   { color: rgba(120, 50, 20, 0.86); background: rgba(220, 175, 130, 0.32); }
+
+/* v122 — Restricted-source metadata dossier panel */
+.dossier-panel { margin: 4px 0 18px; }
+.dossier-back {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(110, 60, 20, 0.8);
+  background: none; border: none; cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.dossier-title {
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.14em;
+  font-size: 18px;
+  color: rgba(55, 30, 10, 0.92);
+  margin-bottom: 6px;
+}
+.dossier-field {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: rgba(70, 45, 20, 0.85);
+  margin: 3px 0;
+  line-height: 1.5;
+}
+.dossier-field b { font-variant: small-caps; letter-spacing: 0.06em; color: rgba(95, 55, 20, 0.9); font-weight: 600; }
+.dossier-coverage-label {
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-size: 13px;
+  color: rgba(95, 55, 20, 0.85);
+  margin: 14px 0 6px;
+}
+.dossier-coverage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Georgia, serif;
+  font-size: 12px;
+}
+.dossier-coverage-table th, .dossier-coverage-table td {
+  text-align: left;
+  padding: 3px 8px;
+  border-bottom: 1px solid rgba(150, 110, 60, 0.18);
+  color: rgba(60, 40, 20, 0.85);
+}
+.dossier-coverage-table th {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: rgba(95, 55, 20, 0.78);
+}
+.dossier-nocopyright {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12.5px;
+  color: rgba(120, 50, 20, 0.8);
+  background: rgba(220, 180, 140, 0.22);
+  border-left: 3px solid rgba(150, 90, 40, 0.5);
+  padding: 8px 12px;
+  margin-top: 16px;
 }
 .muktika-gap-list {
   list-style: none;
@@ -20589,6 +20791,36 @@ function browseTextFamily(familyId) {
     html += `<div class="family-description">${escH(fam.description)}</div>`;
   }
 
+  // v122 — Canon-level "108 Map" launcher. Appears under the intro
+  // text and above the view-switcher tabs. Only shown for families
+  // with a Muktikā-108 canon (i.e. the Upanishads). Opens a
+  // metadata-only canon overview without replacing the tabs.
+  const hasCanon = Array.isArray(fam.byUpanishad) && fam.byUpanishad.length
+    && typeof MUKTIKA_108 !== 'undefined';
+
+  // v122 — Restricted-source metadata dossier branch. If a dossier
+  // is open, render it instead of the normal family views and return.
+  if (_activeDossierId) {
+    html += _renderRestrictedDossier(fam, _activeDossierId);
+    $browseTiles.innerHTML = html;
+    return;
+  }
+
+  if (hasCanon) {
+    html += `<button type="button" class="map108-launch" ` +
+            `onclick="toggle108Map('${escH(fam.id)}')">` +
+            (_show108Map ? 'Close the 108 Map' : 'View the 108 Map') +
+            `</button>`;
+  }
+
+  // v122 — 108 Map branch. Render the canon overview and return,
+  // keeping the launcher button visible above it.
+  if (hasCanon && _show108Map) {
+    html += _render108Map(fam);
+    $browseTiles.innerHTML = html;
+    return;
+  }
+
   // View switcher
   if (Array.isArray(fam.byUpanishad) && fam.byUpanishad.length) {
     const modes = [
@@ -20637,7 +20869,7 @@ function browseTextFamily(familyId) {
           'text. See <code>reports/v121_restricted_upanishads_architecture.md</code> ' +
           'for the doctrine.</div>';
         for (const rs of famRestricted) {
-          html += _restrictedSourceTileHTML(rs);
+          html += _restrictedSourceTileHTML(rs, fam.id);
         }
         html += '</div>';
       }
@@ -20669,6 +20901,236 @@ function setFamilyViewMode(familyId, mode) {
   browseTextFamily(familyId);
   // Bring the family page back to the top after a view switch.
   $reader.scrollTop = 0;
+}
+
+// ════════════════════════════════════════════════════════════════
+//  v122 — Muktikā 108 Map + restricted-source dossiers
+// ────────────────────────────────────────────────────────────────
+let _show108Map = false;        // is the canon map open?
+let _map108Mode = 'by-veda';    // by-veda | by-class | by-status | by-sequence
+let _activeDossierId = null;    // open restricted-source dossier id, or null
+
+function toggle108Map(familyId) {
+  _show108Map = !_show108Map;
+  _activeDossierId = null;
+  browseTextFamily(familyId);
+  $reader.scrollTop = 0;
+}
+function set108MapMode(familyId, mode) {
+  _map108Mode = mode;
+  browseTextFamily(familyId);
+  $reader.scrollTop = 0;
+}
+function openRestrictedDossier(familyId, sourceId) {
+  _activeDossierId = sourceId;
+  browseTextFamily(familyId);
+  $reader.scrollTop = 0;
+}
+function closeRestrictedDossier(familyId) {
+  _activeDossierId = null;
+  browseTextFamily(familyId);
+  $reader.scrollTop = 0;
+}
+
+// Build the enriched 108 model from the public MUKTIKA_108 canon,
+// the active byUpanishad routes, and the RESTRICTED_SOURCES register.
+// Each returned entry: { n, name, veda, cls, key, active, witnessCount,
+//   primaryWitness, futureSource }
+// futureSource (if any): the RESTRICTED_SOURCES record whose
+// coveredNumbers includes this entry's Muktikā number.
+function _buildMuktika108Map(fam) {
+  // active key → byUpanishad entry (for witness data)
+  const byKey = {};
+  for (const u of (fam.byUpanishad || [])) byKey[u.key] = u;
+  // Muktikā number → restricted source (first match)
+  const numToSource = {};
+  if (typeof RESTRICTED_SOURCES !== 'undefined') {
+    for (const rs of RESTRICTED_SOURCES) {
+      for (const num of (rs.coveredNumbers || [])) {
+        if (!(num in numToSource)) numToSource[num] = rs;
+      }
+    }
+  }
+  return MUKTIKA_108.map(m => {
+    const u = m.key ? byKey[m.key] : null;
+    const witnesses = u ? (u.witnesses || []).filter(
+      w => w.routeQuality === 'safe' || w.routeQuality === 'safe-start') : [];
+    const active = !!(m.key && witnesses.length);
+    return {
+      n: m.n, name: m.name, veda: m.veda, cls: m.cls, key: m.key,
+      active,
+      witnessCount: witnesses.length,
+      primaryWitness: witnesses[0] || null,
+      futureSource: active ? null : (numToSource[m.n] || null),
+    };
+  });
+}
+
+const _MAP108_CLASS_LABELS = {
+  M: 'Principal (Mukhya)', V: 'Sāmānya Vedānta', S: 'Sannyāsa',
+  Y: 'Yoga', Sh: 'Shaiva', Vs: 'Vaishnava', Sk: 'Shakta', '?': 'Unclassified',
+};
+const _MAP108_VEDA_ORDER = ['Rigveda', 'Samaveda', 'Shukla Yajurveda',
+  'Krishna Yajurveda', 'Atharvaveda'];
+const _MAP108_CLASS_ORDER = ['M', 'V', 'S', 'Y', 'Sh', 'Vs', 'Sk', '?'];
+
+// Render one canon chip (metadata only for missing/future; clickable
+// to the witness picker for active entries).
+function _map108ChipHTML(e, familyId) {
+  if (e.active) {
+    const badge = `<span class="map108-badge map108-badge--active">Active${e.witnessCount > 1 ? ' · ' + e.witnessCount : ''}</span>`;
+    return `<div class="map108-chip map108-chip--active" ` +
+      `onclick="showUpanishadDetail('${escH(familyId)}','${escH(e.key)}')">` +
+      `<span class="map108-chip-num">${e.n}</span>` +
+      `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
+  }
+  if (e.futureSource) {
+    const fs = e.futureSource;
+    const yr = fs.expectedPublicDomainYear ? ('Future PD ' + fs.expectedPublicDomainYear) : 'Future';
+    const badge = `<span class="map108-badge map108-badge--future">${escH(yr)}</span>`;
+    const onclick = `openRestrictedDossier('${escH(familyId)}','${escH(fs.id)}')`;
+    return `<div class="map108-chip map108-chip--future" onclick="${onclick}" ` +
+      `title="${escH(fs.displayTitle)} — metadata only">` +
+      `<span class="map108-chip-num">${e.n}</span>` +
+      `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
+  }
+  const badge = `<span class="map108-badge map108-badge--missing">Source needed</span>`;
+  return `<div class="map108-chip map108-chip--missing">` +
+    `<span class="map108-chip-num">${e.n}</span>` +
+    `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
+}
+
+function _map108GroupHTML(label, entries, familyId, withCount) {
+  if (!entries.length) return '';
+  const activeN = entries.filter(e => e.active).length;
+  const countLabel = withCount ? ` <span class="byveda-progress">${activeN} / ${entries.length} active</span>` : '';
+  let h = `<div class="map108-group-label">${escH(label)}${countLabel}</div>`;
+  h += '<div class="map108-chip-grid">';
+  for (const e of entries) h += _map108ChipHTML(e, familyId);
+  h += '</div>';
+  return h;
+}
+
+function _render108Map(fam) {
+  const model = _buildMuktika108Map(fam);
+  const total = model.length;
+  const activeN = model.filter(e => e.active).length;
+  const futureN = model.filter(e => !e.active && e.futureSource).length;
+  const needN = model.filter(e => !e.active && !e.futureSource).length;
+
+  let html = '<div class="map108-panel">';
+  html += '<div class="map108-head">';
+  html += `<span class="map108-title">The Muktikā 108 Map</span>`;
+  html += `<button type="button" class="map108-close" onclick="toggle108Map('${escH(fam.id)}')">Close map ✕</button>`;
+  html += '</div>';
+  html += `<div class="map108-summary">` +
+    `<b>${activeN}</b> active &middot; <b>${futureN}</b> future public-domain source identified &middot; ` +
+    `<b>${needN}</b> source still needed &middot; ${total} total. ` +
+    `Active entries open the witness picker. Future entries open a metadata-only ` +
+    `source dossier — no copyrighted text is included in the public archive.</div>`;
+
+  // Mode switcher
+  const modes = [
+    { id: 'by-veda', label: 'By Veda' },
+    { id: 'by-class', label: 'By Class' },
+    { id: 'by-status', label: 'By Status' },
+    { id: 'by-sequence', label: 'Traditional Sequence' },
+  ];
+  html += '<div class="map108-modes">';
+  for (const m of modes) {
+    const active = (m.id === _map108Mode) ? ' map108-mode-btn--active' : '';
+    html += `<button type="button" class="map108-mode-btn${active}" ` +
+            `onclick="set108MapMode('${escH(fam.id)}','${escH(m.id)}')">${escH(m.label)}</button>`;
+  }
+  html += '</div>';
+
+  if (_map108Mode === 'by-class') {
+    for (const cls of _MAP108_CLASS_ORDER) {
+      const items = model.filter(e => e.cls === cls);
+      html += _map108GroupHTML(_MAP108_CLASS_LABELS[cls] || cls, items, fam.id, true);
+    }
+  } else if (_map108Mode === 'by-status') {
+    html += _map108GroupHTML('Active in archive', model.filter(e => e.active), fam.id, false);
+    html += _map108GroupHTML('Future public-domain source identified',
+      model.filter(e => !e.active && e.futureSource), fam.id, false);
+    html += _map108GroupHTML('Source still needed',
+      model.filter(e => !e.active && !e.futureSource), fam.id, false);
+  } else if (_map108Mode === 'by-sequence') {
+    html += _map108GroupHTML('Muktikā traditional sequence (1–108)', model, fam.id, true);
+  } else {
+    // by-veda (default)
+    for (const v of _MAP108_VEDA_ORDER) {
+      const items = model.filter(e => e.veda === v);
+      html += _map108GroupHTML(v, items, fam.id, true);
+    }
+  }
+  html += '</div>';
+  return html;
+}
+
+// Render a metadata-only dossier for one restricted source. No
+// copyrighted text — only bibliographic metadata + the list of
+// Upanishads the source would activate + the rights/PD status.
+function _renderRestrictedDossier(fam, sourceId) {
+  const rs = (typeof RESTRICTED_SOURCES !== 'undefined')
+    ? RESTRICTED_SOURCES.find(s => s.id === sourceId) : null;
+  if (!rs) {
+    return `<button type="button" class="dossier-back" onclick="closeRestrictedDossier('${escH(fam.id)}')">‹ Back</button>` +
+           '<div class="dossier-field">Source not found.</div>';
+  }
+  const statusLabel = rs.availabilityStatus === 'copyrighted-unavailable'
+    ? 'Copyrighted — unavailable'
+    : (rs.availabilityStatus === 'public-domain-deferred' ? 'Public-domain deferred' : 'Restricted');
+  let html = '<div class="dossier-panel">';
+  // Back always just clears the dossier. If the map was open when the
+  // dossier was launched, _show108Map is still true so the next render
+  // returns to the map; otherwise it returns to the By-text view.
+  html += `<button type="button" class="dossier-back" onclick="closeRestrictedDossier('${escH(fam.id)}')">‹ Back</button>`;
+  html += `<div class="dossier-title">${escH(rs.displayTitle)}</div>`;
+  html += `<div class="dossier-field"><b>Status:</b> ${escH(statusLabel)}</div>`;
+  html += `<div class="dossier-field"><b>Source family:</b> ${escH(rs.sourceFamily || '—')}</div>`;
+  const tr = [];
+  if (rs.translator) tr.push(rs.translator);
+  if (rs.editor && rs.editor !== rs.translator) tr.push('ed. ' + rs.editor);
+  if (rs.originalAuthor) tr.push('orig. ' + rs.originalAuthor);
+  if (tr.length) html += `<div class="dossier-field"><b>Translator / editor:</b> ${escH(tr.join(' · '))}</div>`;
+  if (rs.publicationYear) html += `<div class="dossier-field"><b>Publication year:</b> ${escH(String(rs.publicationYear))}</div>`;
+  if (rs.expectedPublicDomainYear) html += `<div class="dossier-field"><b>Expected public-domain year:</b> ${escH(String(rs.expectedPublicDomainYear))}</div>`;
+  if (rs.rightsHolder) html += `<div class="dossier-field"><b>Rights holder:</b> ${escH(rs.rightsHolder)}</div>`;
+  if (rs.copyrightOwnerConfidence) html += `<div class="dossier-field"><b>Rights-holder confidence:</b> ${escH(rs.copyrightOwnerConfidence)}</div>`;
+  const gain = rs.expectedCoverageGain;
+  if (gain) html += `<div class="dossier-field"><b>Expected coverage:</b> ${escH(typeof gain === 'number' ? (gain + ' missing Muktikā Upanishads') : String(gain))}</div>`;
+
+  // Covered Upanishads — derive from coveredNumbers against MUKTIKA_108,
+  // showing current archive status for each. Metadata only.
+  if (Array.isArray(rs.coveredNumbers) && rs.coveredNumbers.length
+      && typeof MUKTIKA_108 !== 'undefined') {
+    const byNum = {};
+    for (const m of MUKTIKA_108) byNum[m.n] = m;
+    const activeKeys = new Set((fam.byUpanishad || []).map(u => u.key));
+    html += '<div class="dossier-coverage-label">Upanishads this source would activate</div>';
+    html += '<table class="dossier-coverage-table"><thead><tr>' +
+            '<th>#</th><th>Upanishad</th><th>Veda</th><th>Class</th><th>Archive status</th>' +
+            '</tr></thead><tbody>';
+    for (const num of rs.coveredNumbers) {
+      const m = byNum[num];
+      if (!m) continue;
+      const isActive = m.key && activeKeys.has(m.key);
+      const status = isActive ? 'Active' : 'Missing';
+      html += `<tr><td>${m.n}</td><td>${escH(m.name)}</td><td>${escH(m.veda)}</td>` +
+              `<td>${escH(_MAP108_CLASS_LABELS[m.cls] || m.cls)}</td><td>${status}</td></tr>`;
+    }
+    html += '</tbody></table>';
+  } else if (rs.coveredUpanishads) {
+    html += `<div class="dossier-field"><b>Coverage:</b> ${escH(String(rs.expectedCoverageGain || rs.coveredUpanishads))}</div>`;
+  }
+
+  html += '<div class="dossier-nocopyright">No copyrighted text is included in the public archive. ' +
+          'This dossier is metadata only. The source will become readable here only after its ' +
+          'copyright expires (expected ' + escH(String(rs.expectedPublicDomainYear || 'a future year')) +
+          ') and a rights re-verification is performed.</div>';
+  html += '</div>';
+  return html;
 }
 
 // View 1 — By Veda. Cards are grouped under their associated Veda,
@@ -20975,28 +21437,36 @@ function openUpanishadAt(textId, keyOrPid, isPid) {
 // styling, no onclick to a reading-room route. The reader sees
 // status, expected PD year, translator, rights holder, coverage
 // summary — all metadata only. No copyrighted text is rendered.
-function _restrictedSourceTileHTML(rs) {
+function _restrictedSourceTileHTML(rs, familyId) {
   const statusLabel = rs.availabilityStatus === 'copyrighted-unavailable'
     ? 'Copyrighted — unavailable'
     : (rs.availabilityStatus === 'public-domain-deferred'
         ? 'Public-domain deferred'
         : 'Restricted');
   const pdYear = rs.expectedPublicDomainYear
-    ? `Expected public-domain entry: ${rs.expectedPublicDomainYear}`
+    ? `Expected public-domain year: ${rs.expectedPublicDomainYear}`
     : '';
   const translatorBits = [];
   if (rs.translator) translatorBits.push(rs.translator);
   if (rs.editor && rs.editor !== rs.translator) translatorBits.push('ed. ' + rs.editor);
   if (rs.publicationYear) translatorBits.push(String(rs.publicationYear));
   const metaLine = translatorBits.join(' · ');
-  const cov = Array.isArray(rs.coveredUpanishads) ? rs.coveredUpanishads.length : 0;
-  const coverageLine = cov > 0
-    ? `When activated: ${rs.expectedCoverageGain || cov} of the missing Muktikā 108 closed (${cov} Upanishad${cov === 1 ? '' : 's'})`
-    : (rs.expectedCoverageGain ? `When activated: ${rs.expectedCoverageGain}` : '');
+  // v122 — clearer coverage wording ("Would close: N missing …").
+  const classWord = rs.classLabel ? (' ' + rs.classLabel) : '';
+  let coverageLine = '';
+  if (typeof rs.expectedCoverageGain === 'number') {
+    coverageLine = `Would close: ${rs.expectedCoverageGain} missing${classWord} Muktikā Upanishads`;
+  } else if (rs.expectedCoverageGain) {
+    coverageLine = `Expected coverage: ${rs.expectedCoverageGain}`;
+  }
   const rightsLine = rs.rightsHolder
     ? `Rights holder: ${rs.rightsHolder}`
     : '';
-  return `<div class="restricted-source-tile" title="Metadata only — restricted/future source">
+  // v122 — clickable to a metadata-only dossier (no reading-room route).
+  const clickable = familyId
+    ? ` rs-clickable" onclick="openRestrictedDossier('${escH(familyId)}','${escH(rs.id)}')`
+    : '"';
+  return `<div class="restricted-source-tile${clickable}" title="Metadata only — restricted/future source">
     <div>
       <span class="rs-status">${escH(statusLabel)}</span>
       ${pdYear ? `<span class="rs-pd-year">${escH(pdYear)}</span>` : ''}
@@ -21005,6 +21475,7 @@ function _restrictedSourceTileHTML(rs) {
     ${metaLine ? `<div class="rs-meta">${escH(metaLine)}</div>` : ''}
     ${coverageLine ? `<div class="rs-coverage">${escH(coverageLine)}</div>` : ''}
     ${rightsLine ? `<div class="rs-rights">${escH(rightsLine)}</div>` : ''}
+    ${familyId ? '<div class="rs-view-meta">View metadata dossier ›</div>' : ''}
   </div>`;
 }
 
@@ -22264,6 +22735,8 @@ const RESTRICTED_SOURCES = [
     copyrightOwnerConfidence: 'likely',
     expectedCoverageGain: 13,
     coveredUpanishads: 13,
+    coveredNumbers: [7, 39, 55, 57, 74, 77, 81, 82, 83, 87, 96, 101, 102],
+    classLabel: 'Shaiva',
     publicRouteAllowed: false,
   },
   {
@@ -22280,6 +22753,8 @@ const RESTRICTED_SOURCES = [
     copyrightOwnerConfidence: 'likely',
     expectedCoverageGain: 7,
     coveredUpanishads: 7,
+    coveredNumbers: [19, 40, 45, 50, 54, 68, 76],
+    classLabel: 'Yoga',
     publicRouteAllowed: false,
   },
   {
@@ -22296,6 +22771,8 @@ const RESTRICTED_SOURCES = [
     copyrightOwnerConfidence: 'likely',
     expectedCoverageGain: 11,
     coveredUpanishads: 11,
+    coveredNumbers: [6, 17, 42, 51, 52, 58, 73, 94, 95, 97, 103],
+    classLabel: 'Sāmānya Vedānta',
     publicRouteAllowed: false,
   },
   {
@@ -22312,6 +22789,8 @@ const RESTRICTED_SOURCES = [
     copyrightOwnerConfidence: 'likely',
     expectedCoverageGain: 11,
     coveredUpanishads: 11,
+    coveredNumbers: [69, 71, 84, 88, 89, 90, 104, 105, 106, 107, 108],
+    classLabel: 'Vaishnava',
     publicRouteAllowed: false,
   },
   {
@@ -22328,6 +22807,8 @@ const RESTRICTED_SOURCES = [
     copyrightOwnerConfidence: 'likely',
     expectedCoverageGain: 9,
     coveredUpanishads: 9,
+    coveredNumbers: [8, 9, 10, 61, 86, 93, 98, 99, 100],
+    classLabel: 'Shakta',
     publicRouteAllowed: false,
   },
   {
@@ -22344,6 +22825,8 @@ const RESTRICTED_SOURCES = [
     copyrightOwnerConfidence: 'likely',
     expectedCoverageGain: 13,
     coveredUpanishads: 13,
+    coveredNumbers: [5, 13, 15, 21, 24, 27, 28, 53, 64, 70, 72, 75, 92],
+    classLabel: 'Sannyāsa',
     publicRouteAllowed: false,
   },
   {
