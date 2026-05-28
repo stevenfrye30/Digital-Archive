@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v122-muktika-108-map">
+  <meta name="atlas-build" content="v123-muktika-map-usability">
   <title>Digital Archive</title>
   <style>
 
@@ -3295,6 +3295,107 @@ button.home-path {
 .map108-badge--active   { color: rgba(30, 90, 40, 0.92); background: rgba(150, 200, 150, 0.30); }
 .map108-badge--missing  { color: rgba(120, 70, 30, 0.78); background: rgba(210, 180, 140, 0.28); }
 .map108-badge--future   { color: rgba(120, 50, 20, 0.86); background: rgba(220, 175, 130, 0.32); }
+
+/* v123 — 108 Map usability controls (legend, search, filters, sort,
+   compact density). All display-only — no canon data changes. */
+.map108-legend {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 11.5px;
+  color: rgba(95, 65, 35, 0.66);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.map108-legend b { font-variant: small-caps; letter-spacing: 0.05em; font-style: normal; font-weight: 600; color: rgba(80, 50, 20, 0.82); }
+.map108-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.map108-search {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  padding: 5px 10px;
+  border: 1px solid rgba(150, 110, 60, 0.4);
+  border-radius: 5px;
+  background: rgba(252, 248, 238, 0.85);
+  color: rgba(55, 35, 15, 0.92);
+  min-width: 230px;
+  flex: 1 1 230px;
+  max-width: 360px;
+}
+.map108-search:focus { outline: none; border-color: rgba(140, 95, 45, 0.7); background: #fff; }
+.map108-count {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(95, 60, 25, 0.7);
+  white-space: nowrap;
+}
+.map108-clear {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(110, 60, 20, 0.78);
+  background: none; border: none; cursor: pointer;
+  text-decoration: underline;
+}
+.map108-filters { margin-bottom: 6px; display: flex; flex-direction: column; gap: 4px; }
+.map108-filter-row { display: flex; flex-wrap: wrap; gap: 4px; }
+.map108-chip-btn, .map108-sort-btn {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: rgba(90, 55, 25, 0.82);
+  background: rgba(244, 236, 220, 0.55);
+  border: 1px solid rgba(150, 110, 60, 0.28);
+  border-radius: 12px;
+  padding: 2px 11px;
+  cursor: pointer;
+}
+.map108-chip-btn--active, .map108-sort-btn--active {
+  background: rgba(200, 165, 110, 0.55);
+  color: rgba(50, 28, 8, 0.95);
+  border-color: rgba(140, 95, 45, 0.6);
+}
+.map108-sortrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 8px 0 4px;
+}
+.map108-sortrow .map108-sort-label,
+.map108-sortrow .map108-display-label {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  color: rgba(110, 70, 30, 0.7);
+  margin-right: 2px;
+}
+.map108-sortrow .map108-sep { color: rgba(150, 110, 60, 0.4); margin: 0 6px; }
+.map108-group--hidden { display: none; }
+.map108-chip--hidden { display: none; }
+
+/* Compact density */
+.map108-panel--compact .map108-chip-grid {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 4px;
+}
+.map108-panel--compact .map108-chip {
+  padding: 3px 6px;
+  min-height: 16px;
+  gap: 5px;
+}
+.map108-panel--compact .map108-chip-name { font-size: 11.5px; }
+.map108-panel--compact .map108-chip-num { font-size: 9px; min-width: 18px; }
+.map108-panel--compact .map108-badge { font-size: 8.5px; padding: 0 4px; }
+.map108-panel--compact .map108-group-label { margin: 10px 0 4px; font-size: 12px; }
 
 /* v122 — Restricted-source metadata dossier panel */
 .dossier-panel { margin: 4px 0 18px; }
@@ -20809,7 +20910,7 @@ function browseTextFamily(familyId) {
   if (hasCanon) {
     html += `<button type="button" class="map108-launch" ` +
             `onclick="toggle108Map('${escH(fam.id)}')">` +
-            (_show108Map ? 'Close the 108 Map' : 'View the 108 Map') +
+            (_show108Map ? '← Back to Upanishads' : 'View the 108 Map') +
             `</button>`;
   }
 
@@ -20818,6 +20919,11 @@ function browseTextFamily(familyId) {
   if (hasCanon && _show108Map) {
     html += _render108Map(fam);
     $browseTiles.innerHTML = html;
+    // v123 — apply display-only view state (search/filter/sort/density)
+    // to the freshly-rendered chip DOM, and restore the search value.
+    const _si = document.querySelector('.map108-search');
+    if (_si && _map108Search) _si.value = _map108Search;
+    _apply108MapView();
     return;
   }
 
@@ -20909,6 +21015,13 @@ function setFamilyViewMode(familyId, mode) {
 let _show108Map = false;        // is the canon map open?
 let _map108Mode = 'by-veda';    // by-veda | by-class | by-status | by-sequence
 let _activeDossierId = null;    // open restricted-source dossier id, or null
+// v123 — display-only view state (search/filter/sort/density). These
+// do NOT trigger a full re-render — _apply108MapView() manipulates the
+// already-rendered chip DOM so the search box keeps focus.
+let _map108Search = '';
+let _map108Filter = 'all';      // all | active | future | needed | M|V|S|Y|Sh|Vs|Sk
+let _map108Sort = 'traditional';// traditional | alpha | active-first | future-year
+let _map108Compact = false;
 
 function toggle108Map(familyId) {
   _show108Map = !_show108Map;
@@ -20920,6 +21033,108 @@ function set108MapMode(familyId, mode) {
   _map108Mode = mode;
   browseTextFamily(familyId);
   $reader.scrollTop = 0;
+}
+// v123 — display-only setters: no re-render, just re-apply the view.
+function set108MapSearch(v) { _map108Search = v; _apply108MapView(); }
+function clear108MapSearch() {
+  _map108Search = '';
+  const inp = document.querySelector('.map108-search');
+  if (inp) inp.value = '';
+  _apply108MapView();
+}
+function set108MapFilter(f) { _map108Filter = f; _apply108MapView(); }
+function set108MapSort(s) { _map108Sort = s; _apply108MapView(); }
+function set108MapCompact(on) { _map108Compact = !!on; _apply108MapView(); }
+
+// v123 — Apply the display-only view (search + filter + sort +
+// density) to the already-rendered 108-Map DOM. Called once right
+// after the map renders and again on every search/filter/sort/density
+// change. No canon data is touched; this only shows/hides/reorders
+// chips and toggles button-active classes.
+function _apply108MapView() {
+  const panel = document.querySelector('.map108-panel');
+  if (!panel) return;
+
+  // Density
+  panel.classList.toggle('map108-panel--compact', !!_map108Compact);
+
+  // Sync control active-states
+  panel.querySelectorAll('.map108-chip-btn[data-filter]').forEach(b => {
+    b.classList.toggle('map108-chip-btn--active', b.getAttribute('data-filter') === _map108Filter);
+  });
+  panel.querySelectorAll('.map108-sort-btn[data-sort]').forEach(b => {
+    b.classList.toggle('map108-sort-btn--active', b.getAttribute('data-sort') === _map108Sort);
+  });
+  panel.querySelectorAll('.map108-sort-btn[data-display]').forEach(b => {
+    const want = _map108Compact ? 'compact' : 'comfortable';
+    b.classList.toggle('map108-sort-btn--active', b.getAttribute('data-display') === want);
+  });
+
+  const q = (_map108Search || '').toLowerCase().trim();
+  const filt = _map108Filter;
+  const statusFilters = { active: 1, future: 1, needed: 1 };
+  const isStatusFilter = !!statusFilters[filt];
+
+  let shownTotal = 0, grandTotal = 0;
+  const grids = panel.querySelectorAll('.map108-chip-grid');
+  grids.forEach(grid => {
+    const chips = Array.from(grid.querySelectorAll('.map108-chip'));
+    // Visibility
+    chips.forEach(chip => {
+      grandTotal++;
+      const blob = chip.getAttribute('data-search') || '';
+      const status = chip.getAttribute('data-status');
+      const cls = chip.getAttribute('data-class');
+      let visible = true;
+      if (q && blob.indexOf(q) === -1) visible = false;
+      if (filt !== 'all') {
+        if (isStatusFilter) { if (status !== filt) visible = false; }
+        else { if (cls !== filt) visible = false; }
+      }
+      chip.classList.toggle('map108-chip--hidden', !visible);
+      if (visible) shownTotal++;
+    });
+    // Sort visible chips
+    const visibleChips = chips.filter(c => !c.classList.contains('map108-chip--hidden'));
+    const sorted = visibleChips.slice().sort((a, b) => _map108ChipCmp(a, b));
+    sorted.forEach(c => grid.appendChild(c));  // re-append in sorted order
+    // Hide empty groups
+    const group = grid.closest('.map108-group');
+    if (group) group.classList.toggle('map108-group--hidden', visibleChips.length === 0);
+  });
+
+  // Result count
+  const countEl = panel.querySelector('.map108-count');
+  if (countEl) {
+    countEl.textContent = (q || filt !== 'all')
+      ? `Showing ${shownTotal} of ${grandTotal}`
+      : `${grandTotal} entries`;
+  }
+}
+
+function _map108ChipCmp(a, b) {
+  const an = parseInt(a.getAttribute('data-n'), 10) || 0;
+  const bn = parseInt(b.getAttribute('data-n'), 10) || 0;
+  const aname = a.getAttribute('data-name') || '';
+  const bname = b.getAttribute('data-name') || '';
+  const arank = { active: 0, future: 1, needed: 2 }[a.getAttribute('data-status')] ?? 3;
+  const brank = { active: 0, future: 1, needed: 2 }[b.getAttribute('data-status')] ?? 3;
+  const apd = parseInt(a.getAttribute('data-pdyear'), 10) || 0;
+  const bpd = parseInt(b.getAttribute('data-pdyear'), 10) || 0;
+  switch (_map108Sort) {
+    case 'alpha':
+      return aname.localeCompare(bname);
+    case 'active-first':
+      return (arank - brank) || (an - bn);
+    case 'future-year':
+      // active first (pd 0), then by PD year ascending, then name
+      if (arank !== brank) return arank - brank;
+      if (apd !== bpd) return apd - bpd;
+      return aname.localeCompare(bname);
+    case 'traditional':
+    default:
+      return an - bn;
+  }
 }
 function openRestrictedDossier(familyId, sourceId) {
   _activeDossierId = sourceId;
@@ -20967,35 +21182,67 @@ function _buildMuktika108Map(fam) {
 }
 
 const _MAP108_CLASS_LABELS = {
-  M: 'Principal (Mukhya)', V: 'Sāmānya Vedānta', S: 'Sannyāsa',
+  M: 'Principal / Mukhya-class', V: 'Sāmānya Vedānta', S: 'Sannyāsa',
   Y: 'Yoga', Sh: 'Shaiva', Vs: 'Vaishnava', Sk: 'Shakta', '?': 'Unclassified',
 };
 const _MAP108_VEDA_ORDER = ['Rigveda', 'Samaveda', 'Shukla Yajurveda',
   'Krishna Yajurveda', 'Atharvaveda'];
 const _MAP108_CLASS_ORDER = ['M', 'V', 'S', 'Y', 'Sh', 'Vs', 'Sk', '?'];
 
-// Render one canon chip (metadata only for missing/future; clickable
-// to the witness picker for active entries).
+// Short source-family hint for a restricted source ("Adyar Saiva",
+// "Adyar Yoga", …). Falls back to classLabel or the display title.
+function _restrictedShortHint(fs) {
+  if (fs.classLabel && /Adyar/i.test(fs.sourceFamily || '')) return 'Adyar ' + fs.classLabel;
+  if (fs.classLabel) return fs.classLabel;
+  return fs.displayTitle || 'restricted';
+}
+
+// Render one canon chip. Carries data-* attributes so the
+// client-side view function (_apply108MapView) can search / filter /
+// sort without a full re-render. Active = clickable to witness
+// picker; future = clickable to metadata-only dossier; needed = no
+// action.
 function _map108ChipHTML(e, familyId) {
+  const classLabel = _MAP108_CLASS_LABELS[e.cls] || e.cls;
+  let status, statusWord, pdYear = 0, futureHint = '', extra = '';
+  if (e.active) {
+    status = 'active'; statusWord = 'active';
+  } else if (e.futureSource) {
+    status = 'future'; statusWord = 'future public-domain';
+    pdYear = e.futureSource.expectedPublicDomainYear || 0;
+    futureHint = _restrictedShortHint(e.futureSource);
+    extra = ' ' + futureHint + ' ' + (e.futureSource.displayTitle || '');
+  } else {
+    status = 'needed'; statusWord = 'source needed';
+  }
+  const searchBlob = `${e.name} ${e.key || ''} ${e.veda} ${classLabel} ${statusWord} ${pdYear || ''}${extra}`
+    .toLowerCase().replace(/\s+/g, ' ').trim();
+  const dataAttrs = `data-status="${status}" data-class="${escH(e.cls)}" ` +
+    `data-veda="${escH(e.veda)}" data-n="${e.n}" ` +
+    `data-name="${escH(e.name.toLowerCase())}" data-pdyear="${pdYear || 0}" ` +
+    `data-search="${escH(searchBlob)}"`;
+
   if (e.active) {
     const badge = `<span class="map108-badge map108-badge--active">Active${e.witnessCount > 1 ? ' · ' + e.witnessCount : ''}</span>`;
-    return `<div class="map108-chip map108-chip--active" ` +
+    return `<div class="map108-chip map108-chip--active" ${dataAttrs} ` +
       `onclick="showUpanishadDetail('${escH(familyId)}','${escH(e.key)}')">` +
       `<span class="map108-chip-num">${e.n}</span>` +
       `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
   }
   if (e.futureSource) {
     const fs = e.futureSource;
-    const yr = fs.expectedPublicDomainYear ? ('Future PD ' + fs.expectedPublicDomainYear) : 'Future';
-    const badge = `<span class="map108-badge map108-badge--future">${escH(yr)}</span>`;
+    const yr = fs.expectedPublicDomainYear || '';
+    // Full label: "Future PD 2031 · Adyar Saiva"; compact CSS shrinks it.
+    const badgeText = (yr ? ('Future PD ' + yr) : 'Future') + (futureHint ? (' · ' + futureHint) : '');
+    const badge = `<span class="map108-badge map108-badge--future">${escH(badgeText)}</span>`;
     const onclick = `openRestrictedDossier('${escH(familyId)}','${escH(fs.id)}')`;
-    return `<div class="map108-chip map108-chip--future" onclick="${onclick}" ` +
+    return `<div class="map108-chip map108-chip--future" ${dataAttrs} onclick="${onclick}" ` +
       `title="${escH(fs.displayTitle)} — metadata only">` +
       `<span class="map108-chip-num">${e.n}</span>` +
       `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
   }
   const badge = `<span class="map108-badge map108-badge--missing">Source needed</span>`;
-  return `<div class="map108-chip map108-chip--missing">` +
+  return `<div class="map108-chip map108-chip--missing" ${dataAttrs}>` +
     `<span class="map108-chip-num">${e.n}</span>` +
     `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
 }
@@ -21003,11 +21250,26 @@ function _map108ChipHTML(e, familyId) {
 function _map108GroupHTML(label, entries, familyId, withCount) {
   if (!entries.length) return '';
   const activeN = entries.filter(e => e.active).length;
-  const countLabel = withCount ? ` <span class="byveda-progress">${activeN} / ${entries.length} active</span>` : '';
-  let h = `<div class="map108-group-label">${escH(label)}${countLabel}</div>`;
+  const futures = entries.filter(e => !e.active && e.futureSource);
+  const futureN = futures.length;
+  // Build a concise future-PD summary: "13 future PD 2031" or, when
+  // several years appear, "26 future PD 2031–2074".
+  let futureSummary = '';
+  if (futureN) {
+    const years = futures.map(e => e.futureSource.expectedPublicDomainYear).filter(Boolean);
+    const uniq = Array.from(new Set(years)).sort((a, b) => a - b);
+    if (uniq.length === 1) futureSummary = ` · ${futureN} future PD ${uniq[0]}`;
+    else if (uniq.length > 1) futureSummary = ` · ${futureN} future PD ${uniq[0]}–${uniq[uniq.length - 1]}`;
+    else futureSummary = ` · ${futureN} future sources identified`;
+  }
+  const countLabel = withCount
+    ? ` <span class="byveda-progress">${activeN} / ${entries.length} active${futureSummary}</span>`
+    : '';
+  let h = `<div class="map108-group">`;
+  h += `<div class="map108-group-label">${escH(label)}${countLabel}</div>`;
   h += '<div class="map108-chip-grid">';
   for (const e of entries) h += _map108ChipHTML(e, familyId);
-  h += '</div>';
+  h += '</div></div>';
   return h;
 }
 
@@ -21018,16 +21280,81 @@ function _render108Map(fam) {
   const futureN = model.filter(e => !e.active && e.futureSource).length;
   const needN = model.filter(e => !e.active && !e.futureSource).length;
 
-  let html = '<div class="map108-panel">';
+  // v123 — the panel gets a compact class when density is toggled.
+  // Note: _apply108MapView() also sets this at runtime, but render it
+  // here too so the initial paint is correct.
+  const compactCls = _map108Compact ? ' map108-panel--compact' : '';
+  let html = `<div class="map108-panel${compactCls}">`;
   html += '<div class="map108-head">';
   html += `<span class="map108-title">The Muktikā 108 Map</span>`;
-  html += `<button type="button" class="map108-close" onclick="toggle108Map('${escH(fam.id)}')">Close map ✕</button>`;
-  html += '</div>';
+  html += '</div>';  // v123 — single exit control: the "← Back to Upanishads" launcher above.
   html += `<div class="map108-summary">` +
     `<b>${activeN}</b> active &middot; <b>${futureN}</b> future public-domain source identified &middot; ` +
-    `<b>${needN}</b> source still needed &middot; ${total} total. ` +
-    `Active entries open the witness picker. Future entries open a metadata-only ` +
-    `source dossier — no copyrighted text is included in the public archive.</div>`;
+    `<b>${needN}</b> source still needed &middot; ${total} total.</div>`;
+
+  // v123 — legend
+  html += '<div class="map108-legend">' +
+    '<b>Active</b> = readable now · <b>Future PD</b> = known source, not publicly readable yet · ' +
+    '<b>Source needed</b> = no source identified. ' +
+    'Click an active entry to choose a witness; click a future entry to view metadata only.</div>';
+
+  // v123 — search box + live result count
+  html += '<div class="map108-controls">';
+  html += '<input type="text" class="map108-search" placeholder="Search the 108…" ' +
+          'oninput="set108MapSearch(this.value)" />';
+  html += '<span class="map108-count"></span>';
+  html += '<button type="button" class="map108-clear" onclick="clear108MapSearch()">clear</button>';
+  html += '</div>';
+
+  // v123 — filter chips (status row + class row)
+  const statusFilters = [
+    { id: 'all', label: 'All' },
+    { id: 'active', label: 'Active' },
+    { id: 'future', label: 'Future PD' },
+    { id: 'needed', label: 'Source needed' },
+  ];
+  const classFilters = [
+    { id: 'M', label: 'Principal' },
+    { id: 'V', label: 'Vedānta' },
+    { id: 'S', label: 'Sannyāsa' },
+    { id: 'Y', label: 'Yoga' },
+    { id: 'Sh', label: 'Shaiva' },
+    { id: 'Vs', label: 'Vaishnava' },
+    { id: 'Sk', label: 'Shakta' },
+  ];
+  html += '<div class="map108-filters">';
+  html += '<div class="map108-filter-row">';
+  for (const f of statusFilters) {
+    html += `<button type="button" class="map108-chip-btn" data-filter="${escH(f.id)}" ` +
+            `onclick="set108MapFilter('${escH(f.id)}')">${escH(f.label)}</button>`;
+  }
+  html += '</div><div class="map108-filter-row">';
+  for (const f of classFilters) {
+    html += `<button type="button" class="map108-chip-btn" data-filter="${escH(f.id)}" ` +
+            `onclick="set108MapFilter('${escH(f.id)}')">${escH(f.label)}</button>`;
+  }
+  html += '</div></div>';
+
+  // v123 — sort + display density row
+  const sorts = [
+    { id: 'traditional', label: 'Traditional' },
+    { id: 'alpha', label: 'Alphabetical' },
+    { id: 'active-first', label: 'Active first' },
+    { id: 'future-year', label: 'Future year' },
+  ];
+  html += '<div class="map108-sortrow">';
+  html += '<span class="map108-sort-label">Sort</span>';
+  for (const s of sorts) {
+    html += `<button type="button" class="map108-sort-btn" data-sort="${escH(s.id)}" ` +
+            `onclick="set108MapSort('${escH(s.id)}')">${escH(s.label)}</button>`;
+  }
+  html += '<span class="map108-sep">|</span>';
+  html += '<span class="map108-display-label">Display</span>';
+  html += `<button type="button" class="map108-sort-btn" data-display="comfortable" ` +
+          `onclick="set108MapCompact(false)">Comfortable</button>`;
+  html += `<button type="button" class="map108-sort-btn" data-display="compact" ` +
+          `onclick="set108MapCompact(true)">Compact</button>`;
+  html += '</div>';
 
   // Mode switcher
   const modes = [
@@ -21044,6 +21371,7 @@ function _render108Map(fam) {
   }
   html += '</div>';
 
+  html += '<div class="map108-groups">';
   if (_map108Mode === 'by-class') {
     for (const cls of _MAP108_CLASS_ORDER) {
       const items = model.filter(e => e.cls === cls);
@@ -21064,7 +21392,8 @@ function _render108Map(fam) {
       html += _map108GroupHTML(v, items, fam.id, true);
     }
   }
-  html += '</div>';
+  html += '</div>';   // .map108-groups
+  html += '</div>';   // .map108-panel
   return html;
 }
 
