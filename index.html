@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v126-local-restricted-validator">
+  <meta name="atlas-build" content="v127-local-restricted-availability">
   <title>Digital Archive</title>
   <style>
 
@@ -3315,6 +3315,23 @@ button.home-path {
 .map108-badge--active   { color: rgba(30, 90, 40, 0.92); background: rgba(150, 200, 150, 0.30); }
 .map108-badge--missing  { color: rgba(120, 70, 30, 0.78); background: rgba(210, 180, 140, 0.28); }
 .map108-badge--future   { color: rgba(120, 50, 20, 0.86); background: rgba(220, 175, 130, 0.32); }
+/* v127 — local-restricted status (only ever rendered in local mode) */
+.map108-badge--local    { color: rgba(120, 80, 10, 0.95); background: rgba(232, 205, 130, 0.55); }
+.map108-chip--local {
+  cursor: pointer;
+  border-style: double;
+  border-width: 3px;
+  border-color: rgba(180, 130, 40, 0.6);
+  background: rgba(248, 236, 200, 0.55);
+}
+.map108-chip--local:hover { background: rgba(244, 228, 178, 0.85); }
+.map108-local-emph { color: rgba(140, 95, 15, 0.95); }
+.map108-local-note {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(120, 75, 25, 0.72);
+}
 /* v124a — full vs compact future-badge text (CSS-toggled, no re-render) */
 .map108-badge-compact { display: none; }
 .map108-panel--compact .map108-badge-full { display: none; }
@@ -21000,6 +21017,15 @@ function browseTextFamily(familyId) {
   // v122 — 108 Map branch. Render the canon overview and return,
   // keeping the launcher button visible above it.
   if (hasCanon && _show108Map) {
+    // v127 — in local mode, ensure the local index is loaded before the
+    // map paints its local-availability status. If not tried yet, kick
+    // off the lazy load and re-render once it resolves. No-op on public.
+    if (typeof isRestrictedLocalModeEnabled === 'function'
+        && isRestrictedLocalModeEnabled() && !_localRestrictedIndexTried) {
+      loadLocalRestrictedIndex().then(() => {
+        if (_show108Map) browseTextFamily(fam.id);
+      });
+    }
     html += _render108Map(fam);
     $browseTiles.innerHTML = html;
     // v123 — apply display-only view state (search/filter/sort/density)
@@ -21155,7 +21181,7 @@ function _apply108MapView() {
 
   const q = (_map108Search || '').toLowerCase().trim();
   const filt = _map108Filter;
-  const statusFilters = { active: 1, future: 1, needed: 1 };
+  const statusFilters = { active: 1, local: 1, future: 1, needed: 1 };
   const isStatusFilter = !!statusFilters[filt];
 
   let shownTotal = 0, grandTotal = 0;
@@ -21200,8 +21226,8 @@ function _map108ChipCmp(a, b) {
   const bn = parseInt(b.getAttribute('data-n'), 10) || 0;
   const aname = a.getAttribute('data-name') || '';
   const bname = b.getAttribute('data-name') || '';
-  const arank = { active: 0, future: 1, needed: 2 }[a.getAttribute('data-status')] ?? 3;
-  const brank = { active: 0, future: 1, needed: 2 }[b.getAttribute('data-status')] ?? 3;
+  const arank = { active: 0, local: 1, future: 2, needed: 3 }[a.getAttribute('data-status')] ?? 4;
+  const brank = { active: 0, local: 1, future: 2, needed: 3 }[b.getAttribute('data-status')] ?? 4;
   const apd = parseInt(a.getAttribute('data-pdyear'), 10) || 0;
   const bpd = parseInt(b.getAttribute('data-pdyear'), 10) || 0;
   switch (_map108Sort) {
@@ -21249,17 +21275,42 @@ function _buildMuktika108Map(fam) {
       }
     }
   }
+  // v127 — LOCAL ONLY: Muktikā number → local restricted source record.
+  // Built only when local mode is enabled AND a valid local index is
+  // loaded. On the public deploy isRestrictedLocalModeEnabled() is
+  // false, so this map stays empty and the map behaves exactly as v124a.
+  const localByNum = {};
+  if (typeof isRestrictedLocalModeEnabled === 'function'
+      && isRestrictedLocalModeEnabled()
+      && _localRestrictedIndex && Array.isArray(_localRestrictedIndex.sources)) {
+    for (const s of _localRestrictedIndex.sources) {
+      if (s.publicRouteAllowed === false && s.localRouteAllowed === true
+          && s.status === 'local-restricted-available' && s.localDataPath) {
+        let nums = Array.isArray(s.coveredNumbers) ? s.coveredNumbers : null;
+        if (!nums && Array.isArray(s.coveredUpanishads)) {
+          nums = s.coveredUpanishads.map(c => c && c.muktikaNumber).filter(Boolean);
+        }
+        for (const num of (nums || [])) {
+          if (!(num in localByNum)) localByNum[num] = s;
+        }
+      }
+    }
+  }
   return MUKTIKA_108.map(m => {
     const u = m.key ? byKey[m.key] : null;
     const witnesses = u ? (u.witnesses || []).filter(
       w => w.routeQuality === 'safe' || w.routeQuality === 'safe-start') : [];
     const active = !!(m.key && witnesses.length);
+    // Local availability only applies to entries that are NOT public-active.
+    const localSource = (!active && localByNum[m.n]) ? localByNum[m.n] : null;
     return {
       n: m.n, name: m.name, veda: m.veda, cls: m.cls, key: m.key,
       active,
       witnessCount: witnesses.length,
       primaryWitness: witnesses[0] || null,
-      futureSource: active ? null : (numToSource[m.n] || null),
+      localSource,
+      // future only when neither public-active nor locally available
+      futureSource: (active || localSource) ? null : (numToSource[m.n] || null),
     };
   });
 }
@@ -21294,6 +21345,13 @@ function _map108ChipHTML(e, familyId) {
   let status, statusWord, pdYear = 0, futureHint = '', extra = '';
   if (e.active) {
     status = 'active'; statusWord = 'active';
+  } else if (e.localSource) {
+    // v127 — LOCAL ONLY: locally-available restricted copy (never on
+    // the public deploy — localSource is only set when local mode is on).
+    status = 'local'; statusWord = 'local restricted available';
+    pdYear = e.localSource.expectedPublicDomainYear || 0;
+    futureHint = _restrictedShortHint(e.localSource);
+    extra = ' local restricted ' + futureHint + ' ' + (e.localSource.displayTitle || '');
   } else if (e.futureSource) {
     status = 'future'; statusWord = 'future public-domain';
     pdYear = e.futureSource.expectedPublicDomainYear || 0;
@@ -21313,6 +21371,23 @@ function _map108ChipHTML(e, familyId) {
     const badge = `<span class="map108-badge map108-badge--active">Active${e.witnessCount > 1 ? ' · ' + e.witnessCount : ''}</span>`;
     return `<div class="map108-chip map108-chip--active" ${dataAttrs} ` +
       `onclick="showUpanishadDetail('${escH(familyId)}','${escH(e.key)}')">` +
+      `<span class="map108-chip-num">${e.n}</span>` +
+      `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
+  }
+  if (e.localSource) {
+    // v127 — local-restricted chip: distinct styling, opens the
+    // metadata dossier (which, in local mode, offers the "Open local
+    // restricted copy" button). Never routes directly to text.
+    const ls = e.localSource;
+    const yr = ls.expectedPublicDomainYear || '';
+    const fullText = 'Local restricted' + (yr ? (' · PD ' + yr) : '');
+    const compactText = 'Local' + (yr ? (' · PD ' + yr) : '');
+    const badge = `<span class="map108-badge map108-badge--local">` +
+      `<span class="map108-badge-full">${escH(fullText)}</span>` +
+      `<span class="map108-badge-compact">${escH(compactText)}</span></span>`;
+    const onclick = `openRestrictedDossier('${escH(familyId)}','${escH(ls.id)}')`;
+    return `<div class="map108-chip map108-chip--local" ${dataAttrs} onclick="${onclick}" ` +
+      `title="Local restricted copy available — metadata only publicly">` +
       `<span class="map108-chip-num">${e.n}</span>` +
       `<span class="map108-chip-name">${escH(e.name)}</span>${badge}</div>`;
   }
@@ -21373,8 +21448,12 @@ function _render108Map(fam) {
   const model = _buildMuktika108Map(fam);
   const total = model.length;
   const activeN = model.filter(e => e.active).length;
-  const futureN = model.filter(e => !e.active && e.futureSource).length;
-  const needN = model.filter(e => !e.active && !e.futureSource).length;
+  const localN = model.filter(e => !e.active && e.localSource).length;
+  const futureN = model.filter(e => !e.active && !e.localSource && e.futureSource).length;
+  const needN = model.filter(e => !e.active && !e.localSource && !e.futureSource).length;
+  // v127 — local mode is on only when isRestrictedLocalModeEnabled().
+  const localMode = (typeof isRestrictedLocalModeEnabled === 'function')
+    && isRestrictedLocalModeEnabled();
 
   // v123 — the panel gets a compact class when density is toggled.
   // Note: _apply108MapView() also sets this at runtime, but render it
@@ -21384,15 +21463,37 @@ function _render108Map(fam) {
   html += '<div class="map108-head">';
   html += `<span class="map108-title">The Muktikā 108 Map</span>`;
   html += '</div>';  // v123 — single exit control: the "← Back to Upanishads" launcher above.
-  html += `<div class="map108-summary">` +
-    `<b>${activeN}</b> active &middot; <b>${futureN}</b> future public-domain source identified &middot; ` +
-    `<b>${needN}</b> source still needed &middot; ${total} total.</div>`;
 
-  // v123 — legend
+  // v127 — summary line. Public mode is unchanged. Local mode adds a
+  // separate "local restricted available" tally (never folded into the
+  // public active count).
+  if (localMode) {
+    if (localN > 0) {
+      html += `<div class="map108-summary">` +
+        `<b>${activeN}</b> public active &middot; ` +
+        `<b class="map108-local-emph">${localN}</b> local restricted available &middot; ` +
+        `<b>${futureN}</b> future public-domain pending &middot; ` +
+        `<b>${needN}</b> source still needed &middot; ${total} total.</div>`;
+    } else {
+      html += `<div class="map108-summary">` +
+        `<b>${activeN}</b> active &middot; <b>${futureN}</b> future public-domain source identified &middot; ` +
+        `<b>${needN}</b> source still needed &middot; ${total} total. ` +
+        `<span class="map108-local-note">Local restricted mode enabled; no local restricted copies detected.</span></div>`;
+    }
+  } else {
+    html += `<div class="map108-summary">` +
+      `<b>${activeN}</b> active &middot; <b>${futureN}</b> future public-domain source identified &middot; ` +
+      `<b>${needN}</b> source still needed &middot; ${total} total.</div>`;
+  }
+
+  // v123/v127 — legend
   html += '<div class="map108-legend">' +
-    '<b>Active</b> = readable now · <b>Future PD</b> = known source, not publicly readable yet · ' +
+    '<b>Active</b> = readable now · ' +
+    (localMode ? '<b>Local restricted</b> = lawful local copy, private/local only · ' : '') +
+    '<b>Future PD</b> = known source, not publicly readable yet · ' +
     '<b>Source needed</b> = no source identified. ' +
-    'Click an active entry to choose a witness; click a future entry to view metadata only.</div>';
+    'Click an active entry to choose a witness; click a future' +
+    (localMode ? ' or local restricted' : '') + ' entry to view metadata only.</div>';
 
   // v123 — search box + live result count
   html += '<div class="map108-controls">';
@@ -21403,12 +21504,15 @@ function _render108Map(fam) {
   html += '</div>';
 
   // v123 — filter chips (status row + class row)
+  // v127 — the "Local restricted" status filter is added ONLY in local
+  // mode (and only when local copies are actually present).
   const statusFilters = [
     { id: 'all', label: 'All' },
     { id: 'active', label: 'Active' },
-    { id: 'future', label: 'Future PD' },
-    { id: 'needed', label: 'Source needed' },
   ];
+  if (localMode && localN > 0) statusFilters.push({ id: 'local', label: 'Local restricted' });
+  statusFilters.push({ id: 'future', label: 'Future PD' });
+  statusFilters.push({ id: 'needed', label: 'Source needed' });
   const classFilters = [
     { id: 'M', label: 'Principal' },
     { id: 'V', label: 'Vedānta' },
