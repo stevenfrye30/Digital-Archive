@@ -3975,6 +3975,22 @@ details.display-options > summary {
   margin-bottom: 1.1em;
 }
 
+/* Structural markers promoted from body stubs (Gap 5 stub cleanup):
+   roman numerals, "BOOK I", "INTRODUCTION" etc. Rendered as quiet
+   section headings rather than orphan body paragraphs. Text renders
+   as direct children of .passage, so style the element itself. */
+.passage[data-role="heading"] {
+  padding-left: 0;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--chrome-active, #6a4a2a);
+  text-align: center;
+}
+.passage[data-role="heading"] .ref { display: none; }
+
 /* Canonical genre cadence. The Bible is not a uniform document.
    A psalm breathes between verses; a prophet packs density; an
    apocalyptic vision pauses between symbols. These deltas are
@@ -11705,6 +11721,7 @@ const BUCKET_FOR_TRADITION = {
   Confucian:'Religion', Taoist:'Religion', Egyptian:'Religion',
   Mesoamerican:'Religion', Mesopotamian:'Religion', Norse:'Religion',
   Celtic:'Religion', Shinto:'Religion', Gnostic:'Religion',
+  'Native American':'Religion', Polynesian:'Religion', African:'Religion',
   Jain:'Religion', Finnish:'Religion', 'Comparative Religion':'Religion',
   Sikh:'Religion', Zoroastrian:'Religion', 'Tibetan Buddhist':'Religion',
   Bahai:'Religion', Mandaean:'Religion', Rastafari:'Religion',
@@ -11714,8 +11731,12 @@ const BUCKET_FOR_TRADITION = {
   Stoic:'Philosophy', Legalist:'Philosophy',
   'Japanese Philosophy':'Philosophy', 'Chinese Strategy':'Philosophy',
   'Greek Literature':'Literature', Greek:'Literature',
-  'Persian Literature':'Literature',
-  Hermetic:'Esoteric', Theosophy:'Esoteric',
+  'Persian Literature':'Literature', 'Spanish Literature':'Literature',
+  'English Literature':'Literature', 'German Literature':'Literature',
+  'French Literature':'Literature', 'American Literature':'Literature',
+  'Latin Literature':'Literature', 'Sanskrit Literature':'Literature',
+  'Arabic Literature':'Literature', 'Japanese Literature':'Literature',
+  Hermetic:'Esoteric', Theosophy:'Esoteric', 'New Thought':'Esoteric',
   'Witchcraft / Folk Religion':'Esoteric',
 };
 const bucketFor = trd => BUCKET_FOR_TRADITION[trd] || 'Other';
@@ -12448,6 +12469,9 @@ function _renderBatch(passages, query, frag) {
     const div = document.createElement('div');
     div.className = 'passage';
     div.dataset.pid = p.id;
+    // Short structural markers (roman numerals, "BOOK I", "INTRODUCTION")
+    // promoted from body stubs to proper headings (stub cleanup, Gap 5).
+    if (p.role === 'heading') div.dataset.role = 'heading';
 
     const ref = document.createElement('span');
     ref.className   = 'ref clickable-ref';
