@@ -83,32 +83,6 @@
       "cross_traditions": null
     },
     {
-      "id": "kitab-i-aqdas",
-      "title": "The Kitáb-i-Aqdas (The Most Holy Book)",
-      "tradition": "Bahai",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "kitab-i-aqdas_uhj.json",
-      "source": "internet-archive",
-      "author": [
-        "Baháʼu'lláh"
-      ],
-      "translator": [
-        "Universal House of Justice"
-      ],
-      "year": 1992,
-      "translation_label": "The Kitáb-i-Aqdas (The Most Holy Book)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Kitáb-i-Aqdas (The Most Holy Book)* Universal House of Justice (1992). Via Internet Archive.",
-      "importance_rank": 1,
-      "cross_sections": null,
-      "cross_traditions": null
-    },
-    {
       "id": "dhammapada",
       "title": "Dhammapada",
       "tradition": "Buddhist",
@@ -11185,32 +11159,6 @@
       "cross_traditions": null
     },
     {
-      "id": "nahjul-balagha",
-      "title": "Nahjul Balagha (Peak of Eloquence)",
-      "tradition": "Islam",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "nahjul-balagha_al-jibouri.json",
-      "source": "internet-archive",
-      "author": [
-        "Imam Ali ibn Abu Talib"
-      ],
-      "translator": [
-        "Yasin T. Al-Jibouri"
-      ],
-      "year": null,
-      "translation_label": "Nahjul Balagha (Peak of Eloquence)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null
-    },
-    {
       "id": "oriental-mysticism-palmer",
       "title": "Oriental Mysticism",
       "tradition": "Islam",
@@ -12976,33 +12924,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*The Wars of the Jews* William Whiston (1737). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null
-    },
-    {
-      "id": "ginza-rabba",
-      "title": "Ginza Rabba (The Great Treasure)",
-      "tradition": "Mandaean",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "ginza-rabba_lidzbarski.json",
-      "source": "internet-archive",
-      "author": [
-        "Anonymous (Mandaean tradition)"
-      ],
-      "translator": [
-        "Mark Lidzbarski",
-        "Ram Al-Sabiry"
-      ],
-      "year": 2011,
-      "translation_label": "Ginza Rabba (The Great Treasure)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Ginza Rabba (The Great Treasure)* by Anonymous (Mandaean tradition). Translated by Mark Lidzbarski and Ram Al-Sabiry (2011). Via Internet Archive.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null
@@ -30411,6 +30332,82 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": null,
+      "source": null,
+      "importance_rank": null,
+      "restricted": true
+    },
+    {
+      "id": "kitab-i-aqdas",
+      "title": "The Kitáb-i-Aqdas (The Most Holy Book)",
+      "tradition": "Bahai",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "kitab-i-aqdas_uhj.json",
+      "author": [
+        "Baháʼu'lláh"
+      ],
+      "translator": [
+        "Universal House of Justice"
+      ],
+      "year": 1992,
+      "translation_label": "The Kitáb-i-Aqdas (The Most Holy Book)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*The Kitáb-i-Aqdas (The Most Holy Book)* Universal House of Justice (1992). Via Internet Archive.",
+      "source": null,
+      "importance_rank": null,
+      "restricted": true
+    },
+    {
+      "id": "nahjul-balagha",
+      "title": "Nahjul Balagha (Peak of Eloquence)",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "nahjul-balagha_al-jibouri.json",
+      "author": [
+        "Imam Ali ibn Abu Talib"
+      ],
+      "translator": [
+        "Yasin T. Al-Jibouri"
+      ],
+      "year": null,
+      "translation_label": "Nahjul Balagha (Peak of Eloquence)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "source": null,
+      "importance_rank": null,
+      "restricted": true
+    },
+    {
+      "id": "ginza-rabba",
+      "title": "Ginza Rabba (The Great Treasure)",
+      "tradition": "Mandaean",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "ginza-rabba_lidzbarski.json",
+      "author": [
+        "Anonymous (Mandaean tradition)"
+      ],
+      "translator": [
+        "Mark Lidzbarski",
+        "Ram Al-Sabiry"
+      ],
+      "year": 2011,
+      "translation_label": "Ginza Rabba (The Great Treasure)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*Ginza Rabba (The Great Treasure)* by Anonymous (Mandaean tradition). Translated by Mark Lidzbarski and Ram Al-Sabiry (2011). Via Internet Archive.",
       "source": null,
       "importance_rank": null,
       "restricted": true
