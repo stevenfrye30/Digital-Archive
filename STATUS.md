@@ -1,6 +1,6 @@
 # Digital Archive — Project Status
 
-*Last refreshed: 2026-05-10*
+*Last refreshed: 2026-06-07 (Reading Room correctness pass)*
 
 A single trustworthy view of the project's current state. When numbers
 here disagree with anything else in the project, this file is the one
@@ -16,37 +16,69 @@ generated reader at `03_web_app/`.
 
 | Measure | Count | Source of truth |
 |---|---:|---|
-| Distinct texts (web app reader) | **1,091** | `03_web_app/data/index.json` (unique `id`) |
-| Translations published (web app reader) | **1,200** | `03_web_app/data/index.json` (entry count) |
-| `text.json` files on disk | 1,132 | `01_library/library/texts/**/text.json` |
-| Registry `text_count` and array length | 1,132 (agree) | `01_library/library/metadata/registry.json` |
-| Distinct ids in registry | 1,086 | same — 13 multi-translation works share ids legitimately |
+| Index entries (web app reader) | **1,133** | `03_web_app/data/index.json` (entry count) |
+| — of which public | **1,114** | same (`restricted` ≠ true) |
+| — of which restricted (locked, metadata-only) | **19** | same (`restricted` = true) |
+| Distinct ids | 1,068 | unique `id` — Bible/Quran/Tanakh & multi-volume works share ids legitimately |
+| `text.json` files on disk | 1,080 | `01_library/library/texts/**/text.json` |
 | Daily-reading whitelist | ~198 | `05_scripts/daily_passage.py` `WHITELIST` |
-| Restricted (copyrighted) | 6 | `01_library/_restricted/copyrighted/` |
+| Restricted (copyrighted) source dirs | 19 | `01_library/_restricted/copyrighted/` |
 | Quarantined (integrity wishlist) | 11 | `01_library/_restricted/wishlist/` |
 
-### Validation state (run 2026-05-10)
+### Validation / integrity (run 2026-06-07)
 
-| Metric | Value | Report |
+| Metric | Value | Source |
 |---|---:|---|
-| Fully clean | 666 (61.0%) | `logs/reports/final_validation.md` |
-| Acceptable (minor issues) | 109 | same |
-| Needs manual work | 316 (29.0%) | same |
-| Texts with residual duplicate IDs | 39 | same |
-| Total residual duplicate passages | 12,756 | same |
-| Quality flags raised | 551 | same |
-
-### Corpus audit (run 2026-05-10)
-
-| Metric | Value | Report |
-|---|---:|---|
-| Texts with structural dup-ID issues | 48 | `logs/reports/corpus_audit_report.md` |
-| Total excess duplicates (parser) | 12,779 | same |
-| Texts missing front matter | 43 | same |
+| Metadata validation errors | **0** | `05_scripts/validate_metadata.py` |
+| Public entries that fail to open | **0** | all public `data_file`s load with content |
+| Orphan (un-shelved) public entries | **0** | every tradition maps to a shelf |
+| Passage subsequence proof | **99.83%**, 0 FAIL | `logs/passage_subsequence_proof.md` |
+| Unproven sources (readable, not yet proof-verified) | 4 | cicero-de-officiis, tibetan-tantra-muses, babylonian-talmud-rodkinson, bible/peshitta |
+| Exact-duplicate texts | 0 (+4 intentional Tanakh/Bible-OT parallels) | `05_scripts/find_exact_duplicate_texts.py` |
+| Residual duplicate passage-IDs | 196 (upanishads only, deliberate) | `05_scripts/dedupe_passage_ids.py` |
+| Restricted-text safety guard | PASS | `05_scripts/check_no_restricted_text.py` |
 | Short stubs classified | 163,632 | same |
 | — keep | 72,683 | same |
 | — review | 47,779 | same |
 | — drop | 43,170 | same |
+
+## Text Organization (taxonomy, as of 2026-06-07)
+
+Every public text is shelved into exactly **one of four top-level categories**
+by its `tradition` field, via `BUCKET_FOR_TRADITION` in
+`03_web_app/index.html` (enforced against `VALID_TRADITIONS` in
+`05_scripts/validate_metadata.py`). The `category` field on each text is a
+finer-grained *genre* tag (Theology, Mythology, History…), NOT the shelf.
+
+| Shelf | Public texts | Traditions mapped to it |
+|---|---:|---|
+| **Religion** | 588 | Christian, Hindu, Buddhist, Jewish, Islam, Confucian, Taoist, Egyptian, Mesoamerican, Mesopotamian, Norse, Celtic, Shinto, Gnostic, Jain, Finnish, Comparative Religion, Sikh, Zoroastrian, Tibetan Buddhist, Bahai, Mandaean, Rastafari, Slavic, Mohist, **Native American**, **Polynesian**, **African** |
+| **Philosophy** | 302 | Modern Philosophy, Greek Philosophy, Roman Philosophy, Political Philosophy, Stoic, Legalist, Japanese Philosophy, Chinese Strategy |
+| **Literature** | 138 | Greek Literature, Greek, Persian Literature, **Spanish/English/German/French/American/Latin/Sanskrit/Arabic/Japanese Literature** |
+| **Esoteric** | 86 | Hermetic, Theosophy, **New Thought**, Witchcraft / Folk Religion |
+
+(Bold traditions were added in the 2026-06-07 correctness pass when the
+"Modern Philosophy" catch-drawer and a block of mislabeled folklore were
+re-shelved truthfully.)
+
+### Organizing policies
+- **One copy per version.** A work + a specific translation appears exactly
+  once. 65 exact-duplicate entries were removed in the correctness pass
+  (verbose-named re-ingests, Quran/Bible translations stored 2–3×). Verify
+  with `05_scripts/find_exact_duplicate_texts.py`.
+- **Bible ↔ Tanakh parallel presentations (intentional exception).** The
+  Masoretic Text, Westminster Leningrad Codex, JPS, and Leeser each exist
+  twice on purpose: once in the Christian **Bible** group (Old Testament path)
+  and once as the Jewish **Tanakh** (Jewish-shelf path). These are the *same
+  underlying Hebrew text* surfaced through two legitimate browsing traditions,
+  not duplicate junk. A future alias/shared-source model could unify the
+  bytes; until then both are kept so both paths stay complete.
+- **Restricted/copyrighted texts** (19) live under
+  `01_library/_restricted/copyrighted/`, appear in the index as locked
+  metadata-only entries (`restricted: true`), and their data files are
+  gitignored + untracked so the body is **never deployed**. Public domain is
+  determined by copyright term + renewal status; see the correctness-pass
+  report for the per-text rationale.
 
 ### Ingestion warnings (run 2026-05-10)
 

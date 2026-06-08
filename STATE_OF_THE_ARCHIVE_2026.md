@@ -6,6 +6,16 @@ philosophically, and operationally.
 **Purpose:** An institutional inventory. What the archive is. What
 has been built. What has not. What must not yet be attempted.
 
+> **Addendum — 2026-06-07 (Reading Room correctness pass).** The counts
+> and shelf taxonomy in this May snapshot are superseded. Current,
+> validated numbers and the truthful organization — four shelves and the
+> traditions mapped to each, the one-copy-per-version policy, the
+> Bible↔Tanakh parallel-presentation exception, and restricted-text
+> handling — now live in **`STATUS.md`**. That pass re-shelved ~89
+> miscategorized texts, removed 65 exact-duplicate entries, restricted 14
+> confirmed/uncertain-copyright texts, and reached 0 validation errors /
+> 0 orphans / 0 unopenable public entries.
+
 This is a stewardship memorandum. It is not a roadmap. It is not a
 report to anyone in particular. It is what a future steward will need
 to read to understand what the archive had become by May 2026, before
