@@ -12135,6 +12135,12 @@ function groupName(key) {
   if (level === 'rule') {
     return String(key);
   }
+  // Work / letter L1 keys are already descriptive strings
+  // ("First Corinthians", "Letter I", "Introduction") — show verbatim
+  // rather than prefixing the level word ("Work First Corinthians").
+  if (level === 'work' || level === 'letter') {
+    return String(key);
+  }
   // \u2500\u2500 Generic codex-cover labelling (v95) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
   // For every numeric L1 type (chapter, section, part, book non-Bible,
   // volume, treatise, question, article, \u2026) produce a clean labelled
@@ -12878,7 +12884,8 @@ function needsGroupSelector() {
   return t === 'book' || t === 'surah' || t === 'upanishad' || t === 'sutta'
       || t === 'rune' || t === 'parva' || t === 'chapter'
       || t === 'biography' || t === 'rule' || t === 'part'
-      || t === 'section' || t === 'volume' || t === 'treatise';
+      || t === 'section' || t === 'volume' || t === 'treatise'
+      || t === 'work' || t === 'letter' || t === 'proposition';
 }
 
 // Chapter-room mode — for Bible-shaped texts (book.chapter.verse),
