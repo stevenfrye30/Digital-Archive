@@ -2240,6 +2240,47 @@ button.home-path {
   background: #ffe8c0;
   border-color: #c4993a;
 }
+/* Archive Workroom — distinct from Restricted (parchment/ink, not amber-lock).
+   Reads as intentional preparation, never an error state. */
+#home-workroom { margin-top: clamp(12px, 2vh, 20px); }
+.home-workroom-btn {
+  color: #4a5a3a;
+  background: #f0efe6;
+  border-color: #c9c4ad;
+}
+.home-workroom-btn:hover {
+  background: #e7e6da;
+  border-color: #a8a283;
+}
+.home-workroom-count { opacity: 0.7; font-size: 12px; }
+/* Workroom view: intro line, section notes, per-tile status chip */
+.workroom-intro {
+  max-width: 640px;
+  margin: 4px auto 18px;
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--chrome-muted);
+  background: #f0efe6;
+  border: 1px solid #d9d4bf;
+  border-radius: 8px;
+  text-align: center;
+}
+.wr-sec-note { font-weight: 400; font-size: 12px; color: var(--chrome-muted); }
+.wr-chip {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 2px 7px;
+  border-radius: 10px;
+  white-space: nowrap;
+  color: #4a5a3a;
+  background: #e7e6da;
+  border: 1px solid #c9c4ad;
+}
+.wr-chip-review { color: #5a5320; background: #f3efd6; border-color: #ddd29a; }
+.wr-chip-defer  { color: #4a3a5a; background: #ece6f3; border-color: #cbbdda; }
+.wr-chip-fix    { color: #6a3320; background: #f5e2da; border-color: #ddb29a; }
 
 #home-footer {
   margin-top: clamp(12px, 3vh, 32px);
@@ -11150,6 +11191,9 @@ body.viewer-active .folio-leaf-colophon {
             <div id="home-search">
               <input type="search" id="home-search-input" placeholder="Search all texts…" autocomplete="off">
               <ul id="home-search-results"></ul>
+            </div>
+            <div id="home-workroom" style="display:none;">
+              <button class="home-restricted-btn home-workroom-btn" onclick="browseWorkroom()">⚒ Archive Workroom <span id="home-workroom-count" class="home-workroom-count"></span></button>
             </div>
             <div id="home-restricted" style="display:none;">
               <button class="home-restricted-btn" onclick="browseRestricted()">🔒 Restricted Library</button>
@@ -20683,12 +20727,42 @@ function showBrowse() {
 }
 
 /** Build the data structures needed for browse from indexGroups */
+// ── Phase 3: reading_status room routing ────────────────────────────────────
+// A text-id's room is decided across its translations (index entries).
+// Restricted entries are governed by restricted:true and excluded from the
+// public rooms. Conservative rollup: the Reading Room only holds a text whose
+// EVERY public translation is reading_status "pass"; if any public translation
+// is review/defer/fix (or missing — treated as non-pass, never pass), the whole
+// text-id goes to the Archive Workroom.
+function _textRoom(entries) {
+  const pub = entries.filter(e => !e.restricted);
+  if (!pub.length) return 'restricted';                 // all translations restricted
+  return pub.every(e => e.reading_status === 'pass') ? 'reading' : 'workroom';
+}
+// Which Workroom section a (non-pass) text-id belongs to: the most-severe
+// public non-pass status across its translations. Missing -> 'review'.
+function _workroomSection(entries) {
+  const sev = { review: 1, defer: 2, fix: 3 };
+  let worst = 0, label = 'review';
+  for (const e of entries) {
+    if (e.restricted) continue;
+    if (e.reading_status === 'pass') continue;
+    const st = e.reading_status || 'review';            // missing -> review
+    const s = sev[st] || 1;
+    if (s > worst) { worst = s; label = (st in sev) ? st : 'review'; }
+  }
+  return label;
+}
+
 function buildBrowseData() {
   // buckets → traditions → text groups
   const tree = {};
   for (const bucket of BUCKET_ORDER) tree[bucket] = {};
 
   for (const [id, entries] of Object.entries(indexGroups)) {
+    // Reading Room shelves = certified-pass texts only (conservative rollup).
+    // Workroom + Restricted texts are reached via their own buttons.
+    if (_textRoom(entries) !== 'reading') continue;
     const e = entries[0];
     const trd = e.tradition || 'Other';
     const bucket = bucketFor(trd);
@@ -24479,6 +24553,65 @@ function browseRestricted() {
   $browseTiles.innerHTML = html;
 }
 
+/** Browse Archive Workroom — public texts not yet certified for the Reading Room.
+ *  Mirrors browseRestricted(); selects text-ids whose room is 'workroom'
+ *  (reading_status review/defer/fix under the conservative rollup) and groups
+ *  them into the three preparation sections. Restricted texts are NOT here. */
+function browseWorkroom() {
+  if (!browseTree) browseTree = buildBrowseData();
+  showBrowse();
+  browseHistory = [{fn: browseHome}];
+  $browseCrumb.innerHTML = `<a onclick="browseHome()">Home</a><span class="sep">›</span>Archive Workroom`;
+  $browseTitle.textContent = '⚒ Archive Workroom';
+  document.getElementById('browse-toolbar').style.display = 'none';
+  $browseTiles.className = 'tile-list';
+
+  const SECTIONS = [
+    { key: 'review', label: 'Needs Review',
+      note: 'Readable; contents/navigation still being refined.' },
+    { key: 'defer',  label: 'Awaiting Structure Repair',
+      note: 'Readable as continuous text; chapter/section structure not yet recovered.' },
+    { key: 'fix',    label: 'Contents Fix Queue',
+      note: 'A known contents issue is queued for repair.' },
+  ];
+  const groups = { review: [], defer: [], fix: [] };
+  for (const [id, entries] of Object.entries(indexGroups)) {
+    if (_textRoom(entries) !== 'workroom') continue;
+    groups[_workroomSection(entries)].push(entries[0]);
+  }
+  for (const k of Object.keys(groups)) {
+    groups[k].sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+  }
+
+  let html = '<div class="workroom-intro">These texts are readable but not yet ' +
+             'certified for the main Reading Room. Their contents or structure are ' +
+             'still being prepared.</div>';
+  let any = false;
+  for (const sec of SECTIONS) {
+    const items = groups[sec.key];
+    if (!items.length) continue;                 // hide empty sections (e.g. fix)
+    any = true;
+    html += `<div class="tile-section-label">${escH(sec.label)}` +
+            ` <span class="wr-sec-note">— ${escH(sec.note)}</span></div>`;
+    for (const e of items) {
+      const tr = (e.translator || []).join(', ');
+      const meta = [tr, e.year].filter(Boolean).join(' · ');
+      html += `<div class="text-tile" onclick="browseOpen('${escH(e.data_file)}')">
+        <span class="tt-star wr-chip wr-chip-${sec.key}">${escH(sec.label)}</span>
+        <div class="tt-info">
+          <div class="tt-title">${escH(e.title)}${tr ? ' — ' + escH(tr) : ''}</div>
+          ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
+        </div>
+      </div>`;
+    }
+  }
+  if (!any) {
+    html += '<div style="text-align:center;color:var(--chrome-muted);padding:40px;">' +
+            'No texts in the Workroom.</div>';
+  }
+  $browseTiles.innerHTML = html;
+}
+
 /** Populate category counts on the home screen after index loads */
 function updateHomeCounts() {
   if (!browseTree) browseTree = buildBrowseData();
@@ -24487,6 +24620,17 @@ function updateHomeCounts() {
   const hasRestricted = Object.values(indexGroups).some(entries => entries.some(e => e.restricted));
   const restrictedPanel = document.getElementById('home-restricted');
   if (restrictedPanel) restrictedPanel.style.display = hasRestricted ? 'block' : 'none';
+
+  // Archive Workroom button + live count — public text-ids not certified pass
+  // (review/defer/fix under the conservative rollup). Counted from live data.
+  let workroomCount = 0;
+  for (const entries of Object.values(indexGroups)) {
+    if (_textRoom(entries) === 'workroom') workroomCount++;
+  }
+  const workroomPanel = document.getElementById('home-workroom');
+  if (workroomPanel) workroomPanel.style.display = workroomCount ? 'block' : 'none';
+  const workroomCountEl = document.getElementById('home-workroom-count');
+  if (workroomCountEl) workroomCountEl.textContent = workroomCount ? `· ${workroomCount} texts` : '';
   document.querySelectorAll('.home-cat').forEach(btn => {
     const cat = btn.dataset.cat;
     const traditions = browseTree[cat] || {};
