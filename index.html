@@ -13755,30 +13755,82 @@ function showCover(data, entry) {
   }
 
   if (isBibleCover && grouped) {
-    // Canonical sections — Old Testament, Apocrypha, New Testament.
-    // Books 1-39 are OT, 40-53 are deuterocanonical (Apocrypha in
-    // the KJV-with-Apocrypha edition), 54-80 are NT. Each section
-    // has its own grid with a small italic Roman label; Apocrypha
-    // is tonally muted to honor its deuterocanonical status without
-    // hiding it. Numbering is continuous across the canon so the
-    // leaf still reads as a single Scripture index, not three tabs.
-    const sections = [
-      { canon: 'old-testament', label: 'i · Old Testament',  from: 0,  to: 39 },
-      { canon: 'apocrypha',     label: 'ii · Apocrypha',      from: 39, to: 53 },
-      { canon: 'new-testament', label: 'iii · New Testament', from: 53, to: 80 },
-    ];
-    for (const sec of sections) {
-      const books = keys.slice(sec.from, sec.to);
-      if (!books.length) continue;
-      html += `<section class="bcl-canon-section" data-canon="${sec.canon}">`;
-      html += `<div class="bcl-canon-label">${sec.label}</div>`;
-      html += '<ul class="cc-toc-list bcl-canon-list">';
-      books.forEach((k, j) => {
-        const i = sec.from + j;
-        html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+    // Canonical sections — Old Testament, Apocrypha/Deuterocanon,
+    // New Testament — segmented by actual book CODE, not by fixed
+    // positional slices. This block used to hardcode the 80-book KJV
+    // layout (OT [0:39], Apocrypha [39:53], NT [53:80]). That
+    // mislabeled every non-KJV canon: a 66-book Bible (e.g. BBE)
+    // showed its first New Testament books under "Apocrypha", and a
+    // 53-book Septuagint (e.g. Brenton) pulled Tobit & Judith into
+    // the Old Testament. We now classify each book code by canon
+    // membership, render only the sections that actually have books,
+    // and number continuously so the leaf still reads as a single
+    // Scripture index. Books whose codes we don't recognize are never
+    // hidden — they fall to an "Other" section. Bibles keyed by bare
+    // numbers (e.g. Douay-Rheims, which has no 3-letter codes) have
+    // nothing classifiable, so we fall back to the original
+    // positional layout to avoid regressing them.
+    const OT_CODES = new Set(['gen','exo','lev','num','deu','jos','jdg','rut','1sa','2sa','1ki','2ki','1ch','2ch','ezr','neh','est','job','psa','pro','ecc','sng','isa','jer','lam','eze','dan','hos','joe','amo','oba','jon','mic','nah','hab','zep','hag','zec','mal']);
+    const NT_CODES = new Set(['mat','mrk','luk','jhn','act','rom','1co','2co','gal','eph','php','col','1th','2th','1ti','2ti','tit','phm','heb','jas','1pe','2pe','1jn','2jn','3jn','jud','rev']);
+    const APOC_CODES = new Set(['1es','2es','tob','jdt','esth','wis','sir','bar','lje','s3y','sus','bel','man','1ma','2ma','3ma','4ma','dag']);
+    const canonOf = (code) => {
+      const c = String(code).toLowerCase();
+      if (OT_CODES.has(c)) return 'old-testament';
+      if (APOC_CODES.has(c)) return 'apocrypha';
+      if (NT_CODES.has(c)) return 'new-testament';
+      return 'other';
+    };
+    const classifiable = keys.filter((k) => canonOf(k) !== 'other').length;
+    const useMembership = keys.length > 0 && classifiable >= keys.length / 2;
+
+    if (useMembership) {
+      // Canon order: OT → Apocrypha/Deuterocanon → NT → Other. Books
+      // keep their original source order within each section. Roman
+      // numerals re-number across the sections that are actually
+      // present (so a no-Apocrypha Bible reads i, ii — not i, iii),
+      // and the cc-toc-num runs continuously across all sections.
+      const order = [
+        { canon: 'old-testament', name: 'Old Testament' },
+        { canon: 'apocrypha',     name: 'Apocrypha' },
+        { canon: 'new-testament', name: 'New Testament' },
+        { canon: 'other',         name: 'Other' },
+      ];
+      const ROMAN = ['i', 'ii', 'iii', 'iv'];
+      const present = order.filter((o) => keys.some((k) => canonOf(k) === o.canon));
+      let n = 0; // continuous book number across all sections
+      present.forEach((sec, si) => {
+        const books = keys.filter((k) => canonOf(k) === sec.canon);
+        html += `<section class="bcl-canon-section" data-canon="${sec.canon}">`;
+        html += `<div class="bcl-canon-label">${ROMAN[si]} · ${sec.name}</div>`;
+        html += '<ul class="cc-toc-list bcl-canon-list">';
+        books.forEach((k) => {
+          html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${n + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+          n++;
+        });
+        html += '</ul>';
+        html += '</section>';
       });
-      html += '</ul>';
-      html += '</section>';
+    } else {
+      // Fallback for numeric-key Bibles (e.g. Douay-Rheims): keep the
+      // original positional layout so they do not regress.
+      const sections = [
+        { canon: 'old-testament', label: 'i · Old Testament',  from: 0,  to: 39 },
+        { canon: 'apocrypha',     label: 'ii · Apocrypha',      from: 39, to: 53 },
+        { canon: 'new-testament', label: 'iii · New Testament', from: 53, to: 80 },
+      ];
+      for (const sec of sections) {
+        const books = keys.slice(sec.from, sec.to);
+        if (!books.length) continue;
+        html += `<section class="bcl-canon-section" data-canon="${sec.canon}">`;
+        html += `<div class="bcl-canon-label">${sec.label}</div>`;
+        html += '<ul class="cc-toc-list bcl-canon-list">';
+        books.forEach((k, j) => {
+          const i = sec.from + j;
+          html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+        });
+        html += '</ul>';
+        html += '</section>';
+      }
     }
   } else if (useCodexLayout && grouped) {
     // Non-Bible codex — one generic grid using the same
