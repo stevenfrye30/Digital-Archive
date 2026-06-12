@@ -13,8 +13,29 @@
 
 /* ── CSS variables ─────────────────────────────────────────────────────────── */
 
+/* ReaderGreek — polytonic-correct Greek glyphs via local fonts only (no webfont,
+   no network). Georgia renders precomposed Greek "with varia" (grave) characters
+   as a detached base-letter + spacing grave, so Greek codepoints are re-routed to
+   a better local serif. unicode-range scopes this to Greek codepoints ONLY, so all
+   Latin/English text keeps using Georgia and English typography is unchanged.
+   Georgia is deliberately excluded from this src list; if a reader has none of the
+   listed fonts the range falls through to Georgia (no regression). */
+@font-face {
+  font-family: 'ReaderGreek';
+  src: local('Gentium Plus'), local('GentiumPlus'),
+       local('Noto Serif'), local('Noto Serif Greek'),
+       local('New Athena Unicode'),
+       local('Palatino Linotype'),
+       local('Cambria'),
+       local('Times New Roman'), local('Times');
+  unicode-range:
+    U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF,
+    U+1F00-1FFF,
+    U+0300-036F;
+}
+
 :root {
-  --reader-font:    Georgia, serif;
+  --reader-font:    'ReaderGreek', Georgia, serif;
   --reader-size:    18px;
   --reader-leading: 1.9;
   --reader-bg:      #faf8f5;
