@@ -12124,6 +12124,42 @@ function _detectLabelWord(defaultLevel) {
   return 'Section';
 }
 
+// ── Per-translation Bible display profiles ──────────────────────────────────
+// Display-only overrides for a specific Bible edition, keyed by data_file.
+// A translation with no entry here behaves exactly as before (so KJV, BBE,
+// Brenton English/Greek and every other Bible are untouched). These NEVER
+// change book codes, passage text, citation IDs, or Atlas/Folio internals —
+// only the friendly labels shown on the cover/contents/reader.
+const BIBLE_DISPLAY_PROFILES = {
+  // Douay-Rheims (Challoner, 1899) — Catholic canon. The deuterocanonical
+  // books are not "Apocrypha" in Catholic usage, and several books carry
+  // traditional Douay-Rheims names. Ezra/Nehemiah and Samuel/Kings are left
+  // as-is on purpose (the "1/2 Esdras" and "1-4 Kings" schemes collide with
+  // other canons' codes and confuse cross-canon readers).
+  'bible_douay-rheims-bible.json': {
+    deuterocanonLabel: 'Deuterocanonical Books',
+    bookNames: {
+      tob: 'Tobias',
+      sir: 'Ecclesiasticus',
+      sng: 'Canticle of Canticles',
+      '1ch': '1 Paralipomenon',
+      '2ch': '2 Paralipomenon',
+    },
+  },
+};
+function bibleDisplayProfile() {
+  return (currentEntry && BIBLE_DISPLAY_PROFILES[currentEntry.data_file]) || null;
+}
+// Friendly book name with the active edition's profile applied first, then the
+// global BOOK_NAMES atlas, then the raw code.
+function bibleBookName(code) {
+  const p = bibleDisplayProfile();
+  if (p && p.bookNames && Object.prototype.hasOwnProperty.call(p.bookNames, code)) {
+    return p.bookNames[code];
+  }
+  return BOOK_NAMES[code] || code;
+}
+
 function groupName(key) {
   const level = topLevel();
   if (level === 'book') {
@@ -12131,7 +12167,7 @@ function groupName(key) {
     // "Genesis 1". Plain book keys keep their friendly name.
     if (_isChapterScopedHierarchy() && typeof key === 'string' && key.includes('.')) {
       const [bk, ch] = key.split('.');
-      const name = BOOK_NAMES[bk] || bk;
+      const name = bibleBookName(bk);
       return `${name} ${ch}`;
     }
     // Bible-shaped texts: use the BOOK_NAMES atlas for friendly
@@ -12139,7 +12175,8 @@ function groupName(key) {
     // have no BOOK_NAMES entry — route through the helpers so
     // placeholder / junk chapter_titles are dropped before being
     // appended. Never expose a bare numeric key as the button label.
-    const mapped = BOOK_NAMES[key];
+    const _prof = bibleDisplayProfile();
+    const mapped = (_prof && _prof.bookNames && _prof.bookNames[key]) || BOOK_NAMES[key];
     if (mapped) return mapped;
     const titles = currentData && currentData.chapter_titles;
     const raw = titles && (titles[key] || titles[Number(key)]);
@@ -12858,7 +12895,7 @@ function _buildChapterTraverse(position) {
   wrap.dataset.position = position || 'bottom';
   const labelFor = (k) => {
     const [bk, ch] = String(k).split('.');
-    return `${BOOK_NAMES[bk] || bk} Ch ${ch}`;
+    return `${bibleBookName(bk)} Ch ${ch}`;
   };
   if (prevKey) {
     const a = document.createElement('button');
@@ -13157,7 +13194,7 @@ function _buildChapterHeading() {
     // rule, Roman numeral chapter. The reader feels the textual
     // witness open before the first verse begins.
     const [bk, ch] = String(currentBook).split('.');
-    const bookName = BOOK_NAMES[bk] || bk;
+    const bookName = bibleBookName(bk);
     const title = document.createElement('div');
     title.className = 'ch-title';
     title.textContent = bookName;
@@ -13817,12 +13854,19 @@ function showCover(data, entry) {
         { canon: 'other',         name: 'Other' },
       ];
       const ROMAN = ['i', 'ii', 'iii', 'iv'];
+      const _prof = bibleDisplayProfile();
       const present = order.filter((o) => keys.some((k) => canonOf(k) === o.canon));
       let n = 0; // continuous book number across all sections
       present.forEach((sec, si) => {
         const books = keys.filter((k) => canonOf(k) === sec.canon);
+        // Per-edition section label: a Catholic profile renames the
+        // deuterocanon section (data-canon stays 'apocrypha' so its CSS
+        // tint is unchanged). Every other Bible keeps the default name.
+        const secName = (sec.canon === 'apocrypha' && _prof && _prof.deuterocanonLabel)
+          ? _prof.deuterocanonLabel
+          : sec.name;
         html += `<section class="bcl-canon-section" data-canon="${sec.canon}">`;
-        html += `<div class="bcl-canon-label">${ROMAN[si]} · ${sec.name}</div>`;
+        html += `<div class="bcl-canon-label">${ROMAN[si]} · ${secName}</div>`;
         html += '<ul class="cc-toc-list bcl-canon-list">';
         books.forEach((k) => {
           html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${n + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
