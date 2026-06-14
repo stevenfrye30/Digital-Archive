@@ -23866,7 +23866,9 @@ const CANONICAL_SHELVES = [
     ] },
 
   { id: 'douay-rheims-family', text_id: 'bible', label: 'Douay-Rheims',
-    members: ['bible_douay-rheims.json', 'bible_douay.json', 'bible_douay-rheims-bible.json'] },
+    // bible_douay-rheims.json (Gutenberg 1900, Variant A) retired 2026-06-11 —
+    // broken duplicate; only the finalized eBible 1899 Challoner remains.
+    members: ['bible_douay-rheims-bible.json'] },
 
   { id: 'geneva-family', text_id: 'bible', label: 'Geneva Bible',
     members: ['bible_geneva.json', 'bible_geneva-bible.json'] },
