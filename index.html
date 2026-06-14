@@ -12146,6 +12146,14 @@ const BIBLE_DISPLAY_PROFILES = {
       '2ch': '2 Paralipomenon',
     },
   },
+  // JPS Tanakh (1917) as carried on the Christian "bible" tile. It is a Jewish
+  // Hebrew Bible, so its OT-code section must read "Tanakh", not "Old Testament".
+  // (The dedicated Jewish tanakh-tile copies are handled by the tradition/id rule
+  // in bibleOldTestamentLabel(); this explicit override covers the Christian-tile
+  // copy, whose tradition is "Christian" and id is "bible".)
+  'bible_jps-tanakh.json': {
+    oldTestamentLabel: 'Tanakh',
+  },
 };
 function bibleDisplayProfile() {
   return (currentEntry && BIBLE_DISPLAY_PROFILES[currentEntry.data_file]) || null;
@@ -12158,6 +12166,19 @@ function bibleBookName(code) {
     return p.bookNames[code];
   }
   return BOOK_NAMES[code] || code;
+}
+// Label for the OT-code canon section. Jewish Hebrew-Bible / Tanakh texts read
+// "Tanakh" instead of the Christian "Old Testament"; a per-edition profile may
+// override explicitly. Christian Bibles keep "Old Testament". Display-only —
+// data-canon stays 'old-testament' (CSS tint unchanged). Resolution order:
+// explicit profile override -> Jewish tradition / tanakh tile -> "Old Testament".
+function bibleOldTestamentLabel() {
+  const p = bibleDisplayProfile();
+  if (p && p.oldTestamentLabel) return p.oldTestamentLabel;
+  const isJewishHebrewBible =
+       (currentEntry && currentEntry.id === 'tanakh')
+    || (currentData && currentData.tradition === 'Jewish');
+  return isJewishHebrewBible ? 'Tanakh' : 'Old Testament';
 }
 
 function groupName(key) {
@@ -13859,11 +13880,14 @@ function showCover(data, entry) {
       let n = 0; // continuous book number across all sections
       present.forEach((sec, si) => {
         const books = keys.filter((k) => canonOf(k) === sec.canon);
-        // Per-edition section label: a Catholic profile renames the
-        // deuterocanon section (data-canon stays 'apocrypha' so its CSS
-        // tint is unchanged). Every other Bible keeps the default name.
-        const secName = (sec.canon === 'apocrypha' && _prof && _prof.deuterocanonLabel)
-          ? _prof.deuterocanonLabel
+        // Per-edition / tradition-aware section label (display only;
+        // data-canon is unchanged so CSS tints still apply):
+        //  - Jewish Hebrew-Bible/Tanakh texts read "Tanakh" for the OT section;
+        //  - a Catholic profile renames the deuterocanon section;
+        //  - every other Bible keeps the default name.
+        const secName =
+            (sec.canon === 'old-testament') ? bibleOldTestamentLabel()
+          : (sec.canon === 'apocrypha' && _prof && _prof.deuterocanonLabel) ? _prof.deuterocanonLabel
           : sec.name;
         html += `<section class="bcl-canon-section" data-canon="${sec.canon}">`;
         html += `<div class="bcl-canon-label">${ROMAN[si]} · ${secName}</div>`;
