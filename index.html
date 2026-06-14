@@ -23900,9 +23900,11 @@ const CANONICAL_SHELVES = [
   { id: 'darby-family', text_id: 'bible', label: 'Darby Bible',
     members: ['bible_darby.json'] },
 
-  { id: 'tanakh-family', text_id: 'bible', label: 'JPS / Leeser Tanakh',
+  { id: 'tanakh-family', text_id: 'bible', label: 'Leeser Tanakh',
+    // JPS Tanakh (bible_jps-tanakh.json) retired 2026-06-11 — duplicate of the
+    // Jewish-tile tanakh_jps.json (now the primary public JPS). Only the Leeser
+    // copy remains on the bible tile (its own retirement is a separate gate).
     members: [
-      'bible_jps.json', 'bible_jps-tanakh.json',
       'bible_leeser.json', 'bible_isaac-leeser-tanakh.json'
     ] },
 
