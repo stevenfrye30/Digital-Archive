@@ -6143,14 +6143,17 @@
         "verse"
       ],
       "data_file": "bible_majority-text-new-testament.json",
-      "source": "ebible",
+      "source": "byztxt",
       "author": [],
-      "translator": [],
-      "year": null,
-      "translation_label": "Majority Text New Testament",
+      "translator": [
+        "Maurice A. Robinson",
+        "William G. Pierpont"
+      ],
+      "year": 2018,
+      "translation_label": "Byzantine Majority Text (Robinson-Pierpont 2018)",
       "translation_short_label": null,
       "volume_label": null,
-      "quality": "derivative",
+      "quality": "popular",
       "source_summary": null,
       "importance_rank": null,
       "cross_sections": null,
