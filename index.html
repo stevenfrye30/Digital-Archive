@@ -13512,7 +13512,13 @@ function showMeta(data) {
       items.push({ label: 'Source', html: val });
     }
     if (tr.rights) {
-      items.push({ label: 'Rights', value: tr.rights });
+      const rv = tr.license_url
+        ? `<a class="meta-link" href="${escapeHTML(tr.license_url)}" target="_blank" rel="noopener">${escapeHTML(tr.rights)}</a>`
+        : escapeHTML(tr.rights);
+      items.push({ label: 'Rights', html: rv });
+    }
+    if (tr.attribution) {
+      items.push({ label: 'Attribution', value: tr.attribution });
     }
   }
 
