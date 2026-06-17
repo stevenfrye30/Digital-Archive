@@ -13511,6 +13511,9 @@ function showMeta(data) {
         : escapeHTML(tr.source);
       items.push({ label: 'Source', html: val });
     }
+    if (tr.rights) {
+      items.push({ label: 'Rights', value: tr.rights });
+    }
   }
 
   $metaGrid.innerHTML = items.map(it => {
