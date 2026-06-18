@@ -52,8 +52,25 @@
   unicode-range: U+0590-05FF, U+FB1D-FB4F;
 }
 
+/* ReaderArabic — Urdu/Arabic-script bodies (e.g. Kanzul Iman) via LOCAL fonts only
+   (no webfont, no network), mirroring ReaderHebrew/ReaderGreek. Georgia has no
+   Arabic glyphs, so Arabic-script codepoints fall to a poor default; this re-routes
+   them to local Nastaliq (preferred for Urdu) / Naskh fonts. unicode-range scopes
+   this to Arabic-script codepoints ONLY (no overlap with Hebrew U+0590-05FF / U+FB1D-FB4F
+   or Greek/Latin), so all existing texts are unaffected. Falls through to the OS Arabic
+   font if none are present (no regression). RTL direction is handled by .reader-rtl. */
+@font-face {
+  font-family: 'ReaderArabic';
+  src: local('Noto Nastaliq Urdu'), local('Jameel Noori Nastaleeq'),
+       local('Awami Nastaliq'), local('Pak Nastaleeq'),
+       local('Noto Naskh Arabic'), local('Noto Naskh Arabic UI'),
+       local('Scheherazade New'), local('Scheherazade'), local('Amiri'),
+       local('Traditional Arabic'), local('Segoe UI'), local('Tahoma');
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+}
+
 :root {
-  --reader-font:    'ReaderGreek', 'ReaderHebrew', Georgia, serif;
+  --reader-font:    'ReaderGreek', 'ReaderHebrew', 'ReaderArabic', Georgia, serif;
   --reader-size:    18px;
   --reader-leading: 1.9;
   --reader-bg:      #faf8f5;
@@ -81,6 +98,25 @@
 .reader-hebrew .genealogy-ref,
 .reader-hebrew .fn-ref,
 .reader-hebrew .apparatus-ref {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* ReaderRTL — generic RTL direction + spacing for Urdu/Arabic-script verse bodies
+   (e.g. Kanzul Iman, translation.language 'ur'). Applied (via JS) only to passage
+   bodies of texts whose language is 'ur'/'ar', so English/Greek/Latin/Hebrew texts
+   are never affected (Hebrew keeps its own .reader-hebrew path). The verse body flows
+   right-to-left; verse numbers / refs / inline markers are kept left-to-right so Latin
+   digits and controls don't reorder. Generous line-height for Nastaliq/Naskh. */
+.reader-rtl {
+  direction: rtl;
+  text-align: right;
+  line-height: 2.2;
+}
+.reader-rtl .ref,
+.reader-rtl .genealogy-ref,
+.reader-rtl .fn-ref,
+.reader-rtl .apparatus-ref {
   direction: ltr;
   unicode-bidi: embed;
 }
@@ -12642,13 +12678,18 @@ function _renderBatch(passages, query, frag) {
   // (translation.language === 'he'); Greek/English/Latin texts are untouched.
   // Syriac (Peshitta, language 'syc') is intentionally NOT handled here — it is a
   // separate later ReaderSyriac gate.
-  const isHebrew = !!(currentData && currentData.translation
-                      && currentData.translation.language === 'he');
+  const _lang = (currentData && currentData.translation && currentData.translation.language) || '';
+  const isHebrew = (_lang === 'he');
+  // Urdu / Arabic-script (RTL) verse bodies (e.g. Kanzul Iman, language 'ur'): route to
+  // generic .reader-rtl layout + ReaderArabic font. Hebrew keeps its dedicated
+  // ReaderHebrew path; Syriac ('syc') remains deferred; English/Greek/Latin untouched.
+  const isArabicScriptRTL = (_lang === 'ur' || _lang === 'ar');
   for (const p of passages) {
     const div = document.createElement('div');
     div.className = 'passage';
     div.dataset.pid = p.id;
     if (isHebrew) { div.dir = 'rtl'; div.lang = 'he'; div.classList.add('reader-hebrew'); }
+    else if (isArabicScriptRTL) { div.dir = 'rtl'; div.lang = _lang; div.classList.add('reader-rtl'); }
     // Short structural markers (roman numerals, "BOOK I", "INTRODUCTION")
     // promoted from body stubs to proper headings (stub cleanup, Gap 5).
     if (p.role === 'heading') div.dataset.role = 'heading';
