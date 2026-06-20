@@ -163,6 +163,9 @@ const SURAH_NAMES={1:"Al-Fatihah",2:"Al-Baqarah",3:"Ali 'Imran",4:"An-Nisa'",5:"
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const cap = s => s ? s.charAt(0).toUpperCase()+s.slice(1) : s;
+const TC_SMALL = new Set("of and the in to a an on at for with from by or".split(" "));
+const tc = s => String(s).toLowerCase().split(/\s+/)
+  .map((w,i)=> (i>0 && TC_SMALL.has(w)) ? w : w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
 
 let WORKS = {}, TRADITIONS = [], CUR = null, override = null, mode = "single";
 let ancVals = [];
@@ -189,7 +192,7 @@ async function getText(file){
   const passages = (d.passages||[]).filter(p=>Array.isArray(p.path) && p.text!=null)
                     .slice().sort((a,b)=>a.order-b.order);
   const byKey = {}; for(const p of passages) byKey[p.path.join("|")] = p.text;
-  return TEXTCACHE[file] = {passages, byKey, title:d.title, hierarchy:d.hierarchy};
+  return TEXTCACHE[file] = {passages, byKey, title:d.title, hierarchy:d.hierarchy, titles:d.chapter_titles||null};
 }
 
 // ── catalog ──────────────────────────────────────────────────────────────────
@@ -236,7 +239,7 @@ async function loadText(){
   const t = await getText(file);
   if(!t){ status("Could not load that text.", true); return; }
   CUR = { id, title:t.title||w.title, label:(w.trans.find(x=>x.file===file)||{}).label||t.title,
-          hierarchy:t.hierarchy || w.hierarchy || ["section"], passages:t.passages };
+          hierarchy:t.hierarchy || w.hierarchy || ["section"], passages:t.passages, titles:t.titles||null };
   override=null; $("ref").value="";
   if(mode==="parallel") populateCompare();
   buildNav();
@@ -269,10 +272,13 @@ function distinct(level, prefix){
   }
   return out;
 }
+function sectionTitle(v){ return (CUR.titles && CUR.titles[String(v)]) ? tc(CUR.titles[String(v)]) : null; }
 function ancLabel(level, v){
   if(CUR.id==="bible" && level===0) return BOOK_NAMES[v] || v;
   if(CUR.id==="quran" && level===0) return "Surah "+(SURAH_NAMES[v]||v)+" ("+v+")";
-  return cap(CUR.hierarchy[level]||"")+" "+v;
+  let base = cap(CUR.hierarchy[level]||"")+" "+v;
+  if(level===0){ const t=sectionTitle(v); if(t) base += " — "+t; }
+  return base;
 }
 function ancSel(l){ return $("nav").querySelector(`select[data-level="${l}"]`); }
 function buildNav(){
@@ -389,12 +395,16 @@ function renderSingle(sel, ref){
   const lines = ST.layout==="lines";
   const sectionKey=p=>p.path.slice(0,-1).join("|");
   const multi = L>1 && new Set(sel.map(sectionKey)).size>1;
-  let html=`<div class="ttl">${esc(ref)}</div><div class="sub">${esc(CUR.label)}</div><hr>`;
+  const secVal = L>1 ? sel[0].path[L-2] : sel[0].path[0];
+  const secName = (!multi && CUR.id!=="bible") ? sectionTitle(secVal) : null;
+  const sub = secName ? `${esc(secName)} · ${esc(CUR.label)}` : esc(CUR.label);
+  let html=`<div class="ttl">${esc(ref)}</div><div class="sub">${sub}</div><hr>`;
   let curKey=null, buf=[];
   const flush=()=>{ if(buf.length){ html+=`<div class="body${ST.just?" just":""}">${buf.join(" ")}</div>`; buf=[]; } };
   for(const p of sel){
     if(multi){ const k=sectionKey(p); if(k!==curKey){ if(!lines) flush(); curKey=k;
-      const lab = CUR.id==="bible" ? (BOOK_NAMES[p.path[0]]||p.path[0])+" "+p.path[1] : cap(CUR.hierarchy[L-2]||"")+" "+p.path[L-2];
+      let lab = CUR.id==="bible" ? (BOOK_NAMES[p.path[0]]||p.path[0])+" "+p.path[1] : cap(CUR.hierarchy[L-2]||"")+" "+p.path[L-2];
+      if(CUR.id!=="bible"){ const t=sectionTitle(p.path[L-2]); if(t) lab += " — "+t; }
       html+=`<div class="chap">${esc(lab)}</div>`; } }
     const cell=`<span class="vn">${esc(p.path[L-1])}</span> ${esc(p.text)}`;
     if(lines) html+=`<div class="line${ST.just?" just":""}">${cell}</div>`;
