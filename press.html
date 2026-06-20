@@ -215,9 +215,10 @@ async function loadCatalog(){
 function fillSelect(sel, pairs, value){
   sel.innerHTML = pairs.map(([v,t])=>`<option value="${esc(v)}"${String(v)===String(value)?" selected":""}>${esc(t)}</option>`).join("");
 }
-// finalized-aware visibility (toggled by "Show all texts")
-function visTrans(w){ return SHOWALL ? w.trans : w.trans.filter(t=>t.fin); }
-function workVisible(w){ return SHOWALL || w.trans.some(t=>t.fin); }
+// finalized-aware visibility (toggled by "Show all texts"). If the finalized
+// list failed to load, fall back to showing everything (never an empty Press).
+function visTrans(w){ return (SHOWALL || !FINALIZED.size) ? w.trans : w.trans.filter(t=>t.fin); }
+function workVisible(w){ return SHOWALL || !FINALIZED.size || w.trans.some(t=>t.fin); }
 function populateTraditions(){
   const trads=[...new Set(Object.values(WORKS).filter(workVisible).map(w=>w.tradition))].sort();
   const def = trads.includes("Christian") ? "Christian" : trads[0];
