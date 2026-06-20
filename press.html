@@ -92,6 +92,7 @@
       <select id="text"></select>
       <label for="translation">Translation</label>
       <select id="translation"></select>
+      <label class="check"><input type="checkbox" id="showall"> Show all texts (incl. unfinalized)</label>
     </div>
 
     <div class="sec">
@@ -168,6 +169,7 @@ const tc = s => String(s).toLowerCase().split(/\s+/)
   .map((w,i)=> (i>0 && TC_SMALL.has(w)) ? w : w.charAt(0).toUpperCase()+w.slice(1)).join(" ");
 
 let WORKS = {}, TRADITIONS = [], CUR = null, override = null, mode = "single";
+let FINALIZED = new Set(), SHOWALL = false;
 let ancVals = [];
 const TEXTCACHE = {};        // file -> {passages, byKey, title, hierarchy}
 let ST = { size:"a6", fam:"serif", fs:11, lh:1.5, just:false, layout:"flow" };
@@ -200,24 +202,31 @@ async function loadCatalog(){
   let idx = await fetchJSON("data/index.json");
   if(!idx) idx = await fetchJSON("data/index.json.gz");
   if(!idx){ status("Could not load the library catalog.", true); return; }
+  FINALIZED = new Set(await fetchJSON("data/finalized.json") || []);
   const texts = idx.texts || idx;
-  const trad = new Set();
   for(const e of texts){
-    trad.add(e.tradition || "Other");
     const w = WORKS[e.id] || (WORKS[e.id] = {id:e.id,title:e.title,tradition:e.tradition||"Other",
       hierarchy:e.hierarchy||["section"], imp:(e.importance_rank ?? 9999), trans:[]});
     if(!w.trans.some(t=>t.file===e.data_file))
-      w.trans.push({file:e.data_file, label:e.translation_label || e.title});
+      w.trans.push({file:e.data_file, label:e.translation_label || e.title, fin:FINALIZED.has(e.data_file)});
   }
-  TRADITIONS = [...trad].sort();
-  fillSelect($("tradition"), TRADITIONS.map(t=>[t,t]), TRADITIONS.includes("Christian")?"Christian":TRADITIONS[0]);
-  populateTexts();
+  populateTraditions();
 }
 function fillSelect(sel, pairs, value){
   sel.innerHTML = pairs.map(([v,t])=>`<option value="${esc(v)}"${String(v)===String(value)?" selected":""}>${esc(t)}</option>`).join("");
 }
+// finalized-aware visibility (toggled by "Show all texts")
+function visTrans(w){ return SHOWALL ? w.trans : w.trans.filter(t=>t.fin); }
+function workVisible(w){ return SHOWALL || w.trans.some(t=>t.fin); }
+function populateTraditions(){
+  const trads=[...new Set(Object.values(WORKS).filter(workVisible).map(w=>w.tradition))].sort();
+  const def = trads.includes("Christian") ? "Christian" : trads[0];
+  fillSelect($("tradition"), trads.map(t=>[t,t]), def);
+  populateTexts();
+}
 function worksInTradition(t){
-  return Object.values(WORKS).filter(w=>w.tradition===t).sort((a,b)=>(a.imp-b.imp)||a.title.localeCompare(b.title));
+  return Object.values(WORKS).filter(w=>w.tradition===t && workVisible(w))
+    .sort((a,b)=>(a.imp-b.imp)||a.title.localeCompare(b.title));
 }
 function populateTexts(){
   const ws = worksInTradition($("tradition").value);
@@ -227,8 +236,10 @@ function populateTexts(){
 }
 function populateTranslations(){
   const w = WORKS[$("text").value]; if(!w) return;
-  const def = (w.trans.find(t=>/kjv|king-james/i.test(t.file)) || w.trans[0]).file;
-  fillSelect($("translation"), w.trans.map(t=>[t.file, t.label]), def);
+  const list = visTrans(w);
+  if(!list.length) return;
+  const def = (list.find(t=>/kjv|king-james/i.test(t.file)) || list[0]).file;
+  fillSelect($("translation"), list.map(t=>[t.file, t.label]), def);
   loadText();
 }
 
@@ -251,7 +262,7 @@ async function loadText(){
 // ── compare (parallel) ───────────────────────────────────────────────────────
 function populateCompare(){
   const w=WORKS[CUR.id], prim=$("translation").value;
-  const others=w.trans.filter(t=>t.file!==prim);
+  const others=visTrans(w).filter(t=>t.file!==prim);
   const box=$("compare");
   box.innerHTML = others.length
     ? others.map((t,i)=>`<label class="cbx"><input type="checkbox" value="${esc(t.file)}"${i===0?" checked":""}> ${esc(t.label)}</label>`).join("")
@@ -480,6 +491,7 @@ function renderParallel(sel, ref){
 
 // ── controls wiring ──────────────────────────────────────────────────────────
 function syncSize(){ [...$("sizeSeg").children].forEach(b=>b.classList.toggle("on", b.dataset.size===ST.size)); }
+$("showall").onchange = e=>{ SHOWALL=e.target.checked; populateTraditions(); };
 $("tradition").onchange = populateTexts;
 $("text").onchange = populateTranslations;
 $("translation").onchange = ()=>{ loadText(); };
