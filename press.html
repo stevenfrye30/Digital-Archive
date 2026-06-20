@@ -238,8 +238,10 @@ async function loadText(){
   status("Loading text…");
   const t = await getText(file);
   if(!t){ status("Could not load that text.", true); return; }
+  const uniq = new Set(t.passages.map(p=>p.path.join("|"))).size === t.passages.length;
   CUR = { id, title:t.title||w.title, label:(w.trans.find(x=>x.file===file)||{}).label||t.title,
-          hierarchy:t.hierarchy || w.hierarchy || ["section"], passages:t.passages, titles:t.titles||null };
+          hierarchy:t.hierarchy || w.hierarchy || ["section"], passages:t.passages, titles:t.titles||null,
+          unique:uniq };
   override=null; $("ref").value="";
   if(mode==="parallel") populateCompare();
   buildNav();
@@ -272,17 +274,38 @@ function distinct(level, prefix){
   }
   return out;
 }
+const isNum = v => /^\d+$/.test(String(v));
 function sectionTitle(v){ return (CUR.titles && CUR.titles[String(v)]) ? tc(CUR.titles[String(v)]) : null; }
 function ancLabel(level, v){
   if(CUR.id==="bible" && level===0) return BOOK_NAMES[v] || v;
   if(CUR.id==="quran" && level===0) return "Surah "+(SURAH_NAMES[v]||v)+" ("+v+")";
-  let base = cap(CUR.hierarchy[level]||"")+" "+v;
+  // numeric values get the level name ("Chapter 3"); already-named values
+  // (e.g. "Book I", "Bu Pj 1") are shown as-is to avoid "Book Book I".
+  let base = isNum(v) ? (cap(CUR.hierarchy[level]||"")+" "+v) : String(v);
   if(level===0){ const t=sectionTitle(v); if(t) base += " — "+t; }
   return base;
 }
+// Leaf (From/To) labels: for depth-1 texts the leaf IS the top section, so
+// give it the rich label (name/title); deeper texts just show the verse number.
+function leafLabel(v){ return CUR.hierarchy.length===1 ? ancLabel(0, v) : String(v); }
 function ancSel(l){ return $("nav").querySelector(`select[data-level="${l}"]`); }
+function buildIndexNav(nav){
+  // Fallback for texts whose paths don't uniquely address passages (upstream
+  // data quirk) — let the reader page through by passage position instead.
+  const n=CUR.passages.length;
+  const row=document.createElement("div"); row.className="row";
+  const mk=(id,txt,def)=>{ const d=document.createElement("div"); const l=document.createElement("label");
+    l.textContent=txt; const s=document.createElement("select"); s.id=id;
+    let o=""; for(let i=0;i<n;i++) o+=`<option value="${i}">${i+1}</option>`;
+    s.innerHTML=o; s.value=String(def);
+    s.addEventListener("change",()=>{override=null;$("ref").value="";render();}); d.append(l,s); return d; };
+  row.append(mk("fromSel","From passage",0), mk("toSel","To passage",Math.min(n-1,9)));
+  nav.append(row);
+  override=null; render();
+}
 function buildNav(){
   const nav=$("nav"); nav.innerHTML=""; ancVals=[];
+  if(!CUR.unique){ buildIndexNav(nav); return; }
   const H=CUR.hierarchy, L=H.length;
   for(let lvl=0; lvl<L-1; lvl++){
     const wrap=document.createElement("div");
@@ -309,7 +332,7 @@ function populateAnc(level){
     populateAnc(level+1);
   } else {
     const leaves=distinct(L-1, ancVals.slice(0,L-1));
-    const opts=leaves.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join("");
+    const opts=leaves.map(v=>`<option value="${esc(v)}">${esc(leafLabel(v))}</option>`).join("");
     $("fromSel").innerHTML=opts; $("toSel").innerHTML=opts;
     if(leaves.length){ $("fromSel").value=String(leaves[0]); $("toSel").value=String(leaves[leaves.length-1]); }
     override=null; render();
@@ -331,12 +354,25 @@ function prefixRange(prefix){
   return hi>=0 ? {first:lo,last:hi} : null;
 }
 function selFromControls(){
+  if(!CUR.unique){
+    const a=+$("fromSel").value, b=+$("toSel").value;
+    if(isNaN(a)||isNaN(b)) return null;
+    return {lo:Math.min(a,b), hi:Math.max(a,b), idx:true};
+  }
   const L=CUR.hierarchy.length, prefix=ancVals.slice(0,L-1);
   const a=exactOrder([...prefix,$("fromSel").value]), b=exactOrder([...prefix,$("toSel").value]);
   if(a==null||b==null) return null;
   return {lo:Math.min(a,b), hi:Math.max(a,b)};
 }
 function parseRef(str){
+  if(!CUR.unique){
+    const sp=str.trim().split(/\s*[-–]\s*/); const a=parseInt(sp[0],10);
+    if(isNaN(a)) return null;
+    const n=CUR.passages.length, b=sp[1]!==undefined?parseInt(sp[1],10):a;
+    const clamp=x=>Math.max(0,Math.min(n-1,(isNaN(x)?a:x)-1));
+    const lo=clamp(a), hi=clamp(b);
+    return {lo:Math.min(lo,hi), hi:Math.max(lo,hi), idx:true};
+  }
   const L=CUR.hierarchy.length; let body=str.trim(); if(!body) return null; let lead=[];
   if(CUR.id==="bible"){
     const m=body.match(/^\s*(.+?)\s+(\d.*)$/); if(!m) return null;
@@ -358,6 +394,10 @@ function applyRef(){ const r=parseRef($("ref").value);
 
 // ── citation ─────────────────────────────────────────────────────────────────
 function citation(sel){
+  if(!CUR.unique){
+    const i1=CUR.passages.indexOf(sel[0])+1, i2=CUR.passages.indexOf(sel[sel.length-1])+1;
+    return i1===i2 ? `${CUR.title} ¶${i1}` : `${CUR.title} ¶${i1}–${i2}`;
+  }
   const f=sel[0].path, l=sel[sel.length-1].path, id=CUR.id;
   if(id==="bible"){
     const bk=(f[0]==="psa"?"Psalm":BOOK_NAMES[f[0]]||f[0]);
@@ -382,7 +422,9 @@ function citation(sel){
 function render(){
   if(!CUR) return;
   const r=override||selFromControls(); if(!r) return;
-  const sel=CUR.passages.filter(p=>p.order>=r.lo && p.order<=r.hi); if(!sel.length) return;
+  const sel = r.idx ? CUR.passages.slice(r.lo, r.hi+1)
+                    : CUR.passages.filter(p=>p.order>=r.lo && p.order<=r.hi);
+  if(!sel.length) return;
   const ref=citation(sel), page=$("page");
   page.className=ST.size+" "+ST.fam;
   page.style.setProperty("--fs", ST.fs+"pt");
@@ -399,17 +441,19 @@ function renderSingle(sel, ref){
   const secName = (!multi && CUR.id!=="bible") ? sectionTitle(secVal) : null;
   const sub = secName ? `${esc(secName)} · ${esc(CUR.label)}` : esc(CUR.label);
   let html=`<div class="ttl">${esc(ref)}</div><div class="sub">${sub}</div><hr>`;
+  const base = CUR.unique ? 0 : CUR.passages.indexOf(sel[0]);
   let curKey=null, buf=[];
   const flush=()=>{ if(buf.length){ html+=`<div class="body${ST.just?" just":""}">${buf.join(" ")}</div>`; buf=[]; } };
-  for(const p of sel){
+  sel.forEach((p,i)=>{
     if(multi){ const k=sectionKey(p); if(k!==curKey){ if(!lines) flush(); curKey=k;
       let lab = CUR.id==="bible" ? (BOOK_NAMES[p.path[0]]||p.path[0])+" "+p.path[1] : cap(CUR.hierarchy[L-2]||"")+" "+p.path[L-2];
       if(CUR.id!=="bible"){ const t=sectionTitle(p.path[L-2]); if(t) lab += " — "+t; }
       html+=`<div class="chap">${esc(lab)}</div>`; } }
-    const cell=`<span class="vn">${esc(p.path[L-1])}</span> ${esc(p.text)}`;
+    const marker = CUR.unique ? p.path[L-1] : (base+i+1);
+    const cell=`<span class="vn">${esc(marker)}</span> ${esc(p.text)}`;
     if(lines) html+=`<div class="line${ST.just?" just":""}">${cell}</div>`;
     else buf.push(cell);
-  }
+  });
   if(!lines) flush();
   html+=`<hr><div class="foot">${esc(ref)} · ${esc(CUR.label)} · Digital Archive</div>`;
   $("page").innerHTML=html;
