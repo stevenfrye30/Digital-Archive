@@ -55,6 +55,9 @@
   #page .chap { font-weight:700; font-size:calc(var(--fs) * 1.08); margin:12px 0 3px; }
   #page .body { font-size:var(--fs); line-height:var(--lh); text-align:left; }
   #page .body.just { text-align:justify; }
+  #page .line { font-size:var(--fs); line-height:var(--lh); text-align:left;
+    padding-left:1.7em; text-indent:-1.7em; margin:0 0 .18em; }
+  #page .line.just { text-align:justify; }
   #page .vn { font-size:.62em; vertical-align:super; line-height:0; color:#333; }
   #page .foot { text-align:center; font-size:calc(var(--fs) * .68); color:var(--muted);
     font-family:"Segoe UI",system-ui,sans-serif; margin-top:12px; }
@@ -128,6 +131,11 @@
         <button data-fam="serif" class="on">Serif</button>
         <button data-fam="sans">Sans</button>
       </div>
+      <label>Layout</label>
+      <div class="seg" id="layoutSeg">
+        <button data-layout="flow" class="on">Flowing</button>
+        <button data-layout="lines">Per verse</button>
+      </div>
       <label for="fs">Text size — <span id="fsVal">11</span> pt</label>
       <input type="range" id="fs" min="8" max="18" step="0.5" value="11">
       <label for="lh">Line spacing — <span id="lhVal">1.5</span></label>
@@ -159,7 +167,7 @@ const cap = s => s ? s.charAt(0).toUpperCase()+s.slice(1) : s;
 let WORKS = {}, TRADITIONS = [], CUR = null, override = null, mode = "single";
 let ancVals = [];
 const TEXTCACHE = {};        // file -> {passages, byKey, title, hierarchy}
-let ST = { size:"a6", fam:"serif", fs:11, lh:1.5, just:false };
+let ST = { size:"a6", fam:"serif", fs:11, lh:1.5, just:false, layout:"flow" };
 
 function status(msg, err){ const s=$("status"); s.textContent=msg; s.className = err?"err":""; }
 
@@ -378,18 +386,21 @@ function render(){
 }
 function renderSingle(sel, ref){
   const L=CUR.hierarchy.length;
+  const lines = ST.layout==="lines";
   const sectionKey=p=>p.path.slice(0,-1).join("|");
   const multi = L>1 && new Set(sel.map(sectionKey)).size>1;
   let html=`<div class="ttl">${esc(ref)}</div><div class="sub">${esc(CUR.label)}</div><hr>`;
   let curKey=null, buf=[];
   const flush=()=>{ if(buf.length){ html+=`<div class="body${ST.just?" just":""}">${buf.join(" ")}</div>`; buf=[]; } };
   for(const p of sel){
-    if(multi){ const k=sectionKey(p); if(k!==curKey){ flush(); curKey=k;
+    if(multi){ const k=sectionKey(p); if(k!==curKey){ if(!lines) flush(); curKey=k;
       const lab = CUR.id==="bible" ? (BOOK_NAMES[p.path[0]]||p.path[0])+" "+p.path[1] : cap(CUR.hierarchy[L-2]||"")+" "+p.path[L-2];
       html+=`<div class="chap">${esc(lab)}</div>`; } }
-    buf.push(`<span class="vn">${esc(p.path[L-1])}</span> ${esc(p.text)}`);
+    const cell=`<span class="vn">${esc(p.path[L-1])}</span> ${esc(p.text)}`;
+    if(lines) html+=`<div class="line${ST.just?" just":""}">${cell}</div>`;
+    else buf.push(cell);
   }
-  flush();
+  if(!lines) flush();
   html+=`<hr><div class="foot">${esc(ref)} · ${esc(CUR.label)} · Digital Archive</div>`;
   $("page").innerHTML=html;
   status(ref+" · "+sel.length+(sel.length===1?" passage":" passages"));
@@ -430,6 +441,8 @@ $("sizeSeg").onclick = e=>{ const b=e.target.closest("button"); if(!b) return;
   ST.size=b.dataset.size; syncSize(); render(); };
 $("famSeg").onclick = e=>{ const b=e.target.closest("button"); if(!b) return;
   ST.fam=b.dataset.fam; [...$("famSeg").children].forEach(x=>x.classList.toggle("on",x===b)); render(); };
+$("layoutSeg").onclick = e=>{ const b=e.target.closest("button"); if(!b) return;
+  ST.layout=b.dataset.layout; [...$("layoutSeg").children].forEach(x=>x.classList.toggle("on",x===b)); render(); };
 $("fs").oninput = e=>{ ST.fs=parseFloat(e.target.value); $("fsVal").textContent=ST.fs; render(); };
 $("lh").oninput = e=>{ ST.lh=parseFloat(e.target.value); $("lhVal").textContent=ST.lh; render(); };
 $("justify").onchange = e=>{ ST.just=e.target.checked; render(); };
