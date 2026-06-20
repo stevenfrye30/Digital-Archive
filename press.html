@@ -89,7 +89,20 @@
       <select id="text"></select>
       <label for="translation">Translation</label>
       <select id="translation"></select>
-      <label>Mode</label>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h">Passage</div>
+      <div id="nav"></div>
+      <label for="ref">…or type a reference</label>
+      <div class="refrow">
+        <input type="text" id="ref" placeholder="e.g. John 3:16-18  ·  2:255  ·  5:1-10">
+        <button id="refgo">Go</button>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h">Compare translations</div>
       <div class="seg" id="modeSeg">
         <button data-mode="single" class="on">Single</button>
         <button data-mode="parallel">Parallel</button>
@@ -98,16 +111,6 @@
         <label>Compare with</label>
         <div id="compare"></div>
       </div>
-    </div>
-
-    <div class="sec">
-      <div class="sec-h">Passage</div>
-      <label for="ref">Type a reference</label>
-      <div class="refrow">
-        <input type="text" id="ref" placeholder="e.g. John 3:16-18  ·  2:255  ·  3:16-4:2">
-        <button id="refgo">Go</button>
-      </div>
-      <div id="nav"></div>
     </div>
 
     <div class="sec">
