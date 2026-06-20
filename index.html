@@ -2106,9 +2106,12 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0 24px;
-  overflow: hidden;
+  /* "safe center": stays vertically centered when it fits, but falls back
+     to top-aligned (so nothing is clipped) and scrolls when the content is
+     taller than the window. */
+  justify-content: safe center;
+  padding: 24px;
+  overflow-y: auto;
 }
 #home-header {
   text-align: center;
@@ -11292,6 +11295,7 @@ body.viewer-active .folio-leaf-colophon {
               <button class="home-restricted-btn" onclick="browseRestricted()">🔒 Restricted Library</button>
             </div>
             <div id="home-footer">
+              <a href="press.html">The Press</a>
               <a href="sources.html">Sources &amp; Attribution</a>
               <a href="integrity.html">Integrity</a>
               <a href="translators.html">Translators</a>
@@ -11310,10 +11314,7 @@ body.viewer-active .folio-leaf-colophon {
                 <div class="welcome-section-label">Continue reading</div>
                 <button type="button" id="continue-btn"></button>
               </div>
-              <div id="welcome-recent" style="display:none;">
-                <div class="welcome-section-label">Recently read</div>
-                <ul id="recent-list"></ul>
-              </div>
+              <!-- "Recently read" section removed by request. -->
             </div>
             <div id="welcome-search" style="display:none;">
               <div class="welcome-section-label">Search across the corpus</div>
@@ -14562,27 +14563,7 @@ function renderWelcome() {
     $welcomeContinue.style.display = 'none';
   }
 
-  if (recents.length > 1) {
-    $recentList.innerHTML = '';
-    for (const r of recents) {
-      if (!dataFileToEntry[r.data_file]) continue;
-      if (last && r.data_file === last.data_file) continue;
-      const li = document.createElement('li');
-      const sub = r.translator ? `<span class="recent-sub">${escapeHTML(r.translator)}</span>` : '';
-      const rPct = r.pct || getReadingProgress(r.data_file);
-      const rBadge = rPct > 0 ? `<span class="progress-badge">${rPct}%</span>` : '';
-      li.innerHTML = escapeHTML(r.title) + rBadge + sub;
-      li.addEventListener('click', () => {
-        const { entry, li: sidebarLi } = dataFileToEntry[r.data_file];
-        pendingPid = r.pid;
-        loadText(entry, sidebarLi);
-      });
-      $recentList.appendChild(li);
-    }
-    $welcomeRecent.style.display = $recentList.children.length ? 'block' : 'none';
-  } else {
-    $welcomeRecent.style.display = 'none';
-  }
+  // "Recently read" section removed by request — nothing to render here.
 }
 
 $reader.addEventListener('scroll', scheduleBookmark, { passive: true });

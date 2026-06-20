@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Press — choose a reading</title>
+<style>
+  :root { --ink:#111; --muted:#555; --rule:#999; --bg:#f4f1ea; --panel:#fff; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 -apple-system, Segoe UI, Roboto, sans-serif;
+    display: flex; min-height: 100vh;
+  }
+  #controls {
+    width: 300px; flex: none; background: var(--panel);
+    border-right: 1px solid #ddd; padding: 22px 20px; overflow-y: auto;
+  }
+  #back { display: inline-block; color: var(--muted); text-decoration: none;
+    font-size: 13px; margin-bottom: 14px; }
+  #back:hover { color: var(--ink); }
+  #controls h1 { font: 600 20px/1.2 Georgia, serif; margin: 0 0 2px; }
+  #controls .tag { color: var(--muted); font-size: 12px; margin: 0 0 20px; }
+  label { display: block; font-weight: 600; font-size: 12px;
+    text-transform: uppercase; letter-spacing: .04em; color: var(--muted);
+    margin: 16px 0 5px; }
+  select, button {
+    width: 100%; padding: 9px 10px; font-size: 15px;
+    border: 1px solid #ccc; border-radius: 7px; background: #fff;
+  }
+  .row { display: flex; gap: 8px; }
+  .row > div { flex: 1; }
+  .seg { display: flex; gap: 6px; margin-top: 4px; }
+  .seg button {
+    flex: 1; padding: 9px 4px; cursor: pointer; background: #f7f7f7;
+    font-size: 13px;
+  }
+  .seg button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .check { display: flex; align-items: center; gap: 8px; margin-top: 16px;
+    font-size: 14px; font-weight: 500; color: var(--ink); text-transform: none;
+    letter-spacing: 0; }
+  .check input { width: auto; }
+  #print {
+    margin-top: 24px; background: #2a5d34; color: #fff; border: none;
+    font-weight: 600; cursor: pointer; padding: 13px;
+  }
+  #print:hover { background: #234e2b; }
+  .hint { font-size: 12px; color: var(--muted); margin-top: 10px; line-height:1.45;}
+  #status { font-size: 12px; color: var(--muted); margin-top: 14px; }
+
+  #stage { flex: 1; padding: 36px; overflow-y: auto; display: flex;
+    justify-content: center; align-items: flex-start; }
+  #page {
+    background: #fff; color: var(--ink); box-shadow: 0 6px 28px rgba(0,0,0,.16);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  #page.a6 { width: 105mm; padding: 8mm; }
+  #page.a5 { width: 148mm; padding: 12mm; }
+  #page.receipt { width: 80mm; padding: 5mm; }
+
+  #page .ttl { text-align: center; font-weight: 700; font-size: 22px; margin: 4px 0 2px; }
+  #page.receipt .ttl, #page.a6 .ttl { font-size: 18px; }
+  #page .sub { text-align: center; font-style: italic; color: var(--muted); margin: 0 0 12px; }
+  #page hr { border: none; border-top: .5px solid var(--rule); width: 40%; margin: 12px auto; }
+  #page .chap { font-weight: 700; margin: 14px 0 4px; }
+  #page .body { font-size: 16px; line-height: 1.55; text-align: left; }
+  #page.a6 .body, #page.receipt .body { font-size: 13px; }
+  #page.body-justify .body { text-align: justify; }
+  #page .vn { font-size: .62em; vertical-align: super; line-height: 0; }
+  #page .foot { text-align: center; font-size: 10px; color: var(--muted);
+    font-family: sans-serif; margin-top: 14px; }
+
+  @media print {
+    #controls { display: none; }
+    body { background: #fff; }
+    #stage { padding: 0; display: block; }
+    #page { box-shadow: none; width: auto; }
+  }
+</style>
+</head>
+<body>
+  <div id="controls">
+    <a id="back" href="index.html">← Back to the Archive</a>
+    <h1>The Press</h1>
+    <p class="tag">Pick a passage · print or save as PDF</p>
+
+    <label for="book">Book</label>
+    <select id="book"></select>
+
+    <label for="chap">Chapter</label>
+    <select id="chap"></select>
+
+    <div class="row">
+      <div>
+        <label for="v1">From verse</label>
+        <select id="v1"></select>
+      </div>
+      <div>
+        <label for="v2">To verse</label>
+        <select id="v2"></select>
+      </div>
+    </div>
+
+    <label>Page size</label>
+    <div class="seg" id="sizeSeg">
+      <button data-size="a6" class="on">A6 card</button>
+      <button data-size="a5">A5 page</button>
+      <button data-size="receipt">Receipt</button>
+    </div>
+
+    <label class="check"><input type="checkbox" id="justify"> Justify text</label>
+
+    <button id="print">Print / Save as PDF</button>
+    <p class="hint">In the print dialog, pick your printer — or choose
+       <b>“Save as PDF”</b> as the destination. Match the paper size to
+       your selection (A6 / A5).</p>
+    <p id="status">Loading the King James text…</p>
+  </div>
+
+  <div id="stage">
+    <div id="page" class="a6">
+      <div class="ttl">—</div>
+    </div>
+  </div>
+
+<script>
+const BOOKS = [
+  ["gen","Genesis"],["exo","Exodus"],["lev","Leviticus"],["num","Numbers"],
+  ["deu","Deuteronomy"],["jos","Joshua"],["jdg","Judges"],["rut","Ruth"],
+  ["1sa","1 Samuel"],["2sa","2 Samuel"],["1ki","1 Kings"],["2ki","2 Kings"],
+  ["1ch","1 Chronicles"],["2ch","2 Chronicles"],["ezr","Ezra"],["neh","Nehemiah"],
+  ["est","Esther"],["job","Job"],["psa","Psalms"],["pro","Proverbs"],
+  ["ecc","Ecclesiastes"],["sng","Song of Solomon"],["isa","Isaiah"],["jer","Jeremiah"],
+  ["lam","Lamentations"],["eze","Ezekiel"],["dan","Daniel"],["hos","Hosea"],
+  ["joe","Joel"],["amo","Amos"],["oba","Obadiah"],["jon","Jonah"],["mic","Micah"],
+  ["nah","Nahum"],["hab","Habakkuk"],["zep","Zephaniah"],["hag","Haggai"],
+  ["zec","Zechariah"],["mal","Malachi"],
+  ["mat","Matthew"],["mrk","Mark"],["luk","Luke"],["jhn","John"],["act","Acts"],
+  ["rom","Romans"],["1co","1 Corinthians"],["2co","2 Corinthians"],["gal","Galatians"],
+  ["eph","Ephesians"],["php","Philippians"],["col","Colossians"],["1th","1 Thessalonians"],
+  ["2th","2 Thessalonians"],["1ti","1 Timothy"],["2ti","2 Timothy"],["tit","Titus"],
+  ["phm","Philemon"],["heb","Hebrews"],["jas","James"],["1pe","1 Peter"],["2pe","2 Peter"],
+  ["1jn","1 John"],["2jn","2 John"],["3jn","3 John"],["jud","Jude"],["rev","Revelation"],
+];
+const NAME = Object.fromEntries(BOOKS);
+const label = a => a === "psa" ? "Psalm" : NAME[a];
+
+const $ = id => document.getElementById(id);
+let TREE = {};
+let size = "a6";
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+// The live site ships only the GZIPPED data (decompressed in-browser, like
+// the main reader). The plain .json exists locally. Try gz first everywhere.
+const DATA_PATHS = [
+  "data/bible_kjv.json.gz",
+  "data/bible_kjv.json",
+  "../03_web_app/data/bible_kjv.json.gz",
+];
+
+async function fetchData(path) {
+  const r = await fetch(path, { cache: "no-store" });
+  if (!r.ok) return null;
+  if (path.endsWith(".gz")) {
+    const stream = r.body.pipeThrough(new DecompressionStream("gzip"));
+    return JSON.parse(await new Response(stream).text());
+  }
+  return r.json();
+}
+
+async function loadData() {
+  let raw = null;
+  for (const p of DATA_PATHS) {
+    try { raw = await fetchData(p); if (raw) break; } catch (e) { /* try next */ }
+  }
+  if (!raw) { $("status").textContent = "Could not load the King James data."; return; }
+
+  for (const p of raw.passages) {
+    const [b, c, v] = p.path;
+    if (!NAME[b]) continue;
+    (TREE[b] = TREE[b] || {});
+    (TREE[b][c] = TREE[b][c] || []).push({ v, text: p.text });
+  }
+  buildBooks();
+  $("status").textContent = "Ready.";
+  render();
+}
+
+function fill(sel, items, cur) {
+  sel.innerHTML = items.map(([val, txt]) =>
+    `<option value="${val}"${val==cur?" selected":""}>${txt}</option>`).join("");
+}
+
+function buildBooks() {
+  fill($("book"), BOOKS.filter(([a]) => TREE[a]).map(([a,n]) => [a, n]), "gen");
+  buildChaps();
+}
+function buildChaps() {
+  const b = $("book").value;
+  const chaps = Object.keys(TREE[b]).map(Number).sort((x,y)=>x-y);
+  fill($("chap"), chaps.map(c => [c, "Chapter " + c]), chaps[0]);
+  buildVerses();
+}
+function buildVerses() {
+  const b = $("book").value, c = $("chap").value;
+  const verses = TREE[b][c].map(o => o.v).sort((x,y)=>x-y);
+  const opts = verses.map(v => [v, v]);
+  fill($("v1"), opts, verses[0]);
+  fill($("v2"), opts, verses[verses.length-1]);
+}
+
+function render() {
+  const b = $("book").value, c = +$("chap").value;
+  let a = +$("v1").value, z = +$("v2").value;
+  if (a > z) [a, z] = [z, a];
+  const verses = TREE[b][c].filter(o => o.v >= a && o.v <= z).sort((x,y)=>x.v-y.v);
+
+  const ref = a === z ? `${label(b)} ${c}:${a}` : `${label(b)} ${c}:${a}–${z}`;
+  const body = verses.map(o =>
+    `<span class="vn">${o.v}</span> ${esc(o.text)}`).join(" ");
+
+  const page = $("page");
+  page.className = size + ($("justify").checked ? " body-justify" : "");
+  page.innerHTML =
+    `<div class="ttl">${ref}</div>` +
+    `<div class="sub">King James Version</div>` +
+    `<hr>` +
+    `<div class="body">${body}</div>` +
+    `<hr>` +
+    `<div class="foot">${ref} · KJV · Digital Archive</div>`;
+  document.title = "The Press — " + ref;
+}
+
+$("book").onchange = () => { buildChaps(); render(); };
+$("chap").onchange = () => { buildVerses(); render(); };
+$("v1").onchange = render;
+$("v2").onchange = render;
+$("justify").onchange = render;
+$("sizeSeg").onclick = e => {
+  const btn = e.target.closest("button"); if (!btn) return;
+  size = btn.dataset.size;
+  [...$("sizeSeg").children].forEach(x => x.classList.toggle("on", x === btn));
+  render();
+};
+$("print").onclick = () => {
+  const css = { a6: "A6", a5: "A5", receipt: "80mm auto" }[size];
+  let st = $("pagecss"); if (!st) { st = document.createElement("style"); st.id = "pagecss"; document.head.appendChild(st); }
+  st.textContent = `@page { size: ${css}; margin: ${size==="a5"?"12mm":size==="a6"?"8mm":"5mm"}; }`;
+  window.print();
+};
+
+loadData();
+</script>
+</body>
+</html>
