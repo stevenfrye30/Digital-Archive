@@ -2212,18 +2212,18 @@ button.home-path {
 #home-categories {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(10px, 2vh, 18px);
-  width: min(520px, 80vw);
+  gap: clamp(9px, 1.8vh, 16px);
+  width: min(470px, 78vw);
 }
 .home-cat {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1.6;
-  padding: 12px 16px;
+  aspect-ratio: 1.9;
+  padding: 10px 14px;
   font-family: Georgia, serif;
-  font-size: clamp(18px, 2.5vw, 24px);
+  font-size: clamp(16px, 2.1vw, 20px);
   color: white;
   border: none;
   border-radius: 12px;
@@ -2262,6 +2262,35 @@ button.home-path {
   font-size: clamp(10px, 1.2vw, 13px);
   color: rgba(255,255,255,0.65);
   margin-top: 6px;
+  font-family: system-ui, sans-serif;
+}
+#home-press {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: clamp(16px, 3vh, 26px);
+  padding: 12px 34px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2a5d34, #3f7d4c);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: transform 0.15s, box-shadow 0.25s;
+}
+#home-press:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 30px rgba(0,0,0,0.26);
+}
+#home-press:active { transform: translateY(0); }
+.home-press-title {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  letter-spacing: 0.02em;
+}
+.home-press-sub {
+  font-size: 11px;
+  opacity: 0.85;
+  margin-top: 2px;
   font-family: system-ui, sans-serif;
 }
 #home-search {
@@ -11288,6 +11317,10 @@ body.viewer-active .folio-leaf-colophon {
               <input type="search" id="home-search-input" placeholder="Search all texts…" autocomplete="off">
               <ul id="home-search-results"></ul>
             </div>
+            <a id="home-press" href="press.html">
+              <span class="home-press-title">The Press</span>
+              <span class="home-press-sub">Print or save any passage</span>
+            </a>
             <div id="home-workroom" style="display:none;">
               <button class="home-restricted-btn home-workroom-btn" onclick="browseWorkroom()">⚒ Archive Workroom <span id="home-workroom-count" class="home-workroom-count"></span></button>
             </div>
@@ -11295,7 +11328,6 @@ body.viewer-active .folio-leaf-colophon {
               <button class="home-restricted-btn" onclick="browseRestricted()">🔒 Restricted Library</button>
             </div>
             <div id="home-footer">
-              <a href="press.html">The Press</a>
               <a href="sources.html">Sources &amp; Attribution</a>
               <a href="integrity.html">Integrity</a>
               <a href="translators.html">Translators</a>
