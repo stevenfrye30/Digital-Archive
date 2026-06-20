@@ -23,12 +23,15 @@
   select, input[type=search], input[type=text], button { width:100%; padding:8px 9px; font-size:14px;
     border:1px solid #ccc; border-radius:7px; background:#fff; font-family:inherit; }
   .row { display:flex; gap:8px; } .row > div { flex:1; }
-  .seg { display:flex; gap:6px; margin-top:4px; }
-  .seg button { flex:1; padding:8px 4px; cursor:pointer; background:#f7f7f7; font-size:13px; }
+  .seg { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+  .seg button { flex:1 1 auto; min-width:54px; padding:8px 4px; cursor:pointer; background:#f7f7f7; font-size:13px; }
   .seg button.on { background:var(--ink); color:#fff; border-color:var(--ink); }
   .check { display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; font-weight:500;
     color:var(--ink); text-transform:none; letter-spacing:0; }
   .check input { width:auto; }
+  .cbx { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:400; text-transform:none;
+    letter-spacing:0; color:var(--ink); margin:5px 0; }
+  .cbx input { width:auto; }
   input[type=range] { width:100%; }
   .refrow { display:flex; gap:6px; } .refrow input { flex:1; } .refrow button { width:auto; padding:8px 12px; cursor:pointer; }
   #print { margin-top:18px; background:var(--green); color:#fff; border:none; font-weight:600; cursor:pointer; padding:13px; }
@@ -37,13 +40,14 @@
   #status { font-size:12px; color:var(--muted); margin-top:12px; min-height:1em; }
   #status.err { color:#9a2a2a; }
 
-  #stage { flex:1; padding:32px; overflow-y:auto; display:flex; justify-content:center; align-items:flex-start; }
-  #page { background:#fff; color:var(--ink); box-shadow:0 6px 28px rgba(0,0,0,.16);
-    --fs:11pt; --lh:1.5; }
+  #stage { flex:1; padding:32px; overflow:auto; display:flex; justify-content:center; align-items:flex-start; }
+  #page { background:#fff; color:var(--ink); box-shadow:0 6px 28px rgba(0,0,0,.16); --fs:11pt; --lh:1.5; }
   #page.serif { font-family:Georgia,"Times New Roman",serif; }
   #page.sans  { font-family:"Segoe UI",system-ui,sans-serif; }
   #page.a6 { width:105mm; padding:8mm; }
   #page.a5 { width:148mm; padding:12mm; }
+  #page.a4 { width:210mm; padding:14mm; }
+  #page.letter { width:216mm; padding:14mm; }
   #page.receipt { width:80mm; padding:5mm; }
   #page .ttl { text-align:center; font-weight:700; font-size:calc(var(--fs) * 1.7); margin:2px 0; line-height:1.15; }
   #page .sub { text-align:center; font-style:italic; color:var(--muted); font-size:calc(var(--fs) * .92); margin:0 0 10px; }
@@ -54,12 +58,20 @@
   #page .vn { font-size:.62em; vertical-align:super; line-height:0; color:#333; }
   #page .foot { text-align:center; font-size:calc(var(--fs) * .68); color:var(--muted);
     font-family:"Segoe UI",system-ui,sans-serif; margin-top:12px; }
+  /* parallel table */
+  #page table.par { width:100%; border-collapse:collapse; font-size:var(--fs); line-height:var(--lh); }
+  #page table.par th, #page table.par td { border:.5px solid #c9c4b8; padding:5px 8px; vertical-align:top; text-align:left; }
+  #page table.par th { background:#f1ede3; font-family:"Segoe UI",system-ui,sans-serif;
+    font-size:calc(var(--fs) * .8); font-weight:700; }
+  #page table.par td.vh, #page table.par th.vh { width:2.6em; text-align:right; color:#666;
+    font-size:.82em; font-family:"Segoe UI",system-ui,sans-serif; }
 
   @media print {
     #controls { display:none; }
     body { background:#fff; }
-    #stage { padding:0; display:block; }
+    #stage { padding:0; display:block; overflow:visible; }
     #page { box-shadow:none; width:auto; }
+    #page table.par th { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   }
 </style>
 </head>
@@ -67,7 +79,7 @@
   <div id="controls">
     <a id="back" href="index.html">← Back to the Archive</a>
     <h1>The Press</h1>
-    <p class="tag">Any text · any translation · print or save as PDF</p>
+    <p class="tag">Any text · any translation · single or parallel</p>
 
     <div class="sec">
       <div class="sec-h">Source</div>
@@ -77,6 +89,15 @@
       <select id="text"></select>
       <label for="translation">Translation</label>
       <select id="translation"></select>
+      <label>Mode</label>
+      <div class="seg" id="modeSeg">
+        <button data-mode="single" class="on">Single</button>
+        <button data-mode="parallel">Parallel</button>
+      </div>
+      <div id="compareSec" style="display:none;">
+        <label>Compare with</label>
+        <div id="compare"></div>
+      </div>
     </div>
 
     <div class="sec">
@@ -93,8 +114,10 @@
       <div class="sec-h">Page &amp; type</div>
       <label>Size</label>
       <div class="seg" id="sizeSeg">
-        <button data-size="a6" class="on">A6 card</button>
-        <button data-size="a5">A5 page</button>
+        <button data-size="a6" class="on">A6</button>
+        <button data-size="a5">A5</button>
+        <button data-size="a4">A4</button>
+        <button data-size="letter">Letter</button>
         <button data-size="receipt">Receipt</button>
       </div>
       <label>Font</label>
@@ -130,10 +153,9 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const cap = s => s ? s.charAt(0).toUpperCase()+s.slice(1) : s;
 
-let WORKS = {};          // id -> {id,title,tradition,hierarchy,imp,trans:[{file,label}]}
-let TRADITIONS = [];
-let CUR = null;          // {id,title,label,hierarchy,passages}
-let override = null;     // {lo,hi} from a typed reference
+let WORKS = {}, TRADITIONS = [], CUR = null, override = null, mode = "single";
+let ancVals = [];
+const TEXTCACHE = {};        // file -> {passages, byKey, title, hierarchy}
 let ST = { size:"a6", fam:"serif", fs:11, lh:1.5, just:false };
 
 function status(msg, err){ const s=$("status"); s.textContent=msg; s.className = err?"err":""; }
@@ -146,6 +168,17 @@ async function fetchJSON(path){
     return JSON.parse(await new Response(stream).text());
   }
   return r.json();
+}
+
+async function getText(file){
+  if(TEXTCACHE[file]) return TEXTCACHE[file];
+  let d = await fetchJSON("data/"+file+".gz");
+  if(!d) d = await fetchJSON("data/"+file);
+  if(!d) return null;
+  const passages = (d.passages||[]).filter(p=>Array.isArray(p.path) && p.text!=null)
+                    .slice().sort((a,b)=>a.order-b.order);
+  const byKey = {}; for(const p of passages) byKey[p.path.join("|")] = p.text;
+  return TEXTCACHE[file] = {passages, byKey, title:d.title, hierarchy:d.hierarchy};
 }
 
 // ── catalog ──────────────────────────────────────────────────────────────────
@@ -164,49 +197,54 @@ async function loadCatalog(){
   }
   TRADITIONS = [...trad].sort();
   fillSelect($("tradition"), TRADITIONS.map(t=>[t,t]), TRADITIONS.includes("Christian")?"Christian":TRADITIONS[0]);
-  populateTexts(); // chains to translation + load
+  populateTexts();
 }
-
 function fillSelect(sel, pairs, value){
   sel.innerHTML = pairs.map(([v,t])=>`<option value="${esc(v)}"${String(v)===String(value)?" selected":""}>${esc(t)}</option>`).join("");
 }
-
 function worksInTradition(t){
-  return Object.values(WORKS).filter(w=>w.tradition===t).sort((a,b)=> (a.imp-b.imp) || a.title.localeCompare(b.title));
+  return Object.values(WORKS).filter(w=>w.tradition===t).sort((a,b)=>(a.imp-b.imp)||a.title.localeCompare(b.title));
 }
-
 function populateTexts(){
-  const t = $("tradition").value;
-  const ws = worksInTradition(t);
+  const ws = worksInTradition($("tradition").value);
   const def = ws.some(w=>w.id==="bible") ? "bible" : (ws[0] && ws[0].id);
   fillSelect($("text"), ws.map(w=>[w.id, w.title]), def);
   populateTranslations();
 }
-
 function populateTranslations(){
-  const w = WORKS[$("text").value];
-  if(!w) return;
+  const w = WORKS[$("text").value]; if(!w) return;
   const def = (w.trans.find(t=>/kjv|king-james/i.test(t.file)) || w.trans[0]).file;
   fillSelect($("translation"), w.trans.map(t=>[t.file, t.label]), def);
   loadText();
 }
 
-// ── load a translation's text ────────────────────────────────────────────────
+// ── load primary text ────────────────────────────────────────────────────────
 async function loadText(){
-  const id = $("text").value, file = $("translation").value;
-  const w = WORKS[id];
+  const id=$("text").value, file=$("translation").value, w=WORKS[id];
   status("Loading text…");
-  let data = await fetchJSON("data/"+file+".gz");
-  if(!data) data = await fetchJSON("data/"+file);
-  if(!data){ status("Could not load that text.", true); return; }
-  const passages = (data.passages||[]).filter(p=>Array.isArray(p.path) && p.text!=null)
-                    .slice().sort((a,b)=>a.order-b.order);
-  CUR = { id, title:data.title||w.title, label:(w.trans.find(t=>t.file===file)||{}).label||data.title,
-          hierarchy:data.hierarchy || w.hierarchy || ["section"], passages };
-  override = null; $("ref").value = "";
+  const t = await getText(file);
+  if(!t){ status("Could not load that text.", true); return; }
+  CUR = { id, title:t.title||w.title, label:(w.trans.find(x=>x.file===file)||{}).label||t.title,
+          hierarchy:t.hierarchy || w.hierarchy || ["section"], passages:t.passages };
+  override=null; $("ref").value="";
+  if(mode==="parallel") populateCompare();
   buildNav();
-  status("Ready · "+passages.length.toLocaleString()+" passages");
+  status("Ready · "+CUR.passages.length.toLocaleString()+" passages");
 }
+
+// ── compare (parallel) ───────────────────────────────────────────────────────
+function populateCompare(){
+  const w=WORKS[CUR.id], prim=$("translation").value;
+  const others=w.trans.filter(t=>t.file!==prim);
+  const box=$("compare");
+  box.innerHTML = others.length
+    ? others.map((t,i)=>`<label class="cbx"><input type="checkbox" value="${esc(t.file)}"${i===0?" checked":""}> ${esc(t.label)}</label>`).join("")
+    : `<div class="hint">No other translations of this text.</div>`;
+  box.querySelectorAll("input").forEach(cb=>cb.addEventListener("change", onCompareToggle));
+  Promise.all([...box.querySelectorAll("input:checked")].map(cb=>getText(cb.value))).then(render);
+}
+async function onCompareToggle(e){ if(e.target.checked) await getText(e.target.value); render(); }
+function compareChecked(){ return [...$("compare").querySelectorAll("input:checked")].map(c=>c.value); }
 
 // ── structured navigation ────────────────────────────────────────────────────
 function distinct(level, prefix){
@@ -215,7 +253,7 @@ function distinct(level, prefix){
     let ok = p.path.length > level;
     for(let i=0;i<prefix.length && ok;i++) if(String(p.path[i])!==String(prefix[i])) ok=false;
     if(!ok) continue;
-    const v = p.path[level];
+    const v=p.path[level];
     if(!seen.has(String(v))){ seen.add(String(v)); out.push(v); }
   }
   return out;
@@ -225,7 +263,6 @@ function ancLabel(level, v){
   if(CUR.id==="quran" && level===0) return "Surah "+(SURAH_NAMES[v]||v)+" ("+v+")";
   return cap(CUR.hierarchy[level]||"")+" "+v;
 }
-let ancVals = [];
 function ancSel(l){ return $("nav").querySelector(`select[data-level="${l}"]`); }
 function buildNav(){
   const nav=$("nav"); nav.innerHTML=""; ancVals=[];
@@ -261,12 +298,9 @@ function populateAnc(level){
     override=null; render();
   }
 }
-function onAncChange(level){
-  ancVals[level]=ancSel(level).value;
-  populateAnc(level+1);
-}
+function onAncChange(level){ ancVals[level]=ancSel(level).value; populateAnc(level+1); }
 
-// ── order lookups ────────────────────────────────────────────────────────────
+// ── order lookups + selection ────────────────────────────────────────────────
 function exactOrder(comps){
   const p = CUR.passages.find(p => p.path.length===comps.length
             && comps.every((c,i)=>String(p.path[i])===String(c)));
@@ -274,66 +308,42 @@ function exactOrder(comps){
 }
 function prefixRange(prefix){
   let lo=Infinity, hi=-Infinity;
-  for(const p of CUR.passages){
-    if(prefix.every((c,i)=>String(p.path[i])===String(c))){
-      if(p.order<lo) lo=p.order; if(p.order>hi) hi=p.order;
-    }
+  for(const p of CUR.passages) if(prefix.every((c,i)=>String(p.path[i])===String(c))){
+    if(p.order<lo) lo=p.order; if(p.order>hi) hi=p.order;
   }
   return hi>=0 ? {first:lo,last:hi} : null;
 }
-
-// ── selection from dropdowns ─────────────────────────────────────────────────
 function selFromControls(){
-  const L=CUR.hierarchy.length;
-  const prefix=ancVals.slice(0,L-1);
-  const a=exactOrder([...prefix, $("fromSel").value]);
-  const b=exactOrder([...prefix, $("toSel").value]);
+  const L=CUR.hierarchy.length, prefix=ancVals.slice(0,L-1);
+  const a=exactOrder([...prefix,$("fromSel").value]), b=exactOrder([...prefix,$("toSel").value]);
   if(a==null||b==null) return null;
   return {lo:Math.min(a,b), hi:Math.max(a,b)};
 }
-
-// ── reference parsing ────────────────────────────────────────────────────────
 function parseRef(str){
-  const L=CUR.hierarchy.length;
-  let body=str.trim(); if(!body) return null;
-  let lead=[];
+  const L=CUR.hierarchy.length; let body=str.trim(); if(!body) return null; let lead=[];
   if(CUR.id==="bible"){
-    const m=body.match(/^\s*(.+?)\s+(\d.*)$/);
-    if(!m) return null;
-    const key=m[1].toLowerCase().replace(/[^a-z0-9]/g,"");
-    const abbr=BOOK_LOOKUP[key];
-    if(!abbr) return null;
+    const m=body.match(/^\s*(.+?)\s+(\d.*)$/); if(!m) return null;
+    const abbr=BOOK_LOOKUP[m[1].toLowerCase().replace(/[^a-z0-9]/g,"")]; if(!abbr) return null;
     lead=[abbr]; body=m[2];
   }
-  const [aStr,bStr] = body.split(/\s*[-–]\s*/);
-  const part = s => s.split(/[:.]/).map(x=>x.trim()).filter(x=>x!=="");
-  const start = lead.concat(part(aStr));
-  let lo, hi;
-  if(start.length>=L) lo=exactOrder(start);
-  else { const r=prefixRange(start); lo = r && r.first; }
-  if(bStr===undefined){
-    if(start.length>=L) hi=lo;
-    else { const r=prefixRange(start); hi = r && r.last; }
-  } else {
-    let end=part(bStr);
-    if(end.length < start.length) end = start.slice(0, start.length-end.length).concat(end);
-    if(end.length>=L) hi=exactOrder(end);
-    else { const r=prefixRange(end); hi = r && r.last; }
-  }
+  const sp=body.split(/\s*[-–]\s*/), aStr=sp[0], bStr=sp[1];
+  const part=s=>s.split(/[:.]/).map(x=>x.trim()).filter(x=>x!=="");
+  const start=lead.concat(part(aStr)); let lo,hi;
+  if(start.length>=L) lo=exactOrder(start); else { const r=prefixRange(start); lo=r&&r.first; }
+  if(bStr===undefined){ if(start.length>=L) hi=lo; else { const r=prefixRange(start); hi=r&&r.last; } }
+  else { let end=part(bStr); if(end.length<start.length) end=start.slice(0,start.length-end.length).concat(end);
+    if(end.length>=L) hi=exactOrder(end); else { const r=prefixRange(end); hi=r&&r.last; } }
   if(lo==null||hi==null) return null;
   return {lo:Math.min(lo,hi), hi:Math.max(lo,hi)};
 }
-function applyRef(){
-  const r=parseRef($("ref").value);
-  if(!r){ status("Couldn't find that reference in this text.", true); return; }
-  override=r; render();
-}
+function applyRef(){ const r=parseRef($("ref").value);
+  if(!r){ status("Couldn't find that reference in this text.", true); return; } override=r; render(); }
 
 // ── citation ─────────────────────────────────────────────────────────────────
 function citation(sel){
   const f=sel[0].path, l=sel[sel.length-1].path, id=CUR.id;
   if(id==="bible"){
-    const bk = (f[0]==="psa"?"Psalm":BOOK_NAMES[f[0]]||f[0]);
+    const bk=(f[0]==="psa"?"Psalm":BOOK_NAMES[f[0]]||f[0]);
     if(f[0]!==l[0]) return `${bk}–${BOOK_NAMES[l[0]]||l[0]}`;
     if(f[1]===l[1] && f[2]===l[2]) return `${bk} ${f[1]}:${f[2]}`;
     if(f[1]===l[1]) return `${bk} ${f[1]}:${f[2]}–${l[2]}`;
@@ -354,61 +364,77 @@ function citation(sel){
 // ── render ───────────────────────────────────────────────────────────────────
 function render(){
   if(!CUR) return;
-  const r = override || selFromControls();
-  if(!r){ return; }
-  const sel = CUR.passages.filter(p=>p.order>=r.lo && p.order<=r.hi);
-  if(!sel.length){ return; }
-  const L=CUR.hierarchy.length;
-  const ref=citation(sel);
-
-  const page=$("page");
-  page.className = ST.size + " " + ST.fam;
+  const r=override||selFromControls(); if(!r) return;
+  const sel=CUR.passages.filter(p=>p.order>=r.lo && p.order<=r.hi); if(!sel.length) return;
+  const ref=citation(sel), page=$("page");
+  page.className=ST.size+" "+ST.fam;
   page.style.setProperty("--fs", ST.fs+"pt");
   page.style.setProperty("--lh", ST.lh);
-
-  // section headers when the selection spans more than one section (path minus leaf)
-  const sectionKey = p => p.path.slice(0,-1).join("|");
-  const multiSection = L>1 && new Set(sel.map(sectionKey)).size > 1;
-  let html = `<div class="ttl">${esc(ref)}</div><div class="sub">${esc(CUR.label)}</div><hr>`;
+  if(mode==="parallel") renderParallel(sel, ref); else renderSingle(sel, ref);
+  document.title="The Press — "+ref;
+}
+function renderSingle(sel, ref){
+  const L=CUR.hierarchy.length;
+  const sectionKey=p=>p.path.slice(0,-1).join("|");
+  const multi = L>1 && new Set(sel.map(sectionKey)).size>1;
+  let html=`<div class="ttl">${esc(ref)}</div><div class="sub">${esc(CUR.label)}</div><hr>`;
   let curKey=null, buf=[];
   const flush=()=>{ if(buf.length){ html+=`<div class="body${ST.just?" just":""}">${buf.join(" ")}</div>`; buf=[]; } };
   for(const p of sel){
-    if(multiSection){
-      const k=sectionKey(p);
-      if(k!==curKey){ flush(); curKey=k;
-        let lab;
-        if(CUR.id==="bible") lab=(BOOK_NAMES[p.path[0]]||p.path[0])+" "+p.path[1];
-        else lab=cap(CUR.hierarchy[L-2]||"")+" "+p.path[L-2];
-        html+=`<div class="chap">${esc(lab)}</div>`;
-      }
-    }
-    const leaf=p.path[L-1];
-    buf.push(`<span class="vn">${esc(leaf)}</span> ${esc(p.text)}`);
+    if(multi){ const k=sectionKey(p); if(k!==curKey){ flush(); curKey=k;
+      const lab = CUR.id==="bible" ? (BOOK_NAMES[p.path[0]]||p.path[0])+" "+p.path[1] : cap(CUR.hierarchy[L-2]||"")+" "+p.path[L-2];
+      html+=`<div class="chap">${esc(lab)}</div>`; } }
+    buf.push(`<span class="vn">${esc(p.path[L-1])}</span> ${esc(p.text)}`);
   }
   flush();
-  html += `<hr><div class="foot">${esc(ref)} · ${esc(CUR.label)} · Digital Archive</div>`;
-  page.innerHTML = html;
-  document.title = "The Press — " + ref;
-  status(ref + " · " + sel.length + (sel.length===1?" passage":" passages"));
+  html+=`<hr><div class="foot">${esc(ref)} · ${esc(CUR.label)} · Digital Archive</div>`;
+  $("page").innerHTML=html;
+  status(ref+" · "+sel.length+(sel.length===1?" passage":" passages"));
+}
+function renderParallel(sel, ref){
+  const L=CUR.hierarchy.length, prim=$("translation").value;
+  const cols=[prim, ...compareChecked().filter(f=>f!==prim)];
+  const w=WORKS[CUR.id];
+  const labelFor=f=>(w.trans.find(t=>t.file===f)||{}).label||f;
+  let html=`<div class="ttl">${esc(ref)}</div><div class="sub">Parallel · ${cols.length} translation${cols.length===1?"":"s"}</div><hr>`;
+  html+=`<table class="par"><thead><tr><th class="vh"></th>`+cols.map(f=>`<th>${esc(labelFor(f))}</th>`).join("")+`</tr></thead><tbody>`;
+  for(const p of sel){
+    const key=p.path.join("|");
+    html+=`<tr><td class="vh">${esc(p.path[L-1])}</td>`+cols.map(f=>{
+      const txt = f===prim ? p.text : ((TEXTCACHE[f]&&TEXTCACHE[f].byKey[key]) || "—");
+      return `<td>${esc(txt)}</td>`;
+    }).join("")+`</tr>`;
+  }
+  html+=`</tbody></table><hr><div class="foot">${esc(ref)} · parallel · Digital Archive</div>`;
+  $("page").innerHTML=html;
+  status(ref+" · "+sel.length+" × "+cols.length+" translations");
 }
 
 // ── controls wiring ──────────────────────────────────────────────────────────
+function syncSize(){ [...$("sizeSeg").children].forEach(b=>b.classList.toggle("on", b.dataset.size===ST.size)); }
 $("tradition").onchange = populateTexts;
 $("text").onchange = populateTranslations;
-$("translation").onchange = loadText;
+$("translation").onchange = ()=>{ loadText(); };
+$("modeSeg").onclick = e=>{ const b=e.target.closest("button"); if(!b) return;
+  mode=b.dataset.mode; [...$("modeSeg").children].forEach(x=>x.classList.toggle("on",x===b));
+  $("compareSec").style.display = mode==="parallel" ? "block" : "none";
+  if(mode==="parallel"){ if(ST.size==="a6"||ST.size==="receipt"){ ST.size="a4"; syncSize(); } populateCompare(); }
+  else render();
+};
 $("refgo").onclick = applyRef;
 $("ref").addEventListener("keydown", e=>{ if(e.key==="Enter") applyRef(); });
 $("sizeSeg").onclick = e=>{ const b=e.target.closest("button"); if(!b) return;
-  ST.size=b.dataset.size; [...$("sizeSeg").children].forEach(x=>x.classList.toggle("on",x===b)); render(); };
+  ST.size=b.dataset.size; syncSize(); render(); };
 $("famSeg").onclick = e=>{ const b=e.target.closest("button"); if(!b) return;
   ST.fam=b.dataset.fam; [...$("famSeg").children].forEach(x=>x.classList.toggle("on",x===b)); render(); };
 $("fs").oninput = e=>{ ST.fs=parseFloat(e.target.value); $("fsVal").textContent=ST.fs; render(); };
 $("lh").oninput = e=>{ ST.lh=parseFloat(e.target.value); $("lhVal").textContent=ST.lh; render(); };
 $("justify").onchange = e=>{ ST.just=e.target.checked; render(); };
 $("print").onclick = ()=>{
-  const css={a6:"A6",a5:"A5",receipt:"80mm auto"}[ST.size];
+  const css={a6:"A6",a5:"A5",a4:"A4",letter:"Letter",receipt:"80mm auto"}[ST.size];
+  const marg={a6:"8mm",a5:"12mm",a4:"14mm",letter:"14mm",receipt:"5mm"}[ST.size];
   let st=$("pagecss"); if(!st){ st=document.createElement("style"); st.id="pagecss"; document.head.appendChild(st); }
-  st.textContent=`@page{ size:${css}; margin:${ST.size==="a5"?"12mm":ST.size==="a6"?"8mm":"5mm"}; }`;
+  st.textContent=`@page{ size:${css}; margin:${marg}; }`;
   window.print();
 };
 
