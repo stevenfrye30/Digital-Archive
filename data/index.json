@@ -32732,6 +32732,34 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_luther-1545.json",
+      "source": "getbiblenet",
+      "author": [],
+      "translator": [
+        "Martin Luther"
+      ],
+      "year": 1545,
+      "translation_label": "Luther Bible 1545 (Lutherbibel 1545, modernized spelling)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
     }
   ]
 }
