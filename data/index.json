@@ -32675,6 +32675,35 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_reina-valera-1909.json",
+      "source": "ebible",
+      "author": [],
+      "translator": [
+        "Casiodoro de Reina",
+        "Cipriano de Valera"
+      ],
+      "year": 1909,
+      "translation_label": "Reina-Valera 1909 (Santa Biblia)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
     }
   ]
 }
