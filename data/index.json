@@ -32816,6 +32816,36 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "targum-onkelos-etheridge",
+      "title": "Targum Onkelos (Etheridge English)",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "targum-onkelos-etheridge_etheridge.json",
+      "source": "ebible",
+      "author": [
+        "Onkelos (traditional attribution)"
+      ],
+      "translator": [
+        "John Wesley Etheridge"
+      ],
+      "year": 1862,
+      "translation_label": "The Targum of Onkelos on the Pentateuch (Etheridge, 1862-65)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*Targum Onkelos* on the Pentateuch, English tr. J. W. Etheridge (1862-65). Onkelos portion only. Via eBible.org (engoke).",
+      "importance_rank": 6,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
     }
   ]
 }
