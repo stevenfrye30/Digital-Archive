@@ -21616,6 +21616,19 @@ function closeRestrictedDossier(familyId) {
   $reader.scrollTop = 0;
 }
 
+// A witness is renderable only if its route is safe AND its source text
+// is actually loadable (present in the index via indexGroups). Guards
+// against witness records whose underlying data file was removed (the
+// "dedup, copyright review" pass deleted the Hume / Sastri / Röer
+// Upanishad witness files but left their witness references in place) —
+// such witnesses must not show as active/clickable or inflate counts.
+// Self-heals automatically if the data is later restored to the index.
+function _witnessRenderable(w) {
+  if (!(w.routeQuality === 'safe' || w.routeQuality === 'safe-start')) return false;
+  return typeof indexGroups !== 'undefined'
+    && Array.isArray(indexGroups[w.textId]) && indexGroups[w.textId].length > 0;
+}
+
 // Build the enriched 108 model from the public MUKTIKA_108 canon,
 // the active byUpanishad routes, and the RESTRICTED_SOURCES register.
 // Each returned entry: { n, name, veda, cls, key, active, witnessCount,
@@ -21658,8 +21671,7 @@ function _buildMuktika108Map(fam) {
   }
   return MUKTIKA_108.map(m => {
     const u = m.key ? byKey[m.key] : null;
-    const witnesses = u ? (u.witnesses || []).filter(
-      w => w.routeQuality === 'safe' || w.routeQuality === 'safe-start') : [];
+    const witnesses = u ? (u.witnesses || []).filter(_witnessRenderable) : [];
     const active = !!(m.key && witnesses.length);
     // Local availability only applies to entries that are NOT public-active.
     const localSource = (!active && localByNum[m.n]) ? localByNum[m.n] : null;
@@ -22202,8 +22214,7 @@ function _renderUpanishadsByTraditional(fam) {
 // preview of the primary witness so the user can see which edition
 // they would land in before clicking.
 function _byUpanishadTileHTML(u, familyId) {
-  const witnesses = (u.witnesses || []).filter(
-    w => w.routeQuality === 'safe' || w.routeQuality === 'safe-start');
+  const witnesses = (u.witnesses || []).filter(_witnessRenderable);
   if (!witnesses.length) return '';
   const primary = witnesses[0];
   const witnessBadge = witnesses.length > 1
@@ -22266,8 +22277,7 @@ function showUpanishadDetail(familyId, upnKey) {
   // v102 — Metadata band: importance · Veda · veda source · active
   // witness count. Reinforces source transparency before the user
   // routes into the reading room.
-  const safeWitnesses = (u.witnesses || []).filter(
-    w => w.routeQuality === 'safe' || w.routeQuality === 'safe-start');
+  const safeWitnesses = (u.witnesses || []).filter(_witnessRenderable);
   const metaBits = [];
   if (u.importance) {
     metaBits.push((u.importance === 'principal' ? 'Principal' : 'Minor') + ' Upanishad');
