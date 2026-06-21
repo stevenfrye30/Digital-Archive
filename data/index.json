@@ -6359,6 +6359,34 @@
       "reading_status_certified": false
     },
     {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_webster-bible.json",
+      "source": "getbiblenet",
+      "author": [],
+      "translator": [
+        "Noah Webster"
+      ],
+      "year": 1833,
+      "translation_label": "Webster's Bible (1833)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "jefferson-bible",
       "title": "The Life and Morals of Jesus of Nazareth",
       "tradition": "Christian",
