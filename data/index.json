@@ -6471,6 +6471,35 @@
       "reading_status_certified": true
     },
     {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_arabic-van-dyck-1865.json",
+      "source": "ebible",
+      "author": [],
+      "translator": [
+        "Cornelius Van Dyck",
+        "Eli Smith"
+      ],
+      "year": 1865,
+      "translation_label": "Arabic Van Dyck Bible (1865)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
       "id": "jefferson-bible",
       "title": "The Life and Morals of Jesus of Nazareth",
       "tradition": "Christian",
