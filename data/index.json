@@ -6415,6 +6415,34 @@
       "reading_status_certified": false
     },
     {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_murdock-peshitta-new-testament.json",
+      "source": "crosswire-bible-society-(sword)",
+      "author": [],
+      "translator": [
+        "James Murdock"
+      ],
+      "year": 1851,
+      "translation_label": "Murdock Peshitta New Testament (English, 1851)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "jefferson-bible",
       "title": "The Life and Morals of Jesus of Nazareth",
       "tradition": "Christian",
