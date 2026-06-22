@@ -4000,6 +4000,19 @@ details.display-options > summary {
   color: var(--chrome-active, #864);
   margin-right: 6px;
 }
+/* Language section heading on the grouped Bible cover (Option B grouping).
+   Calm, restrained — a quiet ledger divider, not a redesign. */
+.gt-lang-heading {
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--chrome-muted, #6a5f4b);
+  margin: 14px 2px 2px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--chrome-border, #d8d1c4);
+}
+.gt-lang-heading:first-child { margin-top: 0; }
 
 /* ── Table of contents page ───────────────────────────────────────────────── */
 
@@ -13618,6 +13631,74 @@ $metaToggle.addEventListener('click', () => {
     metaVisible ? 'Hide text info' : 'About this text';
 });
 
+// ── Christian Bible language grouping (UI-only; Option B) ─────────────────────
+// Manual map keyed by data_file -> the reading/body language (what the reader
+// actually reads), per plans/design_christian_bible_language_grouping.md. Used
+// ONLY for the grouped 'bible' cover; every other family is untouched. English
+// deliberately includes English translations of non-English textual traditions
+// (Etheridge/Murdock English Peshitta; Brenton/LXX2012 English Septuagint) —
+// grouped by what the reader reads, not by the ancient source language. Any
+// Bible witness NOT listed here falls to an 'Other' section (never dropped).
+const BIBLE_LANGUAGE_BY_FILE = {
+  'bible_asv.json': 'English',
+  'bible_bible-in-basic-english.json': 'English',
+  'bible_brenton-septuagint-translation.json': 'English',
+  'bible_darby.json': 'English',
+  'bible_douay-rheims-bible.json': 'English',
+  'bible_etheridge-peshitta-new-testament.json': 'English',
+  'bible_geneva-bible.json': 'English',
+  'bible_kjv.json': 'English',
+  'bible_lxx-septuagint.json': 'English',
+  'bible_murdock-peshitta-new-testament.json': 'English',
+  'bible_revised-version-with-apocrypha.json': 'English',
+  'bible_tyndale-new-testament.json': 'English',
+  'bible_web.json': 'English',
+  'bible_webster-bible.json': 'English',
+  'bible_weymouth-new-testament.json': 'English',
+  'bible_wycliffe-bible.json': 'English',
+  'bible_youngs-literal-translation.json': 'English',
+  'bible_brenton-septuagint-greek.json': 'Greek',
+  'bible_nestle-1904-greek-new-testament.json': 'Greek',
+  'bible_sbl-nt.json': 'Greek',
+  'bible_tr.json': 'Greek',
+  'bible_majority-text-new-testament.json': 'Greek',
+  'bible_luther-1545.json': 'German',
+  'bible_luther-1912.json': 'German',
+  'bible_vulgate.json': 'Latin',
+  'bible_louis-segond-1910.json': 'French',
+  'bible_statenvertaling.json': 'Dutch',
+  'bible_diodati-1649.json': 'Italian',
+  'bible_reina-valera-1909.json': 'Spanish',
+  'bible_russian-synodal-1876.json': 'Russian',
+  'bible_arabic-van-dyck-1865.json': 'Arabic',
+  'bible_chinese-union-cunp-traditional.json': 'Chinese',
+  'bible_salkinson-new-testament.json': 'Hebrew',
+  'bible_peshitta.json': 'Syriac / Aramaic',
+};
+// Section display order; 'Other' (unmapped fallback) always renders last.
+const BIBLE_LANGUAGE_ORDER = ['English', 'Greek', 'German', 'Latin', 'Hebrew',
+  'Syriac / Aramaic', 'French', 'Dutch', 'Italian', 'Spanish', 'Russian',
+  'Arabic', 'Chinese', 'Other'];
+// Canon-scope tier for in-section sort: 1 complete -> 2 OT/Septuagint ->
+// 3 New Testament only -> 4 partial. Manual & UI-only (mirrors the private
+// canon metadata; not read from the public index). Unlisted -> tier 1.
+const BIBLE_CANON_TIER_BY_FILE = {
+  'bible_brenton-septuagint-greek.json': 2,
+  'bible_brenton-septuagint-translation.json': 2,
+  'bible_lxx-septuagint.json': 2,
+  'bible_peshitta.json': 2,
+  'bible_etheridge-peshitta-new-testament.json': 3,
+  'bible_majority-text-new-testament.json': 3,
+  'bible_murdock-peshitta-new-testament.json': 3,
+  'bible_nestle-1904-greek-new-testament.json': 3,
+  'bible_salkinson-new-testament.json': 3,
+  'bible_sbl-nt.json': 3,
+  'bible_tr.json': 3,
+  'bible_tyndale-new-testament.json': 3,
+  'bible_weymouth-new-testament.json': 3,
+  'bible_wycliffe-bible.json': 4,
+};
+
 // ── Cover page ───────────────────────────────────────────────────────────────
 
 function showGroupCover(group, listItem) {
@@ -13649,8 +13730,29 @@ function showGroupCover(group, listItem) {
   $groupCoverAuthor.style.display = authors ? 'block' : 'none';
 
   $groupCoverTranslations.innerHTML = '';
-  // Sort: primary first, then by translator name
+  // Sort: primary first, then by translator name. For the grouped Bible
+  // (Option B, UI-only) sort instead by language section, so the existing
+  // loop below can emit a calm heading at each language boundary. Every
+  // witness is still iterated exactly once (unmapped -> 'Other'), so none
+  // can be dropped or duplicated and the rendered button count is unchanged.
+  const isBibleGroup = group.id === 'bible';
+  const bibleLangIndex = (e) => {
+    const i = BIBLE_LANGUAGE_ORDER.indexOf(BIBLE_LANGUAGE_BY_FILE[e.data_file] || 'Other');
+    return i === -1 ? BIBLE_LANGUAGE_ORDER.length : i;
+  };
   const sortedEntries = group.entries.slice().sort((a, b) => {
+    if (isBibleGroup) {
+      const la = bibleLangIndex(a), lb = bibleLangIndex(b);
+      if (la !== lb) return la - lb;
+      if ((a.quality === 'primary') !== (b.quality === 'primary'))
+        return a.quality === 'primary' ? -1 : 1;
+      const ta = BIBLE_CANON_TIER_BY_FILE[a.data_file] || 1;
+      const tb = BIBLE_CANON_TIER_BY_FILE[b.data_file] || 1;
+      if (ta !== tb) return ta - tb;
+      const ya = a.year || 999999, yb = b.year || 999999;
+      if (ya !== yb) return ya - yb;
+      return translationLabel(a).localeCompare(translationLabel(b));
+    }
     if ((a.quality === 'primary') !== (b.quality === 'primary')) {
       return a.quality === 'primary' ? -1 : 1;
     }
@@ -13658,7 +13760,20 @@ function showGroupCover(group, listItem) {
     const bt = (b.translator || []).join(' ');
     return at.localeCompare(bt);
   });
+  let _lastBibleLang = null;
   for (const entry of sortedEntries) {
+    if (isBibleGroup) {
+      const lang = BIBLE_LANGUAGE_BY_FILE[entry.data_file] || 'Other';
+      if (lang !== _lastBibleLang) {
+        const n = sortedEntries.filter(
+          e => (BIBLE_LANGUAGE_BY_FILE[e.data_file] || 'Other') === lang).length;
+        const h = document.createElement('div');
+        h.className = 'gt-lang-heading';
+        h.textContent = lang + ' · ' + n;
+        $groupCoverTranslations.appendChild(h);
+        _lastBibleLang = lang;
+      }
+    }
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'group-translation-btn';
