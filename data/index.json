@@ -32820,6 +32820,34 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_tischendorf-greek-new-testament.json",
+      "source": "morphgntorg",
+      "author": [],
+      "translator": [
+        "Constantin von Tischendorf"
+      ],
+      "year": 1872,
+      "translation_label": "Tischendorf Greek New Testament, 8th ed.",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
     }
   ]
 }
