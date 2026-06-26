@@ -32906,6 +32906,34 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_twentieth-century-new-testament.json",
+      "source": "sunday-school-union-(london)---fleming-h-revell-(new-york),-1904",
+      "author": [],
+      "translator": [
+        "Twentieth Century New Testament Committee (anonymous)"
+      ],
+      "year": 1904,
+      "translation_label": "Twentieth Century New Testament, 1904",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
     }
   ]
 }
