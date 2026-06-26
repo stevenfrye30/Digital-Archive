@@ -114,3 +114,19 @@ data/nahjul-balagha_al-jibouri.json
 data/nahjul-balagha_al-jibouri.json.gz
 data/ginza-rabba_lidzbarski.json
 data/ginza-rabba_lidzbarski.json.gz
+
+# 2026-06 — restricted_toolkits: ship ONLY code + metadata + instructions +
+# structural signatures. NEVER commit text, sources, output, or fixtures. A
+# toolkit's OUTPUT lands in the already-gitignored data/_restricted/ tree.
+restricted_toolkits/**/fixtures/
+restricted_toolkits/**/sources/
+restricted_toolkits/**/generated/
+restricted_toolkits/**/output/
+restricted_toolkits/**/*.local.json
+restricted_toolkits/**/*.restricted.json
+restricted_toolkits/**/*.txt
+restricted_toolkits/**/*.epub
+restricted_toolkits/**/*.pdf
+restricted_toolkits/**/*.usfm
+restricted_toolkits/**/*.WH
+restricted_toolkits/**/__pycache__/

@@ -1,0 +1,13 @@
+{
+  "id": "<text-id>",
+  "edition": "<exact edition the signatures were generated from>",
+  "unit_count": 0,
+  "first_id": null,
+  "last_id": null,
+  "book_unit_counts": {},
+  "ordered_ids_sha256": null,
+  "per_unit": { "mode": "length+tokens", "items": {} },
+  "strict_hashes_sha256": null,
+  "generator": "<id> parse.py v0.1.0",
+  "notes": "structural fingerprints only; length = chars, tokens = whitespace-delimited; no text"
+}

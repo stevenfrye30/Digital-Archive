@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# restricted_toolkits guard — block commits that introduce text/source/output/fixtures.
+# Install:  git -C 03_web_app config core.hooksPath restricted_toolkits/tools/hooks
+# (or copy this file to 03_web_app/.git/hooks/pre-commit and chmod +x)
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+SCAN="$REPO_ROOT/restricted_toolkits/tools/scan_no_text.py"
+
+# staged files under restricted_toolkits/ (added/copied/modified)
+mapfile -t STAGED < <(git diff --cached --name-only --diff-filter=ACM | grep '^restricted_toolkits/' || true)
+
+if [ "${#STAGED[@]}" -eq 0 ]; then
+  exit 0
+fi
+
+ABS=()
+for f in "${STAGED[@]}"; do ABS+=("$REPO_ROOT/$f"); done
+
+if ! python "$SCAN" "${ABS[@]}"; then
+  echo ""
+  echo "pre-commit BLOCKED: restricted_toolkits must contain no text/source/output/fixtures."
+  echo "Remove the flagged content (it belongs in gitignored data/_restricted/), then re-commit."
+  exit 1
+fi
+exit 0

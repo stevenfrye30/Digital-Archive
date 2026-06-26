@@ -1,0 +1,26 @@
+{
+  "id": "<text-id>",
+  "schema_version": 1,
+  "title": "<bibliographic title>",
+  "edition": "<exact edition/printing this toolkit targets>",
+  "year": 0,
+  "language": "<iso-639>",
+  "output_schema": "generic",
+  "rights": {
+    "holder": "<rightsholder or 'public domain'>",
+    "status": "in-copyright",
+    "distributable": false,
+    "why_restricted": "<one line>",
+    "rights_file": "RIGHTS.md"
+  },
+  "source_options": [
+    { "kind": "user-file", "default": true, "formats": ["txt"], "notes": "<what the user must supply>" },
+    { "kind": "official-download", "url": "<url>", "allowed": false, "reason": "<ToS/paywall/why blocked>" }
+  ],
+  "output": {
+    "path": "data/_restricted/generated/<text-id>.local.json",
+    "register_id": null
+  },
+  "signatures_file": "SIGNATURES.json",
+  "toolkit_version": "0.1.0"
+}

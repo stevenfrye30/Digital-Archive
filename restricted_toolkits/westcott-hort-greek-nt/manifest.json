@@ -1,0 +1,28 @@
+{
+  "id": "westcott-hort-greek-nt",
+  "schema_version": 1,
+  "title": "Westcott-Hort Greek New Testament (1881) — unaccented Robinson digitization",
+  "edition": "byztxt 'textonly' *.WH per-book files (unaccented beta-code)",
+  "year": 1881,
+  "language": "grc",
+  "output_schema": "bible",
+  "rights": {
+    "holder": "public domain",
+    "status": "public-domain",
+    "distributable": true,
+    "why_restricted": "none — public-domain proof-of-concept; exercised through the restricted/local pipeline to validate the toolkit machinery and guardrails with zero legal exposure",
+    "rights_file": "RIGHTS.md"
+  },
+  "source_options": [
+    { "kind": "user-file", "default": true, "formats": ["whdir"],
+      "notes": "a directory of byztxt 'textonly' per-book files named MT.WH, MR.WH, ... RE.WH (27 files)" },
+    { "kind": "official-download", "url": "https://github.com/byztxt/greektext-westcott-hort",
+      "allowed": true, "reason": "Public Domain — byztxt states 'Public Domain. Copy freely.'" }
+  ],
+  "output": {
+    "path": "data/_restricted/generated/westcott-hort-greek-nt.local.json",
+    "register_id": null
+  },
+  "signatures_file": "SIGNATURES.json",
+  "toolkit_version": "0.1.0"
+}
