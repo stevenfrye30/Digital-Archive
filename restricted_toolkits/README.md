@@ -53,6 +53,18 @@ gitignored local tree. No restricted-text package exists yet.
 
 ## Guards
 
-`tools/scan_no_text.py` (run by `tools/hooks/pre-commit`) blocks any commit that would
-introduce text/source/output/fixtures or oversized/prose-like files into this tree.
+Two git hooks enforce the boundary:
+- **pre-commit** → `tools/scan_no_text.py` — blocks any commit that would introduce
+  text/source/output/fixtures or oversized/prose-like files into this tree.
+- **pre-push** → `05_scripts/check_restricted_invariants.py` — **fails closed**: blocks a
+  push if any restricted text would ship publicly (restricted entry tracked, a shipped
+  body mapping to a restricted entry, or `data/_restricted/` not gitignored).
+
+`core.hooksPath` is local git config (not committed), so install the hooks **once per clone**:
+
+```
+bash restricted_toolkits/tools/install-hooks.sh
+# (equivalently: git config core.hooksPath restricted_toolkits/tools/hooks)
+```
+
 See `CONVENTIONS.md` for the full package contract.
