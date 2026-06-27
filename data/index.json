@@ -32934,6 +32934,34 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_scrivener-textus-receptus-1894.json",
+      "source": "byztxt",
+      "author": [],
+      "translator": [
+        "Frederick Henry Ambrose Scrivener"
+      ],
+      "year": 1894,
+      "translation_label": "Scrivener's Textus Receptus, 1894 — unaccented Robinson digitization",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
     }
   ]
 }
