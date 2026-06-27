@@ -33018,6 +33018,34 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_emphatic-diaglott-interlinear-1864.json",
+      "source": "studybibleinfo",
+      "author": [],
+      "translator": [
+        "Benjamin Wilson"
+      ],
+      "year": 1864,
+      "translation_label": "The Emphatic Diaglott — interlinear word-for-word English gloss (Benjamin Wilson, 1864)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
     }
   ]
 }
