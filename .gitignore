@@ -130,3 +130,13 @@ restricted_toolkits/**/*.pdf
 restricted_toolkits/**/*.usfm
 restricted_toolkits/**/*.WH
 restricted_toolkits/**/__pycache__/
+
+# 2026-06-28 — Generated diagnostic render output. PNG screenshots, CSV,
+# and diagnostic scripts reproduce from the canonical library and are
+# local-only. Hand-authored reports/*.md docs stay tracked. NOTE: this
+# only stops NEW untracked files; already-tracked reports (467 png /
+# 86 py) are unaffected and need a separate `git rm --cached` to drop.
+reports/*.png
+reports/**/*.png
+reports/*.csv
+reports/*.py
