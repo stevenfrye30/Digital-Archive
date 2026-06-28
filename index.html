@@ -21480,6 +21480,13 @@ const COMPLETED_FAMILY_META = {
     collection: 'public-safe collection',
     modes: ['Arabic', 'English', 'Public'],
   },
+  tanakh: {
+    title: 'Tanakh',
+    status: 'Finalized family',
+    unit: 'texts',
+    collection: 'public-domain collection',
+    modes: ['Hebrew', 'English', 'Public'],
+  },
 };
 
 /** Build HTML for a completed text-family entrance card (reusable). */
@@ -24830,15 +24837,28 @@ function browseBibleLang(cat, trd, lang) {
 // Back-compat wrapper: the old "View all" entry now maps to the All mode.
 function browseBibleAll(cat, trd) { browseBibleRoom(cat, trd, 'all'); }
 
-// ── Quran room (UI-only) ─────────────────────────────────────────────────────
-// The public Quran shelf is small (4 public-safe texts), so its room is a simple
-// list: the Arabic source (Uthmani) shown separately, then the English
-// translations together. No Date/Translator modes. Restricted/local-only Quran
-// translations are never in the public index, so nothing to filter here; cards
-// open the existing reader via browseOpen()->loadText.
-const QURAN_ARABIC_FILES = new Set(['quran_uthmani-tanzil.json']);
+// ── Simple family room (UI-only, reusable) ───────────────────────────────────
+// Small public-safe shelves (Quran, Tanakh, …) whose room is just a subtitle +
+// an optional source-language section (e.g. Arabic / Hebrew) + the remaining
+// translations. No Date/Translator modes. Restricted/local-only entries are
+// never in the public index, so there is nothing to filter; cards open the
+// existing reader via browseOpen()->loadText. Add a family by listing it here.
+const SIMPLE_FAMILY_ROOMS = {
+  quran: {
+    subtitle: n => `Browse ${n} public-safe Quran texts.`,
+    sourceLabel: 'Arabic',
+    sourceFiles: ['quran_uthmani-tanzil.json'],
+    restLabel: 'English translations',
+  },
+  tanakh: {
+    subtitle: n => `Browse ${n} public-domain Tanakh texts.`,
+    sourceLabel: 'Hebrew (Masoretic)',
+    sourceFiles: ['tanakh_masoretic.json', 'tanakh_wlc.json'],
+    restLabel: 'English translations',
+  },
+};
 
-function _quranTileHTML(e) {
+function _simpleFamilyTileHTML(e) {
   const star = e.quality === 'primary' ? '★' : '';
   const label = translationLabel(e) || e.data_file;
   const tr = (e.translator || []).filter(Boolean).join(', ');
@@ -24855,9 +24875,10 @@ function _quranTileHTML(e) {
     </div>`;
 }
 
-function browseQuranRoom(cat, trd) {
-  const group = indexGroups['quran'];
-  if (!group || !group.length) return;
+function browseSimpleFamilyRoom(cat, trd, id) {
+  const cfg = SIMPLE_FAMILY_ROOMS[id];
+  const group = indexGroups[id];
+  if (!cfg || !group || !group.length) return;
   showBrowse();
   document.getElementById('browse-toolbar').style.display = 'none';
   browseHistory = [{fn: browseHome}, {fn: browseCategory, args: [cat]},
@@ -24872,30 +24893,36 @@ function browseQuranRoom(cat, trd) {
   $browseTitle.textContent = title;
 
   const total = group.length;
-  const arabic = group.filter(e => QURAN_ARABIC_FILES.has(e.data_file));
-  const english = group.filter(e => !QURAN_ARABIC_FILES.has(e.data_file));
-  english.sort((a, b) => {
+  const srcSet = new Set(cfg.sourceFiles || []);
+  const sortFam = (a, b) => {
     if ((a.quality === 'primary') !== (b.quality === 'primary'))
       return a.quality === 'primary' ? -1 : 1;
+    const ya = a.year || 999999, yb = b.year || 999999;
+    if (ya !== yb) return ya - yb;
     return (translationLabel(a) || '').localeCompare(translationLabel(b) || '');
-  });
+  };
+  const source = group.filter(e => srcSet.has(e.data_file)).sort(sortFam);
+  const rest = group.filter(e => !srcSet.has(e.data_file)).sort(sortFam);
 
   // Reuse the compact room container + responsive grid from the Bible room.
   $browseTiles.className = 'bible-room';
-  let html = `<p class="bible-room-subtitle">Browse ${total} public-safe Quran texts.</p>`;
+  let html = `<p class="bible-room-subtitle">${escH(cfg.subtitle(total))}</p>`;
   html += `<div class="bible-witness-grid">`;
-  if (arabic.length) {
-    html += `<div class="tile-section-label">Arabic · ${arabic.length}</div>`;
-    for (const e of arabic) html += _quranTileHTML(e);
+  if (source.length) {
+    html += `<div class="tile-section-label">${escH(cfg.sourceLabel)} · ${source.length}</div>`;
+    for (const e of source) html += _simpleFamilyTileHTML(e);
   }
-  if (english.length) {
-    html += `<div class="tile-section-label">English translations · ${english.length}</div>`;
-    for (const e of english) html += _quranTileHTML(e);
+  if (rest.length) {
+    html += `<div class="tile-section-label">${escH(cfg.restLabel)} · ${rest.length}</div>`;
+    for (const e of rest) html += _simpleFamilyTileHTML(e);
   }
   html += `</div>`;
   $browseTiles.innerHTML = html;
   $reader.scrollTop = 0;
 }
+
+// Back-compat wrapper (the Quran family card / any earlier reference).
+function browseQuranRoom(cat, trd) { browseSimpleFamilyRoom(cat, trd, 'quran'); }
 
 function browseText(cat, trd, textId) {
   const group = indexGroups[textId];
@@ -24916,8 +24943,9 @@ function browseText(cat, trd, textId) {
   // links bypass this entirely.
   if (textId === 'bible') { browseBibleRoom(cat, trd, 'language'); return; }
 
-  // Quran — small public-safe shelf; open the simple Arabic/English room.
-  if (textId === 'quran') { browseQuranRoom(cat, trd); return; }
+  // Small public-safe scripture families (Quran, Tanakh) open a simple
+  // source-language + translations room.
+  if (SIMPLE_FAMILY_ROOMS[textId]) { browseSimpleFamilyRoom(cat, trd, textId); return; }
 
   // Multiple translations — show chooser tiles
   showBrowse();
