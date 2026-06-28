@@ -2787,7 +2787,41 @@ button.home-path {
   font-size: 14px;
   font-style: italic;
   color: var(--chrome-muted);
-  margin: 2px 0 16px;
+  margin: 2px 0 10px;
+}
+/* Language / Date / All mode selector (segmented control). */
+.bible-mode-selector {
+  display: inline-flex;
+  gap: 2px;
+  margin: 0 0 18px;
+  padding: 2px;
+  border: 1px solid var(--shelf-card-edge, rgba(120, 95, 60, 0.30));
+  border-radius: 6px;
+  background: var(--chrome-bg);
+}
+.bible-mode-btn {
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--chrome-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.bible-mode-btn:hover { color: var(--chrome-fg); }
+.bible-mode-btn.active {
+  background: var(--shelf-card-surface, #f6f0e2);
+  color: var(--chrome-fg);
+  box-shadow: 0 1px 0 rgba(60, 42, 22, 0.06);
+  font-weight: 600;
+}
+/* Date / All witness grid (responsive; section labels span full width). */
+.bible-witness-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
 }
 .bible-featured {
   display: grid;
@@ -24377,22 +24411,51 @@ function _bibleCrumb(cat, trd, title, tail) {
       : escH(title));
 }
 
-function browseBibleLanguages(cat, trd) {
-  const group = indexGroups['bible'];
-  if (!group || !group.length) return;
-  showBrowse();
-  document.getElementById('browse-toolbar').style.display = 'none';
-  browseHistory = [{fn: browseHome}, {fn: browseCategory, args: [cat]},
-                   {fn: browseTradition, args: [cat, trd]}];
-  const title = group[0].title;
-  $browseCrumb.innerHTML = _bibleCrumb(cat, trd, title, null);
-  $browseTitle.textContent = title;
+// Century/era buckets for Date mode. Tested in order; first match wins.
+const BIBLE_ERAS = [
+  { label: 'Medieval', test: y => y < 1500 },
+  { label: '1500s',    test: y => y >= 1500 && y < 1600 },
+  { label: '1600s',    test: y => y >= 1600 && y < 1700 },
+  { label: '1700s',    test: y => y >= 1700 && y < 1800 },
+  { label: '1800s',    test: y => y >= 1800 && y < 1900 },
+  { label: '1900s',    test: y => y >= 1900 && y < 2000 },
+  { label: '2000s',    test: y => y >= 2000 },
+];
 
+function _bibleModeSelector(cat, trd, mode) {
+  const modes = [['language', 'Language'], ['date', 'Date'], ['all', 'All']];
+  return `<div class="bible-mode-selector" role="tablist">` +
+    modes.map(([m, label]) =>
+      `<button type="button" role="tab" aria-selected="${m === mode}" ` +
+      `class="bible-mode-btn${m === mode ? ' active' : ''}" ` +
+      `onclick="browseBibleRoom('${escH(cat)}','${escH(trd)}','${m}')">${escH(label)}</button>`
+    ).join('') + `</div>`;
+}
+
+// Date-mode card: title + year + language + canon scope. Opens the reader.
+function _bibleDateTileHTML(e) {
+  const star = e.quality === 'primary' ? '★' : '';
+  const full = translationLabel(e) || e.data_file;
+  let main = full;
+  const dash = full.indexOf(' — ');
+  if (dash > 0) main = full.slice(0, dash);
+  const lang = BIBLE_LANGUAGE_BY_FILE[e.data_file] || 'Other';
+  const scope = BIBLE_TIER_LABEL[BIBLE_CANON_TIER_BY_FILE[e.data_file] || 1] || 'Complete Bible';
+  const meta = [e.year != null ? String(e.year) : 'Unknown date', lang, scope]
+    .filter(Boolean).join(' · ');
+  return `<div class="text-tile" onclick="browseOpen('${escH(e.data_file)}')">
+      <span class="tt-star">${star}</span>
+      <div class="tt-info">
+        <div class="tt-title">${escH(main)}</div>
+        <div class="tt-meta">${escH(meta)}</div>
+      </div>
+    </div>`;
+}
+
+function _bibleRoomLanguageHTML(cat, trd, group) {
   const { byLang, langs } = _bibleLangBuckets(group);
-  const total = group.length;
   const featured = BIBLE_FEATURED_LANGS.filter(l => byLang.has(l));
   const secondary = langs.filter(l => !featured.includes(l));
-
   const langCard = (lang, cls) => {
     const n = byLang.get(lang).length;
     const blurb = BIBLE_LANG_BLURB[lang];
@@ -24405,9 +24468,7 @@ function browseBibleLanguages(cat, trd) {
       </div>
     </div>`;
   };
-
-  $browseTiles.className = 'bible-room';
-  let html = `<p class="bible-room-subtitle">Browse ${total} Bible witnesses by language.</p>`;
+  let html = '';
   if (featured.length) {
     html += `<div class="bible-featured">` +
       featured.map(l => langCard(l, 'bible-lang-featured')).join('') + `</div>`;
@@ -24417,13 +24478,77 @@ function browseBibleLanguages(cat, trd) {
       `<div class="bible-secondary">` +
       secondary.map(l => langCard(l, 'bible-lang-mini')).join('') + `</div>`;
   }
-  html += `<div class="bible-viewall-wrap">` +
-    `<button type="button" class="bible-viewall" ` +
-    `onclick="browseBibleAll('${escH(cat)}','${escH(trd)}')">` +
-    `View all ${total} Bible witnesses →</button></div>`;
+  return html;
+}
+
+function _bibleRoomDateHTML(cat, trd, group) {
+  const dated = group.filter(e => e.year != null).slice().sort((a, b) => {
+    if (a.year !== b.year) return a.year - b.year;
+    const ta = BIBLE_CANON_TIER_BY_FILE[a.data_file] || 1;
+    const tb = BIBLE_CANON_TIER_BY_FILE[b.data_file] || 1;
+    if (ta !== tb) return ta - tb;
+    return (translationLabel(a) || '').localeCompare(translationLabel(b) || '');
+  });
+  const undated = group.filter(e => e.year == null);
+  let html = `<div class="bible-witness-grid">`;
+  for (const era of BIBLE_ERAS) {
+    const ents = dated.filter(e => era.test(e.year));
+    if (!ents.length) continue;
+    html += `<div class="tile-section-label">${escH(era.label)} · ${ents.length}</div>`;
+    for (const e of ents) html += _bibleDateTileHTML(e);
+  }
+  if (undated.length) {
+    html += `<div class="tile-section-label">Unknown date · ${undated.length}</div>`;
+    for (const e of undated) html += _bibleDateTileHTML(e);
+  }
+  html += `</div>`;
+  return html;
+}
+
+function _bibleRoomAllHTML(cat, trd, group) {
+  const { byLang, langs } = _bibleLangBuckets(group);
+  let html = `<div class="bible-witness-grid">`;
+  for (const lang of langs) {
+    const ents = _bibleSortEntries(byLang.get(lang));
+    html += `<div class="tile-section-label">${escH(lang)} · ${ents.length}</div>`;
+    for (const e of ents) html += _bibleWitnessTileHTML(e);
+  }
+  html += `</div>`;
+  return html;
+}
+
+// Bible room with a Language / Date / All mode selector. Mode is a within-room
+// toggle (not a history level); witnesses always open via browseOpen->loadText.
+function browseBibleRoom(cat, trd, mode) {
+  mode = (mode === 'date' || mode === 'all') ? mode : 'language';
+  const group = indexGroups['bible'];
+  if (!group || !group.length) return;
+  showBrowse();
+  document.getElementById('browse-toolbar').style.display = 'none';
+  browseHistory = [{fn: browseHome}, {fn: browseCategory, args: [cat]},
+                   {fn: browseTradition, args: [cat, trd]}];
+  const title = group[0].title;
+  $browseCrumb.innerHTML = _bibleCrumb(cat, trd, title, null);
+  $browseTitle.textContent = title;
+
+  const total = group.length;
+  const subline = mode === 'date' ? `Browse ${total} Bible witnesses by date.`
+    : mode === 'all' ? `All ${total} Bible witnesses.`
+    : `Browse ${total} Bible witnesses by language.`;
+
+  $browseTiles.className = 'bible-room';
+  let html = `<p class="bible-room-subtitle">${escH(subline)}</p>`;
+  html += _bibleModeSelector(cat, trd, mode);
+  if (mode === 'date') html += _bibleRoomDateHTML(cat, trd, group);
+  else if (mode === 'all') html += _bibleRoomAllHTML(cat, trd, group);
+  else html += _bibleRoomLanguageHTML(cat, trd, group);
   $browseTiles.innerHTML = html;
   $reader.scrollTop = 0;
 }
+
+// Back-compat wrapper: existing back-tiles / breadcrumbs / history call this and
+// land on Language mode (the room's default).
+function browseBibleLanguages(cat, trd) { browseBibleRoom(cat, trd, 'language'); }
 
 function browseBibleLang(cat, trd, lang) {
   const group = indexGroups['bible'];
@@ -24450,33 +24575,8 @@ function browseBibleLang(cat, trd, lang) {
   $reader.scrollTop = 0;
 }
 
-function browseBibleAll(cat, trd) {
-  const group = indexGroups['bible'];
-  if (!group || !group.length) return;
-  showBrowse();
-  document.getElementById('browse-toolbar').style.display = 'none';
-  browseHistory = [{fn: browseHome}, {fn: browseCategory, args: [cat]},
-                   {fn: browseTradition, args: [cat, trd]},
-                   {fn: browseBibleLanguages, args: [cat, trd]}];
-  const title = group[0].title;
-  $browseCrumb.innerHTML = _bibleCrumb(cat, trd, title, 'All witnesses');
-  $browseTitle.textContent = `${title} · All witnesses`;
-
-  const { byLang, langs } = _bibleLangBuckets(group);
-  $browseTiles.className = 'tile-list';
-  let html = `<div class="text-tile bible-lang-back" ` +
-    `onclick="browseBibleLanguages('${escH(cat)}','${escH(trd)}')">
-    <span class="tt-star">←</span>
-    <div class="tt-info"><div class="tt-title">Back to languages</div></div>
-  </div>`;
-  for (const lang of langs) {
-    const ents = _bibleSortEntries(byLang.get(lang));
-    html += `<div class="tile-section-label">${escH(lang)} · ${ents.length}</div>`;
-    for (const e of ents) html += _bibleWitnessTileHTML(e);
-  }
-  $browseTiles.innerHTML = html;
-  $reader.scrollTop = 0;
-}
+// Back-compat wrapper: the old "View all" entry now maps to the All mode.
+function browseBibleAll(cat, trd) { browseBibleRoom(cat, trd, 'all'); }
 
 function browseText(cat, trd, textId) {
   const group = indexGroups[textId];
@@ -24491,10 +24591,11 @@ function browseText(cat, trd, textId) {
     return;
   }
 
-  // Christian Bible — open the language-room drill-down instead of one long
-  // mixed list. UI-only; every witness still opens via browseOpen()->loadText
-  // (reader behaviour unchanged), and direct ?text= deep links bypass this.
-  if (textId === 'bible') { browseBibleLanguages(cat, trd); return; }
+  // Christian Bible — open the curated Bible room (Language / Date / All modes)
+  // instead of one long mixed list. UI-only; every witness still opens via
+  // browseOpen()->loadText (reader behaviour unchanged), and direct ?text= deep
+  // links bypass this entirely.
+  if (textId === 'bible') { browseBibleRoom(cat, trd, 'language'); return; }
 
   // Multiple translations — show chooser tiles
   showBrowse();
