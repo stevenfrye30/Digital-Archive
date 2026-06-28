@@ -2776,6 +2776,26 @@ button.home-path {
   font-family: system-ui, sans-serif;
 }
 
+/* ── Christian Bible language-room drill-down (UI-only) ──────────────────────
+   Level 1 reuses the centered tile-grid-cards layout for language buttons;
+   level 2 is the normal tile-list. The "All languages" back tile is a quiet
+   dashed affordance distinct from the witness cards. */
+#browse-tiles.bible-lang-rooms .text-tile.bible-lang-card .tt-title {
+  font-size: 16px;
+  letter-spacing: 0.01em;
+}
+.text-tile.bible-lang-back {
+  background: transparent;
+  border-style: dashed;
+  box-shadow: none;
+}
+.text-tile.bible-lang-back:hover {
+  background: var(--shelf-card-surface-hover, #fbf6ea);
+  transform: none;
+}
+.text-tile.bible-lang-back .tt-title { color: var(--chrome-muted); font-size: 14px; }
+.text-tile.bible-lang-back .tt-star { color: var(--chrome-muted); }
+
 /* ── v98 — Text-family tiles (Hindu → "The Upanishads" prototype)
    A family card replaces multiple member tiles on the tradition
    shelf. Visually it shares the same shelf-card material
@@ -24208,6 +24228,119 @@ const CANONICAL_SHELVES = [
   // textual witnesses.
 ];
 
+// ── Christian Bible: language-room drill-down (UI-only) ──────────────────────
+// Level 1 (browseBibleLanguages): one card per language present on the Bible
+// shelf, driven by BIBLE_LANGUAGE_BY_FILE. Level 2 (browseBibleLang): the
+// filtered witness list for one language, sorted primary-first then canon
+// scope tier then year. No data/index change; cards open the existing reader.
+function _bibleLangBuckets(group) {
+  const byLang = new Map();
+  for (const e of group) {
+    const lang = BIBLE_LANGUAGE_BY_FILE[e.data_file] || 'Other';
+    if (!byLang.has(lang)) byLang.set(lang, []);
+    byLang.get(lang).push(e);
+  }
+  // Display order: declared BIBLE_LANGUAGE_ORDER first (only non-empty), then
+  // any unexpected language (should not happen) appended so none is dropped.
+  const langs = BIBLE_LANGUAGE_ORDER.filter(l => byLang.has(l))
+    .concat([...byLang.keys()].filter(l => !BIBLE_LANGUAGE_ORDER.includes(l)));
+  return { byLang, langs };
+}
+
+function browseBibleLanguages(cat, trd) {
+  const group = indexGroups['bible'];
+  if (!group || !group.length) return;
+  showBrowse();
+  document.getElementById('browse-toolbar').style.display = 'none';
+  browseHistory = [{fn: browseHome}, {fn: browseCategory, args: [cat]},
+                   {fn: browseTradition, args: [cat, trd]}];
+  const title = group[0].title;
+  $browseCrumb.innerHTML =
+    `<a onclick="browseHome()">Home</a><span class="sep">›</span>` +
+    `<a onclick="browseCategory('${escH(cat)}')">${escH(cat)}</a>` +
+    `<span class="sep">›</span>` +
+    `<a onclick="browseTradition('${escH(cat)}','${escH(trd)}')">${escH(trd)}</a>` +
+    `<span class="sep">›</span>${escH(title)}`;
+  $browseTitle.textContent = title;
+
+  const { byLang, langs } = _bibleLangBuckets(group);
+  $browseTiles.className = 'tile-grid-cards bible-lang-rooms';
+  let html = '';
+  for (const lang of langs) {
+    const n = byLang.get(lang).length;
+    html += `<div class="text-tile bible-lang-card" ` +
+      `onclick="browseBibleLang('${escH(cat)}','${escH(trd)}','${escH(lang)}')">
+      <div class="tt-info">
+        <div class="tt-title">${escH(lang)}</div>
+        <div class="tt-meta">${n} ${n === 1 ? 'witness' : 'witnesses'}</div>
+      </div>
+    </div>`;
+  }
+  $browseTiles.innerHTML = html;
+  $reader.scrollTop = 0;
+}
+
+function browseBibleLang(cat, trd, lang) {
+  const group = indexGroups['bible'];
+  if (!group || !group.length) return;
+  showBrowse();
+  document.getElementById('browse-toolbar').style.display = 'none';
+  browseHistory = [{fn: browseHome}, {fn: browseCategory, args: [cat]},
+                   {fn: browseTradition, args: [cat, trd]},
+                   {fn: browseBibleLanguages, args: [cat, trd]}];
+  const title = group[0].title;
+  $browseCrumb.innerHTML =
+    `<a onclick="browseHome()">Home</a><span class="sep">›</span>` +
+    `<a onclick="browseCategory('${escH(cat)}')">${escH(cat)}</a>` +
+    `<span class="sep">›</span>` +
+    `<a onclick="browseTradition('${escH(cat)}','${escH(trd)}')">${escH(trd)}</a>` +
+    `<span class="sep">›</span>` +
+    `<a onclick="browseBibleLanguages('${escH(cat)}','${escH(trd)}')">${escH(title)}</a>` +
+    `<span class="sep">›</span>${escH(lang)}`;
+  $browseTitle.textContent = `${title} · ${lang}`;
+
+  const ents = group.filter(e => (BIBLE_LANGUAGE_BY_FILE[e.data_file] || 'Other') === lang);
+  ents.sort((a, b) => {
+    if ((a.quality === 'primary') !== (b.quality === 'primary'))
+      return a.quality === 'primary' ? -1 : 1;
+    const ta = BIBLE_CANON_TIER_BY_FILE[a.data_file] || 1;
+    const tb = BIBLE_CANON_TIER_BY_FILE[b.data_file] || 1;
+    if (ta !== tb) return ta - tb;
+    const ya = a.year || 999999, yb = b.year || 999999;
+    if (ya !== yb) return ya - yb;
+    return (translationLabel(a) || '').localeCompare(translationLabel(b) || '');
+  });
+
+  const TIER_LABEL = { 2: 'Old Testament / Septuagint', 3: 'New Testament only',
+                       4: 'Partial witness' };
+  $browseTiles.className = 'tile-list';
+  let html = `<div class="text-tile bible-lang-back" ` +
+    `onclick="browseBibleLanguages('${escH(cat)}','${escH(trd)}')">
+    <span class="tt-star">←</span>
+    <div class="tt-info"><div class="tt-title">All languages</div></div>
+  </div>`;
+  for (const e of ents) {
+    const star = e.quality === 'primary' ? '★' : '';
+    const full = translationLabel(e) || e.data_file;
+    // UI-only: split a long "Title — descriptor" label so the card title
+    // stays clean and the descriptor drops to the muted meta line.
+    let main = full, desc = '';
+    const dash = full.indexOf(' — ');
+    if (dash > 0) { main = full.slice(0, dash); desc = full.slice(dash + 3); }
+    const tierLbl = TIER_LABEL[BIBLE_CANON_TIER_BY_FILE[e.data_file] || 1] || '';
+    const meta = [desc, e.year ? String(e.year) : '', tierLbl].filter(Boolean).join(' · ');
+    html += `<div class="text-tile" onclick="browseOpen('${escH(e.data_file)}')">
+      <span class="tt-star">${star}</span>
+      <div class="tt-info">
+        <div class="tt-title">${escH(main)}</div>
+        ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
+      </div>
+    </div>`;
+  }
+  $browseTiles.innerHTML = html;
+  $reader.scrollTop = 0;
+}
+
 function browseText(cat, trd, textId) {
   const group = indexGroups[textId];
   if (!group || group.length === 0) return;
@@ -24220,6 +24353,11 @@ function browseText(cat, trd, textId) {
     loadText(group[0]);
     return;
   }
+
+  // Christian Bible — open the language-room drill-down instead of one long
+  // mixed list. UI-only; every witness still opens via browseOpen()->loadText
+  // (reader behaviour unchanged), and direct ?text= deep links bypass this.
+  if (textId === 'bible') { browseBibleLanguages(cat, trd); return; }
 
   // Multiple translations — show chooser tiles
   showBrowse();
