@@ -2739,7 +2739,11 @@ button.home-path {
   box-shadow: 0 2px 6px rgba(60, 42, 22, 0.10);
   transform: translateY(-1px);
 }
-.text-tile:active { box-shadow: none; }
+.text-tile:active { box-shadow: none; transform: translateY(0); }
+.text-tile:focus-visible {
+  outline: 2px solid rgba(120, 70, 25, 0.55);
+  outline-offset: 1px;
+}
 .text-tile .tt-star {
   color: #c49a3a;
   font-size: 14px;
@@ -2774,6 +2778,81 @@ button.home-path {
   padding: 3px 8px;
   border-radius: 10px;
   font-family: system-ui, sans-serif;
+}
+
+/* ── Completed text-family entrance card (reusable) ──────────────────────────
+   A finalized "room entrance" for a complete text family (Bible now; Quran /
+   Tanakh / Upanishads / … later via COMPLETED_FAMILY_META). Spans the full
+   shelf width in both list and grid view modes so it reads as a featured band,
+   distinct from ordinary single-text cards but kept calm and warm. */
+.text-tile.family-card {
+  grid-column: 1 / -1;
+  display: block;
+  padding: 0;
+  border-width: 1.5px;
+  border-color: rgba(120, 70, 25, 0.34);
+  background: linear-gradient(180deg,
+    var(--shelf-card-surface-hover, #fbf6ea) 0%,
+    var(--shelf-card-surface, #f6f0e2) 100%);
+  overflow: hidden;
+}
+.text-tile.family-card:hover {
+  border-color: rgba(120, 70, 25, 0.55);
+  box-shadow: 0 2px 10px rgba(60, 42, 22, 0.12);
+  transform: translateY(-1px);
+}
+.family-card .fc-accent {
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg,
+    rgba(150, 95, 35, 0.75) 0%, rgba(150, 95, 35, 0.12) 100%);
+}
+.family-card .fc-info { padding: 13px 16px 14px; }
+.family-card .fc-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.family-card .fc-title {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  color: var(--chrome-fg);
+  line-height: 1.2;
+}
+.family-card .fc-status {
+  flex-shrink: 0;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(110, 65, 25, 0.92);
+  background: rgba(120, 70, 25, 0.10);
+  border: 1px solid rgba(120, 70, 25, 0.30);
+  border-radius: 10px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+.family-card .fc-summary {
+  font-size: 12.5px;
+  color: var(--chrome-muted);
+  font-family: system-ui, sans-serif;
+  margin-top: 4px;
+}
+.family-card .fc-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 11px;
+}
+.family-card .fc-mode {
+  font-size: 11px;
+  font-family: system-ui, sans-serif;
+  color: var(--chrome-muted);
+  background: var(--chrome-bg);
+  border: 1px solid var(--shelf-card-edge, rgba(120, 95, 60, 0.25));
+  border-radius: 4px;
+  padding: 3px 9px;
 }
 
 /* ── Christian Bible language room (UI-only) ─────────────────────────────────
@@ -21383,8 +21462,50 @@ function _impClass(rank) {
   return '';
 }
 
+// Completed text-family registry (UI-only). A text id listed here renders on
+// its tradition shelf as a polished "completed family" entrance card instead of
+// an ordinary tile. Reusable: add Quran / Tanakh / Upanishads / etc. later with
+// their own wording. `unit`/`collection` build the summary; `modes` are the
+// browse modes advertised in the footer; `title` overrides the displayed label.
+const COMPLETED_FAMILY_META = {
+  bible: {
+    title: 'Bible',
+    status: 'Complete family',
+    unit: 'witnesses',
+    collection: 'public-domain collection',
+    modes: ['Language', 'Date', 'Translator', 'All'],
+  },
+};
+
+/** Build HTML for a completed text-family entrance card (reusable). */
+function _familyCompleteTileHTML(t, cat, trd) {
+  const cfg = COMPLETED_FAMILY_META[t.id];
+  const count = t.entries.length;
+  const title = cfg.title || t.title;
+  const summary = `${count} ${cfg.unit} · ${cfg.collection}`;
+  const modes = (cfg.modes || [])
+    .map(m => `<span class="fc-mode">${escH(m)}</span>`).join('');
+  const onclick = `browseText('${escH(cat)}','${escH(trd)}','${escH(t.id)}')`;
+  return `<div class="text-tile family-card family-card-complete family-card-${escH(t.id)}" ` +
+    `onclick="${onclick}">
+    <span class="fc-accent" aria-hidden="true"></span>
+    <div class="fc-info">
+      <div class="fc-head">
+        <span class="fc-title">${escH(title)}</span>
+        <span class="fc-status">${escH(cfg.status)}</span>
+      </div>
+      <div class="fc-summary">${escH(summary)}</div>
+      ${modes ? `<div class="fc-modes">${modes}</div>` : ''}
+    </div>
+  </div>`;
+}
+
 /** Build HTML for a single text tile */
 function _textTileHTML(t, cat, trd) {
+  // Completed families (e.g. the Bible) get a finalized entrance card.
+  if (COMPLETED_FAMILY_META[t.id] && !t.crossFrom && !t.crossSection) {
+    return _familyCompleteTileHTML(t, cat, trd);
+  }
   const count = t.entries.length;
   const authorArr = (t.author || []).filter(a => a && a !== 'Anonymous');
   const authorStr = authorArr.join(', ');
