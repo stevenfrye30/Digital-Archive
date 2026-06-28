@@ -2781,78 +2781,76 @@ button.home-path {
 }
 
 /* ── Completed text-family entrance card (reusable) ──────────────────────────
-   A finalized "room entrance" for a complete text family (Bible now; Quran /
-   Tanakh / Upanishads / … later via COMPLETED_FAMILY_META). Spans the full
-   shelf width in both list and grid view modes so it reads as a featured band,
-   distinct from ordinary single-text cards but kept calm and warm. */
-.text-tile.family-card {
-  grid-column: 1 / -1;
+   A finalized, *compact* featured card for a complete text family (Bible now;
+   Quran / Tanakh / Upanishads / … later via COMPLETED_FAMILY_META). Slightly
+   wider than an ordinary card (span 2 → clamps to one column on mobile), not a
+   full-width banner; distinct but calm and warm. The id-scoped selectors keep
+   it consistent in both list and grid shelf view modes. */
+#browse-tiles .text-tile.family-card {
+  grid-column: span 2;
+  align-self: start;
   display: block;
-  padding: 0;
-  border-width: 1.5px;
-  border-color: rgba(120, 70, 25, 0.34);
+  text-align: left;
+  position: relative;
+  padding: 8px 12px 9px;
+  border: 1.5px solid rgba(120, 70, 25, 0.34);
+  border-radius: 5px;
   background: linear-gradient(180deg,
     var(--shelf-card-surface-hover, #fbf6ea) 0%,
     var(--shelf-card-surface, #f6f0e2) 100%);
   overflow: hidden;
 }
-.text-tile.family-card:hover {
+#browse-tiles .text-tile.family-card:hover {
   border-color: rgba(120, 70, 25, 0.55);
-  box-shadow: 0 2px 10px rgba(60, 42, 22, 0.12);
+  box-shadow: 0 2px 8px rgba(60, 42, 22, 0.10);
   transform: translateY(-1px);
 }
 .family-card .fc-accent {
-  display: block;
-  height: 3px;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
   background: linear-gradient(90deg,
-    rgba(150, 95, 35, 0.75) 0%, rgba(150, 95, 35, 0.12) 100%);
+    rgba(150, 95, 35, 0.70) 0%, rgba(150, 95, 35, 0.10) 100%);
 }
-.family-card .fc-info { padding: 13px 16px 14px; }
+.family-card .fc-info { padding: 0; }
 .family-card .fc-head {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
+  line-height: 1.1;
 }
 .family-card .fc-title {
   font-family: Georgia, serif;
-  font-size: 19px;
+  font-size: 15px;
   letter-spacing: 0.01em;
   color: var(--chrome-fg);
-  line-height: 1.2;
+  line-height: 1.1;
 }
 .family-card .fc-status {
   flex-shrink: 0;
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   color: rgba(110, 65, 25, 0.92);
   background: rgba(120, 70, 25, 0.10);
   border: 1px solid rgba(120, 70, 25, 0.30);
-  border-radius: 10px;
-  padding: 3px 9px;
+  border-radius: 9px;
+  padding: 1px 7px;
   white-space: nowrap;
 }
 .family-card .fc-summary {
-  font-size: 12.5px;
+  font-size: 11.5px;
+  line-height: 1.25;
   color: var(--chrome-muted);
   font-family: system-ui, sans-serif;
   margin-top: 4px;
 }
 .family-card .fc-modes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 11px;
-}
-.family-card .fc-mode {
   font-size: 11px;
-  font-family: system-ui, sans-serif;
+  line-height: 1.2;
   color: var(--chrome-muted);
-  background: var(--chrome-bg);
-  border: 1px solid var(--shelf-card-edge, rgba(120, 95, 60, 0.25));
-  border-radius: 4px;
-  padding: 3px 9px;
+  font-family: system-ui, sans-serif;
+  margin-top: 4px;
 }
 
 /* ── Christian Bible language room (UI-only) ─────────────────────────────────
@@ -21470,7 +21468,7 @@ function _impClass(rank) {
 const COMPLETED_FAMILY_META = {
   bible: {
     title: 'Bible',
-    status: 'Complete family',
+    status: 'Finalized family',
     unit: 'witnesses',
     collection: 'public-domain collection',
     modes: ['Language', 'Date', 'Translator', 'All'],
@@ -21483,8 +21481,8 @@ function _familyCompleteTileHTML(t, cat, trd) {
   const count = t.entries.length;
   const title = cfg.title || t.title;
   const summary = `${count} ${cfg.unit} · ${cfg.collection}`;
-  const modes = (cfg.modes || [])
-    .map(m => `<span class="fc-mode">${escH(m)}</span>`).join('');
+  // Compact single-line mode list (no pill row) to keep the card short.
+  const modes = (cfg.modes || []).map(escH).join(' · ');
   const onclick = `browseText('${escH(cat)}','${escH(trd)}','${escH(t.id)}')`;
   return `<div class="text-tile family-card family-card-complete family-card-${escH(t.id)}" ` +
     `onclick="${onclick}">
