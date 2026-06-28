@@ -21473,6 +21473,13 @@ const COMPLETED_FAMILY_META = {
     collection: 'public-domain collection',
     modes: ['Language', 'Date', 'Translator', 'All'],
   },
+  quran: {
+    title: 'Quran',
+    status: 'Finalized family',
+    unit: 'texts',
+    collection: 'public-safe collection',
+    modes: ['Arabic', 'English', 'Public'],
+  },
 };
 
 /** Build HTML for a completed text-family entrance card (reusable). */
@@ -24823,6 +24830,73 @@ function browseBibleLang(cat, trd, lang) {
 // Back-compat wrapper: the old "View all" entry now maps to the All mode.
 function browseBibleAll(cat, trd) { browseBibleRoom(cat, trd, 'all'); }
 
+// ── Quran room (UI-only) ─────────────────────────────────────────────────────
+// The public Quran shelf is small (4 public-safe texts), so its room is a simple
+// list: the Arabic source (Uthmani) shown separately, then the English
+// translations together. No Date/Translator modes. Restricted/local-only Quran
+// translations are never in the public index, so nothing to filter here; cards
+// open the existing reader via browseOpen()->loadText.
+const QURAN_ARABIC_FILES = new Set(['quran_uthmani-tanzil.json']);
+
+function _quranTileHTML(e) {
+  const star = e.quality === 'primary' ? '★' : '';
+  const label = translationLabel(e) || e.data_file;
+  const tr = (e.translator || []).filter(Boolean).join(', ');
+  const parts = [];
+  if (tr && tr !== label) parts.push(tr);
+  if (e.year) parts.push(String(e.year));
+  const meta = parts.join(' · ');
+  return `<div class="text-tile" onclick="browseOpen('${escH(e.data_file)}')">
+      <span class="tt-star">${star}</span>
+      <div class="tt-info">
+        <div class="tt-title">${escH(label)}</div>
+        ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
+      </div>
+    </div>`;
+}
+
+function browseQuranRoom(cat, trd) {
+  const group = indexGroups['quran'];
+  if (!group || !group.length) return;
+  showBrowse();
+  document.getElementById('browse-toolbar').style.display = 'none';
+  browseHistory = [{fn: browseHome}, {fn: browseCategory, args: [cat]},
+                   {fn: browseTradition, args: [cat, trd]}];
+  const title = group[0].title;
+  $browseCrumb.innerHTML =
+    `<a onclick="browseHome()">Home</a><span class="sep">›</span>` +
+    `<a onclick="browseCategory('${escH(cat)}')">${escH(cat)}</a>` +
+    `<span class="sep">›</span>` +
+    `<a onclick="browseTradition('${escH(cat)}','${escH(trd)}')">${escH(trd)}</a>` +
+    `<span class="sep">›</span>${escH(title)}`;
+  $browseTitle.textContent = title;
+
+  const total = group.length;
+  const arabic = group.filter(e => QURAN_ARABIC_FILES.has(e.data_file));
+  const english = group.filter(e => !QURAN_ARABIC_FILES.has(e.data_file));
+  english.sort((a, b) => {
+    if ((a.quality === 'primary') !== (b.quality === 'primary'))
+      return a.quality === 'primary' ? -1 : 1;
+    return (translationLabel(a) || '').localeCompare(translationLabel(b) || '');
+  });
+
+  // Reuse the compact room container + responsive grid from the Bible room.
+  $browseTiles.className = 'bible-room';
+  let html = `<p class="bible-room-subtitle">Browse ${total} public-safe Quran texts.</p>`;
+  html += `<div class="bible-witness-grid">`;
+  if (arabic.length) {
+    html += `<div class="tile-section-label">Arabic · ${arabic.length}</div>`;
+    for (const e of arabic) html += _quranTileHTML(e);
+  }
+  if (english.length) {
+    html += `<div class="tile-section-label">English translations · ${english.length}</div>`;
+    for (const e of english) html += _quranTileHTML(e);
+  }
+  html += `</div>`;
+  $browseTiles.innerHTML = html;
+  $reader.scrollTop = 0;
+}
+
 function browseText(cat, trd, textId) {
   const group = indexGroups[textId];
   if (!group || group.length === 0) return;
@@ -24841,6 +24915,9 @@ function browseText(cat, trd, textId) {
   // browseOpen()->loadText (reader behaviour unchanged), and direct ?text= deep
   // links bypass this entirely.
   if (textId === 'bible') { browseBibleRoom(cat, trd, 'language'); return; }
+
+  // Quran — small public-safe shelf; open the simple Arabic/English room.
+  if (textId === 'quran') { browseQuranRoom(cat, trd); return; }
 
   // Multiple translations — show chooser tiles
   showBrowse();
