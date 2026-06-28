@@ -24353,6 +24353,76 @@ const BIBLE_LANG_BLURB = {
 const BIBLE_TIER_LABEL = { 2: 'Old Testament / Septuagint', 3: 'New Testament only',
                            4: 'Partial witness' };
 
+// Translator mode (UI-only). The `translator` field already exists on 44/45
+// index entries; this map only buckets each witness by attribution type for a
+// readable grouped list (per-person grouping would be 42 dead-end singletons).
+// Any witness NOT listed falls to 'review' (Unknown / needs review) — never
+// dropped. Group keys -> display order/labels in BIBLE_TRANSLATOR_GROUP_META.
+const BIBLE_TRANSLATOR_GROUP_META = [
+  ['named',          'Named translators / editors'],
+  ['committee',      'Translation committees'],
+  ['greek',          'Greek textual editors'],
+  ['ecclesiastical', 'Traditional / ecclesiastical texts'],
+  ['review',         'Unknown / needs review'],
+];
+const BIBLE_TRANSLATOR_GROUP = {
+  // Greek source-language textual editors
+  'bible_tr.json': 'greek',
+  'bible_stephanus-textus-receptus-1550.json': 'greek',
+  'bible_elzevir-textus-receptus-1624.json': 'greek',
+  'bible_scrivener-textus-receptus-1894.json': 'greek',
+  'bible_tregelles-greek-new-testament.json': 'greek',
+  'bible_tischendorf-greek-new-testament.json': 'greek',
+  'bible_westcott-hort-greek-new-testament.json': 'greek',
+  'bible_nestle-1904-greek-new-testament.json': 'greek',
+  'bible_sbl-nt.json': 'greek',
+  'bible_majority-text-new-testament.json': 'greek',
+  'bible_antoniades-patriarchal-1904.json': 'greek',
+  'bible_brenton-septuagint-greek.json': 'greek',
+  // Translation committees
+  'bible_kjv.json': 'committee',
+  'bible_revised-version-with-apocrypha.json': 'committee',
+  'bible_asv.json': 'committee',
+  'bible_twentieth-century-new-testament.json': 'committee',
+  'bible_chinese-union-cunp-traditional.json': 'committee',
+  'bible_statenvertaling.json': 'committee',
+  'bible_geneva-bible.json': 'committee',
+  // Traditional / ecclesiastical texts
+  'bible_vulgate.json': 'ecclesiastical',
+  'bible_russian-synodal-1876.json': 'ecclesiastical',
+  'bible_douay-rheims-bible.json': 'ecclesiastical',
+  // Named individual translators
+  'bible_wycliffe-bible.json': 'named',
+  'bible_tyndale-new-testament.json': 'named',
+  'bible_tyndale-pentateuch.json': 'named',
+  'bible_webster-bible.json': 'named',
+  'bible_brenton-septuagint-translation.json': 'named',
+  'bible_etheridge-peshitta-new-testament.json': 'named',
+  'bible_murdock-peshitta-new-testament.json': 'named',
+  'bible_youngs-literal-translation.json': 'named',
+  'bible_emphatic-diaglott-interlinear-1864.json': 'named',
+  'bible_darby.json': 'named',
+  'bible_rotherham-emphasized-bible-1902.json': 'named',
+  'bible_weymouth-new-testament.json': 'named',
+  'bible_bible-in-basic-english.json': 'named',
+  'bible_web.json': 'named',
+  'bible_lxx-septuagint.json': 'named',
+  'bible_luther-1545.json': 'named',
+  'bible_luther-1912.json': 'named',
+  'bible_diodati-1649.json': 'named',
+  'bible_almeida-1911.json': 'named',
+  'bible_louis-segond-1910.json': 'named',
+  'bible_salkinson-new-testament.json': 'named',
+  'bible_reina-valera-1909.json': 'named',
+  'bible_arabic-van-dyck-1865.json': 'named',
+};
+// UI-only display fallback for witnesses whose index `translator` field is
+// blank (does NOT edit data/index.json). Brenton edited the Greek Septuagint
+// text; his English twin entry is so credited.
+const BIBLE_TRANSLATOR_OVERRIDE = {
+  'bible_brenton-septuagint-greek.json': 'L. C. L. Brenton',
+};
+
 function _bibleLangBuckets(group) {
   const byLang = new Map();
   for (const e of group) {
@@ -24423,7 +24493,8 @@ const BIBLE_ERAS = [
 ];
 
 function _bibleModeSelector(cat, trd, mode) {
-  const modes = [['language', 'Language'], ['date', 'Date'], ['all', 'All']];
+  const modes = [['language', 'Language'], ['date', 'Date'],
+                 ['translator', 'Translator'], ['all', 'All']];
   return `<div class="bible-mode-selector" role="tablist">` +
     modes.map(([m, label]) =>
       `<button type="button" role="tab" aria-selected="${m === mode}" ` +
@@ -24517,10 +24588,63 @@ function _bibleRoomAllHTML(cat, trd, group) {
   return html;
 }
 
+// Translator/editor display name: the index field, else a UI-only fallback.
+function _bibleTranslatorOf(e) {
+  const t = (e.translator || []).filter(Boolean).join(', ');
+  return t || BIBLE_TRANSLATOR_OVERRIDE[e.data_file] || 'Unknown';
+}
+
+// Translator-mode card: title + translator/editor + year + language + scope.
+function _bibleTranslatorTileHTML(e) {
+  const star = e.quality === 'primary' ? '★' : '';
+  const full = translationLabel(e) || e.data_file;
+  let main = full;
+  const dash = full.indexOf(' — ');
+  if (dash > 0) main = full.slice(0, dash);
+  const who = _bibleTranslatorOf(e);
+  const lang = BIBLE_LANGUAGE_BY_FILE[e.data_file] || 'Other';
+  const scope = BIBLE_TIER_LABEL[BIBLE_CANON_TIER_BY_FILE[e.data_file] || 1] || 'Complete Bible';
+  const meta = [who, e.year != null ? String(e.year) : 'Unknown date', lang, scope]
+    .filter(Boolean).join(' · ');
+  return `<div class="text-tile" onclick="browseOpen('${escH(e.data_file)}')">
+      <span class="tt-star">${star}</span>
+      <div class="tt-info">
+        <div class="tt-title">${escH(main)}</div>
+        <div class="tt-meta">${escH(meta)}</div>
+      </div>
+    </div>`;
+}
+
+function _bibleRoomTranslatorHTML(cat, trd, group) {
+  // Bucket by attribution type; unlisted -> 'review' so none is dropped.
+  const byGroup = new Map();
+  for (const e of group) {
+    const g = BIBLE_TRANSLATOR_GROUP[e.data_file] || 'review';
+    if (!byGroup.has(g)) byGroup.set(g, []);
+    byGroup.get(g).push(e);
+  }
+  let html = `<div class="bible-witness-grid">`;
+  for (const [key, label] of BIBLE_TRANSLATOR_GROUP_META) {
+    const ents = byGroup.get(key);
+    if (!ents || !ents.length) continue;
+    // Sort alphabetically by translator/editor label, then by year.
+    ents.sort((a, b) => {
+      const ca = _bibleTranslatorOf(a).toLowerCase();
+      const cb = _bibleTranslatorOf(b).toLowerCase();
+      if (ca !== cb) return ca.localeCompare(cb);
+      return (a.year || 999999) - (b.year || 999999);
+    });
+    html += `<div class="tile-section-label">${escH(label)} · ${ents.length}</div>`;
+    for (const e of ents) html += _bibleTranslatorTileHTML(e);
+  }
+  html += `</div>`;
+  return html;
+}
+
 // Bible room with a Language / Date / All mode selector. Mode is a within-room
 // toggle (not a history level); witnesses always open via browseOpen->loadText.
 function browseBibleRoom(cat, trd, mode) {
-  mode = (mode === 'date' || mode === 'all') ? mode : 'language';
+  mode = (mode === 'date' || mode === 'all' || mode === 'translator') ? mode : 'language';
   const group = indexGroups['bible'];
   if (!group || !group.length) return;
   showBrowse();
@@ -24533,6 +24657,7 @@ function browseBibleRoom(cat, trd, mode) {
 
   const total = group.length;
   const subline = mode === 'date' ? `Browse ${total} Bible witnesses by date.`
+    : mode === 'translator' ? `Browse ${total} Bible witnesses by translator or editor.`
     : mode === 'all' ? `All ${total} Bible witnesses.`
     : `Browse ${total} Bible witnesses by language.`;
 
@@ -24540,6 +24665,7 @@ function browseBibleRoom(cat, trd, mode) {
   let html = `<p class="bible-room-subtitle">${escH(subline)}</p>`;
   html += _bibleModeSelector(cat, trd, mode);
   if (mode === 'date') html += _bibleRoomDateHTML(cat, trd, group);
+  else if (mode === 'translator') html += _bibleRoomTranslatorHTML(cat, trd, group);
   else if (mode === 'all') html += _bibleRoomAllHTML(cat, trd, group);
   else html += _bibleRoomLanguageHTML(cat, trd, group);
   $browseTiles.innerHTML = html;
