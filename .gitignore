@@ -52,6 +52,13 @@ restricted_local_config.json
 #  match. The patterns above target the *real* local files by exact
 #  name, never the *.template.json variants.)
 
+# Compressed copies of the public register/templates are redundant local
+# build artifacts — the app loads the .json (and data/index.json.gz), not
+# these. Ignore so a broad add can't stage them; tracked *.json /
+# *.template.json are unaffected (different extension).
+data/restricted_sources_register.json.gz
+data/restricted_templates/*.json.gz
+
 # Local runtime
 .server.pid
 .claude/
