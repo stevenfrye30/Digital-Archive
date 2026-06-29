@@ -122,9 +122,33 @@
       "tradition": "Buddhist",
       "collection": "sacred",
       "hierarchy": [
-        "sutta",
-        "section",
-        "verse"
+        "verse",
+        "segment"
+      ],
+      "data_file": "dhammapada-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 1,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "dhammapada-sujato",
+      "title": "Sayings of the Dhamma",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "verse",
+        "segment"
       ],
       "data_file": "dhammapada-sujato_sujato.json",
       "source": "suttacentral",
@@ -137,7 +161,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Sayings of the Dhamma* Bhikkhu Sujato (2022). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 1,
       "cross_sections": null,
       "cross_traditions": null,
@@ -180,7 +204,33 @@
       "hierarchy": [
         "sutta",
         "section",
-        "verse"
+        "segment"
+      ],
+      "data_file": "long-discourses-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 5,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "long-discourses-sujato",
+      "title": "Long Discourses",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "sutta",
+        "section",
+        "segment"
       ],
       "data_file": "long-discourses-sujato_sujato.json",
       "source": "suttacentral",
@@ -193,7 +243,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Long Discourses* Bhikkhu Sujato (2018). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 5,
       "cross_sections": null,
       "cross_traditions": null,
@@ -208,7 +258,33 @@
       "hierarchy": [
         "sutta",
         "section",
-        "verse"
+        "segment"
+      ],
+      "data_file": "middle-discourses-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 6,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "middle-discourses-sujato",
+      "title": "Middle Discourses",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "sutta",
+        "section",
+        "segment"
       ],
       "data_file": "middle-discourses-sujato_sujato.json",
       "source": "suttacentral",
@@ -221,7 +297,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Middle Discourses* Bhikkhu Sujato (2018). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 6,
       "cross_sections": null,
       "cross_traditions": null,
@@ -234,9 +310,37 @@
       "tradition": "Buddhist",
       "collection": "sacred",
       "hierarchy": [
+        "nipata",
         "sutta",
         "section",
-        "verse"
+        "segment"
+      ],
+      "data_file": "numbered-discourses-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 7,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "numbered-discourses-sujato",
+      "title": "Numbered Discourses",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "nipata",
+        "sutta",
+        "section",
+        "segment"
       ],
       "data_file": "numbered-discourses-sujato_sujato.json",
       "source": "suttacentral",
@@ -249,7 +353,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Numbered Discourses* Bhikkhu Sujato (2018). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 7,
       "cross_sections": null,
       "cross_traditions": null,
@@ -257,14 +361,96 @@
       "reading_status_certified": true
     },
     {
-      "id": "linked-discourses-sujato",
-      "title": "Linked Discourses",
+      "id": "khuddakapatha-sujato",
+      "title": "Khuddakapāṭha",
       "tradition": "Buddhist",
       "collection": "sacred",
       "hierarchy": [
         "sutta",
         "section",
-        "verse"
+        "segment"
+      ],
+      "data_file": "khuddakapatha-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 8,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "khuddakapatha-sujato",
+      "title": "Khuddakapāṭha",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "sutta",
+        "section",
+        "segment"
+      ],
+      "data_file": "khuddakapatha-sujato_sujato.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "Bhikkhu Sujato"
+      ],
+      "year": 2018,
+      "translation_label": "Khuddakapāṭha",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": null,
+      "importance_rank": 8,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "linked-discourses-sujato",
+      "title": "Linked Discourses",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "samyutta",
+        "sutta",
+        "section",
+        "segment"
+      ],
+      "data_file": "linked-discourses-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 8,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "linked-discourses-sujato",
+      "title": "Linked Discourses",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "samyutta",
+        "sutta",
+        "section",
+        "segment"
       ],
       "data_file": "linked-discourses-sujato_sujato.json",
       "source": "suttacentral",
@@ -277,7 +463,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Linked Discourses* Bhikkhu Sujato (2018). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 8,
       "cross_sections": null,
       "cross_traditions": null,
@@ -285,14 +471,96 @@
       "reading_status_certified": true
     },
     {
+      "id": "cariyapitaka-sujato",
+      "title": "Cariyāpiṭaka",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "story",
+        "section",
+        "segment"
+      ],
+      "data_file": "cariyapitaka-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 9,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "cariyapitaka-sujato",
+      "title": "Cariyāpiṭaka",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "story",
+        "section",
+        "segment"
+      ],
+      "data_file": "cariyapitaka-sujato_sujato.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "Bhikkhu Sujato"
+      ],
+      "year": 2018,
+      "translation_label": "Cariyāpiṭaka",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": null,
+      "importance_rank": 9,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "sutta-nipata-sujato",
       "title": "Anthology of Discourses",
       "tradition": "Buddhist",
       "collection": "sacred",
       "hierarchy": [
+        "vagga",
         "sutta",
         "section",
-        "verse"
+        "segment"
+      ],
+      "data_file": "sutta-nipata-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 10,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "sutta-nipata-sujato",
+      "title": "Anthology of Discourses",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "vagga",
+        "sutta",
+        "section",
+        "segment"
       ],
       "data_file": "sutta-nipata-sujato_sujato.json",
       "source": "suttacentral",
@@ -305,7 +573,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Anthology of Discourses* Bhikkhu Sujato (2022). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 10,
       "cross_sections": null,
       "cross_traditions": null,
@@ -313,14 +581,68 @@
       "reading_status_certified": true
     },
     {
+      "id": "petavatthu-kovilo",
+      "title": "Petavatthu (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "story",
+        "section",
+        "segment"
+      ],
+      "data_file": "petavatthu-kovilo_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 10,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "udana-sujato",
       "title": "Heartfelt Sayings",
       "tradition": "Buddhist",
       "collection": "sacred",
       "hierarchy": [
+        "vagga",
         "sutta",
         "section",
-        "verse"
+        "segment"
+      ],
+      "data_file": "udana-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 11,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "udana-sujato",
+      "title": "Heartfelt Sayings",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "vagga",
+        "sutta",
+        "section",
+        "segment"
       ],
       "data_file": "udana-sujato_sujato.json",
       "source": "suttacentral",
@@ -333,12 +655,148 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Heartfelt Sayings* Bhikkhu Sujato (2018). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 11,
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "jataka-sujato",
+      "title": "Jātaka Verses (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "jataka",
+        "section",
+        "segment"
+      ],
+      "data_file": "jataka-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 11,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "jataka-sujato",
+      "title": "Jātaka Verses (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "jataka",
+        "section",
+        "segment"
+      ],
+      "data_file": "jataka-sujato_sujato.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "Bhikkhu Sujato"
+      ],
+      "year": 2018,
+      "translation_label": "Jātaka Verses (Pali)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": null,
+      "importance_rank": 11,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "buddhavamsa-pali",
+      "title": "Buddhavaṃsa (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "section",
+        "segment"
+      ],
+      "data_file": "buddhavamsa-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 12,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "milindapanha-kelly",
+      "title": "Milindapañha",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "section",
+        "segment"
+      ],
+      "data_file": "milindapanha-kelly_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 12,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "milindapanha-kelly",
+      "title": "Milindapañha",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "section",
+        "segment"
+      ],
+      "data_file": "milindapanha-kelly_kelly.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "John Kelly"
+      ],
+      "year": 2018,
+      "translation_label": "Milindapañha",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": 12,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
     },
     {
       "id": "itivuttaka-sujato",
@@ -348,7 +806,33 @@
       "hierarchy": [
         "sutta",
         "section",
-        "verse"
+        "segment"
+      ],
+      "data_file": "itivuttaka-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 12,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "itivuttaka-sujato",
+      "title": "So It Was Said",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "sutta",
+        "section",
+        "segment"
       ],
       "data_file": "itivuttaka-sujato_sujato.json",
       "source": "suttacentral",
@@ -361,7 +845,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*So It Was Said* Bhikkhu Sujato (2022). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 12,
       "cross_sections": null,
       "cross_traditions": null,
@@ -369,14 +853,223 @@
       "reading_status_certified": true
     },
     {
+      "id": "vimanavatthu-pali",
+      "title": "Vimānavatthu (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "vimana",
+        "section",
+        "segment"
+      ],
+      "data_file": "vimanavatthu-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 12,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "culaniddesa-pali",
+      "title": "Cūḷaniddesa (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "niddesa",
+        "section",
+        "segment"
+      ],
+      "data_file": "culaniddesa-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 13,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "dhammasangani-pali",
+      "title": "Dhammasaṅgaṇī (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "division",
+        "section",
+        "segment"
+      ],
+      "data_file": "dhammasangani-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 13,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "kathavatthu-pali",
+      "title": "Kathāvatthu (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "discussion",
+        "segment"
+      ],
+      "data_file": "kathavatthu-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 13,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "mahaniddesa-pali",
+      "title": "Mahāniddesa (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "niddesa",
+        "section",
+        "segment"
+      ],
+      "data_file": "mahaniddesa-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 13,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "patisambhidamagga-pali",
+      "title": "Paṭisambhidāmagga (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "vagga",
+        "treatise",
+        "section",
+        "segment"
+      ],
+      "data_file": "patisambhidamagga-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 13,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "patthana-pali",
+      "title": "Paṭṭhāna (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "division",
+        "section",
+        "segment"
+      ],
+      "data_file": "patthana-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 13,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "therigatha-sujato",
       "title": "Verses of the Senior Nuns",
       "tradition": "Buddhist",
       "collection": "sacred",
       "hierarchy": [
-        "sutta",
-        "section",
-        "verse"
+        "chapter",
+        "poem",
+        "segment"
+      ],
+      "data_file": "therigatha-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 13,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "therigatha-sujato",
+      "title": "Verses of the Senior Nuns",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "poem",
+        "segment"
       ],
       "data_file": "therigatha-sujato_sujato.json",
       "source": "suttacentral",
@@ -389,7 +1082,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Verses of the Senior Nuns* Bhikkhu Sujato (2014). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 13,
       "cross_sections": null,
       "cross_traditions": null,
@@ -397,14 +1090,222 @@
       "reading_status_certified": true
     },
     {
+      "id": "vibhanga-pali",
+      "title": "Vibhaṅga (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "section",
+        "segment"
+      ],
+      "data_file": "vibhanga-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 13,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "dhatukatha-pali",
+      "title": "Dhātukathā (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "division",
+        "section",
+        "segment"
+      ],
+      "data_file": "dhatukatha-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 14,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "nettippakarana-pali",
+      "title": "Nettippakaraṇa (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "section",
+        "subsection",
+        "segment"
+      ],
+      "data_file": "nettippakarana-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 14,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "petakopadesa-pali",
+      "title": "Peṭakopadesa (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "section",
+        "segment"
+      ],
+      "data_file": "petakopadesa-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 14,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "puggalapannatti-pali",
+      "title": "Puggalapaññatti (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "division",
+        "section",
+        "segment"
+      ],
+      "data_file": "puggalapannatti-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 14,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "apadana-thera-pali",
+      "title": "Thera-apadāna (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "apadana",
+        "section",
+        "segment"
+      ],
+      "data_file": "apadana-thera-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 14,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "apadana-theri-pali",
+      "title": "Therī-apadāna (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "apadana",
+        "section",
+        "segment"
+      ],
+      "data_file": "apadana-theri-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 14,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "theragatha-sujato",
       "title": "Verses of the Senior Monks",
       "tradition": "Buddhist",
       "collection": "sacred",
       "hierarchy": [
-        "sutta",
-        "section",
-        "verse"
+        "chapter",
+        "poem",
+        "segment"
+      ],
+      "data_file": "theragatha-sujato_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 14,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "theragatha-sujato",
+      "title": "Verses of the Senior Monks",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "poem",
+        "segment"
       ],
       "data_file": "theragatha-sujato_sujato.json",
       "source": "suttacentral",
@@ -417,7 +1318,7 @@
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
-      "source_summary": "*Verses of the Senior Monks* Bhikkhu Sujato (2014). Via Suttacentral.",
+      "source_summary": null,
       "importance_rank": 14,
       "cross_sections": null,
       "cross_traditions": null,
@@ -425,27 +1326,79 @@
       "reading_status_certified": true
     },
     {
+      "id": "yamaka-pali",
+      "title": "Yamaka (Pali)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "section",
+        "segment"
+      ],
+      "data_file": "yamaka-pali_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 14,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "theravada-vinaya",
       "title": "Theravāda Collection on Monastic Law",
       "tradition": "Buddhist",
       "collection": "sacred",
       "hierarchy": [
+        "division",
+        "category",
         "rule",
-        "section",
-        "verse"
+        "segment"
+      ],
+      "data_file": "theravada-vinaya_pli.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": 15,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "theravada-vinaya",
+      "title": "Theravāda Collection on Monastic Law",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "division",
+        "category",
+        "rule",
+        "segment"
       ],
       "data_file": "theravada-vinaya_brahmali.json",
       "source": "suttacentral",
       "author": [],
-      "translator": [
-        "Bhikkhu Brahmali"
-      ],
-      "year": 2021,
-      "translation_label": "Theravāda Collection on Monastic Law",
+      "translator": [],
+      "year": 2018,
+      "translation_label": "Mahāsaṅgīti Tipiṭaka (pli-ms root edition)",
       "translation_short_label": null,
       "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Theravāda Collection on Monastic Law* Bhikkhu Brahmali (2021). Via Suttacentral.",
+      "quality": "derivative",
+      "source_summary": null,
       "importance_rank": 15,
       "cross_sections": null,
       "cross_traditions": null,
@@ -2960,6 +3913,32 @@
         "chapter",
         "verse"
       ],
+      "data_file": "bible_peshitta.json",
+      "source": "ebible",
+      "author": [],
+      "translator": [],
+      "year": null,
+      "translation_label": "Peshitta Old Testament (Syriac, ETCBC edition)",
+      "translation_short_label": null,
+      "volume_label": "Peshitta (Syriac)",
+      "quality": "derivative",
+      "source_summary": "Peshitta (Syriac). Via eBible.org.",
+      "importance_rank": 1,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
       "data_file": "bible_sbl-nt.json",
       "source": "ebible",
       "author": [],
@@ -3735,7 +4714,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "celsus-porphyry-julian-against-christians",
@@ -4059,7 +5038,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "erasmus-war",
@@ -4203,7 +5182,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "chrysostom-homilies-corinthians",
@@ -4261,7 +5240,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "chrysostom-homilies-timothy-hebrews",
@@ -4317,7 +5296,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "hymns-eastern-church-neale",
@@ -4576,7 +5555,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "jerome-letters-works",
@@ -4605,7 +5584,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "calvin-letters",
@@ -5011,7 +5990,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "pagan-christs-robertson",
@@ -5242,7 +6221,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "athanasius-select-works",
@@ -5270,7 +6249,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "cyril-nazianzus-select-works",
@@ -5299,7 +6278,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "bible-contradictions-burr",
@@ -5389,7 +6368,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "ruysbroeck-adornment",
@@ -6503,6 +7482,513 @@
       "reading_status_certified": true
     },
     {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_chinese-union-cunp-traditional.json",
+      "source": "ebible",
+      "author": [],
+      "translator": [
+        "Chinese Union Version translation committee"
+      ],
+      "year": 1919,
+      "translation_label": "Chinese Union Version, New Punctuation (新標點和合本, Traditional)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_reina-valera-1909.json",
+      "source": "ebible",
+      "author": [],
+      "translator": [
+        "Casiodoro de Reina",
+        "Cipriano de Valera"
+      ],
+      "year": 1909,
+      "translation_label": "Reina-Valera 1909 (Santa Biblia)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_luther-1912.json",
+      "source": "ebible",
+      "author": [],
+      "translator": [
+        "Martin Luther"
+      ],
+      "year": 1912,
+      "translation_label": "Luther Bible 1912 (Lutherbibel 1912)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_luther-1545.json",
+      "source": "getbiblenet",
+      "author": [],
+      "translator": [
+        "Martin Luther"
+      ],
+      "year": 1545,
+      "translation_label": "Luther Bible 1545 (Lutherbibel 1545, modernized spelling)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_diodati-1649.json",
+      "source": "getbiblenet",
+      "author": [],
+      "translator": [
+        "Giovanni Diodati"
+      ],
+      "year": 1649,
+      "translation_label": "Giovanni Diodati Bible (1649)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_statenvertaling.json",
+      "source": "getbiblenet",
+      "author": [],
+      "translator": [
+        "Statenvertaling translators (Synod of Dordrecht)"
+      ],
+      "year": 1637,
+      "translation_label": "Statenvertaling (Dutch States Translation, 1637)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_tischendorf-greek-new-testament.json",
+      "source": "morphgntorg",
+      "author": [],
+      "translator": [
+        "Constantin von Tischendorf"
+      ],
+      "year": 1872,
+      "translation_label": "Tischendorf Greek New Testament, 8th ed.",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_tyndale-pentateuch.json",
+      "source": "wikisource",
+      "author": [],
+      "translator": [
+        "William Tyndale"
+      ],
+      "year": 1530,
+      "translation_label": "Tyndale Pentateuch",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_westcott-hort-greek-new-testament.json",
+      "source": "byztxt",
+      "author": [],
+      "translator": [
+        "Brooke Foss Westcott",
+        "Fenton John Anthony Hort"
+      ],
+      "year": 1881,
+      "translation_label": "Westcott-Hort Greek New Testament, 1881 — unaccented Robinson digitization",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_twentieth-century-new-testament.json",
+      "source": "sunday-school-union-(london)---fleming-h-revell-(new-york),-1904",
+      "author": [],
+      "translator": [
+        "Twentieth Century New Testament Committee (anonymous)"
+      ],
+      "year": 1904,
+      "translation_label": "Twentieth Century New Testament, 1904",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_scrivener-textus-receptus-1894.json",
+      "source": "byztxt",
+      "author": [],
+      "translator": [
+        "Frederick Henry Ambrose Scrivener"
+      ],
+      "year": 1894,
+      "translation_label": "Scrivener's Textus Receptus, 1894 — unaccented Robinson digitization",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_rotherham-emphasized-bible-1902.json",
+      "source": "scrollmapper-bible_databases-(public-domain-text)",
+      "author": [],
+      "translator": [
+        "Joseph Bryant Rotherham"
+      ],
+      "year": 1902,
+      "translation_label": "Rotherham's Emphasised Bible, 1902",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_almeida-1911.json",
+      "source": "getbiblenet",
+      "author": [],
+      "translator": [
+        "João Ferreira de Almeida"
+      ],
+      "year": 1911,
+      "translation_label": "Bíblia Sagrada, João Ferreira de Almeida (1911 reprint of a 1900 edition)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_emphatic-diaglott-interlinear-1864.json",
+      "source": "studybibleinfo",
+      "author": [],
+      "translator": [
+        "Benjamin Wilson"
+      ],
+      "year": 1864,
+      "translation_label": "The Emphatic Diaglott — interlinear word-for-word English gloss (Benjamin Wilson, 1864)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_stephanus-textus-receptus-1550.json",
+      "source": "byztxt",
+      "author": [],
+      "translator": [
+        "Robert Estienne (Stephanus)"
+      ],
+      "year": 1550,
+      "translation_label": "Stephanus' 1550 Textus Receptus (Editio Regia) — unaccented Robinson digitization",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_elzevir-textus-receptus-1624.json",
+      "source": "byztxt",
+      "author": [],
+      "translator": [
+        "Bonaventura Elzevir",
+        "Abraham Elzevir"
+      ],
+      "year": 1624,
+      "translation_label": "Elzevir 1624 Textus Receptus — unaccented Robinson digitization",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_antoniades-patriarchal-1904.json",
+      "source": "byztxt",
+      "author": [],
+      "translator": [
+        "Vasileios Antoniades"
+      ],
+      "year": 1904,
+      "translation_label": "Antoniades Patriarchal Text (1904) — unaccented Robinson digitization",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "The Holy Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_tregelles-greek-new-testament.json",
+      "source": "samuel-bagster-&-sons-(original)---tyndale-house,-cambridge-(2009-transcription)",
+      "author": [],
+      "translator": [
+        "Samuel Prideaux Tregelles"
+      ],
+      "year": 1857,
+      "translation_label": "Tregelles' Greek New Testament (1857–1879) — Tyndale House transcription, unaccented",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
       "id": "jefferson-bible",
       "title": "The Life and Morals of Jesus of Nazareth",
       "tradition": "Christian",
@@ -6993,7 +8479,7 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": false
+      "reading_status_certified": true
     },
     {
       "id": "folklore-holy-land",
@@ -10616,6 +12102,62 @@
       "reading_status_certified": true
     },
     {
+      "id": "aitareya-brahmana-keith",
+      "title": "The Aitareya Brāhmaṇa",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "pancika",
+        "adhyaya",
+        "khanda"
+      ],
+      "data_file": "aitareya-brahmana-keith_keith.json",
+      "source": "internet-archive",
+      "author": [],
+      "translator": [
+        "Arthur Berriedale Keith"
+      ],
+      "year": 1920,
+      "translation_label": "Rigveda Brahmanas: The Aitareya and Kausitaki Brahmanas (tr. A.B. Keith, HOS 25)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "aitareya-aranyaka-muller",
+      "title": "The Aitareya Āraṇyaka (Āraṇyakas I–III)",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "aranyaka",
+        "adhyaya",
+        "khanda"
+      ],
+      "data_file": "aitareya-aranyaka-muller_muller.json",
+      "source": "sacredtexts",
+      "author": [],
+      "translator": [
+        "F. Max Müller"
+      ],
+      "year": 1879,
+      "translation_label": "The Upanishads, Part I — Aitareya-Āraṇyaka (tr. F. Max Müller, SBE 1)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "atharva-veda-bloomfield",
       "title": "The Atharva Veda (Hymns)",
       "tradition": "Hindu",
@@ -10733,21 +12275,53 @@
       "reading_status_certified": true
     },
     {
+      "id": "atharva-veda-griffith",
+      "title": "The Hymns of the Atharvaveda",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "hymn",
+        "verse"
+      ],
+      "data_file": "atharva-veda-griffith_griffith.json",
+      "source": "sacredtexts",
+      "author": [],
+      "translator": [
+        "Ralph T.H. Griffith"
+      ],
+      "year": 1896,
+      "translation_label": "The Hymns of the Atharvaveda (tr. Ralph T.H. Griffith)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "rig-veda-griffith",
       "title": "The Hymns of the Rigveda",
       "tradition": "Hindu",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "mandala",
+        "hymn",
+        "verse"
       ],
       "data_file": "rig-veda-griffith_griffith.json",
-      "source": "internet-archive",
-      "author": [],
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
       "translator": [
         "Ralph T.H. Griffith"
       ],
-      "year": 1889,
-      "translation_label": "The Hymns of the Rigveda",
+      "year": 1896,
+      "translation_label": "The Hymns of the Rigveda (tr. Ralph T.H. Griffith)",
       "translation_short_label": null,
       "volume_label": null,
       "quality": "primary",
@@ -10786,6 +12360,61 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "kausitaki-brahmana-keith",
+      "title": "The Kauṣītaki (Śāṅkhāyana) Brāhmaṇa",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "adhyaya",
+        "khanda"
+      ],
+      "data_file": "kausitaki-brahmana-keith_keith.json",
+      "source": "internet-archive",
+      "author": [],
+      "translator": [
+        "Arthur Berriedale Keith"
+      ],
+      "year": 1920,
+      "translation_label": "Rigveda Brahmanas: The Aitareya and Kausitaki Brahmanas (tr. A.B. Keith, HOS 25)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "pancavimsa-brahmana-caland",
+      "title": "The Pañcaviṃśa (Tāṇḍya) Brāhmaṇa",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "khanda",
+        "verse"
+      ],
+      "data_file": "pancavimsa-brahmana-caland_caland.json",
+      "source": "internet-archive",
+      "author": [],
+      "translator": [
+        "Willem Caland"
+      ],
+      "year": 1931,
+      "translation_label": "Pañcaviṃśa-Brāhmaṇa: The Brāhmaṇa of Twenty-Five Chapters (tr. W. Caland)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
     },
     {
       "id": "tagore-post-office",
@@ -10880,7 +12509,9 @@
       "tradition": "Hindu",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "part",
+        "book",
+        "verse"
       ],
       "data_file": "sama-veda-griffith_griffith.json",
       "source": "sacredtexts",
@@ -10995,7 +12626,9 @@
       "tradition": "Hindu",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "kanda",
+        "prapathaka",
+        "anuvaka"
       ],
       "data_file": "yajur-veda-keith_keith.json",
       "source": "sacredtexts",
@@ -11006,7 +12639,7 @@
         "Arthur Berriedale Keith"
       ],
       "year": 1914,
-      "translation_label": "The Yajur Veda (Taittiriya Saṃhitā)",
+      "translation_label": "The Veda of the Black Yajus School entitled Taittiriya Sanhita (tr. A.B. Keith)",
       "translation_short_label": null,
       "volume_label": null,
       "quality": "popular",
@@ -11221,6 +12854,91 @@
       "reading_status_certified": true
     },
     {
+      "id": "satapatha-brahmana-eggeling",
+      "title": "The Śatapatha Brāhmaṇa",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "kanda",
+        "adhyaya",
+        "brahmana",
+        "kandika"
+      ],
+      "data_file": "satapatha-brahmana-eggeling_eggeling.json",
+      "source": "sacredtexts",
+      "author": [],
+      "translator": [
+        "Julius Eggeling"
+      ],
+      "year": 1900,
+      "translation_label": "The Satapatha-Brahmana (tr. Julius Eggeling, SBE 12/26/41/43/44)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "sankhayana-aranyaka-keith",
+      "title": "The Śāṅkhāyana Āraṇyaka",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "adhyaya",
+        "khanda"
+      ],
+      "data_file": "sankhayana-aranyaka-keith_keith.json",
+      "source": "internet-archive",
+      "author": [],
+      "translator": [
+        "Arthur Berriedale Keith"
+      ],
+      "year": 1908,
+      "translation_label": "The Sankhayana Aranyaka, with an appendix on the Mahavrata (tr. A.B. Keith)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "the-upanishads-max-muller-1879",
+      "title": "The_Upanishads",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "the-upanishads-max-muller-1879_anonymous.json",
+      "source": "sacredtexts",
+      "author": [
+        "Max Muller (1879)"
+      ],
+      "translator": [
+        "Max Muller (1879)"
+      ],
+      "year": 1900,
+      "translation_label": "The_Upanishads",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": "*The_Upanishads* Max Muller (1879) (1900). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
       "id": "vedic-hymns-part1",
       "title": "Vedic Hymns, Part 1",
       "tradition": "Hindu",
@@ -11364,6 +13082,108 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
+    },
+    {
+      "id": "sankhayana-aranyaka-sanskrit",
+      "title": "Śāṅkhāyana Āraṇyaka (Sanskrit)",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "adhyaya",
+        "khanda"
+      ],
+      "data_file": "sankhayana-aranyaka-sanskrit_devanagari.json",
+      "source": "gretil-(gretilsubuni-goettingende)",
+      "author": [],
+      "translator": [],
+      "year": 1980,
+      "translation_label": "Śāṅkhāyana-Āraṇyaka (ed. Bhim Dev), GRETIL e-text",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "sankhayana-aranyaka-sanskrit",
+      "title": "Śāṅkhāyana Āraṇyaka (Sanskrit)",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "adhyaya",
+        "khanda"
+      ],
+      "data_file": "sankhayana-aranyaka-sanskrit_iast.json",
+      "source": "gretil-(gretilsubuni-goettingende)",
+      "author": [],
+      "translator": [],
+      "year": 1980,
+      "translation_label": "Śāṅkhāyana-Āraṇyaka (ed. Bhim Dev), GRETIL e-text",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "rig-veda-sanskrit-aufrecht",
+      "title": "Ṛgveda Saṃhitā (Sanskrit)",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "mandala",
+        "hymn",
+        "verse"
+      ],
+      "data_file": "rig-veda-sanskrit-aufrecht_devanagari.json",
+      "source": "gretil-(gretilsubuni-goettingende)",
+      "author": [],
+      "translator": [],
+      "year": 1877,
+      "translation_label": "Ṛgveda-Saṃhitā, ed. Theodor Aufrecht (GRETIL e-text)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "rig-veda-sanskrit-aufrecht",
+      "title": "Ṛgveda Saṃhitā (Sanskrit)",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "mandala",
+        "hymn",
+        "verse"
+      ],
+      "data_file": "rig-veda-sanskrit-aufrecht_iast.json",
+      "source": "gretil-(gretilsubuni-goettingende)",
+      "author": [],
+      "translator": [],
+      "year": 1877,
+      "translation_label": "Ṛgveda-Saṃhitā, ed. Theodor Aufrecht (GRETIL e-text)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": null,
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
     },
     {
       "id": "quran",
@@ -12333,6 +14153,36 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*Pirke Avot (The Sayings of the Jewish Fathers)* Joseph I. Gorfinkle (1913). Via Project Gutenberg.",
+      "importance_rank": 6,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "targum-onkelos-etheridge",
+      "title": "Targum Onkelos (Etheridge English)",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "targum-onkelos-etheridge_etheridge.json",
+      "source": "ebible",
+      "author": [
+        "Onkelos (traditional attribution)"
+      ],
+      "translator": [
+        "John Wesley Etheridge"
+      ],
+      "year": 1862,
+      "translation_label": "The Targum of Onkelos on the Pentateuch (Etheridge, 1862-65)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*Targum Onkelos* on the Pentateuch, English tr. J. W. Etheridge (1862-65). Onkelos portion only. Via eBible.org (engoke).",
       "importance_rank": 6,
       "cross_sections": null,
       "cross_traditions": null,
@@ -32418,746 +34268,6 @@
       "importance_rank": null,
       "restricted": true,
       "reading_status": "restricted",
-      "reading_status_certified": true
-    },
-    {
-      "id": "upanishads-hume-1921",
-      "title": "The Thirteen Principal Upanishads (Hume)",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "upanishad",
-        "passage"
-      ],
-      "data_file": "upanishads-hume-1921_hume.json",
-      "source": "internetarchive",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "Robert Ernest Hume"
-      ],
-      "year": 1921,
-      "translation_label": "The Thirteen Principal Upanishads (Hume)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Thirteen Principal Upanishads (Hume)* Robert Ernest Hume (1921). Public domain. Via Internet Archive.",
-      "importance_rank": 8,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "upanishads-sankara-sastri-vol1",
-      "title": "The Upanishads & Sri Sankara's Commentary, Vol 1 (Sastri)",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "upanishad",
-        "passage"
-      ],
-      "data_file": "upanishads-sankara-sastri-vol1_sastri.json",
-      "source": "internetarchive",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "S. Sitarama Sastri"
-      ],
-      "year": 1905,
-      "translation_label": "The Upanishads & Sri Sankara's Commentary, Vol 1 (Sastri)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Upanishads & Sri Sankara's Commentary, Vol 1 (Sastri)* S. Sitarama Sastri (1905). Public domain. Via Internet Archive.",
-      "importance_rank": 12,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "upanishads-sankara-sastri-vol2",
-      "title": "The Upanishads & Sri Sankara's Commentary, Vol 2 (Sastri)",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "upanishad",
-        "passage"
-      ],
-      "data_file": "upanishads-sankara-sastri-vol2_sastri.json",
-      "source": "internetarchive",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "S. Sitarama Sastri"
-      ],
-      "year": 1898,
-      "translation_label": "The Upanishads & Sri Sankara's Commentary, Vol 2 (Sastri)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Upanishads & Sri Sankara's Commentary, Vol 2 (Sastri)* S. Sitarama Sastri (1898). Public domain. Via Internet Archive.",
-      "importance_rank": 12,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "upanishads-sankara-sastri-vol3",
-      "title": "The Upanishads & Sri Sankara's Commentary, Vol 3 (Sastri)",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "upanishad",
-        "passage"
-      ],
-      "data_file": "upanishads-sankara-sastri-vol3_sastri.json",
-      "source": "internetarchive",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "S. Sitarama Sastri"
-      ],
-      "year": 1899,
-      "translation_label": "The Upanishads & Sri Sankara's Commentary, Vol 3 (Sastri)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Upanishads & Sri Sankara's Commentary, Vol 3 (Sastri)* S. Sitarama Sastri (1899). Public domain. Via Internet Archive.",
-      "importance_rank": 12,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "upanishads-sankara-sastri-vol4",
-      "title": "The Upanishads & Sri Sankara's Commentary, Vol 4 (Sastri)",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "upanishad",
-        "passage"
-      ],
-      "data_file": "upanishads-sankara-sastri-vol4_sastri.json",
-      "source": "internetarchive",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "S. Sitarama Sastri"
-      ],
-      "year": 1899,
-      "translation_label": "The Upanishads & Sri Sankara's Commentary, Vol 4 (Sastri)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Upanishads & Sri Sankara's Commentary, Vol 4 (Sastri)* S. Sitarama Sastri (1899). Public domain. Via Internet Archive.",
-      "importance_rank": 12,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "upanishads-sankara-sastri-vol5",
-      "title": "The Upanishads & Sri Sankara's Commentary, Vol 5 (Sastri)",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "upanishad",
-        "passage"
-      ],
-      "data_file": "upanishads-sankara-sastri-vol5_sastri.json",
-      "source": "internetarchive",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "S. Sitarama Sastri"
-      ],
-      "year": 1901,
-      "translation_label": "The Upanishads & Sri Sankara's Commentary, Vol 5 (Sastri)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Upanishads & Sri Sankara's Commentary, Vol 5 (Sastri)* S. Sitarama Sastri (1901). Public domain. Via Internet Archive.",
-      "importance_rank": 12,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "upanishads-brihadaranyaka-roer",
-      "title": "Brihadaranyaka Upanishad (Röer)",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "upanishad",
-        "passage"
-      ],
-      "data_file": "upanishads-brihadaranyaka-roer_roer.json",
-      "source": "internetarchive",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "Eduard Roer"
-      ],
-      "year": 1856,
-      "translation_label": "Brihadaranyaka Upanishad (Röer)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Brihadaranyaka Upanishad (Röer)* Eduard Roer (1856). Public domain. Via Internet Archive.",
-      "importance_rank": 12,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_chinese-union-cunp-traditional.json",
-      "source": "ebible",
-      "author": [],
-      "translator": [
-        "Chinese Union Version translation committee"
-      ],
-      "year": 1919,
-      "translation_label": "Chinese Union Version, New Punctuation (新標點和合本, Traditional)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_reina-valera-1909.json",
-      "source": "ebible",
-      "author": [],
-      "translator": [
-        "Casiodoro de Reina",
-        "Cipriano de Valera"
-      ],
-      "year": 1909,
-      "translation_label": "Reina-Valera 1909 (Santa Biblia)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_luther-1912.json",
-      "source": "ebible",
-      "author": [],
-      "translator": [
-        "Martin Luther"
-      ],
-      "year": 1912,
-      "translation_label": "Luther Bible 1912 (Lutherbibel 1912)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_luther-1545.json",
-      "source": "getbiblenet",
-      "author": [],
-      "translator": [
-        "Martin Luther"
-      ],
-      "year": 1545,
-      "translation_label": "Luther Bible 1545 (Lutherbibel 1545, modernized spelling)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_diodati-1649.json",
-      "source": "getbiblenet",
-      "author": [],
-      "translator": [
-        "Giovanni Diodati"
-      ],
-      "year": 1649,
-      "translation_label": "Giovanni Diodati Bible (1649)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_statenvertaling.json",
-      "source": "getbiblenet",
-      "author": [],
-      "translator": [
-        "Statenvertaling translators (Synod of Dordrecht)"
-      ],
-      "year": 1637,
-      "translation_label": "Statenvertaling (Dutch States Translation, 1637)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "targum-onkelos-etheridge",
-      "title": "Targum Onkelos (Etheridge English)",
-      "tradition": "Jewish",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "targum-onkelos-etheridge_etheridge.json",
-      "source": "ebible",
-      "author": [
-        "Onkelos (traditional attribution)"
-      ],
-      "translator": [
-        "John Wesley Etheridge"
-      ],
-      "year": 1862,
-      "translation_label": "The Targum of Onkelos on the Pentateuch (Etheridge, 1862-65)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Targum Onkelos* on the Pentateuch, English tr. J. W. Etheridge (1862-65). Onkelos portion only. Via eBible.org (engoke).",
-      "importance_rank": 6,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_tischendorf-greek-new-testament.json",
-      "source": "morphgntorg",
-      "author": [],
-      "translator": [
-        "Constantin von Tischendorf"
-      ],
-      "year": 1872,
-      "translation_label": "Tischendorf Greek New Testament, 8th ed.",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_tyndale-pentateuch.json",
-      "source": "wikisource",
-      "author": [],
-      "translator": [
-        "William Tyndale"
-      ],
-      "year": 1530,
-      "translation_label": "Tyndale Pentateuch",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_westcott-hort-greek-new-testament.json",
-      "source": "byztxt",
-      "author": [],
-      "translator": [
-        "Brooke Foss Westcott",
-        "Fenton John Anthony Hort"
-      ],
-      "year": 1881,
-      "translation_label": "Westcott-Hort Greek New Testament, 1881 — unaccented Robinson digitization",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_twentieth-century-new-testament.json",
-      "source": "sunday-school-union-(london)---fleming-h-revell-(new-york),-1904",
-      "author": [],
-      "translator": [
-        "Twentieth Century New Testament Committee (anonymous)"
-      ],
-      "year": 1904,
-      "translation_label": "Twentieth Century New Testament, 1904",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_scrivener-textus-receptus-1894.json",
-      "source": "byztxt",
-      "author": [],
-      "translator": [
-        "Frederick Henry Ambrose Scrivener"
-      ],
-      "year": 1894,
-      "translation_label": "Scrivener's Textus Receptus, 1894 — unaccented Robinson digitization",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_rotherham-emphasized-bible-1902.json",
-      "source": "scrollmapper-bible_databases-(public-domain-text)",
-      "author": [],
-      "translator": [
-        "Joseph Bryant Rotherham"
-      ],
-      "year": 1902,
-      "translation_label": "Rotherham's Emphasised Bible, 1902",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_almeida-1911.json",
-      "source": "getbiblenet",
-      "author": [],
-      "translator": [
-        "João Ferreira de Almeida"
-      ],
-      "year": 1911,
-      "translation_label": "Bíblia Sagrada, João Ferreira de Almeida (1911 reprint of a 1900 edition)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_emphatic-diaglott-interlinear-1864.json",
-      "source": "studybibleinfo",
-      "author": [],
-      "translator": [
-        "Benjamin Wilson"
-      ],
-      "year": 1864,
-      "translation_label": "The Emphatic Diaglott — interlinear word-for-word English gloss (Benjamin Wilson, 1864)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_stephanus-textus-receptus-1550.json",
-      "source": "byztxt",
-      "author": [],
-      "translator": [
-        "Robert Estienne (Stephanus)"
-      ],
-      "year": 1550,
-      "translation_label": "Stephanus' 1550 Textus Receptus (Editio Regia) — unaccented Robinson digitization",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_elzevir-textus-receptus-1624.json",
-      "source": "byztxt",
-      "author": [],
-      "translator": [
-        "Bonaventura Elzevir",
-        "Abraham Elzevir"
-      ],
-      "year": 1624,
-      "translation_label": "Elzevir 1624 Textus Receptus — unaccented Robinson digitization",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_antoniades-patriarchal-1904.json",
-      "source": "byztxt",
-      "author": [],
-      "translator": [
-        "Vasileios Antoniades"
-      ],
-      "year": 1904,
-      "translation_label": "Antoniades Patriarchal Text (1904) — unaccented Robinson digitization",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "The Holy Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bible_tregelles-greek-new-testament.json",
-      "source": "samuel-bagster-&-sons-(original)---tyndale-house,-cambridge-(2009-transcription)",
-      "author": [],
-      "translator": [
-        "Samuel Prideaux Tregelles"
-      ],
-      "year": 1857,
-      "translation_label": "Tregelles' Greek New Testament (1857–1879) — Tyndale House transcription, unaccented",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
       "reading_status_certified": true
     }
   ]
