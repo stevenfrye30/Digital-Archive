@@ -122,6 +122,32 @@ data/nahjul-balagha_al-jibouri.json.gz
 data/ginza-rabba_lidzbarski.json
 data/ginza-rabba_lidzbarski.json.gz
 
+# 2026-06-30 — restricted Quran translations: data local-only, never push.
+# (.json already covered by data/*.json; .json.gz was the uncovered gap that
+#  let gzip output leak into a commit — explicitly ignore both here.)
+data/quran_abul-aala-maududi.json
+data/quran_abul-aala-maududi.json.gz
+data/quran_anonymous.json
+data/quran_anonymous.json.gz
+data/quran_arberry.json
+data/quran_arberry.json.gz
+data/quran_bahasa-indonesia-indonesian.json
+data/quran_bahasa-indonesia-indonesian.json.gz
+data/quran_elmalili-hamdi-yazir.json
+data/quran_elmalili-hamdi-yazir.json.gz
+data/quran_hilali-khan.json
+data/quran_hilali-khan.json.gz
+data/quran_ma-jian-chinese.json
+data/quran_ma-jian-chinese.json.gz
+data/quran_mohammad-mahdi-fooladvand.json
+data/quran_mohammad-mahdi-fooladvand.json.gz
+data/quran_muhammad-asad.json
+data/quran_muhammad-asad.json.gz
+data/quran_saheeh.json
+data/quran_saheeh.json.gz
+data/quran_yusufali.json
+data/quran_yusufali.json.gz
+
 # 2026-06 — restricted_toolkits: ship ONLY code + metadata + instructions +
 # structural signatures. NEVER commit text, sources, output, or fixtures. A
 # toolkit's OUTPUT lands in the already-gitignored data/_restricted/ tree.
