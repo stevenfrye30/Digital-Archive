@@ -1865,35 +1865,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "tibetan-tantra-muses",
-      "title": "Esoteric Teachings of the Tibetan Tantra",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "tibetan-tantra-muses_muses.json",
-      "source": "sacredtexts",
-      "author": [
-        "Various Tibetan masters"
-      ],
-      "translator": [
-        "Charles A. Muses"
-      ],
-      "year": 1961,
-      "translation_label": "Esoteric Teachings of the Tibetan Tantra",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "suzuki-essays-zen",
       "title": "Essays in Zen Buddhism (First Series)",
       "tradition": "Buddhist",
@@ -24161,35 +24132,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "abominable-snowmen-ivan-sanderson-1961",
-      "title": "Abominable Snowmen",
-      "tradition": "Hermetic",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "abominable-snowmen-ivan-sanderson-1961_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "Ivan Sanderson (1961)"
-      ],
-      "translator": [
-        "Ivan Sanderson (1961)"
-      ],
-      "year": 1900,
-      "translation_label": "Abominable Snowmen",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Abominable Snowmen* by Ivan Sanderson (1961). Translated by Ivan Sanderson (1961) (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "atlantis-donnelly",
       "title": "Atlantis: The Antediluvian World",
       "tradition": "Hermetic",
@@ -24527,35 +24469,6 @@
       ],
       "year": 1922,
       "translation_label": "Initiation, Human and Solar",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "internet-book-shadows",
-      "title": "Internet Book of Shadows",
-      "tradition": "Hermetic",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "internet-book-shadows_various.json",
-      "source": "sacredtexts",
-      "author": [
-        "Various"
-      ],
-      "translator": [
-        "Various"
-      ],
-      "year": 1999,
-      "translation_label": "Internet Book of Shadows",
       "translation_short_label": null,
       "volume_label": null,
       "quality": "popular",
@@ -25316,35 +25229,6 @@
       "volume_label": null,
       "quality": "primary",
       "source_summary": "*The Edinburgh Lectures on Mental Science* Thomas Troward (1904). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "flying-saucers-keyhoe",
-      "title": "The Flying Saucers Are Real",
-      "tradition": "Hermetic",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "flying-saucers-keyhoe_keyhoe.json",
-      "source": "sacredtexts",
-      "author": [
-        "Donald Keyhoe"
-      ],
-      "translator": [
-        "Donald Keyhoe"
-      ],
-      "year": 1950,
-      "translation_label": "The Flying Saucers Are Real",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -33666,6 +33550,110 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "internet-book-shadows",
+      "title": "Internet Book of Shadows",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "internet-book-shadows_various.json",
+      "source": null,
+      "author": [],
+      "translator": [
+        "Various"
+      ],
+      "year": 1999,
+      "translation_label": "Internet Book of Shadows",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
+      "reading_status_certified": true
+    },
+    {
+      "id": "tibetan-tantra-muses",
+      "title": "Esoteric Teachings of the Tibetan Tantra",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "tibetan-tantra-muses_muses.json",
+      "source": null,
+      "author": [],
+      "translator": [
+        "Charles A. Muses"
+      ],
+      "year": 1961,
+      "translation_label": "Esoteric Teachings of the Tibetan Tantra",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
+      "reading_status_certified": true
+    },
+    {
+      "id": "abominable-snowmen-ivan-sanderson-1961",
+      "title": "Abominable Snowmen",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "abominable-snowmen-ivan-sanderson-1961_anonymous.json",
+      "source": null,
+      "author": [],
+      "translator": [
+        "Ivan Sanderson"
+      ],
+      "year": 1961,
+      "translation_label": "Abominable Snowmen",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
+      "reading_status_certified": true
+    },
+    {
+      "id": "flying-saucers-keyhoe",
+      "title": "The Flying Saucers Are Real",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "flying-saucers-keyhoe_keyhoe.json",
+      "source": null,
+      "author": [],
+      "translator": [
+        "Donald Keyhoe"
+      ],
+      "year": 1950,
+      "translation_label": "The Flying Saucers Are Real",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
       "reading_status_certified": true
     },
     {

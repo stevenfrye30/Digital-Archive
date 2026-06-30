@@ -148,6 +148,17 @@ data/quran_saheeh.json.gz
 data/quran_yusufali.json
 data/quran_yusufali.json.gz
 
+# 2026-06-30 — R1 restricted (modern copyright; rights audit): body local-only, never push.
+# (.json already covered by data/*.json; .json.gz must be ignored or it re-leaks on gzip.)
+data/internet-book-shadows_various.json
+data/internet-book-shadows_various.json.gz
+data/tibetan-tantra-muses_muses.json
+data/tibetan-tantra-muses_muses.json.gz
+data/abominable-snowmen-ivan-sanderson-1961_anonymous.json
+data/abominable-snowmen-ivan-sanderson-1961_anonymous.json.gz
+data/flying-saucers-keyhoe_keyhoe.json
+data/flying-saucers-keyhoe_keyhoe.json.gz
+
 # 2026-06 — restricted_toolkits: ship ONLY code + metadata + instructions +
 # structural signatures. NEVER commit text, sources, output, or fixtures. A
 # toolkit's OUTPUT lands in the already-gitignored data/_restricted/ tree.
