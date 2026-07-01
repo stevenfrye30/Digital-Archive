@@ -11290,35 +11290,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "kundalini-gherwal",
-      "title": "Kundalini: The Mother of the Universe",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "kundalini-gherwal_gherwal.json",
-      "source": "sacredtexts",
-      "author": [
-        "Rishi Singh Gherwal"
-      ],
-      "translator": [
-        "Rishi Singh Gherwal"
-      ],
-      "year": 1930,
-      "translation_label": "Kundalini: The Mother of the Universe",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-1-ganguli",
       "title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 1",
       "tradition": "Hindu",
@@ -12527,35 +12498,6 @@
       "volume_label": null,
       "quality": "primary",
       "source_summary": "*Vishnupuranam (Dutt)* Manmatha Nath Dutt (1894). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "yoga-vasishtha-gherwal",
-      "title": "Yoga Vasishtha, or Heaven Found",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "yoga-vasishtha-gherwal_gherwal.json",
-      "source": "sacredtexts",
-      "author": [
-        "Valmiki (attributed)"
-      ],
-      "translator": [
-        "Rishi Singh Gherwal"
-      ],
-      "year": 1930,
-      "translation_label": "Yoga Vasishtha, or Heaven Found",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -32073,6 +32015,62 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "kundalini-gherwal",
+      "title": "Kundalini: The Mother of the Universe",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "kundalini-gherwal_gherwal.json",
+      "source": null,
+      "author": [
+        "Rishi Singh Gherwal"
+      ],
+      "translator": [
+        "Rishi Singh Gherwal"
+      ],
+      "year": 1930,
+      "translation_label": "Kundalini: The Mother of the Universe",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
+      "reading_status_certified": true
+    },
+    {
+      "id": "yoga-vasishtha-gherwal",
+      "title": "Yoga Vasishtha, or Heaven Found",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "yoga-vasishtha-gherwal_gherwal.json",
+      "source": null,
+      "author": [
+        "Valmiki (attributed)"
+      ],
+      "translator": [
+        "Rishi Singh Gherwal"
+      ],
+      "year": 1930,
+      "translation_label": "Yoga Vasishtha, or Heaven Found",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
       "reading_status_certified": true
     },
     {

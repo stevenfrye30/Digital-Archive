@@ -267,6 +267,13 @@ data/pagan-regeneration-willoughby_willoughby.json.gz
 data/mozi_mei.json
 data/mozi_mei.json.gz
 
+# 2026-07-01 — WWH-2 restricted (worldwide-PD life+70; Gherwal d.1964→2035): body local-only, never push.
+# (.json already covered by data/*.json; .json.gz must be ignored or it re-leaks on gzip.)
+data/kundalini-gherwal_gherwal.json
+data/kundalini-gherwal_gherwal.json.gz
+data/yoga-vasishtha-gherwal_gherwal.json
+data/yoga-vasishtha-gherwal_gherwal.json.gz
+
 # 2026-06 — restricted_toolkits: ship ONLY code + metadata + instructions +
 # structural signatures. NEVER commit text, sources, output, or fixtures. A
 # toolkit's OUTPUT lands in the already-gitignored data/_restricted/ tree.
