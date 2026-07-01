@@ -159,6 +159,33 @@ data/abominable-snowmen-ivan-sanderson-1961_anonymous.json.gz
 data/flying-saucers-keyhoe_keyhoe.json
 data/flying-saucers-keyhoe_keyhoe.json.gz
 
+# 2026-06-30 — R2 restricted (US-term 1931-1939; rights audit): body local-only, never push.
+# (.json already covered by data/*.json; .json.gz must be ignored or it re-leaks on gzip.)
+data/luther-galatians_graebner.json
+data/luther-galatians_graebner.json.gz
+data/thunderbird-tootooch-kirk_kirk.json
+data/thunderbird-tootooch-kirk_kirk.json.gz
+data/selestors-men-of-atlantis-clara-iza-von-ravn-1_anonymous.json
+data/selestors-men-of-atlantis-clara-iza-von-ravn-1_anonymous.json.gz
+data/poetic-edda_bellows.json
+data/poetic-edda_bellows.json.gz
+data/spider-woman-reichard_reichard.json
+data/spider-woman-reichard_reichard.json.gz
+data/the-gateless-gate-mu-mon-ekai-tr-nyogen-senza_anonymous.json
+data/the-gateless-gate-mu-mon-ekai-tr-nyogen-senza_anonymous.json.gz
+data/tewa-songs-spinden_spinden.json
+data/tewa-songs-spinden_spinden.json.gz
+data/sacred-symbols-mu-churchward_churchward.json
+data/sacred-symbols-mu-churchward_churchward.json.gz
+data/golden-mountain-levin_levin.json
+data/golden-mountain-levin_levin.json.gz
+data/wild-talents-fort_fort.json
+data/wild-talents-fort_fort.json.gz
+data/dancing-gods-fergusson_fergusson.json
+data/dancing-gods-fergusson_fergusson.json.gz
+data/pancavimsa-brahmana-caland_caland.json
+data/pancavimsa-brahmana-caland_caland.json.gz
+
 # 2026-06 — restricted_toolkits: ship ONLY code + metadata + instructions +
 # structural signatures. NEVER commit text, sources, output, or fixtures. A
 # toolkit's OUTPUT lands in the already-gitignored data/_restricted/ tree.
