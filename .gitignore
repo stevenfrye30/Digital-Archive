@@ -274,6 +274,17 @@ data/kundalini-gherwal_gherwal.json.gz
 data/yoga-vasishtha-gherwal_gherwal.json
 data/yoga-vasishtha-gherwal_gherwal.json.gz
 
+# 2026-07-01 — R4 restricted (GRETIL CC BY-NC-SA 4.0; license-incompatible): body local-only, never push.
+# (.json already covered by data/*.json; .json.gz must be ignored or it re-leaks on gzip.)
+data/rig-veda-sanskrit-aufrecht_devanagari.json
+data/rig-veda-sanskrit-aufrecht_devanagari.json.gz
+data/rig-veda-sanskrit-aufrecht_iast.json
+data/rig-veda-sanskrit-aufrecht_iast.json.gz
+data/sankhayana-aranyaka-sanskrit_devanagari.json
+data/sankhayana-aranyaka-sanskrit_devanagari.json.gz
+data/sankhayana-aranyaka-sanskrit_iast.json
+data/sankhayana-aranyaka-sanskrit_iast.json.gz
+
 # 2026-06 — restricted_toolkits: ship ONLY code + metadata + instructions +
 # structural signatures. NEVER commit text, sources, output, or fixtures. A
 # toolkit's OUTPUT lands in the already-gitignored data/_restricted/ tree.
