@@ -9838,36 +9838,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "fairy-tales-greece",
-      "title": "Fairy Tales of Modern Greece",
-      "tradition": "Greek",
-      "collection": "sacred",
-      "hierarchy": [
-        "passage"
-      ],
-      "data_file": "fairy-tales-greece_gianakoulis.json",
-      "source": "sacredtexts",
-      "author": [
-        "Theodore Gianakoulis",
-        "Georgia MacPherson"
-      ],
-      "translator": [
-        "Theodore Gianakoulis",
-        "Georgia MacPherson"
-      ],
-      "year": 1930,
-      "translation_label": "Theodore Gianakoulis",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Fairy Tales of Modern Greece* by Theodore Gianakoulis, Georgia MacPherson. Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
-    },
-    {
       "id": "hesiodi-carmina-latin-hesiod",
       "title": "Hesiodi Carmina (Latin)",
       "tradition": "Greek",
@@ -31913,6 +31883,35 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "fairy-tales-greece",
+      "title": "Fairy Tales of Modern Greece",
+      "tradition": "Greek",
+      "collection": "sacred",
+      "hierarchy": [
+        "passage"
+      ],
+      "data_file": "fairy-tales-greece_gianakoulis.json",
+      "source": null,
+      "author": [
+        "Theodore Gianakoulis",
+        "Georgia MacPherson"
+      ],
+      "translator": [
+        "Theodore Gianakoulis",
+        "Georgia MacPherson"
+      ],
+      "year": 1930,
+      "translation_label": "Theodore Gianakoulis",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
       "reading_status_certified": true
     },
     {

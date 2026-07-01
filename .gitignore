@@ -285,6 +285,11 @@ data/sankhayana-aranyaka-sanskrit_devanagari.json.gz
 data/sankhayana-aranyaka-sanskrit_iast.json
 data/sankhayana-aranyaka-sanskrit_iast.json.gz
 
+# 2026-07-01 — fairy-tales-greece restricted (worldwide-PD life+70; Gianakoulis active to 1972): body local-only.
+# (.json already covered by data/*.json; .json.gz must be ignored or it re-leaks on gzip.)
+data/fairy-tales-greece_gianakoulis.json
+data/fairy-tales-greece_gianakoulis.json.gz
+
 # 2026-06 — restricted_toolkits: ship ONLY code + metadata + instructions +
 # structural signatures. NEVER commit text, sources, output, or fixtures. A
 # toolkit's OUTPUT lands in the already-gitignored data/_restricted/ tree.
