@@ -20671,7 +20671,7 @@ window.toggleFolioDebug = function () {
 async function ensureGlobalIndex() {
   if (globalIndex || globalIndexLoading) return;
   globalIndexLoading = true;
-  $globalStatus.textContent = 'Loading search index (~8 MB) …';
+  $globalStatus.textContent = 'Loading search index…';
   try {
     globalIndex = await getJSON('data/search_index.json');
     $globalStatus.textContent = `${Object.keys(globalIndex.words).length.toLocaleString()} words indexed across ${globalIndex.texts.length} texts.`;
