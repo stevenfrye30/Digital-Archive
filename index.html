@@ -13783,6 +13783,18 @@ $search.addEventListener('keydown', (e) => {
 
 // ── Metadata panel ───────────────────────────────────────────────────────────
 
+// Reading-language display names, keyed by the translation.language code
+// (ISO 639-1/639-3 as used across the corpus). Generic: shows the correct
+// reading language for every text in the metadata panel; script/RTL handling
+// is unaffected (that is keyed separately off the same code). Unknown codes
+// fall through and simply show no Language row.
+const LANG_NAMES = {
+  en: 'English', la: 'Latin', grc: 'Ancient Greek', el: 'Greek', he: 'Hebrew',
+  pi: 'Pali', ar: 'Arabic', syc: 'Syriac', zh: 'Chinese', de: 'German',
+  ur: 'Urdu', fa: 'Persian', ru: 'Russian', fr: 'French', es: 'Spanish',
+  it: 'Italian', nl: 'Dutch', pt: 'Portuguese', id: 'Indonesian', tr: 'Turkish',
+};
+
 function showMeta(data) {
   $metaTitle.textContent = data.title || '';
   $metaDesc.textContent  = data.description || '';
@@ -13799,6 +13811,9 @@ function showMeta(data) {
   }
   const tr = data.translation;
   if (tr) {
+    if (tr.language && LANG_NAMES[tr.language]) {
+      items.push({ label: 'Language', value: LANG_NAMES[tr.language] });
+    }
     if (tr.translator && tr.translator.length) {
       items.push({ label: 'Translator', value: tr.translator.join(', ') });
     }
