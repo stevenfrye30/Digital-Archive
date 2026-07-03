@@ -10123,8 +10123,8 @@
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
+      "reading_status": "pass",
+      "reading_status_certified": true
     },
     {
       "id": "sophocles-three-plays",
@@ -13519,7 +13519,9 @@
       ],
       "data_file": "book-of-enoch_charles.json",
       "source": "sacredtexts",
-      "author": [],
+      "author": [
+        "Anonymous (Enoch attributed)"
+      ],
       "translator": [
         "R.H. Charles"
       ],
@@ -13532,8 +13534,8 @@
       "importance_rank": 15,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
+      "reading_status": "pass",
+      "reading_status_certified": true
     },
     {
       "id": "josephus-against-apion",
