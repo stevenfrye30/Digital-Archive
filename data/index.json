@@ -8448,8 +8448,8 @@
       "importance_rank": 8,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
+      "reading_status": "pass",
+      "reading_status_certified": true
     },
     {
       "id": "history-chinese-literature-giles",
@@ -8683,34 +8683,6 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
-    },
-    {
-      "id": "confucian-canon-bilingual",
-      "title": "The Confucian Canon (Chinese and English)",
-      "tradition": "Confucian",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "confucian-canon-bilingual_legge-bilingual.json",
-      "source": "sacredtexts",
-      "author": [
-        "Various"
-      ],
-      "translator": [
-        "James Legge"
-      ],
-      "year": 1893,
-      "translation_label": "The Confucian Canon (Chinese and English)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Confucian Canon (Chinese and English)* James Legge (1893). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
     },
     {
       "id": "doctrine-of-the-mean",
