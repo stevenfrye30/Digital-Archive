@@ -12514,6 +12514,26 @@ function bibleOldTestamentLabel() {
   return isJewishHebrewBible ? 'Tanakh' : 'Old Testament';
 }
 
+// Canonical section-key builder — the SINGLE source of truth for both the
+// contents page and the reader dropdown, so the two can never drift. Excludes
+// front matter (p.fm), skips empty/invalid path values (no numeric fallback
+// sections leaking in from hidden front matter), dedupes, and preserves
+// first-occurrence source order. `chapterScoped` selects the key level:
+// path[0] normally, `${path[0]}.${path[1]}` for Bible-shaped book.chapter texts.
+function sectionKeys(passages, chapterScoped) {
+  const seen = new Set();
+  const keys = [];
+  for (const p of passages) {
+    if (p.fm) continue;
+    if (!p.path || !p.path.length) continue;
+    const raw = chapterScoped ? `${p.path[0]}.${p.path[1]}` : p.path[0];
+    if (raw === null || raw === undefined || raw === '' || String(raw) === 'undefined') continue;
+    const k = String(raw);
+    if (!seen.has(k)) { seen.add(k); keys.push(k); }
+  }
+  return keys;
+}
+
 function groupName(key) {
   const level = topLevel();
   if (level === 'book') {
@@ -12608,8 +12628,20 @@ function groupName(key) {
   // of redundant "<word> <key> \u2014 " prefixes. The button never reads
   // "Chapter 1 \u2014 Chapter 1".
   if (typeof level === 'string' && level.length) {
-    const word = _detectLabelWord(level);
     const titles = currentData && currentData.chapter_titles;
+    const ks = String(key);
+    // Fix B: only prepend a generic level word ("Section"/"Chapter") when the
+    // key is a BARE enumerator (Arabic number or Roman numeral). If the key is
+    // already a meaningful heading ("Chapter I", "Preface", "Appendix A",
+    // "Notes and References", a tale name), show it verbatim \u2014 never
+    // "Section Chapter I".
+    const bareEnum = /^\d+$/.test(ks) || /^[IVXLCDM]+$/.test(ks);
+    if (!bareEnum) {
+      const raw = titles && (titles[key] || titles[Number(key)]);
+      const t = _refineChapterTitle(raw, key, null);
+      return (t && t !== ks) ? `${ks} \u2014 ${t}` : ks;
+    }
+    const word = _detectLabelWord(level);
     const raw = titles && (titles[key] || titles[Number(key)]);
     const t = _refineChapterTitle(raw, key, word);
     const base = `${word} ${key}`;
@@ -13413,17 +13445,10 @@ function buildBookSelector() {
     level === 'parva' ? 'Parva' : level === 'chapter' ? 'Chapter' :
     level === 'biography' ? 'Life' : level === 'rule' ? 'Rule' : 'Text';
 
-  const seen = new Set();
-  groupKeys  = [];
-  // For Bible-shaped texts the group is book.chapter so prev/next
-  // and filterAndRender treat each chapter as its own room.
-  const chapterScoped = _isChapterScopedHierarchy();
-  for (const p of allPassages) {
-    const k = chapterScoped
-      ? `${p.path[0]}.${p.path[1]}`
-      : String(p.path[0]);
-    if (!seen.has(k)) { seen.add(k); groupKeys.push(k); }
-  }
+  // Canonical, fm-filtered keys (shared builder, same as the contents page).
+  // For Bible-shaped texts the group is book.chapter so prev/next and
+  // filterAndRender treat each chapter as its own room.
+  groupKeys = sectionKeys(allPassages, _isChapterScopedHierarchy());
 
   $bookSelect.innerHTML = '';
 
@@ -14152,13 +14177,10 @@ function showCover(data, entry) {
   // sorted so the grid reads 1, 2, 3 … regardless of passage order
   // in the source file.
   const hier = data.hierarchy || [];
-  const seen = new Set();
-  const keys = [];
-  for (const p of data.passages) {
-    if (p.fm) continue;
-    const k = String(p.path[0]);
-    if (!seen.has(k)) { seen.add(k); keys.push(k); }
-  }
+  // Canonical section keys via the shared builder (excludes front matter;
+  // path[0] level to match the codex-cover grid). The reader dropdown uses the
+  // same sectionKeys() builder, so contents and dropdown stay in lock-step.
+  const keys = sectionKeys(data.passages, false);
   if (keys.every(k => /^\d+$/.test(k))) {
     keys.sort((a, b) => Number(a) - Number(b));
   }
