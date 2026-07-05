@@ -13488,12 +13488,20 @@ function buildBookSelector() {
     }
   }
 
-  // Respect a pre-set currentBook (permalink / resume); otherwise default to first.
-  let startIdx = groupKeys.indexOf(String(currentBook));
-  if (startIdx < 0) startIdx = 0;
-  groupIndex  = startIdx;
-  currentBook = groupKeys[startIdx];
-  $bookSelect.value        = currentBook;
+  // Respect a pre-set currentBook (permalink / resume); otherwise default to
+  // first. The front-matter pseudo-book ('__fm__') is NOT a chapter key — never
+  // coerce it to groupKeys[0], or the Front Matter button opens Chapter I
+  // instead of the front matter.
+  if (currentBook === '__fm__') {
+    groupIndex = -1;
+    $bookSelect.value = '';
+  } else {
+    let startIdx = groupKeys.indexOf(String(currentBook));
+    if (startIdx < 0) startIdx = 0;
+    groupIndex  = startIdx;
+    currentBook = groupKeys[startIdx];
+    $bookSelect.value = currentBook;
+  }
   $bookGroup.style.display = 'flex';
   $navBar.style.display    = 'flex';
   updateNav();
