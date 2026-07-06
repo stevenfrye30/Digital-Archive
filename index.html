@@ -14199,7 +14199,13 @@ function showCover(data, entry) {
   if (keys.every(k => /^\d+$/.test(k))) {
     keys.sort((a, b) => Number(a) - Number(b));
   }
-  const grouped = needsGroupSelector() && keys.length > 1 && keys.length <= 200;
+  // A single MEANINGFUL (non-numeric) section — e.g. a one-work text such as
+  // "Jesus an Essene" — is routed through the codex path too, so it gets a real
+  // contents card + "Read from beginning" entry. Without this a one-section
+  // grouped-hierarchy text fell to the flat plate and had no usable entry point.
+  // Numeric single sections (separately mis-parsed) keep the flat fallback.
+  const _singleMeaningful = keys.length === 1 && !/^\d+$/.test(String(keys[0]));
+  const grouped = needsGroupSelector() && (keys.length > 1 || _singleMeaningful) && keys.length <= 200;
   const useCodexLayout = isBibleCover || grouped;
   let hasFrontMatter = data.passages.some(p => p.fm);
   const bodyCount = data.passages.filter(p => !p.fm).length;
@@ -14348,7 +14354,7 @@ function showCover(data, entry) {
     // declaring the count + the L1 type ("18 chapters · 295
     // passages"). Mirrors the Bible's silent canon-rubric tone.
     const labelWord = hier[0] || 'section';
-    const plural = labelWord + (labelWord.endsWith('s') ? '' : 's');
+    const plural = (keys.length === 1) ? labelWord : labelWord + (labelWord.endsWith('s') ? '' : 's');
     html += `<div class="cc-toc-sub bcl-codex-sub">${keys.length} ${plural} \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
   }
 
