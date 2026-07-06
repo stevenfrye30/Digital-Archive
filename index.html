@@ -12345,6 +12345,7 @@ function formatRef(p) {
   }
 
   const verse = p.range_end ? `${path[1]}\u2013${p.range_end}` : path[1];
+  if (!path || path.length < 2) return (path && path[0] != null) ? String(path[0]) : '';
   return `${path[0]}.${verse}`;
 }
 
@@ -12984,9 +12985,15 @@ function _renderBatch(passages, query, frag) {
     ref.className   = 'ref clickable-ref';
     // In chapter-room mode the room title already establishes
     // book + chapter, so the verse label is just the numeral.
+    // When a single-level section is the selected room, the section label is
+    // already the room heading + dropdown value; repeating the full label beside
+    // every passage is noise (and long labels like "Part I — Lecture I. …" wrap).
+    // Suppress it there; verse-level refs (path length >= 2) still show a locator.
+    const _sectionSelected = p.path && p.path.length === 1
+      && currentBook && currentBook !== '__fm__' && String(p.path[0]) === String(currentBook);
     ref.textContent = (chapterRoom && p.path && p.path.length === 3)
       ? String(p.path[2])
-      : formatRef(p);
+      : _sectionSelected ? '' : formatRef(p);
     ref.title       = 'Click to copy link to this passage';
     ref.addEventListener('click', (e) => {
       e.stopPropagation();
