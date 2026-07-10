@@ -12536,6 +12536,14 @@ function sectionKeys(passages, chapterScoped) {
 }
 
 function groupName(key) {
+  // Citation-safe section re-label: an opt-in `section_labels` map overrides the
+  // DISPLAY label for a section key, leaving path[0] (the identifier) unchanged.
+  // Authoritative — an explicit steward override wins over any computed label.
+  // See plans/SECTION_RELABEL_DESIGN.md.
+  const _relabel = currentData && currentData.section_labels;
+  if (_relabel && Object.prototype.hasOwnProperty.call(_relabel, String(key))) {
+    return _relabel[String(key)];
+  }
   const level = topLevel();
   if (level === 'book') {
     // Chapter-scoped Bible groups are "book.chapter" — render as
