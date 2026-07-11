@@ -1429,6 +1429,26 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   cursor: pointer;
   transition: color 0.18s ease-out, border-color 0.18s ease-out,
               background 0.18s ease-out;
+  /* Long section/group labels (non-numeric ranges, e.g. the SBE X combined
+     volume) must wrap cleanly and stay bounded instead of running off in one
+     ambiguous line. Numeric ranges ("1–24") are short, so the cap and wrap
+     leave them visually unchanged. */
+  max-width: min(100%, 340px);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+  text-align: center;
+}
+/* Range separator for label (non-numeric) ranges — an upright arrow that is
+   visually distinct from the em-dashes inside the labels, so the from/to
+   endpoints no longer run together. Numeric ranges keep their bare "–". */
+.bible-cover-layout .bcl-codex-range .bcl-range-sep {
+  font-style: normal;
+  font-variant: normal;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: rgba(110, 65, 25, 0.5);
+  padding: 0 0.15em;
 }
 .bible-cover-layout .bcl-codex-range:hover,
 .bible-cover-layout .bcl-codex-range:focus-visible {
@@ -14565,8 +14585,14 @@ function showCover(data, entry) {
         const fromKey = keys[r.from];
         const toKey   = keys[r.to - 1];
         const active = (i === 0) ? ' bcl-codex-range--active' : '';
+        // Numeric ranges (Bible book/chapter grids) keep the compact "1–24"
+        // form. Long non-numeric section labels (e.g. the SBE X combined
+        // volume) get a distinct, styleable arrow separator so the two
+        // endpoints don't run together with the em-dashes inside the labels.
+        const bothNumeric = /^\d+$/.test(String(fromKey)) && /^\d+$/.test(String(toKey));
+        const sep = bothNumeric ? '–' : '<span class="bcl-range-sep">→</span>';
         html += `<button type="button" class="bcl-codex-range${active}" role="tab"` +
-                ` data-from="${r.from}" data-to="${r.to}">${escapeHTML(fromKey)}–${escapeHTML(toKey)}</button>`;
+                ` data-from="${r.from}" data-to="${r.to}">${escapeHTML(fromKey)}${sep}${escapeHTML(toKey)}</button>`;
       });
       html += '</nav>';
     }
