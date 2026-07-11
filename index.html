@@ -4362,6 +4362,20 @@ details.display-options > summary {
   margin-bottom: 1.1em;
 }
 
+/* Continuation passages (join_prev:true): a page-split paragraph fragment
+   rendered INLINE inside the preceding paragraph block so the sentence reads
+   continuously with no paragraph-sized break. The element stays an addressable
+   .passage[data-pid] (permalink / citation / highlight intact); only its display
+   box changes. Stored text is unchanged; the leading [paragraph continues] marker
+   is suppressed in display by the renderer. Flag-guarded — no other text affected. */
+.passage.passage-joined {
+  display: inline;
+  position: static;
+  padding-left: 0;
+  margin: 0;
+  border: 0;
+}
+
 /* Structural markers promoted from body stubs (Gap 5 stub cleanup):
    roman numerals, "BOOK I", "INTRODUCTION" etc. Rendered as quiet
    section headings rather than orphan body paragraphs. Text renders
@@ -12966,6 +12980,47 @@ function toggleGenealogyBody(passageDiv, rec) {
   body.classList.toggle('open');
 }
 
+// Render passage text with inline [N] footnote refs and [*N] apparatus refs into an
+// INLINE target node — used for join_prev continuation spans. `ownerDiv` is the
+// paragraph block the apparatus body attaches to. Mirrors the block renderer's
+// reference handling; a continuation is never itself a footnote-body.
+function _renderInlineText(targetNode, rawText, ownerDiv, p) {
+  const parts = rawText.split(/(\[\*?\d+\])/);
+  for (const part of parts) {
+    const fnMatch = part.match(/^\[(\d+)\]$/);
+    const apMatch = part.match(/^\[\*(\d+)\]$/);
+    if (fnMatch) {
+      const a = document.createElement('a');
+      a.className = 'fn-ref'; a.href = '#'; a.textContent = part;
+      a.dataset.fnTarget = fnMatch[1];
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = $passages.querySelector(`.footnote-body[data-fn-number="${fnMatch[1]}"]`);
+        if (target) {
+          target.classList.toggle('fn-visible');
+          if (target.classList.contains('fn-visible')) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.classList.add('fn-flash');
+            setTimeout(() => target.classList.remove('fn-flash'), 1500);
+          }
+        }
+      });
+      targetNode.appendChild(a);
+    } else if (apMatch) {
+      const a = document.createElement('a');
+      a.className = 'apparatus-ref'; a.href = '#'; a.textContent = part;
+      a.dataset.apparatusIndex = apMatch[1];
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleApparatusBody(ownerDiv, p.id, parseInt(apMatch[1], 10));
+      });
+      targetNode.appendChild(a);
+    } else {
+      targetNode.appendChild(document.createTextNode(part));
+    }
+  }
+}
+
 function _renderBatch(passages, query, frag) {
   const chapterRoom = _isChapterScopedHierarchy() && document.body.classList.contains('chapter-room');
   // Hebrew (RTL) verse bodies: route to ReaderHebrew font + RTL layout when the
@@ -12979,7 +13034,29 @@ function _renderBatch(passages, query, frag) {
   // generic .reader-rtl layout + ReaderArabic font. Hebrew keeps its dedicated
   // ReaderHebrew path; Syriac ('syc') remains deferred; English/Greek/Latin untouched.
   const isArabicScriptRTL = (_lang === 'ur' || _lang === 'ar');
+  // Anchor for join_prev continuation passages: the last real (non-joined) .passage
+  // block already in the DOM, so a continuation at a render-batch boundary still
+  // attaches to its paragraph. Updated to each new block below.
+  let _joinAnchor = (function () {
+    const els = $passages.querySelectorAll('.passage:not(.passage-joined)');
+    return els.length ? els[els.length - 1] : null;
+  })();
   for (const p of passages) {
+    // Continuation passage: render INLINE into the current paragraph block so a
+    // page-split sentence reads continuously. Flag-guarded (join_prev only) — no
+    // lowercase/punctuation heuristic at runtime; texts without the flag are
+    // untouched. The element stays an addressable .passage[data-pid]; stored text
+    // is unchanged (a leading [paragraph continues] marker is suppressed in display).
+    if (p.join_prev === true && _joinAnchor) {
+      const span = document.createElement('span');
+      span.className = 'passage passage-joined';
+      span.dataset.pid = p.id;
+      const disp = p.text.replace(/\n/g, ' ').replace(/^\s*\[paragraph continues\]\s*/, '');
+      _joinAnchor.appendChild(document.createTextNode(' '));
+      _renderInlineText(span, disp, _joinAnchor, p);
+      _joinAnchor.appendChild(span);
+      continue;
+    }
     const div = document.createElement('div');
     div.className = 'passage';
     div.dataset.pid = p.id;
@@ -13181,6 +13258,10 @@ function _renderBatch(passages, query, frag) {
         });
       }
     }
+
+    // This is a real (non-continuation) block: it becomes the anchor that any
+    // following join_prev passages attach to.
+    _joinAnchor = div;
 
     if (chapterRoom) {
       // Chapter-room layout — scripture is sovereign. cr-row is a
