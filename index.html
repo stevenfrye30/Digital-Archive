@@ -13842,6 +13842,22 @@ function filterAndRender() {
   if (currentBook === '__fm__') {
     // Show only front-matter passages
     passages = allPassages.filter(p => p.fm);
+    // Records with no fm passages but a structured front_matter block (e.g. a
+    // Gutenberg title page in data.front_matter) render that block here, so the
+    // Front Matter button opens a real view. Reuses renderFrontMatter(); source
+    // is never mutated.
+    if (passages.length === 0
+        && currentData && currentData.front_matter && currentData.front_matter.length) {
+      $passages.innerHTML = '';
+      const fmEl = renderFrontMatter();
+      if (fmEl) {
+        fmEl.querySelectorAll('details').forEach(d => { d.open = true; });
+        $passages.appendChild(fmEl);
+      }
+      searchMatches = []; searchMatchIdx = -1;
+      $searchCount.textContent = ''; updateSearchNav();
+      return;
+    }
   } else if (needsGroupSelector() && currentBook) {
     if (_isChapterScopedHierarchy()) {
       // Bible-shaped: currentBook is a "book.chapter" key.
@@ -14316,7 +14332,11 @@ function showCover(data, entry) {
   const _singleMeaningful = keys.length === 1 && !/^\d+$/.test(String(keys[0]));
   const grouped = needsGroupSelector() && (keys.length > 1 || _singleMeaningful) && keys.length <= 200;
   const useCodexLayout = isBibleCover || grouped;
-  let hasFrontMatter = data.passages.some(p => p.fm);
+  // Front Matter button shows for either fm passages OR a structured
+  // front_matter block (e.g. a Gutenberg title page held in data.front_matter
+  // with no fm passages). Presentation only — no source mutation.
+  let hasFrontMatter = data.passages.some(p => p.fm)
+    || !!(data.front_matter && data.front_matter.length);
   const bodyCount = data.passages.filter(p => !p.fm).length;
 
   // v100 — Apply per-text contents overrides BEFORE downstream
