@@ -4372,6 +4372,13 @@ details.display-options > summary {
 .passage.footnote-body.fn-visible {
   display: block;
 }
+.passage.footnote-body .fn-return {
+  margin-left: 8px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .passage.footnote-body.fn-flash {
   background-color: #fffbcc;
   display: block;
@@ -13011,6 +13018,144 @@ function toggleGenealogyBody(passageDiv, rec) {
 // INLINE target node — used for join_prev continuation spans. `ownerDiv` is the
 // paragraph block the apparatus body attaches to. Mirrors the block renderer's
 // reference handling; a continuation is never itself a footnote-body.
+// ── Footnote resolution ───────────────────────────────────────────────────────
+// A footnote body is a passage whose text begins "[N] ". The reader hides it until its
+// marker is clicked. The marker and the body normally sit in the same section, so the old
+// lookup searched only the RENDERED section ($passages). But some witnesses (Gutenberg
+// apostolic-fathers: 188 of 2,027) store the footnote blocks at the END of a work, i.e. in a
+// DIFFERENT section from the prose that cites them. Those markers resolved to nothing.
+//
+// _resolveFootnote falls back to the LOADED RECORD's own passage list — never another text,
+// never a stale record — finds the note's section, navigates there with the existing
+// section-navigation path, then reveals, scrolls and highlights it. Nothing is duplicated
+// into other sections and no new apparatus framework is introduced.
+let _fnReturn = null;          // prose passage to come back to
+
+function _revealFootnoteBody(el) {
+  if (!el) return;
+  el.classList.add('fn-visible');
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.classList.add('fn-flash');
+  setTimeout(() => el.classList.remove('fn-flash'), 1500);
+}
+
+function _footnoteBodyPassage(num) {
+  const src = (typeof currentData !== 'undefined' && currentData && currentData.passages)
+    ? currentData.passages : [];
+  // A footnote BODY is "[N] text" (marker + whitespace). A prose passage may legitimately BEGIN
+  // with a marker ("[1398]Ignatius, who is…" — the note is on the epistle's title), and that is
+  // NOT a body: no whitespace follows the bracket. The \s is what keeps the two apart.
+  const re = new RegExp('^\\[' + num + '\\]\\s');
+  return src.find(p => re.test(String(p.text || '').replace(/\n/g, ' '))) || null;
+}
+
+function _addFootnoteReturn(el, fromPid) {
+  if (!el || !fromPid || el.querySelector('.fn-return')) return;
+  const back = document.createElement('a');
+  back.className = 'fn-return';
+  back.href = '#';
+  back.textContent = '↩ back to the text';
+  back.setAttribute('aria-label', 'Return to the passage that cites this footnote');
+  const num = el.dataset.fnNumber;
+  const go = (e) => {
+    e.preventDefault();
+    _gotoPassage(fromPid, true);
+    // Returning re-renders the originating section, so the marker element we came from has been
+    // destroyed. Re-query it in the fresh DOM rather than focusing a detached node.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const marker = $passages.querySelector(`.fn-ref[data-fn-target="${num}"]`);
+      if (marker) {
+        marker.setAttribute('aria-expanded', 'false');
+        marker.focus({ preventScroll: true });
+      }
+    }));
+  };
+  back.addEventListener('click', go);
+  back.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') go(e);
+  });
+  el.appendChild(document.createTextNode(' '));
+  el.appendChild(back);
+}
+
+// Navigate to any passage of the LOADED record, crossing sections if needed.
+function _gotoPassage(pid, push) {
+  const rec = (typeof currentData !== 'undefined') ? currentData : null;
+  const src = (rec && rec.passages) ? rec.passages : [];
+  const target = src.find(p => String(p.id) === String(pid));
+  if (!target || !target.path || !target.path.length) return false;
+  const sec = String(target.path[0]);
+  if (needsGroupSelector() && String(currentBook) !== sec) {
+    currentBook = sec;
+    enterReading(sec);
+  }
+  if (push) {
+    const url = new URL(location);
+    url.searchParams.set('p', pid);
+    history.pushState({ pid }, '', url);
+  }
+  // Stale-record guard: a text switch between now and the next frame must not let this jump
+  // land inside a DIFFERENT record. `currentData` is replaced wholesale by loadText.
+  requestAnimationFrame(() => {
+    if (currentData !== rec) return;
+    jumpToPassage(pid, true);
+  });
+  return true;
+}
+
+function _resolveFootnote(num, fromPid, refEl) {
+  // Same section: unchanged behaviour — a plain toggle.
+  const here = $passages.querySelector(`.footnote-body[data-fn-number="${num}"]`);
+  if (here) {
+    here.classList.toggle('fn-visible');
+    const open = here.classList.contains('fn-visible');
+    if (refEl) refEl.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
+      here.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      here.classList.add('fn-flash');
+      setTimeout(() => here.classList.remove('fn-flash'), 1500);
+    }
+    return;
+  }
+  // Cross-section: resolve inside THIS record only.
+  const rec = (typeof currentData !== 'undefined') ? currentData : null;
+  const note = _footnoteBodyPassage(num);
+  if (!note) return;                       // unknown number -> no-op, never guesses
+  _fnReturn = fromPid || null;
+  if (refEl) refEl.setAttribute('aria-expanded', 'true');
+  if (!_gotoPassage(note.id, true)) return;
+  requestAnimationFrame(() => {
+    // Same stale-record guard: never reveal a note belonging to a record we have left. Without
+    // this, a rapid text switch could surface another text's footnote with the same number.
+    if (currentData !== rec) return;
+    const el = $passages.querySelector(`.footnote-body[data-fn-number="${num}"]`);
+    if (!el) return;
+    _revealFootnoteBody(el);
+    _addFootnoteReturn(el, _fnReturn);
+    el.setAttribute('tabindex', '-1');     // focus follows the reader to the note
+    el.focus({ preventScroll: true });
+  });
+}
+
+// Back/forward must return to the originating prose passage. The reader otherwise only ever
+// calls replaceState, so a pushed footnote entry needs a popstate handler to re-render.
+window.addEventListener('popstate', () => {
+  const qs = new URLSearchParams(location.search);
+  const pid = qs.get('p');
+  const wantText = qs.get('text');
+  if (typeof currentData === 'undefined' || !currentData) return;
+  // Back/forward may cross a TEXT boundary (loadText only replaceState's the URL). Jumping a pid
+  // from record A into record B would be nonsense, so re-enter through the normal fresh-load
+  // path instead of guessing. Same-text moves are handled in place.
+  const haveText = (typeof currentEntry !== 'undefined' && currentEntry) ? currentEntry.data_file : null;
+  if (wantText && haveText && wantText !== haveText) {
+    location.reload();
+    return;
+  }
+  if (!pid) return;
+  _gotoPassage(pid, false);
+});
+
 function _renderInlineText(targetNode, rawText, ownerDiv, p) {
   const parts = rawText.split(/(\[\*?\d+\])/);
   for (const part of parts) {
@@ -13020,17 +13165,16 @@ function _renderInlineText(targetNode, rawText, ownerDiv, p) {
       const a = document.createElement('a');
       a.className = 'fn-ref'; a.href = '#'; a.textContent = part;
       a.dataset.fnTarget = fnMatch[1];
-      a.addEventListener('click', (e) => {
+      a.setAttribute('role', 'button');
+      a.setAttribute('aria-label', 'Footnote ' + fnMatch[1]);
+      a.setAttribute('aria-expanded', 'false');
+      const _fire = (e) => {
         e.preventDefault();
-        const target = $passages.querySelector(`.footnote-body[data-fn-number="${fnMatch[1]}"]`);
-        if (target) {
-          target.classList.toggle('fn-visible');
-          if (target.classList.contains('fn-visible')) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            target.classList.add('fn-flash');
-            setTimeout(() => target.classList.remove('fn-flash'), 1500);
-          }
-        }
+        _resolveFootnote(fnMatch[1], p && p.id, a);
+      };
+      a.addEventListener('click', _fire);
+      a.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') _fire(e);
       });
       targetNode.appendChild(a);
     } else if (apMatch) {
@@ -13158,18 +13302,16 @@ function _renderBatch(passages, query, frag) {
           a.href = '#';
           a.textContent = part;
           a.dataset.fnTarget = fnMatch[1];
-          a.addEventListener('click', (e) => {
+          a.setAttribute('role', 'button');
+          a.setAttribute('aria-label', 'Footnote ' + fnMatch[1]);
+          a.setAttribute('aria-expanded', 'false');
+          const _fire2 = (e) => {
             e.preventDefault();
-            const target = $passages.querySelector(`.footnote-body[data-fn-number="${fnMatch[1]}"]`);
-            if (target) {
-              // Toggle visibility
-              target.classList.toggle('fn-visible');
-              if (target.classList.contains('fn-visible')) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                target.classList.add('fn-flash');
-                setTimeout(() => target.classList.remove('fn-flash'), 1500);
-              }
-            }
+            _resolveFootnote(fnMatch[1], p && p.id, a);
+          };
+          a.addEventListener('click', _fire2);
+          a.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') _fire2(e);
           });
           targetNode.appendChild(a);
         } else if (apMatch) {
@@ -13229,14 +13371,17 @@ function _renderBatch(passages, query, frag) {
               a.className = 'fn-ref';
               a.href = '#';
               a.textContent = part;
-              a.addEventListener('click', (e) => {
+              a.dataset.fnTarget = fnMatch[1];
+              a.setAttribute('role', 'button');
+              a.setAttribute('aria-label', 'Footnote ' + fnMatch[1]);
+              a.setAttribute('aria-expanded', 'false');
+              const _fire3 = (e) => {
                 e.preventDefault();
-                const target = $passages.querySelector(`.footnote-body[data-fn-number="${fnMatch[1]}"]`);
-                if (target) {
-                  target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  target.classList.add('fn-flash');
-                  setTimeout(() => target.classList.remove('fn-flash'), 1500);
-                }
+                _resolveFootnote(fnMatch[1], p && p.id, a);
+              };
+              a.addEventListener('click', _fire3);
+              a.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') _fire3(e);
               });
               frag2.appendChild(a);
             } else if (apMatch) {
@@ -15094,6 +15239,11 @@ function jumpToPassage(pid, highlight) {
   // Programmatic landing on an exact id: protect it from scroll-driven ?p= drift
   // until genuine user input (a new jump here supersedes any prior protected id).
   _citationPid = pid;
+  // A footnote body is hidden (zero height) until revealed. Landing a deep link, a reload or
+  // a Copy Link on one must SHOW it — never scroll silently to an invisible element.
+  if (el.classList.contains('footnote-body')) {
+    el.classList.add('fn-visible');
+  }
   _scrollPassageIntoReader(el, highlight);
   return true;
 }
