@@ -173,19 +173,59 @@ def main():
         page.wait_for_timeout(700)
         check(page.evaluate(URLP) not in ("snp1.3:22.1", u1), "continues tracking further user scroll")
 
-        # 3) Translation-switch permanence: aligned PID retained, no drift.
-        print("\n[translation-switch permanence]")
-        page.goto(f"{BASE}/?text=sutta-nipata-sujato_sujato.json&p=snp1.3:22.1",
-                  wait_until="networkidle", timeout=45000)
-        page.wait_for_timeout(1500)
-        for target in ("sutta-nipata-sujato_pli.json", "sutta-nipata-sujato_sujato.json"):
-            page.evaluate("""(v)=>{const s=document.getElementById('translation-select');
-                s.value=v;s.dispatchEvent(new Event('change'));}""", target)
-            page.wait_for_timeout(1800)
-            a = page.evaluate(URLP)
+        # 3) Translation-switch EXACT permanence: EN->PL->EN keeps the exact requested id
+        #    (fully aligned Sujato witnesses), across URL / _citationPid / centered / drop-down.
+        for req in ("snp1.2:2.1", "snp1.3:22.1"):
+            print(f"\n[translation-switch exact permanence] {req}")
+            page.goto(f"{BASE}/?text=sutta-nipata-sujato_sujato.json&p={req}",
+                      wait_until="networkidle", timeout=45000)
+            page.wait_for_timeout(1600)
+            for target in ("sutta-nipata-sujato_pli.json", "sutta-nipata-sujato_sujato.json"):
+                page.evaluate("""(v)=>{const s=document.getElementById('translation-select');
+                    s.value=v;s.dispatchEvent(new Event('change'));}""", target)
+                page.wait_for_timeout(1800)
+                r = page.evaluate(PROBE, req)
+                page.wait_for_timeout(1500)
+                lang = target.split('_')[-1].split('.')[0]
+                check(page.evaluate(URLP) == req and page.evaluate("()=>_citationPid") == req
+                      and page.evaluate(BM) == req and r.get("centered")
+                      and page.evaluate("()=>currentEntry.data_file") == target,
+                      f"switch -> {lang}: URL/cite/bookmark/centered/dropdown all == {req}, no drift")
+
+        # 3b) Genuine-scroll release gate: harmless input must NOT release; real scrolling must.
+        print("\n[release gate]")
+        def arm_reset():
+            page.goto(f"{BASE}/?text=sutta-nipata-sujato_sujato.json&p=snp1.3:22.1",
+                      wait_until="networkidle", timeout=45000)
             page.wait_for_timeout(1500)
-            check(a and page.evaluate(URLP) == a and page.evaluate("()=>_citationPid") == a,
-                  f"switch -> {target.split('_')[-1]}: aligned PID {a} retained, no drift")
+        # false-release: input events that scroll nothing keep protection
+        FALSE = {
+            "click passage text":       "()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));}",
+            "text selection (no scroll)":"()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));$reader.dispatchEvent(new PointerEvent('pointermove',{bubbles:true,buttons:1}));window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));}",
+            "Copy Link tap":            "()=>{const el=$passages.querySelector('.passage[data-pid]');el.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));}",
+            "empty-space click":        "()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));}",
+            "pointerdown no movement":  "()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));}",
+            "arrow key, button focused":"()=>{document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true}));}",
+        }
+        for name, js in FALSE.items():
+            arm_reset(); page.evaluate(js); page.wait_for_timeout(1600)
+            check(page.evaluate("()=>_citationPid") == "snp1.3:22.1" and page.evaluate(URLP) == "snp1.3:22.1",
+                  f"false-release: {name} keeps protection + no drift")
+        # true-release: input followed by an actual scroll clears protection
+        TRUE = {
+            "wheel + scroll":     "()=>{$reader.dispatchEvent(new WheelEvent('wheel',{bubbles:true,deltaY:300}));$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}",
+            "PageDown + scroll":  "()=>{document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'PageDown',bubbles:true}));$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}",
+            "scrollbar drag":     "()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}",
+            "touch scroll":       "()=>{$reader.dispatchEvent(new Event('touchmove'));$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}",
+        }
+        for name, js in TRUE.items():
+            arm_reset(); page.evaluate(js); page.wait_for_timeout(700)
+            check(page.evaluate("()=>_citationPid") is None, f"true-release: {name} clears protection")
+        # negative control: a programmatic scroll with no user input must NOT release
+        arm_reset()
+        page.evaluate("()=>{$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}")
+        page.wait_for_timeout(500)
+        check(page.evaluate("()=>_citationPid") == "snp1.3:22.1", "programmatic scroll (no input) keeps protection")
 
         # 4) State cleanup: superseded jump, invalid id, and opening Contents.
         print("\n[state cleanup]")

@@ -15192,22 +15192,43 @@ function scheduleBookmark() {
   }, 400);
 }
 
-// Release citation protection on the first genuine user navigation action. These
-// input events are produced ONLY by the user (wheel, touch, scrollbar drag/pointer,
-// keyboard) — never by programmatic scrollIntoView, layout shifts, font swaps, folio
-// renders, or batch rendering — so they cannot be mistaken for user scrolling. After
-// release, scheduleBookmark tracks the top-visible passage normally.
-function _releaseCitation() { _citationPid = null; }
-$reader.addEventListener('wheel',      _releaseCitation, { passive: true });
-$reader.addEventListener('touchstart', _releaseCitation, { passive: true });
-$reader.addEventListener('pointerdown', _releaseCitation, { passive: true });
+// Genuine-scroll gate. User input (wheel / touch-move / pointer drag / scroll-or-
+// pagination keys) ARMS a short, bounded intent window; protection clears only if the
+// reader actually SCROLLS while that window is open. A `scroll` event fires only when
+// scrollTop genuinely changes, so "scroll while armed" IS a real position change after
+// user input — and, unlike reading scrollTop inside a passive wheel handler (which the
+// compositor may already have advanced), it is immune to that race. Input that scrolls
+// nothing (click, text selection, Copy-Link tap, empty-space click, motionless
+// pointerdown, dead arrow key) fires no scroll, so the window simply decays and the
+// citation is kept. Programmatic scrollIntoView, layout shifts, batch renders, and
+// folio updates arm nothing, so their scrolls never release protection.
+let _userScrollArmed = 0;       // remaining animation frames in which a scroll counts as user-driven
+function _decayIntent() {
+  if (_userScrollArmed > 0) { _userScrollArmed--; requestAnimationFrame(_decayIntent); }
+}
+function _armUserScroll() {
+  const wasIdle = _userScrollArmed <= 0;
+  _userScrollArmed = 6;                           // ~100ms — tolerates compositor scroll latency
+  if (wasIdle) requestAnimationFrame(_decayIntent);   // one bounded, self-terminating decay loop
+}
+$reader.addEventListener('wheel',       _armUserScroll, { passive: true });
+$reader.addEventListener('touchmove',   _armUserScroll, { passive: true });   // movement, not touchstart
+$reader.addEventListener('pointerdown', _armUserScroll, { passive: true });   // scrollbar drag start
+$reader.addEventListener('pointermove', (e) => { if (e.buttons) _armUserScroll(); }, { passive: true }); // sustained drag
+window.addEventListener('pointerup',     () => { _userScrollArmed = 0; }, { passive: true });
+window.addEventListener('pointercancel', () => { _userScrollArmed = 0; }, { passive: true });
 document.addEventListener('keydown', (e) => {
   const tag = (e.target && e.target.tagName) || '';
   if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;   // typing, not scrolling
-  // Keys that scroll or paginate the reader count as genuine user navigation.
   if (/^(Arrow|Page)/.test(e.key) || e.key === 'Home' || e.key === 'End' ||
-      e.key === ' ' || e.key === 'Spacebar') _releaseCitation();
+      e.key === ' ' || e.key === 'Spacebar') _armUserScroll();
 });
+$reader.addEventListener('scroll', () => {
+  if (_userScrollArmed > 0) {      // a real scroll movement that followed genuine user input
+    _citationPid = null;           // resume ordinary top-visible reading-position tracking
+    _userScrollArmed = 0;
+  }
+}, { passive: true });
 
 function renderWelcome() {
   let last = null, recents = [];
@@ -21048,6 +21069,7 @@ async function loadText(entry, listItem) {
   // Any new load supersedes a prior protected landing; a pendingPid jump below will
   // re-arm it for the fresh target, while a cover/Contents load leaves it cleared.
   _citationPid = null;
+  _userScrollArmed = 0;
   currentEntry = entry;
   // Exit reading context until enterReading re-establishes it.
   // Loading a text begins in orientation (cover/TOC); folio + viewer
@@ -21243,7 +21265,7 @@ $compareSelect.addEventListener('change', () => {
   if (compareActive) activateCompare();
 });
 
-$trSelect.addEventListener('change', () => {
+$trSelect.addEventListener('change', async () => {
   const dataFile = $trSelect.value;
   if (!dataFile || !currentEntry) return;
   // Resolve the target sibling canonically from indexGroups (keyed by text id),
@@ -21253,18 +21275,26 @@ $trSelect.addEventListener('change', () => {
   const siblings = indexGroups[currentEntry.id] || [];
   const entry = siblings.find(s => s.data_file === dataFile);
   if (!entry || entry.data_file === currentEntry.data_file) return;
-  // Preserve position + state across the switch. Aligned witnesses share passage
-  // ids, so realign to the passage now at the top of the reader; fall back to the
-  // current section, or stay on Contents when not reading.
+  // Preserve the reader's exact place across the switch. Prefer the protected
+  // citation id (an intentionally opened passage); otherwise the passage now at the
+  // top of the reader. Verify the chosen id actually exists in the TARGET witness
+  // before committing — a fully aligned sibling (e.g. Sujato Pāli↔English) keeps the
+  // exact id; a non-aligned one degrades to top-visible, then to the section, with
+  // no stale pendingPid / pendingSection / _citationPid left behind.
+  pendingPid = null; pendingSection = null;
   if (document.body.classList.contains('in-reading')) {
     let topPid = null;
     const threshold = $reader.getBoundingClientRect().top + 80;
     for (const p of $passages.querySelectorAll('.passage[data-pid]')) {
       if (p.getBoundingClientRect().bottom > threshold) { topPid = p.dataset.pid; break; }
     }
-    if (topPid) pendingPid = topPid;
+    const wantPid = _citationPid || topPid;
+    let sibIds = null;
+    try { const d = await getJSON(`data/${dataFile}`); sibIds = new Set(d.passages.map(p => p.id)); } catch (e) {}
+    if (sibIds && wantPid && sibIds.has(wantPid))    pendingPid = wantPid;   // exact citation / position
+    else if (sibIds && topPid && sibIds.has(topPid)) pendingPid = topPid;    // fall back to top-visible
     else if (typeof currentBook === 'string' && currentBook && currentBook !== '__fm__') {
-      pendingSection = currentBook;
+      pendingSection = currentBook;                                          // fall back to section
     }
   }
   // Sidebar <li> is optional: use it for the active highlight + group expansion
