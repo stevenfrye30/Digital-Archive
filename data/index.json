@@ -2353,6 +2353,60 @@
       "reading_status_certified": true
     },
     {
+      "id": "dhammapada-sbe",
+      "title": "The Dhammapada (SBE X, Müller)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "dhammapada-sbe_muller.json",
+      "source": "sacredtexts",
+      "author": [],
+      "translator": [
+        "F. Max Müller"
+      ],
+      "year": 1881,
+      "translation_label": "The Dhammapada (SBE X, Müller)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "*The Dhammapada & Sutta-Nipāta (Müller)* Max Müller, V. Fausböll (1881). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
+      "id": "sutta-nipata-sbe",
+      "title": "The Sutta-Nipāta (SBE X, Fausböll)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "sutta-nipata-sbe_fausboll.json",
+      "source": "sacredtexts",
+      "author": [],
+      "translator": [
+        "V. Fausböll"
+      ],
+      "year": 1881,
+      "translation_label": "The Sutta-Nipāta (SBE X, Fausböll)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*The Dhammapada & Sutta-Nipāta (Müller)* Max Müller, V. Fausböll (1881). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "diamond-sutra",
       "title": "The Diamond Sutra",
       "tradition": "Buddhist",

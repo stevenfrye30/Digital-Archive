@@ -22948,9 +22948,15 @@ function _witnessTileHTML(w) {
     : '';
   // v102 — pid-mode routing for sub-L1 entry points (e.g. Aitareya
   // in Müller Part 1 routes to id='11.51' rather than L1='11').
-  const onclick = w.pid
-    ? `openUpanishadAt('${escH(w.textId)}','${escH(w.pid)}',true)`
-    : `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
+  // Per-witness route mode (explicit, opt-in). Default = the existing section
+  // deep-link (openUpanishadAt); `routeMode:'contents'` opens the witness's
+  // own contents page instead of jumping into a chapter/section. Witnesses
+  // without routeMode (all Upanishads) are unchanged.
+  const onclick = (w.routeMode === 'contents')
+    ? `openWitnessContents('${escH(w.textId)}')`
+    : w.pid
+      ? `openUpanishadAt('${escH(w.textId)}','${escH(w.pid)}',true)`
+      : `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
   return `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0">
     <div class="byupn-witness-head">
       <span class="byupn-witness-role">${escH(roleLabel)}</span>
@@ -22970,6 +22976,21 @@ function _witnessTileHTML(w) {
 //     passage id. Used for sub-L1 routes — e.g. Aitareya in
 //     Müller Part 1 lives within a merged L1 key, so we route to
 //     id='11.51' (the AITAREYA-ARANYAKA section header) instead.
+// Open a witness at its CONTENTS page (no section/pid deep-link). Used by
+// witnesses with routeMode:'contents' (e.g. the extracted SBE X works and the
+// standalone Dhammapada / Sujato records) so the reader lands on the work's
+// contents rather than Chapter 1 / an introduction.
+function openWitnessContents(textId) {
+  const group = indexGroups[textId];
+  if (!group || !group.length) return;
+  pendingSection = null; pendingPid = null;
+  $browse.style.display = 'none';
+  document.body.classList.remove('on-shelf-page');
+  document.getElementById('controls').style.display = '';
+  document.getElementById('reader').style.overflow = '';
+  loadText(group[0]);
+}
+
 function openUpanishadAt(textId, keyOrPid, isPid) {
   const group = indexGroups[textId];
   if (!group || !group.length) return;
@@ -23955,23 +23976,31 @@ const TEXT_FAMILIES = [
     subtitle: 'Buddhist verse-collection — witnesses',
     category: 'Religion',
     tradition: 'Buddhist',
-    suppressMembers: false,
+    // Members are suppressed from the shelf (default) so exactly one family
+    // card shows; the records stay reachable via the witness list + their URLs.
     description:
       'The Dhammapada across its witnesses. Each route preserves its source ' +
       'credit; no source files were merged.',
     members: [
       { textId: 'dhammapada', role: 'primary' },
+      { textId: 'dhammapada-sbe', role: 'primary' },
+      { textId: 'dhammapada-muller', role: 'source-volume' },
     ],
     works: [
       { key: 'dhammapada', name: 'Dhammapada', displayTitle: 'The Dhammapada',
         witnesses: [
-          { textId: 'dhammapada', groupKey: '1',
+          { textId: 'dhammapada', routeMode: 'contents',
             sourceTitle: 'The Dhammapada — Müller (Project Gutenberg)',
             translator: 'F. Max Müller', year: '1881',
             role: 'primary', routeQuality: 'safe',
             note: 'Verse-only Gutenberg edition; 26 chapters, 414 passages.' },
+          { textId: 'dhammapada-sbe', routeMode: 'contents',
+            sourceTitle: 'The Dhammapada — Müller (SBE X, with introduction)',
+            translator: 'F. Max Müller', year: '1881',
+            role: 'primary', routeQuality: 'safe',
+            note: 'Extracted SBE X witness: Müller’s introduction + 26 chapters.' },
           { textId: 'dhammapada-muller', groupKey: 'The Dhammapada: Introduction',
-            sourceTitle: 'The Dhammapada & Sutta-Nipāta (SBE X)',
+            sourceTitle: 'The Dhammapada & Sutta-Nipāta (SBE X) — full source volume',
             translator: 'F. Max Müller', year: '1881',
             role: 'source-volume', routeQuality: 'safe',
             note: 'Opens at Müller’s Dhammapada introduction inside the combined SBE X volume.' },
@@ -23984,27 +24013,29 @@ const TEXT_FAMILIES = [
     subtitle: 'Buddhist discourse-collection — witnesses',
     category: 'Religion',
     tradition: 'Buddhist',
-    suppressMembers: false,
     description:
       'The Sutta-Nipāta across its witnesses. Each route preserves its source ' +
       'credit; no source files were merged.',
     members: [
-      // sutta-nipata-sujato is routable but not surfaced in the browse grid,
-      // so the combined SBE X volume (present on the shelf) anchors the family
-      // card; suppressMembers:false keeps it independently discoverable.
       { textId: 'sutta-nipata-sujato', role: 'primary' },
+      { textId: 'sutta-nipata-sbe', role: 'primary' },
       { textId: 'dhammapada-muller', role: 'source-volume' },
     ],
     works: [
       { key: 'sutta-nipata', name: 'Sutta-Nipata', displayTitle: 'The Sutta-Nipāta',
         witnesses: [
-          { textId: 'sutta-nipata-sujato', groupKey: '1',
+          { textId: 'sutta-nipata-sujato', routeMode: 'contents',
             sourceTitle: 'Anthology of Discourses — Bhikkhu Sujato (bilingual)',
             translator: 'Bhikkhu Sujato', year: '2022',
             role: 'primary', routeQuality: 'safe',
             note: 'SuttaCentral CC0; Pāli + English witness (toggle translations in the reader).' },
+          { textId: 'sutta-nipata-sbe', routeMode: 'contents',
+            sourceTitle: 'The Sutta-Nipāta — Fausböll (SBE X)',
+            translator: 'V. Fausböll', year: '1881',
+            role: 'primary', routeQuality: 'safe',
+            note: 'Extracted SBE X witness: title, introduction, 5 vaggas and all suttas.' },
           { textId: 'dhammapada-muller', groupKey: 'The Sutta-Nipata: Introduction',
-            sourceTitle: 'The Dhammapada & Sutta-Nipāta (SBE X)',
+            sourceTitle: 'The Dhammapada & Sutta-Nipāta (SBE X) — full source volume',
             translator: 'V. Fausböll', year: '1881',
             role: 'source-volume', routeQuality: 'safe',
             note: 'Opens at the Sutta-Nipāta introduction inside the combined SBE X volume.' },
