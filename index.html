@@ -13798,7 +13798,7 @@ function _installChapterHeading() {
 
 function navTo(idx) {
   if (idx < 0 || idx >= groupKeys.length) return;
-  _citationPid = null;                  // explicit chapter/section nav is user movement
+  _citationPid = null; _userScrollArmed = 0;   // explicit chapter/section nav is user movement
   groupIndex  = idx;
   currentBook = groupKeys[idx];
   $bookSelect.value = currentBook;
@@ -13921,6 +13921,7 @@ function filterAndRender() {
 }
 
 $bookSelect.addEventListener('change', () => {
+  _citationPid = null; _userScrollArmed = 0;   // explicit book/chapter jump is user navigation
   groupIndex  = groupKeys.indexOf($bookSelect.value);
   currentBook = $bookSelect.value;
   updateNav();
@@ -15104,7 +15105,7 @@ function jumpToPassage(pid, highlight) {
 // top. Scroll, then re-verify across two animation frames and correct at most
 // twice. Bounded: no observers, timers, or unbounded retries.
 function _scrollPassageIntoReader(el, highlight) {
-  el.scrollIntoView({ block: 'center' });
+  _guardScroll(() => el.scrollIntoView({ block: 'center' }));   // programmatic: never releases the citation
   if (highlight) {
     el.classList.add('passage-highlight');
     setTimeout(() => el.classList.remove('passage-highlight'), 2000);
@@ -15116,7 +15117,7 @@ function _scrollPassageIntoReader(el, highlight) {
     const offscreen = r.bottom < rt.top || r.top > rt.bottom;   // reset pushed it away
     if (offscreen && corrections < 2) {
       corrections++;
-      el.scrollIntoView({ block: 'center' });
+      _guardScroll(() => el.scrollIntoView({ block: 'center' }));
       requestAnimationFrame(verify);
     }
   };
@@ -15192,40 +15193,80 @@ function scheduleBookmark() {
   }, 400);
 }
 
-// Genuine-scroll gate. User input (wheel / touch-move / pointer drag / scroll-or-
-// pagination keys) ARMS a short, bounded intent window; protection clears only if the
-// reader actually SCROLLS while that window is open. A `scroll` event fires only when
-// scrollTop genuinely changes, so "scroll while armed" IS a real position change after
-// user input — and, unlike reading scrollTop inside a passive wheel handler (which the
-// compositor may already have advanced), it is immune to that race. Input that scrolls
-// nothing (click, text selection, Copy-Link tap, empty-space click, motionless
-// pointerdown, dead arrow key) fires no scroll, so the window simply decays and the
-// citation is kept. Programmatic scrollIntoView, layout shifts, batch renders, and
-// folio updates arm nothing, so their scrolls never release protection.
-let _userScrollArmed = 0;       // remaining animation frames in which a scroll counts as user-driven
+// ── Citation-release gate ─────────────────────────────────────────────────────
+// A reader scroll clears the protected citation only when a GENUINE user gesture is
+// armed AND the scroll is NOT one this app initiated. Two explicit states, never a
+// timing-only guess:
+//   _programmaticScroll  — nesting counter, >0 while archive code is scrolling
+//   _userScrollArmed     — bounded window opened only by a trusted, eligible gesture
+// So an unrelated programmatic scroll landing just after a harmless click/keypress
+// can never be mis-attributed to the user (the input did not arm; and even a real
+// armed gesture is ignored while the guard is up).
+
+// Programmatic-scroll guard. Wrap every reader scroll started by archive code; the
+// guard is held through the async `scroll` event the operation emits (~1 frame later)
+// and cleared deterministically. try/finally guarantees release even on throw, and the
+// counter supports nested programmatic scrolls.
+let _programmaticScroll = 0;
+function _guardScroll(fn) {
+  _programmaticScroll++;
+  try { return fn(); }
+  finally {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (_programmaticScroll > 0) _programmaticScroll--;
+    }));
+  }
+}
+
+// Eligible user-scroll intent — only gestures that can genuinely move the reader.
+let _userScrollArmed = 0;       // remaining animation frames of a live user-scroll window
 function _decayIntent() {
   if (_userScrollArmed > 0) { _userScrollArmed--; requestAnimationFrame(_decayIntent); }
 }
 function _armUserScroll() {
   const wasIdle = _userScrollArmed <= 0;
-  _userScrollArmed = 6;                           // ~100ms — tolerates compositor scroll latency
-  if (wasIdle) requestAnimationFrame(_decayIntent);   // one bounded, self-terminating decay loop
+  _userScrollArmed = 6;                                 // ~100ms — tolerates compositor scroll latency
+  if (wasIdle) requestAnimationFrame(_decayIntent);     // one bounded, self-terminating decay loop
 }
-$reader.addEventListener('wheel',       _armUserScroll, { passive: true });
-$reader.addEventListener('touchmove',   _armUserScroll, { passive: true });   // movement, not touchstart
-$reader.addEventListener('pointerdown', _armUserScroll, { passive: true });   // scrollbar drag start
-$reader.addEventListener('pointermove', (e) => { if (e.buttons) _armUserScroll(); }, { passive: true }); // sustained drag
+function _isNonReaderControl(t) {
+  const tag = (t && t.tagName) || '';
+  return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' ||
+         tag === 'BUTTON' || tag === 'A' || tag === 'OPTION' || !!(t && t.isContentEditable);
+}
+// Eligibility decision, isolated so focused tests can invoke it with mock events.
+function _isEligibleScrollInput(e) {
+  if (!e || !e.isTrusted) return false;                 // ignore synthetic JS-dispatched events
+  const t = e.target;
+  if (e.type === 'wheel' || e.type === 'touchmove') return t === $reader || $reader.contains(t);
+  if (e.type === 'pointerdown')                          // only the native scrollbar gutter, not content
+    return t === $reader && typeof e.offsetX === 'number' && e.offsetX >= $reader.clientWidth;
+  if (e.type === 'keydown') {
+    if (_isNonReaderControl(t)) return false;           // key while a button/link/form/editable is focused
+    if (!(t === document.body || t === $reader || $reader.contains(t))) return false;
+    return /^(Arrow|Page)/.test(e.key) || e.key === 'Home' || e.key === 'End' ||
+           e.key === ' ' || e.key === 'Spacebar';
+  }
+  return false;
+}
+function _maybeArmUserScroll(e) { if (_isEligibleScrollInput(e)) _armUserScroll(); }
+$reader.addEventListener('wheel',       _maybeArmUserScroll, { passive: true });
+$reader.addEventListener('touchmove',   _maybeArmUserScroll, { passive: true });
+$reader.addEventListener('pointerdown', _maybeArmUserScroll, { passive: true });   // scrollbar gutter only
+$reader.addEventListener('pointermove', (e) => {          // sustain an already-armed scrollbar drag
+  if (e.isTrusted && e.buttons && _userScrollArmed > 0) _armUserScroll();
+}, { passive: true });
 window.addEventListener('pointerup',     () => { _userScrollArmed = 0; }, { passive: true });
 window.addEventListener('pointercancel', () => { _userScrollArmed = 0; }, { passive: true });
-document.addEventListener('keydown', (e) => {
-  const tag = (e.target && e.target.tagName) || '';
-  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;   // typing, not scrolling
-  if (/^(Arrow|Page)/.test(e.key) || e.key === 'Home' || e.key === 'End' ||
-      e.key === ' ' || e.key === 'Spacebar') _armUserScroll();
-});
+document.addEventListener('keydown', _maybeArmUserScroll);
+
+// The release rule — small and directly testable: eligible user intent + real scroll,
+// while no programmatic scroll is in flight.
+function _shouldReleaseCitation() {
+  return _userScrollArmed > 0 && _programmaticScroll === 0;
+}
 $reader.addEventListener('scroll', () => {
-  if (_userScrollArmed > 0) {      // a real scroll movement that followed genuine user input
-    _citationPid = null;           // resume ordinary top-visible reading-position tracking
+  if (_shouldReleaseCitation()) {
+    _citationPid = null;           // genuine user scroll — resume top-visible tracking
     _userScrollArmed = 0;
   }
 }, { passive: true });

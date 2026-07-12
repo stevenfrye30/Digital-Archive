@@ -198,32 +198,79 @@ def main():
             page.goto(f"{BASE}/?text=sutta-nipata-sujato_sujato.json&p=snp1.3:22.1",
                       wait_until="networkidle", timeout=45000)
             page.wait_for_timeout(1500)
-        # false-release: input events that scroll nothing keep protection
-        FALSE = {
-            "click passage text":       "()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));}",
-            "text selection (no scroll)":"()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));$reader.dispatchEvent(new PointerEvent('pointermove',{bubbles:true,buttons:1}));window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));}",
-            "Copy Link tap":            "()=>{const el=$passages.querySelector('.passage[data-pid]');el.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));}",
-            "empty-space click":        "()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));window.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));}",
-            "pointerdown no movement":  "()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));}",
-            "arrow key, button focused":"()=>{document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowDown',bubbles:true}));}",
-        }
-        for name, js in FALSE.items():
-            arm_reset(); page.evaluate(js); page.wait_for_timeout(1600)
-            check(page.evaluate("()=>_citationPid") == "snp1.3:22.1" and page.evaluate(URLP) == "snp1.3:22.1",
-                  f"false-release: {name} keeps protection + no drift")
-        # true-release: input followed by an actual scroll clears protection
-        TRUE = {
-            "wheel + scroll":     "()=>{$reader.dispatchEvent(new WheelEvent('wheel',{bubbles:true,deltaY:300}));$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}",
-            "PageDown + scroll":  "()=>{document.body.dispatchEvent(new KeyboardEvent('keydown',{key:'PageDown',bubbles:true}));$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}",
-            "scrollbar drag":     "()=>{$reader.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true}));$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}",
-            "touch scroll":       "()=>{$reader.dispatchEvent(new Event('touchmove'));$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}",
-        }
-        for name, js in TRUE.items():
-            arm_reset(); page.evaluate(js); page.wait_for_timeout(700)
-            check(page.evaluate("()=>_citationPid") is None, f"true-release: {name} clears protection")
-        # negative control: a programmatic scroll with no user input must NOT release
+
+        # -- eligibility branch tests (internal function, mock events, both isTrusted states) --
+        check(page.evaluate("()=>_isEligibleScrollInput({isTrusted:false,type:'wheel',target:$reader})") is False,
+              "synthetic (isTrusted=false) never eligible")
+        check(page.evaluate("()=>_isEligibleScrollInput({isTrusted:true,type:'wheel',target:$reader})") is True,
+              "trusted wheel over reader is eligible")
+        check(page.evaluate("()=>_isEligibleScrollInput({isTrusted:true,type:'pointerdown',target:$reader,offsetX:$reader.clientWidth+4})") is True,
+              "trusted pointerdown on scrollbar gutter is eligible")
+        check(page.evaluate("()=>_isEligibleScrollInput({isTrusted:true,type:'pointerdown',target:$reader,offsetX:5})") is False,
+              "trusted pointerdown on content is NOT eligible")
+        check(page.evaluate("()=>_isEligibleScrollInput({isTrusted:true,type:'keydown',key:'ArrowDown',target:document.createElement('button')})") is False,
+              "arrow key with a button focused is NOT eligible")
+        check(page.evaluate("()=>_isEligibleScrollInput({isTrusted:true,type:'keydown',key:'ArrowDown',target:document.body})") is True,
+              "arrow key with body focus is eligible")
+        # guard suppresses release even when armed:
+        check(page.evaluate("()=>{_userScrollArmed=6;_programmaticScroll=1;const r=_shouldReleaseCitation();_userScrollArmed=0;_programmaticScroll=0;return r;}") is False,
+              "armed + programmatic guard => no release")
+        check(page.evaluate("()=>{_userScrollArmed=6;_programmaticScroll=0;const r=_shouldReleaseCitation();_userScrollArmed=0;return r;}") is True,
+              "armed + no guard => release eligible")
+
+        # -- FALSE release with GENUINE Playwright input (must keep protection, no drift) --
         arm_reset()
-        page.evaluate("()=>{$reader.scrollTop+=300;$reader.dispatchEvent(new Event('scroll'));}")
+        box = page.evaluate("(id)=>{const el=$passages.querySelector('.passage[data-pid=\"'+CSS.escape(id)+'\"]');const r=el.getBoundingClientRect();return {x:Math.round(r.left+40),y:Math.round(r.top+8)};}", "snp1.3:22.1")
+        genuine_false = [
+            ("real click passage text", lambda: page.mouse.click(box["x"], box["y"])),
+            ("real text-selection drag (no scroll)", lambda: (page.mouse.move(box["x"], box["y"]), page.mouse.down(), page.mouse.move(box["x"]+140, box["y"], steps=6), page.mouse.up())),
+            ("real empty-margin click", lambda: page.mouse.click(box["x"]-25, box["y"])),
+            ("real pointerdown+up, no move", lambda: (page.mouse.move(box["x"], box["y"]), page.mouse.down(), page.mouse.up())),
+        ]
+        for name, act in genuine_false:
+            arm_reset(); act(); page.wait_for_timeout(1500)
+            check(page.evaluate("()=>_citationPid") == "snp1.3:22.1" and page.evaluate(URLP) == "snp1.3:22.1"
+                  and page.evaluate(BM) == "snp1.3:22.1",
+                  f"false-release (genuine): {name} keeps protection + no drift")
+        # real Copy Link click: URL of THAT passage stays exact; protection kept
+        arm_reset()
+        ref = page.evaluate("()=>{const ref=$passages.querySelector('.passage[data-pid] .passage-ref,.passage[data-pid] [title*=copy],.passage[data-pid] [title*=link]');if(!ref)return null;const r=ref.getBoundingClientRect();return{x:Math.round(r.left+3),y:Math.round(r.top+3)};}")
+        if ref:
+            page.mouse.click(ref["x"], ref["y"]); page.wait_for_timeout(1200)
+        check(page.evaluate("()=>_citationPid") == "snp1.3:22.1", "false-release (genuine): Copy Link click keeps protection")
+        # real arrow key while a BUTTON is genuinely focused
+        arm_reset()
+        page.evaluate("()=>{const b=document.querySelector('#back-to-top,button');b&&b.focus();}")
+        page.keyboard.press("ArrowDown"); page.wait_for_timeout(1200)
+        check(page.evaluate("()=>_citationPid") == "snp1.3:22.1", "false-release (genuine): arrow key with button focused keeps protection")
+
+        # -- TRUE release with GENUINE Playwright input (position changes -> clears) --
+        arm_reset(); page.mouse.move(640, 450); page.mouse.wheel(0, 400); page.wait_for_timeout(700)
+        u = page.evaluate(URLP)
+        check(page.evaluate("()=>_citationPid") is None, "true-release (genuine): mouse.wheel clears protection")
+        page.mouse.wheel(0, 400); page.wait_for_timeout(600)
+        check(page.evaluate(URLP) != "snp1.3:22.1" and page.evaluate(BM) == page.evaluate(URLP),
+              "true-release (genuine): URL+bookmark track further wheel scrolling")
+        arm_reset(); page.mouse.click(640, 450); page.wait_for_timeout(200); page.keyboard.press("PageDown"); page.wait_for_timeout(700)
+        check(page.evaluate("()=>_citationPid") is None, "true-release (genuine): Page Down clears protection")
+        arm_reset(); page.evaluate("()=>$reader.setAttribute('tabindex','0')"); page.mouse.click(640, 450); page.keyboard.press("ArrowDown"); page.wait_for_timeout(700)
+        check(page.evaluate("()=>_citationPid") is None, "true-release (genuine): Arrow Down (reader focus) clears protection")
+
+        # -- RACE: harmless input then EVERY programmatic pathway must NOT release --
+        RACE_PROG = {
+            "scrollIntoView":  "()=>{const el=$passages.querySelector('.passage[data-pid=\"'+CSS.escape('snp1.3:20.1')+'\"]');_guardScroll(()=>el&&el.scrollIntoView({block:'start'}));}",
+            "scrollTop reset": "()=>_guardScroll(()=>{$reader.scrollTop+=400;})",
+            "second jumpToPassage": "()=>jumpToPassage('snp1.3:22.1',true)",
+        }
+        for name, prog in RACE_PROG.items():
+            arm_reset(); page.mouse.click(box["x"], box["y"])           # genuine harmless click
+            page.evaluate(prog); page.wait_for_timeout(900)
+            check(page.evaluate("()=>_citationPid") == "snp1.3:22.1" and page.evaluate(URLP) == "snp1.3:22.1"
+                  and page.evaluate("()=>_programmaticScroll") == 0,
+                  f"race: harmless click + {name} keeps citation; guard cleared")
+        # negative control: a bare programmatic scroll with no user input must NOT release
+        arm_reset()
+        page.evaluate("()=>_guardScroll(()=>{$reader.scrollTop+=300;})")
         page.wait_for_timeout(500)
         check(page.evaluate("()=>_citationPid") == "snp1.3:22.1", "programmatic scroll (no input) keeps protection")
 
