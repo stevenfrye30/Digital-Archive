@@ -12247,6 +12247,13 @@ const dataFileToEntry = {};           // data_file → {entry, li}
 let pendingPid     = null;            // passage id to jump to on enterReading
 let pendingSection = null;            // section name to jump to on loadText (cross-tradition deep link)
 let bookmarkTimer  = null;
+// The exact passage id of an in-progress programmatic landing (deep link, citation,
+// bookmark restore, translation switch, internal jump). While set, scheduleBookmark
+// keeps ?p= and the bookmark pinned to this id instead of drifting to the top-visible
+// neighbour the landing scroll produces. Cleared only by genuine user input (see the
+// release listeners) or by a new/superseded/aborted navigation — never by a layout
+// shift, font swap, folio render, batch render, or corrective programmatic scroll.
+let _citationPid   = null;
 let entryToLi     = new Map();      // entry → sidebar <li> element
 
 // ── Fetch ─────────────────────────────────────────────────────────────────────
@@ -13791,6 +13798,7 @@ function _installChapterHeading() {
 
 function navTo(idx) {
   if (idx < 0 || idx >= groupKeys.length) return;
+  _citationPid = null;                  // explicit chapter/section nav is user movement
   groupIndex  = idx;
   currentBook = groupKeys[idx];
   $bookSelect.value = currentBook;
@@ -15063,7 +15071,7 @@ function passageById(pid) {
 function jumpToPassage(pid, highlight) {
   let el = $passages.querySelector(`.passage[data-pid="${CSS.escape(pid)}"]`);
   if (!el) {
-    if (!passageById(pid)) return false;               // truly-missing id — unchanged
+    if (!passageById(pid)) { _citationPid = null; return false; }   // truly-missing id
     if (_pendingPassages.length) {
       const btn = $passages.querySelector('.load-more-btn');
       if (btn) btn.remove();
@@ -15080,8 +15088,11 @@ function jumpToPassage(pid, highlight) {
       }
       if (_pendingPassages.length > 0) _addLoadMoreBtn();  // keep manual "Load more"
     }
-    if (!el) return false;                             // valid, but not in this section
+    if (!el) { _citationPid = null; return false; }    // valid, but not in this section
   }
+  // Programmatic landing on an exact id: protect it from scroll-driven ?p= drift
+  // until genuine user input (a new jump here supersedes any prior protected id).
+  _citationPid = pid;
   _scrollPassageIntoReader(el, highlight);
   return true;
 }
@@ -15131,9 +15142,9 @@ function topVisiblePassage() {
   return null;
 }
 
-function saveBookmark() {
+function saveBookmark(pidOverride) {
   if (!currentEntry) return;
-  const pid = topVisiblePassage();
+  const pid = pidOverride || topVisiblePassage();
   if (!pid) return;
   // Calculate reading progress %
   const scrollTop = $reader.scrollTop;
@@ -15170,11 +15181,33 @@ function getReadingProgress(dataFile) {
 function scheduleBookmark() {
   clearTimeout(bookmarkTimer);
   bookmarkTimer = setTimeout(() => {
-    saveBookmark();
-    const pid = topVisiblePassage();
-    if (pid) setUrlPassage(pid);
+    // While a programmatic citation landing is protected, keep ?p= and the bookmark
+    // pinned to the exact requested id (not the top-visible neighbour the landing
+    // scroll produced). _citationPid is released by genuine user input, after which
+    // this resumes ordinary top-visible reading-position tracking.
+    const pid = _citationPid || topVisiblePassage();
+    if (!pid) return;
+    saveBookmark(pid);
+    setUrlPassage(pid);
   }, 400);
 }
+
+// Release citation protection on the first genuine user navigation action. These
+// input events are produced ONLY by the user (wheel, touch, scrollbar drag/pointer,
+// keyboard) — never by programmatic scrollIntoView, layout shifts, font swaps, folio
+// renders, or batch rendering — so they cannot be mistaken for user scrolling. After
+// release, scheduleBookmark tracks the top-visible passage normally.
+function _releaseCitation() { _citationPid = null; }
+$reader.addEventListener('wheel',      _releaseCitation, { passive: true });
+$reader.addEventListener('touchstart', _releaseCitation, { passive: true });
+$reader.addEventListener('pointerdown', _releaseCitation, { passive: true });
+document.addEventListener('keydown', (e) => {
+  const tag = (e.target && e.target.tagName) || '';
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;   // typing, not scrolling
+  // Keys that scroll or paginate the reader count as genuine user navigation.
+  if (/^(Arrow|Page)/.test(e.key) || e.key === 'Home' || e.key === 'End' ||
+      e.key === ' ' || e.key === 'Spacebar') _releaseCitation();
+});
 
 function renderWelcome() {
   let last = null, recents = [];
@@ -21012,6 +21045,9 @@ document.addEventListener('keydown', (e) => {
 async function loadText(entry, listItem) {
   if (activeItem) activeItem.classList.remove('active');
   if (listItem) { listItem.classList.add('active'); activeItem = listItem; }
+  // Any new load supersedes a prior protected landing; a pendingPid jump below will
+  // re-arm it for the fresh target, while a cover/Contents load leaves it cleared.
+  _citationPid = null;
   currentEntry = entry;
   // Exit reading context until enterReading re-establishes it.
   // Loading a text begins in orientation (cover/TOC); folio + viewer

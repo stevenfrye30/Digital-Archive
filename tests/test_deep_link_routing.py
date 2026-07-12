@@ -137,6 +137,69 @@ def main():
         check(narrow.get("inDom") and narrow.get("centered"), "narrow: target centered")
         check(not hscroll, "narrow: no horizontal overflow")
 
+        # ── Citation permanence ────────────────────────────────────────────────
+        page.set_viewport_size({"width": 1280, "height": 900})
+        BM = "()=>{try{return JSON.parse(localStorage.getItem('da-last')||'{}').pid||null}catch(e){return null}}"
+        URLP = "()=>new URL(location).searchParams.get('p')"
+
+        # 1) Exact-PID permanence at landing, 500 ms, 2 s — no user input, no drift.
+        for label, f, pid, _exp in CASES:
+            print(f"\n[permanence] {f}?p={pid}")
+            page.goto(f"{BASE}/?text={f}&p={pid}", wait_until="networkidle", timeout=45000)
+            page.wait_for_timeout(300)
+            check(page.evaluate(URLP) == pid, "URL == requested at landing")
+            page.wait_for_timeout(500)
+            check(page.evaluate(URLP) == pid, "URL == requested at +500ms (no drift)")
+            page.wait_for_timeout(1500)
+            r = page.evaluate(PROBE, pid)
+            check(page.evaluate(URLP) == pid, "URL == requested at +2s (no drift)")
+            check(page.evaluate(BM) == pid, "bookmark == requested at +2s")
+            check(r.get("centered"), "requested still centered at +2s")
+
+        # 2) Genuine user scroll releases protection; URL/bookmark then track position.
+        print("\n[user-scroll release]")
+        page.goto(f"{BASE}/?text=sutta-nipata-sujato_sujato.json&p=snp1.3:22.1",
+                  wait_until="networkidle", timeout=45000)
+        page.wait_for_timeout(1500)
+        check(page.evaluate(URLP) == "snp1.3:22.1", "protected before user scroll")
+        page.mouse.move(640, 450)
+        page.mouse.wheel(0, 350)                       # real wheel event -> release + scroll
+        page.wait_for_timeout(700)
+        u1 = page.evaluate(URLP)
+        check(u1 != "snp1.3:22.1" and page.evaluate("()=>_citationPid") is None,
+              f"released + URL tracks new position ({u1})")
+        check(page.evaluate(BM) == u1, "bookmark tracks new position after release")
+        page.mouse.wheel(0, 350)                       # keep scrolling -> keeps tracking
+        page.wait_for_timeout(700)
+        check(page.evaluate(URLP) not in ("snp1.3:22.1", u1), "continues tracking further user scroll")
+
+        # 3) Translation-switch permanence: aligned PID retained, no drift.
+        print("\n[translation-switch permanence]")
+        page.goto(f"{BASE}/?text=sutta-nipata-sujato_sujato.json&p=snp1.3:22.1",
+                  wait_until="networkidle", timeout=45000)
+        page.wait_for_timeout(1500)
+        for target in ("sutta-nipata-sujato_pli.json", "sutta-nipata-sujato_sujato.json"):
+            page.evaluate("""(v)=>{const s=document.getElementById('translation-select');
+                s.value=v;s.dispatchEvent(new Event('change'));}""", target)
+            page.wait_for_timeout(1800)
+            a = page.evaluate(URLP)
+            page.wait_for_timeout(1500)
+            check(a and page.evaluate(URLP) == a and page.evaluate("()=>_citationPid") == a,
+                  f"switch -> {target.split('_')[-1]}: aligned PID {a} retained, no drift")
+
+        # 4) State cleanup: superseded jump, invalid id, and opening Contents.
+        print("\n[state cleanup]")
+        page.goto(f"{BASE}/?text=sutta-nipata-sujato_sujato.json&p=snp1.3:22.1",
+                  wait_until="networkidle", timeout=45000)
+        page.wait_for_timeout(1500)
+        sup = page.evaluate("()=>{jumpToPassage('snp1.2:2.1',true);return _citationPid;}")
+        check(sup == "snp1.2:2.1", "superseded jump re-arms to the new PID")
+        inv = page.evaluate("()=>{jumpToPassage('snp9.9:9.9',true);return _citationPid;}")
+        check(inv is None, "invalid jump clears protection")
+        page.evaluate("()=>openWitnessContents('sutta-nipata-sujato')")
+        page.wait_for_timeout(600)
+        check(page.evaluate("()=>_citationPid") is None, "opening Contents clears protection")
+
         browser.close()
     httpd.shutdown()
 
