@@ -21146,26 +21146,45 @@ $compareSelect.addEventListener('change', () => {
 
 $trSelect.addEventListener('change', () => {
   const dataFile = $trSelect.value;
-  // Find the entry and its sidebar <li>
-  for (const [entry, li] of entryToLi) {
-    if (entry.data_file === dataFile) {
-      loadText(entry, li);
-      // Ensure all enclosing collapsible groups are open: walk up from
-      // the clicked <li>, opening any text-group-items / tradition-items
-      // we encounter.
-      let node = li.parentElement;
-      while (node) {
-        if (node.classList && (node.classList.contains('text-group-items') ||
-                               node.classList.contains('tradition-items'))) {
-          if (!node.classList.contains('expanded')) {
-            node.classList.add('expanded');
-            const hdr = node.previousElementSibling;
-            if (hdr) hdr.classList.add('expanded');
-          }
+  if (!dataFile || !currentEntry) return;
+  // Resolve the target sibling canonically from indexGroups (keyed by text id),
+  // NOT from the sidebar map. entryToLi only holds records that render a browse
+  // <li>, so a family-only multilingual witness suppressed from the grid (e.g.
+  // sutta-nipata-sujato) had no entry there and the switch silently no-oped.
+  const siblings = indexGroups[currentEntry.id] || [];
+  const entry = siblings.find(s => s.data_file === dataFile);
+  if (!entry || entry.data_file === currentEntry.data_file) return;
+  // Preserve position + state across the switch. Aligned witnesses share passage
+  // ids, so realign to the passage now at the top of the reader; fall back to the
+  // current section, or stay on Contents when not reading.
+  if (document.body.classList.contains('in-reading')) {
+    let topPid = null;
+    const threshold = $reader.getBoundingClientRect().top + 80;
+    for (const p of $passages.querySelectorAll('.passage[data-pid]')) {
+      if (p.getBoundingClientRect().bottom > threshold) { topPid = p.dataset.pid; break; }
+    }
+    if (topPid) pendingPid = topPid;
+    else if (typeof currentBook === 'string' && currentBook && currentBook !== '__fm__') {
+      pendingSection = currentBook;
+    }
+  }
+  // Sidebar <li> is optional: use it for the active highlight + group expansion
+  // when the record is grid-listed; never require it.
+  let li = null;
+  for (const [e, el] of entryToLi) { if (e.data_file === dataFile) { li = el; break; } }
+  loadText(entry, li);
+  if (li) {
+    let node = li.parentElement;
+    while (node) {
+      if (node.classList && (node.classList.contains('text-group-items') ||
+                             node.classList.contains('tradition-items'))) {
+        if (!node.classList.contains('expanded')) {
+          node.classList.add('expanded');
+          const hdr = node.previousElementSibling;
+          if (hdr) hdr.classList.add('expanded');
         }
-        node = node.parentElement;
       }
-      return;
+      node = node.parentElement;
     }
   }
 });
