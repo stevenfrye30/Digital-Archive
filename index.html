@@ -13471,6 +13471,19 @@ function _installChapterTraverseTop() {
   }
 }
 
+// Render the next RENDER_BATCH slice of _pendingPassages into the DOM. Shared by
+// the manual "Load more" button and jumpToPassage()'s render-forward path, so the
+// deep-link fix reuses the exact existing batch pathway. Returns the count rendered.
+function _renderNextBatch() {
+  if (_pendingPassages.length === 0) return 0;
+  const batch = _pendingPassages.slice(0, RENDER_BATCH);
+  _pendingPassages = _pendingPassages.slice(RENDER_BATCH);
+  const frag = document.createDocumentFragment();
+  _renderBatch(batch, _pendingQuery, frag);
+  $passages.appendChild(frag);
+  return batch.length;
+}
+
 function _addLoadMoreBtn() {
   const existing = $passages.querySelector('.load-more-btn');
   if (existing) existing.remove();
@@ -13480,11 +13493,7 @@ function _addLoadMoreBtn() {
   btn.textContent = `Load ${Math.min(RENDER_BATCH, _pendingPassages.length)} more passages (${_pendingPassages.length} remaining)`;
   btn.addEventListener('click', () => {
     btn.remove();
-    const batch = _pendingPassages.slice(0, RENDER_BATCH);
-    _pendingPassages = _pendingPassages.slice(RENDER_BATCH);
-    const frag = document.createDocumentFragment();
-    _renderBatch(batch, _pendingQuery, frag);
-    $passages.appendChild(frag);
+    _renderNextBatch();
     if (_pendingPassages.length > 0) _addLoadMoreBtn();
   });
   $passages.appendChild(btn);
@@ -15042,15 +15051,65 @@ function passageById(pid) {
   return allPassages.find(p => p.id === pid);
 }
 
+// Deep-link a passage. Every deep-link caller funnels through here (direct URL /
+// citation via loadText's pendingPid, translation switch, bookmark restore, and
+// internal jumps), so both routing defects are fixed in one place:
+//   (A) a valid target beyond the first RENDER_BATCH lives in _pendingPassages and
+//       is absent from the DOM — render forward, bounded, until it appears;
+//   (B) the initial single-RAF scroll can be undone by loadText's later
+//       `$reader.scrollTop = 0`, chapter-heading insertion, folio render, or a
+//       web-font/layout shift — re-assert the position after layout settles.
+// An unknown id keeps the prior behavior: return false (loadText then shows cover).
 function jumpToPassage(pid, highlight) {
-  const el = $passages.querySelector(`.passage[data-pid="${CSS.escape(pid)}"]`);
-  if (!el) return false;
+  let el = $passages.querySelector(`.passage[data-pid="${CSS.escape(pid)}"]`);
+  if (!el) {
+    if (!passageById(pid)) return false;               // truly-missing id — unchanged
+    if (_pendingPassages.length) {
+      const btn = $passages.querySelector('.load-more-btn');
+      if (btn) btn.remove();
+      // Render only as many RENDER_BATCH chunks as needed, stopping the instant the
+      // target appears. Upper bound = chunks that could remain + 1, so malformed
+      // state cannot loop forever and the whole section is rendered only when the
+      // target is genuinely in its final batch.
+      const maxChunks = Math.ceil(_pendingPassages.length / RENDER_BATCH) + 1;
+      let n = 0;
+      while (!el && _pendingPassages.length && n < maxChunks) {
+        _renderNextBatch();
+        n++;
+        el = $passages.querySelector(`.passage[data-pid="${CSS.escape(pid)}"]`);
+      }
+      if (_pendingPassages.length > 0) _addLoadMoreBtn();  // keep manual "Load more"
+    }
+    if (!el) return false;                             // valid, but not in this section
+  }
+  _scrollPassageIntoReader(el, highlight);
+  return true;
+}
+
+// Center a passage inside the #reader scroll container and hold it there. The
+// deep-link path scrolls on a single RAF — before the batch layout (heading plate,
+// folio column, web-font swap) has settled and before loadText's own
+// `$reader.scrollTop = 0` — which can leave the target off-screen at the section
+// top. Scroll, then re-verify across two animation frames and correct at most
+// twice. Bounded: no observers, timers, or unbounded retries.
+function _scrollPassageIntoReader(el, highlight) {
   el.scrollIntoView({ block: 'center' });
   if (highlight) {
     el.classList.add('passage-highlight');
     setTimeout(() => el.classList.remove('passage-highlight'), 2000);
   }
-  return true;
+  let corrections = 0;
+  const verify = () => {
+    const rt = $reader.getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    const offscreen = r.bottom < rt.top || r.top > rt.bottom;   // reset pushed it away
+    if (offscreen && corrections < 2) {
+      corrections++;
+      el.scrollIntoView({ block: 'center' });
+      requestAnimationFrame(verify);
+    }
+  };
+  requestAnimationFrame(() => requestAnimationFrame(verify));
 }
 
 function setUrlPassage(pid) {
@@ -21015,8 +21074,12 @@ async function loadText(entry, listItem) {
         }
         $infoBar.style.display = 'flex';
         enterReading();
-        requestAnimationFrame(() => jumpToPassage(pendingPid, true));
+        // Capture the id: the deferred jump runs next frame, after the line
+        // below nulls pendingPid, so the closure must not read the global (it
+        // would call jumpToPassage(null) — the no-op that lost every deep link).
+        const _jumpPid = pendingPid;
         pendingPid = null;
+        requestAnimationFrame(() => jumpToPassage(_jumpPid, true));
       } else {
         pendingPid = null;
         showCover(data, entry);
