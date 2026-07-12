@@ -21791,7 +21791,12 @@ function _renderTextTiles() {
   }).filter(x => x.presentMembers.length > 0);
 
   const suppressedIds = new Set();
-  for (const { presentMembers } of activeFamilies) {
+  for (const { fam, presentMembers } of activeFamilies) {
+    // Witness-style families (e.g. Dhammapada, Sutta-Nipata) show a family
+    // card AND keep their member records visible on the shelf, so standalone
+    // and combined-volume cards stay independently discoverable. Collection
+    // families (the Upanishads) suppress members by default (no flag).
+    if (fam.suppressMembers === false) continue;
     for (const t of presentMembers) suppressedIds.add(t.id);
   }
   const visibleTexts = texts.filter(t => !suppressedIds.has(t.id));
@@ -21914,6 +21919,32 @@ function browseTextFamily(familyId) {
   // Toolbar (grid/list/sort/color) doesn't apply to family pages.
   document.getElementById('browse-toolbar').style.display = 'none';
   $browseTiles.className = 'tile-list family-page';
+
+  // ── Generic work-family view ────────────────────────────────────────────
+  // Families that declare `works[]` (Dhammapada, Sutta-Nipata, future works)
+  // render a simple flat witness list per work, reusing the shared witness
+  // router (_witnessTileHTML → openUpanishadAt → pendingSection deep-link).
+  // No Veda/108 machinery. Families without `works` (the Upanishads) fall
+  // through to the existing canon views below, unchanged.
+  const _works = fam.works || null;
+  if (Array.isArray(_works) && _works.length) {
+    let whtml = '';
+    if (fam.description) whtml += `<div class="family-description">${escH(fam.description)}</div>`;
+    for (const work of _works) {
+      const wl = (work.witnesses || []).filter(_witnessRenderable);
+      if (!wl.length) continue;
+      const label = (_works.length > 1 && (work.displayTitle || work.name))
+        ? (work.displayTitle || work.name) : 'Witnesses';
+      whtml += `<div class="tile-section-label">${escH(label)}</div>`;
+      whtml += '<ul class="byupn-witness-list">';
+      for (const w of wl) whtml += _witnessTileHTML(w);
+      whtml += '</ul>';
+    }
+    $browseTiles.className = 'upn-detail-wrap';
+    $browseTiles.innerHTML = whtml
+      || '<div class="upn-detail-empty">No routable witness available yet.</div>';
+    return;
+  }
 
   // Resolve members to indexGroups entries (textGroup objects).
   // Skip members not present in the catalog.
@@ -23911,6 +23942,73 @@ const TEXT_FAMILIES = [
     principalMissing: [],
     byUpanishadInactive: [
       // v106 — Mandukya entry removed; recovered via Hume 1921 ingestion.
+    ],
+  },
+  // ── Buddhist work-families (generic works[] model) ──────────────────────
+  // Witness-style families: a family card that keeps its member records
+  // visible on the shelf (suppressMembers: false), with each work's witnesses
+  // routed to a section via groupKey. The combined SBE X volume appears as a
+  // source-volume witness under BOTH families without being duplicated.
+  {
+    id: 'family-dhammapada',
+    title: 'The Dhammapada',
+    subtitle: 'Buddhist verse-collection — witnesses',
+    category: 'Religion',
+    tradition: 'Buddhist',
+    suppressMembers: false,
+    description:
+      'The Dhammapada across its witnesses. Each route preserves its source ' +
+      'credit; no source files were merged.',
+    members: [
+      { textId: 'dhammapada', role: 'primary' },
+    ],
+    works: [
+      { key: 'dhammapada', name: 'Dhammapada', displayTitle: 'The Dhammapada',
+        witnesses: [
+          { textId: 'dhammapada', groupKey: '1',
+            sourceTitle: 'The Dhammapada — Müller (Project Gutenberg)',
+            translator: 'F. Max Müller', year: '1881',
+            role: 'primary', routeQuality: 'safe',
+            note: 'Verse-only Gutenberg edition; 26 chapters, 414 passages.' },
+          { textId: 'dhammapada-muller', groupKey: 'The Dhammapada: Introduction',
+            sourceTitle: 'The Dhammapada & Sutta-Nipāta (SBE X)',
+            translator: 'F. Max Müller', year: '1881',
+            role: 'source-volume', routeQuality: 'safe',
+            note: 'Opens at Müller’s Dhammapada introduction inside the combined SBE X volume.' },
+        ] },
+    ],
+  },
+  {
+    id: 'family-sutta-nipata',
+    title: 'The Sutta-Nipāta',
+    subtitle: 'Buddhist discourse-collection — witnesses',
+    category: 'Religion',
+    tradition: 'Buddhist',
+    suppressMembers: false,
+    description:
+      'The Sutta-Nipāta across its witnesses. Each route preserves its source ' +
+      'credit; no source files were merged.',
+    members: [
+      // sutta-nipata-sujato is routable but not surfaced in the browse grid,
+      // so the combined SBE X volume (present on the shelf) anchors the family
+      // card; suppressMembers:false keeps it independently discoverable.
+      { textId: 'sutta-nipata-sujato', role: 'primary' },
+      { textId: 'dhammapada-muller', role: 'source-volume' },
+    ],
+    works: [
+      { key: 'sutta-nipata', name: 'Sutta-Nipata', displayTitle: 'The Sutta-Nipāta',
+        witnesses: [
+          { textId: 'sutta-nipata-sujato', groupKey: '1',
+            sourceTitle: 'Anthology of Discourses — Bhikkhu Sujato (bilingual)',
+            translator: 'Bhikkhu Sujato', year: '2022',
+            role: 'primary', routeQuality: 'safe',
+            note: 'SuttaCentral CC0; Pāli + English witness (toggle translations in the reader).' },
+          { textId: 'dhammapada-muller', groupKey: 'The Sutta-Nipata: Introduction',
+            sourceTitle: 'The Dhammapada & Sutta-Nipāta (SBE X)',
+            translator: 'V. Fausböll', year: '1881',
+            role: 'source-volume', routeQuality: 'safe',
+            note: 'Opens at the Sutta-Nipāta introduction inside the combined SBE X volume.' },
+        ] },
     ],
   },
 ];
