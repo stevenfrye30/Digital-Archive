@@ -24162,10 +24162,17 @@ const TEXT_FAMILIES = [
     ],
   },
   // ── Buddhist work-families (generic works[] model) ──────────────────────
-  // Witness-style families: a family card that keeps its member records
-  // visible on the shelf (suppressMembers: false), with each work's witnesses
-  // routed to a section via groupKey. The combined SBE X volume appears as a
-  // source-volume witness under BOTH families without being duplicated.
+  // Witness-style families: a family card whose works[] list the work-level
+  // witnesses, each routed to a section via groupKey.
+  //
+  // The combined SBE X volume (dhammapada-muller) is deliberately NOT a witness
+  // card under either family: it is not another Dhammapada or Sutta-Nipata
+  // witness but a retained source-volume holding two different works, so
+  // presenting it beside the work-level witnesses misread the archive model.
+  // It stays in each family's members[] — that list governs shelf suppression
+  // (and the member back-button target), not the witness cards — so the record
+  // remains fully preserved, un-duplicated on the shelf, and reachable by its
+  // direct URL and every existing permanent passage link.
   {
     id: 'family-dhammapada',
     title: 'The Dhammapada',
@@ -24195,11 +24202,6 @@ const TEXT_FAMILIES = [
             translator: 'F. Max Müller', year: '1881',
             role: 'primary', routeQuality: 'safe',
             note: 'Extracted SBE X witness: Müller’s introduction + 26 chapters.' },
-          { textId: 'dhammapada-muller', groupKey: 'The Dhammapada: Introduction',
-            sourceTitle: 'The Dhammapada & Sutta-Nipāta (SBE X) — full source volume',
-            translator: 'F. Max Müller', year: '1881',
-            role: 'source-volume', routeQuality: 'safe',
-            note: 'Opens at Müller’s Dhammapada introduction inside the combined SBE X volume.' },
         ] },
     ],
   },
@@ -24230,11 +24232,6 @@ const TEXT_FAMILIES = [
             translator: 'V. Fausböll', year: '1881',
             role: 'primary', routeQuality: 'safe',
             note: 'Extracted SBE X witness: title, introduction, 5 vaggas and all suttas.' },
-          { textId: 'dhammapada-muller', groupKey: 'The Sutta-Nipata: Introduction',
-            sourceTitle: 'The Dhammapada & Sutta-Nipāta (SBE X) — full source volume',
-            translator: 'V. Fausböll', year: '1881',
-            role: 'source-volume', routeQuality: 'safe',
-            note: 'Opens at the Sutta-Nipāta introduction inside the combined SBE X volume.' },
         ] },
     ],
   },
