@@ -21166,7 +21166,14 @@ async function loadText(entry, listItem) {
         // Jump past the cover, honor the group the passage lives in.
         // For chapter-scoped Bible texts the group is book.chapter
         // so the room opens directly to the right chapter.
-        if (target.path && target.path.length) {
+        // Front-matter passages live in no chapter room: filterAndRender
+        // excludes `fm` from every body view, so routing them by path[0]
+        // opened a room that could never contain them and the deep link
+        // died in jumpToPassage ("valid, but not in this section").
+        // '__fm__' is the existing pseudo-book that renders exactly these.
+        if (target.fm) {
+          currentBook = '__fm__';
+        } else if (target.path && target.path.length) {
           currentBook = chapterScoped
             ? `${target.path[0]}.${target.path[1]}`
             : String(target.path[0]);
