@@ -12286,7 +12286,44 @@ async function getJSON(url) {
 
 // ── Reference formatting ──────────────────────────────────────────────────────
 
+// ── Citation-label injectivity (record-level) ────────────────────────────────
+// The visible chip is built from `p.path`; the URL and Copy Link use the stable
+// `p.id`. Those agree only while the path-derived labels are INJECTIVE. When a
+// record's sections are merged (Apostolic Fathers' source-aligned repartition
+// merged 26 sections into 13 works while preserving each passage's id and its
+// old within-section ordinal), two passages can render the same label — and a
+// label can even read as another passage's real id. A citation that names six
+// passages, or names a different one than it links to, is not a citation.
+//
+// So: if a record's path-derived labels are not injective, that record falls
+// back — UNIFORMLY — to displaying the stable id, which is unique by definition
+// and is exactly what Copy Link targets. Records whose labels are already clean
+// (all four counted texts among them) keep their current chips byte-for-byte.
+// Mode is recomputed from the record's own bytes each time a record loads, so no
+// mode can leak across a text switch.
+let _refMode = 'path';                 // 'path' (normal) | 'id' (uniform fallback)
+
+function _buildRefIndex() {
+  _refMode = 'path';
+  const ps = currentData && currentData.passages;
+  if (!Array.isArray(ps) || !ps.length) return;
+  const ids = new Set(ps.map(p => p.id));
+  const seen = new Set();
+  for (const p of ps) {
+    const label = _formatRefPath(p);   // the RAW path-derived label, pre-fallback
+    if (seen.has(label)) { _refMode = 'id'; return; }   // two passages, one label
+    seen.add(label);
+    // the label reads as some OTHER passage's stable id (self-equality is fine)
+    if (label !== p.id && ids.has(label)) { _refMode = 'id'; return; }
+  }
+}
+
 function formatRef(p) {
+  if (_refMode === 'id') return p.id;   // uniform, unique, == the Copy Link target
+  return _formatRefPath(p);
+}
+
+function _formatRefPath(p) {
   const path = p.path;
   const hier = currentMeta && currentMeta.hierarchy;
 
@@ -21297,6 +21334,7 @@ async function loadText(entry, listItem) {
     currentMeta  = { hierarchy: data.hierarchy };
     allPassages  = data.passages;
     currentBook  = null;
+    _buildRefIndex();          // citation mode belongs to THIS record; recomputed, never inherited
     _recomputeChapterEnds();
     if (typeof renderCompanionFolio === 'function') renderCompanionFolio();
 
