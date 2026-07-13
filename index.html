@@ -11764,6 +11764,12 @@ const UPANISHAD_NAMES = {
   brihadaranyaka: 'Brihadaranyaka',
   svetasvatara:   'Svetasvatara',
   prasna:         'Prasna',
+  // Reachable only once a witness covering them is indexed. Spelling follows this
+  // table's existing convention (plain transliteration, no diacritics) so every
+  // citation label in the reader reads consistently.
+  aitareya:       'Aitareya',
+  mandukya:       'Mandukya',
+  maitri:         'Maitri',
 };
 
 // ── Sutta name maps (Suttacentral / Sujato) ──────────────────────────────────
@@ -12323,6 +12329,13 @@ function formatRef(p) {
   return _formatRefPath(p);
 }
 
+// A path level is usable in a citation only if it actually carries a value. Zero is a
+// value; undefined, null and empty strings are not, and must never reach the chip --
+// that is what produced ':undefined'.
+function _refLevelPresent(v) {
+  return v !== undefined && v !== null && String(v).trim() !== '';
+}
+
 function _formatRefPath(p) {
   const path = p.path;
   const hier = currentMeta && currentMeta.hierarchy;
@@ -12344,9 +12357,27 @@ function _formatRefPath(p) {
   }
 
   if (hier && hier[0] === 'upanishad') {
-    const name  = UPANISHAD_NAMES[path[0]] || path[0];
-    const verse = p.range_end ? `${path[2]}\u2013${p.range_end}` : path[2];
-    return `${name}\u2009${path[1]}:${verse}`;
+    // Upanishad witnesses do not share one path depth. Some subdivide a work into
+    // chapter and verse \u2014 [work, chapter, verse] \u2014 while others number passages
+    // straight through a work \u2014 [work, passage]. This branch used to read path[2]
+    // unconditionally, so a two-level path rendered a trailing ':undefined'.
+    // Format from the levels the record actually has, and never emit a component that
+    // is absent: a citation must name a passage, not a hole in an array.
+    if (!Array.isArray(path) || !path.length) return p.id;
+    const name   = UPANISHAD_NAMES[path[0]] || path[0];
+    const levels = path.slice(1).filter(_refLevelPresent);
+    // >= 2 levels: unchanged \u2014 'Work 1:1' (deeper paths keep using the first two,
+    // exactly as before).
+    if (levels.length >= 2) {
+      const verse = p.range_end ? `${levels[1]}\u2013${p.range_end}` : levels[1];
+      return `${name}\u2009${levels[0]}:${verse}`;
+    }
+    // 1 level: 'Work 1' \u2014 meaningful, stable, and unique within the work.
+    if (levels.length === 1) {
+      const only = p.range_end ? `${levels[0]}\u2013${p.range_end}` : levels[0];
+      return `${name}\u2009${only}`;
+    }
+    return String(name);
   }
 
   if (hier && hier[0] === 'sutta') {
