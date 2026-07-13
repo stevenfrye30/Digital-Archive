@@ -3468,6 +3468,37 @@ button.home-path {
    public-domain year, rights holder, and what Upanishads will be
    activated when the source becomes safely usable. The placeholder
    is informational only — clicking does not open the reading room. */
+/* Phase C — the withheld state: a record the archive names but does not serve. */
+.withheld-card {
+  max-width: 720px; margin: 8px auto 40px; padding: 22px 24px;
+  border: 1px solid var(--chrome-border); border-left: 4px solid rgba(90, 130, 80, 0.55);
+  border-radius: 6px; background: rgba(236, 244, 232, 0.35);
+}
+.withheld-card .wh-headline {
+  font-weight: 600; font-size: 1.05rem; margin-bottom: 10px; line-height: 1.35;
+}
+.withheld-card .wh-body { line-height: 1.6; margin-bottom: 14px; }
+.withheld-card .wh-note {
+  font-size: 0.92rem; line-height: 1.55; padding: 10px 12px; margin-bottom: 16px;
+  border-radius: 4px; background: rgba(0, 0, 0, 0.035); color: var(--chrome-muted);
+}
+.withheld-card .wh-meta {
+  display: grid; grid-template-columns: minmax(140px, auto) 1fr;
+  gap: 6px 18px; margin: 0 0 16px; font-size: 0.94rem;
+}
+.withheld-card .wh-meta dt { color: var(--chrome-muted); }
+.withheld-card .wh-meta dd { margin: 0; }
+.withheld-card .wh-foot {
+  font-size: 0.86rem; color: var(--chrome-muted); border-top: 1px solid var(--chrome-border);
+  padding-top: 10px;
+}
+@media (max-width: 560px) {
+  .withheld-card { margin: 4px 0 28px; padding: 16px; border-radius: 4px; }
+  .withheld-card .wh-meta { grid-template-columns: 1fr; gap: 2px 0; }
+  .withheld-card .wh-meta dt { margin-top: 8px; font-size: 0.86rem; }
+}
+[data-theme="dark"] .withheld-card { background: rgba(255, 255, 255, 0.03); }
+
 .restricted-source-section {
   margin-top: 28px;
   padding-top: 18px;
@@ -21323,6 +21354,11 @@ document.addEventListener('keydown', (e) => {
 // ── Load text ─────────────────────────────────────────────────────────────────
 
 async function loadText(entry, listItem) {
+  // The single choke point: EVERY route into the reading room passes through here. A
+  // metadata-only record is diverted to its withheld state before any fetch is issued —
+  // no request for its body is ever made, whatever path the user arrived by (a witness
+  // tile, a library tile, a search hit, or a crafted ?text= / ?p= URL).
+  if (_isMetadataOnly(entry)) { openWithheld(entry.id); return; }
   if (activeItem) activeItem.classList.remove('active');
   if (listItem) { listItem.classList.add('active'); activeItem = listItem; }
   // Any new load supersedes a prior protected landing; a pendingPid jump below will
@@ -21657,11 +21693,28 @@ function renderSidebarTree({ firstLoad = false } = {}) {
 
   for (const tg of textGroups) {
     for (const entry of tg.entries) {
-      dataFileToEntry[entry.data_file] = { entry, li: null };
-      if (requestedText && entry.data_file === requestedText && !autoLoaded) {
+      // A metadata-only row has data_file === null: an intentionally absent body, not a
+      // missing file. It must never enter the data_file → entry map, or a null key would
+      // become a fetchable "null" route.
+      if (entry.data_file) dataFileToEntry[entry.data_file] = { entry, li: null };
+      if (requestedText && entry.data_file && entry.data_file === requestedText
+          && !autoLoaded) {
         autoLoaded = true;
         if (requestedPid) pendingPid = requestedPid;
         loadText(entry);
+      }
+      // A metadata-only record has no data_file, so a ?text= deep link can only name it
+      // by id. Land on the withheld state — a shared or guessed link must EXPLAIN itself,
+      // not silently drop the visitor on the home page. Any ?p= is dropped: there is no
+      // passage to address.
+      if (requestedText && !autoLoaded && _isMetadataOnly(entry)
+          && entry.id === requestedText) {
+        autoLoaded = true;
+        pendingPid = null;
+        const u = new URL(location);
+        u.searchParams.delete('p');
+        history.replaceState({}, '', u);
+        openWithheld(entry.id);
       }
     }
   }
@@ -22666,10 +22719,28 @@ function closeRestrictedDossier(familyId) {
 // Upanishad witness files but left their witness references in place) —
 // such witnesses must not show as active/clickable or inflate counts.
 // Self-heals automatically if the data is later restored to the index.
+// ── The availability contract (Phase C) ──────────────────────────────────────
+// A metadata-only witness is one the archive NAMES publicly but does not let you read:
+//   public_metadata === true  AND  public_passages === false
+// The reader must decide that from the contract alone — never from a missing file, never
+// from an HTTP error, never from `restricted` on its own, never from a hard-coded id, and
+// never from whether an orphaned blob still happens to exist on the server.
+function _isMetadataOnly(e) {
+  return !!e && e.public_metadata === true && e.public_passages === false;
+}
+function _entryReadable(e) {
+  return !!e && !_isMetadataOnly(e);
+}
+
 function _witnessRenderable(w) {
   if (!(w.routeQuality === 'safe' || w.routeQuality === 'safe-start')) return false;
-  return typeof indexGroups !== 'undefined'
-    && Array.isArray(indexGroups[w.textId]) && indexGroups[w.textId].length > 0;
+  if (typeof indexGroups === 'undefined') return false;
+  const entries = indexGroups[w.textId];
+  if (!Array.isArray(entries) || !entries.length) return false;
+  // Index presence is NOT enough. A metadata-only record is deliberately indexed and
+  // deliberately unreadable: it must never become a clickable witness, never open a
+  // route, never fetch a body, and never inflate the active count.
+  return entries.some(_entryReadable);
 }
 
 // Build the enriched 108 model from the public MUKTIKA_108 canon,
@@ -26369,6 +26440,84 @@ function browseHome() {
   reader.style.overflow = 'hidden';
 }
 
+// ── The withheld state (Phase C) ─────────────────────────────────────────────
+// The intentional destination for a metadata-only record. It renders the safe
+// bibliographic surface and says plainly WHY reading is unavailable. It issues no fetch,
+// names no file, and builds no passage URL — so it can neither 404 nor leak a target.
+//
+// The reason text is driven by restriction_reason, so a QUALITY hold is never dressed up
+// as a copyright restriction. Röer and Sastri are worldwide public domain; the hold is on
+// our digitisation, not on anyone's rights, and saying otherwise would misinform.
+function _withheldReasonHTML(e) {
+  const reason = e.restriction_reason;
+  if (reason === 'quality') {
+    return '<div class="wh-headline">Reading unavailable — held for OCR quality review</div>'
+      + '<div class="wh-body">This is a <strong>public-domain source</strong>. It is not '
+      + 'restricted by copyright. The scanned transcription we hold is too damaged to '
+      + 'present as a reading text, so the archive lists the edition but does not serve '
+      + 'it. A transcription is retained for future correction, but it is not currently '
+      + 'offered as a reading witness.</div>';
+  }
+  if (reason === 'rights') {
+    const yr = e.public_domain_date
+      ? ` Expected to enter the public domain in ${escH(String(e.public_domain_date))}.` : '';
+    return '<div class="wh-headline">Reading unavailable — restricted source</div>'
+      + `<div class="wh-body">This edition is under copyright, so the archive lists it but `
+      + `cannot serve its text.${yr}</div>`;
+  }
+  if (reason === 'incompleteness') {
+    return '<div class="wh-headline">Reading unavailable — incomplete witness</div>'
+      + '<div class="wh-body">The archive holds only part of this edition, so it is listed '
+      + 'but not served as a reading witness.</div>';
+  }
+  return '<div class="wh-headline">Reading unavailable — pending review</div>'
+    + '<div class="wh-body">This edition is listed but has not yet been reviewed for '
+    + 'reading.</div>';
+}
+
+function openWithheld(textId) {
+  const entries = (typeof indexGroups !== 'undefined' && indexGroups[textId]) || [];
+  const e = entries.find(_isMetadataOnly) || entries[0];
+  if (!e) return;
+  if (!browseTree) browseTree = buildBrowseData();
+  showBrowse();
+  browseHistory = [{ fn: browseHome }];
+  $browseCrumb.innerHTML =
+    `<a onclick="browseHome()">Home</a><span class="sep">›</span>${escH(e.title || textId)}`;
+  $browseTitle.textContent = e.title || textId;
+  const tb = document.getElementById('browse-toolbar');
+  if (tb) tb.style.display = 'none';
+  $browseTiles.className = 'upn-detail-wrap';
+
+  const rows = [];
+  const tr = (e.translator || []).filter(Boolean).join(', ');
+  if (tr)                 rows.push(['Translator / editor', tr]);
+  if (e.year)             rows.push(['Publication year', String(e.year)]);
+  if (e.publisher)        rows.push(['Source / edition', e.publisher]);
+  if (e.language)         rows.push(['Language', e.language === 'en' ? 'English' : e.language]);
+  if (e.script)           rows.push(['Script', e.script]);
+  if ((e.works_covered || []).length)
+    rows.push(['Works covered', (e.works_covered || []).join(', ')]);
+  if (e.rights_status)    rows.push(['Rights', e.rights_status === 'worldwide-PD'
+                                     ? 'Public domain worldwide' : e.rights_status]);
+  if (e.quality_status)   rows.push(['Transcription quality', e.quality_status]);
+  if (e.availability_status) rows.push(['Availability', e.availability_status]);
+
+  let html = '<div class="withheld-card">';
+  html += _withheldReasonHTML(e);
+  if (e.restriction_note) {
+    html += `<div class="wh-note">${escH(e.restriction_note)}</div>`;
+  }
+  html += '<dl class="wh-meta">';
+  for (const [k, v] of rows) {
+    html += `<dt>${escH(k)}</dt><dd>${escH(String(v))}</dd>`;
+  }
+  html += '</dl>';
+  html += '<div class="wh-foot">Metadata only — no text is served for this record.</div>';
+  html += '</div>';
+  $browseTiles.innerHTML = html;
+}
+
 /** Browse restricted texts */
 function browseRestricted() {
   if (!browseTree) browseTree = buildBrowseData();
@@ -26394,17 +26543,40 @@ function browseRestricted() {
     return;
   }
 
-  let html = '<div class="tile-section-label">Copyrighted — local only, not on public site</div>';
-  for (const e of restricted) {
-    const tr = (e.translator || []).join(', ');
-    const meta = [tr, e.year].filter(Boolean).join(' · ');
-    html += `<div class="text-tile" onclick="browseOpen('${escH(e.data_file)}')">
-      <span class="tt-star">🔒</span>
-      <div class="tt-info">
-        <div class="tt-title">${escH(e.title)} — ${escH(e.translation_short_label || tr)}</div>
-        ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
-      </div>
-    </div>`;
+  // Metadata-only records are separated from the legacy copyright-restricted list. They
+  // are public-domain works held for transcription quality — filing them under
+  // "Copyrighted" would be a false statement about their rights.
+  const metaOnly = restricted.filter(_isMetadataOnly);
+  const legacy   = restricted.filter(e => !_isMetadataOnly(e));
+
+  let html = '';
+  if (metaOnly.length) {
+    html += '<div class="tile-section-label">Public domain — reading held for OCR quality review</div>';
+    for (const e of metaOnly) {
+      const tr = (e.translator || []).filter(Boolean).join(', ');
+      const meta = [tr, e.year].filter(Boolean).join(' · ');
+      html += `<div class="text-tile" onclick="openWithheld('${escH(e.id)}')">
+        <span class="tt-star">◍</span>
+        <div class="tt-info">
+          <div class="tt-title">${escH(e.title)}</div>
+          ${meta ? `<div class="tt-meta">${escH(meta)} · Reading unavailable — quality review</div>` : ''}
+        </div>
+      </div>`;
+    }
+  }
+  if (legacy.length) {
+    html += '<div class="tile-section-label">Copyrighted — local only, not on public site</div>';
+    for (const e of legacy) {
+      const tr = (e.translator || []).join(', ');
+      const meta = [tr, e.year].filter(Boolean).join(' · ');
+      html += `<div class="text-tile" onclick="browseOpen('${escH(e.data_file)}')">
+        <span class="tt-star">🔒</span>
+        <div class="tt-info">
+          <div class="tt-title">${escH(e.title)} — ${escH(e.translation_short_label || tr)}</div>
+          ${meta ? `<div class="tt-meta">${escH(meta)}</div>` : ''}
+        </div>
+      </div>`;
+    }
   }
   $browseTiles.innerHTML = html;
 }
@@ -26547,6 +26719,10 @@ function updateHomeCounts() {
           input.value = '';
           results.classList.remove('open');
           results.innerHTML = '';
+          // Metadata search MAY surface a metadata-only record (title, translator, year).
+          // Selecting it opens the withheld state — never a reading route.
+          const grp = (typeof indexGroups !== 'undefined' && indexGroups[id]) || [];
+          if (grp.length && grp.every(_isMetadataOnly)) { openWithheld(id); return; }
           browseText(cat, trd, id);
         });
       });
