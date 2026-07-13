@@ -12291,6 +12291,81 @@ const dataFileToEntry = {};           // data_file → {entry, li}
 let pendingPid     = null;            // passage id to jump to on enterReading
 let pendingSection = null;            // section name to jump to on loadText (cross-tradition deep link)
 let bookmarkTimer  = null;
+
+  // ── BEGIN GENERATED: AIYAR_WORKS (05_scripts/generate_aiyar_routes.py) ──
+  // Bounded work routes for the Aiyar volume. Generated from the Phase H1
+  // audit — do not hand-edit. Each work carries an explicit END, so ordinary
+  // navigation can no longer walk out of the Upanishad the reader chose.
+  const AIYAR_WORKS = [
+    {key: 'muktika', muktika: 29, title: "Muktikā", displayTitle: "Muktikā Upanishad", startSection: 2, endSection: 3, startPid: '2.1', endPid: '3.15', sections: [2,3], passageCount: 34, routeQuality: 'safe-start'},
+    {key: 'sarvasara', muktika: 41, title: "Sarvasāra", displayTitle: "Sarvasāra Upanishad", startSection: 4, endSection: 4, startPid: '4.1', endPid: '4.51', sections: [4], passageCount: 51, routeQuality: 'safe'},
+    {key: 'niralamba', muktika: 18, title: "Nirālamba", displayTitle: "Nirālamba Upanishad", startSection: 5, endSection: 5, startPid: '5.1', endPid: '5.65', sections: [5], passageCount: 65, routeQuality: 'safe'},
+    {key: 'maitreya', muktika: 66, title: "Maitreya", displayTitle: "Maitreya Upanishad", startSection: 6, endSection: 8, startPid: '6.1', endPid: '8.2', sections: [6,7,8], passageCount: 14, routeQuality: 'safe'},
+    {key: 'kaivalya', muktika: 33, title: "Kaivalya", displayTitle: "Kaivalya Upanishad", startSection: 9, endSection: 9, startPid: '9.1', endPid: '9.8', sections: [9], passageCount: 8, routeQuality: 'safe'},
+    {key: 'amrtabindu', muktika: 37, title: "Amṛta-bindu", displayTitle: "Amṛta-bindu Upanishad", startSection: 10, endSection: 10, startPid: '10.1', endPid: '10.6', sections: [10], passageCount: 6, routeQuality: 'safe'},
+    {key: 'atmabodha', muktika: 4, title: "Ātma-bodha", displayTitle: "Ātma-bodha Upanishad", startSection: 11, endSection: 11, startPid: '11.1', endPid: '11.8', sections: [11], passageCount: 8, routeQuality: 'safe'},
+    {key: 'skanda', muktika: 48, title: "Skanda", displayTitle: "Skanda Upanishad", startSection: 12, endSection: 12, startPid: '12.1', endPid: '12.5', sections: [12], passageCount: 5, routeQuality: 'safe'},
+    {key: 'paingala', muktika: 22, title: "Pāiṅgala", displayTitle: "Pāiṅgala Upanishad", startSection: 13, endSection: 16, startPid: '13.1', endPid: '16.7', sections: [13,14,15,16], passageCount: 22, routeQuality: 'safe-start'},
+    {key: 'adhyatma', muktika: 25, title: "Adhyātmā", displayTitle: "Adhyātmā Upanishad", startSection: 17, endSection: 17, startPid: '17.1', endPid: '17.13', sections: [17], passageCount: 13, routeQuality: 'safe'},
+    {key: 'subala', muktika: 16, title: "Subāla", displayTitle: "Subāla Upanishad", startSection: 18, endSection: 27, startPid: '18.1', endPid: '27.4', sections: [18,19,20,21,22,23,24,25,26,27], passageCount: 72, routeQuality: 'unsafe'},
+    {key: 'tejobindu', muktika: 43, title: "Tejo-bindu", displayTitle: "Tejo-bindu Upanishad", startSection: 28, endSection: 33, startPid: '28.1', endPid: '33.11', sections: [28,29,30,31,32,33], passageCount: 47, routeQuality: 'safe-start'},
+    {key: 'brahmopanishad', muktika: 32, title: "Brahma", displayTitle: "Brahma Upanishad", startSection: 34, endSection: 34, startPid: '34.1', endPid: '34.8', sections: [34], passageCount: 8, routeQuality: 'safe'},
+    {key: 'vajrasuchi', muktika: 67, title: "Vajrasūcikā", displayTitle: "Vajrasūcikā Upanishad", startSection: 35, endSection: 35, startPid: '35.1', endPid: '35.12', sections: [35], passageCount: 12, routeQuality: 'safe'},
+    {key: 'sariraka', muktika: 49, title: "Śārīraka", displayTitle: "Śārīraka Upanishad", startSection: 36, endSection: 36, startPid: '36.1', endPid: '36.3', sections: [36], passageCount: 3, routeQuality: 'safe'},
+    {key: 'garbha', muktika: 35, title: "Garbha", displayTitle: "Garbha Upanishad", startSection: 37, endSection: 37, startPid: '37.1', endPid: '37.15', sections: [37], passageCount: 15, routeQuality: 'safe'},
+    {key: 'tarasara', muktika: 26, title: "Tārasāra", displayTitle: "Tārasāra Upanishad", startSection: 38, endSection: 38, startPid: '38.1', endPid: '38.15', sections: [38], passageCount: 15, routeQuality: 'safe'},
+    {key: 'narayana', muktika: 36, title: "Nārāyaṇa", displayTitle: "Nārāyaṇa Upanishad", startSection: 39, endSection: 39, startPid: '39.1', endPid: '39.6', sections: [39], passageCount: 6, routeQuality: 'safe'},
+    {key: 'kalisantarana', muktika: 60, title: "Kalisantaraṇa", displayTitle: "Kalisantaraṇa Upanishad", startSection: 40, endSection: 40, startPid: '40.1', endPid: '40.4', sections: [40], passageCount: 4, routeQuality: 'safe'},
+    {key: 'bhikshuka', muktika: 23, title: "Bhikṣu", displayTitle: "Bhikṣu Upanishad", startSection: 41, endSection: 41, startPid: '41.1', endPid: '41.2', sections: [41], passageCount: 2, routeQuality: 'unsafe'},
+    {key: 'narada-parivrajaka', muktika: 85, title: "Nārada-parivrājaka", displayTitle: "Nārada-parivrājaka Upanishad", startSection: 42, endSection: 50, startPid: '42.1', endPid: '50.9', sections: [42,43,44,45,46,47,48,49,50], passageCount: 83, routeQuality: 'unsafe'},
+    {key: 'sandilya', muktika: 91, title: "Śāṇḍilya", displayTitle: "Śāṇḍilya Upanishad", startSection: 51, endSection: 54, startPid: '51.1', endPid: '54.2', sections: [51,52,53,54], passageCount: 49, routeQuality: 'safe-start'},
+    {key: 'yogatattva', muktika: 46, title: "Yogatattva", displayTitle: "Yogatattva Upanishad", startSection: 55, endSection: 55, startPid: '55.1', endPid: '55.19', sections: [55], passageCount: 19, routeQuality: 'safe'},
+    {key: 'dhyanabindu', muktika: 44, title: "Dhyāna-bindu", displayTitle: "Dhyāna-bindu Upanishad", startSection: 56, endSection: 56, startPid: '56.1', endPid: '56.19', sections: [56], passageCount: 19, routeQuality: 'safe'},
+    {key: 'hamsa', muktika: 14, title: "Haṃsa", displayTitle: "Haṃsa Upanishad", startSection: 57, endSection: 57, startPid: '57.1', endPid: '57.11', sections: [57], passageCount: 11, routeQuality: 'safe'},
+    {key: 'amrtanada', muktika: 38, title: "Amṛta-nāda", displayTitle: "Amṛta-nāda Upanishad", startSection: 58, endSection: 58, startPid: '58.1', endPid: '58.7', sections: [58], passageCount: 7, routeQuality: 'unsafe'},
+    {key: 'varaha', muktika: 59, title: "Varāha", displayTitle: "Varāha Upanishad", startSection: 59, endSection: 63, startPid: '59.1', endPid: '63.11', sections: [59,60,61,62,63], passageCount: 51, routeQuality: 'safe-start'},
+    {key: 'mandalabrahmana', muktika: 20, title: "Maṇḍala-brāhmaṇa", displayTitle: "Maṇḍala-brāhmaṇa Upanishad", startSection: 64, endSection: 67, startPid: '64.1', endPid: '67.2', sections: [64,65,66,67], passageCount: 27, routeQuality: 'safe-start'},
+    {key: 'nadabindu', muktika: 3, title: "Nāda-bindu", displayTitle: "Nāda-bindu Upanishad", startSection: 68, endSection: 68, startPid: '68.1', endPid: '68.56', sections: [68], passageCount: 56, routeQuality: 'unsafe'},
+    {key: 'yogakundalini', muktika: 56, title: "Yoga-kuṇḍalinī", displayTitle: "Yoga-kuṇḍalinī Upanishad", startSection: 69, endSection: 71, startPid: '69.1', endPid: '71.9', sections: [69,70,71], passageCount: 28, routeQuality: 'safe-start'},
+  ];
+  const AIYAR_TEXT_ID = 'upanishads-30-minor-aiyar';
+  const AIYAR_SOURCE_VOLUME = "Thirty Minor Upanishads (Aiyar, 1914)";
+  // ── END GENERATED: AIYAR_WORKS ──
+
+// ── v132 (H2) — bounded Aiyar work routes ────────────────────────────────────
+// The Aiyar volume is ONE record holding THIRTY Upanishads. Its routes carried a start
+// and nothing that said where a work ENDS, so Next walked out of the work the reader had
+// chosen — for five of them under a bare "Chapter 69" header, with nothing naming the text
+// they had just wandered into. Aiyar is the only readable witness for all thirty, so there
+// was no second text to correct the mistake.
+//
+// `workScope` is that missing end. When a work route is open it holds the work's sections,
+// and buildBookSelector narrows `groupKeys` to exactly those — which bounds the chapter
+// selector, Prev/Next and the contents list in one place, because all three read groupKeys.
+// Passage ids, paths, order and text are untouched: this is routing and presentation only.
+//
+// null  = the full source volume (all 71 sections). That route is preserved deliberately:
+//         the volume is the witness, and it must never pretend to be one Upanishad.
+let workScope       = null;   // {key, title, displayTitle, sections:[...], startPid, endPid, …}
+let pendingWorkKey  = null;   // work to scope to once loadText has the record
+
+function aiyarWorkByKey(key) {
+  return AIYAR_WORKS.find(w => w.key === key) || null;
+}
+
+// Deterministic recovery of work context from a bare passage id. A legacy link carries only
+// ?text=…&p=42.1 — but section 42 belongs to exactly one work, so the work is derivable and
+// no existing link has to be invalidated to gain a boundary.
+function aiyarWorkForPid(pid) {
+  const sec = parseInt(String(pid).split('.')[0], 10);
+  if (!Number.isFinite(sec)) return null;
+  return AIYAR_WORKS.find(w => w.sections.includes(sec)) || null;
+}
+
+function isAiyar(entry) {
+  return !!entry && entry.id === AIYAR_TEXT_ID;
+}
+
 // The exact passage id of an in-progress programmatic landing (deep link, citation,
 // bookmark restore, translation switch, internal jump). While set, scheduleBookmark
 // keeps ?p= and the bookmark pinned to this id instead of drifting to the top-visible
@@ -13826,6 +13901,15 @@ function buildBookSelector() {
   // filterAndRender treat each chapter as its own room.
   groupKeys = sectionKeys(allPassages, _isChapterScopedHierarchy());
 
+  // v132 (H2) — the work boundary, enforced once. Prev/Next, the chapter selector and the
+  // contents list all read groupKeys, so narrowing it here bounds every one of them: the
+  // selector offers only this work's sections, Prev disables at its first, Next at its
+  // last, and no following Upanishad is reachable by ordinary navigation.
+  if (workScope) {
+    const own = new Set(workScope.sections.map(String));
+    groupKeys = groupKeys.filter(k => own.has(String(k)));
+  }
+
   $bookSelect.innerHTML = '';
 
   // SN (1685 suttas / 53 saṁyuttas) and AN (1408 sutta IDs / 11 nipātas)
@@ -13915,7 +13999,14 @@ function updateNav() {
   navLabel.innerHTML = '';
   const chapSpan = document.createElement('span');
   chapSpan.className = 'nav-label-chapter';
-  chapSpan.textContent = chapterName;
+  // v132 (H2) — additive work context. The subdivision heading STAYS (it is real structure);
+  // the work's canonical name is prepended so nine works whose title was dropped in
+  // transformation stop opening under a bare "Adhyaya I", and a citation reads
+  // "Nārada-parivrājaka · Upadeśa I" instead of an anonymous "Chapter 42".
+  // Presentation only: path[0] and the pid are untouched.
+  chapSpan.textContent = workScope
+    ? `${workScope.title} · ${chapterName}`
+    : chapterName;
   navLabel.appendChild(chapSpan);
   const posSpan = document.createElement('span');
   posSpan.className = 'nav-label-position';
@@ -14223,8 +14314,17 @@ const LANG_NAMES = {
 };
 
 function showMeta(data) {
-  $metaTitle.textContent = data.title || '';
-  $metaDesc.textContent  = data.description || '';
+  // v132 (H2) — in a bounded work view the reader is reading ONE Upanishad, not the volume.
+  // Name it, and keep the source volume visible so attribution never disappears.
+  $metaTitle.textContent = workScope
+    ? workScope.displayTitle
+    : (data.title || '');
+  $metaDesc.textContent  = workScope
+    ? `${workScope.title} — bounded work view. Source: ${AIYAR_SOURCE_VOLUME}. `
+      + `Sections ${workScope.startSection}–${workScope.endSection} `
+      + `(${workScope.passageCount} passages); citations remain volume-relative `
+      + `(${workScope.startPid}–${workScope.endPid}).`
+    : (data.description || '');
 
   const items = [];
   if (data.author && data.author.length) {
@@ -15284,6 +15384,9 @@ function passageLinkURL(pid) {
   url.searchParams.set('text', currentEntry.data_file);
   if (pid) url.searchParams.set('p', pid);
   else url.searchParams.delete('p');
+  // v132 (H2) — a link copied from a bounded work reopens bounded to that same work.
+  if (workScope) url.searchParams.set('w', workScope.key);
+  else           url.searchParams.delete('w');
   return url.toString();
 }
 
@@ -21401,6 +21504,19 @@ async function loadText(entry, listItem) {
     currentMeta  = { hierarchy: data.hierarchy };
     allPassages  = data.passages;
     currentBook  = null;
+
+    // v132 (H2) — resolve the Aiyar work scope for THIS load. Order matters:
+    //   1. an explicit work route (a byUpanishad card, or ?w=<key>) — authoritative
+    //   2. a bare passage link (?p=42.1) — the section belongs to exactly one work, so the
+    //      work is recovered deterministically and legacy links gain the boundary for free
+    //   3. otherwise none — the reader opened the SOURCE VOLUME, which stays whole
+    // Scope is per-record: it must never survive into a different text.
+    workScope = null;
+    if (isAiyar(entry)) {
+      if (pendingWorkKey)   workScope = aiyarWorkByKey(pendingWorkKey);
+      else if (pendingPid)  workScope = aiyarWorkForPid(pendingPid);
+    }
+    pendingWorkKey = null;
     _buildRefIndex();          // citation mode belongs to THIS record; recomputed, never inherited
     _recomputeChapterEnds();
     if (typeof renderCompanionFolio === 'function') renderCompanionFolio();
@@ -21411,6 +21527,9 @@ async function loadText(entry, listItem) {
     const url = new URL(location);
     url.searchParams.set('text', entry.data_file);
     if (!pendingPid) url.searchParams.delete('p');
+    // v132 (H2) — the bounded work is part of the address: reload keeps the boundary.
+    if (workScope) url.searchParams.set('w', workScope.key);
+    else           url.searchParams.delete('w');
     history.replaceState(null, '', url);
 
     const chapterScoped = data.hierarchy && data.hierarchy[0] === 'book'
@@ -21689,6 +21808,9 @@ function renderSidebarTree({ firstLoad = false } = {}) {
   const params = new URLSearchParams(location.search);
   const requestedText = firstLoad ? params.get('text') : null;
   const requestedPid  = firstLoad ? params.get('p') : null;
+  // v132 (H2) — explicit bounded-work context on a shared link. Absent it, a bare ?p= still
+  // recovers the work from the pid's section, so no existing link is invalidated.
+  const requestedWork = firstLoad ? params.get('w') : null;
   let autoLoaded = false;
 
   for (const tg of textGroups) {
@@ -21701,6 +21823,7 @@ function renderSidebarTree({ firstLoad = false } = {}) {
           && !autoLoaded) {
         autoLoaded = true;
         if (requestedPid) pendingPid = requestedPid;
+        if (requestedWork) pendingWorkKey = requestedWork;
         loadText(entry);
       }
       // A metadata-only record has no data_file, so a ?text= deep link can only name it
@@ -22405,7 +22528,7 @@ function browseTextFamily(familyId) {
         ? (work.displayTitle || work.name) : 'Witnesses';
       whtml += `<div class="tile-section-label">${escH(label)}</div>`;
       whtml += '<ul class="byupn-witness-list">';
-      for (const w of wl) whtml += _witnessTileHTML(w);
+      for (const w of wl) whtml += _witnessTileHTML(w, work.key);
       whtml += '</ul>';
     }
     $browseTiles.className = 'upn-detail-wrap';
@@ -23408,7 +23531,7 @@ function showUpanishadDetail(familyId, upnKey) {
     html += '<div class="tile-section-label">Witnesses</div>';
     html += '<ul class="byupn-witness-list">';
     for (const w of safeWitnesses) {
-      html += _witnessTileHTML(w);
+      html += _witnessTileHTML(w, u.key);
     }
     html += '</ul>';
   } else {
@@ -23420,7 +23543,7 @@ function showUpanishadDetail(familyId, upnKey) {
   $browseTiles.innerHTML = html;
 }
 
-function _witnessTileHTML(w) {
+function _witnessTileHTML(w, upnKey) {
   const roleLabel = ({
     'primary':       'Primary reading witness',
     'source-volume': 'Source-volume witness',
@@ -23438,11 +23561,13 @@ function _witnessTileHTML(w) {
   // deep-link (openUpanishadAt); `routeMode:'contents'` opens the witness's
   // own contents page instead of jumping into a chapter/section. Witnesses
   // without routeMode (all Upanishads) are unchanged.
+  // v132 (H2) — carry the work key so an Aiyar route enters BOUNDED to that Upanishad.
+  const _wk = upnKey ? `,'${escH(upnKey)}'` : '';
   const onclick = (w.routeMode === 'contents')
     ? `openWitnessContents('${escH(w.textId)}')`
     : w.pid
-      ? `openUpanishadAt('${escH(w.textId)}','${escH(w.pid)}',true)`
-      : `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}')`;
+      ? `openUpanishadAt('${escH(w.textId)}','${escH(w.pid)}',true${_wk})`
+      : `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}',false${_wk})`;
   return `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0">
     <div class="byupn-witness-head">
       <span class="byupn-witness-role">${escH(roleLabel)}</span>
@@ -23477,7 +23602,7 @@ function openWitnessContents(textId) {
   loadText(group[0]);
 }
 
-function openUpanishadAt(textId, keyOrPid, isPid) {
+function openUpanishadAt(textId, keyOrPid, isPid, workKey) {
   const group = indexGroups[textId];
   if (!group || !group.length) return;
   const entry = group[0];
@@ -23486,6 +23611,8 @@ function openUpanishadAt(textId, keyOrPid, isPid) {
   } else {
     pendingSection = String(keyOrPid);
   }
+  // v132 (H2) — entering through a work route binds the reader to that work's span.
+  if (textId === AIYAR_TEXT_ID && workKey) pendingWorkKey = String(workKey);
   // Tear down browse scaffolding before loadText so the reading
   // room enters clean (mirrors browseTextSection's pattern).
   $browse.style.display = 'none';
