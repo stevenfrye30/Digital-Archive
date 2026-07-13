@@ -24153,11 +24153,24 @@ const TEXT_FAMILIES = [
         importance: 'principal', order: 80,
         associatedVeda: 'Rigveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-muller-part1', pid: '11.51',
-            sourceTitle: 'The Upanishads (Müller, Part 1) — SBE Vol. I',
-            translator: 'F. Max Müller', year: '1879',
-            role: 'source-volume', routeQuality: 'safe-start',
-            note: 'Opens at the AITAREYA-ARANYAKA section header in Müller Part 1; the Aitareya Upanishad sits within the second Aranyaka and reads forward from there.' },
+          // v134 (I3) — the Müller Part 1 witness was WITHDRAWN as a reading route.
+          //
+          // It anchored at pid 11.51, "AITAREYA-ARANYAKA." — a heading, flagged as front
+          // matter, sitting inside section 11 (which is the *Talavakara*/Kena). The reader
+          // sends a front-matter target to the '__fm__' pseudo-view, so the button did not
+          // open the Aitareya Upanishad at all: it rendered 294 front-matter passages across
+          // 15 sections.
+          //
+          // Müller DOES carry the work — his own note (14.142) says "with this adhyaya begins
+          // the real Upanishad", and the scripture opens at 14.146 — but it is EMBEDDED: his
+          // commentary (14.142-145) sits inside the span, and section 14 also holds Aranyaka
+          // II adhyayas 2-3 and 7 plus the whole Third Aranyaka. The reader groups by section,
+          // so no route into this record can show the Upanishad without the Aranyaka around
+          // it. Separating it would mean restructuring the record — not a route fix.
+          //
+          // Hume serves a clean, bounded, 29-passage Aitareya, so no coverage is lost. The
+          // Müller Part 1 source volume itself is untouched and remains readable and
+          // discoverable in the library. A knowingly broken button is worse than no button.
           { textId: 'upanishads-hume-1921', groupKey: 'aitareya',
             sourceTitle: 'The Thirteen Principal Upanishads — Hume',
             translator: 'Robert Ernest Hume', year: '1921',
