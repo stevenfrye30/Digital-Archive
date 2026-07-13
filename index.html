@@ -11541,6 +11541,7 @@ body.viewer-active .folio-leaf-colophon {
 
     <div id="text-meta">
       <div class="meta-title" id="meta-title"></div>
+      <div id="derived-source-slot"></div>
       <div class="meta-desc" id="meta-desc"></div>
       <div class="meta-grid" id="meta-grid"></div>
       <div class="meta-front-matter" id="meta-front-matter"></div>
@@ -14313,6 +14314,28 @@ const LANG_NAMES = {
   it: 'Italian', nl: 'Dutch', pt: 'Portuguese', id: 'Indonesian', tr: 'Turkish',
 };
 
+// v133 (H4) — a derived work record: one Upanishad, carved from a collected volume. The
+// record must never pretend to be a standalone book — it credits the translator AND the
+// volume it came from, shows the heading the volume actually prints for it, and offers a way
+// back to the complete source volume.
+function _derivedSourceHTML(data) {
+  const d = data && data.derived_from;
+  if (!d) return '';
+  const heading = data.source_printed_heading
+    ? `<div class="derived-heading">Source heading: <em>${escH(data.source_printed_heading)}</em></div>`
+    : '';
+  return `<div class="derived-source">
+    ${heading}
+    <div class="derived-credit">From <strong>${escH(d.volume_title)}</strong>, tr. ${escH((data.translator||[]).join(', '))} (${escH(data.date||'')}) — sections ${escH(String(d.source_sections[0]))}–${escH(String(d.source_sections[1]))}, passages ${escH(d.source_first_pid)}–${escH(d.source_last_pid)}. Wording unchanged; the division is archival, not an editorial correction.</div>
+    <button type="button" class="derived-volume-link" onclick="openSourceVolume('${escH(d.volume_data_file)}')">Open the complete source volume &rarr;</button>
+  </div>`;
+}
+
+function openSourceVolume(dataFile) {
+  const rec = dataFileToEntry[dataFile];
+  if (rec && rec.entry) { pendingWorkKey = null; pendingPid = null; loadText(rec.entry); }
+}
+
 function showMeta(data) {
   // v132 (H2) — in a bounded work view the reader is reading ONE Upanishad, not the volume.
   // Name it, and keep the source volume visible so attribution never disappears.
@@ -14325,6 +14348,10 @@ function showMeta(data) {
       + `(${workScope.passageCount} passages); citations remain volume-relative `
       + `(${workScope.startPid}–${workScope.endPid}).`
     : (data.description || '');
+
+  // v133 (H4) — parent-volume credit for a derived work record.
+  const _ds = document.getElementById('derived-source-slot');
+  if (_ds) _ds.innerHTML = _derivedSourceHTML(data);
 
   const items = [];
   if (data.author && data.author.length) {
@@ -24170,7 +24197,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 210,
         associatedVeda: 'Samaveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '6',
+          { textId: 'maitreya-upanishad-aiyar-1914', pid: '6.1', groupKey: '6',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24180,7 +24207,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 220,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '4',
+          { textId: 'sarvasara-upanishad-aiyar-1914', pid: '4.1', groupKey: '4',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24189,7 +24216,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 230,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '5',
+          { textId: 'niralamba-upanishad-aiyar-1914', pid: '5.1', groupKey: '5',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24198,7 +24225,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 240,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '9',
+          { textId: 'kaivalya-upanishad-aiyar-1914', pid: '9.1', groupKey: '9',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24207,7 +24234,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 250,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '10',
+          { textId: 'amrtabindu-upanishad-aiyar-1914', pid: '10.1', groupKey: '10',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24216,7 +24243,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 260,
         associatedVeda: 'Rigveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '11',
+          { textId: 'atmabodha-upanishad-aiyar-1914', pid: '11.1', groupKey: '11',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24225,7 +24252,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 270,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '12',
+          { textId: 'skanda-upanishad-aiyar-1914', pid: '12.1', groupKey: '12',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24235,7 +24262,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 280,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '17',
+          { textId: 'adhyatma-upanishad-aiyar-1914', pid: '17.1', groupKey: '17',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24244,7 +24271,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 290,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '34',
+          { textId: 'brahmopanishad-upanishad-aiyar-1914', pid: '34.1', groupKey: '34',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24253,7 +24280,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 300,
         associatedVeda: 'Samaveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '35',
+          { textId: 'vajrasuchi-upanishad-aiyar-1914', pid: '35.1', groupKey: '35',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24262,7 +24289,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 310,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '36',
+          { textId: 'sariraka-upanishad-aiyar-1914', pid: '36.1', groupKey: '36',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24271,7 +24298,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 320,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '37',
+          { textId: 'garbha-upanishad-aiyar-1914', pid: '37.1', groupKey: '37',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24280,7 +24307,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 330,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '38',
+          { textId: 'tarasara-upanishad-aiyar-1914', pid: '38.1', groupKey: '38',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24289,7 +24316,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 340,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '39',
+          { textId: 'narayana-upanishad-aiyar-1914', pid: '39.1', groupKey: '39',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24298,7 +24325,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 350,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '40',
+          { textId: 'kalisantarana-upanishad-aiyar-1914', pid: '40.1', groupKey: '40',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24307,7 +24334,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 360,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '41',
+          { textId: 'bhikshuka-upanishad-aiyar-1914', pid: '41.1', groupKey: '41',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24316,7 +24343,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 370,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '55',
+          { textId: 'yogatattva-upanishad-aiyar-1914', pid: '55.1', groupKey: '55',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24325,7 +24352,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 380,
         associatedVeda: 'Samaveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '56',
+          { textId: 'dhyanabindu-upanishad-aiyar-1914', pid: '56.1', groupKey: '56',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24334,7 +24361,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 390,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '57',
+          { textId: 'hamsa-upanishad-aiyar-1914', pid: '57.1', groupKey: '57',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24359,7 +24386,7 @@ const TEXT_FAMILIES = [
         importance: 'principal', order: 130,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '2',
+          { textId: 'muktika-upanishad-aiyar-1914', pid: '2.1', groupKey: '2',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24377,7 +24404,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 285,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '18',
+          { textId: 'subala-upanishad-aiyar-1914', pid: '18.1', groupKey: '18',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24387,7 +24414,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 295,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '28',
+          { textId: 'tejobindu-upanishad-aiyar-1914', pid: '28.1', groupKey: '28',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24420,7 +24447,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 297,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '13',
+          { textId: 'paingala-upanishad-aiyar-1914', pid: '13.1', groupKey: '13',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24430,7 +24457,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 298,
         associatedVeda: 'Shukla Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '64',
+          { textId: 'mandalabrahmana-upanishad-aiyar-1914', pid: '64.1', groupKey: '64',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24440,7 +24467,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 299,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '69',
+          { textId: 'yogakundalini-upanishad-aiyar-1914', pid: '69.1', groupKey: '69',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24481,7 +24508,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 296,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '59',
+          { textId: 'varaha-upanishad-aiyar-1914', pid: '59.1', groupKey: '59',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24517,7 +24544,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 400,
         associatedVeda: 'Krishna Yajurveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '58',
+          { textId: 'amrtanada-upanishad-aiyar-1914', pid: '58.1', groupKey: '58',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start' },
@@ -24526,7 +24553,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 410,
         associatedVeda: 'Rigveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '68',
+          { textId: 'nadabindu-upanishad-aiyar-1914', pid: '68.1', groupKey: '68',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe' },
@@ -24541,7 +24568,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 405,
         associatedVeda: 'Atharvaveda', vedaSource: 'curated traditional metadata',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '42',
+          { textId: 'narada-parivrajaka-upanishad-aiyar-1914', pid: '42.1', groupKey: '42',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',
@@ -24552,7 +24579,7 @@ const TEXT_FAMILIES = [
         importance: 'minor', order: 415,
         associatedVeda: 'Atharvaveda', vedaSource: 'source heading',
         witnesses: [
-          { textId: 'upanishads-30-minor-aiyar', groupKey: '51',
+          { textId: 'sandilya-upanishad-aiyar-1914', pid: '51.1', groupKey: '51',
             sourceTitle: 'Thirty Minor Upanishads',
             translator: 'K. Narayanasvami Aiyar', year: '1914',
             role: 'primary', routeQuality: 'safe-start',

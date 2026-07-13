@@ -10606,14 +10606,49 @@
       "year": 1914,
       "translation_label": "Thirty Minor Upanishads",
       "translation_short_label": null,
-      "volume_label": null,
+      "volume_label": "Source volume — the complete Thirty Minor Upanishads (K. Narayanasvami Aiyar, 1914)",
       "quality": "popular",
       "source_summary": "*Thirty Minor Upanishads* K. Narayanasvami Aiyar (1914). Via SacredTexts.com.",
       "importance_rank": 11,
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": true
+      "reading_status_certified": true,
+      "witness_role": "source-volume",
+      "works_covered": [
+        3,
+        4,
+        14,
+        16,
+        18,
+        20,
+        22,
+        23,
+        25,
+        26,
+        29,
+        32,
+        33,
+        35,
+        36,
+        37,
+        38,
+        41,
+        43,
+        44,
+        46,
+        48,
+        49,
+        56,
+        59,
+        60,
+        66,
+        67,
+        85,
+        91
+      ],
+      "searchable_passages": false,
+      "searchable_metadata": true
     },
     {
       "id": "mahabharata",
@@ -34350,6 +34385,1416 @@
       "restricted": true,
       "reading_status": "restricted",
       "reading_status_certified": true
+    },
+    {
+      "id": "nadabindu-upanishad-aiyar-1914",
+      "title": "Nāda-bindu Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "nadabindu-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        3
+      ],
+      "source_printed_heading": "NADABINDU-UPANISHAD OF RGVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 68–68 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 55
+    },
+    {
+      "id": "atmabodha-upanishad-aiyar-1914",
+      "title": "Ātma-bodha Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "atmabodha-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        4
+      ],
+      "source_printed_heading": "ATMABODHA-UPANISHAD OF RGVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 11–11 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 8
+    },
+    {
+      "id": "hamsa-upanishad-aiyar-1914",
+      "title": "Haṃsa Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "hamsa-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        14
+      ],
+      "source_printed_heading": null,
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 57–57 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 11
+    },
+    {
+      "id": "subala-upanishad-aiyar-1914",
+      "title": "Subāla Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "subala-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        16
+      ],
+      "source_printed_heading": "SUBALA-UPANISHAD OF S'UKLA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 18–27 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 72
+    },
+    {
+      "id": "niralamba-upanishad-aiyar-1914",
+      "title": "Nirālamba Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "niralamba-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        18
+      ],
+      "source_printed_heading": "NIRALAMBA-UPANISHAD OF S'UKLA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 5–5 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 64
+    },
+    {
+      "id": "mandalabrahmana-upanishad-aiyar-1914",
+      "title": "Maṇḍala-brāhmaṇa Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "mandalabrahmana-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        20
+      ],
+      "source_printed_heading": "MANDALABRAHMANA-UPANISHAD OF S'UKLA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 64–67 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 27
+    },
+    {
+      "id": "paingala-upanishad-aiyar-1914",
+      "title": "Pāiṅgala Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "paingala-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        22
+      ],
+      "source_printed_heading": "PAINGALA-UPANISHAD OF S'UKLA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 13–16 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 22
+    },
+    {
+      "id": "bhikshuka-upanishad-aiyar-1914",
+      "title": "Bhikṣu Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bhikshuka-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        23
+      ],
+      "source_printed_heading": "BHIKSHUKA-UPANISHAD OF S'UKLA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 41–41 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 2
+    },
+    {
+      "id": "adhyatma-upanishad-aiyar-1914",
+      "title": "Adhyātmā Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "adhyatma-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        25
+      ],
+      "source_printed_heading": "ADHYATMA-UPANISHAD OF S'UKLA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 17–17 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 13
+    },
+    {
+      "id": "tarasara-upanishad-aiyar-1914",
+      "title": "Tārasāra Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "tarasara-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        26
+      ],
+      "source_printed_heading": "TARASARA-UPANISHAD OF S'UKLA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 38–38 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 15
+    },
+    {
+      "id": "muktika-upanishad-aiyar-1914",
+      "title": "Muktikā Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "muktika-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        29
+      ],
+      "source_printed_heading": "MUKTIKOPANISHAD of S'UKLA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 2–3 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 33
+    },
+    {
+      "id": "brahmopanishad-upanishad-aiyar-1914",
+      "title": "Brahma Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "brahmopanishad-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        32
+      ],
+      "source_printed_heading": null,
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 34–34 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 8
+    },
+    {
+      "id": "kaivalya-upanishad-aiyar-1914",
+      "title": "Kaivalya Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "kaivalya-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        33
+      ],
+      "source_printed_heading": "KAIVALYA-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 9–9 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 8
+    },
+    {
+      "id": "garbha-upanishad-aiyar-1914",
+      "title": "Garbha Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "garbha-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        35
+      ],
+      "source_printed_heading": "GARBHA-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 37–37 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 15
+    },
+    {
+      "id": "narayana-upanishad-aiyar-1914",
+      "title": "Nārāyaṇa Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "narayana-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        36
+      ],
+      "source_printed_heading": "NARAYANA-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 39–39 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 6
+    },
+    {
+      "id": "amrtabindu-upanishad-aiyar-1914",
+      "title": "Amṛta-bindu Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "amrtabindu-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        37
+      ],
+      "source_printed_heading": "AMRTABINDU-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 10–10 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 5
+    },
+    {
+      "id": "amrtanada-upanishad-aiyar-1914",
+      "title": "Amṛta-nāda Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "amrtanada-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        38
+      ],
+      "source_printed_heading": "AMRTANADA-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 58–58 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 7
+    },
+    {
+      "id": "sarvasara-upanishad-aiyar-1914",
+      "title": "Sarvasāra Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "sarvasara-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        41
+      ],
+      "source_printed_heading": "SARVASARA-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 4–4 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 51
+    },
+    {
+      "id": "tejobindu-upanishad-aiyar-1914",
+      "title": "Tejo-bindu Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "tejobindu-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        43
+      ],
+      "source_printed_heading": "TEJOBINDU-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 28–33 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 47
+    },
+    {
+      "id": "dhyanabindu-upanishad-aiyar-1914",
+      "title": "Dhyāna-bindu Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "dhyanabindu-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        44
+      ],
+      "source_printed_heading": "DHYANABINDU-UPANISHAD OF SAMAVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 56–56 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 18
+    },
+    {
+      "id": "yogatattva-upanishad-aiyar-1914",
+      "title": "Yogatattva Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "yogatattva-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        46
+      ],
+      "source_printed_heading": "YOGATATTVA-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 55–55 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 19
+    },
+    {
+      "id": "skanda-upanishad-aiyar-1914",
+      "title": "Skanda Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "skanda-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        48
+      ],
+      "source_printed_heading": "SKANDA -UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 12–12 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 4
+    },
+    {
+      "id": "sariraka-upanishad-aiyar-1914",
+      "title": "Śārīraka Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "sariraka-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        49
+      ],
+      "source_printed_heading": "S'ARIRAKA-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 36–36 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 3
+    },
+    {
+      "id": "yogakundalini-upanishad-aiyar-1914",
+      "title": "Yoga-kuṇḍalinī Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "yogakundalini-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        56
+      ],
+      "source_printed_heading": "YOGAKUNDALI-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 69–71 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 26
+    },
+    {
+      "id": "varaha-upanishad-aiyar-1914",
+      "title": "Varāha Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "varaha-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        59
+      ],
+      "source_printed_heading": "VARAHA-UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 59–63 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 50
+    },
+    {
+      "id": "kalisantarana-upanishad-aiyar-1914",
+      "title": "Kalisantaraṇa Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "kalisantarana-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        60
+      ],
+      "source_printed_heading": "KALISANTARANA UPANISHAD OF KRSHNA-YAJURVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 40–40 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 4
+    },
+    {
+      "id": "maitreya-upanishad-aiyar-1914",
+      "title": "Maitreya Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "maitreya-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        66
+      ],
+      "source_printed_heading": "MAITREYA-UPANISHAD OF SAMAVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 6–8 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 14
+    },
+    {
+      "id": "vajrasuchi-upanishad-aiyar-1914",
+      "title": "Vajrasūcikā Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "vajrasuchi-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        67
+      ],
+      "source_printed_heading": "VAJRASUCHI-UPANISHAD OF SAMAVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 35–35 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 12
+    },
+    {
+      "id": "narada-parivrajaka-upanishad-aiyar-1914",
+      "title": "Nārada-parivrājaka Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "narada-parivrajaka-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        85
+      ],
+      "source_printed_heading": "NARADAPARIVRAJAKA-UPANISHAD OF ATHARVANAVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 42–50 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 83
+    },
+    {
+      "id": "sandilya-upanishad-aiyar-1914",
+      "title": "Śāṇḍilya Upanishad",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "sandilya-upanishad-aiyar-1914_aiyar.json",
+      "source": "sacredtexts",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "K. Narayanasvami Aiyar"
+      ],
+      "year": 1914,
+      "translation_label": "K. Narayanasvami Aiyar (1914)",
+      "translation_short_label": "Aiyar",
+      "volume_label": "From Thirty Minor Upanishads — K. Narayanasvami Aiyar (1914)",
+      "derived_from_volume": "upanishads-30-minor-aiyar",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        91
+      ],
+      "source_printed_heading": "S'ANDILYA-UPANISHAD OF ATHARVANAVEDA",
+      "source_summary": "*Thirty Minor Upanishads* — K. Narayanasvami Aiyar (1914). Via SacredTexts.com. Sections 51–54 of the source volume.",
+      "language": "en",
+      "script": "Latin",
+      "quality": "popular",
+      "importance_rank": 11,
+      "reading_status": "review",
+      "public_metadata": true,
+      "public_passages": true,
+      "public_route_allowed": true,
+      "searchable_metadata": true,
+      "searchable_passages": true,
+      "direct_passage_links_allowed": true,
+      "restricted": false,
+      "rights_status": "worldwide-PD",
+      "quality_status": "provisional",
+      "availability_status": "public-readable",
+      "derivation_status": "derived-from-source-volume; wording unchanged",
+      "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
+      "body_passages": 48
     }
   ]
 }
