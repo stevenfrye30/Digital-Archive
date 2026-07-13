@@ -315,3 +315,23 @@ reports/*.png
 reports/**/*.png
 reports/*.csv
 reports/*.py
+
+# 2026-07-13 — Phase E2: WITHDRAWN OCR-poor Upanishad bodies. Roer 1856 and Sastri vols
+# 1-5 are worldwide public domain but their digitisations carry 19-36% character-level
+# OCR damage, so they are publicly NAMED as metadata-only records and their passage
+# payloads are withdrawn from the deploy branch. The text is preserved in the local-only
+# parent repo (01_library/_preserved) and is exactly reconstructable from it. These
+# bodies must never be re-tracked; 05_scripts/check_restricted_invariants.py fails the
+# push if one reappears. See plans/upanishad_preservation_E1.md.
+data/upanishads-brihadaranyaka-roer_roer.json
+data/upanishads-brihadaranyaka-roer_roer.json.gz
+data/upanishads-sankara-sastri-vol1_sastri.json
+data/upanishads-sankara-sastri-vol1_sastri.json.gz
+data/upanishads-sankara-sastri-vol2_sastri.json
+data/upanishads-sankara-sastri-vol2_sastri.json.gz
+data/upanishads-sankara-sastri-vol3_sastri.json
+data/upanishads-sankara-sastri-vol3_sastri.json.gz
+data/upanishads-sankara-sastri-vol4_sastri.json
+data/upanishads-sankara-sastri-vol4_sastri.json.gz
+data/upanishads-sankara-sastri-vol5_sastri.json
+data/upanishads-sankara-sastri-vol5_sastri.json.gz
