@@ -22575,18 +22575,42 @@ function browseTextFamily(familyId) {
 
   // Resolve members to indexGroups entries (textGroup objects).
   // Skip members not present in the catalog.
-  const traditionTexts = (browseTree[cat] || {})[trd] || [];
+  // v134 — edition cards resolve from the CATALOG, not from the Reading-Room shelf.
+  // `browseTree` only carries texts whose every public translation is reading_status
+  // 'pass' (_textRoom === 'reading'). Hume is a complete, unrestricted, readable 1921
+  // source volume that happens to carry 'review', so it landed in the Workroom and was
+  // silently dropped from its OWN family's edition list. Shelf placement is a polish
+  // judgement; it is not edition eligibility, and it must not decide bibliography.
+  //
+  // Eligibility is explicit and public-facing: a member earns a card only if it has at
+  // least one PUBLIC (unrestricted), non-metadata-only entry WITH a body file. That
+  // admits Hume and Dakṣiṇāmūrti; it excludes the withdrawn Röer and Sastri volumes
+  // (all-restricted, no data_file), which must never appear as readable editions.
+  // Unacquired/future sources are not members at all — they keep their own clearly
+  // unavailable dossier cards further down.
   const byId = {};
-  for (const t of traditionTexts) byId[t.id] = t;
+  for (const m of fam.members) {
+    const entries = (typeof indexGroups !== 'undefined' && indexGroups[m.textId]) || [];
+    const pub = entries.filter(e => !e.restricted && _entryReadable(e) && e.data_file);
+    if (!pub.length) continue;                     // restricted, bodyless or metadata-only
+    const e0 = pub[0];
+    byId[m.textId] = {
+      id: m.textId, entries: pub, title: e0.title, author: e0.author,
+      rank: e0.importance_rank ?? 9999,
+    };
+  }
 
-  // Group by role for an archival reading order.
-  const roleOrder = ['primary', 'collection', 'part', 'anthology', 'legacy'];
+  // Group by role for an archival reading order. 'source-volume' is listed here, but a
+  // withdrawn body still cannot reach a card — the eligibility filter above already
+  // dropped it. Role decides WHERE a card sits, never WHETHER it exists.
+  const roleOrder = ['primary', 'collection', 'part', 'source-volume', 'anthology', 'legacy'];
   const roleLabels = {
-    primary:    'Primary collections',
-    collection: 'Specialised collections',
-    part:       'Volumes and parts',
-    anthology:  'Anthologies and extracts',
-    legacy:     'Legacy / duplicate records',
+    primary:      'Primary collections',
+    collection:   'Specialised collections',
+    part:         'Volumes and parts',
+    'source-volume': 'Source volumes',
+    anthology:    'Anthologies and extracts',
+    legacy:       'Legacy / duplicate records',
   };
   const buckets = {};
   for (const m of fam.members) {
@@ -23159,9 +23183,12 @@ function _render108Map(fam) {
         `<span class="map108-local-note">Local restricted mode enabled; no local restricted copies detected.</span></div>`;
     }
   } else {
+    // v134 — the settled accounting, stated plainly. The old phrasing ("future
+    // public-domain source identified") read as a promise about all 64; the archive
+    // makes no such promise, and the wording is not the place to argue rights.
     html += `<div class="map108-summary">` +
-      `<b>${activeN}</b> active &middot; <b>${futureN}</b> future public-domain source identified &middot; ` +
-      `<b>${needN}</b> source still needed &middot; ${total} total.</div>`;
+      `<b>${activeN}</b> active &middot; <b>${futureN}</b> future &middot; ` +
+      `<b>${needN}</b> missing &middot; ${total} total.</div>`;
   }
 
   // v123/v127 — legend
