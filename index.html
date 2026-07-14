@@ -3047,6 +3047,15 @@ button.home-path {
 /* Family page (browseTextFamily) — lives at one rung deeper than
    the tradition shelf. The description sits above the grouped
    member sections as a quiet italic note. */
+/* v133 — canon accounting, in place of the old introductory paragraph. */
+.family-status-line {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 13px;
+  color: rgba(95, 75, 50, 0.86);
+  margin: -2px 0 14px;
+}
+.family-status-line b { color: rgba(70, 52, 30, 0.95); }
+
 .family-description {
   font-family: Georgia, "Palatino Linotype", Palatino, serif;
   font-style: italic;
@@ -22613,23 +22622,36 @@ function browseTextFamily(familyId) {
     return;
   }
 
+  // v133 — a canon family has exactly TWO top-level views. The canon IS the
+  // collection, so the 108 opens by default and no launcher stands in front of
+  // it; the editions are apparatus, one tab away. The old "View the 108 Map" /
+  // "← Back to Upanishads" launcher and the three-way By Veda / By text /
+  // Traditional order switcher are gone: Veda, class, status, traditional and
+  // alphabetical order all still exist as controls INSIDE the 108 view.
   if (hasCanon) {
-    html += `<button type="button" class="map108-launch" ` +
-            `onclick="toggle108Map('${escH(fam.id)}')">` +
-            (_show108Map ? '← Back to Upanishads' : 'View the 108 Map') +
-            `</button>`;
+    const tabs = [
+      { id: 'canon-108', label: '108 Upanishads' },
+      { id: 'editions',  label: 'Texts & Editions' },
+    ];
+    html += '<nav class="family-view-switch" role="tablist">';
+    for (const t of tabs) {
+      const on = (t.id === _familyTab);
+      html += `<button type="button" class="family-view-btn${on ? ' family-view-btn--active' : ''}" ` +
+              `role="tab" aria-selected="${on}" ` +
+              `onclick="setFamilyTab('${escH(fam.id)}','${escH(t.id)}')">${escH(t.label)}</button>`;
+    }
+    html += '</nav>';
   }
 
-  // v122 — 108 Map branch. Render the canon overview and return,
-  // keeping the launcher button visible above it.
-  if (hasCanon && _show108Map) {
+  // v122/v133 — 108 branch: the DEFAULT view of the family.
+  if (hasCanon && _familyTab === 'canon-108') {
     // v127 — in local mode, ensure the local index is loaded before the
     // map paints its local-availability status. If not tried yet, kick
     // off the lazy load and re-render once it resolves. No-op on public.
     if (typeof isRestrictedLocalModeEnabled === 'function'
         && isRestrictedLocalModeEnabled() && !_localRestrictedIndexTried) {
       loadLocalRestrictedIndex().then(() => {
-        if (_show108Map) browseTextFamily(fam.id);
+        if (_familyTab === 'canon-108') browseTextFamily(fam.id);
       });
     }
     html += _render108Map(fam);
@@ -22642,8 +22664,8 @@ function browseTextFamily(familyId) {
     return;
   }
 
-  // View switcher
-  if (Array.isArray(fam.byUpanishad) && fam.byUpanishad.length) {
+  // View switcher — non-canon families only (they have no 108 tabs).
+  if (!hasCanon && Array.isArray(fam.byUpanishad) && fam.byUpanishad.length) {
     const modes = [
       { id: 'by-veda',        label: 'By Veda' },
       { id: 'by-collection',  label: 'By text' },
@@ -22658,12 +22680,20 @@ function browseTextFamily(familyId) {
     html += '</nav>';
   }
 
-  if (viewMode === 'by-veda' && Array.isArray(fam.byUpanishad)) {
+  // v133 — a canon family only reaches here on the "Texts & Editions" tab, so it
+  // always takes the collection path. Non-canon families keep their old modes.
+  if (!hasCanon && viewMode === 'by-veda' && Array.isArray(fam.byUpanishad)) {
     html += _renderUpanishadsByVeda(fam);
-  } else if (viewMode === 'by-traditional' && Array.isArray(fam.byUpanishad)) {
+  } else if (!hasCanon && viewMode === 'by-traditional' && Array.isArray(fam.byUpanishad)) {
     html += _renderUpanishadsByTraditional(fam);
   } else {
-    // by-collection (the v98/v100 bibliographic path)
+    // by-collection (the v98/v100 bibliographic path) — "Texts & Editions"
+    if (hasCanon) {
+      const _m = _muktikaCounts(fam);
+      html += `<div class="family-status-line">` +
+              `<b>${_m.active}</b> active &middot; <b>${_m.future}</b> future &middot; ` +
+              `<b>${_m.needed}</b> missing &middot; ${_m.total} total.</div>`;
+    }
     html += '<div class="family-section-heading">Collections / source witnesses</div>';
     for (const role of roleOrder) {
       const items = buckets[role];
@@ -22727,7 +22757,9 @@ function setFamilyViewMode(familyId, mode) {
 // ════════════════════════════════════════════════════════════════
 //  v122 — Muktikā 108 Map + restricted-source dossiers
 // ────────────────────────────────────────────────────────────────
-let _show108Map = false;        // is the canon map open?
+// v133 — which of the family's two top-level tabs is showing. The canon is the
+// default: opening the family lands on the 108, not on a landing layer.
+let _familyTab = 'canon-108';   // canon-108 | editions
 let _map108Mode = 'by-veda';    // by-veda | by-class | by-status | by-sequence
 let _activeDossierId = null;    // open restricted-source dossier id, or null
 // v123 — display-only view state (search/filter/sort/density). These
@@ -22738,11 +22770,21 @@ let _map108Filter = 'all';      // all | active | future | needed | M|V|S|Y|Sh|V
 let _map108Sort = 'traditional';// traditional | alpha | active-first | future-year
 let _map108Compact = false;
 
-function toggle108Map(familyId) {
-  _show108Map = !_show108Map;
+function setFamilyTab(familyId, tab) {
+  _familyTab = tab;
   _activeDossierId = null;
   browseTextFamily(familyId);
   $reader.scrollTop = 0;
+}
+
+// v133 — the same tallies the 108 panel prints, for the Texts & Editions header.
+function _muktikaCounts(fam) {
+  const model = _buildMuktika108Map(fam);
+  const active = model.filter(e => e.active).length;
+  const future = model.filter(e => !e.active && !e.localSource && e.futureSource).length;
+  const local  = model.filter(e => !e.active && e.localSource).length;
+  return { total: model.length, active, future, local,
+           needed: model.length - active - future - local };
 }
 function set108MapMode(familyId, mode) {
   _map108Mode = mode;
@@ -23098,7 +23140,7 @@ function _render108Map(fam) {
   let html = `<div class="map108-panel${compactCls}">`;
   html += '<div class="map108-head">';
   html += `<span class="map108-title">The Muktikā 108 Map</span>`;
-  html += '</div>';  // v123 — single exit control: the "← Back to Upanishads" launcher above.
+  html += '</div>';  // v133 — no exit control: this IS the family's default view.
 
   // v127 — summary line. Public mode is unchanged. Local mode adds a
   // separate "local restricted available" tally (never folded into the
@@ -23247,9 +23289,8 @@ function _renderRestrictedDossier(fam, sourceId) {
     ? 'Copyrighted — unavailable'
     : (rs.availabilityStatus === 'public-domain-deferred' ? 'Public-domain deferred' : 'Restricted');
   let html = '<div class="dossier-panel">';
-  // Back always just clears the dossier. If the map was open when the
-  // dossier was launched, _show108Map is still true so the next render
-  // returns to the map; otherwise it returns to the By-text view.
+  // Back always just clears the dossier; the family re-renders on whichever
+  // tab is active (_familyTab), so it returns where the dossier was opened from.
   html += `<button type="button" class="dossier-back" onclick="closeRestrictedDossier('${escH(fam.id)}')">‹ Back</button>`;
   html += `<div class="dossier-title">${escH(rs.displayTitle)}</div>`;
   html += `<div class="dossier-field"><b>Status:</b> ${escH(statusLabel)}</div>`;
@@ -23870,10 +23911,10 @@ const TEXT_FAMILIES = [
     subtitle: 'Vedic / Vedānta textual family',
     category: 'Religion',
     tradition: 'Hindu',
-    description:
-      'Browse the family either by individual Upanishad or by collection / edition. ' +
-      'Each route preserves its source witness — every card credits its translator, ' +
-      'edition, and year. No source files were merged.',
+    // v133 — deliberately carries no intro prose. The family opens straight into the
+    // Muktikā 108, whose own summary line ("44 active · 64 future · 0 needed · 108
+    // total") says what the old paragraph used to. Source witnesses are still credited
+    // per card, one tab over, under Texts & Editions.
     members: [
       { textId: 'upanishads',                role: 'primary', note: 'Müller — complete (SBE Vol. I + XV, merged)' },
       { textId: 'upanishads-johnson',        role: 'primary', note: 'Charles Johnston edition' },
