@@ -22191,6 +22191,19 @@ function _textRoom(entries) {
   if (!pub.length) return 'restricted';                 // all translations restricted
   return pub.every(e => e.reading_status === 'pass') ? 'reading' : 'workroom';
 }
+// shelf-scope phase — the coarsest browse-visibility of a text-id: the most restrictive
+// scope across its public entries. Absent field -> 'normal'. Governs BROWSE surfaces only
+// (loose shelf, family cards); never routing, search, or the body.
+function _shelfScope(entries) {
+  const rank = { 'normal': 0, 'family-only': 1, 'legacy-direct-only': 2 };
+  let worst = 'normal';
+  for (const e of entries) {
+    if (e.restricted) continue;
+    const s = e.shelf_scope || 'normal';
+    if ((rank[s] || 0) > (rank[worst] || 0)) worst = s;
+  }
+  return worst;
+}
 // Which Workroom section a (non-pass) text-id belongs to: the most-severe
 // public non-pass status across its translations. Missing -> 'review'.
 function _workroomSection(entries) {
@@ -22215,6 +22228,10 @@ function buildBrowseData() {
     // Reading Room shelves = certified-pass texts only (conservative rollup).
     // Workroom + Restricted texts are reached via their own buttons.
     if (_textRoom(entries) !== 'reading') continue;
+    // shelf-scope (browse visibility): 'family-only' and 'legacy-direct-only' records
+    // are addressable and routable but must not appear as loose tradition-shelf cards.
+    // Absent field -> 'normal'. This gates BROWSE only; direct routes/search are separate.
+    if (_shelfScope(entries) !== 'normal') continue;
     const e = entries[0];
     const trd = e.tradition || 'Other';
     const bucket = bucketFor(trd);
@@ -22657,6 +22674,10 @@ function browseTextFamily(familyId) {
     const entries = (typeof indexGroups !== 'undefined' && indexGroups[m.textId]) || [];
     const pub = entries.filter(e => !e.restricted && _entryReadable(e) && e.data_file);
     if (!pub.length) continue;                     // restricted, bodyless or metadata-only
+    // shelf-scope: 'legacy-direct-only' is excluded from FAMILY browsing too (a redundant
+    // record is addressable but surfaces nowhere). 'family-only' stays eligible — that IS
+    // where it belongs. (The legacy record is not a family member today; guard anyway.)
+    if (_shelfScope(pub) === 'legacy-direct-only') continue;
     const e0 = pub[0];
     byId[m.textId] = {
       id: m.textId, entries: pub, title: e0.title, author: e0.author,
