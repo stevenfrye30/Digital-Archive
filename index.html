@@ -3848,7 +3848,8 @@ button.home-path {
   margin: 8px 0 4px;
 }
 .map108-sortrow .map108-sort-label,
-.map108-sortrow .map108-display-label {
+.map108-sortrow .map108-display-label,
+.map108-ctl-label {
   font-family: Georgia, serif;
   font-style: italic;
   font-variant: small-caps;
@@ -3856,7 +3857,35 @@ button.home-path {
   font-size: 11px;
   color: rgba(110, 70, 30, 0.7);
   margin-right: 2px;
+  min-width: 52px;
+  display: inline-block;
 }
+.map108-filter-row { align-items: center; }
+
+/* v135 — unified-page heading + Sources jump link */
+.upn-family-head { margin: 0 0 14px; }
+.upn-family-sub {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 15px;
+  color: rgba(95, 75, 50, 0.9);
+  margin-bottom: 4px;
+}
+.upn-family-accounting {
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: rgba(95, 75, 50, 0.82);
+}
+.upn-family-accounting b { color: rgba(70, 52, 30, 0.95); }
+.upn-jump {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(120, 70, 20, 0.9);
+  cursor: pointer;
+  border-bottom: 1px dotted rgba(120, 70, 20, 0.5);
+}
+.upn-jump:hover { color: rgba(150, 90, 30, 1); }
+.upn-editions { margin-top: 26px; }
 .map108-sortrow .map108-sep { color: rgba(150, 110, 60, 0.4); margin: 0 6px; }
 .map108-group--hidden { display: none; }
 .map108-chip--hidden { display: none; }
@@ -22521,6 +22550,41 @@ function _familyTileHTML(fam, presentMembers) {
 // Page-type doctrine: this IS a shelf/path page (on-shelf-page is
 // set by showBrowse), so it scrolls naturally if the member list
 // grows. It is NOT the museum-ivory specific-text contents leaf.
+// v135 — the edition-card section, factored out so the unified canon page and the
+// (unchanged) non-canon family path render identical bibliography. `heading` lets the
+// canon page title it "Sources & Editions" while non-canon families keep their wording.
+// Eligibility is unchanged: buckets already hold only public-readable members
+// (see the eligibility filter in browseTextFamily); withdrawn Röer/Sastri never enter.
+function _renderEditionsSection(fam, buckets, roleOrder, roleLabels, cat, trd, heading) {
+  let html = `<div class="family-section-heading">${escH(heading)}</div>`;
+  for (const role of roleOrder) {
+    const items = buckets[role];
+    if (!items || !items.length) continue;
+    html += `<div class="tile-section-label">${escH(roleLabels[role] || role)}</div>`;
+    for (const { m, t } of items) {
+      html += _familyMemberTileHTML(t, m, cat, trd);
+    }
+  }
+  // v121 — Restricted / future-public-domain source placeholders: metadata-only
+  // dossier cards. No public route to restricted text.
+  if (typeof RESTRICTED_SOURCES !== 'undefined' && RESTRICTED_SOURCES.length) {
+    const famRestricted = RESTRICTED_SOURCES.filter(rs =>
+      rs.category === 'Upanishads' && rs.tradition === fam.tradition);
+    if (famRestricted.length) {
+      html += '<div class="restricted-source-section">';
+      html += '<div class="restricted-source-heading">Future or unavailable sources</div>';
+      html += '<div class="restricted-source-note">' +
+        'Known sources that are not publicly readable yet — each card is metadata only; ' +
+        'the archive routes no copyrighted text.</div>';
+      for (const rs of famRestricted) {
+        html += _restrictedSourceTileHTML(rs, fam.id);
+      }
+      html += '</div>';
+    }
+  }
+  return html;
+}
+
 function browseTextFamily(familyId) {
   const fam = TEXT_FAMILIES.find(f => f.id === familyId);
   if (!fam) return;
@@ -22646,42 +22710,40 @@ function browseTextFamily(familyId) {
     return;
   }
 
-  // v133 — a canon family has exactly TWO top-level views. The canon IS the
-  // collection, so the 108 opens by default and no launcher stands in front of
-  // it; the editions are apparatus, one tab away. The old "View the 108 Map" /
-  // "← Back to Upanishads" launcher and the three-way By Veda / By text /
-  // Traditional order switcher are gone: Veda, class, status, traditional and
-  // alphabetical order all still exist as controls INSIDE the 108 view.
+  // v135 — ONE continuous canon page. No tabs, no launcher, no intermediate screen:
+  // a strong heading and accounting, the compact Muktikā 108 map, then Sources &
+  // Editions beneath it — all rendered together and returned once.
   if (hasCanon) {
-    const tabs = [
-      { id: 'canon-108', label: '108 Upanishads' },
-      { id: 'editions',  label: 'Texts & Editions' },
-    ];
-    html += '<nav class="family-view-switch" role="tablist">';
-    for (const t of tabs) {
-      const on = (t.id === _familyTab);
-      html += `<button type="button" class="family-view-btn${on ? ' family-view-btn--active' : ''}" ` +
-              `role="tab" aria-selected="${on}" ` +
-              `onclick="setFamilyTab('${escH(fam.id)}','${escH(t.id)}')">${escH(t.label)}</button>`;
-    }
-    html += '</nav>';
-  }
-
-  // v122/v133 — 108 branch: the DEFAULT view of the family.
-  if (hasCanon && _familyTab === 'canon-108') {
-    // v127 — in local mode, ensure the local index is loaded before the
-    // map paints its local-availability status. If not tried yet, kick
-    // off the lazy load and re-render once it resolves. No-op on public.
+    // v127 — in local mode, ensure the local index is loaded before the map paints
+    // its local-availability status. No-op on the public site.
     if (typeof isRestrictedLocalModeEnabled === 'function'
         && isRestrictedLocalModeEnabled() && !_localRestrictedIndexTried) {
-      loadLocalRestrictedIndex().then(() => {
-        if (_familyTab === 'canon-108') browseTextFamily(fam.id);
-      });
+      loadLocalRestrictedIndex().then(() => browseTextFamily(fam.id));
     }
+    const _m = _muktikaCounts(fam);
+    html += '<div class="upn-family-head">';
+    html += '<div class="upn-family-sub">The Muktikā Canon of 108 Texts</div>';
+    html += `<div class="upn-family-accounting">` +
+            `<b>${_m.active}</b> active &middot; <b>${_m.future}</b> future &middot; ` +
+            `<b>${_m.needed}</b> missing &middot; ${_m.total} total</div>`;
+    html += `<a class="upn-jump" onclick="const s=document.getElementById('upn-editions');` +
+            `if(s)s.scrollIntoView({behavior:'smooth'});">Browse Sources &amp; Editions ↓</a>`;
+    html += '</div>';
     html += _render108Map(fam);
+    html += `<div id="upn-editions" class="upn-editions">`;
+    html += _renderEditionsSection(fam, buckets, roleOrder, roleLabels, cat, trd,
+                                   'Sources & Editions');
+    html += '</div>';
+    if (Array.isArray(fam.byUpanishadInactive) && fam.byUpanishadInactive.length) {
+      html += '<details class="byupn-inactive"><summary>Named but not yet individually routable</summary><ul>';
+      for (const it of fam.byUpanishadInactive) {
+        html += `<li><span class="byupn-inactive-name">${escH(it.name)}</span> — ${escH(it.reason)}</li>`;
+      }
+      html += '</ul></details>';
+    }
     $browseTiles.innerHTML = html;
-    // v123 — apply display-only view state (search/filter/sort/density)
-    // to the freshly-rendered chip DOM, and restore the search value.
+    // v123 — apply display-only view state (search/filter/sort/density) to the
+    // freshly-rendered chip DOM, and restore the search value.
     const _si = document.querySelector('.map108-search');
     if (_si && _map108Search) _si.value = _map108Search;
     _apply108MapView();
@@ -22704,51 +22766,17 @@ function browseTextFamily(familyId) {
     html += '</nav>';
   }
 
-  // v133 — a canon family only reaches here on the "Texts & Editions" tab, so it
-  // always takes the collection path. Non-canon families keep their old modes.
+  // v135 — canon families returned above (unified page). Only non-canon families
+  // reach here, keeping their original three view modes.
   if (!hasCanon && viewMode === 'by-veda' && Array.isArray(fam.byUpanishad)) {
     html += _renderUpanishadsByVeda(fam);
   } else if (!hasCanon && viewMode === 'by-traditional' && Array.isArray(fam.byUpanishad)) {
     html += _renderUpanishadsByTraditional(fam);
   } else {
-    // by-collection (the v98/v100 bibliographic path) — "Texts & Editions"
-    if (hasCanon) {
-      const _m = _muktikaCounts(fam);
-      html += `<div class="family-status-line">` +
-              `<b>${_m.active}</b> active &middot; <b>${_m.future}</b> future &middot; ` +
-              `<b>${_m.needed}</b> missing &middot; ${_m.total} total.</div>`;
-    }
-    html += '<div class="family-section-heading">Collections / source witnesses</div>';
-    for (const role of roleOrder) {
-      const items = buckets[role];
-      if (!items || !items.length) continue;
-      html += `<div class="tile-section-label">${escH(roleLabels[role] || role)}</div>`;
-      for (const { m, t } of items) {
-        html += _familyMemberTileHTML(t, m, cat, trd);
-      }
-    }
-    // v121 — Restricted / future-public-domain source placeholders.
-    // Metadata-only cards for sources that will (eventually) become
-    // ingestible when their copyright expires. No public route to
-    // restricted text; clicking does nothing visible.
-    if (typeof RESTRICTED_SOURCES !== 'undefined' && RESTRICTED_SOURCES.length) {
-      const famRestricted = RESTRICTED_SOURCES.filter(rs =>
-        rs.category === 'Upanishads' && rs.tradition === fam.tradition);
-      if (famRestricted.length) {
-        html += '<div class="restricted-source-section">';
-        html += '<div class="restricted-source-heading">Restricted / Future Public-Domain Sources</div>';
-        html += '<div class="restricted-source-note">' +
-          'These source families would close substantial portions of the missing ' +
-          'Muktikā 108 when their US copyright eventually expires. Each card is ' +
-          'metadata only — the archive does not commit or route any copyrighted ' +
-          'text. See <code>reports/v121_restricted_upanishads_architecture.md</code> ' +
-          'for the doctrine.</div>';
-        for (const rs of famRestricted) {
-          html += _restrictedSourceTileHTML(rs, fam.id);
-        }
-        html += '</div>';
-      }
-    }
+    // by-collection (the v98/v100 bibliographic path). Canon families never reach
+    // here (they returned above); this is the non-canon family bibliography.
+    html += _renderEditionsSection(fam, buckets, roleOrder, roleLabels, cat, trd,
+                                   'Collections / source witnesses');
   }
 
   // Inactive disclosure (visible in all views) — keeps the family's
@@ -22781,9 +22809,8 @@ function setFamilyViewMode(familyId, mode) {
 // ════════════════════════════════════════════════════════════════
 //  v122 — Muktikā 108 Map + restricted-source dossiers
 // ────────────────────────────────────────────────────────────────
-// v133 — which of the family's two top-level tabs is showing. The canon is the
-// default: opening the family lands on the 108, not on a landing layer.
-let _familyTab = 'canon-108';   // canon-108 | editions
+// v135 — the two-tab split is gone; the family is one continuous page, so there is
+// no family-tab state. Group/sort/filter/density remain map-internal state below.
 let _map108Mode = 'by-veda';    // by-veda | by-class | by-status | by-sequence
 let _activeDossierId = null;    // open restricted-source dossier id, or null
 // v123 — display-only view state (search/filter/sort/density). These
@@ -22792,16 +22819,9 @@ let _activeDossierId = null;    // open restricted-source dossier id, or null
 let _map108Search = '';
 let _map108Filter = 'all';      // all | active | future | needed | M|V|S|Y|Sh|Vs|Sk
 let _map108Sort = 'traditional';// traditional | alpha | active-first | future-year
-let _map108Compact = false;
+let _map108Compact = true;   // v135 — compact is the default first-open density
 
-function setFamilyTab(familyId, tab) {
-  _familyTab = tab;
-  _activeDossierId = null;
-  browseTextFamily(familyId);
-  $reader.scrollTop = 0;
-}
-
-// v133 — the same tallies the 108 panel prints, for the Texts & Editions header.
+// v135 — canon accounting, shared by the unified page heading and any status line.
 function _muktikaCounts(fam) {
   const model = _buildMuktika108Map(fam);
   const active = model.filter(e => e.active).length;
@@ -23096,12 +23116,14 @@ function _map108ChipHTML(e, familyId) {
   if (e.futureSource) {
     const fs = e.futureSource;
     const yr = fs.expectedPublicDomainYear || '';
-    // v124a — two badge forms: full ("Future PD 2037 · Adyar Vedānta")
+    // v124a — two badge forms: full ("Future 2037 · Adyar Vedānta")
     // for comfortable mode, short ("PD 2037") for compact mode. CSS
     // toggles which is shown via .map108-panel--compact, so no
     // re-render is needed when density changes. Compact's short badge
     // is what removes the horizontal overflow.
-    const fullText = (yr ? ('Future PD ' + yr) : 'Future') + (futureHint ? (' · ' + futureHint) : '');
+    // v135 — public wording is "Future", not "Future PD" (rights are not argued
+    // in a badge). The underlying future-source records and dates are unchanged.
+    const fullText = (yr ? ('Future ' + yr) : 'Future') + (futureHint ? (' · ' + futureHint) : '');
     const compactText = yr ? ('PD ' + yr) : 'PD';
     const fsYear = fs.publicationYear ? (', ' + fs.publicationYear) : '';
     const titleText = (fs.displayTitle || 'restricted') + fsYear + ' — metadata only';
@@ -23191,12 +23213,14 @@ function _render108Map(fam) {
       `<b>${needN}</b> missing &middot; ${total} total.</div>`;
   }
 
-  // v123/v127 — legend
+  // v123/v127/v135 — legend. "Source needed" appears only when something is actually
+  // missing (needN > 0); with 0 missing it would describe a state the map never shows.
+  // Public wording is "Future", not "Future PD".
   html += '<div class="map108-legend">' +
     '<b>Active</b> = readable now · ' +
     (localMode ? '<b>Local restricted</b> = lawful local copy, private/local only · ' : '') +
-    '<b>Future PD</b> = known source, not publicly readable yet · ' +
-    '<b>Source needed</b> = no source identified. ' +
+    '<b>Future</b> = known source, not publicly readable yet' +
+    (needN > 0 ? ' · <b>Source needed</b> = no source identified' : '') + '. ' +
     'Click an active entry to choose a witness; click a future' +
     (localMode ? ' or local restricted' : '') + ' entry to view metadata only.</div>';
 
@@ -23211,70 +23235,74 @@ function _render108Map(fam) {
   // v123 — filter chips (status row + class row)
   // v127 — the "Local restricted" status filter is added ONLY in local
   // mode (and only when local copies are actually present).
+  // v135 — controls are grouped by purpose (Status · Class · Sort · Group · Display),
+  // each row carrying a concise visible label so they no longer read as several
+  // undifferentiated rows. "Source needed" is offered only when needN > 0.
   const statusFilters = [
     { id: 'all', label: 'All' },
     { id: 'active', label: 'Active' },
   ];
   if (localMode && localN > 0) statusFilters.push({ id: 'local', label: 'Local restricted' });
-  statusFilters.push({ id: 'future', label: 'Future PD' });
-  statusFilters.push({ id: 'needed', label: 'Source needed' });
+  statusFilters.push({ id: 'future', label: 'Future' });
+  if (needN > 0) statusFilters.push({ id: 'needed', label: 'Source needed' });
   const classFilters = [
     { id: 'M', label: 'Principal' },
     { id: 'V', label: 'Vedānta' },
     { id: 'S', label: 'Sannyāsa' },
     { id: 'Y', label: 'Yoga' },
-    { id: 'Sh', label: 'Shaiva' },
-    { id: 'Vs', label: 'Vaishnava' },
-    { id: 'Sk', label: 'Shakta' },
+    { id: 'Sh', label: 'Śaiva' },
+    { id: 'Vs', label: 'Vaiṣṇava' },
+    { id: 'Sk', label: 'Śākta' },
   ];
+  const filterRow = (label, arr) => {
+    let h = `<div class="map108-filter-row"><span class="map108-ctl-label">${escH(label)}</span>`;
+    for (const f of arr) {
+      h += `<button type="button" class="map108-chip-btn" data-filter="${escH(f.id)}" ` +
+           `onclick="set108MapFilter('${escH(f.id)}')">${escH(f.label)}</button>`;
+    }
+    return h + '</div>';
+  };
   html += '<div class="map108-filters">';
-  html += '<div class="map108-filter-row">';
-  for (const f of statusFilters) {
-    html += `<button type="button" class="map108-chip-btn" data-filter="${escH(f.id)}" ` +
-            `onclick="set108MapFilter('${escH(f.id)}')">${escH(f.label)}</button>`;
-  }
-  html += '</div><div class="map108-filter-row">';
-  for (const f of classFilters) {
-    html += `<button type="button" class="map108-chip-btn" data-filter="${escH(f.id)}" ` +
-            `onclick="set108MapFilter('${escH(f.id)}')">${escH(f.label)}</button>`;
-  }
-  html += '</div></div>';
+  html += filterRow('Status', statusFilters);
+  html += filterRow('Class', classFilters);
 
-  // v123 — sort + display density row
+  // Sort
   const sorts = [
     { id: 'traditional', label: 'Traditional' },
     { id: 'alpha', label: 'Alphabetical' },
     { id: 'active-first', label: 'Active first' },
     { id: 'future-year', label: 'Future year' },
   ];
-  html += '<div class="map108-sortrow">';
-  html += '<span class="map108-sort-label">Sort</span>';
+  html += '<div class="map108-sortrow"><span class="map108-ctl-label">Sort</span>';
   for (const s of sorts) {
     html += `<button type="button" class="map108-sort-btn" data-sort="${escH(s.id)}" ` +
             `onclick="set108MapSort('${escH(s.id)}')">${escH(s.label)}</button>`;
   }
-  html += '<span class="map108-sep">|</span>';
-  html += '<span class="map108-display-label">Display</span>';
-  html += `<button type="button" class="map108-sort-btn" data-display="comfortable" ` +
-          `onclick="set108MapCompact(false)">Comfortable</button>`;
-  html += `<button type="button" class="map108-sort-btn" data-display="compact" ` +
-          `onclick="set108MapCompact(true)">Compact</button>`;
   html += '</div>';
 
-  // Mode switcher
+  // Group
   const modes = [
     { id: 'by-veda', label: 'By Veda' },
     { id: 'by-class', label: 'By Class' },
     { id: 'by-status', label: 'By Status' },
     { id: 'by-sequence', label: 'Traditional Sequence' },
   ];
-  html += '<div class="map108-modes">';
+  html += '<div class="map108-sortrow"><span class="map108-ctl-label">Group</span>';
   for (const m of modes) {
-    const active = (m.id === _map108Mode) ? ' map108-mode-btn--active' : '';
-    html += `<button type="button" class="map108-mode-btn${active}" ` +
+    const active = (m.id === _map108Mode) ? ' map108-sort-btn--active' : '';
+    html += `<button type="button" class="map108-sort-btn${active}" ` +
             `onclick="set108MapMode('${escH(fam.id)}','${escH(m.id)}')">${escH(m.label)}</button>`;
   }
   html += '</div>';
+
+  // Display density
+  html += '<div class="map108-sortrow"><span class="map108-ctl-label">Display</span>';
+  html += `<button type="button" class="map108-sort-btn" data-display="comfortable" ` +
+          `onclick="set108MapCompact(false)">Comfortable</button>`;
+  html += `<button type="button" class="map108-sort-btn" data-display="compact" ` +
+          `onclick="set108MapCompact(true)">Compact</button>`;
+  html += '</div>';
+  html += '</div>';   // .map108-filters
 
   html += '<div class="map108-groups">';
   if (_map108Mode === 'by-class') {
@@ -23316,8 +23344,7 @@ function _renderRestrictedDossier(fam, sourceId) {
     ? 'Copyrighted — unavailable'
     : (rs.availabilityStatus === 'public-domain-deferred' ? 'Public-domain deferred' : 'Restricted');
   let html = '<div class="dossier-panel">';
-  // Back always just clears the dossier; the family re-renders on whichever
-  // tab is active (_familyTab), so it returns where the dossier was opened from.
+  // Back clears the dossier and re-renders the family's one continuous page.
   html += `<button type="button" class="dossier-back" onclick="closeRestrictedDossier('${escH(fam.id)}')">‹ Back</button>`;
   html += `<div class="dossier-title">${escH(rs.displayTitle)}</div>`;
   html += `<div class="dossier-field"><b>Status:</b> ${escH(statusLabel)}</div>`;
@@ -23938,10 +23965,9 @@ const TEXT_FAMILIES = [
     subtitle: 'Vedic / Vedānta textual family',
     category: 'Religion',
     tradition: 'Hindu',
-    // v133 — deliberately carries no intro prose. The family opens straight into the
-    // Muktikā 108, whose own summary line ("44 active · 64 future · 0 needed · 108
-    // total") says what the old paragraph used to. Source witnesses are still credited
-    // per card, one tab over, under Texts & Editions.
+    // v133/v135 — deliberately carries no intro prose. The family is one continuous
+    // page: a heading with the accounting, the compact Muktikā 108 map, then Sources
+    // & Editions beneath it. Source witnesses are credited per card in that section.
     members: [
       { textId: 'upanishads',                role: 'primary', note: 'Müller — complete (SBE Vol. I + XV, merged)' },
       { textId: 'upanishads-johnson',        role: 'primary', note: 'Charles Johnston edition' },
