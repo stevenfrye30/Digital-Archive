@@ -23124,7 +23124,10 @@ function _map108ChipHTML(e, familyId) {
     // v135 — public wording is "Future", not "Future PD" (rights are not argued
     // in a badge). The underlying future-source records and dates are unchanged.
     const fullText = (yr ? ('Future ' + yr) : 'Future') + (futureHint ? (' · ' + futureHint) : '');
-    const compactText = yr ? ('PD ' + yr) : 'PD';
+    // v136 — compact badge shows the year alone (or "Future" when none). "PD" is
+    // never displayed publicly; the chip stays marked Future via its future CSS
+    // classes, and the bare year is what keeps the compact chip from overflowing.
+    const compactText = yr ? String(yr) : 'Future';
     const fsYear = fs.publicationYear ? (', ' + fs.publicationYear) : '';
     const titleText = (fs.displayTitle || 'restricted') + fsYear + ' — metadata only';
     const badge = `<span class="map108-badge map108-badge--future">` +
@@ -23147,14 +23150,14 @@ function _map108GroupHTML(label, entries, familyId, withCount) {
   const activeN = entries.filter(e => e.active).length;
   const futures = entries.filter(e => !e.active && e.futureSource);
   const futureN = futures.length;
-  // Build a concise future-PD summary: "13 future PD 2031" or, when
-  // several years appear, "26 future PD 2031–2074".
+  // v136 — concise future summary: "13 future · 2031" or, when several years
+  // appear, "26 future · 2031–2074". Public wording is "future", never "PD".
   let futureSummary = '';
   if (futureN) {
     const years = futures.map(e => e.futureSource.expectedPublicDomainYear).filter(Boolean);
     const uniq = Array.from(new Set(years)).sort((a, b) => a - b);
-    if (uniq.length === 1) futureSummary = ` · ${futureN} future PD ${uniq[0]}`;
-    else if (uniq.length > 1) futureSummary = ` · ${futureN} future PD ${uniq[0]}–${uniq[uniq.length - 1]}`;
+    if (uniq.length === 1) futureSummary = ` · ${futureN} future · ${uniq[0]}`;
+    else if (uniq.length > 1) futureSummary = ` · ${futureN} future · ${uniq[0]}–${uniq[uniq.length - 1]}`;
     else futureSummary = ` · ${futureN} future sources identified`;
   }
   const countLabel = withCount
