@@ -10364,35 +10364,6 @@
         "chapter",
         "verse"
       ],
-      "data_file": "bhagavad-gita_gita_society.json",
-      "source": "sacredtexts",
-      "author": [
-        "Vyasa"
-      ],
-      "translator": [
-        "International Gita Society"
-      ],
-      "year": null,
-      "translation_label": "Bhagavad Gita",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Bhagavad Gita* International Gita Society. Via International Gita Society.",
-      "importance_rank": 1,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bhagavad-gita",
-      "title": "Bhagavad Gita",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
       "data_file": "bhagavad-gita_arnold.json",
       "source": "gutenberg",
       "author": [
@@ -10407,35 +10378,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*Bhagavad Gita* International Gita Society. Via International Gita Society.",
-      "importance_rank": 1,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bhagavad-gita",
-      "title": "Bhagavad Gita",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bhagavad-gita_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Edwin Arnold"
-      ],
-      "translator": [
-        "Edwin Arnold"
-      ],
-      "year": 1900,
-      "translation_label": "Bhagavad-Gîtâ",
-      "translation_short_label": null,
-      "volume_label": "Edwin Arnold",
-      "quality": "derivative",
-      "source_summary": "*Bhagavad-Gîtâ* Edwin Arnold (1900). Via Project Gutenberg.",
       "importance_rank": 1,
       "cross_sections": null,
       "cross_traditions": null,
@@ -34122,6 +34064,34 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*Ginza Rabba (The Great Treasure)* by Anonymous (Mandaean tradition). Translated by Mark Lidzbarski and Ram Al-Sabiry (2011). Via Internet Archive.",
+      "source": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
+      "reading_status_certified": true
+    },
+    {
+      "id": "bhagavad-gita",
+      "title": "Bhagavad Gita",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bhagavad-gita_gita_society.json",
+      "author": [
+        "Vyasa"
+      ],
+      "translator": [
+        "International Gita Society"
+      ],
+      "year": 1988,
+      "translation_label": "Bhagavad Gita (International Gita Society)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*Bhagavad Gita* International Gita Society (Dr. Ramananda Prasad, first publ. 1988). Modern copyrighted translation — restricted (not public domain).",
       "source": null,
       "importance_rank": null,
       "restricted": true,

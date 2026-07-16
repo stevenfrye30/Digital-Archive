@@ -21657,7 +21657,12 @@ async function loadText(entry, listItem) {
 // ── Translation switcher ─────────────────────────────────────────────────────
 
 function buildTranslationSwitcher(entry) {
-  const siblings = indexGroups[entry.id] || [];
+  // A restricted or metadata-only sibling is NOT a public reading option: it must never appear
+  // in the switcher or the compare list (selecting it would 404 or open a withheld state). E.g.
+  // the Bhagavad Gita group carries the public Arnold witness plus the restricted International
+  // Gita Society translation — only Arnold may be offered.
+  const siblings = (indexGroups[entry.id] || [])
+    .filter(e => !e.restricted && !_isMetadataOnly(e));
 
   // Hide for solo texts
   if (siblings.length <= 1) {
@@ -22456,12 +22461,17 @@ function _renderTextTiles() {
   const activeFamilies = TEXT_FAMILIES.filter(
     fam => fam.category === cat && fam.tradition === trd
   ).map(fam => {
-    // A family is only renderable if at least one member exists in
-    // the current shelf's texts list.
     const memberIdSet = new Set(fam.members.map(m => m.textId));
+    // `presentMembers` = members still on the loose shelf (used only to suppress them below).
     const presentMembers = texts.filter(t => memberIdSet.has(t.id));
-    return { fam, presentMembers };
-  }).filter(x => x.presentMembers.length > 0);
+    // The family CARD must render whenever the family EXISTS — i.e. any member is in the
+    // catalog — even if every member was moved off the loose shelf by shelf_scope=family-only.
+    // (Before this, a family whose members were all family-only had no shelf entry point at all;
+    // the Upanishads family card vanished after the shelf-scope deploy.)
+    const exists = fam.members.some(m =>
+      typeof indexGroups !== 'undefined' && (indexGroups[m.textId] || []).length > 0);
+    return { fam, presentMembers, exists };
+  }).filter(x => x.exists);
 
   const suppressedIds = new Set();
   for (const { fam, presentMembers } of activeFamilies) {
