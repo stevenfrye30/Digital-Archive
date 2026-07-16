@@ -22459,10 +22459,16 @@ function _textTileHTML(t, cat, trd) {
   if (COMPLETED_FAMILY_META[t.id] && !t.crossFrom && !t.crossSection) {
     return _familyCompleteTileHTML(t, cat, trd);
   }
-  const count = t.entries.length;
+  // The shelf card reflects only publicly-readable editions: a restricted or
+  // metadata-only sibling must not inflate the "N trans." badge or set the
+  // card's year / reading-progress. (It stays reachable via the Restricted
+  // Library.) Fall back to the raw first entry only if nothing is readable.
+  const pubEntries = _publicEditions(t.entries);
+  const primaryEntry = pubEntries[0] || t.entries[0];
+  const count = pubEntries.length;
   const authorArr = (t.author || []).filter(a => a && a !== 'Anonymous');
   const authorStr = authorArr.join(', ');
-  const yearVal = t.entries[0].year;
+  const yearVal = primaryEntry.year;
   const crossNote = t.crossFrom ? `from ${t.crossFrom}` : '';
   const meta = [authorStr, yearVal, crossNote].filter(Boolean).join(' · ');
   const displayTitle = t.crossSection
@@ -22477,7 +22483,7 @@ function _textTileHTML(t, cat, trd) {
   let colorClass = '';
   if (colorMode === 'era') colorClass = _eraClass(yearVal);
   else if (colorMode === 'importance') colorClass = _impClass(t.rank);
-  const progPct = getReadingProgress(t.entries[0].data_file);
+  const progPct = getReadingProgress(primaryEntry.data_file);
   const progBadge = progPct > 0 ? `<span class="progress-badge">${progPct}%</span>` : '';
   return `<div class="text-tile ${colorClass}" onclick="${onclick}">
     ${star}
@@ -23062,6 +23068,14 @@ function _isMetadataOnly(e) {
 }
 function _entryReadable(e) {
   return !!e && !_isMetadataOnly(e);
+}
+// Publicly-readable editions of a text group: neither copyright-restricted nor
+// metadata-only. This is the general rule for normal edition/family selection —
+// restricted and metadata-only records are excluded here and remain reachable
+// only through the Restricted Library / withheld page. A group with exactly one
+// public edition opens it directly; two or more show the edition/family page.
+function _publicEditions(entries) {
+  return (entries || []).filter(e => e && !e.restricted && !_isMetadataOnly(e));
 }
 
 function _witnessRenderable(w) {
@@ -26098,12 +26112,16 @@ function browseText(cat, trd, textId) {
   const group = indexGroups[textId];
   if (!group || group.length === 0) return;
 
-  if (group.length === 1) {
-    // Single translation — open directly
+  // Normal edition selection counts only publicly-readable editions. Restricted
+  // and metadata-only records never make a group a multi-edition chooser — they
+  // live in the Restricted Library. Exactly one readable edition opens directly
+  // (no intermediate room); two or more show the edition/family page below.
+  const readable = _publicEditions(group);
+  if (readable.length === 1) {
     $browse.style.display = 'none';
     document.getElementById('controls').style.display = '';
     document.getElementById('reader').style.overflow = '';
-    loadText(group[0]);
+    loadText(readable[0]);
     return;
   }
 
@@ -26142,15 +26160,16 @@ function browseText(cat, trd, textId) {
   const claimedFiles = new Set();
   for (const sh of shelvesForText) for (const m of sh.members) claimedFiles.add(m.data_file);
 
-  // Sort: primary first, then by label
-  const sorted = group.slice().sort((a, b) => {
+  // Sort: primary first, then by label. Only readable editions are offered —
+  // restricted / metadata-only records are excluded from the chooser.
+  const sorted = readable.slice().sort((a, b) => {
     if (a.quality === 'primary' && b.quality !== 'primary') return -1;
     if (b.quality === 'primary' && a.quality !== 'primary') return 1;
     return (translationLabel(a) || '').localeCompare(translationLabel(b) || '');
   });
 
   const byFile = {};
-  for (const e of group) byFile[e.data_file] = e;
+  for (const e of readable) byFile[e.data_file] = e;
 
   $browseTiles.className = 'tile-list';
   let html = '';
