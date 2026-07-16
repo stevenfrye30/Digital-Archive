@@ -3702,7 +3702,7 @@ button.home-path {
   background: rgba(248, 242, 228, 0.5);
   font-family: Georgia, serif;
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 7px;
   min-height: 22px;
   /* v124a — allow the chip to shrink inside its grid cell. */
@@ -3724,11 +3724,12 @@ button.home-path {
   font-size: 13px;
   color: rgba(55, 35, 15, 0.9);
   flex: 1;
-  /* v124a — truncate long names instead of forcing the chip wider. */
+  /* The full work name is the priority and is never truncated to make room
+     for the year/status badge — long names wrap instead of ellipsizing. */
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .map108-badge {
   font-family: Georgia, serif;
@@ -12435,6 +12436,12 @@ function _speakerSplit(dataFile, text) {
 //         the volume is the witness, and it must never pretend to be one Upanishad.
 let workScope       = null;   // {key, title, displayTitle, sections:[...], startPid, endPid, …}
 let pendingWorkKey  = null;   // work to scope to once loadText has the record
+// Part 2 — work-level return. When the reader is entered from an Upanishad work
+// page (a witness/edition tile), remember the work so Contents/Back return to the
+// work's page, not the containing source volume. pendingUpnReturn is staged by the
+// work-entry functions and consumed by loadText (so a normal open auto-clears it).
+let pendingUpnReturn = null;
+let _upnWorkReturn   = null;
 
 function aiyarWorkByKey(key) {
   return AIYAR_WORKS.find(w => w.key === key) || null;
@@ -21587,6 +21594,9 @@ document.addEventListener('keydown', (e) => {
 // ── Load text ─────────────────────────────────────────────────────────────────
 
 async function loadText(entry, listItem) {
+  // Part 2 — consume any staged work-return exactly once. A normal open (no work
+  // route) leaves this null, so Contents there behaves as before.
+  _upnWorkReturn = pendingUpnReturn; pendingUpnReturn = null;
   // The single choke point: EVERY route into the reading room passes through here. A
   // metadata-only record is diverted to its withheld state before any fetch is issued —
   // no request for its body is ever made, whatever path the user arrived by (a witness
@@ -22626,8 +22636,23 @@ function _renderTextTiles() {
 // text tiles: the same shelf-card material, but a small italic
 // "family" badge and a member-count subtitle so the reader sees at
 // a glance that this is a cluster, not one text.
+// Count the family's publicly-readable editions across ALL its members, not just
+// those on the loose shelf. A family whose members are all shelf-scoped (e.g. the
+// Upanishads: every source is family-only) has zero loose members but still has
+// real editions — using presentMembers.length here showed a false "0 editions".
+function _familyEditionCount(fam) {
+  if (typeof indexGroups === 'undefined') return 0;
+  const seen = new Set();
+  for (const m of (fam.members || [])) {
+    for (const e of (indexGroups[m.textId] || [])) {
+      if (e.restricted || _isMetadataOnly(e)) continue;
+      seen.add(e.data_file);
+    }
+  }
+  return seen.size;
+}
 function _familyTileHTML(fam, presentMembers) {
-  const count = presentMembers.length;
+  const count = _familyEditionCount(fam);
   const subtitle = fam.subtitle || '';
   const countLabel = count + ' edition' + (count !== 1 ? 's' : '');
   const meta = subtitle ? `${subtitle} · ${countLabel}` : countLabel;
@@ -22920,8 +22945,7 @@ let _activeDossierId = null;    // open restricted-source dossier id, or null
 // already-rendered chip DOM so the search box keeps focus.
 let _map108Search = '';
 let _map108Filter = 'all';      // all | active | future | needed | M|V|S|Y|Sh|Vs|Sk
-let _map108Sort = 'traditional';// traditional | alpha | active-first | future-year
-let _map108Compact = true;   // v135 — compact is the default first-open density
+let _map108Compact = false;  // Comfortable is the default density
 
 // v135 — canon accounting, shared by the unified page heading and any status line.
 function _muktikaCounts(fam) {
@@ -22946,7 +22970,6 @@ function clear108MapSearch() {
   _apply108MapView();
 }
 function set108MapFilter(f) { _map108Filter = f; _apply108MapView(); }
-function set108MapSort(s) { _map108Sort = s; _apply108MapView(); }
 function set108MapCompact(on) { _map108Compact = !!on; _apply108MapView(); }
 
 // v123 — Apply the display-only view (search + filter + sort +
@@ -22964,9 +22987,6 @@ function _apply108MapView() {
   // Sync control active-states
   panel.querySelectorAll('.map108-chip-btn[data-filter]').forEach(b => {
     b.classList.toggle('map108-chip-btn--active', b.getAttribute('data-filter') === _map108Filter);
-  });
-  panel.querySelectorAll('.map108-sort-btn[data-sort]').forEach(b => {
-    b.classList.toggle('map108-sort-btn--active', b.getAttribute('data-sort') === _map108Sort);
   });
   panel.querySelectorAll('.map108-sort-btn[data-display]').forEach(b => {
     const want = _map108Compact ? 'compact' : 'comfortable';
@@ -23016,28 +23036,11 @@ function _apply108MapView() {
 }
 
 function _map108ChipCmp(a, b) {
+  // Chips render in the traditional Muktikā order (by canon number). The former
+  // Sort control and its alternate orderings were removed.
   const an = parseInt(a.getAttribute('data-n'), 10) || 0;
   const bn = parseInt(b.getAttribute('data-n'), 10) || 0;
-  const aname = a.getAttribute('data-name') || '';
-  const bname = b.getAttribute('data-name') || '';
-  const arank = { active: 0, local: 1, future: 2, needed: 3 }[a.getAttribute('data-status')] ?? 4;
-  const brank = { active: 0, local: 1, future: 2, needed: 3 }[b.getAttribute('data-status')] ?? 4;
-  const apd = parseInt(a.getAttribute('data-pdyear'), 10) || 0;
-  const bpd = parseInt(b.getAttribute('data-pdyear'), 10) || 0;
-  switch (_map108Sort) {
-    case 'alpha':
-      return aname.localeCompare(bname);
-    case 'active-first':
-      return (arank - brank) || (an - bn);
-    case 'future-year':
-      // active first (pd 0), then by PD year ascending, then name
-      if (arank !== brank) return arank - brank;
-      if (apd !== bpd) return apd - bpd;
-      return aname.localeCompare(bname);
-    case 'traditional':
-    default:
-      return an - bn;
-  }
+  return an - bn;
 }
 function openRestrictedDossier(familyId, sourceId) {
   _activeDossierId = sourceId;
@@ -23233,10 +23236,11 @@ function _map108ChipHTML(e, familyId) {
     // is what removes the horizontal overflow.
     // v135 — public wording is "Future", not "Future PD" (rights are not argued
     // in a badge). The underlying future-source records and dates are unchanged.
-    const fullText = (yr ? ('Future ' + yr) : 'Future') + (futureHint ? (' · ' + futureHint) : '');
-    // v136 — compact badge shows the year alone (or "Future" when none). "PD" is
-    // never displayed publicly; the chip stays marked Future via its future CSS
-    // classes, and the bare year is what keeps the compact chip from overflowing.
+    // Future cards show only a compact year (e.g. "2038") in both densities — the
+    // source detail lives in the dossier on click, not in the badge. The chip stays
+    // marked Future via its future CSS classes; the bare year avoids overflow and
+    // keeps the full work name the priority.
+    const fullText = yr ? String(yr) : 'Future';
     const compactText = yr ? String(yr) : 'Future';
     const fsYear = fs.publicationYear ? (', ' + fs.publicationYear) : '';
     const titleText = (fs.displayTitle || 'restricted') + fsYear + ' — metadata only';
@@ -23378,20 +23382,6 @@ function _render108Map(fam) {
   html += '<div class="map108-filters">';
   html += filterRow('Status', statusFilters);
   html += filterRow('Class', classFilters);
-
-  // Sort
-  const sorts = [
-    { id: 'traditional', label: 'Traditional' },
-    { id: 'alpha', label: 'Alphabetical' },
-    { id: 'active-first', label: 'Active first' },
-    { id: 'future-year', label: 'Future year' },
-  ];
-  html += '<div class="map108-sortrow"><span class="map108-ctl-label">Sort</span>';
-  for (const s of sorts) {
-    html += `<button type="button" class="map108-sort-btn" data-sort="${escH(s.id)}" ` +
-            `onclick="set108MapSort('${escH(s.id)}')">${escH(s.label)}</button>`;
-  }
-  html += '</div>';
 
   // Group
   const modes = [
@@ -23766,7 +23756,7 @@ function showUpanishadDetail(familyId, upnKey) {
     html += '<div class="tile-section-label">Witnesses</div>';
     html += '<ul class="byupn-witness-list">';
     for (const w of safeWitnesses) {
-      html += _witnessTileHTML(w, u.key);
+      html += _witnessTileHTML(w, u.key, familyId);
     }
     html += '</ul>';
   } else {
@@ -23778,7 +23768,7 @@ function showUpanishadDetail(familyId, upnKey) {
   $browseTiles.innerHTML = html;
 }
 
-function _witnessTileHTML(w, upnKey) {
+function _witnessTileHTML(w, upnKey, familyId) {
   const roleLabel = ({
     'primary':       'Primary reading witness',
     'source-volume': 'Source-volume witness',
@@ -23797,12 +23787,13 @@ function _witnessTileHTML(w, upnKey) {
   // own contents page instead of jumping into a chapter/section. Witnesses
   // without routeMode (all Upanishads) are unchanged.
   // v132 (H2) — carry the work key so an Aiyar route enters BOUNDED to that Upanishad.
-  const _wk = upnKey ? `,'${escH(upnKey)}'` : '';
+  const _wk = upnKey ? `,'${escH(upnKey)}'` : ',null';
+  const _fid = familyId ? `,'${escH(familyId)}'` : ',null';
   const onclick = (w.routeMode === 'contents')
-    ? `openWitnessContents('${escH(w.textId)}')`
+    ? `openWitnessContents('${escH(w.textId)}'${_fid}${_wk})`
     : w.pid
-      ? `openUpanishadAt('${escH(w.textId)}','${escH(w.pid)}',true${_wk})`
-      : `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}',false${_wk})`;
+      ? `openUpanishadAt('${escH(w.textId)}','${escH(w.pid)}',true${_wk}${_fid})`
+      : `openUpanishadAt('${escH(w.textId)}','${escH(w.groupKey)}',false${_wk}${_fid})`;
   return `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0">
     <div class="byupn-witness-head">
       <span class="byupn-witness-role">${escH(roleLabel)}</span>
@@ -23826,10 +23817,11 @@ function _witnessTileHTML(w, upnKey) {
 // witnesses with routeMode:'contents' (e.g. the extracted SBE X works and the
 // standalone Dhammapada / Sujato records) so the reader lands on the work's
 // contents rather than Chapter 1 / an introduction.
-function openWitnessContents(textId) {
+function openWitnessContents(textId, familyId, upnKey) {
   const group = indexGroups[textId];
   if (!group || !group.length) return;
   pendingSection = null; pendingPid = null;
+  pendingUpnReturn = (familyId && upnKey) ? { familyId, upnKey } : null;
   $browse.style.display = 'none';
   document.body.classList.remove('on-shelf-page');
   document.getElementById('controls').style.display = '';
@@ -23837,7 +23829,7 @@ function openWitnessContents(textId) {
   loadText(group[0]);
 }
 
-function openUpanishadAt(textId, keyOrPid, isPid, workKey) {
+function openUpanishadAt(textId, keyOrPid, isPid, workKey, familyId) {
   const group = indexGroups[textId];
   if (!group || !group.length) return;
   const entry = group[0];
@@ -23848,6 +23840,8 @@ function openUpanishadAt(textId, keyOrPid, isPid, workKey) {
   }
   // v132 (H2) — entering through a work route binds the reader to that work's span.
   if (textId === AIYAR_TEXT_ID && workKey) pendingWorkKey = String(workKey);
+  // Part 2 — Contents/Back return to this Upanishad's work page, not the source volume.
+  pendingUpnReturn = (familyId && workKey) ? { familyId, upnKey: String(workKey) } : null;
   // Tear down browse scaffolding before loadText so the reading
   // room enters clean (mirrors browseTextSection's pattern).
   $browse.style.display = 'none';
@@ -26746,6 +26740,17 @@ function backToContents() {
   if (typeof _closeFolioObject === 'function' && _folioMode === 'object') {
     _closeFolioObject();
   }
+  // Part 2 — if the reader entered from an Upanishad work page, Contents returns to
+  // that work (its editions/witnesses), not the containing source volume. The
+  // source-volume contents remains reachable by opening the volume directly.
+  if (_upnWorkReturn) {
+    const w = _upnWorkReturn;
+    document.body.classList.remove('in-reading', 'chapter-room');
+    document.getElementById('ctrl-contents').style.display = 'none';
+    showBrowse();
+    showUpanishadDetail(w.familyId, w.upnKey);
+    return;
+  }
   // Memo the room the reader is leaving so re-entering the
   // same chapter restores scroll and folio state.
   const reader = document.getElementById('reader');
@@ -26768,6 +26773,7 @@ function browseHome() {
   if (typeof _closeFolioObject === 'function' && _folioMode === 'object') {
     _closeFolioObject();
   }
+  _upnWorkReturn = null; pendingUpnReturn = null;
   document.body.classList.remove('in-reading');
   document.body.classList.remove('chapter-room');
   document.body.classList.remove('on-text-contents');
