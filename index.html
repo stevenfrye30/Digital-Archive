@@ -4488,6 +4488,25 @@ details.display-options > summary {
 }
 .passage[data-role="heading"] .ref { display: none; }
 
+/* Speaker labels (J2) — declarative, per-text (see SPEAKER_LABELS).
+   A dramatic-dialogue cue lifted out of the stored line so the reader
+   sees who speaks. Stronger than the muted verse number, quieter than
+   the 1.8em chapter heading; no badge, pill, or box — type only. The
+   stored text is untouched: the label carries the original prefix
+   characters, the speech carries the remainder, so copy/AT reproduce
+   the original wording exactly. */
+.speaker-label {
+  display: block;
+  font-variant: small-caps;
+  font-weight: 700;
+  font-size: 0.95em;
+  letter-spacing: 0.05em;
+  color: var(--chrome-active, #6a4a2a);
+  margin: 0.1em 0 0.15em;
+  line-height: 1.2;
+}
+[data-theme="dark"] .speaker-label { color: var(--chrome-active); }
+
 /* Canonical genre cadence. The Bible is not a uniform document.
    A psalm breathes between verses; a prophet packs density; an
    apocalyptic vision pauses between symbols. These deltas are
@@ -12331,6 +12350,35 @@ let pendingPid     = null;            // passage id to jump to on enterReading
 let pendingSection = null;            // section name to jump to on loadText (cross-tradition deep link)
 let bookmarkTimer  = null;
 
+// ── Speaker labels (J2) ─────────────────────────────────────────────────────
+// Declarative, per-text. Only the texts named here get speaker extraction, and
+// only the enumerated speaker names are recognized — NOT a universal
+// "text before the first period" heuristic. A configured passage whose text
+// begins with "<RecognizedName><delimiter>" at absolute position 0 has that
+// exact prefix lifted into a distinct label above the speech; every other
+// passage (and every other text) renders unchanged. The stored body is never
+// modified: label = the original prefix characters, speech = the remainder,
+// so copy and assistive tech reproduce the original wording exactly.
+const SPEAKER_LABELS = {
+  'bhagavad-gita_arnold.json': {
+    speakers: ['Dhritirashtra', 'Sanjaya', 'Krishna', 'Arjuna'],
+    delimiters: [':', '.'],
+  },
+};
+function _speakerSplit(dataFile, text) {
+  const cfg = dataFile && SPEAKER_LABELS[dataFile];
+  if (!cfg || !text) return null;
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const names = cfg.speakers.map(esc).join('|');
+  const delims = cfg.delimiters.map(esc).join('');
+  // Require whitespace after the delimiter (so "Krishna." is a speaker cue, not
+  // a glued token) but do NOT consume it — the separating space stays with the
+  // speech so label + speech reconstruct the original wording, space included.
+  const m = text.match(new RegExp('^(' + names + ')([' + delims + '])(?=\\s)'));
+  if (!m) return null;
+  return { label: m[1] + m[2], rest: text.slice(m[0].length) };
+}
+
   // ── BEGIN GENERATED: AIYAR_WORKS (05_scripts/generate_aiyar_routes.py) ──
   // Bounded work routes for the Aiyar volume. Generated from the Phase H1
   // audit — do not hand-edit. Each work carries an explicit END, so ordinary
@@ -13493,6 +13541,23 @@ function _renderBatch(passages, query, frag) {
 
     const flatText = p.text.replace(/\n/g, ' ');
 
+    // Speaker labels (J2): for configured texts only, lift a recognized
+    // speaker prefix into a distinct label above the speech. The stored text
+    // is untouched — the label holds the original prefix, bodyText holds the
+    // remainder — so the prefix is shown once and copy/AT stay faithful.
+    // Suppressed in compare mode (the column shows the full flat text).
+    let bodyText = flatText;
+    if (!(compareActive && compareData)) {
+      const _sp = _speakerSplit(currentEntry && currentEntry.data_file, flatText);
+      if (_sp) {
+        const _lab = document.createElement('div');
+        _lab.className = 'speaker-label';
+        _lab.textContent = _sp.label;
+        div.appendChild(_lab);
+        bodyText = _sp.rest;
+      }
+    }
+
     // Detect footnote-body passages: text starting "[N] ..."
     const fnBodyMatch = flatText.match(/^\[(\d+)\]\s+(.+)$/s);
     if (fnBodyMatch) {
@@ -13565,7 +13630,7 @@ function _renderBatch(passages, query, frag) {
       div.appendChild(secondary);
     } else if (query) {
       const span = document.createElement('span');
-      span.innerHTML = highlightText(flatText, query);
+      span.innerHTML = highlightText(bodyText, query);
       // Post-process: turn any [N] tokens inside the highlighted HTML into fn-refs
       span.querySelectorAll(':not(.fn-ref)').length;  // no-op; walk text nodes manually below
       (function linkifyFnRefs(root) {
@@ -13616,7 +13681,7 @@ function _renderBatch(passages, query, frag) {
       })(span);
       div.appendChild(span);
     } else {
-      renderTextWithFnRefs(div, flatText);
+      renderTextWithFnRefs(div, bodyText);
     }
 
     // Annotations: render clickable markers + expandable note blocks
