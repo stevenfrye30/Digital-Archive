@@ -3267,6 +3267,26 @@ button.home-path {
   box-shadow: 0 2px 6px rgba(60, 42, 22, 0.10);
   transform: translateY(-1px);
 }
+/* Vedas family: four-Veda divisions + layer sub-sections (navigation only) */
+.veda-division { margin: 22px 0 6px; }
+.veda-division-name {
+  font-size: 20px; font-weight: 700; letter-spacing: 0.01em;
+  color: var(--ink, #2c2013); border-bottom: 2px solid rgba(120, 95, 60, 0.30);
+  padding-bottom: 3px; margin-bottom: 2px;
+}
+.veda-division-note { font-size: 12.5px; opacity: 0.75; margin: 2px 0 6px; }
+.tile-section-label.veda-layer { margin-top: 10px; }
+.veda-completeness {
+  font-size: 10px; font-variant: small-caps; letter-spacing: 0.03em;
+  border-radius: 3px; padding: 1px 6px; border: 1px solid transparent;
+}
+.veda-complete { color: #2f6f3a; border-color: rgba(47,111,58,0.35); background: rgba(47,111,58,0.08); }
+.veda-partial  { color: #8a5a1a; border-color: rgba(138,90,26,0.35); background: rgba(138,90,26,0.08); }
+.byupn-witness-card.veda-restricted {
+  cursor: default; opacity: 0.72; background: repeating-linear-gradient(
+    135deg, rgba(120,95,60,0.05) 0 8px, rgba(120,95,60,0.09) 8px 16px);
+}
+.byupn-witness-card.veda-restricted:hover { transform: none; box-shadow: 0 1px 0 rgba(60,42,22,0.04); }
 .byupn-witness-head {
   display: flex;
   align-items: baseline;
@@ -22774,6 +22794,60 @@ function browseTextFamily(familyId) {
     return;
   }
 
+  // ── Vedas family view (declarative byVeda → layer → works) ───────────────
+  // Leads with the four Vedas; each textual layer (Saṃhitā / Brāhmaṇa / Āraṇyaka /
+  // Supplementary) is a labelled sub-section, so a Brāhmaṇa or Āraṇyaka is never
+  // implied to be another translation of a Saṃhitā. A readable work is a witness
+  // card opening the text at its contents (openWitnessContents — the same router the
+  // Buddhist families use). A restricted work is a non-clickable, honestly-labelled
+  // "Local Archive only" row that never exposes a public route. Navigation only:
+  // no body, PID, count, status, or scope is read or altered here.
+  const _byVeda = fam.byVeda || null;
+  if (Array.isArray(_byVeda) && _byVeda.length) {
+    let vh = '';
+    if (fam.description) vh += `<div class="family-description">${escH(fam.description)}</div>`;
+    for (const vd of _byVeda) {
+      vh += `<div class="veda-division"><div class="veda-division-name">${escH(vd.veda)}</div>`;
+      if (vd.note) vh += `<div class="veda-division-note">${escH(vd.note)}</div>`;
+      for (const ly of (vd.layers || [])) {
+        vh += `<div class="tile-section-label veda-layer">${escH(ly.layer)}</div>`;
+        vh += '<ul class="byupn-witness-list">';
+        for (const wk of (ly.works || [])) {
+          const entries = (typeof indexGroups !== 'undefined' && indexGroups[wk.textId]) || [];
+          const pub = entries.filter(e => e && !e.restricted && _entryReadable(e) && e.data_file);
+          const comp = wk.completeness
+            ? `<span class="veda-completeness veda-${escH(wk.completeness)}">${wk.completeness === 'complete' ? 'complete' : 'partial'}</span>`
+            : '';
+          if (pub.length) {
+            const onclick = `openWitnessContents('${escH(wk.textId)}','${escH(fam.id)}',null)`;
+            vh += `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0" data-veda-textid="${escH(wk.textId)}">
+              <div class="byupn-witness-head"><span class="byupn-witness-role">${escH(wk.role || 'Reading edition')}</span>${comp}</div>
+              <div class="byupn-witness-title">${escH(wk.title || '')}</div>
+              <div class="byupn-witness-credit">${escH(wk.translator || '')} · ${escH(wk.year || '')}</div>
+              ${wk.note ? `<div class="byupn-witness-note">${escH(wk.note)}</div>` : ''}
+            </li>`;
+          } else {
+            // Restricted or not-yet-available witness: honest, non-clickable, no public route.
+            const why = wk.restricted
+              ? (wk.restrictedNote || 'Restricted source — held in the Local Archive; not publicly readable.')
+              : 'Source witness not currently available.';
+            vh += `<li class="byupn-witness-card veda-restricted" aria-disabled="true" data-veda-textid="${escH(wk.textId)}">
+              <div class="byupn-witness-head"><span class="byupn-witness-role">Restricted source</span>${comp}</div>
+              <div class="byupn-witness-title">${escH(wk.title || wk.textId)}</div>
+              <div class="byupn-witness-credit">${escH(wk.translator || '')} · ${escH(wk.year || '')}</div>
+              <div class="byupn-witness-note">${escH(why)}</div>
+            </li>`;
+          }
+        }
+        vh += '</ul>';
+      }
+      vh += '</div>';
+    }
+    $browseTiles.className = 'upn-detail-wrap vedas-family';
+    $browseTiles.innerHTML = vh || '<div class="upn-detail-empty">No Vedic witness available.</div>';
+    return;
+  }
+
   // Resolve members to indexGroups entries (textGroup objects).
   // Skip members not present in the catalog.
   // v134 — edition cards resolve from the CATALOG, not from the Reading-Room shelf.
@@ -24906,6 +24980,98 @@ const TEXT_FAMILIES = [
             note: 'Extracted SBE X witness: title, introduction, 5 vaggas and all suttas.' },
         ] },
     ],
+  },
+  {
+    // ── The Vedas (navigation/shelf architecture only — v-vedas-1) ──────────
+    // One family card in place of ~13 loose Hindu tiles. Members are the already-
+    // live public Vedic records; suppression (default) plus their family-only
+    // shelf_scope removes them from the loose shelf. The page leads with the four
+    // Vedas and makes the Saṃhitā/Brāhmaṇa/Āraṇyaka layer explicit via `byVeda`
+    // (rendered by the dedicated branch in browseTextFamily). Nothing here changes
+    // any body, PID, count, translator, year, rights, or reading status. The
+    // finalized Upanishads family is deliberately NOT referenced as a member and is
+    // unaffected. The two malformed stubs (atharva-veda-hymns-ralph-griffith-1895,
+    // yajur-veda-black-arthur-keith-1914-no) and the Mesoamerican rig-veda-americanus
+    // -brinton are intentionally excluded.
+    id: 'vedas',
+    title: 'The Vedas',
+    subtitle: 'Ṛg · Sāma · Yajur · Atharva — Saṃhitā, Brāhmaṇa, Āraṇyaka',
+    category: 'Religion',
+    tradition: 'Hindu',
+    description:
+      'The four Vedas across their textual layers. Each Veda opens onto its ' +
+      'Saṃhitā (hymn collection) and, where a rights-clear English witness ' +
+      'exists, its Brāhmaṇa (ritual exposition) and Āraṇyaka (forest text). ' +
+      'Associated Upanishads live in the separate Upanishads family. Each route ' +
+      'preserves its own source credit; no source files were merged.',
+    members: [
+      { textId: 'rig-veda-griffith',          role: 'primary' },
+      { textId: 'sama-veda-griffith',         role: 'primary' },
+      { textId: 'yajur-veda-keith',           role: 'primary' },
+      { textId: 'yajur-veda-white-griffith',  role: 'primary' },
+      { textId: 'atharva-veda-griffith',      role: 'primary' },
+      { textId: 'atharva-veda-bloomfield',    role: 'primary' },
+      { textId: 'satapatha-brahmana-eggeling', role: 'primary' },
+      { textId: 'aitareya-brahmana-keith',    role: 'primary' },
+      { textId: 'kausitaki-brahmana-keith',   role: 'primary' },
+      { textId: 'aitareya-aranyaka-muller',   role: 'primary' },
+      { textId: 'sankhayana-aranyaka-keith',  role: 'primary' },
+      { textId: 'vedic-hymns-part1',          role: 'collection' },
+      { textId: 'vedic-hymns-part2',          role: 'collection' },
+    ],
+    byVeda: [
+      { veda: 'Ṛgveda',
+        note: 'The oldest Veda: 1,028 hymns in ten maṇḍalas, with the Aitareya and Kauṣītaki Brāhmaṇas and Āraṇyakas attached to it.',
+        layers: [
+          { layer: 'Saṃhitā', works: [
+            { textId: 'rig-veda-griffith', title: 'The Hymns of the Rigveda', translator: 'Ralph T. H. Griffith', year: '1896',
+              role: 'Reading edition', completeness: 'complete',
+              note: 'All ten maṇḍalas, 1,028 hymns (Vālakhilya inline in maṇḍala 8). mandala.hymn.verse identifiers.' } ] },
+          { layer: 'Brāhmaṇa', works: [
+            { textId: 'aitareya-brahmana-keith', title: 'The Aitareya Brāhmaṇa', translator: 'Arthur Berriedale Keith', year: '1920', role: 'Reading edition', completeness: 'complete' },
+            { textId: 'kausitaki-brahmana-keith', title: 'The Kauṣītaki (Śāṅkhāyana) Brāhmaṇa', translator: 'Arthur Berriedale Keith', year: '1920', role: 'Reading edition', completeness: 'complete' } ] },
+          { layer: 'Āraṇyaka', works: [
+            { textId: 'aitareya-aranyaka-muller', title: 'The Aitareya Āraṇyaka (Āraṇyakas I–III)', translator: 'F. Max Müller', year: '1879', role: 'Reading edition', completeness: 'partial',
+              note: 'Müller translated Āraṇyakas I–III (SBE 1); IV–V are mantra-only. An honest partial.' },
+            { textId: 'sankhayana-aranyaka-keith', title: 'The Śāṅkhāyana Āraṇyaka', translator: 'Arthur Berriedale Keith', year: '1908', role: 'Reading edition', completeness: 'complete' } ] },
+          { layer: 'Supplementary Vedic selections', works: [
+            { textId: 'vedic-hymns-part1', title: 'Vedic Hymns, Part 1', translator: 'F. Max Müller', year: '1891', role: 'Selection', completeness: 'partial',
+              note: 'SBE 32 — Müller’s prose renderings of selected Ṛgvedic hymns (Agni, Maruts, Vāta…).' },
+            { textId: 'vedic-hymns-part2', title: 'Vedic Hymns, Part 2', translator: 'Hermann Oldenberg', year: '1897', role: 'Selection', completeness: 'partial',
+              note: 'SBE 46 — Oldenberg’s continuation of the selected-hymns translation.' } ] },
+        ] },
+      { veda: 'Sāmaveda',
+        note: 'The Veda of melodies: chants drawn largely from the Ṛgveda, with the Pañcaviṃśa (Tāṇḍya) Brāhmaṇa attached.',
+        layers: [
+          { layer: 'Saṃhitā', works: [
+            { textId: 'sama-veda-griffith', title: 'The Sama Veda', translator: 'Ralph T. H. Griffith', year: '1895', role: 'Reading edition', completeness: 'complete' } ] },
+          { layer: 'Brāhmaṇa', works: [
+            { textId: 'pancavimsa-brahmana-caland', title: 'The Pañcaviṃśa (Tāṇḍya) Brāhmaṇa', translator: 'Willem Caland', year: '1931', restricted: true, completeness: 'complete',
+              restrictedNote: 'Held in the Local Archive; enters the US public domain on 2027-01-01. Not publicly readable until then.' } ] },
+        ] },
+      { veda: 'Yajurveda',
+        note: 'The Veda of sacrificial formulae, transmitted in a Black (Taittirīya) and a White (Vājasaneyi) recension, the latter with the Śatapatha Brāhmaṇa.',
+        layers: [
+          { layer: 'Saṃhitā — Black (Taittirīya)', works: [
+            { textId: 'yajur-veda-keith', title: 'The Yajur Veda (Taittirīya Saṃhitā)', translator: 'Arthur Berriedale Keith', year: '1914', role: 'Reading edition', completeness: 'complete' } ] },
+          { layer: 'Saṃhitā — White (Vājasaneyi)', works: [
+            { textId: 'yajur-veda-white-griffith', title: 'The White Yajur Veda (Vājasaneyi Saṃhitā)', translator: 'Ralph T. H. Griffith', year: '1899', role: 'Reading edition', completeness: 'complete',
+              note: 'Near-complete: 40 adhyāyas, 1,950 verses (documented minor residual vs ~1,975).' } ] },
+          { layer: 'Brāhmaṇa', works: [
+            { textId: 'satapatha-brahmana-eggeling', title: 'The Śatapatha Brāhmaṇa', translator: 'Julius Eggeling', year: '1900', role: 'Reading edition', completeness: 'complete',
+              note: 'SBE 12/26/41/43/44 — 14 kāṇḍas (Eggeling omits SB 14.4–9, which is the Bṛhadāraṇyaka Upaniṣad).' } ] },
+        ] },
+      { veda: 'Atharvaveda',
+        note: 'The Veda of everyday and apotropaic hymns. Represented by a complete metrical translation and a partial thematic selection.',
+        layers: [
+          { layer: 'Saṃhitā', works: [
+            { textId: 'atharva-veda-griffith', title: 'The Hymns of the Atharvaveda', translator: 'Ralph T. H. Griffith', year: '1896', role: 'Reading edition', completeness: 'complete',
+              note: 'Complete: 20 books, 727 hymns.' },
+            { textId: 'atharva-veda-bloomfield', title: 'The Atharva Veda (Hymns)', translator: 'Maurice Bloomfield', year: '1897', role: 'Scholarly selection', completeness: 'partial',
+              note: 'SBE 42 — a thematic selection (~⅓ of the Atharvaveda), not a complete translation; the extracted text carries known OCR-marker artifacts.' } ] },
+        ] },
+    ],
+    primaryMemberId: 'rig-veda-griffith',
   },
 ];
 
