@@ -12365,11 +12365,25 @@ const SPEAKER_LABELS = {
     speakers: ['Dhritirashtra', 'Sanjaya', 'Krishna', 'Arjuna'],
     delimiters: [':', '.'],
   },
+  // Telang (SBE 8, 1882) prints full speaker lines ("Sañgaya said:"), not a bare
+  // "Name:" cue, so its config lists the EXACT source label strings verbatim (no
+  // general text-before-colon/period heuristic). Copied/AT text keeps the full wording.
+  'bhagavad-gita_telang.json': {
+    labels: ['Dhritarâshtra said', 'Sañgaya said:', 'Sañgaya said', 'Arguna said:', 'The Deity said:'],
+  },
 };
 function _speakerSplit(dataFile, text) {
   const cfg = dataFile && SPEAKER_LABELS[dataFile];
   if (!cfg || !text) return null;
   const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Explicit full-prefix labels (e.g. Telang "Sañgaya said:"): match the longest
+  // configured label at the very start, requiring following whitespace, which stays
+  // with the speech so label + speech reconstruct the original wording exactly.
+  if (cfg.labels) {
+    const alts = cfg.labels.slice().sort((a, b) => b.length - a.length).map(esc).join('|');
+    const lm = text.match(new RegExp('^(' + alts + ')(?=\\s)'));
+    return lm ? { label: lm[1], rest: text.slice(lm[0].length) } : null;
+  }
   const names = cfg.speakers.map(esc).join('|');
   const delims = cfg.delimiters.map(esc).join('');
   // Require whitespace after the delimiter (so "Krishna." is a speaker cue, not

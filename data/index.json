@@ -10385,6 +10385,35 @@
       "reading_status_certified": true
     },
     {
+      "id": "bhagavad-gita",
+      "title": "Bhagavad Gita",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bhagavad-gita_telang.json",
+      "source": "sacredtexts",
+      "author": [
+        "Vyasa"
+      ],
+      "translator": [
+        "K. T. Telang"
+      ],
+      "year": 1882,
+      "translation_label": "The Bhagavadgita (Sacred Books of the East, Vol. 8)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "Scholarly prose translation in *The Bhagavadgita, with the Sanatsugatiya and the Anugita* (Sacred Books of the East, Vol. 8, 1882). Via the Internet Sacred Text Archive. Identifiers are prose segments, not verse numbers.",
+      "importance_rank": 1,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
       "id": "upanishads",
       "title": "The Upanishads",
       "tradition": "Hindu",
