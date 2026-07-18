@@ -22843,9 +22843,12 @@ function browseTextFamily(familyId) {
       divisionsHtml += `<div class="veda-division" id="${escH(_vedaSlug(vd))}"><div class="veda-division-name">${escH(vd.veda)}</div>`;
       if (vd.note) divisionsHtml += `<div class="veda-division-note">${escH(vd.note)}</div>`;
       for (const ly of (vd.layers || [])) {
-        divisionsHtml += `<div class="tile-section-label veda-layer">${escH(ly.layer)}</div>`;
-        divisionsHtml += '<ul class="byupn-witness-list">';
+        let layerWorksHtml = '';
         for (const wk of (ly.works || [])) {
+          // Presentation quarantine: a `hidden` work is omitted from the public family page only.
+          // Its body, PIDs, index row, search, membership, restricted status, and direct route are
+          // untouched; it is simply not counted or rendered here.
+          if (wk.hidden) continue;
           const entries = (typeof indexGroups !== 'undefined' && indexGroups[wk.textId]) || [];
           const pub = entries.filter(e => e && !e.restricted && _entryReadable(e) && e.data_file);
           // Badge text: 'complete' and 'near-complete' render verbatim; anything else is an
@@ -22858,7 +22861,7 @@ function browseTextFamily(familyId) {
           if (pub.length) {
             readableCount++;
             const onclick = `openWitnessContents('${escH(wk.textId)}','${escH(fam.id)}',null)`;
-            divisionsHtml += `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0" data-veda-textid="${escH(wk.textId)}">
+            layerWorksHtml += `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0" data-veda-textid="${escH(wk.textId)}">
               <div class="byupn-witness-head"><span class="byupn-witness-role">${escH(wk.role || 'Reading edition')}</span>${comp}</div>
               <div class="byupn-witness-title">${escH(wk.title || '')}</div>
               <div class="byupn-witness-credit">${escH(wk.translator || '')} · ${escH(wk.year || '')}</div>
@@ -22870,7 +22873,7 @@ function browseTextFamily(familyId) {
             const why = wk.restricted
               ? (wk.restrictedNote || 'Restricted source — held in the Local Archive; not publicly readable.')
               : 'Source witness not currently available.';
-            divisionsHtml += `<li class="byupn-witness-card veda-restricted" aria-disabled="true" data-veda-textid="${escH(wk.textId)}">
+            layerWorksHtml += `<li class="byupn-witness-card veda-restricted" aria-disabled="true" data-veda-textid="${escH(wk.textId)}">
               <div class="byupn-witness-head"><span class="byupn-witness-role">Restricted source</span>${comp}</div>
               <div class="byupn-witness-title">${escH(wk.title || wk.textId)}</div>
               <div class="byupn-witness-credit">${escH(wk.translator || '')} · ${escH(wk.year || '')}</div>
@@ -22878,15 +22881,22 @@ function browseTextFamily(familyId) {
             </li>`;
           }
         }
-        divisionsHtml += '</ul>';
+        // Skip a layer whose every work is quarantined/absent — no empty section label or list.
+        if (!layerWorksHtml) continue;
+        divisionsHtml += `<div class="tile-section-label veda-layer">${escH(ly.layer)}</div>`;
+        divisionsHtml += '<ul class="byupn-witness-list">' + layerWorksHtml + '</ul>';
       }
       divisionsHtml += '</div>';
     }
-    // Summary line (derived) — secondary to the title, sits just below it.
+    // Summary line (derived from the SAME render pass). Drop the restricted clause entirely when
+    // no restricted card is shown, so the line never reads "… · 0 restricted sources · …".
     const _w = readableCount === 1 ? 'readable witness' : 'readable witnesses';
     const _s = restrictedCount === 1 ? 'restricted source' : 'restricted sources';
     const _t = _byVeda.length === 1 ? 'Vedic tradition' : 'Vedic traditions';
-    const summaryHtml = `<div class="veda-family-summary">${escH(`${readableCount} ${_w} · ${restrictedCount} ${_s} · ${_byVeda.length} ${_t}`)}</div>`;
+    const _summaryParts = [`${readableCount} ${_w}`];
+    if (restrictedCount > 0) _summaryParts.push(`${restrictedCount} ${_s}`);
+    _summaryParts.push(`${_byVeda.length} ${_t}`);
+    const summaryHtml = `<div class="veda-family-summary">${escH(_summaryParts.join(' · '))}</div>`;
     // Jump nav (plain anchors + CSS only) — one item per Veda, wraps cleanly on mobile.
     const jumpHtml = `<nav class="veda-jump-nav" aria-label="Jump to a Veda">`
       + _byVeda.map((vd, i) =>
@@ -25088,9 +25098,14 @@ const TEXT_FAMILIES = [
               note: 'Müller translated Āraṇyakas I–III (SBE 1); IV–V are mantra-only. An honest partial.' },
             { textId: 'sankhayana-aranyaka-keith', title: 'The Śāṅkhāyana Āraṇyaka', translator: 'Arthur Berriedale Keith', year: '1908', role: 'Reading edition', completeness: 'complete' } ] },
           { layer: 'Supplementary Vedic selections', works: [
-            { textId: 'vedic-hymns-part1', title: 'Vedic Hymns, Part 1', translator: 'F. Max Müller', year: '1891', role: 'Selection', completeness: 'partial',
+            // hidden: PRESENTATION QUARANTINE (2026-07-18). Malformed full-volume source dumps
+            // (front matter / contents / <page N> markers / notes / footnotes flattened with the
+            // hymns). Omitted from the public family page ONLY — body, PIDs, index row, search,
+            // family membership, and direct route (?text=…) are all preserved; needs a separate
+            // re-ingest phase before it returns. See plans/vedas_presentation_quarantine.md.
+            { textId: 'vedic-hymns-part1', hidden: true, title: 'Vedic Hymns, Part 1', translator: 'F. Max Müller', year: '1891', role: 'Selection', completeness: 'partial',
               note: 'SBE 32 — Müller’s prose renderings of selected Ṛgvedic hymns (Agni, Maruts, Vāta…).' },
-            { textId: 'vedic-hymns-part2', title: 'Vedic Hymns, Part 2', translator: 'Hermann Oldenberg', year: '1897', role: 'Selection', completeness: 'partial',
+            { textId: 'vedic-hymns-part2', hidden: true, title: 'Vedic Hymns, Part 2', translator: 'Hermann Oldenberg', year: '1897', role: 'Selection', completeness: 'partial',
               note: 'SBE 46 — Oldenberg’s continuation of the selected-hymns translation.' } ] },
         ] },
       { veda: 'Sāmaveda', anchor: 'samaveda',
@@ -25099,7 +25114,11 @@ const TEXT_FAMILIES = [
           { layer: 'Saṃhitā', works: [
             { textId: 'sama-veda-griffith', title: 'The Sama Veda', translator: 'Ralph T. H. Griffith', year: '1895', role: 'Reading edition', completeness: 'complete' } ] },
           { layer: 'Brāhmaṇa', works: [
-            { textId: 'pancavimsa-brahmana-caland', title: 'The Pañcaviṃśa (Tāṇḍya) Brāhmaṇa', translator: 'Willem Caland', year: '1931', restricted: true, completeness: 'complete',
+            // hidden: PRESENTATION QUARANTINE (2026-07-18). Restricted until 2027-01-01; the large
+            // disabled public card is removed from the family page per user decision. The record
+            // stays restricted in the index / canonical / rights data (2027-01-01 PD date intact),
+            // never public or routable, still in the restricted inventory. See the quarantine report.
+            { textId: 'pancavimsa-brahmana-caland', hidden: true, title: 'The Pañcaviṃśa (Tāṇḍya) Brāhmaṇa', translator: 'Willem Caland', year: '1931', restricted: true, completeness: 'complete',
               restrictedNote: 'Held in the Local Archive; enters the US public domain on 2027-01-01. Not publicly readable until then.' } ] },
         ] },
       { veda: 'Yajurveda', anchor: 'yajurveda',
