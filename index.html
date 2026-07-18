@@ -25098,14 +25098,15 @@ const TEXT_FAMILIES = [
               note: 'Müller translated Āraṇyakas I–III (SBE 1); IV–V are mantra-only. An honest partial.' },
             { textId: 'sankhayana-aranyaka-keith', title: 'The Śāṅkhāyana Āraṇyaka', translator: 'Arthur Berriedale Keith', year: '1908', role: 'Reading edition', completeness: 'complete' } ] },
           { layer: 'Supplementary Vedic selections', works: [
-            // hidden: PRESENTATION QUARANTINE (2026-07-18). Malformed full-volume source dumps
-            // (front matter / contents / <page N> markers / notes / footnotes flattened with the
-            // hymns). Omitted from the public family page ONLY — body, PIDs, index row, search,
-            // family membership, and direct route (?text=…) are all preserved; needs a separate
-            // re-ingest phase before it returns. See plans/vedas_presentation_quarantine.md.
+            // Part 2 (Oldenberg, SBE 46) was re-ingested clean and RESTORED to the public family page
+            // 2026-07-18 (1,147 passages, mandala/hymn/verse; deploy 4770ee46). Part 1 (Müller, SBE 32)
+            // REMAINS presentation-quarantined: still a malformed full-volume dump (front matter /
+            // contents / <page N> markers / notes / footnotes flattened with the hymns), omitted from
+            // the public family page ONLY — its body, PIDs, index row, search, membership, and direct
+            // route (?text=…) are all preserved; it returns after its own re-ingest phase.
             { textId: 'vedic-hymns-part1', hidden: true, title: 'Vedic Hymns, Part 1', translator: 'F. Max Müller', year: '1891', role: 'Selection', completeness: 'partial',
               note: 'SBE 32 — Müller’s prose renderings of selected Ṛgvedic hymns (Agni, Maruts, Vāta…).' },
-            { textId: 'vedic-hymns-part2', hidden: true, title: 'Vedic Hymns, Part 2', translator: 'Hermann Oldenberg', year: '1897', role: 'Selection', completeness: 'partial',
+            { textId: 'vedic-hymns-part2', title: 'Vedic Hymns, Part 2', translator: 'Hermann Oldenberg', year: '1897', role: 'Selection', completeness: 'partial',
               note: 'SBE 46 — Oldenberg’s continuation of the selected-hymns translation.' } ] },
         ] },
       { veda: 'Sāmaveda', anchor: 'samaveda',
