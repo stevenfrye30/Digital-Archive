@@ -3268,7 +3268,10 @@ button.home-path {
   transform: translateY(-1px);
 }
 /* Vedas family: four-Veda divisions + layer sub-sections (navigation only) */
-.veda-division { margin: 22px 0 6px; }
+/* scroll-margin-top: browse pages scroll naturally with no sticky header, so a
+   small offset just gives the heading breathing room clear of the 3px reading
+   progress bar after an in-page #veda-… jump. */
+.veda-division { margin: 22px 0 6px; scroll-margin-top: 18px; }
 .veda-division-name {
   font-size: 20px; font-weight: 700; letter-spacing: 0.01em;
   color: var(--ink, #2c2013); border-bottom: 2px solid rgba(120, 95, 60, 0.30);
@@ -3282,6 +3285,29 @@ button.home-path {
 }
 .veda-complete { color: #2f6f3a; border-color: rgba(47,111,58,0.35); background: rgba(47,111,58,0.08); }
 .veda-partial  { color: #8a5a1a; border-color: rgba(138,90,26,0.35); background: rgba(138,90,26,0.08); }
+/* near-complete: a distinct teal category — reads as "almost whole", never as partial. */
+.veda-near-complete { color: #1f5e56; border-color: rgba(31,94,86,0.40); background: rgba(31,94,86,0.09); }
+
+/* Family summary line + Veda jump nav — secondary to the title, single-column,
+   minimal vertical footprint, colours drawn from the existing brown palette. */
+.veda-family-summary {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 12.5px; letter-spacing: 0.02em;
+  color: rgba(74, 58, 38, 0.92); margin: -2px 0 10px;
+}
+.veda-jump-nav {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 4px;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 13px; line-height: 1.5; margin: 0 0 18px;
+}
+.veda-jump-nav a {
+  color: rgba(74, 58, 38, 0.95); text-decoration: none; cursor: pointer;
+  border-bottom: 1px solid rgba(120, 95, 60, 0.30);
+}
+.veda-jump-nav a:hover, .veda-jump-nav a:focus-visible {
+  color: var(--chrome-active); border-bottom-color: currentColor;
+}
+.veda-jump-nav .veda-jump-sep { color: rgba(120, 95, 60, 0.55); user-select: none; }
 .byupn-witness-card.veda-restricted {
   cursor: default; opacity: 0.72; background: repeating-linear-gradient(
     135deg, rgba(120,95,60,0.05) 0 8px, rgba(120,95,60,0.09) 8px 16px);
@@ -22804,23 +22830,35 @@ function browseTextFamily(familyId) {
   // no body, PID, count, status, or scope is read or altered here.
   const _byVeda = fam.byVeda || null;
   if (Array.isArray(_byVeda) && _byVeda.length) {
-    let vh = '';
-    if (fam.description) vh += `<div class="family-description">${escH(fam.description)}</div>`;
+    // Stable in-page anchor per Veda: prefer an explicit `anchor`, else a diacritic-
+    // folded slug of the name. Used only for #veda-… jump links + scroll target.
+    const _vedaSlug = (vd) => 'veda-' + (vd.anchor
+      || String(vd.veda || '').normalize('NFKD').replace(/[^\w]+/g, '').toLowerCase());
+    // Build the divisions once, tallying the summary from the SAME pass that renders
+    // the cards, so the summary line can never drift from what the page actually shows:
+    // a readable witness == a work that resolves to a public, bodied, routable card; a
+    // restricted source == a work rendered as the non-routable Local-Archive row.
+    let readableCount = 0, restrictedCount = 0, divisionsHtml = '';
     for (const vd of _byVeda) {
-      vh += `<div class="veda-division"><div class="veda-division-name">${escH(vd.veda)}</div>`;
-      if (vd.note) vh += `<div class="veda-division-note">${escH(vd.note)}</div>`;
+      divisionsHtml += `<div class="veda-division" id="${escH(_vedaSlug(vd))}"><div class="veda-division-name">${escH(vd.veda)}</div>`;
+      if (vd.note) divisionsHtml += `<div class="veda-division-note">${escH(vd.note)}</div>`;
       for (const ly of (vd.layers || [])) {
-        vh += `<div class="tile-section-label veda-layer">${escH(ly.layer)}</div>`;
-        vh += '<ul class="byupn-witness-list">';
+        divisionsHtml += `<div class="tile-section-label veda-layer">${escH(ly.layer)}</div>`;
+        divisionsHtml += '<ul class="byupn-witness-list">';
         for (const wk of (ly.works || [])) {
           const entries = (typeof indexGroups !== 'undefined' && indexGroups[wk.textId]) || [];
           const pub = entries.filter(e => e && !e.restricted && _entryReadable(e) && e.data_file);
+          // Badge text: 'complete' and 'near-complete' render verbatim; anything else is an
+          // honest 'partial'. 'near-complete' is a distinct status — NEVER relabelled 'partial'.
+          const _compLabel = wk.completeness === 'complete' ? 'complete'
+            : wk.completeness === 'near-complete' ? 'near-complete' : 'partial';
           const comp = wk.completeness
-            ? `<span class="veda-completeness veda-${escH(wk.completeness)}">${wk.completeness === 'complete' ? 'complete' : 'partial'}</span>`
+            ? `<span class="veda-completeness veda-${escH(wk.completeness)}">${_compLabel}</span>`
             : '';
           if (pub.length) {
+            readableCount++;
             const onclick = `openWitnessContents('${escH(wk.textId)}','${escH(fam.id)}',null)`;
-            vh += `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0" data-veda-textid="${escH(wk.textId)}">
+            divisionsHtml += `<li class="byupn-witness-card" onclick="${onclick}" tabindex="0" data-veda-textid="${escH(wk.textId)}">
               <div class="byupn-witness-head"><span class="byupn-witness-role">${escH(wk.role || 'Reading edition')}</span>${comp}</div>
               <div class="byupn-witness-title">${escH(wk.title || '')}</div>
               <div class="byupn-witness-credit">${escH(wk.translator || '')} · ${escH(wk.year || '')}</div>
@@ -22828,10 +22866,11 @@ function browseTextFamily(familyId) {
             </li>`;
           } else {
             // Restricted or not-yet-available witness: honest, non-clickable, no public route.
+            if (wk.restricted) restrictedCount++;
             const why = wk.restricted
               ? (wk.restrictedNote || 'Restricted source — held in the Local Archive; not publicly readable.')
               : 'Source witness not currently available.';
-            vh += `<li class="byupn-witness-card veda-restricted" aria-disabled="true" data-veda-textid="${escH(wk.textId)}">
+            divisionsHtml += `<li class="byupn-witness-card veda-restricted" aria-disabled="true" data-veda-textid="${escH(wk.textId)}">
               <div class="byupn-witness-head"><span class="byupn-witness-role">Restricted source</span>${comp}</div>
               <div class="byupn-witness-title">${escH(wk.title || wk.textId)}</div>
               <div class="byupn-witness-credit">${escH(wk.translator || '')} · ${escH(wk.year || '')}</div>
@@ -22839,10 +22878,24 @@ function browseTextFamily(familyId) {
             </li>`;
           }
         }
-        vh += '</ul>';
+        divisionsHtml += '</ul>';
       }
-      vh += '</div>';
+      divisionsHtml += '</div>';
     }
+    // Summary line (derived) — secondary to the title, sits just below it.
+    const _w = readableCount === 1 ? 'readable witness' : 'readable witnesses';
+    const _s = restrictedCount === 1 ? 'restricted source' : 'restricted sources';
+    const _t = _byVeda.length === 1 ? 'Vedic tradition' : 'Vedic traditions';
+    const summaryHtml = `<div class="veda-family-summary">${escH(`${readableCount} ${_w} · ${restrictedCount} ${_s} · ${_byVeda.length} ${_t}`)}</div>`;
+    // Jump nav (plain anchors + CSS only) — one item per Veda, wraps cleanly on mobile.
+    const jumpHtml = `<nav class="veda-jump-nav" aria-label="Jump to a Veda">`
+      + _byVeda.map((vd, i) =>
+          (i ? '<span class="veda-jump-sep" aria-hidden="true">·</span>' : '')
+          + `<a href="#${escH(_vedaSlug(vd))}">${escH(vd.veda)}</a>`).join('')
+      + `</nav>`;
+    let vh = summaryHtml;
+    if (fam.description) vh += `<div class="family-description">${escH(fam.description)}</div>`;
+    vh += jumpHtml + divisionsHtml;
     $browseTiles.className = 'upn-detail-wrap vedas-family';
     $browseTiles.innerHTML = vh || '<div class="upn-detail-empty">No Vedic witness available.</div>';
     return;
@@ -25020,7 +25073,7 @@ const TEXT_FAMILIES = [
       { textId: 'vedic-hymns-part2',          role: 'collection' },
     ],
     byVeda: [
-      { veda: 'Ṛgveda',
+      { veda: 'Ṛgveda', anchor: 'rgveda',
         note: 'The oldest Veda: 1,028 hymns in ten maṇḍalas, with the Aitareya and Kauṣītaki Brāhmaṇas and Āraṇyakas attached to it.',
         layers: [
           { layer: 'Saṃhitā', works: [
@@ -25040,7 +25093,7 @@ const TEXT_FAMILIES = [
             { textId: 'vedic-hymns-part2', title: 'Vedic Hymns, Part 2', translator: 'Hermann Oldenberg', year: '1897', role: 'Selection', completeness: 'partial',
               note: 'SBE 46 — Oldenberg’s continuation of the selected-hymns translation.' } ] },
         ] },
-      { veda: 'Sāmaveda',
+      { veda: 'Sāmaveda', anchor: 'samaveda',
         note: 'The Veda of melodies: chants drawn largely from the Ṛgveda, with the Pañcaviṃśa (Tāṇḍya) Brāhmaṇa attached.',
         layers: [
           { layer: 'Saṃhitā', works: [
@@ -25049,19 +25102,19 @@ const TEXT_FAMILIES = [
             { textId: 'pancavimsa-brahmana-caland', title: 'The Pañcaviṃśa (Tāṇḍya) Brāhmaṇa', translator: 'Willem Caland', year: '1931', restricted: true, completeness: 'complete',
               restrictedNote: 'Held in the Local Archive; enters the US public domain on 2027-01-01. Not publicly readable until then.' } ] },
         ] },
-      { veda: 'Yajurveda',
+      { veda: 'Yajurveda', anchor: 'yajurveda',
         note: 'The Veda of sacrificial formulae, transmitted in a Black (Taittirīya) and a White (Vājasaneyi) recension, the latter with the Śatapatha Brāhmaṇa.',
         layers: [
           { layer: 'Saṃhitā — Black (Taittirīya)', works: [
             { textId: 'yajur-veda-keith', title: 'The Yajur Veda (Taittirīya Saṃhitā)', translator: 'Arthur Berriedale Keith', year: '1914', role: 'Reading edition', completeness: 'complete' } ] },
           { layer: 'Saṃhitā — White (Vājasaneyi)', works: [
-            { textId: 'yajur-veda-white-griffith', title: 'The White Yajur Veda (Vājasaneyi Saṃhitā)', translator: 'Ralph T. H. Griffith', year: '1899', role: 'Reading edition', completeness: 'complete',
+            { textId: 'yajur-veda-white-griffith', title: 'The White Yajur Veda (Vājasaneyi Saṃhitā)', translator: 'Ralph T. H. Griffith', year: '1899', role: 'Reading edition', completeness: 'near-complete',
               note: 'Near-complete: 40 adhyāyas, 1,950 verses (documented minor residual vs ~1,975).' } ] },
           { layer: 'Brāhmaṇa', works: [
             { textId: 'satapatha-brahmana-eggeling', title: 'The Śatapatha Brāhmaṇa', translator: 'Julius Eggeling', year: '1900', role: 'Reading edition', completeness: 'complete',
               note: 'SBE 12/26/41/43/44 — 14 kāṇḍas (Eggeling omits SB 14.4–9, which is the Bṛhadāraṇyaka Upaniṣad).' } ] },
         ] },
-      { veda: 'Atharvaveda',
+      { veda: 'Atharvaveda', anchor: 'atharvaveda',
         note: 'The Veda of everyday and apotropaic hymns. Represented by a complete metrical translation and a partial thematic selection.',
         layers: [
           { layer: 'Saṃhitā', works: [
