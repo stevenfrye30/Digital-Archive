@@ -25138,7 +25138,12 @@ const TEXT_FAMILIES = [
           { layer: 'Saṃhitā', works: [
             { textId: 'atharva-veda-griffith', title: 'The Hymns of the Atharvaveda', translator: 'Ralph T. H. Griffith', year: '1896', role: 'Reading edition', completeness: 'complete',
               note: 'Complete: 20 books, 727 hymns.' },
-            { textId: 'atharva-veda-bloomfield', title: 'The Atharva Veda (Hymns)', translator: 'Maurice Bloomfield', year: '1897', role: 'Scholarly selection', completeness: 'partial',
+            // Presentation quarantine (2026-07-18): the live public body is the malformed dump-era
+            // extraction (438 passages, ~49% non-scripture artifacts). A print-reconciled replacement
+            // (1,818 passages, reconciled against the 1897 SBE 42 print) is ready. The card is hidden
+            // HERE ONLY — the body, index row, direct route, family membership, and PID space are all
+            // preserved. The card returns after the clean body is deployed and verified live.
+            { textId: 'atharva-veda-bloomfield', hidden: true, title: 'The Atharva Veda (Hymns)', translator: 'Maurice Bloomfield', year: '1897', role: 'Scholarly selection', completeness: 'partial',
               note: 'SBE 42 — a thematic selection (~⅓ of the Atharvaveda), not a complete translation; the extracted text carries known OCR-marker artifacts.' } ] },
         ] },
     ],
