@@ -15032,7 +15032,9 @@ function showCover(data, entry) {
   html += '<div id="continuous-toc">';
   if (!useCodexLayout) {
     html += `<div class="cc-toc-heading">Contents</div>`;
-    if (grouped) {
+    if (_override && _override.summary) {
+      html += `<div class="cc-toc-sub">${escapeHTML(_override.summary)}</div>`;
+    } else if (grouped) {
       html += `<div class="cc-toc-sub">${keys.length} ${hier[0] || 'section'}s \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
     } else {
       html += `<div class="cc-toc-sub">${bodyCount.toLocaleString()} passages</div>`;
@@ -15041,9 +15043,15 @@ function showCover(data, entry) {
     // Codex-leaf sub-rubric — quiet italic line under the title
     // declaring the count + the L1 type ("18 chapters · 295
     // passages"). Mirrors the Bible's silent canon-rubric tone.
-    const labelWord = hier[0] || 'section';
-    const plural = (keys.length === 1) ? labelWord : labelWord + (labelWord.endsWith('s') ? '' : 's');
-    html += `<div class="cc-toc-sub bcl-codex-sub">${keys.length} ${plural} \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
+    // v101 \u2014 a per-text override may replace this computed rubric
+    // with an explicit selection-aware line (inert when absent).
+    if (_override && _override.summary) {
+      html += `<div class="cc-toc-sub bcl-codex-sub">${escapeHTML(_override.summary)}</div>`;
+    } else {
+      const labelWord = hier[0] || 'section';
+      const plural = (keys.length === 1) ? labelWord : labelWord + (labelWord.endsWith('s') ? '' : 's');
+      html += `<div class="cc-toc-sub bcl-codex-sub">${keys.length} ${plural} \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
+    }
   }
 
   // v100 — Per-text contents note (italic, restrained). Appears
@@ -25748,6 +25756,12 @@ const _TEXT_FAMILY_BY_TEXTID = (() => {
 //                        legacy reprint")
 //    · note              prose annotation rendered above the
 //                        contents grid (italic, restrained)
+//    · summary           replace the computed "N units · N passages"
+//                        contents sub-rubric with an explicit
+//                        selection-aware line (e.g. "49 selected
+//                        hymns · 541 verses"). General + inert when
+//                        absent — records without it keep the
+//                        computed rubric unchanged.
 //    · entries           explicit list of cleanly-routable L1 keys
 //                        with display names. When present, the
 //                        cover renders ONLY these entries; the
@@ -25798,6 +25812,28 @@ const TEXT_CONTENTS_OVERRIDES = {
   'upanishads-johnson': {
     mode: 'thematic',
     note: 'This edition is organised thematically by Charles Johnston, not as a simple Upanishad-by-Upanishad sequence. Section labels reflect the translator’s own structure.',
+  },
+  // Vedic Hymns, Part 1 (Müller, SBE 32, 1891) is a THEMATIC SELECTION —
+  // 49 hymns / 541 verses drawn from Maṇḍalas 1, 2, 5, 6, 7, 8, and 10 (the
+  // Maruts, Rudra, Vāyu, Vāta hymns). The computed rubric "7 mandalas · 541
+  // passages" + bare "Maṇḍala N" tiles read as seven COMPLETE maṇḍalas with
+  // 3/4/9 missing. This override makes the selection explicit WITHOUT touching
+  // the body, PIDs, hierarchy, ordering, or canonical maṇḍala numbers. The
+  // `entries` keys are the numerically-sorted L1 maṇḍala keys (unchanged set
+  // and order); only the display labels and the sub-rubric change.
+  'vedic-hymns-part1': {
+    mode: 'thematic',
+    summary: '49 selected hymns · 541 verses',
+    note: 'Müller’s Sacred Books of the East, Vol. 32 — a thematic selection of the hymns to the Maruts, Rudra, Vāyu, and Vāta, drawn from Maṇḍalas 1, 2, 5, 6, 7, 8, and 10. These 49 hymns (541 verses) are selected hymns only — not the complete maṇḍalas, and not the complete Rigveda.',
+    entries: [
+      { key: '1',  name: 'Hymns from Maṇḍala 1' },
+      { key: '2',  name: 'Hymns from Maṇḍala 2' },
+      { key: '5',  name: 'Hymns from Maṇḍala 5' },
+      { key: '6',  name: 'Hymns from Maṇḍala 6' },
+      { key: '7',  name: 'Hymns from Maṇḍala 7' },
+      { key: '8',  name: 'Hymns from Maṇḍala 8' },
+      { key: '10', name: 'Hymns from Maṇḍala 10' },
+    ],
   },
 };
 
