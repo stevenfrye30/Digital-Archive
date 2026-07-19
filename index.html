@@ -25835,6 +25835,26 @@ const TEXT_CONTENTS_OVERRIDES = {
       { key: '10', name: 'Hymns from Maṇḍala 10' },
     ],
   },
+  // Vedic Hymns, Part 2 (Oldenberg, SBE 46, 1897) is Oldenberg's continuation of
+  // the selected-hymns translation — the hymns to Agni from Maṇḍalas I–V: 130
+  // hymns / 1,147 verses. The computed rubric "5 mandalas · 1,147 passages" +
+  // bare "Maṇḍala N" tiles (1–5, no gaps) read as five COMPLETE maṇḍalas. This
+  // override makes the Agni selection explicit WITHOUT touching the body, PIDs,
+  // hierarchy, ordering, or canonical maṇḍala numbers. The `entries` keys are the
+  // numerically-sorted L1 maṇḍala keys (unchanged set and order 1–5); only the
+  // display labels and the sub-rubric change. Not a claim of every Agni hymn.
+  'vedic-hymns-part2': {
+    mode: 'thematic',
+    summary: '130 selected hymns · 1,147 verses',
+    note: 'Oldenberg’s Sacred Books of the East, Vol. 46 — the hymns to Agni from Maṇḍalas I–V. These 130 hymns (1,147 verses) are selected hymns only — not the complete maṇḍalas, and not the complete Rigveda.',
+    entries: [
+      { key: '1', name: 'Hymns from Maṇḍala 1' },
+      { key: '2', name: 'Hymns from Maṇḍala 2' },
+      { key: '3', name: 'Hymns from Maṇḍala 3' },
+      { key: '4', name: 'Hymns from Maṇḍala 4' },
+      { key: '5', name: 'Hymns from Maṇḍala 5' },
+    ],
+  },
 };
 
 function _contentsOverrideFor(entry) {
