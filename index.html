@@ -2302,6 +2302,24 @@ button.home-path {
   box-shadow: 0 9px 30px rgba(0,0,0,0.26);
 }
 #home-press:active { transform: translateY(0); }
+#home-hall {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: clamp(10px, 2vh, 16px);
+  padding: 12px 34px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2c4080, #3f5aa6);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: transform 0.15s, box-shadow 0.25s;
+}
+#home-hall:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 30px rgba(0,0,0,0.26);
+}
+#home-hall:active { transform: translateY(0); }
 .home-press-title {
   font-family: Georgia, serif;
   font-size: 19px;
@@ -11718,6 +11736,10 @@ body.viewer-active .folio-leaf-colophon {
             <a id="home-press" href="press.html">
               <span class="home-press-title">The Press</span>
               <span class="home-press-sub">Print or save any passage</span>
+            </a>
+            <a id="home-hall" href="hall/">
+              <span class="home-press-title">The Religion Hall</span>
+              <span class="home-press-sub">Enter the traditions — Hinduism &amp; Christianity open</span>
             </a>
             <div id="home-workroom" style="display:none;">
               <button class="home-restricted-btn home-workroom-btn" onclick="browseWorkroom()">⚒ Archive Workroom <span id="home-workroom-count" class="home-workroom-count"></span></button>
