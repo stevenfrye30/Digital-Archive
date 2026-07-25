@@ -4,7 +4,7 @@
 <!-- LIGHT-FIRST theme boot: runs before paint; light unless the shared key says dark; invalid/absent ⇒ light -->
 <script>(function(){try{var t=localStorage.getItem("archive_theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
 <meta name="robots" content="noindex">
-<!-- Religion Hall preview | enabled rooms: hindu -&gt; /Digital-Archive/rooms/hindu/ sha256=00fca69fc4989cbc05486b6a042e19b3034dd2d4722c8891ded983f0cf4b232e; christian -&gt; /Digital-Archive/rooms/christian/ sha256=e3e7f3a245936b49c4b2954c1869890121fd48bd9ac05084e83db6791ce8250c -->
+<!-- Religion Hall preview | enabled rooms: hindu -&gt; /Digital-Archive/rooms/hindu/ sha256=e81b0ca482b7d5f5e8ea07eeb938d8379d0ddba23ba3927f0eb35466562db3da; christian -&gt; /Digital-Archive/rooms/christian/ sha256=6daf37213570582309ac56eaaa37f0ef166479c3e314276874a159bcafa347b2; buddhist -&gt; /Digital-Archive/rooms/buddhist/ sha256=518ca0fb83af31cc12e1b64d505a51418bf3d642097aeae1564bc332fcf93dca -->
 <style>
   :root{
     --bg:#f3efe4; --bg2:#ece5d6; --panel:#faf6ec; --ink:#141220; --ink-soft:#4a4636; --ink-faint:#7c7261;
@@ -146,7 +146,7 @@
   <section class="intro" aria-labelledby="halltitle">
     <p class="eyebrow">The Archive</p>
     <h1 id="halltitle">The Religion Hall</h1>
-    <p class="lede">A threshold to the world&#x27;s sacred-text traditions. Two rooms are open; the rest are mapped in the expansion and their rooms are forthcoming. Step through an open doorway to enter its archive.</p>
+    <p class="lede">A threshold to the world&#x27;s sacred-text traditions. Three rooms are open; the rest are mapped in the expansion and their rooms are forthcoming. Step through an open doorway to enter its archive.</p>
   </section>
 
   <div class="legend" role="note" aria-label="What the doorway markers mean">
@@ -158,7 +158,7 @@
   <nav id="doors" class="colonnade" aria-label="Tradition doorways">
     <a class="door open" data-k="hindu" data-name="Hinduism" href="/Digital-Archive/rooms/hindu/" aria-label="Enter the Hinduism room — Room open. Use your browser Back to return to the Hall."><span class="keyline" aria-hidden="true"></span><span class="sym" role="img" aria-label="Om">🕉️</span><h3>Hinduism</h3><p class="blurb">Śruti and smṛti — the Vedas and Brāhmaṇas to the epics, the six darśanas, and the devotional poets.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">◉</span>Room open</span><span class="cta">Enter →</span></span></a>
     <a class="door open" data-k="christian" data-name="Christianity" href="/Digital-Archive/rooms/christian/" aria-label="Enter the Christianity room — Room open. Use your browser Back to return to the Hall."><span class="keyline" aria-hidden="true"></span><span class="sym" role="img" aria-label="Cross">✝</span><h3>Christianity</h3><p class="blurb">Twenty centuries of scripture, patristics, and devotion — the great Bibles, the Fathers, the Reformers, the mystics.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">◉</span>Room open</span><span class="cta">Enter →</span></span></a>
-    <button type="button" class="door forth" data-k="buddhist" data-name="Buddhism" aria-label="Buddhism — Room forthcoming. Mapped in the expansion plan; the immersive room is not yet built."><span class="sym" role="img" aria-label="Dharma wheel">☸</span><h3>Buddhism</h3><p class="blurb">The three great canons — Pāli, Chinese, and Tibetan.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">○</span>Room forthcoming</span><span class="cta">Mapped</span></span></button>
+    <a class="door open" data-k="buddhist" data-name="Buddhism" href="/Digital-Archive/rooms/buddhist/" aria-label="Enter the Buddhism room — Room open. Use your browser Back to return to the Hall."><span class="keyline" aria-hidden="true"></span><span class="sym" role="img" aria-label="Dharma wheel">☸</span><h3>Buddhism</h3><p class="blurb">The teachings of the Buddha — early Pāli discourses, the Jātaka birth-stories, and the Mahāyāna sūtras.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">◉</span>Room open</span><span class="cta">Enter →</span></span></a>
     <button type="button" class="door forth" data-k="jewish" data-name="Judaism" aria-label="Judaism — Room forthcoming. Mapped in the expansion plan; the immersive room is not yet built."><span class="sym" role="img" aria-label="Star of David">✡</span><h3>Judaism</h3><p class="blurb">Tanakh, Mishnah and Talmud, and the classical commentators.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">○</span>Room forthcoming</span><span class="cta">Mapped</span></span></button>
     <button type="button" class="door forth" data-k="islamic" data-name="Islam" aria-label="Islam — Room forthcoming. Mapped in the expansion plan; the immersive room is not yet built."><span class="sym" role="img" aria-label="Star and crescent">☪</span><h3>Islam</h3><p class="blurb">The Qur&#x27;an, the hadith collections, and the classical tradition.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">○</span>Room forthcoming</span><span class="cta">Mapped</span></span></button>
     <button type="button" class="door forth" data-k="eastasian" data-name="East Asian" aria-label="East Asian — Room forthcoming. Mapped in the expansion plan; the immersive room is not yet built."><span class="sym" role="img" aria-label="Yin and yang">☯</span><h3>East Asian</h3><p class="blurb">The Confucian classics and the Daoist canon.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">○</span>Room forthcoming</span><span class="cta">Mapped</span></span></button>
@@ -177,12 +177,12 @@
 </main>
 
 <footer class="foot">
-  <p>Rooms of the world&#x27;s sacred-text traditions. Two rooms are open (Hinduism, Christianity); every other tradition is mapped in the expansion
-  and its room is forthcoming. Enter a room, then use your browser's Back to return to the Hall — or the room's own
-  "Return to the Hall" link. (Texts still open in the reader in a separate tab.)</p>
+  <p>Rooms of the world&#x27;s sacred-text traditions. Three rooms are open (Hinduism, Christianity, Buddhism); every other tradition is mapped in the
+  expansion and its room is forthcoming. Enter a room, then use your browser's Back to return to the Hall — or the
+  room's own "Return to the Hall" link. (Texts still open in the reader in a separate tab.)</p>
 </footer>
 
-<script id="halldata" type="application/json">[{"k": "hindu", "name": "Hinduism", "status": "available"}, {"k": "christian", "name": "Christianity", "status": "available"}, {"k": "buddhist", "name": "Buddhism", "status": "forthcoming"}, {"k": "jewish", "name": "Judaism", "status": "forthcoming"}, {"k": "islamic", "name": "Islam", "status": "forthcoming"}, {"k": "eastasian", "name": "East Asian", "status": "forthcoming"}, {"k": "zoroastrian", "name": "Zoroastrianism", "status": "forthcoming"}, {"k": "sikh", "name": "Sikhism", "status": "forthcoming"}, {"k": "jain", "name": "Jainism", "status": "forthcoming"}, {"k": "shinto", "name": "Shintō", "status": "forthcoming"}, {"k": "ancient", "name": "Ancient World", "status": "forthcoming"}, {"k": "gnostic", "name": "Gnostic & Hermetic", "status": "forthcoming"}, {"k": "indigenous", "name": "Indigenous & Oral", "status": "forthcoming"}, {"k": "modern", "name": "Modern & New", "status": "forthcoming"}]</script>
+<script id="halldata" type="application/json">[{"k": "hindu", "name": "Hinduism", "status": "available"}, {"k": "christian", "name": "Christianity", "status": "available"}, {"k": "buddhist", "name": "Buddhism", "status": "available"}, {"k": "jewish", "name": "Judaism", "status": "forthcoming"}, {"k": "islamic", "name": "Islam", "status": "forthcoming"}, {"k": "eastasian", "name": "East Asian", "status": "forthcoming"}, {"k": "zoroastrian", "name": "Zoroastrianism", "status": "forthcoming"}, {"k": "sikh", "name": "Sikhism", "status": "forthcoming"}, {"k": "jain", "name": "Jainism", "status": "forthcoming"}, {"k": "shinto", "name": "Shintō", "status": "forthcoming"}, {"k": "ancient", "name": "Ancient World", "status": "forthcoming"}, {"k": "gnostic", "name": "Gnostic & Hermetic", "status": "forthcoming"}, {"k": "indigenous", "name": "Indigenous & Oral", "status": "forthcoming"}, {"k": "modern", "name": "Modern & New", "status": "forthcoming"}]</script>
 <script>
 (function(){
   "use strict";

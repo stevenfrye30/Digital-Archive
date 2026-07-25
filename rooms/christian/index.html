@@ -307,7 +307,29 @@ function renderNave(){                               // basilica floor-plan (axi
     navBay(g,z,n); svg.appendChild(g);
   });
 }
-if(NAVKIND==="nave") renderNave(); else if(NAVKIND!=="none") renderRings();
+function renderCourtyard(){                          // monastic-library plan (enclosed): a central reading court
+  const svg=$("#navmap"); if(!svg)return;            // ringed by shelf "cabinets" — one bay per content shelf.
+  svg.setAttribute("viewBox","0 0 240 240");
+  const items=ZONES.filter(z=>z.k!=="start"&&z.k!=="all");
+  const max=Math.max(1,...items.map(z=>(DATA[z.k]||[]).length));
+  // 3×3 plan: the centre (1,1) is the open reading courtyard; the 8 perimeter cells hold shelf cabinets.
+  const cell=72, gap=6, x0=8, perim=[[0,0],[1,0],[2,0],[2,1],[2,2],[1,2],[0,2],[0,1]];  // clockwise from top-left
+  const cx=x0+1*cell+8, cy=x0+1*cell+8, cs=cell-16;
+  svg.appendChild(svgEl("rect",{x:cx,y:cy,width:cs,height:cs,rx:4,fill:"none",stroke:"var(--gold)","stroke-width":1.5,opacity:.8}));
+  svg.appendChild(svgEl("circle",{cx:cx+cs/2,cy:cy+cs/2,r:6,fill:"none",stroke:"var(--gold)","stroke-width":1.5}));  // court well
+  items.slice(0,8).forEach((z,idx)=>{
+    const [c,rw]=perim[idx], n=(DATA[z.k]||[]).length;
+    const x=x0+c*cell+(c?gap:0), y=x0+rw*cell+(rw?gap:0), w=cell-2, h=cell-2;
+    const g=svgEl("g",{class:"bay"});
+    g.appendChild(svgEl("rect",{x:x,y:y,width:w,height:h,rx:4,fill:"var(--accent)",opacity:(.15+.55*(n/max)).toFixed(2),stroke:"var(--accent)","stroke-width":1}));
+    const t=svgEl("text",{x:x+w/2,y:y+h/2+5,"text-anchor":"middle","font-size":13,fill:"var(--ink)"}); t.textContent=z.i;
+    g.appendChild(t); navBay(g,z,n); svg.appendChild(g);
+  });
+}
+/* nav dispatcher — tradition-neutral: the kind + all labels/symbols come from config, never hard-coded here */
+if(NAVKIND==="courtyard") renderCourtyard();
+else if(NAVKIND==="nave") renderNave();
+else if(NAVKIND!=="none") renderRings();
 
 const BADGE={
   verified:'<span class="badge full"><span class="bi" aria-hidden="true">◉</span>fully source-verified</span>',
