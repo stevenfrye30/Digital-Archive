@@ -1,8 +1,10 @@
 <meta charset="utf-8">
 <title>The Archive · The Religion Hall</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- LIGHT-FIRST theme boot: runs before paint; light unless the shared key says dark; invalid/absent ⇒ light -->
+<script>(function(){try{var t=localStorage.getItem("archive_theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
 <meta name="robots" content="noindex">
-<!-- Religion Hall preview | enabled rooms: hindu -&gt; /Digital-Archive/rooms/hindu/ sha256=aff8b09b75525e53e3d10104ea7fd958c9530e3fca7e5cda365749ae74034146; christian -&gt; /Digital-Archive/rooms/christian/ sha256=8b6413f5d8b61b4e05cc25614e2ba886f53f2b8b52216cf55068746ea917068d -->
+<!-- Religion Hall preview | enabled rooms: hindu -&gt; /Digital-Archive/rooms/hindu/ sha256=aae2fb23e532ad7d8bdbb0fb81fb6905db5f0b200328d8be10506f48f4ab681e; christian -&gt; /Digital-Archive/rooms/christian/ sha256=ae352509ee28e1ebbe34862e3f2123e1062bb7825160a6baa309182072d5182c -->
 <style>
   :root{
     --bg:#f3efe4; --bg2:#ece5d6; --panel:#faf6ec; --ink:#141220; --ink-soft:#4a4636; --ink-faint:#7c7261;
@@ -14,17 +16,13 @@
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --shadow:0 1px 2px rgba(20,18,32,.05),0 8px 24px rgba(20,18,32,.06);
   }
-  @media (prefers-color-scheme:dark){
-    :root{ --bg:#141220; --bg2:#100e1a; --panel:#1c1a2a; --ink:#ece7f3; --ink-soft:#b7b1c4; --ink-faint:#8f8799;
-      --line:#2d2940; --line2:#3a3552; --gold:#d8b45a; --gold-soft:#b7902f;
-      --hindu:#d69a3c; --christian:#8098d8; --arch:#3a3552; --arch-open:#d8b45a; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); }
-  }
+  /* LIGHT-FIRST: light is the base :root above; dark applies ONLY via [data-theme="dark"] (no prefers-color-scheme). */
   :root[data-theme="dark"]{ --bg:#141220; --bg2:#100e1a; --panel:#1c1a2a; --ink:#ece7f3; --ink-soft:#b7b1c4;
     --ink-faint:#8f8799; --line:#2d2940; --line2:#3a3552; --gold:#d8b45a; --gold-soft:#b7902f;
     --hindu:#d69a3c; --christian:#8098d8; --arch:#3a3552; --arch-open:#d8b45a; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); }
-  :root[data-theme="light"]{ --bg:#f3efe4; --bg2:#ece5d6; --panel:#faf6ec; --ink:#141220; --ink-soft:#4a4636;
-    --ink-faint:#7c7261; --line:#ddd3bf; --line2:#ccbfa6; --gold:#a6801f; --gold-soft:#c9a84e;
-    --hindu:#a96e14; --christian:#3f5aa6; --arch:#c9bfa6; --arch-open:#b8942e; --shadow:0 1px 2px rgba(20,18,32,.05),0 8px 24px rgba(20,18,32,.06); }
+  :root[data-theme="light"]{ --bg:#f3efe4; --bg2:#e9e1d0; --panel:#fbf7ee; --ink:#201c14; --ink-soft:#5a5142;
+    --ink-faint:#6f6551; --line:#e0d8c5; --line2:#c8bda3; --gold:#8f7320; --gold-soft:#b89a3e;
+    --hindu:#a2680f; --christian:#39508f; --arch:#c2b697; --arch-open:#a9862a; --shadow:0 1px 2px rgba(20,18,32,.05),0 8px 24px rgba(20,18,32,.06); }
 
   *{box-sizing:border-box}
   html,body{margin:0}
@@ -41,6 +39,14 @@
   .brand{ font-family:var(--serif); font-size:.95rem; letter-spacing:.02em; color:var(--ink-soft); }
   .brand b{ color:var(--ink); margin-left:.5rem; }
   .barnote{ margin-left:auto; font-size:.76rem; color:var(--ink-faint); }
+  nav.crumbs ol{ list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:.1rem; margin:0; padding:0;
+    font-family:var(--serif); font-size:.86rem; }
+  nav.crumbs li{ display:inline-flex; align-items:center; }
+  nav.crumbs li+li::before{ content:"›"; margin:0 .4rem; color:var(--ink-faint); }
+  nav.crumbs a{ color:var(--gold); text-decoration:none; }
+  nav.crumbs a:hover{ text-decoration:underline; }
+  nav.crumbs a:focus-visible{ outline:2.5px solid var(--gold); outline-offset:2px; border-radius:4px; }
+  nav.crumbs .crumb-shelf{ color:var(--ink); font-weight:600; }
   .theme{ border:1px solid var(--line2); background:transparent; color:var(--ink-soft); border-radius:99px;
     padding:.3rem .7rem; font:inherit; font-size:.8rem; cursor:pointer; display:inline-flex; gap:.4rem; align-items:center; }
   .theme:hover{ border-color:var(--gold); color:var(--ink); }
@@ -125,9 +131,14 @@
 
 <header class="hall" role="banner">
   <div class="bar">
-    <span class="brand">The Archive<b>The Religion Hall</b></span>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/Digital-Archive/">Archive Home</a></li>
+        <li><span class="crumb-shelf" aria-current="page">Religion Hall</span></li>
+      </ol>
+    </nav>
     <span class="barnote" id="barnote">Rooms of the world&#x27;s sacred-text traditions.</span>
-    <button class="theme" id="themeBtn" type="button" aria-label="Toggle light or dark theme">◐ <span id="themeLbl">Theme</span></button>
+    <button class="theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme">◐ <span id="themeLbl">Light</span></button>
   </div>
 </header>
 
@@ -176,13 +187,13 @@
 (function(){
   "use strict";
   var root=document.documentElement;
-  /* ---- theme toggle (media query is the default; toggle stamps data-theme) ---- */
-  var tb=document.getElementById("themeBtn"), tl=document.getElementById("themeLbl");
-  function curTheme(){ var d=root.getAttribute("data-theme"); if(d) return d;
-    return matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"; }
-  function setTheme(t){ root.setAttribute("data-theme",t); if(tl) tl.textContent=(t==="dark"?"Dark":"Light");
-    try{ sessionStorage.setItem("hall_theme",t); }catch(e){} }
-  try{ var saved=sessionStorage.getItem("hall_theme"); if(saved) setTheme(saved); }catch(e){}
+  /* ---- shared theme contract: light-first default (set pre-paint), manual choice persists across Hall + rooms
+         via one localStorage key ("archive_theme") ---- */
+  var tb=document.getElementById("themeBtn"), tl=document.getElementById("themeLbl"), THEME_KEY="archive_theme";
+  function curTheme(){ return root.getAttribute("data-theme")==="dark"?"dark":"light"; }
+  function setTheme(t){ t=(t==="dark")?"dark":"light"; root.setAttribute("data-theme",t);
+    if(tl) tl.textContent=(t==="dark"?"Dark":"Light"); try{ localStorage.setItem(THEME_KEY,t); }catch(e){} }
+  setTheme(curTheme());   // sync the toggle label to the pre-painted theme
   if(tb) tb.addEventListener("click",function(){ setTheme(curTheme()==="dark"?"light":"dark"); });
 
   /* ---- forthcoming activation → accessible announcement (no fake room) ---- */
@@ -199,11 +210,17 @@
   try{
     var last=sessionStorage.getItem("hall_last");
     if(last){ var el=document.querySelector('.door.open[data-k="'+last+'"]');
-      if(el){ el.classList.add("lastvisited"); } }
+      if(el){ el.classList.add("lastvisited");
+        /* on a Back/Forward return to the Hall, restore keyboard focus to the doorway that opened the room */
+        var nav=(performance.getEntriesByType&&performance.getEntriesByType("navigation")[0])||{};
+        if(nav.type==="back_forward"){ try{ el.focus(); }catch(e){} } } }
   }catch(e){}
+  /* bfcache restores the Hall as-is on Back; make sure focus lands on the last-opened doorway there too */
+  window.addEventListener("pageshow",function(ev){ if(!ev.persisted) return;
+    try{ var lk=sessionStorage.getItem("hall_last"); if(lk){ var e2=document.querySelector('.door.open[data-k="'+lk+'"]'); if(e2) e2.focus(); } }catch(e){} });
   Array.prototype.forEach.call(document.querySelectorAll(".door.open"),function(a){
     a.addEventListener("click",function(){
-      /* rooms open in a new tab, so the Hall stays put — mark the last-opened door immediately */
+      /* mark the doorway we're entering from, so a later Back restores focus + the "last opened" marker here */
       Array.prototype.forEach.call(document.querySelectorAll(".door.open.lastvisited"),
         function(o){ o.classList.remove("lastvisited"); });
       a.classList.add("lastvisited");

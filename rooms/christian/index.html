@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <title>The Archive · Religion Hall — The Christian Room</title>
+<script>(function(){try{var t=localStorage.getItem("archive_theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
 <style>
 :root{
     --bg:#f3efe4; --surface:#fffdf7; --panel:#faf6ec; --raise:#fbf8f0;
@@ -11,10 +12,9 @@
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
     --sans:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
-  :root[data-theme="light"]{--bg:#f3efe4;--surface:#fffdf7;--panel:#faf6ec;--raise:#fbf8f0;--ink:#241f18;--ink-soft:#685f51;--ink-faint:#7c7261;--line:#e4ddcc;--line2:#d4cab4;--accent:#a96e14;--accent-ink:#7a4e12;--gold:#b8942e;--g:#2E7D32;--a:#B7791F;--r:#C0392B;--g-t:#e5efe1;--a-t:#f2e8d3;}
-  @media (prefers-color-scheme:dark){
-    :root{--bg:#141220;--surface:#1d1a2b;--panel:#221e33;--raise:#26223a;--ink:#ece6da;--ink-soft:#a79fb2;--ink-faint:#8f8799;--line:#2d2941;--line2:#3b3654;--accent:#e6a93a;--accent-ink:#f1c470;--gold:#d8b45a;--g:#5cb36a;--a:#d99a3c;--r:#e06459;--g-t:#1b2a1e;--a-t:#2a2318;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px -18px rgba(0,0,0,.6);}
-  }
+  /* LIGHT-FIRST: light is the base :root (applies with no data-theme, incl. JS-off and system-dark systems).
+     Dark applies ONLY when the shared theme contract stamps data-theme="dark". No prefers-color-scheme default. */
+  :root[data-theme="light"]{--bg:#f3efe4;--surface:#fffdf7;--panel:#faf6ec;--raise:#fbf8f0;--ink:#241f18;--ink-soft:#5d5445;--ink-faint:#726853;--line:#e2dac7;--line2:#cdc2a8;--accent:#a96e14;--accent-ink:#734810;--gold:#9c7d24;--g:#2E7D32;--a:#9c6f16;--r:#C0392B;--g-t:#e5efe1;--a-t:#f2e8d3;}
   :root[data-theme="dark"]{--bg:#141220;--surface:#1d1a2b;--panel:#221e33;--raise:#26223a;--ink:#ece6da;--ink-soft:#a79fb2;--ink-faint:#8f8799;--line:#2d2941;--line2:#3b3654;--accent:#e6a93a;--accent-ink:#f1c470;--gold:#d8b45a;--g:#5cb36a;--a:#d99a3c;--r:#e06459;--g-t:#1b2a1e;--a-t:#2a2318;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px -18px rgba(0,0,0,.6);}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -110,25 +110,69 @@
   .themebtn:hover{border-color:var(--line2)}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-:root,:root[data-theme="light"]{--accent:#3f5aa6;--accent-ink:#2c4080;--gold:#b8942e;}@media (prefers-color-scheme:dark){:root{--accent:#8098d8;--accent-ink:#a9bdf0;--gold:#d8b45a;}}:root[data-theme="dark"]{--accent:#8098d8;--accent-ink:#a9bdf0;--gold:#d8b45a;}
+  /* ===== 2026-07-25 light-first navigation refinement ===== */
+  .topbar{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .topbar .hall-in{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .topbar .themebtn{min-height:36px}
+  nav.crumbs{min-width:0}
+  nav.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:.15rem .1rem;margin:0;padding:0;
+    font-family:var(--serif);font-size:.86rem}
+  nav.crumbs li{display:inline-flex;align-items:center;max-width:100%}
+  nav.crumbs li+li::before{content:"›";margin:0 .4rem;color:var(--ink-faint);font-family:var(--sans)}
+  nav.crumbs a{color:var(--accent-ink);text-decoration:none;padding:.15rem .1rem;border-radius:4px}
+  nav.crumbs a:hover{text-decoration:underline}
+  nav.crumbs a:focus-visible,.seqbtn:focus-visible,.exit:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+  nav.crumbs .crumb-shelf{color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:14ch}
+
+  /* prominent Hall-return link (not a metadata chip): ≥44px target, integrated with the room accent */
+  .mast{position:relative}
+  a.exit{margin:0 0 1rem;align-self:flex-start;display:inline-flex;align-items:center;gap:.45rem;min-height:44px;
+    padding:.55rem 1.05rem;border-radius:12px;background:var(--raise);border:1.5px solid var(--line2);
+    color:var(--accent-ink);font-family:var(--serif);font-size:.98rem;font-weight:600;text-decoration:none;
+    box-shadow:var(--shadow);transition:border-color .15s,transform .1s,background .15s}
+  a.exit:hover{border-color:var(--accent);color:var(--ink);transform:translateY(-1px)}
+  a.exit:active{transform:translateY(0)}
+
+  /* previous / next shelf controls */
+  .shelfseq{display:flex;justify-content:space-between;gap:.6rem;margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--line)}
+  .seqbtn{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:.5rem .9rem;border-radius:10px;
+    background:var(--surface);border:1px solid var(--line2);color:var(--accent-ink);font-family:var(--serif);
+    font-size:.94rem;text-decoration:none;max-width:48%;transition:border-color .15s,transform .1s,color .15s}
+  .seqbtn:hover{border-color:var(--accent);color:var(--ink);transform:translateY(-1px)}
+  .seqbtn.next{margin-left:auto;text-align:right}
+  .seqbtn .seqname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .seqbtn .seqdir{color:var(--accent);font-weight:700}
+  .seqspace{flex:0 0 auto}
+
+  @media (max-width:560px){
+    .topbar{position:static}
+    nav.crumbs ol{font-size:.8rem}
+    nav.crumbs li:nth-child(1){display:none}          /* drop "Archive Home" first on narrow screens to avoid wrap */
+    nav.crumbs li:nth-child(2)::before{content:none}
+    .seqbtn .seqname{max-width:34vw}
+  }
+
+:root,:root[data-theme="light"]{--accent:#3f5aa6;--accent-ink:#2c4080;--gold:#b8942e;}:root[data-theme="dark"]{--accent:#8098d8;--accent-ink:#a9bdf0;--gold:#d8b45a;}
 </style>
 
 
-<header class="hall" role="banner">
+<header class="topbar" role="banner">
   <div class="hall-in">
-    <div class="hall-top">
-      <div class="hall-brand">The Archive<b>Religion Hall</b></div>
-      <div style="display:flex;align-items:center;gap:.6rem">
-        <span class="hall-count" id="hallCount"></span>
-        <button class="themebtn" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
-      </div>
-    </div>
-    <nav class="doors" id="doors" aria-label="Choose a tradition"></nav>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/Digital-Archive/">Archive Home</a></li>
+        <li><a href="/Digital-Archive/hall/">Religion Hall</a></li>
+        <li><a class="crumb-room" href="#start">Christian Room</a></li>
+        <li><span class="crumb-shelf" id="crumbShelf" aria-current="page">Start Here</span></li>
+      </ol>
+    </nav>
+    <button class="themebtn" id="themeBtn" type="button" aria-label="Switch between light and dark theme">◐ <span id="themeLbl">Light</span></button>
   </div>
 </header>
 
 <main class="wrap" id="room">
   <section class="mast" aria-labelledby="roomTitle">
+    <a class="exit" id="exitBtn" href="/Digital-Archive/hall/">← Return to the Religion Hall</a>
     <div class="mast-eyebrow"><span aria-hidden="true">✝</span> Tradition Room</div>
     <h1 id="roomTitle">The Christian Room</h1>
     <p class="lede">Twenty centuries of scripture, thought and devotion — from the <em>Fathers</em> of the early Church through the great Bibles, the Scholastics and Reformers, to the mystics and poets. Each text is a complete edition that opens in the reader — <em>labelled by how far its accuracy has been verified.</em></p>
@@ -136,16 +180,15 @@
       <span class="stat"><b>101</b> texts, all readable</span>
       <span class="stat"><b>16</b> finalize-audited</span>
       <span class="stat"><b>85</b> verification pending</span>
-      <a class="exit" id="exitBtn" href="/Digital-Archive/hall/" aria-label="Return to the Religion Hall (this room's parent Hall)">← Return to the Hall</a>
     </div>
   </section>
 
   <div class="layout">
     <aside class="wayfind" aria-label="Room navigation">
       <h2>Where to go</h2>
-      <div class="zones" id="zones" role="tablist" aria-label="Hindu Room shelves"></div>
+      <div class="zones" id="zones" role="tablist" aria-label="Shelves"></div>
       <figure class="mapwall">
-        <svg class="rings" id="navmap" viewBox="-120 -120 240 240" role="img" aria-label="Ring map of the five main shelves, sized by number of texts"></svg>
+        <svg class="rings" id="navmap" viewBox="-120 -120 240 240" role="img" aria-label="Map of the shelves, sized by number of texts"></svg>
         <figcaption>The nave — the central aisle of the archive; each bay is a shelf. Click a bay to enter.</figcaption>
       </figure>
     </aside>
@@ -154,6 +197,7 @@
       <div class="shelf-head"><h3 id="shelfTitle"></h3><span class="sc" id="shelfCount"></span></div>
       <p class="shelf-sub" id="shelfSub"></p>
       <div id="shelfBody"></div>
+      <nav class="shelfseq" id="shelfSeq" aria-label="Move between shelves"></nav>
     </section>
   </div>
 
@@ -177,21 +221,24 @@ const N = DATA.all.length;
 const RM = (window.ROOM||{});
 const NAVKIND = (RM.mapWall && RM.mapWall.kind) || (RM.navKind) || "rings";
 
-const root=document.documentElement, tb=$("#themeBtn");
-tb.addEventListener("click",()=>{const cur=root.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");root.dataset.theme=cur==="dark"?"light":"dark";});
+/* Shared theme contract: light is the first-visit default (set pre-paint by the early inline script);
+   the manual choice persists across the Hall + both rooms via one localStorage key. */
+const root=document.documentElement, tb=$("#themeBtn"), THEME_KEY="archive_theme";
+function applyTheme(t){t=(t==="dark")?"dark":"light";root.setAttribute("data-theme",t);try{localStorage.setItem(THEME_KEY,t);}catch(e){}}
+tb.addEventListener("click",()=>{applyTheme(root.getAttribute("data-theme")==="dark"?"light":"dark");});
 
+/* legacy in-room tradition strip (optional — omitted from the current shell in favour of the breadcrumb) */
 const doorsEl=$("#doors");
-DOORS.forEach(([k,sym,name,built])=>{
+if(doorsEl){ DOORS.forEach(([k,sym,name,built])=>{
   const b=el("button","door"+(built?" on":""));
   b.setAttribute("aria-label", built?`${name} — current room`:`${name} — room in progress`);
   b.innerHTML=`<span class="sym" aria-hidden="true">${sym}</span>${name}`+(built?"":`<span class="soon">soon</span>`);
   if(built) b.setAttribute("aria-current","page");
   doorsEl.appendChild(b);
-});
-$("#hallCount").textContent=`${N} texts · ${DOORS.length} traditions in the Hall`;
-/* Hall-return: if the builder rendered #exitBtn as a real link (a configured hall_url), let it navigate
-   natively (works without JS, goes to the same place regardless of history). Only when it is a plain
-   button (standalone, no hall_url) do we fall back to scrolling to the room header. */
+}); }
+{const hc=$("#hallCount"); if(hc) hc.textContent=`${N} texts · ${DOORS.length} traditions in the Hall`;}
+/* Hall-return: the builder renders #exitBtn as a real link to the configured hall_url (works without JS, goes to
+   the same place regardless of history). Only a plain button (standalone) falls back to scrolling to the top. */
 (function(){const ex=$("#exitBtn"); if(ex && ex.tagName!=="A" && !ex.getAttribute("href"))
   ex.addEventListener("click",()=>{document.querySelector(".hall").scrollIntoView({block:"start"});});})();
 
@@ -289,6 +336,8 @@ function render(k, keepFocus){
   const z=ZONES.find(x=>x.k===k)||ZONES.find(x=>x.k==="start")||ZONES[0]; k=z.k;
   ZONES.forEach(x=>{const t=document.getElementById("ztab-"+x.k);const on=x.k===k;t.classList.toggle("on",on);t.setAttribute("aria-selected",on?"true":"false");t.tabIndex=on?0:-1;});
   if(keepFocus) document.getElementById("ztab-"+k).focus();
+  {const cs=$("#crumbShelf"); if(cs) cs.textContent=z.n;}   // breadcrumb: current shelf
+  renderShelfSeq(k);                                        // previous / next shelf controls
   $("#shelfTitle").textContent=z.n;
   const body=$("#shelfBody"); body.innerHTML="";
   if(k==="start"){
@@ -309,6 +358,22 @@ function navigate(k, keepFocus){
   k=validKey(k);
   if(location.hash!=="#"+k) history.pushState({k},"","#"+k);   // pushState ONLY on explicit user action
   render(k, keepFocus);
+}
+/* Previous / next shelf controls — follow the room's actual shelf order (ZONES). Start Here leads forward into
+   the first content shelf; Browse All (last) has a previous but no next. Each routes through navigate() so
+   Back/Forward and the shelf hash stay consistent; keyboard-activated (anchors). Absent ends are honest gaps. */
+function renderShelfSeq(k){
+  const seq=$("#shelfSeq"); if(!seq) return;
+  const order=ZONES.map(x=>x.k), i=order.indexOf(k);
+  const prev=i>0?ZONES[i-1]:null, next=i>=0&&i<ZONES.length-1?ZONES[i+1]:null;
+  seq.innerHTML="";
+  const mk=(z,dir)=>{const a=el("a","seqbtn "+dir); a.href="#"+z.k;
+    a.setAttribute("aria-label",(dir==="prev"?"Previous shelf: ":"Next shelf: ")+z.n);
+    a.innerHTML=dir==="prev"?`<span class="seqdir" aria-hidden="true">←</span><span class="seqname">${z.n}</span>`
+                            :`<span class="seqname">${z.n}</span><span class="seqdir" aria-hidden="true">→</span>`;
+    a.addEventListener("click",e=>{e.preventDefault();navigate(z.k,true);}); return a;};
+  seq.appendChild(prev?mk(prev,"prev"):el("span","seqspace"));
+  seq.appendChild(next?mk(next,"next"):el("span","seqspace"));
 }
 window.addEventListener("popstate",()=>render(currentKey()));   // render only — no history write here
 (function initRoute(){
