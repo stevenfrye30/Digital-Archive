@@ -147,8 +147,9 @@
   @media (max-width:560px){
     .topbar{position:static}
     nav.crumbs ol{font-size:.8rem}
-    nav.crumbs li:nth-child(1){display:none}          /* drop "Archive Home" first on narrow screens to avoid wrap */
-    nav.crumbs li:nth-child(2)::before{content:none}
+    /* Archive Home MUST stay reachable on mobile. To control width, drop the trailing current-shelf crumb
+       instead (it is still shown as the shelf <h3>, the selected tab, and the prev/next controls). */
+    nav.crumbs li.crumb-shelf-li{display:none}
     .seqbtn .seqname{max-width:34vw}
   }
 
@@ -163,7 +164,7 @@
         <li><a href="/Digital-Archive/">Archive Home</a></li>
         <li><a href="/Digital-Archive/hall/">Religion Hall</a></li>
         <li><a class="crumb-room" href="#start">Hindu Room</a></li>
-        <li><span class="crumb-shelf" id="crumbShelf" aria-current="page">Start Here</span></li>
+        <li class="crumb-shelf-li"><span class="crumb-shelf" id="crumbShelf" aria-current="page">Start Here</span></li>
       </ol>
     </nav>
     <button class="themebtn" id="themeBtn" type="button" aria-label="Switch between light and dark theme">◐ <span id="themeLbl">Light</span></button>
