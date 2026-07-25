@@ -1,0 +1,322 @@
+<meta charset="utf-8">
+<title>The Archive · Religion Hall — The Hindu Room</title>
+<style>
+:root{
+    --bg:#f3efe4; --surface:#fffdf7; --panel:#faf6ec; --raise:#fbf8f0;
+    --ink:#241f18; --ink-soft:#685f51; --ink-faint:#7c7261;
+    --line:#e4ddcc; --line2:#d4cab4;
+    --accent:#a96e14; --accent-ink:#7a4e12; --gold:#b8942e;
+    --g:#2E7D32; --a:#B7791F; --r:#C0392B; --g-t:#e5efe1; --a-t:#f2e8d3;
+    --shadow:0 1px 2px rgba(60,45,20,.05),0 8px 30px -18px rgba(90,60,20,.28);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  :root[data-theme="light"]{--bg:#f3efe4;--surface:#fffdf7;--panel:#faf6ec;--raise:#fbf8f0;--ink:#241f18;--ink-soft:#685f51;--ink-faint:#7c7261;--line:#e4ddcc;--line2:#d4cab4;--accent:#a96e14;--accent-ink:#7a4e12;--gold:#b8942e;--g:#2E7D32;--a:#B7791F;--r:#C0392B;--g-t:#e5efe1;--a-t:#f2e8d3;}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#141220;--surface:#1d1a2b;--panel:#221e33;--raise:#26223a;--ink:#ece6da;--ink-soft:#a79fb2;--ink-faint:#8f8799;--line:#2d2941;--line2:#3b3654;--accent:#e6a93a;--accent-ink:#f1c470;--gold:#d8b45a;--g:#5cb36a;--a:#d99a3c;--r:#e06459;--g-t:#1b2a1e;--a-t:#2a2318;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px -18px rgba(0,0,0,.6);}
+  }
+  :root[data-theme="dark"]{--bg:#141220;--surface:#1d1a2b;--panel:#221e33;--raise:#26223a;--ink:#ece6da;--ink-soft:#a79fb2;--ink-faint:#8f8799;--line:#2d2941;--line2:#3b3654;--accent:#e6a93a;--accent-ink:#f1c470;--gold:#d8b45a;--g:#5cb36a;--a:#d99a3c;--r:#e06459;--g-t:#1b2a1e;--a-t:#2a2318;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px -18px rgba(0,0,0,.6);}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent-ink);text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1rem,4vw,2.2rem)}
+
+  /* ---- Religion Hall strip ---- */
+  .hall{background:var(--panel);border-bottom:1px solid var(--line)}
+  .hall-in{max-width:1120px;margin:0 auto;padding:.7rem clamp(1rem,4vw,2.2rem)}
+  .hall-top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .hall-brand{font-size:.68rem;letter-spacing:.19em;text-transform:uppercase;color:var(--accent-ink);font-weight:700}
+  .hall-brand b{font-family:var(--serif);font-weight:600;font-size:1.02rem;letter-spacing:0;text-transform:none;color:var(--ink);margin-left:.5rem}
+  .hall-count{font-size:.74rem;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .doors{display:flex;gap:.4rem;overflow-x:auto;padding:.7rem 0 .3rem;scrollbar-width:thin}
+  .door{flex:0 0 auto;display:flex;align-items:center;gap:.45rem;padding:.42rem .7rem;border-radius:10px;cursor:pointer;
+    background:var(--surface);border:1px solid var(--line);color:var(--ink-soft);font-family:var(--serif);font-size:.9rem;white-space:nowrap;
+    transition:border-color .15s,transform .1s,color .15s}
+  .door:hover{border-color:var(--line2);transform:translateY(-1px);color:var(--ink)}
+  .door:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .door.on{border-color:var(--accent);color:var(--ink);box-shadow:0 2px 12px -6px var(--accent);background:var(--raise)}
+  .door .sym{font-size:1.05rem;line-height:1}
+  .door .soon{font-family:var(--sans);font-size:.6rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-faint);border:1px solid var(--line);border-radius:99px;padding:.02rem .34rem}
+
+  /* ---- Room masthead ---- */
+  .mast{padding:clamp(1.4rem,4vw,2.6rem) 0 1.2rem;border-bottom:1px solid var(--line)}
+  .mast-eyebrow{display:flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);font-weight:700}
+  .mast h1{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,5.4vw,3rem);margin:.4rem 0 .3rem;letter-spacing:-.01em;text-wrap:balance}
+  .mast .lede{max-width:64ch;color:var(--ink-soft);font-size:1rem;margin:.2rem 0 1rem}
+  .mast .lede em{font-family:var(--serif);font-style:italic;color:var(--accent-ink)}
+  .mast-bar{display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center}
+  .stat{display:inline-flex;align-items:baseline;gap:.35rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.34rem .7rem;font-size:.82rem;color:var(--ink-soft)}
+  .stat b{font-family:var(--serif);font-size:1.05rem;color:var(--ink);font-variant-numeric:tabular-nums}
+  .exit{margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:1px solid var(--line2);border-radius:99px;padding:.36rem .8rem;color:var(--ink-soft);font-family:var(--serif);font-size:.9rem;cursor:pointer}
+  .exit:hover{border-color:var(--accent);color:var(--ink)}
+
+  /* ---- Wayfinding: zone cards ---- */
+  .layout{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(1.2rem,4vw,2.4rem);padding:1.7rem 0 3rem;align-items:start}
+  @media (max-width:840px){.layout{grid-template-columns:1fr}}
+  .wayfind h2,.shelf h2{font-family:var(--serif);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .7rem;font-weight:700}
+  .zones{display:flex;flex-direction:column;gap:.5rem}
+  .zone{display:grid;grid-template-columns:2rem 1fr auto;gap:.7rem;align-items:center;text-align:left;width:100%;
+    background:var(--surface);border:1px solid var(--line);border-left:3px solid transparent;border-radius:11px;padding:.7rem .85rem;cursor:pointer;color:inherit;font:inherit;transition:border-color .15s,background .15s,transform .1s}
+  .zone:hover{border-color:var(--line2);background:var(--panel);transform:translateX(2px)}
+  .zone:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .zone.on{border-color:var(--line2);border-left-color:var(--accent);background:var(--raise);box-shadow:var(--shadow)}
+  .zone .zi{font-size:1.35rem;line-height:1;text-align:center;color:var(--accent)}
+  .zone .zn{font-family:var(--serif);font-weight:600;font-size:1.02rem}
+  .zone .zd{font-size:.72rem;color:var(--ink-faint);display:block;line-height:1.35}
+  .zone .zc{font-family:var(--serif);font-size:.86rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;background:var(--panel);border:1px solid var(--line);border-radius:99px;min-width:1.9rem;text-align:center;padding:.05rem .4rem}
+  .zone.on .zc{border-color:var(--accent);color:var(--accent-ink)}
+
+  .mapwall{margin-top:1.3rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem;text-align:center}
+  .mapwall figcaption{font-size:.72rem;color:var(--ink-faint);margin-top:.5rem;line-height:1.4}
+  svg.rings{width:100%;max-width:230px;height:auto}
+  svg.rings .ring{cursor:pointer;transition:opacity .15s}
+  svg.rings .ring:hover{opacity:.7}
+  svg.rings text{font-family:var(--sans);fill:var(--ink-soft)}
+
+  /* ---- Shelf: text cards ---- */
+  .shelf-head{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;border-bottom:2px solid var(--line2);padding-bottom:.55rem;margin-bottom:.2rem}
+  .shelf-head h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,3.2vw,1.85rem);margin:0;color:var(--ink)}
+  .shelf-head .sc{font-size:.8rem;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .shelf-sub{color:var(--ink-soft);font-size:.92rem;margin:.55rem 0 1.1rem;max-width:66ch}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:.7rem}
+  .card{display:flex;flex-direction:column;gap:.4rem;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:.85rem .9rem;color:inherit;box-shadow:var(--shadow);transition:border-color .15s,transform .12s}
+  .card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .card .ct{font-family:var(--serif);font-weight:600;font-size:1.02rem;line-height:1.25;color:var(--ink)}
+  .card .cm{font-size:.76rem;color:var(--ink-faint)}
+  .card .cm .yr{font-variant-numeric:tabular-nums}
+  .badges{display:flex;flex-wrap:wrap;gap:.32rem;margin-top:auto;padding-top:.3rem}
+  .badge{display:inline-flex;align-items:center;gap:.3em;font-size:.68rem;font-weight:600;letter-spacing:.02em;padding:.16rem .46rem;border-radius:99px;border:1px solid var(--line)}
+  .badge .bi{font-size:.82em}
+  .badge.pd{color:var(--g);background:var(--g-t);border-color:transparent}
+  .badge.ready{color:var(--accent-ink);background:var(--a-t);border-color:transparent}
+  .badge.full{color:var(--ink);background:transparent;border-color:var(--gold)}
+  .badge.pend{color:var(--ink-faint);background:transparent;border-color:var(--line2)}
+  .open{font-size:.72rem;color:var(--accent-ink);font-weight:600;display:inline-flex;align-items:center;gap:.25rem}
+
+  /* Start Here special block */
+  .startgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.7rem;margin-bottom:.4rem}
+  .steps{list-style:none;margin:0 0 1.2rem;padding:0;display:flex;flex-direction:column;gap:.5rem;counter-reset:s}
+  .steps li{display:grid;grid-template-columns:1.7rem 1fr;gap:.7rem;align-items:baseline;font-size:.92rem;color:var(--ink-soft)}
+  .steps li::before{counter-increment:s;content:counter(s);font-family:var(--serif);font-weight:700;color:var(--accent);background:var(--panel);border:1px solid var(--line);border-radius:99px;width:1.7rem;height:1.7rem;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+  .steps b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding:1.3rem 0 3rem;font-size:.78rem;color:var(--ink-faint);line-height:1.65}
+  footer .legend{display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;margin-bottom:.6rem}
+  footer .lg{display:inline-flex;align-items:center;gap:.4rem;color:var(--ink-soft)}
+  .themebtn{background:var(--surface);border:1px solid var(--line);color:var(--ink-soft);border-radius:99px;padding:.3rem .68rem;font-size:.75rem;cursor:pointer}
+  .themebtn:hover{border-color:var(--line2)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+:root,:root[data-theme="light"]{--accent:#a96e14;--accent-ink:#7a4e12;--gold:#b8942e;}@media (prefers-color-scheme:dark){:root{--accent:#e6a93a;--accent-ink:#f1c470;--gold:#d8b45a;}}:root[data-theme="dark"]{--accent:#e6a93a;--accent-ink:#f1c470;--gold:#d8b45a;}
+</style>
+
+
+<header class="hall" role="banner">
+  <div class="hall-in">
+    <div class="hall-top">
+      <div class="hall-brand">The Archive<b>Religion Hall</b></div>
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <span class="hall-count" id="hallCount"></span>
+        <button class="themebtn" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
+      </div>
+    </div>
+    <nav class="doors" id="doors" aria-label="Choose a tradition"></nav>
+  </div>
+</header>
+
+<main class="wrap" id="room">
+  <section class="mast" aria-labelledby="roomTitle">
+    <div class="mast-eyebrow"><span aria-hidden="true">🕉️</span> Tradition Room</div>
+    <h1 id="roomTitle">The Hindu Room</h1>
+    <p class="lede">The world's oldest living textual tradition, from the <em>śruti</em> core of the Vedas to the epics, the six philosophical schools, and the devotional poets. Every text here is a complete public-domain edition that opens in the reader — labelled by <em>how far its accuracy has been verified.</em></p>
+    <div class="mast-bar">
+      <span class="stat"><b>57</b> texts, all readable</span>
+      <span class="stat"><b>3</b> fully source-verified</span>
+      <span class="stat"><b>18</b> finalize-audited</span>
+      <span class="stat"><b>36</b> verification pending</span>
+      <a class="exit" id="exitBtn" href="/Digital-Archive/hall/" aria-label="Return to the Religion Hall (this room's parent Hall)">← Return to the Hall</a>
+    </div>
+  </section>
+
+  <div class="layout">
+    <aside class="wayfind" aria-label="Room navigation">
+      <h2>Where to go</h2>
+      <div class="zones" id="zones" role="tablist" aria-label="Hindu Room shelves"></div>
+      <figure class="mapwall">
+        <svg class="rings" id="navmap" viewBox="-120 -120 240 240" role="img" aria-label="Ring map of the five main shelves, sized by number of texts"></svg>
+        <figcaption>The map wall — each ring a shelf, sized by its texts. Click a ring to jump.</figcaption>
+      </figure>
+    </aside>
+
+    <section class="shelf" id="shelf" aria-live="polite">
+      <div class="shelf-head"><h3 id="shelfTitle"></h3><span class="sc" id="shelfCount"></span></div>
+      <p class="shelf-sub" id="shelfSub"></p>
+      <div id="shelfBody"></div>
+    </section>
+  </div>
+
+  <footer>
+    <h2 style="font-family:var(--serif);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 .6rem">How each text is verified</h2>
+    <div class="legend">
+      <span class="lg"><span class="badge full"><span class="bi" aria-hidden="true">◉</span> fully source-verified</span> whole witness checked passage-by-passage against the printed source (3)</span>
+      <span class="lg"><span class="badge ready"><span class="bi" aria-hidden="true">✓</span> finalize-audited</span> rights, edition & boundaries confirmed by a finalization audit (18)</span>
+      <span class="lg"><span class="badge pend"><span class="bi" aria-hidden="true">○</span> verification pending</span> clean, readable text; deeper source-verification not yet done (36)</span></div>
+    <div style="margin-top:.6rem">Every text is a complete edition that opens in the reader. Counts are from the archive index; each label shows how far that text's accuracy has been verified.</div>
+  </footer>
+</main>
+
+
+<script>
+"use strict";
+window.ROOM={"reader": "/Digital-Archive/?text=", "doors": [["hindu", "🕉️", "Hinduism", true], ["bud", "☸", "Buddhism", false], ["abr", "✡✝☪", "Abrahamic", false], ["ea", "☯", "East Asian", false], ["zo", "🔥", "Zoroastrian", false], ["sk", "☬", "Sikhism", false], ["ja", "✋", "Jainism", false], ["sh", "⛩", "Shintō", false], ["ba", "✷", "Bahá'í", false], ["an", "🏛", "Ancient World", false], ["gn", "🐍", "Gnostic", false], ["ind", "🪶", "Indigenous", false], ["mo", "🌱", "Modern & New", false]], "zones": [{"k": "start", "i": "✦", "n": "Start Here", "d": "A guided first path into the tradition"}, {"k": "vedic", "i": "🕉", "n": "Vedic & Upaniṣadic", "d": "Śruti — the Vedas, Brāhmaṇas, Āraṇyakas, Upaniṣads"}, {"k": "epics", "i": "🏹", "n": "Epics & Purāṇas", "d": "Rāmāyaṇa, Mahābhārata & narrative scripture"}, {"k": "philo", "i": "☸", "n": "Philosophy & Yoga", "d": "The Darśanas — Vedānta, Yoga, Sāṃkhya"}, {"k": "devo", "i": "🪔", "n": "Devotional · Poetry · Drama", "d": "Bhakti, Tagore, Kabir, Kālidāsa"}, {"k": "life", "i": "📜", "n": "Society, Law & Learning", "d": "Dharma, history, the arts of living"}, {"k": "all", "i": "❖", "n": "Browse All", "d": "Every Hindu text in this room, A–Z"}], "start": [{"id": "upanishads-johnson", "why": "The mystical heart of the tradition — short, dialogic, foundational."}, {"id": "ramayana-griffith", "why": "The great epic of Rāma, in Griffith's flowing verse."}, {"id": "yoga-sutras", "why": "Patañjali's aphorisms — the classical manual of yoga."}, {"id": "tagore-gitanjali", "why": "Tagore's Nobel-winning devotional lyrics — a gentle way in."}], "data": {"vedic": [{"df": "upanishads-johnson_johnson.json", "id": "upanishads-johnson", "t": "The Upanishads (Johnson)", "y": 1899, "tr": "Charles Johnston", "lab": "audited"}, {"df": "upanishads-30-minor-aiyar_aiyar.json", "id": "upanishads-30-minor-aiyar", "t": "Thirty Minor Upanishads", "y": 1914, "tr": "K. Narayanasvami Aiyar", "lab": "audited"}, {"df": "vedanta-sutras-sankara_thibaut-s.json", "id": "vedanta-sutras-sankara", "t": "The Vedanta-Sutras with the Commentary by Sankaracarya", "y": 1890, "tr": "George Thibaut", "lab": "audited"}, {"df": "vedanta-sutras-ramanuja_thibaut-r.json", "id": "vedanta-sutras-ramanuja", "t": "The Vedanta-Sutras with the Commentary by Ramanuja", "y": 1904, "tr": "George Thibaut", "lab": "audited"}, {"df": "aitareya-brahmana-keith_keith.json", "id": "aitareya-brahmana-keith", "t": "The Aitareya Brāhmaṇa", "y": 1920, "tr": "Arthur Berriedale Keith", "lab": "verified"}, {"df": "aitareya-aranyaka-muller_muller.json", "id": "aitareya-aranyaka-muller", "t": "The Aitareya Āraṇyaka (Āraṇyakas I–III)", "y": 1879, "tr": "F. Max Müller", "lab": "audited"}, {"df": "atharva-veda-bloomfield_bloomfield.json", "id": "atharva-veda-bloomfield", "t": "The Atharva Veda (Hymns)", "y": 1897, "tr": "Maurice Bloomfield", "lab": "audited"}, {"df": "atharva-veda-griffith_griffith.json", "id": "atharva-veda-griffith", "t": "The Hymns of the Atharvaveda", "y": 1896, "tr": "Ralph T.H. Griffith", "lab": "audited"}, {"df": "kausitaki-brahmana-keith_keith.json", "id": "kausitaki-brahmana-keith", "t": "The Kauṣītaki (Śāṅkhāyana) Brāhmaṇa", "y": 1920, "tr": "Arthur Berriedale Keith", "lab": "verified"}, {"df": "sama-veda-griffith_griffith.json", "id": "sama-veda-griffith", "t": "The Sama Veda", "y": 1895, "tr": "Ralph T.H. Griffith", "lab": "audited"}, {"df": "yajur-veda-white-griffith_griffith-white.json", "id": "yajur-veda-white-griffith", "t": "The White Yajur Veda (Vajasaneyi Saṃhitā)", "y": 1899, "tr": "Ralph T.H. Griffith", "lab": "audited"}, {"df": "yajur-veda-keith_keith.json", "id": "yajur-veda-keith", "t": "The Yajur Veda (Taittiriya Saṃhitā)", "y": 1914, "tr": "Arthur Berriedale Keith", "lab": "audited"}, {"df": "satapatha-brahmana-eggeling_eggeling.json", "id": "satapatha-brahmana-eggeling", "t": "The Śatapatha Brāhmaṇa", "y": 1900, "tr": "Julius Eggeling", "lab": "audited"}, {"df": "sankhayana-aranyaka-keith_keith.json", "id": "sankhayana-aranyaka-keith", "t": "The Śāṅkhāyana Āraṇyaka", "y": 1908, "tr": "Arthur Berriedale Keith", "lab": "verified"}, {"df": "vedic-hymns-part1_muller-vedic.json", "id": "vedic-hymns-part1", "t": "Vedic Hymns, Part 1", "y": 1891, "tr": "Max Müller", "lab": "clean"}, {"df": "vedic-hymns-part2_oldenberg.json", "id": "vedic-hymns-part2", "t": "Vedic Hymns, Part 2", "y": 1897, "tr": "Hermann Oldenberg", "lab": "clean"}], "epics": [{"df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-1-ganguli_anonymous.json", "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-1-ganguli", "t": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 1", "y": 1900, "tr": "Ganguli", "lab": "clean"}, {"df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-2-ganguli_anonymous.json", "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-2-ganguli", "t": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 2", "y": 1900, "tr": "Ganguli", "lab": "clean"}, {"df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-3-ganguli_anonymous.json", "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-3-ganguli", "t": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 3", "y": 1900, "tr": "Ganguli", "lab": "clean"}, {"df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-4-ganguli_anonymous.json", "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-4-ganguli", "t": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 4", "y": 1900, "tr": "Ganguli", "lab": "clean"}, {"df": "kalidasa-birth-war-god_griffith.json", "id": "kalidasa-birth-war-god", "t": "The Birth of the War-God (Kumārasaṃbhava)", "y": 1879, "tr": "Ralph T.H. Griffith", "lab": "clean"}, {"df": "ramayana-griffith_griffith.json", "id": "ramayana-griffith", "t": "The Ramayana", "y": 1870, "tr": "Ralph T.H. Griffith", "lab": "clean"}, {"df": "ramayana-dutt_dutt.json", "id": "ramayana-dutt", "t": "The Ramayana (Dutt)", "y": 1899, "tr": "Romesh Chunder Dutt", "lab": "clean"}], "philo": [{"df": "yoga-sutras_johnson.json", "id": "yoga-sutras", "t": "The Yoga Sutras of Patanjali", "y": 1912, "tr": "Charles Johnston", "lab": "clean"}, {"df": "besant-yoga_besant.json", "id": "besant-yoga", "t": "An Introduction to Yoga", "y": 1908, "tr": "Annie Besant", "lab": "clean"}, {"df": "vivekananda-jnana-yoga_vivekananda.json", "id": "vivekananda-jnana-yoga", "t": "Jñāna Yoga, Part 2", "y": 1915, "tr": "Swami Vivekananda", "lab": "clean"}, {"df": "science-breath-yogi-ramacharaka_ramacharaka.json", "id": "science-breath-yogi-ramacharaka", "t": "The Science of Breath", "y": 1904, "tr": "Yogi Ramacharaka", "lab": "clean"}, {"df": "yoga-vasishtha-mitra-vol1_mitra.json", "id": "yoga-vasishtha-mitra-vol1", "t": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 1", "y": 1891, "tr": "Vihārī-Lāla Mitra", "lab": "audited"}, {"df": "yoga-vasishtha-mitra-vol2-pt1_mitra.json", "id": "yoga-vasishtha-mitra-vol2-pt1", "t": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 2 pt 1", "y": 1891, "tr": "Vihārī-Lāla Mitra", "lab": "audited"}, {"df": "yoga-vasishtha-mitra-vol2-pt2_mitra.json", "id": "yoga-vasishtha-mitra-vol2-pt2", "t": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 2 pt 2", "y": 1891, "tr": "Vihārī-Lāla Mitra", "lab": "audited"}, {"df": "yoga-vasishtha-mitra-vol3-pt1_mitra.json", "id": "yoga-vasishtha-mitra-vol3-pt1", "t": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 3 pt 1", "y": 1891, "tr": "Vihārī-Lāla Mitra", "lab": "audited"}, {"df": "yoga-vasishtha-mitra-vol3-pt2_mitra.json", "id": "yoga-vasishtha-mitra-vol3-pt2", "t": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 3 pt 2", "y": 1891, "tr": "Vihārī-Lāla Mitra", "lab": "audited"}, {"df": "yoga-vasishtha-mitra-vol4-pt1_mitra.json", "id": "yoga-vasishtha-mitra-vol4-pt1", "t": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 4 pt 1", "y": 1891, "tr": "Vihārī-Lāla Mitra", "lab": "audited"}, {"df": "yoga-vasishtha-mitra-vol4-pt2_mitra.json", "id": "yoga-vasishtha-mitra-vol4-pt2", "t": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 4 pt 2", "y": 1891, "tr": "Vihārī-Lāla Mitra", "lab": "audited"}, {"df": "yoga-philosophy-religion-dasgupta_dasgupta.json", "id": "yoga-philosophy-religion-dasgupta", "t": "Yoga as Philosophy and Religion", "y": 1924, "tr": "Surendranath Dasgupta", "lab": "clean"}, {"df": "dasgupta-indian-philosophy_dasgupta.json", "id": "dasgupta-indian-philosophy", "t": "A History of Indian Philosophy, Volume 1", "y": 1922, "tr": "Surendranath Dasgupta", "lab": "clean"}, {"df": "the-kama-sutra-vatsyayana_anonymous.json", "id": "the-kama-sutra-vatsyayana", "t": "The Kama Sutra", "y": 1900, "tr": "Vatsyayana", "lab": "clean"}], "devo": [{"df": "besant-avataras_besant.json", "id": "besant-avataras", "t": "Avatāras", "y": 1900, "tr": "Annie Besant", "lab": "clean"}, {"df": "tagore-gitanjali_tagore.json", "id": "tagore-gitanjali", "t": "Gitanjali (Song Offerings)", "y": 1912, "tr": "Rabindranath Tagore", "lab": "clean"}, {"df": "tamil-saivite-hymns_kingsbury-phillips.json", "id": "tamil-saivite-hymns", "t": "Hymns of the Tamil Saivite Saints", "y": 1921, "tr": "F. Kingsbury", "lab": "clean"}, {"df": "arnold-indian-poetry_arnold.json", "id": "arnold-indian-poetry", "t": "Indian Poetry", "y": 1881, "tr": "Edwin Arnold", "lab": "clean"}, {"df": "occult-chemistry-annie-besant_anonymous.json", "id": "occult-chemistry-annie-besant", "t": "Occult Chemistry", "y": 1900, "tr": "Annie Besant", "lab": "clean"}, {"df": "tagore-sadhana_tagore.json", "id": "tagore-sadhana", "t": "Sadhana: The Realisation of Life", "y": 1913, "tr": "Rabindranath Tagore", "lab": "clean"}, {"df": "kalidasa-sakoontala_monier-williams.json", "id": "kalidasa-sakoontala", "t": "Sakoontala, or The Lost Ring", "y": 1855, "tr": "Monier Monier-Williams", "lab": "clean"}, {"df": "kabir-songs-tagore_tagore.json", "id": "kabir-songs-tagore", "t": "Songs of Kabir", "y": 1915, "tr": "Rabindranath Tagore", "lab": "clean"}, {"df": "tales-hindu-dramatists_dutt.json", "id": "tales-hindu-dramatists", "t": "Tales from the Hindu Dramatists", "y": 1893, "tr": "Manmatha Nath Dutt", "lab": "clean"}, {"df": "tagore-post-office_anonymous.json", "id": "tagore-post-office", "t": "The Post Office", "y": 1914, "tr": "Devabrata Mukerjea", "lab": "clean"}, {"df": "sanskrit-drama-keith_keith.json", "id": "sanskrit-drama-keith", "t": "The Sanskrit Drama", "y": 1924, "tr": "A. Berriedale Keith", "lab": "clean"}, {"df": "tagore-nationalism_tagore.json", "id": "tagore-nationalism", "t": "Nationalism", "y": 1917, "tr": "Rabindranath Tagore", "lab": "clean"}, {"df": "tagore-stray-birds_tagore.json", "id": "tagore-stray-birds", "t": "Stray Birds", "y": 1916, "tr": "Rabindranath Tagore", "lab": "clean"}, {"df": "tagore-home-world_tagore.json", "id": "tagore-home-world", "t": "The Home and the World", "y": 1919, "tr": "Surendranath Tagore", "lab": "clean"}, {"df": "the-siksha-patri-of-the-svami-narayana-sect-monier-williams_anonymous.json", "id": "the-siksha-patri-of-the-svami-narayana-sect-monier-williams", "t": "The Siksha-Patri of the Svami-Narayana Sect", "y": 1882, "tr": "Monier Williams", "lab": "clean"}], "life": [{"df": "gandhi-guide-health_ramaiyer.json", "id": "gandhi-guide-health", "t": "A Guide to Health", "y": 1921, "tr": "A. Rama Iyer", "lab": "clean"}, {"df": "history-sanskrit-literature-macdonell_macdonell.json", "id": "history-sanskrit-literature-macdonell", "t": "A History of Sanskrit Literature", "y": 1900, "tr": "Arthur A. Macdonell", "lab": "clean"}, {"df": "hindu-law-judicature-sastri_roer-montriou.json", "id": "hindu-law-judicature-sastri", "t": "Hindu Law and Judicature from the Dharma-Śāstra", "y": 1859, "tr": "Edward Röer", "lab": "clean"}, {"df": "arnold-hindu-literature_arnold.json", "id": "arnold-hindu-literature", "t": "Hindu Literature", "y": 1899, "tr": "Edwin Arnold", "lab": "clean"}, {"df": "hindu-astrology-seva_seva.json", "id": "hindu-astrology-seva", "t": "The Hindu Book of Astrology", "y": 1902, "tr": "Bhakti Seva", "lab": "clean"}]}, "badges": {"verified": "<span class=\"badge full\"><span class=\"bi\" aria-hidden=\"true\">◉</span>fully source-verified</span>", "audited": "<span class=\"badge ready\"><span class=\"bi\" aria-hidden=\"true\">✓</span>finalize-audited</span>", "clean": "<span class=\"badge pend\"><span class=\"bi\" aria-hidden=\"true\">○</span>verification pending</span>"}, "traditionName": "Hinduism", "mapWall": {"enabled": true, "kind": "rings"}, "navKind": "rings"};
+const READER=ROOM.reader,DOORS=ROOM.doors,ZONES=ROOM.zones,DATA=ROOM.data,START=ROOM.start;
+DATA.all=Object.keys(DATA).reduce((a,k)=>a.concat(DATA[k]),[]).sort((x,y)=>x.t.localeCompare(y.t));
+const $=(s,r=document)=>r.querySelector(s), el=(t,c,h)=>{const n=document.createElement(t);if(c)n.className=c;if(h!=null)n.innerHTML=h;return n;};
+const N = DATA.all.length;
+const RM = (window.ROOM||{});
+const NAVKIND = (RM.mapWall && RM.mapWall.kind) || (RM.navKind) || "rings";
+
+const root=document.documentElement, tb=$("#themeBtn");
+tb.addEventListener("click",()=>{const cur=root.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");root.dataset.theme=cur==="dark"?"light":"dark";});
+
+const doorsEl=$("#doors");
+DOORS.forEach(([k,sym,name,built])=>{
+  const b=el("button","door"+(built?" on":""));
+  b.setAttribute("aria-label", built?`${name} — current room`:`${name} — room in progress`);
+  b.innerHTML=`<span class="sym" aria-hidden="true">${sym}</span>${name}`+(built?"":`<span class="soon">soon</span>`);
+  if(built) b.setAttribute("aria-current","page");
+  doorsEl.appendChild(b);
+});
+$("#hallCount").textContent=`${N} texts · ${DOORS.length} traditions in the Hall`;
+/* Hall-return: if the builder rendered #exitBtn as a real link (a configured hall_url), let it navigate
+   natively (works without JS, goes to the same place regardless of history). Only when it is a plain
+   button (standalone, no hall_url) do we fall back to scrolling to the room header. */
+(function(){const ex=$("#exitBtn"); if(ex && ex.tagName!=="A" && !ex.getAttribute("href"))
+  ex.addEventListener("click",()=>{document.querySelector(".hall").scrollIntoView({block:"start"});});})();
+
+const zonesEl=$("#zones");
+ZONES.forEach(z=>{
+  const count = z.k==="start"?START.length : z.k==="all"?N : (DATA[z.k]||[]).length;
+  const b=el("button","zone"); b.id="ztab-"+z.k; b.setAttribute("role","tab"); b.setAttribute("aria-selected","false");
+  b.setAttribute("aria-controls","shelf"); b.tabIndex=-1;
+  b.innerHTML=`<span class="zi" aria-hidden="true">${z.i}</span><span><span class="zn">${z.n}</span><span class="zd">${z.d}</span></span><span class="zc">${count}</span>`;
+  b.addEventListener("click",()=>navigate(z.k));
+  b.addEventListener("keydown",e=>arrow(e,z.k));
+  zonesEl.appendChild(b);
+});
+function arrow(e,k){
+  const order=ZONES.map(z=>z.k); let i=order.indexOf(k);
+  if(e.key==="ArrowDown"||e.key==="ArrowRight"){e.preventDefault();navigate(order[(i+1)%order.length],true);}
+  else if(e.key==="ArrowUp"||e.key==="ArrowLeft"){e.preventDefault();navigate(order[(i-1+order.length)%order.length],true);}
+  else if(e.key==="Home"){e.preventDefault();navigate(order[0],true);}
+  else if(e.key==="End"){e.preventDefault();navigate(order[order.length-1],true);}
+}
+
+/* ---- environmental navigation (config-driven; generic; kind: "rings" | "nave" | "none") ---- */
+const NS="http://www.w3.org/2000/svg";
+function svgEl(t,attrs){const e=document.createElementNS(NS,t);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
+function navBay(el_, z, n){
+  el_.setAttribute("tabindex","0"); el_.setAttribute("role","button"); el_.setAttribute("aria-label",`${z.n}: ${n} texts`);
+  el_.style.cursor="pointer";
+  el_.addEventListener("click",()=>navigate(z.k));
+  el_.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();navigate(z.k);}});
+}
+function renderRings(){                              // concentric mandala (radial)
+  const svg=$("#navmap"); if(!svg)return;
+  const items=ZONES.filter(z=>z.k!=="start"&&z.k!=="all");
+  const max=Math.max(1,...items.map(z=>(DATA[z.k]||[]).length));
+  items.forEach((z,idx)=>{
+    const n=(DATA[z.k]||[]).length;
+    const c=svgEl("circle",{class:"ring",r:30+idx*17,cx:0,cy:0,fill:"none",stroke:"var(--accent)",
+      "stroke-width":Math.max(2,(n/max)*11),opacity:.28+.5*(n/max)});
+    navBay(c,z,n); svg.appendChild(c);
+  });
+  svg.appendChild(svgEl("circle",{r:5,fill:"var(--gold)"}));
+}
+function renderNave(){                               // basilica floor-plan (axial): apse + central aisle + side bays
+  const svg=$("#navmap"); if(!svg)return;
+  svg.setAttribute("viewBox","0 0 200 300");
+  const items=ZONES.filter(z=>z.k!=="start"&&z.k!=="all");
+  // apse (sanctuary arch) at the head of the nave
+  svg.appendChild(svgEl("path",{d:"M60 34 A40 40 0 0 1 140 34 L140 46 L60 46 Z",fill:"none",stroke:"var(--accent)","stroke-width":2,opacity:.7}));
+  svg.appendChild(svgEl("line",{x1:100,y1:12,x2:100,y2:34,stroke:"var(--gold)","stroke-width":3}));      // cross upright
+  svg.appendChild(svgEl("line",{x1:90,y1:20,x2:110,y2:20,stroke:"var(--gold)","stroke-width":3}));       // cross bar
+  // central nave aisle
+  svg.appendChild(svgEl("rect",{x:86,y:46,width:28,height:236,rx:3,fill:"none",stroke:"var(--line2)","stroke-width":1.5}));
+  // side bays (chapels): alternate left/right down the nave, sized by text count
+  const rows=Math.ceil(items.length/2), top=54, gap=(232-rows*10)/Math.max(1,rows), bh=(232/rows)-4;
+  const max=Math.max(1,...items.map(z=>(DATA[z.k]||[]).length));
+  items.forEach((z,idx)=>{
+    const n=(DATA[z.k]||[]).length, row=Math.floor(idx/2), left=(idx%2===0);
+    const y=top+row*(bh+4), x=left?18:118, w=64;
+    const g=svgEl("g",{class:"bay"});
+    const r=svgEl("rect",{x:x,y:y,width:w,height:bh,rx:3,fill:"var(--accent)",opacity:(.16+.55*(n/max)).toFixed(2),stroke:"var(--accent)","stroke-width":1});
+    const t=svgEl("text",{x:x+w/2,y:y+bh/2+4,"text-anchor":"middle","font-size":9,fill:"var(--ink)"});
+    t.textContent=z.i; g.appendChild(r); g.appendChild(t);
+    // connector from bay to the aisle
+    g.appendChild(svgEl("line",{x1:left?x+w:x,y1:y+bh/2,x2:left?86:114,y2:y+bh/2,stroke:"var(--line2)","stroke-width":1}));
+    navBay(g,z,n); svg.appendChild(g);
+  });
+}
+if(NAVKIND==="nave") renderNave(); else if(NAVKIND!=="none") renderRings();
+
+const BADGE={
+  verified:'<span class="badge full"><span class="bi" aria-hidden="true">◉</span>fully source-verified</span>',
+  audited :'<span class="badge ready"><span class="bi" aria-hidden="true">✓</span>finalize-audited</span>',
+  clean   :'<span class="badge pend"><span class="bi" aria-hidden="true">○</span>verification pending</span>'
+};
+const LABTXT={verified:"fully source-verified",audited:"finalize-audited, reader-ready",clean:"structurally clean, verification pending"};
+const findText=s=>DATA.all.find(x=>(s.df&&x.df===s.df)||(s.id&&x.id===s.id));
+function card(d){
+  const a=el("a","card"); a.href=READER+encodeURIComponent(d.df); a.target="_blank"; a.rel="noopener";
+  a.setAttribute("aria-label",`${d.t}, translated ${d.tr}, ${d.y} — ${LABTXT[d.lab]}; opens in the reader`);
+  a.innerHTML=`<span class="ct">${d.t}</span>
+    <span class="cm">${d.tr} · <span class="yr">${d.y}</span></span>
+    <span class="badges">${BADGE[d.lab]}</span>
+    <span class="open">Open in reader <span aria-hidden="true">→</span></span>`;
+  return a;
+}
+/* ---- routing contract (shared) ------------------------------------------------------------------
+   render(k)    — pure view update for shelf k; writes NO history. Unknown k falls back to "start".
+   navigate(k)  — explicit USER shelf change: pushState("#k") once, then render. Never called on popstate.
+   popstate     — render the current URL's shelf only; never writes history (no push/replaceState here).
+   init         — normalize an empty/invalid hash with replaceState (no duplicate entry), then render.
+   Result: initial load adds no extra entry; Back from #start leaves the room; deep links + reload work. */
+const validKey=k=>ZONES.some(x=>x.k===k)?k:"start";
+const currentKey=()=>validKey((location.hash||"").replace(/^#/,""));
+function render(k, keepFocus){
+  const z=ZONES.find(x=>x.k===k)||ZONES.find(x=>x.k==="start")||ZONES[0]; k=z.k;
+  ZONES.forEach(x=>{const t=document.getElementById("ztab-"+x.k);const on=x.k===k;t.classList.toggle("on",on);t.setAttribute("aria-selected",on?"true":"false");t.tabIndex=on?0:-1;});
+  if(keepFocus) document.getElementById("ztab-"+k).focus();
+  $("#shelfTitle").textContent=z.n;
+  const body=$("#shelfBody"); body.innerHTML="";
+  if(k==="start"){
+    $("#shelfCount").textContent="a first path";
+    $("#shelfSub").textContent=`New to the tradition? Read these ${START.length} in order — each is complete, and a doorway to a whole shelf.`;
+    const ol=el("ol","steps");
+    START.forEach(s=>{const d=findText(s);if(!d)return;const li=el("li");li.innerHTML=`<span><b>${d.t}</b> — ${s.why}</span>`;ol.appendChild(li);});
+    body.appendChild(ol);
+    const grid=el("div","startgrid"); START.forEach(s=>{const d=findText(s);if(d)grid.appendChild(card(d));}); body.appendChild(grid);
+    return;
+  }
+  const list = k==="all"?DATA.all:(DATA[k]||[]);
+  $("#shelfCount").textContent=`${list.length} texts`;
+  $("#shelfSub").textContent=z.d + (k==="all"?" — every text in this room, alphabetical.":".");
+  const grid=el("div","cards"); list.forEach(d=>grid.appendChild(card(d))); body.appendChild(grid);
+}
+function navigate(k, keepFocus){
+  k=validKey(k);
+  if(location.hash!=="#"+k) history.pushState({k},"","#"+k);   // pushState ONLY on explicit user action
+  render(k, keepFocus);
+}
+window.addEventListener("popstate",()=>render(currentKey()));   // render only — no history write here
+(function initRoute(){
+  const k=currentKey();
+  if(location.hash!=="#"+k) history.replaceState({k},"","#"+k); // normalize empty/invalid hash without a new entry
+  render(k);
+})();
+
+</script>
