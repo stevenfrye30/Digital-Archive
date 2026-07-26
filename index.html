@@ -2302,24 +2302,65 @@ button.home-path {
   box-shadow: 0 9px 30px rgba(0,0,0,0.26);
 }
 #home-press:active { transform: translateY(0); }
-#home-hall {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: clamp(10px, 2vh, 16px);
-  padding: 12px 34px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #2c4080, #3f5aa6);
-  color: #fff;
-  text-decoration: none;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-  transition: transform 0.15s, box-shadow 0.25s;
+/* ===== Religion Hall front-door feature (3 open rooms) ===== */
+#home-hall-feature {
+  margin-top: clamp(14px, 3vh, 24px);
+  width: min(500px, 100%);
+  box-sizing: border-box;
+  padding: clamp(16px, 3vw, 22px) clamp(16px, 3.5vw, 26px);
+  border: 1px solid #e2dac7;
+  border-radius: 16px;
+  background: #fbf7ee;
+  box-shadow: 0 1px 2px rgba(60,45,20,.05), 0 10px 30px -18px rgba(90,60,20,.28);
+  text-align: center;
 }
-#home-hall:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 9px 30px rgba(0,0,0,0.26);
+[data-theme="dark"] #home-hall-feature { background: rgba(255,255,255,.035); border-color: rgba(255,255,255,.12); }
+#home-hall-feature .hall-feature-title {
+  font-family: Georgia, "Iowan Old Style", serif; font-size: 20px; font-weight: 600;
+  margin: 0 0 4px; color: inherit; letter-spacing: .01em;
 }
-#home-hall:active { transform: translateY(0); }
+#home-hall-feature .hall-feature-sub { margin: 0 0 14px; font-size: 13px; opacity: .78; }
+#home-hall-feature .hall-feature-cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4em;
+  min-height: 44px; padding: 11px 26px; border-radius: 999px; text-decoration: none;
+  background: linear-gradient(135deg, #6e5518, #8f7320); color: #fff; font-weight: 600; font-size: 15px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18); transition: transform .15s, box-shadow .25s;
+}
+#home-hall-feature .hall-feature-cta:hover { transform: translateY(-2px); box-shadow: 0 9px 30px rgba(0,0,0,0.26); }
+#home-hall-feature .hall-feature-cta:active { transform: translateY(0); }
+#home-hall-feature .hall-open {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px;
+  margin: 16px 0 6px;
+}
+#home-hall-feature .hall-open-label { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; opacity: .6; }
+#home-hall-feature .hall-room-link {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 8px 15px 8px 13px;
+  border: 1px solid #d4cab4; border-left: 4px solid #b9ad92; border-radius: 10px;
+  background: #fffdf7; color: #33302a; text-decoration: none; font-size: 14px; font-weight: 600;
+  transition: transform .12s, border-color .15s, background .15s;
+}
+/* Dark: recolour only the non-accent borders so the tradition
+   left-accent (set below) is never clobbered by a shorthand. */
+[data-theme="dark"] #home-hall-feature .hall-room-link {
+  background: rgba(255,255,255,.07); color: #ece7dd;
+  border-top-color: rgba(255,255,255,.16);
+  border-right-color: rgba(255,255,255,.16);
+  border-bottom-color: rgba(255,255,255,.16);
+}
+#home-hall-feature .hall-room-link:hover { transform: translateY(-1px); }
+#home-hall-feature .hall-room-link:focus-visible,
+#home-hall-feature .hall-feature-cta:focus-visible { outline: 3px solid #8f7320; outline-offset: 2px; }
+#home-hall-feature .t-hindu     { border-left-color: #a96e14; }  /* saffron */
+#home-hall-feature .t-christian { border-left-color: #3f5aa6; }  /* lapis   */
+#home-hall-feature .t-buddhist  { border-left-color: #8a3a24; }  /* maroon  */
+/* Brighter accents for legibility on the dark ground. */
+[data-theme="dark"] #home-hall-feature .t-hindu     { border-left-color: #d99a2b; }
+[data-theme="dark"] #home-hall-feature .t-christian { border-left-color: #7fa0e0; }
+[data-theme="dark"] #home-hall-feature .t-buddhist  { border-left-color: #d98b6a; }
+#home-hall-feature .t-hindu:hover     { border-color: #a96e14; }
+#home-hall-feature .t-christian:hover { border-color: #3f5aa6; }
+#home-hall-feature .t-buddhist:hover  { border-color: #8a3a24; }
+#home-hall-feature .hall-feature-more { margin: 4px 0 0; font-size: 12px; opacity: .62; }
 .home-press-title {
   font-family: Georgia, serif;
   font-size: 19px;
@@ -11737,10 +11778,18 @@ body.viewer-active .folio-leaf-colophon {
               <span class="home-press-title">The Press</span>
               <span class="home-press-sub">Print or save any passage</span>
             </a>
-            <a id="home-hall" href="hall/">
-              <span class="home-press-title">The Religion Hall</span>
-              <span class="home-press-sub">Enter the traditions — Hinduism &amp; Christianity open</span>
-            </a>
+            <section id="home-hall-feature" aria-labelledby="home-hall-heading">
+              <h2 id="home-hall-heading" class="hall-feature-title">The Religion Hall</h2>
+              <p class="hall-feature-sub">Step inside a tradition through an immersive room — distinct from browsing the Religion text list.</p>
+              <a class="hall-feature-cta" href="hall/">Enter the Religion Hall <span aria-hidden="true">→</span></a>
+              <div class="hall-open" role="group" aria-label="Rooms open now">
+                <span class="hall-open-label" aria-hidden="true">Open now</span>
+                <a class="hall-room-link t-hindu" href="rooms/hindu/">Hinduism</a>
+                <a class="hall-room-link t-christian" href="rooms/christian/">Christianity</a>
+                <a class="hall-room-link t-buddhist" href="rooms/buddhist/">Buddhism</a>
+              </div>
+              <p class="hall-feature-more">Three rooms open · eleven more traditions forthcoming</p>
+            </section>
             <div id="home-workroom" style="display:none;">
               <button class="home-restricted-btn home-workroom-btn" onclick="browseWorkroom()">⚒ Archive Workroom <span id="home-workroom-count" class="home-workroom-count"></span></button>
             </div>
