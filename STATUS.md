@@ -205,14 +205,15 @@ listed once with the link entering at the first chapter.
   if that timestamp is older than `Last refreshed` above, the public
   reader is stale and the refresh ritual in `MAINTENANCE.md` should
   be re-run.
-- **Daily Reader** — `Digital-Archive/04_landing/`. Landing page +
+- **Daily Reader** — `Digital-Archive/_archive/04_landing/` (frozen
+  surface since Task 11 lane A, 2026-07-27). Landing page +
   Render.com cloud server that emails one passage per subscriber per
   day. Pulls from a ~198-text whitelist of audited translations.
 - **Archive shelf** — `workspace-hub/archive/`. Hand-authored Markdown
   shelf, deployed via GitHub Pages. Independent corpus from the
   canonical library; soft-linked through `library_id` frontmatter.
-- **Pre-pivot Atlas** — `Digital-Archive/atlas/`,
-  `Digital-Archive/texts/`. Frozen. Authoring migrated to
+- **Pre-pivot Atlas** — `Digital-Archive/_archive/atlas/`,
+  `Digital-Archive/_archive/texts/`. Frozen. Authoring migrated to
   `workspace-hub/archive/` on the pivot date; retained for history
   (the root `index.md` tombstone was deleted 2026-07-27).
 
