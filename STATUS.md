@@ -237,7 +237,7 @@ listed once with the link entering at the first chapter.
   and need parser work or manual restructuring. The Quran's previously
   reported 158,458 collisions turned out to be a measurement artifact
   in `corpus_audit.py` and were resolved by the May 2026 restoration
-  (`QURAN_RESTORATION_2026.md`); the audit now groups per translation
+  (`records/QURAN_RESTORATION_2026.md`); the audit now groups per translation
   so multi-translation works do not surface false alarms.
   Distinguished from legitimate directory-level shared `id`s in
   `01_library/library/DUPLICATE_IDS.md`.
