@@ -25,8 +25,11 @@ source_status.html
 # Convention: underscore-prefixed top-level dirs are private
 # (see workspace-hub/CONVENTIONS.md). _legacy holds retired surfaces;
 # _admin holds dev/admin pages not intended for the public Reading Room.
+# _build holds the uncompressed working copies of generated bodies
+# (dataflow lane 4, 2026-07-27) — data/ ships only the .json.gz.
 _legacy/
 _admin/
+_build/
 
 # Restricted/copyrighted texts — local only, never push
 data/dead-sea-scrolls-*.json
