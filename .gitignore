@@ -4,6 +4,10 @@ data/*.json
 !data/.gitkeep
 # v121 — metadata-only restricted-source register (no copyrighted text)
 !data/restricted_sources_register.json
+# 2026-07-27 — dataflow lane 1: the build manifest is the deploy contract
+# (hashes + counts + restriction reasons; no text). Tracked by negation,
+# NOT force-add — generated files must be visibly tracked or not at all.
+!data/build_manifest.json
 
 # Dev-only pages — not for public visitors
 # (kept individually for the existing tracked names; _legacy/ and
