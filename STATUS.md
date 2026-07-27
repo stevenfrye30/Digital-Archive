@@ -212,9 +212,9 @@ listed once with the link entering at the first chapter.
   shelf, deployed via GitHub Pages. Independent corpus from the
   canonical library; soft-linked through `library_id` frontmatter.
 - **Pre-pivot Atlas** — `Digital-Archive/atlas/`,
-  `Digital-Archive/index.md`, `Digital-Archive/texts/`. Frozen.
-  Authoring migrated to `workspace-hub/archive/` on the pivot date;
-  retained for history.
+  `Digital-Archive/texts/`. Frozen. Authoring migrated to
+  `workspace-hub/archive/` on the pivot date; retained for history
+  (the root `index.md` tombstone was deleted 2026-07-27).
 
 ---
 
