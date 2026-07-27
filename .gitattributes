@@ -1,0 +1,5 @@
+# Generated data artifacts are byte-exact: no line-ending conversion, ever.
+# (2026-07-27 — a stash/pop under autocrlf smudged data/_generated/index.json
+# to CRLF, silently diverging the working tree from its own committed blob.
+# Attestations and gz-parity checks bind exact bytes; -text ends the class.)
+data/** -text
