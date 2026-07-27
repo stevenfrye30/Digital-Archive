@@ -1,6 +1,6 @@
 """Add AO · 008 — The Opened Heavens (Visionary Disclosure).
 
-The eighth Atlas Object class — revelatory-vision. Materially
+The eighth Codex Object class — revelatory-vision. Materially
 distinct from the prior seven:
 
   AO · 001  cosmological-motif      diagram + ANE parallels.

@@ -13,7 +13,7 @@ between primeval and patriarchal Genesis.
 
 Constraints inherited from the prior documents:
 
-- No new Atlas Objects.
+- No new Codex Objects.
 - No new folio systems, metadata classes, or resonance mechanics.
 - No completeness mindset.
 - Silence remains visible.

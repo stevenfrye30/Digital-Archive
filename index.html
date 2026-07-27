@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="atlas-build" content="v133-steven-developer-handbook">
+  <meta name="codex-build" content="v133-steven-developer-handbook">
   <title>Digital Archive</title>
   <style>
 
@@ -950,7 +950,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
    The whole leaf fits on a single laptop viewport.
    v95 — The title leaf is now visibly independent from the
    reading-room parchment. The leaf carries the same museum-ivory
-   material as the v92 Atlas Object surface, with a hairline plate
+   material as the v92 Codex Object surface, with a hairline plate
    edge and a soft drop shadow, so opening a text reads as
    "entering" rather than "already reading". The Bible reading
    room (warm cream parchment) is preserved unchanged. */
@@ -1016,7 +1016,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   transition: color 0.18s ease-out, border-color 0.18s ease-out,
               background 0.18s ease-out;
 }
-/* Atlas Index — quiet manuscript utility sitting beneath the
+/* Codex Index — quiet manuscript utility sitting beneath the
    contents and above the Reading Room threshold. Same family as
    the enter-plate but lighter: hairline border, transparent
    parchment, small-caps italic, no engraved gradient, no
@@ -1025,7 +1025,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .bible-cover-layout .bcl-atlas-index-wrap {
   display: flex;
   justify-content: center;
-  /* v96 — tighter margin so Atlas Index + Reading Room threshold
+  /* v96 — tighter margin so Codex Index + Reading Room threshold
      fit alongside the canon grid on a 900px viewport. */
   margin: 10px auto 0;
 }
@@ -1053,7 +1053,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   outline: none;
 }
 
-/* ── Atlas Index page — a manuscript witness ledger ──────────
+/* ── Codex Index page — a manuscript witness ledger ──────────
    Sparse, elegant, printable. No cards, tables, or grids — a
    paragraph-shaped register where each chapter section breathes
    on its own. Reads as a hidden appendix at the back of a sacred
@@ -1917,7 +1917,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   justify-content: center;
   gap: 18px;
   /* v96 — tightened from 7px so the threshold sits compactly under
-     the Atlas Index pill without pushing the leaf below the fold. */
+     the Codex Index pill without pushing the leaf below the fold. */
   margin: 6px auto 0;
 }
 .bible-cover-layout .bcl-enter-wrap::before,
@@ -5152,7 +5152,7 @@ body.viewer-active #reader {
    closure descent, so the leaf reads as a preserved archival
    sheet rather than a rectangular continuation of the page.
 
-   Excluded: Atlas Object chambers (which carry their own bespoke
+   Excluded: Codex Object chambers (which carry their own bespoke
    compositional architecture) and Doré plates (which override
    padding entirely). The padding change is for text witnesses
    only. See FOLIO_OBJECT_ARCHITECTURE.md. */
@@ -5264,7 +5264,7 @@ body:not(.in-reading) #meta-toggle .info-icon {
    across the leaf's many text rows — invisible, mechanical
    defense against the microscopic scrollbar.
 
-   The Atlas Index is exempt — it is a long printable appendix
+   The Codex Index is exempt — it is a long printable appendix
    that must scroll naturally inside the reader column.
 
    v97 (page-type doctrine) — shelf / category / path browsing
@@ -5556,7 +5556,7 @@ body.cols-single.chapter-room.companion-mode.folio-left
 /* Anchor weight — within each authority class, markers at the
    object's ORIGINATING anchor carry slight warmth; markers at
    ECHO anchors quietly fade. Subtle within authority. The
-   canonical centres of each Atlas Object radiate without any
+   canonical centres of each Codex Object radiate without any
    label naming them. */
 .cr-folio-marker[data-anchor-weight="originating"][data-authority="primary"] {
   border-color: rgba(95, 50, 12, 0.92);
@@ -7129,7 +7129,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 
 /* ── Recurrence rubric (chamber head) ──────────────────────────
    Quiet manuscript continuity note. Appears at the very top of
-   the chamber only when the reader has met this Atlas Object
+   the chamber only when the reader has met this Codex Object
    before AND the present anchoring differs from the first.
    Italic, sub-rubric size, the "first encountered" lead in
    small-caps; the reference in normal italic. No icons, no
@@ -7155,7 +7155,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
   color: rgba(85, 50, 18, 0.86);
 }
 
-/* ── Atlas Object rubric (chamber top) ──────────────────────────
+/* ── Codex Object rubric (chamber top) ──────────────────────────
    A small italic-small-caps line at the head of an object
    chamber. The chamber begins with this notation so the reader
    meets the object before its verse-anchoring. Manuscriptal
@@ -7233,7 +7233,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 
 /* ── Kindred encounter (civilizational resonance) ──────────────
    A quiet italic small-caps line at the chamber's foot, naming
-   other Atlas Objects also anchored at the current verse. Each
+   other Codex Objects also anchored at the current verse. Each
    kindred is a small button bearing its kind-glyph and title;
    clicking switches chambers. Not a hyperlink overload — a
    single restrained line acknowledging that the verse hosts
@@ -7429,7 +7429,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 
 /* ── Anchorings (the object's wider field of encounter) ─────────
    Quiet italic list. Each line is a passage or external text
-   where the same Atlas Object may also be reached. The reader's
+   where the same Codex Object may also be reached. The reader's
    current anchoring is gently marked so they can locate
    themselves inside the object's wider field. */
 .folio-leaf .cc-anchorings {
@@ -7509,7 +7509,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 /* ════════════════════════════════════════════════════════════
    ATLAS OBJECT ARCHITECTURE (v90 — constitutional rule)
    ════════════════════════════════════════════════════════════
-   Default Atlas Object experience is STATIC, not scrolling.
+   Default Codex Object experience is STATIC, not scrolling.
 
    - Each object is a contained artifact view, fitted to the
      viewer at common viewport sizes.
@@ -7534,12 +7534,12 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 
    This rule governs cosmology (the prototype), genealogy,
    commentary, sacred geography, ritual, manuscript, and any
-   future Atlas Object family. The cosmology chamber below
+   future Codex Object family. The cosmology chamber below
    is the first implementation.
    ════════════════════════════════════════════════════════════ */
 .folio-leaf.cosmology-chamber,
 .folio-leaf.promise-chamber {
-  /* v92 — Atlas Object material independence. The opened object
+  /* v92 — Codex Object material independence. The opened object
      now reads as a museum object card, not as another sheet of
      the warm-cream reading-room parchment or the warm-bone
      witness vellum. Three material tokens scoped to the
@@ -8161,7 +8161,7 @@ body.viewer-active .folio-leaf[data-kind="genealogy"] .folio-body-vertical {
 /* ════════════════════════════════════════════════════════════════
    AO · 013 — The Promise Line (Patriarchal Lineage)
    ────────────────────────────────────────────────────────────────
-   Second instance of the v92 Atlas Object architecture. Inherits
+   Second instance of the v92 Codex Object architecture. Inherits
    the entire shell (material tokens, frame, rail, masthead, tabs,
    panel envelope, archive block) via the shared
    .cosmology-chamber / .promise-chamber selector groups above.
@@ -12903,7 +12903,7 @@ function _detectLabelWord(defaultLevel) {
 // Display-only overrides for a specific Bible edition, keyed by data_file.
 // A translation with no entry here behaves exactly as before (so KJV, BBE,
 // Brenton English/Greek and every other Bible are untouched). These NEVER
-// change book codes, passage text, citation IDs, or Atlas/Folio internals —
+// change book codes, passage text, citation IDs, or Codex/Folio internals —
 // only the friendly labels shown on the cover/contents/reader.
 const BIBLE_DISPLAY_PROFILES = {
   // Douay-Rheims (Challoner, 1899) — Catholic canon. The deuterocanonical
@@ -12924,7 +12924,7 @@ const BIBLE_DISPLAY_PROFILES = {
   // Vulgate Clementina (Latin) — Catholic canon. Like the Douay-Rheims (its
   // English translation), the seven deuterocanonical books are "Deuterocanonical
   // Books" in Catholic usage, not "Apocrypha". Label-only; book codes, passage
-  // text, citation IDs, and Atlas/Folio internals are untouched.
+  // text, citation IDs, and Codex/Folio internals are untouched.
   'bible_vulgate.json': {
     deuterocanonLabel: 'Deuterocanonical Books',
   },
@@ -14878,7 +14878,7 @@ function showGroupCover(group, listItem) {
 //        reading itself.
 //      · Material: reading-room parchment (--reader-bg, warm
 //        cream by default; theme-able).
-//      · Folio / Atlas Object / companion-mode machinery belongs
+//      · Folio / Codex Object / companion-mode machinery belongs
 //        here and nowhere else.
 //
 //  Cross-cutting CSS gate (line ~3572):
@@ -14887,7 +14887,7 @@ function showGroupCover(group, listItem) {
 //      #reader { overflow: hidden; ... }
 //
 //  This locks #reader for the Home and Text Contents page types
-//  while leaving Shelf, Reading Room, and Atlas Index free to
+//  while leaving Shelf, Reading Room, and Codex Index free to
 //  scroll. Whenever a new "static" page type is added, route it
 //  through this rule (not into a new exception).
 // ════════════════════════════════════════════════════════════════
@@ -14928,7 +14928,7 @@ function showCover(data, entry) {
   // class name `.bible-cover-layout` predates this generalisation; an
   // alias `.codex-cover-layout` rides alongside on non-Bible texts so
   // future styling can address only the broader case. Bible-only
-  // affordances (canon segmentation, Atlas Index, Bible-Versions
+  // affordances (canon segmentation, Codex Index, Bible-Versions
   // back-arrow) remain gated on `isBibleCover`. See
   // STATIC_CONTENTS_PAGES.md.
   const isBibleCover = data.hierarchy && data.hierarchy[0] === 'book'
@@ -15009,7 +15009,7 @@ function showCover(data, entry) {
   let html = '';
   if (useCodexLayout) {
     // Codex-leaf shell for every enumerable text. Bible carries
-    // canon segmentation + Atlas Index + back-to-versions; other
+    // canon segmentation + Codex Index + back-to-versions; other
     // codex texts get one generic grid + a single "Read from
     // beginning" CTA. Both share the same composition.
     const layoutClasses = isBibleCover
@@ -15275,14 +15275,14 @@ function showCover(data, entry) {
     html += `<li data-book="__all__"><span class="cc-toc-num">&rarr;</span><span class="cc-toc-name">Read the full text</span></li>`;
     html += '</ul>';
   }
-  // Atlas Index — quiet manuscriptal utility above the Reading
-  // Room threshold. Bible only — the Atlas Index ledger is wired
+  // Codex Index — quiet manuscriptal utility above the Reading
+  // Room threshold. Bible only — the Codex Index ledger is wired
   // to the Bible's chapter/verse witness structure.
   if (isBibleCover) {
     html += '<div class="bcl-atlas-index-wrap">' +
             '<button type="button" class="bcl-atlas-index-btn" ' +
             'id="cc-atlas-index-btn">' +
-            'Atlas Index' +
+            'Codex Index' +
             '</button></div>';
   }
 
@@ -15396,7 +15396,7 @@ function showCover(data, entry) {
     });
   }
 
-  // Wire the Atlas Index — opens the witness ledger for this
+  // Wire the Codex Index — opens the witness ledger for this
   // text (chapter → verse → objects).
   const atlasIndexBtn = $textHeader.querySelector('.bcl-atlas-index-btn');
   if (atlasIndexBtn) {
@@ -15546,7 +15546,7 @@ function enterReading(targetGroupKey) {
   // v97 page-type doctrine — entering the reading room. Clear any
   // catalog / contents-leaf flags so the broader CSS rules resolve
   // cleanly to reading-room behaviour (reader scrolls, parchment
-  // material, folio + Atlas Object machinery available).
+  // material, folio + Codex Object machinery available).
   document.body.classList.remove('on-shelf-page');
   document.body.classList.remove('on-text-contents');
   // Reading is the default ontology of the room. Apparatus
@@ -16173,7 +16173,7 @@ function _openFolioObject(id) {
   if (viewer) viewer.scrollTop = 0;
 }
 // Pick the anchor whose chapter matches the reader's current
-// chapter. A record with multiple anchors (e.g., an Atlas Object
+// chapter. A record with multiple anchors (e.g., an Codex Object
 // recurring across the canon) must open into the chamber from
 // the anchoring the reader is actually standing on, so that
 // the verse line and the encounter memory both reflect the
@@ -16253,7 +16253,7 @@ function _renderFolioObjectLeaf(rec, pid) {
 
   // Deep-chamber dispatch — selected records open into bespoke
   // consultation chambers, each one shaped to the intellectual
-  // texture of its Atlas Object class. Adding a new Object class
+  // texture of its Codex Object class. Adding a new Object class
   // means adding a new branch here; the rest of the folio
   // pipeline does not change.
   //
@@ -16299,7 +16299,7 @@ function _renderFolioObjectLeaf(rec, pid) {
   }
   //
   //   AO · 013  patriarchal-promise-lineage   gen12-promise-line
-  //             Second instance of the v92 Atlas Object architec-
+  //             Second instance of the v92 Codex Object architec-
   //             ture (the cosmology chamber was AO · 001's v92
   //             refit). A static rail+tabs object whose central
   //             panel is a covenant axis (Terah → Abraham → Isaac
@@ -16493,7 +16493,7 @@ function _renderFolioObjectLeaf(rec, pid) {
 
   // Closing colophon — small italic chapter rubric at the foot of
   // the prepared leaf. CSS reveals it only in viewer-active state.
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -16553,7 +16553,7 @@ function _renderProvenanceHeader(rec) {
 
 // ── Genesis 1 Cosmology Chamber ─────────────────────────────────
 // First prototype of a deep consultation chamber. Demonstrates
-// the Atlas's posture toward serious civilizational apparatus:
+// the Codex's posture toward serious civilizational apparatus:
 //   - provenance-aware scholarship (header declares epistemic class)
 //   - source hierarchy (primary witness · secondary scholarship ·
 //     tertiary archive synthesis are visually separated, never
@@ -16623,7 +16623,7 @@ const _COSMOLOGY_ARCHIVE_COMMENTARY =
 
 
 function _renderCosmologyChamber(leaf, rec, pid, chKey) {
-  // ── Atlas Object Architecture (v90 constitutional rule) ─────
+  // ── Codex Object Architecture (v90 constitutional rule) ─────
   // The cosmology chamber is the prototype implementation of the
   // static, single-tab-layer object frame. Layout:
   //
@@ -16640,7 +16640,7 @@ function _renderCosmologyChamber(leaf, rec, pid, chKey) {
   //   - Content per panel is compressed to fit one static
   //     screen at common viewport sizes (1440×900+).
   //   - No kindred / resonance / colophon footer — those belong
-  //     to text-witness leaves, not Atlas Object artifacts.
+  //     to text-witness leaves, not Codex Object artifacts.
 
   // Encounter memory — record the present encounter and look up
   // whether the reader has met this object before.
@@ -17113,9 +17113,9 @@ function _renderCCComparativeCompact() {
   return wrap;
 }
 
-// ── Atlas Object encounter memory ───────────────────────────────
+// ── Codex Object encounter memory ───────────────────────────────
 // A very lightweight persistence layer that lets the archive
-// quietly remember which Atlas Objects the reader has
+// quietly remember which Codex Objects the reader has
 // encountered, where they were first met, and which other
 // passages they have been re-encountered through. This is not
 // analytics, not a progress system, not an achievement layer —
@@ -17180,7 +17180,7 @@ function _formatArchivalRef(pid) {
 }
 
 // Quiet recurrence rubric — appears at the head of a chamber
-// only when the reader has encountered this Atlas Object before
+// only when the reader has encountered this Codex Object before
 // AND the current anchoring differs from the first one. Reads
 // as a manuscriptal continuity note ("first encountered —
 // Genesis 1:6"), never as a progress notification.
@@ -17205,7 +17205,7 @@ function _renderRecurrenceRubric(first) {
 }
 
 // Quiet object rubric — a small italic small-caps line at the
-// top of a chamber that names the encountered Atlas Object by
+// top of a chamber that names the encountered Codex Object by
 // its siglum and class. Reads as a manuscriptal registry
 // notation, never as a database badge. The reader senses
 // "this is an object I have encountered through this verse"
@@ -17238,7 +17238,7 @@ function _renderAtlasObjectRubric(ao) {
 
 // Anchorings — the architectural face of "object, not annotation."
 // A small italic list of passages and external texts where the
-// same Atlas Object may also be encountered. The current
+// same Codex Object may also be encountered. The current
 // anchoring (the verse the reader is on) is marked, so the
 // reader sees their own position inside the object's wider field.
 function _renderCCAnchorings(anchorings, currentPid) {
@@ -17308,7 +17308,7 @@ function _renderCCArchiveCommentary() {
 
 
 // ── AO · 002 — The Firmament Translation Tradition ─────────────
-// A textual-witness / translation-tradition Atlas Object. The
+// A textual-witness / translation-tradition Codex Object. The
 // chamber rhythm is materially different from AO · 001's
 // comparative-cosmology cadence: witness fragments dominate, the
 // archive prose recedes, the visual centre of gravity sits on
@@ -17328,7 +17328,7 @@ function _renderCCArchiveCommentary() {
 //   - lineage strip (manuscript transmission chain)
 
 // ── AO · 013 — The Promise Line (Patriarchal Lineage) ──────────
-// Second instance of the v92 Atlas Object architecture. Inherits
+// Second instance of the v92 Codex Object architecture. Inherits
 // the entire static rail+tabs shell from AO · 001 (cosmology) via
 // the shared CSS selector groups; renders four panels:
 //
@@ -17806,7 +17806,7 @@ function _renderTranslationTraditionChamber(leaf, rec, pid, chKey) {
   // here — so the explicit body matters).
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -18008,17 +18008,17 @@ function _renderTCArchive(body) {
 }
 
 
-// ── Atlas — Cross-Object Kindred Encounter ─────────────────────
+// ── Codex — Cross-Object Kindred Encounter ─────────────────────
 //
 // The archive has acquired enough objects that some verses now
-// carry MORE THAN ONE Atlas Object. Genesis 1:6 hosts both
+// carry MORE THAN ONE Codex Object. Genesis 1:6 hosts both
 // AO · 001 (the cosmic firmament) and AO · 002 (the firmament
 // translation tradition). Genesis 2 hosts the Sabbath pattern
 // and the Sacred Mountain. The chamber currently opens to one
 // object and is silent about the others.
 //
 // _renderChamberKindred surfaces this civilizational resonance.
-// When a chamber opens at a verse where other Atlas Objects
+// When a chamber opens at a verse where other Codex Objects
 // also speak, a quiet italic small-caps line at the chamber's
 // foot names the kindred — each as glyph + title, each clickable
 // to switch chambers. Recurrence is no longer "this object
@@ -18027,7 +18027,7 @@ function _renderTCArchive(body) {
 
 // ── Anchor gravity ─────────────────────────────────────────────
 //
-// Each Atlas Object's anchors form a hierarchy by canonical
+// Each Codex Object's anchors form a hierarchy by canonical
 // position: the FIRST anchor in the record is the originating
 // anchor (the canonical centre of the object's formation); the
 // rest are echoes (later anchorings carrying the object as
@@ -18238,7 +18238,7 @@ function _canonicalStratumOf(bookKey, chapterNum) {
 // content rules. The chamber needs the glyph in JS to render
 // the kindred line.
 const _ATLAS_KIND_GLYPHS = {
-  // Atlas Object classes — mirror per-kind CSS glyph rules
+  // Codex Object classes — mirror per-kind CSS glyph rules
   'cosmology':              '⊕',
   'translation-tradition':  '‡',
   'genealogy':              '❦',
@@ -18252,7 +18252,7 @@ const _ATLAS_KIND_GLYPHS = {
   'resurrection-renewal':   '⊛',
   'sacred-space':           '⊞',
   // Non-AO commentary kinds — mirror the marker-glyph CSS so
-  // the Atlas Index can resolve any kind in one place.
+  // the Codex Index can resolve any kind in one place.
   'plate':                  '▣',
   'map':                    '✥',
   'commentary':             '❡',
@@ -18319,7 +18319,7 @@ function _stampCanonGenre() {
 }
 
 // Collect every other record (besides the active one) that
-// carries Atlas Object metadata AND anchors to the same pid.
+// carries Codex Object metadata AND anchors to the same pid.
 function _findKindredAtPid(currentRecordId, pid) {
   if (!currentData || !Array.isArray(currentData.genealogy)) return [];
   const kindred = [];
@@ -18384,7 +18384,7 @@ function _renderChamberKindred(rec, pid) {
 }
 
 
-// ── Atlas — Object Resonance (constellation) ───────────────────
+// ── Codex — Object Resonance (constellation) ───────────────────
 //
 // Resonance is a second, quieter layer beneath the kindred line.
 // Where kindred surfaces same-verse co-presence ("also met
@@ -18397,7 +18397,7 @@ function _renderChamberKindred(rec, pid) {
 // Incarnation, that lament calls to resurrection, that covenant
 // calls to ritual. The reader who notices may follow the
 // resonance; the reader who does not loses nothing. Eight
-// curated pairs span the twelve Atlas Objects; not every object
+// curated pairs span the twelve Codex Objects; not every object
 // belongs to a pair, and that is part of the form.
 
 // Each resonance entry carries the peer's object id AND a short
@@ -18595,7 +18595,7 @@ function _renderChamberResonance(rec) {
 
 
 // ── AO · 003 — The Antediluvian Line ────────────────────────────
-// A genealogical / lineage Atlas Object. The chamber rhythm is
+// A genealogical / lineage Codex Object. The chamber rhythm is
 // recursive and generational, not essay-like:
 //
 //   §i   Descent register — ten generation rows stacked
@@ -18677,7 +18677,7 @@ function _renderLineageChamber(leaf, rec, pid, chKey) {
   // §iv — Archive commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -18859,7 +18859,7 @@ function _renderLCStemma(generations) {
 
 
 // ── AO · 004 — The Sabbath Pattern (Consecrated Time) ──────────
-// A ritual / sacred-time Atlas Object. The chamber's form
+// A ritual / sacred-time Codex Object. The chamber's form
 // inhabits the form of the Sabbath itself: six identical
 // movements, then a seventh that breaks the cadence and is set
 // apart. Then a column of recurrence fragments showing how the
@@ -18881,7 +18881,7 @@ function _renderLCStemma(generations) {
 //   §iv Archive Commentary — what is consecrated is an interval.
 
 function _renderSabbathChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — shared
+  // Encounter memory + Codex rubric + provenance — shared
   // pipeline with the prior three chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -18941,7 +18941,7 @@ function _renderSabbathChamber(leaf, rec, pid, chKey) {
   // §iv — Archive Commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -19057,7 +19057,7 @@ function _renderSCRecurrenceFragments(fragments) {
 
 
 // ── AO · 005 — The Sacred Mountain (Elevation and Encounter) ──
-// A symbolic / imaginal Atlas Object. The chamber's heart is a
+// A symbolic / imaginal Codex Object. The chamber's heart is a
 // vertical column of canonical mountain encounters connected by
 // a hairline axis-mundi rule. Each layer is a single encounter
 // inscription; between layers, small italic ascent marks signal
@@ -19078,7 +19078,7 @@ function _renderSCRecurrenceFragments(fragments) {
 //   §iv Archive Commentary (reused).
 
 function _renderSacredMountainChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — same pipeline
+  // Encounter memory + Codex rubric + provenance — same pipeline
   // as the prior four chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -19138,7 +19138,7 @@ function _renderSacredMountainChamber(leaf, rec, pid, chKey) {
   // §iv — Archive Commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -19257,7 +19257,7 @@ function _renderMCFragments(fragments) {
 
 
 // ── AO · 006 — The Covenant Formula ─────────────────────────────
-// A covenantal / legal Atlas Object. The chamber's form is the
+// A covenantal / legal Codex Object. The chamber's form is the
 // form of the covenant: a reciprocal call-and-response that
 // recurs across the canon. Seven occurrences of the same formula
 // rendered as bipartite pivots; five witness clauses surrounding
@@ -19277,7 +19277,7 @@ function _renderMCFragments(fragments) {
 //       relationship under the form of law.
 
 function _renderCovenantChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — shared
+  // Encounter memory + Codex rubric + provenance — shared
   // pipeline with the prior five chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -19337,7 +19337,7 @@ function _renderCovenantChamber(leaf, rec, pid, chKey) {
   // §iv — Archive Commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -19457,7 +19457,7 @@ function _renderVCWitnesses(clauses) {
 
 
 // ── AO · 007 — The Fear of the LORD (Wisdom's Beginning) ───────
-// A wisdom / contemplative Atlas Object. The chamber's form is
+// A wisdom / contemplative Codex Object. The chamber's form is
 // the form of wisdom itself: short sayings surrounded by
 // silence. Six aphorisms stacked vertically, each centered and
 // generously padded so the eye rests on one before moving to
@@ -19475,7 +19475,7 @@ function _renderVCWitnesses(clauses) {
 //   §iv Archive Commentary — wisdom is entered, not solved.
 
 function _renderWisdomChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — shared
+  // Encounter memory + Codex rubric + provenance — shared
   // pipeline with the prior six chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -19535,7 +19535,7 @@ function _renderWisdomChamber(leaf, rec, pid, chKey) {
   // §iv — Archive Commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -19673,7 +19673,7 @@ function _renderWSCompression(c) {
 
 
 // ── AO · 008 — The Opened Heavens (Visionary Disclosure) ───────
-// A revelatory / apocalyptic Atlas Object. The chamber's form
+// A revelatory / apocalyptic Codex Object. The chamber's form
 // is the form of unveiling itself: five paired vision blocks,
 // each carrying a dim THRESHOLD rubric above (partial sight,
 // reduced opacity) and the UNVEILED canonical text below (full
@@ -19691,7 +19691,7 @@ function _renderWSCompression(c) {
 //       its object is more than the seer can hold.
 
 function _renderRevelationChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — shared
+  // Encounter memory + Codex rubric + provenance — shared
   // pipeline with the prior seven chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -19751,7 +19751,7 @@ function _renderRevelationChamber(leaf, rec, pid, chKey) {
   // §iv — Archive Commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -19853,7 +19853,7 @@ function _renderRCFragments(fragments) {
 
 
 // ── AO · 009 — How Long, O LORD? (Lament Before Heaven) ───────
-// A lament / suffering Atlas Object. The chamber's form is the
+// A lament / suffering Codex Object. The chamber's form is the
 // form of lament itself: a column of cries held together by a
 // broken-but-unsevered vertical axis of address. The Lamentations
 // acrostic is rendered as Hebrew-letter triplets so the
@@ -19871,7 +19871,7 @@ function _renderRCFragments(fragments) {
 //       like under pressure.
 
 function _renderLamentChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — shared
+  // Encounter memory + Codex rubric + provenance — shared
   // pipeline with the prior eight chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -19931,7 +19931,7 @@ function _renderLamentChamber(leaf, rec, pid, chKey) {
   // §iv — Archive Commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -20083,7 +20083,7 @@ function _renderLMRefrains(refrains) {
 
 
 // ── AO · 010 — The Word Became Flesh (Tent, Temple, Flesh) ─────
-// An incarnational / indwelling Atlas Object. The chamber's
+// An incarnational / indwelling Codex Object. The chamber's
 // form is the form of incarnation itself: a compressed,
 // narrow, intimate column of dwellings, each closer than the
 // last. The reader does not read about divine presence; they
@@ -20105,7 +20105,7 @@ function _renderLMRefrains(refrains) {
 //       as exception but as form.
 
 function _renderIncarnationChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — shared
+  // Encounter memory + Codex rubric + provenance — shared
   // pipeline with the prior nine chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -20165,7 +20165,7 @@ function _renderIncarnationChamber(leaf, rec, pid, chKey) {
   // §iv — Archive Commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -20307,7 +20307,7 @@ function _renderINVocabulary(terms) {
 
 
 // ── AO · 011 — Bones Clothed With Breath ──────────────────────
-// A resurrection / renewal Atlas Object. The chamber's form is
+// A resurrection / renewal Codex Object. The chamber's form is
 // the form of resurrection itself: each return-moment renders
 // the silence/corruption state ABOVE the renewed text — dimmed,
 // smaller, kept legible — so the reader's eye sees life come
@@ -20330,7 +20330,7 @@ function _renderINVocabulary(terms) {
 //       what returns is altered; the wounds remain.
 
 function _renderResurrectionChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — shared
+  // Encounter memory + Codex rubric + provenance — shared
   // pipeline with the prior ten chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -20390,7 +20390,7 @@ function _renderResurrectionChamber(leaf, rec, pid, chKey) {
   // §iv — Archive Commentary.
   leaf.appendChild(_renderTCArchive(rec.archive_commentary));
 
-  // Kindred — quiet line naming other Atlas Objects also
+  // Kindred — quiet line naming other Codex Objects also
   // anchored at this verse, if any. Civilizational resonance.
   const _kindred = _renderChamberKindred(rec, pid);
   if (_kindred) leaf.appendChild(_kindred);
@@ -20548,7 +20548,7 @@ function _renderRSVocabulary(terms) {
 
 
 // ── AO · 012 — The House Filled With Glory ────────────────────
-// A sacred-space Atlas Object. The chamber's form is the form
+// A sacred-space Codex Object. The chamber's form is the form
 // of sacred approach: five concentric enclosures each
 // successively narrower in measure, joined by small italic
 // threshold rubrics, with the fifth and last appearing without
@@ -20569,7 +20569,7 @@ function _renderRSVocabulary(terms) {
 //   §iv Archive Commentary — sacred space as graded nearness.
 
 function _renderSanctuaryChamber(leaf, rec, pid, chKey) {
-  // Encounter memory + Atlas rubric + provenance — shared
+  // Encounter memory + Codex rubric + provenance — shared
   // pipeline with the prior eleven chambers.
   let recurrence = null;
   if (rec.atlas_object && rec.atlas_object.id) {
@@ -21121,14 +21121,14 @@ function _renderFolioWitnessList(inner, chapters) {
   }
 }
 
-// ── Atlas Object Field — the folio as encounter surface ──────
+// ── Codex Object Field — the folio as encounter surface ──────
 //
 // The folio is not a "commentary margin" attached to a verse.
-// It is an Atlas Object Field: a discovery surface through which
-// the reader meets autonomous knowledge entities — Atlas Objects.
+// It is an Codex Object Field: a discovery surface through which
+// the reader meets autonomous knowledge entities — Codex Objects.
 //
 // In this model:
-//   - An Atlas Object is an autonomous knowledge entity, with an
+//   - An Codex Object is an autonomous knowledge entity, with an
 //     identity, an authority class, civilizational/tradition
 //     associations, and (potentially) many anchorings across the
 //     archive. Examples: "Ancient Hebrew Cosmology", "Flood
@@ -21138,11 +21138,11 @@ function _renderFolioWitnessList(inner, chapters) {
 //     object may be encountered through Genesis 1, Psalm 104,
 //     Job 38, Enūma Eliš, and so on.
 //   - A folio marker, then, is not "a note about this verse."
-//     It is a signal that an Atlas Object is encounterable here.
+//     It is a signal that an Codex Object is encounterable here.
 //
 // Each record in the data stream that carries an `atlas_object`
 // block (id, class, siglum, civilizations, anchorings, linked)
-// is treated as a first-class Atlas Object encountered here.
+// is treated as a first-class Codex Object encountered here.
 // Records without that block remain ordinary apparatus witnesses;
 // the architecture allows both kinds to coexist as the archive
 // grows. The cosmology chamber (gen1-cosmology-firmament) is the
@@ -21175,7 +21175,7 @@ function _renderChapterRoomFolio(_legacyInner) {
   const ch = chKey || currentBook || '';
   if (!ch || !currentData || !currentData.genealogy) return;
   // Iterate over ALL anchors of each record (not only the first):
-  // an Atlas Object may be anchored to multiple passages, so a
+  // an Codex Object may be anchored to multiple passages, so a
   // single record may surface markers in multiple chapters. The
   // record is included in this chapter render once per anchor
   // that falls in the current chapter — typically one, but the
@@ -21480,7 +21480,7 @@ function _renderFolioMarker(rec, pid) {
   if (rec.atlas_object && typeof _anchorGravity === 'function') {
     marker.dataset.anchorWeight = _anchorGravity(rec, pid);
   }
-  // Visited-state — for records that carry Atlas Object identity,
+  // Visited-state — for records that carry Codex Object identity,
   // the marker quietly warms when the object has been encountered
   // before (any anchoring). The change is subtle: a slightly
   // deeper border-color / glyph-color, no badge, no dot. The
@@ -26645,14 +26645,14 @@ let _lastReadingMemo = null;
 // archive. Accessed from a quiet italic line at the foot of the
 // Bible title leaf. Not documentation — rubric. The voice is
 // medieval-codex-preface, Borges-adjacent: a few short
-// observations about what an Atlas Object is, what recurrence
+// observations about what an Codex Object is, what recurrence
 // means, what the form holds. Dismissable by clicking outside.
 
 const _CODEX_PREFACE_RUBRICS = [
   {
-    head: 'On Atlas Objects',
+    head: 'On Codex Objects',
     body: (
-      'An Atlas Object is not an article. It is an autonomous ' +
+      'An Codex Object is not an article. It is an autonomous ' +
       'knowledge entity — a form that civilizations have used to ' +
       'remember themselves. The same object may be encountered ' +
       'through different passages, traditions, and centuries; ' +
@@ -26821,7 +26821,7 @@ function _closeCodexPreface() {
 
 
 // ──────────────────────────────────────────────────────────────
-// Atlas Index — a manuscript witness ledger for the current text.
+// Codex Index — a manuscript witness ledger for the current text.
 // Renders into $textHeader (the same surface the cover uses), so
 // returning to Contents is a single re-render of the cover.
 // Hierarchy: book → chapter → verse → records. No tables, cards,
@@ -26856,10 +26856,10 @@ const _ATLAS_INDEX_KIND_NAMES = {
 };
 
 function _atlasIndexClassification(rec) {
-  // Atlas Object records carry their siglum on the classification
+  // Codex Object records carry their siglum on the classification
   // line. Other records carry "Authority · Kind".
   if (rec && rec.atlas_object && rec.atlas_object.siglum) {
-    return `Atlas Object · ${rec.atlas_object.siglum}`;
+    return `Codex Object · ${rec.atlas_object.siglum}`;
   }
   const auth = (rec && rec.authority) || 'tertiary';
   const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
@@ -26960,7 +26960,7 @@ function _openAtlasIndex(data, entry) {
   // here from the DOM so this function can run independently.
   const $textHeader = document.getElementById('text-header');
   if (!$textHeader) return;
-  // Mark that we are now in the Atlas Index view so other render
+  // Mark that we are now in the Codex Index view so other render
   // paths can read it.
   document.body.classList.add('atlas-index-active');
   document.body.classList.remove('in-reading');
@@ -26982,7 +26982,7 @@ function _openAtlasIndex(data, entry) {
   if (ctrls) ctrls.style.display = '';
   const ctrlContents = document.getElementById('ctrl-contents');
   if (ctrlContents) ctrlContents.style.display = 'none';
-  // The Atlas Index is a long appendix; the reader column must
+  // The Codex Index is a long appendix; the reader column must
   // scroll. #reader ships with an inline `overflow:hidden` so the
   // welcome screen does not scroll inside it, and the CSS rule
   // is `overflow-y: auto`. Clearing the inline style restores
@@ -27002,7 +27002,7 @@ function _openAtlasIndex(data, entry) {
        '</button>');
   push('    <div class="aix-title-block">');
   push(`      <div class="aix-text-name">${escapeHTML(data.title || entry.title || '')}</div>`);
-  push('      <div class="aix-title">Atlas Index</div>');
+  push('      <div class="aix-title">Codex Index</div>');
   push('      <div class="aix-rule" aria-hidden="true"></div>');
   push('    </div>');
   push('    <div class="aix-preface">' +
@@ -27107,7 +27107,7 @@ function _openAtlasIndex(data, entry) {
     });
   });
 
-  // Atlas Index scrolls inside the reader column; ensure it
+  // Codex Index scrolls inside the reader column; ensure it
   // opens at the top regardless of any prior scroll position.
   $reader.scrollTop = 0;
 }

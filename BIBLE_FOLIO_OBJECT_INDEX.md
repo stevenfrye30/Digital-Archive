@@ -2,7 +2,7 @@
 
 *Auto-generated from `data/bible_kjv.json`. Run `05_scripts/build_folio_object_index.py` to regenerate.*
 
-A human-readable register of every record currently anchored to a verse in the Bible. Atlas Objects, commentary, architecture, plates, and patriarchal wave-one additions are listed together, grouped by the chapter they touch. Authority class is shown by glyph:
+A human-readable register of every record currently anchored to a verse in the Bible. Codex Objects, commentary, architecture, plates, and patriarchal wave-one additions are listed together, grouped by the chapter they touch. Authority class is shown by glyph:
 
 - ● primary — canonical anchor
 - ◐ secondary — substantial scholarly witness

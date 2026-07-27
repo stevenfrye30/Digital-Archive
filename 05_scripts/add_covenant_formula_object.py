@@ -1,6 +1,6 @@
 """Add AO · 006 — The Covenant Formula (I Will Be Your God).
 
-The sixth Atlas Object class — covenant-formula. Materially
+The sixth Codex Object class — covenant-formula. Materially
 distinct from the prior five:
 
   AO · 001  cosmological-motif      diagram + ANE parallels.

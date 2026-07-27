@@ -1,5 +1,7 @@
 # The Cosmogram Prototype
 
+> *Note (2026-07-27, Task 16): the steward renamed "Atlas Objects" to **Codex Objects** ("Atlas" now belongs solely to the workspace's graph-engine layer). This dated record keeps its original wording.*
+
 *Compiled 2026-05-22, v84. The first true artifact-level
 breakthrough. Companion to `OBJECT_ARTIFACT_AUDIT.md`.*
 

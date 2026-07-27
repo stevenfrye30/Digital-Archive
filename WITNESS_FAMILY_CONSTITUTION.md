@@ -80,7 +80,7 @@ is rated *mature*, *forming*, or *unformed*.
 
 ### 2. AO chambers (mature, family-of-twelve)
 
-  - **What it is:** Twelve Atlas Object classes, each with a
+  - **What it is:** Twelve Codex Object classes, each with a
     bespoke chamber render. The cosmology chamber, the
     sanctuary chamber, the lament chamber, the covenant
     chamber, etc.

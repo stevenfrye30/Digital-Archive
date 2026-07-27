@@ -1,6 +1,6 @@
 """Add AO · 012 — The House Filled With Glory (The Layered Sanctuary).
 
-The twelfth Atlas Object class — sacred-space. Materially distinct
+The twelfth Codex Object class — sacred-space. Materially distinct
 from the prior eleven:
 
   AO · 001  cosmological-motif      diagram + ANE parallels.

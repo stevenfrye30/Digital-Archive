@@ -1,6 +1,6 @@
 """Add AO · 007 — The Fear of the LORD (Wisdom's Beginning).
 
-The seventh Atlas Object class — wisdom-saying. Materially
+The seventh Codex Object class — wisdom-saying. Materially
 distinct from the prior six:
 
   AO · 001  cosmological-motif      diagram + ANE parallels.

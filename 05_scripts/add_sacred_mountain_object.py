@@ -1,6 +1,6 @@
 """Add AO · 005 — The Sacred Mountain (Elevation and Encounter).
 
-The fifth Atlas Object class — symbolic / imaginal. Materially
+The fifth Codex Object class — symbolic / imaginal. Materially
 distinct from the prior four:
 
   AO · 001  cosmological-motif      diagram + ANE parallels.

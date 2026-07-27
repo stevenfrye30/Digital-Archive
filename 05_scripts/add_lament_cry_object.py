@@ -1,6 +1,6 @@
 """Add AO · 009 — How Long, O LORD? (Lament Before Heaven).
 
-The ninth Atlas Object class — lament-structure. Materially
+The ninth Codex Object class — lament-structure. Materially
 distinct from the prior eight:
 
   AO · 001  cosmological-motif      diagram + ANE parallels.

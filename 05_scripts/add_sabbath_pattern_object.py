@@ -1,6 +1,6 @@
 """Add AO · 004 — The Sabbath Pattern (Consecrated Time).
 
-The fourth Atlas Object class — ritual / sacred-time. Materially
+The fourth Codex Object class — ritual / sacred-time. Materially
 distinct from the prior three:
 
   AO · 001  cosmological-motif        diagram + ANE parallels.

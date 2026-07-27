@@ -1,4 +1,4 @@
-"""Stamp the gen1-cosmology-firmament record with Atlas Object
+"""Stamp the gen1-cosmology-firmament record with Codex Object
 metadata — the first record promoted from "annotation" to "Atlas
 Object encountered through this verse."
 
@@ -11,7 +11,7 @@ Adds the following block to that one record:
     civilizations: civilizational contexts the object spans
     traditions:    traditions through which it has been transmitted
     anchorings:    other passages where this object may be met
-    linked:        related Atlas Object ids (future)
+    linked:        related Codex Object ids (future)
   }
 
 This is a data-only stamp. The chamber renderer (in index.html)
@@ -53,7 +53,7 @@ COSMOLOGY_OBJECT = {
         "Mesopotamian",
         "Egyptian",
     ],
-    # Other passages where the same Atlas Object may be encountered.
+    # Other passages where the same Codex Object may be encountered.
     # External refs (non-canonical, e.g. Mesopotamian texts) carry
     # external: true and no internal citation.
     "anchorings": [
@@ -83,7 +83,7 @@ COSMOLOGY_OBJECT = {
             "note": "Marduk splits Tiāmat; upper and lower waters formed",
         },
     ],
-    # Related Atlas Objects — placeholders for future objects.
+    # Related Codex Objects — placeholders for future objects.
     # Listed by id so the architecture supports cross-linking
     # before any of these objects exist as full chambers.
     "linked": [
@@ -106,7 +106,7 @@ def main():
         raise SystemExit("gen1-cosmology-firmament record not found")
     target["atlas_object"] = COSMOLOGY_OBJECT
 
-    # Multi-anchor: the Atlas Object recurs across the canon, so the
+    # Multi-anchor: the Codex Object recurs across the canon, so the
     # record now carries anchorings on Psalm 104:5 and Job 38:4 in
     # addition to the canonical Genesis 1:6 anchoring. The folio
     # render iterates all anchors, so a single record contributes
@@ -123,7 +123,7 @@ def main():
     for a in target["anchors"]:
         print(f"    - {a['target']}")
     print(f"  anchorings (declared, may be wider): {len(COSMOLOGY_OBJECT['anchorings'])}")
-    print(f"  linked Atlas Objects:               {len(COSMOLOGY_OBJECT['linked'])}")
+    print(f"  linked Codex Objects:               {len(COSMOLOGY_OBJECT['linked'])}")
 
     with DATA.open("w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)

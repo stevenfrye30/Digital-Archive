@@ -1,6 +1,6 @@
 """Add AO · 011 — Bones Clothed With Breath (Resurrection and Renewal).
 
-The eleventh Atlas Object class — resurrection-renewal. Materially
+The eleventh Codex Object class — resurrection-renewal. Materially
 distinct from the prior ten:
 
   AO · 001  cosmological-motif      diagram + ANE parallels.

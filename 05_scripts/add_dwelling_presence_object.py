@@ -1,6 +1,6 @@
 """Add AO · 010 — The Word Became Flesh (Tent, Temple, Flesh).
 
-The tenth Atlas Object class — incarnational-presence. Materially
+The tenth Codex Object class — incarnational-presence. Materially
 distinct from the prior nine:
 
   AO · 001  cosmological-motif      diagram + ANE parallels.

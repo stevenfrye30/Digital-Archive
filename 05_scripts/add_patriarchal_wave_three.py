@@ -25,7 +25,7 @@ Adds fourteen records across nine chapters, structured as:
     gen.16.13  el-roi-hagar                  tertiary  linguistic
 
 Discipline:
-  · No new Atlas Object; no AO·014; no chamber class.
+  · No new Codex Object; no AO·014; no chamber class.
   · No metadata on existing AO records modified.
   · Akedah cluster is six independent witnesses, not a chamber.
   · Each Akedah record anchors at its own verse — no verse

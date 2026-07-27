@@ -13,7 +13,7 @@ codex without being colonized by it.
 This roadmap operates within strict constraints inherited from
 `ATLAS_EDITORIAL_AUDIT.md`:
 
-- No new Atlas Objects. The twelve are sufficient; AO·013-015
+- No new Codex Objects. The twelve are sufficient; AO·013-015
   remain for a later phase.
 - No new folio systems, resonance mechanics, or metadata classes.
 - No dashboard behavior, no encyclopedic ambition.
@@ -30,7 +30,7 @@ clearest density-cliff. The codex currently surfaces 42 records
 in Genesis, distributed as:
 
 ```
-6  Atlas Object originating anchors    (gen.1.6 ×2, gen.2.1, gen.2.10, gen.5.1, gen.17.7)
+6  Codex Object originating anchors    (gen.1.6 ×2, gen.2.1, gen.2.10, gen.5.1, gen.17.7)
 20 Genesis 1 commentary apparatus      (linguistic, manuscript, commentary, reception, etc.)
 11 genealogy chains                    (cain-seth → ephraim-manasseh)
 5  Doré plates                         (creation, expulsion, Cain/Abel, deluge, Babel)
@@ -705,7 +705,7 @@ genuinely populated.
 
 After these twenty additions, Genesis would carry:
 
-- 6 Atlas Object originating anchors (unchanged)
+- 6 Codex Object originating anchors (unchanged)
 - 20 Gen 1 commentary apparatus (lightly trimmed to ~17)
 - 11 genealogy chains (unchanged)
 - 5 Doré plates (unchanged) + 1 map plate (new)
@@ -770,7 +770,7 @@ between secondary and tertiary, the discipline of the realized
 chamber — will determine how the rest of the canon is inhabited.
 
 The twenty additions proposed above are the minimum to make
-Genesis feel inevitable. They do not require new Atlas Objects.
+Genesis feel inevitable. They do not require new Codex Objects.
 They do not require new systems. They do not require new
 metadata classes. They require only the editorial work of
 selecting, writing, and anchoring twenty carefully judged

@@ -1,5 +1,7 @@
 # Atlas — Editorial Audit and Canon-Completion Roadmap
 
+> *Note (2026-07-27, Task 16): the steward renamed "Atlas Objects" to **Codex Objects** ("Atlas" now belongs solely to the workspace's graph-engine layer). This dated record keeps its original wording.*
+
 *Compiled 2026-05-20, after v57 (Biblical Corpus Deepening, first wave).*
 
 This is the codex's first governing editorial doctrine. It is not a feature plan. It is a manuscript editor's read of the codex at the moment it crossed from experimental phase into civilizational manuscript. It exists to slow the next phase, to refuse premature additions, to set the threshold for future Atlas Objects, and to identify — with restraint — what Atlas still owes the Bible.

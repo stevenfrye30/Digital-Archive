@@ -1,6 +1,6 @@
 """Add AO · 003 — The Antediluvian Line (Adam → Noah).
 
-The third Atlas Object class — genealogical / lineage. Materially
+The third Codex Object class — genealogical / lineage. Materially
 distinct from AO · 001 (comparative cosmology) and AO · 002
 (textual witness / transmission):
 

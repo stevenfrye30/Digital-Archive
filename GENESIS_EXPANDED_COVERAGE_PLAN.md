@@ -627,8 +627,8 @@ After expansion, Genesis would carry roughly:
 - **Genealogy chains:** 11 (unchanged)
 - **Doré plates:** 5 (unchanged)
 - **Map plate:** 1 (gen.12.5, optional)
-- **Atlas Object originating anchors:** 6 (unchanged)
-- **Atlas Object recurrence anchors (potential):**
+- **Codex Object originating anchors:** 6 (unchanged)
+- **Codex Object recurrence anchors (potential):**
   + AO·006 reconsidered to originate at gen.9.9 (Noahide) —
     separate deliberation
   + AO·002 recurrence at gen.11.7 (Babel) — separate
@@ -798,8 +798,8 @@ seventy or eighty records when complete.
 Is that too many?
 
 The Editorial Audit's central anchoring number was **fifteen
-Atlas Objects total** across the entire canon. That number is
-unchanged — this plan adds *no new Atlas Objects to Genesis*
+Codex Objects total** across the entire canon. That number is
+unchanged — this plan adds *no new Codex Objects to Genesis*
 beyond the three already-considered candidates (AO·013-015
 remain governed by the Audit's discipline).
 

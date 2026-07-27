@@ -1,5 +1,7 @@
 # Object Artifact Audit
 
+> *Note (2026-07-27, Task 16): the steward renamed "Atlas Objects" to **Codex Objects** ("Atlas" now belongs solely to the workspace's graph-engine layer). This dated record keeps its original wording.*
+
 *Compiled 2026-05-22, v83. The transition document from
 codex-architecture passes (v76-v82) into reader-facing object
 maturation. Companion to all prior constitutional documents.*

@@ -1,7 +1,7 @@
 """Wave One — Patriarchal Genesis atmosphere layer.
 
 Adds six records to bible_kjv.json, exactly as specified in
-GENESIS_WAVE_ONE_PLAN.md. No new Atlas Objects, no new chamber
+GENESIS_WAVE_ONE_PLAN.md. No new Codex Objects, no new chamber
 classes, no new metadata fields. Each record uses the existing
 generic fallback renderer (provenance header + verse + title +
 body).

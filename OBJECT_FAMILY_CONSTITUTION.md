@@ -7,7 +7,7 @@ it from sibling families. Companion to
 `WITNESS_FAMILY_CONSTITUTION.md`, `LEAF_CONSTITUTION_AUDIT.md`,
 and the prior Genesis-arc documents.*
 
-This constitution turns the Atlas Object-family system from
+This constitution turns the Codex Object-family system from
 *styled variants of a generic modal* into *distinct manuscript
 traditions sharing one civilizational volume*. The pass before
 this (Leaf Constitution) shipped commentary, linguistic, and
@@ -50,7 +50,7 @@ as: monumental, framed by the dark chamber.
 The patriarchal narrative's lineage backbone. Reads as: tree
 form, indented by generation.
 
-**Atlas Object chambers (×12)** — *bespoke encounter
+**Codex Object chambers (×12)** — *bespoke encounter
 architecture*. Twelve realized chamber renderers, each a
 unique world (cosmology, sanctuary, lament, etc.). Distinct
 by design.
@@ -368,7 +368,7 @@ Per the brief, explicitly:
   no dashboard aesthetics, no excessive ornament, no fake
   texture overlays, no fantasy RPG styling, no museum-kiosk
   energy.
-- **No new Atlas Objects.** Twelve. The constitution holds.
+- **No new Codex Objects.** Twelve. The constitution holds.
 - **No content changes.** The 4 reception-history records are
   editorially complete; the 1 manuscript record likewise; the
   1 ritual record (ma'ariv) likewise; the 1 cross-reference

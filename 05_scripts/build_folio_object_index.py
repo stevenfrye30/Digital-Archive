@@ -1,10 +1,10 @@
 """Build BIBLE_FOLIO_OBJECT_INDEX.md — a human-readable index of
-all folio/Atlas objects currently anchored to the Bible, organized
+all folio/Codex objects currently anchored to the Bible, organized
 by canonical order.
 
 Pulls from data/bible_kjv.json. For each chapter that carries
 records, lists the records with title, anchor verse, authority,
-kind, optional Atlas Object siglum, and a short role line.
+kind, optional Codex Object siglum, and a short role line.
 
 Not a feature. An editorial-planning reference document.
 """
@@ -63,7 +63,7 @@ BOOK_NAMES = {abbr: name for abbr, name in CANON}
 # plays in the codex, in the manuscript editor's own voice. Kept
 # brief because the index is for planning, not exegesis.
 ROLES = {
-    # Atlas Objects
+    # Codex Objects
     "gen1-cosmology-firmament":
         "AO·001 cosmology — Firmament chamber; the ANE three-tier cosmos.",
     "gen1-firmament-translation-tradition":
@@ -152,7 +152,7 @@ def main():
     push("")
     push(
         "A human-readable register of every record currently "
-        "anchored to a verse in the Bible. Atlas Objects, "
+        "anchored to a verse in the Bible. Codex Objects, "
         "commentary, architecture, plates, and patriarchal "
         "wave-one additions are listed together, grouped by the "
         "chapter they touch. Authority class is shown by glyph:"

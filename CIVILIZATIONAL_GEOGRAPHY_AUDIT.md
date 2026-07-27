@@ -1,5 +1,7 @@
 # Civilizational Geography Audit
 
+> *Note (2026-07-27, Task 16): the steward renamed "Atlas Objects" to **Codex Objects** ("Atlas" now belongs solely to the workspace's graph-engine layer). This dated record keeps its original wording.*
+
 *Compiled 2026-05-22, v82. The first depth-gradient pass.
 Companion to `CIVILIZATIONAL_INHERITANCE_AUDIT.md` and the
 constitutional documents above it.*
