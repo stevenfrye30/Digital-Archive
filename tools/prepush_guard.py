@@ -1,112 +1,188 @@
 #!/usr/bin/env python3
-"""Pre-push guard for the public reader repo.
+"""Pre-push guard v2 for the public reader repo (dataflow spec, lane 2).
 
-Blocks a push when the force-tracked reader index disagrees with the
-counts declared in STATUS.md, or when any restricted entry's data file
-is tracked by git. START_HERE.md (parent archive) documents this as the
-pre-push invariant; STATUS.md is the truth surface the expected numbers
-are read from, so a legitimate corpus change is made pushable by
-refreshing STATUS.md — never by editing this script.
+Every invariant is DERIVED from data/build_manifest.json — the deploy
+contract written by the build (05_scripts/build_manifest.py). Nothing
+here is remembered or hand-counted:
+
+  1. counts       manifest counts == counts recomputed from index.json
+  2. STATUS       STATUS.md's Canonical Library counts == manifest counts
+                  (refresh with: python tools/status_from_manifest.py --write)
+  3. reasons      every restricted entry carries a restricted_reason
+                  from the enum
+  4. boundary     no restricted entry ships a tracked data file
+                  (.json or .json.gz)
+  5. integrity    every manifest data_file exists on disk and its
+                  sha256 matches data_hash; no index row lacks a
+                  manifest entry and no manifest entry is an orphan
+
+A legitimate corpus change is made pushable by rebuilding the deploy
+(which rewrites the manifest) and refreshing STATUS from it — never by
+editing this script.
 
 Install with: python tools/install_hooks.py
-Run manually: python tools/prepush_guard.py
+Run manually: python tools/prepush_guard.py [--fast]   (--fast skips 5's hashing)
 """
 
+import argparse
+import hashlib
 import json
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
+
+# Windows consoles may be cp1252; messages carry — glyphs.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 REPO = Path(__file__).resolve().parent.parent
 STATUS = REPO / "STATUS.md"
 INDEX = REPO / "data" / "index.json"
+MANIFEST = REPO / "data" / "build_manifest.json"
+
+REASON_ENUM = {"copyrighted", "uncertain-copyright", "integrity-wishlist",
+               "steward-hold"}
 
 STATUS_ROWS = {
-    "total": r"^\|\s*Index entries[^|]*\|\s*\**([\d,]+)\**\s*\|",
+    "entries": r"^\|\s*Index entries[^|]*\|\s*\**([\d,]+)\**\s*\|",
     "public": r"^\|\s*—? ?of which public[^|]*\|\s*\**([\d,]+)\**\s*\|",
     "restricted": r"^\|\s*—? ?of which restricted[^|]*\|\s*\**([\d,]+)\**\s*\|",
 }
 
 
 def fail(msg):
-    sys.stderr.write("\npre-push guard: PUSH BLOCKED\n" + msg + "\n")
+    sys.stderr.write("\npre-push guard v2: PUSH BLOCKED\n" + msg + "\n")
     sys.exit(1)
 
 
-def expected_counts():
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return "sha256:" + h.hexdigest()
+
+
+def status_counts():
     if not STATUS.exists():
-        fail("STATUS.md not found beside the reader — the guard cannot "
-             "verify the index without its truth surface.")
+        fail("STATUS.md not found beside the reader.")
     text = STATUS.read_text(encoding="utf-8")
-    counts = {}
+    out = {}
     for key, pattern in STATUS_ROWS.items():
         m = re.search(pattern, text, re.MULTILINE)
         if not m:
             fail(f"Could not find the '{key}' row in STATUS.md's Canonical "
-                 "Library table. If the table was reworded, update "
-                 "STATUS_ROWS in tools/prepush_guard.py to match.")
-        counts[key] = int(m.group(1).replace(",", ""))
-    return counts
-
-
-def actual_counts():
-    idx = json.loads(INDEX.read_text(encoding="utf-8"))
-    texts = idx["texts"] if isinstance(idx, dict) and "texts" in idx else idx
-    restricted = [t for t in texts if t.get("restricted") is True]
-    return {
-        "total": len(texts),
-        "public": len(texts) - len(restricted),
-        "restricted": len(restricted),
-    }, restricted
-
-
-def tracked_restricted_files(restricted):
-    out = subprocess.run(
-        ["git", "ls-files", "data/"],
-        capture_output=True, text=True, cwd=REPO, check=True,
-    ).stdout.splitlines()
-    tracked = set(out)
-    leaks = []
-    for t in restricted:
-        df = t.get("data_file")
-        if not df:
-            continue
-        for candidate in (f"data/{df}", f"data/{df}.gz"):
-            if candidate in tracked:
-                leaks.append(candidate)
-    return leaks
+                 "Library table; update STATUS_ROWS here if it was reworded.")
+        out[key] = int(m.group(1).replace(",", ""))
+    return out
 
 
 def main():
-    expected = expected_counts()
-    actual, restricted = actual_counts()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--fast", action="store_true",
+                    help="skip full data_hash verification (counts/boundary only)")
+    a = ap.parse_args()
 
-    if expected != actual:
-        fail(
-            "data/index.json disagrees with STATUS.md.\n"
-            f"  STATUS.md declares : {expected['total']} = "
-            f"{expected['public']} public + {expected['restricted']} restricted\n"
-            f"  index.json contains: {actual['total']} = "
-            f"{actual['public']} public + {actual['restricted']} restricted\n"
-            "If the corpus legitimately changed, refresh the Canonical\n"
-            "Library counts in STATUS.md (with the export lane's numbers)\n"
-            "and try again. If it did not, the index is drifted — stop and\n"
-            "investigate before pushing."
-        )
+    if not MANIFEST.exists():
+        fail("data/build_manifest.json is missing — the deploy has no "
+             "contract. Emit it with: python 05_scripts/build_manifest.py "
+             "(or run the full build).")
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    mtexts = manifest["texts"]
 
-    leaks = tracked_restricted_files(restricted)
+    # 1 — manifest counts vs index reality
+    idx = json.loads(INDEX.read_text(encoding="utf-8"))
+    rows = idx["texts"] if isinstance(idx, dict) and "texts" in idx else idx
+    n_restricted = sum(1 for t in rows if t.get("restricted") is True)
+    actual = {"entries": len(rows), "public": len(rows) - n_restricted,
+              "restricted": n_restricted}
+    if manifest["counts"] != actual:
+        fail("data/index.json disagrees with the build manifest.\n"
+             f"  manifest : {manifest['counts']}\n"
+             f"  index    : {actual}\n"
+             "The index changed without a manifest rewrite (or vice versa). "
+             "Rebuild, or investigate the drift before pushing.")
+
+    # 2 — STATUS is printed output, and must match
+    sc = status_counts()
+    if sc != actual:
+        fail("STATUS.md's Canonical Library counts are stale.\n"
+             f"  STATUS   : {sc}\n"
+             f"  manifest : {actual}\n"
+             "Refresh with: python tools/status_from_manifest.py --write")
+
+    # 3 + 4 — restricted reasons and the no-body boundary
+    tracked = set(subprocess.run(
+        ["git", "ls-files", "data/"],
+        capture_output=True, text=True, cwd=REPO, check=True,
+    ).stdout.splitlines())
+    missing_reason, leaks = [], []
+    for key, e in mtexts.items():
+        if not e.get("restricted"):
+            continue
+        if e.get("restricted_reason") not in REASON_ENUM:
+            missing_reason.append(key)
+        df = e.get("data_file")
+        if df:
+            stem = df[:-3] if df.endswith(".gz") else df
+            for cand in (f"data/{stem}", f"data/{stem}.gz"):
+                if cand in tracked:
+                    leaks.append(cand)
+    if missing_reason:
+        fail("Restricted entries without a valid restricted_reason:\n  "
+             + "\n  ".join(missing_reason[:20]))
     if leaks:
-        fail(
-            "Restricted entries have tracked data files (bodies must never "
-            "deploy):\n  " + "\n  ".join(leaks) +
-            "\nUntrack them (git rm --cached <file>) and confirm they are "
-            "gitignored."
-        )
+        fail("Restricted entries have TRACKED data files (bodies must "
+             "never deploy):\n  " + "\n  ".join(leaks)
+             + "\nUntrack them (git rm --cached <file>) and confirm they "
+               "are gitignored.")
 
-    print(f"pre-push guard: OK — {actual['total']} = {actual['public']} "
-          f"public + {actual['restricted']} restricted; "
-          "no restricted data files tracked.")
+    # 5 — correspondence + integrity
+    idx_dfs = {t["data_file"] for t in rows if t.get("data_file")}
+    man_dfs = set()
+    for e in mtexts.values():
+        df = e.get("data_file")
+        if df:
+            man_dfs.add(df[:-3] if df.endswith(".gz") else df)
+    if idx_dfs - man_dfs:
+        fail("Index rows with no manifest entry:\n  "
+             + "\n  ".join(sorted(idx_dfs - man_dfs)[:20]))
+    if man_dfs - idx_dfs:
+        fail("Manifest entries no index row references:\n  "
+             + "\n  ".join(sorted(man_dfs - idx_dfs)[:20]))
+
+    hashed = 0
+    if not a.fast:
+        t0 = time.time()
+        bad, gone = [], []
+        for key, e in mtexts.items():
+            df, want = e.get("data_file"), e.get("data_hash")
+            if not df or not want:
+                continue
+            p = REPO / "data" / df
+            if not p.exists():
+                gone.append(df)
+            elif sha256_file(p) != want:
+                bad.append(df)
+            hashed += 1
+        if gone:
+            fail("Manifest data files missing on disk:\n  "
+                 + "\n  ".join(gone[:20]))
+        if bad:
+            fail("Data files whose sha256 no longer matches the manifest "
+                 "(edited or corrupted after the build):\n  "
+                 + "\n  ".join(bad[:20])
+                 + "\nRebuild the deploy so the manifest and the files agree.")
+        elapsed = f"{time.time() - t0:.1f}s"
+    else:
+        elapsed = "skipped (--fast)"
+
+    print(f"pre-push guard v2: OK — {actual['entries']} = {actual['public']} "
+          f"public + {actual['restricted']} restricted; reasons complete; "
+          f"boundary clean; {hashed} artifact hashes verified ({elapsed}).")
 
 
 if __name__ == "__main__":

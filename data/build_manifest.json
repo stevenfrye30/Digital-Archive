@@ -1,8 +1,8 @@
 {
- "generated": "2026-07-27T21:28:52Z",
+ "generated": "2026-07-27T21:43:33Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "d98f04ef7d265d66638abaf3a91e1e079c62ac8d",
- "library_fingerprint": "sha256:6b54063ba94129bfb24defde8135be2400f99e21f87f63d058225821a18086a2",
+ "exporter_rev": "16735c7382d904e489803aab827a7f5275877d74",
+ "library_fingerprint": "sha256:7a7073a3c95cc1ec518da7ea8b9ce20c7a0e12ca622e983c3eb993aa77ce7d6c",
  "counts": {
   "entries": 1230,
   "public": 1139,
@@ -11687,7 +11687,7 @@
    "exported": "2026-07-10T17:31:22Z"
   },
   "seneca-minor-dialogues_stewart": {
-   "source_hash": null,
+   "source_hash": "sha256:597d179de603c61a3cd0e3bcb9394df5f765d79cfd5c0cc7815a338bf78b982e",
    "data_file": "seneca-minor-dialogues_stewart.json.gz",
    "data_hash": "sha256:8e8e0ca3a7197c5031f78efe943ee5c8402b03bb18e0548bc97e263e9e8d1bb6",
    "data_bytes": 321973,
@@ -11696,8 +11696,7 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-11T15:28:35Z",
-   "source_note": "ambiguous: 2 canonical dirs carry passages_stewart.json"
+   "exported": "2026-07-11T15:28:35Z"
   },
   "seneca-morals_aubrey-stewart": {
    "source_hash": "sha256:c412466ccef4be7f7030f9e604ef11030ef0b518664b47415cb6b756b7a649d8",
