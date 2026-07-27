@@ -16173,7 +16173,7 @@ function _openFolioObject(id) {
   if (viewer) viewer.scrollTop = 0;
 }
 // Pick the anchor whose chapter matches the reader's current
-// chapter. A record with multiple anchors (e.g., an Codex Object
+// chapter. A record with multiple anchors (e.g., a Codex Object
 // recurring across the canon) must open into the chamber from
 // the anchoring the reader is actually standing on, so that
 // the verse line and the encounter memory both reflect the
@@ -21124,11 +21124,11 @@ function _renderFolioWitnessList(inner, chapters) {
 // ── Codex Object Field — the folio as encounter surface ──────
 //
 // The folio is not a "commentary margin" attached to a verse.
-// It is an Codex Object Field: a discovery surface through which
+// It is a Codex Object Field: a discovery surface through which
 // the reader meets autonomous knowledge entities — Codex Objects.
 //
 // In this model:
-//   - An Codex Object is an autonomous knowledge entity, with an
+//   - A Codex Object is an autonomous knowledge entity, with an
 //     identity, an authority class, civilizational/tradition
 //     associations, and (potentially) many anchorings across the
 //     archive. Examples: "Ancient Hebrew Cosmology", "Flood
@@ -21138,7 +21138,7 @@ function _renderFolioWitnessList(inner, chapters) {
 //     object may be encountered through Genesis 1, Psalm 104,
 //     Job 38, Enūma Eliš, and so on.
 //   - A folio marker, then, is not "a note about this verse."
-//     It is a signal that an Codex Object is encounterable here.
+//     It is a signal that a Codex Object is encounterable here.
 //
 // Each record in the data stream that carries an `atlas_object`
 // block (id, class, siglum, civilizations, anchorings, linked)
@@ -21175,7 +21175,7 @@ function _renderChapterRoomFolio(_legacyInner) {
   const ch = chKey || currentBook || '';
   if (!ch || !currentData || !currentData.genealogy) return;
   // Iterate over ALL anchors of each record (not only the first):
-  // an Codex Object may be anchored to multiple passages, so a
+  // a Codex Object may be anchored to multiple passages, so a
   // single record may surface markers in multiple chapters. The
   // record is included in this chapter render once per anchor
   // that falls in the current chapter — typically one, but the
@@ -26645,14 +26645,14 @@ let _lastReadingMemo = null;
 // archive. Accessed from a quiet italic line at the foot of the
 // Bible title leaf. Not documentation — rubric. The voice is
 // medieval-codex-preface, Borges-adjacent: a few short
-// observations about what an Codex Object is, what recurrence
+// observations about what a Codex Object is, what recurrence
 // means, what the form holds. Dismissable by clicking outside.
 
 const _CODEX_PREFACE_RUBRICS = [
   {
     head: 'On Codex Objects',
     body: (
-      'An Codex Object is not an article. It is an autonomous ' +
+      'A Codex Object is not an article. It is an autonomous ' +
       'knowledge entity — a form that civilizations have used to ' +
       'remember themselves. The same object may be encountered ' +
       'through different passages, traditions, and centuries; ' +
