@@ -70,7 +70,7 @@ def load_corpus() -> tuple[list[Passage], dict]:
     loaded once. Otherwise the same passages would be counted multiple
     times in the duplicate-id audit.
     """
-    with open(DATA / "index.json", encoding="utf-8") as f:
+    with open(DATA / "_generated" / "index.json", encoding="utf-8") as f:
         idx = json.load(f)
 
     source_map = {e["id"]: e.get("source", "unknown") for e in idx["texts"]}

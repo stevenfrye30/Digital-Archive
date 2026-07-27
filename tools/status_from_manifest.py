@@ -46,7 +46,7 @@ def main() -> int:
 
     print(f"from build manifest of {m['generated']}:")
     print(f"| Index entries (web app reader) | **{c['entries']:,}** | "
-          "`03_web_app/data/index.json` (entry count) |")
+          "`03_web_app/data/_generated/index.json` (entry count) |")
     print(f"| — of which public | **{c['public']:,}** | same (`restricted` ≠ true) |")
     print(f"| — of which restricted (locked, metadata-only) | **{c['restricted']:,}** | "
           "same (`restricted` = true) |")

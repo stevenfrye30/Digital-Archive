@@ -199,8 +199,8 @@ async function getText(file){
 
 // ── catalog ──────────────────────────────────────────────────────────────────
 async function loadCatalog(){
-  let idx = await fetchJSON("data/index.json");
-  if(!idx) idx = await fetchJSON("data/index.json.gz");
+  let idx = await fetchJSON("data/_generated/index.json");
+  if(!idx) idx = await fetchJSON("data/_generated/index.json.gz");
   if(!idx){ status("Could not load the library catalog.", true); return; }
   FINALIZED = new Set(await fetchJSON("data/finalized.json") || []);
   const texts = idx.texts || idx;

@@ -22058,11 +22058,11 @@ function translationLabel(entry) {
 async function loadIndex() {
   let index;
   try {
-    index = await getJSON('data/index.json');
+    index = await getJSON('data/_generated/index.json');
   } catch (err) {
     $textList.innerHTML =
       '<li style="padding:14px 16px;font-size:12px;color:#c00">' +
-      'Could not load data/index.json.<br>Run: python 05_scripts/export_reader_data.py</li>';
+      'Could not load data/_generated/index.json.<br>Run: python 05_scripts/export_reader_data.py</li>';
     return;
   }
 
@@ -26109,7 +26109,7 @@ const BIBLE_TRANSLATOR_GROUP = {
   'bible_arabic-van-dyck-1865.json': 'named',
 };
 // UI-only display fallback for witnesses whose index `translator` field is
-// blank (does NOT edit data/index.json). Brenton edited the Greek Septuagint
+// blank (does NOT edit data/_generated/index.json). Brenton edited the Greek Septuagint
 // text; his English twin entry is so credited.
 const BIBLE_TRANSLATOR_OVERRIDE = {
   'bible_brenton-septuagint-greek.json': 'L. C. L. Brenton',

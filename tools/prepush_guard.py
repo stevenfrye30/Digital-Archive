@@ -40,7 +40,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 REPO = Path(__file__).resolve().parent.parent
 STATUS = REPO / "STATUS.md"
-INDEX = REPO / "data" / "index.json"
+INDEX = REPO / "data" / "_generated" / "index.json"
 MANIFEST = REPO / "data" / "build_manifest.json"
 
 REASON_ENUM = {"copyrighted", "uncertain-copyright", "integrity-wishlist",
@@ -100,7 +100,7 @@ def main():
     actual = {"entries": len(rows), "public": len(rows) - n_restricted,
               "restricted": n_restricted}
     if manifest["counts"] != actual:
-        fail("data/index.json disagrees with the build manifest.\n"
+        fail("data/_generated/index.json disagrees with the build manifest.\n"
              f"  manifest : {manifest['counts']}\n"
              f"  index    : {actual}\n"
              "The index changed without a manifest rewrite (or vice versa). "

@@ -85,7 +85,7 @@ def count_canonical() -> dict:
 
 
 def count_web_app() -> dict:
-    p = ROOT / "03_web_app" / "data" / "index.json"
+    p = ROOT / "03_web_app" / "data" / "_generated" / "index.json"
     if not p.exists():
         return {"error": "web app index.json not found"}
     idx = json.loads(p.read_text(encoding="utf-8"))

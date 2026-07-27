@@ -1,7 +1,7 @@
 # Digital Archive — Project Status
 
 *Last refreshed: 2026-07-27 (index counts re-verified against
-`data/index.json`; validation metrics below are from the 2026-06-07
+`data/_generated/index.json`; validation metrics below are from the 2026-06-07
 run and are dated where they appear).*
 
 A single trustworthy view of the project's current state. When numbers
@@ -26,7 +26,7 @@ generated reader at `03_web_app/`.
 
 | Measure | Count | Source of truth |
 |---|---:|---|
-| Index entries (web app reader) | **1,230** | `03_web_app/data/index.json` (entry count) |
+| Index entries (web app reader) | **1,230** | `03_web_app/data/_generated/index.json` (entry count) |
 | — of which public | **1,139** | same (`restricted` ≠ true) |
 | — of which restricted (locked, metadata-only) | **91** | same (`restricted` = true) |
 | Distinct ids | 1,139 | unique `id` — 33 ids legitimately shared across 124 entries (Jātaka ×8, bilingual pairs, multi-volume works); that this equals the public count is arithmetic coincidence (91 excess shared-id entries = 91 restricted entries) |

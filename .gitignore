@@ -8,6 +8,9 @@ data/*.json
 # (hashes + counts + restriction reasons; no text). Tracked by negation,
 # NOT force-add — generated files must be visibly tracked or not at all.
 !data/build_manifest.json
+# Its gzip twin is a local build artifact (gzip_web_data rglobs *.json) —
+# nothing fetches it; keep it unsweepable.
+data/build_manifest.json.gz
 
 # Dev-only pages — not for public visitors
 # (kept individually for the existing tracked names; _legacy/ and
