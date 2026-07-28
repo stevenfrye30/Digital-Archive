@@ -35,4 +35,8 @@ design pass. NOTHING IS BOUND by this sheet.
 - The Shih King (Book of Poetry) (James Legge, 1900) → `Classic of Poetry · Shījīng 詩經` (con-five) (alias (shih king)) → R5? duplicate-ingest suspect — dedup queue, design confirms
 
 Total reception rows: 28. Pre-ruled: 8.
+Pre-ruling with NO matching row: "Texts of Taoism as volumes stay
+reception" — asserted: no such container rows exist in reception; the
+SBE 39/40 content arrived already split (tao-te-ching_legge /
+zhuangzi_giles). Nothing to reject.
 R1–R5 from Seed Map Review 2026-07.md govern the design pass.
