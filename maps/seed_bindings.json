@@ -1,5 +1,5 @@
 {
- "status": "DRAFT-FOR-DESIGN-REVIEW — no row binds until reviewed; AMBIGUOUS rows may NEVER bind without an explicit resolution",
+ "status": "REVIEWED 2026-07-28 — §1/§2 applied; PROPOSED rows carry auto_verdicts and await the design side's final pass on maps/seed_review_sheet.md",
  "drafted": "2026-07-28 (Task 20 step 2)",
  "scope": {
   "hindu": [
@@ -88,14 +88,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
    "zone": "core",
    "chip": "Yajurveda Taittirīya Saṃhitā",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "yajur-veda-keith",
@@ -110,14 +111,15 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "hindu",
    "zone": "core",
    "chip": "Aitareya Brāhmaṇa",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "aitareya-brahmana-keith",
@@ -132,7 +134,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "hindu",
@@ -154,7 +157,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -176,14 +180,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
    "zone": "core",
    "chip": "Śatapatha Brāhmaṇa",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "satapatha-brahmana-eggeling",
@@ -198,7 +203,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "hindu",
@@ -220,7 +226,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -254,7 +261,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -282,7 +290,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -316,7 +325,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -344,7 +354,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -366,7 +377,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -388,7 +400,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -410,14 +423,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
    "zone": "ring4",
    "chip": "Brahma",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "rejected",
    "candidates": [
     {
      "id": "brahma-knowledge-barnett",
@@ -445,7 +459,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "hindu",
@@ -467,7 +482,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R1 (named skeleton false positive)"
   },
   {
    "tradition": "hindu",
@@ -495,7 +511,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -523,7 +540,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "hindu",
@@ -551,7 +569,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
@@ -573,14 +592,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R2 (su cell — structure, not a work)"
   },
   {
    "tradition": "buddhist",
    "zone": "p-majjhima",
    "chip": "Upāli",
    "basis": "skeleton",
-   "status": "AMBIGUOUS",
+   "status": "rejected",
    "candidates": [
     {
      "id": "apadana-thera-pali",
@@ -822,14 +842,15 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "Khuddakapāṭha",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "khuddakapatha-sujato",
@@ -850,14 +871,15 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "Dhammapada",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "dhammapada",
@@ -872,14 +894,15 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "Udāna",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "the-udana-gm-strong-1902-no",
@@ -894,14 +917,15 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "Sutta Nipāta",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "the-sutta-nipata-v-fausboll-1881-no",
@@ -916,7 +940,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "buddhist",
@@ -938,7 +963,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
@@ -960,14 +986,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "Jātaka",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "jataka",
@@ -1024,14 +1051,15 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "Buddhavaṃsa · Cariyāpiṭaka",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "buddhavamsa-cariyapitaka",
@@ -1046,7 +1074,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "buddhist",
@@ -1068,14 +1097,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "Apadāna",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "apadana-thera-pali",
@@ -1103,14 +1133,16 @@
       }
      ]
     }
-   ]
+   ],
+   "chooser": "works",
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "+ Milindapañha",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "milindapanha-kelly",
@@ -1131,7 +1163,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "buddhist",
@@ -1153,7 +1186,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
@@ -1175,7 +1209,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
@@ -1197,7 +1232,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
@@ -1219,7 +1255,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
@@ -1241,7 +1278,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
@@ -1263,7 +1301,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
@@ -1285,14 +1324,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "buddhist",
    "zone": "p-paracanon",
    "chip": "Milindapañha",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "milindapanha-kelly",
@@ -1313,7 +1353,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "abrahamic",
@@ -1335,7 +1376,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R1 (works-about)"
   },
   {
    "tradition": "abrahamic",
@@ -1357,14 +1399,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
    "zone": "ju-tanakh",
    "chip": "Song of Songs",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "song-of-songs-translation",
@@ -1379,7 +1422,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "abrahamic",
@@ -1401,7 +1445,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
@@ -1423,7 +1468,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
@@ -1445,7 +1491,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
@@ -1467,14 +1514,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
    "zone": "ju-mishnah",
    "chip": "Pirkei Avot",
    "basis": "skeleton",
-   "status": "AMBIGUOUS",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "pirke-avot",
@@ -1488,21 +1536,16 @@
        "restricted": false
       }
      ]
-    },
+    }
+   ],
+   "dedup_queue": [
     {
      "id": "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl",
      "title": "The Sayings of the Jewish Fathers (Pirke Avot)",
-     "restricted": false,
-     "dfs": [
-      {
-       "df": "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl_anonymous.json",
-       "translator": "Joseph Gorfinkle",
-       "year": 1900,
-       "restricted": false
-      }
-     ]
+     "note": "verbose re-ingest of the same translation — DUPLICATE_IDS Type-B dedup queue, never bound"
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "abrahamic",
@@ -1524,7 +1567,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
@@ -1546,7 +1590,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
@@ -1568,7 +1613,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
@@ -1590,7 +1636,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
@@ -1612,14 +1659,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-ot",
    "chip": "Song of Songs",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "song-of-songs-translation",
@@ -1634,7 +1682,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "abrahamic",
@@ -1656,7 +1705,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
@@ -1684,14 +1734,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-nt",
    "chip": "Acts",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "rejected",
    "candidates": [
     {
      "id": "chrysostom-homilies-acts-romans",
@@ -1719,7 +1770,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "abrahamic",
@@ -1741,14 +1793,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-nt",
    "chip": "Galatians",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "rejected",
    "candidates": [
     {
      "id": "chrysostom-homilies-galatians-ephesians",
@@ -1776,7 +1829,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "abrahamic",
@@ -1798,7 +1852,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
@@ -1820,7 +1875,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
@@ -1842,14 +1898,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-nt",
    "chip": "Hebrews",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "rejected",
    "candidates": [
     {
      "id": "chrysostom-homilies-timothy-hebrews",
@@ -1890,7 +1947,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "abrahamic",
@@ -1912,14 +1970,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "Didache",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "didache-riddle",
@@ -1934,7 +1993,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "abrahamic",
@@ -1956,14 +2016,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "The Confessions",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "augustine-confessions",
@@ -1978,14 +2039,15 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "The City of God",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "augustine-city-of-god",
@@ -2006,7 +2068,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "abrahamic",
@@ -2028,7 +2091,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
@@ -2050,14 +2114,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "The Letters",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "ambrose-select-works",
@@ -2097,53 +2162,10 @@
        "restricted": false
       }
      ]
-    },
-    {
-     "id": "calvin-letters",
-     "title": "Letters of John Calvin",
-     "restricted": false,
-     "dfs": [
-      {
-       "df": "calvin-letters_bonnet-volume-1.json",
-       "translator": "Jules Bonnet",
-       "year": 1855,
-       "restricted": false
-      },
-      {
-       "df": "calvin-letters_bonnet-volume-2.json",
-       "translator": "Jules Bonnet",
-       "year": 1855,
-       "restricted": false
-      }
-     ]
-    },
-    {
-     "id": "jerome-letters-works",
-     "title": "Letters and Select Works",
-     "restricted": false,
-     "dfs": [
-      {
-       "df": "jerome-letters-works_ccel-schaff.json",
-       "translator": "Multiple translators (ed. Philip Schaff)",
-       "year": 1893,
-       "restricted": false
-      }
-     ]
-    },
-    {
-     "id": "love-letters-rumi",
-     "title": "The Love Letters",
-     "restricted": false,
-     "dfs": [
-      {
-       "df": "love-letters-rumi_anonymous.json",
-       "translator": "Anonymous",
-       "year": 1905,
-       "restricted": false
-      }
-     ]
     }
-   ]
+   ],
+   "chooser": "works",
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "abrahamic",
@@ -2165,14 +2187,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "On the Priesthood",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "chrysostom-priesthood",
@@ -2187,7 +2210,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "abrahamic",
@@ -2209,7 +2233,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R1 (works-about)"
   },
   {
    "tradition": "abrahamic",
@@ -2231,7 +2256,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R1 (works-about)"
   },
   {
    "tradition": "abrahamic",
@@ -2253,7 +2279,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R1 (works-about)"
   },
   {
    "tradition": "abrahamic",
@@ -2275,14 +2302,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "REJECT-R1 (works-about)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "Eusebius — Church History",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "eusebius-church-history",
@@ -2297,7 +2325,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "abrahamic",
@@ -2325,7 +2354,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
@@ -2347,7 +2377,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "abrahamic",
@@ -2369,7 +2400,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "eastasian",
@@ -2391,7 +2423,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "eastasian",
@@ -2413,7 +2446,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "eastasian",
@@ -2435,7 +2469,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "eastasian",
@@ -2457,7 +2492,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "jain",
@@ -2479,7 +2515,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "shinto",
@@ -2501,7 +2538,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "shinto",
@@ -2523,7 +2561,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "shinto",
@@ -2545,7 +2584,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "bahai",
@@ -2567,7 +2607,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "ancient",
@@ -2589,14 +2630,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "ancient",
    "zone": "aw-meso",
    "chip": "The Epic of Gilgamesh",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "gilgamesh-langdon",
@@ -2611,7 +2653,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "ancient",
@@ -2633,7 +2676,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "ancient",
@@ -2655,14 +2699,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "ancient",
    "zone": "aw-norse",
    "chip": "The Völsunga Saga",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "volsunga-saga",
@@ -2677,7 +2722,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   },
   {
    "tradition": "ancient",
@@ -2699,7 +2745,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "ancient",
@@ -2721,7 +2768,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "ancient",
@@ -2743,14 +2791,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "ancient",
    "zone": "aw-celtic",
    "chip": "Lady Gregory — Cuchulain of Muirthemne · Gods and Fighting Men",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "cuchulain-muirthemne-gregory",
@@ -2778,7 +2827,9 @@
       }
      ]
     }
-   ]
+   ],
+   "chooser": "works",
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "ancient",
@@ -2800,7 +2851,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "gnostic",
@@ -2822,7 +2874,8 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "gnostic",
@@ -2844,14 +2897,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "gnostic",
    "zone": "gn-gnostic",
    "chip": "The Gospel of Thomas — the Greek fragments (Oxyrhynchus)",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "rejected",
    "candidates": [
     {
      "id": "gospel-of-thomas",
@@ -2879,14 +2933,15 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "gnostic",
    "zone": "gn-gnostic",
    "chip": "The Nag Hammadi Library (Gospel of Truth · Philip · Apocryphon of John…)",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "apocryphon-of-john",
@@ -2927,14 +2982,16 @@
       }
      ]
     }
-   ]
+   ],
+   "chooser": "works",
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "gnostic",
    "zone": "gn-gnostic",
    "chip": "The Gospel of Thomas — the complete Coptic text",
    "basis": "containment",
-   "status": "AMBIGUOUS",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "gospel-of-thomas",
@@ -2948,21 +3005,15 @@
        "restricted": false
       }
      ]
-    },
+    }
+   ],
+   "restricted_note": [
     {
      "id": "gospel-of-thomas-various",
-     "title": "The Gospel of Thomas",
-     "restricted": true,
-     "dfs": [
-      {
-       "df": "gospel-of-thomas-various_lambdin.json",
-       "translator": "Thomas Lambdin",
-       "year": 1977,
-       "restricted": true
-      }
-     ]
+     "title": "The Gospel of Thomas"
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §2"
   },
   {
    "tradition": "gnostic",
@@ -2984,14 +3035,15 @@
       }
      ]
     }
-   ]
+   ],
+   "auto_verdict": "stands"
   },
   {
    "tradition": "gnostic",
    "zone": "gn-mandaean",
    "chip": "The Ginza Rabbā (the Great Treasure)",
    "basis": "exact",
-   "status": "auto-exact",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "ginza-rabba",
@@ -3006,7 +3058,8 @@
       }
      ]
     }
-   ]
+   ],
+   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
   }
  ],
  "coverage_gaps": {
@@ -5753,5 +5806,6 @@
     "tradition": "Theosophy"
    }
   ]
- }
+ },
+ "review": "Seed Map Review 2026-07.md (design project, 2026-07-28)"
 }

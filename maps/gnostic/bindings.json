@@ -4,7 +4,9 @@
  "provisional": true,
  "counts": {
   "possible": 9,
-  "none": 14,
+  "held-several": 1,
+  "held": 1,
+  "none": 12,
   "restricted": 1
  },
  "chips": [
@@ -36,22 +38,59 @@
    "zone": "gn-gnostic",
    "chip": "The Gospel of Thomas — the Greek fragments (Oxyrhynchus)",
    "pd": "g",
-   "state": "possible",
-   "blocked_ambiguous": true
+   "state": "possible"
   },
   {
    "zone": "gn-gnostic",
    "chip": "The Nag Hammadi Library (Gospel of Truth · Philip · Apocryphon of John…)",
    "pd": "r",
-   "state": "none",
-   "blocked_ambiguous": true
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "gospel-of-philip_isenberg.json",
+     "work": "The Gospel of Philip",
+     "translator": "Wesley W. Isenberg",
+     "year": null,
+     "url": "?text=gospel-of-philip_isenberg.json"
+    },
+    {
+     "df": "gospel-of-truth_grant.json",
+     "work": "The Gospel of Truth",
+     "translator": "Robert M. Grant",
+     "year": null,
+     "url": "?text=gospel-of-truth_grant.json"
+    }
+   ],
+   "restricted_note": [
+    {
+     "id": "apocryphon-of-john",
+     "title": "The Apocryphon of John",
+     "reason_class": "rights-or-quality hold"
+    }
+   ]
   },
   {
    "zone": "gn-gnostic",
    "chip": "The Gospel of Thomas — the complete Coptic text",
    "pd": "r",
-   "state": "none",
-   "blocked_ambiguous": true
+   "state": "held",
+   "read": [
+    {
+     "df": "gospel-of-thomas_various.json",
+     "work": "Gospel of Thomas",
+     "translator": "Various",
+     "year": null,
+     "url": "?text=gospel-of-thomas_various.json"
+    }
+   ],
+   "restricted_note": [
+    {
+     "id": "gospel-of-thomas-various",
+     "title": "The Gospel of Thomas",
+     "reason_class": "rights-or-quality hold"
+    }
+   ]
   },
   {
    "zone": "gn-gnostic",

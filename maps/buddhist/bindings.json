@@ -4,8 +4,8 @@
  "provisional": true,
  "counts": {
   "possible": 11,
-  "none": 267,
-  "held-several": 4,
+  "none": 266,
+  "held-several": 5,
   "held": 4
  },
  "chips": [
@@ -577,8 +577,7 @@
    "zone": "p-majjhima",
    "chip": "Upāli",
    "pd": null,
-   "state": "none",
-   "blocked_ambiguous": true
+   "state": "none"
   },
   {
    "zone": "p-majjhima",
@@ -1563,15 +1562,18 @@
    "chip": "Khuddakapāṭha",
    "pd": "g",
    "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "khuddakapatha-sujato_pli.json",
+     "work": "Khuddakapāṭha",
      "translator": "",
      "year": 2018,
      "url": "?text=khuddakapatha-sujato_pli.json"
     },
     {
      "df": "khuddakapatha-sujato_sujato.json",
+     "work": "Khuddakapāṭha",
      "translator": "Bhikkhu Sujato",
      "year": 2018,
      "url": "?text=khuddakapatha-sujato_sujato.json"
@@ -1586,6 +1588,7 @@
    "read": [
     {
      "df": "dhammapada_muller.json",
+     "work": "Dhammapada",
      "translator": "F. Max Müller",
      "year": 1881,
      "url": "?text=dhammapada_muller.json"
@@ -1600,6 +1603,7 @@
    "read": [
     {
      "df": "the-udana-gm-strong-1902-no_anonymous.json",
+     "work": "The Udana",
      "translator": "GM-Strong",
      "year": 1900,
      "url": "?text=the-udana-gm-strong-1902-no_anonymous.json"
@@ -1620,6 +1624,7 @@
    "read": [
     {
      "df": "the-sutta-nipata-v-fausboll-1881-no_anonymous.json",
+     "work": "The Sutta-Nipata",
      "translator": "V-Fausboll 1881 (NO)",
      "year": 1900,
      "url": "?text=the-sutta-nipata-v-fausboll-1881-no_anonymous.json"
@@ -1643,51 +1648,60 @@
    "chip": "Jātaka",
    "pd": "g",
    "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "jataka_cowell-rouse-vol6.json",
+     "work": "The Jātaka",
      "translator": "E. B. Cowell, W. H. D. Rouse",
      "year": 1907,
      "url": "?text=jataka_cowell-rouse-vol6.json"
     },
     {
      "df": "jataka_babbit.json",
+     "work": "The Jātaka",
      "translator": "Ellen C. Babbit",
      "year": 1912,
      "url": "?text=jataka_babbit.json"
     },
     {
      "df": "jataka_chalmers-vol1.json",
+     "work": "The Jātaka",
      "translator": "Robert Chalmers",
      "year": 1895,
      "url": "?text=jataka_chalmers-vol1.json"
     },
     {
      "df": "jataka_rhys-davids.json",
+     "work": "The Jātaka",
      "translator": "Rhys Davids",
      "year": 1900,
      "url": "?text=jataka_rhys-davids.json"
     },
     {
      "df": "jataka_rouse-vol2.json",
+     "work": "The Jātaka",
      "translator": "W.H.D. Rouse",
      "year": 1895,
      "url": "?text=jataka_rouse-vol2.json"
     },
     {
      "df": "jataka_francis-neil-vol3.json",
+     "work": "The Jātaka",
      "translator": "H.T. Francis, R.A. Neil",
      "year": 1897,
      "url": "?text=jataka_francis-neil-vol3.json"
     },
     {
      "df": "jataka_rouse-vol4.json",
+     "work": "The Jātaka",
      "translator": "W.H.D. Rouse",
      "year": 1901,
      "url": "?text=jataka_rouse-vol4.json"
     },
     {
      "df": "jataka_francis-vol5.json",
+     "work": "The Jātaka",
      "translator": "H.T. Francis",
      "year": 1905,
      "url": "?text=jataka_francis-vol5.json"
@@ -1708,6 +1722,7 @@
    "read": [
     {
      "df": "buddhavamsa-cariyapitaka_morris.json",
+     "work": "The Buddhavaṃsa and the Cariyā-piṭaka",
      "translator": "Richard Morris",
      "year": 1882,
      "url": "?text=buddhavamsa-cariyapitaka_morris.json"
@@ -1730,8 +1745,24 @@
    "zone": "p-khuddaka",
    "chip": "Apadāna",
    "pd": "r",
-   "state": "none",
-   "blocked_ambiguous": true
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apadana-thera-pali_pli.json",
+     "work": "Thera-apadāna (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=apadana-thera-pali_pli.json"
+    },
+    {
+     "df": "apadana-theri-pali_pli.json",
+     "work": "Therī-apadāna (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=apadana-theri-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-khuddaka",
@@ -1744,15 +1775,18 @@
    "chip": "+ Milindapañha",
    "pd": "g",
    "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "milindapanha-kelly_pli.json",
+     "work": "Milindapañha",
      "translator": "",
      "year": 2018,
      "url": "?text=milindapanha-kelly_pli.json"
     },
     {
      "df": "milindapanha-kelly_kelly.json",
+     "work": "Milindapañha",
      "translator": "John Kelly",
      "year": 2018,
      "url": "?text=milindapanha-kelly_kelly.json"
@@ -1806,15 +1840,18 @@
    "chip": "Milindapañha",
    "pd": "g",
    "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "milindapanha-kelly_pli.json",
+     "work": "Milindapañha",
      "translator": "",
      "year": 2018,
      "url": "?text=milindapanha-kelly_pli.json"
     },
     {
      "df": "milindapanha-kelly_kelly.json",
+     "work": "Milindapañha",
      "translator": "John Kelly",
      "year": 2018,
      "url": "?text=milindapanha-kelly_kelly.json"

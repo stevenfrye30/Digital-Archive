@@ -3,10 +3,10 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 373,
-  "held": 6,
-  "none": 110,
-  "held-several": 1
+  "possible": 372,
+  "held": 7,
+  "none": 109,
+  "held-several": 2
  },
  "chips": [
   {
@@ -191,6 +191,7 @@
    "read": [
     {
      "df": "song-of-songs-translation_anonymous.json",
+     "work": "The Song of Songs",
      "translator": "Christian D. Ginsburg",
      "year": 1857,
      "url": "?text=song-of-songs-translation_anonymous.json"
@@ -483,8 +484,16 @@
    "zone": "ju-mishnah",
    "chip": "Pirkei Avot",
    "pd": "a",
-   "state": "none",
-   "blocked_ambiguous": true
+   "state": "held",
+   "read": [
+    {
+     "df": "pirke-avot_gorfinkle.json",
+     "work": "Pirke Avot (The Sayings of the Jewish Fathers)",
+     "translator": "Joseph I. Gorfinkle",
+     "year": 1913,
+     "url": "?text=pirke-avot_gorfinkle.json"
+    }
+   ]
   },
   {
    "zone": "ju-mishnah",
@@ -920,6 +929,7 @@
    "read": [
     {
      "df": "song-of-songs-translation_anonymous.json",
+     "work": "The Song of Songs",
      "translator": "Christian D. Ginsburg",
      "year": 1857,
      "url": "?text=song-of-songs-translation_anonymous.json"
@@ -1134,8 +1144,7 @@
    "zone": "ch-nt",
    "chip": "Acts",
    "pd": "g",
-   "state": "possible",
-   "blocked_ambiguous": true
+   "state": "possible"
   },
   {
    "zone": "ch-nt",
@@ -1159,8 +1168,7 @@
    "zone": "ch-nt",
    "chip": "Galatians",
    "pd": "g",
-   "state": "possible",
-   "blocked_ambiguous": true
+   "state": "possible"
   },
   {
    "zone": "ch-nt",
@@ -1220,8 +1228,7 @@
    "zone": "ch-nt",
    "chip": "Hebrews",
    "pd": "g",
-   "state": "possible",
-   "blocked_ambiguous": true
+   "state": "possible"
   },
   {
    "zone": "ch-nt",
@@ -1309,6 +1316,7 @@
    "read": [
     {
      "df": "didache-riddle_riddle.json",
+     "work": "The Didache",
      "translator": "M.B. Riddle",
      "year": 1886,
      "url": "?text=didache-riddle_riddle.json"
@@ -1539,6 +1547,7 @@
    "read": [
     {
      "df": "augustine-confessions_pusey.json",
+     "work": "Confessions",
      "translator": "E.B. Pusey",
      "year": 1838,
      "url": "?text=augustine-confessions_pusey.json"
@@ -1550,15 +1559,18 @@
    "chip": "The City of God",
    "pd": "g",
    "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "augustine-city-of-god_dods-volume-1.json",
+     "work": "The City of God",
      "translator": "Marcus Dods",
      "year": 1871,
      "url": "?text=augustine-city-of-god_dods-volume-1.json"
     },
     {
      "df": "augustine-city-of-god_dods-volume-2.json",
+     "work": "The City of God",
      "translator": "Marcus Dods",
      "year": 1872,
      "url": "?text=augustine-city-of-god_dods-volume-2.json"
@@ -1647,8 +1659,31 @@
    "zone": "ch-fathers",
    "chip": "The Letters",
    "pd": "g",
-   "state": "possible",
-   "blocked_ambiguous": true
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "ambrose-select-works_ccel-schaff.json",
+     "work": "Select Works and Letters",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1896,
+     "url": "?text=ambrose-select-works_ccel-schaff.json"
+    },
+    {
+     "df": "athanasius-select-works_ccel-schaff.json",
+     "work": "Select Works and Letters",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1892,
+     "url": "?text=athanasius-select-works_ccel-schaff.json"
+    },
+    {
+     "df": "basil-letters-works_ccel-schaff.json",
+     "work": "Letters and Select Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1895,
+     "url": "?text=basil-letters-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -1664,6 +1699,7 @@
    "read": [
     {
      "df": "chrysostom-priesthood_stephens.json",
+     "work": "On the Priesthood",
      "translator": "W. R. W. Stephens",
      "year": 1889,
      "url": "?text=chrysostom-priesthood_stephens.json"
@@ -1726,6 +1762,7 @@
    "read": [
     {
      "df": "eusebius-church-history_ccel-schaff.json",
+     "work": "Church History and Life of Constantine",
      "translator": "Multiple translators (ed. Philip Schaff)",
      "year": 1890,
      "url": "?text=eusebius-church-history_ccel-schaff.json"

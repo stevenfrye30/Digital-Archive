@@ -3,9 +3,10 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 51,
+  "possible": 50,
   "none": 18,
-  "held": 2
+  "held": 2,
+  "held-several": 1
  },
  "chips": [
   {
@@ -76,6 +77,7 @@
    "read": [
     {
      "df": "gilgamesh-langdon_langdon.json",
+     "work": "The Epic of Gilgamesh",
      "translator": "Stephen Langdon",
      "year": 1917,
      "url": "?text=gilgamesh-langdon_langdon.json"
@@ -366,6 +368,7 @@
    "read": [
     {
      "df": "volsunga-saga_magnusson.json",
+     "work": "The Volsunga Saga",
      "translator": "Eirikr Magnusson, William Morris",
      "year": 1888,
      "url": "?text=volsunga-saga_magnusson.json"
@@ -406,8 +409,24 @@
    "zone": "aw-celtic",
    "chip": "Lady Gregory — Cuchulain of Muirthemne · Gods and Fighting Men",
    "pd": "g",
-   "state": "possible",
-   "blocked_ambiguous": true
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "cuchulain-muirthemne-gregory_gregory.json",
+     "work": "Cuchulain of Muirthemne",
+     "translator": "Lady Augusta Gregory",
+     "year": 1902,
+     "url": "?text=cuchulain-muirthemne-gregory_gregory.json"
+    },
+    {
+     "df": "gods-fighting-men-gregory_gregory.json",
+     "work": "Gods and Fighting Men",
+     "translator": "Lady Augusta Gregory",
+     "year": 1904,
+     "url": "?text=gods-fighting-men-gregory_gregory.json"
+    }
+   ]
   },
   {
    "zone": "aw-newworld",
