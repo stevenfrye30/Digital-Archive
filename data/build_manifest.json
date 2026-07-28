@@ -1,11 +1,11 @@
 {
- "generated": "2026-07-28T19:34:55Z",
+ "generated": "2026-07-28T20:50:13Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "6c14a3b4a905fc3e74cf7e91bfc17e29b85b028a",
- "library_fingerprint": "sha256:7a7073a3c95cc1ec518da7ea8b9ce20c7a0e12ca622e983c3eb993aa77ce7d6c",
+ "exporter_rev": "a9d79884e2627b3e0fcdba50fb2d6a6f63cb3d45",
+ "library_fingerprint": "sha256:ed4565c37c6808c736a8fc8d10c10d5d7d25fcdf633e1564e88d95bf6eab5cab",
  "counts": {
-  "entries": 1230,
-  "public": 1138,
+  "entries": 1218,
+  "public": 1126,
   "restricted": 92
  },
  "texts": {
@@ -36,16 +36,16 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "a-dweller-on-two-planets-frederick-oliver-189_anonymous": {
-   "source_hash": "sha256:ede83685edaa4c8016fea5e08bea4b4e335883c089394021f8061cb960bddff3",
+   "source_hash": "sha256:5c856f7c9a72c39b5a0f03217410982f4e487dba830b9e2734ac4c4c4a241ab2",
    "data_file": "a-dweller-on-two-planets-frederick-oliver-189_anonymous.json.gz",
-   "data_hash": "sha256:5b437697aecac551516055aece59c0312b70655485db5c1c396d0529ff07021d",
-   "data_bytes": 361628,
+   "data_hash": "sha256:7458dbf53fde707c8133bb32efa79ab1fc0070c230363146bbdfde0908de7733",
+   "data_bytes": 361633,
    "passages": 1874,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-01T20:10:53Z"
+   "exported": "2026-07-28T20:45:12Z"
   },
   "a-very-pleasaunt-fruitful-diologe-called-the-epicur-erasmus_anonymous": {
    "source_hash": "sha256:d83617e74ca681c11cae5f7d776c1b5905434bf17f5bdaff708dc28dd49de7e8",
@@ -60,16 +60,16 @@
    "exported": "2026-07-10T17:30:19Z"
   },
   "a-wanderer-in-the-sprit-lands-franchezzo-1896_anonymous": {
-   "source_hash": "sha256:2825ecac80d8a6e4ac09073edb562fe4031aeb27356f1a7b487401680c740405",
+   "source_hash": "sha256:2b3699d58ddea14f104585c3f15973f7f7b6a186ee2d9de3b768c4635793dc86",
    "data_file": "a-wanderer-in-the-sprit-lands-franchezzo-1896_anonymous.json.gz",
-   "data_hash": "sha256:401e0a25bfbe0b52a8e7a5856560cdc76200d5bde3aef90dbcd8d637ea6594b7",
-   "data_bytes": 186902,
+   "data_hash": "sha256:cda018f7e25bcbdc27bd5a0b497e667bfa7e92cbc88e6dc1027129c9c2392a79",
+   "data_bytes": 186897,
    "passages": 97,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-01T20:10:53Z"
+   "exported": "2026-07-28T20:45:12Z"
   },
   "abominable-snowmen-ivan-sanderson-1961_anonymous": {
    "source_hash": null,
@@ -290,18 +290,6 @@
    "apparatus": false,
    "exported": "2026-07-13T20:46:50Z",
    "source_note": "no canonical dir (derived provider record)"
-  },
-  "analects-legge-1893_legge-1893": {
-   "source_hash": "sha256:a417c3751943d4e54893daaa638226ea9c92df43cc871311e4a02563ebb91714",
-   "data_file": "analects-legge-1893_legge-1893.json.gz",
-   "data_hash": "sha256:2d2ba83b2fba2005ea2374959325c986e7921ebf823679d05c973668cc731c19",
-   "data_bytes": 51258,
-   "passages": 41,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:20Z"
   },
   "analects_legge": {
    "source_hash": "sha256:90b68a9e8711cf530924047c76b9b277d78bbb66b976108e7970ea0c1f663b7c",
@@ -2365,18 +2353,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:43Z"
   },
-  "bushido-the-soul-of-japan-inazo-nitobe-1905_anonymous": {
-   "source_hash": "sha256:9c9b6b1d25a27235392c2ca3dc32631dfce2b8d088eecfe65d660fafcc15c2f6",
-   "data_file": "bushido-the-soul-of-japan-inazo-nitobe-1905_anonymous.json.gz",
-   "data_hash": "sha256:1e538d75739419a960719fe55454226a99dabb2dbe9475aa11e16e96377608ec",
-   "data_bytes": 88302,
-   "passages": 435,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-12T16:47:04Z"
-  },
   "bushido_nitobe": {
    "source_hash": "sha256:85d1c5af0c759f8a9317282b77491b709583b811c178749e595b1367add12959",
    "data_file": "bushido_nitobe.json.gz",
@@ -2796,18 +2772,6 @@
    "data_hash": "sha256:f33434870080f1a30705a4455f41d4245bbb180244d719e10b26d4db5f27d27c",
    "data_bytes": 96269,
    "passages": 314,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:45Z"
-  },
-  "chuang-tzu-mystic-edition_giles-mystic": {
-   "source_hash": "sha256:63942b9d620af3c8cca6aa5c49391f8c94ca2c9360708e0ea215f010911d2122",
-   "data_file": "chuang-tzu-mystic-edition_giles-mystic.json.gz",
-   "data_hash": "sha256:a5291347ad01e1f39668953da6f4f844b7289932e4a54507245f2f4fadb60a27",
-   "data_bytes": 290729,
-   "passages": 4597,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
@@ -3804,16 +3768,16 @@
    "exported": "2026-07-10T17:30:48Z"
   },
   "egypt-religious-development-petrie_petrie": {
-   "source_hash": "sha256:cd3327b71003d9a5ff4e51498424afff16a73259128e86b54c7665ca1f6fdbd0",
+   "source_hash": "sha256:3cd67c52609fa593fa00df93134864650534386aa6491c684b177d8380ccba77",
    "data_file": "egypt-religious-development-petrie_petrie.json.gz",
-   "data_hash": "sha256:fd0f20d1a10116d2831ddeae85ebe00bd639b7d50e9e2e64088c1dc903cab988",
-   "data_bytes": 280089,
+   "data_hash": "sha256:9ff30c0d37857a017a67c0a5759ff50b16998625aeca56a174b441c85d1a379d",
+   "data_bytes": 280113,
    "passages": 1760,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:48Z"
+   "exported": "2026-07-28T20:46:12Z"
   },
   "egyptian-myth-legend_mackenzie": {
    "source_hash": "sha256:ff8a4fe5185bf7ad23a6a404eb7c51b345dd84da3b639a83178a11ac373a7fd2",
@@ -4468,18 +4432,6 @@
    "data_hash": "sha256:370a20f4d53362bf8c8562b011f71f08967f6f1c7c8b0f7efbfcf2d4d892f4d1",
    "data_bytes": 80773,
    "passages": 1070,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:50Z"
-  },
-  "folk-tales-japan_smith": {
-   "source_hash": "sha256:37e9871aedbacb1a9e55205837e7c71ed65d50558fb8e56930acd3f9e7c2ea66",
-   "data_file": "folk-tales-japan_smith.json.gz",
-   "data_hash": "sha256:a6126447f25793e871050b90afeee9955d6e1ef8676d7b2eaaa5b48aa3e07b45",
-   "data_bytes": 210482,
-   "passages": 2051,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
@@ -6238,18 +6190,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:58Z"
-  },
-  "jaina-sutras-part-2-hermann-jacobi-1884_anonymous": {
-   "source_hash": "sha256:3f5649d077371fd8168aad5f395230f6f3210989a8b4855685c8b0282a6e3868",
-   "data_file": "jaina-sutras-part-2-hermann-jacobi-1884_anonymous.json.gz",
-   "data_hash": "sha256:06b4bb7ff1aa961b80585045c728b5db88f0e585c24e474443215792c6b6bf32",
-   "data_bytes": 216543,
-   "passages": 2715,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
   },
   "jaina-sutras-part2_jacobi": {
    "source_hash": "sha256:58fc1cde6bcf0c7dbdeff7a44549fd80e5f90402a9de03c4a000eb0db58cac79",
@@ -8967,18 +8907,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:11Z"
   },
-  "numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19_anonymous": {
-   "source_hash": "sha256:81ca5448fed5565419e070ae3cd6dd9de72be7a7cbd1fdfeed4e79699904a5c3",
-   "data_file": "numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19_anonymous.json.gz",
-   "data_hash": "sha256:5cfa584548b8d2c2c716d658177bb26f1ea7cbac750a06fb4620f55742f19b0f",
-   "data_bytes": 104156,
-   "passages": 1684,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
-  },
   "oahspe-newbrough_newbrough": {
    "source_hash": "sha256:d2023f628a4b7092c307b33d074391c9281dff0244b2ee53067922ab4fe604d8",
    "data_file": "oahspe-newbrough_newbrough.json.gz",
@@ -10635,30 +10563,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:18Z"
   },
-  "records-of-the-past-2nd-series-vol-i-ah-sayce-1888_anonymous": {
-   "source_hash": "sha256:783bd47aa810ff507c04ccec3a1c51667463a75d0e716ce1c4dddb7d39a77a4c",
-   "data_file": "records-of-the-past-2nd-series-vol-i-ah-sayce-1888_anonymous.json.gz",
-   "data_hash": "sha256:0c7747711c17fa85a09391590cb392a8cdd13c39ef0358a769fa08991b7255d0",
-   "data_bytes": 105364,
-   "passages": 1134,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
-  },
-  "records-of-the-past-2nd-series-vol-ii-ah-sayce-1888_anonymous": {
-   "source_hash": "sha256:4970553f4a6aa6bed57a7348e8aa71029a5d24dc839f8e46c48a2231c015b96a",
-   "data_file": "records-of-the-past-2nd-series-vol-ii-ah-sayce-1888_anonymous.json.gz",
-   "data_hash": "sha256:1acaf6636682ffc399c4b64ed8d2086cfd3a9f2d9933f70facc1653fb6779d36",
-   "data_bytes": 137624,
-   "passages": 1629,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
-  },
   "records-past-vol1_sayce": {
    "source_hash": "sha256:dad4f2a57833ca79c2dedecfe08bebdbab26ede4fe51add0f5ad17bec6cc110e",
    "data_file": "records-past-vol1_sayce.json.gz",
@@ -10742,18 +10646,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:31:18Z"
-  },
-  "religious-development-thought-in-ancient-egypt-james-breaste_anonymous": {
-   "source_hash": "sha256:2ebe718b925a6c61aaa0df894e02c093c2b976122fd0475d58c58bda80dd4f87",
-   "data_file": "religious-development-thought-in-ancient-egypt-james-breaste_anonymous.json.gz",
-   "data_hash": "sha256:dbc8937d5a8c83cf3d79e39001b5cf04ff6c5b8c9fbc31226ec465313f2c41d0",
-   "data_bytes": 279958,
-   "passages": 1755,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
   },
   "rig-veda-americanus-brinton_brinton": {
    "source_hash": "sha256:b1058a9a3e5863d22426e0fdb5490374f7c3085a657a37b44f10ac44cb3178a1",
@@ -12262,18 +12154,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:23Z"
   },
-  "shibboleth-a-templar-monitor-george-connor-1894_anonymous": {
-   "source_hash": "sha256:6929759e2804195c2abdc82d2e74c30fd165e42031f99826f2d279c7145dc5e5",
-   "data_file": "shibboleth-a-templar-monitor-george-connor-1894_anonymous.json.gz",
-   "data_hash": "sha256:a840086f6a1dcf035a2b30659d2303535882333679e421b14ad3ffa7c702e748",
-   "data_bytes": 126778,
-   "passages": 2337,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
-  },
   "shibboleth-templar-monitor_steinbrenner": {
    "source_hash": "sha256:b8fd390881f83c2d3451e8ffc807e94d3dd2bf81fcc6e3d6415e0b9029977d21",
    "data_file": "shibboleth-templar-monitor_steinbrenner.json.gz",
@@ -13418,30 +13298,6 @@
    "data_hash": "sha256:36646f86c9840d3b897d380d0cd9bfa52992c3412861fe2878d4f307c96b69aa",
    "data_bytes": 9888,
    "passages": 115,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:29Z"
-  },
-  "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl_anonymous": {
-   "source_hash": "sha256:9ff3fb5bc2f159ada18d8d0060a06900644c50a2617d0108a1e13b056da1b329",
-   "data_file": "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl_anonymous.json.gz",
-   "data_hash": "sha256:561ad2bb13e85d776ba4bbe5f090b777afd2b4b57e46c5a9b23bbd8344a9538e",
-   "data_bytes": 63594,
-   "passages": 613,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:29Z"
-  },
-  "the-seven-great-monarchies-of-the-ancient-eastern-george-raw_anonymous": {
-   "source_hash": "sha256:38cb70f768bc9df8985b28356cfce639f4b31b1d9b9ab7e07778447a21dc2ad9",
-   "data_file": "the-seven-great-monarchies-of-the-ancient-eastern-george-raw_anonymous.json.gz",
-   "data_hash": "sha256:20e56f4cce29f424e476a1370e641dd20f6e2ccd439036d7bb2a8b551bd00f1c",
-   "data_bytes": 323867,
-   "passages": 678,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,

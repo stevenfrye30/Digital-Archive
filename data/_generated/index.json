@@ -8935,34 +8935,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "analects-legge-1893",
-      "title": "The Confucian Analects (Legge)",
-      "tradition": "Confucian",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "analects-legge-1893_legge-1893.json",
-      "source": "sacredtexts",
-      "author": [
-        "Confucius"
-      ],
-      "translator": [
-        "James Legge"
-      ],
-      "year": 1893,
-      "translation_label": "The Confucian Analects (Legge)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Confucian Analects (Legge)* James Legge (1893). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "doctrine-of-the-mean",
       "title": "The Doctrine of the Mean",
       "tradition": "Confucian",
@@ -9101,6 +9073,35 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*The Shundai Zatsuwa* George William Knox (1892). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "egypt-religious-development-petrie",
+      "title": "Development of Religion and Thought in Ancient Egypt",
+      "tradition": "Egyptian",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "egypt-religious-development-petrie_petrie.json",
+      "source": "sacredtexts",
+      "author": [
+        "James Henry Breasted"
+      ],
+      "translator": [
+        "W.M. Flinders Petrie"
+      ],
+      "year": 1912,
+      "translation_label": "Religious Development and Thought in Ancient Egypt",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*Religious Development and Thought in Ancient Egypt* W.M. Flinders Petrie (1912). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -9477,93 +9478,6 @@
       "volume_label": null,
       "quality": "primary",
       "source_summary": "*Legends of the Gods* E.A. Wallis Budge (1912). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "records-of-the-past-2nd-series-vol-i-ah-sayce-1888",
-      "title": "Records of the Past - 2nd series - Vol I",
-      "tradition": "Egyptian",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "records-of-the-past-2nd-series-vol-i-ah-sayce-1888_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "AH-Sayce"
-      ],
-      "translator": [
-        "AH-Sayce"
-      ],
-      "year": 1900,
-      "translation_label": "Records of the Past - 2nd series - Vol I",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Records of the Past - 2nd series - Vol I* AH-Sayce (1888) (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "records-of-the-past-2nd-series-vol-ii-ah-sayce-1888",
-      "title": "Records of the Past - 2nd series - Vol II",
-      "tradition": "Egyptian",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "records-of-the-past-2nd-series-vol-ii-ah-sayce-1888_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "AH-Sayce"
-      ],
-      "translator": [
-        "AH-Sayce"
-      ],
-      "year": 1900,
-      "translation_label": "Records of the Past - 2nd series - Vol II",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Records of the Past - 2nd series - Vol II* AH-Sayce (1888) (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "egypt-religious-development-petrie",
-      "title": "Religious Development and Thought in Ancient Egypt",
-      "tradition": "Egyptian",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "egypt-religious-development-petrie_petrie.json",
-      "source": "sacredtexts",
-      "author": [
-        "W.M. Flinders Petrie"
-      ],
-      "translator": [
-        "W.M. Flinders Petrie"
-      ],
-      "year": 1912,
-      "translation_label": "Religious Development and Thought in Ancient Egypt",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Religious Development and Thought in Ancient Egypt* W.M. Flinders Petrie (1912). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -15696,35 +15610,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "the-seven-great-monarchies-of-the-ancient-eastern-george-raw",
-      "title": "The Seven Great Monarchies Of The Ancient Eastern World - Vol 7 - The Sassanian (New Persian) Empire",
-      "tradition": "Mesopotamian",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-seven-great-monarchies-of-the-ancient-eastern-george-raw_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "George Rawlinson"
-      ],
-      "translator": [
-        "George Rawlinson"
-      ],
-      "year": 1900,
-      "translation_label": "The Seven Great Monarchies Of The Ancient Eastern World - Vol 7 - The Sassanian (New Persian) Empire",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The Seven Great Monarchies Of The Ancient Eastern World - Vol 7 - The Sassanian (New Persian) Empire* George Rawlinson (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "seven-tablets-king",
       "title": "The Seven Tablets of Creation",
       "tradition": "Mesopotamian",
@@ -16563,34 +16448,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "folk-tales-japan",
-      "title": "Ancient Tales and Folk-lore of Japan",
-      "tradition": "Shinto",
-      "collection": "sacred",
-      "hierarchy": [
-        "passage"
-      ],
-      "data_file": "folk-tales-japan_smith.json",
-      "source": "sacredtexts",
-      "author": [
-        "Richard Smith"
-      ],
-      "translator": [
-        "Richard Smith"
-      ],
-      "year": 1918,
-      "translation_label": "Richard Smith",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Ancient Tales and Folk-lore of Japan* by Richard Smith. Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
-    },
-    {
       "id": "japan-folklore-smith",
       "title": "Ancient Tales and Folklore of Japan",
       "tradition": "Shinto",
@@ -17011,35 +16868,6 @@
       "quality": "primary",
       "source_summary": "*The Tao Teh King, or the Tao and its Characteristics* James Legge (1891). Via Project Gutenberg.",
       "importance_rank": 1,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "chuang-tzu-mystic-edition",
-      "title": "Chuang Tzu: Mystic, Moralist, and Social Reformer",
-      "tradition": "Taoist",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "chuang-tzu-mystic-edition_giles-mystic.json",
-      "source": "gutenberg",
-      "author": [
-        "Zhuangzi"
-      ],
-      "translator": [
-        "Herbert A. Giles"
-      ],
-      "year": 1889,
-      "translation_label": "Chuang Tzu: Mystic, Moralist, and Social Reformer",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Chuang Tzu: Mystic, Moralist, and Social Reformer* Herbert A. Giles (1889). Via Project Gutenberg.",
-      "importance_rank": 5,
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
@@ -18262,35 +18090,6 @@
       "volume_label": null,
       "quality": "primary",
       "source_summary": "*Egyptian Ideas of the Future Life* E.A. Wallis Budge (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "religious-development-thought-in-ancient-egypt-james-breaste",
-      "title": "Religious Development & Thought in Ancient Egypt",
-      "tradition": "Egyptian",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "religious-development-thought-in-ancient-egypt-james-breaste_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "James Breasted"
-      ],
-      "translator": [
-        "James Breasted"
-      ],
-      "year": 1900,
-      "translation_label": "Religious Development & Thought in Ancient Egypt",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Religious Development & Thought in Ancient Egypt* by James Breasted (1912). Translated by James Breasted (1912) (1900). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -23704,35 +23503,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19",
-      "title": "Numbers - Their Occult Power & Mystic Virtues",
-      "tradition": "Hermetic",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "W-Wynn Westcott"
-      ],
-      "translator": [
-        "W-Wynn Westcott"
-      ],
-      "year": 1900,
-      "translation_label": "Numbers - Their Occult Power & Mystic Virtues",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Numbers - Their Occult Power & Mystic Virtues* by W-Wynn Westcott (1911). Translated by W-Wynn Westcott (1911) (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "numbers-occult-westcott",
       "title": "Numbers: Their Occult Power and Mystic Virtues",
       "tradition": "Hermetic",
@@ -23871,35 +23641,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*Shamanism in Siberia* Maria Czaplicka (1914). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "shibboleth-a-templar-monitor-george-connor-1894",
-      "title": "Shibboleth A Templar Monitor",
-      "tradition": "Hermetic",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "shibboleth-a-templar-monitor-george-connor-1894_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "George Connor"
-      ],
-      "translator": [
-        "George Connor"
-      ],
-      "year": 1900,
-      "translation_label": "Shibboleth A Templar Monitor",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Shibboleth A Templar Monitor* by George Connor (1894). Translated by George Connor (1894) (1900). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -25218,64 +24959,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "jaina-sutras-part-2-hermann-jacobi-1884",
-      "title": "Jaina Sutras - Part 2",
-      "tradition": "Jain",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "jaina-sutras-part-2-hermann-jacobi-1884_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "Hermann Jacobi"
-      ],
-      "translator": [
-        "Hermann Jacobi"
-      ],
-      "year": 1900,
-      "translation_label": "Jaina Sutras - Part 2",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Jaina Sutras - Part 2* by Hermann Jacobi (1884). Translated by Hermann Jacobi (1884) (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bushido-the-soul-of-japan-inazo-nitobe-1905",
-      "title": "Bushido - the Soul of Japan",
-      "tradition": "Japanese Philosophy",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "bushido-the-soul-of-japan-inazo-nitobe-1905_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "Inazo Nitobe"
-      ],
-      "translator": [
-        "Inazo Nitobe"
-      ],
-      "year": 1900,
-      "translation_label": "Bushido - the Soul of Japan",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Bushido - the Soul of Japan* by Inazo Nitobe (1905). Translated by Inazo Nitobe (1905) (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "bushido",
       "title": "Bushido: The Soul of Japan",
       "tradition": "Japanese Philosophy",
@@ -25326,35 +25009,6 @@
       "volume_label": null,
       "quality": "derivative",
       "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl",
-      "title": "The Sayings of the Jewish Fathers (Pirke Avot)",
-      "tradition": "Jewish",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Joseph Gorfinkle"
-      ],
-      "translator": [
-        "Joseph Gorfinkle"
-      ],
-      "year": 1900,
-      "translation_label": "The Sayings of the Jewish Fathers (Pirke Avot)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The Sayings of the Jewish Fathers (Pirke Avot)* by Joseph Gorfinkle. Translated by Joseph Gorfinkle (1900). Via Project Gutenberg.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -31898,7 +31552,7 @@
       "data_file": "a-dweller-on-two-planets-frederick-oliver-189_anonymous.json",
       "source": "sacredtexts",
       "author": [
-        "Frederick Oliver"
+        "Frederick Spencer Oliver"
       ],
       "translator": [
         "Frederick Oliver"
@@ -31917,7 +31571,7 @@
     },
     {
       "id": "a-wanderer-in-the-sprit-lands-franchezzo-1896",
-      "title": "A Wanderer in the Sprit Lands",
+      "title": "A Wanderer in the Spirit Lands",
       "tradition": "Theosophy",
       "collection": "other",
       "hierarchy": [
