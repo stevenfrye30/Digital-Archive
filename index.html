@@ -2116,276 +2116,199 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   #browse-tiles.tile-grid-cards { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 }
 
-/* ── Home screen (4 category buttons) ────────────────────────────── */
-
-/* ── Home: fixed viewport, no scroll ─────────────────────────────── */
+/* ── Home screen — the entrance (2026-07 rebuild per Entrance.dc.html:
+   masthead → search → four shelves → Hall band → colophon). A scrolling
+   page, not a fixed-center stack; the masthead sits at the top on every
+   viewport (the May mobile-pass position). ── */
 
 #welcome-home {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* "safe center": stays vertically centered when it fits, but falls back
-     to top-aligned (so nothing is clipped) and scrolls when the content is
-     taller than the window. */
-  justify-content: safe center;
-  padding: 24px;
   overflow-y: auto;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--reader-fg);
+}
+#home-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  border-bottom: 1px solid #e6e1d9;
+}
+#home-topbar a,
+#home-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--chrome-muted);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+#home-topbar a:hover,
+#home-topbar button:hover { color: var(--chrome-active); }
+#home-topnav { display: flex; gap: 26px; }
+#home-main {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 64px 32px 0;
 }
 #home-header {
   text-align: center;
-  margin-bottom: clamp(16px, 4vh, 36px);
+  margin: 0 0 14px;
 }
-#home-hub-link {
-  position: absolute;
-  top: 20px;
-  left: 24px;
-  font-size: 12px;
-  color: var(--chrome-muted);
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-#home-hub-link:hover { text-decoration: underline; }
 #home-title {
-  font-family: Georgia, serif;
-  font-size: clamp(26px, 4vw, 40px);
-  font-weight: normal;
+  font: 400 clamp(34px, 6vw, 54px)/1.1 Georgia, serif;
+  letter-spacing: -0.015em;
   color: var(--chrome-active);
-  margin: 10px 0 6px;
-  letter-spacing: -0.01em;
+  margin: 0 0 14px;
 }
 #home-subtitle {
-  font-size: clamp(12px, 1.5vw, 15px);
+  font: italic 400 17px/1.6 Georgia, serif;
   color: var(--chrome-muted);
-  font-family: Georgia, serif;
-  font-style: italic;
+  margin: 0 0 6px;
 }
-/* Two-path entrance: Reading Room (here) ↔ Atlas (relational exploration).
-   Sits between the title and the four-category Reading Room grid so the
-   archive/Atlas distinction is immediately legible without a separate
-   landing page. Conservative addition; nothing else in the welcome
-   layout changes. */
-#home-paths {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  width: min(580px, 84vw);
-  margin: clamp(6px, 1.5vh, 14px) 0 0;
+#home-countline {
+  font: 400 12.5px/1.6 Georgia, serif;
+  color: #a09080;
+  margin: 0;
 }
-.home-path {
-  display: block;
-  padding: 10px 14px;
-  border: 1px solid var(--chrome-border);
-  border-radius: 8px;
-  background: var(--reader-bg);
-  text-decoration: none;
-  color: var(--chrome-fg);
-  text-align: left;
-  font-family: Georgia, serif;
-  transition: background 0.15s, border-color 0.15s;
+/* The four shelves */
+#home-shelves { margin: 52px 0 0; }
+#home-shelves-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--reader-fg);
+  padding-bottom: 8px;
 }
-.home-path:hover {
-  background: #f0ece5;
-  border-color: var(--chrome-active);
-}
-.home-path-current {
-  background: #efe9da;
-  border-color: #c0a878;
-}
-.home-path-current:hover {
-  background: #e9e0c8;
-  border-color: #a88e5e;
-}
-/* The Reading Room card is a <button>; remove the default button
-   chrome so it shares the visual register of the Atlas <a> card. */
-button.home-path {
-  font: inherit;
-  text-align: left;
-  width: 100%;
-}
-.home-path-label {
-  display: block;
-  font-size: 15px;
-  font-weight: 600;
+#home-shelves-head h2 {
+  font: 400 13px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--chrome-active);
-  margin-bottom: 2px;
-  letter-spacing: 0.01em;
+  margin: 0;
 }
-.home-path-sub {
-  display: block;
-  font-size: 12px;
-  color: var(--chrome-muted);
-  line-height: 1.35;
-}
-#home-paths-note {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 12px;
-  color: var(--chrome-muted);
-  margin: clamp(6px, 1vh, 10px) 0 clamp(10px, 2vh, 20px);
-  max-width: min(580px, 84vw);
-  text-align: center;
-}
-
 #home-categories {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(9px, 1.8vh, 16px);
-  width: min(470px, 78vw);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 6px;
 }
 .home-cat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1.9;
-  padding: 10px 14px;
+  display: block;
+  padding: 22px 22px 20px 22px;
   font-family: Georgia, serif;
-  font-size: clamp(16px, 2.1vw, 20px);
-  color: white;
+  text-align: left;
+  color: var(--reader-fg);
+  background: none;
   border: none;
-  border-radius: 12px;
+  border-left: 1px solid #e6e1d9;
+  border-radius: 0;
   cursor: pointer;
-  transition: box-shadow 0.25s, transform 0.15s;
-  position: relative;
-  overflow: hidden;
+  transition: background 0.15s;
 }
-.home-cat::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  background: rgba(255,255,255,0.1);
-  transition: opacity 0.25s;
+.home-cat:first-child { border-left: none; padding-left: 0; }
+.home-cat:last-child { padding-right: 0; }
+.home-cat:hover { background: #f7f4ef; }
+.home-cat-titleline {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 10px;
 }
-.home-cat:hover::before { opacity: 1; }
-.home-cat:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-  transform: translateY(-3px);
-}
-.home-cat:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-.home-cat[data-cat="Religion"]   { background: linear-gradient(135deg, #5c3d2e, #8a6a4e); }
-.home-cat[data-cat="Philosophy"] { background: linear-gradient(135deg, #3a4e30, #5e7a45); }
-.home-cat[data-cat="Literature"] { background: linear-gradient(135deg, #2e3d5c, #4a6a8a); }
-.home-cat[data-cat="Esoteric"]   { background: linear-gradient(135deg, #4e2e4e, #7a4a7a); }
 .home-cat .home-cat-label {
-  font-weight: normal;
-  letter-spacing: 0.03em;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  font: 400 24px/1.2 Georgia, serif;
+  color: var(--reader-fg);
 }
 .home-cat .home-cat-count {
-  font-size: clamp(10px, 1.2vw, 13px);
-  color: rgba(255,255,255,0.65);
-  margin-top: 6px;
-  font-family: system-ui, sans-serif;
+  font: 400 12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #a09080;
 }
-#home-press {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: clamp(16px, 3vh, 26px);
-  padding: 12px 34px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #2a5d34, #3f7d4c);
-  color: #fff;
-  text-decoration: none;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-  transition: transform 0.15s, box-shadow 0.25s;
+.home-cat-scent {
+  display: block;
+  font: italic 400 13px/1.7 Georgia, serif;
+  color: var(--chrome-muted);
 }
-#home-press:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 9px 30px rgba(0,0,0,0.26);
+.home-cat-browse {
+  display: block;
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--chrome-active);
+  margin-top: 12px;
 }
-#home-press:active { transform: translateY(0); }
-/* ===== Religion Hall front-door feature (3 open rooms) ===== */
+/* ===== Religion Hall band ("Another way in") =====
+   Built as a doorway band: the steward intends the Hall to eventually
+   replace the Religion shelf, so the band and the shelf cards share the
+   same anchor-friendly inner structure. */
 #home-hall-feature {
-  margin-top: clamp(14px, 3vh, 24px);
-  width: min(500px, 100%);
-  box-sizing: border-box;
-  padding: clamp(16px, 3vw, 22px) clamp(16px, 3.5vw, 26px);
-  border: 1px solid #e2dac7;
-  border-radius: 16px;
-  background: #fbf7ee;
-  box-shadow: 0 1px 2px rgba(60,45,20,.05), 0 10px 30px -18px rgba(90,60,20,.28);
-  text-align: center;
+  margin: 56px 0 0;
+  background: var(--chrome-bg);
+  border: 1px solid var(--chrome-border);
+  border-radius: 2px;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  text-align: left;
 }
-[data-theme="dark"] #home-hall-feature { background: rgba(255,255,255,.035); border-color: rgba(255,255,255,.12); }
+.hall-feature-text { max-width: 30em; }
+.hall-feature-kicker {
+  font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chrome-muted);
+  margin: 0 0 10px;
+}
 #home-hall-feature .hall-feature-title {
-  font-family: Georgia, "Iowan Old Style", serif; font-size: 20px; font-weight: 600;
-  margin: 0 0 4px; color: inherit; letter-spacing: .01em;
+  font: 400 24px/1.3 Georgia, serif;
+  color: var(--reader-fg);
+  margin: 0 0 8px;
 }
-#home-hall-feature .hall-feature-sub { margin: 0 0 14px; font-size: 13px; opacity: .78; }
-#home-hall-feature .hall-feature-cta {
-  display: inline-flex; align-items: center; justify-content: center; gap: .4em;
-  min-height: 44px; padding: 11px 26px; border-radius: 999px; text-decoration: none;
-  background: linear-gradient(135deg, #6e5518, #8f7320); color: #fff; font-weight: 600; font-size: 15px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18); transition: transform .15s, box-shadow .25s;
+#home-hall-feature .hall-feature-title a {
+  color: inherit;
+  text-decoration: none;
 }
-#home-hall-feature .hall-feature-cta:hover { transform: translateY(-2px); box-shadow: 0 9px 30px rgba(0,0,0,0.26); }
-#home-hall-feature .hall-feature-cta:active { transform: translateY(0); }
-#home-hall-feature .hall-open {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px;
-  margin: 16px 0 6px;
+#home-hall-feature .hall-feature-title a:hover { color: var(--chrome-active); }
+#home-hall-feature .hall-feature-sub {
+  font: italic 400 14px/1.65 Georgia, serif;
+  color: #5a5048;
+  margin: 0;
 }
-#home-hall-feature .hall-open-label { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; opacity: .6; }
+.hall-rooms {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
 #home-hall-feature .hall-room-link {
-  display: inline-flex; align-items: center; min-height: 44px; padding: 8px 15px 8px 13px;
-  border: 1px solid #d4cab4; border-left: 4px solid #b9ad92; border-radius: 10px;
-  background: #fffdf7; color: #33302a; text-decoration: none; font-size: 14px; font-weight: 600;
-  transition: transform .12s, border-color .15s, background .15s;
+  font: 400 14.5px/1.4 Georgia, serif;
+  color: var(--chrome-active);
+  text-decoration: none;
+  border-bottom: 1px solid var(--chrome-border);
+  padding: 4px 2px;
 }
-/* Dark: recolour only the non-accent borders so the tradition
-   left-accent (set below) is never clobbered by a shorthand. */
-[data-theme="dark"] #home-hall-feature .hall-room-link {
-  background: rgba(255,255,255,.07); color: #ece7dd;
-  border-top-color: rgba(255,255,255,.16);
-  border-right-color: rgba(255,255,255,.16);
-  border-bottom-color: rgba(255,255,255,.16);
-}
-#home-hall-feature .hall-room-link:hover { transform: translateY(-1px); }
-#home-hall-feature .hall-room-link:focus-visible,
-#home-hall-feature .hall-feature-cta:focus-visible { outline: 3px solid #8f7320; outline-offset: 2px; }
-#home-hall-feature .t-hindu     { border-left-color: #a96e14; }  /* saffron */
-#home-hall-feature .t-christian { border-left-color: #3f5aa6; }  /* lapis   */
-#home-hall-feature .t-buddhist  { border-left-color: #8a3a24; }  /* maroon  */
-/* Brighter accents for legibility on the dark ground. */
-[data-theme="dark"] #home-hall-feature .t-hindu     { border-left-color: #d99a2b; }
-[data-theme="dark"] #home-hall-feature .t-christian { border-left-color: #7fa0e0; }
-[data-theme="dark"] #home-hall-feature .t-buddhist  { border-left-color: #d98b6a; }
-#home-hall-feature .t-hindu:hover     { border-color: #a96e14; }
-#home-hall-feature .t-christian:hover { border-color: #3f5aa6; }
-#home-hall-feature .t-buddhist:hover  { border-color: #8a3a24; }
-#home-hall-feature .hall-feature-more { margin: 4px 0 0; font-size: 12px; opacity: .62; }
-.home-press-title {
-  font-family: Georgia, serif;
-  font-size: 19px;
-  letter-spacing: 0.02em;
-}
-.home-press-sub {
-  font-size: 11px;
-  opacity: 0.85;
-  margin-top: 2px;
-  font-family: system-ui, sans-serif;
-}
+.hall-rooms .hall-room-link:last-child { border-bottom: none; }
+#home-hall-feature .hall-room-link:hover { color: var(--reader-fg); }
+#home-hall-feature .hall-room-link:focus-visible { outline: 3px solid var(--chrome-active); outline-offset: 2px; }
 #home-search {
-  margin-top: clamp(16px, 3vh, 28px);
-  width: min(440px, 80vw);
+  max-width: 560px;
+  margin: 30px auto 0;
   position: relative;
 }
 #home-search-input {
   width: 100%;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-family: system-ui, sans-serif;
+  box-sizing: border-box;
+  padding: 13px 18px;
+  font: 400 16px/1.4 Georgia, serif;
+  color: var(--reader-fg);
+  background: #ffffff;
   border: 1px solid var(--chrome-border);
-  border-radius: 8px;
-  background: white;
-  color: var(--chrome-fg);
+  border-radius: 2px;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -2486,22 +2409,38 @@ button.home-path {
 .wr-chip-defer  { color: #4a3a5a; background: #ece6f3; border-color: #cbbdda; }
 .wr-chip-fix    { color: #6a3320; background: #f5e2da; border-color: #ddb29a; }
 
+/* Colophon footer */
+#home-workroom, #home-restricted { text-align: center; }
 #home-footer {
-  margin-top: clamp(12px, 3vh, 32px);
-  display: flex;
-  gap: 20px;
-  font-size: 12px;
+  margin: 64px 0 0;
+  border-top: 1px solid var(--chrome-border);
+  padding: 26px 0 40px;
+  text-align: center;
 }
-#home-footer a {
+#home-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+#home-footer-links a {
   color: var(--chrome-muted);
   text-decoration: none;
-  letter-spacing: 0.03em;
 }
-#home-footer a:hover { text-decoration: underline; color: var(--chrome-active); }
+#home-footer-links a:hover { color: var(--chrome-active); }
+#home-colophon {
+  font: italic 400 13px/1.6 Georgia, serif;
+  color: #a09080;
+  margin: 0;
+}
 
 #home-recent-panel {
   position: absolute;
-  top: 20px;
+  top: 66px;
   right: 24px;
   width: 200px;
   font-size: 13px;
@@ -2561,31 +2500,36 @@ button.home-path {
     text-align: center;
   }
 }
-@media (max-width: 500px) {
-  #home-categories { grid-template-columns: 1fr; width: min(260px, 80vw); }
-  .home-cat { aspect-ratio: 2.5; }
-  #home-paths { grid-template-columns: 1fr; width: min(280px, 84vw); gap: 8px; }
-  .home-path { padding: 8px 12px; }
-  .home-path-label { font-size: 14px; }
-  .home-path-sub { font-size: 11px; }
-}
 
-/* When the welcome stack grows taller than the viewport (most phones,
-   especially after the Reading Room/Atlas paths were added), switch
-   from vertical centering to top-aligned with a scroll fallback. The
-   title and subtitle stay visible; content below scrolls into view. */
+/* Mobile: the shelves stack as rows and the masthead holds the
+   May-pass viewport position (top-aligned, modest padding — the page
+   was already a top-flowing scroll, so nothing recenters or clips). */
 @media (max-width: 720px) {
-  #welcome-home {
-    justify-content: flex-start;
-    padding-top: clamp(18px, 5vh, 40px);
-    padding-bottom: 24px;
-    overflow-y: auto;
+  #home-topbar { padding: 14px 20px; }
+  #home-topnav { gap: 16px; }
+  #home-main { padding: clamp(18px, 5vh, 40px) 20px 0; }
+  #home-shelves { margin-top: 36px; }
+  #home-categories { grid-template-columns: 1fr; }
+  .home-cat {
+    border-left: none;
+    border-top: 1px solid #e6e1d9;
+    padding: 18px 0 16px;
   }
+  .home-cat:first-child { border-top: none; }
+  #home-hall-feature {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px 20px;
+    margin-top: 40px;
+  }
+  .hall-rooms { flex-direction: row; flex-wrap: wrap; gap: 14px; }
+  .hall-rooms .hall-room-link { border-bottom: 1px solid var(--chrome-border); }
+  #home-footer { margin-top: 44px; }
 }
 @media (max-height: 600px) {
-  #home-header { margin-bottom: 10px; }
-  .home-cat { aspect-ratio: 2; padding: 8px 12px; }
-  #home-footer { margin-top: 8px; }
+  #home-main { padding-top: 24px; }
+  #home-shelves { margin-top: 30px; }
 }
 
 /* ── Browse view (center area tile navigation) ───────────────────── */
@@ -11163,10 +11107,25 @@ body.viewer-active .folio-leaf-colophon {
 }
 [data-theme="dark"] .tile-card { background: #2a2a2e; border-color: var(--chrome-border); }
 [data-theme="dark"] .tile-card:hover { border-color: var(--chrome-active); background: #303035; }
-[data-theme="dark"] .home-path { background: #2a2a2e; border-color: var(--chrome-border); }
-[data-theme="dark"] .home-path:hover { background: #303035; border-color: var(--chrome-active); }
-[data-theme="dark"] .home-path-current,
-[data-theme="dark"] .home-path-current:hover { background: #2e2a22; border-color: #6a5a3a; }
+/* Entrance (2026-07 rebuild): map the new surfaces onto the dark palette. */
+[data-theme="dark"] #home-topbar { border-bottom-color: var(--chrome-border); }
+[data-theme="dark"] #home-countline,
+[data-theme="dark"] .home-cat .home-cat-count,
+[data-theme="dark"] #home-colophon { color: var(--chrome-muted); }
+[data-theme="dark"] #home-shelves-head { border-bottom-color: #6a665e; }
+[data-theme="dark"] .home-cat {
+  border-left-color: var(--chrome-border);
+  border-top-color: var(--chrome-border);
+}
+[data-theme="dark"] .home-cat:hover { background: #26262b; }
+[data-theme="dark"] #home-hall-feature {
+  background: var(--chrome-bg);
+  border-color: var(--chrome-border);
+}
+[data-theme="dark"] #home-hall-feature .hall-feature-sub {
+  color: var(--chrome-fg);
+  opacity: 0.85;
+}
 [data-theme="dark"] .tile-list-item { border-color: var(--chrome-border); }
 [data-theme="dark"] .tile-list-item:hover { background: #2a2a2e; }
 [data-theme="dark"] .cc-section { background: var(--reader-bg); border-color: var(--chrome-border); }
@@ -11747,49 +11706,64 @@ body.viewer-active .folio-leaf-colophon {
       <div id="reader-inner">
         <div id="welcome">
           <div id="welcome-home">
-            <div id="home-header">
+            <div id="home-topbar">
               <a href="https://stevenfrye30.github.io/Workspace/" id="home-hub-link">&larr; Workspace</a>
-              <h1 id="home-title">Digital Archive</h1>
-              <p id="home-subtitle">A verified digital library of sacred, philosophical, and literary texts</p>
+              <nav id="home-topnav">
+                <a href="press.html">The Press</a>
+                <a href="hall/">The Religion Hall</a>
+                <button id="dark-toggle" type="button" onclick="toggleDarkMode()">Dark</button>
+              </nav>
             </div>
-            <div id="home-categories">
-              <button class="home-cat" data-cat="Religion">
-                <span class="home-cat-label">Religion</span>
-                <span class="home-cat-count"></span>
-              </button>
-              <button class="home-cat" data-cat="Philosophy">
-                <span class="home-cat-label">Philosophy</span>
-                <span class="home-cat-count"></span>
-              </button>
-              <button class="home-cat" data-cat="Literature">
-                <span class="home-cat-label">Literature</span>
-                <span class="home-cat-count"></span>
-              </button>
-              <button class="home-cat" data-cat="Esoteric">
-                <span class="home-cat-label">Esoteric</span>
-                <span class="home-cat-count"></span>
-              </button>
+            <div id="home-main">
+            <div id="home-header">
+              <h1 id="home-title">Digital Archive</h1>
+              <p id="home-subtitle">A reading room for sacred, philosophical, and literary texts</p>
+              <p id="home-countline"><span id="home-count-total"></span>every passage verified against its source</p>
             </div>
             <div id="home-search">
-              <input type="search" id="home-search-input" placeholder="Search all texts…" autocomplete="off">
+              <input type="search" id="home-search-input" placeholder="Search all texts — title, translator, tradition…" autocomplete="off">
               <ul id="home-search-results"></ul>
             </div>
-            <a id="home-press" href="press.html">
-              <span class="home-press-title">The Press</span>
-              <span class="home-press-sub">Print or save any passage</span>
-            </a>
-            <section id="home-hall-feature" aria-labelledby="home-hall-heading">
-              <h2 id="home-hall-heading" class="hall-feature-title">The Religion Hall</h2>
-              <p class="hall-feature-sub">Step inside a tradition through an immersive room — distinct from browsing the Religion text list.</p>
-              <a class="hall-feature-cta" href="hall/">Enter the Religion Hall <span aria-hidden="true">→</span></a>
-              <div class="hall-open" role="group" aria-label="Rooms open now">
-                <span class="hall-open-label" aria-hidden="true">Open now</span>
-                <a class="hall-room-link t-hindu" href="rooms/hindu/">Hinduism</a>
-                <a class="hall-room-link t-christian" href="rooms/christian/">Abrahamic</a>
-                <a class="hall-room-link t-buddhist" href="rooms/buddhist/">Buddhism</a>
+            <div id="home-shelves">
+              <div id="home-shelves-head"><h2>The four shelves</h2></div>
+              <div id="home-categories">
+                <!-- The Religion card is built to become a doorway later (the
+                     steward intends the Hall to eventually replace this shelf):
+                     swapping the <button> for an <a href="hall/"> keeps the
+                     grid, scent line, and count binding unchanged. -->
+                <button class="home-cat" data-cat="Religion" type="button">
+                  <span class="home-cat-titleline"><span class="home-cat-label">Religion</span><span class="home-cat-count"></span></span>
+                  <span class="home-cat-scent">The Rig-Veda &middot; The City of God &middot; The Analects &middot; the world&rsquo;s scriptures<span class="home-cat-trads"></span></span>
+                  <span class="home-cat-browse">Browse &rarr;</span>
+                </button>
+                <button class="home-cat" data-cat="Philosophy" type="button">
+                  <span class="home-cat-titleline"><span class="home-cat-label">Philosophy</span><span class="home-cat-count"></span></span>
+                  <span class="home-cat-scent">Aristotle&rsquo;s Metaphysics &middot; Bacon&rsquo;s Essays &middot; the Stoics, the Legalists, the moderns</span>
+                  <span class="home-cat-browse">Browse &rarr;</span>
+                </button>
+                <button class="home-cat" data-cat="Literature" type="button">
+                  <span class="home-cat-titleline"><span class="home-cat-label">Literature</span><span class="home-cat-count"></span></span>
+                  <span class="home-cat-scent">Beowulf &middot; The Arabian Nights &middot; the Aeneid &middot; epics and tales<span class="home-cat-trads"></span></span>
+                  <span class="home-cat-browse">Browse &rarr;</span>
+                </button>
+                <button class="home-cat" data-cat="Esoteric" type="button">
+                  <span class="home-cat-titleline"><span class="home-cat-label">Esoteric</span><span class="home-cat-count"></span></span>
+                  <span class="home-cat-scent">Thrice-Greatest Hermes &middot; Atlantis &middot; Aradia &middot; the hermetic and the strange</span>
+                  <span class="home-cat-browse">Browse &rarr;</span>
+                </button>
               </div>
-              <p class="hall-feature-sub">These rooms map the structure of religious traditions. The archive contains a curated and incomplete collection of readable texts within those structures.</p>
-              <p class="hall-feature-more">Three rooms open — Hinduism, Buddhism, and the Abrahamic room, where Judaism, Christianity, and Islam are represented together. Five more rooms are planned for the Version 1 edition; other mapped areas are reserved for later editions.</p>
+            </div>
+            <section id="home-hall-feature" aria-labelledby="home-hall-heading">
+              <div class="hall-feature-text">
+                <div class="hall-feature-kicker">Another way in</div>
+                <h2 id="home-hall-heading" class="hall-feature-title"><a href="hall/">The Religion Hall</a></h2>
+                <p class="hall-feature-sub">Step into a tradition&rsquo;s own room &mdash; its structure on the walls, its texts on the shelves. Three rooms stand open; five more are planned.</p>
+              </div>
+              <div class="hall-rooms" role="group" aria-label="Rooms open now">
+                <a class="hall-room-link" href="rooms/hindu/">Hinduism &rarr;</a>
+                <a class="hall-room-link" href="rooms/buddhist/">Buddhism &rarr;</a>
+                <a class="hall-room-link" href="rooms/christian/">The Abrahamic Room &rarr;</a>
+              </div>
             </section>
             <div id="home-workroom" style="display:none;">
               <button class="home-restricted-btn home-workroom-btn" onclick="browseWorkroom()">⚒ Archive Workroom <span id="home-workroom-count" class="home-workroom-count"></span></button>
@@ -11798,11 +11772,15 @@ body.viewer-active .folio-leaf-colophon {
               <button class="home-restricted-btn" onclick="browseRestricted()">🔒 Restricted Library</button>
             </div>
             <div id="home-footer">
-              <a href="sources.html">Sources &amp; Attribution</a>
-              <a href="integrity.html">Integrity</a>
-              <a href="translators.html">Translators</a>
-              <a href="wishlist.html">Wishlist</a>
-              <button id="dark-toggle" onclick="toggleDarkMode()">Dark</button>
+              <div id="home-footer-links">
+                <a href="sources.html">Sources &amp; attribution</a>
+                <a href="integrity.html">Integrity proof</a>
+                <a href="translators.html">Translators</a>
+                <a href="wishlist.html">Wishlist</a>
+                <a href="press.html">The Press</a>
+              </div>
+              <p id="home-colophon">Public-domain texts with stable provenance. Built slowly, read slowly, maintained without hurry.</p>
+            </div>
             </div>
             <!-- Recent-reads panel: lives inside #welcome-home so it
                  participates in the flex column on mobile (where it would
@@ -27425,14 +27403,29 @@ function updateHomeCounts() {
   if (workroomPanel) workroomPanel.style.display = workroomCount ? 'block' : 'none';
   const workroomCountEl = document.getElementById('home-workroom-count');
   if (workroomCountEl) workroomCountEl.textContent = workroomCount ? `· ${workroomCount} texts` : '';
+  let shelfTotal = 0;
   document.querySelectorAll('.home-cat').forEach(btn => {
     const cat = btn.dataset.cat;
     const traditions = browseTree[cat] || {};
     const textCount = Object.values(traditions).reduce((s, t) => s + t.length, 0);
     const tradCount = Object.keys(traditions).length;
-    btn.querySelector('.home-cat-count').textContent =
-      `${textCount} texts · ${tradCount} traditions`;
+    shelfTotal += textCount;
+    btn.querySelector('.home-cat-count').textContent = textCount.toLocaleString('en-US');
+    // Scent-line tradition phrase where the copy carries one — bound live,
+    // never literal.
+    const tr = btn.querySelector('.home-cat-trads');
+    if (tr) {
+      tr.textContent = cat === 'Religion' ? `, ${tradCount} traditions`
+                     : cat === 'Literature' ? ` in ${tradCount} literatures`
+                     : '';
+    }
   });
+  // Masthead count line — the sum of the four shelves, formatted live.
+  const totalEl = document.getElementById('home-count-total');
+  if (totalEl) {
+    totalEl.textContent =
+      `${shelfTotal.toLocaleString('en-US')} public texts across four shelves · `;
+  }
 }
 
 // Wire home search
