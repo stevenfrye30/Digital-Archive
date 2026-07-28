@@ -4835,6 +4835,118 @@ mark.search-hl-active {
 @media (max-width: 720px) {
   .genealogy-body .genealogy-text { font-size: 0.85em; }
 }
+/* ── Commentary layer (Task 21) — Reading / Interactive mode ──────────
+   Registers per Commentary Mockup.dc.html, exact values. One renderer:
+   these leaves are the codex witness machinery extended to Stack B. */
+#mode-switch {
+  display: inline-flex; align-items: center; margin-left: 10px;
+  border: 1px solid #d8d3cc; border-radius: 2px; overflow: hidden;
+}
+#mode-switch button, #nav-bar #mode-switch button {
+  font: 400 10.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 14px;
+  cursor: pointer; border: none; border-radius: 0; white-space: nowrap;
+  background: none; color: #8a7a6a;
+}
+#mode-switch button.active, #nav-bar #mode-switch button.active {
+  background: #7a5c3a; color: #faf8f5;
+}
+#mode-switch.mode-disabled { opacity: 0.45; }
+#mode-switch.mode-disabled button { cursor: not-allowed; }
+@media (max-width: 720px) {
+  #mode-switch { margin-left: 6px; }
+  #mode-switch button { padding: 6px 8px; font-size: 9px; letter-spacing: 0.08em; }
+}
+.commentary-strip { text-align: center; margin: 0 0 4px; }
+.commentary-strip .cs-chips {
+  display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 0 0 4px;
+}
+.cs-chip {
+  font: 400 9.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.12em; text-transform: uppercase; padding: 7px 11px;
+  cursor: pointer; border-radius: 2px; white-space: nowrap;
+  border: 1px solid #d8d3cc; background: none;
+}
+.cs-chip.open { color: #faf8f5 !important; }
+.commentary-strip .cs-caption {
+  font: italic 400 11.5px/1.6 Georgia, serif; color: #b8ab99; margin: 0 0 8px;
+}
+.commentary-ref {
+  font: 400 13px Georgia, serif; color: #7a5c3a; text-decoration: none;
+  margin-left: 4px; cursor: pointer;
+}
+.commentary-leaf {
+  border-left: 2px solid; margin: 6px 0 14px 22px; padding: 10px 16px;
+  max-width: 32em; font-family: Georgia, serif;
+}
+.commentary-leaf .cl-head {
+  font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.16em; text-transform: uppercase; margin: 0 0 5px;
+}
+.commentary-leaf .cl-body { font: 400 13px/1.65 Georgia, serif; margin: 0; white-space: pre-wrap; }
+.commentary-leaf .cl-foot {
+  font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #b0b0aa; margin: 6px 0 0;
+}
+.cl-editorial   { border-color: #c9b99f; background: #f6f2ea; }
+.cl-editorial .cl-head { color: #8a7a6a; }
+.cl-editorial .cl-body { color: #3c362e; }
+.cl-scholarship { border-color: #9aa8a2; background: #f2f4f2; }
+.cl-scholarship .cl-head { color: #5a6a6a; }
+.cl-scholarship .cl-body { color: #37413d; }
+.cl-traditional { border-style: dashed; border-color: #cfc2a4; background: #f5f0e3; }
+.cl-traditional .cl-head { color: #8a7a5a; }
+.cl-traditional .cl-body { color: #7a6c50; font-style: italic; }
+.cl-traditional .cl-gap-tag {
+  font-style: normal; font: 400 10px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #b0a080;
+}
+.cl-ai          { border-color: #b8b8b2; background: #f1f1ef; }
+.cl-ai .cl-head { color: #8a8a86; }
+.cl-ai .cl-head .cl-unendorsed { color: #7a5c3a; }
+.cl-ai .cl-body { color: #3c3c38; }
+.ai-door {
+  border-left: 2px solid #b8b8b2; background: #f1f1ef;
+  margin: 6px 0 14px 22px; padding: 10px 16px; max-width: 32em;
+}
+.ai-door .cl-head { color: #8a8a86; }
+.ai-door .ad-body { font: italic 400 13px/1.65 Georgia, serif; color: #6a6a66; margin: 0 0 8px; }
+.ai-door button {
+  font: 400 9.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px;
+  border: 1px solid #b8b8b2; background: none; color: #8a8a86;
+  border-radius: 2px; cursor: pointer;
+}
+.ai-door button:hover { background: #e6e6e2; }
+.gloss-term {
+  font: inherit; color: inherit; background: none; border: none;
+  border-bottom: 1px dotted #9aa8a2; padding: 0; cursor: pointer;
+}
+.gloss-anchor-term { border-bottom: 1px dotted #c9b99f; }
+.gloss-leaf {
+  border-left: 2px solid #9aa8a2; background: #f7f6f0;
+  margin: 6px 0 14px 22px; padding: 10px 16px; max-width: 32em;
+}
+.gloss-leaf .gl-line { font: 400 14px/1.4 Georgia, serif; color: #2c2c2c; margin: 0 0 4px; }
+.gloss-leaf .gl-etym { font: italic 400 12px Georgia, serif; color: #8a9490; }
+.gloss-leaf .gl-kind {
+  font: 400 8.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #b0b8b2; margin-left: 6px;
+}
+.gloss-leaf .gl-body { font: 400 13px/1.6 Georgia, serif; color: #4a524e; margin: 0; }
+.cl-lifecycle-provisional { color: #b0a490; }
+.cl-lifecycle-verified    { color: #7a8a6a; }
+.cl-lifecycle-withdrawn   { color: #a08a8a; }
+.cl-lifecycle-superseded  { color: #8a8a9a; }
+.cl-lifecycle-unresolved  { color: #a89a7a; }
+[data-theme="dark"] .commentary-leaf,
+[data-theme="dark"] .gloss-leaf,
+[data-theme="dark"] .ai-door { background: rgba(255,255,255,0.05); }
+[data-theme="dark"] .commentary-leaf .cl-body,
+[data-theme="dark"] .gloss-leaf .gl-body,
+[data-theme="dark"] .gloss-leaf .gl-line { color: var(--reader-fg); }
+[data-theme="dark"] .ai-door button:hover { background: rgba(255,255,255,0.08); }
+
 [data-theme="dark"] .genealogy-body {
   background: #2a241a;
   border-color: #8a6a3a;
@@ -11692,6 +11804,10 @@ body.viewer-active .folio-leaf-colophon {
            Hidden on desktop where the chrome row carries the same context
            through separate elements. -->
       <span id="nav-subtitle" aria-hidden="true"></span>
+      <div id="mode-switch">
+        <button id="mode-reading" type="button" class="active" onclick="setReaderMode('reading')">Reading</button>
+        <button id="mode-interactive" type="button" onclick="setReaderMode('interactive')">Interactive</button>
+      </div>
       <button id="nav-next" disabled>Next &#9654;</button>
       <!-- Mobile-only metadata-access trigger. Opens the existing
            #text-meta panel inline. Hidden on desktop, where the
@@ -11727,15 +11843,15 @@ body.viewer-active .folio-leaf-colophon {
             <div id="home-shelves">
               <div id="home-shelves-head"><h2>The four shelves</h2></div>
               <div id="home-categories">
-                <!-- The Religion card is built to become a doorway later (the
-                     steward intends the Hall to eventually replace this shelf):
-                     swapping the <button> for an <a href="hall/"> keeps the
-                     grid, scent line, and count binding unchanged. -->
-                <button class="home-cat" data-cat="Religion" type="button">
+                <!-- Task 21 rider: the doorway swap the card was built for —
+                     the Religion shelf now opens as The Map of Sacred Texts.
+                     The flat shelf list stays reachable from the map itself;
+                     class + data-cat keep the count binding unchanged. -->
+                <a class="home-cat" data-cat="Religion" href="map/">
                   <span class="home-cat-titleline"><span class="home-cat-label">Religion</span><span class="home-cat-count"></span></span>
                   <span class="home-cat-scent">The Rig-Veda &middot; The City of God &middot; The Analects &middot; the world&rsquo;s scriptures<span class="home-cat-trads"></span></span>
-                  <span class="home-cat-browse">Browse &rarr;</span>
-                </button>
+                  <span class="home-cat-browse">Enter the Map &rarr;</span>
+                </a>
                 <button class="home-cat" data-cat="Philosophy" type="button">
                   <span class="home-cat-titleline"><span class="home-cat-label">Philosophy</span><span class="home-cat-count"></span></span>
                   <span class="home-cat-scent">Aristotle&rsquo;s Metaphysics &middot; Bacon&rsquo;s Essays &middot; the Stoics, the Legalists, the moderns</span>
@@ -13393,6 +13509,285 @@ function toggleGenealogyBody(passageDiv, rec) {
   body.classList.toggle('open');
 }
 
+// ── Commentary layer (Task 21): Reading / Interactive mode ────────────────
+// One renderer: commentary records join the passage stream through the same
+// marker→leaf machinery the genealogy witnesses use (❦ becomes ❧). Reading
+// mode never runs any of this — the bare canon renders byte-identical to a
+// commentary-free build. Mode never persists; every text opens in Reading.
+let readerMode = 'reading';
+let _lastRenderArgs = null;
+
+const _CL_DRESS = {
+  editorial:   { glyph: '❧', label: 'archive editorial' },
+  scholarship: { glyph: '✳', label: 'modern scholarship' },
+  traditional: { glyph: '◌', label: 'traditional commentary' },
+  ai:          { glyph: '⌸', label: 'machine suggestion' },
+};
+const _CL_CHIP_COLORS = { editorial: '#8a7a6a', scholarship: '#5a6a6a',
+                          traditional: '#8a7a5a', ai: '#8a8a86' };
+
+function _hasInteractive() {
+  return !!(currentData && ((currentData.commentary || []).length ||
+                            (currentData.glosses || []).length ||
+                            (currentData.genealogy || []).length));
+}
+
+function _updateModeSwitch() {
+  const sw = document.getElementById('mode-switch');
+  if (!sw) return;
+  const has = _hasInteractive();
+  sw.classList.toggle('mode-disabled', !has);
+  sw.title = has ? '' : 'nothing attends this text yet';
+  document.getElementById('mode-reading').classList.toggle('active', readerMode === 'reading');
+  document.getElementById('mode-interactive').classList.toggle('active', readerMode === 'interactive');
+}
+
+function setReaderMode(m) {
+  if (m === readerMode) return;
+  if (m === 'interactive' && !_hasInteractive()) return;
+  readerMode = m;
+  _updateModeSwitch();
+  if (_lastRenderArgs) render(_lastRenderArgs[0], _lastRenderArgs[1]);
+}
+
+function _clAuthor(rec) {
+  const a = (rec.provenance && rec.provenance.author) || '';
+  if (a.indexOf('archive:steward:') === 0) return 'the steward';
+  if (a.indexOf('archive:ai:') === 0) return a.slice('archive:ai:'.length);
+  if (a.indexOf('prototype:scholar:placeholder') === 0)
+    return 'placeholder — no real scholar represented';
+  if (a.indexOf('primary:') === 0)
+    return 'Jātakaṭṭhakathā, attr. Buddhaghosa, ' + (rec.provenance.date || '');
+  return a;
+}
+
+function _clAnchorPhrase(rec) {
+  const anchors = rec.anchors || [];
+  const passages = anchors.filter(a => (a.target || '').indexOf('archive:passage:') === 0);
+  const phrase = anchors.map(a => a.sub_locator).find(s => s && s.type === 'phrase');
+  if (phrase) return 'at “' + phrase.value + '”';
+  if (passages.length > 1) {
+    const pids = passages.map(a => a.target.split('::').pop());
+    return 'spans ¶ ' + pids[0] + '–' + pids[pids.length - 1];
+  }
+  if (passages.length === 1) return 'at ¶ ' + passages[0].target.split('::').pop();
+  return 'attends the tale';
+}
+
+function _clLifecycle(rec) { return rec.lifecycle_state || 'provisional'; }
+
+function _commentaryLeaf(rec) {
+  const layer = (rec.provenance && rec.provenance.layer) || 'editorial';
+  const d = _CL_DRESS[layer] || _CL_DRESS.editorial;
+  const leaf = document.createElement('div');
+  leaf.className = 'commentary-leaf cl-' + layer;
+  leaf.id = 'cl-' + rec.id;
+  const head = document.createElement('div');
+  head.className = 'cl-head';
+  const life = _clLifecycle(rec);
+  if (layer === 'ai') {
+    const src = (rec.provenance && rec.provenance.source) || {};
+    head.innerHTML = d.glyph + ' ' + d.label + ' · ' +
+      escapeHTML(src.model_id || _clAuthor(rec)) +
+      (src.model_date ? ' (' + escapeHTML(src.model_date) + ')' : '') +
+      ' · <span class="cl-unendorsed">not reviewed or endorsed by the steward</span>';
+  } else {
+    head.innerHTML = d.glyph + ' ' + d.label + ' · ' + escapeHTML(_clAuthor(rec)) +
+      ' · ' + escapeHTML(String((rec.provenance && rec.provenance.date) || '').slice(0, 4)) +
+      ' · <span class="cl-lifecycle-' + life + '">' + escapeHTML(life) + '</span>' +
+      ' · ' + escapeHTML(_clAnchorPhrase(rec));
+  }
+  leaf.appendChild(head);
+  const body = document.createElement('p');
+  body.className = 'cl-body';
+  if (layer === 'traditional' && !rec.body) {
+    // Honest gap: a Layer-3 bridge whose target text is not yet acquired.
+    body.innerHTML = 'The tradition speaks here, but the archive has not yet ' +
+      'acquired a translation. The shelf is real; the book is not yet on it. ' +
+      '<span class="cl-gap-tag">bridge unresolved · acquisition is a named future task</span>';
+  } else {
+    body.textContent = rec.body || '';
+  }
+  leaf.appendChild(body);
+  if (layer === 'ai') {
+    const src = (rec.provenance && rec.provenance.source) || {};
+    const foot = document.createElement('div');
+    foot.className = 'cl-foot';
+    foot.textContent = (src.prompt_context ? src.prompt_context + ' · ' : '') +
+      'never silently promoted — elevation requires a new steward record citing this one';
+    leaf.appendChild(foot);
+  }
+  return leaf;
+}
+
+// Layer 6 renders ONLY behind the closed door; door state never persists.
+function _aiDoor(rec) {
+  const door = document.createElement('div');
+  door.className = 'ai-door';
+  door.id = 'cl-' + rec.id;
+  const head = document.createElement('div');
+  head.className = 'cl-head';
+  head.textContent = '⌸ machine suggestion · held behind this door';
+  door.appendChild(head);
+  const body = document.createElement('p');
+  body.className = 'ad-body';
+  body.textContent = 'One machine suggestion is held behind this door. ' +
+    'Nothing behind this door has been endorsed by the steward.';
+  door.appendChild(body);
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.textContent = 'open the door';
+  btn.addEventListener('click', () => { door.replaceWith(_commentaryLeaf(rec)); });
+  door.appendChild(btn);
+  return door;
+}
+
+function _toggleCommentaryLeaf(afterEl, rec, chipEl) {
+  const existing = document.getElementById('cl-' + rec.id);
+  if (existing) {
+    existing.remove();
+    if (chipEl) { chipEl.classList.remove('open'); chipEl.style.background = 'none'; }
+    return;
+  }
+  const layer = (rec.provenance && rec.provenance.layer) || 'editorial';
+  const el = (layer === 'ai') ? _aiDoor(rec) : _commentaryLeaf(rec);
+  afterEl.insertAdjacentElement('afterend', el);
+  if (chipEl) { chipEl.classList.add('open'); chipEl.style.background = chipEl.dataset.color; }
+}
+
+function _anchorPassageEl(rec) {
+  const pids = (rec.anchors || [])
+    .map(a => (a.target || ''))
+    .filter(t => t.indexOf('archive:passage:') === 0)
+    .map(t => t.split('::').pop());
+  for (const pid of pids) {
+    const el = $passages.querySelector('.passage[data-pid="' + CSS.escape(pid) + '"]');
+    if (el) return el;
+  }
+  return null;
+}
+
+function _renderCommentaryStrip(target) {
+  // Presentation order per the mockup: human layers first, the
+  // quarantined machine voice always last. Data order is untouched.
+  const _order = { editorial: 0, scholarship: 1, traditional: 2, ai: 3 };
+  const recs = ((currentData && currentData.commentary) || []).slice()
+    .sort((a, b) => (_order[(a.provenance || {}).layer] ?? 9) -
+                    (_order[(b.provenance || {}).layer] ?? 9));
+  if (!recs.length) return;
+  const strip = document.createElement('div');
+  strip.className = 'commentary-strip';
+  const chips = document.createElement('div');
+  chips.className = 'cs-chips';
+  for (const rec of recs) {
+    const layer = (rec.provenance && rec.provenance.layer) || 'editorial';
+    const d = _CL_DRESS[layer] || _CL_DRESS.editorial;
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'cs-chip';
+    const color = _CL_CHIP_COLORS[layer] || '#8a7a6a';
+    chip.dataset.color = color;
+    chip.style.color = color;
+    let tail;
+    if (layer === 'ai') tail = 'AI · held apart';
+    else if (layer === 'traditional' && !rec.body) tail = 'tradition · gap';
+    else {
+      const phrase = (rec.anchors || []).map(a => a.sub_locator)
+        .find(s => s && s.type === 'phrase');
+      tail = layer + ' · ' + (phrase ? phrase.value : _clAnchorPhrase(rec)
+        .replace('spans ¶ ', '¶ ').replace('at ¶ ', '¶ '));
+    }
+    chip.textContent = d.glyph + ' ' + tail;
+    chip.addEventListener('click', () => {
+      const anchorEl = _anchorPassageEl(rec) || strip;
+      _toggleCommentaryLeaf(anchorEl, rec, chip);
+    });
+    chips.appendChild(chip);
+  }
+  strip.appendChild(chips);
+  const cap = document.createElement('div');
+  cap.className = 'cs-caption';
+  const n = recs.length;
+  const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  cap.textContent = (words[n] || n) + ' object' + (n === 1 ? '' : 's') +
+    ' attend' + (n === 1 ? 's' : '') + ' this tale — open, close, study' +
+    ((currentData.genealogy || []).length ? '' :
+      ' · no codex chambers here yet; Genesis carries the first');
+  strip.appendChild(cap);
+  target.insertBefore(strip, target.firstChild);
+}
+
+// Interactive decoration for a rendered batch: ❧ markers on anchored
+// passages + dotted gloss terms. Called ONLY in interactive mode — the
+// Reading path never enters here.
+function _decorateInteractive(container) {
+  const recs = (currentData && currentData.commentary) || [];
+  const glosses = (currentData && currentData.glosses) || [];
+  container.querySelectorAll('.passage[data-pid]:not(.passage-joined)').forEach(div => {
+    const pid = div.dataset.pid;
+    for (const rec of recs) {
+      const firsts = (rec.anchors || []).map(a => a.target || '')
+        .filter(t => t.indexOf('archive:passage:') === 0);
+      // The ❧ marker rides the record's FIRST passage anchor only.
+      if (!firsts.length || firsts[0].split('::').pop() !== pid) continue;
+      const marker = document.createElement('a');
+      marker.className = 'commentary-ref';
+      marker.href = '#';
+      const dd = _CL_DRESS[(rec.provenance || {}).layer] || _CL_DRESS.editorial;
+      marker.textContent = dd.glyph;
+      marker.title = dd.label + ' · ' + _clAnchorPhrase(rec);
+      marker.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        _toggleCommentaryLeaf(div, rec, null);
+      });
+      div.appendChild(marker);
+    }
+    for (const g of glosses) {
+      if (String(g.pid) === String(pid)) _wrapGlossTerm(div, g);
+    }
+  });
+}
+
+function _wrapGlossTerm(div, g) {
+  const walker = document.createTreeWalker(div, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (node.parentElement.closest('.ref, .gloss-term, .commentary-leaf, .gloss-leaf'))
+        return NodeFilter.FILTER_REJECT;
+      return node.nodeValue.indexOf(g.term) !== -1
+        ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    }
+  });
+  const node = walker.nextNode();
+  if (!node) return;
+  const i = node.nodeValue.indexOf(g.term);
+  const after = node.splitText(i);
+  after.splitText(g.term.length);
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'gloss-term';
+  btn.textContent = g.term;
+  btn.addEventListener('click', () => {
+    const id = 'gl-' + (g.headword || g.term).replace(/[^a-zA-Z0-9]+/g, '-');
+    const existing = document.getElementById(id);
+    if (existing) { existing.remove(); return; }
+    const leaf = document.createElement('div');
+    leaf.className = 'gloss-leaf';
+    leaf.id = id;
+    const line = document.createElement('div');
+    line.className = 'gl-line';
+    line.innerHTML = '<strong style="font-weight:400">' + escapeHTML(g.headword || g.term) +
+      '</strong> <span class="gl-etym">· ' + escapeHTML(g.etym || '') + '</span>' +
+      '<span class="gl-kind">' + escapeHTML(g.kind || 'word') + '</span>';
+    leaf.appendChild(line);
+    const body = document.createElement('p');
+    body.className = 'gl-body';
+    body.textContent = g.body || '';
+    leaf.appendChild(body);
+    div.insertAdjacentElement('afterend', leaf);
+  });
+  node.parentNode.replaceChild(btn, after);
+}
+
 // Render passage text with inline [N] footnote refs and [*N] apparatus refs into an
 // INLINE target node — used for join_prev continuation spans. `ownerDiv` is the
 // paragraph block the apparatus body attaches to. Mirrors the block renderer's
@@ -13858,6 +14253,9 @@ function _renderBatch(passages, query, frag) {
       }
     }
   }
+  // Commentary layer (Task 21): interactive decoration only — the
+  // Reading path falls through untouched (bare-canon byte identity).
+  if (readerMode === 'interactive' && !chapterRoom) _decorateInteractive(frag);
 }
 
 // Margin witness renderer for chapter-room mode — a quiet
@@ -13882,6 +14280,7 @@ function _renderMarginWitness(rec, pid) {
 
 function render(passages, query) {
   $passages.innerHTML = '';
+  _lastRenderArgs = [passages, query];
 
   // Chapter-room uses a chapter-spread wrapper: scripture and
   // folio live as grid columns inside the same scroll
@@ -13920,6 +14319,11 @@ function render(passages, query) {
     scriptureTarget.appendChild(frag);
     _addLoadMoreBtn();
   }
+  // Commentary layer (Task 21): the object strip heads the passage
+  // stream in Interactive mode; Reading mode never builds it.
+  if (readerMode === 'interactive' && !chapterRoom) _renderCommentaryStrip(scriptureTarget);
+  _updateModeSwitch();
+
   // Folio column gets refilled after each render — the spread
   // is rebuilt every time, so folio entries need re-rendering
   // and re-positioning. Deferred via RAF so the chapter heading
@@ -21713,6 +22117,9 @@ document.addEventListener('keydown', (e) => {
 // ── Load text ─────────────────────────────────────────────────────────────────
 
 async function loadText(entry, listItem) {
+  // Task 21: every text opens in Reading — the bare canon is the
+  // default experience; mode never persists (v1 decision).
+  readerMode = 'reading';
   // Part 2 — consume any staged work-return exactly once. A normal open (no work
   // route) leaves this null, so Contents there behaves as before.
   _upnWorkReturn = pendingUpnReturn; pendingUpnReturn = null;
@@ -27511,8 +27918,9 @@ document.querySelectorAll('.bt-btn').forEach(btn => {
 document.getElementById('browse-sort').addEventListener('change', _renderTextTiles);
 document.getElementById('browse-color').addEventListener('change', _renderTextTiles);
 
-// Wire home-screen category buttons
-document.querySelectorAll('.home-cat').forEach(btn => {
+// Wire home-screen category buttons. Anchors (the Religion card is the
+// Map's doorway) navigate natively and are not wired here.
+document.querySelectorAll('button.home-cat').forEach(btn => {
   btn.addEventListener('click', () => browseCategory(btn.dataset.cat));
 });
 
