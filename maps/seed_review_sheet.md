@@ -102,3 +102,9 @@ Ancient additions — Task 25 supplement verdicts (final, 2026-07-28):
 - records-of-the-past-2nd-series-vol-ii-ah-sayce-1888_anonymous.json == records-past-vol2_sayce.json — CONFIRMED twins — never bound
 - the-seven-great-monarchies-of-the-ancient-eastern-george-raw_anonymous.json — container twin of the four rawlinson-monarchy-vol*.json rows (R5) — never bound
 - egypt-religious-development-petrie_petrie.json vs religious-development-thought-in-ancient-egypt-james-breaste_anonymous.json — verify content match, then dedup. CARRIES AN INDEX METADATA CORRECTION: the work is Breasted's "Development of Religion and Thought in Ancient Egypt" (1912); the petrie row's stated author is wrong. Correct via a named metadata-correction record IN THE DEDUP LANE (steward flagged per protocol) — not this lane, never silently.
+
+Gnostic additions — Task 25 supplement verdicts (final, 2026-07-28):
+
+- numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19_anonymous.json == numbers-occult-westcott_westcott.json — CONFIRMED twins — never bound
+- shibboleth-a-templar-monitor-george-connor-1894_anonymous.json == shibboleth-templar-monitor_steinbrenner.json — CONFIRMED twins (attribution question rides the dedup lane) — never bound
+- nostradamus-roberts_ward.json — RIGHTS CHECK BRANCH 2 (body ≠ held Ward 1891 Oracles, 0-node overlap; plausibly Roberts 1947): restriction PREPARED in the exporter (uncertain-copyright), BLOCKED on the Aiyar exporter gap — see the gnostic-lane STATUS; steward decides removal.

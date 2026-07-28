@@ -3,8 +3,8 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "held-several": 3,
-  "possible": 40,
+  "held-several": 4,
+  "possible": 39,
   "none": 17,
   "held": 10,
   "restricted": 1
@@ -290,7 +290,41 @@
    "zone": "aw-greek",
    "chip": "The Hermetica (Corpus Hermeticum)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "hermes-pymander_everard.json",
+     "work": "The Divine Pymander",
+     "translator": "John Everard",
+     "year": 1650,
+     "url": "?text=hermes-pymander_everard.json"
+    },
+    {
+     "df": "thrice-greatest-hermes-vol2_mead.json",
+     "work": "Thrice-Greatest Hermes, Vol 2",
+     "translator": "G.R.S. Mead",
+     "year": 1906,
+     "label": "the Corpus proper",
+     "url": "?text=thrice-greatest-hermes-vol2_mead.json"
+    },
+    {
+     "df": "thrice-greatest-hermes-vol3_mead.json",
+     "work": "Thrice-Greatest Hermes, Vol 3",
+     "translator": "G.R.S. Mead",
+     "year": 1906,
+     "label": "fragments (Stobaeus)",
+     "url": "?text=thrice-greatest-hermes-vol3_mead.json"
+    },
+    {
+     "df": "virgin-world-kingsford_kingsford-maitland.json",
+     "work": "The Virgin of the World",
+     "translator": "Anna Kingsford, Edward Maitland",
+     "year": 1885,
+     "label": "the Kore Kosmou & excerpts",
+     "url": "?text=virgin-world-kingsford_kingsford-maitland.json"
+    }
+   ]
   },
   {
    "zone": "aw-greek",

@@ -4377,6 +4377,73 @@
    ],
    "auto_verdict": "stands",
    "review": "ancient_supplement_sheet.md design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "ancient",
+   "zone": "aw-greek",
+   "chip": "The Hermetica (Corpus Hermeticum)",
+   "basis": "cross-map supplement review (gnostic lane)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "hermes-pymander",
+     "title": "The Divine Pymander",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "hermes-pymander_everard.json",
+       "translator": "John Everard",
+       "year": 1650,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "thrice-greatest-hermes-vol2",
+     "title": "Thrice-Greatest Hermes, Vol 2",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "thrice-greatest-hermes-vol2_mead.json",
+       "translator": "G.R.S. Mead",
+       "year": 1906,
+       "restricted": false,
+       "label": "the Corpus proper"
+      }
+     ]
+    },
+    {
+     "id": "thrice-greatest-hermes-vol3",
+     "title": "Thrice-Greatest Hermes, Vol 3",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "thrice-greatest-hermes-vol3_mead.json",
+       "translator": "G.R.S. Mead",
+       "year": 1906,
+       "restricted": false,
+       "label": "fragments (Stobaeus)"
+      }
+     ]
+    },
+    {
+     "id": "virgin-world-kingsford",
+     "title": "The Virgin of the World",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "virgin-world-kingsford_kingsford-maitland.json",
+       "translator": "Anna Kingsford, Edward Maitland",
+       "year": 1885,
+       "restricted": false,
+       "label": "the Kore Kosmou & excerpts"
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "chooser": "translations",
+   "review": "gnostic_supplement_sheet.md design verdicts (final, 2026-07-28) — cross-map ruling"
   }
  ],
  "coverage_gaps": {
