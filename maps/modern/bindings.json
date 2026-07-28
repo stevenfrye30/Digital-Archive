@@ -3,15 +3,26 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 19,
-  "none": 11
+  "held": 5,
+  "possible": 13,
+  "none": 11,
+  "held-several": 1
  },
  "chips": [
   {
    "zone": "mn-lds",
    "chip": "The Book of Mormon",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "book-of-mormon_lds.json",
+     "work": "The Book of Mormon",
+     "translator": "Joseph Smith Jr.",
+     "year": 1830,
+     "url": "?text=book-of-mormon_lds.json"
+    }
+   ]
   },
   {
    "zone": "mn-lds",
@@ -89,13 +100,31 @@
    "zone": "mn-esoteric",
    "chip": "Oahspe: A New Bible",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "oahspe-newbrough_newbrough.json",
+     "work": "Oahspe: A New Bible",
+     "translator": "John Ballou Newbrough",
+     "year": 1882,
+     "url": "?text=oahspe-newbrough_newbrough.json"
+    }
+   ]
   },
   {
    "zone": "mn-esoteric",
    "chip": "The Aquarian Gospel of Jesus the Christ",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "aquarian-gospel_dowling.json",
+     "work": "The Aquarian Gospel of Jesus Christ",
+     "translator": "Levi H. Dowling",
+     "year": 1908,
+     "url": "?text=aquarian-gospel_dowling.json"
+    }
+   ]
   },
   {
    "zone": "mn-esoteric",
@@ -107,13 +136,75 @@
    "zone": "mn-esoteric",
    "chip": "Theosophy — Isis Unveiled · The Secret Doctrine · The Voice of the Silence",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "isis-unveiled-vol1-blavatsky_blavatsky.json",
+     "work": "Isis Unveiled, Volume 1 (Science)",
+     "translator": "H. P. Blavatsky",
+     "year": 1877,
+     "url": "?text=isis-unveiled-vol1-blavatsky_blavatsky.json"
+    },
+    {
+     "df": "isis-unveiled-vol2-blavatsky_blavatsky.json",
+     "work": "Isis Unveiled, Volume 2 (Theology)",
+     "translator": "H. P. Blavatsky",
+     "year": 1877,
+     "url": "?text=isis-unveiled-vol2-blavatsky_blavatsky.json"
+    },
+    {
+     "df": "secret-doctrine-vol1-blavatsky_blavatsky.json",
+     "work": "The Secret Doctrine, Vol. 1 of 4",
+     "translator": "H. P. Blavatsky",
+     "year": 1888,
+     "url": "?text=secret-doctrine-vol1-blavatsky_blavatsky.json"
+    },
+    {
+     "df": "secret-doctrine-vol2-blavatsky_blavatsky.json",
+     "work": "The Secret Doctrine, Vol. 2 of 4",
+     "translator": "H. P. Blavatsky",
+     "year": 1888,
+     "url": "?text=secret-doctrine-vol2-blavatsky_blavatsky.json"
+    },
+    {
+     "df": "secret-doctrine-vol3-blavatsky_blavatsky.json",
+     "work": "The Secret Doctrine, Vol. 3 of 4",
+     "translator": "H. P. Blavatsky",
+     "year": 1888,
+     "url": "?text=secret-doctrine-vol3-blavatsky_blavatsky.json"
+    },
+    {
+     "df": "secret-doctrine-vol4-blavatsky_blavatsky.json",
+     "work": "The Secret Doctrine, Vol. 4 of 4",
+     "translator": "H. P. Blavatsky",
+     "year": 1888,
+     "url": "?text=secret-doctrine-vol4-blavatsky_blavatsky.json"
+    },
+    {
+     "df": "key-to-theosophy-blavatsky_blavatsky.json",
+     "work": "The Key to Theosophy",
+     "translator": "H. P. Blavatsky",
+     "year": 1889,
+     "url": "?text=key-to-theosophy-blavatsky_blavatsky.json"
+    }
+   ]
   },
   {
    "zone": "mn-esoteric",
    "chip": "Anthroposophy — Occult Science · Knowledge of the Higher Worlds",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "steiner-higher-worlds_metcalfe.json",
+     "work": "Knowledge of the Higher Worlds and Its Attainment",
+     "translator": "George Metcalfe",
+     "year": 1918,
+     "url": "?text=steiner-higher-worlds_metcalfe.json"
+    }
+   ],
+   "contained_in": "one of the chip's two named works held (Knowledge of the Higher Worlds)"
   },
   {
    "zone": "mn-esoteric",
@@ -125,7 +216,17 @@
    "zone": "mn-esoteric",
    "chip": "New Thought — Unity (Fillmore) · Science of Getting Rich (Wattles) · As a Man Thinketh (Allen)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "science-getting-rich-wattles_wattles.json",
+     "work": "The Science of Getting Rich",
+     "translator": "Wallace D. Wattles",
+     "year": 1910,
+     "url": "?text=science-getting-rich-wattles_wattles.json"
+    }
+   ],
+   "contained_in": "chip names Unity · Wattles · Allen; Wattles held"
   },
   {
    "zone": "mn-esoteric",

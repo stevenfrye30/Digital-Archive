@@ -58,6 +58,12 @@
    "New Thought",
    "Rastafari",
    "Witchcraft / Folk Religion"
+  ],
+  "indigenous": [
+   "Native American",
+   "Polynesian",
+   "African",
+   "Rastafari"
   ]
  },
  "unscoped_note": "index traditions scoped to NO map (design decision pending): Modern Philosophy, Greek Literature, Greek Philosophy, Political Philosophy, Roman Philosophy, Stoic, English/American/German/French/Spanish/Latin/Persian Literature, Comparative Religion — these are Philosophy/Literature/Esoteric-shelf territory, not religion-map chips",
@@ -4740,6 +4746,279 @@
    "contained_in": "within The Sikh Religion, tr. Macauliffe (1909) — selections",
    "review": "sikh_supplement_sheet.md design verdicts (final, 2026-07-28)",
    "chooser": "translations"
+  },
+  {
+   "tradition": "modern",
+   "zone": "mn-esoteric",
+   "chip": "Theosophy — Isis Unveiled · The Secret Doctrine · The Voice of the Silence",
+   "basis": "supplement review (wave 3)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "isis-unveiled-vol1-blavatsky",
+     "title": "Isis Unveiled, Volume 1 (Science)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "isis-unveiled-vol1-blavatsky_blavatsky.json",
+       "translator": "H. P. Blavatsky",
+       "year": 1877,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "isis-unveiled-vol2-blavatsky",
+     "title": "Isis Unveiled, Volume 2 (Theology)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "isis-unveiled-vol2-blavatsky_blavatsky.json",
+       "translator": "H. P. Blavatsky",
+       "year": 1877,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "secret-doctrine-vol1-blavatsky",
+     "title": "The Secret Doctrine, Vol. 1 of 4",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "secret-doctrine-vol1-blavatsky_blavatsky.json",
+       "translator": "H. P. Blavatsky",
+       "year": 1888,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "secret-doctrine-vol2-blavatsky",
+     "title": "The Secret Doctrine, Vol. 2 of 4",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "secret-doctrine-vol2-blavatsky_blavatsky.json",
+       "translator": "H. P. Blavatsky",
+       "year": 1888,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "secret-doctrine-vol3-blavatsky",
+     "title": "The Secret Doctrine, Vol. 3 of 4",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "secret-doctrine-vol3-blavatsky_blavatsky.json",
+       "translator": "H. P. Blavatsky",
+       "year": 1888,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "secret-doctrine-vol4-blavatsky",
+     "title": "The Secret Doctrine, Vol. 4 of 4",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "secret-doctrine-vol4-blavatsky_blavatsky.json",
+       "translator": "H. P. Blavatsky",
+       "year": 1888,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "key-to-theosophy-blavatsky",
+     "title": "The Key to Theosophy",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "key-to-theosophy-blavatsky_blavatsky.json",
+       "translator": "H. P. Blavatsky",
+       "year": 1889,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)",
+   "chooser": "works"
+  },
+  {
+   "tradition": "modern",
+   "zone": "mn-lds",
+   "chip": "The Book of Mormon",
+   "basis": "supplement review (wave 3)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "book-of-mormon",
+     "title": "The Book of Mormon",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "book-of-mormon_lds.json",
+       "translator": "Joseph Smith Jr.",
+       "year": 1830,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "modern",
+   "zone": "mn-esoteric",
+   "chip": "Oahspe: A New Bible",
+   "basis": "supplement review (wave 3)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "oahspe-newbrough",
+     "title": "Oahspe: A New Bible",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "oahspe-newbrough_newbrough.json",
+       "translator": "John Ballou Newbrough",
+       "year": 1882,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "modern",
+   "zone": "mn-esoteric",
+   "chip": "The Aquarian Gospel of Jesus the Christ",
+   "basis": "supplement review (wave 3)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "aquarian-gospel",
+     "title": "The Aquarian Gospel of Jesus Christ",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "aquarian-gospel_dowling.json",
+       "translator": "Levi H. Dowling",
+       "year": 1908,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "modern",
+   "zone": "mn-esoteric",
+   "chip": "Anthroposophy — Occult Science · Knowledge of the Higher Worlds",
+   "basis": "supplement review (wave 3)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "steiner-higher-worlds",
+     "title": "Knowledge of the Higher Worlds and Its Attainment",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "steiner-higher-worlds_metcalfe.json",
+       "translator": "George Metcalfe",
+       "year": 1918,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)",
+   "contained_in": "one of the chip's two named works held (Knowledge of the Higher Worlds)"
+  },
+  {
+   "tradition": "modern",
+   "zone": "mn-esoteric",
+   "chip": "New Thought — Unity (Fillmore) · Science of Getting Rich (Wattles) · As a Man Thinketh (Allen)",
+   "basis": "supplement review (wave 3)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "science-getting-rich-wattles",
+     "title": "The Science of Getting Rich",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "science-getting-rich-wattles_wattles.json",
+       "translator": "Wallace D. Wattles",
+       "year": 1910,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)",
+   "contained_in": "chip names Unity · Wattles · Allen; Wattles held"
+  },
+  {
+   "tradition": "indigenous",
+   "zone": "in-namerica",
+   "chip": "Navajo / Diné — the emergence legends & the Blessingway",
+   "basis": "supplement review (wave 3)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "navaho-origin-myths-matthews",
+     "title": "Origin Myths of the Navaho Indians",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "navaho-origin-myths-matthews_matthews.json",
+       "translator": "Washington Matthews",
+       "year": 1897,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "indigenous",
+   "zone": "in-diaspora",
+   "chip": "The Holy Piby (the Blackman’s Bible)",
+   "basis": "supplement review (wave 3)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "holy-piby",
+     "title": "The Holy Piby",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "holy-piby_rogers.json",
+       "translator": "Robert Athlyi Rogers",
+       "year": 1924,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)"
   }
  ],
  "coverage_gaps": {

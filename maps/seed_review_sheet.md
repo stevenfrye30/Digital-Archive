@@ -122,3 +122,10 @@ Shinto additions — Task 25 supplement verdicts (final, 2026-07-28):
 Sikh additions — Task 25 supplement verdicts (final, 2026-07-28):
 
 - Amber targets recorded: The Sikh Religion Vol 4, Macauliffe 1909 (TOP — one PD volume completes the set and closes the six-Gurus vol-4 gap) · Trumpp's Ādi Granth 1877 (low priority; recorded with the hostile-literalism caveat, accepted by design).
+
+Wave-3 additions — Task 25 supplement verdicts (final, 2026-07-28):
+
+- BAHÁ'Í FLOOR RULING recorded: thin-room — NO room; the door stays "Mapped — room to come"; NAMED RE-OPEN TRIGGER = Browne's A Traveller's Narrative (1891, PD) + one further acquisition (mirrors the Shintō/Nihongi pattern).
+- Modern _anonymous stubs flagged to the dedup lane for provenance normalization (NOT twins — metadata hygiene): a-dweller-on-two-planets… · a-wanderer-in-the-sprit-lands… (note the "Sprit" title typo, correct in the same record).
+- Structure-growth note: a possible future Aradia (Leland 1899) chip on the modern map — never silently added.
+- Indigenous amber ranking (design's): 1. Kebra Nagast (one acquisition serves in-diaspora + the Rastafari door note) · 2. Kumulipo (Liliʻuokalani 1897) · 3. Zuni (Cushing 1896); rest unranked.

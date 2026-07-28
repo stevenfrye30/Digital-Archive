@@ -3,8 +3,9 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 11,
+  "possible": 9,
   "none": 7,
+  "held": 2,
   "unmapped": 4
  },
  "chips": [
@@ -66,7 +67,16 @@
    "zone": "in-diaspora",
    "chip": "The Holy Piby (the Blackman’s Bible)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "holy-piby_rogers.json",
+     "work": "The Holy Piby",
+     "translator": "Robert Athlyi Rogers",
+     "year": 1924,
+     "url": "?text=holy-piby_rogers.json"
+    }
+   ]
   },
   {
    "zone": "in-diaspora",
@@ -120,7 +130,16 @@
    "zone": "in-namerica",
    "chip": "Navajo / Diné — the emergence legends & the Blessingway",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "navaho-origin-myths-matthews_matthews.json",
+     "work": "Origin Myths of the Navaho Indians",
+     "translator": "Washington Matthews",
+     "year": 1897,
+     "url": "?text=navaho-origin-myths-matthews_matthews.json"
+    }
+   ]
   },
   {
    "zone": "in-namerica",
