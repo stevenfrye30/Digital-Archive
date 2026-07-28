@@ -372,7 +372,7 @@ btn.addEventListener('click',()=>{
    const sec=document.getElementById('zone-'+zk);if(!sec)return;
    const works={};ARDATA.byzone[zk].forEach(p=>{(works[p.work_key]=works[p.work_key]||{d:p.work_display,c:p.confidence,e:[]}).e.push(p);});
    const n=ARDATA.byzone[zk].length;
-   let h=`<div class="zheld" id="zheld-${zk}" hidden><h4>◉ Held in this archive — ${n} editions</h4>`;
+   let h=`<div class="zheld" id="zheld-${zk}" hidden><h4>◉ Held in this archive — ${n} edition${n===1?'':'s'}</h4>`;
    Object.keys(works).forEach(wk=>{const w=works[wk];
      h+=`<div class="wk"><span class="wt">${w.d}</span> ${w.c!=='exact'?'<span class="conf">· '+(w.c==='zone'?'placed by area':'uncertain placement')+'</span>':''}<br>`+
         w.e.map(e=>{const v={verified:'◉',audited:'✓',clean:'○'}[e.level]||'';return `<a class="ed" href="${ARDATA.reader}${e.df}" target="_blank" rel="noopener">${e.title.length>46?e.title.slice(0,46)+'…':e.title} <span class="v">${v}</span></a>`;}).join('')+`</div>`;});
@@ -408,7 +408,7 @@ const AR=(function(){
  function lookup(cands){for(const c of cands){if(c&&NODES[c])return NODES[c];}return null;}
  function relLabel(rel){return {exact:'Held edition of this work',collection:'Held edition(s) of this collection',contained:'Available within held complete editions',alternate:'Alternate translation held',broader:'Related archive editions from this broader collection'}[rel]||'Held in the archive';}
  function edRow(m){const v={verified:'◉ source-verified',audited:'✓ finalize-audited',clean:'○ verification pending'}[m.level]||'';
-   const meta=[m.translator,(m.year&&m.year>0?m.year:'')].filter(Boolean).join(' · ');
+   const meta=[m.translator,(m.year&&m.year>0?m.year:''),(m.label||'')].filter(Boolean).join(' · ');
    return `<a class="ed" href="${READER}${m.df}" target="_blank" rel="noopener"><span class="et">${m.title}</span><span class="em">${meta}${meta?' · ':''}${v}</span><span class="cta">Read in Archive ↗</span></a>`;}
  function extRow(e){const meta=[e.translator&&e.translator!=='—'?e.translator:'',(e.year||''),e.host,e.access].filter(Boolean).join(' · ');
    return `<a class="ed ext" href="${e.url}" target="_blank" rel="noopener"><span class="et">${e.edition}</span><span class="em">${meta}${e.checked?' · link checked':''}</span><span class="cta">${e.label||'Read online'} ↗</span></a>`;}

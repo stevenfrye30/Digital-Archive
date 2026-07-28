@@ -555,7 +555,7 @@ btn.addEventListener('click',()=>{const cur=document.documentElement.getAttribut
  Object.keys(ARDATA.bybasket).forEach(bid=>{
    const sec=document.getElementById(bid);if(!sec)return;const h2=sec.querySelector('h2')||sec.querySelector('.zone-h');if(!h2)return;
    const held=ARDATA.bybasket[bid];const ext=ARDATA.external[bid]||[];const approx=held.some(x=>x.approx);
-   let h=`<div class="zheld" id="zh-${bid}" hidden><h4>◉ Held in this archive — ${held.length} editions${approx?' <span class="conf">· best-fit placement</span>':''}</h4>`;
+   let h=`<div class="zheld" id="zh-${bid}" hidden><h4>◉ Held in this archive — ${held.length} edition${held.length===1?'':'s'}${approx?' <span class="conf">· best-fit placement</span>':''}</h4>`;
    h+=held.map(e=>edRow(e,false)).join('');
    if(ext.length){h+=`<div class="exth">Read at an exact lawful external source</div>`+ext.map(e=>edRow(e,true)).join('');}
    h+=`</div>`;
@@ -588,7 +588,7 @@ const AR=(function(){
  function lookup(cands){for(const c of cands){if(c&&NODES[c])return NODES[c];}return null;}
  function relLabel(rel){return {exact:'Held edition of this work',collection:'Held edition(s) of this collection',contained:'Available within held complete editions',alternate:'Alternate translation held',broader:'Related archive editions from this broader collection'}[rel]||'Held in the archive';}
  function edRow(m){const v={verified:'◉ source-verified',audited:'✓ finalize-audited',clean:'○ verification pending'}[m.level]||'';
-   const meta=[m.translator,(m.year&&m.year>0?m.year:'')].filter(Boolean).join(' · ');
+   const meta=[m.translator,(m.year&&m.year>0?m.year:''),(m.label||'')].filter(Boolean).join(' · ');
    return `<a class="ed" href="${READER}${m.df}" target="_blank" rel="noopener"><span class="et">${m.title}</span><span class="em">${meta}${meta?' · ':''}${v}</span><span class="cta">Read in Archive ↗</span></a>`;}
  function extRow(e){const meta=[e.translator&&e.translator!=='—'?e.translator:'',(e.year||''),e.host,e.access].filter(Boolean).join(' · ');
    return `<a class="ed ext" href="${e.url}" target="_blank" rel="noopener"><span class="et">${e.edition}</span><span class="em">${meta}${e.checked?' · link checked':''}</span><span class="cta">${e.label||'Read online'} ↗</span></a>`;}
