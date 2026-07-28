@@ -3,39 +3,90 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 48,
-  "none": 5
+  "held": 36,
+  "none": 5,
+  "possible": 12
  },
  "chips": [
   {
    "zone": "av-gathas",
    "chip": "Ahunavaitī Gāthā (Yasna 28–34)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within the Yasna, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-gathas",
    "chip": "Uštavaitī Gāthā (Yasna 43–46)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within the Yasna, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-gathas",
    "chip": "Spentā-Mainyū Gāthā (Yasna 47–50)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within the Yasna, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-gathas",
    "chip": "Vohu-Khšathrā Gāthā (Yasna 51)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within the Yasna, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-gathas",
    "chip": "Vahištōišti Gāthā (Yasna 53)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within the Yasna, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-gathas",
@@ -47,187 +98,497 @@
    "zone": "av-yasna",
    "chip": "The Yasna · 72 chapters (hā)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 3 — Yasna, Visparad, Afrinagan, and Gahs, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-yasna",
    "chip": "The Yasna Haptaŋhāiti (Yasna 35–41)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 3 — Yasna, Visparad, Afrinagan, and Gahs, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-yasna",
    "chip": "The Visperad · ~24 sections",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 3 — Yasna, Visparad, Afrinagan, and Gahs, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-yashts",
    "chip": "1. Hormazd Yašt (Ahura Mazdā)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "2. Haptān Yašt (the Amesha Spentas)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "3. Ardvahišt Yašt (Aša Vahišta)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "4. Hordād Yašt (Haurvatāt)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "5. Ābān Yašt (Arədvī Sūrā Anāhitā)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "6. Khoršēd Yašt (the Sun)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "7. Māh Yašt (the Moon)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "8. Tīr / Tištar Yašt (Sirius)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "9. Gōš / Drvāsp Yašt",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "10. Mihr Yašt (Mithra)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "11. Sraoš Yašt (Sraoša)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "12. Rašn Yašt (Rašnu)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "13. Frawardīn Yašt (the Fravašis)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "14. Bahrām Yašt (Vərəθraγna)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "15. Rām Yašt (Vayu)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "16. Dēn Yašt (Čistā)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "17. Ard / Aši Yašt (Aši Vanguhī)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "18. Aštād Yašt (Arštāt)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "19. Zamyād Yašt (the Earth & the Khvarənah)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "20. Hōm Yašt (Haoma)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-yashts",
    "chip": "21. Vanant Yašt (the star Vanant)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-vendidad",
    "chip": "Fargard 1 — the sixteen lands",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part1_darmesteter.json",
+     "work": "The Zend-Avesta, Part 1: Vendidad",
+     "translator": "James Darmesteter",
+     "year": 1880,
+     "url": "?text=zend-avesta-part1_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 1 — Vendidad, tr. Darmesteter (SBE 4)"
   },
   {
    "zone": "av-vendidad",
    "chip": "Fargard 2 — Yima and the vara",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part1_darmesteter.json",
+     "work": "The Zend-Avesta, Part 1: Vendidad",
+     "translator": "James Darmesteter",
+     "year": 1880,
+     "url": "?text=zend-avesta-part1_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 1 — Vendidad, tr. Darmesteter (SBE 4)"
   },
   {
    "zone": "av-vendidad",
    "chip": "Fargards 3–22 — purity law, penances, medicine, praise",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part1_darmesteter.json",
+     "work": "The Zend-Avesta, Part 1: Vendidad",
+     "translator": "James Darmesteter",
+     "year": 1880,
+     "url": "?text=zend-avesta-part1_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 1 — Vendidad, tr. Darmesteter (SBE 4)"
   },
   {
    "zone": "av-khordeh",
    "chip": "Khoršēd · Mihr · Māh · Ābān · Ātaš Niyāyišn",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-khordeh",
    "chip": "The 5 Gāhs (watches of the day)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 3 — Yasna, Visparad, Afrinagan, and Gahs, tr. Mills (SBE 31)"
   },
   {
    "zone": "av-khordeh",
    "chip": "The 2 Sīrōzas (the 30 day-divinities)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part2_darmesteter.json",
+     "work": "The Zend-Avesta, Part 2: Sirozahs, Yasts, and Nyayis",
+     "translator": "James Darmesteter",
+     "year": 1883,
+     "url": "?text=zend-avesta-part2_darmesteter.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 2 — Sirozahs, Yasts, and Nyayis, tr. Darmesteter (SBE 23)"
   },
   {
    "zone": "av-khordeh",
    "chip": "The Āfrīnagāns (blessings)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zend-avesta-part3_mills.json",
+     "work": "The Zend-Avesta, Part 3: Yasna, Visparad, Afrinagan, and Gahs",
+     "translator": "Lawrence Heyworth Mills",
+     "year": 1887,
+     "url": "?text=zend-avesta-part3_mills.json"
+    }
+   ],
+   "contained_in": "within The Zend-Avesta, Part 3 — Yasna, Visparad, Afrinagan, and Gahs, tr. Mills (SBE 31)"
   },
   {
    "zone": "ph-books",

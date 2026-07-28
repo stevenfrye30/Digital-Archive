@@ -84,3 +84,14 @@ reads most faithfully — design rules.
   works-about in scope.
 
 Total reception rows: 3. Chips with a candidate volume: 36.
+
+## POST-VERDICT RECORD (2026-07-28, terminal)
+
+Design verdicts (final, in the design-project copy) APPLIED EXACTLY:
+all 36 chips bind held with per-chip contained_in (Mahābhārata
+precedent), the five Gāthā chips carrying the double-containment label
+"within the Yasna, tr. Mills (SBE 31)"; Zand stays possible; Pahlavi
+pillar honest unlit. Recorded per the verdicts: **West's Pahlavi Texts
+I–V (SBE 5/18/24/37/47) is the archive's single highest-value
+amber-conversion target — 11 green chips light from 5 volumes when
+acquired.**
