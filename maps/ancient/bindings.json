@@ -3,18 +3,19 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "held": 8,
-  "possible": 44,
+  "held-several": 3,
+  "possible": 40,
   "none": 17,
-  "restricted": 1,
-  "held-several": 1
+  "held": 10,
+  "restricted": 1
  },
  "chips": [
   {
    "zone": "aw-egypt",
    "chip": "The Book of the Dead (Coming Forth by Day)",
    "pd": "g",
-   "state": "held",
+   "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "the-book-of-the-dead-wallis-budge_anonymous.json",
@@ -22,6 +23,13 @@
      "translator": "Wallis Budge",
      "year": 1900,
      "url": "?text=the-book-of-the-dead-wallis-budge_anonymous.json"
+    },
+    {
+     "df": "book-of-dead-renouf_renouf.json",
+     "work": "The Egyptian Book of the Dead",
+     "translator": "Peter le Page Renouf, Edouard Naville",
+     "year": 1904,
+     "url": "?text=book-of-dead-renouf_renouf.json"
     }
    ]
   },
@@ -77,7 +85,25 @@
    "zone": "aw-meso",
    "chip": "Enūma Eliš (the Babylonian creation)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "seven-tablets-king_king.json",
+     "work": "The Seven Tablets of Creation",
+     "translator": "Leonard W. King",
+     "year": 1902,
+     "url": "?text=seven-tablets-king_king.json"
+    },
+    {
+     "df": "babylonian-creation-king_king.json",
+     "work": "The Babylonian Legends of Creation",
+     "translator": "E. A. Wallis Budge",
+     "year": 1921,
+     "label": "abridged, with commentary",
+     "url": "?text=babylonian-creation-king_king.json"
+    }
+   ]
   },
   {
    "zone": "aw-meso",
@@ -182,7 +208,17 @@
    "zone": "aw-greek",
    "chip": "Hesiod — Theogony & Works and Days",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "hesiod-shield-hercules-elton_elton.json",
+     "work": "The Remains of Hesiod the Ascræan & The Shield of Hercules",
+     "translator": "Charles Abraham Elton",
+     "year": 1815,
+     "url": "?text=hesiod-shield-hercules-elton_elton.json"
+    }
+   ],
+   "contained_in": "within Elton's Remains of Hesiod, 1815"
   },
   {
    "zone": "aw-greek",
@@ -372,7 +408,16 @@
    "zone": "aw-norse",
    "chip": "The Prose Edda (Snorri Sturluson)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "prose-edda_anderson.json",
+     "work": "The Prose Edda (Younger Edda)",
+     "translator": "Rasmus B. Anderson",
+     "year": 1879,
+     "url": "?text=prose-edda_anderson.json"
+    }
+   ]
   },
   {
    "zone": "aw-norse",
@@ -494,7 +539,16 @@
    "zone": "aw-newworld",
    "chip": "The Aztec sacred hymns (to the gods)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "rig-veda-americanus-brinton_brinton.json",
+     "work": "Rig Veda Americanus",
+     "translator": "Daniel G. Brinton",
+     "year": 1890,
+     "url": "?text=rig-veda-americanus-brinton_brinton.json"
+    }
+   ]
   },
   {
    "zone": "aw-newworld",

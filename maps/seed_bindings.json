@@ -2744,10 +2744,24 @@
        "restricted": false
       }
      ]
+    },
+    {
+     "id": "book-of-dead-renouf",
+     "title": "The Egyptian Book of the Dead",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "book-of-dead-renouf_renouf.json",
+       "translator": "Peter le Page Renouf, Edouard Naville",
+       "year": 1904,
+       "restricted": false
+      }
+     ]
     }
    ],
    "auto_verdict": "stands",
-   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
+   "review": "ancient_supplement_sheet.md design verdicts (final, 2026-07-28)",
+   "chooser": "translations"
   },
   {
    "tradition": "ancient",
@@ -4251,6 +4265,118 @@
    "auto_verdict": "stands",
    "contained_in": "within The Zend-Avesta, Part 3 — Yasna, Visparad, Afrinagan, and Gahs, tr. Mills (SBE 31)",
    "review": "zoroastrian_supplement_sheet.md design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "ancient",
+   "zone": "aw-norse",
+   "chip": "The Prose Edda (Snorri Sturluson)",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "prose-edda",
+     "title": "The Prose Edda (Younger Edda)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "prose-edda_anderson.json",
+       "translator": "Rasmus B. Anderson",
+       "year": 1879,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "ancient_supplement_sheet.md design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "ancient",
+   "zone": "aw-meso",
+   "chip": "Enūma Eliš (the Babylonian creation)",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "seven-tablets-king",
+     "title": "The Seven Tablets of Creation",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "seven-tablets-king_king.json",
+       "translator": "Leonard W. King",
+       "year": 1902,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "babylonian-creation-king",
+     "title": "The Babylonian Legends of Creation",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "babylonian-creation-king_king.json",
+       "translator": "E. A. Wallis Budge",
+       "year": 1921,
+       "restricted": false,
+       "label": "abridged, with commentary"
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "ancient_supplement_sheet.md design verdicts (final, 2026-07-28)",
+   "chooser": "translations"
+  },
+  {
+   "tradition": "ancient",
+   "zone": "aw-greek",
+   "chip": "Hesiod — Theogony & Works and Days",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "hesiod-shield-hercules-elton",
+     "title": "The Remains of Hesiod the Ascræan & The Shield of Hercules",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "hesiod-shield-hercules-elton_elton.json",
+       "translator": "Charles Abraham Elton",
+       "year": 1815,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "ancient_supplement_sheet.md design verdicts (final, 2026-07-28)",
+   "contained_in": "within Elton's Remains of Hesiod, 1815"
+  },
+  {
+   "tradition": "ancient",
+   "zone": "aw-newworld",
+   "chip": "The Aztec sacred hymns (to the gods)",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "rig-veda-americanus-brinton",
+     "title": "Rig Veda Americanus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "rig-veda-americanus-brinton_brinton.json",
+       "translator": "Daniel G. Brinton",
+       "year": 1890,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "ancient_supplement_sheet.md design verdicts (final, 2026-07-28)"
   }
  ],
  "coverage_gaps": {
