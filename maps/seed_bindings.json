@@ -2624,10 +2624,25 @@
        "restricted": false
       }
      ]
+    },
+    {
+     "id": "jaina-sutras-part2",
+     "title": "Jaina Sutras, Part 2",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "jaina-sutras-part2_jacobi.json",
+       "translator": "Hermann Jacobi",
+       "year": 1895,
+       "restricted": false,
+       "label": "within Jaina Sūtras Part 2 (SBE 45)"
+      }
+     ]
     }
    ],
    "auto_verdict": "stands",
-   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
+   "review": "jain_supplement_sheet.md design verdicts (final, 2026-07-28)",
+   "chooser": "translations"
   },
   {
    "tradition": "shinto",
@@ -4444,6 +4459,31 @@
    "auto_verdict": "stands",
    "chooser": "translations",
    "review": "gnostic_supplement_sheet.md design verdicts (final, 2026-07-28) — cross-map ruling"
+  },
+  {
+   "tradition": "jain",
+   "zone": "ja-svet",
+   "chip": "Sūtrakṛtāṅga (2nd Aṅga — doctrine)",
+   "basis": "containment (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "jaina-sutras-part2",
+     "title": "Jaina Sutras, Part 2",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "jaina-sutras-part2_jacobi.json",
+       "translator": "Hermann Jacobi",
+       "year": 1895,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Jaina Sūtras Part 2, tr. Jacobi (SBE 45)",
+   "review": "jain_supplement_sheet.md design verdicts (final, 2026-07-28)"
   }
  ],
  "coverage_gaps": {

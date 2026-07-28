@@ -108,3 +108,8 @@ Gnostic additions — Task 25 supplement verdicts (final, 2026-07-28):
 - numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19_anonymous.json == numbers-occult-westcott_westcott.json — CONFIRMED twins — never bound
 - shibboleth-a-templar-monitor-george-connor-1894_anonymous.json == shibboleth-templar-monitor_steinbrenner.json — CONFIRMED twins (attribution question rides the dedup lane) — never bound
 - nostradamus-roberts_ward.json — RIGHTS CHECK BRANCH 2 (body ≠ held Ward 1891 Oracles, 0-node overlap; plausibly Roberts 1947): restriction PREPARED in the exporter (uncertain-copyright), BLOCKED on the Aiyar exporter gap — see the gnostic-lane STATUS; steward decides removal.
+
+Jain additions — Task 25 supplement verdicts (final, 2026-07-28):
+
+- jaina-sutras-part-2-hermann-jacobi-1884_anonymous.json == jaina-sutras-part2_jacobi.json — CONFIRMED twins — never bound. METADATA NOTE for the dedup lane: the stub carries THREE conflicting years (1884 in the id, 1900 in the row, 1895 actual) — fold into the metadata-correction record.
+- Amber-conversion targets recorded: SBE 22 (Jaina Sutras Part 1 — lights the Ācārāṅga + Kalpa Sūtra chips; second only to West's Pahlavi set) · Tattvārtha Sūtra, J.L. Jaini 1920.

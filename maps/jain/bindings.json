@@ -3,8 +3,9 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 4,
+  "possible": 3,
   "held": 1,
+  "held-several": 1,
   "none": 13
  },
  "chips": [
@@ -18,7 +19,17 @@
    "zone": "ja-svet",
    "chip": "Sūtrakṛtāṅga (2nd Aṅga — doctrine)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "jaina-sutras-part2_jacobi.json",
+     "work": "Jaina Sutras, Part 2",
+     "translator": "Hermann Jacobi",
+     "year": 1895,
+     "url": "?text=jaina-sutras-part2_jacobi.json"
+    }
+   ],
+   "contained_in": "within Jaina Sūtras Part 2, tr. Jacobi (SBE 45)"
   },
   {
    "zone": "ja-svet",
@@ -30,7 +41,8 @@
    "zone": "ja-svet",
    "chip": "Uttarādhyayana Sūtra (Mūlasūtra — Mahāvīra’s last sermon)",
    "pd": "g",
-   "state": "held",
+   "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "uttaradhyayana-sutra_jacobi.json",
@@ -38,6 +50,14 @@
      "translator": "Hermann Jacobi",
      "year": 1895,
      "url": "?text=uttaradhyayana-sutra_jacobi.json"
+    },
+    {
+     "df": "jaina-sutras-part2_jacobi.json",
+     "work": "Jaina Sutras, Part 2",
+     "translator": "Hermann Jacobi",
+     "year": 1895,
+     "label": "within Jaina Sūtras Part 2 (SBE 45)",
+     "url": "?text=jaina-sutras-part2_jacobi.json"
     }
    ]
   },
