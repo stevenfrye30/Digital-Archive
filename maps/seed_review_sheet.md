@@ -118,3 +118,7 @@ Shinto additions — Task 25 supplement verdicts (final, 2026-07-28):
 
 - folk-tales-japan_smith.json == japan-folklore-smith_smith.json — CONFIRMED twins (same 1918 work) — never bound. METADATA NOTE: folk-tales-japan_smith clips the author to "Richard Smith"; correct to Richard Gordon Smith in the dedup lane's metadata-correction record.
 - FLOOR RULING recorded: Option 1 (thin-room) — NO shinto room; the door stays "Mapped — room to come"; the NIHONGI CONVERSION (Aston 1896) is the NAMED RE-OPEN TRIGGER (room builds at 2 placed works, no waiver). Amber targets: Aston Nihongi 1896 (top) · Aston "Shinto: The Way of the Gods" 1905 · Kogoshūi (~2035).
+
+Sikh additions — Task 25 supplement verdicts (final, 2026-07-28):
+
+- Amber targets recorded: The Sikh Religion Vol 4, Macauliffe 1909 (TOP — one PD volume completes the set and closes the six-Gurus vol-4 gap) · Trumpp's Ādi Granth 1877 (low priority; recorded with the hostile-literalism caveat, accepted by design).

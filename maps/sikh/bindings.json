@@ -3,7 +3,8 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 6,
+  "held": 4,
+  "held-several": 2,
   "none": 9
  },
  "chips": [
@@ -11,31 +12,144 @@
    "zone": "sk-ggs",
    "chip": "Japji Sāhib (Guru Nanak’s opening)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "sikh-religion-vol1-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 1",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 1",
+     "url": "?text=sikh-religion-vol1-macauliffe_macauliffe.json"
+    }
+   ],
+   "contained_in": "within The Sikh Religion Vol 1, tr. Macauliffe (1909)"
   },
   {
    "zone": "sk-ggs",
    "chip": "So Dar & Sohila (the daily prayers)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "sikh-religion-vol1-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 1",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 1",
+     "url": "?text=sikh-religion-vol1-macauliffe_macauliffe.json"
+    }
+   ],
+   "contained_in": "within The Sikh Religion Vol 1, tr. Macauliffe (1909)"
   },
   {
    "zone": "sk-ggs",
    "chip": "Bāṇī of the six Gurus (Nanak → Tegh Bahadur)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "sikh-religion-vol1-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 1",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 1",
+     "url": "?text=sikh-religion-vol1-macauliffe_macauliffe.json"
+    },
+    {
+     "df": "sikh-religion-vol2-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 2",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 2",
+     "url": "?text=sikh-religion-vol2-macauliffe_macauliffe.json"
+    },
+    {
+     "df": "sikh-religion-vol3-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 3",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 3",
+     "url": "?text=sikh-religion-vol3-macauliffe_macauliffe.json"
+    },
+    {
+     "df": "sikh-religion-vol5-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 5",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 5",
+     "url": "?text=sikh-religion-vol5-macauliffe_macauliffe.json"
+    }
+   ],
+   "contained_in": "within The Sikh Religion vols 1–3, 5, tr. Macauliffe (1909) — vol 4 (Har Gobind → Tegh Bahadur, incl. Tegh Bahadur's bāṇī) pending"
   },
   {
    "zone": "sk-ggs",
    "chip": "Bhagat Bāṇī — 15 bhagats (Kabir, Farid, Namdev, Ravidas…)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "sikh-religion-vol6-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 6",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 6",
+     "url": "?text=sikh-religion-vol6-macauliffe_macauliffe.json"
+    }
+   ],
+   "contained_in": "within The Sikh Religion Vol 6, tr. Macauliffe (1909)"
   },
   {
    "zone": "sk-ggs",
    "chip": "The 31 Rāga sections (5,894 shabads)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "sikh-religion-vol1-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 1",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 1",
+     "url": "?text=sikh-religion-vol1-macauliffe_macauliffe.json"
+    },
+    {
+     "df": "sikh-religion-vol2-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 2",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 2",
+     "url": "?text=sikh-religion-vol2-macauliffe_macauliffe.json"
+    },
+    {
+     "df": "sikh-religion-vol3-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 3",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 3",
+     "url": "?text=sikh-religion-vol3-macauliffe_macauliffe.json"
+    },
+    {
+     "df": "sikh-religion-vol5-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 5",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 5",
+     "url": "?text=sikh-religion-vol5-macauliffe_macauliffe.json"
+    },
+    {
+     "df": "sikh-religion-vol6-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 6",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 6",
+     "url": "?text=sikh-religion-vol6-macauliffe_macauliffe.json"
+    }
+   ],
+   "contained_in": "within The Sikh Religion, tr. Macauliffe (1909) — selections"
   },
   {
    "zone": "sk-ggs",
@@ -83,7 +197,18 @@
    "zone": "sk-companion",
    "chip": "The Janamsākhīs (lives of Guru Nanak)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "sikh-religion-vol1-macauliffe_macauliffe.json",
+     "work": "The Sikh Religion, Volume 1",
+     "translator": "Max A. Macauliffe",
+     "year": 1909,
+     "label": "Vol 1",
+     "url": "?text=sikh-religion-vol1-macauliffe_macauliffe.json"
+    }
+   ],
+   "contained_in": "within The Sikh Religion Vol 1, tr. Macauliffe (1909) — the Purātan material"
   },
   {
    "zone": "sk-companion",
