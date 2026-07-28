@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Map of Sacred Texts — Digital Archive</title>
+<!-- Ported from The Map of Sacred Texts (artifact fea77718) per Task 20. -->
+<style>
+@charset "utf-8";
+
+:root { --bg: #efe9db; --panel: #fbf7ee; --card: #fffdf8; --ink: #241f18; --ink-soft: #645b4d; --ink-faint: #948977; --line: #e2d9c6; --line2: #d2c6ad; --accent: #a8641c; --accent-ink: #7c4a12; --gold: #b8942e; --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif; --sans: ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+
+:root[data-theme="light"] { --bg: #efe9db; --panel: #fbf7ee; --card: #fffdf8; --ink: #241f18; --ink-soft: #645b4d; --ink-faint: #948977; --line: #e2d9c6; --line2: #d2c6ad; --accent: #a8641c; --accent-ink: #7c4a12; --gold: #b8942e; }
+
+:root[data-theme="dark"] { --bg: #13110d; --panel: #1e1a14; --card: #221d16; --ink: #ece5d5; --ink-soft: #a89e8b; --ink-faint: #7c7360; --line: #302a20; --line2: #423a2c; --accent: #e0a23a; --accent-ink: #eec06a; --gold: #d8b45a; }
+
+* { box-sizing: border-box; }
+
+body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+
+.topbar { text-align: center; padding: clamp(1.1rem, 3vw, 2rem) 1rem 1.1rem; border-bottom: 1px solid var(--line); background: var(--panel); }
+
+.brand { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); font-weight: 700; }
+
+.topbar h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 5vw, 2.9rem); margin: 0.25rem 0px 0.1rem; letter-spacing: -0.01em; }
+
+.topbar .tag { color: var(--ink-soft); font-size: 0.92rem; margin: 0.15rem auto 0.95rem; max-width: 60ch; }
+
+.topbar .tag em { font-style: italic; color: var(--accent-ink); }
+
+.doors { display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center; }
+
+.door { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; min-width: 118px; padding: 0.7rem 1.05rem; cursor: pointer; background: var(--card); border: 1.5px solid var(--line); border-radius: 13px; color: var(--ink); font-family: var(--serif); transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s; }
+
+.door:hover:not([disabled]) { border-color: var(--line2); transform: translateY(-1px); }
+
+.door.on { border-color: var(--accent); box-shadow: 0 2px 14px -6px var(--accent); }
+
+.door .sym { font-size: 1.55rem; line-height: 1; }
+
+.door .dn { font-weight: 600; font-size: 1rem; }
+
+.door .dc { font-family: var(--sans); font-size: 0.68rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.03em; }
+
+.door.on .dc { color: var(--accent-ink); }
+
+.door[disabled] { opacity: 0.42; cursor: default; }
+
+.door[disabled] .dc { color: var(--ink-faint); }
+
+.stage { position: relative; }
+
+iframe.frame { width: 100%; border: 0px; display: none; background: var(--bg); vertical-align: top; }
+
+iframe.frame.on { display: block; }
+
+.loading { display: none; text-align: center; color: var(--ink-faint); font-family: var(--serif); font-style: italic; padding: 3rem 1rem; }
+
+.themebtn { position: fixed; top: 0.7rem; right: 0.7rem; background: var(--card); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 99px; padding: 0.34rem 0.7rem; font-size: 0.76rem; cursor: pointer; z-index: 50; }
+
+.themebtn:hover { border-color: var(--line2); }
+</style>
+<style>
+
+/* ── archive dress: ground tokens (per Sacred Map Harmonization §III) ──
+   per-tradition --accent/--accent-ink are KEPT; the ground converges. */
+:root, :root[data-theme="light"] {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #a09080;
+  --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Georgia, 'Times New Roman', serif;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+}
+/* archive top strip */
+#arch-topbar { display:flex; justify-content:space-between; align-items:center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: #7a5c3a; }
+#arch-topnav { display: flex; gap: 22px; }
+
+/* ── five-state chip dress (Map Node States specimen, verbatim tokens) ── */
+.m-held, .m-several { background: #f1ebe1 !important;
+  border-color: #e0d8c8 !important; border-left: 3px solid #7a5c3a !important; }
+.m-possible { background: none !important;
+  border-color: #ddd0b8 !important; border-left: 3px solid #c9ab7a !important; }
+.m-none { background: none !important;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-restricted { background: none !important;
+  border: 1px dashed #b8ab99 !important; border-left: 3px dashed #a09080 !important; }
+.m-unmapped { background: none !important; opacity: .75;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-held .nm, .m-several .nm, .m-held .tl, .m-several .tl { color: var(--ink) !important; }
+.m-possible .nm, .m-possible .tl { color: var(--ink-soft) !important; }
+.m-none .nm, .m-none .tl, .m-unmapped .nm, .m-unmapped .tl { color: var(--ink-faint) !important; }
+.m-restricted .nm, .m-restricted .tl { color: var(--ink-faint) !important; }
+.mdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  display: inline-block; margin-right: 2px; box-sizing: border-box; }
+.m-held .mdot { background: #7a5c3a; }
+.m-several .mdot { background: #7a5c3a; box-shadow: 0 0 0 1.5px #f1ebe1, 0 0 0 3px #7a5c3a; }
+.m-possible .mdot { border: 1.5px solid #a8865a; }
+.m-none .mdot, .m-unmapped .mdot { background: #ddd6c8; }
+.m-restricted .mdot { border: 1.5px dashed #a09080; }
+.m-held .dot, .m-several .dot, .m-possible .dot, .m-none .dot,
+.m-restricted .dot, .m-unmapped .dot { display: none; }
+a.m-link { text-decoration: none; }
+:root[data-theme="dark"] .m-held, :root[data-theme="dark"] .m-several {
+  background: #2a2620 !important; border-left-color: #c4a060 !important; }
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background: #c4a060; }
+:root[data-theme="dark"] .m-several .mdot { box-shadow: 0 0 0 1.5px #2a2620, 0 0 0 3px #c4a060; }
+
+/* derived four-band zone bar */
+.zb { display: inline-flex; height: 6px; width: 170px; border-radius: 3px;
+  overflow: hidden; background: var(--track); vertical-align: middle; }
+.zb i { display: block; height: 100%; }
+.zb .zb-held { background: #7a5c3a; }
+.zb .zb-poss { background: none; border-top: 6px double #a8865a; box-sizing: border-box; }
+.zb .zb-none { background: #ddd6c8; }
+.zb .zb-res  { background: repeating-linear-gradient(45deg, #a09080 0 2px, #eee9e0 2px 4px); }
+
+/* legend strip */
+#m-legend { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2); padding: 12px 0; margin: 18px 0 26px;
+  font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em; text-transform: uppercase; }
+#m-legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+/* chooser inset (specimen form) */
+.m-chooser { border-left: 2px solid #7a5c3a; background: #f6f2ea;
+  margin: 8px 0 14px 12px; padding: 12px 18px; max-width: 30em; }
+:root[data-theme="dark"] .m-chooser { background: #26232c; }
+.m-chooser .mc-head { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
+.m-chooser a { display: block; font: 400 14px/1.5 var(--serif); color: var(--ink);
+  text-decoration: none; }
+.m-chooser a:hover { color: #7a5c3a; }
+.m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
+.m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
+
+/* fraction line under the mast */
+#m-fraction { text-align: center;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); margin: 4px 0 0; }
+#m-fraction b { color: #7a5c3a; font-weight: 400; }
+
+/* deep views: shown stacked (the artifact's tab JS was not captured) */
+section.view { display: block !important; }
+
+</style>
+</head>
+<body>
+<div id="arch-topbar"><a href="../">&larr; The Archive</a><nav id="arch-topnav"><a href="../hall/">The Religion Hall</a><button id="arch-dark" type="button">Dark</button></nav></div>
+
+<title>The Map of Sacred Texts</title>
+
+
+<button class="themebtn" id="tb" aria-label="Toggle light or dark theme">◐ theme</button>
+<header class="topbar">
+  <div class="brand">The Archive · front door</div>
+  <h1>The Map of Sacred Texts</h1>
+  <p class="tag">One door for each tradition. Step through, and the whole textual world opens — every text <em>coloured by whether a public-domain translation exists.</em></p>
+  <div class="doors" id="doors">
+    <a href="hindu.html" class="door on" data-world="hindu"><span class="sym">🕧</span><span class="dn">Hinduism</span><span class="dc">332 texts</span></a>
+    <a href="buddhist.html" class="door" data-world="bud"><span class="sym">☸</span><span class="dn">Buddhism</span><span class="dc">~7,000 texts</span></a>
+    <a href="abrahamic.html" class="door" data-world="abr"><span class="sym" style="letter-spacing:.04em">✡✝☪</span><span class="dn">Abrahamic</span><span class="dc">Judaism · Christianity · Islam</span></a>
+    <a href="eastasian.html" class="door" data-world="ea"><span class="sym">☯</span><span class="dn">East Asian</span><span class="dc">Confucianism · Daoism</span></a>
+    <a href="zoroastrian.html" class="door" data-world="zo"><span class="sym">🔥</span><span class="dn">Zoroastrian</span><span class="dc">Avesta · Pahlavi</span></a>
+    <a href="sikh.html" class="door" data-world="sk"><span class="sym">☬</span><span class="dn">Sikhism</span><span class="dc">Guru Granth Sahib</span></a>
+    <a href="jain.html" class="door" data-world="ja"><span class="sym">✋</span><span class="dn">Jainism</span><span class="dc">the Āgamas</span></a>
+    <a href="shinto.html" class="door" data-world="sh"><span class="sym">⛩</span><span class="dn">Shintō</span><span class="dc">Kojiki · Nihongi</span></a>
+    <a href="bahai.html" class="door" data-world="ba"><span class="sym">✶</span><span class="dn">Bahá’í</span><span class="dc">the youngest faith</span></a>
+    <a href="ancient.html" class="door" data-world="an"><span class="sym">🏺</span><span class="dn">Ancient World</span><span class="dc">the dead pantheons</span></a>
+    <a href="gnostic.html" class="door" data-world="gn"><span class="sym">🐍</span><span class="dn">Gnostic</span><span class="dc">Gnosis · Mani · Mandaeans</span></a>
+    <a href="indigenous.html" class="door" data-world="ind"><span class="sym">🪘</span><span class="dn">Indigenous</span><span class="dc">Africa · Oceania · the Americas</span></a>
+    <a href="modern.html" class="door" data-world="mo"><span class="sym">🌱</span><span class="dn">Modern &amp; New</span><span class="dc">born since 1800</span></a>
+  </div>
+</header>
+<div class="stage">
+  <div class="loading" id="loading">opening…</div>
+  <iframe class="frame on" data-world="hindu" title="The Map of Hindu Texts" src="cid:frame-653DF170967A0A5D39133F1843481235@mhtml.blink" data-ruffle-polyfilled="" style="height: 8266px;"></iframe>
+  <iframe class="frame" data-world="bud" title="The Map of Buddhist Texts" src="cid:frame-32F37AC35FA22D072A498545DBAA3DD3@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="abr" title="The Map of Abrahamic Texts" src="cid:frame-6B34A2224E9CC3D78EE497ECA38F8AA7@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="ea" title="The Map of East Asian Texts" src="cid:frame-2C91B2CCABBED9C99B0499DB532D91A3@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="zo" title="The Map of Zoroastrian Texts" src="cid:frame-3C982FC52A82EDC831A40CDA6CB4693E@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="sk" title="The Map of Sikh Texts" src="cid:frame-0348F701A5AC026D5EE8433A8B5A487E@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="ja" title="The Map of Jain Texts" src="cid:frame-80E34BA139F1FB0ED15B824A3E947659@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="sh" title="The Map of Shinto Texts" src="cid:frame-14346826F6E4F3B48A04D154EFE2F711@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="ba" title="The Map of Baha'i Texts" src="cid:frame-856FC5085C64A28186B5AB45E33822E9@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="an" title="The Map of Ancient World Texts" src="cid:frame-4F43DC6D8A64E4D76D5F93DD2C91B76D@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="gn" title="The Map of Gnostic &amp; Dualist Texts" src="cid:frame-EB010EAD50137B7CA095CA05C0374290@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="ind" title="The Map of Indigenous &amp; African Texts" src="cid:frame-C0087A03AA76F54F701D727F0BE82513@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+  <iframe class="frame" data-world="mo" title="The Map of Modern &amp; New Religions" src="cid:frame-A0CBF159A9E0C5CF239049BBB114F0B5@mhtml.blink" data-ruffle-polyfilled=""></iframe>
+</div>
+
+
+
+<script>
+
+(function () {
+  var KEY = 'da-dark-mode';
+  if (localStorage.getItem(KEY) === 'true')
+    document.documentElement.setAttribute('data-theme', 'dark');
+  else
+    document.documentElement.setAttribute('data-theme', 'light');
+  document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+    b.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? 'Light' : 'Dark';
+    b.addEventListener('click', function () {
+      var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+      localStorage.setItem(KEY, dark ? 'false' : 'true');
+      document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (x) {
+        x.textContent = dark ? 'Dark' : 'Light';
+      });
+    });
+  });
+  var SLUGS = ["hindu", "buddhist", "abrahamic", "eastasian", "zoroastrian", "sikh", "jain", "shinto", "bahai", "ancient", "gnostic", "indigenous", "modern"];
+  SLUGS.forEach(function (slug) {
+    fetch('../maps/' + slug + '/bindings.json').then(function (r) { return r.json(); })
+    .then(function (B) {
+      var held = (B.counts['held'] || 0) + (B.counts['held-several'] || 0);
+      var poss = B.counts['possible'] || 0;
+      var a = document.querySelector('a[href="' + slug + '.html"] .dc');
+      if (!a) return;
+      var sub = a.textContent;
+      a.innerHTML = sub.replace(/ texts$/, ' texts in the tradition') +
+        ' · <b style="color:#7a5c3a">' + held + ' readable here</b> · ' +
+        poss + ' more possible';
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

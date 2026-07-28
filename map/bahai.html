@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Map of Bahá’í Texts — Digital Archive</title>
+<!-- Ported from The Map of Sacred Texts (artifact fea77718) per Task 20;
+     archive dress per Sacred Map Harmonization + Map Node States. -->
+<style>
+@charset "utf-8";
+
+:root { --bg: #f4f0e7; --surface: #fffdf8; --panel: #f7f3ea; --ink: #241f18; --ink-soft: #5b5346; --ink-faint: #928777; --line: #e6ddc9; --line2: #d4c8ad; --accent: #5a4a9c; --accent-ink: #463a7c; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --x: #8a8175; --x-t: #ece9e2; --track: #e9e0cf; --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif; --sans: ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+
+:root[data-theme="light"] { --bg: #f4f0e7; --surface: #fffdf8; --panel: #f7f3ea; --ink: #241f18; --ink-soft: #5b5346; --ink-faint: #928777; --line: #e6ddc9; --line2: #d4c8ad; --accent: #5a4a9c; --accent-ink: #463a7c; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --x: #8a8175; --x-t: #ece9e2; --track: #e9e0cf; }
+
+:root[data-theme="dark"] { --bg: #14120e; --surface: #1e1a13; --panel: #221d15; --ink: #ece4d3; --ink-soft: #a89b84; --ink-faint: #7d7059; --line: #322a1c; --line2: #443826; --accent: #9a8bd8; --accent-ink: #b0a2e4; --g: #5cb36a; --a: #d99a3c; --r: #e0687a; --g-t: #16261a; --a-t: #28230f; --r-t: #2a1a20; --g-t2: #142013; --x: #6f6a5e; --x-t: #23211c; --track: #2a2318; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+.page { max-width: 1180px; margin: 0px auto; padding: clamp(1.2rem, 4vw, 2.6rem) clamp(1rem, 4vw, 2.2rem) 5rem; }
+
+.mast { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 1.3rem; margin-bottom: 1rem; }
+
+.mast .sym { font-size: 1.7rem; color: var(--accent); }
+
+.mast h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.8rem, 5.2vw, 3rem); margin: 0.3rem 0px 0.15rem; letter-spacing: -0.01em; text-wrap: balance; }
+
+.mast p { margin: 0.35rem auto 0px; max-width: 66ch; color: var(--ink-soft); font-size: 0.95rem; }
+
+.mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
+
+.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
+
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
+
+.stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+
+.stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
+
+.greenline b { color: var(--g); }
+
+.insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
+
+.insight b { color: var(--ink); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.82rem; color: var(--ink-soft); align-items: center; justify-content: center; margin: 0px 0px 1.3rem; padding: 0.7rem 0px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.legend b { color: var(--ink); }
+
+.lg { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+.basket { margin: 0px 0px 1.7rem; }
+
+.basket > h2 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; margin: 0px 0px 0.1rem; display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; border-bottom: 2px solid var(--line2); padding-bottom: 0.35rem; }
+
+.basket > h2 .pi { font-size: 0.78rem; font-style: italic; color: var(--accent-ink); font-family: var(--serif); font-weight: 400; }
+
+.basket > h2 .ct { margin-left: auto; font-size: 0.72rem; color: var(--ink-faint); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.basket > .blurb { font-size: 0.85rem; color: var(--ink-faint); margin: 0.5rem 0px 1rem; max-width: 84ch; }
+
+details.fam { border: 1px solid var(--line); border-radius: 9px; margin: 0px 0px 0.4rem; background: var(--surface); }
+
+details.fam > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.75rem; font-family: var(--serif); font-size: 0.96rem; }
+
+details.fam > summary::-webkit-details-marker { display: none; }
+
+details.fam > summary::before { content: "▶"; font-size: 0.62rem; color: var(--ink-faint); transition: transform 0.15s; flex: 0 0 auto; }
+
+details.fam[open] > summary::before { transform: rotate(90deg); }
+
+.famname { font-weight: 600; }
+
+.famr { font-size: 0.68rem; color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+
+.fambar { margin-left: auto; display: flex; width: 60px; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); flex: 0 0 auto; }
+
+.fambar i { display: block; height: 100%; }
+
+.fambar .mg { background: var(--g); }
+
+.fambar .ma { background: var(--a); }
+
+.fambar .mr { background: var(--r); }
+
+.fambar .mx { background: var(--x); }
+
+.famct { font-size: 0.7rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; min-width: 2.2em; text-align: right; flex: 0 0 auto; }
+
+.fambody { padding: 0.15rem 0.75rem 0.65rem; }
+
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
+
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+
+.tc .tl { color: var(--ink); }
+
+.tc .te { font-size: 0.69rem; color: var(--ink-soft); font-style: italic; }
+
+.tc.g { border-left-color: var(--g); background: var(--g-t2); }
+
+.tc.a { border-left-color: var(--a); background: var(--a-t); }
+
+.tc.r { border-left-color: var(--r); background: var(--r-t); }
+
+.tc.x { border-left-color: var(--x); background: var(--x-t); }
+
+.tc.x .tl { color: var(--ink-soft); }
+
+footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1rem; font-size: 0.77rem; color: var(--ink-faint); line-height: 1.6; }
+
+.toggle { position: fixed; top: 0.7rem; right: 0.7rem; background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 99px; padding: 0.32rem 0.68rem; font-size: 0.76rem; cursor: pointer; z-index: 30; }
+</style>
+<style>
+
+/* ── archive dress: ground tokens (per Sacred Map Harmonization §III) ──
+   per-tradition --accent/--accent-ink are KEPT; the ground converges. */
+:root, :root[data-theme="light"] {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #a09080;
+  --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Georgia, 'Times New Roman', serif;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+}
+/* archive top strip */
+#arch-topbar { display:flex; justify-content:space-between; align-items:center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: #7a5c3a; }
+#arch-topnav { display: flex; gap: 22px; }
+
+/* ── five-state chip dress (Map Node States specimen, verbatim tokens) ── */
+.m-held, .m-several { background: #f1ebe1 !important;
+  border-color: #e0d8c8 !important; border-left: 3px solid #7a5c3a !important; }
+.m-possible { background: none !important;
+  border-color: #ddd0b8 !important; border-left: 3px solid #c9ab7a !important; }
+.m-none { background: none !important;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-restricted { background: none !important;
+  border: 1px dashed #b8ab99 !important; border-left: 3px dashed #a09080 !important; }
+.m-unmapped { background: none !important; opacity: .75;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-held .nm, .m-several .nm, .m-held .tl, .m-several .tl { color: var(--ink) !important; }
+.m-possible .nm, .m-possible .tl { color: var(--ink-soft) !important; }
+.m-none .nm, .m-none .tl, .m-unmapped .nm, .m-unmapped .tl { color: var(--ink-faint) !important; }
+.m-restricted .nm, .m-restricted .tl { color: var(--ink-faint) !important; }
+.mdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  display: inline-block; margin-right: 2px; box-sizing: border-box; }
+.m-held .mdot { background: #7a5c3a; }
+.m-several .mdot { background: #7a5c3a; box-shadow: 0 0 0 1.5px #f1ebe1, 0 0 0 3px #7a5c3a; }
+.m-possible .mdot { border: 1.5px solid #a8865a; }
+.m-none .mdot, .m-unmapped .mdot { background: #ddd6c8; }
+.m-restricted .mdot { border: 1.5px dashed #a09080; }
+.m-held .dot, .m-several .dot, .m-possible .dot, .m-none .dot,
+.m-restricted .dot, .m-unmapped .dot { display: none; }
+a.m-link { text-decoration: none; }
+:root[data-theme="dark"] .m-held, :root[data-theme="dark"] .m-several {
+  background: #2a2620 !important; border-left-color: #c4a060 !important; }
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background: #c4a060; }
+:root[data-theme="dark"] .m-several .mdot { box-shadow: 0 0 0 1.5px #2a2620, 0 0 0 3px #c4a060; }
+
+/* derived four-band zone bar */
+.zb { display: inline-flex; height: 6px; width: 170px; border-radius: 3px;
+  overflow: hidden; background: var(--track); vertical-align: middle; }
+.zb i { display: block; height: 100%; }
+.zb .zb-held { background: #7a5c3a; }
+.zb .zb-poss { background: none; border-top: 6px double #a8865a; box-sizing: border-box; }
+.zb .zb-none { background: #ddd6c8; }
+.zb .zb-res  { background: repeating-linear-gradient(45deg, #a09080 0 2px, #eee9e0 2px 4px); }
+
+/* legend strip */
+#m-legend { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2); padding: 12px 0; margin: 18px 0 26px;
+  font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em; text-transform: uppercase; }
+#m-legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+/* chooser inset (specimen form) */
+.m-chooser { border-left: 2px solid #7a5c3a; background: #f6f2ea;
+  margin: 8px 0 14px 12px; padding: 12px 18px; max-width: 30em; }
+:root[data-theme="dark"] .m-chooser { background: #26232c; }
+.m-chooser .mc-head { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
+.m-chooser a { display: block; font: 400 14px/1.5 var(--serif); color: var(--ink);
+  text-decoration: none; }
+.m-chooser a:hover { color: #7a5c3a; }
+.m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
+.m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
+
+/* fraction line under the mast */
+#m-fraction { text-align: center;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); margin: 4px 0 0; }
+#m-fraction b { color: #7a5c3a; font-weight: 400; }
+
+/* deep views: shown stacked (the artifact's tab JS was not captured) */
+section.view { display: block !important; }
+
+</style>
+</head>
+<body data-map="bahai">
+<div id="arch-topbar"><a href="../">&larr; The Archive</a><nav id="arch-topnav"><a href="./">The Map of Sacred Texts</a><a href="../hall/">The Religion Hall</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="m-legend" aria-label="Node states">
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
+<span style="color:#a8865a"><span class="mdot" style="border:1.5px solid #a8865a"></span>public domain &middot; not yet held</span>
+<span style="color:#a09080"><span class="mdot" style="background:#ddd6c8"></span>no PD translation</span>
+<span style="color:#a09080"><span class="mdot" style="border:1.5px dashed #a09080"></span>held &middot; restricted</span>
+</div><button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
+<div class="page">
+  <header class="mast">
+    <div class="sym" aria-hidden="true">✶</div>
+    <h1>The Map of Bahá’í Texts</h1>
+    <p>The youngest of the world’s major religions (from 1844) — the writings of the <span class="em">Báb</span>, <span class="em">Baháʼuʼlláh</span>, and ʻAbduʼl-Bahá. Coloured by whether a worldwide-public-domain English translation exists.</p>
+    <div class="statband" id="statband"><div class="stat"><b>30</b><span>texts</span></div><div class="stat"><b>5</b><span>green</span></div><div class="stat"><b>23</b><span>amber</span></div><div class="stat"><b>2</b><span>red</span></div></div>
+    <p class="greenline" id="greenline"><b>5 of 30 green</b> — the green islands are E.G. Browne’s Victorian academic works (d.1926) and the original Arabic &amp; Persian — the entire authorized English canon is © / free-to-read-but-not-PD (Shoghi Effendi d.1957 → 2028+).</p>
+  </header>
+  <div class="insight"><b>The exact inverse of Zoroastrian — the newest major religion is the <i>least</i> public-domain.</b> The original Arabic and Persian texts are all public-domain (their authors died 1850–1921), but the <b>authoritative English canon is a 20th-century translation corpus</b> made and actively copyright-controlled by <b>Shoghi Effendi (d.1957 → not worldwide-PD until 2028+)</b> and the Bahá’í World Centre. The official <b>Bahá’í Reference Library</b> hosts the whole canon free to read — but free-to-read is not public-domain (the 84000 model). The only clean green in English is <b>E.G. Browne’s Victorian scholarship (d.1926)</b>.</div>
+  <div class="legend">
+    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
+    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
+    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
+    <span class="lg" id="xleg" style="display:none"></span>
+    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
+  </div>
+  <main id="main"><section class="basket" id="ba-bab"><h2>The Báb <span class="pi">1819–1850 · the Forerunner</span><span class="ct">5 texts</span></h2><div class="blurb">Siyyid ʻAlí Muhammad, the Báb, who heralded "Him Whom God shall make manifest." His major books have no authorized English translation; the only public-domain access is through Browne and Nicolas.</div><details class="fam" open=""><summary><span class="famname">The writings of the Báb</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:60%"></i><i class="mr" style="width:40%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Qayyúmuʼl-Asmáʼ (1844 — "the Qurʼán of the Bábís")</span><span class="te">no authorized English; excerpts only</span></span><span class="tc a"><span class="tl">The Persian Bayán (the book of laws)</span><span class="te">Browne partial PD; no authorized full English</span></span><span class="tc r"><span class="tl">The Arabic Bayán</span><span class="te">no authorized English translation</span></span><span class="tc a"><span class="tl">Dalá’il-i-Sabʻih (the Seven Proofs)</span><span class="te">Nicolas French 1902 (PD, French)</span></span><span class="tc a"><span class="tl">Selections from the Writings of the Báb</span><span class="te">1976 Bahá’í World Centre © (free via Ref. Library)</span></span></div></div></details></section><section class="basket" id="ba-bahaullah"><h2>Baháʼuʼlláh <span class="pi">1817–1892 · the Founder</span><span class="ct">8 texts</span></h2><div class="blurb">Mírzá Husayn-ʻAlí, Baháʼuʼlláh. His central works are all in print in authorized English — every one under active copyright, freely readable via the Bahá’í Reference Library.</div><details class="fam" open=""><summary><span class="famname">The central books</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:100%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">8</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Kitáb-i-Aqdas (the "Most Holy Book," ~1873)</span><span class="te">1992 UHJ authorized © (free via Ref. Library)</span></span><span class="tc a"><span class="tl">Kitáb-i-Íqán (the "Book of Certitude," 1861)</span><span class="te">Shoghi Effendi 1931 © (Ali-Kuli Khan 1904 US-PD)</span></span><span class="tc a"><span class="tl">The Hidden Words (1858)</span><span class="te">Shoghi Effendi 1929 ©</span></span><span class="tc a"><span class="tl">The Seven Valleys &amp; the Four Valleys</span><span class="te">Gail 1945 © (Ali-Kuli Khan 1906 US-PD)</span></span><span class="tc a"><span class="tl">Gleanings from the Writings of Baháʼuʼlláh</span><span class="te">Shoghi Effendi 1935 ©</span></span><span class="tc a"><span class="tl">Epistle to the Son of the Wolf (1891)</span><span class="te">Shoghi Effendi 1941 ©</span></span><span class="tc a"><span class="tl">Gems of Divine Mysteries · Summons of the Lord of Hosts</span><span class="te">2002 Bahá’í World Centre ©</span></span><span class="tc a"><span class="tl">Prayers and Meditations</span><span class="te">Shoghi Effendi 1938 ©</span></span></div></div></details></section><section class="basket" id="ba-abdulbaha"><h2>ʻAbduʼl-Bahá <span class="pi">1844–1921 · the Exemplar</span><span class="ct">7 texts</span></h2><div class="blurb">ʻAbbás Effendi, ʻAbduʼl-Bahá — son, successor, and authorized interpreter. His "A Traveller’s Narrative" is the one Bahá’í primary text with a clean public-domain English translation (Browne, 1891).</div><details class="fam" open=""><summary><span class="famname">The interpretive writings</span><span class="fambar"><i class="mg" style="width:14.285714285714285%"></i><i class="ma" style="width:85.71428571428571%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">7</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">A Traveller’s Narrative (Maqála-yi-Shakhsí Sayyáh, ~1886)</span><span class="te">Browne 1891 (PD)</span></span><span class="tc a"><span class="tl">Some Answered Questions (1904–06)</span><span class="te">Barney 1908 — US-PD, worldwide 2045</span></span><span class="tc a"><span class="tl">The Secret of Divine Civilization (1875)</span><span class="te">Gail 1957 ©</span></span><span class="tc a"><span class="tl">Tablets of the Divine Plan (1916–17)</span><span class="te">© (free via Ref. Library)</span></span><span class="tc a"><span class="tl">Paris Talks · The Promulgation of Universal Peace</span><span class="te">© (recorded talks)</span></span><span class="tc a"><span class="tl">The Will and Testament (1921)</span><span class="te">© (free via Ref. Library)</span></span><span class="tc a"><span class="tl">Tablet to Auguste Forel (1921)</span><span class="te">© </span></span></div></div></details></section><section class="basket" id="ba-guardian"><h2>Shoghi Effendi &amp; the House of Justice <span class="pi">interpretation &amp; legislation</span><span class="ct">5 texts</span></h2><div class="blurb">Shoghi Effendi (d.1957), "the Guardian," authored the interpretive histories and translated most of the canon; the Universal House of Justice (1963– ) is the infallible legislature.</div><details class="fam" open=""><summary><span class="famname">The Guardian &amp; the UHJ</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:100%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">God Passes By (1944 — the definitive history)</span><span class="te">Shoghi Effendi © (US → 2040)</span></span><span class="tc a"><span class="tl">The World Order of Baháʼuʼlláh (1938)</span><span class="te">Shoghi Effendi ©</span></span><span class="tc a"><span class="tl">The Advent of Divine Justice (1939)</span><span class="te">Shoghi Effendi ©</span></span><span class="tc a"><span class="tl">The Dawn-Breakers (Nabíl’s Narrative, tr. 1932)</span><span class="te">Shoghi Effendi © (Nabíl’s original PD)</span></span><span class="tc a"><span class="tl">The Universal House of Justice — letters &amp; Constitution</span><span class="te">© (free via Ref. Library)</span></span></div></div></details></section><section class="basket" id="ba-pd"><h2>The public-domain shelf <span class="pi">the green islands</span><span class="ct">5 texts</span></h2><div class="blurb">What is actually free to use now: the Victorian academic corpus of E.G. Browne, Nicolas’s French, and the original-language scripture.</div><details class="fam" open=""><summary><span class="famname">Freely usable today</span><span class="fambar"><i class="mg" style="width:80%"></i><i class="ma" style="width:20%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Browne — The New History of the Báb (Táríkh-i-Jadíd, 1893)</span><span class="te">E.G. Browne (PD)</span></span><span class="tc g"><span class="tl">Browne — Materials for the Study of the Bábí Religion (1918)</span><span class="te">E.G. Browne (PD)</span></span><span class="tc g"><span class="tl">Nicolas — Le Béyan Persan · Le Béyan Arabe (1905–14)</span><span class="te">A.L.M. Nicolas (PD, French)</span></span><span class="tc g"><span class="tl">The original Arabic &amp; Persian texts</span><span class="te">authors d.1850–1921 — PD (original language)</span></span><span class="tc a"><span class="tl">The Bahá’í Reference Library (bahai.org)</span><span class="te">the whole canon — free to read, © (not PD)</span></span></div></div></details></section></main>
+  <footer id="foot">A structural atlas of the Bahá’í canon — coloured by worldwide public-domain English availability. Green = E.G. Browne (d.1926): A Traveller’s Narrative (1891), New History of the Báb (1893), Materials (1918); + the PD original-language texts. Amber = the Shoghi-Effendi-translated canon (© / free via the Bahá’í Reference Library, HOLD 2028+), Ali-Kuli Khan (US-PD, worldwide 2037), Barney’s Some Answered Questions (worldwide 2045). Sources: bahai.org Reference Library (© free-access), Browne via archive.org / sacred-texts.com. Best-effort scholarship, not legal advice.</footer>
+</div>
+
+<script>
+
+(function () {
+  var KEY = 'da-dark-mode';
+  if (localStorage.getItem(KEY) === 'true')
+    document.documentElement.setAttribute('data-theme', 'dark');
+  else
+    document.documentElement.setAttribute('data-theme', 'light');
+  function flip() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    localStorage.setItem(KEY, dark ? 'false' : 'true');
+    label();
+  }
+  function label() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+      b.textContent = dark ? 'Light' : 'Dark';
+    });
+  }
+  document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+    b.addEventListener('click', flip);
+  });
+  label();
+
+  function norm(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+            .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+  }
+  var SLUG = document.body.getAttribute('data-map');
+  if (!SLUG) return;
+  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  .then(function (B) {
+    var byKey = {};
+    B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      var zid = sec.id.replace(/^zone-/, '');
+      var states = [];
+      sec.querySelectorAll('.chip, .tc, .su').forEach(function (el) {
+        var nmEl = el.querySelector('.nm') || el.querySelector('.tl') ||
+                   el.querySelector('span:last-child');
+        if (!nmEl) return;
+        var b = byKey[zid + '||' + norm(nmEl.textContent)];
+        if (!b) return;
+        states.push(b.state);
+        el.classList.add('m-' + b.state.replace('held-several', 'several'));
+        if (!el.querySelector('.mdot')) {
+          var d = document.createElement('span');
+          d.className = 'mdot';
+          el.insertBefore(d, el.firstChild);
+        }
+        if (b.restricted_note) {
+          el.title = (el.title ? el.title + ' — ' : '') + b.restricted_note.length +
+                     ' related record(s) held restricted (' +
+                     b.restricted_note[0].reason_class + ')';
+        }
+        if (b.state === 'held' && b.read && b.read.length === 1) {
+          var a = document.createElement('a');
+          a.className = 'm-link'; a.href = '../' + b.read[0].url;
+          el.parentNode.insertBefore(a, el); a.appendChild(el);
+        } else if (b.state === 'held-several' && b.read) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', function () {
+            var next = el.nextElementSibling;
+            if (next && next.classList && next.classList.contains('m-chooser')) {
+              next.remove(); return;
+            }
+            var box = document.createElement('div');
+            box.className = 'm-chooser';
+            var kind = (b.chooser === 'works') ? ' works held — choose'
+                                               : ' translations held — choose';
+            box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
+                            b.read.length + kind + '</div>';
+            b.read.forEach(function (r) {
+              var a = document.createElement('a');
+              a.href = '../' + r.url;
+              var label = (b.chooser === 'works')
+                  ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
+                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
+                    ' <span class="mc-sub">· ' + r.work + '</span>';
+              a.innerHTML = label + ' <span class="mc-go">→ read</span>';
+              box.appendChild(a);
+            });
+            el.parentNode.insertBefore(box, el.nextSibling);
+          });
+        }
+      });
+      if (states.length) {
+        var held = 0, poss = 0, none = 0, res = 0;
+        states.forEach(function (s) {
+          if (s === 'held' || s === 'held-several') held++;
+          else if (s === 'possible') poss++;
+          else if (s === 'restricted') res++;
+          else none++;
+        });
+        var n = states.length;
+        var bar = document.createElement('span');
+        bar.className = 'zb';
+        bar.innerHTML = '<i class="zb-held" style="width:' + (held * 100 / n) + '%"></i>' +
+                        '<i class="zb-poss" style="width:' + (poss * 100 / n) + '%"></i>' +
+                        '<i class="zb-none" style="width:' + (none * 100 / n) + '%"></i>' +
+                        '<i class="zb-res" style="width:' + (res * 100 / n) + '%"></i>';
+        var old = sec.querySelector('.mini, .fambar');
+        var head = sec.querySelector('.zone-h, h2');
+        if (old && old.closest('section') === sec) old.replaceWith(bar);
+        else if (head) head.appendChild(bar);
+      }
+    });
+    // mast fraction line — derived, never typed
+    var held = (B.counts['held'] || 0) + (B.counts['held-several'] || 0);
+    var poss = B.counts['possible'] || 0;
+    fetch('../maps/doors.json').then(function (r) { return r.json(); })
+    .then(function (D) {
+      var door = D.doors.filter(function (d) { return d.tradition === SLUG; })[0];
+      var mast = document.querySelector('.mast');
+      if (!mast || !door) return;
+      var p = document.createElement('p');
+      p.id = 'm-fraction';
+      p.innerHTML = door.sub.replace(/ texts$/, ' texts in the tradition') +
+                    ' · <b>' + held + ' readable here</b> · ' + poss + ' more possible';
+      mast.appendChild(p);
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

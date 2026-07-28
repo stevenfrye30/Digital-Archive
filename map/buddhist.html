@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Map of Buddhist Texts — Digital Archive</title>
+<!-- Ported from The Map of Sacred Texts (artifact fea77718) per Task 20;
+     archive dress per Sacred Map Harmonization + Map Node States. -->
+<style>
+@charset "utf-8";
+
+:root { --bg: #f5f1e8; --surface: #fffdf8; --panel: #faf6ec; --raise: #fbf8ef; --ink: #241f18; --ink-soft: #645b4d; --ink-faint: #948977; --line: #e6dfce; --line2: #d6ccb4; --accent: #a8641c; --accent-ink: #7c4a12; --gold: #b8942e; --g: #2E7D32; --a: #B7791F; --r: #C0392B; --g-t: #e7f0e2; --a-t: #f3e8d2; --r-t: #f6ddd7; --g-t2: #eef5ea; --track: #e9e1d1; --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif; --sans: ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+
+:root[data-theme="light"] { --bg: #f5f1e8; --surface: #fffdf8; --panel: #faf6ec; --raise: #fbf8ef; --ink: #241f18; --ink-soft: #645b4d; --ink-faint: #948977; --line: #e6dfce; --line2: #d6ccb4; --accent: #a8641c; --accent-ink: #7c4a12; --gold: #b8942e; --g: #2E7D32; --a: #B7791F; --r: #C0392B; --g-t: #e7f0e2; --a-t: #f3e8d2; --r-t: #f6ddd7; --g-t2: #eef5ea; --track: #e9e1d1; }
+
+:root[data-theme="dark"] { --bg: #14120e; --surface: #1f1b15; --panel: #242019; --raise: #26221a; --ink: #ece5d5; --ink-soft: #a89e8b; --ink-faint: #7c7360; --line: #322c22; --line2: #443c2d; --accent: #e0a23a; --accent-ink: #eec06a; --gold: #d8b45a; --g: #5cb36a; --a: #d99a3c; --r: #e06459; --g-t: #1a2a1d; --a-t: #2a2318; --r-t: #2d1c1a; --g-t2: #182517; --track: #2a2419; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+.page { max-width: 1240px; margin: 0px auto; padding: clamp(1.2rem, 4vw, 2.6rem) clamp(1rem, 4vw, 2.2rem) 5rem; }
+
+.mast { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 1.3rem; margin-bottom: 1.1rem; }
+
+.mast .wheel { font-size: 1.9rem; color: var(--accent); line-height: 1; }
+
+.mast h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 5.5vw, 3.1rem); margin: 0.3rem 0px 0.15rem; letter-spacing: -0.01em; text-wrap: balance; }
+
+.mast p { margin: 0.35rem auto 0px; max-width: 64ch; color: var(--ink-soft); font-size: 0.95rem; }
+
+.mast .pali { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
+
+.switch { display: flex; justify-content: center; gap: 0.25rem; margin: 1.1rem auto 0px; background: var(--panel); border: 1px solid var(--line); border-radius: 99px; padding: 0.28rem; width: max-content; max-width: 100%; flex-wrap: wrap; }
+
+.switch button { font-family: var(--serif); font-size: 0.92rem; color: var(--ink-soft); background: transparent; border: 0px; border-radius: 99px; padding: 0.42rem 1rem; cursor: pointer; white-space: nowrap; transition: background 0.15s, color 0.15s; }
+
+.switch button:hover { color: var(--ink); }
+
+.switch button.on { background: var(--surface); color: var(--accent-ink); box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 3px; font-weight: 600; }
+
+.switch button small { font-weight: 400; color: var(--ink-faint); font-size: 0.68rem; margin-left: 0.3em; font-family: var(--sans); }
+
+.switch button.on small { color: var(--accent); }
+
+.view { display: none; margin-top: 1.6rem; }
+
+.view.on { display: block; animation: 0.25s ease 0s 1 normal none running fade; }
+
+@keyframes fade { 
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view.on { animation: auto ease 0s 1 normal none running none; }
+}
+
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.82rem; color: var(--ink-soft); align-items: center; justify-content: center; margin: 0px 0px 1.4rem; padding: 0.7rem 0px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.legend b { color: var(--ink); }
+
+.lg { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+#view-atlas .gradient { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1.3rem; }
+
+#view-atlas .gradient h2 { font-family: var(--serif); font-size: 1.05rem; margin: 0px 0px 0.1rem; color: var(--ink); }
+
+#view-atlas .gradient .cap { font-size: 0.82rem; color: var(--ink-faint); margin: 0px 0px 0.8rem; }
+
+#view-atlas .grow { display: grid; grid-template-columns: 9.5rem 1fr auto; gap: 0.5rem 0.8rem; align-items: center; margin: 0.35rem 0px; }
+
+#view-atlas .grow .gl { font-size: 0.86rem; font-weight: 600; }
+
+#view-atlas .grow .gl small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 0.72rem; }
+
+#view-atlas .gbar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--track); }
+
+#view-atlas .gbar i { display: block; height: 100%; }
+
+#view-atlas .gbar .bg { background: var(--g); }
+
+#view-atlas .gbar .ba { background: var(--a); }
+
+#view-atlas .gbar .br { background: var(--r); }
+
+#view-atlas .gnum { font-size: 0.76rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+#view-atlas .insight { margin: 0px 0px 2rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.94rem; color: var(--ink-soft); }
+
+#view-atlas .insight b { color: var(--ink); }
+
+#view-atlas .pillars { display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 1rem; align-items: start; }
+
+@media (max-width: 900px) {
+  #view-atlas .pillars { grid-template-columns: 1fr; }
+}
+
+#view-atlas .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1rem 1.2rem; min-width: 0px; }
+
+#view-atlas .pillar-h { border-bottom: 2px solid var(--line2); padding-bottom: 0.6rem; margin-bottom: 0.8rem; }
+
+#view-atlas .pillar-h .pn { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; color: var(--ink); letter-spacing: -0.01em; }
+
+#view-atlas .pillar-h .pw { font-size: 0.78rem; color: var(--accent-ink); font-weight: 600; margin-top: 0.1rem; }
+
+#view-atlas .pillar-h .pnote { font-size: 0.76rem; color: var(--ink-faint); margin-top: 0.15rem; }
+
+#view-atlas .pmini { display: flex; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); margin-top: 0.55rem; }
+
+#view-atlas .pmini i { display: block; height: 100%; }
+
+#view-atlas .pmini .mg { background: var(--g); }
+
+#view-atlas .pmini .ma { background: var(--a); }
+
+#view-atlas .pmini .mr { background: var(--r); }
+
+#view-atlas .godeep { margin-top: 0.7rem; }
+
+#view-atlas .godeep button { font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 0.8rem; color: var(--accent-ink); background: var(--g-t2); border: 1px solid var(--g); border-radius: 99px; padding: 0.3rem 0.8rem; cursor: pointer; width: 100%; }
+
+#view-atlas .godeep button:hover { background: var(--g-t); }
+
+#view-atlas .sec { margin: 0px 0px 0.9rem; }
+
+#view-atlas .sec h3 { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 0.9rem; color: var(--ink-soft); margin: 0px 0px 0.45rem; display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+
+#view-atlas .sec h3 .sc { font-size: 0.68rem; color: var(--ink-faint); font-style: normal; font-family: var(--sans); }
+
+#view-atlas .chips { display: flex; flex-direction: column; gap: 0.32rem; }
+
+#view-atlas .chip { display: flex; align-items: flex-start; gap: 0.45em; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.8rem; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-left-color: ; border-left-style: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left-width: 3px; background: var(--surface); cursor: default; line-height: 1.35; }
+
+#view-atlas .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; margin-top: 0.42em; }
+
+#view-atlas .chip.g { border-left-color: var(--g); background: var(--g-t2); }
+
+#view-atlas .chip.g .dot { background: var(--g); }
+
+#view-atlas .chip.a { border-left-color: var(--a); background: var(--a-t); }
+
+#view-atlas .chip.a .dot { background: var(--a); }
+
+#view-atlas .chip.r { border-left-color: var(--r); background: var(--r-t); }
+
+#view-atlas .chip.r .dot { background: var(--r); }
+
+#view-atlas .chip .nm { flex: 1 1 0%; min-width: 0px; }
+
+#view-atlas .chip:hover { border-color: var(--line2); }
+
+#view-atlas .shared { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--accent); border-radius: 4px; padding: 0px 0.25em; margin-left: 0.3em; vertical-align: 1px; }
+
+.deep .statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0px 0px 0.4rem; }
+
+.deep .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
+
+.deep .stat b { display: block; font-family: var(--serif); font-size: 1.25rem; color: var(--ink); line-height: 1.1; font-variant-numeric: tabular-nums; }
+
+.deep .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.deep .greenline { max-width: 76ch; margin: 0.7rem auto 1.3rem; text-align: center; font-size: 0.9rem; color: var(--ink-soft); }
+
+.deep .greenline b { color: var(--g); }
+
+.deep .greenline .amb { color: var(--a); font-weight: 600; }
+
+.deep nav.toc { position: sticky; top: 0px; z-index: 20; background: color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin: 0px -2.2rem 1.6rem; padding: 0.55rem 2.2rem; display: flex; gap: 0.15rem; flex-wrap: wrap; justify-content: center; }
+
+.deep nav.toc a { font-size: 0.8rem; color: var(--ink-soft); text-decoration: none; padding: 0.25rem 0.6rem; border-radius: 99px; white-space: nowrap; cursor: pointer; }
+
+.deep nav.toc a:hover { background: var(--panel); color: var(--accent-ink); }
+
+.deep nav.toc a b { color: var(--ink-faint); font-weight: 600; font-size: 0.72rem; }
+
+.deep .basket { margin: 0px 0px 2rem; scroll-margin-top: 3.4rem; }
+
+.deep .basket > h2 { font-family: var(--serif); font-weight: 600; font-size: 1.45rem; color: var(--ink); margin: 0px 0px 0.1rem; display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; border-bottom: 2px solid var(--line2); padding-bottom: 0.35rem; }
+
+.deep .basket > h2 .pi { font-size: 0.8rem; font-style: italic; color: var(--accent-ink); font-family: var(--serif); font-weight: 400; }
+
+.deep .basket > h2 .ct { margin-left: auto; font-size: 0.72rem; color: var(--ink-faint); font-family: var(--sans); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.deep .basket > .blurb { font-size: 0.86rem; color: var(--ink-faint); margin: 0.5rem 0px 1rem; max-width: 82ch; }
+
+.deep .vagga { margin: 0px 0px 1rem; }
+
+.deep .vagga h3 { font-size: 0.82rem; font-weight: 700; color: var(--ink-soft); margin: 0px 0px 0.4rem; display: flex; align-items: baseline; gap: 0.4rem; }
+
+.deep .vagga h3 em { font-style: italic; font-weight: 400; color: var(--ink-faint); }
+
+.deep .vagga h3 .pn { color: var(--ink-faint); font-weight: 400; font-size: 0.72rem; margin-left: auto; font-variant-numeric: tabular-nums; }
+
+.deep .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); gap: 0.3rem; }
+
+.deep .su { display: flex; align-items: baseline; gap: 0.4em; padding: 0.28em 0.5em 0.28em 0.4em; border-radius: 6px; font-size: 0.78rem; line-height: 1.25; background: var(--g-t2); border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--g); cursor: default; }
+
+.deep .su b { font-variant-numeric: tabular-nums; color: var(--g); font-weight: 700; font-size: 0.72rem; min-width: 1.8em; text-align: right; flex: 0 0 auto; }
+
+.deep .su span { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.deep .su:hover { border-color: var(--g); background: var(--g-t); }
+
+.deep .divblock { margin: 0px 0px 1rem; }
+
+.deep .divblock h4 { font-family: var(--serif); font-size: 0.95rem; font-weight: 600; color: var(--ink); margin: 0px 0px 0.4rem; display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+
+.deep .divblock h4 .dr { font-size: 0.7rem; color: var(--accent-ink); font-weight: 600; font-family: var(--sans); letter-spacing: 0.02em; }
+
+.deep .divblock h4 em { font-style: italic; font-weight: 400; color: var(--ink-faint); font-size: 0.8rem; }
+
+.deep .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.4rem; }
+
+.deep .chip { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.5em 0.65em; border-radius: 8px; font-size: 0.82rem; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-left-color: ; border-left-style: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left-width: 3px; background: var(--surface); cursor: default; line-height: 1.3; }
+
+.deep .chip .top { display: flex; align-items: baseline; gap: 0.4em; }
+
+.deep .chip .nm { font-weight: 600; color: var(--ink); }
+
+.deep .chip .meta { font-size: 0.72rem; color: var(--ink-faint); }
+
+.deep .chip .ed { font-size: 0.71rem; color: var(--ink-soft); font-style: italic; }
+
+.deep .chip.g { border-left-color: var(--g); background: var(--g-t2); }
+
+.deep .chip.a { border-left-color: var(--a); background: var(--a-t); }
+
+.deep .chip.r { border-left-color: var(--r); background: var(--r-t); }
+
+.deep .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; align-self: center; }
+
+.deep .chip.g .dot { background: var(--g); }
+
+.deep .chip.a .dot { background: var(--a); }
+
+.deep .chip.r .dot { background: var(--r); }
+
+.deep .subnote { grid-column: 1 / -1; font-size: 0.75rem; color: var(--ink-faint); padding: 0.1rem 0.2rem 0.3rem; line-height: 1.5; }
+
+.deep .subnote b { color: var(--ink-soft); }
+
+.deep details.fam { border: 1px solid var(--line); border-radius: 9px; margin: 0px 0px 0.4rem; background: var(--surface); }
+
+.deep details.fam > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.75rem; font-family: var(--serif); font-size: 0.96rem; color: var(--ink); }
+
+.deep details.fam > summary::-webkit-details-marker { display: none; }
+
+.deep details.fam > summary::before { content: "▶"; font-size: 0.62rem; color: var(--ink-faint); transition: transform 0.15s; flex: 0 0 auto; }
+
+.deep details.fam[open] > summary::before { transform: rotate(90deg); }
+
+.deep .famname { font-weight: 600; }
+
+.deep .famr { font-size: 0.68rem; color: var(--accent-ink); font-family: var(--sans); font-weight: 600; white-space: nowrap; }
+
+.deep details.fam > summary em { font-style: italic; font-weight: 400; color: var(--ink-faint); font-size: 0.76rem; }
+
+.deep .fambar { margin-left: auto; display: flex; width: 64px; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); flex: 0 0 auto; }
+
+.deep .fambar i { display: block; height: 100%; }
+
+.deep .fambar .mg { background: var(--g); }
+
+.deep .fambar .ma { background: var(--a); }
+
+.deep .fambar .mr { background: var(--r); }
+
+.deep .famct { font-size: 0.7rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; min-width: 2.6em; text-align: right; flex: 0 0 auto; }
+
+.deep .fambody { padding: 0.15rem 0.75rem 0.65rem; }
+
+.deep .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 0.26rem; }
+
+.deep .tc { display: flex; align-items: baseline; gap: 0.4em; padding: 0.24em 0.5em; border-radius: 6px; font-size: 0.74rem; line-height: 1.25; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+
+.deep .tc b { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 0.68rem; color: var(--ink-faint); min-width: 3.4em; flex: 0 0 auto; }
+
+.deep .tc span { color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.deep .tc.g { border-left-color: var(--g); background: var(--g-t2); }
+
+.deep .tc.g b { color: var(--g); }
+
+.deep .tc.a { border-left-color: var(--a); background: var(--a-t); }
+
+.deep .tc.r { border-left-color: var(--r); background: var(--r-t); }
+
+.deep .caveat { font-size: 0.76rem; color: var(--ink-faint); background: var(--panel); border-left: 3px solid var(--a); border-radius: 0px 7px 7px 0px; padding: 0.55rem 0.8rem; margin: 0px 0px 1rem; line-height: 1.5; }
+
+.deep .caveat b { color: var(--ink-soft); }
+
+footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1rem; font-size: 0.77rem; color: var(--ink-faint); line-height: 1.6; }
+
+.toggle { position: fixed; top: 0.7rem; right: 0.7rem; background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 99px; padding: 0.32rem 0.68rem; font-size: 0.76rem; cursor: pointer; z-index: 30; }
+
+@media (max-width: 560px) {
+  .deep nav.toc { margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem; }
+}
+</style>
+<style>
+
+/* ── archive dress: ground tokens (per Sacred Map Harmonization §III) ──
+   per-tradition --accent/--accent-ink are KEPT; the ground converges. */
+:root, :root[data-theme="light"] {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #a09080;
+  --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Georgia, 'Times New Roman', serif;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+}
+/* archive top strip */
+#arch-topbar { display:flex; justify-content:space-between; align-items:center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: #7a5c3a; }
+#arch-topnav { display: flex; gap: 22px; }
+
+/* ── five-state chip dress (Map Node States specimen, verbatim tokens) ── */
+.m-held, .m-several { background: #f1ebe1 !important;
+  border-color: #e0d8c8 !important; border-left: 3px solid #7a5c3a !important; }
+.m-possible { background: none !important;
+  border-color: #ddd0b8 !important; border-left: 3px solid #c9ab7a !important; }
+.m-none { background: none !important;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-restricted { background: none !important;
+  border: 1px dashed #b8ab99 !important; border-left: 3px dashed #a09080 !important; }
+.m-unmapped { background: none !important; opacity: .75;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-held .nm, .m-several .nm, .m-held .tl, .m-several .tl { color: var(--ink) !important; }
+.m-possible .nm, .m-possible .tl { color: var(--ink-soft) !important; }
+.m-none .nm, .m-none .tl, .m-unmapped .nm, .m-unmapped .tl { color: var(--ink-faint) !important; }
+.m-restricted .nm, .m-restricted .tl { color: var(--ink-faint) !important; }
+.mdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  display: inline-block; margin-right: 2px; box-sizing: border-box; }
+.m-held .mdot { background: #7a5c3a; }
+.m-several .mdot { background: #7a5c3a; box-shadow: 0 0 0 1.5px #f1ebe1, 0 0 0 3px #7a5c3a; }
+.m-possible .mdot { border: 1.5px solid #a8865a; }
+.m-none .mdot, .m-unmapped .mdot { background: #ddd6c8; }
+.m-restricted .mdot { border: 1.5px dashed #a09080; }
+.m-held .dot, .m-several .dot, .m-possible .dot, .m-none .dot,
+.m-restricted .dot, .m-unmapped .dot { display: none; }
+a.m-link { text-decoration: none; }
+:root[data-theme="dark"] .m-held, :root[data-theme="dark"] .m-several {
+  background: #2a2620 !important; border-left-color: #c4a060 !important; }
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background: #c4a060; }
+:root[data-theme="dark"] .m-several .mdot { box-shadow: 0 0 0 1.5px #2a2620, 0 0 0 3px #c4a060; }
+
+/* derived four-band zone bar */
+.zb { display: inline-flex; height: 6px; width: 170px; border-radius: 3px;
+  overflow: hidden; background: var(--track); vertical-align: middle; }
+.zb i { display: block; height: 100%; }
+.zb .zb-held { background: #7a5c3a; }
+.zb .zb-poss { background: none; border-top: 6px double #a8865a; box-sizing: border-box; }
+.zb .zb-none { background: #ddd6c8; }
+.zb .zb-res  { background: repeating-linear-gradient(45deg, #a09080 0 2px, #eee9e0 2px 4px); }
+
+/* legend strip */
+#m-legend { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2); padding: 12px 0; margin: 18px 0 26px;
+  font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em; text-transform: uppercase; }
+#m-legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+/* chooser inset (specimen form) */
+.m-chooser { border-left: 2px solid #7a5c3a; background: #f6f2ea;
+  margin: 8px 0 14px 12px; padding: 12px 18px; max-width: 30em; }
+:root[data-theme="dark"] .m-chooser { background: #26232c; }
+.m-chooser .mc-head { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
+.m-chooser a { display: block; font: 400 14px/1.5 var(--serif); color: var(--ink);
+  text-decoration: none; }
+.m-chooser a:hover { color: #7a5c3a; }
+.m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
+.m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
+
+/* fraction line under the mast */
+#m-fraction { text-align: center;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); margin: 4px 0 0; }
+#m-fraction b { color: #7a5c3a; font-weight: 400; }
+
+/* deep views: shown stacked (the artifact's tab JS was not captured) */
+section.view { display: block !important; }
+
+</style>
+</head>
+<body data-map="buddhist">
+<div id="arch-topbar"><a href="../">&larr; The Archive</a><nav id="arch-topnav"><a href="./">The Map of Sacred Texts</a><a href="../hall/">The Religion Hall</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="m-legend" aria-label="Node states">
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
+<span style="color:#a8865a"><span class="mdot" style="border:1.5px solid #a8865a"></span>public domain &middot; not yet held</span>
+<span style="color:#a09080"><span class="mdot" style="background:#ddd6c8"></span>no PD translation</span>
+<span style="color:#a09080"><span class="mdot" style="border:1.5px dashed #a09080"></span>held &middot; restricted</span>
+</div><button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
+<div class="page">
+  <header class="mast">
+    <div class="wheel" aria-hidden="true">☸️</div>
+    <h1>The Map of Buddhist Texts</h1>
+    <p>One root that split into <strong>three great canons</strong> — the <span class="pali">Pāli</span>, Chinese, and Tibetan — coloured by whether a worldwide-public-domain English translation exists. Start with the whole tradition, then walk into any canon.</p>
+    <div class="switch" id="switch">
+      <button data-view="atlas" class="on">The Three Canons</button>
+      <button data-view="pali">Pāli <small>253 suttas</small></button>
+      <button data-view="chinese">Chinese <small>2,920</small></button>
+      <button data-view="tibetan">Tibetan <small>~4,569</small></button>
+    </div>
+  </header>
+
+  <!-- ============ ATLAS ============ -->
+  <section class="view on" id="view-atlas">
+    <div class="gradient">
+      <h2>The light fades as you move north &amp; east</h2>
+      <p class="cap">Each canon’s share of green / amber / red. The oldest, southernmost canon is the most translated; the tradition’s expansion outran translation.</p>
+      <div id="gradient"><div class="grow"><div class="gl">Pāli Tipiṭaka<small>S &amp; SE Asia</small></div><div class="gbar"><i class="bg" style="width:80%"></i><i class="ba" style="width:14%"></i><i class="br" style="width:6%"></i></div><div class="gnum">80% · 14% · 6%</div></div><div class="grow"><div class="gl">Chinese Taishō<small>China, Korea, Japan</small></div><div class="gbar"><i class="bg" style="width:16%"></i><i class="ba" style="width:34%"></i><i class="br" style="width:50%"></i></div><div class="gnum">16% · 34% · 50%</div></div><div class="grow"><div class="gl">Kangyur + Tengyur<small>Tibet, Mongolia</small></div><div class="gbar"><i class="bg" style="width:6%"></i><i class="ba" style="width:40%"></i><i class="br" style="width:54%"></i></div><div class="gnum">6% · 40% · 54%</div></div></div>
+    </div>
+    <div class="legend">
+      <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide-PD <em>or</em> CC0 (ingestible)</span>
+      <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / open-access-only / US-PD but not yet worldwide</span>
+      <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no standard English translation</span>
+    </div>
+    <div class="insight">
+      <b>The exact inverse of Hinduism.</b> There, the ancient core was green and the edges went amber. Here the <b>oldest, southernmost canon is the greenest</b> — the entire Pāli Sutta Piṭaka is CC0 (Sujato/SuttaCentral) on top of a century of public-domain PTS &amp; SBE scholarship — and the map <b>darkens as the tradition moved north and east</b>, because the expansion into Mahāyāna and Vajrayāna generated <em>vaster</em> literatures (2,920 Chinese texts, ~4,000 Tibetan treatises) faster than anyone could render them. The frontier here isn’t copyright — it’s the <b>untranslated ocean</b>: the Tibetan Tengyur isn’t projected to be finished in English until <b>2110</b>. Tap <b>▸ open</b> on any pillar to walk into it.
+    </div>
+    <div class="pillars" id="pillars"><div class="pillar"><div class="pillar-h"><div class="pn">Pāli Tipiṭaka</div><div class="pw">Theravāda · S &amp; SE Asia</div><div class="pnote">The oldest complete canon — 3 baskets</div><div class="pmini"><i class="mg" style="width:80%"></i><i class="ma" style="width:14%"></i><i class="mr" style="width:6%"></i></div><div class="godeep"><button data-goto="pali">▸ open the complete Pāli canon</button></div></div><div class="sec"><h3>Vinaya Piṭaka <span class="sc">227 + 311 rules</span></h3><div class="chips"><span class="chip g" title="SBE 13/17/20 (PD) · Brahmali CC0"><span class="dot"></span><span class="nm">Suttavibhaṅga · Khandhaka · Parivāra<span class="shared">shared spine</span></span></span></div></div><div class="sec"><h3>Sutta Piṭaka <span class="sc">the five Nikāyas · all CC0</span></h3><div class="chips"><span class="chip g" title="Sujato CC0 · Rhys Davids Dialogues (PD)"><span class="dot"></span><span class="nm">Dīgha — 34 · Majjhima — 152<span class="shared">shared spine</span></span></span><span class="chip g" title="Sujato CC0 · PTS Kindred/Gradual Sayings (PD)"><span class="dot"></span><span class="nm">Saṃyutta — 56 · Aṅguttara — 11<span class="shared">shared spine</span></span></span><span class="chip g" title="mostly PD/CC0; some later books ©"><span class="dot"></span><span class="nm">Khuddaka — 15/17/18 minor books</span></span></div></div><div class="sec"><h3>Abhidhamma Piṭaka <span class="sc">7 books</span></h3><div class="chips"><span class="chip g" title="C.A.F. Rhys Davids 1900/1915 (PD)"><span class="dot"></span><span class="nm">Dhammasaṅgaṇī · Kathāvatthu</span></span><span class="chip a" title="PTS © / US-PD-only"><span class="dot"></span><span class="nm">Vibhaṅga · Puggalapaññatti · Paṭṭhāna</span></span><span class="chip r" title="no standard English translation"><span class="dot"></span><span class="nm">Yamaka</span></span></div></div><div class="sec"><h3>Paracanon</h3><div class="chips"><span class="chip g" title="SBE 35/36 · Oldenberg/Geiger (PD)"><span class="dot"></span><span class="nm">Milindapañha · chronicles</span></span><span class="chip a" title="Pe Maung Tin →2043 / Ñāṇamoli ©"><span class="dot"></span><span class="nm">Visuddhimagga · commentaries</span></span></div></div></div><div class="pillar"><div class="pillar-h"><div class="pn">Chinese Taishō</div><div class="pw">East Asia · China, Korea, Japan</div><div class="pnote">2,920 texts / 85 vols — an accreted library</div><div class="pmini"><i class="mg" style="width:16%"></i><i class="ma" style="width:34%"></i><i class="mr" style="width:50%"></i></div><div class="godeep"><button data-goto="chinese">▸ open the Chinese canon</button></div></div><div class="sec"><h3>Sūtra 經 <span class="sc">T1–847</span></h3><div class="chips"><span class="chip a" title="≈ the Nikāyas; mostly modern © / untransl."><span class="dot"></span><span class="nm">Āgamas (T1–151)<span class="shared">shared spine</span></span></span><span class="chip g" title="Kern/Müller SBE — but from the Sanskrit parallels"><span class="dot"></span><span class="nm">Lotus · Diamond · Heart · Pure Land</span></span><span class="chip a" title="Conze/Cleary/Watson © modern"><span class="dot"></span><span class="nm">Prajñā · Avataṃsaka · Vimalakīrti · Golden Light</span></span><span class="chip r" title="mostly untranslated"><span class="dot"></span><span class="nm">Ratnakūṭa · Nirvāṇa · Great Assembly</span></span></div></div><div class="sec"><h3>Esoteric 密 · Vinaya 律 <span class="sc">T848–1504</span></h3><div class="chips"><span class="chip r" title="BDK partial; mostly untransl."><span class="dot"></span><span class="nm">Mahāvairocana · Vajraśekhara · dhāraṇīs</span></span><span class="chip r" title="Dharmaguptaka partial; rest untransl."><span class="dot"></span><span class="nm">The 5 Vinaya codes</span></span></div></div><div class="sec"><h3>Śāstra 論 <span class="sc">T1505–1692</span></h3><div class="chips"><span class="chip g" title="Timothy Richard 1907 (PD; Richard d.1919) · Suzuki 1900"><span class="dot"></span><span class="nm">Awakening of Faith (T1666)</span></span><span class="chip a" title="Pruden/Garfield © modern"><span class="dot"></span><span class="nm">Abhidharmakośa · MMK · Yogācārabhūmi</span></span></div></div><div class="sec"><h3>Schools 諸宗 · History 史傳 <span class="sc">T1693–2920</span></h3><div class="chips"><span class="chip g" title="Legge 1886 · Beal 1884 (PD)"><span class="dot"></span><span class="nm">Faxian · Xuanzang travel records</span></span><span class="chip g" title="Wong Mou-lam 1930 (PD)"><span class="dot"></span><span class="nm">Platform Sūtra (T2008)</span></span><span class="chip a" title="Swanson/Cleary © / untransl."><span class="dot"></span><span class="nm">Tiantai · Chan · Japanese commentaries</span></span></div></div></div><div class="pillar"><div class="pillar-h"><div class="pn">Kangyur + Tengyur</div><div class="pw">Vajrayāna · Tibet, Mongolia</div><div class="pnote">~4,569 texts (Tōhoku)</div><div class="pmini"><i class="mg" style="width:6%"></i><i class="ma" style="width:40%"></i><i class="mr" style="width:54%"></i></div><div class="godeep"><button data-goto="tibetan">▸ open the Tibetan canon</button></div></div><div class="sec"><h3>Kangyur — Buddha-word <span class="sc">Tōh 1–1108</span></h3><div class="chips"><span class="chip g" title="Müller SBE 49 (PD, from Skt)"><span class="dot"></span><span class="nm">Diamond &amp; Heart (Tōh 16/21)</span></span><span class="chip a" title="84000 open-access (CC BY-NC-ND, not PD)"><span class="dot"></span><span class="nm">Vinaya · Prajñā · Ratnakūṭa · Sūtra · Dhāraṇī</span></span><span class="chip r" title="mostly untransl.; Snellgrove/Wallace © partial"><span class="dot"></span><span class="nm">Tantra · Nyingma tantras (Tōh 360–844)</span></span></div></div><div class="sec"><h3>Tengyur — the treatises <span class="sc">Tōh 1109–4569 · ~99% untransl.</span></h3><div class="chips"><span class="chip g" title="Wenzel/Speyer/Stcherbatsky/Bendall-Rouse (PD)"><span class="dot"></span><span class="nm">Suhṛllekha · Jātakamālā · Nyāyabindu · Śikṣāsamuccaya</span></span><span class="chip a" title="Barnett 1909 — US-PD, worldwide 2031 (HOLD)"><span class="dot"></span><span class="nm">Bodhicaryāvatāra (Tōh 3871)</span></span><span class="chip a" title="Garfield/Pruden © modern"><span class="dot"></span><span class="nm">MMK · Abhidharmakośa · Yogācāra</span></span><span class="chip r" title="the great untranslated mass"><span class="dot"></span><span class="nm">~3,000 tantra commentaries · sciences</span></span></div></div></div></div>
+  </section>
+
+  <!-- ============ PĀLI ============ -->
+  <section class="view deep" id="view-pali">
+    <div class="statband" id="pali-stat"><div class="stat"><b>5</b><span>Vinaya</span></div><div class="stat"><b>34</b><span>Dīgha</span></div><div class="stat"><b>152</b><span>Majjhima</span></div><div class="stat"><b>56</b><span>Saṃyutta</span></div><div class="stat"><b>11</b><span>Aṅguttara</span></div><div class="stat"><b>18</b><span>Khuddaka</span></div><div class="stat"><b>7</b><span>Abhidhamma</span></div></div>
+    <p class="greenline" id="pali-green"><b>253 named discourses</b>, every one freely usable — the four main Nikāyas are dedicated to the public domain under CC0 by Bhikkhu Sujato. This is the corpus a digital archive can ingest <b>in full, today</b>.</p>
+    <nav class="toc">
+      <a data-j="p-vinaya"><b>◆</b> Vinaya</a><a data-j="p-digha"><b>34</b> Dīgha</a><a data-j="p-majjhima"><b>152</b> Majjhima</a><a data-j="p-samyutta"><b>56</b> Saṃyutta</a><a data-j="p-anguttara"><b>11</b> Aṅguttara</a><a data-j="p-khuddaka"><b>18</b> Khuddaka</a><a data-j="p-abhidhamma"><b>7</b> Abhidhamma</a><a data-j="p-paracanon"><b>◇</b> Paracanon</a>
+    </nav>
+    <div class="legend">
+      <span class="lg"><span class="sw" style="background:var(--g)"></span> worldwide-PD <em>or</em> CC0</span>
+      <span class="lg"><span class="sw" style="background:var(--a)"></span> © / US-PD-only</span>
+      <span class="lg"><span class="sw" style="background:var(--r)"></span> no standard translation</span>
+      <span class="lg" style="color:var(--ink-faint)">hover for English name, edition &amp; SuttaCentral ID</span>
+    </div>
+    <main id="pali-main"><section class="basket" id="p-vinaya"><h2>Vinaya Piṭaka <span class="pi">the basket of discipline</span><span class="ct">5 divisions</span></h2><div class="blurb">The monastic code — 227 rules for monks, 311 for nuns, each with its origin-story, plus the institutional regulations and the first two councils.</div><div class="chips"><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Suttavibhaṅga — Mahāvibhaṅga</span></div><div class="meta">monks · 227 rules</div><div class="ed">SBE 13/17 (PD) · Brahmali CC0</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Suttavibhaṅga — Bhikkhunīvibhaṅga</span></div><div class="meta">nuns · 311 rules</div><div class="ed">Brahmali CC0</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Khandhaka — Mahāvagga</span></div><div class="meta">10 khandhakas</div><div class="ed">SBE 13/17 (PD) · Brahmali CC0</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Khandhaka — Cullavagga</span></div><div class="meta">12 khandhakas</div><div class="ed">SBE 20 (PD) · Brahmali CC0</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Parivāra</span></div><div class="meta">appendix / catechism</div><div class="ed">Brahmali CC0</div></div></div></section><section class="basket" id="p-digha"><h2>Dīgha Nikāya <span class="pi">the long discourses</span><span class="ct">34 suttas · 3 vaggas</span></h2><div class="blurb">The 34 longest discourses — the Buddha’s last days, the great mindfulness discourse, the layperson’s code. <b>All CC0 via Sujato.</b></div><div class="vagga"><h3>Sīlakkhandha-vagga <em>The Division on Morality</em><span class="pn">DN 1–13</span></h3><div class="grid"><span class="su" title="Brahmajāla — The All-Embracing Net of Views · dn1"><b>1</b><span>Brahmajāla</span></span><span class="su" title="Sāmaññaphala — The Fruits of the Ascetic Life · dn2"><b>2</b><span>Sāmaññaphala</span></span><span class="su" title="Ambaṭṭha — With Ambaṭṭha · dn3"><b>3</b><span>Ambaṭṭha</span></span><span class="su" title="Soṇadaṇḍa — With Soṇadaṇḍa · dn4"><b>4</b><span>Soṇadaṇḍa</span></span><span class="su" title="Kūṭadanta — With Kūṭadanta · dn5"><b>5</b><span>Kūṭadanta</span></span><span class="su" title="Mahāli — With Mahāli · dn6"><b>6</b><span>Mahāli</span></span><span class="su" title="Jāliya — With Jāliya · dn7"><b>7</b><span>Jāliya</span></span><span class="su" title="Mahāsīhanāda — The Great Lion’s Roar · dn8"><b>8</b><span>Mahāsīhanāda</span></span><span class="su" title="Poṭṭhapāda — With Poṭṭhapāda · dn9"><b>9</b><span>Poṭṭhapāda</span></span><span class="su" title="Subha — With Subha · dn10"><b>10</b><span>Subha</span></span><span class="su" title="Kevaṭṭa — With Kevaṭṭa · dn11"><b>11</b><span>Kevaṭṭa</span></span><span class="su" title="Lohicca — With Lohicca · dn12"><b>12</b><span>Lohicca</span></span><span class="su" title="Tevijja — The Threefold Knowledge · dn13"><b>13</b><span>Tevijja</span></span></div></div><div class="vagga"><h3>Mahā-vagga <em>The Great Division</em><span class="pn">DN 14–23</span></h3><div class="grid"><span class="su" title="Mahāpadāna — The Great Discourse on the Lineage · dn14"><b>14</b><span>Mahāpadāna</span></span><span class="su" title="Mahānidāna — The Great Discourse on Causation · dn15"><b>15</b><span>Mahānidāna</span></span><span class="su" title="Mahāparinibbāna — The Final Nibbāna · dn16"><b>16</b><span>Mahāparinibbāna</span></span><span class="su" title="Mahāsudassana — King Mahāsudassana · dn17"><b>17</b><span>Mahāsudassana</span></span><span class="su" title="Janavasabha — With Janavasabha · dn18"><b>18</b><span>Janavasabha</span></span><span class="su" title="Mahāgovinda — The Great Steward · dn19"><b>19</b><span>Mahāgovinda</span></span><span class="su" title="Mahāsamaya — The Great Assembly · dn20"><b>20</b><span>Mahāsamaya</span></span><span class="su" title="Sakkapañha — Sakka’s Questions · dn21"><b>21</b><span>Sakkapañha</span></span><span class="su" title="Mahāsatipaṭṭhāna — The Foundations of Mindfulness · dn22"><b>22</b><span>Mahāsatipaṭṭhāna</span></span><span class="su" title="Pāyāsi — With Pāyāsi · dn23"><b>23</b><span>Pāyāsi</span></span></div></div><div class="vagga"><h3>Pāṭika-vagga <em>The Pāṭika Division</em><span class="pn">DN 24–34</span></h3><div class="grid"><span class="su" title="Pāṭika — About Pāṭikaputta · dn24"><b>24</b><span>Pāṭika</span></span><span class="su" title="Udumbarika — The Lion’s Roar at Udumbarikā’s · dn25"><b>25</b><span>Udumbarika</span></span><span class="su" title="Cakkavatti — The Wheel-Turning Monarch · dn26"><b>26</b><span>Cakkavatti</span></span><span class="su" title="Aggañña — On Knowledge of Beginnings · dn27"><b>27</b><span>Aggañña</span></span><span class="su" title="Sampasādanīya — Serene Faith · dn28"><b>28</b><span>Sampasādanīya</span></span><span class="su" title="Pāsādika — The Delightful Discourse · dn29"><b>29</b><span>Pāsādika</span></span><span class="su" title="Lakkhaṇa — The Marks of a Great Man · dn30"><b>30</b><span>Lakkhaṇa</span></span><span class="su" title="Siṅgāla — Advice to Sigālaka · dn31"><b>31</b><span>Siṅgāla</span></span><span class="su" title="Āṭānāṭiya — The Āṭānāṭiya Protection · dn32"><b>32</b><span>Āṭānāṭiya</span></span><span class="su" title="Saṅgīti — Chanting Together · dn33"><b>33</b><span>Saṅgīti</span></span><span class="su" title="Dasuttara — Up to Ten · dn34"><b>34</b><span>Dasuttara</span></span></div></div></section><section class="basket" id="p-majjhima"><h2>Majjhima Nikāya <span class="pi">the middle-length discourses</span><span class="ct">152 suttas · 15 vaggas</span></h2><div class="blurb">The heart of the canon for practice — 152 discourses from the Root of All Things to the Development of the Faculties. <b>All CC0.</b></div><div class="vagga"><h3>Mūlapariyāya-vagga <em>Root Fifty · I</em><span class="pn">MN 1–10</span></h3><div class="grid"><span class="su" title="Mūlapariyāya — The Root of All Things · mn1"><b>1</b><span>Mūlapariyāya</span></span><span class="su" title="Sabbāsava — All the Taints · mn2"><b>2</b><span>Sabbāsava</span></span><span class="su" title="Dhammadāyāda — Heirs in the Dhamma · mn3"><b>3</b><span>Dhammadāyāda</span></span><span class="su" title="Bhayabherava — Fear and Dread · mn4"><b>4</b><span>Bhayabherava</span></span><span class="su" title="Anaṅgaṇa — Unblemished · mn5"><b>5</b><span>Anaṅgaṇa</span></span><span class="su" title="Ākaṅkheyya — If a Bhikkhu Should Wish · mn6"><b>6</b><span>Ākaṅkheyya</span></span><span class="su" title="Vattha — The Simile of the Cloth · mn7"><b>7</b><span>Vattha</span></span><span class="su" title="Sallekha — Self-Effacement · mn8"><b>8</b><span>Sallekha</span></span><span class="su" title="Sammādiṭṭhi — Right View · mn9"><b>9</b><span>Sammādiṭṭhi</span></span><span class="su" title="Satipaṭṭhāna — The Foundations of Mindfulness · mn10"><b>10</b><span>Satipaṭṭhāna</span></span></div></div><div class="vagga"><h3>Sīhanāda-vagga <em>The Lion’s Roar</em><span class="pn">MN 11–20</span></h3><div class="grid"><span class="su" title="Cūḷasīhanāda — The Shorter Lion’s Roar · mn11"><b>11</b><span>Cūḷasīhanāda</span></span><span class="su" title="Mahāsīhanāda — The Greater Lion’s Roar · mn12"><b>12</b><span>Mahāsīhanāda</span></span><span class="su" title="Mahādukkhakkhandha — The Greater Mass of Suffering · mn13"><b>13</b><span>Mahādukkhakkhandha</span></span><span class="su" title="Cūḷadukkhakkhandha — The Shorter Mass of Suffering · mn14"><b>14</b><span>Cūḷadukkhakkhandha</span></span><span class="su" title="Anumāna — Inference · mn15"><b>15</b><span>Anumāna</span></span><span class="su" title="Cetokhila — Emotional Barrenness · mn16"><b>16</b><span>Cetokhila</span></span><span class="su" title="Vanapattha — Jungle Thickets · mn17"><b>17</b><span>Vanapattha</span></span><span class="su" title="Madhupiṇḍika — The Honey-Ball · mn18"><b>18</b><span>Madhupiṇḍika</span></span><span class="su" title="Dvedhāvitakka — Two Kinds of Thought · mn19"><b>19</b><span>Dvedhāvitakka</span></span><span class="su" title="Vitakkasaṇṭhāna — The Removal of Distracting Thoughts · mn20"><b>20</b><span>Vitakkasaṇṭhāna</span></span></div></div><div class="vagga"><h3>Opamma-vagga <em>Similes</em><span class="pn">MN 21–30</span></h3><div class="grid"><span class="su" title="Kakacūpama — The Simile of the Saw · mn21"><b>21</b><span>Kakacūpama</span></span><span class="su" title="Alagaddūpama — The Simile of the Snake · mn22"><b>22</b><span>Alagaddūpama</span></span><span class="su" title="Vammika — The Ant-Hill · mn23"><b>23</b><span>Vammika</span></span><span class="su" title="Rathavinīta — The Relay Chariots · mn24"><b>24</b><span>Rathavinīta</span></span><span class="su" title="Nivāpa — The Bait · mn25"><b>25</b><span>Nivāpa</span></span><span class="su" title="Pāsarāsi — The Noble Search · mn26"><b>26</b><span>Pāsarāsi</span></span><span class="su" title="Cūḷahatthipadopama — The Shorter Elephant’s Footprint · mn27"><b>27</b><span>Cūḷahatthipadopama</span></span><span class="su" title="Mahāhatthipadopama — The Greater Elephant’s Footprint · mn28"><b>28</b><span>Mahāhatthipadopama</span></span><span class="su" title="Mahāsāropama — The Greater Heartwood · mn29"><b>29</b><span>Mahāsāropama</span></span><span class="su" title="Cūḷasāropama — The Shorter Heartwood · mn30"><b>30</b><span>Cūḷasāropama</span></span></div></div><div class="vagga"><h3>Mahāyamaka-vagga <em>The Greater Pairs</em><span class="pn">MN 31–40</span></h3><div class="grid"><span class="su" title="Cūḷagosiṅga — The Shorter Discourse at Gosiṅga · mn31"><b>31</b><span>Cūḷagosiṅga</span></span><span class="su" title="Mahāgosiṅga — The Greater Discourse at Gosiṅga · mn32"><b>32</b><span>Mahāgosiṅga</span></span><span class="su" title="Mahāgopālaka — The Greater Cowherd · mn33"><b>33</b><span>Mahāgopālaka</span></span><span class="su" title="Cūḷagopālaka — The Shorter Cowherd · mn34"><b>34</b><span>Cūḷagopālaka</span></span><span class="su" title="Cūḷasaccaka — The Shorter Discourse to Saccaka · mn35"><b>35</b><span>Cūḷasaccaka</span></span><span class="su" title="Mahāsaccaka — The Greater Discourse to Saccaka · mn36"><b>36</b><span>Mahāsaccaka</span></span><span class="su" title="Cūḷataṇhāsaṅkhaya — The Shorter Destruction of Craving · mn37"><b>37</b><span>Cūḷataṇhāsaṅkhaya</span></span><span class="su" title="Mahātaṇhāsaṅkhaya — The Greater Destruction of Craving · mn38"><b>38</b><span>Mahātaṇhāsaṅkhaya</span></span><span class="su" title="Mahāassapura — The Greater Discourse at Assapura · mn39"><b>39</b><span>Mahāassapura</span></span><span class="su" title="Cūḷaassapura — The Shorter Discourse at Assapura · mn40"><b>40</b><span>Cūḷaassapura</span></span></div></div><div class="vagga"><h3>Cūḷayamaka-vagga <em>The Shorter Pairs</em><span class="pn">MN 41–50</span></h3><div class="grid"><span class="su" title="Sāleyyaka — The Brahmins of Sālā · mn41"><b>41</b><span>Sāleyyaka</span></span><span class="su" title="Verañjaka — The Brahmins of Verañja · mn42"><b>42</b><span>Verañjaka</span></span><span class="su" title="Mahāvedalla — The Greater Questions and Answers · mn43"><b>43</b><span>Mahāvedalla</span></span><span class="su" title="Cūḷavedalla — The Shorter Questions and Answers · mn44"><b>44</b><span>Cūḷavedalla</span></span><span class="su" title="Cūḷadhammasamādāna — The Shorter Ways of Undertaking Things · mn45"><b>45</b><span>Cūḷadhammasamādāna</span></span><span class="su" title="Mahādhammasamādāna — The Greater Ways of Undertaking Things · mn46"><b>46</b><span>Mahādhammasamādāna</span></span><span class="su" title="Vīmaṁsaka — The Inquirer · mn47"><b>47</b><span>Vīmaṁsaka</span></span><span class="su" title="Kosambiya — The Bhikkhus of Kosambī · mn48"><b>48</b><span>Kosambiya</span></span><span class="su" title="Brahmanimantanika — The Invitation of a Brahmā · mn49"><b>49</b><span>Brahmanimantanika</span></span><span class="su" title="Māratajjanīya — The Rebuke to Māra · mn50"><b>50</b><span>Māratajjanīya</span></span></div></div><div class="vagga"><h3>Gahapati-vagga <em>Middle Fifty · Householders</em><span class="pn">MN 51–60</span></h3><div class="grid"><span class="su" title="Kandaraka — With Kandaraka · mn51"><b>51</b><span>Kandaraka</span></span><span class="su" title="Aṭṭhakanāgara — The Man from Aṭṭhakanagara · mn52"><b>52</b><span>Aṭṭhakanāgara</span></span><span class="su" title="Sekha — The Trainee · mn53"><b>53</b><span>Sekha</span></span><span class="su" title="Potaliya — With Potaliya · mn54"><b>54</b><span>Potaliya</span></span><span class="su" title="Jīvaka — With Jīvaka · mn55"><b>55</b><span>Jīvaka</span></span><span class="su" title="Upāli — With Upāli · mn56"><b>56</b><span>Upāli</span></span><span class="su" title="Kukkuravatika — The Dog-Duty Ascetic · mn57"><b>57</b><span>Kukkuravatika</span></span><span class="su" title="Abhayarājakumāra — With Prince Abhaya · mn58"><b>58</b><span>Abhayarājakumāra</span></span><span class="su" title="Bahuvedanīya — The Many Kinds of Feeling · mn59"><b>59</b><span>Bahuvedanīya</span></span><span class="su" title="Apaṇṇaka — The Unfailing Teaching · mn60"><b>60</b><span>Apaṇṇaka</span></span></div></div><div class="vagga"><h3>Bhikkhu-vagga <em>Monks</em><span class="pn">MN 61–70</span></h3><div class="grid"><span class="su" title="Ambalaṭṭhikarāhulovāda — Advice to Rāhula at Ambalaṭṭhika · mn61"><b>61</b><span>Ambalaṭṭhikarāhulovāda</span></span><span class="su" title="Mahārāhulovāda — The Greater Advice to Rāhula · mn62"><b>62</b><span>Mahārāhulovāda</span></span><span class="su" title="Cūḷamālukya — The Shorter Discourse to Mālukyāputta · mn63"><b>63</b><span>Cūḷamālukya</span></span><span class="su" title="Mahāmālukya — The Greater Discourse to Mālukyāputta · mn64"><b>64</b><span>Mahāmālukya</span></span><span class="su" title="Bhaddāli — With Bhaddāli · mn65"><b>65</b><span>Bhaddāli</span></span><span class="su" title="Laṭukikopama — The Simile of the Quail · mn66"><b>66</b><span>Laṭukikopama</span></span><span class="su" title="Cātuma — At Cātumā · mn67"><b>67</b><span>Cātuma</span></span><span class="su" title="Naḷakapāna — At Naḷakapāna · mn68"><b>68</b><span>Naḷakapāna</span></span><span class="su" title="Goliyāni — With Gulissāni · mn69"><b>69</b><span>Goliyāni</span></span><span class="su" title="Kīṭāgiri — At Kīṭāgiri · mn70"><b>70</b><span>Kīṭāgiri</span></span></div></div><div class="vagga"><h3>Paribbājaka-vagga <em>Wanderers</em><span class="pn">MN 71–80</span></h3><div class="grid"><span class="su" title="Tevijjavaccha — To Vacchagotta on the Threefold Knowledge · mn71"><b>71</b><span>Tevijjavaccha</span></span><span class="su" title="Aggivaccha — To Vacchagotta on Fire · mn72"><b>72</b><span>Aggivaccha</span></span><span class="su" title="Mahāvaccha — The Greater Discourse to Vacchagotta · mn73"><b>73</b><span>Mahāvaccha</span></span><span class="su" title="Dīghanakha — With Dīghanakha · mn74"><b>74</b><span>Dīghanakha</span></span><span class="su" title="Māgaṇḍiya — With Māgaṇḍiya · mn75"><b>75</b><span>Māgaṇḍiya</span></span><span class="su" title="Sandaka — With Sandaka · mn76"><b>76</b><span>Sandaka</span></span><span class="su" title="Mahāsakuludāyi — The Greater Discourse to Sakuludāyī · mn77"><b>77</b><span>Mahāsakuludāyi</span></span><span class="su" title="Samaṇamuṇḍika — With Samaṇamaṇḍikāputta · mn78"><b>78</b><span>Samaṇamuṇḍika</span></span><span class="su" title="Cūḷasakuludāyi — The Shorter Discourse to Sakuludāyī · mn79"><b>79</b><span>Cūḷasakuludāyi</span></span><span class="su" title="Vekhanasa — With Vekhanasa · mn80"><b>80</b><span>Vekhanasa</span></span></div></div><div class="vagga"><h3>Rāja-vagga <em>Kings</em><span class="pn">MN 81–90</span></h3><div class="grid"><span class="su" title="Ghaṭikāra — Ghaṭīkāra the Potter · mn81"><b>81</b><span>Ghaṭikāra</span></span><span class="su" title="Raṭṭhapāla — With Raṭṭhapāla · mn82"><b>82</b><span>Raṭṭhapāla</span></span><span class="su" title="Maghadeva — King Maghadeva · mn83"><b>83</b><span>Maghadeva</span></span><span class="su" title="Madhura — At Madhurā · mn84"><b>84</b><span>Madhura</span></span><span class="su" title="Bodhirājakumāra — With Prince Bodhi · mn85"><b>85</b><span>Bodhirājakumāra</span></span><span class="su" title="Aṅgulimāla — With Aṅgulimāla · mn86"><b>86</b><span>Aṅgulimāla</span></span><span class="su" title="Piyajātika — Born from Those Who Are Dear · mn87"><b>87</b><span>Piyajātika</span></span><span class="su" title="Bāhitika — The Cloak · mn88"><b>88</b><span>Bāhitika</span></span><span class="su" title="Dhammacetiya — Monuments to the Dhamma · mn89"><b>89</b><span>Dhammacetiya</span></span><span class="su" title="Kaṇṇakatthala — At Kaṇṇakatthala · mn90"><b>90</b><span>Kaṇṇakatthala</span></span></div></div><div class="vagga"><h3>Brāhmaṇa-vagga <em>Brahmins</em><span class="pn">MN 91–100</span></h3><div class="grid"><span class="su" title="Brahmāyu — With Brahmāyu · mn91"><b>91</b><span>Brahmāyu</span></span><span class="su" title="Sela — With Sela · mn92"><b>92</b><span>Sela</span></span><span class="su" title="Assalāyana — With Assalāyana · mn93"><b>93</b><span>Assalāyana</span></span><span class="su" title="Ghoṭamukha — With Ghoṭamukha · mn94"><b>94</b><span>Ghoṭamukha</span></span><span class="su" title="Caṅkī — With Caṅkī · mn95"><b>95</b><span>Caṅkī</span></span><span class="su" title="Esukārī — With Esukārī · mn96"><b>96</b><span>Esukārī</span></span><span class="su" title="Dhanañjāni — With Dhanañjāni · mn97"><b>97</b><span>Dhanañjāni</span></span><span class="su" title="Vāseṭṭha — With Vāseṭṭha · mn98"><b>98</b><span>Vāseṭṭha</span></span><span class="su" title="Subha — With Subha · mn99"><b>99</b><span>Subha</span></span><span class="su" title="Saṅgārava — With Saṅgārava · mn100"><b>100</b><span>Saṅgārava</span></span></div></div><div class="vagga"><h3>Devadaha-vagga <em>Final Fifty · Devadaha</em><span class="pn">MN 101–110</span></h3><div class="grid"><span class="su" title="Devadaha — At Devadaha · mn101"><b>101</b><span>Devadaha</span></span><span class="su" title="Pañcattaya — The Five and Three · mn102"><b>102</b><span>Pañcattaya</span></span><span class="su" title="Kinti — What Do You Think of Me? · mn103"><b>103</b><span>Kinti</span></span><span class="su" title="Sāmagāma — At Sāmagāma · mn104"><b>104</b><span>Sāmagāma</span></span><span class="su" title="Sunakkhatta — With Sunakkhatta · mn105"><b>105</b><span>Sunakkhatta</span></span><span class="su" title="Āneñjasappāya — Conducive to the Imperturbable · mn106"><b>106</b><span>Āneñjasappāya</span></span><span class="su" title="Gaṇakamoggallāna — With Moggallāna the Accountant · mn107"><b>107</b><span>Gaṇakamoggallāna</span></span><span class="su" title="Gopakamoggallāna — With Moggallāna the Guardian · mn108"><b>108</b><span>Gopakamoggallāna</span></span><span class="su" title="Mahāpuṇṇama — The Greater Full-Moon Night · mn109"><b>109</b><span>Mahāpuṇṇama</span></span><span class="su" title="Cūḷapuṇṇama — The Shorter Full-Moon Night · mn110"><b>110</b><span>Cūḷapuṇṇama</span></span></div></div><div class="vagga"><h3>Anupada-vagga <em>One by One</em><span class="pn">MN 111–120</span></h3><div class="grid"><span class="su" title="Anupada — One by One as They Occurred · mn111"><b>111</b><span>Anupada</span></span><span class="su" title="Chabbisodhana — The Sixfold Purity · mn112"><b>112</b><span>Chabbisodhana</span></span><span class="su" title="Sappurisa — The Superior Person · mn113"><b>113</b><span>Sappurisa</span></span><span class="su" title="Sevitabbāsevitabba — To Be Cultivated and Not · mn114"><b>114</b><span>Sevitabbāsevitabba</span></span><span class="su" title="Bahudhātuka — The Many Kinds of Elements · mn115"><b>115</b><span>Bahudhātuka</span></span><span class="su" title="Isigili — At Isigili · mn116"><b>116</b><span>Isigili</span></span><span class="su" title="Mahācattārīsaka — The Great Forty · mn117"><b>117</b><span>Mahācattārīsaka</span></span><span class="su" title="Ānāpānassati — Mindfulness of Breathing · mn118"><b>118</b><span>Ānāpānassati</span></span><span class="su" title="Kāyagatāsati — Mindfulness of the Body · mn119"><b>119</b><span>Kāyagatāsati</span></span><span class="su" title="Saṅkhārupapatti — Rebirth by Aspiration · mn120"><b>120</b><span>Saṅkhārupapatti</span></span></div></div><div class="vagga"><h3>Suññata-vagga <em>Emptiness</em><span class="pn">MN 121–130</span></h3><div class="grid"><span class="su" title="Cūḷasuññata — The Shorter Discourse on Emptiness · mn121"><b>121</b><span>Cūḷasuññata</span></span><span class="su" title="Mahāsuññata — The Greater Discourse on Emptiness · mn122"><b>122</b><span>Mahāsuññata</span></span><span class="su" title="Acchariyaabbhuta — Wonderful and Marvellous · mn123"><b>123</b><span>Acchariyaabbhuta</span></span><span class="su" title="Bākula — With Bakkula · mn124"><b>124</b><span>Bākula</span></span><span class="su" title="Dantabhūmi — The Level of the Tamed · mn125"><b>125</b><span>Dantabhūmi</span></span><span class="su" title="Bhūmija — With Bhūmija · mn126"><b>126</b><span>Bhūmija</span></span><span class="su" title="Anuruddha — With Anuruddha · mn127"><b>127</b><span>Anuruddha</span></span><span class="su" title="Upakkilesa — Corruptions · mn128"><b>128</b><span>Upakkilesa</span></span><span class="su" title="Bālapaṇḍita — Fools and the Wise · mn129"><b>129</b><span>Bālapaṇḍita</span></span><span class="su" title="Devadūta — The Divine Messengers · mn130"><b>130</b><span>Devadūta</span></span></div></div><div class="vagga"><h3>Vibhaṅga-vagga <em>Expositions</em><span class="pn">MN 131–142</span></h3><div class="grid"><span class="su" title="Bhaddekaratta — One Fine Night · mn131"><b>131</b><span>Bhaddekaratta</span></span><span class="su" title="Ānandabhaddekaratta — Ānanda and One Fine Night · mn132"><b>132</b><span>Ānandabhaddekaratta</span></span><span class="su" title="Mahākaccānabhaddekaratta — Mahākaccāna and One Fine Night · mn133"><b>133</b><span>Mahākaccānabhaddekaratta</span></span><span class="su" title="Lomasakaṅgiyabhaddekaratta — Lomasakaṅgiya and One Fine Night · mn134"><b>134</b><span>Lomasakaṅgiyabhaddekaratta</span></span><span class="su" title="Cūḷakammavibhaṅga — The Shorter Exposition of Action · mn135"><b>135</b><span>Cūḷakammavibhaṅga</span></span><span class="su" title="Mahākammavibhaṅga — The Greater Exposition of Action · mn136"><b>136</b><span>Mahākammavibhaṅga</span></span><span class="su" title="Saḷāyatanavibhaṅga — The Exposition of the Sixfold Base · mn137"><b>137</b><span>Saḷāyatanavibhaṅga</span></span><span class="su" title="Uddesavibhaṅga — The Exposition of a Summary · mn138"><b>138</b><span>Uddesavibhaṅga</span></span><span class="su" title="Araṇavibhaṅga — The Exposition of Non-Conflict · mn139"><b>139</b><span>Araṇavibhaṅga</span></span><span class="su" title="Dhātuvibhaṅga — The Exposition of the Elements · mn140"><b>140</b><span>Dhātuvibhaṅga</span></span><span class="su" title="Saccavibhaṅga — The Exposition of the Truths · mn141"><b>141</b><span>Saccavibhaṅga</span></span><span class="su" title="Dakkhiṇāvibhaṅga — The Exposition of Offerings · mn142"><b>142</b><span>Dakkhiṇāvibhaṅga</span></span></div></div><div class="vagga"><h3>Saḷāyatana-vagga <em>The Six Sense Bases</em><span class="pn">MN 143–152</span></h3><div class="grid"><span class="su" title="Anāthapiṇḍikovāda — Advice to Anāthapiṇḍika · mn143"><b>143</b><span>Anāthapiṇḍikovāda</span></span><span class="su" title="Channovāda — Advice to Channa · mn144"><b>144</b><span>Channovāda</span></span><span class="su" title="Puṇṇovāda — Advice to Puṇṇa · mn145"><b>145</b><span>Puṇṇovāda</span></span><span class="su" title="Nandakovāda — Advice from Nandaka · mn146"><b>146</b><span>Nandakovāda</span></span><span class="su" title="Cūḷarāhulovāda — The Shorter Advice to Rāhula · mn147"><b>147</b><span>Cūḷarāhulovāda</span></span><span class="su" title="Chachakka — The Six Sets of Six · mn148"><b>148</b><span>Chachakka</span></span><span class="su" title="Mahāsaḷāyatanika — The Great Sixfold Base · mn149"><b>149</b><span>Mahāsaḷāyatanika</span></span><span class="su" title="Nagaravindeyya — To the People of Nagaravinda · mn150"><b>150</b><span>Nagaravindeyya</span></span><span class="su" title="Piṇḍapātapārisuddhi — The Purification of Almsfood · mn151"><b>151</b><span>Piṇḍapātapārisuddhi</span></span><span class="su" title="Indriyabhāvanā — The Development of the Faculties · mn152"><b>152</b><span>Indriyabhāvanā</span></span></div></div></section><section class="basket" id="p-samyutta"><h2>Saṃyutta Nikāya <span class="pi">the connected discourses</span><span class="ct">56 saṃyuttas · 5 vaggas</span></h2><div class="blurb">Thousands of short suttas in 56 thematic collections (the individual total runs 2,889–7,762 by counting convention). Shown at the saṃyutta level. <b>All CC0.</b></div><div class="vagga"><h3>Sagāthā-vagga <em>With Verses</em><span class="pn">SN 1–11</span></h3><div class="grid"><span class="su" title="Devatā — With Deities · sn1"><b>1</b><span>Devatā</span></span><span class="su" title="Devaputta — With Young Gods · sn2"><b>2</b><span>Devaputta</span></span><span class="su" title="Kosala — With King Pasenadi · sn3"><b>3</b><span>Kosala</span></span><span class="su" title="Māra — With Māra · sn4"><b>4</b><span>Māra</span></span><span class="su" title="Bhikkhunī — With Nuns · sn5"><b>5</b><span>Bhikkhunī</span></span><span class="su" title="Brahma — With Brahmās · sn6"><b>6</b><span>Brahma</span></span><span class="su" title="Brāhmaṇa — With Brahmins · sn7"><b>7</b><span>Brāhmaṇa</span></span><span class="su" title="Vaṅgīsa — With Vaṅgīsa · sn8"><b>8</b><span>Vaṅgīsa</span></span><span class="su" title="Vana — In the Forest · sn9"><b>9</b><span>Vana</span></span><span class="su" title="Yakkha — With Spirits · sn10"><b>10</b><span>Yakkha</span></span><span class="su" title="Sakka — With Sakka · sn11"><b>11</b><span>Sakka</span></span></div></div><div class="vagga"><h3>Nidāna-vagga <em>Causation</em><span class="pn">SN 12–21</span></h3><div class="grid"><span class="su" title="Nidāna — On Causation · sn12"><b>12</b><span>Nidāna</span></span><span class="su" title="Abhisamaya — The Breakthrough · sn13"><b>13</b><span>Abhisamaya</span></span><span class="su" title="Dhātu — On Elements · sn14"><b>14</b><span>Dhātu</span></span><span class="su" title="Anamatagga — The Unfindable Beginning · sn15"><b>15</b><span>Anamatagga</span></span><span class="su" title="Kassapa — With Kassapa · sn16"><b>16</b><span>Kassapa</span></span><span class="su" title="Lābhasakkāra — Gains and Honour · sn17"><b>17</b><span>Lābhasakkāra</span></span><span class="su" title="Rāhula — With Rāhula · sn18"><b>18</b><span>Rāhula</span></span><span class="su" title="Lakkhaṇa — With Lakkhaṇa · sn19"><b>19</b><span>Lakkhaṇa</span></span><span class="su" title="Opamma — With Similes · sn20"><b>20</b><span>Opamma</span></span><span class="su" title="Bhikkhu — With Monks · sn21"><b>21</b><span>Bhikkhu</span></span></div></div><div class="vagga"><h3>Khandha-vagga <em>The Aggregates</em><span class="pn">SN 22–34</span></h3><div class="grid"><span class="su" title="Khandha — On the Aggregates · sn22"><b>22</b><span>Khandha</span></span><span class="su" title="Rādha — With Rādha · sn23"><b>23</b><span>Rādha</span></span><span class="su" title="Diṭṭhi — On Views · sn24"><b>24</b><span>Diṭṭhi</span></span><span class="su" title="Okkanta — On Entering · sn25"><b>25</b><span>Okkanta</span></span><span class="su" title="Uppāda — On Arising · sn26"><b>26</b><span>Uppāda</span></span><span class="su" title="Kilesa — On Defilements · sn27"><b>27</b><span>Kilesa</span></span><span class="su" title="Sāriputta — With Sāriputta · sn28"><b>28</b><span>Sāriputta</span></span><span class="su" title="Nāga — On Nāgas · sn29"><b>29</b><span>Nāga</span></span><span class="su" title="Supaṇṇa — On Supaṇṇas · sn30"><b>30</b><span>Supaṇṇa</span></span><span class="su" title="Gandhabbakāya — On Gandhabba Devas · sn31"><b>31</b><span>Gandhabbakāya</span></span><span class="su" title="Valāhaka — On Cloud Devas · sn32"><b>32</b><span>Valāhaka</span></span><span class="su" title="Vacchagotta — With Vacchagotta · sn33"><b>33</b><span>Vacchagotta</span></span><span class="su" title="Jhāna — On Meditation · sn34"><b>34</b><span>Jhāna</span></span></div></div><div class="vagga"><h3>Saḷāyatana-vagga <em>The Six Sense Bases</em><span class="pn">SN 35–44</span></h3><div class="grid"><span class="su" title="Saḷāyatana — On the Six Sense Bases · sn35"><b>35</b><span>Saḷāyatana</span></span><span class="su" title="Vedanā — On Feeling · sn36"><b>36</b><span>Vedanā</span></span><span class="su" title="Mātugāma — On Women · sn37"><b>37</b><span>Mātugāma</span></span><span class="su" title="Jambukhādaka — With Jambukhādaka · sn38"><b>38</b><span>Jambukhādaka</span></span><span class="su" title="Sāmaṇḍaka — With Sāmaṇḍaka · sn39"><b>39</b><span>Sāmaṇḍaka</span></span><span class="su" title="Moggallāna — With Moggallāna · sn40"><b>40</b><span>Moggallāna</span></span><span class="su" title="Citta — With Citta the Householder · sn41"><b>41</b><span>Citta</span></span><span class="su" title="Gāmaṇi — With Headmen · sn42"><b>42</b><span>Gāmaṇi</span></span><span class="su" title="Asaṅkhata — On the Unconditioned · sn43"><b>43</b><span>Asaṅkhata</span></span><span class="su" title="Abyākata — On the Undeclared · sn44"><b>44</b><span>Abyākata</span></span></div></div><div class="vagga"><h3>Mahā-vagga <em>The Great Division</em><span class="pn">SN 45–56</span></h3><div class="grid"><span class="su" title="Magga — On the Path · sn45"><b>45</b><span>Magga</span></span><span class="su" title="Bojjhaṅga — On the Awakening Factors · sn46"><b>46</b><span>Bojjhaṅga</span></span><span class="su" title="Satipaṭṭhāna — On Mindfulness Meditation · sn47"><b>47</b><span>Satipaṭṭhāna</span></span><span class="su" title="Indriya — On the Faculties · sn48"><b>48</b><span>Indriya</span></span><span class="su" title="Sammappadhāna — On Right Efforts · sn49"><b>49</b><span>Sammappadhāna</span></span><span class="su" title="Bala — On the Powers · sn50"><b>50</b><span>Bala</span></span><span class="su" title="Iddhipāda — On the Bases of Spiritual Power · sn51"><b>51</b><span>Iddhipāda</span></span><span class="su" title="Anuruddha — With Anuruddha · sn52"><b>52</b><span>Anuruddha</span></span><span class="su" title="Jhāna — On the Absorptions · sn53"><b>53</b><span>Jhāna</span></span><span class="su" title="Ānāpāna — On Mindfulness of Breathing · sn54"><b>54</b><span>Ānāpāna</span></span><span class="su" title="Sotāpatti — On Stream-Entry · sn55"><b>55</b><span>Sotāpatti</span></span><span class="su" title="Sacca — On the Four Noble Truths · sn56"><b>56</b><span>Sacca</span></span></div></div></section><section class="basket" id="p-anguttara"><h2>Aṅguttara Nikāya <span class="pi">the numerical discourses</span><span class="ct">11 nipātas · ~2,344 suttas</span></h2><div class="blurb">Discourses arranged by ascending number, ones to elevens. Shown at book level; vagga counts vary by edition. <b>All CC0.</b></div><div class="vagga"><h3>The Eleven Books <em>nipātas — grouped by ascending number</em><span class="pn">AN 1–11</span></h3><div class="grid"><span class="su" title="Ekaka — The Book of the Ones · an1"><b>1</b><span>Ekaka</span></span><span class="su" title="Duka — The Book of the Twos · an2"><b>2</b><span>Duka</span></span><span class="su" title="Tika — The Book of the Threes · an3"><b>3</b><span>Tika</span></span><span class="su" title="Catukka — The Book of the Fours · an4"><b>4</b><span>Catukka</span></span><span class="su" title="Pañcaka — The Book of the Fives · an5"><b>5</b><span>Pañcaka</span></span><span class="su" title="Chakka — The Book of the Sixes · an6"><b>6</b><span>Chakka</span></span><span class="su" title="Sattaka — The Book of the Sevens · an7"><b>7</b><span>Sattaka</span></span><span class="su" title="Aṭṭhaka — The Book of the Eights · an8"><b>8</b><span>Aṭṭhaka</span></span><span class="su" title="Navaka — The Book of the Nines · an9"><b>9</b><span>Navaka</span></span><span class="su" title="Dasaka — The Book of the Tens · an10"><b>10</b><span>Dasaka</span></span><span class="su" title="Ekādasaka — The Book of the Elevens · an11"><b>11</b><span>Ekādasaka</span></span></div></div></section><section class="basket" id="p-khuddaka"><h2>Khuddaka Nikāya <span class="pi">the minor collection</span><span class="ct">15 · 17 · 18 books</span></h2><div class="blurb">The most heterogeneous basket — Dhammapada and Jātaka to technical exegesis. Its membership is itself disputed: 15 books, 17 with the hermeneutic manuals, 18 once the Burmese Sixth Council admits the Milindapañha.</div><div class="chips"><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Khuddakapāṭha</span></div><div class="meta">9 short texts</div><div class="ed">SuttaCentral CC0</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Dhammapada</span></div><div class="meta">423 verses · 26 vaggas</div><div class="ed">Müller SBE 10 1881 (PD) · Sujato CC0</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Udāna</span></div><div class="meta">80 suttas · 8 vaggas</div><div class="ed">Sujato CC0 (Woodward 1935)</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Itivuttaka</span></div><div class="meta">112 suttas · 4 nipātas</div><div class="ed">Sujato CC0 (Woodward 1935)</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Sutta Nipāta</span></div><div class="meta">70 suttas · 5 vaggas</div><div class="ed">Fausbøll SBE 10 1881 (PD) · Sujato CC0</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Theragāthā</span></div><div class="meta">264 poems of the elder monks</div><div class="ed">C.A.F. Rhys Davids 1913 (PD)</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Therīgāthā</span></div><div class="meta">73 poems of the elder nuns</div><div class="ed">C.A.F. Rhys Davids 1909 (PD)</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Jātaka</span></div><div class="meta">547 birth-stories (550 trad.)</div><div class="ed">Cowell ed. 1895–1907 (PD)</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Vimānavatthu · Petavatthu</span></div><div class="meta">heaven &amp; hungry-ghost tales</div><div class="ed">Gehman/Horner PTS ©</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Buddhavaṃsa · Cariyāpiṭaka</span></div><div class="meta">the 24 Buddhas · conduct</div><div class="ed">Horner 1975 ©</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Paṭisambhidāmagga</span></div><div class="meta">path of discrimination</div><div class="ed">Ñāṇamoli PTS 1982 ©</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Niddesa</span></div><div class="meta">Mahā- &amp; Cūḷa- · old exegesis</div><div class="ed">recent online tr. (© / non-PD)</div></div><div class="chip r"><div class="top"><span class="dot"></span><span class="nm">Apadāna</span></div><div class="meta">life-story verses of arahants</div><div class="ed">largely untranslated</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">+ Nettippakaraṇa · Peṭakopadesa</span></div><div class="meta">Burmese canon · hermeneutics</div><div class="ed">Ñāṇamoli 1962/64 ©</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">+ Milindapañha</span></div><div class="meta">Burmese canon · King Milinda</div><div class="ed">Rhys Davids SBE 35/36 (PD)</div></div><div class="subnote"><b>Khuddakapāṭha’s 9 texts:</b> Refuge · Ten Precepts · 32 Body-Parts · Novice’s Questions · Maṅgala · Ratana · Tirokuḍḍa · Nidhikaṇḍa · Karaṇīyametta. &nbsp; <b>Sutta Nipāta’s 5 vaggas:</b> Uraga · Cūḷa · Mahā · Aṭṭhaka (the archaic Octets) · Pārāyana.</div></div></section><section class="basket" id="p-abhidhamma"><h2>Abhidhamma Piṭaka <span class="pi">the basket of higher doctrine</span><span class="ct">7 books</span></h2><div class="blurb">The systematic analysis of experience into ultimate constituents (dhammas), culminating in the vast Paṭṭhāna. Only two books have worldwide-PD translations; the Yamaka has no standard English at all.</div><div class="chips"><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Dhammasaṅgaṇī</span></div><div class="meta">enumeration of dhammas</div><div class="ed">C.A.F. Rhys Davids 1900 (PD)</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Vibhaṅga</span></div><div class="meta">analysis</div><div class="ed">Thiṭṭila PTS 1969 ©</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Dhātukathā</span></div><div class="meta">discussion of elements</div><div class="ed">Nārada PTS 1962 ©</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Puggalapaññatti</span></div><div class="meta">designation of persons</div><div class="ed">B.C. Law 1922 — US-PD, worldwide 2039</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Kathāvatthu</span></div><div class="meta">points of controversy</div><div class="ed">Aung &amp; Rhys Davids 1915 (PD)</div></div><div class="chip r"><div class="top"><span class="dot"></span><span class="nm">Yamaka</span></div><div class="meta">the pairs</div><div class="ed">no standard English translation</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Paṭṭhāna</span></div><div class="meta">conditional relations (24 paccaya)</div><div class="ed">U Nārada PTS ©</div></div></div></section><section class="basket" id="p-paracanon"><h2>Paracanon &amp; Commentary <span class="pi">beyond the three baskets</span><span class="ct">post-canonical</span></h2><div class="blurb">Works revered but outside (or at the edge of) the Tipiṭaka — Buddhaghosa’s summa, the King Milinda dialogue, the hermeneutic guides, the chronicles, and the classical commentaries that frame how the canon is read.</div><div class="chips"><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Milindapañha</span></div><div class="meta">Nāgasena &amp; King Menander</div><div class="ed">Rhys Davids SBE 35/36 1890–94 (PD)</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Visuddhimagga</span></div><div class="meta">Buddhaghosa · the great summa</div><div class="ed">Pe Maung Tin →2043; Ñāṇamoli © — no PD yet</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Nettippakaraṇa · Peṭakopadesa</span></div><div class="meta">hermeneutic manuals</div><div class="ed">Ñāṇamoli 1962/64 ©</div></div><div class="chip g"><div class="top"><span class="dot"></span><span class="nm">Dīpavaṃsa · Mahāvaṃsa</span></div><div class="meta">the Sri Lankan chronicles</div><div class="ed">Oldenberg 1879 · Geiger–Bode 1912 (PD)</div></div><div class="chip a"><div class="top"><span class="dot"></span><span class="nm">Cūḷavaṃsa</span></div><div class="meta">continuation of the chronicle</div><div class="ed">Geiger 1929 ©</div></div><div class="chip r"><div class="top"><span class="dot"></span><span class="nm">Aṭṭhakathā</span></div><div class="meta">the classical commentaries</div><div class="ed">mostly untransl. (Dhp-comm 1921 PD)</div></div></div></section></main>
+  </section>
+
+  <!-- ============ CHINESE ============ -->
+  <section class="view deep" id="view-chinese">
+    <div class="statband" id="cn-stat"><div class="stat"><b>2459</b><span>texts</span></div><div class="stat"><b>13</b><span>PD</span></div><div class="stat"><b>25</b><span>©</span></div><div class="stat"><b>28</b><span>divisions</span></div></div>
+    <p class="greenline" id="cn-green"><b>2459 texts</b> pulled live from the CBETA catalogue (T1–T2920; the ~460 texts of vols&nbsp;56–84 aren’t in the dataset). The public-domain seam is <span class="amb">thin</span> — 13 verified-PD marquee texts in an ocean of untranslated scripture.</p>
+    <nav class="toc">
+      <a data-j="c-sutra"><b>經</b> Sūtra</a><a data-j="c-eso"><b>密</b> Esoteric</a><a data-j="c-vin"><b>律</b> Vinaya</a><a data-j="c-sas"><b>論</b> Śāstra</a><a data-j="c-comm"><b>宗</b> Schools</a><a data-j="c-hist"><b>史</b> History</a>
+    </nav>
+    <div class="legend">
+      <span class="lg"><span class="sw" style="background:var(--g)"></span> worldwide-PD (SBE / pre-1929)</span>
+      <span class="lg"><span class="sw" style="background:var(--a)"></span> modern © / partial</span>
+      <span class="lg"><span class="sw" style="background:var(--r)"></span> untranslated</span>
+      <span class="lg" style="color:var(--ink-faint)">T-numbers are Taishō catalogue references</span>
+    </div>
+    <main id="cn-main"><div class="caveat"><b>How the Chinese canon is coloured.</b> Individually-verified marquee texts are green (public-domain) or amber (modern ©). All others are shown <b>red</b> = no public-domain English translation identified in this catalogue. Modern © translations (the BDK/Numata project has ~139 core texts, plus others) exist and are <b>not</b> individually flagged — red here means “no PD English known,” not “proven untranslated.” Titles are the Chinese catalogue titles from CBETA.</div><section class="basket" id="c-sutra"><h2>Sūtra 經 <span class="pi">the discourses</span><span class="ct">T1–847</span></h2><div class="blurb">The nine sūtra divisions — from the Āgamas (parallels of the Pāli Nikāyas) through the great Mahāyāna scriptures.</div><details class="fam"><summary><span class="famname">Āgama 阿含部</span><span class="famr">T1–151</span><em>≈ the Pāli Nikāyas</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:2.5806451612903225%"></i><i class="mr" style="width:97.41935483870968%"></i></span><span class="famct">155</span></summary><div class="fambody" data-key="c-sutra-0"></div></details><details class="fam"><summary><span class="famname">Birth Stories 本緣部</span><span class="famr">T152–219</span><span class="fambar"><i class="mg" style="width:2.7777777777777777%"></i><i class="ma" style="width:1.3888888888888888%"></i><i class="mr" style="width:95.83333333333334%"></i></span><span class="famct">72</span></summary><div class="fambody" data-key="c-sutra-1"></div></details><details class="fam"><summary><span class="famname">Prajñāpāramitā 般若部</span><span class="famr">T220–261</span><em>Perfection of Wisdom</em><span class="fambar"><i class="mg" style="width:4.651162790697675%"></i><i class="ma" style="width:2.3255813953488373%"></i><i class="mr" style="width:93.02325581395348%"></i></span><span class="famct">43</span></summary><div class="fambody" data-key="c-sutra-2"></div></details><details class="fam"><summary><span class="famname">Lotus 法華部</span><span class="famr">T262–277</span><span class="fambar"><i class="mg" style="width:6.25%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:93.75%"></i></span><span class="famct">16</span></summary><div class="fambody" data-key="c-sutra-3"></div></details><details class="fam"><summary><span class="famname">Avataṃsaka 華嚴部</span><span class="famr">T278–309</span><em>Flower Garland</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:3.125%"></i><i class="mr" style="width:96.875%"></i></span><span class="famct">32</span></summary><div class="fambody" data-key="c-sutra-4"></div></details><details class="fam"><summary><span class="famname">Ratnakūṭa 寶積部</span><span class="famr">T310–373</span><em>Jewel Heap</em><span class="fambar"><i class="mg" style="width:4.615384615384616%"></i><i class="ma" style="width:1.5384615384615385%"></i><i class="mr" style="width:93.84615384615384%"></i></span><span class="famct">65</span></summary><div class="fambody" data-key="c-sutra-5"></div></details><details class="fam"><summary><span class="famname">Nirvāṇa 涅槃部</span><span class="famr">T374–396</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:4.3478260869565215%"></i><i class="mr" style="width:95.65217391304348%"></i></span><span class="famct">23</span></summary><div class="fambody" data-key="c-sutra-6"></div></details><details class="fam"><summary><span class="famname">Great Assembly 大集部</span><span class="famr">T397–424</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:3.571428571428571%"></i><i class="mr" style="width:96.42857142857143%"></i></span><span class="famct">28</span></summary><div class="fambody" data-key="c-sutra-7"></div></details><details class="fam"><summary><span class="famname">Sūtra Collection 經集部</span><span class="famr">T425–847</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0.9237875288683602%"></i><i class="mr" style="width:99.07621247113164%"></i></span><span class="famct">433</span></summary><div class="fambody" data-key="c-sutra-8"></div></details></section><section class="basket" id="c-eso"><h2>Esoteric 密教部 <span class="pi">tantra / mikkyō</span><span class="ct">T848–1420</span></h2><div class="blurb">The esoteric division — the scriptural base of Shingon and Tendai mikkyō, plus a vast body of dhāraṇī texts.</div><details class="fam"><summary><span class="famname">Esoteric scriptures 密教部</span><span class="famr">T848–1420</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0.32573289902280134%"></i><i class="mr" style="width:99.6742671009772%"></i></span><span class="famct">614</span></summary><div class="fambody" data-key="c-eso-0"></div></details></section><section class="basket" id="c-vin"><h2>Vinaya 律部 <span class="pi">monastic discipline</span><span class="ct">T1421–1504</span></h2><div class="blurb">Five complete Vinaya codes; the Dharmaguptaka is the basis of all East Asian ordination.</div><details class="fam"><summary><span class="famname">Vinaya codes 律部</span><span class="famr">T1421–1504</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">87</span></summary><div class="fambody" data-key="c-vin-0"></div></details></section><section class="basket" id="c-sas"><h2>Śāstra 論 <span class="pi">treatises</span><span class="ct">T1505–1692</span></h2><div class="blurb">The Indian treatise tradition in Chinese — Abhidharma, Madhyamaka, Yogācāra — plus the collection holding the Awakening of Faith.</div><details class="fam"><summary><span class="famname">Sūtra-commentary śāstras 釋經論部</span><span class="famr">T1505–1535</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:3.125%"></i><i class="mr" style="width:96.875%"></i></span><span class="famct">32</span></summary><div class="fambody" data-key="c-sas-0"></div></details><details class="fam"><summary><span class="famname">Abhidharma 毘曇部</span><span class="famr">T1536–1563</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:3.571428571428571%"></i><i class="mr" style="width:96.42857142857143%"></i></span><span class="famct">28</span></summary><div class="fambody" data-key="c-sas-1"></div></details><details class="fam"><summary><span class="famname">Madhyamaka 中觀部類</span><span class="famr">T1564–1578</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:6.666666666666667%"></i><i class="mr" style="width:93.33333333333333%"></i></span><span class="famct">15</span></summary><div class="fambody" data-key="c-sas-2"></div></details><details class="fam"><summary><span class="famname">Yogācāra 瑜伽部類</span><span class="famr">T1579–1627</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:4.081632653061225%"></i><i class="mr" style="width:95.91836734693877%"></i></span><span class="famct">49</span></summary><div class="fambody" data-key="c-sas-3"></div></details><details class="fam"><summary><span class="famname">Treatise Collection 論集部</span><span class="famr">T1628–1692</span><span class="fambar"><i class="mg" style="width:1.5151515151515151%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:98.48484848484848%"></i></span><span class="famct">66</span></summary><div class="fambody" data-key="c-sas-4"></div></details></section><section class="basket" id="c-comm"><h2>Commentaries &amp; Schools 諸宗部 <span class="pi">exegesis &amp; sects</span><span class="ct">T1693–2025</span></h2><div class="blurb">The Chinese/Japanese exegetical layer, then the "schools" — Tiantai, Huayan, Chan/Zen, Pure Land.</div><details class="fam"><summary><span class="famname">Commentaries 經疏·律疏·論疏部</span><span class="famr">T1693–1850</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">158</span></summary><div class="fambody" data-key="c-comm-0"></div></details><details class="fam"><summary><span class="famname">Schools 諸宗部</span><span class="famr">T1851–2025</span><em>Tiantai · Huayan · Chan · Pure Land</em><span class="fambar"><i class="mg" style="width:0.5405405405405406%"></i><i class="ma" style="width:1.6216216216216217%"></i><i class="mr" style="width:97.83783783783784%"></i></span><span class="famct">185</span></summary><div class="fambody" data-key="c-comm-1"></div></details></section><section class="basket" id="c-hist"><h2>History, Reference &amp; Beyond <span class="pi">vols 49–85</span><span class="ct">T2026–2920</span></h2><div class="blurb">The non-scriptural remainder — travel records, biographies, encyclopedias, catalogs, the Japanese sub-commentary block, Siddhaṃ, Dunhuang finds, apocrypha, and the canon’s Nestorian/Manichaean corner.</div><details class="fam"><summary><span class="famname">History &amp; Biography 史傳部</span><span class="famr">T2026–2120</span><span class="fambar"><i class="mg" style="width:3.125%"></i><i class="ma" style="width:1.0416666666666665%"></i><i class="mr" style="width:95.83333333333334%"></i></span><span class="famct">96</span></summary><div class="fambody" data-key="c-hist-0"></div></details><details class="fam"><summary><span class="famname">Encyclopedia 事彙部</span><span class="famr">T2121–2136</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">17</span></summary><div class="fambody" data-key="c-hist-1"></div></details><details class="fam"><summary><span class="famname">Non-Buddhist 外教部</span><span class="famr">T2137–2144</span><em>Daoist · Manichaean · Nestorian</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">9</span></summary><div class="fambody" data-key="c-hist-2"></div></details><details class="fam"><summary><span class="famname">Catalogues 目錄部</span><span class="famr">T2145–2184</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">42</span></summary><div class="fambody" data-key="c-hist-3"></div></details><details class="fam"><summary><span class="famname">Japanese continued commentaries 續經疏部</span><span class="famr">T2185–2700</span><em>28 vols — not in the CBETA dataset</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">1</span></summary><div class="fambody" data-key="c-hist-4"></div></details><details class="fam"><summary><span class="famname">Siddham 悉曇部</span><span class="famr">T2701–2731</span><em>not in the CBETA dataset</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">1</span></summary><div class="fambody" data-key="c-hist-5"></div></details><details class="fam"><summary><span class="famname">Ancient / Lost 古逸部</span><span class="famr">T2732–2864</span><em>Dunhuang</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">135</span></summary><div class="fambody" data-key="c-hist-6"></div></details><details class="fam"><summary><span class="famname">Apocrypha 疑似部</span><span class="famr">T2865–2920</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">57</span></summary><div class="fambody" data-key="c-hist-7"></div></details></section></main>
+  </section>
+
+  <!-- ============ TIBETAN ============ -->
+  <section class="view deep" id="view-tibetan">
+    <div class="statband" id="tb-stat"><div class="stat"><b>4355</b><span>texts</span></div><div class="stat"><b>460</b><span>via 84000</span></div><div class="stat"><b>6</b><span>PD</span></div><div class="stat"><b>3889</b><span>untransl.</span></div></div>
+    <p class="greenline" id="tb-green"><b>4355 texts</b> by Tōhoku number, per-text status from 84000. <span class="amb">460 translated</span> (open-access, not PD) · <b>6 worldwide-PD</b> · 3889 untranslated. The Tengyur is the great red mass.</p>
+    <nav class="toc">
+      <a data-j="t-kangyur"><b>བཀའ</b> Kangyur</a><a data-j="t-tengyur"><b>བསྟན</b> Tengyur</a>
+    </nav>
+    <div class="legend">
+      <span class="lg"><span class="sw" style="background:var(--g)"></span> worldwide-PD</span>
+      <span class="lg"><span class="sw" style="background:var(--a)"></span> © / 84000 open-access (not PD)</span>
+      <span class="lg"><span class="sw" style="background:var(--r)"></span> untranslated</span>
+      <span class="lg" style="color:var(--ink-faint)">Tōh = Tōhoku (Derge) catalogue number</span>
+    </div>
+    <main id="tb-main"><div class="caveat"><b>How the Tibetan canon is coloured.</b> Per-text status comes from 84000’s catalogue: <b>amber</b> = a translation exists (84000 open-access, CC BY-NC-ND — free to read, not public domain), <b>red</b> = untranslated, <b>green</b> = a verified worldwide-public-domain translation. English titles are 84000’s.</div><section class="basket" id="t-kangyur"><h2>Kangyur <span class="pi">bka’ ’gyur · the word of the Buddha</span><span class="ct">Tōh 1–1108</span></h2><div class="blurb">The translated word of the Buddha — sūtras and tantras. Large tracts are readable via 84000 (open-access, CC BY-NC-ND — free to read, not public domain), so they colour amber.</div><details class="fam"><summary><span class="famname">Vinaya ’dul ba</span><span class="famr">Tōh 1–7</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:12.5%"></i><i class="mr" style="width:87.5%"></i></span><span class="famct">8</span></summary><div class="fambody" data-key="t-kangyur-0"></div></details><details class="fam"><summary><span class="famname">Prajñāpāramitā sher phyin</span><span class="famr">Tōh 8–30</span><em>Perfection of Wisdom</em><span class="fambar"><i class="mg" style="width:9.523809523809524%"></i><i class="ma" style="width:38.095238095238095%"></i><i class="mr" style="width:52.38095238095239%"></i></span><span class="famct">21</span></summary><div class="fambody" data-key="t-kangyur-1"></div></details><details class="fam"><summary><span class="famname">Miscellaneous Sūtras</span><span class="famr">Tōh 31–43</span><em>late-translated</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:23.076923076923077%"></i><i class="mr" style="width:76.92307692307693%"></i></span><span class="famct">13</span></summary><div class="fambody" data-key="t-kangyur-2"></div></details><details class="fam"><summary><span class="famname">Avataṃsaka phal chen</span><span class="famr">Tōh 44</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:100%"></i><i class="mr" style="width:0%"></i></span><span class="famct">1</span></summary><div class="fambody" data-key="t-kangyur-3"></div></details><details class="fam"><summary><span class="famname">Ratnakūṭa dkon brtsegs</span><span class="famr">Tōh 45–93</span><em>Jewel Heap</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:67.3469387755102%"></i><i class="mr" style="width:32.6530612244898%"></i></span><span class="famct">49</span></summary><div class="fambody" data-key="t-kangyur-4"></div></details><details class="fam"><summary><span class="famname">General Sūtra mdo sde</span><span class="famr">Tōh 94–359</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:72.69076305220884%"></i><i class="mr" style="width:27.309236947791167%"></i></span><span class="famct">249</span></summary><div class="fambody" data-key="t-kangyur-5"></div></details><details class="fam"><summary><span class="famname">Tantra rgyud</span><span class="famr">Tōh 360–827</span><em>largest Kangyur section</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:29.88505747126437%"></i><i class="mr" style="width:70.11494252873564%"></i></span><span class="famct">435</span></summary><div class="fambody" data-key="t-kangyur-6"></div></details><details class="fam"><summary><span class="famname">Nyingma old tantras rnying rgyud</span><span class="famr">Tōh 828–844</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">13</span></summary><div class="fambody" data-key="t-kangyur-7"></div></details><details class="fam"><summary><span class="famname">Kālacakra</span><span class="famr">Tōh 845</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">1</span></summary><div class="fambody" data-key="t-kangyur-8"></div></details><details class="fam"><summary><span class="famname">Dhāraṇī gzungs ’dus</span><span class="famr">Tōh 846–1108</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:36.40167364016737%"></i><i class="mr" style="width:63.59832635983263%"></i></span><span class="famct">239</span></summary><div class="fambody" data-key="t-kangyur-9"></div></details></section><section class="basket" id="t-tengyur"><h2>Tengyur <span class="pi">bstan ’gyur · the translated treatises</span><span class="ct">Tōh 1109–4569 · ranges ≈</span></h2><div class="blurb">The greatest library of Indian Buddhist philosophy — Nāgārjuna, Asaṅga, Vasubandhu, Dharmakīrti, Śāntideva. ~99% untranslated; the public-domain islands are a handful of Victorian/early-20th-c. Sanskritists. Internal section boundaries are approximate (≈).</div><details class="fam"><summary><span class="famname">Stotra — Praises bstod tshogs</span><span class="famr">≈Tōh 1109–1179</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">71</span></summary><div class="fambody" data-key="t-tengyur-0"></div></details><details class="fam"><summary><span class="famname">Tantra commentaries rgyud ’grel</span><span class="famr">≈Tōh 1180–3785</span><em>by far the largest section</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0.15408320493066258%"></i><i class="mr" style="width:99.84591679506933%"></i></span><span class="famct">2596</span></summary><div class="fambody" data-key="t-tengyur-1"></div></details><details class="fam"><summary><span class="famname">Prajñāpāramitā commentaries</span><span class="famr">≈Tōh 3786–3823</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:3.125%"></i><i class="mr" style="width:96.875%"></i></span><span class="famct">32</span></summary><div class="fambody" data-key="t-tengyur-2"></div></details><details class="fam"><summary><span class="famname">Madhyamaka dbu ma</span><span class="famr">≈Tōh 3824–3979</span><span class="fambar"><i class="mg" style="width:0.6493506493506493%"></i><i class="ma" style="width:1.948051948051948%"></i><i class="mr" style="width:97.40259740259741%"></i></span><span class="famct">154</span></summary><div class="fambody" data-key="t-tengyur-3"></div></details><details class="fam"><summary><span class="famname">Sūtra commentaries mdo ’grel</span><span class="famr">≈Tōh 3980–4008</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:3.4482758620689653%"></i><i class="mr" style="width:96.55172413793103%"></i></span><span class="famct">29</span></summary><div class="fambody" data-key="t-tengyur-4"></div></details><details class="fam"><summary><span class="famname">Yogācāra sems tsam</span><span class="famr">≈Tōh 4009–4085</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">75</span></summary><div class="fambody" data-key="t-tengyur-5"></div></details><details class="fam"><summary><span class="famname">Abhidharma mngon pa</span><span class="famr">≈Tōh 4086–4098</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:15.384615384615385%"></i><i class="mr" style="width:84.61538461538461%"></i></span><span class="famct">13</span></summary><div class="fambody" data-key="t-tengyur-6"></div></details><details class="fam"><summary><span class="famname">Vinaya commentaries ’dul ba</span><span class="famr">≈Tōh 4099–4149</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">50</span></summary><div class="fambody" data-key="t-tengyur-7"></div></details><details class="fam"><summary><span class="famname">Jātaka &amp; Epistles</span><span class="famr">≈Tōh 4150–4200</span><span class="fambar"><i class="mg" style="width:3.9215686274509802%"></i><i class="ma" style="width:3.9215686274509802%"></i><i class="mr" style="width:92.15686274509804%"></i></span><span class="famct">51</span></summary><div class="fambody" data-key="t-tengyur-8"></div></details><details class="fam"><summary><span class="famname">Pramāṇa — Logic tshad ma</span><span class="famr">≈Tōh 4201–4268</span><span class="fambar"><i class="mg" style="width:1.4925373134328357%"></i><i class="ma" style="width:2.9850746268656714%"></i><i class="mr" style="width:95.52238805970148%"></i></span><span class="famct">67</span></summary><div class="fambody" data-key="t-tengyur-9"></div></details><details class="fam"><summary><span class="famname">The sciences</span><span class="famr">≈Tōh 4269–4464</span><em>grammar · medicine · arts · statecraft</em><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0.5376344086021506%"></i><i class="mr" style="width:99.46236559139786%"></i></span><span class="famct">186</span></summary><div class="fambody" data-key="t-tengyur-10"></div></details><details class="fam"><summary><span class="famname">Atiśa’s works &amp; catalogue</span><span class="famr">≈Tōh 4465–4569</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">2</span></summary><div class="fambody" data-key="t-tengyur-11"></div></details></section></main>
+  </section>
+
+  <footer id="foot">One artifact, four views. <b>The Three Canons</b> maps the whole Buddhist textual world; the <b>Pāli</b>, <b>Chinese</b> and <b>Tibetan</b> views walk into each canon. Pāli is enumerated to every named text (253 discourses, SuttaCentral IDs on hover); Chinese and Tibetan are now enumerated to every catalogued text (2459 Taishō from CBETA + 4355 Tōhoku from 84000), in expandable families coloured by translation availability. Colour = worldwide public-domain / CC0 availability (life+70 AND the US 95-yr term); 84000 &amp; BDK are open-access but © (amber), not PD. Contested figures footnoted, not smoothed. Data audited 2026-07-23 — the <em>Awakening of Faith</em> restored to green (Timothy Richard 1907, d.1919). Sources: SuttaCentral (CC0), PTS, SBE, the Taishō (SAT/CBETA) &amp; Tōhoku catalogues, 84000. Best-effort scholarship, not legal advice.</footer>
+</div>
+
+
+
+<script>
+
+(function () {
+  var KEY = 'da-dark-mode';
+  if (localStorage.getItem(KEY) === 'true')
+    document.documentElement.setAttribute('data-theme', 'dark');
+  else
+    document.documentElement.setAttribute('data-theme', 'light');
+  function flip() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    localStorage.setItem(KEY, dark ? 'false' : 'true');
+    label();
+  }
+  function label() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+      b.textContent = dark ? 'Light' : 'Dark';
+    });
+  }
+  document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+    b.addEventListener('click', flip);
+  });
+  label();
+
+  function norm(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+            .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+  }
+  var SLUG = document.body.getAttribute('data-map');
+  if (!SLUG) return;
+  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  .then(function (B) {
+    var byKey = {};
+    B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      var zid = sec.id.replace(/^zone-/, '');
+      var states = [];
+      sec.querySelectorAll('.chip, .tc, .su').forEach(function (el) {
+        var nmEl = el.querySelector('.nm') || el.querySelector('.tl') ||
+                   el.querySelector('span:last-child');
+        if (!nmEl) return;
+        var b = byKey[zid + '||' + norm(nmEl.textContent)];
+        if (!b) return;
+        states.push(b.state);
+        el.classList.add('m-' + b.state.replace('held-several', 'several'));
+        if (!el.querySelector('.mdot')) {
+          var d = document.createElement('span');
+          d.className = 'mdot';
+          el.insertBefore(d, el.firstChild);
+        }
+        if (b.restricted_note) {
+          el.title = (el.title ? el.title + ' — ' : '') + b.restricted_note.length +
+                     ' related record(s) held restricted (' +
+                     b.restricted_note[0].reason_class + ')';
+        }
+        if (b.state === 'held' && b.read && b.read.length === 1) {
+          var a = document.createElement('a');
+          a.className = 'm-link'; a.href = '../' + b.read[0].url;
+          el.parentNode.insertBefore(a, el); a.appendChild(el);
+        } else if (b.state === 'held-several' && b.read) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', function () {
+            var next = el.nextElementSibling;
+            if (next && next.classList && next.classList.contains('m-chooser')) {
+              next.remove(); return;
+            }
+            var box = document.createElement('div');
+            box.className = 'm-chooser';
+            var kind = (b.chooser === 'works') ? ' works held — choose'
+                                               : ' translations held — choose';
+            box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
+                            b.read.length + kind + '</div>';
+            b.read.forEach(function (r) {
+              var a = document.createElement('a');
+              a.href = '../' + r.url;
+              var label = (b.chooser === 'works')
+                  ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
+                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
+                    ' <span class="mc-sub">· ' + r.work + '</span>';
+              a.innerHTML = label + ' <span class="mc-go">→ read</span>';
+              box.appendChild(a);
+            });
+            el.parentNode.insertBefore(box, el.nextSibling);
+          });
+        }
+      });
+      if (states.length) {
+        var held = 0, poss = 0, none = 0, res = 0;
+        states.forEach(function (s) {
+          if (s === 'held' || s === 'held-several') held++;
+          else if (s === 'possible') poss++;
+          else if (s === 'restricted') res++;
+          else none++;
+        });
+        var n = states.length;
+        var bar = document.createElement('span');
+        bar.className = 'zb';
+        bar.innerHTML = '<i class="zb-held" style="width:' + (held * 100 / n) + '%"></i>' +
+                        '<i class="zb-poss" style="width:' + (poss * 100 / n) + '%"></i>' +
+                        '<i class="zb-none" style="width:' + (none * 100 / n) + '%"></i>' +
+                        '<i class="zb-res" style="width:' + (res * 100 / n) + '%"></i>';
+        var old = sec.querySelector('.mini, .fambar');
+        var head = sec.querySelector('.zone-h, h2');
+        if (old && old.closest('section') === sec) old.replaceWith(bar);
+        else if (head) head.appendChild(bar);
+      }
+    });
+    // mast fraction line — derived, never typed
+    var held = (B.counts['held'] || 0) + (B.counts['held-several'] || 0);
+    var poss = B.counts['possible'] || 0;
+    fetch('../maps/doors.json').then(function (r) { return r.json(); })
+    .then(function (D) {
+      var door = D.doors.filter(function (d) { return d.tradition === SLUG; })[0];
+      var mast = document.querySelector('.mast');
+      if (!mast || !door) return;
+      var p = document.createElement('p');
+      p.id = 'm-fraction';
+      p.innerHTML = door.sub.replace(/ texts$/, ' texts in the tradition') +
+                    ' · <b>' + held + ' readable here</b> · ' + poss + ' more possible';
+      mast.appendChild(p);
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

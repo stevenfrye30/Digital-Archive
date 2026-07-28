@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Map of Ancient World Texts — Digital Archive</title>
+<!-- Ported from The Map of Sacred Texts (artifact fea77718) per Task 20;
+     archive dress per Sacred Map Harmonization + Map Node States. -->
+<style>
+@charset "utf-8";
+
+:root { --bg: #f4f0e7; --surface: #fffdf8; --panel: #f7f3ea; --ink: #241f18; --ink-soft: #5b5346; --ink-faint: #928777; --line: #e6ddc9; --line2: #d4c8ad; --accent: #7d6a4a; --accent-ink: #5f5238; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --x: #8a8175; --x-t: #ece9e2; --track: #e9e0cf; --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif; --sans: ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+
+:root[data-theme="light"] { --bg: #f4f0e7; --surface: #fffdf8; --panel: #f7f3ea; --ink: #241f18; --ink-soft: #5b5346; --ink-faint: #928777; --line: #e6ddc9; --line2: #d4c8ad; --accent: #7d6a4a; --accent-ink: #5f5238; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --x: #8a8175; --x-t: #ece9e2; --track: #e9e0cf; }
+
+:root[data-theme="dark"] { --bg: #14120e; --surface: #1e1a13; --panel: #221d15; --ink: #ece4d3; --ink-soft: #a89b84; --ink-faint: #7d7059; --line: #322a1c; --line2: #443826; --accent: #c4a878; --accent-ink: #d4bd93; --g: #5cb36a; --a: #d99a3c; --r: #e0687a; --g-t: #16261a; --a-t: #28230f; --r-t: #2a1a20; --g-t2: #142013; --x: #6f6a5e; --x-t: #23211c; --track: #2a2318; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+.page { max-width: 1180px; margin: 0px auto; padding: clamp(1.2rem, 4vw, 2.6rem) clamp(1rem, 4vw, 2.2rem) 5rem; }
+
+.mast { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 1.3rem; margin-bottom: 1rem; }
+
+.mast .sym { font-size: 1.7rem; color: var(--accent); }
+
+.mast h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.8rem, 5.2vw, 3rem); margin: 0.3rem 0px 0.15rem; letter-spacing: -0.01em; text-wrap: balance; }
+
+.mast p { margin: 0.35rem auto 0px; max-width: 66ch; color: var(--ink-soft); font-size: 0.95rem; }
+
+.mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
+
+.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
+
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
+
+.stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+
+.stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
+
+.greenline b { color: var(--g); }
+
+.insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
+
+.insight b { color: var(--ink); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.82rem; color: var(--ink-soft); align-items: center; justify-content: center; margin: 0px 0px 1.3rem; padding: 0.7rem 0px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.legend b { color: var(--ink); }
+
+.lg { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+.basket { margin: 0px 0px 1.7rem; }
+
+.basket > h2 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; margin: 0px 0px 0.1rem; display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; border-bottom: 2px solid var(--line2); padding-bottom: 0.35rem; }
+
+.basket > h2 .pi { font-size: 0.78rem; font-style: italic; color: var(--accent-ink); font-family: var(--serif); font-weight: 400; }
+
+.basket > h2 .ct { margin-left: auto; font-size: 0.72rem; color: var(--ink-faint); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.basket > .blurb { font-size: 0.85rem; color: var(--ink-faint); margin: 0.5rem 0px 1rem; max-width: 84ch; }
+
+details.fam { border: 1px solid var(--line); border-radius: 9px; margin: 0px 0px 0.4rem; background: var(--surface); }
+
+details.fam > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.75rem; font-family: var(--serif); font-size: 0.96rem; }
+
+details.fam > summary::-webkit-details-marker { display: none; }
+
+details.fam > summary::before { content: "▶"; font-size: 0.62rem; color: var(--ink-faint); transition: transform 0.15s; flex: 0 0 auto; }
+
+details.fam[open] > summary::before { transform: rotate(90deg); }
+
+.famname { font-weight: 600; }
+
+.famr { font-size: 0.68rem; color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+
+.fambar { margin-left: auto; display: flex; width: 60px; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); flex: 0 0 auto; }
+
+.fambar i { display: block; height: 100%; }
+
+.fambar .mg { background: var(--g); }
+
+.fambar .ma { background: var(--a); }
+
+.fambar .mr { background: var(--r); }
+
+.fambar .mx { background: var(--x); }
+
+.famct { font-size: 0.7rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; min-width: 2.2em; text-align: right; flex: 0 0 auto; }
+
+.fambody { padding: 0.15rem 0.75rem 0.65rem; }
+
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
+
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+
+.tc .tl { color: var(--ink); }
+
+.tc .te { font-size: 0.69rem; color: var(--ink-soft); font-style: italic; }
+
+.tc.g { border-left-color: var(--g); background: var(--g-t2); }
+
+.tc.a { border-left-color: var(--a); background: var(--a-t); }
+
+.tc.r { border-left-color: var(--r); background: var(--r-t); }
+
+.tc.x { border-left-color: var(--x); background: var(--x-t); }
+
+.tc.x .tl { color: var(--ink-soft); }
+
+footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1rem; font-size: 0.77rem; color: var(--ink-faint); line-height: 1.6; }
+
+.toggle { position: fixed; top: 0.7rem; right: 0.7rem; background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 99px; padding: 0.32rem 0.68rem; font-size: 0.76rem; cursor: pointer; z-index: 30; }
+</style>
+<style>
+
+/* ── archive dress: ground tokens (per Sacred Map Harmonization §III) ──
+   per-tradition --accent/--accent-ink are KEPT; the ground converges. */
+:root, :root[data-theme="light"] {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #a09080;
+  --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Georgia, 'Times New Roman', serif;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+}
+/* archive top strip */
+#arch-topbar { display:flex; justify-content:space-between; align-items:center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: #7a5c3a; }
+#arch-topnav { display: flex; gap: 22px; }
+
+/* ── five-state chip dress (Map Node States specimen, verbatim tokens) ── */
+.m-held, .m-several { background: #f1ebe1 !important;
+  border-color: #e0d8c8 !important; border-left: 3px solid #7a5c3a !important; }
+.m-possible { background: none !important;
+  border-color: #ddd0b8 !important; border-left: 3px solid #c9ab7a !important; }
+.m-none { background: none !important;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-restricted { background: none !important;
+  border: 1px dashed #b8ab99 !important; border-left: 3px dashed #a09080 !important; }
+.m-unmapped { background: none !important; opacity: .75;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-held .nm, .m-several .nm, .m-held .tl, .m-several .tl { color: var(--ink) !important; }
+.m-possible .nm, .m-possible .tl { color: var(--ink-soft) !important; }
+.m-none .nm, .m-none .tl, .m-unmapped .nm, .m-unmapped .tl { color: var(--ink-faint) !important; }
+.m-restricted .nm, .m-restricted .tl { color: var(--ink-faint) !important; }
+.mdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  display: inline-block; margin-right: 2px; box-sizing: border-box; }
+.m-held .mdot { background: #7a5c3a; }
+.m-several .mdot { background: #7a5c3a; box-shadow: 0 0 0 1.5px #f1ebe1, 0 0 0 3px #7a5c3a; }
+.m-possible .mdot { border: 1.5px solid #a8865a; }
+.m-none .mdot, .m-unmapped .mdot { background: #ddd6c8; }
+.m-restricted .mdot { border: 1.5px dashed #a09080; }
+.m-held .dot, .m-several .dot, .m-possible .dot, .m-none .dot,
+.m-restricted .dot, .m-unmapped .dot { display: none; }
+a.m-link { text-decoration: none; }
+:root[data-theme="dark"] .m-held, :root[data-theme="dark"] .m-several {
+  background: #2a2620 !important; border-left-color: #c4a060 !important; }
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background: #c4a060; }
+:root[data-theme="dark"] .m-several .mdot { box-shadow: 0 0 0 1.5px #2a2620, 0 0 0 3px #c4a060; }
+
+/* derived four-band zone bar */
+.zb { display: inline-flex; height: 6px; width: 170px; border-radius: 3px;
+  overflow: hidden; background: var(--track); vertical-align: middle; }
+.zb i { display: block; height: 100%; }
+.zb .zb-held { background: #7a5c3a; }
+.zb .zb-poss { background: none; border-top: 6px double #a8865a; box-sizing: border-box; }
+.zb .zb-none { background: #ddd6c8; }
+.zb .zb-res  { background: repeating-linear-gradient(45deg, #a09080 0 2px, #eee9e0 2px 4px); }
+
+/* legend strip */
+#m-legend { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2); padding: 12px 0; margin: 18px 0 26px;
+  font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em; text-transform: uppercase; }
+#m-legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+/* chooser inset (specimen form) */
+.m-chooser { border-left: 2px solid #7a5c3a; background: #f6f2ea;
+  margin: 8px 0 14px 12px; padding: 12px 18px; max-width: 30em; }
+:root[data-theme="dark"] .m-chooser { background: #26232c; }
+.m-chooser .mc-head { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
+.m-chooser a { display: block; font: 400 14px/1.5 var(--serif); color: var(--ink);
+  text-decoration: none; }
+.m-chooser a:hover { color: #7a5c3a; }
+.m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
+.m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
+
+/* fraction line under the mast */
+#m-fraction { text-align: center;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); margin: 4px 0 0; }
+#m-fraction b { color: #7a5c3a; font-weight: 400; }
+
+/* deep views: shown stacked (the artifact's tab JS was not captured) */
+section.view { display: block !important; }
+
+</style>
+</head>
+<body data-map="ancient">
+<div id="arch-topbar"><a href="../">&larr; The Archive</a><nav id="arch-topnav"><a href="./">The Map of Sacred Texts</a><a href="../hall/">The Religion Hall</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="m-legend" aria-label="Node states">
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
+<span style="color:#a8865a"><span class="mdot" style="border:1.5px solid #a8865a"></span>public domain &middot; not yet held</span>
+<span style="color:#a09080"><span class="mdot" style="background:#ddd6c8"></span>no PD translation</span>
+<span style="color:#a09080"><span class="mdot" style="border:1.5px dashed #a09080"></span>held &middot; restricted</span>
+</div><button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
+<div class="page">
+  <header class="mast">
+    <div class="sym" aria-hidden="true">🏺</div>
+    <h1>The Map of Ancient World Texts</h1>
+    <p>The scriptures of the great <span class="em">dead religions</span> — from Egypt and Babylon, across the Levant, Greece, and Rome, to the Norse, the Celts, and the pre-Columbian New World. Their worshippers are gone, but their sacred texts survive. Coloured by whether a worldwide-public-domain English translation exists.</p>
+    <div class="statband" id="statband"><div class="stat"><b>71</b><span>texts</span></div><div class="stat"><b>53</b><span>green</span></div><div class="stat"><b>8</b><span>amber</span></div><div class="stat"><b>10</b><span>red</span></div></div>
+    <p class="greenline" id="greenline"><b>53 of 71 green</b> — the Victorian antiquarians (Budge, Frazer, Mead, Thorpe, Guest, Brinton, Markham) translated most of it before 1931 — the red is what was deciphered too late (the Ugaritic Baal Cycle, the Hittite myths, the Egyptian Pyramid &amp; Coffin Texts), untranslated to this day (the Etruscan Liber Linteus), or oddly still ©-blocked (the Popol Vuh).</p>
+  </header>
+  <div class="insight"><b>The public domain runs greenest at the dawn of history.</b> Most of the ancient world’s sacred literature is freely readable — not only because it is ancient, but because the <b>Victorian and Edwardian antiquarians</b> (Budge, Breasted, L.W. King, Frazer, Mead, Thorpe, Lady Guest, Brinton, Markham) translated nearly all of it into the public domain before 1931. The red gaps trace a sharp historical line: the great corpora <b>deciphered too late</b> — the Ugaritic <b>Baal Cycle</b> and the <b>Hittite</b> myths (read only after 1930) — are wholly under copyright, as are the Egyptian <b>Pyramid &amp; Coffin Texts</b> (the oldest religious writing on Earth, first Englished in 1952 and 1973) and the Maya <b>Popol Vuh</b>, which astonishingly still has <b>no complete public-domain English</b>. The <span class="em">gods</span> of these traditions live in the comparative-pantheon map; here are their <span class="em">books</span>.</div>
+  <div class="legend">
+    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
+    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
+    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
+    <span class="lg" id="xleg" style="display:none"></span>
+    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
+  </div>
+  <main id="main"><section class="basket" id="aw-egypt"><h2>Egyptian <span class="pi">the Nile valley · from ~2400 BCE</span><span class="ct">9 texts</span></h2><div class="blurb">The funerary and temple religion of pharaonic Egypt. Budge’s (dated but public-domain) translations are the free backbone; the oldest layer, the Pyramid &amp; Coffin Texts, has no PD English at all.</div><details class="fam" open=""><summary><span class="famname">Funerary &amp; netherworld books</span><span class="fambar"><i class="mg" style="width:40%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:60%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Book of the Dead (Coming Forth by Day)</span><span class="te">Budge 1895/1901 (PD)</span></span><span class="tc g"><span class="tl">The Book of Gates &amp; the Amduat</span><span class="te">Budge, Egyptian Heaven and Hell 1905 (PD)</span></span><span class="tc r"><span class="tl">The Pyramid Texts (Old Kingdom)</span><span class="te">no PD English — Mercer 1952 ©</span></span><span class="tc r"><span class="tl">The Coffin Texts (Middle Kingdom)</span><span class="te">no PD English — Faulkner 1973 ©</span></span><span class="tc r"><span class="tl">The Book of Caverns</span><span class="te">no PD English — Piankoff ©</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Hymns, theology &amp; wisdom</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Great Hymn to the Aten (Akhenaten)</span><span class="te">Breasted 1905 (PD)</span></span><span class="tc g"><span class="tl">The Memphite Theology (Shabaka Stone)</span><span class="te">Breasted 1901 (PD)</span></span><span class="tc g"><span class="tl">The Instruction of Ptahhotep</span><span class="te">Gunn 1906 (PD)</span></span><span class="tc g"><span class="tl">Hymns to Amun, Osiris &amp; the Nile</span><span class="te">Budge 1904–12 (PD)</span></span></div></div></details></section><section class="basket" id="aw-meso"><h2>Mesopotamian <span class="pi">Sumer, Babylon &amp; Assyria · from ~2600 BCE</span><span class="ct">9 texts</span></h2><div class="blurb">The world’s oldest literate religion. The Akkadian/Babylonian classics are public-domain via King and Thompson; the Sumerian layer (Inanna, Enheduanna) survives mainly in modern © or the free-but-not-PD ETCSL.</div><details class="fam" open=""><summary><span class="famname">Cosmogony &amp; epic</span><span class="fambar"><i class="mg" style="width:75%"></i><i class="ma" style="width:25%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Enūma Eliš (the Babylonian creation)</span><span class="te">L.W. King 1902 (PD)</span></span><span class="tc g"><span class="tl">The Epic of Gilgamesh</span><span class="te">R.C. Thompson 1930 (PD 2026) · Smith 1876</span></span><span class="tc a"><span class="tl">Atra-Hasis (the flood)</span><span class="te">partial PD (Smith/Rogers); full = Lambert ©</span></span><span class="tc g"><span class="tl">Adapa · Etana (myths)</span><span class="te">Rogers/King 1899–1916 (PD)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Law, hymns &amp; the underworld</span><span class="fambar"><i class="mg" style="width:40%"></i><i class="ma" style="width:60%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Code of Hammurabi (given by Shamash)</span><span class="te">Johns 1903 · Harper 1904 (PD)</span></span><span class="tc g"><span class="tl">The Descent of Ishtar (Akkadian)</span><span class="te">L.W. King · Jastrow 1898 (PD)</span></span><span class="tc a"><span class="tl">The Descent of Inanna (Sumerian)</span><span class="te">Kramer © / ETCSL (free, not PD)</span></span><span class="tc a"><span class="tl">Ludlul bēl nēmeqi ("the Babylonian Job")</span><span class="te">Jastrow partial PD; Lambert ©</span></span><span class="tc a"><span class="tl">Sumerian temple hymns · Enheduanna</span><span class="te">Langdon liturgies PD; Enheduanna © / ETCSL</span></span></div></div></details></section><section class="basket" id="aw-levant"><h2>The Levant &amp; Anatolia <span class="pi">Canaan, Phoenicia, the Hittites · from ~1400 BCE</span><span class="ct">7 texts</span></h2><div class="blurb">The western and northern arc of the ancient Near East. The Phoenician and Aramaic layer is public-domain — but the two greatest corpora, Ugaritic Canaanite and Hittite, were deciphered too late for the public domain and remain wholly under copyright.</div><details class="fam" open=""><summary><span class="famname">Canaanite &amp; Anatolian — deciphered too late for the public domain</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i><i class="mx" style="width:0%"></i></span><span class="famct">2</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Ugaritic: the Baal Cycle · Kirta · Aqhat</span><span class="te">Ras Shamra, found 1929 — all English © (Ginsberg 1950+)</span></span><span class="tc r"><span class="tl">Hittite: the Kumarbi cycle · Telipinu · plague prayers</span><span class="te">deciphered post-1915 — English © (Goetze 1950+)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Phoenician &amp; Aramaic — public domain</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Sanchuniathon’s cosmogony (via Philo of Byblos → Eusebius)</span><span class="te">Cory, Ancient Fragments 1832 · Gifford 1903</span></span><span class="tc g"><span class="tl">The Story of Ahiqar (Aramaic wisdom)</span><span class="te">Conybeare, Harris &amp; Lewis 1898/1913</span></span><span class="tc g"><span class="tl">The Elephantine papyri (the temple of YHW)</span><span class="te">Cowley 1923 (PD)</span></span><span class="tc g"><span class="tl">Aramaic incantation bowls</span><span class="te">Montgomery, Nippur 1913 (PD)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">A living survival</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">1</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Yazidi sacred books (Kitāb al-Jilwa · Meṣḥef Reş)</span><span class="te">Browne, in Parry 1895 (PD) — living faith; disputed</span></span></div></div></details></section><section class="basket" id="aw-greek"><h2>Greek <span class="pi">the Olympian gods · from ~700 BCE</span><span class="ct">19 texts</span></h2><div class="blurb">The theogony, cult, mystery-initiation, and late-antique theology of the Greek gods — almost entirely public-domain through the Loeb-era translators, the Neoplatonist Thomas Taylor, and G.R.S. Mead.</div><details class="fam" open=""><summary><span class="famname">Theogony &amp; the hymns</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Hesiod — Theogony &amp; Works and Days</span><span class="te">Evelyn-White, Loeb 1914 (PD)</span></span><span class="tc g"><span class="tl">Hesiod — the Catalogue of Women</span><span class="te">Evelyn-White, Loeb 1914 (PD)</span></span><span class="tc g"><span class="tl">The Homeric Hymns (33)</span><span class="te">Evelyn-White 1914 · Lang 1899 (PD)</span></span><span class="tc g"><span class="tl">The Orphic Hymns (87)</span><span class="te">Thomas Taylor 1792 (PD)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Mythography &amp; epic</span><span class="fambar"><i class="mg" style="width:50%"></i><i class="ma" style="width:25%"></i><i class="mr" style="width:25%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Apollodorus — the Bibliotheca (Library)</span><span class="te">Frazer, Loeb 1921 (PD)</span></span><span class="tc g"><span class="tl">Homer — the Iliad &amp; the Odyssey</span><span class="te">Lang/Butcher · Murray, Loeb (PD)</span></span><span class="tc a"><span class="tl">Nonnus — the Dionysiaca</span><span class="te">Rouse, Loeb 1940 — US © to 2036</span></span><span class="tc r"><span class="tl">The Orphic theogony / Derveni papyrus</span><span class="te">discovered 1962 — modern © only</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Cult, oracle &amp; the mysteries</span><span class="fambar"><i class="mg" style="width:80%"></i><i class="ma" style="width:20%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Pausanias — Description of Greece (the sanctuaries)</span><span class="te">Frazer 1897 (PD)</span></span><span class="tc g"><span class="tl">Plutarch — On Isis and Osiris &amp; the Delphic dialogues</span><span class="te">Goodwin rev. 1870 (PD)</span></span><span class="tc a"><span class="tl">The Orphic gold tablets (the Bacchic passwords)</span><span class="te">Harrison prose PD; Murray verse © to 2028</span></span><span class="tc g"><span class="tl">The Chaldean Oracles</span><span class="te">Westcott 1895 · Taylor 1806 (PD)</span></span><span class="tc g"><span class="tl">The Hermetica (Corpus Hermeticum)</span><span class="te">Mead, Thrice-Greatest Hermes 1906 (PD)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The Neoplatonic theurgists</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">6</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Iamblichus — On the Mysteries (De Mysteriis)</span><span class="te">Thomas Taylor 1821 (PD)</span></span><span class="tc g"><span class="tl">Sallustius — On the Gods and the World</span><span class="te">Thomas Taylor 1793 (PD)</span></span><span class="tc g"><span class="tl">Porphyry — On the Cave of the Nymphs · On Abstinence</span><span class="te">Thomas Taylor 1823 (PD)</span></span><span class="tc g"><span class="tl">Proclus — the Hymns</span><span class="te">Thomas Taylor (PD)</span></span><span class="tc g"><span class="tl">Philostratus — Life of Apollonius of Tyana</span><span class="te">Conybeare, Loeb 1912 (PD)</span></span><span class="tc g"><span class="tl">Lucian — On the Syrian Goddess (De Dea Syria)</span><span class="te">Strong &amp; Garstang 1913 (PD)</span></span></div></div></details></section><section class="basket" id="aw-roman"><h2>Roman <span class="pi">the state cult · from ~200 BCE</span><span class="ct">10 texts</span></h2><div class="blurb">The mythology, civic religion, theology, and mystery cults of Rome — public-domain through Dryden, Yonge, Mead and the Loeb translators, save the Etruscan books (untranslated to this day) and the antiquarian Macrobius.</div><details class="fam" open=""><summary><span class="famname">Myth &amp; the sacred calendar</span><span class="fambar"><i class="mg" style="width:80%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:20%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Ovid — the Metamorphoses</span><span class="te">Garth–Dryden 1717 · Miller 1916 (PD)</span></span><span class="tc g"><span class="tl">Ovid — the Fasti (the religious calendar)</span><span class="te">Frazer, Macmillan 1929 (PD; Loeb ed. 1931)</span></span><span class="tc g"><span class="tl">Virgil — the Aeneid</span><span class="te">Dryden 1697 (PD)</span></span><span class="tc g"><span class="tl">The Sibylline Oracles</span><span class="te">Milton Terry 1899 (PD)</span></span><span class="tc r"><span class="tl">Macrobius — the Saturnalia</span><span class="te">no PD English — Davies 1969 / Kaster ©</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Theology, mystery &amp; the state cult</span><span class="fambar"><i class="mg" style="width:80%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:20%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Cicero — On the Nature of the Gods &amp; On Divination</span><span class="te">C.D. Yonge 1853 (PD)</span></span><span class="tc g"><span class="tl">Apuleius — the Golden Ass (the Isis initiation, Bk 11)</span><span class="te">Butler 1910 · Adlington 1566 (PD)</span></span><span class="tc g"><span class="tl">The Mithras Liturgy (from the Great Magical Papyrus)</span><span class="te">Mead, A Mithraic Ritual 1907 (PD)</span></span><span class="tc g"><span class="tl">Julian — Hymns to the Mother of the Gods &amp; to King Helios</span><span class="te">W.C. Wright, Loeb 1913 (PD)</span></span><span class="tc r"><span class="tl">Etruscan: the Liber Linteus &amp; the disciplina etrusca</span><span class="te">untranslated in any language — testimonia only</span></span></div></div></details></section><section class="basket" id="aw-norse"><h2>Norse &amp; Northern Europe <span class="pi">the Æsir &amp; Vanir; the Finnic north</span><span class="ct">6 texts</span></h2><div class="blurb">The mythology of the Norse gods, preserved by Christian Icelanders, with the surviving Germanic pagan charms and the Finnish folk epic — all public-domain (use Anderson 1880 for the Prose Edda; Brodeur 1916 is US-only).</div><details class="fam" open=""><summary><span class="famname">The Eddas &amp; the sagas</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Poetic Edda (Codex Regius)</span><span class="te">Thorpe 1866 · Bellows 1923 (PD)</span></span><span class="tc g"><span class="tl">The Prose Edda (Snorri Sturluson)</span><span class="te">Anderson 1880 (PD; Brodeur 1916 US-only)</span></span><span class="tc g"><span class="tl">Heimskringla (the Ynglinga saga)</span><span class="te">Laing 1844 (PD)</span></span><span class="tc g"><span class="tl">The Völsunga Saga</span><span class="te">Morris &amp; Magnússon 1888 (PD)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Charms &amp; the Finnic north</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">2</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Merseburg Charms &amp; the Nine Herbs Charm (Woden · Frija)</span><span class="te">Thorpe · Cockayne 1866 (PD) — pagan spell-remnants</span></span><span class="tc g"><span class="tl">The Kalevala (Finnish pagan epic)</span><span class="te">Kirby 1907 · Crawford 1888 — 19th-c. folk compilation</span></span></div></div></details></section><section class="basket" id="aw-celtic"><h2>Celtic <span class="pi">the Túatha Dé &amp; the Mabinogi · Wales &amp; Ireland</span><span class="ct">4 texts</span></h2><div class="blurb">The mythological cycles of Wales and Ireland — public-domain through Lady Guest and Lady Gregory; only the full Book of Invasions has an unclear US status.</div><details class="fam" open=""><summary><span class="famname">Welsh &amp; Irish myth</span><span class="fambar"><i class="mg" style="width:75%"></i><i class="ma" style="width:25%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Mabinogion (the four branches)</span><span class="te">Lady Guest 1849 (PD)</span></span><span class="tc g"><span class="tl">The Táin Bó Cúailnge (Cattle Raid of Cooley)</span><span class="te">Faraday 1904 · Dunn 1914 (PD)</span></span><span class="tc a"><span class="tl">Lebor Gabála Érenn (Book of Invasions)</span><span class="te">Macalister 1938–56 — worldwide-PD, US © to ~2034</span></span><span class="tc g"><span class="tl">Lady Gregory — Cuchulain of Muirthemne · Gods and Fighting Men</span><span class="te">Gregory 1902–04 (PD)</span></span></div></div></details></section><section class="basket" id="aw-newworld"><h2>The New World <span class="pi">the pre-Columbian Americas · Maya, Aztec, Inca</span><span class="ct">7 texts</span></h2><div class="blurb">The dead pantheons of the pre-Columbian Americas. Aztec and Inca religion has a clean public-domain foothold in the Victorian anthologists (Brinton, Markham) — but the Maya Popol Vuh, the greatest surviving Native American scripture, still has no complete public-domain English.</div><details class="fam" open=""><summary><span class="famname">Mesoamerica</span><span class="fambar"><i class="mg" style="width:50%"></i><i class="ma" style="width:25%"></i><i class="mr" style="width:25%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">The Popol Vuh (the K’iche’ Maya creation)</span><span class="te">no full PD English — Spence 1908 partial; Recinos/Goetz 1950 ©</span></span><span class="tc g"><span class="tl">The Aztec sacred hymns (to the gods)</span><span class="te">Brinton, Rig Veda Americanus 1890 (PD)</span></span><span class="tc g"><span class="tl">Aztec poetry &amp; the Legend of the Suns</span><span class="te">Brinton, Ancient Nahuatl Poetry 1887 (PD)</span></span><span class="tc r"><span class="tl">The Books of Chilam Balam · the Ritual of the Bacabs (Maya)</span><span class="te">only English = Roys 1933/1965 ©</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The Andes</span><span class="fambar"><i class="mg" style="width:66.66666666666666%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:33.33333333333333%"></i><i class="mx" style="width:0%"></i></span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Rites and Fables of the Yncas (Cristóbal de Molina)</span><span class="te">Markham 1873 (PD)</span></span><span class="tc g"><span class="tl">Garcilaso — the Royal Commentaries of the Incas</span><span class="te">Markham 1869–71 (PD)</span></span><span class="tc r"><span class="tl">The Huarochirí Manuscript (Andean myths)</span><span class="te">only English = Salomon 1991 ©</span></span></div></div></details></section></main>
+  <footer id="foot">A structural atlas of the ancient world’s sacred texts across eight traditions — coloured by worldwide public-domain English availability (translator death+70 AND US 95-year term). PD anchors: Budge/Breasted/Gunn (Egyptian), L.W. King/Johns (Mesopotamian), Cory/Cowley/Conybeare (Levant), Evelyn-White/Frazer/Taylor/Mead (Greek), Dryden/Yonge/Wright (Roman), Thorpe/Kirby (Norse &amp; Finnic), Guest/Gregory (Celtic), Brinton/Markham (New World). Red = no PD English (deciphered post-1930: Ugaritic, Hittite; untranslated: Etruscan; ©: Pyramid/Coffin Texts, Macrobius, PGM, Chilam Balam, Huarochirí). Amber = free-to-read-but-not-PD (ETCSL Sumerian) or US-only/unclear (Nonnus, Popol Vuh, Lebor Gabála). Yazidi is a living faith of disputed textual authenticity. Sources: sacred-texts.com, archive.org, ETCSL. Best-effort scholarship, not legal advice.</footer>
+</div>
+
+<script>
+
+(function () {
+  var KEY = 'da-dark-mode';
+  if (localStorage.getItem(KEY) === 'true')
+    document.documentElement.setAttribute('data-theme', 'dark');
+  else
+    document.documentElement.setAttribute('data-theme', 'light');
+  function flip() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    localStorage.setItem(KEY, dark ? 'false' : 'true');
+    label();
+  }
+  function label() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+      b.textContent = dark ? 'Light' : 'Dark';
+    });
+  }
+  document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+    b.addEventListener('click', flip);
+  });
+  label();
+
+  function norm(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+            .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+  }
+  var SLUG = document.body.getAttribute('data-map');
+  if (!SLUG) return;
+  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  .then(function (B) {
+    var byKey = {};
+    B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      var zid = sec.id.replace(/^zone-/, '');
+      var states = [];
+      sec.querySelectorAll('.chip, .tc, .su').forEach(function (el) {
+        var nmEl = el.querySelector('.nm') || el.querySelector('.tl') ||
+                   el.querySelector('span:last-child');
+        if (!nmEl) return;
+        var b = byKey[zid + '||' + norm(nmEl.textContent)];
+        if (!b) return;
+        states.push(b.state);
+        el.classList.add('m-' + b.state.replace('held-several', 'several'));
+        if (!el.querySelector('.mdot')) {
+          var d = document.createElement('span');
+          d.className = 'mdot';
+          el.insertBefore(d, el.firstChild);
+        }
+        if (b.restricted_note) {
+          el.title = (el.title ? el.title + ' — ' : '') + b.restricted_note.length +
+                     ' related record(s) held restricted (' +
+                     b.restricted_note[0].reason_class + ')';
+        }
+        if (b.state === 'held' && b.read && b.read.length === 1) {
+          var a = document.createElement('a');
+          a.className = 'm-link'; a.href = '../' + b.read[0].url;
+          el.parentNode.insertBefore(a, el); a.appendChild(el);
+        } else if (b.state === 'held-several' && b.read) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', function () {
+            var next = el.nextElementSibling;
+            if (next && next.classList && next.classList.contains('m-chooser')) {
+              next.remove(); return;
+            }
+            var box = document.createElement('div');
+            box.className = 'm-chooser';
+            var kind = (b.chooser === 'works') ? ' works held — choose'
+                                               : ' translations held — choose';
+            box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
+                            b.read.length + kind + '</div>';
+            b.read.forEach(function (r) {
+              var a = document.createElement('a');
+              a.href = '../' + r.url;
+              var label = (b.chooser === 'works')
+                  ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
+                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
+                    ' <span class="mc-sub">· ' + r.work + '</span>';
+              a.innerHTML = label + ' <span class="mc-go">→ read</span>';
+              box.appendChild(a);
+            });
+            el.parentNode.insertBefore(box, el.nextSibling);
+          });
+        }
+      });
+      if (states.length) {
+        var held = 0, poss = 0, none = 0, res = 0;
+        states.forEach(function (s) {
+          if (s === 'held' || s === 'held-several') held++;
+          else if (s === 'possible') poss++;
+          else if (s === 'restricted') res++;
+          else none++;
+        });
+        var n = states.length;
+        var bar = document.createElement('span');
+        bar.className = 'zb';
+        bar.innerHTML = '<i class="zb-held" style="width:' + (held * 100 / n) + '%"></i>' +
+                        '<i class="zb-poss" style="width:' + (poss * 100 / n) + '%"></i>' +
+                        '<i class="zb-none" style="width:' + (none * 100 / n) + '%"></i>' +
+                        '<i class="zb-res" style="width:' + (res * 100 / n) + '%"></i>';
+        var old = sec.querySelector('.mini, .fambar');
+        var head = sec.querySelector('.zone-h, h2');
+        if (old && old.closest('section') === sec) old.replaceWith(bar);
+        else if (head) head.appendChild(bar);
+      }
+    });
+    // mast fraction line — derived, never typed
+    var held = (B.counts['held'] || 0) + (B.counts['held-several'] || 0);
+    var poss = B.counts['possible'] || 0;
+    fetch('../maps/doors.json').then(function (r) { return r.json(); })
+    .then(function (D) {
+      var door = D.doors.filter(function (d) { return d.tradition === SLUG; })[0];
+      var mast = document.querySelector('.mast');
+      if (!mast || !door) return;
+      var p = document.createElement('p');
+      p.id = 'm-fraction';
+      p.innerHTML = door.sub.replace(/ texts$/, ' texts in the tradition') +
+                    ' · <b>' + held + ' readable here</b> · ' + poss + ' more possible';
+      mast.appendChild(p);
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

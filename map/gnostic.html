@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Map of Gnostic &amp; Dualist Texts — Digital Archive</title>
+<!-- Ported from The Map of Sacred Texts (artifact fea77718) per Task 20;
+     archive dress per Sacred Map Harmonization + Map Node States. -->
+<style>
+@charset "utf-8";
+
+:root { --bg: #f4f0e7; --surface: #fffdf8; --panel: #f7f3ea; --ink: #241f18; --ink-soft: #5b5346; --ink-faint: #928777; --line: #e6ddc9; --line2: #d4c8ad; --accent: #6a3d7a; --accent-ink: #4f2c5c; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --x: #8a8175; --x-t: #ece9e2; --track: #e9e0cf; --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif; --sans: ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+
+:root[data-theme="light"] { --bg: #f4f0e7; --surface: #fffdf8; --panel: #f7f3ea; --ink: #241f18; --ink-soft: #5b5346; --ink-faint: #928777; --line: #e6ddc9; --line2: #d4c8ad; --accent: #6a3d7a; --accent-ink: #4f2c5c; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --x: #8a8175; --x-t: #ece9e2; --track: #e9e0cf; }
+
+:root[data-theme="dark"] { --bg: #14120e; --surface: #1e1a13; --panel: #221d15; --ink: #ece4d3; --ink-soft: #a89b84; --ink-faint: #7d7059; --line: #322a1c; --line2: #443826; --accent: #b98fcf; --accent-ink: #cbaadd; --g: #5cb36a; --a: #d99a3c; --r: #e0687a; --g-t: #16261a; --a-t: #28230f; --r-t: #2a1a20; --g-t2: #142013; --x: #6f6a5e; --x-t: #23211c; --track: #2a2318; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+.page { max-width: 1180px; margin: 0px auto; padding: clamp(1.2rem, 4vw, 2.6rem) clamp(1rem, 4vw, 2.2rem) 5rem; }
+
+.mast { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 1.3rem; margin-bottom: 1rem; }
+
+.mast .sym { font-size: 1.7rem; color: var(--accent); }
+
+.mast h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.8rem, 5.2vw, 3rem); margin: 0.3rem 0px 0.15rem; letter-spacing: -0.01em; text-wrap: balance; }
+
+.mast p { margin: 0.35rem auto 0px; max-width: 66ch; color: var(--ink-soft); font-size: 0.95rem; }
+
+.mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
+
+.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
+
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
+
+.stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+
+.stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
+
+.greenline b { color: var(--g); }
+
+.insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
+
+.insight b { color: var(--ink); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.82rem; color: var(--ink-soft); align-items: center; justify-content: center; margin: 0px 0px 1.3rem; padding: 0.7rem 0px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.legend b { color: var(--ink); }
+
+.lg { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+.basket { margin: 0px 0px 1.7rem; }
+
+.basket > h2 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; margin: 0px 0px 0.1rem; display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; border-bottom: 2px solid var(--line2); padding-bottom: 0.35rem; }
+
+.basket > h2 .pi { font-size: 0.78rem; font-style: italic; color: var(--accent-ink); font-family: var(--serif); font-weight: 400; }
+
+.basket > h2 .ct { margin-left: auto; font-size: 0.72rem; color: var(--ink-faint); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.basket > .blurb { font-size: 0.85rem; color: var(--ink-faint); margin: 0.5rem 0px 1rem; max-width: 84ch; }
+
+details.fam { border: 1px solid var(--line); border-radius: 9px; margin: 0px 0px 0.4rem; background: var(--surface); }
+
+details.fam > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.75rem; font-family: var(--serif); font-size: 0.96rem; }
+
+details.fam > summary::-webkit-details-marker { display: none; }
+
+details.fam > summary::before { content: "▶"; font-size: 0.62rem; color: var(--ink-faint); transition: transform 0.15s; flex: 0 0 auto; }
+
+details.fam[open] > summary::before { transform: rotate(90deg); }
+
+.famname { font-weight: 600; }
+
+.famr { font-size: 0.68rem; color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+
+.fambar { margin-left: auto; display: flex; width: 60px; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); flex: 0 0 auto; }
+
+.fambar i { display: block; height: 100%; }
+
+.fambar .mg { background: var(--g); }
+
+.fambar .ma { background: var(--a); }
+
+.fambar .mr { background: var(--r); }
+
+.fambar .mx { background: var(--x); }
+
+.famct { font-size: 0.7rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; min-width: 2.2em; text-align: right; flex: 0 0 auto; }
+
+.fambody { padding: 0.15rem 0.75rem 0.65rem; }
+
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
+
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+
+.tc .tl { color: var(--ink); }
+
+.tc .te { font-size: 0.69rem; color: var(--ink-soft); font-style: italic; }
+
+.tc.g { border-left-color: var(--g); background: var(--g-t2); }
+
+.tc.a { border-left-color: var(--a); background: var(--a-t); }
+
+.tc.r { border-left-color: var(--r); background: var(--r-t); }
+
+.tc.x { border-left-color: var(--x); background: var(--x-t); }
+
+.tc.x .tl { color: var(--ink-soft); }
+
+footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1rem; font-size: 0.77rem; color: var(--ink-faint); line-height: 1.6; }
+
+.toggle { position: fixed; top: 0.7rem; right: 0.7rem; background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 99px; padding: 0.32rem 0.68rem; font-size: 0.76rem; cursor: pointer; z-index: 30; }
+</style>
+<style>
+
+/* ── archive dress: ground tokens (per Sacred Map Harmonization §III) ──
+   per-tradition --accent/--accent-ink are KEPT; the ground converges. */
+:root, :root[data-theme="light"] {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #a09080;
+  --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Georgia, 'Times New Roman', serif;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+}
+/* archive top strip */
+#arch-topbar { display:flex; justify-content:space-between; align-items:center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: #7a5c3a; }
+#arch-topnav { display: flex; gap: 22px; }
+
+/* ── five-state chip dress (Map Node States specimen, verbatim tokens) ── */
+.m-held, .m-several { background: #f1ebe1 !important;
+  border-color: #e0d8c8 !important; border-left: 3px solid #7a5c3a !important; }
+.m-possible { background: none !important;
+  border-color: #ddd0b8 !important; border-left: 3px solid #c9ab7a !important; }
+.m-none { background: none !important;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-restricted { background: none !important;
+  border: 1px dashed #b8ab99 !important; border-left: 3px dashed #a09080 !important; }
+.m-unmapped { background: none !important; opacity: .75;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-held .nm, .m-several .nm, .m-held .tl, .m-several .tl { color: var(--ink) !important; }
+.m-possible .nm, .m-possible .tl { color: var(--ink-soft) !important; }
+.m-none .nm, .m-none .tl, .m-unmapped .nm, .m-unmapped .tl { color: var(--ink-faint) !important; }
+.m-restricted .nm, .m-restricted .tl { color: var(--ink-faint) !important; }
+.mdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  display: inline-block; margin-right: 2px; box-sizing: border-box; }
+.m-held .mdot { background: #7a5c3a; }
+.m-several .mdot { background: #7a5c3a; box-shadow: 0 0 0 1.5px #f1ebe1, 0 0 0 3px #7a5c3a; }
+.m-possible .mdot { border: 1.5px solid #a8865a; }
+.m-none .mdot, .m-unmapped .mdot { background: #ddd6c8; }
+.m-restricted .mdot { border: 1.5px dashed #a09080; }
+.m-held .dot, .m-several .dot, .m-possible .dot, .m-none .dot,
+.m-restricted .dot, .m-unmapped .dot { display: none; }
+a.m-link { text-decoration: none; }
+:root[data-theme="dark"] .m-held, :root[data-theme="dark"] .m-several {
+  background: #2a2620 !important; border-left-color: #c4a060 !important; }
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background: #c4a060; }
+:root[data-theme="dark"] .m-several .mdot { box-shadow: 0 0 0 1.5px #2a2620, 0 0 0 3px #c4a060; }
+
+/* derived four-band zone bar */
+.zb { display: inline-flex; height: 6px; width: 170px; border-radius: 3px;
+  overflow: hidden; background: var(--track); vertical-align: middle; }
+.zb i { display: block; height: 100%; }
+.zb .zb-held { background: #7a5c3a; }
+.zb .zb-poss { background: none; border-top: 6px double #a8865a; box-sizing: border-box; }
+.zb .zb-none { background: #ddd6c8; }
+.zb .zb-res  { background: repeating-linear-gradient(45deg, #a09080 0 2px, #eee9e0 2px 4px); }
+
+/* legend strip */
+#m-legend { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2); padding: 12px 0; margin: 18px 0 26px;
+  font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em; text-transform: uppercase; }
+#m-legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+/* chooser inset (specimen form) */
+.m-chooser { border-left: 2px solid #7a5c3a; background: #f6f2ea;
+  margin: 8px 0 14px 12px; padding: 12px 18px; max-width: 30em; }
+:root[data-theme="dark"] .m-chooser { background: #26232c; }
+.m-chooser .mc-head { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
+.m-chooser a { display: block; font: 400 14px/1.5 var(--serif); color: var(--ink);
+  text-decoration: none; }
+.m-chooser a:hover { color: #7a5c3a; }
+.m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
+.m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
+
+/* fraction line under the mast */
+#m-fraction { text-align: center;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); margin: 4px 0 0; }
+#m-fraction b { color: #7a5c3a; font-weight: 400; }
+
+/* deep views: shown stacked (the artifact's tab JS was not captured) */
+section.view { display: block !important; }
+
+</style>
+</head>
+<body data-map="gnostic">
+<div id="arch-topbar"><a href="../">&larr; The Archive</a><nav id="arch-topnav"><a href="./">The Map of Sacred Texts</a><a href="../hall/">The Religion Hall</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="m-legend" aria-label="Node states">
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
+<span style="color:#a8865a"><span class="mdot" style="border:1.5px solid #a8865a"></span>public domain &middot; not yet held</span>
+<span style="color:#a09080"><span class="mdot" style="background:#ddd6c8"></span>no PD translation</span>
+<span style="color:#a09080"><span class="mdot" style="border:1.5px dashed #a09080"></span>held &middot; restricted</span>
+</div><button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
+<div class="page">
+  <header class="mast">
+    <div class="sym" aria-hidden="true">🐍</div>
+    <h1>The Map of Gnostic &amp; Dualist Texts</h1>
+    <p>The lost churches of late antiquity — the <span class="em">Gnostics, Manichaeans, and dualists</span> who taught a hidden knowledge and a divided cosmos. Coloured by whether a worldwide-public-domain English translation exists.</p>
+    <div class="statband" id="statband"><div class="stat"><b>24</b><span>texts</span></div><div class="stat"><b>9</b><span>green</span></div><div class="stat"><b>1</b><span>amber</span></div><div class="stat"><b>14</b><span>red</span></div></div>
+    <p class="greenline" id="greenline"><b>9 of 24 green</b> — the Church Fathers who quoted them (the Ante-Nicene Fathers) and G.R.S. Mead’s recoveries (Pistis Sophia, Fragments of a Faith Forgotten) are public-domain — the red is everything dug from the sand in the twentieth century (Nag Hammadi, the Manichaean and Mandaean codices), still under copyright.</p>
+  </header>
+  <div class="insight"><b>What the heresy-hunters quoted survives; what the heretics wrote does not.</b> Gnostic religion reaches us two ways. The first is <b>public-domain</b>: the Church Fathers’ hostile summaries (the Ante-Nicene Fathers, 1867–85) and the recoveries of <b>G.R.S. Mead</b> (Pistis Sophia 1896, Fragments of a Faith Forgotten 1900) — a luminous green core. The second is a <b>red frontier</b>: the heretics’ own books, buried in the sand and dug up only in the twentieth century — the entire <b>Nag Hammadi library</b> (1945), the Manichaean codices (1930), the Gospels of Mary and Judas — every one still under copyright. Living <b>Mandaeism</b>, the last Gnostic religion, has <b>no public-domain English scripture at all</b>. The mystery-cult neighbours (the Hermetica, the Mithras Liturgy, the Orphic Hymns, the Chaldean Oracles) live on the <span class="em">Ancient World</span> door.</div>
+  <div class="legend">
+    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
+    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
+    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
+    <span class="lg" id="xleg" style="display:none"></span>
+    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
+  </div>
+  <main id="main"><section class="basket" id="gn-gnostic"><h2>Gnosticism <span class="pi">Sethian &amp; Valentinian · 2nd–4th c. CE</span><span class="ct">10 texts</span></h2><div class="blurb">The classical Gnostic schools of Valentinus, Basilides and the Sethians. What the Fathers quoted — and what G.R.S. Mead recovered from the Askew Codex — is public-domain; the codices dug up in the 20th century are not.</div><details class="fam" open=""><summary><span class="famname">The public-domain core — what the Fathers quoted &amp; Mead recovered</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Pistis Sophia (the Askew Codex)</span><span class="te">Mead 1896 / rev. 1921 (PD)</span></span><span class="tc g"><span class="tl">Fragments of a Faith Forgotten (Valentinus · Basilides · the Sethians)</span><span class="te">Mead 1900 (PD)</span></span><span class="tc g"><span class="tl">The Valentinian fragments (Ptolemy’s Letter to Flora · Heracleon)</span><span class="te">via the Ante-Nicene Fathers 1867–85 (PD)</span></span><span class="tc g"><span class="tl">Simon Magus &amp; the Simonians (the Apophasis Megalē)</span><span class="te">Mead 1892 · Hippolytus, ANF (PD)</span></span><span class="tc g"><span class="tl">The Gospel of Thomas — the Greek fragments (Oxyrhynchus)</span><span class="te">Grenfell &amp; Hunt 1897/1904 (PD) — partial only</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The buried codices — discovered too late, all ©</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:20%"></i><i class="mr" style="width:80%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">The Nag Hammadi Library (Gospel of Truth · Philip · Apocryphon of John…)</span><span class="te">found 1945 — all English © (Robinson 1977)</span></span><span class="tc r"><span class="tl">The Gospel of Thomas — the complete Coptic text</span><span class="te">from Nag Hammadi — © only</span></span><span class="tc r"><span class="tl">The Gospel of Mary (the Berlin Codex)</span><span class="te">published 1955 — © only</span></span><span class="tc r"><span class="tl">The Gospel of Judas (Codex Tchacos)</span><span class="te">published 2006 — © only</span></span><span class="tc a"><span class="tl">The Bruce Codex (the Books of Jeu · the Untitled Text)</span><span class="te">Untitled Text PD (Lamplugh 1918); Jeu proper = MacDermot ©</span></span></div></div></details></section><section class="basket" id="gn-mani"><h2>Manichaeism <span class="pi">Mani’s world religion · 3rd c. CE, Rome to China</span><span class="ct">5 texts</span></h2><div class="blurb">Once a rival to Christianity from North Africa to China, now wholly extinct. Mani wrote his own scriptures — and almost none survive in public-domain English; the church is visible mainly through the Fathers who condemned it.</div><details class="fam" open=""><summary><span class="famname">The lost church of Light</span><span class="fambar"><i class="mg" style="width:20%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:80%"></i><i class="mx" style="width:0%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Mani’s own scriptures (the Living Gospel · the Shābuhragān · the Book of Giants)</span><span class="te">no continuous text survives — reconstructions ©</span></span><span class="tc r"><span class="tl">The Kephalaia (the Coptic Medinet Madi codices)</span><span class="te">found 1930 — Gardner 1995 ©</span></span><span class="tc r"><span class="tl">The Cologne Mani-Codex (On the Origin of His Body)</span><span class="te">© only</span></span><span class="tc r"><span class="tl">The Chinese Manichaean texts (the Hymnscroll · the Compendium)</span><span class="te">PD only in French — Chavannes &amp; Pelliot 1913</span></span><span class="tc g"><span class="tl">Augustine against the Manichees (Contra Faustum)</span><span class="te">Schaff, Nicene Fathers 1887 (PD) — testimonia</span></span></div></div></details></section><section class="basket" id="gn-mandaean"><h2>Mandaeism <span class="pi">the last living Gnostics · Iraq &amp; Iran</span><span class="ct">3 texts</span></h2><div class="blurb">The only Gnostic religion to survive to the present day — and, strikingly, the one with no public-domain English scripture at all. Its holy books exist in English only in modern copyrighted or German editions.</div><details class="fam" open=""><summary><span class="famname">A living faith with no public-domain scripture</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i><i class="mx" style="width:0%"></i></span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">The Ginza Rabbā (the Great Treasure)</span><span class="te">PD only in German (Lidzbarski 1925); English © 2012</span></span><span class="tc r"><span class="tl">The Book of John (Drašā d-Yahia)</span><span class="te">English © 2020</span></span><span class="tc r"><span class="tl">The Qolastā (the canonical prayerbook)</span><span class="te">Drower 1959 ©</span></span></div></div></details></section><section class="basket" id="gn-dualist"><h2>Dualist heresies &amp; the late-antique fringe <span class="pi">Cathars, Bogomils, Paulicians, Marcionites</span><span class="ct">6 texts</span></h2><div class="blurb">The medieval dualist churches and the great late-antique heresies. Two survive in surprising public-domain English (the Cathar Secret Supper and the Paulician Key of Truth); the rest are © or unrecovered.</div><details class="fam" open=""><summary><span class="famname">The dualist churches</span><span class="fambar"><i class="mg" style="width:50%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:50%"></i><i class="mx" style="width:0%"></i></span><span class="famct">6</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Secret Supper (Interrogatio Iohannis — the Cathar/Bogomil gospel)</span><span class="te">M.R. James, Apocryphal NT 1924 (PD)</span></span><span class="tc g"><span class="tl">The Key of Truth (the Paulician / Tondrakian manual)</span><span class="te">Conybeare 1898 (PD)</span></span><span class="tc g"><span class="tl">Marcion’s Gospel &amp; Apostolikon (reconstructed)</span><span class="te">Hill, The Gospel of the Lord 1891 (PD) — reconstruction</span></span><span class="tc r"><span class="tl">The Cathar rituals (the Lyon Ritual · the Book of the Two Principles)</span><span class="te">Wakefield &amp; Evans 1969 ©</span></span><span class="tc r"><span class="tl">Priscillian (the Würzburg Tractates)</span><span class="te">no PD English</span></span><span class="tc r"><span class="tl">The Sabians of Harran (the star-worshippers)</span><span class="te">primary sources PD only in German (Chwolsohn 1856)</span></span></div></div></details></section></main>
+  <footer id="foot">A structural atlas of Gnostic, Manichaean, Mandaean and dualist scripture — coloured by worldwide public-domain English availability. Green backbones: G.R.S. Mead (d.1933) and the Ante-Nicene / Nicene Fathers series (Roberts-Donaldson 1867–85, Schaff 1886–90). Red = the 20th-century manuscript finds (Nag Hammadi 1945, the Berlin &amp; Tchacos codices, the Manichaean Medinet Madi corpus, the Mandaean scrolls) — all still ©. The mystery/wisdom traditions (Hermetica, Mithras Liturgy, Orphic Hymns, Chaldean Oracles) are cross-referenced to the Ancient World door, not duplicated here. Sources: sacred-texts.com, archive.org, gnosis.org. Best-effort scholarship, not legal advice.</footer>
+</div>
+
+<script>
+
+(function () {
+  var KEY = 'da-dark-mode';
+  if (localStorage.getItem(KEY) === 'true')
+    document.documentElement.setAttribute('data-theme', 'dark');
+  else
+    document.documentElement.setAttribute('data-theme', 'light');
+  function flip() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    localStorage.setItem(KEY, dark ? 'false' : 'true');
+    label();
+  }
+  function label() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+      b.textContent = dark ? 'Light' : 'Dark';
+    });
+  }
+  document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+    b.addEventListener('click', flip);
+  });
+  label();
+
+  function norm(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+            .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+  }
+  var SLUG = document.body.getAttribute('data-map');
+  if (!SLUG) return;
+  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  .then(function (B) {
+    var byKey = {};
+    B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      var zid = sec.id.replace(/^zone-/, '');
+      var states = [];
+      sec.querySelectorAll('.chip, .tc, .su').forEach(function (el) {
+        var nmEl = el.querySelector('.nm') || el.querySelector('.tl') ||
+                   el.querySelector('span:last-child');
+        if (!nmEl) return;
+        var b = byKey[zid + '||' + norm(nmEl.textContent)];
+        if (!b) return;
+        states.push(b.state);
+        el.classList.add('m-' + b.state.replace('held-several', 'several'));
+        if (!el.querySelector('.mdot')) {
+          var d = document.createElement('span');
+          d.className = 'mdot';
+          el.insertBefore(d, el.firstChild);
+        }
+        if (b.restricted_note) {
+          el.title = (el.title ? el.title + ' — ' : '') + b.restricted_note.length +
+                     ' related record(s) held restricted (' +
+                     b.restricted_note[0].reason_class + ')';
+        }
+        if (b.state === 'held' && b.read && b.read.length === 1) {
+          var a = document.createElement('a');
+          a.className = 'm-link'; a.href = '../' + b.read[0].url;
+          el.parentNode.insertBefore(a, el); a.appendChild(el);
+        } else if (b.state === 'held-several' && b.read) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', function () {
+            var next = el.nextElementSibling;
+            if (next && next.classList && next.classList.contains('m-chooser')) {
+              next.remove(); return;
+            }
+            var box = document.createElement('div');
+            box.className = 'm-chooser';
+            var kind = (b.chooser === 'works') ? ' works held — choose'
+                                               : ' translations held — choose';
+            box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
+                            b.read.length + kind + '</div>';
+            b.read.forEach(function (r) {
+              var a = document.createElement('a');
+              a.href = '../' + r.url;
+              var label = (b.chooser === 'works')
+                  ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
+                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
+                    ' <span class="mc-sub">· ' + r.work + '</span>';
+              a.innerHTML = label + ' <span class="mc-go">→ read</span>';
+              box.appendChild(a);
+            });
+            el.parentNode.insertBefore(box, el.nextSibling);
+          });
+        }
+      });
+      if (states.length) {
+        var held = 0, poss = 0, none = 0, res = 0;
+        states.forEach(function (s) {
+          if (s === 'held' || s === 'held-several') held++;
+          else if (s === 'possible') poss++;
+          else if (s === 'restricted') res++;
+          else none++;
+        });
+        var n = states.length;
+        var bar = document.createElement('span');
+        bar.className = 'zb';
+        bar.innerHTML = '<i class="zb-held" style="width:' + (held * 100 / n) + '%"></i>' +
+                        '<i class="zb-poss" style="width:' + (poss * 100 / n) + '%"></i>' +
+                        '<i class="zb-none" style="width:' + (none * 100 / n) + '%"></i>' +
+                        '<i class="zb-res" style="width:' + (res * 100 / n) + '%"></i>';
+        var old = sec.querySelector('.mini, .fambar');
+        var head = sec.querySelector('.zone-h, h2');
+        if (old && old.closest('section') === sec) old.replaceWith(bar);
+        else if (head) head.appendChild(bar);
+      }
+    });
+    // mast fraction line — derived, never typed
+    var held = (B.counts['held'] || 0) + (B.counts['held-several'] || 0);
+    var poss = B.counts['possible'] || 0;
+    fetch('../maps/doors.json').then(function (r) { return r.json(); })
+    .then(function (D) {
+      var door = D.doors.filter(function (d) { return d.tradition === SLUG; })[0];
+      var mast = document.querySelector('.mast');
+      if (!mast || !door) return;
+      var p = document.createElement('p');
+      p.id = 'm-fraction';
+      p.innerHTML = door.sub.replace(/ texts$/, ' texts in the tradition') +
+                    ' · <b>' + held + ' readable here</b> · ' + poss + ' more possible';
+      mast.appendChild(p);
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

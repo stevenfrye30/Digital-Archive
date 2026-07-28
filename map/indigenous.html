@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Map of Indigenous &amp; African Texts — Digital Archive</title>
+<!-- Ported from The Map of Sacred Texts (artifact fea77718) per Task 20;
+     archive dress per Sacred Map Harmonization + Map Node States. -->
+<style>
+@charset "utf-8";
+
+:root { --bg: #f4f0e7; --surface: #fffdf8; --panel: #f7f3ea; --ink: #241f18; --ink-soft: #5b5346; --ink-faint: #928777; --line: #e6ddc9; --line2: #d4c8ad; --accent: #8f4a34; --accent-ink: #6d3826; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --x: #8a8175; --x-t: #ece9e2; --track: #e9e0cf; --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif; --sans: ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+
+:root[data-theme="light"] { --bg: #f4f0e7; --surface: #fffdf8; --panel: #f7f3ea; --ink: #241f18; --ink-soft: #5b5346; --ink-faint: #928777; --line: #e6ddc9; --line2: #d4c8ad; --accent: #8f4a34; --accent-ink: #6d3826; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --x: #8a8175; --x-t: #ece9e2; --track: #e9e0cf; }
+
+:root[data-theme="dark"] { --bg: #14120e; --surface: #1e1a13; --panel: #221d15; --ink: #ece4d3; --ink-soft: #a89b84; --ink-faint: #7d7059; --line: #322a1c; --line2: #443826; --accent: #d3987a; --accent-ink: #dfaa8c; --g: #5cb36a; --a: #d99a3c; --r: #e0687a; --g-t: #16261a; --a-t: #28230f; --r-t: #2a1a20; --g-t2: #142013; --x: #6f6a5e; --x-t: #23211c; --track: #2a2318; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+.page { max-width: 1180px; margin: 0px auto; padding: clamp(1.2rem, 4vw, 2.6rem) clamp(1rem, 4vw, 2.2rem) 5rem; }
+
+.mast { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 1.3rem; margin-bottom: 1rem; }
+
+.mast .sym { font-size: 1.7rem; color: var(--accent); }
+
+.mast h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.8rem, 5.2vw, 3rem); margin: 0.3rem 0px 0.15rem; letter-spacing: -0.01em; text-wrap: balance; }
+
+.mast p { margin: 0.35rem auto 0px; max-width: 66ch; color: var(--ink-soft); font-size: 0.95rem; }
+
+.mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
+
+.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
+
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
+
+.stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+
+.stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
+
+.greenline b { color: var(--g); }
+
+.insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
+
+.insight b { color: var(--ink); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.82rem; color: var(--ink-soft); align-items: center; justify-content: center; margin: 0px 0px 1.3rem; padding: 0.7rem 0px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.legend b { color: var(--ink); }
+
+.lg { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+.basket { margin: 0px 0px 1.7rem; }
+
+.basket > h2 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; margin: 0px 0px 0.1rem; display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; border-bottom: 2px solid var(--line2); padding-bottom: 0.35rem; }
+
+.basket > h2 .pi { font-size: 0.78rem; font-style: italic; color: var(--accent-ink); font-family: var(--serif); font-weight: 400; }
+
+.basket > h2 .ct { margin-left: auto; font-size: 0.72rem; color: var(--ink-faint); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.basket > .blurb { font-size: 0.85rem; color: var(--ink-faint); margin: 0.5rem 0px 1rem; max-width: 84ch; }
+
+details.fam { border: 1px solid var(--line); border-radius: 9px; margin: 0px 0px 0.4rem; background: var(--surface); }
+
+details.fam > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.75rem; font-family: var(--serif); font-size: 0.96rem; }
+
+details.fam > summary::-webkit-details-marker { display: none; }
+
+details.fam > summary::before { content: "▶"; font-size: 0.62rem; color: var(--ink-faint); transition: transform 0.15s; flex: 0 0 auto; }
+
+details.fam[open] > summary::before { transform: rotate(90deg); }
+
+.famname { font-weight: 600; }
+
+.famr { font-size: 0.68rem; color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+
+.fambar { margin-left: auto; display: flex; width: 60px; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); flex: 0 0 auto; }
+
+.fambar i { display: block; height: 100%; }
+
+.fambar .mg { background: var(--g); }
+
+.fambar .ma { background: var(--a); }
+
+.fambar .mr { background: var(--r); }
+
+.fambar .mx { background: var(--x); }
+
+.famct { font-size: 0.7rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; min-width: 2.2em; text-align: right; flex: 0 0 auto; }
+
+.fambody { padding: 0.15rem 0.75rem 0.65rem; }
+
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
+
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+
+.tc .tl { color: var(--ink); }
+
+.tc .te { font-size: 0.69rem; color: var(--ink-soft); font-style: italic; }
+
+.tc.g { border-left-color: var(--g); background: var(--g-t2); }
+
+.tc.a { border-left-color: var(--a); background: var(--a-t); }
+
+.tc.r { border-left-color: var(--r); background: var(--r-t); }
+
+.tc.x { border-left-color: var(--x); background: var(--x-t); }
+
+.tc.x .tl { color: var(--ink-soft); }
+
+footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1rem; font-size: 0.77rem; color: var(--ink-faint); line-height: 1.6; }
+
+.toggle { position: fixed; top: 0.7rem; right: 0.7rem; background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 99px; padding: 0.32rem 0.68rem; font-size: 0.76rem; cursor: pointer; z-index: 30; }
+</style>
+<style>
+
+/* ── archive dress: ground tokens (per Sacred Map Harmonization §III) ──
+   per-tradition --accent/--accent-ink are KEPT; the ground converges. */
+:root, :root[data-theme="light"] {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #a09080;
+  --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Georgia, 'Times New Roman', serif;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+}
+/* archive top strip */
+#arch-topbar { display:flex; justify-content:space-between; align-items:center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: #7a5c3a; }
+#arch-topnav { display: flex; gap: 22px; }
+
+/* ── five-state chip dress (Map Node States specimen, verbatim tokens) ── */
+.m-held, .m-several { background: #f1ebe1 !important;
+  border-color: #e0d8c8 !important; border-left: 3px solid #7a5c3a !important; }
+.m-possible { background: none !important;
+  border-color: #ddd0b8 !important; border-left: 3px solid #c9ab7a !important; }
+.m-none { background: none !important;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-restricted { background: none !important;
+  border: 1px dashed #b8ab99 !important; border-left: 3px dashed #a09080 !important; }
+.m-unmapped { background: none !important; opacity: .75;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-held .nm, .m-several .nm, .m-held .tl, .m-several .tl { color: var(--ink) !important; }
+.m-possible .nm, .m-possible .tl { color: var(--ink-soft) !important; }
+.m-none .nm, .m-none .tl, .m-unmapped .nm, .m-unmapped .tl { color: var(--ink-faint) !important; }
+.m-restricted .nm, .m-restricted .tl { color: var(--ink-faint) !important; }
+.mdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  display: inline-block; margin-right: 2px; box-sizing: border-box; }
+.m-held .mdot { background: #7a5c3a; }
+.m-several .mdot { background: #7a5c3a; box-shadow: 0 0 0 1.5px #f1ebe1, 0 0 0 3px #7a5c3a; }
+.m-possible .mdot { border: 1.5px solid #a8865a; }
+.m-none .mdot, .m-unmapped .mdot { background: #ddd6c8; }
+.m-restricted .mdot { border: 1.5px dashed #a09080; }
+.m-held .dot, .m-several .dot, .m-possible .dot, .m-none .dot,
+.m-restricted .dot, .m-unmapped .dot { display: none; }
+a.m-link { text-decoration: none; }
+:root[data-theme="dark"] .m-held, :root[data-theme="dark"] .m-several {
+  background: #2a2620 !important; border-left-color: #c4a060 !important; }
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background: #c4a060; }
+:root[data-theme="dark"] .m-several .mdot { box-shadow: 0 0 0 1.5px #2a2620, 0 0 0 3px #c4a060; }
+
+/* derived four-band zone bar */
+.zb { display: inline-flex; height: 6px; width: 170px; border-radius: 3px;
+  overflow: hidden; background: var(--track); vertical-align: middle; }
+.zb i { display: block; height: 100%; }
+.zb .zb-held { background: #7a5c3a; }
+.zb .zb-poss { background: none; border-top: 6px double #a8865a; box-sizing: border-box; }
+.zb .zb-none { background: #ddd6c8; }
+.zb .zb-res  { background: repeating-linear-gradient(45deg, #a09080 0 2px, #eee9e0 2px 4px); }
+
+/* legend strip */
+#m-legend { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2); padding: 12px 0; margin: 18px 0 26px;
+  font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em; text-transform: uppercase; }
+#m-legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+/* chooser inset (specimen form) */
+.m-chooser { border-left: 2px solid #7a5c3a; background: #f6f2ea;
+  margin: 8px 0 14px 12px; padding: 12px 18px; max-width: 30em; }
+:root[data-theme="dark"] .m-chooser { background: #26232c; }
+.m-chooser .mc-head { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
+.m-chooser a { display: block; font: 400 14px/1.5 var(--serif); color: var(--ink);
+  text-decoration: none; }
+.m-chooser a:hover { color: #7a5c3a; }
+.m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
+.m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
+
+/* fraction line under the mast */
+#m-fraction { text-align: center;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); margin: 4px 0 0; }
+#m-fraction b { color: #7a5c3a; font-weight: 400; }
+
+/* deep views: shown stacked (the artifact's tab JS was not captured) */
+section.view { display: block !important; }
+
+</style>
+</head>
+<body data-map="indigenous">
+<div id="arch-topbar"><a href="../">&larr; The Archive</a><nav id="arch-topnav"><a href="./">The Map of Sacred Texts</a><a href="../hall/">The Religion Hall</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="m-legend" aria-label="Node states">
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
+<span style="color:#a8865a"><span class="mdot" style="border:1.5px solid #a8865a"></span>public domain &middot; not yet held</span>
+<span style="color:#a09080"><span class="mdot" style="background:#ddd6c8"></span>no PD translation</span>
+<span style="color:#a09080"><span class="mdot" style="border:1.5px dashed #a09080"></span>held &middot; restricted</span>
+</div><button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
+<div class="page">
+  <header class="mast">
+    <div class="sym" aria-hidden="true">🪘</div>
+    <h1>The Map of Indigenous &amp; African Texts</h1>
+    <p>The sacred oral traditions of <span class="em">Africa, the diaspora, Oceania, and Native America</span> — mostly unwritten, living faiths whose “texts” are colonial-era transcriptions of oral practice. Coloured by the copyright of the published transcription — with the traditions that should <em>not</em> be mapped shown as such.</p>
+    <div class="statband" id="statband"><div class="stat"><b>22</b><span>texts</span></div><div class="stat"><b>11</b><span>green</span></div><div class="stat"><b>5</b><span>amber</span></div><div class="stat"><b>2</b><span>red</span></div><div class="stat"><b>4</b><span>not mapped</span></div></div>
+    <p class="greenline" id="greenline"><b>11 of 22 green</b> — the green is the pre-1931 transcribers of living oral tradition — Callaway’s Zulu, the Bleek–Lloyd |Xam archive, Rattray’s Ashanti, Queen Liliʻuokalani’s Kumulipo, and the young Rastafari scriptures — while the deepest sacred material stays grey, unmapped by design.</p>
+  </header>
+  <div class="insight"><b>Public-domain is a fact about a book, not permission from a community.</b> Almost none of these traditions canonize a scripture; their sacred knowledge is <b>oral</b>, and often initiatory or restricted. This map colours the copyright status of <i>already-published ethnographic transcriptions</i> — it indexes what exists, it does not reproduce restricted content. The green is largely the work of transcribers who recorded oral tradition before 1931 (Callaway’s Zulu, the Bleek–Lloyd |Xam archive, Queen Liliʻuokalani’s Kumulipo). The <b>grey is the honest part</b>: the <b>Australian Aboriginal Dreaming</b>, Haitian <b>Vodou</b>, Cuban <b>Santería</b> and Brazilian <b>Candomblé</b> are <b>deliberately not mapped</b> — living, oral, and held rather than printed — and the <b>Walam Olum</b> is a debunked forgery. Those absences are the finding.</div>
+  <div class="legend">
+    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
+    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
+    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
+    <span class="lg" id="xleg" style=""><span class="sw" style="background:var(--x)"></span> <b>grey</b> — not mapped (living / oral / restricted)</span>
+    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
+  </div>
+  <main id="main"><section class="basket" id="in-africa"><h2>African Traditional <span class="pi">the orisha, the ancestors &amp; the diviners</span><span class="ct">8 texts</span></h2><div class="blurb">The traditional religions of sub-Saharan Africa. The green here is a handful of pre-1931 bilingual transcriptions (Callaway, Bleek–Lloyd) that record diviners’ own words; the great divination corpora (Ifá, Fa) survive as oral verse and reach English only in modern copyright.</div><details class="fam" open=""><summary><span class="famname">Verbatim oral corpora — the ethical models</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Zulu — the religious system of the amaZulu (izangoma testimony)</span><span class="te">Callaway 1868–70 (d.1890) — bilingual verbatim</span></span><span class="tc g"><span class="tl">San / |Xam — Bushman folklore &amp; the |Kaggen myths</span><span class="te">Bleek &amp; Lloyd 1911 (Lloyd d.1914) — verbatim</span></span><span class="tc g"><span class="tl">Thonga / Tsonga — the religious life</span><span class="te">Junod 1912–13 (d.1934)</span></span><span class="tc g"><span class="tl">Akan / Ashanti — religion, the Golden Stool &amp; the dirges</span><span class="te">Rattray 1923–27 (d.1938)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Divination corpora — described, not translated</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:75%"></i><i class="mr" style="width:25%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Yoruba — the Ifá corpus (256 Odù) &amp; the orisha</span><span class="te">Ellis survey 1894 PD; the Odù verses © (Bascom 1969)</span></span><span class="tc a"><span class="tl">Fon / Dahomey — Vodun &amp; the Fa oracle</span><span class="te">Ellis survey 1890 PD; the Fa corpus © (Herskovits 1938)</span></span><span class="tc a"><span class="tl">Maasai — myth, prayer &amp; the high god</span><span class="te">Hollis 1905 US-PD; d.1961 → worldwide 2032</span></span><span class="tc r"><span class="tl">Nuer &amp; Dinka — the Nilotic high god</span><span class="te">Evans-Pritchard 1956 / Lienhardt 1961 ©</span></span></div></div></details></section><section class="basket" id="in-diaspora"><h2>The African Diaspora <span class="pi">the New World religions of the enslaved</span><span class="ct">6 texts</span></h2><div class="blurb">The faiths carried across the Atlantic. Rastafari is the anomaly — young enough to have written and published its own scriptures; the Afro-Caribbean and Brazilian religions are initiatory and oral, held rather than printed, with no public-domain text to map.</div><details class="fam" open=""><summary><span class="famname">Rastafari — the young, self-written scriptures</span><span class="fambar"><i class="mg" style="width:50%"></i><i class="ma" style="width:25%"></i><i class="mr" style="width:25%"></i><i class="mx" style="width:0%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Kebra Nagast (the Glory of Kings)</span><span class="te">Budge 1922 (d.1934) — Ethiopian; also on the Abrahamic door</span></span><span class="tc g"><span class="tl">The Holy Piby (the Blackman’s Bible)</span><span class="te">Robert Athlyi Rogers 1924 (d.1931)</span></span><span class="tc a"><span class="tl">The Royal Parchment Scroll of Black Supremacy</span><span class="te">Pettersburg 1925; death date unclear</span></span><span class="tc r"><span class="tl">The Promised Key</span><span class="te">Leonard Howell 1935 (d.1981) — ©</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Held, not printed — no scripture to map</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:100%"></i></span><span class="famct">2</span></summary><div class="fambody"><div class="tgrid"><span class="tc x"><span class="tl">Haitian Vodou</span><span class="te">initiatory &amp; oral; no published scripture, no PD source</span></span><span class="tc x"><span class="tl">Cuban Lucumí / Santería · Brazilian Candomblé</span><span class="te">initiatory &amp; oral; libretas passed hand-to-hand, unpublished</span></span></div></div></details></section><section class="basket" id="in-pacific"><h2>Pacific &amp; Oceanic <span class="pi">the atua, the mana &amp; the creation chants</span><span class="ct">4 texts</span></h2><div class="blurb">The religions of Polynesia — the least ethically fraught pillar, because the tradition-bearers often held the pen themselves. Queen Liliʻuokalani translated the Kumulipo during her imprisonment; Māori and Hawaiian narrators shaped their own transcriptions.</div><details class="fam" open=""><summary><span class="famname">Where the tradition-bearers held the pen</span><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Hawaiian — the Kumulipo (the 2,102-line creation chant)</span><span class="te">Queen Liliʻuokalani 1897 (d.1917)</span></span><span class="tc g"><span class="tl">Hawaiian — the Fornander Collection (mele &amp; moʻolelo)</span><span class="te">Bishop Museum / Thrum 1916–20 (PD)</span></span><span class="tc g"><span class="tl">Māori — the myths &amp; the atua (Ranginui, Papatūānuku, Māui)</span><span class="te">George Grey 1855 (d.1898)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Deliberately not mapped</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:100%"></i></span><span class="famct">1</span></summary><div class="fambody"><div class="tgrid"><span class="tc x"><span class="tl">Australian Aboriginal — the Dreaming (Tjukurpa)</span><span class="te">living, oral &amp; secret-sacred; no fixed text — mapping would misrepresent &amp; risk restricted material</span></span></div></div></details></section><section class="basket" id="in-namerica"><h2>Native North America <span class="pi">living &amp; often sacred-restricted</span><span class="ct">4 texts</span></h2><div class="blurb">The most delicate pillar. Public-domain ethnography exists, but several items are ceremonial texts the originating nations actively wish were not in circulation — copyright-free is not the same as ethically free. These are flagged, not celebrated.</div><details class="fam" open=""><summary><span class="famname">Published, but the nations did not consent</span><span class="fambar"><i class="mg" style="width:66.66666666666666%"></i><i class="ma" style="width:33.33333333333333%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:0%"></i></span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Navajo / Diné — the emergence legends &amp; the Blessingway</span><span class="te">Matthews 1897 (d.1905) — PD, but ceremony is restricted</span></span><span class="tc g"><span class="tl">Zuni — the creation myths</span><span class="te">Cushing 1896 (d.1900) — PD, but esoteric &amp; contested</span></span><span class="tc a"><span class="tl">Plains &amp; Chippewa ceremonial song</span><span class="te">Densmore 1910s–20s US-PD; d.1957 → worldwide 2028</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Excluded</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i><i class="mx" style="width:100%"></i></span><span class="famct">1</span></summary><div class="fambody"><div class="tgrid"><span class="tc x"><span class="tl">The Walam Olum (the alleged Lenape migration)</span><span class="te">a demonstrated 19th-c. hoax (Rafinesque 1836) — not a genuine Lenape text</span></span></div></div></details></section></main>
+  <footer id="foot">A structural atlas of indigenous &amp; African sacred oral traditions — colouring the copyright of published transcriptions, NOT the traditions themselves, which are living and often oral or restricted. <b>Public-domain status does not imply a community’s consent to circulate.</b> Green transcribers: Callaway (Zulu, d.1890), Bleek &amp; Lloyd (|Xam, d.1914), Junod (Thonga, d.1934), Rattray (Ashanti, d.1938), Liliʻuokalani (Kumulipo, d.1917), Fornander (Hawaiʻi, d.1887), Grey (Māori, d.1898), Budge (Kebra Nagast, d.1934), Rogers (Holy Piby, d.1931). Grey = deliberately not mapped (Australian Aboriginal Dreaming; Haitian Vodou; Cuban Santería &amp; Brazilian Candomblé; the Walam Olum hoax). Ceremonial material published without consent (Navajo/Zuni) is flagged. Sources: sacred-texts.com, archive.org, the Bleek-Lloyd Archive. Best-effort scholarship; not legal advice, and not a claim of permission.</footer>
+</div>
+
+<script>
+
+(function () {
+  var KEY = 'da-dark-mode';
+  if (localStorage.getItem(KEY) === 'true')
+    document.documentElement.setAttribute('data-theme', 'dark');
+  else
+    document.documentElement.setAttribute('data-theme', 'light');
+  function flip() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    localStorage.setItem(KEY, dark ? 'false' : 'true');
+    label();
+  }
+  function label() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+      b.textContent = dark ? 'Light' : 'Dark';
+    });
+  }
+  document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+    b.addEventListener('click', flip);
+  });
+  label();
+
+  function norm(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+            .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+  }
+  var SLUG = document.body.getAttribute('data-map');
+  if (!SLUG) return;
+  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  .then(function (B) {
+    var byKey = {};
+    B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      var zid = sec.id.replace(/^zone-/, '');
+      var states = [];
+      sec.querySelectorAll('.chip, .tc, .su').forEach(function (el) {
+        var nmEl = el.querySelector('.nm') || el.querySelector('.tl') ||
+                   el.querySelector('span:last-child');
+        if (!nmEl) return;
+        var b = byKey[zid + '||' + norm(nmEl.textContent)];
+        if (!b) return;
+        states.push(b.state);
+        el.classList.add('m-' + b.state.replace('held-several', 'several'));
+        if (!el.querySelector('.mdot')) {
+          var d = document.createElement('span');
+          d.className = 'mdot';
+          el.insertBefore(d, el.firstChild);
+        }
+        if (b.restricted_note) {
+          el.title = (el.title ? el.title + ' — ' : '') + b.restricted_note.length +
+                     ' related record(s) held restricted (' +
+                     b.restricted_note[0].reason_class + ')';
+        }
+        if (b.state === 'held' && b.read && b.read.length === 1) {
+          var a = document.createElement('a');
+          a.className = 'm-link'; a.href = '../' + b.read[0].url;
+          el.parentNode.insertBefore(a, el); a.appendChild(el);
+        } else if (b.state === 'held-several' && b.read) {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', function () {
+            var next = el.nextElementSibling;
+            if (next && next.classList && next.classList.contains('m-chooser')) {
+              next.remove(); return;
+            }
+            var box = document.createElement('div');
+            box.className = 'm-chooser';
+            var kind = (b.chooser === 'works') ? ' works held — choose'
+                                               : ' translations held — choose';
+            box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
+                            b.read.length + kind + '</div>';
+            b.read.forEach(function (r) {
+              var a = document.createElement('a');
+              a.href = '../' + r.url;
+              var label = (b.chooser === 'works')
+                  ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
+                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
+                    ' <span class="mc-sub">· ' + r.work + '</span>';
+              a.innerHTML = label + ' <span class="mc-go">→ read</span>';
+              box.appendChild(a);
+            });
+            el.parentNode.insertBefore(box, el.nextSibling);
+          });
+        }
+      });
+      if (states.length) {
+        var held = 0, poss = 0, none = 0, res = 0;
+        states.forEach(function (s) {
+          if (s === 'held' || s === 'held-several') held++;
+          else if (s === 'possible') poss++;
+          else if (s === 'restricted') res++;
+          else none++;
+        });
+        var n = states.length;
+        var bar = document.createElement('span');
+        bar.className = 'zb';
+        bar.innerHTML = '<i class="zb-held" style="width:' + (held * 100 / n) + '%"></i>' +
+                        '<i class="zb-poss" style="width:' + (poss * 100 / n) + '%"></i>' +
+                        '<i class="zb-none" style="width:' + (none * 100 / n) + '%"></i>' +
+                        '<i class="zb-res" style="width:' + (res * 100 / n) + '%"></i>';
+        var old = sec.querySelector('.mini, .fambar');
+        var head = sec.querySelector('.zone-h, h2');
+        if (old && old.closest('section') === sec) old.replaceWith(bar);
+        else if (head) head.appendChild(bar);
+      }
+    });
+    // mast fraction line — derived, never typed
+    var held = (B.counts['held'] || 0) + (B.counts['held-several'] || 0);
+    var poss = B.counts['possible'] || 0;
+    fetch('../maps/doors.json').then(function (r) { return r.json(); })
+    .then(function (D) {
+      var door = D.doors.filter(function (d) { return d.tradition === SLUG; })[0];
+      var mast = document.querySelector('.mast');
+      if (!mast || !door) return;
+      var p = document.createElement('p');
+      p.id = 'm-fraction';
+      p.innerHTML = door.sub.replace(/ texts$/, ' texts in the tradition') +
+                    ' · <b>' + held + ' readable here</b> · ' + poss + ' more possible';
+      mast.appendChild(p);
+    });
+  });
+})();
+
+</script>
+</body>
+</html>
