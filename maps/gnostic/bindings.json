@@ -1,0 +1,160 @@
+{
+ "tradition": "gnostic",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "possible": 9,
+  "none": 14,
+  "restricted": 1
+ },
+ "chips": [
+  {
+   "zone": "gn-gnostic",
+   "chip": "Pistis Sophia (the Askew Codex)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "Fragments of a Faith Forgotten (Valentinus · Basilides · the Sethians)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "The Valentinian fragments (Ptolemy’s Letter to Flora · Heracleon)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "Simon Magus & the Simonians (the Apophasis Megalē)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "The Gospel of Thomas — the Greek fragments (Oxyrhynchus)",
+   "pd": "g",
+   "state": "possible",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "The Nag Hammadi Library (Gospel of Truth · Philip · Apocryphon of John…)",
+   "pd": "r",
+   "state": "none",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "The Gospel of Thomas — the complete Coptic text",
+   "pd": "r",
+   "state": "none",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "The Gospel of Mary (the Berlin Codex)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "The Gospel of Judas (Codex Tchacos)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-gnostic",
+   "chip": "The Bruce Codex (the Books of Jeu · the Untitled Text)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "gn-mani",
+   "chip": "Mani’s own scriptures (the Living Gospel · the Shābuhragān · the Book of Giants)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-mani",
+   "chip": "The Kephalaia (the Coptic Medinet Madi codices)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-mani",
+   "chip": "The Cologne Mani-Codex (On the Origin of His Body)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-mani",
+   "chip": "The Chinese Manichaean texts (the Hymnscroll · the Compendium)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-mani",
+   "chip": "Augustine against the Manichees (Contra Faustum)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "gn-mandaean",
+   "chip": "The Ginza Rabbā (the Great Treasure)",
+   "pd": "r",
+   "state": "restricted",
+   "reason_class": "rights-or-quality hold"
+  },
+  {
+   "zone": "gn-mandaean",
+   "chip": "The Book of John (Drašā d-Yahia)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-mandaean",
+   "chip": "The Qolastā (the canonical prayerbook)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-dualist",
+   "chip": "The Secret Supper (Interrogatio Iohannis — the Cathar/Bogomil gospel)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "gn-dualist",
+   "chip": "The Key of Truth (the Paulician / Tondrakian manual)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "gn-dualist",
+   "chip": "Marcion’s Gospel & Apostolikon (reconstructed)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "gn-dualist",
+   "chip": "The Cathar rituals (the Lyon Ritual · the Book of the Two Principles)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-dualist",
+   "chip": "Priscillian (the Würzburg Tractates)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "gn-dualist",
+   "chip": "The Sabians of Harran (the star-worshippers)",
+   "pd": "r",
+   "state": "none"
+  }
+ ]
+}

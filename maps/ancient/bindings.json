@@ -1,0 +1,455 @@
+{
+ "tradition": "ancient",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "possible": 51,
+  "none": 18,
+  "held": 2
+ },
+ "chips": [
+  {
+   "zone": "aw-egypt",
+   "chip": "The Book of the Dead (Coming Forth by Day)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-egypt",
+   "chip": "The Book of Gates & the Amduat",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-egypt",
+   "chip": "The Pyramid Texts (Old Kingdom)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-egypt",
+   "chip": "The Coffin Texts (Middle Kingdom)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-egypt",
+   "chip": "The Book of Caverns",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-egypt",
+   "chip": "The Great Hymn to the Aten (Akhenaten)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-egypt",
+   "chip": "The Memphite Theology (Shabaka Stone)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-egypt",
+   "chip": "The Instruction of Ptahhotep",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-egypt",
+   "chip": "Hymns to Amun, Osiris & the Nile",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "Enūma Eliš (the Babylonian creation)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "The Epic of Gilgamesh",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "gilgamesh-langdon_langdon.json",
+     "translator": "Stephen Langdon",
+     "year": 1917,
+     "url": "?text=gilgamesh-langdon_langdon.json"
+    }
+   ]
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "Atra-Hasis (the flood)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "Adapa · Etana (myths)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "The Code of Hammurabi (given by Shamash)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "The Descent of Ishtar (Akkadian)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "The Descent of Inanna (Sumerian)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "Ludlul bēl nēmeqi (\"the Babylonian Job\")",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "aw-meso",
+   "chip": "Sumerian temple hymns · Enheduanna",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "aw-levant",
+   "chip": "Ugaritic: the Baal Cycle · Kirta · Aqhat",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-levant",
+   "chip": "Hittite: the Kumarbi cycle · Telipinu · plague prayers",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-levant",
+   "chip": "Sanchuniathon’s cosmogony (via Philo of Byblos → Eusebius)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-levant",
+   "chip": "The Story of Ahiqar (Aramaic wisdom)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-levant",
+   "chip": "The Elephantine papyri (the temple of YHW)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-levant",
+   "chip": "Aramaic incantation bowls",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-levant",
+   "chip": "The Yazidi sacred books (Kitāb al-Jilwa · Meṣḥef Reş)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Hesiod — Theogony & Works and Days",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Hesiod — the Catalogue of Women",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "The Homeric Hymns (33)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "The Orphic Hymns (87)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Apollodorus — the Bibliotheca (Library)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Homer — the Iliad & the Odyssey",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Nonnus — the Dionysiaca",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "The Orphic theogony / Derveni papyrus",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Pausanias — Description of Greece (the sanctuaries)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Plutarch — On Isis and Osiris & the Delphic dialogues",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "The Orphic gold tablets (the Bacchic passwords)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "The Chaldean Oracles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "The Hermetica (Corpus Hermeticum)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Iamblichus — On the Mysteries (De Mysteriis)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Sallustius — On the Gods and the World",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Porphyry — On the Cave of the Nymphs · On Abstinence",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Proclus — the Hymns",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Philostratus — Life of Apollonius of Tyana",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-greek",
+   "chip": "Lucian — On the Syrian Goddess (De Dea Syria)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "Ovid — the Metamorphoses",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "Ovid — the Fasti (the religious calendar)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "Virgil — the Aeneid",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "The Sibylline Oracles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "Macrobius — the Saturnalia",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "Cicero — On the Nature of the Gods & On Divination",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "Apuleius — the Golden Ass (the Isis initiation, Bk 11)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "The Mithras Liturgy (from the Great Magical Papyrus)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "Julian — Hymns to the Mother of the Gods & to King Helios",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-roman",
+   "chip": "Etruscan: the Liber Linteus & the disciplina etrusca",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-norse",
+   "chip": "The Poetic Edda (Codex Regius)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-norse",
+   "chip": "The Prose Edda (Snorri Sturluson)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-norse",
+   "chip": "Heimskringla (the Ynglinga saga)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-norse",
+   "chip": "The Völsunga Saga",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "volsunga-saga_magnusson.json",
+     "translator": "Eirikr Magnusson, William Morris",
+     "year": 1888,
+     "url": "?text=volsunga-saga_magnusson.json"
+    }
+   ]
+  },
+  {
+   "zone": "aw-norse",
+   "chip": "The Merseburg Charms & the Nine Herbs Charm (Woden · Frija)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-norse",
+   "chip": "The Kalevala (Finnish pagan epic)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-celtic",
+   "chip": "The Mabinogion (the four branches)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-celtic",
+   "chip": "The Táin Bó Cúailnge (Cattle Raid of Cooley)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-celtic",
+   "chip": "Lebor Gabála Érenn (Book of Invasions)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "aw-celtic",
+   "chip": "Lady Gregory — Cuchulain of Muirthemne · Gods and Fighting Men",
+   "pd": "g",
+   "state": "possible",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "aw-newworld",
+   "chip": "The Popol Vuh (the K’iche’ Maya creation)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "aw-newworld",
+   "chip": "The Aztec sacred hymns (to the gods)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-newworld",
+   "chip": "Aztec poetry & the Legend of the Suns",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-newworld",
+   "chip": "The Books of Chilam Balam · the Ritual of the Bacabs (Maya)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "aw-newworld",
+   "chip": "The Rites and Fables of the Yncas (Cristóbal de Molina)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-newworld",
+   "chip": "Garcilaso — the Royal Commentaries of the Incas",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "aw-newworld",
+   "chip": "The Huarochirí Manuscript (Andean myths)",
+   "pd": "r",
+   "state": "none"
+  }
+ ]
+}

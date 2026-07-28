@@ -1,0 +1,3020 @@
+{
+ "tradition": "abrahamic",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "possible": 373,
+  "held": 6,
+  "none": 110,
+  "held-several": 1
+ },
+ "chips": [
+  {
+   "zone": "ju-tanakh",
+   "chip": "Genesis",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Exodus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Leviticus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Numbers",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Deuteronomy",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Joshua",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Judges",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "I Samuel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "II Samuel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "I Kings",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "II Kings",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Isaiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Jeremiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Ezekiel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Hosea",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Joel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Amos",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Obadiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Jonah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Micah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Nahum",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Habakkuk",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Zephaniah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Haggai",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Zechariah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Malachi",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Psalms",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Proverbs",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Job",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Song of Songs",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "song-of-songs-translation_anonymous.json",
+     "translator": "Christian D. Ginsburg",
+     "year": 1857,
+     "url": "?text=song-of-songs-translation_anonymous.json"
+    }
+   ]
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Ruth",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Lamentations",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Ecclesiastes",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Esther",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Daniel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Ezra",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Nehemiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "I Chronicles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "II Chronicles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Berakhot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Peah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Demai",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Kilayim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Sheviit",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Terumot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Maasrot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Maaser Sheni",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Challah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Orlah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bikkurim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Shabbat",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Eruvin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Pesachim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Shekalim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Yoma",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Sukkah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Beitzah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Rosh Hashanah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Ta'anit",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Megillah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Moed Katan",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Chagigah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Yevamot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Ketubot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Nedarim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Nazir",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Sotah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Gittin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Kiddushin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bava Kamma",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bava Metzia",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bava Batra",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Sanhedrin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Makkot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Shevuot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Eduyot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Avodah Zarah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Pirkei Avot",
+   "pd": "a",
+   "state": "none",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Horayot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Zevachim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Menachot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Chullin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bekhorot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Arakhin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Temurah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Keritot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Meilah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Tamid",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Middot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Kinnim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Kelim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Oholot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Negaim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Parah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Tahorot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Mikvaot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Niddah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Makhshirin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Zavim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Tevul Yom",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Yadayim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Oktzin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-talmud",
+   "chip": "Babylonian Talmud (Bavli) — Gemara on 37 of the 63 tractates",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-talmud",
+   "chip": "Jerusalem Talmud (Yerushalmi)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-talmud",
+   "chip": "Tosefta",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Midrash Rabbah (10 books)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Mekhilta of Rabbi Ishmael",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Sifra (Leviticus)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Sifre (Numbers & Deuteronomy)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Tanchuma",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Pirkei de-Rabbi Eliezer",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Pesikta",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Yalkut Shimoni",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Targum Onkelos (Torah)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Targum Jonathan (Prophets)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Mishneh Torah (Maimonides)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Shulchan Aruch (Karo)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Arbaʿah Turim (Jacob ben Asher)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Guide for the Perplexed (Maimonides)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Kuzari (Judah Halevi)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Emunot ve-Deot (Saadia Gaon)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Chovot ha-Levavot (Bahya)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Zohar",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Sefer Yetzirah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Sefer ha-Bahir",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Siddur — Daily Prayer Book",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Machzor — Festival Prayers",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Passover Haggadah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Genesis",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Exodus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Leviticus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Numbers",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Deuteronomy",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Joshua",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Judges",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Ruth",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "1 Samuel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "2 Samuel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "1 Kings",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "2 Kings",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "1 Chronicles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "2 Chronicles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Ezra",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Nehemiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Esther",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Job",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Psalms",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Proverbs",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Ecclesiastes",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Song of Songs",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "song-of-songs-translation_anonymous.json",
+     "translator": "Christian D. Ginsburg",
+     "year": 1857,
+     "url": "?text=song-of-songs-translation_anonymous.json"
+    }
+   ]
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Isaiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Jeremiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Lamentations",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Ezekiel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Daniel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Hosea",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Joel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Amos",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Obadiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Jonah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Micah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Nahum",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Habakkuk",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Zephaniah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Haggai",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Zechariah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Malachi",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Tobit",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Judith",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Wisdom of Solomon",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Sirach (Ecclesiasticus)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Baruch (w/ Letter of Jeremiah)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "1 Maccabees",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "2 Maccabees",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Additions to Esther",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Additions to Daniel",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "1 Esdras (Orthodox)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "3 Maccabees (Orthodox)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Prayer of Manasseh",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-ot",
+   "chip": "Psalm 151",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Matthew",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Mark",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Luke",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Acts",
+   "pd": "g",
+   "state": "possible",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Romans",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "1 Corinthians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "2 Corinthians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Galatians",
+   "pd": "g",
+   "state": "possible",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Ephesians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Philippians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Colossians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "1 Thessalonians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "2 Thessalonians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "1 Timothy",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "2 Timothy",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Titus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Philemon",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Hebrews",
+   "pd": "g",
+   "state": "possible",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "James",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "1 Peter",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "2 Peter",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "1 John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "2 John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "3 John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Jude",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-nt",
+   "chip": "Revelation",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "1 Clement",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "2 Clement",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Ignatius — 7 Epistles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Polycarp — to the Philippians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Martyrdom of Polycarp",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Didache",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "didache-riddle_riddle.json",
+     "translator": "M.B. Riddle",
+     "year": 1886,
+     "url": "?text=didache-riddle_riddle.json"
+    }
+   ]
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Epistle of Barnabas",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Shepherd of Hermas",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Epistle to Diognetus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Fragments of Papias",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Justin Martyr — First Apology",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Justin Martyr — Second Apology",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Justin Martyr — Dialogue with Trypho",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Irenaeus — Against Heresies (5 books)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Tatian — Address to the Greeks",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Athenagoras — A Plea for the Christians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Theophilus — To Autolycus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Exhortation to the Heathen",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "The Instructor (Paedagogus)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "The Stromata (Miscellanies)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Who is the Rich Man that shall be Saved?",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Apology",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "The Prescription Against Heretics",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Five Books Against Marcion",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "A Treatise on the Soul (De Anima)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Flesh of Christ",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On Baptism",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Resurrection of the Flesh",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On Idolatry",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Shows (De Spectaculis)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "De Principiis (On First Principles)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Against Celsus (Contra Celsum)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Commentary on the Gospel of John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Commentary on the Gospel of Matthew",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Cyprian — the 82 Epistles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Cyprian — On the Unity of the Church",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Cyprian — On the Lapsed",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Hippolytus — Refutation of All Heresies",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Novatian — On the Trinity",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Methodius — The Banquet of the Ten Virgins",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Arnobius — Against the Heathen",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Lactantius — The Divine Institutes",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "The Confessions",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "augustine-confessions_pusey.json",
+     "translator": "E.B. Pusey",
+     "year": 1838,
+     "url": "?text=augustine-confessions_pusey.json"
+    }
+   ]
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "The City of God",
+   "pd": "g",
+   "state": "held-several",
+   "read": [
+    {
+     "df": "augustine-city-of-god_dods-volume-1.json",
+     "translator": "Marcus Dods",
+     "year": 1871,
+     "url": "?text=augustine-city-of-god_dods-volume-1.json"
+    },
+    {
+     "df": "augustine-city-of-god_dods-volume-2.json",
+     "translator": "Marcus Dods",
+     "year": 1872,
+     "url": "?text=augustine-city-of-god_dods-volume-2.json"
+    }
+   ]
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On Christian Doctrine",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Holy Trinity",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "The Enchiridion",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Spirit and the Letter",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On Nature and Grace",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Predestination of the Saints",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Reply to Faustus the Manichaean",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On Baptism, Against the Donatists",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on the Gospel of John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on the First Epistle of John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Expositions on the Book of Psalms",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "The Harmony of the Gospels",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Sermon on the Mount",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "The Letters",
+   "pd": "g",
+   "state": "possible",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Soliloquies",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Priesthood",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "chrysostom-priesthood_stephens.json",
+     "translator": "W. R. W. Stephens",
+     "year": 1889,
+     "url": "?text=chrysostom-priesthood_stephens.json"
+    }
+   ]
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on the Statues",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on Matthew",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on Acts",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on Romans",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on 1 & 2 Corinthians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on Galatians–Philemon",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Homilies on Hebrews",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Eusebius — Church History",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "eusebius-church-history_ccel-schaff.json",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1890,
+     "url": "?text=eusebius-church-history_ccel-schaff.json"
+    }
+   ]
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Eusebius — Life of Constantine",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Socrates — Ecclesiastical History",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Sozomen — Ecclesiastical History",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Theodoret — Ecclesiastical History",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Incarnation of the Word",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Against the Heathen (Contra Gentes)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Four Orations Against the Arians",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "On the Nicene Definition (De Decretis)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Life of Antony",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Arian History",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Basil — On the Holy Spirit",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Basil — The Hexaemeron",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Basil — the Letters",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Gregory of Nyssa — Against Eunomius",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Gregory of Nyssa — On the Making of Man",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Gregory of Nyssa — The Great Catechism",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Gregory of Nyssa — On the Soul and the Resurrection",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Gregory Nazianzen — the Orations",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Jerome — the Letters",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Jerome — De Viris Illustribus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Jerome — Against Jovinianus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Ambrose — On the Duties of the Clergy",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Ambrose — On the Holy Spirit",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Hilary of Poitiers — On the Trinity",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Cyril of Jerusalem — Catechetical Lectures",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "John of Damascus — Exposition of the Orthodox Faith",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Leo the Great — Letters and Sermons",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Gregory the Great — Book of Pastoral Rule",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "John Cassian — the Conferences",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-fathers",
+   "chip": "Vincent of Lérins — the Commonitory",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Apostles’ Creed",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Nicene Creed (325)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Niceno-Constantinopolitan Creed (381)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Athanasian Creed (Quicunque Vult)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Chalcedonian Definition (451)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Nicaea I (325)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Constantinople I (381)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Ephesus (431)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Chalcedon (451)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Constantinople II (553)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Constantinople III (680–81)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-creeds",
+   "chip": "Nicaea II (787)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Protevangelium of James",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Infancy Gospel of Thomas",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Gospel of Pseudo-Matthew",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Gospel of Nicodemus (Acts of Pilate)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Gospel of Peter",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Acts of Paul (& Thecla)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Acts of Peter",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Acts of John",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Acts of Thomas",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Apocalypse of Peter",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Apocalypse of Paul",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Epistle of the Apostles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "1 Enoch (Ethiopic)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "2 Enoch (Slavonic)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Jubilees",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Testaments of the Twelve Patriarchs",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "2 Baruch",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "4 Ezra",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Assumption of Moses",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Ascension of Isaiah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Psalms of Solomon",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Sibylline Oracles",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Letter of Aristeas",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Gospel of Thomas",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Gospel of Philip",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Gospel of Truth",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Apocryphon of John",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Gospel of Mary",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Gospel of Judas",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Thunder, Perfect Mind",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ch-apoc",
+   "chip": "Pistis Sophia (Mead 1896 PD)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "1. Al-Fatihah — The Opener",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "2. Al-Baqarah — The Cow",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "3. Ali 'Imran — Family of Imran",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "4. An-Nisa — The Women",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "5. Al-Ma'idah — The Table Spread",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "6. Al-An'am — The Cattle",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "7. Al-A'raf — The Heights",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "8. Al-Anfal — The Spoils of War",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "9. At-Tawbah — The Repentance",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "10. Yunus — Jonah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "11. Hud — Hud",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "12. Yusuf — Joseph",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "13. Ar-Ra'd — The Thunder",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "14. Ibrahim — Abraham",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "15. Al-Hijr — The Rocky Tract",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "16. An-Nahl — The Bee",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "17. Al-Isra — The Night Journey",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "18. Al-Kahf — The Cave",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "19. Maryam — Mary",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "20. Taha — Ta-Ha",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "21. Al-Anbya — The Prophets",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "22. Al-Hajj — The Pilgrimage",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "23. Al-Mu'minun — The Believers",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "24. An-Nur — The Light",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "25. Al-Furqan — The Criterion",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "26. Ash-Shu'ara — The Poets",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "27. An-Naml — The Ant",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "28. Al-Qasas — The Stories",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "29. Al-'Ankabut — The Spider",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "30. Ar-Rum — The Romans",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "31. Luqman — Luqman",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "32. As-Sajdah — The Prostration",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "33. Al-Ahzab — The Combined Forces",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "34. Saba — Sheba",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "35. Fatir — Originator",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "36. Ya-Sin — Ya Sin",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "37. As-Saffat — Those who set the Ranks",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "38. Sad — The Letter \"Saad\"",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "39. Az-Zumar — The Troops",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "40. Ghafir — The Forgiver",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "41. Fussilat — Explained in Detail",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "42. Ash-Shuraa — The Consultation",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "43. Az-Zukhruf — The Ornaments of Gold",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "44. Ad-Dukhan — The Smoke",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "45. Al-Jathiyah — The Crouching",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "46. Al-Ahqaf — The Wind-Curved Sandhills",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "47. Muhammad — Muhammad",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "48. Al-Fath — The Victory",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "49. Al-Hujurat — The Rooms",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "50. Qaf — The Letter \"Qaf\"",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "51. Adh-Dhariyat — The Winnowing Winds",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "52. At-Tur — The Mount",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "53. An-Najm — The Star",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "54. Al-Qamar — The Moon",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "55. Ar-Rahman — The Beneficent",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "56. Al-Waqi'ah — The Inevitable",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "57. Al-Hadid — The Iron",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "58. Al-Mujadila — The Pleading Woman",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "59. Al-Hashr — The Exile",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "60. Al-Mumtahanah — She that is to be examined",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "61. As-Saf — The Ranks",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "62. Al-Jumu'ah — The Congregation, Friday",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "63. Al-Munafiqun — The Hypocrites",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "64. At-Taghabun — The Mutual Disillusion",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "65. At-Talaq — The Divorce",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "66. At-Tahrim — The Prohibition",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "67. Al-Mulk — The Sovereignty",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "68. Al-Qalam — The Pen",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "69. Al-Haqqah — The Reality",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "70. Al-Ma'arij — The Ascending Stairways",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "71. Nuh — Noah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "72. Al-Jinn — The Jinn",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "73. Al-Muzzammil — The Enshrouded One",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "74. Al-Muddaththir — The Cloaked One",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "75. Al-Qiyamah — The Resurrection",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "76. Al-Insan — The Man",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "77. Al-Mursalat — The Emissaries",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "78. An-Naba — The Tidings",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "79. An-Nazi'at — Those who drag forth",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "80. 'Abasa — He Frowned",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "81. At-Takwir — The Overthrowing",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "82. Al-Infitar — The Cleaving",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "83. Al-Mutaffifin — The Defrauding",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "84. Al-Inshiqaq — The Sundering",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "85. Al-Buruj — The Mansions of the Stars",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "86. At-Tariq — The Nightcommer",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "87. Al-A'la — The Most High",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "88. Al-Ghashiyah — The Overwhelming",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "89. Al-Fajr — The Dawn",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "90. Al-Balad — The City",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "91. Ash-Shams — The Sun",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "92. Al-Layl — The Night",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "93. Ad-Duhaa — The Morning Hours",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "94. Ash-Sharh — The Relief",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "95. At-Tin — The Fig",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "96. Al-'Alaq — The Clot",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "97. Al-Qadr — The Power",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "98. Al-Bayyinah — The Clear Proof",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "99. Az-Zalzalah — The Earthquake",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "100. Al-'Adiyat — The Courser",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "101. Al-Qari'ah — The Calamity",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "102. At-Takathur — The Rivalry in world increase",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "103. Al-'Asr — The Declining Day",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "104. Al-Humazah — The Traducer",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "105. Al-Fil — The Elephant",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "106. Quraysh — Quraysh",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "107. Al-Ma'un — The Small kindnesses",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "108. Al-Kawthar — The Abundance",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "109. Al-Kafirun — The Disbelievers",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "110. An-Nasr — The Divine Support",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "111. Al-Masad — The Palm Fiber",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "112. Al-Ikhlas — The Sincerity",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "113. Al-Falaq — The Daybreak",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "114. An-Nas — Mankind",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Ṣaḥīḥ al-Bukhārī (d.870)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Ṣaḥīḥ Muslim (d.875)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Sunan Abī Dāwūd (d.889)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Jāmiʿ al-Tirmidhī (d.892)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Sunan al-Nasāʾī (d.915)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Sunan Ibn Mājah (d.887)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Muwaṭṭaʾ Mālik (d.795)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Musnad Aḥmad ibn Ḥanbal (d.855)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "al-Kāfī (al-Kulaynī, d.941)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Man lā yaḥḍuruhu al-Faqīh (al-Ṣadūq, d.991)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Tahdhīb al-Aḥkām (al-Ṭūsī, d.1067)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "al-Istibṣār (al-Ṭūsī)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sira",
+   "chip": "Ibn Isḥāq / Ibn Hishām — Sīrat Rasūl Allāh",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sira",
+   "chip": "al-Ṭabarī — History (Tārīkh)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sira",
+   "chip": "Ibn Saʿd — Kitāb al-Ṭabaqāt",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sira",
+   "chip": "al-Wāqidī — Kitāb al-Maghāzī",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "Tafsīr al-Ṭabarī (d.923)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "Tafsīr Ibn Kathīr (d.1373)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "Tafsīr al-Jalālayn (d.1459/1505)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "al-Kashshāf (al-Zamakhsharī, d.1144)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "Mafātīḥ al-Ghayb (al-Rāzī, d.1210)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "Rūmī — the Masnavī",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "ʿAṭṭār — Conference of the Birds",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "Saʿdī — Gulistān · Būstān",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "ʿUmar Khayyām — Rubáiyát",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "al-Ghazālī — Iḥyāʾ ʿUlūm al-Dīn",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "Ibn ʿArabī — Fuṣūṣ · Futūḥāt",
+   "pd": "r",
+   "state": "none"
+  }
+ ]
+}

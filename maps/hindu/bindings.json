@@ -1,0 +1,2029 @@
+{
+ "tradition": "hindu",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "possible": 159,
+  "held": 3,
+  "none": 170
+ },
+ "chips": [
+  {
+   "zone": "core",
+   "chip": "Ṛgveda Saṃhitā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Sāmaveda Saṃhitā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Yajurveda Vājasaneyi Saṃhitā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Yajurveda Taittirīya Saṃhitā",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "yajur-veda-keith_keith.json",
+     "translator": "Arthur Berriedale Keith",
+     "year": 1914,
+     "url": "?text=yajur-veda-keith_keith.json"
+    }
+   ]
+  },
+  {
+   "zone": "core",
+   "chip": "Yajurveda Maitrāyaṇī Saṃhitā",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Yajurveda Kaṭha Saṃhitā",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Yajurveda Kapiṣṭhala-Kaṭha Saṃhitā",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Atharvaveda Saṃhitā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Aitareya Brāhmaṇa",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "aitareya-brahmana-keith_keith.json",
+     "translator": "Arthur Berriedale Keith",
+     "year": 1920,
+     "url": "?text=aitareya-brahmana-keith_keith.json"
+    }
+   ]
+  },
+  {
+   "zone": "core",
+   "chip": "Kauṣītaki Brāhmaṇa",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Pañcaviṃśa Brāhmaṇa",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Ṣaḍviṃśa Brāhmaṇa (+6 minor)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Jaiminīya Brāhmaṇa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Śatapatha Brāhmaṇa",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "satapatha-brahmana-eggeling_eggeling.json",
+     "translator": "Julius Eggeling",
+     "year": 1900,
+     "url": "?text=satapatha-brahmana-eggeling_eggeling.json"
+    }
+   ]
+  },
+  {
+   "zone": "core",
+   "chip": "Taittirīya Brāhmaṇa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Gopatha Brāhmaṇa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Aitareya Āraṇyaka",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Kauṣītaki Āraṇyaka",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Bṛhadāraṇyaka Āraṇyaka",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Taittirīya Āraṇyaka",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Kaṭha Āraṇyaka",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Nāda-bindu (3)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Ātma-bodha (4)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Nirvāṇa (5)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Mudgala (6)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Akṣamālā (7)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Tripurā (8)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Saubhāgya (9)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Bahvṛca (10)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Āruṇi (64)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Maitreya (66)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Vajrasūcikā (67)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Yoga-cūḍāmaṇi (68)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Vāsudeva (69)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Mahat-Sannyāsa (70)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Avyakta (71)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Kuṇḍikā (72)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Sāvitrī (73)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Rudrākṣa (74)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Jābāla (75)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Darśana (76)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Jābāli (77)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Jābāla (13)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Haṃsa (14)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Paramahaṃsa (15)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Subāla (16)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Mantrikā (17)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Nirālamba (18)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Trīśikhi-brāhmaṇa (19)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Maṇḍala-brāhmaṇa (20)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Advaya-tāraka (21)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Pāiṅgala (22)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Bhikṣu (23)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Turīyātīta (24)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Adhyātmā (25)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Tārasāra (26)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Yājñavalkya (27)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Sātyāyanī (28)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Muktikā (the index text) (29)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Brahma (32)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Kaivalya (33)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Garbha (35)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Nārāyaṇa (36)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Amṛta-bindu (37)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Amṛta-nāda (38)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Kālāgnirudra (39)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Kṣurikā (40)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Sarvasāra (41)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Śukarahasya (42)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Tejo-bindu (43)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Dhyāna-bindu (44)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Brahmavidyā (45)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Yogatattva (46)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Dakṣiṇāmūrti (47)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Skanda (48)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Śārīraka (49)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Yogaśikhā (50)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Ekākṣara (51)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Akṣi (52)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Avadhūta (53)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Kaṭharudra (54)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Rudra-hṛdaya (55)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Yoga-kuṇḍalinī (56)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Pañcabrahma (57)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Prāṇāgnihotra (58)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Varāha (59)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Kalisantaraṇa (60)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Sarasvatī-rahasya (61)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Atharvaśiras (81)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Atharvaśikhā (82)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Bṛhad-Jābāla (83)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Nṛsiṃha-tāpanī (84)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Nārada-parivrājaka (85)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Sītā (86)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Śarabha (87)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Mahā-Nārāyaṇa (88)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Rāma-rahasya (89)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Rāma-tāpanī (90)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Śāṇḍilya (91)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "core",
+   "chip": "Paramahaṃsa-parivrājaka (92)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Annapūrṇā (93)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Sūrya (94)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Ātmā (95)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Pāśupata-brahma (96)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Parabrahma (97)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Tripura-tāpinī (98)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Devī (99)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Bhāvanā (100)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Bhasma-Jābāla (101)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Gaṇapati (102)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Mahāvākya (103)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Gopāla-tāpanī (104)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Kṛṣṇa (105)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Hayagrīva (106)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Dattātreya (107)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "core",
+   "chip": "Garuḍa (108)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Śikṣā — Prātiśākhyas (phonetics)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Chandas — Piṅgala, Chandaḥsūtra (meter)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Vyākaraṇa — Pāṇini, Aṣṭādhyāyī (grammar)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Nirukta — Yāska, Nirukta + Nighaṇṭu (etymology)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Jyotiṣa — Vedāṅga-Jyotiṣa (astronomy)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Gṛhya-sūtras — Śāṅkhāyana · Āśvalāyana · Pāraskara · Khādira",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Gṛhya-sūtras — Gobhila · Hiraṇyakeśin · Āpastamba",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Śāṅkhāyana Śrauta (Rigveda)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Āśvalāyana Śrauta (Rigveda)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Lāṭyāyana Śrauta (Sāmaveda)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Drāhyāyaṇa · Jaiminīya Śrauta (Sāmaveda)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Āpastamba Śrauta (Black Yajur)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Baudhāyana Śrauta (Black Yajur)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Bhāradvāja · Mānava Śrauta (Black Yajur)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Hiraṇyakeśin · Vārāha · Vaikhānasa Śrauta (Black Yajur)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Kātyāyana Śrauta (White Yajur)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Vaitāna Śrauta (Atharva)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Śulba-sūtras — Baudhāyana · Āpastamba · Kātyāyana · Mānava",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Kauśika Sūtra",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Dharma-sūtras — Āpastamba · Gautama",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Dharma-sūtras — Baudhāyana · Vāsiṣṭha",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Manu-smṛti (Mānava-Dharmaśāstra)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Yājñavalkya-smṛti",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Nārada-smṛti",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Viṣṇu-smṛti",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring1",
+   "chip": "Parāśara-smṛti",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring2",
+   "chip": "Nyāya — Nyāya-sūtra (Gautama/Akṣapāda) + Vātsyāyana's Bhāṣya",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring2",
+   "chip": "Vaiśeṣika — Vaiśeṣika-sūtra (Kaṇāda) + Praśastapāda",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring2",
+   "chip": "Sāṃkhya — Sāṃkhya-Kārikā (Īśvarakṛṣṇa) + Gauḍapāda's Bhāṣya",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring2",
+   "chip": "Yoga — Yoga-sūtra (Patañjali) + Vyāsa's Bhāṣya",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring2",
+   "chip": "Mīmāṃsā (Pūrva) — Mīmāṃsā-sūtra (Jaimini) + Śabara's Bhāṣya",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring2",
+   "chip": "Vedānta (Uttara-Mīmāṃsā) — Brahma-sūtra (Bādarāyaṇa) + bhāṣyas",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring2",
+   "chip": "Upaniṣads + Brahma-sūtra + Bhagavad-Gītā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring3",
+   "chip": "Mahābhārata (18 parvas, ~1.8M words)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring3",
+   "chip": "Bhagavad-Gītā (in MBh, Bhīṣma-parva; a Prasthāna-trayī pillar)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring3",
+   "chip": "Harivaṃśa (khila / appendix to the Mahābhārata)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring3",
+   "chip": "Rāmāyaṇa (Vālmīki, 7 kāṇḍas, ~24,000 verses)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Viṣṇu",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Bhāgavata (Śrīmad Bhāgavatam)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Nāradīya (Nārada)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Garuḍa",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Padma",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Varāha",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Brahma",
+   "pd": "a",
+   "state": "none",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "ring4",
+   "chip": "Brahmāṇḍa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Brahmavaivarta",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Mārkaṇḍeya",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Bhaviṣya",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Vāmana",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Śiva",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Liṅga",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Skanda (largest — 81,000+ verses)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Agni",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Matsya",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Kūrma",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Vāyu (Śaiva lists count it a Mahāpurāṇa in place of Śiva)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Devī-Bhāgavata",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Gaṇeśa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Kālikā",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Nṛsiṃha (Nārasiṃha)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Vishnudharmottara (Pt III, on art)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "~13 more (Sāmba · Sūrya · Sanatkumāra · Bṛhannāradīya · Kapila · Mudgala · Śivarahasya · …)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "ring4",
+   "chip": "Local temple / tīrtha texts (hundreds; Sanskrit + vernacular)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Caraka Saṃhitā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Suśruta Saṃhitā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Aṣṭāṅga Hṛdaya (Vāgbhaṭa)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Nāṭyaśāstra (Bharata — \"fifth Veda\" of drama)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Saṅgīta-Ratnākara (Śārṅgadeva — music)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Dhanurveda (archery / martial science)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Mānasāra",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Mayamata",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Arthaśāstra (Kauṭilya — statecraft)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Kāmasūtra (Vātsyāyana)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Sūrya-Siddhānta (astronomy)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Bṛhat-Saṃhitā (Varāhamihira)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Līlāvatī (Bhāskara II — mathematics)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ring5",
+   "chip": "Āryabhaṭīya (Āryabhaṭa)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchA",
+   "chip": "Woodroffe / \"Arthur Avalon\" corpus",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchA",
+   "chip": "Spanda Kārikā · Śiva-Sūtra Vimarśinī",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchA",
+   "chip": "Vijñāna Bhairava · Pratyabhijñāhṛdaya · Tantrāloka",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchA",
+   "chip": "The 28 Śaiva Siddhānta Āgamas",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchA",
+   "chip": "Siddhānta śāstras (Śivajñānabodham, etc.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchA",
+   "chip": "Pāñcarātra Saṃhitās (Ahirbudhnya · Lakṣmī · Jayākhya)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Tulsīdās, Rāmcaritmānas (Awadhi)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Kabīr (Sant Bhāṣā)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Tukārām (Marathi abhaṅgas)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Bengali Vaiṣṇava (Vidyāpati · Caṇḍīdās)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Sūrdās, Sūrsāgar (Braj)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Mīrābāī (Rajasthani)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Jñāneśvar, Jñāneśvarī (Marathi)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Sikh, Gurū Granth Sāhib (adjacent religion)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Divya Prabandham — the \"Tamil Veda\" (Ālvārs)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Tiruvācakam (Māṇikkavācakar, Śaiva)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Tēvāram (Nāyanārs, Śaiva)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Kannada vacanas (Basava · Akka · Allama)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Telugu (Annamayya; Pōtana Bhāgavatam)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchB",
+   "chip": "Tirukkuṟaḷ (Tiruvaḷḷuvar)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Sāyaṇa (Ṛgveda-bhāṣya, 14th c.)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Ādi Śaṅkara (8th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Sureśvara (9th c., Śaṅkara's disciple)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Maṇḍana Miśra (8th c.)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Vācaspati Miśra (9–10th c., polymath)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Padmapāda (9th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Vidyāraṇya (14th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Madhusūdana Sarasvatī (16th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Sadānanda (15th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Appayya Dīkṣita (16th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Rāmānuja (11–12th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Yāmuna (10–11th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Vedānta Deśika (13–14th c., polymath)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Sudarśana Sūri (13–14th c.)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Madhva (13th c., Dvaita)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Jayatīrtha (14th c.)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Vyāsatīrtha (15–16th c.)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Vallabha (15–16th c., Śuddhādvaita)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Nimbārka (13th c., Dvaitādvaita)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Bhāskara (9th c., Bhedābheda)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Rūpa Gosvāmī (16th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Jīva Gosvāmī (16th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Baladeva Vidyābhūṣaṇa (18th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Kumārila Bhaṭṭa (7–8th c., Bhāṭṭa)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Prabhākara (7–8th c., Prābhākara)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Pārthasārathi Miśra (11th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Uddyotakara (6th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Udayana (10th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Jayanta Bhaṭṭa (9th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Gaṅgeśa (14th c., founds Navya-Nyāya)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Raghunātha Śiromaṇi (15–16th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Annambhaṭṭa (17th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Viśvanātha Pañcānana (17th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Praśastapāda + Śrīdhara (6th / 10th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Vācaspati Miśra (Tattvakaumudī)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Bhoja (11th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Vijñānabhikṣu (16th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Bhartṛhari (5th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Bhaṭṭoji Dīkṣita (17th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Nāgeśa Bhaṭṭa (17–18th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Kaiyaṭa (11th c.)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Abhinavagupta (10–11th c., polymath)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Utpaladeva (10th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Kṣemarāja (11th c.)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Vijñāneśvara (11–12th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Jīmūtavāhana (12th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Medhātithi (9th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Kullūka Bhaṭṭa (13–15th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Aparārka (12th c.) · Hemādri (13th c.)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Mādhava / Vidyāraṇya (14th c.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Haribhadra (8th c., Jain survey)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Śrīharṣa (12th c., demolition-dialectic)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Citsukha (13–14th c.)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Cārvāka / Lokāyata (materialists)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Jayarāśi Bhaṭṭa (8–9th c., radical skeptic)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Kṣemendra (11th c., satirist)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchC",
+   "chip": "Bhāsarvajña (10th c., theistic Nyāya)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Viṣṇu Sahasranāma (in the Mahābhārata)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Śiva Sahasranāma (in the Mahābhārata)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Lalitā Sahasranāma (w/ Bhāskararāya's comm.)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Saundaryalaharī / Ānandalaharī",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Hymns to the Goddess (Devī stotras)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Bhaja Govindam · Śivānandalaharī · Dakṣiṇāmūrti-stotra",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Anu-Gītā + Sanatsujātīya (in the Mahābhārata)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Aṣṭāvakra Gītā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Avadhūta Gītā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Uddhava Gītā (Bhāgavata, Bk 11)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Devī Gītā (Devī-Bhāgavata)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Ribhu Gītā · Guru Gītā",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Haṭha-Yoga-Pradīpikā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Gheraṇḍa Saṃhitā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "branchD",
+   "chip": "Śiva Saṃhitā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Kālidāsa — Śākuntalā · Meghadūta · Raghuvaṃśa · Kumārasambhava",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Śūdraka — Mṛcchakaṭika (Little Clay Cart)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Bhāsa — the 13 plays",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Bāṇa — Kādambarī",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Bāṇa — Harṣacarita",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Bhavabhūti — Uttararāmacarita / Mālatīmādhava",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Jayadeva — Gīta-Govinda",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Bhartṛhari — the three Śatakas",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Amaru — Amaruśataka",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Pañcatantra",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Hitopadeśa",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Kathāsaritsāgara (Somadeva)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Daśakumāracarita (Daṇḍin)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Vyavahāra-mayūkha (Nīlakaṇṭha)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Parāśara-Mādhavīya (Mādhava)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Vīramitrodaya (Mitra Miśra)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Smṛti-candrikā (Devaṇṇa Bhaṭṭa)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Kṛtya-kalpataru · Caturvarga-cintāmaṇi · Nirṇaya-sindhu · Dharma-sindhu",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Śaiva Siddhānta Meykaṇḍa Śāstras (14 Tamil texts)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Vaikhānasa Smārta-sūtra",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Śrī Vaiṣṇava Tiruvāymoḻi commentary (\"Tamil Veda\")",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Vīraśaiva Śūnyasampādane · Liṅgāyat vacanas",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Swaminarayan Vachanāmṛt · Guru-caritra",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Śrī Vaiṣṇava Īṭu (36,000-paḍi) · Pāñcarātra & Vaikhānasa temple āgamas",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Rammohan Roy (1772–1833, Brahmo Samāj)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Dayānanda Sarasvatī (1824–83, Ārya Samāj)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Vivekananda (1863–1902)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Ramakrishna (1836–86)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Rabindranath Tagore (1861–1941)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Sri Aurobindo (1872–1950)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Ramana Maharshi (1879–1950)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Paramahansa Yogananda (1893–1952)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Mahatma Gandhi (1869–1948)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "appendix",
+   "chip": "Radhakrishnan · Sivananda · Prabhupāda · Chinmayananda",
+   "pd": "a",
+   "state": "none"
+  }
+ ]
+}

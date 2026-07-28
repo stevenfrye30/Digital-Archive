@@ -1,0 +1,329 @@
+{
+ "tradition": "zoroastrian",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "possible": 48,
+  "none": 5
+ },
+ "chips": [
+  {
+   "zone": "av-gathas",
+   "chip": "Ahunavaitī Gāthā (Yasna 28–34)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-gathas",
+   "chip": "Uštavaitī Gāthā (Yasna 43–46)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-gathas",
+   "chip": "Spentā-Mainyū Gāthā (Yasna 47–50)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-gathas",
+   "chip": "Vohu-Khšathrā Gāthā (Yasna 51)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-gathas",
+   "chip": "Vahištōišti Gāthā (Yasna 53)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-gathas",
+   "chip": "Modern verse translations",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "av-yasna",
+   "chip": "The Yasna · 72 chapters (hā)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yasna",
+   "chip": "The Yasna Haptaŋhāiti (Yasna 35–41)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yasna",
+   "chip": "The Visperad · ~24 sections",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "1. Hormazd Yašt (Ahura Mazdā)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "2. Haptān Yašt (the Amesha Spentas)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "3. Ardvahišt Yašt (Aša Vahišta)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "4. Hordād Yašt (Haurvatāt)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "5. Ābān Yašt (Arədvī Sūrā Anāhitā)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "6. Khoršēd Yašt (the Sun)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "7. Māh Yašt (the Moon)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "8. Tīr / Tištar Yašt (Sirius)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "9. Gōš / Drvāsp Yašt",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "10. Mihr Yašt (Mithra)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "11. Sraoš Yašt (Sraoša)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "12. Rašn Yašt (Rašnu)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "13. Frawardīn Yašt (the Fravašis)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "14. Bahrām Yašt (Vərəθraγna)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "15. Rām Yašt (Vayu)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "16. Dēn Yašt (Čistā)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "17. Ard / Aši Yašt (Aši Vanguhī)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "18. Aštād Yašt (Arštāt)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "19. Zamyād Yašt (the Earth & the Khvarənah)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "20. Hōm Yašt (Haoma)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-yashts",
+   "chip": "21. Vanant Yašt (the star Vanant)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-vendidad",
+   "chip": "Fargard 1 — the sixteen lands",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-vendidad",
+   "chip": "Fargard 2 — Yima and the vara",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-vendidad",
+   "chip": "Fargards 3–22 — purity law, penances, medicine, praise",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-khordeh",
+   "chip": "Khoršēd · Mihr · Māh · Ābān · Ātaš Niyāyišn",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-khordeh",
+   "chip": "The 5 Gāhs (watches of the day)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-khordeh",
+   "chip": "The 2 Sīrōzas (the 30 day-divinities)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "av-khordeh",
+   "chip": "The Āfrīnagāns (blessings)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Bundahišn (Creation)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Dēnkard (Acts of the Religion, bks 3–9)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Selections of Zādspram",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Mēnōg-ī Khrad (Spirit of Wisdom)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Dādestān-ī Dēnīg (Religious Judgements)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Škand-gumānīg Wizār (Doubt-dispelling Exposition)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Šāyest nē Šāyest (Proper & Improper)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Ardā Wirāz Nāmag (the vision of heaven & hell)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Epistles of Manuščihr",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Sad Dar (the Hundred Subjects)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Bahman Yašt (Zand-ī Wahman Yasn, apocalyptic)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ph-books",
+   "chip": "Jāmāsp Nāmag (the Jāmāspi)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "zo-later",
+   "chip": "The Zand (Middle-Persian commentary on the Avesta)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "zo-later",
+   "chip": "The Persian Rivāyats",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "zo-later",
+   "chip": "Ṣad-dar Bundahiš · later Rivāyat literature",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "zo-later",
+   "chip": "The Dasātīr",
+   "pd": "r",
+   "state": "none"
+  }
+ ]
+}

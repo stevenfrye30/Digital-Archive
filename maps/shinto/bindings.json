@@ -1,0 +1,89 @@
+{
+ "tradition": "shinto",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "possible": 3,
+  "none": 10
+ },
+ "chips": [
+  {
+   "zone": "sh-chron",
+   "chip": "Kojiki (712 — Records of Ancient Matters, 3 books)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "sh-chron",
+   "chip": "Nihon Shoki / Nihongi (720 — Chronicles of Japan, 30 books)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "sh-chron",
+   "chip": "Aston, \"Shinto: The Way of the Gods\" (1905)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "sh-chron",
+   "chip": "Kogoshūi (807 — the Inbe clan history)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "sh-chron",
+   "chip": "Sendai Kuji Hongi / Kujiki (10 books)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "sh-chron",
+   "chip": "Fudoki (713 — the provincial gazetteers)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "sh-liturgy",
+   "chip": "The Engishiki (927 — 50 vols; the Norito in book 8)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "sh-liturgy",
+   "chip": "The 27 Norito (ritual invocations)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "sh-liturgy",
+   "chip": "Ō-harae no Kotoba (the Great Purification)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "sh-later",
+   "chip": "Man’yōshū (759 — 20 books, ~4,500 poems)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "sh-later",
+   "chip": "Jinnō Shōtōki (Kitabatake, 1339)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "sh-later",
+   "chip": "The Five Books of Shintō (Watarai / Ise)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "sh-later",
+   "chip": "Motoori Norinaga — Kojiki-den (44 vols)",
+   "pd": "r",
+   "state": "none"
+  }
+ ]
+}

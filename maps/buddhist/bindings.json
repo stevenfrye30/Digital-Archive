@@ -1,0 +1,1855 @@
+{
+ "tradition": "buddhist",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "possible": 11,
+  "none": 267,
+  "held-several": 4,
+  "held": 4
+ },
+ "chips": [
+  {
+   "zone": "p-vinaya",
+   "chip": "Suttavibhaṅga — Mahāvibhaṅga",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-vinaya",
+   "chip": "Suttavibhaṅga — Bhikkhunīvibhaṅga",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-vinaya",
+   "chip": "Khandhaka — Mahāvagga",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-vinaya",
+   "chip": "Khandhaka — Cullavagga",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-vinaya",
+   "chip": "Parivāra",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Brahmajāla",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Sāmaññaphala",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Ambaṭṭha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Soṇadaṇḍa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Kūṭadanta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahāli",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Jāliya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahāsīhanāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Poṭṭhapāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Subha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Kevaṭṭa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Lohicca",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Tevijja",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahāpadāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahānidāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahāparinibbāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahāsudassana",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Janavasabha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahāgovinda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahāsamaya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Sakkapañha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Mahāsatipaṭṭhāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Pāyāsi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Pāṭika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Udumbarika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Cakkavatti",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Aggañña",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Sampasādanīya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Pāsādika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Lakkhaṇa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Siṅgāla",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Āṭānāṭiya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Saṅgīti",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-digha",
+   "chip": "Dasuttara",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mūlapariyāya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sabbāsava",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Dhammadāyāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bhayabherava",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Anaṅgaṇa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Ākaṅkheyya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Vattha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sallekha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sammādiṭṭhi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Satipaṭṭhāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷasīhanāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāsīhanāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahādukkhakkhandha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷadukkhakkhandha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Anumāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cetokhila",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Vanapattha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Madhupiṇḍika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Dvedhāvitakka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Vitakkasaṇṭhāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Kakacūpama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Alagaddūpama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Vammika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Rathavinīta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Nivāpa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Pāsarāsi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷahatthipadopama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāhatthipadopama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāsāropama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷasāropama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷagosiṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāgosiṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāgopālaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷagopālaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷasaccaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāsaccaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷataṇhāsaṅkhaya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahātaṇhāsaṅkhaya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāassapura",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷaassapura",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sāleyyaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Verañjaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāvedalla",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷavedalla",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷadhammasamādāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahādhammasamādāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Vīmaṁsaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Kosambiya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Brahmanimantanika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Māratajjanīya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Kandaraka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Aṭṭhakanāgara",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sekha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Potaliya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Jīvaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Upāli",
+   "pd": null,
+   "state": "none",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Kukkuravatika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Abhayarājakumāra",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bahuvedanīya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Apaṇṇaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Ambalaṭṭhikarāhulovāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahārāhulovāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷamālukya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāmālukya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bhaddāli",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Laṭukikopama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cātuma",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Naḷakapāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Goliyāni",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Kīṭāgiri",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Tevijjavaccha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Aggivaccha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāvaccha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Dīghanakha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Māgaṇḍiya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sandaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāsakuludāyi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Samaṇamuṇḍika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷasakuludāyi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Vekhanasa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Ghaṭikāra",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Raṭṭhapāla",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Maghadeva",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Madhura",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bodhirājakumāra",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Aṅgulimāla",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Piyajātika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bāhitika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Dhammacetiya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Kaṇṇakatthala",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Brahmāyu",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sela",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Assalāyana",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Ghoṭamukha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Caṅkī",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Esukārī",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Dhanañjāni",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Vāseṭṭha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Subha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Saṅgārava",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Devadaha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Pañcattaya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Kinti",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sāmagāma",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sunakkhatta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Āneñjasappāya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Gaṇakamoggallāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Gopakamoggallāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāpuṇṇama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷapuṇṇama",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Anupada",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Chabbisodhana",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sappurisa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Sevitabbāsevitabba",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bahudhātuka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Isigili",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahācattārīsaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Ānāpānassati",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Kāyagatāsati",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Saṅkhārupapatti",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷasuññata",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāsuññata",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Acchariyaabbhuta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bākula",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Dantabhūmi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bhūmija",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Anuruddha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Upakkilesa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bālapaṇḍita",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Devadūta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Bhaddekaratta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Ānandabhaddekaratta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahākaccānabhaddekaratta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Lomasakaṅgiyabhaddekaratta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷakammavibhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahākammavibhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Saḷāyatanavibhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Uddesavibhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Araṇavibhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Dhātuvibhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Saccavibhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Dakkhiṇāvibhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Anāthapiṇḍikovāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Channovāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Puṇṇovāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Nandakovāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Cūḷarāhulovāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Chachakka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Mahāsaḷāyatanika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Nagaravindeyya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Piṇḍapātapārisuddhi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-majjhima",
+   "chip": "Indriyabhāvanā",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Devatā",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Devaputta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Kosala",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Māra",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Bhikkhunī",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Brahma",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Brāhmaṇa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Vaṅgīsa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Vana",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Yakkha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Sakka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Nidāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Abhisamaya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Dhātu",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Anamatagga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Kassapa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Lābhasakkāra",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Rāhula",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Lakkhaṇa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Opamma",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Bhikkhu",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Khandha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Rādha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Diṭṭhi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Okkanta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Uppāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Kilesa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Sāriputta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Nāga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Supaṇṇa",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Gandhabbakāya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Valāhaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Vacchagotta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Jhāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Saḷāyatana",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Vedanā",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Mātugāma",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Jambukhādaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Sāmaṇḍaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Moggallāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Citta",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Gāmaṇi",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Asaṅkhata",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Abyākata",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Magga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Bojjhaṅga",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Satipaṭṭhāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Indriya",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Sammappadhāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Bala",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Iddhipāda",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Anuruddha",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Jhāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Ānāpāna",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Sotāpatti",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-samyutta",
+   "chip": "Sacca",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Ekaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Duka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Tika",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Catukka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Pañcaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Chakka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Sattaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Aṭṭhaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Navaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Dasaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-anguttara",
+   "chip": "Ekādasaka",
+   "pd": null,
+   "state": "none"
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Khuddakapāṭha",
+   "pd": "g",
+   "state": "held-several",
+   "read": [
+    {
+     "df": "khuddakapatha-sujato_pli.json",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=khuddakapatha-sujato_pli.json"
+    },
+    {
+     "df": "khuddakapatha-sujato_sujato.json",
+     "translator": "Bhikkhu Sujato",
+     "year": 2018,
+     "url": "?text=khuddakapatha-sujato_sujato.json"
+    }
+   ]
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Dhammapada",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "dhammapada_muller.json",
+     "translator": "F. Max Müller",
+     "year": 1881,
+     "url": "?text=dhammapada_muller.json"
+    }
+   ]
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Udāna",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "the-udana-gm-strong-1902-no_anonymous.json",
+     "translator": "GM-Strong",
+     "year": 1900,
+     "url": "?text=the-udana-gm-strong-1902-no_anonymous.json"
+    }
+   ]
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Itivuttaka",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Sutta Nipāta",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "the-sutta-nipata-v-fausboll-1881-no_anonymous.json",
+     "translator": "V-Fausboll 1881 (NO)",
+     "year": 1900,
+     "url": "?text=the-sutta-nipata-v-fausboll-1881-no_anonymous.json"
+    }
+   ]
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Theragāthā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Therīgāthā",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Jātaka",
+   "pd": "g",
+   "state": "held-several",
+   "read": [
+    {
+     "df": "jataka_cowell-rouse-vol6.json",
+     "translator": "E. B. Cowell, W. H. D. Rouse",
+     "year": 1907,
+     "url": "?text=jataka_cowell-rouse-vol6.json"
+    },
+    {
+     "df": "jataka_babbit.json",
+     "translator": "Ellen C. Babbit",
+     "year": 1912,
+     "url": "?text=jataka_babbit.json"
+    },
+    {
+     "df": "jataka_chalmers-vol1.json",
+     "translator": "Robert Chalmers",
+     "year": 1895,
+     "url": "?text=jataka_chalmers-vol1.json"
+    },
+    {
+     "df": "jataka_rhys-davids.json",
+     "translator": "Rhys Davids",
+     "year": 1900,
+     "url": "?text=jataka_rhys-davids.json"
+    },
+    {
+     "df": "jataka_rouse-vol2.json",
+     "translator": "W.H.D. Rouse",
+     "year": 1895,
+     "url": "?text=jataka_rouse-vol2.json"
+    },
+    {
+     "df": "jataka_francis-neil-vol3.json",
+     "translator": "H.T. Francis, R.A. Neil",
+     "year": 1897,
+     "url": "?text=jataka_francis-neil-vol3.json"
+    },
+    {
+     "df": "jataka_rouse-vol4.json",
+     "translator": "W.H.D. Rouse",
+     "year": 1901,
+     "url": "?text=jataka_rouse-vol4.json"
+    },
+    {
+     "df": "jataka_francis-vol5.json",
+     "translator": "H.T. Francis",
+     "year": 1905,
+     "url": "?text=jataka_francis-vol5.json"
+    }
+   ]
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Vimānavatthu · Petavatthu",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Buddhavaṃsa · Cariyāpiṭaka",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "buddhavamsa-cariyapitaka_morris.json",
+     "translator": "Richard Morris",
+     "year": 1882,
+     "url": "?text=buddhavamsa-cariyapitaka_morris.json"
+    }
+   ]
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Paṭisambhidāmagga",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Niddesa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "Apadāna",
+   "pd": "r",
+   "state": "none",
+   "blocked_ambiguous": true
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "+ Nettippakaraṇa · Peṭakopadesa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-khuddaka",
+   "chip": "+ Milindapañha",
+   "pd": "g",
+   "state": "held-several",
+   "read": [
+    {
+     "df": "milindapanha-kelly_pli.json",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=milindapanha-kelly_pli.json"
+    },
+    {
+     "df": "milindapanha-kelly_kelly.json",
+     "translator": "John Kelly",
+     "year": 2018,
+     "url": "?text=milindapanha-kelly_kelly.json"
+    }
+   ]
+  },
+  {
+   "zone": "p-abhidhamma",
+   "chip": "Dhammasaṅgaṇī",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-abhidhamma",
+   "chip": "Vibhaṅga",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-abhidhamma",
+   "chip": "Dhātukathā",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-abhidhamma",
+   "chip": "Puggalapaññatti",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-abhidhamma",
+   "chip": "Kathāvatthu",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-abhidhamma",
+   "chip": "Yamaka",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "p-abhidhamma",
+   "chip": "Paṭṭhāna",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-paracanon",
+   "chip": "Milindapañha",
+   "pd": "g",
+   "state": "held-several",
+   "read": [
+    {
+     "df": "milindapanha-kelly_pli.json",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=milindapanha-kelly_pli.json"
+    },
+    {
+     "df": "milindapanha-kelly_kelly.json",
+     "translator": "John Kelly",
+     "year": 2018,
+     "url": "?text=milindapanha-kelly_kelly.json"
+    }
+   ]
+  },
+  {
+   "zone": "p-paracanon",
+   "chip": "Visuddhimagga",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-paracanon",
+   "chip": "Nettippakaraṇa · Peṭakopadesa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-paracanon",
+   "chip": "Dīpavaṃsa · Mahāvaṃsa",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "p-paracanon",
+   "chip": "Cūḷavaṃsa",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "p-paracanon",
+   "chip": "Aṭṭhakathā",
+   "pd": "r",
+   "state": "none"
+  }
+ ]
+}
