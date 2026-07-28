@@ -1,0 +1,2966 @@
+{
+ "tradition": "buddhist",
+ "title": "The Map of Buddhist Texts",
+ "grammar": "basket-fam",
+ "source": "The Map of Sacred Texts.mhtml (artifact fea77718) — extracted 2026-07-28; editorial artifact, never regenerated silently",
+ "zones": [
+  {
+   "id": "p-vinaya",
+   "name": "Vinaya Piṭaka",
+   "territory": "5 divisions",
+   "territory_count": 5,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the basket of discipline",
+   "blurb": "The monastic code — 227 rules for monks, 311 for nuns, each with its origin-story, plus the institutional regulations and the first two councils.",
+   "groups": [
+    {
+     "heading": null,
+     "chips": [
+      {
+       "name": "Suttavibhaṅga — Mahāvibhaṅga",
+       "pd": "g",
+       "note": "SBE 13/17 (PD) · Brahmali CC0",
+       "meta": "monks · 227 rules"
+      },
+      {
+       "name": "Suttavibhaṅga — Bhikkhunīvibhaṅga",
+       "pd": "g",
+       "note": "Brahmali CC0",
+       "meta": "nuns · 311 rules"
+      },
+      {
+       "name": "Khandhaka — Mahāvagga",
+       "pd": "g",
+       "note": "SBE 13/17 (PD) · Brahmali CC0",
+       "meta": "10 khandhakas"
+      },
+      {
+       "name": "Khandhaka — Cullavagga",
+       "pd": "g",
+       "note": "SBE 20 (PD) · Brahmali CC0",
+       "meta": "12 khandhakas"
+      },
+      {
+       "name": "Parivāra",
+       "pd": "g",
+       "note": "Brahmali CC0",
+       "meta": "appendix / catechism"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p-digha",
+   "name": "Dīgha Nikāya",
+   "territory": "34 suttas · 3 vaggas",
+   "territory_count": 34,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the long discourses",
+   "blurb": "The 34 longest discourses — the Buddha’s last days, the great mindfulness discourse, the layperson’s code. All CC0 via Sujato.",
+   "groups": [
+    {
+     "chips": [
+      {
+       "name": "Brahmajāla",
+       "pd": null,
+       "note": "Brahmajāla — The All-Embracing Net of Views · dn1",
+       "kind": "su",
+       "num": "1"
+      },
+      {
+       "name": "Sāmaññaphala",
+       "pd": null,
+       "note": "Sāmaññaphala — The Fruits of the Ascetic Life · dn2",
+       "kind": "su",
+       "num": "2"
+      },
+      {
+       "name": "Ambaṭṭha",
+       "pd": null,
+       "note": "Ambaṭṭha — With Ambaṭṭha · dn3",
+       "kind": "su",
+       "num": "3"
+      },
+      {
+       "name": "Soṇadaṇḍa",
+       "pd": null,
+       "note": "Soṇadaṇḍa — With Soṇadaṇḍa · dn4",
+       "kind": "su",
+       "num": "4"
+      },
+      {
+       "name": "Kūṭadanta",
+       "pd": null,
+       "note": "Kūṭadanta — With Kūṭadanta · dn5",
+       "kind": "su",
+       "num": "5"
+      },
+      {
+       "name": "Mahāli",
+       "pd": null,
+       "note": "Mahāli — With Mahāli · dn6",
+       "kind": "su",
+       "num": "6"
+      },
+      {
+       "name": "Jāliya",
+       "pd": null,
+       "note": "Jāliya — With Jāliya · dn7",
+       "kind": "su",
+       "num": "7"
+      },
+      {
+       "name": "Mahāsīhanāda",
+       "pd": null,
+       "note": "Mahāsīhanāda — The Great Lion’s Roar · dn8",
+       "kind": "su",
+       "num": "8"
+      },
+      {
+       "name": "Poṭṭhapāda",
+       "pd": null,
+       "note": "Poṭṭhapāda — With Poṭṭhapāda · dn9",
+       "kind": "su",
+       "num": "9"
+      },
+      {
+       "name": "Subha",
+       "pd": null,
+       "note": "Subha — With Subha · dn10",
+       "kind": "su",
+       "num": "10"
+      },
+      {
+       "name": "Kevaṭṭa",
+       "pd": null,
+       "note": "Kevaṭṭa — With Kevaṭṭa · dn11",
+       "kind": "su",
+       "num": "11"
+      },
+      {
+       "name": "Lohicca",
+       "pd": null,
+       "note": "Lohicca — With Lohicca · dn12",
+       "kind": "su",
+       "num": "12"
+      },
+      {
+       "name": "Tevijja",
+       "pd": null,
+       "note": "Tevijja — The Threefold Knowledge · dn13",
+       "kind": "su",
+       "num": "13"
+      }
+     ],
+     "range": "DN 1–13",
+     "gloss": "The Division on Morality",
+     "heading": "Sīlakkhandha-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Mahāpadāna",
+       "pd": null,
+       "note": "Mahāpadāna — The Great Discourse on the Lineage · dn14",
+       "kind": "su",
+       "num": "14"
+      },
+      {
+       "name": "Mahānidāna",
+       "pd": null,
+       "note": "Mahānidāna — The Great Discourse on Causation · dn15",
+       "kind": "su",
+       "num": "15"
+      },
+      {
+       "name": "Mahāparinibbāna",
+       "pd": null,
+       "note": "Mahāparinibbāna — The Final Nibbāna · dn16",
+       "kind": "su",
+       "num": "16"
+      },
+      {
+       "name": "Mahāsudassana",
+       "pd": null,
+       "note": "Mahāsudassana — King Mahāsudassana · dn17",
+       "kind": "su",
+       "num": "17"
+      },
+      {
+       "name": "Janavasabha",
+       "pd": null,
+       "note": "Janavasabha — With Janavasabha · dn18",
+       "kind": "su",
+       "num": "18"
+      },
+      {
+       "name": "Mahāgovinda",
+       "pd": null,
+       "note": "Mahāgovinda — The Great Steward · dn19",
+       "kind": "su",
+       "num": "19"
+      },
+      {
+       "name": "Mahāsamaya",
+       "pd": null,
+       "note": "Mahāsamaya — The Great Assembly · dn20",
+       "kind": "su",
+       "num": "20"
+      },
+      {
+       "name": "Sakkapañha",
+       "pd": null,
+       "note": "Sakkapañha — Sakka’s Questions · dn21",
+       "kind": "su",
+       "num": "21"
+      },
+      {
+       "name": "Mahāsatipaṭṭhāna",
+       "pd": null,
+       "note": "Mahāsatipaṭṭhāna — The Foundations of Mindfulness · dn22",
+       "kind": "su",
+       "num": "22"
+      },
+      {
+       "name": "Pāyāsi",
+       "pd": null,
+       "note": "Pāyāsi — With Pāyāsi · dn23",
+       "kind": "su",
+       "num": "23"
+      }
+     ],
+     "range": "DN 14–23",
+     "gloss": "The Great Division",
+     "heading": "Mahā-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Pāṭika",
+       "pd": null,
+       "note": "Pāṭika — About Pāṭikaputta · dn24",
+       "kind": "su",
+       "num": "24"
+      },
+      {
+       "name": "Udumbarika",
+       "pd": null,
+       "note": "Udumbarika — The Lion’s Roar at Udumbarikā’s · dn25",
+       "kind": "su",
+       "num": "25"
+      },
+      {
+       "name": "Cakkavatti",
+       "pd": null,
+       "note": "Cakkavatti — The Wheel-Turning Monarch · dn26",
+       "kind": "su",
+       "num": "26"
+      },
+      {
+       "name": "Aggañña",
+       "pd": null,
+       "note": "Aggañña — On Knowledge of Beginnings · dn27",
+       "kind": "su",
+       "num": "27"
+      },
+      {
+       "name": "Sampasādanīya",
+       "pd": null,
+       "note": "Sampasādanīya — Serene Faith · dn28",
+       "kind": "su",
+       "num": "28"
+      },
+      {
+       "name": "Pāsādika",
+       "pd": null,
+       "note": "Pāsādika — The Delightful Discourse · dn29",
+       "kind": "su",
+       "num": "29"
+      },
+      {
+       "name": "Lakkhaṇa",
+       "pd": null,
+       "note": "Lakkhaṇa — The Marks of a Great Man · dn30",
+       "kind": "su",
+       "num": "30"
+      },
+      {
+       "name": "Siṅgāla",
+       "pd": null,
+       "note": "Siṅgāla — Advice to Sigālaka · dn31",
+       "kind": "su",
+       "num": "31"
+      },
+      {
+       "name": "Āṭānāṭiya",
+       "pd": null,
+       "note": "Āṭānāṭiya — The Āṭānāṭiya Protection · dn32",
+       "kind": "su",
+       "num": "32"
+      },
+      {
+       "name": "Saṅgīti",
+       "pd": null,
+       "note": "Saṅgīti — Chanting Together · dn33",
+       "kind": "su",
+       "num": "33"
+      },
+      {
+       "name": "Dasuttara",
+       "pd": null,
+       "note": "Dasuttara — Up to Ten · dn34",
+       "kind": "su",
+       "num": "34"
+      }
+     ],
+     "range": "DN 24–34",
+     "gloss": "The Pāṭika Division",
+     "heading": "Pāṭika-vagga"
+    }
+   ]
+  },
+  {
+   "id": "p-majjhima",
+   "name": "Majjhima Nikāya",
+   "territory": "152 suttas · 15 vaggas",
+   "territory_count": 152,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the middle-length discourses",
+   "blurb": "The heart of the canon for practice — 152 discourses from the Root of All Things to the Development of the Faculties. All CC0.",
+   "groups": [
+    {
+     "chips": [
+      {
+       "name": "Mūlapariyāya",
+       "pd": null,
+       "note": "Mūlapariyāya — The Root of All Things · mn1",
+       "kind": "su",
+       "num": "1"
+      },
+      {
+       "name": "Sabbāsava",
+       "pd": null,
+       "note": "Sabbāsava — All the Taints · mn2",
+       "kind": "su",
+       "num": "2"
+      },
+      {
+       "name": "Dhammadāyāda",
+       "pd": null,
+       "note": "Dhammadāyāda — Heirs in the Dhamma · mn3",
+       "kind": "su",
+       "num": "3"
+      },
+      {
+       "name": "Bhayabherava",
+       "pd": null,
+       "note": "Bhayabherava — Fear and Dread · mn4",
+       "kind": "su",
+       "num": "4"
+      },
+      {
+       "name": "Anaṅgaṇa",
+       "pd": null,
+       "note": "Anaṅgaṇa — Unblemished · mn5",
+       "kind": "su",
+       "num": "5"
+      },
+      {
+       "name": "Ākaṅkheyya",
+       "pd": null,
+       "note": "Ākaṅkheyya — If a Bhikkhu Should Wish · mn6",
+       "kind": "su",
+       "num": "6"
+      },
+      {
+       "name": "Vattha",
+       "pd": null,
+       "note": "Vattha — The Simile of the Cloth · mn7",
+       "kind": "su",
+       "num": "7"
+      },
+      {
+       "name": "Sallekha",
+       "pd": null,
+       "note": "Sallekha — Self-Effacement · mn8",
+       "kind": "su",
+       "num": "8"
+      },
+      {
+       "name": "Sammādiṭṭhi",
+       "pd": null,
+       "note": "Sammādiṭṭhi — Right View · mn9",
+       "kind": "su",
+       "num": "9"
+      },
+      {
+       "name": "Satipaṭṭhāna",
+       "pd": null,
+       "note": "Satipaṭṭhāna — The Foundations of Mindfulness · mn10",
+       "kind": "su",
+       "num": "10"
+      }
+     ],
+     "range": "MN 1–10",
+     "gloss": "Root Fifty · I",
+     "heading": "Mūlapariyāya-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Cūḷasīhanāda",
+       "pd": null,
+       "note": "Cūḷasīhanāda — The Shorter Lion’s Roar · mn11",
+       "kind": "su",
+       "num": "11"
+      },
+      {
+       "name": "Mahāsīhanāda",
+       "pd": null,
+       "note": "Mahāsīhanāda — The Greater Lion’s Roar · mn12",
+       "kind": "su",
+       "num": "12"
+      },
+      {
+       "name": "Mahādukkhakkhandha",
+       "pd": null,
+       "note": "Mahādukkhakkhandha — The Greater Mass of Suffering · mn13",
+       "kind": "su",
+       "num": "13"
+      },
+      {
+       "name": "Cūḷadukkhakkhandha",
+       "pd": null,
+       "note": "Cūḷadukkhakkhandha — The Shorter Mass of Suffering · mn14",
+       "kind": "su",
+       "num": "14"
+      },
+      {
+       "name": "Anumāna",
+       "pd": null,
+       "note": "Anumāna — Inference · mn15",
+       "kind": "su",
+       "num": "15"
+      },
+      {
+       "name": "Cetokhila",
+       "pd": null,
+       "note": "Cetokhila — Emotional Barrenness · mn16",
+       "kind": "su",
+       "num": "16"
+      },
+      {
+       "name": "Vanapattha",
+       "pd": null,
+       "note": "Vanapattha — Jungle Thickets · mn17",
+       "kind": "su",
+       "num": "17"
+      },
+      {
+       "name": "Madhupiṇḍika",
+       "pd": null,
+       "note": "Madhupiṇḍika — The Honey-Ball · mn18",
+       "kind": "su",
+       "num": "18"
+      },
+      {
+       "name": "Dvedhāvitakka",
+       "pd": null,
+       "note": "Dvedhāvitakka — Two Kinds of Thought · mn19",
+       "kind": "su",
+       "num": "19"
+      },
+      {
+       "name": "Vitakkasaṇṭhāna",
+       "pd": null,
+       "note": "Vitakkasaṇṭhāna — The Removal of Distracting Thoughts · mn20",
+       "kind": "su",
+       "num": "20"
+      }
+     ],
+     "range": "MN 11–20",
+     "gloss": "The Lion’s Roar",
+     "heading": "Sīhanāda-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Kakacūpama",
+       "pd": null,
+       "note": "Kakacūpama — The Simile of the Saw · mn21",
+       "kind": "su",
+       "num": "21"
+      },
+      {
+       "name": "Alagaddūpama",
+       "pd": null,
+       "note": "Alagaddūpama — The Simile of the Snake · mn22",
+       "kind": "su",
+       "num": "22"
+      },
+      {
+       "name": "Vammika",
+       "pd": null,
+       "note": "Vammika — The Ant-Hill · mn23",
+       "kind": "su",
+       "num": "23"
+      },
+      {
+       "name": "Rathavinīta",
+       "pd": null,
+       "note": "Rathavinīta — The Relay Chariots · mn24",
+       "kind": "su",
+       "num": "24"
+      },
+      {
+       "name": "Nivāpa",
+       "pd": null,
+       "note": "Nivāpa — The Bait · mn25",
+       "kind": "su",
+       "num": "25"
+      },
+      {
+       "name": "Pāsarāsi",
+       "pd": null,
+       "note": "Pāsarāsi — The Noble Search · mn26",
+       "kind": "su",
+       "num": "26"
+      },
+      {
+       "name": "Cūḷahatthipadopama",
+       "pd": null,
+       "note": "Cūḷahatthipadopama — The Shorter Elephant’s Footprint · mn27",
+       "kind": "su",
+       "num": "27"
+      },
+      {
+       "name": "Mahāhatthipadopama",
+       "pd": null,
+       "note": "Mahāhatthipadopama — The Greater Elephant’s Footprint · mn28",
+       "kind": "su",
+       "num": "28"
+      },
+      {
+       "name": "Mahāsāropama",
+       "pd": null,
+       "note": "Mahāsāropama — The Greater Heartwood · mn29",
+       "kind": "su",
+       "num": "29"
+      },
+      {
+       "name": "Cūḷasāropama",
+       "pd": null,
+       "note": "Cūḷasāropama — The Shorter Heartwood · mn30",
+       "kind": "su",
+       "num": "30"
+      }
+     ],
+     "range": "MN 21–30",
+     "gloss": "Similes",
+     "heading": "Opamma-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Cūḷagosiṅga",
+       "pd": null,
+       "note": "Cūḷagosiṅga — The Shorter Discourse at Gosiṅga · mn31",
+       "kind": "su",
+       "num": "31"
+      },
+      {
+       "name": "Mahāgosiṅga",
+       "pd": null,
+       "note": "Mahāgosiṅga — The Greater Discourse at Gosiṅga · mn32",
+       "kind": "su",
+       "num": "32"
+      },
+      {
+       "name": "Mahāgopālaka",
+       "pd": null,
+       "note": "Mahāgopālaka — The Greater Cowherd · mn33",
+       "kind": "su",
+       "num": "33"
+      },
+      {
+       "name": "Cūḷagopālaka",
+       "pd": null,
+       "note": "Cūḷagopālaka — The Shorter Cowherd · mn34",
+       "kind": "su",
+       "num": "34"
+      },
+      {
+       "name": "Cūḷasaccaka",
+       "pd": null,
+       "note": "Cūḷasaccaka — The Shorter Discourse to Saccaka · mn35",
+       "kind": "su",
+       "num": "35"
+      },
+      {
+       "name": "Mahāsaccaka",
+       "pd": null,
+       "note": "Mahāsaccaka — The Greater Discourse to Saccaka · mn36",
+       "kind": "su",
+       "num": "36"
+      },
+      {
+       "name": "Cūḷataṇhāsaṅkhaya",
+       "pd": null,
+       "note": "Cūḷataṇhāsaṅkhaya — The Shorter Destruction of Craving · mn37",
+       "kind": "su",
+       "num": "37"
+      },
+      {
+       "name": "Mahātaṇhāsaṅkhaya",
+       "pd": null,
+       "note": "Mahātaṇhāsaṅkhaya — The Greater Destruction of Craving · mn38",
+       "kind": "su",
+       "num": "38"
+      },
+      {
+       "name": "Mahāassapura",
+       "pd": null,
+       "note": "Mahāassapura — The Greater Discourse at Assapura · mn39",
+       "kind": "su",
+       "num": "39"
+      },
+      {
+       "name": "Cūḷaassapura",
+       "pd": null,
+       "note": "Cūḷaassapura — The Shorter Discourse at Assapura · mn40",
+       "kind": "su",
+       "num": "40"
+      }
+     ],
+     "range": "MN 31–40",
+     "gloss": "The Greater Pairs",
+     "heading": "Mahāyamaka-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Sāleyyaka",
+       "pd": null,
+       "note": "Sāleyyaka — The Brahmins of Sālā · mn41",
+       "kind": "su",
+       "num": "41"
+      },
+      {
+       "name": "Verañjaka",
+       "pd": null,
+       "note": "Verañjaka — The Brahmins of Verañja · mn42",
+       "kind": "su",
+       "num": "42"
+      },
+      {
+       "name": "Mahāvedalla",
+       "pd": null,
+       "note": "Mahāvedalla — The Greater Questions and Answers · mn43",
+       "kind": "su",
+       "num": "43"
+      },
+      {
+       "name": "Cūḷavedalla",
+       "pd": null,
+       "note": "Cūḷavedalla — The Shorter Questions and Answers · mn44",
+       "kind": "su",
+       "num": "44"
+      },
+      {
+       "name": "Cūḷadhammasamādāna",
+       "pd": null,
+       "note": "Cūḷadhammasamādāna — The Shorter Ways of Undertaking Things · mn45",
+       "kind": "su",
+       "num": "45"
+      },
+      {
+       "name": "Mahādhammasamādāna",
+       "pd": null,
+       "note": "Mahādhammasamādāna — The Greater Ways of Undertaking Things · mn46",
+       "kind": "su",
+       "num": "46"
+      },
+      {
+       "name": "Vīmaṁsaka",
+       "pd": null,
+       "note": "Vīmaṁsaka — The Inquirer · mn47",
+       "kind": "su",
+       "num": "47"
+      },
+      {
+       "name": "Kosambiya",
+       "pd": null,
+       "note": "Kosambiya — The Bhikkhus of Kosambī · mn48",
+       "kind": "su",
+       "num": "48"
+      },
+      {
+       "name": "Brahmanimantanika",
+       "pd": null,
+       "note": "Brahmanimantanika — The Invitation of a Brahmā · mn49",
+       "kind": "su",
+       "num": "49"
+      },
+      {
+       "name": "Māratajjanīya",
+       "pd": null,
+       "note": "Māratajjanīya — The Rebuke to Māra · mn50",
+       "kind": "su",
+       "num": "50"
+      }
+     ],
+     "range": "MN 41–50",
+     "gloss": "The Shorter Pairs",
+     "heading": "Cūḷayamaka-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Kandaraka",
+       "pd": null,
+       "note": "Kandaraka — With Kandaraka · mn51",
+       "kind": "su",
+       "num": "51"
+      },
+      {
+       "name": "Aṭṭhakanāgara",
+       "pd": null,
+       "note": "Aṭṭhakanāgara — The Man from Aṭṭhakanagara · mn52",
+       "kind": "su",
+       "num": "52"
+      },
+      {
+       "name": "Sekha",
+       "pd": null,
+       "note": "Sekha — The Trainee · mn53",
+       "kind": "su",
+       "num": "53"
+      },
+      {
+       "name": "Potaliya",
+       "pd": null,
+       "note": "Potaliya — With Potaliya · mn54",
+       "kind": "su",
+       "num": "54"
+      },
+      {
+       "name": "Jīvaka",
+       "pd": null,
+       "note": "Jīvaka — With Jīvaka · mn55",
+       "kind": "su",
+       "num": "55"
+      },
+      {
+       "name": "Upāli",
+       "pd": null,
+       "note": "Upāli — With Upāli · mn56",
+       "kind": "su",
+       "num": "56"
+      },
+      {
+       "name": "Kukkuravatika",
+       "pd": null,
+       "note": "Kukkuravatika — The Dog-Duty Ascetic · mn57",
+       "kind": "su",
+       "num": "57"
+      },
+      {
+       "name": "Abhayarājakumāra",
+       "pd": null,
+       "note": "Abhayarājakumāra — With Prince Abhaya · mn58",
+       "kind": "su",
+       "num": "58"
+      },
+      {
+       "name": "Bahuvedanīya",
+       "pd": null,
+       "note": "Bahuvedanīya — The Many Kinds of Feeling · mn59",
+       "kind": "su",
+       "num": "59"
+      },
+      {
+       "name": "Apaṇṇaka",
+       "pd": null,
+       "note": "Apaṇṇaka — The Unfailing Teaching · mn60",
+       "kind": "su",
+       "num": "60"
+      }
+     ],
+     "range": "MN 51–60",
+     "gloss": "Middle Fifty · Householders",
+     "heading": "Gahapati-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Ambalaṭṭhikarāhulovāda",
+       "pd": null,
+       "note": "Ambalaṭṭhikarāhulovāda — Advice to Rāhula at Ambalaṭṭhika · mn61",
+       "kind": "su",
+       "num": "61"
+      },
+      {
+       "name": "Mahārāhulovāda",
+       "pd": null,
+       "note": "Mahārāhulovāda — The Greater Advice to Rāhula · mn62",
+       "kind": "su",
+       "num": "62"
+      },
+      {
+       "name": "Cūḷamālukya",
+       "pd": null,
+       "note": "Cūḷamālukya — The Shorter Discourse to Mālukyāputta · mn63",
+       "kind": "su",
+       "num": "63"
+      },
+      {
+       "name": "Mahāmālukya",
+       "pd": null,
+       "note": "Mahāmālukya — The Greater Discourse to Mālukyāputta · mn64",
+       "kind": "su",
+       "num": "64"
+      },
+      {
+       "name": "Bhaddāli",
+       "pd": null,
+       "note": "Bhaddāli — With Bhaddāli · mn65",
+       "kind": "su",
+       "num": "65"
+      },
+      {
+       "name": "Laṭukikopama",
+       "pd": null,
+       "note": "Laṭukikopama — The Simile of the Quail · mn66",
+       "kind": "su",
+       "num": "66"
+      },
+      {
+       "name": "Cātuma",
+       "pd": null,
+       "note": "Cātuma — At Cātumā · mn67",
+       "kind": "su",
+       "num": "67"
+      },
+      {
+       "name": "Naḷakapāna",
+       "pd": null,
+       "note": "Naḷakapāna — At Naḷakapāna · mn68",
+       "kind": "su",
+       "num": "68"
+      },
+      {
+       "name": "Goliyāni",
+       "pd": null,
+       "note": "Goliyāni — With Gulissāni · mn69",
+       "kind": "su",
+       "num": "69"
+      },
+      {
+       "name": "Kīṭāgiri",
+       "pd": null,
+       "note": "Kīṭāgiri — At Kīṭāgiri · mn70",
+       "kind": "su",
+       "num": "70"
+      }
+     ],
+     "range": "MN 61–70",
+     "gloss": "Monks",
+     "heading": "Bhikkhu-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Tevijjavaccha",
+       "pd": null,
+       "note": "Tevijjavaccha — To Vacchagotta on the Threefold Knowledge · mn71",
+       "kind": "su",
+       "num": "71"
+      },
+      {
+       "name": "Aggivaccha",
+       "pd": null,
+       "note": "Aggivaccha — To Vacchagotta on Fire · mn72",
+       "kind": "su",
+       "num": "72"
+      },
+      {
+       "name": "Mahāvaccha",
+       "pd": null,
+       "note": "Mahāvaccha — The Greater Discourse to Vacchagotta · mn73",
+       "kind": "su",
+       "num": "73"
+      },
+      {
+       "name": "Dīghanakha",
+       "pd": null,
+       "note": "Dīghanakha — With Dīghanakha · mn74",
+       "kind": "su",
+       "num": "74"
+      },
+      {
+       "name": "Māgaṇḍiya",
+       "pd": null,
+       "note": "Māgaṇḍiya — With Māgaṇḍiya · mn75",
+       "kind": "su",
+       "num": "75"
+      },
+      {
+       "name": "Sandaka",
+       "pd": null,
+       "note": "Sandaka — With Sandaka · mn76",
+       "kind": "su",
+       "num": "76"
+      },
+      {
+       "name": "Mahāsakuludāyi",
+       "pd": null,
+       "note": "Mahāsakuludāyi — The Greater Discourse to Sakuludāyī · mn77",
+       "kind": "su",
+       "num": "77"
+      },
+      {
+       "name": "Samaṇamuṇḍika",
+       "pd": null,
+       "note": "Samaṇamuṇḍika — With Samaṇamaṇḍikāputta · mn78",
+       "kind": "su",
+       "num": "78"
+      },
+      {
+       "name": "Cūḷasakuludāyi",
+       "pd": null,
+       "note": "Cūḷasakuludāyi — The Shorter Discourse to Sakuludāyī · mn79",
+       "kind": "su",
+       "num": "79"
+      },
+      {
+       "name": "Vekhanasa",
+       "pd": null,
+       "note": "Vekhanasa — With Vekhanasa · mn80",
+       "kind": "su",
+       "num": "80"
+      }
+     ],
+     "range": "MN 71–80",
+     "gloss": "Wanderers",
+     "heading": "Paribbājaka-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Ghaṭikāra",
+       "pd": null,
+       "note": "Ghaṭikāra — Ghaṭīkāra the Potter · mn81",
+       "kind": "su",
+       "num": "81"
+      },
+      {
+       "name": "Raṭṭhapāla",
+       "pd": null,
+       "note": "Raṭṭhapāla — With Raṭṭhapāla · mn82",
+       "kind": "su",
+       "num": "82"
+      },
+      {
+       "name": "Maghadeva",
+       "pd": null,
+       "note": "Maghadeva — King Maghadeva · mn83",
+       "kind": "su",
+       "num": "83"
+      },
+      {
+       "name": "Madhura",
+       "pd": null,
+       "note": "Madhura — At Madhurā · mn84",
+       "kind": "su",
+       "num": "84"
+      },
+      {
+       "name": "Bodhirājakumāra",
+       "pd": null,
+       "note": "Bodhirājakumāra — With Prince Bodhi · mn85",
+       "kind": "su",
+       "num": "85"
+      },
+      {
+       "name": "Aṅgulimāla",
+       "pd": null,
+       "note": "Aṅgulimāla — With Aṅgulimāla · mn86",
+       "kind": "su",
+       "num": "86"
+      },
+      {
+       "name": "Piyajātika",
+       "pd": null,
+       "note": "Piyajātika — Born from Those Who Are Dear · mn87",
+       "kind": "su",
+       "num": "87"
+      },
+      {
+       "name": "Bāhitika",
+       "pd": null,
+       "note": "Bāhitika — The Cloak · mn88",
+       "kind": "su",
+       "num": "88"
+      },
+      {
+       "name": "Dhammacetiya",
+       "pd": null,
+       "note": "Dhammacetiya — Monuments to the Dhamma · mn89",
+       "kind": "su",
+       "num": "89"
+      },
+      {
+       "name": "Kaṇṇakatthala",
+       "pd": null,
+       "note": "Kaṇṇakatthala — At Kaṇṇakatthala · mn90",
+       "kind": "su",
+       "num": "90"
+      }
+     ],
+     "range": "MN 81–90",
+     "gloss": "Kings",
+     "heading": "Rāja-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Brahmāyu",
+       "pd": null,
+       "note": "Brahmāyu — With Brahmāyu · mn91",
+       "kind": "su",
+       "num": "91"
+      },
+      {
+       "name": "Sela",
+       "pd": null,
+       "note": "Sela — With Sela · mn92",
+       "kind": "su",
+       "num": "92"
+      },
+      {
+       "name": "Assalāyana",
+       "pd": null,
+       "note": "Assalāyana — With Assalāyana · mn93",
+       "kind": "su",
+       "num": "93"
+      },
+      {
+       "name": "Ghoṭamukha",
+       "pd": null,
+       "note": "Ghoṭamukha — With Ghoṭamukha · mn94",
+       "kind": "su",
+       "num": "94"
+      },
+      {
+       "name": "Caṅkī",
+       "pd": null,
+       "note": "Caṅkī — With Caṅkī · mn95",
+       "kind": "su",
+       "num": "95"
+      },
+      {
+       "name": "Esukārī",
+       "pd": null,
+       "note": "Esukārī — With Esukārī · mn96",
+       "kind": "su",
+       "num": "96"
+      },
+      {
+       "name": "Dhanañjāni",
+       "pd": null,
+       "note": "Dhanañjāni — With Dhanañjāni · mn97",
+       "kind": "su",
+       "num": "97"
+      },
+      {
+       "name": "Vāseṭṭha",
+       "pd": null,
+       "note": "Vāseṭṭha — With Vāseṭṭha · mn98",
+       "kind": "su",
+       "num": "98"
+      },
+      {
+       "name": "Subha",
+       "pd": null,
+       "note": "Subha — With Subha · mn99",
+       "kind": "su",
+       "num": "99"
+      },
+      {
+       "name": "Saṅgārava",
+       "pd": null,
+       "note": "Saṅgārava — With Saṅgārava · mn100",
+       "kind": "su",
+       "num": "100"
+      }
+     ],
+     "range": "MN 91–100",
+     "gloss": "Brahmins",
+     "heading": "Brāhmaṇa-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Devadaha",
+       "pd": null,
+       "note": "Devadaha — At Devadaha · mn101",
+       "kind": "su",
+       "num": "101"
+      },
+      {
+       "name": "Pañcattaya",
+       "pd": null,
+       "note": "Pañcattaya — The Five and Three · mn102",
+       "kind": "su",
+       "num": "102"
+      },
+      {
+       "name": "Kinti",
+       "pd": null,
+       "note": "Kinti — What Do You Think of Me? · mn103",
+       "kind": "su",
+       "num": "103"
+      },
+      {
+       "name": "Sāmagāma",
+       "pd": null,
+       "note": "Sāmagāma — At Sāmagāma · mn104",
+       "kind": "su",
+       "num": "104"
+      },
+      {
+       "name": "Sunakkhatta",
+       "pd": null,
+       "note": "Sunakkhatta — With Sunakkhatta · mn105",
+       "kind": "su",
+       "num": "105"
+      },
+      {
+       "name": "Āneñjasappāya",
+       "pd": null,
+       "note": "Āneñjasappāya — Conducive to the Imperturbable · mn106",
+       "kind": "su",
+       "num": "106"
+      },
+      {
+       "name": "Gaṇakamoggallāna",
+       "pd": null,
+       "note": "Gaṇakamoggallāna — With Moggallāna the Accountant · mn107",
+       "kind": "su",
+       "num": "107"
+      },
+      {
+       "name": "Gopakamoggallāna",
+       "pd": null,
+       "note": "Gopakamoggallāna — With Moggallāna the Guardian · mn108",
+       "kind": "su",
+       "num": "108"
+      },
+      {
+       "name": "Mahāpuṇṇama",
+       "pd": null,
+       "note": "Mahāpuṇṇama — The Greater Full-Moon Night · mn109",
+       "kind": "su",
+       "num": "109"
+      },
+      {
+       "name": "Cūḷapuṇṇama",
+       "pd": null,
+       "note": "Cūḷapuṇṇama — The Shorter Full-Moon Night · mn110",
+       "kind": "su",
+       "num": "110"
+      }
+     ],
+     "range": "MN 101–110",
+     "gloss": "Final Fifty · Devadaha",
+     "heading": "Devadaha-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Anupada",
+       "pd": null,
+       "note": "Anupada — One by One as They Occurred · mn111",
+       "kind": "su",
+       "num": "111"
+      },
+      {
+       "name": "Chabbisodhana",
+       "pd": null,
+       "note": "Chabbisodhana — The Sixfold Purity · mn112",
+       "kind": "su",
+       "num": "112"
+      },
+      {
+       "name": "Sappurisa",
+       "pd": null,
+       "note": "Sappurisa — The Superior Person · mn113",
+       "kind": "su",
+       "num": "113"
+      },
+      {
+       "name": "Sevitabbāsevitabba",
+       "pd": null,
+       "note": "Sevitabbāsevitabba — To Be Cultivated and Not · mn114",
+       "kind": "su",
+       "num": "114"
+      },
+      {
+       "name": "Bahudhātuka",
+       "pd": null,
+       "note": "Bahudhātuka — The Many Kinds of Elements · mn115",
+       "kind": "su",
+       "num": "115"
+      },
+      {
+       "name": "Isigili",
+       "pd": null,
+       "note": "Isigili — At Isigili · mn116",
+       "kind": "su",
+       "num": "116"
+      },
+      {
+       "name": "Mahācattārīsaka",
+       "pd": null,
+       "note": "Mahācattārīsaka — The Great Forty · mn117",
+       "kind": "su",
+       "num": "117"
+      },
+      {
+       "name": "Ānāpānassati",
+       "pd": null,
+       "note": "Ānāpānassati — Mindfulness of Breathing · mn118",
+       "kind": "su",
+       "num": "118"
+      },
+      {
+       "name": "Kāyagatāsati",
+       "pd": null,
+       "note": "Kāyagatāsati — Mindfulness of the Body · mn119",
+       "kind": "su",
+       "num": "119"
+      },
+      {
+       "name": "Saṅkhārupapatti",
+       "pd": null,
+       "note": "Saṅkhārupapatti — Rebirth by Aspiration · mn120",
+       "kind": "su",
+       "num": "120"
+      }
+     ],
+     "range": "MN 111–120",
+     "gloss": "One by One",
+     "heading": "Anupada-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Cūḷasuññata",
+       "pd": null,
+       "note": "Cūḷasuññata — The Shorter Discourse on Emptiness · mn121",
+       "kind": "su",
+       "num": "121"
+      },
+      {
+       "name": "Mahāsuññata",
+       "pd": null,
+       "note": "Mahāsuññata — The Greater Discourse on Emptiness · mn122",
+       "kind": "su",
+       "num": "122"
+      },
+      {
+       "name": "Acchariyaabbhuta",
+       "pd": null,
+       "note": "Acchariyaabbhuta — Wonderful and Marvellous · mn123",
+       "kind": "su",
+       "num": "123"
+      },
+      {
+       "name": "Bākula",
+       "pd": null,
+       "note": "Bākula — With Bakkula · mn124",
+       "kind": "su",
+       "num": "124"
+      },
+      {
+       "name": "Dantabhūmi",
+       "pd": null,
+       "note": "Dantabhūmi — The Level of the Tamed · mn125",
+       "kind": "su",
+       "num": "125"
+      },
+      {
+       "name": "Bhūmija",
+       "pd": null,
+       "note": "Bhūmija — With Bhūmija · mn126",
+       "kind": "su",
+       "num": "126"
+      },
+      {
+       "name": "Anuruddha",
+       "pd": null,
+       "note": "Anuruddha — With Anuruddha · mn127",
+       "kind": "su",
+       "num": "127"
+      },
+      {
+       "name": "Upakkilesa",
+       "pd": null,
+       "note": "Upakkilesa — Corruptions · mn128",
+       "kind": "su",
+       "num": "128"
+      },
+      {
+       "name": "Bālapaṇḍita",
+       "pd": null,
+       "note": "Bālapaṇḍita — Fools and the Wise · mn129",
+       "kind": "su",
+       "num": "129"
+      },
+      {
+       "name": "Devadūta",
+       "pd": null,
+       "note": "Devadūta — The Divine Messengers · mn130",
+       "kind": "su",
+       "num": "130"
+      }
+     ],
+     "range": "MN 121–130",
+     "gloss": "Emptiness",
+     "heading": "Suññata-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Bhaddekaratta",
+       "pd": null,
+       "note": "Bhaddekaratta — One Fine Night · mn131",
+       "kind": "su",
+       "num": "131"
+      },
+      {
+       "name": "Ānandabhaddekaratta",
+       "pd": null,
+       "note": "Ānandabhaddekaratta — Ānanda and One Fine Night · mn132",
+       "kind": "su",
+       "num": "132"
+      },
+      {
+       "name": "Mahākaccānabhaddekaratta",
+       "pd": null,
+       "note": "Mahākaccānabhaddekaratta — Mahākaccāna and One Fine Night · mn133",
+       "kind": "su",
+       "num": "133"
+      },
+      {
+       "name": "Lomasakaṅgiyabhaddekaratta",
+       "pd": null,
+       "note": "Lomasakaṅgiyabhaddekaratta — Lomasakaṅgiya and One Fine Night · mn134",
+       "kind": "su",
+       "num": "134"
+      },
+      {
+       "name": "Cūḷakammavibhaṅga",
+       "pd": null,
+       "note": "Cūḷakammavibhaṅga — The Shorter Exposition of Action · mn135",
+       "kind": "su",
+       "num": "135"
+      },
+      {
+       "name": "Mahākammavibhaṅga",
+       "pd": null,
+       "note": "Mahākammavibhaṅga — The Greater Exposition of Action · mn136",
+       "kind": "su",
+       "num": "136"
+      },
+      {
+       "name": "Saḷāyatanavibhaṅga",
+       "pd": null,
+       "note": "Saḷāyatanavibhaṅga — The Exposition of the Sixfold Base · mn137",
+       "kind": "su",
+       "num": "137"
+      },
+      {
+       "name": "Uddesavibhaṅga",
+       "pd": null,
+       "note": "Uddesavibhaṅga — The Exposition of a Summary · mn138",
+       "kind": "su",
+       "num": "138"
+      },
+      {
+       "name": "Araṇavibhaṅga",
+       "pd": null,
+       "note": "Araṇavibhaṅga — The Exposition of Non-Conflict · mn139",
+       "kind": "su",
+       "num": "139"
+      },
+      {
+       "name": "Dhātuvibhaṅga",
+       "pd": null,
+       "note": "Dhātuvibhaṅga — The Exposition of the Elements · mn140",
+       "kind": "su",
+       "num": "140"
+      },
+      {
+       "name": "Saccavibhaṅga",
+       "pd": null,
+       "note": "Saccavibhaṅga — The Exposition of the Truths · mn141",
+       "kind": "su",
+       "num": "141"
+      },
+      {
+       "name": "Dakkhiṇāvibhaṅga",
+       "pd": null,
+       "note": "Dakkhiṇāvibhaṅga — The Exposition of Offerings · mn142",
+       "kind": "su",
+       "num": "142"
+      }
+     ],
+     "range": "MN 131–142",
+     "gloss": "Expositions",
+     "heading": "Vibhaṅga-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Anāthapiṇḍikovāda",
+       "pd": null,
+       "note": "Anāthapiṇḍikovāda — Advice to Anāthapiṇḍika · mn143",
+       "kind": "su",
+       "num": "143"
+      },
+      {
+       "name": "Channovāda",
+       "pd": null,
+       "note": "Channovāda — Advice to Channa · mn144",
+       "kind": "su",
+       "num": "144"
+      },
+      {
+       "name": "Puṇṇovāda",
+       "pd": null,
+       "note": "Puṇṇovāda — Advice to Puṇṇa · mn145",
+       "kind": "su",
+       "num": "145"
+      },
+      {
+       "name": "Nandakovāda",
+       "pd": null,
+       "note": "Nandakovāda — Advice from Nandaka · mn146",
+       "kind": "su",
+       "num": "146"
+      },
+      {
+       "name": "Cūḷarāhulovāda",
+       "pd": null,
+       "note": "Cūḷarāhulovāda — The Shorter Advice to Rāhula · mn147",
+       "kind": "su",
+       "num": "147"
+      },
+      {
+       "name": "Chachakka",
+       "pd": null,
+       "note": "Chachakka — The Six Sets of Six · mn148",
+       "kind": "su",
+       "num": "148"
+      },
+      {
+       "name": "Mahāsaḷāyatanika",
+       "pd": null,
+       "note": "Mahāsaḷāyatanika — The Great Sixfold Base · mn149",
+       "kind": "su",
+       "num": "149"
+      },
+      {
+       "name": "Nagaravindeyya",
+       "pd": null,
+       "note": "Nagaravindeyya — To the People of Nagaravinda · mn150",
+       "kind": "su",
+       "num": "150"
+      },
+      {
+       "name": "Piṇḍapātapārisuddhi",
+       "pd": null,
+       "note": "Piṇḍapātapārisuddhi — The Purification of Almsfood · mn151",
+       "kind": "su",
+       "num": "151"
+      },
+      {
+       "name": "Indriyabhāvanā",
+       "pd": null,
+       "note": "Indriyabhāvanā — The Development of the Faculties · mn152",
+       "kind": "su",
+       "num": "152"
+      }
+     ],
+     "range": "MN 143–152",
+     "gloss": "The Six Sense Bases",
+     "heading": "Saḷāyatana-vagga"
+    }
+   ]
+  },
+  {
+   "id": "p-samyutta",
+   "name": "Saṃyutta Nikāya",
+   "territory": "56 saṃyuttas · 5 vaggas",
+   "territory_count": 56,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the connected discourses",
+   "blurb": "Thousands of short suttas in 56 thematic collections (the individual total runs 2,889–7,762 by counting convention). Shown at the saṃyutta level. All CC0.",
+   "groups": [
+    {
+     "chips": [
+      {
+       "name": "Devatā",
+       "pd": null,
+       "note": "Devatā — With Deities · sn1",
+       "kind": "su",
+       "num": "1"
+      },
+      {
+       "name": "Devaputta",
+       "pd": null,
+       "note": "Devaputta — With Young Gods · sn2",
+       "kind": "su",
+       "num": "2"
+      },
+      {
+       "name": "Kosala",
+       "pd": null,
+       "note": "Kosala — With King Pasenadi · sn3",
+       "kind": "su",
+       "num": "3"
+      },
+      {
+       "name": "Māra",
+       "pd": null,
+       "note": "Māra — With Māra · sn4",
+       "kind": "su",
+       "num": "4"
+      },
+      {
+       "name": "Bhikkhunī",
+       "pd": null,
+       "note": "Bhikkhunī — With Nuns · sn5",
+       "kind": "su",
+       "num": "5"
+      },
+      {
+       "name": "Brahma",
+       "pd": null,
+       "note": "Brahma — With Brahmās · sn6",
+       "kind": "su",
+       "num": "6"
+      },
+      {
+       "name": "Brāhmaṇa",
+       "pd": null,
+       "note": "Brāhmaṇa — With Brahmins · sn7",
+       "kind": "su",
+       "num": "7"
+      },
+      {
+       "name": "Vaṅgīsa",
+       "pd": null,
+       "note": "Vaṅgīsa — With Vaṅgīsa · sn8",
+       "kind": "su",
+       "num": "8"
+      },
+      {
+       "name": "Vana",
+       "pd": null,
+       "note": "Vana — In the Forest · sn9",
+       "kind": "su",
+       "num": "9"
+      },
+      {
+       "name": "Yakkha",
+       "pd": null,
+       "note": "Yakkha — With Spirits · sn10",
+       "kind": "su",
+       "num": "10"
+      },
+      {
+       "name": "Sakka",
+       "pd": null,
+       "note": "Sakka — With Sakka · sn11",
+       "kind": "su",
+       "num": "11"
+      }
+     ],
+     "range": "SN 1–11",
+     "gloss": "With Verses",
+     "heading": "Sagāthā-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Nidāna",
+       "pd": null,
+       "note": "Nidāna — On Causation · sn12",
+       "kind": "su",
+       "num": "12"
+      },
+      {
+       "name": "Abhisamaya",
+       "pd": null,
+       "note": "Abhisamaya — The Breakthrough · sn13",
+       "kind": "su",
+       "num": "13"
+      },
+      {
+       "name": "Dhātu",
+       "pd": null,
+       "note": "Dhātu — On Elements · sn14",
+       "kind": "su",
+       "num": "14"
+      },
+      {
+       "name": "Anamatagga",
+       "pd": null,
+       "note": "Anamatagga — The Unfindable Beginning · sn15",
+       "kind": "su",
+       "num": "15"
+      },
+      {
+       "name": "Kassapa",
+       "pd": null,
+       "note": "Kassapa — With Kassapa · sn16",
+       "kind": "su",
+       "num": "16"
+      },
+      {
+       "name": "Lābhasakkāra",
+       "pd": null,
+       "note": "Lābhasakkāra — Gains and Honour · sn17",
+       "kind": "su",
+       "num": "17"
+      },
+      {
+       "name": "Rāhula",
+       "pd": null,
+       "note": "Rāhula — With Rāhula · sn18",
+       "kind": "su",
+       "num": "18"
+      },
+      {
+       "name": "Lakkhaṇa",
+       "pd": null,
+       "note": "Lakkhaṇa — With Lakkhaṇa · sn19",
+       "kind": "su",
+       "num": "19"
+      },
+      {
+       "name": "Opamma",
+       "pd": null,
+       "note": "Opamma — With Similes · sn20",
+       "kind": "su",
+       "num": "20"
+      },
+      {
+       "name": "Bhikkhu",
+       "pd": null,
+       "note": "Bhikkhu — With Monks · sn21",
+       "kind": "su",
+       "num": "21"
+      }
+     ],
+     "range": "SN 12–21",
+     "gloss": "Causation",
+     "heading": "Nidāna-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Khandha",
+       "pd": null,
+       "note": "Khandha — On the Aggregates · sn22",
+       "kind": "su",
+       "num": "22"
+      },
+      {
+       "name": "Rādha",
+       "pd": null,
+       "note": "Rādha — With Rādha · sn23",
+       "kind": "su",
+       "num": "23"
+      },
+      {
+       "name": "Diṭṭhi",
+       "pd": null,
+       "note": "Diṭṭhi — On Views · sn24",
+       "kind": "su",
+       "num": "24"
+      },
+      {
+       "name": "Okkanta",
+       "pd": null,
+       "note": "Okkanta — On Entering · sn25",
+       "kind": "su",
+       "num": "25"
+      },
+      {
+       "name": "Uppāda",
+       "pd": null,
+       "note": "Uppāda — On Arising · sn26",
+       "kind": "su",
+       "num": "26"
+      },
+      {
+       "name": "Kilesa",
+       "pd": null,
+       "note": "Kilesa — On Defilements · sn27",
+       "kind": "su",
+       "num": "27"
+      },
+      {
+       "name": "Sāriputta",
+       "pd": null,
+       "note": "Sāriputta — With Sāriputta · sn28",
+       "kind": "su",
+       "num": "28"
+      },
+      {
+       "name": "Nāga",
+       "pd": null,
+       "note": "Nāga — On Nāgas · sn29",
+       "kind": "su",
+       "num": "29"
+      },
+      {
+       "name": "Supaṇṇa",
+       "pd": null,
+       "note": "Supaṇṇa — On Supaṇṇas · sn30",
+       "kind": "su",
+       "num": "30"
+      },
+      {
+       "name": "Gandhabbakāya",
+       "pd": null,
+       "note": "Gandhabbakāya — On Gandhabba Devas · sn31",
+       "kind": "su",
+       "num": "31"
+      },
+      {
+       "name": "Valāhaka",
+       "pd": null,
+       "note": "Valāhaka — On Cloud Devas · sn32",
+       "kind": "su",
+       "num": "32"
+      },
+      {
+       "name": "Vacchagotta",
+       "pd": null,
+       "note": "Vacchagotta — With Vacchagotta · sn33",
+       "kind": "su",
+       "num": "33"
+      },
+      {
+       "name": "Jhāna",
+       "pd": null,
+       "note": "Jhāna — On Meditation · sn34",
+       "kind": "su",
+       "num": "34"
+      }
+     ],
+     "range": "SN 22–34",
+     "gloss": "The Aggregates",
+     "heading": "Khandha-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Saḷāyatana",
+       "pd": null,
+       "note": "Saḷāyatana — On the Six Sense Bases · sn35",
+       "kind": "su",
+       "num": "35"
+      },
+      {
+       "name": "Vedanā",
+       "pd": null,
+       "note": "Vedanā — On Feeling · sn36",
+       "kind": "su",
+       "num": "36"
+      },
+      {
+       "name": "Mātugāma",
+       "pd": null,
+       "note": "Mātugāma — On Women · sn37",
+       "kind": "su",
+       "num": "37"
+      },
+      {
+       "name": "Jambukhādaka",
+       "pd": null,
+       "note": "Jambukhādaka — With Jambukhādaka · sn38",
+       "kind": "su",
+       "num": "38"
+      },
+      {
+       "name": "Sāmaṇḍaka",
+       "pd": null,
+       "note": "Sāmaṇḍaka — With Sāmaṇḍaka · sn39",
+       "kind": "su",
+       "num": "39"
+      },
+      {
+       "name": "Moggallāna",
+       "pd": null,
+       "note": "Moggallāna — With Moggallāna · sn40",
+       "kind": "su",
+       "num": "40"
+      },
+      {
+       "name": "Citta",
+       "pd": null,
+       "note": "Citta — With Citta the Householder · sn41",
+       "kind": "su",
+       "num": "41"
+      },
+      {
+       "name": "Gāmaṇi",
+       "pd": null,
+       "note": "Gāmaṇi — With Headmen · sn42",
+       "kind": "su",
+       "num": "42"
+      },
+      {
+       "name": "Asaṅkhata",
+       "pd": null,
+       "note": "Asaṅkhata — On the Unconditioned · sn43",
+       "kind": "su",
+       "num": "43"
+      },
+      {
+       "name": "Abyākata",
+       "pd": null,
+       "note": "Abyākata — On the Undeclared · sn44",
+       "kind": "su",
+       "num": "44"
+      }
+     ],
+     "range": "SN 35–44",
+     "gloss": "The Six Sense Bases",
+     "heading": "Saḷāyatana-vagga"
+    },
+    {
+     "chips": [
+      {
+       "name": "Magga",
+       "pd": null,
+       "note": "Magga — On the Path · sn45",
+       "kind": "su",
+       "num": "45"
+      },
+      {
+       "name": "Bojjhaṅga",
+       "pd": null,
+       "note": "Bojjhaṅga — On the Awakening Factors · sn46",
+       "kind": "su",
+       "num": "46"
+      },
+      {
+       "name": "Satipaṭṭhāna",
+       "pd": null,
+       "note": "Satipaṭṭhāna — On Mindfulness Meditation · sn47",
+       "kind": "su",
+       "num": "47"
+      },
+      {
+       "name": "Indriya",
+       "pd": null,
+       "note": "Indriya — On the Faculties · sn48",
+       "kind": "su",
+       "num": "48"
+      },
+      {
+       "name": "Sammappadhāna",
+       "pd": null,
+       "note": "Sammappadhāna — On Right Efforts · sn49",
+       "kind": "su",
+       "num": "49"
+      },
+      {
+       "name": "Bala",
+       "pd": null,
+       "note": "Bala — On the Powers · sn50",
+       "kind": "su",
+       "num": "50"
+      },
+      {
+       "name": "Iddhipāda",
+       "pd": null,
+       "note": "Iddhipāda — On the Bases of Spiritual Power · sn51",
+       "kind": "su",
+       "num": "51"
+      },
+      {
+       "name": "Anuruddha",
+       "pd": null,
+       "note": "Anuruddha — With Anuruddha · sn52",
+       "kind": "su",
+       "num": "52"
+      },
+      {
+       "name": "Jhāna",
+       "pd": null,
+       "note": "Jhāna — On the Absorptions · sn53",
+       "kind": "su",
+       "num": "53"
+      },
+      {
+       "name": "Ānāpāna",
+       "pd": null,
+       "note": "Ānāpāna — On Mindfulness of Breathing · sn54",
+       "kind": "su",
+       "num": "54"
+      },
+      {
+       "name": "Sotāpatti",
+       "pd": null,
+       "note": "Sotāpatti — On Stream-Entry · sn55",
+       "kind": "su",
+       "num": "55"
+      },
+      {
+       "name": "Sacca",
+       "pd": null,
+       "note": "Sacca — On the Four Noble Truths · sn56",
+       "kind": "su",
+       "num": "56"
+      }
+     ],
+     "range": "SN 45–56",
+     "gloss": "The Great Division",
+     "heading": "Mahā-vagga"
+    }
+   ]
+  },
+  {
+   "id": "p-anguttara",
+   "name": "Aṅguttara Nikāya",
+   "territory": "11 nipātas · ~2,344 suttas",
+   "territory_count": 11,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the numerical discourses",
+   "blurb": "Discourses arranged by ascending number, ones to elevens. Shown at book level; vagga counts vary by edition. All CC0.",
+   "groups": [
+    {
+     "chips": [
+      {
+       "name": "Ekaka",
+       "pd": null,
+       "note": "Ekaka — The Book of the Ones · an1",
+       "kind": "su",
+       "num": "1"
+      },
+      {
+       "name": "Duka",
+       "pd": null,
+       "note": "Duka — The Book of the Twos · an2",
+       "kind": "su",
+       "num": "2"
+      },
+      {
+       "name": "Tika",
+       "pd": null,
+       "note": "Tika — The Book of the Threes · an3",
+       "kind": "su",
+       "num": "3"
+      },
+      {
+       "name": "Catukka",
+       "pd": null,
+       "note": "Catukka — The Book of the Fours · an4",
+       "kind": "su",
+       "num": "4"
+      },
+      {
+       "name": "Pañcaka",
+       "pd": null,
+       "note": "Pañcaka — The Book of the Fives · an5",
+       "kind": "su",
+       "num": "5"
+      },
+      {
+       "name": "Chakka",
+       "pd": null,
+       "note": "Chakka — The Book of the Sixes · an6",
+       "kind": "su",
+       "num": "6"
+      },
+      {
+       "name": "Sattaka",
+       "pd": null,
+       "note": "Sattaka — The Book of the Sevens · an7",
+       "kind": "su",
+       "num": "7"
+      },
+      {
+       "name": "Aṭṭhaka",
+       "pd": null,
+       "note": "Aṭṭhaka — The Book of the Eights · an8",
+       "kind": "su",
+       "num": "8"
+      },
+      {
+       "name": "Navaka",
+       "pd": null,
+       "note": "Navaka — The Book of the Nines · an9",
+       "kind": "su",
+       "num": "9"
+      },
+      {
+       "name": "Dasaka",
+       "pd": null,
+       "note": "Dasaka — The Book of the Tens · an10",
+       "kind": "su",
+       "num": "10"
+      },
+      {
+       "name": "Ekādasaka",
+       "pd": null,
+       "note": "Ekādasaka — The Book of the Elevens · an11",
+       "kind": "su",
+       "num": "11"
+      }
+     ],
+     "range": "AN 1–11",
+     "gloss": "nipātas — grouped by ascending number",
+     "heading": "The Eleven Books"
+    }
+   ]
+  },
+  {
+   "id": "p-khuddaka",
+   "name": "Khuddaka Nikāya",
+   "territory": "15 · 17 · 18 books",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "the minor collection",
+   "blurb": "The most heterogeneous basket — Dhammapada and Jātaka to technical exegesis. Its membership is itself disputed: 15 books, 17 with the hermeneutic manuals, 18 once the Burmese Sixth Council admits the Milindapañha.",
+   "groups": [
+    {
+     "heading": null,
+     "chips": [
+      {
+       "name": "Khuddakapāṭha",
+       "pd": "g",
+       "note": "SuttaCentral CC0",
+       "meta": "9 short texts"
+      },
+      {
+       "name": "Dhammapada",
+       "pd": "g",
+       "note": "Müller SBE 10 1881 (PD) · Sujato CC0",
+       "meta": "423 verses · 26 vaggas"
+      },
+      {
+       "name": "Udāna",
+       "pd": "g",
+       "note": "Sujato CC0 (Woodward 1935)",
+       "meta": "80 suttas · 8 vaggas"
+      },
+      {
+       "name": "Itivuttaka",
+       "pd": "g",
+       "note": "Sujato CC0 (Woodward 1935)",
+       "meta": "112 suttas · 4 nipātas"
+      },
+      {
+       "name": "Sutta Nipāta",
+       "pd": "g",
+       "note": "Fausbøll SBE 10 1881 (PD) · Sujato CC0",
+       "meta": "70 suttas · 5 vaggas"
+      },
+      {
+       "name": "Theragāthā",
+       "pd": "g",
+       "note": "C.A.F. Rhys Davids 1913 (PD)",
+       "meta": "264 poems of the elder monks"
+      },
+      {
+       "name": "Therīgāthā",
+       "pd": "g",
+       "note": "C.A.F. Rhys Davids 1909 (PD)",
+       "meta": "73 poems of the elder nuns"
+      },
+      {
+       "name": "Jātaka",
+       "pd": "g",
+       "note": "Cowell ed. 1895–1907 (PD)",
+       "meta": "547 birth-stories (550 trad.)"
+      },
+      {
+       "name": "Vimānavatthu · Petavatthu",
+       "pd": "a",
+       "note": "Gehman/Horner PTS ©",
+       "meta": "heaven & hungry-ghost tales"
+      },
+      {
+       "name": "Buddhavaṃsa · Cariyāpiṭaka",
+       "pd": "a",
+       "note": "Horner 1975 ©",
+       "meta": "the 24 Buddhas · conduct"
+      },
+      {
+       "name": "Paṭisambhidāmagga",
+       "pd": "a",
+       "note": "Ñāṇamoli PTS 1982 ©",
+       "meta": "path of discrimination"
+      },
+      {
+       "name": "Niddesa",
+       "pd": "a",
+       "note": "recent online tr. (© / non-PD)",
+       "meta": "Mahā- & Cūḷa- · old exegesis"
+      },
+      {
+       "name": "Apadāna",
+       "pd": "r",
+       "note": "largely untranslated",
+       "meta": "life-story verses of arahants"
+      },
+      {
+       "name": "+ Nettippakaraṇa · Peṭakopadesa",
+       "pd": "a",
+       "note": "Ñāṇamoli 1962/64 ©",
+       "meta": "Burmese canon · hermeneutics"
+      },
+      {
+       "name": "+ Milindapañha",
+       "pd": "g",
+       "note": "Rhys Davids SBE 35/36 (PD)",
+       "meta": "Burmese canon · King Milinda"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p-abhidhamma",
+   "name": "Abhidhamma Piṭaka",
+   "territory": "7 books",
+   "territory_count": 7,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the basket of higher doctrine",
+   "blurb": "The systematic analysis of experience into ultimate constituents (dhammas), culminating in the vast Paṭṭhāna. Only two books have worldwide-PD translations; the Yamaka has no standard English at all.",
+   "groups": [
+    {
+     "heading": null,
+     "chips": [
+      {
+       "name": "Dhammasaṅgaṇī",
+       "pd": "g",
+       "note": "C.A.F. Rhys Davids 1900 (PD)",
+       "meta": "enumeration of dhammas"
+      },
+      {
+       "name": "Vibhaṅga",
+       "pd": "a",
+       "note": "Thiṭṭila PTS 1969 ©",
+       "meta": "analysis"
+      },
+      {
+       "name": "Dhātukathā",
+       "pd": "a",
+       "note": "Nārada PTS 1962 ©",
+       "meta": "discussion of elements"
+      },
+      {
+       "name": "Puggalapaññatti",
+       "pd": "a",
+       "note": "B.C. Law 1922 — US-PD, worldwide 2039",
+       "meta": "designation of persons"
+      },
+      {
+       "name": "Kathāvatthu",
+       "pd": "g",
+       "note": "Aung & Rhys Davids 1915 (PD)",
+       "meta": "points of controversy"
+      },
+      {
+       "name": "Yamaka",
+       "pd": "r",
+       "note": "no standard English translation",
+       "meta": "the pairs"
+      },
+      {
+       "name": "Paṭṭhāna",
+       "pd": "a",
+       "note": "U Nārada PTS ©",
+       "meta": "conditional relations (24 paccaya)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p-paracanon",
+   "name": "Paracanon & Commentary",
+   "territory": "post-canonical",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "beyond the three baskets",
+   "blurb": "Works revered but outside (or at the edge of) the Tipiṭaka — Buddhaghosa’s summa, the King Milinda dialogue, the hermeneutic guides, the chronicles, and the classical commentaries that frame how the canon is read.",
+   "groups": [
+    {
+     "heading": null,
+     "chips": [
+      {
+       "name": "Milindapañha",
+       "pd": "g",
+       "note": "Rhys Davids SBE 35/36 1890–94 (PD)",
+       "meta": "Nāgasena & King Menander"
+      },
+      {
+       "name": "Visuddhimagga",
+       "pd": "a",
+       "note": "Pe Maung Tin →2043; Ñāṇamoli © — no PD yet",
+       "meta": "Buddhaghosa · the great summa"
+      },
+      {
+       "name": "Nettippakaraṇa · Peṭakopadesa",
+       "pd": "a",
+       "note": "Ñāṇamoli 1962/64 ©",
+       "meta": "hermeneutic manuals"
+      },
+      {
+       "name": "Dīpavaṃsa · Mahāvaṃsa",
+       "pd": "g",
+       "note": "Oldenberg 1879 · Geiger–Bode 1912 (PD)",
+       "meta": "the Sri Lankan chronicles"
+      },
+      {
+       "name": "Cūḷavaṃsa",
+       "pd": "a",
+       "note": "Geiger 1929 ©",
+       "meta": "continuation of the chronicle"
+      },
+      {
+       "name": "Aṭṭhakathā",
+       "pd": "r",
+       "note": "mostly untransl. (Dhp-comm 1921 PD)",
+       "meta": "the classical commentaries"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c-sutra",
+   "name": "Sūtra 經",
+   "territory": "T1–847",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "the discourses",
+   "blurb": "The nine sūtra divisions — from the Āgamas (parallels of the Pāli Nikāyas) through the great Mahāyāna scriptures.",
+   "groups": [
+    {
+     "heading": "Āgama 阿含部",
+     "chips": [],
+     "range": "T1–151",
+     "gloss": "≈ the Pāli Nikāyas",
+     "authored_count": 155,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 2.5806451612903225,
+      "r": 97.41935483870968
+     },
+     "data_key": "c-sutra-0"
+    },
+    {
+     "heading": "Birth Stories 本緣部",
+     "chips": [],
+     "range": "T152–219",
+     "authored_count": 72,
+     "bar_authored": {
+      "g": 2.7777777777777777,
+      "a": 1.3888888888888888,
+      "r": 95.83333333333334
+     },
+     "data_key": "c-sutra-1"
+    },
+    {
+     "heading": "Prajñāpāramitā 般若部",
+     "chips": [],
+     "range": "T220–261",
+     "gloss": "Perfection of Wisdom",
+     "authored_count": 43,
+     "bar_authored": {
+      "g": 4.651162790697675,
+      "a": 2.3255813953488373,
+      "r": 93.02325581395348
+     },
+     "data_key": "c-sutra-2"
+    },
+    {
+     "heading": "Lotus 法華部",
+     "chips": [],
+     "range": "T262–277",
+     "authored_count": 16,
+     "bar_authored": {
+      "g": 6.25,
+      "a": 0.0,
+      "r": 93.75
+     },
+     "data_key": "c-sutra-3"
+    },
+    {
+     "heading": "Avataṃsaka 華嚴部",
+     "chips": [],
+     "range": "T278–309",
+     "gloss": "Flower Garland",
+     "authored_count": 32,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 3.125,
+      "r": 96.875
+     },
+     "data_key": "c-sutra-4"
+    },
+    {
+     "heading": "Ratnakūṭa 寶積部",
+     "chips": [],
+     "range": "T310–373",
+     "gloss": "Jewel Heap",
+     "authored_count": 65,
+     "bar_authored": {
+      "g": 4.615384615384616,
+      "a": 1.5384615384615385,
+      "r": 93.84615384615384
+     },
+     "data_key": "c-sutra-5"
+    },
+    {
+     "heading": "Nirvāṇa 涅槃部",
+     "chips": [],
+     "range": "T374–396",
+     "authored_count": 23,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 4.3478260869565215,
+      "r": 95.65217391304348
+     },
+     "data_key": "c-sutra-6"
+    },
+    {
+     "heading": "Great Assembly 大集部",
+     "chips": [],
+     "range": "T397–424",
+     "authored_count": 28,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 3.571428571428571,
+      "r": 96.42857142857143
+     },
+     "data_key": "c-sutra-7"
+    },
+    {
+     "heading": "Sūtra Collection 經集部",
+     "chips": [],
+     "range": "T425–847",
+     "authored_count": 433,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.9237875288683602,
+      "r": 99.07621247113164
+     },
+     "data_key": "c-sutra-8"
+    }
+   ]
+  },
+  {
+   "id": "c-eso",
+   "name": "Esoteric 密教部",
+   "territory": "T848–1420",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "tantra / mikkyō",
+   "blurb": "The esoteric division — the scriptural base of Shingon and Tendai mikkyō, plus a vast body of dhāraṇī texts.",
+   "groups": [
+    {
+     "heading": "Esoteric scriptures 密教部",
+     "chips": [],
+     "range": "T848–1420",
+     "authored_count": 614,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.32573289902280134,
+      "r": 99.6742671009772
+     },
+     "data_key": "c-eso-0"
+    }
+   ]
+  },
+  {
+   "id": "c-vin",
+   "name": "Vinaya 律部",
+   "territory": "T1421–1504",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "monastic discipline",
+   "blurb": "Five complete Vinaya codes; the Dharmaguptaka is the basis of all East Asian ordination.",
+   "groups": [
+    {
+     "heading": "Vinaya codes 律部",
+     "chips": [],
+     "range": "T1421–1504",
+     "authored_count": 87,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-vin-0"
+    }
+   ]
+  },
+  {
+   "id": "c-sas",
+   "name": "Śāstra 論",
+   "territory": "T1505–1692",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "treatises",
+   "blurb": "The Indian treatise tradition in Chinese — Abhidharma, Madhyamaka, Yogācāra — plus the collection holding the Awakening of Faith.",
+   "groups": [
+    {
+     "heading": "Sūtra-commentary śāstras 釋經論部",
+     "chips": [],
+     "range": "T1505–1535",
+     "authored_count": 32,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 3.125,
+      "r": 96.875
+     },
+     "data_key": "c-sas-0"
+    },
+    {
+     "heading": "Abhidharma 毘曇部",
+     "chips": [],
+     "range": "T1536–1563",
+     "authored_count": 28,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 3.571428571428571,
+      "r": 96.42857142857143
+     },
+     "data_key": "c-sas-1"
+    },
+    {
+     "heading": "Madhyamaka 中觀部類",
+     "chips": [],
+     "range": "T1564–1578",
+     "authored_count": 15,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 6.666666666666667,
+      "r": 93.33333333333333
+     },
+     "data_key": "c-sas-2"
+    },
+    {
+     "heading": "Yogācāra 瑜伽部類",
+     "chips": [],
+     "range": "T1579–1627",
+     "authored_count": 49,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 4.081632653061225,
+      "r": 95.91836734693877
+     },
+     "data_key": "c-sas-3"
+    },
+    {
+     "heading": "Treatise Collection 論集部",
+     "chips": [],
+     "range": "T1628–1692",
+     "authored_count": 66,
+     "bar_authored": {
+      "g": 1.5151515151515151,
+      "a": 0.0,
+      "r": 98.48484848484848
+     },
+     "data_key": "c-sas-4"
+    }
+   ]
+  },
+  {
+   "id": "c-comm",
+   "name": "Commentaries & Schools 諸宗部",
+   "territory": "T1693–2025",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "exegesis & sects",
+   "blurb": "The Chinese/Japanese exegetical layer, then the \"schools\" — Tiantai, Huayan, Chan/Zen, Pure Land.",
+   "groups": [
+    {
+     "heading": "Commentaries 經疏·律疏·論疏部",
+     "chips": [],
+     "range": "T1693–1850",
+     "authored_count": 158,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-comm-0"
+    },
+    {
+     "heading": "Schools 諸宗部",
+     "chips": [],
+     "range": "T1851–2025",
+     "gloss": "Tiantai · Huayan · Chan · Pure Land",
+     "authored_count": 185,
+     "bar_authored": {
+      "g": 0.5405405405405406,
+      "a": 1.6216216216216217,
+      "r": 97.83783783783784
+     },
+     "data_key": "c-comm-1"
+    }
+   ]
+  },
+  {
+   "id": "c-hist",
+   "name": "History, Reference & Beyond",
+   "territory": "T2026–2920",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "vols 49–85",
+   "blurb": "The non-scriptural remainder — travel records, biographies, encyclopedias, catalogs, the Japanese sub-commentary block, Siddhaṃ, Dunhuang finds, apocrypha, and the canon’s Nestorian/Manichaean corner.",
+   "groups": [
+    {
+     "heading": "History & Biography 史傳部",
+     "chips": [],
+     "range": "T2026–2120",
+     "authored_count": 96,
+     "bar_authored": {
+      "g": 3.125,
+      "a": 1.0416666666666665,
+      "r": 95.83333333333334
+     },
+     "data_key": "c-hist-0"
+    },
+    {
+     "heading": "Encyclopedia 事彙部",
+     "chips": [],
+     "range": "T2121–2136",
+     "authored_count": 17,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-hist-1"
+    },
+    {
+     "heading": "Non-Buddhist 外教部",
+     "chips": [],
+     "range": "T2137–2144",
+     "gloss": "Daoist · Manichaean · Nestorian",
+     "authored_count": 9,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-hist-2"
+    },
+    {
+     "heading": "Catalogues 目錄部",
+     "chips": [],
+     "range": "T2145–2184",
+     "authored_count": 42,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-hist-3"
+    },
+    {
+     "heading": "Japanese continued commentaries 續經疏部",
+     "chips": [],
+     "range": "T2185–2700",
+     "gloss": "28 vols — not in the CBETA dataset",
+     "authored_count": 1,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-hist-4"
+    },
+    {
+     "heading": "Siddham 悉曇部",
+     "chips": [],
+     "range": "T2701–2731",
+     "gloss": "not in the CBETA dataset",
+     "authored_count": 1,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-hist-5"
+    },
+    {
+     "heading": "Ancient / Lost 古逸部",
+     "chips": [],
+     "range": "T2732–2864",
+     "gloss": "Dunhuang",
+     "authored_count": 135,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-hist-6"
+    },
+    {
+     "heading": "Apocrypha 疑似部",
+     "chips": [],
+     "range": "T2865–2920",
+     "authored_count": 57,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "c-hist-7"
+    }
+   ]
+  },
+  {
+   "id": "t-kangyur",
+   "name": "Kangyur",
+   "territory": "Tōh 1–1108",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "bka’ ’gyur · the word of the Buddha",
+   "blurb": "The translated word of the Buddha — sūtras and tantras. Large tracts are readable via 84000 (open-access, CC BY-NC-ND — free to read, not public domain), so they colour amber.",
+   "groups": [
+    {
+     "heading": "Vinaya ’dul ba",
+     "chips": [],
+     "range": "Tōh 1–7",
+     "authored_count": 8,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 12.5,
+      "r": 87.5
+     },
+     "data_key": "t-kangyur-0"
+    },
+    {
+     "heading": "Prajñāpāramitā sher phyin",
+     "chips": [],
+     "range": "Tōh 8–30",
+     "gloss": "Perfection of Wisdom",
+     "authored_count": 21,
+     "bar_authored": {
+      "g": 9.523809523809524,
+      "a": 38.095238095238095,
+      "r": 52.38095238095239
+     },
+     "data_key": "t-kangyur-1"
+    },
+    {
+     "heading": "Miscellaneous Sūtras",
+     "chips": [],
+     "range": "Tōh 31–43",
+     "gloss": "late-translated",
+     "authored_count": 13,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 23.076923076923077,
+      "r": 76.92307692307693
+     },
+     "data_key": "t-kangyur-2"
+    },
+    {
+     "heading": "Avataṃsaka phal chen",
+     "chips": [],
+     "range": "Tōh 44",
+     "authored_count": 1,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     },
+     "data_key": "t-kangyur-3"
+    },
+    {
+     "heading": "Ratnakūṭa dkon brtsegs",
+     "chips": [],
+     "range": "Tōh 45–93",
+     "gloss": "Jewel Heap",
+     "authored_count": 49,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 67.3469387755102,
+      "r": 32.6530612244898
+     },
+     "data_key": "t-kangyur-4"
+    },
+    {
+     "heading": "General Sūtra mdo sde",
+     "chips": [],
+     "range": "Tōh 94–359",
+     "authored_count": 249,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 72.69076305220884,
+      "r": 27.309236947791167
+     },
+     "data_key": "t-kangyur-5"
+    },
+    {
+     "heading": "Tantra rgyud",
+     "chips": [],
+     "range": "Tōh 360–827",
+     "gloss": "largest Kangyur section",
+     "authored_count": 435,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 29.88505747126437,
+      "r": 70.11494252873564
+     },
+     "data_key": "t-kangyur-6"
+    },
+    {
+     "heading": "Nyingma old tantras rnying rgyud",
+     "chips": [],
+     "range": "Tōh 828–844",
+     "authored_count": 13,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "t-kangyur-7"
+    },
+    {
+     "heading": "Kālacakra",
+     "chips": [],
+     "range": "Tōh 845",
+     "authored_count": 1,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "t-kangyur-8"
+    },
+    {
+     "heading": "Dhāraṇī gzungs ’dus",
+     "chips": [],
+     "range": "Tōh 846–1108",
+     "authored_count": 239,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 36.40167364016737,
+      "r": 63.59832635983263
+     },
+     "data_key": "t-kangyur-9"
+    }
+   ]
+  },
+  {
+   "id": "t-tengyur",
+   "name": "Tengyur",
+   "territory": "Tōh 1109–4569 · ranges ≈",
+   "territory_count": null,
+   "territory_soft": false,
+   "territory_comparable": false,
+   "subtitle": "bstan ’gyur · the translated treatises",
+   "blurb": "The greatest library of Indian Buddhist philosophy — Nāgārjuna, Asaṅga, Vasubandhu, Dharmakīrti, Śāntideva. ~99% untranslated; the public-domain islands are a handful of Victorian/early-20th-c. Sanskritists. Internal section boundaries are approximate (≈).",
+   "groups": [
+    {
+     "heading": "Stotra — Praises bstod tshogs",
+     "chips": [],
+     "range": "≈Tōh 1109–1179",
+     "authored_count": 71,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "t-tengyur-0"
+    },
+    {
+     "heading": "Tantra commentaries rgyud ’grel",
+     "chips": [],
+     "range": "≈Tōh 1180–3785",
+     "gloss": "by far the largest section",
+     "authored_count": 2596,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.15408320493066258,
+      "r": 99.84591679506933
+     },
+     "data_key": "t-tengyur-1"
+    },
+    {
+     "heading": "Prajñāpāramitā commentaries",
+     "chips": [],
+     "range": "≈Tōh 3786–3823",
+     "authored_count": 32,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 3.125,
+      "r": 96.875
+     },
+     "data_key": "t-tengyur-2"
+    },
+    {
+     "heading": "Madhyamaka dbu ma",
+     "chips": [],
+     "range": "≈Tōh 3824–3979",
+     "authored_count": 154,
+     "bar_authored": {
+      "g": 0.6493506493506493,
+      "a": 1.948051948051948,
+      "r": 97.40259740259741
+     },
+     "data_key": "t-tengyur-3"
+    },
+    {
+     "heading": "Sūtra commentaries mdo ’grel",
+     "chips": [],
+     "range": "≈Tōh 3980–4008",
+     "authored_count": 29,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 3.4482758620689653,
+      "r": 96.55172413793103
+     },
+     "data_key": "t-tengyur-4"
+    },
+    {
+     "heading": "Yogācāra sems tsam",
+     "chips": [],
+     "range": "≈Tōh 4009–4085",
+     "authored_count": 75,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "t-tengyur-5"
+    },
+    {
+     "heading": "Abhidharma mngon pa",
+     "chips": [],
+     "range": "≈Tōh 4086–4098",
+     "authored_count": 13,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 15.384615384615385,
+      "r": 84.61538461538461
+     },
+     "data_key": "t-tengyur-6"
+    },
+    {
+     "heading": "Vinaya commentaries ’dul ba",
+     "chips": [],
+     "range": "≈Tōh 4099–4149",
+     "authored_count": 50,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "t-tengyur-7"
+    },
+    {
+     "heading": "Jātaka & Epistles",
+     "chips": [],
+     "range": "≈Tōh 4150–4200",
+     "authored_count": 51,
+     "bar_authored": {
+      "g": 3.9215686274509802,
+      "a": 3.9215686274509802,
+      "r": 92.15686274509804
+     },
+     "data_key": "t-tengyur-8"
+    },
+    {
+     "heading": "Pramāṇa — Logic tshad ma",
+     "chips": [],
+     "range": "≈Tōh 4201–4268",
+     "authored_count": 67,
+     "bar_authored": {
+      "g": 1.4925373134328357,
+      "a": 2.9850746268656714,
+      "r": 95.52238805970148
+     },
+     "data_key": "t-tengyur-9"
+    },
+    {
+     "heading": "The sciences",
+     "chips": [],
+     "range": "≈Tōh 4269–4464",
+     "gloss": "grammar · medicine · arts · statecraft",
+     "authored_count": 186,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.5376344086021506,
+      "r": 99.46236559139786
+     },
+     "data_key": "t-tengyur-10"
+    },
+    {
+     "heading": "Atiśa’s works & catalogue",
+     "chips": [],
+     "range": "≈Tōh 4465–4569",
+     "authored_count": 2,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 0.0,
+      "r": 100.0
+     },
+     "data_key": "t-tengyur-11"
+    }
+   ]
+  }
+ ],
+ "deep_views": [
+  {
+   "id": "view-atlas",
+   "cells": 0
+  },
+  {
+   "id": "view-pali",
+   "cells": 0
+  },
+  {
+   "id": "view-chinese",
+   "cells": 0
+  },
+  {
+   "id": "view-tibetan",
+   "cells": 0
+  }
+ ]
+}

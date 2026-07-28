@@ -1,0 +1,459 @@
+{
+ "tradition": "zoroastrian",
+ "title": "The Map of Zoroastrian Texts",
+ "grammar": "basket-fam",
+ "source": "The Map of Sacred Texts.mhtml (artifact fea77718) — extracted 2026-07-28; editorial artifact, never regenerated silently",
+ "zones": [
+  {
+   "id": "av-gathas",
+   "name": "The Gāthās",
+   "territory": "6 texts",
+   "territory_count": 6,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the hymns of Zarathustra himself",
+   "blurb": "The oldest layer — 17 hymns composed by Zarathustra (~1200 BCE), in the archaic Gathic dialect, embedded within the Yasna. Grouped into five Gāthās by metre. All public-domain via Mills (SBE 31); only the modern verse retranslations are ©.",
+   "groups": [
+    {
+     "heading": "The Five Gāthās · 17 hymns",
+     "chips": [
+      {
+       "name": "Ahunavaitī Gāthā (Yasna 28–34)",
+       "pd": "g",
+       "note": "Mills, SBE 31 1887 (PD)"
+      },
+      {
+       "name": "Uštavaitī Gāthā (Yasna 43–46)",
+       "pd": "g",
+       "note": "Mills, SBE 31 (PD)"
+      },
+      {
+       "name": "Spentā-Mainyū Gāthā (Yasna 47–50)",
+       "pd": "g",
+       "note": "Mills, SBE 31 (PD)"
+      },
+      {
+       "name": "Vohu-Khšathrā Gāthā (Yasna 51)",
+       "pd": "g",
+       "note": "Mills, SBE 31 (PD)"
+      },
+      {
+       "name": "Vahištōišti Gāthā (Yasna 53)",
+       "pd": "g",
+       "note": "Mills, SBE 31 (PD)"
+      },
+      {
+       "name": "Modern verse translations",
+       "pd": "a",
+       "note": "Insler 1975 · Humbach · Taraporewala — ©"
+      }
+     ],
+     "range": "within Yasna 28–53",
+     "authored_count": 6,
+     "bar_authored": {
+      "g": 83.33333333333334,
+      "a": 16.666666666666664,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "av-yasna",
+   "name": "The Yasna & Visperad",
+   "territory": "3 texts",
+   "territory_count": 3,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the chief liturgy",
+   "blurb": "The Yasna is the primary act of worship, recited at the Yajishn ceremony; the Visperad extends it for the high feasts. The Yasna Haptaŋhāiti is an archaic prose core nearly as old as the Gāthās.",
+   "groups": [
+    {
+     "heading": "The liturgical core",
+     "chips": [
+      {
+       "name": "The Yasna · 72 chapters (hā)",
+       "pd": "g",
+       "note": "Mills, SBE 31 1887 (PD)"
+      },
+      {
+       "name": "The Yasna Haptaŋhāiti (Yasna 35–41)",
+       "pd": "g",
+       "note": "Mills, SBE 31 (PD) — the old prose"
+      },
+      {
+       "name": "The Visperad · ~24 sections",
+       "pd": "g",
+       "note": "Mills, SBE 31 (PD)"
+      }
+     ],
+     "authored_count": 3,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "av-yashts",
+   "name": "The Yašts",
+   "territory": "21 texts",
+   "territory_count": 21,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "21 hymns to the yazatas",
+   "blurb": "Hymns of praise to the yazatas (divine beings) — among the most poetic and mythologically rich Avestan texts. All translated by Darmesteter (SBE 23).",
+   "groups": [
+    {
+     "heading": "The 21 Yašts",
+     "chips": [
+      {
+       "name": "1. Hormazd Yašt (Ahura Mazdā)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "2. Haptān Yašt (the Amesha Spentas)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "3. Ardvahišt Yašt (Aša Vahišta)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "4. Hordād Yašt (Haurvatāt)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "5. Ābān Yašt (Arədvī Sūrā Anāhitā)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "6. Khoršēd Yašt (the Sun)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "7. Māh Yašt (the Moon)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "8. Tīr / Tištar Yašt (Sirius)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "9. Gōš / Drvāsp Yašt",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "10. Mihr Yašt (Mithra)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "11. Sraoš Yašt (Sraoša)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "12. Rašn Yašt (Rašnu)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "13. Frawardīn Yašt (the Fravašis)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "14. Bahrām Yašt (Vərəθraγna)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "15. Rām Yašt (Vayu)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "16. Dēn Yašt (Čistā)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "17. Ard / Aši Yašt (Aši Vanguhī)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "18. Aštād Yašt (Arštāt)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "19. Zamyād Yašt (the Earth & the Khvarənah)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "20. Hōm Yašt (Haoma)",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "21. Vanant Yašt (the star Vanant)",
+       "pd": "g",
+       "note": ""
+      }
+     ],
+     "range": "Darmesteter, SBE 23 1883",
+     "authored_count": 21,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "av-vendidad",
+   "name": "The Vendidād",
+   "territory": "3 texts",
+   "territory_count": 3,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "22 fargards · the law against the demons",
+   "blurb": "The Vidēvdād (\"law against the demons\") — the priestly code of purity and its mythic frame, including the tale of Yima and the vara (an ark-like refuge). The only Avestan book preserved complete with its Zand.",
+   "groups": [
+    {
+     "heading": "The 22 fargards",
+     "chips": [
+      {
+       "name": "Fargard 1 — the sixteen lands",
+       "pd": "g",
+       "note": "Darmesteter, SBE 4 (PD)"
+      },
+      {
+       "name": "Fargard 2 — Yima and the vara",
+       "pd": "g",
+       "note": "SBE 4 (PD)"
+      },
+      {
+       "name": "Fargards 3–22 — purity law, penances, medicine, praise",
+       "pd": "g",
+       "note": "SBE 4 (PD)"
+      }
+     ],
+     "range": "Darmesteter, SBE 4 1880",
+     "authored_count": 3,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "av-khordeh",
+   "name": "The Khordeh Avesta",
+   "territory": "4 texts",
+   "territory_count": 4,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "the \"Little Avesta\" · daily prayers",
+   "blurb": "The book of common prayer — the litanies, watches, and blessings of daily Zoroastrian devotion. From Darmesteter (SBE 23) and the traditional Parsi Khordeh Avesta (Kanga).",
+   "groups": [
+    {
+     "heading": "Niyāyišn (litanies) · 5",
+     "chips": [
+      {
+       "name": "Khoršēd · Mihr · Māh · Ābān · Ātaš Niyāyišn",
+       "pd": "g",
+       "note": "Darmesteter, SBE 23 (PD)"
+      }
+     ],
+     "authored_count": 1,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Gāhs, Sīrōzas & Āfrīnagāns",
+     "chips": [
+      {
+       "name": "The 5 Gāhs (watches of the day)",
+       "pd": "g",
+       "note": "Mills, SBE 31 / Kanga (PD)"
+      },
+      {
+       "name": "The 2 Sīrōzas (the 30 day-divinities)",
+       "pd": "g",
+       "note": "Darmesteter, SBE 23 (PD)"
+      },
+      {
+       "name": "The Āfrīnagāns (blessings)",
+       "pd": "g",
+       "note": "Mills, SBE 31 / Kanga (PD)"
+      }
+     ],
+     "authored_count": 3,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "ph-books",
+   "name": "The Pahlavi Books",
+   "territory": "12 texts",
+   "territory_count": 12,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "9th-c. theology · E.W. West, SBE 5/18/24/37/47",
+   "blurb": "The great Middle-Persian theological literature, written as Islam rose — the systematic doctrine, cosmology, law, and apocalyptic of Zoroastrianism. E.W. West translated nearly all of it across five SBE volumes (all PD).",
+   "groups": [
+    {
+     "heading": "Cosmology & doctrine",
+     "chips": [
+      {
+       "name": "Bundahišn (Creation)",
+       "pd": "g",
+       "note": "West, SBE 5 1880 (PD)"
+      },
+      {
+       "name": "Dēnkard (Acts of the Religion, bks 3–9)",
+       "pd": "g",
+       "note": "West, SBE 37 & 47 (PD)"
+      },
+      {
+       "name": "Selections of Zādspram",
+       "pd": "g",
+       "note": "West, SBE 5 & 47 (PD)"
+      },
+      {
+       "name": "Mēnōg-ī Khrad (Spirit of Wisdom)",
+       "pd": "g",
+       "note": "West, SBE 24 1885 (PD)"
+      },
+      {
+       "name": "Dādestān-ī Dēnīg (Religious Judgements)",
+       "pd": "g",
+       "note": "West, SBE 18 (PD)"
+      },
+      {
+       "name": "Škand-gumānīg Wizār (Doubt-dispelling Exposition)",
+       "pd": "g",
+       "note": "West, SBE 24 (PD)"
+      }
+     ],
+     "authored_count": 6,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Law, vision & epistles",
+     "chips": [
+      {
+       "name": "Šāyest nē Šāyest (Proper & Improper)",
+       "pd": "g",
+       "note": "West, SBE 5 (PD)"
+      },
+      {
+       "name": "Ardā Wirāz Nāmag (the vision of heaven & hell)",
+       "pd": "g",
+       "note": "Haug & West 1872 (PD)"
+      },
+      {
+       "name": "Epistles of Manuščihr",
+       "pd": "g",
+       "note": "West, SBE 18 (PD)"
+      },
+      {
+       "name": "Sad Dar (the Hundred Subjects)",
+       "pd": "g",
+       "note": "West, SBE 24 (PD)"
+      },
+      {
+       "name": "Bahman Yašt (Zand-ī Wahman Yasn, apocalyptic)",
+       "pd": "g",
+       "note": "West, SBE 5 (PD)"
+      },
+      {
+       "name": "Jāmāsp Nāmag (the Jāmāspi)",
+       "pd": "a",
+       "note": "Modi / partial ©"
+      }
+     ],
+     "authored_count": 6,
+     "bar_authored": {
+      "g": 83.33333333333334,
+      "a": 16.666666666666664,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "zo-later",
+   "name": "Later & living tradition",
+   "territory": "4 texts",
+   "territory_count": 4,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "",
+   "blurb": "The medieval Persian tradition and the modern scholarly layer.",
+   "groups": [
+    {
+     "heading": "Persian & modern",
+     "chips": [
+      {
+       "name": "The Zand (Middle-Persian commentary on the Avesta)",
+       "pd": "g",
+       "note": "mostly within West/Darmesteter SBE (PD)"
+      },
+      {
+       "name": "The Persian Rivāyats",
+       "pd": "a",
+       "note": "Dhabhar 1932 © / partial"
+      },
+      {
+       "name": "Ṣad-dar Bundahiš · later Rivāyat literature",
+       "pd": "a",
+       "note": "© / partial"
+      },
+      {
+       "name": "The Dasātīr",
+       "pd": "r",
+       "note": "spurious 16th-c. text — of doubtful authenticity"
+      }
+     ],
+     "authored_count": 4,
+     "bar_authored": {
+      "g": 25.0,
+      "a": 50.0,
+      "r": 25.0
+     }
+    }
+   ]
+  }
+ ]
+}
