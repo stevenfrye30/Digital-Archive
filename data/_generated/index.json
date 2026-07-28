@@ -24113,35 +24113,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "nostradamus-roberts",
-      "title": "The Complete Prophecies of Nostradamus",
-      "tradition": "Hermetic",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "nostradamus-roberts_ward.json",
-      "source": "sacredtexts",
-      "author": [
-        "Michel de Nostredame"
-      ],
-      "translator": [
-        "Charles A. Ward"
-      ],
-      "year": 1891,
-      "translation_label": "The Complete Prophecies of Nostradamus",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Complete Prophecies of Nostradamus* Charles A. Ward (1891). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "comte-st-germain-cooper-oakley",
       "title": "The Comte de St. Germain",
       "tradition": "Hermetic",
@@ -34310,6 +34281,34 @@
       "quality": "popular",
       "source_summary": "*Ginza Rabba (The Great Treasure)* by Anonymous (Mandaean tradition). Translated by Mark Lidzbarski and Ram Al-Sabiry (2011). Via Internet Archive.",
       "source": null,
+      "importance_rank": null,
+      "restricted": true,
+      "reading_status": "restricted",
+      "reading_status_certified": true
+    },
+    {
+      "id": "nostradamus-roberts",
+      "title": "The Complete Prophecies of Nostradamus",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "nostradamus-roberts_ward.json",
+      "source": null,
+      "author": [
+        "Michel de Nostredame"
+      ],
+      "translator": [
+        "Charles A. Ward"
+      ],
+      "year": 1891,
+      "translation_label": "The Complete Prophecies of Nostradamus",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*The Complete Prophecies of Nostradamus* — stated Ward 1891, but the body does not match Ward's Oracles and is plausibly a modern (1947) rendering. Restricted: uncertain copyright.",
       "importance_rank": null,
       "restricted": true,
       "reading_status": "restricted",
