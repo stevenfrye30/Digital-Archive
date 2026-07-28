@@ -462,7 +462,7 @@ archive&rsquo;s own holdings.</p><button class="toggle" id="themeBtn" aria-label
               a.href = '../' + r.url;
               var label = (b.chooser === 'works')
                   ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
-                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
+                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') + (r.label ? ' — ' + r.label : '') +
                     ' <span class="mc-sub">· ' + r.work + '</span>';
               a.innerHTML = label + ' <span class="mc-go">→ read</span>';
               box.appendChild(a);

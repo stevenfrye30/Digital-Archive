@@ -3,8 +3,9 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "held": 4,
-  "possible": 12,
+  "held": 5,
+  "held-several": 3,
+  "possible": 8,
   "none": 35
  },
  "chips": [
@@ -42,7 +43,8 @@
    "zone": "con-four",
    "chip": "Analects · Lúnyǔ 論語",
    "pd": "g",
-   "state": "held",
+   "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "analects_legge.json",
@@ -50,6 +52,13 @@
      "translator": "James Legge",
      "year": 1893,
      "url": "?text=analects_legge.json"
+    },
+    {
+     "df": "sayings-confucius-lyall_lyall.json",
+     "work": "The Sayings of Confucius",
+     "translator": "Leonard A. Lyall",
+     "year": 1909,
+     "url": "?text=sayings-confucius-lyall_lyall.json"
     }
    ]
   },
@@ -57,13 +66,48 @@
    "zone": "con-four",
    "chip": "Mencius · Mèngzǐ 孟子",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "mencius_legge.json",
+     "work": "The Works of Mencius",
+     "translator": "James Legge",
+     "year": 1861,
+     "url": "?text=mencius_legge.json"
+    }
+   ]
   },
   {
    "zone": "con-five",
    "chip": "Classic of Poetry · Shījīng 詩經",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "shijing-legge_legge.json",
+     "work": "The Book of Poetry (Shi Jing)",
+     "translator": "James Legge",
+     "year": 1876,
+     "label": "metrical, 1876",
+     "url": "?text=shijing-legge_legge.json"
+    },
+    {
+     "df": "book-of-odes-jennings_jennings.json",
+     "work": "The Book of Odes (Shi Jing, Jennings)",
+     "translator": "William Jennings",
+     "year": 1891,
+     "url": "?text=book-of-odes-jennings_jennings.json"
+    },
+    {
+     "df": "the-shih-king-book-of-poetry-james-legge_anonymous.json",
+     "work": "The Shih King (Book of Poetry)",
+     "translator": "James Legge",
+     "year": 1900,
+     "label": "prose, SBE III",
+     "url": "?text=the-shih-king-book-of-poetry-james-legge_anonymous.json"
+    }
+   ]
   },
   {
    "zone": "con-five",
@@ -99,7 +143,16 @@
    "zone": "con-thirteen",
    "chip": "Classic of Filial Piety · Xiàojīng 孝經",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "book-of-filial-duty_chen.json",
+     "work": "The Book of Filial Duty (Hsiao Ching)",
+     "translator": "Ivan Chen",
+     "year": 1908,
+     "url": "?text=book-of-filial-duty_chen.json"
+    }
+   ]
   },
   {
    "zone": "con-thirteen",
@@ -189,7 +242,39 @@
    "zone": "dao-classics",
    "chip": "Dào Dé Jīng 道德經 (Laozi) — 81 chapters",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tao-te-ching_legge.json",
+     "work": "Tao Te Ching",
+     "translator": "James Legge",
+     "year": 1891,
+     "url": "?text=tao-te-ching_legge.json"
+    },
+    {
+     "df": "tao-teh-king-medhurst_medhurst.json",
+     "work": "The Tao Teh King (Medhurst)",
+     "translator": "C. Spurgeon Medhurst",
+     "year": 1905,
+     "url": "?text=tao-teh-king-medhurst_medhurst.json"
+    },
+    {
+     "df": "laotzu-goddard_goddard.json",
+     "work": "Laotzu's Tao & Wu Wei",
+     "translator": "Dwight Goddard, Henri Borel",
+     "year": 1919,
+     "url": "?text=laotzu-goddard_goddard.json"
+    },
+    {
+     "df": "laotzu-sayings-lionel-giles_lionel-giles.json",
+     "work": "The Sayings of Lao Tzu",
+     "translator": "Lionel Giles",
+     "year": 1904,
+     "label": "selections",
+     "url": "?text=laotzu-sayings-lionel-giles_lionel-giles.json"
+    }
+   ]
   },
   {
    "zone": "dao-classics",

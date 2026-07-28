@@ -2562,10 +2562,24 @@
        "restricted": false
       }
      ]
+    },
+    {
+     "id": "sayings-confucius-lyall",
+     "title": "The Sayings of Confucius",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "sayings-confucius-lyall_lyall.json",
+       "translator": "Leonard A. Lyall",
+       "year": 1909,
+       "restricted": false
+      }
+     ]
     }
    ],
    "auto_verdict": "stands",
-   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
+   "review": "eastasian_supplement_sheet.md design verdicts (final, 2026-07-28)",
+   "chooser": "translations"
   },
   {
    "tradition": "eastasian",
@@ -3171,6 +3185,172 @@
     }
    ],
    "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
+  },
+  {
+   "tradition": "eastasian",
+   "zone": "con-four",
+   "chip": "Mencius · Mèngzǐ 孟子",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "mencius",
+     "title": "The Works of Mencius",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "mencius_legge.json",
+       "translator": "James Legge",
+       "year": 1861,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "eastasian_supplement_sheet.md design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "eastasian",
+   "zone": "dao-classics",
+   "chip": "Dào Dé Jīng 道德經 (Laozi) — 81 chapters",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "tao-te-ching",
+     "title": "Tao Te Ching",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "tao-te-ching_legge.json",
+       "translator": "James Legge",
+       "year": 1891,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "tao-teh-king-medhurst",
+     "title": "The Tao Teh King (Medhurst)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "tao-teh-king-medhurst_medhurst.json",
+       "translator": "C. Spurgeon Medhurst",
+       "year": 1905,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "laotzu-goddard",
+     "title": "Laotzu's Tao & Wu Wei",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "laotzu-goddard_goddard.json",
+       "translator": "Dwight Goddard, Henri Borel",
+       "year": 1919,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "laotzu-sayings-lionel-giles",
+     "title": "The Sayings of Lao Tzu",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "laotzu-sayings-lionel-giles_lionel-giles.json",
+       "translator": "Lionel Giles",
+       "year": 1904,
+       "restricted": false,
+       "label": "selections"
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "eastasian_supplement_sheet.md design verdicts (final, 2026-07-28)",
+   "chooser": "translations"
+  },
+  {
+   "tradition": "eastasian",
+   "zone": "con-five",
+   "chip": "Classic of Poetry · Shījīng 詩經",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "shijing-legge",
+     "title": "The Book of Poetry (Shi Jing)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "shijing-legge_legge.json",
+       "translator": "James Legge",
+       "year": 1876,
+       "restricted": false,
+       "label": "metrical, 1876"
+      }
+     ]
+    },
+    {
+     "id": "book-of-odes-jennings",
+     "title": "The Book of Odes (Shi Jing, Jennings)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "book-of-odes-jennings_jennings.json",
+       "translator": "William Jennings",
+       "year": 1891,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "the-shih-king-book-of-poetry-james-legge",
+     "title": "The Shih King (Book of Poetry)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "the-shih-king-book-of-poetry-james-legge_anonymous.json",
+       "translator": "James Legge",
+       "year": 1900,
+       "restricted": false,
+       "label": "prose, SBE III"
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "eastasian_supplement_sheet.md design verdicts (final, 2026-07-28)",
+   "chooser": "translations"
+  },
+  {
+   "tradition": "eastasian",
+   "zone": "con-thirteen",
+   "chip": "Classic of Filial Piety · Xiàojīng 孝經",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "book-of-filial-duty",
+     "title": "The Book of Filial Duty (Hsiao Ching)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "book-of-filial-duty_chen.json",
+       "translator": "Ivan Chen",
+       "year": 1908,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "eastasian_supplement_sheet.md design verdicts (final, 2026-07-28)"
   }
  ],
  "coverage_gaps": {

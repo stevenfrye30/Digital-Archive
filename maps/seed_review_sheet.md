@@ -85,3 +85,13 @@ shinto · "Sendai Kuji Hongi / Kujiki (10 books)" → kojiki-chamberlain (The Ko
 ## Dedup queue (R5)
 
 - the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl — The Sayings of the Jewish Fathers (Pirke Avot): verbose re-ingest of the same translation — DUPLICATE_IDS Type-B dedup queue, never bound
+
+Eastasian additions — Task 24 supplement verdicts (final, 2026-07-28):
+
+- analects-legge-1893_legge-1893.json — The Confucian Analects (Legge): duplicate ingest of the held analects_legge.json (same Legge 1893 translation) — never bound
+- chuang-tzu-mystic-edition_giles-mystic.json — Chuang Tzu: Mystic, Moralist, and Social Reformer: the SAME Giles 1889 translation held as zhuangzi_giles.json (that IS Giles's published title) — never bound
+- bushido_nitobe.json + bushido-the-soul-of-japan-inazo-nitobe-1905_anonymous.json — Bushido (Nitobe 1900): twins of each other, queued as a pair; no chip regardless (not scripture)
+
+NOT queued: the-shih-king-book-of-poetry-james-legge_anonymous.json — the content
+check ruled the two Legge Shi Kings DISTINCT translations (1876 metrical verse vs
+SBE III prose selection); it BINDS as a second rendering instead.
