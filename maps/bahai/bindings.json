@@ -3,7 +3,8 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "none": 25,
+  "none": 24,
+  "restricted": 1,
   "possible": 5
  },
  "chips": [
@@ -41,7 +42,8 @@
    "zone": "ba-bahaullah",
    "chip": "Kitáb-i-Aqdas (the \"Most Holy Book,\" ~1873)",
    "pd": "a",
-   "state": "none"
+   "state": "restricted",
+   "reason_class": "rights-or-quality hold"
   },
   {
    "zone": "ba-bahaullah",

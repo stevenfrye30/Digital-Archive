@@ -3,7 +3,8 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 3,
+  "held": 1,
+  "possible": 2,
   "none": 10
  },
  "chips": [
@@ -11,7 +12,16 @@
    "zone": "sh-chron",
    "chip": "Kojiki (712 — Records of Ancient Matters, 3 books)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "kojiki-chamberlain_chamberlain.json",
+     "work": "The Kojiki",
+     "translator": "Basil Hall Chamberlain",
+     "year": 1919,
+     "url": "?text=kojiki-chamberlain_chamberlain.json"
+    }
+   ]
   },
   {
    "zone": "sh-chron",

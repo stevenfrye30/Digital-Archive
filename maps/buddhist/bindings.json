@@ -3,10 +3,10 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 11,
-  "none": 266,
+  "possible": 8,
+  "none": 260,
   "held-several": 5,
-  "held": 4
+  "held": 13
  },
  "chips": [
   {
@@ -1641,7 +1641,16 @@
    "zone": "p-khuddaka",
    "chip": "Therīgāthā",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "therigatha-davids_rhys-davids.json",
+     "work": "Psalms of the Sisters (Therīgāthā)",
+     "translator": "Caroline A.F. Rhys Davids",
+     "year": 1909,
+     "url": "?text=therigatha-davids_rhys-davids.json"
+    }
+   ]
   },
   {
    "zone": "p-khuddaka",
@@ -1733,7 +1742,16 @@
    "zone": "p-khuddaka",
    "chip": "Paṭisambhidāmagga",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "patisambhidamagga-pali_pli.json",
+     "work": "Paṭisambhidāmagga (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=patisambhidamagga-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-khuddaka",
@@ -1797,43 +1815,106 @@
    "zone": "p-abhidhamma",
    "chip": "Dhammasaṅgaṇī",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "dhammasangani-pali_pli.json",
+     "work": "Dhammasaṅgaṇī (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=dhammasangani-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-abhidhamma",
    "chip": "Vibhaṅga",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "vibhanga-pali_pli.json",
+     "work": "Vibhaṅga (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=vibhanga-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-abhidhamma",
    "chip": "Dhātukathā",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "dhatukatha-pali_pli.json",
+     "work": "Dhātukathā (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=dhatukatha-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-abhidhamma",
    "chip": "Puggalapaññatti",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "puggalapannatti-pali_pli.json",
+     "work": "Puggalapaññatti (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=puggalapannatti-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-abhidhamma",
    "chip": "Kathāvatthu",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "kathavatthu-pali_pli.json",
+     "work": "Kathāvatthu (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=kathavatthu-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-abhidhamma",
    "chip": "Yamaka",
    "pd": "r",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "yamaka-pali_pli.json",
+     "work": "Yamaka (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=yamaka-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-abhidhamma",
    "chip": "Paṭṭhāna",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "patthana-pali_pli.json",
+     "work": "Paṭṭhāna (Pali)",
+     "translator": "",
+     "year": 2018,
+     "url": "?text=patthana-pali_pli.json"
+    }
+   ]
   },
   {
    "zone": "p-paracanon",

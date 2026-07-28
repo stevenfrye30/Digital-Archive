@@ -3,7 +3,8 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 16,
+  "held": 4,
+  "possible": 12,
   "none": 35
  },
  "chips": [
@@ -11,19 +12,46 @@
    "zone": "con-four",
    "chip": "Great Learning · Dàxué 大學",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "great-learning_legge.json",
+     "work": "The Great Learning",
+     "translator": "James Legge",
+     "year": 1893,
+     "url": "?text=great-learning_legge.json"
+    }
+   ]
   },
   {
    "zone": "con-four",
    "chip": "Doctrine of the Mean · Zhōngyōng 中庸",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "doctrine-of-the-mean_legge.json",
+     "work": "The Doctrine of the Mean",
+     "translator": "James Legge",
+     "year": 1893,
+     "url": "?text=doctrine-of-the-mean_legge.json"
+    }
+   ]
   },
   {
    "zone": "con-four",
    "chip": "Analects · Lúnyǔ 論語",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "analects_legge.json",
+     "work": "The Analects",
+     "translator": "James Legge",
+     "year": 1893,
+     "url": "?text=analects_legge.json"
+    }
+   ]
   },
   {
    "zone": "con-four",
@@ -167,7 +195,16 @@
    "zone": "dao-classics",
    "chip": "Zhuāngzǐ 莊子 — 33 chapters",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "zhuangzi_giles.json",
+     "work": "Zhuangzi",
+     "translator": "Herbert A. Giles",
+     "year": 1889,
+     "url": "?text=zhuangzi_giles.json"
+    }
+   ]
   },
   {
    "zone": "dao-classics",

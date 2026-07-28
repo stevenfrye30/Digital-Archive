@@ -3,10 +3,11 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 372,
-  "held": 7,
-  "none": 109,
-  "held-several": 2
+  "possible": 360,
+  "held": 18,
+  "none": 108,
+  "held-several": 3,
+  "restricted": 1
  },
  "chips": [
   {
@@ -643,7 +644,16 @@
    "zone": "ju-talmud",
    "chip": "Babylonian Talmud (Bavli) — Gemara on 37 of the 63 tractates",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "babylonian-talmud-rodkinson_rodkinson.json",
+     "work": "The Babylonian Talmud",
+     "translator": "Michael L. Rodkinson",
+     "year": 1903,
+     "url": "?text=babylonian-talmud-rodkinson_rodkinson.json"
+    }
+   ]
   },
   {
    "zone": "ju-talmud",
@@ -739,7 +749,16 @@
    "zone": "ju-halakhah",
    "chip": "Guide for the Perplexed (Maimonides)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "maimonides-guide_friedlander.json",
+     "work": "The Guide for the Perplexed",
+     "translator": "M. Friedländer",
+     "year": 1881,
+     "url": "?text=maimonides-guide_friedlander.json"
+    }
+   ]
   },
   {
    "zone": "ju-halakhah",
@@ -1417,7 +1436,16 @@
    "zone": "ch-fathers",
    "chip": "Apology",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "tertullian-volume-1_ccel-schaff.json",
+     "work": "Writings, Volume I: Apology + Doctrinal & Controversial Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=tertullian-volume-1_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -1581,7 +1609,17 @@
    "zone": "ch-fathers",
    "chip": "On Christian Doctrine",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "augustine-city-of-god-ccel_ccel-schaff.json",
+     "work": "City of God and On Christian Doctrine (CCEL)",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1887,
+     "url": "?text=augustine-city-of-god-ccel_ccel-schaff.json"
+    }
+   ],
+   "work_in_volume": true
   },
   {
    "zone": "ch-fathers",
@@ -1593,7 +1631,17 @@
    "zone": "ch-fathers",
    "chip": "The Enchiridion",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "augustine-confessions-enchiridion-ccel_ccel-schaff.json",
+     "work": "Confessions and Enchiridion (CCEL)",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1887,
+     "url": "?text=augustine-confessions-enchiridion-ccel_ccel-schaff.json"
+    }
+   ],
+   "work_in_volume": true
   },
   {
    "zone": "ch-fathers",
@@ -1689,7 +1737,16 @@
    "zone": "ch-fathers",
    "chip": "Soliloquies",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "alfred-augustine-soliloquies_hargrove.json",
+     "work": "King Alfred's Old English Version of Augustine's Soliloquies",
+     "translator": "Henry Lee Hargrove",
+     "year": 1902,
+     "url": "?text=alfred-augustine-soliloquies_hargrove.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -1716,7 +1773,16 @@
    "zone": "ch-fathers",
    "chip": "Homilies on Matthew",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "chrysostom-homilies-matthew_ccel-schaff.json",
+     "work": "Homilies on the Gospel of Matthew",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1888,
+     "url": "?text=chrysostom-homilies-matthew_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -1728,13 +1794,31 @@
    "zone": "ch-fathers",
    "chip": "Homilies on Acts",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "chrysostom-homilies-acts-romans_ccel-schaff.json",
+     "work": "Homilies on Acts and Romans",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1889,
+     "url": "?text=chrysostom-homilies-acts-romans_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Homilies on Romans",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "chrysostom-homilies-acts-romans_ccel-schaff.json",
+     "work": "Homilies on Acts and Romans",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1889,
+     "url": "?text=chrysostom-homilies-acts-romans_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -1752,7 +1836,16 @@
    "zone": "ch-fathers",
    "chip": "Homilies on Hebrews",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "chrysostom-homilies-timothy-hebrews_ccel-schaff.json",
+     "work": "Homilies on Timothy, Titus, Philemon, and Hebrews",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1889,
+     "url": "?text=chrysostom-homilies-timothy-hebrews_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -3021,19 +3114,46 @@
    "zone": "is-sufi",
    "chip": "Rūmī — the Masnavī",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "rumi-masnavi_whinfield.json",
+     "work": "The Masnavi",
+     "translator": "E.H. Whinfield",
+     "year": 1898,
+     "url": "?text=rumi-masnavi_whinfield.json"
+    },
+    {
+     "df": "rumi-masnavi_redhouse.json",
+     "work": "The Masnavi",
+     "translator": "James W. Redhouse",
+     "year": 1881,
+     "url": "?text=rumi-masnavi_redhouse.json"
+    }
+   ]
   },
   {
    "zone": "is-sufi",
    "chip": "ʿAṭṭār — Conference of the Birds",
    "pd": "g",
-   "state": "possible"
+   "state": "restricted",
+   "reason_class": "rights-or-quality hold"
   },
   {
    "zone": "is-sufi",
    "chip": "Saʿdī — Gulistān · Būstān",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "bustan-sadi-edwards_edwards.json",
+     "work": "The Bustan of Sa'di",
+     "translator": "A. Hart Edwards",
+     "year": 1911,
+     "url": "?text=bustan-sadi-edwards_edwards.json"
+    }
+   ]
   },
   {
    "zone": "is-sufi",

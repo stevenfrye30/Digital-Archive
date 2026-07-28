@@ -1,5 +1,5 @@
 {
- "status": "REVIEWED 2026-07-28 — §1/§2 applied; PROPOSED rows carry auto_verdicts and await the design side's final pass on maps/seed_review_sheet.md",
+ "status": "FINAL — §6 applied 2026-07-28; bindings may generate from confirmed rows; PROPOSED remains only where §6 left it",
  "drafted": "2026-07-28 (Task 20 step 2)",
  "scope": {
   "hindu": [
@@ -67,29 +67,57 @@
    "zone": "core",
    "chip": "Ṛgveda Saṃhitā",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
-     "id": "rig-veda-sanskrit-aufrecht",
-     "title": "Ṛgveda Saṃhitā (Sanskrit)",
-     "restricted": true,
+     "id": "rig-veda-griffith",
+     "title": "The Hymns of the Rigveda",
+     "restricted": false,
      "dfs": [
       {
-       "df": "rig-veda-sanskrit-aufrecht_devanagari.json",
-       "translator": "",
-       "year": 1877,
-       "restricted": true
-      },
+       "df": "rig-veda-griffith_griffith.json",
+       "translator": "Ralph T.H. Griffith",
+       "year": 1896,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "vedic-hymns-part1",
+     "title": "Vedic Hymns, Part 1",
+     "restricted": false,
+     "dfs": [
       {
-       "df": "rig-veda-sanskrit-aufrecht_iast.json",
-       "translator": "",
-       "year": 1877,
-       "restricted": true
+       "df": "vedic-hymns-part1_muller-vedic.json",
+       "translator": "Max Müller",
+       "year": 1891,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "vedic-hymns-part2",
+     "title": "Vedic Hymns, Part 2",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "vedic-hymns-part2_oldenberg.json",
+       "translator": "Hermann Oldenberg",
+       "year": 1897,
+       "restricted": false
       }
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "chooser": "translations",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28) — HOLD resolved by index search",
+   "restricted_note": [
+    {
+     "id": "rig-veda-sanskrit-aufrecht",
+     "title": "Ṛgveda Saṃhitā (Sanskrit)"
+    }
+   ]
   },
   {
    "tradition": "hindu",
@@ -142,7 +170,7 @@
    "zone": "core",
    "chip": "Kauṣītaki Brāhmaṇa",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "kausitaki-brahmana-keith",
@@ -158,14 +186,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
    "zone": "core",
    "chip": "Pañcaviṃśa Brāhmaṇa",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "pancavimsa-brahmana-caland",
@@ -181,7 +210,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
@@ -211,7 +241,7 @@
    "zone": "core",
    "chip": "Aitareya Āraṇyaka",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "aitareya-aranyaka-muller",
@@ -227,14 +257,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
    "zone": "ring2",
    "chip": "Upaniṣads + Brahma-sūtra + Bhagavad-Gītā",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "bhagavad-gita",
@@ -262,14 +293,16 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)",
+   "chooser": "works"
   },
   {
    "tradition": "hindu",
    "zone": "ring3",
    "chip": "Mahābhārata (18 parvas, ~1.8M words)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "mahabharata",
@@ -291,14 +324,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
    "zone": "ring3",
    "chip": "Bhagavad-Gītā (in MBh, Bhīṣma-parva; a Prasthāna-trayī pillar)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "bhagavad-gita",
@@ -326,14 +360,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
    "zone": "ring3",
    "chip": "Harivaṃśa (khila / appendix to the Mahābhārata)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "mahabharata",
@@ -355,14 +390,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
    "zone": "ring3",
    "chip": "Rāmāyaṇa (Vālmīki, 7 kāṇḍas, ~24,000 verses)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "ramayana-griffith",
@@ -378,14 +414,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
    "zone": "ring4",
    "chip": "Garuḍa",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "garuda-purana",
@@ -401,14 +438,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
    "zone": "ring4",
    "chip": "Varāha",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "varaha-upanishad-aiyar-1914",
@@ -424,7 +462,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "hindu",
@@ -467,7 +506,7 @@
    "zone": "ring4",
    "chip": "Kūrma",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "vivekananda-karma-yoga",
@@ -483,14 +522,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R1 (named skeleton false positive)"
+   "auto_verdict": "REJECT-R1 (named skeleton false positive)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "hindu",
    "zone": "branchD",
    "chip": "Viṣṇu Sahasranāma (in the Mahābhārata)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "mahabharata",
@@ -512,14 +552,17 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)",
+   "chooser": "works",
+   "contained_in": "within the Mahābhārata, tr. Ganguli"
   },
   {
    "tradition": "hindu",
    "zone": "branchD",
    "chip": "Śiva Sahasranāma (in the Mahābhārata)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "mahabharata",
@@ -541,14 +584,17 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)",
+   "chooser": "works",
+   "contained_in": "within the Mahābhārata, tr. Ganguli"
   },
   {
    "tradition": "hindu",
    "zone": "branchD",
    "chip": "Anu-Gītā + Sanatsujātīya (in the Mahābhārata)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "mahabharata",
@@ -570,14 +616,17 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)",
+   "chooser": "works",
+   "contained_in": "within the Mahābhārata, tr. Ganguli"
   },
   {
    "tradition": "buddhist",
    "zone": "p-digha",
    "chip": "Pāṭika",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "buddhavamsa-cariyapitaka",
@@ -593,7 +642,8 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R2 (su cell — structure, not a work)"
+   "auto_verdict": "REJECT-R2 (su cell — structure, not a work)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "buddhist",
@@ -948,7 +998,7 @@
    "zone": "p-khuddaka",
    "chip": "Theragāthā",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "therigatha-davids",
@@ -964,14 +1014,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
    "zone": "p-khuddaka",
    "chip": "Therīgāthā",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "therigatha-davids",
@@ -987,7 +1038,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
@@ -1082,7 +1134,7 @@
    "zone": "p-khuddaka",
    "chip": "Paṭisambhidāmagga",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "patisambhidamagga-pali",
@@ -1098,7 +1150,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
@@ -1171,7 +1224,7 @@
    "zone": "p-abhidhamma",
    "chip": "Dhammasaṅgaṇī",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "dhammasangani-pali",
@@ -1187,14 +1240,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
    "zone": "p-abhidhamma",
    "chip": "Vibhaṅga",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "vibhanga-pali",
@@ -1210,14 +1264,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
    "zone": "p-abhidhamma",
    "chip": "Dhātukathā",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "dhatukatha-pali",
@@ -1233,14 +1288,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
    "zone": "p-abhidhamma",
    "chip": "Puggalapaññatti",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "puggalapannatti-pali",
@@ -1256,14 +1312,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
    "zone": "p-abhidhamma",
    "chip": "Kathāvatthu",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "kathavatthu-pali",
@@ -1279,14 +1336,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
    "zone": "p-abhidhamma",
    "chip": "Yamaka",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "yamaka-pali",
@@ -1302,14 +1360,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
    "zone": "p-abhidhamma",
    "chip": "Paṭṭhāna",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "patthana-pali",
@@ -1325,7 +1384,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "buddhist",
@@ -1361,7 +1421,7 @@
    "zone": "ju-tanakh",
    "chip": "Genesis",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "luther-genesis-vol1",
@@ -1377,14 +1437,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R1 (works-about)"
+   "auto_verdict": "REJECT-R1 (works-about)",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ju-tanakh",
    "chip": "Proverbs",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "ancient-jewish-proverbs",
@@ -1400,7 +1461,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
@@ -1430,7 +1492,7 @@
    "zone": "ju-tanakh",
    "chip": "Esther",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "latin-vulgate-esther-liber-esther-anonymous",
@@ -1446,14 +1508,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ju-tanakh",
    "chip": "I Chronicles",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "jerahmeel-gaster",
@@ -1469,14 +1532,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ju-tanakh",
    "chip": "II Chronicles",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "jerahmeel-gaster",
@@ -1492,14 +1556,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ju-mishnah",
    "chip": "Demai",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "first-book-adam-eve",
@@ -1515,7 +1580,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
@@ -1552,7 +1618,7 @@
    "zone": "ju-talmud",
    "chip": "Babylonian Talmud (Bavli) — Gemara on 37 of the 63 tractates",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "babylonian-talmud-rodkinson",
@@ -1568,14 +1634,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ju-halakhah",
    "chip": "Guide for the Perplexed (Maimonides)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "maimonides-guide",
@@ -1591,14 +1658,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-ot",
    "chip": "Genesis",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "luther-genesis-vol1",
@@ -1614,14 +1682,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-ot",
    "chip": "Esther",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "latin-vulgate-esther-liber-esther-anonymous",
@@ -1637,14 +1706,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-ot",
    "chip": "Proverbs",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "ancient-jewish-proverbs",
@@ -1660,7 +1730,8 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
@@ -1690,7 +1761,7 @@
    "zone": "ch-nt",
    "chip": "Matthew",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "chrysostom-homilies-matthew",
@@ -1706,14 +1777,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-nt",
    "chip": "John",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "calvin-letters",
@@ -1735,7 +1807,8 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "abrahamic",
@@ -1778,7 +1851,7 @@
    "zone": "ch-nt",
    "chip": "Romans",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "chrysostom-homilies-acts-romans",
@@ -1794,7 +1867,8 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "abrahamic",
@@ -1837,7 +1911,7 @@
    "zone": "ch-nt",
    "chip": "Ephesians",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "chrysostom-homilies-galatians-ephesians",
@@ -1853,14 +1927,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-nt",
    "chip": "Titus",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "chrysostom-homilies-timothy-hebrews",
@@ -1876,14 +1951,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-nt",
    "chip": "Philemon",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "chrysostom-homilies-timothy-hebrews",
@@ -1899,7 +1975,8 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "abrahamic",
@@ -1955,7 +2032,7 @@
    "zone": "ch-nt",
    "chip": "Jude",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "philo-judaeus-conybeare",
@@ -1971,7 +2048,8 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)"
+   "auto_verdict": "REJECT-R3 (Bible book chip — binds at zone level in v1)",
+   "review": "sheet auto-verdict, §6: 'auto-rejects all stand'"
   },
   {
    "tradition": "abrahamic",
@@ -2001,7 +2079,7 @@
    "zone": "ch-fathers",
    "chip": "Apology",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "tertullian-volume-1",
@@ -2017,7 +2095,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
@@ -2076,7 +2155,7 @@
    "zone": "ch-fathers",
    "chip": "On Christian Doctrine",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "augustine-city-of-god-ccel",
@@ -2092,14 +2171,16 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)",
+   "work_in_volume": true
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "The Enchiridion",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "augustine-confessions-enchiridion-ccel",
@@ -2115,7 +2196,9 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)",
+   "work_in_volume": true
   },
   {
    "tradition": "abrahamic",
@@ -2172,7 +2255,7 @@
    "zone": "ch-fathers",
    "chip": "Soliloquies",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "alfred-augustine-soliloquies",
@@ -2188,7 +2271,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
@@ -2218,7 +2302,7 @@
    "zone": "ch-fathers",
    "chip": "Homilies on Matthew",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "chrysostom-homilies-matthew",
@@ -2234,14 +2318,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R1 (works-about)"
+   "auto_verdict": "REJECT-R1 (works-about)",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "Homilies on Acts",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "chrysostom-homilies-acts-romans",
@@ -2257,14 +2342,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R1 (works-about)"
+   "auto_verdict": "REJECT-R1 (works-about)",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "Homilies on Romans",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "chrysostom-homilies-acts-romans",
@@ -2280,14 +2366,15 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R1 (works-about)"
+   "auto_verdict": "REJECT-R1 (works-about)",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "ch-fathers",
    "chip": "Homilies on Hebrews",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "chrysostom-homilies-timothy-hebrews",
@@ -2303,7 +2390,8 @@
      ]
     }
    ],
-   "auto_verdict": "REJECT-R1 (works-about)"
+   "auto_verdict": "REJECT-R1 (works-about)",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
@@ -2333,7 +2421,7 @@
    "zone": "is-sufi",
    "chip": "Rūmī — the Masnavī",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "rumi-masnavi",
@@ -2355,14 +2443,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "is-sufi",
    "chip": "ʿAṭṭār — Conference of the Birds",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "conference-of-the-birds",
@@ -2378,14 +2467,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "abrahamic",
    "zone": "is-sufi",
    "chip": "Saʿdī — Gulistān · Būstān",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "bustan-sadi-edwards",
@@ -2401,14 +2491,16 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)",
+   "chooser": "works"
   },
   {
    "tradition": "eastasian",
    "zone": "con-four",
    "chip": "Great Learning · Dàxué 大學",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "great-learning",
@@ -2424,14 +2516,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "eastasian",
    "zone": "con-four",
    "chip": "Doctrine of the Mean · Zhōngyōng 中庸",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "doctrine-of-the-mean",
@@ -2447,14 +2540,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "eastasian",
    "zone": "con-four",
    "chip": "Analects · Lúnyǔ 論語",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "analects",
@@ -2470,14 +2564,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "eastasian",
    "zone": "dao-classics",
    "chip": "Zhuāngzǐ 莊子 — 33 chapters",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "zhuangzi",
@@ -2493,14 +2588,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "jain",
    "zone": "ja-svet",
    "chip": "Uttarādhyayana Sūtra (Mūlasūtra — Mahāvīra’s last sermon)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "uttaradhyayana-sutra",
@@ -2516,14 +2612,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "shinto",
    "zone": "sh-chron",
    "chip": "Kojiki (712 — Records of Ancient Matters, 3 books)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "kojiki-chamberlain",
@@ -2539,14 +2636,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "shinto",
    "zone": "sh-chron",
    "chip": "Sendai Kuji Hongi / Kujiki (10 books)",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "kojiki-chamberlain",
@@ -2562,14 +2660,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "shinto",
    "zone": "sh-later",
    "chip": "Motoori Norinaga — Kojiki-den (44 vols)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "rejected",
    "candidates": [
     {
      "id": "kojiki-chamberlain",
@@ -2585,14 +2684,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "bahai",
    "zone": "ba-bahaullah",
    "chip": "Kitáb-i-Aqdas (the \"Most Holy Book,\" ~1873)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "kitab-i-aqdas",
@@ -2608,14 +2708,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "ancient",
    "zone": "aw-egypt",
    "chip": "The Book of the Dead (Coming Forth by Day)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "the-book-of-the-dead-wallis-budge",
@@ -2631,7 +2732,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "ancient",
@@ -2661,7 +2763,7 @@
    "zone": "aw-greek",
    "chip": "Lucian — On the Syrian Goddess (De Dea Syria)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "syrian-goddess-lucian",
@@ -2677,14 +2779,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "ancient",
    "zone": "aw-norse",
    "chip": "The Poetic Edda (Codex Regius)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "poetic-edda",
@@ -2700,7 +2803,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "ancient",
@@ -2730,7 +2834,7 @@
    "zone": "aw-norse",
    "chip": "The Kalevala (Finnish pagan epic)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "kalevala",
@@ -2746,14 +2850,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "ancient",
    "zone": "aw-celtic",
    "chip": "The Mabinogion (the four branches)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "mabinogion-guest",
@@ -2769,14 +2874,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "ancient",
    "zone": "aw-celtic",
    "chip": "The Táin Bó Cúailnge (Cattle Raid of Cooley)",
    "basis": "skeleton",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "tain-cualnge-dunn",
@@ -2792,7 +2898,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "ancient",
@@ -2836,7 +2943,7 @@
    "zone": "aw-newworld",
    "chip": "The Popol Vuh (the K’iche’ Maya creation)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "popol-vuh-spence",
@@ -2852,14 +2959,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "gnostic",
    "zone": "gn-gnostic",
    "chip": "Pistis Sophia (the Askew Codex)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "pistis-sophia-mead",
@@ -2875,14 +2983,15 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "gnostic",
    "zone": "gn-gnostic",
    "chip": "Fragments of a Faith Forgotten (Valentinus · Basilides · the Sethians)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "fragments-faith-mead",
@@ -2898,7 +3007,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "gnostic",
@@ -3020,7 +3130,7 @@
    "zone": "gn-gnostic",
    "chip": "The Gospel of Mary (the Berlin Codex)",
    "basis": "containment",
-   "status": "PROPOSED",
+   "status": "confirmed",
    "candidates": [
     {
      "id": "gospel-of-mary",
@@ -3036,7 +3146,8 @@
      ]
     }
    ],
-   "auto_verdict": "stands"
+   "auto_verdict": "stands",
+   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
   },
   {
    "tradition": "gnostic",

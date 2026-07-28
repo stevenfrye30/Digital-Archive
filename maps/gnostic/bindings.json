@@ -3,10 +3,10 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 9,
+  "held": 4,
+  "possible": 7,
   "held-several": 1,
-  "held": 1,
-  "none": 12,
+  "none": 11,
   "restricted": 1
  },
  "chips": [
@@ -14,13 +14,31 @@
    "zone": "gn-gnostic",
    "chip": "Pistis Sophia (the Askew Codex)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "pistis-sophia-mead_mead.json",
+     "work": "Pistis Sophia",
+     "translator": "G.R.S. Mead",
+     "year": 1921,
+     "url": "?text=pistis-sophia-mead_mead.json"
+    }
+   ]
   },
   {
    "zone": "gn-gnostic",
    "chip": "Fragments of a Faith Forgotten (Valentinus · Basilides · the Sethians)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "fragments-faith-mead_mead.json",
+     "work": "Fragments of a Faith Forgotten",
+     "translator": "G.R.S. Mead",
+     "year": 1906,
+     "url": "?text=fragments-faith-mead_mead.json"
+    }
+   ]
   },
   {
    "zone": "gn-gnostic",
@@ -96,7 +114,16 @@
    "zone": "gn-gnostic",
    "chip": "The Gospel of Mary (the Berlin Codex)",
    "pd": "r",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "gospel-of-mary_anonymous.json",
+     "work": "The Gospel of Mary",
+     "translator": "Anonymous",
+     "year": null,
+     "url": "?text=gospel-of-mary_anonymous.json"
+    }
+   ]
   },
   {
    "zone": "gn-gnostic",

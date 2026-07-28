@@ -3,9 +3,10 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 50,
-  "none": 18,
-  "held": 2,
+  "held": 8,
+  "possible": 44,
+  "none": 17,
+  "restricted": 1,
   "held-several": 1
  },
  "chips": [
@@ -13,7 +14,16 @@
    "zone": "aw-egypt",
    "chip": "The Book of the Dead (Coming Forth by Day)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "the-book-of-the-dead-wallis-budge_anonymous.json",
+     "work": "The Book of the Dead",
+     "translator": "Wallis Budge",
+     "year": 1900,
+     "url": "?text=the-book-of-the-dead-wallis-budge_anonymous.json"
+    }
+   ]
   },
   {
    "zone": "aw-egypt",
@@ -280,7 +290,16 @@
    "zone": "aw-greek",
    "chip": "Lucian — On the Syrian Goddess (De Dea Syria)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "syrian-goddess-lucian_strong-garstang.json",
+     "work": "The Syrian Goddess (De Dea Syria)",
+     "translator": "Herbert A. Strong, John Garstang",
+     "year": 1913,
+     "url": "?text=syrian-goddess-lucian_strong-garstang.json"
+    }
+   ]
   },
   {
    "zone": "aw-roman",
@@ -346,7 +365,8 @@
    "zone": "aw-norse",
    "chip": "The Poetic Edda (Codex Regius)",
    "pd": "g",
-   "state": "possible"
+   "state": "restricted",
+   "reason_class": "rights-or-quality hold"
   },
   {
    "zone": "aw-norse",
@@ -385,19 +405,46 @@
    "zone": "aw-norse",
    "chip": "The Kalevala (Finnish pagan epic)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "kalevala_crawford.json",
+     "work": "The Kalevala",
+     "translator": "John Martin Crawford",
+     "year": 1888,
+     "url": "?text=kalevala_crawford.json"
+    }
+   ]
   },
   {
    "zone": "aw-celtic",
    "chip": "The Mabinogion (the four branches)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "mabinogion-guest_guest.json",
+     "work": "The Mabinogion",
+     "translator": "Lady Charlotte Guest",
+     "year": 1877,
+     "url": "?text=mabinogion-guest_guest.json"
+    }
+   ]
   },
   {
    "zone": "aw-celtic",
    "chip": "The Táin Bó Cúailnge (Cattle Raid of Cooley)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "tain-cualnge-dunn_dunn.json",
+     "work": "The Cattle Raid of Cualnge (Táin Bó Cúalnge)",
+     "translator": "Joseph Dunn",
+     "year": 1914,
+     "url": "?text=tain-cualnge-dunn_dunn.json"
+    }
+   ]
   },
   {
    "zone": "aw-celtic",
@@ -432,7 +479,16 @@
    "zone": "aw-newworld",
    "chip": "The Popol Vuh (the K’iche’ Maya creation)",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "popol-vuh-spence_spence.json",
+     "work": "The Popol Vuh",
+     "translator": "Lewis Spence",
+     "year": 1908,
+     "url": "?text=popol-vuh-spence_spence.json"
+    }
+   ]
   },
   {
    "zone": "aw-newworld",

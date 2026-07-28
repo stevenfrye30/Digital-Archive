@@ -3,7 +3,8 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 5,
+  "possible": 4,
+  "held": 1,
   "none": 13
  },
  "chips": [
@@ -29,7 +30,16 @@
    "zone": "ja-svet",
    "chip": "Uttarādhyayana Sūtra (Mūlasūtra — Mahāvīra’s last sermon)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "uttaradhyayana-sutra_jacobi.json",
+     "work": "Uttaradhyayana Sutra",
+     "translator": "Hermann Jacobi",
+     "year": 1895,
+     "url": "?text=uttaradhyayana-sutra_jacobi.json"
+    }
+   ]
   },
   {
    "zone": "ja-svet",

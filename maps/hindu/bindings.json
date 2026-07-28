@@ -3,16 +3,49 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 159,
-  "held": 3,
-  "none": 170
+  "held-several": 7,
+  "possible": 147,
+  "held": 7,
+  "none": 170,
+  "restricted": 1
  },
  "chips": [
   {
    "zone": "core",
    "chip": "Ṛgveda Saṃhitā",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "rig-veda-griffith_griffith.json",
+     "work": "The Hymns of the Rigveda",
+     "translator": "Ralph T.H. Griffith",
+     "year": 1896,
+     "url": "?text=rig-veda-griffith_griffith.json"
+    },
+    {
+     "df": "vedic-hymns-part1_muller-vedic.json",
+     "work": "Vedic Hymns, Part 1",
+     "translator": "Max Müller",
+     "year": 1891,
+     "url": "?text=vedic-hymns-part1_muller-vedic.json"
+    },
+    {
+     "df": "vedic-hymns-part2_oldenberg.json",
+     "work": "Vedic Hymns, Part 2",
+     "translator": "Hermann Oldenberg",
+     "year": 1897,
+     "url": "?text=vedic-hymns-part2_oldenberg.json"
+    }
+   ],
+   "restricted_note": [
+    {
+     "id": "rig-veda-sanskrit-aufrecht",
+     "title": "Ṛgveda Saṃhitā (Sanskrit)",
+     "reason_class": "rights-or-quality hold"
+    }
+   ]
   },
   {
    "zone": "core",
@@ -84,13 +117,23 @@
    "zone": "core",
    "chip": "Kauṣītaki Brāhmaṇa",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "kausitaki-brahmana-keith_keith.json",
+     "work": "The Kauṣītaki (Śāṅkhāyana) Brāhmaṇa",
+     "translator": "Arthur Berriedale Keith",
+     "year": 1920,
+     "url": "?text=kausitaki-brahmana-keith_keith.json"
+    }
+   ]
   },
   {
    "zone": "core",
    "chip": "Pañcaviṃśa Brāhmaṇa",
    "pd": "g",
-   "state": "possible"
+   "state": "restricted",
+   "reason_class": "rights-or-quality hold"
   },
   {
    "zone": "core",
@@ -135,7 +178,16 @@
    "zone": "core",
    "chip": "Aitareya Āraṇyaka",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "aitareya-aranyaka-muller_muller.json",
+     "work": "The Aitareya Āraṇyaka (Āraṇyakas I–III)",
+     "translator": "F. Max Müller",
+     "year": 1879,
+     "url": "?text=aitareya-aranyaka-muller_muller.json"
+    }
+   ]
   },
   {
    "zone": "core",
@@ -1005,19 +1057,70 @@
    "zone": "ring2",
    "chip": "Upaniṣads + Brahma-sūtra + Bhagavad-Gītā",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "bhagavad-gita_arnold.json",
+     "work": "Bhagavad Gita",
+     "translator": "Edwin Arnold",
+     "year": 1885,
+     "url": "?text=bhagavad-gita_arnold.json"
+    },
+    {
+     "df": "bhagavad-gita_telang.json",
+     "work": "Bhagavad Gita",
+     "translator": "K. T. Telang",
+     "year": 1882,
+     "url": "?text=bhagavad-gita_telang.json"
+    }
+   ]
   },
   {
    "zone": "ring3",
    "chip": "Mahābhārata (18 parvas, ~1.8M words)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "mahabharata_anonymous.json",
+     "work": "Mahabharata",
+     "translator": "Romesh Dutt",
+     "year": 1900,
+     "url": "?text=mahabharata_anonymous.json"
+    },
+    {
+     "df": "mahabharata_ganguli.json",
+     "work": "Mahabharata",
+     "translator": "Kisari Mohan Ganguli",
+     "year": 1896,
+     "url": "?text=mahabharata_ganguli.json"
+    }
+   ]
   },
   {
    "zone": "ring3",
    "chip": "Bhagavad-Gītā (in MBh, Bhīṣma-parva; a Prasthāna-trayī pillar)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "bhagavad-gita_arnold.json",
+     "work": "Bhagavad Gita",
+     "translator": "Edwin Arnold",
+     "year": 1885,
+     "url": "?text=bhagavad-gita_arnold.json"
+    },
+    {
+     "df": "bhagavad-gita_telang.json",
+     "work": "Bhagavad Gita",
+     "translator": "K. T. Telang",
+     "year": 1882,
+     "url": "?text=bhagavad-gita_telang.json"
+    }
+   ]
   },
   {
    "zone": "ring3",
@@ -1029,7 +1132,16 @@
    "zone": "ring3",
    "chip": "Rāmāyaṇa (Vālmīki, 7 kāṇḍas, ~24,000 verses)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "ramayana-griffith_griffith.json",
+     "work": "The Ramayana",
+     "translator": "Ralph T.H. Griffith",
+     "year": 1870,
+     "url": "?text=ramayana-griffith_griffith.json"
+    }
+   ]
   },
   {
    "zone": "ring4",
@@ -1053,7 +1165,16 @@
    "zone": "ring4",
    "chip": "Garuḍa",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "garuda-purana_wood-subrahmanyam.json",
+     "work": "The Garuda Purana",
+     "translator": "Ernest Wood, S.V. Subrahmanyam",
+     "year": 1911,
+     "url": "?text=garuda-purana_wood-subrahmanyam.json"
+    }
+   ]
   },
   {
    "zone": "ring4",
@@ -1737,13 +1858,49 @@
    "zone": "branchD",
    "chip": "Viṣṇu Sahasranāma (in the Mahābhārata)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "mahabharata_anonymous.json",
+     "work": "Mahabharata",
+     "translator": "Romesh Dutt",
+     "year": 1900,
+     "url": "?text=mahabharata_anonymous.json"
+    },
+    {
+     "df": "mahabharata_ganguli.json",
+     "work": "Mahabharata",
+     "translator": "Kisari Mohan Ganguli",
+     "year": 1896,
+     "url": "?text=mahabharata_ganguli.json"
+    }
+   ],
+   "contained_in": "within the Mahābhārata, tr. Ganguli"
   },
   {
    "zone": "branchD",
    "chip": "Śiva Sahasranāma (in the Mahābhārata)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "mahabharata_anonymous.json",
+     "work": "Mahabharata",
+     "translator": "Romesh Dutt",
+     "year": 1900,
+     "url": "?text=mahabharata_anonymous.json"
+    },
+    {
+     "df": "mahabharata_ganguli.json",
+     "work": "Mahabharata",
+     "translator": "Kisari Mohan Ganguli",
+     "year": 1896,
+     "url": "?text=mahabharata_ganguli.json"
+    }
+   ],
+   "contained_in": "within the Mahābhārata, tr. Ganguli"
   },
   {
    "zone": "branchD",
@@ -1773,7 +1930,25 @@
    "zone": "branchD",
    "chip": "Anu-Gītā + Sanatsujātīya (in the Mahābhārata)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "mahabharata_anonymous.json",
+     "work": "Mahabharata",
+     "translator": "Romesh Dutt",
+     "year": 1900,
+     "url": "?text=mahabharata_anonymous.json"
+    },
+    {
+     "df": "mahabharata_ganguli.json",
+     "work": "Mahabharata",
+     "translator": "Kisari Mohan Ganguli",
+     "year": 1896,
+     "url": "?text=mahabharata_ganguli.json"
+    }
+   ],
+   "contained_in": "within the Mahābhārata, tr. Ganguli"
   },
   {
    "zone": "branchD",
