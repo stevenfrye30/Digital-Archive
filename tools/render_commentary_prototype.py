@@ -519,10 +519,10 @@ def render_html(meta, passages, records, by_passage, by_tale):
   </label>
   <span class="hint">
     The toggles above are independent. AI-layer is off by default per the
-    quarantine rule (<code>PROVENANCE_LAYERS.md §7</code>); a reader who
+    quarantine rule (<code>doctrine/CONSTITUTION.md Part III §7</code>); a reader who
     wants to see AI suggestions must opt in by toggling it on. The
     bare-canon switch overrides every other toggle and provides the
-    constitutional reading-mode (<code>COMMENTARY_CONSTITUTION.md §6</code>).
+    constitutional reading-mode (<code>doctrine/CONSTITUTION.md Part IV §2</code>).
   </span>
 </div>
 

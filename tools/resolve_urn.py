@@ -2,7 +2,7 @@
 """resolve_urn.py — Tiny URN resolver prototype for the Digital Archive.
 
 The first operational layer of the archive's permanence infrastructure.
-Implements the resolver contract specified in CITATION_PERMANENCE.md §5.2:
+Implements the resolver contract specified in doctrine/PERMANENCE.md Part I §5.2:
 
   - Input: a valid URN.
   - Output: one of:
@@ -46,7 +46,7 @@ TEXT_DIR = ROOT / "01_library" / "library" / "texts"
 REGISTRY = ROOT / "01_library" / "library" / "metadata" / "registry.json"
 PERMANENCE = ROOT / "01_library" / "library" / "permanence"
 
-# URN parsers, kind-aware (cf. COMMENTARY_PROTOTYPE_2026.md §7.2).
+# URN parsers, kind-aware (cf. records/COMMENTARY_PROTOTYPE_2026.md §7.2).
 URN_PATTERNS = {
     "text":       re.compile(r"^archive:text:(?P<text>[A-Za-z0-9_\-]+)$"),
     "tale":       re.compile(r"^archive:tale:(?P<text>[A-Za-z0-9_\-]+)::(?P<id>\S+)$"),
@@ -132,7 +132,7 @@ class Resolver:
             if not rid:
                 continue
             if rid in self._commentary:
-                # Duplicate id is a constitutional breach (COMMENTARY_REPAIR_PROTOCOLS.md §6).
+                # Duplicate id is a constitutional breach (doctrine/COMMENTARY_ARCHITECTURE.md Part IV §6).
                 # Mark the record as ambiguous and keep both for the response.
                 existing = self._commentary[rid]
                 if not isinstance(existing, list):
@@ -199,7 +199,7 @@ class Resolver:
                     f"(reason: {entry.get('reason','no reason recorded')})."
                 )
                 return resp
-            # Recurse — but only one hop deep per CITATION_PERMANENCE.md §4.3
+            # Recurse — but only one hop deep per doctrine/PERMANENCE.md Part I §4.3
             # ("single-hop aliases preferred"). We allow up to 3 hops for safety
             # in case of pathological cases, but emit a diagnostic if >1.
             if len(chain) > 1:
@@ -233,7 +233,7 @@ class Resolver:
             resp["resolution_status"] = "malformed"
             resp["diagnostics"].append(
                 "URN does not match any known kind pattern. "
-                "See COMMENTARY_ATTACHMENT_MODEL.md for valid forms."
+                "See doctrine/COMMENTARY_ARCHITECTURE.md Part I for valid forms."
             )
             return resp
 
@@ -286,7 +286,7 @@ class Resolver:
         # Tale-level URNs are virtual — there is no `tale.json`. The resolver
         # returns a structured "tale" object that names the constituent
         # translations and (when available) chapter indices per translation.
-        # See COMMENTARY_ATTACHMENT_MODEL.md §3 on the tale_offset gap.
+        # See doctrine/COMMENTARY_ARCHITECTURE.md Part I §3 on the tale_offset gap.
         text_id = parsed["text"]
         tale_id = parsed["id"]
         # Confirm text exists.
@@ -309,7 +309,7 @@ class Resolver:
             "note": (
                 "Tale-level URNs are virtual references across translations. "
                 "Per-translation chapter mapping requires tale_offset metadata "
-                "(see COMMENTARY_ATTACHMENT_MODEL.md §3); not yet populated for "
+                "(see doctrine/COMMENTARY_ARCHITECTURE.md Part I §3); not yet populated for "
                 "all texts. The resolver returns the symbolic tale handle; the "
                 "renderer is responsible for finding the chapter in each "
                 "translation."
@@ -396,7 +396,7 @@ class Resolver:
             resp["diagnostics"].append(
                 f"Passage id {passage_id!r} appears {len(matches)} times in "
                 f"{passages_path.name}. This is a constitutional duplicate-id breach "
-                f"(COMMENTARY_REPAIR_PROTOCOLS.md §6)."
+                f"(doctrine/COMMENTARY_ARCHITECTURE.md Part IV §6)."
             )
             return resp
         p = matches[0]
@@ -511,7 +511,7 @@ class Resolver:
             resp["resolution_status"] = "ambiguous"
             resp["diagnostics"].append(
                 f"Commentary id {full_id!r} appears in {len(rec)} records. "
-                f"Constitutional duplicate-id breach (COMMENTARY_REPAIR_PROTOCOLS.md §6)."
+                f"Constitutional duplicate-id breach (doctrine/COMMENTARY_ARCHITECTURE.md Part IV §6)."
             )
             resp["resolved_to"] = {
                 "kind": "commentary",
@@ -548,7 +548,7 @@ class Resolver:
         if lifecycle == "withdrawn":
             resp["resolution_status"] = "resolved"
             resolved["withdrawn_marker"] = True
-            resp["diagnostics"].append("Record withdrawn; body preserved per COMMENTARY_LIFECYCLE.md §3.6.")
+            resp["diagnostics"].append("Record withdrawn; body preserved per doctrine/COMMENTARY_ARCHITECTURE.md Part II §3.6.")
         elif lifecycle in ("deprecated", "superseded"):
             resp["resolution_status"] = "resolved"
             successor = rec.get("superseded_by")
