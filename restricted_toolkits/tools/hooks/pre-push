@@ -1,28 +1,31 @@
 #!/usr/bin/env bash
-# restricted_toolkits guard — block a PUSH if the restricted/public boundary is broken.
+# restricted_toolkits guard — block a PUSH unless the deploy contract verifies.
 # Active when core.hooksPath = restricted_toolkits/tools/hooks (see install-hooks.sh).
-# Runs the canonical leak-check (05_scripts/check_restricted_invariants.py in the
-# local-only root repo, the parent of this deploy repo). Fails CLOSED: if the check
-# cannot run or does not pass, the push is aborted.
+# Runs guard v2 (tools/prepush_guard.py, in THIS repo). It supersedes the old
+# parent-side check_restricted_invariants.py: every invariant is derived from
+# data/build_manifest.json — counts ≡ index.json ≡ STATUS.md, a reason on every
+# restricted entry, no tracked restricted body, and a full sha256 verify of every
+# shipping artifact. Fails CLOSED: if the guard cannot run or does not pass, the
+# push is aborted.
 set -euo pipefail
 
 TOP="$(git rev-parse --show-toplevel)"          # .../03_web_app  (this deploy repo)
-CHECK="$TOP/../05_scripts/check_restricted_invariants.py"
+GUARD="$TOP/tools/prepush_guard.py"
 
-if [ ! -f "$CHECK" ]; then
-  echo "pre-push BLOCKED: leak-check not found at:"
-  echo "  $CHECK"
-  echo "The restricted/public boundary check must run before pushing the public deploy."
-  echo "(It lives in the local-only root repo. Push only from the full workspace layout.)"
+if [ ! -f "$GUARD" ]; then
+  echo "pre-push BLOCKED: guard not found at:"
+  echo "  $GUARD"
+  echo "The deploy-contract guard must run before pushing the public deploy."
   exit 1
 fi
 
-echo "pre-push: running restricted/public boundary check ..."
-if ! python "$CHECK"; then
+echo "pre-push: running deploy-contract guard (v2) ..."
+if ! python "$GUARD"; then
   echo ""
-  echo "pre-push BLOCKED: restricted/public invariants FAILED — not pushing."
-  echo "A restricted text would ship publicly. Fix the leak, then push again."
+  echo "pre-push BLOCKED: deploy-contract invariants FAILED — not pushing."
+  echo "A restricted text would ship publicly, or the manifest disagrees with the"
+  echo "tree. Fix the failure, then push again."
   exit 1
 fi
-echo "pre-push: boundary check passed — push allowed."
+echo "pre-push: guard passed — push allowed."
 exit 0
