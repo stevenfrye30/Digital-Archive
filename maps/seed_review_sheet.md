@@ -157,3 +157,10 @@ Abrahamic additions — Task 27 lane 3 verdicts (final, 2026-07-29; applied in t
 - NO-CHIP reports: Platt's First Book of Adam and Eve had NO ch-apoc chip to receive its ruled confirm — stays reception (structure-growth note with the Josephus chip-group, the map's most obvious missing shelves).
 - NEW PRECEDENTS RECORDED: non-English translations join as language-labeled chooser lines but never determine lit-state; zone-divergent witness sets on doubled chips (ju-tanakh Jewish set vs ch-ot Bible set); coverage-computed witness filtering (a df binds a book chip only if its computed codes carry the book).
 - Ambers ratified: hadith (TOP of the whole archive) · Zohar · Mishna book-aware restructuring (De Sola/Raphall FLAT) · Rhys Davids Dialogues + Müller/Hume + principal Upaniṣads on the same restructuring list.
+
+Task 28 — the consolidated rights lane (final, 2026-07-29):
+
+- 8 rows RESTRICTED (7 copyrighted: BBE-Hooke · Suzuki ×4 · Gibb · Itani (VERIFIED CC BY-NC-ND); 1 uncertain-copyright: Hardie–Gaye Physics — the sweep's own find, dates unverifiable from held provenance). Contract 1196 = 1096 + 100. Named record plans/CORRECTIONS_rights_2026-07.md.
+- ADDED as ruled: WLC Hebrew line (39 ju-tanakh families, registry "Public Domain") · Majority Text Greek line (27 ch-nt families, Unlicense dedication verified at the recorded byztxt source). Lit counts unchanged on every map (asserted).
+- PASSED, bind-eligible, LISTED for design riders: SBL-GNT (CC BY 4.0 recorded) · LXX-2012 (publisher dedication verified; FINDING: the df text is ENGLISH — the 2012 Brenton revision — despite its Greek language tag; metadata correction before any bind).
+- SWEEP CLOSED: SuttaCentral ×47 (bilara LICENSE.md CC0 on disk) · bible_web (publisher PD) · enchiridion_higginson (PG catalog: d. 1911; index year 1948 is an edition artifact — metadata-year correction candidate). NO other public row sits in the class.

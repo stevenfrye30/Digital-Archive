@@ -1,12 +1,12 @@
 {
- "generated": "2026-07-29T23:10:02Z",
+ "generated": "2026-07-29T23:43:59Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "993bb0611f2d093066cd352690fd8351d97fed5e",
+ "exporter_rev": "c14f3b5fbc6b90f4fef88f050f99efec4ff4402f",
  "library_fingerprint": "sha256:9a1347605dacb93379e80abc1fa2aedffb4b6c4c75f417b556099dfe5242cda9",
  "counts": {
   "entries": 1196,
-  "public": 1104,
-  "restricted": 92
+  "public": 1096,
+  "restricted": 100
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -455,9 +455,9 @@
    "data_hash": "sha256:b6618679214ccc99197d21908c2ad9c6b2bd66468ffcd65b2e3ccc43cd19d6ff",
    "data_bytes": 79499,
    "passages": 317,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:21Z"
   },
@@ -611,9 +611,9 @@
    "data_hash": "sha256:4f80cd8d8b6fc9b8d7e920d5ea84fe2a2968c7e1e06446aec0e64e0e5ebcfaa2",
    "data_bytes": 139840,
    "passages": 676,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "uncertain-copyright",
    "apparatus": false,
    "exported": "2026-07-10T17:30:21Z"
   },
@@ -1349,9 +1349,9 @@
    "data_hash": "sha256:e0144dbf9f9d1adb6bba3f158d44a8d0815617f869a3e87bb09a0cffb1c6be8e",
    "data_bytes": 1544323,
    "passages": 31067,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-01T20:10:53Z"
   },
@@ -9072,9 +9072,9 @@
    "data_hash": "sha256:8e6061191f75e0370b584565f9191db1cb15280fb4943dee5b475b5950f15dff",
    "data_bytes": 238727,
    "passages": 1784,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:31:11Z"
   },
@@ -10294,8 +10294,8 @@
    "data_bytes": 316133,
    "passages": 6236,
    "license": "CC BY-NC-ND 4.0",
-   "restricted": false,
-   "restricted_reason": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:31:17Z"
   },
@@ -12512,9 +12512,9 @@
    "data_hash": "sha256:8f336896d2d8fd8ca0c1525c2229c13d42b093f62c41a3634dc3c98398c838ac",
    "data_bytes": 340000,
    "passages": 2047,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:31:25Z"
   },
@@ -14432,9 +14432,9 @@
    "data_hash": "sha256:d17df8ef02932cf8d0290758e07e9ea824ec80965499ff6acb7831a31f5610cd",
    "data_bytes": 22808,
    "passages": 254,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:31:35Z"
   },
@@ -14444,9 +14444,9 @@
    "data_hash": "sha256:ff4ed7a6050511b18a9bc9f05052ea9a8eeadff377d9e87e20ed63e27435f0f5",
    "data_bytes": 109180,
    "passages": 618,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:31:35Z"
   },
