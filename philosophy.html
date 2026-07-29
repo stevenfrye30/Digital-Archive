@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philosophy — Digital Archive</title>
+<style>
+/* Philosophy shelf — presentation layer over data/_generated/index.json.
+   Author-organized view of the Philosophy traditions. No data of its own. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --chrome-bg:#eeebe5; --chrome-fg:#3a3530; --chrome-border:#d8d3cc;
+  --chrome-muted:#8a7a6a; --chrome-active:#7a5c3a;
+  --paper:#faf8f5; --card:#f6f0e2; --card-hover:#fbf6ea;
+  --card-edge:rgba(120,95,60,0.20); --rust:#a04020; --sage:#5d7a3a; --lapis:#3a6b8c;
+}
+body { font-family: Georgia, 'Palatino Linotype', Palatino, serif; background: var(--paper); color: var(--chrome-fg); line-height: 1.6; }
+a { color: var(--chrome-active); }
+header { position: relative; text-align: center; padding: 26px 80px 18px; background: var(--chrome-bg); border-bottom: 1px solid var(--chrome-border); }
+header h1 { font-weight: 400; font-variant: small-caps; letter-spacing: 6px; font-size: 28px; color: var(--chrome-active); margin: 0 auto; max-width: calc(100% - 480px); min-width: 200px; }
+header p { font-style: italic; color: var(--chrome-muted); font-size: 13px; margin-top: 4px; }
+.back { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); font-size: 20px; text-decoration: none; color: var(--chrome-muted); padding: 4px 12px; border-radius: 6px; }
+.back:hover { color: var(--chrome-active); background: rgba(120,90,50,0.08); }
+.room { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 12px; font-style: italic; text-decoration: none; color: var(--chrome-muted); border: 1px solid var(--chrome-border); border-radius: 3px; padding: 5px 12px; white-space: nowrap; }
+.room:hover { color: var(--chrome-active); border-color: var(--chrome-active); }
+main { max-width: 1120px; margin: 0 auto; padding: 26px 32px 90px; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; align-items: baseline; font-size: 12px; color: var(--chrome-muted); font-family: system-ui, sans-serif; margin-bottom: 24px; }
+.legend .sw { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+.legend .count { letter-spacing: 0.06em; }
+.legend .sortl { margin-left: auto; font-style: italic; font-family: Georgia, serif; color: var(--chrome-muted); }
+.legend select { font-family: inherit; font-size: 12px; background: #f0ede8; border: 1px solid var(--chrome-border); border-radius: 3px; padding: 2px 6px; color: var(--chrome-fg); cursor: pointer; margin-left: 6px; }
+.wing { margin-bottom: 30px; }
+.wing h2 { font-weight: 700; font-variant: small-caps; letter-spacing: 3px; font-size: 20px; color: var(--chrome-active); border-bottom: 1px solid var(--card-edge); padding-bottom: 6px; margin-bottom: 4px; }
+.wing .range { font-size: 14px; font-weight: 400; letter-spacing: 0.5px; text-transform: none; color: var(--chrome-muted); margin-left: 10px; font-variant: normal; }
+.wing .note { display: none; }
+.authors { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.abtn { font-family: inherit; font-size: 14px; color: var(--chrome-fg); cursor: pointer; background: var(--card); border: 1px solid var(--card-edge); border-radius: 6px; padding: 8px 14px; display: flex; align-items: baseline; gap: 7px; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(255,252,245,0.6); transition: background .15s, border-color .15s, transform .12s; }
+.abtn:hover { background: var(--card-hover); border-color: var(--chrome-active); transform: translateY(-1px); }
+.abtn.open { background: var(--chrome-active); border-color: var(--chrome-active); color: #faf6ec; }
+.abtn .n { font-size: 11px; color: var(--chrome-muted); font-family: system-ui, sans-serif; }
+.abtn.open .n { color: #e8dcc8; }
+.panel { background: var(--card); border: 1px solid var(--card-edge); border-left: 3px solid var(--chrome-active); border-radius: 6px; padding: 18px 22px; margin-top: 12px; }
+.panel .who { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.panel .who b { font-size: 17px; font-weight: 400; font-variant: small-caps; letter-spacing: 1px; color: var(--chrome-active); }
+.panel .who .dates { font-size: 12px; color: var(--chrome-muted); }
+.panel .who a { margin-left: auto; font-size: 12px; font-style: italic; }
+.panel .blurb { font-style: italic; font-size: 13px; color: var(--chrome-muted); margin: 6px 0 10px; max-width: 84ch; }
+.works { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 0 26px; }
+.work { border-bottom: 1px dotted var(--chrome-border); padding: 8px 0; }
+.work a.t { font-style: italic; font-size: 14px; text-decoration: none; }
+.work a.t:hover { text-decoration: underline; }
+.work .meta { font-size: 12px; color: var(--chrome-muted); font-family: system-ui, sans-serif; margin-top: 2px; }
+.chip { font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; border-radius: 3px; padding: 1.5px 6px; margin-left: 8px; color: #fdf8ea; font-family: system-ui, sans-serif; vertical-align: middle; white-space: nowrap; }
+.acq { opacity: 0.75; }
+.acq .t { font-style: italic; font-size: 14px; color: var(--chrome-fg); }
+@media (max-width: 760px) {
+  header { padding: 20px 18px 14px; }
+  header h1 { letter-spacing: 3px; font-size: 22px; }
+  .back { top: 14px; transform: none; }
+  .room { position: static; transform: none; display: inline-block; margin-top: 10px; }
+}
+#status { text-align: center; color: var(--chrome-muted); font-style: italic; padding: 40px 0; }
+footer { border-top: 1px solid var(--chrome-border); padding: 16px 28px; text-align: center; font-size: 12px; font-style: italic; color: var(--chrome-muted); }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="./" title="Back to the Archive">&#10229;</a>
+  <h1>Philosophy</h1>
+  <p>shelved by author &mdash; every text opens in the reading room</p>
+  <a class="room" href="https://stevenfrye30.github.io/Workspace/philosophy/">The Philosophy Room &mdash; 271 thinkers &#10230;</a>
+</header>
+<main>
+  <div class="legend" id="legend"></div>
+  <div id="status">Opening the shelf&hellip;</div>
+  <div id="shelf"></div>
+</main>
+<footer>Presentation layer over <span style="font-family:Consolas,monospace;font-size:11px">data/_generated/index.json</span> &mdash; the shelf regroups the Philosophy traditions by author and holds no data of its own. Rust rows are catalogued works the archive does not hold yet.</footer>
+<script>
+const PHIL_TRADITIONS = new Set(["Modern Philosophy","Greek Philosophy","Roman Philosophy","Political Philosophy","Stoic","Legalist","Japanese Philosophy","Chinese Strategy"]);
+const CURATION = [{"name":"Greek Beginnings","range":"c. 585–322 BC","note":"The shelf opens where argument replaces genealogy. Fragments first, then the two complete corpora that anchor everything after them.","authors":[{"n":"The Pre-Socratics","d":"c. 585–400 BC","b":"No complete books survive, so the shelf entry is a fragments collection — Thales through Democritus reading as one author button.","w":[{"t":"Early Greek Philosophy (fragments)","e":"Burnet (1892) — translation and framing both PD; the standard gateway","s":"pd"},{"t":"Heraclitus — Fragments","e":"Patrick (1889), standalone; also inside Burnet","s":"pd"},{"t":"Parmenides — On Nature","e":"Burnet’s rendering, same volume","s":"pd"}]},{"n":"Plato","d":"428–348 BC","b":"The deepest button on the shelf — a complete corpus with a single PD translator. Jowett (1871, rev. 1892) covers every dialogue.","w":[{"t":"Apology · Crito · Phaedo","e":"Jowett — bundle as “The Trial and Death of Socrates,” the shelf’s natural first volume","s":"pd"},{"t":"Republic","e":"Jowett (1892), the 3rd-edition text","s":"pd"},{"t":"Symposium","e":"Jowett","s":"pd"},{"t":"Phaedrus","e":"Jowett","s":"pd"},{"t":"Meno · Gorgias","e":"Jowett","s":"pd"},{"t":"Theaetetus · Sophist","e":"Jowett","s":"pd"},{"t":"Timaeus","e":"Jowett","s":"pd"},{"t":"Laws","e":"Jowett","s":"pd"}]},{"n":"Aristotle","d":"384–322 BC","b":"Where Plato has one translator, Aristotle has the Oxford ecumene — Ross-era translations, now PD in the US.","w":[{"t":"Nicomachean Ethics","e":"Ross (1925); Chase (1847) as backup","s":"pd"},{"t":"Politics","e":"Jowett (1885)","s":"pd"},{"t":"Metaphysics","e":"Ross (1908)","s":"pd"},{"t":"Physics","e":"Hardie & Gaye (1930) — crossed the PD line Jan 2026","s":"pd"},{"t":"On the Soul (De Anima)","e":"Hicks (1907)","s":"pd"},{"t":"Poetics","e":"Butcher (1895)","s":"pd"},{"t":"Rhetoric","e":"Rhys Roberts (1924)","s":"pd"},{"t":"Organon (selections)","e":"Owen (1853); start with Categories + Prior Analytics","s":"pd"}]},{"n":"Xenophon","d":"430–354 BC","b":"The other Socrates — plainer and soldierly; a control group for Plato’s version.","w":[{"t":"Memorabilia","e":"Dakyns (1897)","s":"pd"},{"t":"Symposium · Apology","e":"Dakyns (1897)","s":"pd"}]}]},{"name":"Hellenistic & Roman","range":"341 BC – 270 AD","note":"Philosophy as a way of life. The shelf’s most-read wing — short, practical, and superbly covered by PD translation.","authors":[{"n":"Epicurus","d":"341–270 BC","b":"Survives mainly as three letters and forty maxims quoted whole inside Diogenes Laërtius, Book X.","w":[{"t":"Letter to Menoeceus · Principal Doctrines","e":"Hicks (1925), via the Lives","s":"pd"}]},{"n":"Lucretius","d":"c. 99–55 BC","b":"Epicurean physics as Latin epic — the whole system in one poem.","w":[{"t":"On the Nature of Things","e":"Leonard (verse, 1916) or Munro (prose, 1864)","s":"pd"}]},{"n":"Cicero","d":"106–43 BC","b":"Rome’s digest of the Greek schools — half the Hellenistic record survives only through him.","w":[{"t":"On Duties","e":"Miller (1913)","s":"pd"},{"t":"On Ends","e":"Rackham (1914)","s":"pd"},{"t":"Tusculan Disputations","e":"Yonge (1877)","s":"pd"},{"t":"On the Nature of the Gods","e":"Yonge (1877)","s":"pd"}]},{"n":"Seneca","d":"4 BC – 65 AD","b":"Stoicism in letters — the most quotable object on the shelf.","w":[{"t":"Letters to Lucilius","e":"Gummere (1917–25), all three volumes PD","s":"pd"},{"t":"On the Shortness of Life","e":"Stewart (1889), in the Minor Dialogues","s":"pd"},{"t":"On Anger","e":"Stewart (1889)","s":"pd"}]},{"n":"Epictetus","d":"c. 50–135","b":"The freed slave’s Stoicism — the Enchiridion is a natural entry star.","w":[{"t":"Enchiridion","e":"Long (1877); Oldfather (1928) also PD","s":"pd"},{"t":"Discourses","e":"Long (1877)","s":"pd"}]},{"n":"Marcus Aurelius","d":"121–180","b":"The emperor’s private notebook; never meant for a shelf, indispensable on one.","w":[{"t":"Meditations","e":"Long (1862); Haines (1916) also PD","s":"pd"}]},{"n":"Sextus Empiricus","d":"c. 160–210","b":"The skeptic’s handbook — and the wing’s one translation problem.","w":[{"t":"Outlines of Pyrrhonism","e":"Patrick (1899) covers Book I only; Bury (1933) enters PD in 2029","s":"gap"}]},{"n":"Plotinus","d":"204–270","b":"Late Platonism at full mystic intensity; the bridge to Augustine.","w":[{"t":"Enneads","e":"MacKenna (1917–30) — all volumes now PD","s":"pd"}]},{"n":"Diogenes Laërtius","d":"fl. 3rd c.","b":"The gossip column of ancient philosophy — and the only source for much of it.","w":[{"t":"Lives of Eminent Philosophers","e":"Yonge (1853); Hicks (1925)","s":"pd"}]}]},{"name":"Chinese Traditions","range":"c. 551–233 BC","note":"Warring-States argument: Confucians, Daoists, Mohists, Legalists. Legge’s Chinese Classics carry the Confucian side; the gaps cluster on the later schools.","authors":[{"n":"Confucius","d":"551–479 BC","b":"Kongzi. The Analects is compiled conversation — the tradition’s Apology.","w":[{"t":"Analects","e":"Legge (1861); Soothill (1910)","s":"pd"}]},{"n":"Mencius","d":"372–289 BC","b":"Mengzi — the optimist fork of the Confucian line: human nature is good.","w":[{"t":"Mencius","e":"Legge (1861)","s":"pd"}]},{"n":"Laozi","d":"trad. 6th c. BC","b":"Author-shaped legend; the text is what shelves.","w":[{"t":"Daodejing","e":"Legge (1891); dozens of PD alternatives","s":"pd"}]},{"n":"Zhuangzi","d":"c. 369–286 BC","b":"Daoism’s comedian — the butterfly dream and the useless tree.","w":[{"t":"Zhuangzi","e":"Legge (1891, complete); Giles (1889)","s":"pd"}]},{"n":"Xunzi","d":"c. 310–235 BC","b":"The pessimist fork: human nature is crooked wood, straightened by ritual.","w":[{"t":"Xunzi","e":"Dubs (1928) translates the major chapters; PD in US","s":"pd"}]},{"n":"Mozi","d":"c. 470–391 BC","b":"Impartial care and anti-Confucian frugality — the first consequentialist.","w":[{"t":"Mozi","e":"Mei (1929), the ethical and political chapters","s":"pd"}]},{"n":"Han Feizi","d":"c. 280–233 BC","b":"Legalism — the Machiavelli slot, eighteen centuries early.","w":[{"t":"Han Feizi","e":"Liao (1939) under copyright to 2035 — the wing’s clearest gap","s":"gap"}]}]},{"name":"Indian Darśanas","range":"c. 200 BC – 800 AD","note":"Half-covered already: the Gītā and Upaniṣads live on the religion shelf, so this wing holds the sūtra literature of the schools proper — pointers, not duplicates, for the overlaps.","authors":[{"n":"Patañjali","d":"c. 2nd c. BC","b":"Yoga as systematic psychology, in 196 aphorisms.","w":[{"t":"Yoga Sūtras","e":"Woods (1914, Harvard Oriental Series); Prasāda (1912)","s":"pd"}]},{"n":"Īśvarakṛṣṇa","d":"c. 350","b":"Sāṃkhya — the dualist enumeration the Yoga school assumes.","w":[{"t":"Sāṃkhya Kārikā","e":"Colebrooke & Wilson (1837)","s":"pd"}]},{"n":"Gautama (Akṣapāda)","d":"c. 2nd c.","b":"Nyāya — Indian logic and epistemology at its source.","w":[{"t":"Nyāya Sūtras","e":"Vidyābhūṣaṇa (1913)","s":"pd"}]},{"n":"Kaṇāda","d":"c. 2nd c. BC","b":"Vaiśeṣika — atomism, categories, and the furniture of the world.","w":[{"t":"Vaiśeṣika Sūtras","e":"Sinha (1911)","s":"pd"}]},{"n":"Bādarāyaṇa + Śaṅkara","d":"sūtras c. 200; Śaṅkara 788–820","b":"Vedānta’s root text shelved with its greatest commentary — they are read as one object.","w":[{"t":"Brahma Sūtras with Śaṅkara’s commentary","e":"Thibaut (1890–96), Sacred Books of the East 34 & 38","s":"pd"}]},{"n":"Nāgārjuna","d":"c. 150–250","b":"Buddhist dialectic against every school above — the wing’s dashed-line generator.","w":[{"t":"Mūlamadhyamakakārikā","e":"No full PD English; Stcherbatsky (1927) covers chapters 1 and 25 only","s":"gap"}]},{"n":"→ Religion shelf","d":"pointers","b":"Bodies live on the religion shelf; the philosophy wing links rather than copies.","w":[{"t":"Bhagavad Gītā","e":"Already shelved under religion — pointer chip only","s":"pointer"},{"t":"Principal Upaniṣads","e":"Already shelved under religion — pointer chip only","s":"pointer"}]}]},{"name":"Medieval — Christian, Islamic, Jewish","range":"400–1300","note":"Three scriptural traditions metabolizing Greek philosophy. Heavy religion-shelf gravity — the boundary rule (argument over revelation) gets tested hardest here.","authors":[{"n":"Augustine","d":"354–430","b":"Shared-custody case #1 — draft keeps the body here (see Map, Q2).","w":[{"t":"Confessions","e":"Pusey (1838)","s":"pd"},{"t":"City of God","e":"Dods (1871)","s":"pd"}]},{"n":"Boethius","d":"477–524","b":"Written awaiting execution; the most-copied philosophy book of the entire Middle Ages.","w":[{"t":"The Consolation of Philosophy","e":"Cooper (1902); H. R. James (1897)","s":"pd"}]},{"n":"Anselm","d":"1033–1109","b":"The ontological argument, four pages long, still generating replies.","w":[{"t":"Proslogion · Monologion","e":"Deane (1903)","s":"pd"}]},{"n":"Al-Ghazālī","d":"1058–1111","b":"The theologian who put the philosophers on trial — and wrote the era’s best memoir doing it.","w":[{"t":"Deliverance from Error","e":"Field (1909)","s":"pd"},{"t":"The Incoherence of the Philosophers","e":"No PD English; Marmura (1997) is standard","s":"gap"}]},{"n":"Ibn Rushd (Averroes)","d":"1126–1198","b":"The Commentator — Aristotle’s advocate against Ghazālī, and Europe’s reintroduction to him.","w":[{"t":"The Decisive Treatise","e":"Jamil-ur-Rehman (1921)","s":"pd"},{"t":"The Incoherence of the Incoherence","e":"Van den Bergh (1954) under copyright","s":"gap"}]},{"n":"Ibn Ṭufayl","d":"1105–1185","b":"A philosophical Robinson Crusoe five centuries before Defoe — reason bootstrapping itself on a desert island.","w":[{"t":"Ḥayy ibn Yaqẓān","e":"Ockley (1708; rev. ed. 1929)","s":"pd"}]},{"n":"Maimonides","d":"1138–1204","b":"The Guide — Aristotle and Torah negotiated by the era’s subtlest mind.","w":[{"t":"The Guide for the Perplexed","e":"Friedländer (1904)","s":"pd"}]},{"n":"Aquinas","d":"1225–1274","b":"The synthesis. Vast — shelve entry cuts, not the whole.","w":[{"t":"Summa Theologica","e":"English Dominican Fathers (1911–25); entry cuts: the Five Ways + Treatise on Law","s":"pd"},{"t":"Summa Contra Gentiles","e":"Rickaby selections (1905)","s":"pd"}]}]},{"name":"Early Modern","range":"1500–1800","note":"Method, substance, and the social contract. The densest wing — and half of it was written in English, so no translation question at all.","authors":[{"n":"Machiavelli","d":"1469–1527","b":"Politics detached from how things ought to be.","w":[{"t":"The Prince","e":"Marriott (1908)","s":"pd"},{"t":"Discourses on Livy","e":"Thomson (1883)","s":"pd"}]},{"n":"Montaigne","d":"1533–1592","b":"The essay invented as a philosophical instrument.","w":[{"t":"Essays","e":"Cotton (ed. Hazlitt); Florio (1603) for period flavor","s":"pd"}]},{"n":"Bacon","d":"1561–1626","b":"The method manifesto — induction against the idols.","w":[{"t":"Novum Organum","e":"Spedding & Ellis edition","s":"pd"},{"t":"Essays","e":"English original","s":"pd"}]},{"n":"Descartes","d":"1596–1650","b":"The restart button: doubt everything, keep what survives.","w":[{"t":"Discourse on Method","e":"Veitch (1850); Haldane & Ross (1911)","s":"pd"},{"t":"Meditations on First Philosophy","e":"Veitch; Haldane & Ross","s":"pd"},{"t":"Principles of Philosophy","e":"Veitch","s":"pd"}]},{"n":"Hobbes","d":"1588–1679","b":"The state as artificial man; fear as first premise.","w":[{"t":"Leviathan","e":"English original (1651)","s":"pd"}]},{"n":"Pascal","d":"1623–1662","b":"Fragments of an unfinished apology — the wager and the wretchedness.","w":[{"t":"Pensées","e":"Trotter (1904)","s":"pd"}]},{"n":"Spinoza","d":"1632–1677","b":"Ethics proved like geometry; God as nature.","w":[{"t":"Ethics","e":"Elwes (1883)","s":"pd"},{"t":"Theological-Political Treatise","e":"Elwes (1883)","s":"pd"}]},{"n":"Locke","d":"1632–1704","b":"The blank slate and the consent of the governed.","w":[{"t":"An Essay Concerning Human Understanding","e":"English original","s":"pd"},{"t":"Two Treatises of Government","e":"English original","s":"pd"}]},{"n":"Leibniz","d":"1646–1716","b":"Monads, pre-established harmony, best of all possible worlds.","w":[{"t":"Monadology · Discourse on Metaphysics","e":"Latta (1898); Montgomery (1902)","s":"pd"}]},{"n":"Berkeley","d":"1685–1753","b":"To be is to be perceived — idealism at its cleanest.","w":[{"t":"Principles of Human Knowledge","e":"English original","s":"pd"},{"t":"Three Dialogues","e":"English original","s":"pd"}]},{"n":"Hume","d":"1711–1776","b":"The great un-knotter: causation, self, miracles. Kant’s alarm clock.","w":[{"t":"An Enquiry Concerning Human Understanding","e":"English original","s":"pd"},{"t":"A Treatise of Human Nature","e":"English original","s":"pd"},{"t":"Dialogues Concerning Natural Religion","e":"English original","s":"pd"}]},{"n":"Rousseau","d":"1712–1778","b":"Born free, everywhere in chains — the contract rewritten from the heart.","w":[{"t":"The Social Contract","e":"Cole (1913)","s":"pd"},{"t":"Discourse on Inequality","e":"Cole (1913)","s":"pd"},{"t":"Émile","e":"Foxley (1911)","s":"pd"}]}]},{"name":"Kant & the Germans","range":"1780–1860","note":"Critique and system. Every major work has a PD Victorian translation, all of them harder than the German — flag the wing for future re-translation, shelve anyway.","authors":[{"n":"Kant","d":"1724–1804","b":"The critical turn: what can reason know about itself?","w":[{"t":"Critique of Pure Reason","e":"Meiklejohn (1855); Müller (1881)","s":"pd"},{"t":"Prolegomena","e":"Bax (1883)","s":"pd"},{"t":"Groundwork of the Metaphysics of Morals","e":"Abbott (1873)","s":"pd"},{"t":"Critique of Practical Reason","e":"Abbott (1873)","s":"pd"},{"t":"Critique of Judgment","e":"Bernard (1892)","s":"pd"}]},{"n":"Fichte","d":"1762–1814","b":"The I positing itself — idealism’s first radical.","w":[{"t":"The Vocation of Man","e":"Smith (1848)","s":"pd"}]},{"n":"Hegel","d":"1770–1831","b":"The system to end systems; history as spirit coming to know itself.","w":[{"t":"Phenomenology of Mind","e":"Baillie (1910)","s":"pd"},{"t":"Philosophy of History","e":"Sibree (1857)","s":"pd"},{"t":"Philosophy of Right","e":"Dyde (1896)","s":"pd"},{"t":"Logic (Encyclopaedia)","e":"Wallace (1874)","s":"pd"}]},{"n":"Schopenhauer","d":"1788–1860","b":"The system’s shadow: will, suffering, art as reprieve.","w":[{"t":"The World as Will and Idea","e":"Haldane & Kemp (1883–86)","s":"pd"},{"t":"Essays","e":"Saunders (1890s selections)","s":"pd"}]}]},{"name":"The Nineteenth Century","range":"1840–1900","note":"After Hegel: revolt in every direction — existential, political, utilitarian, and one hammer.","authors":[{"n":"Kierkegaard","d":"1813–1855","b":"Decision 2026-07-28 (Q5): shelve the Danish originals now; English stays on the acquisitions list. This sets the general gap policy — original in, translation flagged.","w":[{"t":"Frygt og Bæven (Fear and Trembling)","e":"Danish original (1843) shelved; standard English (Hong) copyrighted","s":"gap"},{"t":"Enten – Eller (Either/Or)","e":"Danish original (1843) shelved; English gap","s":"gap"},{"t":"Sygdommen til Døden (The Sickness unto Death)","e":"Danish original (1849) shelved; English gap","s":"gap"}]},{"n":"Marx & Engels","d":"1818–1883 / 1820–1895","b":"Philosophy ordered to stop interpreting the world.","w":[{"t":"The Communist Manifesto","e":"Moore (1888), the authorized English","s":"pd"},{"t":"Capital, vol. I","e":"Moore & Aveling (1887)","s":"pd"},{"t":"Economic & Philosophic Manuscripts of 1844","e":"Milligan (1959) copyrighted","s":"gap"}]},{"n":"Mill","d":"1806–1873","b":"Liberty and utility argued in the clearest English on the shelf.","w":[{"t":"On Liberty","e":"English original","s":"pd"},{"t":"Utilitarianism","e":"English original","s":"pd"},{"t":"The Subjection of Women","e":"English original","s":"pd"},{"t":"Autobiography","e":"English original","s":"pd"}]},{"n":"Emerson","d":"1803–1882","b":"American self-reliance — transcendentalism’s pulpit voice.","w":[{"t":"Essays: First & Second Series","e":"English original","s":"pd"},{"t":"Nature","e":"English original","s":"pd"}]},{"n":"Thoreau","d":"1817–1862","b":"The experiment at Walden and the case for saying no.","w":[{"t":"Walden","e":"English original","s":"pd"},{"t":"Civil Disobedience","e":"English original","s":"pd"}]},{"n":"Nietzsche","d":"1844–1900","b":"The Levy-edition translations are all PD and all uneven — shelve now, mark the wing a re-translation candidate.","w":[{"t":"Thus Spoke Zarathustra","e":"Common (1909)","s":"pd"},{"t":"Beyond Good and Evil","e":"Zimmern (1906)","s":"pd"},{"t":"On the Genealogy of Morals","e":"Samuel (1913)","s":"pd"},{"t":"Twilight of the Idols","e":"Ludovici (1911)","s":"pd"},{"t":"The Birth of Tragedy","e":"Haussmann (1909)","s":"pd"}]}]},{"name":"Into the Twentieth","range":"1900–1930 · the PD line","note":"The US public-domain line sits at 1930 and moves forward every January — this wing grows on a schedule, the shelf’s only self-updating section.","authors":[{"n":"William James","d":"1842–1910","b":"Pragmatism’s founding stylist. Varieties is shared-custody case #3.","w":[{"t":"Pragmatism","e":"English original (1907)","s":"pd"},{"t":"The Will to Believe","e":"English original (1897)","s":"pd"},{"t":"The Varieties of Religious Experience","e":"Religion-shelf gravity — decide in the Map","s":"pointer"}]},{"n":"Bergson","d":"1859–1941","b":"Duration against the clock — the era’s most famous philosopher, briefly.","w":[{"t":"Creative Evolution","e":"Mitchell (1911)","s":"pd"},{"t":"Time and Free Will","e":"Pogson (1910)","s":"pd"}]},{"n":"Dewey","d":"1859–1952","b":"Pragmatism turned civic — inquiry as democracy’s method.","w":[{"t":"Democracy and Education","e":"English original (1916)","s":"pd"},{"t":"How We Think","e":"English original (1910)","s":"pd"}]},{"n":"Santayana","d":"1863–1952","b":"Naturalism in belletrist prose; those who cannot remember the past…","w":[{"t":"The Life of Reason","e":"English original (1905–06)","s":"pd"}]},{"n":"G. E. Moore","d":"1873–1958","b":"The naturalistic fallacy and the open question — analytic ethics begins.","w":[{"t":"Principia Ethica","e":"English original (1903)","s":"pd"}]},{"n":"Russell","d":"1872–1970","b":"Analysis as a public service; the wing’s best on-ramp.","w":[{"t":"The Problems of Philosophy","e":"English original (1912)","s":"pd"},{"t":"The Analysis of Mind","e":"English original (1921)","s":"pd"}]},{"n":"Wittgenstein","d":"1889–1951","b":"The line’s hard stop, in one author: early work in, late work out.","w":[{"t":"Tractatus Logico-Philosophicus","e":"Ogden (1922)","s":"pd"},{"t":"Philosophical Investigations","e":"1953 — decades from PD; marks the shelf boundary","s":"gap"}]}]}];
+const QCHIP = { primary:"#5d7a3a", popular:"#7a5c3a", derivative:"#8a7a6a" };
+const SCHIP = { pd:{c:"#5d7a3a",t:"pd ready"}, gap:{c:"#a04020",t:"pd gap"}, pointer:{c:"#3a6b8c",t:"religion shelf"} };
+const norm = s => (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z]/g,"");
+function aliases(name){
+  const out = [name];
+  const par = name.match(/\(([^)]+)\)/); if (par) { out.push(par[1]); out.push(name.replace(/\s*\([^)]*\)/,"")); }
+  name.split(/[&+]| and /).forEach(p => { if (p.trim().length > 3) out.push(p.trim()); });
+  return out.map(norm).filter(x => x.length > 3);
+}
+const EXTRA = { laozi:["laotze","laotzu"], zhuangzi:["chuangtzu","chuangtse"], mencius:["mengzi"], confucius:["kongzi","kungfutze"], hanfeizi:["hanfeitzu"], averroes:["ibnrushd"], mozi:["motze","micius"] };
+function open(){ return decodeURIComponent(location.hash.slice(1) || ""); }
+let DATA = null;
+async function loadIndex(){
+  try { const r = await fetch("data/_generated/index.json"); if (r.ok) return await r.json(); } catch(e){}
+  try { const r = await fetch("data/_generated/index.json.gz");
+    if (r.ok && typeof DecompressionStream !== "undefined") {
+      const ds = r.body.pipeThrough(new DecompressionStream("gzip"));
+      return JSON.parse(await new Response(ds).text());
+    } } catch(e){}
+  return null;
+}
+function build(idx){
+  const phil = idx.texts.filter(t => PHIL_TRADITIONS.has(t.tradition));
+  // group registry entries by author key
+  const byAuthor = new Map();
+  phil.forEach(t => {
+    const a = (t.author && t.author[0]) || "Unattributed";
+    const k = norm(a) || "unattributed";
+    if (!byAuthor.has(k)) byAuthor.set(k, { display: a, entries: [] });
+    byAuthor.get(k).entries.push(t);
+  });
+  // match curation authors to registry keys
+  const claimed = new Set();
+  const wings = CURATION.map(w => ({ ...w, authors: w.authors.map(a => {
+    const al = aliases(a.n); (EXTRA[norm(a.n)]||[]).forEach(x => al.push(x));
+    let hit = null;
+    for (const [k, v] of byAuthor) {
+      if (claimed.has(k)) continue;
+      if (al.some(x => k.includes(x) || x.includes(k))) { hit = k; break; }
+    }
+    if (hit) claimed.add(hit);
+    return { ...a, reg: hit ? byAuthor.get(hit) : null };
+  }).filter(a => (a.reg || a.w.length) && a.n.charCodeAt(0) !== 0x2192) }));
+  // leftover registry authors -> final wing, by year
+  const leftover = [...byAuthor.entries()].filter(([k]) => !claimed.has(k))
+    .map(([k, v]) => ({ n: v.display, d: "", b: "", w: [], reg: v }))
+    .sort((x, y) => (x.reg.entries[0].year||0) - (y.reg.entries[0].year||0));
+  if (leftover.length) wings.push({ name: "More from the Archive", range: "not yet in the curation", note: "Every remaining philosophy text in the archive, shelved by its author so nothing is hidden.", authors: leftover });
+  return { wings, total: phil.length };
+}
+function groupWorks(entries){
+  const m = new Map();
+  entries.forEach(t => { if (!m.has(t.id)) m.set(t.id, []); m.get(t.id).push(t); });
+  return [...m.values()];
+}
+const SORTS = { era: "By era", chrono: "Oldest \u2192 newest", alpha: "Alphabetical", most: "Most texts" };
+function sortMode(){ return localStorage.getItem("phil-shelf-sort") || "era"; }
+function shapeWings(model){
+  const mode = sortMode();
+  if (mode === "era") return model.wings;
+  const all = model.wings.flatMap(w => w.authors);
+  let list = all.slice(), label = "All authors \u2014 oldest to newest"; // wing order is already chronological
+  if (mode === "alpha") { list.sort((x, y) => x.n.localeCompare(y.n)); label = "All authors \u2014 A to Z"; }
+  else if (mode === "most") { list.sort((x, y) => (y.reg ? y.reg.entries.length : 0) - (x.reg ? x.reg.entries.length : 0)); label = "All authors \u2014 most texts first"; }
+  return [{ name: label, range: "", note: "", authors: list }];
+}
+function render(model){
+  const shelf = document.getElementById("shelf");
+  const o = open(); let nA = 0;
+  shelf.innerHTML = shapeWings(model).map(w => {
+    const auth = w.authors.map(a => {
+      nA++;
+      const cnt = a.reg ? a.reg.entries.length : 0;
+      const id = encodeURIComponent(a.n);
+      const isOpen = o && (norm(o) === norm(a.n));
+      return { a, cnt, id, isOpen };
+    });
+    return '<section class="wing"><h2>' + w.name + (w.range ? '<span class="range">(' + w.range + ')</span>' : '') + '</h2>' +
+      '<p class="note">' + w.note + '</p><div class="authors">' +
+      auth.map(x => '<button class="abtn' + (x.isOpen ? ' open' : '') + '" data-h="' + x.id + '"><span>' + x.a.n + '</span><span class="n">' + (x.cnt || '&ndash;') + '</span></button>').join('') + '</div>' +
+      auth.filter(x => x.isOpen).map(x => panel(x.a)).join('') + '</section>';
+  }).join('');
+  document.getElementById("legend").innerHTML =
+    '<span><span class="sw" style="background:#5d7a3a"></span>primary edition</span>' +
+    '<span><span class="sw" style="background:#7a5c3a"></span>popular</span>' +
+    '<span><span class="sw" style="background:#a04020"></span>catalogued, not yet held</span>' +
+    '<span class="sortl">shelve: <select id="sort-sel">' + Object.entries(SORTS).map(([k, v]) => '<option value="' + k + '"' + (k === sortMode() ? ' selected' : '') + '>' + v + '</option>').join('') + '</select></span>' +
+    '<span class="count">' + model.total + ' texts in the archive &middot; ' + nA + ' authors</span>';
+  document.getElementById("sort-sel").onchange = e => { localStorage.setItem("phil-shelf-sort", e.target.value); render(DATA); };
+  shelf.querySelectorAll(".abtn").forEach(b => b.addEventListener("click", () => {
+    location.hash = (open() === decodeURIComponent(b.dataset.h)) ? "" : b.dataset.h;
+  }));
+}
+function panel(a){
+  let h = '<div class="panel"><div class="who"><b>' + a.n + '</b>' +
+    (a.d ? '<span class="dates">' + a.d + '</span>' : '') +
+    '<a href="https://stevenfrye30.github.io/Workspace/philosophy/#/philosopher/' + encodeURIComponent(a.n.replace(/\s*\([^)]*\)/,"")) + '">their card in the Room &#10230;</a></div>' +
+    (a.b ? '<p class="blurb">' + a.b + '</p>' : '') + '<div class="works">';
+  if (a.reg) groupWorks(a.reg.entries).forEach(g => {
+    const t0 = g[0];
+    h += '<div class="work"><a class="t" href="./?text=' + encodeURIComponent(t0.data_file) + '">' + t0.title + '</a>' +
+      '<span class="chip" style="background:' + (QCHIP[t0.quality] || "#8a7a6a") + '">' + (t0.quality || "text") + '</span>' +
+      '<div class="meta">' + g.map(t => ((t.translator && t.translator.length ? t.translator.join(", ") : "original") + (t.year ? " (" + t.year + ")" : "")) ).join(" &middot; ") +
+      (g.length > 1 ? ' &middot; <a href="./?text=' + encodeURIComponent(g[1].data_file) + '">alt. translation</a>' : '') + '</div></div>';
+  });
+  // curation works the archive doesn't hold -> acquisitions rows (skip ones whose title matches a held text)
+  const held = a.reg ? a.reg.entries.map(t => norm(t.title)).join("|") : "";
+  a.w.forEach(w => {
+    const tn = norm(w.t.split("(")[0].split("\u00b7")[0]);
+    if (held && tn && held.includes(tn.slice(0, Math.max(6, tn.length)))) return;
+    h += '<div class="work acq"><span class="t">' + w.t + '</span>' +
+      '<span class="chip" style="background:' + SCHIP[w.s].c + '">' + (w.s === "pd" ? "not yet held" : SCHIP[w.s].t) + '</span>' +
+      '<div class="meta">' + w.e + '</div></div>';
+  });
+  return h + '</div></div>';
+}
+window.addEventListener("hashchange", () => DATA && render(DATA));
+(async () => {
+  const idx = await loadIndex();
+  const st = document.getElementById("status");
+  if (!idx) { st.textContent = "Could not load the archive index \u2014 this page lives at the Digital-Archive root beside data/_generated/."; return; }
+  st.style.display = "none";
+  DATA = build(idx);
+  render(DATA);
+})();
+</script>
+</body>
+</html>
