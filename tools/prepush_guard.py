@@ -180,9 +180,19 @@ def main():
     else:
         elapsed = "skipped (--fast)"
 
+    # 6. reachability (Task 27 closer, 2026-07-29): every public row must be
+    #    reachable from a structural surface (map binding or room listing) or
+    #    be a recorded decision in tools/reachability_ledger.json. Fails on
+    #    silent growth of the reader-only set; shrinkage never fails.
+    import check_reachability
+    reach = check_reachability.problems()
+    if reach:
+        fail("Reachability check (6) failed:\n  " + "\n  ".join(reach[:10]))
+
     print(f"pre-push guard v2: OK — {actual['entries']} = {actual['public']} "
           f"public + {actual['restricted']} restricted; reasons complete; "
-          f"boundary clean; {hashed} artifact hashes verified ({elapsed}).")
+          f"boundary clean; {hashed} artifact hashes verified; "
+          f"reachability OK ({elapsed}).")
 
 
 if __name__ == "__main__":
