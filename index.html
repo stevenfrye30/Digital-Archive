@@ -27950,3 +27950,23 @@ loadIndex();
 </script>
 </body>
 </html>
+<script id="philosophy-shelf-hook">
+/* Philosophy card -> author shelf. Capture-phase, so it wins before the
+   app's own grid handler. Matches only a card whose entire text is
+   "Philosophy" + "N texts" (the homepage card) - "Modern Philosophy",
+   "Political Philosophy" etc. do not match the anchored regex. */
+document.addEventListener('click', function (e) {
+  var el = e.target;
+  while (el && el !== document.body) {
+    var txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    if (/^Philosophy \d+ texts$/.test(txt)) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      location.href = 'philosophy.html';
+      return;
+    }
+    if (txt.length > 40) break; /* left the card - stop climbing */
+    el = el.parentElement;
+  }
+}, true);
+</script>
