@@ -121,7 +121,7 @@ function build(idx){
     }
     if (hit) claimed.add(hit);
     return { ...a, reg: hit ? byAuthor.get(hit) : null };
-  }).filter(a => (a.reg || a.w.length) && a.n.charCodeAt(0) !== 0x2192) }));
+  }).filter(a => a.reg && a.n.charCodeAt(0) !== 0x2192) })).filter(w => w.authors.length);
   // leftover registry authors -> final wing, by year
   const leftover = [...byAuthor.entries()].filter(([k]) => !claimed.has(k))
     .map(([k, v]) => ({ n: v.display, d: "", b: "", w: [], reg: v }))
