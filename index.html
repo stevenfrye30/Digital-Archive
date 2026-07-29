@@ -27970,3 +27970,18 @@ document.addEventListener('click', function (e) {
   }
 }, true);
 </script>
+<script id="philosophy-shelf-hook-v2">
+/* Entrance page: the Philosophy shelf card is a .home-cat whose
+   .home-cat-label reads "Philosophy". Capture phase wins before the
+   app's own handler. Other shelves untouched. */
+document.addEventListener('click', function (e) {
+  var cat = e.target && e.target.closest ? e.target.closest('.home-cat') : null;
+  if (!cat) return;
+  var lbl = cat.querySelector('.home-cat-label');
+  if (lbl && lbl.textContent.trim() === 'Philosophy') {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    location.href = 'philosophy.html';
+  }
+}, true);
+</script>
