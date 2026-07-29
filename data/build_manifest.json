@@ -1,11 +1,11 @@
 {
- "generated": "2026-07-29T18:50:58Z",
+ "generated": "2026-07-29T19:39:40Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "4d23184d5d21db88e7eb7c48de118b1e5ff7a08e",
- "library_fingerprint": "sha256:5d2220370caec13567fbda8e8510cb93bc2944a7e6e21f8077d2ad89909cc5bd",
+ "exporter_rev": "a65deee658296f3f9b2b8d3b5a9b4ae820ed7f30",
+ "library_fingerprint": "sha256:70b748a186620864a6f77b0e329fe15cd2d1c1d98823401fe3926a868dd8008f",
  "counts": {
-  "entries": 1212,
-  "public": 1120,
+  "entries": 1207,
+  "public": 1115,
   "restricted": 92
  },
  "texts": {
@@ -2220,18 +2220,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-26T21:25:57Z"
-  },
-  "buddhas-life-a-ferdinand-herold-t_anonymous": {
-   "source_hash": "sha256:2e20ce37adc3ea086bd545b619e4b3b24522144261278686b9b328a8417a8668",
-   "data_file": "buddhas-life-a-ferdinand-herold-t_anonymous.json.gz",
-   "data_hash": "sha256:a9a30e926a86ac49a923f29198bdc56a8e427db01faf763de2834fc0b3b5ca94",
-   "data_bytes": 127333,
-   "passages": 1605,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:42Z"
   },
   "buddhas-life-olcott_olcott": {
    "source_hash": "sha256:cf18f2acfb3bc2f1040b0213908d6bf8ad552765d1b4240f0da1dca328ee8b9e",
@@ -4871,18 +4859,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:52Z"
-  },
-  "gleaings-in-buddha-fields-lafcadio-hearn-1897_anonymous": {
-   "source_hash": "sha256:e3a7fc725396c13506a49e0fd6e786a7d30e716f600f72322bd3eccf023d9805",
-   "data_file": "gleaings-in-buddha-fields-lafcadio-hearn-1897_anonymous.json.gz",
-   "data_hash": "sha256:9940a6cd913d416671ac693ba50aedcb6196949f7397e983d2bfa8ac283590c4",
-   "data_bytes": 135370,
-   "passages": 973,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:53Z"
   },
   "gleanings-buddha-fields-hearn_hearn": {
    "source_hash": "sha256:3d13c2408898bc1fe2ccac64244472315cdd54acaa62ed0956edb848f09707f4",
@@ -11043,18 +11019,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:20Z"
   },
-  "saddharma-pundarika-buddhism_anonymous": {
-   "source_hash": "sha256:5918119df313eb68fad2e9b6ff85d193cd0a22e211b7710c4613bf2261fda500",
-   "data_file": "saddharma-pundarika-buddhism_anonymous.json.gz",
-   "data_hash": "sha256:f4dc1477c6e18ef66cd29692579c71dbaa38532432612fda1c6653f60fb8061b",
-   "data_bytes": 193577,
-   "passages": 1604,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:20Z"
-  },
   "salaman-absal-fitzgerald_fitzgerald": {
    "source_hash": "sha256:e2f0d84cf870861101820718eca98a2d31c07304156ba3c1309313d05d31bdbb",
    "data_file": "salaman-absal-fitzgerald_fitzgerald.json.gz",
@@ -13051,18 +13015,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:28Z"
   },
-  "the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no_anonymous": {
-   "source_hash": "sha256:00018d587038b906f0f8cc5513f4ba4d44adaa9c959252e252db3e9a36709093",
-   "data_file": "the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no_anonymous.json.gz",
-   "data_hash": "sha256:91ac633775dd8476b6c3f89cc028f975256e9c3a00f212b272fe649f6f846c0b",
-   "data_bytes": 80812,
-   "passages": 1399,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
-  },
   "the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer_anonymous": {
    "source_hash": "sha256:a1a8f348de74669c60c1c40bdad9ca85aef6eaa701e28e66487fedaa1736d92b",
    "data_file": "the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer_anonymous.json.gz",
@@ -13303,18 +13255,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-01T20:10:54Z"
-  },
-  "the-sutta-nipata-v-fausboll-1881-no_anonymous": {
-   "source_hash": "sha256:9296ad247bba80a7e21711a8e370a1e97d2c6371be735a91ce6b6b2ae3b640b6",
-   "data_file": "the-sutta-nipata-v-fausboll-1881-no_anonymous.json.gz",
-   "data_hash": "sha256:b173530a2aa5292126f0ad420aee812134ac5409c979d59b22acf86b1f190c57",
-   "data_bytes": 128898,
-   "passages": 2052,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:29Z"
   },
   "the-tragedies-seneca_anonymous": {
    "source_hash": "sha256:f1d69f66ef97be4b309f7b2528b8d1c8425e94846701c47c3024a9db2ebf1825",
