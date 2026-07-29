@@ -26,10 +26,10 @@ generated reader at `03_web_app/`.
 
 | Measure | Count | Source of truth |
 |---|---:|---|
-| Index entries (web app reader) | **1,207** | `03_web_app/data/_generated/index.json` (entry count) |
-| — of which public | **1,115** | same (`restricted` ≠ true) |
+| Index entries (web app reader) | **1,196** | `03_web_app/data/_generated/index.json` (entry count) |
+| — of which public | **1,104** | same (`restricted` ≠ true) |
 | — of which restricted (locked, metadata-only) | **92** | same (`restricted` = true) — incl. nostradamus-roberts (uncertain-copyright, withdrawn 2026-07-28: body does not match its stated Ward 1891 source) |
-| Distinct ids | 1,116 | unique `id` — 33 ids legitimately shared across 124 entries (Jātaka ×8, bilingual pairs, multi-volume works) |
+| Distinct ids | 1,106 | unique `id` — 32 ids legitimately shared across 122 entries (Jātaka ×8, bilingual pairs, multi-volume works) |
 | `text.json` files on disk | 1,055 *(2026-07-27)* | `01_library/library/texts/**/text.json` |
 | Daily-reading whitelist | ~198 | `05_scripts/daily_passage.py` `WHITELIST` |
 | Restricted (copyrighted) source dirs | 81 *(2026-07-27)* | `01_library/_restricted/copyrighted/` |

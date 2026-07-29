@@ -3,10 +3,10 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "held-several": 235,
+  "held-several": 248,
   "none": 108,
-  "held": 16,
-  "possible": 130,
+  "held": 42,
+  "possible": 91,
   "restricted": 1
  },
  "chips": [
@@ -1655,7 +1655,8 @@
    "zone": "ju-talmud",
    "chip": "Babylonian Talmud (Bavli) — Gemara on 37 of the 63 tractates",
    "pd": "a",
-   "state": "held",
+   "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "babylonian-talmud-rodkinson_rodkinson.json",
@@ -1663,6 +1664,14 @@
      "translator": "Michael L. Rodkinson",
      "year": 1903,
      "url": "?text=babylonian-talmud-rodkinson_rodkinson.json"
+    },
+    {
+     "df": "talmud-polano_polano.json",
+     "work": "The Talmud: Selections",
+     "translator": "H. Polano",
+     "year": 1876,
+     "label": "selections",
+     "url": "?text=talmud-polano_polano.json"
     }
    ]
   },
@@ -1730,7 +1739,16 @@
    "zone": "ju-midrash",
    "chip": "Targum Onkelos (Torah)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "targum-onkelos-etheridge_etheridge.json",
+     "work": "Targum Onkelos (Etheridge English)",
+     "translator": "John Wesley Etheridge",
+     "year": 1862,
+     "url": "?text=targum-onkelos-etheridge_etheridge.json"
+    }
+   ]
   },
   {
    "zone": "ju-midrash",
@@ -1775,7 +1793,16 @@
    "zone": "ju-halakhah",
    "chip": "Kuzari (Judah Halevi)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "halevi-kuzari_hirschfeld.json",
+     "work": "The Kuzari (Kitab al-Khazari)",
+     "translator": "Hartwig Hirschfeld",
+     "year": 1905,
+     "url": "?text=halevi-kuzari_hirschfeld.json"
+    }
+   ]
   },
   {
    "zone": "ju-halakhah",
@@ -1811,7 +1838,16 @@
    "zone": "ju-kabbalah",
    "chip": "Siddur — Daily Prayer Book",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "standard-prayer-book-singer_singer.json",
+     "work": "The Standard Prayer Book",
+     "translator": "Simeon Singer",
+     "year": 1890,
+     "url": "?text=standard-prayer-book-singer_singer.json"
+    }
+   ]
   },
   {
    "zone": "ju-kabbalah",
@@ -18185,31 +18221,115 @@
    "zone": "ch-fathers",
    "chip": "1 Clement",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    },
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    },
+    {
+     "df": "lost-books-bible_platt.json",
+     "work": "The Lost Books of the Bible",
+     "translator": "Rutherford H. Platt",
+     "year": 1926,
+     "url": "?text=lost-books-bible_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "2 Clement",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Ignatius — 7 Epistles",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    },
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Polycarp — to the Philippians",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    },
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Martyrdom of Polycarp",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    },
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -18230,49 +18350,167 @@
    "zone": "ch-fathers",
    "chip": "Epistle of Barnabas",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    },
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    },
+    {
+     "df": "lost-books-bible_platt.json",
+     "work": "The Lost Books of the Bible",
+     "translator": "Rutherford H. Platt",
+     "year": 1926,
+     "url": "?text=lost-books-bible_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Shepherd of Hermas",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    },
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    },
+    {
+     "df": "lost-books-bible_platt.json",
+     "work": "The Lost Books of the Bible",
+     "translator": "Rutherford H. Platt",
+     "year": 1926,
+     "url": "?text=lost-books-bible_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Epistle to Diognetus",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    },
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Fragments of Papias",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "apostolic-fathers_ante-nicene.json",
+     "work": "The Writings of the Apostolic Fathers",
+     "translator": "Various",
+     "year": 1885,
+     "url": "?text=apostolic-fathers_ante-nicene.json"
+    },
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Justin Martyr — First Apology",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Justin Martyr — Second Apology",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Justin Martyr — Dialogue with Trypho",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Irenaeus — Against Heresies (5 books)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "anf01-early-fathers_ccel-schaff.json",
+     "work": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf01-early-fathers_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -18383,13 +18621,47 @@
    "zone": "ch-fathers",
    "chip": "De Principiis (On First Principles)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "anf04-tertullian-cyprian_ccel-schaff.json",
+     "work": "Tertullian (Part Fourth), Minucius Felix, Commodian, and Origen",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf04-tertullian-cyprian_ccel-schaff.json"
+    },
+    {
+     "df": "origen-writings_crombie-volume-1.json",
+     "work": "The Writings of Origen",
+     "translator": "Frederick Crombie",
+     "year": 1869,
+     "url": "?text=origen-writings_crombie-volume-1.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Against Celsus (Contra Celsum)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "works",
+   "read": [
+    {
+     "df": "anf04-tertullian-cyprian_ccel-schaff.json",
+     "work": "Tertullian (Part Fourth), Minucius Felix, Commodian, and Origen",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1885,
+     "url": "?text=anf04-tertullian-cyprian_ccel-schaff.json"
+    },
+    {
+     "df": "origen-writings_crombie-volume-2.json",
+     "work": "The Writings of Origen",
+     "translator": "Frederick Crombie",
+     "year": 1869,
+     "url": "?text=origen-writings_crombie-volume-2.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -18425,7 +18697,26 @@
    "zone": "ch-fathers",
    "chip": "Hippolytus — Refutation of All Heresies",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "hippolytus-philosophumena_macmahon-volume-1.json",
+     "work": "Philosophumena",
+     "translator": "J.H. MacMahon",
+     "year": 1921,
+     "label": "Vol 1",
+     "url": "?text=hippolytus-philosophumena_macmahon-volume-1.json"
+    },
+    {
+     "df": "hippolytus-philosophumena_macmahon-volume-2.json",
+     "work": "Philosophumena",
+     "translator": "J.H. MacMahon",
+     "year": 1921,
+     "label": "Vol 2",
+     "url": "?text=hippolytus-philosophumena_macmahon-volume-2.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -18455,7 +18746,8 @@
    "zone": "ch-fathers",
    "chip": "The Confessions",
    "pd": "g",
-   "state": "held",
+   "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "augustine-confessions_pusey.json",
@@ -18463,6 +18755,14 @@
      "translator": "E.B. Pusey",
      "year": 1838,
      "url": "?text=augustine-confessions_pusey.json"
+    },
+    {
+     "df": "confessiones-saint-augustine-lati_anonymous.json",
+     "work": "Confessiones",
+     "translator": "Saint Augustine (Latin)",
+     "year": 1900,
+     "label": "Latin text (Oxford 1838)",
+     "url": "?text=confessiones-saint-augustine-lati_anonymous.json"
     }
    ]
   },
@@ -18555,7 +18855,16 @@
    "zone": "ch-fathers",
    "chip": "On Baptism, Against the Donatists",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "augustine-donatist-controversy_king.json",
+     "work": "Writings in Connection with the Donatist Controversy",
+     "translator": "J.R. King",
+     "year": 1872,
+     "url": "?text=augustine-donatist-controversy_king.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -18708,13 +19017,31 @@
    "zone": "ch-fathers",
    "chip": "Homilies on 1 & 2 Corinthians",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "chrysostom-homilies-corinthians_ccel-schaff.json",
+     "work": "Homilies on First and Second Corinthians",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1889,
+     "url": "?text=chrysostom-homilies-corinthians_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Homilies on Galatians–Philemon",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "chrysostom-homilies-galatians-ephesians_ccel-schaff.json",
+     "work": "Homilies on Galatians, Ephesians, and more",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1889,
+     "url": "?text=chrysostom-homilies-galatians-ephesians_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -18828,49 +19155,121 @@
    "zone": "ch-fathers",
    "chip": "Gregory of Nyssa — Against Eunomius",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "gregory-nyssa-select-works_ccel-schaff.json",
+     "work": "Dogmatic Treatises and Select Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1893,
+     "url": "?text=gregory-nyssa-select-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Gregory of Nyssa — On the Making of Man",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "gregory-nyssa-select-works_ccel-schaff.json",
+     "work": "Dogmatic Treatises and Select Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1893,
+     "url": "?text=gregory-nyssa-select-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Gregory of Nyssa — The Great Catechism",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "gregory-nyssa-select-works_ccel-schaff.json",
+     "work": "Dogmatic Treatises and Select Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1893,
+     "url": "?text=gregory-nyssa-select-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Gregory of Nyssa — On the Soul and the Resurrection",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "gregory-nyssa-select-works_ccel-schaff.json",
+     "work": "Dogmatic Treatises and Select Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1893,
+     "url": "?text=gregory-nyssa-select-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Gregory Nazianzen — the Orations",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "cyril-nazianzus-select-works_ccel-schaff.json",
+     "work": "Select Works of Cyril of Jerusalem and Gregory of Nazianzus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1894,
+     "url": "?text=cyril-nazianzus-select-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Jerome — the Letters",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "jerome-letters-works_ccel-schaff.json",
+     "work": "Letters and Select Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1893,
+     "url": "?text=jerome-letters-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Jerome — De Viris Illustribus",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "jerome-letters-works_ccel-schaff.json",
+     "work": "Letters and Select Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1893,
+     "url": "?text=jerome-letters-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
    "chip": "Jerome — Against Jovinianus",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "jerome-letters-works_ccel-schaff.json",
+     "work": "Letters and Select Works",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1893,
+     "url": "?text=jerome-letters-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -18894,7 +19293,16 @@
    "zone": "ch-fathers",
    "chip": "Cyril of Jerusalem — Catechetical Lectures",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "cyril-nazianzus-select-works_ccel-schaff.json",
+     "work": "Select Works of Cyril of Jerusalem and Gregory of Nazianzus",
+     "translator": "Multiple translators (ed. Philip Schaff)",
+     "year": 1894,
+     "url": "?text=cyril-nazianzus-select-works_ccel-schaff.json"
+    }
+   ]
   },
   {
    "zone": "ch-fathers",
@@ -19002,13 +19410,31 @@
    "zone": "ch-apoc",
    "chip": "Protevangelium of James",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "lost-books-bible_platt.json",
+     "work": "The Lost Books of the Bible",
+     "translator": "Rutherford H. Platt",
+     "year": 1926,
+     "url": "?text=lost-books-bible_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-apoc",
    "chip": "Infancy Gospel of Thomas",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "lost-books-bible_platt.json",
+     "work": "The Lost Books of the Bible",
+     "translator": "Rutherford H. Platt",
+     "year": 1926,
+     "url": "?text=lost-books-bible_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-apoc",
@@ -19020,7 +19446,16 @@
    "zone": "ch-apoc",
    "chip": "Gospel of Nicodemus (Acts of Pilate)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "lost-books-bible_platt.json",
+     "work": "The Lost Books of the Bible",
+     "translator": "Rutherford H. Platt",
+     "year": 1926,
+     "url": "?text=lost-books-bible_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-apoc",
@@ -19074,13 +19509,31 @@
    "zone": "ch-apoc",
    "chip": "1 Enoch (Ethiopic)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "book-of-enoch_charles.json",
+     "work": "The Book of Enoch",
+     "translator": "R.H. Charles",
+     "year": 1917,
+     "url": "?text=book-of-enoch_charles.json"
+    }
+   ]
   },
   {
    "zone": "ch-apoc",
    "chip": "2 Enoch (Slavonic)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "forgotten-books-eden_platt.json",
+     "work": "The Forgotten Books of Eden",
+     "translator": "Rutherford H. Platt",
+     "year": 1927,
+     "url": "?text=forgotten-books-eden_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-apoc",
@@ -19092,7 +19545,16 @@
    "zone": "ch-apoc",
    "chip": "Testaments of the Twelve Patriarchs",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "forgotten-books-eden_platt.json",
+     "work": "The Forgotten Books of Eden",
+     "translator": "Rutherford H. Platt",
+     "year": 1927,
+     "url": "?text=forgotten-books-eden_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-apoc",
@@ -19122,7 +19584,16 @@
    "zone": "ch-apoc",
    "chip": "Psalms of Solomon",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "forgotten-books-eden_platt.json",
+     "work": "The Forgotten Books of Eden",
+     "translator": "Rutherford H. Platt",
+     "year": 1927,
+     "url": "?text=forgotten-books-eden_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-apoc",
@@ -19134,7 +19605,16 @@
    "zone": "ch-apoc",
    "chip": "Letter of Aristeas",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "forgotten-books-eden_platt.json",
+     "work": "The Forgotten Books of Eden",
+     "translator": "Rutherford H. Platt",
+     "year": 1927,
+     "url": "?text=forgotten-books-eden_platt.json"
+    }
+   ]
   },
   {
    "zone": "ch-apoc",

@@ -1,11 +1,11 @@
 {
- "generated": "2026-07-29T19:39:40Z",
+ "generated": "2026-07-29T23:10:02Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "a65deee658296f3f9b2b8d3b5a9b4ae820ed7f30",
- "library_fingerprint": "sha256:70b748a186620864a6f77b0e329fe15cd2d1c1d98823401fe3926a868dd8008f",
+ "exporter_rev": "993bb0611f2d093066cd352690fd8351d97fed5e",
+ "library_fingerprint": "sha256:9a1347605dacb93379e80abc1fa2aedffb4b6c4c75f417b556099dfe5242cda9",
  "counts": {
-  "entries": 1207,
-  "public": 1115,
+  "entries": 1196,
+  "public": 1104,
   "restricted": 92
  },
  "texts": {
@@ -833,18 +833,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:22Z"
-  },
-  "atlantis-the-antediluvian-world-ignatius-donnelly-18_anonymous": {
-   "source_hash": "sha256:6f9967a0cf61f375570119f6644cbefc0bc5e0ce77be43e3b4c460f079f88624",
-   "data_file": "atlantis-the-antediluvian-world-ignatius-donnelly-18_anonymous.json.gz",
-   "data_hash": "sha256:81b7a41f2a445a34bf58d764c32894de75424626555f3c3a9b76969b2f0dd2f1",
-   "data_bytes": 326375,
-   "passages": 2063,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:53Z"
   },
   "atmabodha-upanishad-aiyar-1914_aiyar": {
    "source_hash": null,
@@ -3340,18 +3328,6 @@
    "data_hash": "sha256:c5d8f1b659156a4c0613e4fd6d11175a1e0bf3597a00daaf8b5173f5911504bc",
    "data_bytes": 56905,
    "passages": 215,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:47Z"
-  },
-  "deuterocanonical-books-of-the-bible-anonymous_anonymous": {
-   "source_hash": "sha256:e578d738c266af9c99df734e46513c8a81f507bcc5fdefd5064b1d0d495c9b17",
-   "data_file": "deuterocanonical-books-of-the-bible-anonymous_anonymous.json.gz",
-   "data_hash": "sha256:3ab2a7d3fe65b8a677334dea5d4e4dd334d2dcc1471a32d0866a9e3bd6879976",
-   "data_bytes": 321028,
-   "passages": 5731,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
@@ -5950,18 +5926,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:57Z"
   },
-  "imitation-of-christ_anonymous": {
-   "source_hash": "sha256:c9e5ba6dcfeec7f45d3f4863796f008bc30de9df0f7e1b7fea2f2a342d2e1e4a",
-   "data_file": "imitation-of-christ_anonymous.json.gz",
-   "data_hash": "sha256:b2bc5cc3e627a01367096e0f84a3f65726c7359b1076b1cf9548c6c60f394ca0",
-   "data_bytes": 125612,
-   "passages": 677,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:57Z"
-  },
   "imitation-of-christ_benham": {
    "source_hash": "sha256:f2a02ab2627ca00c551a550db73f772e7360a08239bc841e3da106c1ec8b3786",
    "data_file": "imitation-of-christ_benham.json.gz",
@@ -7133,18 +7097,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:01Z"
   },
-  "latin-vulgate-bible-book-titles-names-anonymous_anonymous": {
-   "source_hash": "sha256:8d447d764811dbd8f0283291dff61afc3a89f63f3885da1ba3e0ab39a25aff04",
-   "data_file": "latin-vulgate-bible-book-titles-names-anonymous_anonymous.json.gz",
-   "data_hash": "sha256:dd84b0d38dc72302deff3574d8e7b19f579865e67be2f37973f77f4804bd7b54",
-   "data_bytes": 3310,
-   "passages": 24,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
-  },
   "latin-vulgate-esther-liber-esther-anonymous_anonymous": {
    "source_hash": "sha256:d96f1dfe9797d44fe548ebe5db6129e69c3725e8924659d020c633bb3d40ec05",
    "data_file": "latin-vulgate-esther-liber-esther-anonymous_anonymous.json.gz",
@@ -8023,18 +7975,6 @@
    "data_hash": "sha256:243a3134f06a6b2ab43c95cc88cf0ae468fdfcba1fc9d9c2e0ad7b8ae6a9f666",
    "data_bytes": 184453,
    "passages": 1290,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:07Z"
-  },
-  "midrash-tanuma-no_anonymous": {
-   "source_hash": "sha256:dfcddb238a87a6366bd0ff67847c89c1e805150b3fd75a58fbb97a6f6bbae60c",
-   "data_file": "midrash-tanuma-no_anonymous.json.gz",
-   "data_hash": "sha256:7760f50e0902c598653e5aa4f2e506d2e579af5b0897c808b3e6971289847543",
-   "data_bytes": 25306,
-   "passages": 154,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
@@ -10221,18 +10161,6 @@
    "data_hash": "sha256:c0b84822c636643f4f7be91bb2ae36af6cf90142f35af080b5abcc860b8c1bdd",
    "data_bytes": 328386,
    "passages": 1540,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:15Z"
-  },
-  "prolegomena-to-the-history-of-israel-julius-wellhausen_anonymous": {
-   "source_hash": "sha256:7061a9934bcbb2d285f621ec97d1d0d9cb4edd6b2a530316b89485e318deab59",
-   "data_file": "prolegomena-to-the-history-of-israel-julius-wellhausen_anonymous.json.gz",
-   "data_hash": "sha256:471b342a45b4d6f9c4cfe4277b48096c1b0dc11598137e257f92e805d8c3ba51",
-   "data_bytes": 529361,
-   "passages": 1632,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
@@ -12991,18 +12919,6 @@
    "exported": "2026-07-10T17:31:28Z",
    "source_note": "no canonical dir (restricted local body)"
   },
-  "the-baltimore-catchecism-1891_anonymous": {
-   "source_hash": "sha256:ce02ddf3f56372af1e5502dc934d787a59ee801a661a95969815f99af9e02eb7",
-   "data_file": "the-baltimore-catchecism-1891_anonymous.json.gz",
-   "data_hash": "sha256:db6af1c11405ef5b947e63d7f36f978be01d15f8118e3b8d58a8ccd733044175",
-   "data_bytes": 182580,
-   "passages": 4763,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:28Z"
-  },
   "the-book-of-the-dead-wallis-budge_anonymous": {
    "source_hash": "sha256:604e5e21e53105b0265055d2593505d229544ad82d0f92079911ccbd5209f7b8",
    "data_file": "the-book-of-the-dead-wallis-budge_anonymous.json.gz",
@@ -13100,18 +13016,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:29Z"
   },
-  "the-kashf-al-mahj-b-oldest-persian-treatise-ali-ibn-usman-hu_anonymous": {
-   "source_hash": "sha256:0459da343d89ba193e251168082f30305b08a35260b10f11960c41cb89ef279d",
-   "data_file": "the-kashf-al-mahj-b-oldest-persian-treatise-ali-ibn-usman-hu_anonymous.json.gz",
-   "data_hash": "sha256:12097101afa3c43a4d4d9efa8b37e30d250b5badd3db57f19213b721b249cc3e",
-   "data_bytes": 352074,
-   "passages": 1329,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:29Z"
-  },
   "the-lost-continent-cutcliffe-hyne-1900_anonymous": {
    "source_hash": "sha256:d840a807014a332b4d64fc6f6cd38158f568c227414659b19ac224dc4378a62b",
    "data_file": "the-lost-continent-cutcliffe-hyne-1900_anonymous.json.gz",
@@ -13136,18 +13040,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:29Z"
   },
-  "the-mesnevi-rumi_anonymous": {
-   "source_hash": "sha256:a1b2f326ab896b779c4b3439ce334dbc34efc7db611fe18117920d18d4325351",
-   "data_file": "the-mesnevi-rumi_anonymous.json.gz",
-   "data_hash": "sha256:2b6f459c6505e534110de7d227d05ca8077394840970ec18437a1035a57ee097",
-   "data_bytes": 321173,
-   "passages": 2068,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:29Z"
-  },
   "the-origin-of-the-family-private-property-the-engels_anonymous": {
    "source_hash": "sha256:d5a83262748628053a8db5eb2b50b72c6fce6c0821348b1a5fc05117cd407f36",
    "data_file": "the-origin-of-the-family-private-property-the-engels_anonymous.json.gz",
@@ -13161,16 +13053,16 @@
    "exported": "2026-07-10T17:31:29Z"
   },
   "the-philosophy-and-theology-averroes_anonymous": {
-   "source_hash": "sha256:85e353c8530d21df7083b9c8e6c34860b33fd06f9ff968f1ab34d68d6486a64f",
+   "source_hash": "sha256:b915d06f1415a71cf044cb2a9463fde7547692869ab4c6cb465ffefcc5735d19",
    "data_file": "the-philosophy-and-theology-averroes_anonymous.json.gz",
-   "data_hash": "sha256:be39bbfa11e8cafc384bc2e18bdb5cbfe42db0fdcfcaaa0c712911090de42662",
-   "data_bytes": 88022,
+   "data_hash": "sha256:34e775d7bf2c87bfa973bfb3f7306933d8e0624fcdc6ab419bcfbd7c2a67e18d",
+   "data_bytes": 88019,
    "passages": 159,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:29Z"
+   "exported": "2026-07-29T23:08:32Z"
   },
   "the-prince_marriott": {
    "source_hash": "sha256:13fc66f7ab845b19ad9309d8880538f7c3e6a40a31ea0105246846f202fdc0bf",
@@ -13303,30 +13195,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-01T20:10:55Z"
-  },
-  "the-writings-of-origen-vol-1-origen_anonymous": {
-   "source_hash": "sha256:1f1027e21e0fe0b2a5f34e13b4f190a95fa0e4ef08a22c70b22ac528d54658d7",
-   "data_file": "the-writings-of-origen-vol-1-origen_anonymous.json.gz",
-   "data_hash": "sha256:61fe17dce86b4555d4e8abbdd1737191dfa9634ed7918f75717b4c1cf46a151a",
-   "data_bytes": 384799,
-   "passages": 3375,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:30Z"
-  },
-  "the-writings-of-origen-vol-2-origen_anonymous": {
-   "source_hash": "sha256:40b941dbfbf5bcb0f252573058a6417c18e49291880180cb3772b374786f04b9",
-   "data_file": "the-writings-of-origen-vol-2-origen_anonymous.json.gz",
-   "data_hash": "sha256:3f6b1dd98e1f249d6cfb2919388912955264afc76e8862ed5cc4318300920147",
-   "data_bytes": 555254,
-   "passages": 5040,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:30Z"
   },
   "theophrastus-characters_jebb": {
    "source_hash": "sha256:921f9b9b6673381a2519d88d4576820f947144fe34147e604d052dc11444f94e",

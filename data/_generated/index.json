@@ -4529,36 +4529,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "imitation-of-christ",
-      "title": "The Imitation of Christ",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
-      "data_file": "imitation-of-christ_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Thomas à Kempis"
-      ],
-      "translator": [
-        "Anonymous"
-      ],
-      "year": 1418,
-      "translation_label": "The Imitation of Christ",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "Thomas à Kempis, *The Imitation of Christ*. William Benham trans. (1886). Via Project Gutenberg.",
-      "importance_rank": 35,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "apostolic-fathers",
       "title": "The Writings of the Apostolic Fathers",
       "tradition": "Christian",
@@ -4940,35 +4910,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "atlantis-the-antediluvian-world-ignatius-donnelly-18",
-      "title": "Atlantis - the Antediluvian World",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "atlantis-the-antediluvian-world-ignatius-donnelly-18_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "Ignatius Donnelly"
-      ],
-      "translator": [
-        "Ignatius Donnelly"
-      ],
-      "year": 1900,
-      "translation_label": "Atlantis - the Antediluvian World",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "Ignatius Donnelly, *Atlantis: The Antediluvian World* (1882). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "barlaam-ioasaph",
       "title": "Barlaam and Ioasaph",
       "tradition": "Christian",
@@ -5140,34 +5081,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "Richard Maurice Bucke, *Cosmic Consciousness: A Study in the Evolution of the Human Mind* (1901). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "deuterocanonical-books-of-the-bible-anonymous",
-      "title": "Deuterocanonical Books of the Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "deuterocanonical-books-of-the-bible-anonymous_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "Anonymous"
-      ],
-      "year": 1900,
-      "translation_label": "Deuterocanonical Books of the Bible",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Deuterocanonical Books of the Bible*. (1900). Via Project Gutenberg.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -5658,34 +5571,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "Kirsopp Lake, *Landmarks in the History of Early Christianity* (1920). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "latin-vulgate-bible-book-titles-names-anonymous",
-      "title": "Latin Vulgate - Bible Book Titles & Names",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "latin-vulgate-bible-book-titles-names-anonymous_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "Anonymous"
-      ],
-      "year": 1900,
-      "translation_label": "Latin Vulgate - Bible Book Titles & Names",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Latin Vulgate - Bible Book Titles & Names*. (1900). Via Project Gutenberg.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -12718,35 +12603,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "the-mesnevi-rumi",
-      "title": "The Mesnevi",
-      "tradition": "Islam",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-mesnevi-rumi_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Rumi"
-      ],
-      "translator": [
-        "Rumi"
-      ],
-      "year": 1900,
-      "translation_label": "The Mesnevi",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The Mesnevi* Rumi (1900). Via Project Gutenberg.",
-      "importance_rank": 10,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "bustan-sadi-edwards",
       "title": "The Bustan of Sa'di",
       "tradition": "Islam",
@@ -13182,35 +13038,6 @@
       "reading_status_certified": false
     },
     {
-      "id": "the-kashf-al-mahj-b-oldest-persian-treatise-ali-ibn-usman-hu",
-      "title": "The Kashf al-mahjúb (Oldest Persian treatise on Súfiism)",
-      "tradition": "Islam",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-kashf-al-mahj-b-oldest-persian-treatise-ali-ibn-usman-hu_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Ali ibn Usman Hujviri"
-      ],
-      "translator": [
-        "Ali ibn Usman Hujviri"
-      ],
-      "year": 1900,
-      "translation_label": "The Kashf al-mahjúb (Oldest Persian treatise on Súfiism)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The Kashf al-mahjúb (Oldest Persian treatise on Súfiism)* Ali ibn Usman Hujviri (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "love-letters-rumi",
       "title": "The Love Letters",
       "tradition": "Islam",
@@ -13321,6 +13148,35 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*The Persian Mystics: Jalalu'd-din Rumi* F. Hadland Davis (1912). Via Project Gutenberg.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "the-philosophy-and-theology-averroes",
+      "title": "The Philosophy and Theology",
+      "tradition": "Islam",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "the-philosophy-and-theology-averroes_anonymous.json",
+      "source": "gutenberg",
+      "author": [
+        "Averroes"
+      ],
+      "translator": [
+        "Averroes"
+      ],
+      "year": 1900,
+      "translation_label": "The Philosophy and Theology",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": "*The Philosophy and Theology* Averroes (1900). Via Project Gutenberg.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -14109,35 +13965,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "prolegomena-to-the-history-of-israel-julius-wellhausen",
-      "title": "Prolegomena to the History of Israel",
-      "tradition": "Jewish",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "prolegomena-to-the-history-of-israel-julius-wellhausen_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Julius Wellhausen"
-      ],
-      "translator": [
-        "Julius Wellhausen"
-      ],
-      "year": 1900,
-      "translation_label": "Prolegomena to the History of Israel",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Prolegomena to the History of Israel* Julius Wellhausen (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "studies-judaism-schechter",
       "title": "Studies in Judaism",
       "tradition": "Jewish",
@@ -14591,35 +14418,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*The Old Testament in the Light of the Historical Records of Assyria and Babylonia* Theophilus G. Pinches (1902). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "the-philosophy-and-theology-averroes",
-      "title": "The Philosophy and Theology",
-      "tradition": "Jewish",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-philosophy-and-theology-averroes_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Averroes"
-      ],
-      "translator": [
-        "Averroes"
-      ],
-      "year": 1900,
-      "translation_label": "The Philosophy and Theology",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The Philosophy and Theology* Averroes (1900). Via Project Gutenberg.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -17634,93 +17432,6 @@
       "volume_label": null,
       "quality": "derivative",
       "source_summary": "*Latin Vulgate - Esther (Liber Esther)*. (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "the-baltimore-catchecism-1891",
-      "title": "The Baltimore Catchecism",
-      "tradition": "Christian",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-baltimore-catchecism-1891_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "(1891)"
-      ],
-      "translator": [
-        "(1891)"
-      ],
-      "year": 1900,
-      "translation_label": "The Baltimore Catchecism",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The Baltimore Catchecism* by (1891). Translated by (1891) (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "the-writings-of-origen-vol-1-origen",
-      "title": "The writings of Origen - Vol 1",
-      "tradition": "Christian",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-writings-of-origen-vol-1-origen_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Origen"
-      ],
-      "translator": [
-        "Origen"
-      ],
-      "year": 1900,
-      "translation_label": "The writings of Origen - Vol 1",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The writings of Origen - Vol 1* by Origen. Translated by Origen (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "the-writings-of-origen-vol-2-origen",
-      "title": "The writings of Origen - Vol 2",
-      "tradition": "Christian",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-writings-of-origen-vol-2-origen_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Origen"
-      ],
-      "translator": [
-        "Origen"
-      ],
-      "year": 1900,
-      "translation_label": "The writings of Origen - Vol 2",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The writings of Origen - Vol 2* by Origen. Translated by Origen (1900). Via Project Gutenberg.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -24661,34 +24372,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*Bushido: The Soul of Japan* by Inazo Nitobe. Translated by Inazo Nitobe (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "midrash-tanuma-no",
-      "title": "Midrash Tanuma",
-      "tradition": "Jewish",
-      "collection": "other",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "midrash-tanuma-no_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "(NO)"
-      ],
-      "translator": [
-        "(NO)"
-      ],
-      "year": 1900,
-      "translation_label": "Midrash Tanuma",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": null,
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,

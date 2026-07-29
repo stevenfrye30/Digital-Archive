@@ -1936,10 +1936,25 @@
        "restricted": false
       }
      ]
+    },
+    {
+     "id": "talmud-polano",
+     "title": "The Talmud: Selections",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "talmud-polano_polano.json",
+       "translator": "H. Polano",
+       "year": 1876,
+       "restricted": false,
+       "label": "selections"
+      }
+     ]
     }
    ],
    "auto_verdict": "stands",
-   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "translations"
   },
   {
    "tradition": "abrahamic",
@@ -2587,9 +2602,24 @@
        "restricted": false
       }
      ]
+    },
+    {
+     "id": "confessiones-saint-augustine-lati",
+     "title": "Confessiones",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "confessiones-saint-augustine-lati_anonymous.json",
+       "translator": "Saint Augustine (Latin)",
+       "year": 1900,
+       "restricted": false,
+       "label": "Latin text (Oxford 1838)"
+      }
+     ]
     }
    ],
-   "review": "Seed Map Review 2026-07.md (design project, 2026-07-28) §1"
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "translations"
   },
   {
    "tradition": "abrahamic",
@@ -35583,6 +35613,1129 @@
    "auto_verdict": "stands",
    "contained_in": "within The Holy Bible (KJV 1611 with Apocrypha)",
    "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half A"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-apoc",
+   "chip": "2 Enoch (Slavonic)",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "forgotten-books-eden",
+     "title": "The Forgotten Books of Eden",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "forgotten-books-eden_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1927,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-apoc",
+   "chip": "Gospel of Nicodemus (Acts of Pilate)",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "lost-books-bible",
+     "title": "The Lost Books of the Bible",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "lost-books-bible_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1926,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-apoc",
+   "chip": "Infancy Gospel of Thomas",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "lost-books-bible",
+     "title": "The Lost Books of the Bible",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "lost-books-bible_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1926,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-apoc",
+   "chip": "Letter of Aristeas",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "forgotten-books-eden",
+     "title": "The Forgotten Books of Eden",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "forgotten-books-eden_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1927,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-apoc",
+   "chip": "Protevangelium of James",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "lost-books-bible",
+     "title": "The Lost Books of the Bible",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "lost-books-bible_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1926,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-apoc",
+   "chip": "Psalms of Solomon",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "forgotten-books-eden",
+     "title": "The Forgotten Books of Eden",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "forgotten-books-eden_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1927,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-apoc",
+   "chip": "Testaments of the Twelve Patriarchs",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "forgotten-books-eden",
+     "title": "The Forgotten Books of Eden",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "forgotten-books-eden_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1927,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "1 Clement",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "lost-books-bible",
+     "title": "The Lost Books of the Bible",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "lost-books-bible_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1926,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "2 Clement",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Against Celsus (Contra Celsum)",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "anf04-tertullian-cyprian",
+     "title": "Tertullian (Part Fourth), Minucius Felix, Commodian, and Origen",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf04-tertullian-cyprian_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "origen-writings",
+     "title": "The Writings of Origen",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "origen-writings_crombie-volume-2.json",
+       "translator": "Frederick Crombie",
+       "year": 1869,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Cyril of Jerusalem — Catechetical Lectures",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "cyril-nazianzus-select-works",
+     "title": "Select Works of Cyril of Jerusalem and Gregory of Nazianzus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "cyril-nazianzus-select-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1894,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "De Principiis (On First Principles)",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "anf04-tertullian-cyprian",
+     "title": "Tertullian (Part Fourth), Minucius Felix, Commodian, and Origen",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf04-tertullian-cyprian_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "origen-writings",
+     "title": "The Writings of Origen",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "origen-writings_crombie-volume-1.json",
+       "translator": "Frederick Crombie",
+       "year": 1869,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Epistle of Barnabas",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "lost-books-bible",
+     "title": "The Lost Books of the Bible",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "lost-books-bible_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1926,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Epistle to Diognetus",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Fragments of Papias",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Gregory Nazianzen — the Orations",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "cyril-nazianzus-select-works",
+     "title": "Select Works of Cyril of Jerusalem and Gregory of Nazianzus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "cyril-nazianzus-select-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1894,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Gregory of Nyssa — Against Eunomius",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "gregory-nyssa-select-works",
+     "title": "Dogmatic Treatises and Select Works",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "gregory-nyssa-select-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1893,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Gregory of Nyssa — On the Making of Man",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "gregory-nyssa-select-works",
+     "title": "Dogmatic Treatises and Select Works",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "gregory-nyssa-select-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1893,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Gregory of Nyssa — On the Soul and the Resurrection",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "gregory-nyssa-select-works",
+     "title": "Dogmatic Treatises and Select Works",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "gregory-nyssa-select-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1893,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Gregory of Nyssa — The Great Catechism",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "gregory-nyssa-select-works",
+     "title": "Dogmatic Treatises and Select Works",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "gregory-nyssa-select-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1893,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Hippolytus — Refutation of All Heresies",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "hippolytus-philosophumena",
+     "title": "Philosophumena",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "hippolytus-philosophumena_macmahon-volume-1.json",
+       "translator": "J.H. MacMahon",
+       "year": 1921,
+       "restricted": false,
+       "label": "Vol 1"
+      },
+      {
+       "df": "hippolytus-philosophumena_macmahon-volume-2.json",
+       "translator": "J.H. MacMahon",
+       "year": 1921,
+       "restricted": false,
+       "label": "Vol 2"
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Homilies on 1 & 2 Corinthians",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "chrysostom-homilies-corinthians",
+     "title": "Homilies on First and Second Corinthians",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "chrysostom-homilies-corinthians_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1889,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Homilies on Galatians–Philemon",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "chrysostom-homilies-galatians-ephesians",
+     "title": "Homilies on Galatians, Ephesians, and more",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "chrysostom-homilies-galatians-ephesians_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1889,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Ignatius — 7 Epistles",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Irenaeus — Against Heresies (5 books)",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Jerome — Against Jovinianus",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "jerome-letters-works",
+     "title": "Letters and Select Works",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "jerome-letters-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1893,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Jerome — De Viris Illustribus",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "jerome-letters-works",
+     "title": "Letters and Select Works",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "jerome-letters-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1893,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Jerome — the Letters",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "jerome-letters-works",
+     "title": "Letters and Select Works",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "jerome-letters-works_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1893,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Justin Martyr — Dialogue with Trypho",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Justin Martyr — First Apology",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Justin Martyr — Second Apology",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Martyrdom of Polycarp",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "On Baptism, Against the Donatists",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "augustine-donatist-controversy",
+     "title": "Writings in Connection with the Donatist Controversy",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "augustine-donatist-controversy_king.json",
+       "translator": "J.R. King",
+       "year": 1872,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Polycarp — to the Philippians",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-fathers",
+   "chip": "Shepherd of Hermas",
+   "basis": "containment",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "apostolic-fathers",
+     "title": "The Writings of the Apostolic Fathers",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "apostolic-fathers_ante-nicene.json",
+       "translator": "Various",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "anf01-early-fathers",
+     "title": "Apostolic Fathers, Justin Martyr, Irenaeus",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "anf01-early-fathers_ccel-schaff.json",
+       "translator": "Multiple translators (ed. Philip Schaff)",
+       "year": 1885,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "lost-books-bible",
+     "title": "The Lost Books of the Bible",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "lost-books-bible_platt.json",
+       "translator": "Rutherford H. Platt",
+       "year": 1926,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B",
+   "chooser": "works"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ch-apoc",
+   "chip": "1 Enoch (Ethiopic)",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "book-of-enoch",
+     "title": "The Book of Enoch",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "book-of-enoch_charles.json",
+       "translator": "R.H. Charles",
+       "year": 1917,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ju-midrash",
+   "chip": "Targum Onkelos (Torah)",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "targum-onkelos-etheridge",
+     "title": "Targum Onkelos (Etheridge English)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "targum-onkelos-etheridge_etheridge.json",
+       "translator": "John Wesley Etheridge",
+       "year": 1862,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ju-kabbalah",
+   "chip": "Siddur — Daily Prayer Book",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "standard-prayer-book-singer",
+     "title": "The Standard Prayer Book",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "standard-prayer-book-singer_singer.json",
+       "translator": "Simeon Singer",
+       "year": 1890,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
+  },
+  {
+   "tradition": "abrahamic",
+   "zone": "ju-halakhah",
+   "chip": "Kuzari (Judah Halevi)",
+   "basis": "supplement review",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "halevi-kuzari",
+     "title": "The Kuzari (Kitab al-Khazari)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "halevi-kuzari_hirschfeld.json",
+       "translator": "Hartwig Hirschfeld",
+       "year": 1905,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "abrahamic_supplement_sheet.md design verdicts (final, 2026-07-29) — half B"
   }
  ],
  "coverage_gaps": {
