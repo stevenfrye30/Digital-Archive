@@ -328,10 +328,67 @@
        "restricted": false
       }
      ]
+    },
+    {
+     "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-1-ganguli",
+     "title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 1",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-1-ganguli_anonymous.json",
+       "translator": "Ganguli",
+       "year": 1900,
+       "restricted": false,
+       "label": "Vol 1"
+      }
+     ]
+    },
+    {
+     "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-2-ganguli",
+     "title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 2",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-2-ganguli_anonymous.json",
+       "translator": "Ganguli",
+       "year": 1900,
+       "restricted": false,
+       "label": "Vol 2"
+      }
+     ]
+    },
+    {
+     "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-3-ganguli",
+     "title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 3",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-3-ganguli_anonymous.json",
+       "translator": "Ganguli",
+       "year": 1900,
+       "restricted": false,
+       "label": "Vol 3"
+      }
+     ]
+    },
+    {
+     "id": "mahabharata-of-krishna-dwaipayana-vyasa-vol-4-ganguli",
+     "title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 4",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-4-ganguli_anonymous.json",
+       "translator": "Ganguli",
+       "year": 1900,
+       "restricted": false,
+       "label": "Vol 4"
+      }
+     ]
     }
    ],
    "auto_verdict": "stands",
-   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)",
+   "chooser": "translations"
   },
   {
    "tradition": "hindu",
@@ -418,10 +475,25 @@
        "restricted": false
       }
      ]
+    },
+    {
+     "id": "ramayana-dutt",
+     "title": "The Ramayana (Dutt)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "ramayana-dutt_dutt.json",
+       "translator": "Romesh Chunder Dutt",
+       "year": 1899,
+       "restricted": false,
+       "label": "condensed verse rendering"
+      }
+     ]
     }
    ],
    "auto_verdict": "stands",
-   "review": "Seed Map Review 2026-07.md §6 (final pass, 2026-07-28)"
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)",
+   "chooser": "translations"
   },
   {
    "tradition": "hindu",
@@ -5019,6 +5091,920 @@
    ],
    "auto_verdict": "stands",
    "review": "wave-3 supplement sheets, design verdicts (final, 2026-07-28)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Nāda-bindu (3)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "nadabindu-upanishad-aiyar-1914",
+     "title": "Nāda-bindu Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "nadabindu-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Ātma-bodha (4)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "atmabodha-upanishad-aiyar-1914",
+     "title": "Ātma-bodha Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "atmabodha-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Haṃsa (14)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "hamsa-upanishad-aiyar-1914",
+     "title": "Haṃsa Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "hamsa-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Subāla (16)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "subala-upanishad-aiyar-1914",
+     "title": "Subāla Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "subala-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Nirālamba (18)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "niralamba-upanishad-aiyar-1914",
+     "title": "Nirālamba Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "niralamba-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Maṇḍala-brāhmaṇa (20)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "mandalabrahmana-upanishad-aiyar-1914",
+     "title": "Maṇḍala-brāhmaṇa Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "mandalabrahmana-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Pāiṅgala (22)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "paingala-upanishad-aiyar-1914",
+     "title": "Pāiṅgala Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "paingala-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Bhikṣu (23)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "bhikshuka-upanishad-aiyar-1914",
+     "title": "Bhikṣu Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "bhikshuka-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Adhyātmā (25)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "adhyatma-upanishad-aiyar-1914",
+     "title": "Adhyātmā Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "adhyatma-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Tārasāra (26)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "tarasara-upanishad-aiyar-1914",
+     "title": "Tārasāra Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "tarasara-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Brahma (32)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "brahmopanishad-upanishad-aiyar-1914",
+     "title": "Brahma Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "brahmopanishad-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Kaivalya (33)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "kaivalya-upanishad-aiyar-1914",
+     "title": "Kaivalya Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "kaivalya-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Garbha (35)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "garbha-upanishad-aiyar-1914",
+     "title": "Garbha Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "garbha-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Nārāyaṇa (36)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "narayana-upanishad-aiyar-1914",
+     "title": "Nārāyaṇa Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "narayana-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Amṛta-bindu (37)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "amrtabindu-upanishad-aiyar-1914",
+     "title": "Amṛta-bindu Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "amrtabindu-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Amṛta-nāda (38)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "amrtanada-upanishad-aiyar-1914",
+     "title": "Amṛta-nāda Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "amrtanada-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Sarvasāra (41)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "sarvasara-upanishad-aiyar-1914",
+     "title": "Sarvasāra Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "sarvasara-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Tejo-bindu (43)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "tejobindu-upanishad-aiyar-1914",
+     "title": "Tejo-bindu Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "tejobindu-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Dhyāna-bindu (44)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "dhyanabindu-upanishad-aiyar-1914",
+     "title": "Dhyāna-bindu Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "dhyanabindu-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Yogatattva (46)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "yogatattva-upanishad-aiyar-1914",
+     "title": "Yogatattva Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "yogatattva-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Skanda (48)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "skanda-upanishad-aiyar-1914",
+     "title": "Skanda Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "skanda-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Śārīraka (49)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "sariraka-upanishad-aiyar-1914",
+     "title": "Śārīraka Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "sariraka-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Yoga-kuṇḍalinī (56)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "yogakundalini-upanishad-aiyar-1914",
+     "title": "Yoga-kuṇḍalinī Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "yogakundalini-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Varāha (59)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "varaha-upanishad-aiyar-1914",
+     "title": "Varāha Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "varaha-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Kalisantaraṇa (60)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "kalisantarana-upanishad-aiyar-1914",
+     "title": "Kalisantaraṇa Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "kalisantarana-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Maitreya (66)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "maitreya-upanishad-aiyar-1914",
+     "title": "Maitreya Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "maitreya-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Vajrasūcikā (67)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "vajrasuchi-upanishad-aiyar-1914",
+     "title": "Vajrasūcikā Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "vajrasuchi-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Nārada-parivrājaka (85)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "narada-parivrajaka-upanishad-aiyar-1914",
+     "title": "Nārada-parivrājaka Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "narada-parivrajaka-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Śāṇḍilya (91)",
+   "basis": "upanishad-name (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "sandilya-upanishad-aiyar-1914",
+     "title": "Śāṇḍilya Upanishad",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "sandilya-upanishad-aiyar-1914_aiyar.json",
+       "translator": "K. Narayanasvami Aiyar",
+       "year": 1914,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Sāmaveda Saṃhitā",
+   "basis": "matcher-miss pass (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "sama-veda-griffith",
+     "title": "The Sama Veda",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "sama-veda-griffith_griffith.json",
+       "translator": "Ralph T.H. Griffith",
+       "year": 1895,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Yajurveda Vājasaneyi Saṃhitā",
+   "basis": "matcher-miss pass (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "yajur-veda-white-griffith",
+     "title": "The White Yajur Veda (Vajasaneyi Saṃhitā)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "yajur-veda-white-griffith_griffith-white.json",
+       "translator": "Ralph T.H. Griffith",
+       "year": 1899,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "core",
+   "chip": "Atharvaveda Saṃhitā",
+   "basis": "matcher-miss pass (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "atharva-veda-griffith",
+     "title": "The Hymns of the Atharvaveda",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "atharva-veda-griffith_griffith.json",
+       "translator": "Ralph T.H. Griffith",
+       "year": 1896,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "atharva-veda-bloomfield",
+     "title": "The Atharva Veda (Hymns)",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "atharva-veda-bloomfield_bloomfield.json",
+       "translator": "Maurice Bloomfield",
+       "year": 1897,
+       "restricted": false,
+       "label": "selections"
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)",
+   "chooser": "translations"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "ring4",
+   "chip": "Viṣṇu",
+   "basis": "matcher-miss pass (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "vishnu-purana",
+     "title": "Vishnu Purana",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "vishnu-purana_wilson.json",
+       "translator": "Horace Hayman Wilson",
+       "year": 1840,
+       "restricted": false
+      }
+     ]
+    },
+    {
+     "id": "vishnu-purana",
+     "title": "Vishnu Purana",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "vishnu-purana_dutt.json",
+       "translator": "Manmatha Nath Dutt",
+       "year": 1896,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)",
+   "chooser": "translations"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "ring2",
+   "chip": "Vedānta (Uttara-Mīmāṃsā) — Brahma-sūtra (Bādarāyaṇa) + bhāṣyas",
+   "basis": "matcher-miss pass (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "vedanta-sutras-sankara",
+     "title": "The Vedanta-Sutras with the Commentary by Sankaracarya",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "vedanta-sutras-sankara_thibaut-s.json",
+       "translator": "George Thibaut",
+       "year": 1890,
+       "restricted": false,
+       "label": "with Śaṅkara's commentary"
+      }
+     ]
+    },
+    {
+     "id": "vedanta-sutras-ramanuja",
+     "title": "The Vedanta-Sutras with the Commentary by Ramanuja",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "vedanta-sutras-ramanuja_thibaut-r.json",
+       "translator": "George Thibaut",
+       "year": 1904,
+       "restricted": false,
+       "label": "with Rāmānuja's commentary"
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)",
+   "chooser": "translations"
+  },
+  {
+   "tradition": "hindu",
+   "zone": "ring2",
+   "chip": "Yoga — Yoga-sūtra (Patañjali) + Vyāsa's Bhāṣya",
+   "basis": "matcher-miss pass (supplement review)",
+   "status": "confirmed",
+   "candidates": [
+    {
+     "id": "yoga-sutras",
+     "title": "The Yoga Sutras of Patanjali",
+     "restricted": false,
+     "dfs": [
+      {
+       "df": "yoga-sutras_johnson.json",
+       "translator": "Charles Johnston",
+       "year": 1912,
+       "restricted": false
+      }
+     ]
+    }
+   ],
+   "auto_verdict": "stands",
+   "review": "hindu_supplement_sheet.md design verdicts (final, 2026-07-29)"
   }
  ],
  "coverage_gaps": {

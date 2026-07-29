@@ -129,3 +129,10 @@ Wave-3 additions — Task 25 supplement verdicts (final, 2026-07-28):
 - Modern _anonymous stubs flagged to the dedup lane for provenance normalization (NOT twins — metadata hygiene): a-dweller-on-two-planets… · a-wanderer-in-the-sprit-lands… (note the "Sprit" title typo, correct in the same record).
 - Structure-growth note: a possible future Aradia (Leland 1899) chip on the modern map — never silently added.
 - Indigenous amber ranking (design's): 1. Kebra Nagast (one acquisition serves in-diaspora + the Rastafari door note) · 2. Kumulipo (Liliʻuokalani 1897) · 3. Zuni (Cushing 1896); rest unranked.
+
+Hindu additions — Task 27 lane 1 verdicts (final, 2026-07-29):
+
+- 6 CONTENT-VERIFIED twins retired: besant-avataras _anonymous (100%) · sakoontala _anonymous (100%) · gitanjali _anonymous (100%) · yoga-sutras-1912 _anonymous (100%) · ramayana-griffith _anonymous (100% — verdict-7 twin branch) · the-upanishads-1879 _anonymous (63%/89% vs Müller parts 1/2 — a merged re-ingest of the set).
+- ATTRIBUTION-SUSPECT HOLDS (not twins, NOT retired — provenance verification needed, Nostradamus pattern): upanishads_muller.json (0% overlap with BOTH real Müller parts despite claiming F. Max Müller 1879) · atharva-veda-hymns-1895 _anonymous (1% overlap with Griffith's actual Atharvaveda) · mahabharata_anonymous.json (a 12-node stub riding three bound chips).
+- STRUCTURAL FINDING: principal-Upaniṣad containment DID NOT BIND — the Müller/Hume dfs are FLAT chapter.verse runs with no upanishad-level TOC (missing_book_level class); binding awaits book-aware restructuring. Johnston 1899 same class.
+- Kama Sutra pair: 23% overlap — DISTINCT editions, both stay (no chip).

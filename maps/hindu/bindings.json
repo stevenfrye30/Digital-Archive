@@ -3,11 +3,11 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "held-several": 7,
-  "possible": 147,
-  "held": 7,
+  "held-several": 11,
+  "held": 38,
   "none": 170,
-  "restricted": 1
+  "restricted": 1,
+  "possible": 112
  },
  "chips": [
   {
@@ -51,13 +51,31 @@
    "zone": "core",
    "chip": "Sāmaveda Saṃhitā",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "sama-veda-griffith_griffith.json",
+     "work": "The Sama Veda",
+     "translator": "Ralph T.H. Griffith",
+     "year": 1895,
+     "url": "?text=sama-veda-griffith_griffith.json"
+    }
+   ]
   },
   {
    "zone": "core",
    "chip": "Yajurveda Vājasaneyi Saṃhitā",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "yajur-veda-white-griffith_griffith-white.json",
+     "work": "The White Yajur Veda (Vajasaneyi Saṃhitā)",
+     "translator": "Ralph T.H. Griffith",
+     "year": 1899,
+     "url": "?text=yajur-veda-white-griffith_griffith-white.json"
+    }
+   ]
   },
   {
    "zone": "core",
@@ -96,7 +114,25 @@
    "zone": "core",
    "chip": "Atharvaveda Saṃhitā",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "atharva-veda-griffith_griffith.json",
+     "work": "The Hymns of the Atharvaveda",
+     "translator": "Ralph T.H. Griffith",
+     "year": 1896,
+     "url": "?text=atharva-veda-griffith_griffith.json"
+    },
+    {
+     "df": "atharva-veda-bloomfield_bloomfield.json",
+     "work": "The Atharva Veda (Hymns)",
+     "translator": "Maurice Bloomfield",
+     "year": 1897,
+     "label": "selections",
+     "url": "?text=atharva-veda-bloomfield_bloomfield.json"
+    }
+   ]
   },
   {
    "zone": "core",
@@ -229,13 +265,33 @@
    "zone": "core",
    "chip": "Nāda-bindu (3)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "nadabindu-upanishad-aiyar-1914_aiyar.json",
+     "work": "Nāda-bindu Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=nadabindu-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Ātma-bodha (4)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "atmabodha-upanishad-aiyar-1914_aiyar.json",
+     "work": "Ātma-bodha Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=atmabodha-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -301,13 +357,33 @@
    "zone": "core",
    "chip": "Maitreya (66)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "maitreya-upanishad-aiyar-1914_aiyar.json",
+     "work": "Maitreya Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=maitreya-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Vajrasūcikā (67)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "vajrasuchi-upanishad-aiyar-1914_aiyar.json",
+     "work": "Vajrasūcikā Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=vajrasuchi-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -391,7 +467,17 @@
    "zone": "core",
    "chip": "Haṃsa (14)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "hamsa-upanishad-aiyar-1914_aiyar.json",
+     "work": "Haṃsa Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=hamsa-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -403,7 +489,17 @@
    "zone": "core",
    "chip": "Subāla (16)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "subala-upanishad-aiyar-1914_aiyar.json",
+     "work": "Subāla Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=subala-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -415,7 +511,17 @@
    "zone": "core",
    "chip": "Nirālamba (18)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "niralamba-upanishad-aiyar-1914_aiyar.json",
+     "work": "Nirālamba Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=niralamba-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -427,7 +533,17 @@
    "zone": "core",
    "chip": "Maṇḍala-brāhmaṇa (20)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "mandalabrahmana-upanishad-aiyar-1914_aiyar.json",
+     "work": "Maṇḍala-brāhmaṇa Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=mandalabrahmana-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -439,13 +555,33 @@
    "zone": "core",
    "chip": "Pāiṅgala (22)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "paingala-upanishad-aiyar-1914_aiyar.json",
+     "work": "Pāiṅgala Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=paingala-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Bhikṣu (23)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "bhikshuka-upanishad-aiyar-1914_aiyar.json",
+     "work": "Bhikṣu Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=bhikshuka-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -457,13 +593,33 @@
    "zone": "core",
    "chip": "Adhyātmā (25)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "adhyatma-upanishad-aiyar-1914_aiyar.json",
+     "work": "Adhyātmā Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=adhyatma-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Tārasāra (26)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "tarasara-upanishad-aiyar-1914_aiyar.json",
+     "work": "Tārasāra Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=tarasara-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -499,13 +655,33 @@
    "zone": "core",
    "chip": "Brahma (32)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "brahmopanishad-upanishad-aiyar-1914_aiyar.json",
+     "work": "Brahma Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=brahmopanishad-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Kaivalya (33)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "kaivalya-upanishad-aiyar-1914_aiyar.json",
+     "work": "Kaivalya Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=kaivalya-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -517,25 +693,65 @@
    "zone": "core",
    "chip": "Garbha (35)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "garbha-upanishad-aiyar-1914_aiyar.json",
+     "work": "Garbha Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=garbha-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Nārāyaṇa (36)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "narayana-upanishad-aiyar-1914_aiyar.json",
+     "work": "Nārāyaṇa Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=narayana-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Amṛta-bindu (37)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "amrtabindu-upanishad-aiyar-1914_aiyar.json",
+     "work": "Amṛta-bindu Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=amrtabindu-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Amṛta-nāda (38)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "amrtanada-upanishad-aiyar-1914_aiyar.json",
+     "work": "Amṛta-nāda Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=amrtanada-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -553,7 +769,17 @@
    "zone": "core",
    "chip": "Sarvasāra (41)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "sarvasara-upanishad-aiyar-1914_aiyar.json",
+     "work": "Sarvasāra Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=sarvasara-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -565,13 +791,33 @@
    "zone": "core",
    "chip": "Tejo-bindu (43)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "tejobindu-upanishad-aiyar-1914_aiyar.json",
+     "work": "Tejo-bindu Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=tejobindu-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Dhyāna-bindu (44)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "dhyanabindu-upanishad-aiyar-1914_aiyar.json",
+     "work": "Dhyāna-bindu Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=dhyanabindu-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -583,7 +829,17 @@
    "zone": "core",
    "chip": "Yogatattva (46)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "yogatattva-upanishad-aiyar-1914_aiyar.json",
+     "work": "Yogatattva Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=yogatattva-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -595,13 +851,33 @@
    "zone": "core",
    "chip": "Skanda (48)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "skanda-upanishad-aiyar-1914_aiyar.json",
+     "work": "Skanda Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=skanda-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Śārīraka (49)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "sariraka-upanishad-aiyar-1914_aiyar.json",
+     "work": "Śārīraka Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=sariraka-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -643,7 +919,17 @@
    "zone": "core",
    "chip": "Yoga-kuṇḍalinī (56)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "yogakundalini-upanishad-aiyar-1914_aiyar.json",
+     "work": "Yoga-kuṇḍalinī Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=yogakundalini-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -661,13 +947,33 @@
    "zone": "core",
    "chip": "Varāha (59)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "varaha-upanishad-aiyar-1914_aiyar.json",
+     "work": "Varāha Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=varaha-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
    "chip": "Kalisantaraṇa (60)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "kalisantarana-upanishad-aiyar-1914_aiyar.json",
+     "work": "Kalisantaraṇa Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=kalisantarana-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -721,7 +1027,17 @@
    "zone": "core",
    "chip": "Nārada-parivrājaka (85)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "narada-parivrajaka-upanishad-aiyar-1914_aiyar.json",
+     "work": "Nārada-parivrājaka Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=narada-parivrajaka-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -757,7 +1073,17 @@
    "zone": "core",
    "chip": "Śāṇḍilya (91)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "sandilya-upanishad-aiyar-1914_aiyar.json",
+     "work": "Śāṇḍilya Upanishad",
+     "translator": "K. Narayanasvami Aiyar",
+     "year": 1914,
+     "url": "?text=sandilya-upanishad-aiyar-1914_aiyar.json"
+    }
+   ],
+   "contained_in": "within Thirty Minor Upanishads, tr. Aiyar (1914)"
   },
   {
    "zone": "core",
@@ -1039,7 +1365,16 @@
    "zone": "ring2",
    "chip": "Yoga — Yoga-sūtra (Patañjali) + Vyāsa's Bhāṣya",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "yoga-sutras_johnson.json",
+     "work": "The Yoga Sutras of Patanjali",
+     "translator": "Charles Johnston",
+     "year": 1912,
+     "url": "?text=yoga-sutras_johnson.json"
+    }
+   ]
   },
   {
    "zone": "ring2",
@@ -1051,7 +1386,26 @@
    "zone": "ring2",
    "chip": "Vedānta (Uttara-Mīmāṃsā) — Brahma-sūtra (Bādarāyaṇa) + bhāṣyas",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "vedanta-sutras-sankara_thibaut-s.json",
+     "work": "The Vedanta-Sutras with the Commentary by Sankaracarya",
+     "translator": "George Thibaut",
+     "year": 1890,
+     "label": "with Śaṅkara's commentary",
+     "url": "?text=vedanta-sutras-sankara_thibaut-s.json"
+    },
+    {
+     "df": "vedanta-sutras-ramanuja_thibaut-r.json",
+     "work": "The Vedanta-Sutras with the Commentary by Ramanuja",
+     "translator": "George Thibaut",
+     "year": 1904,
+     "label": "with Rāmānuja's commentary",
+     "url": "?text=vedanta-sutras-ramanuja_thibaut-r.json"
+    }
+   ]
   },
   {
    "zone": "ring2",
@@ -1096,6 +1450,38 @@
      "translator": "Kisari Mohan Ganguli",
      "year": 1896,
      "url": "?text=mahabharata_ganguli.json"
+    },
+    {
+     "df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-1-ganguli_anonymous.json",
+     "work": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 1",
+     "translator": "Ganguli",
+     "year": 1900,
+     "label": "Vol 1",
+     "url": "?text=mahabharata-of-krishna-dwaipayana-vyasa-vol-1-ganguli_anonymous.json"
+    },
+    {
+     "df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-2-ganguli_anonymous.json",
+     "work": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 2",
+     "translator": "Ganguli",
+     "year": 1900,
+     "label": "Vol 2",
+     "url": "?text=mahabharata-of-krishna-dwaipayana-vyasa-vol-2-ganguli_anonymous.json"
+    },
+    {
+     "df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-3-ganguli_anonymous.json",
+     "work": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 3",
+     "translator": "Ganguli",
+     "year": 1900,
+     "label": "Vol 3",
+     "url": "?text=mahabharata-of-krishna-dwaipayana-vyasa-vol-3-ganguli_anonymous.json"
+    },
+    {
+     "df": "mahabharata-of-krishna-dwaipayana-vyasa-vol-4-ganguli_anonymous.json",
+     "work": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 4",
+     "translator": "Ganguli",
+     "year": 1900,
+     "label": "Vol 4",
+     "url": "?text=mahabharata-of-krishna-dwaipayana-vyasa-vol-4-ganguli_anonymous.json"
     }
    ]
   },
@@ -1132,7 +1518,8 @@
    "zone": "ring3",
    "chip": "Rāmāyaṇa (Vālmīki, 7 kāṇḍas, ~24,000 verses)",
    "pd": "g",
-   "state": "held",
+   "state": "held-several",
+   "chooser": "translations",
    "read": [
     {
      "df": "ramayana-griffith_griffith.json",
@@ -1140,6 +1527,14 @@
      "translator": "Ralph T.H. Griffith",
      "year": 1870,
      "url": "?text=ramayana-griffith_griffith.json"
+    },
+    {
+     "df": "ramayana-dutt_dutt.json",
+     "work": "The Ramayana (Dutt)",
+     "translator": "Romesh Chunder Dutt",
+     "year": 1899,
+     "label": "condensed verse rendering",
+     "url": "?text=ramayana-dutt_dutt.json"
     }
    ]
   },
@@ -1147,7 +1542,24 @@
    "zone": "ring4",
    "chip": "Viṣṇu",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "vishnu-purana_wilson.json",
+     "work": "Vishnu Purana",
+     "translator": "Horace Hayman Wilson",
+     "year": 1840,
+     "url": "?text=vishnu-purana_wilson.json"
+    },
+    {
+     "df": "vishnu-purana_dutt.json",
+     "work": "Vishnu Purana",
+     "translator": "Manmatha Nath Dutt",
+     "year": 1896,
+     "url": "?text=vishnu-purana_dutt.json"
+    }
+   ]
   },
   {
    "zone": "ring4",
