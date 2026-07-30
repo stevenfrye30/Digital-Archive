@@ -26491,9 +26491,10 @@ function _bibleWitnessTileHTML(e) {
 
 function _bibleCrumb(cat, trd, title, tail) {
   // Task 32 ruling 3: the Bible-family crumbs point at the structure —
-  // "Home › Map · Abrahamic › …" — never the retired Religion shelf.
+  // Task 45: "Home › Map · Judaism/Christianity › …" — the split pages;
   return `<a onclick="browseHome()">Home</a><span class="sep">›</span>` +
-    `<a href="map/abrahamic.html">Map · Abrahamic</a>` +
+    ((trd === 'Jewish') ? `<a href="map/judaism.html">Map · Judaism</a>`
+      : `<a href="map/christianity.html">Map · Christianity</a>`) +
     `<span class="sep">›</span>` +
     (tail
       ? `<a onclick="browseBibleLanguages('${escH(cat)}','${escH(trd)}')">${escH(title)}</a>` +

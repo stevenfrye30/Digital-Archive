@@ -1,0 +1,3966 @@
+{
+ "tradition": "islam",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "held-several": 115,
+  "none": 23,
+  "restricted": 1,
+  "held": 1,
+  "possible": 1
+ },
+ "chips": [
+  {
+   "zone": "is-quran",
+   "chip": "1. Al-Fatihah — The Opener",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "2. Al-Baqarah — The Cow",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "3. Ali 'Imran — Family of Imran",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "4. An-Nisa — The Women",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "5. Al-Ma'idah — The Table Spread",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "6. Al-An'am — The Cattle",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "7. Al-A'raf — The Heights",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "8. Al-Anfal — The Spoils of War",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "9. At-Tawbah — The Repentance",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "10. Yunus — Jonah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "11. Hud — Hud",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "12. Yusuf — Joseph",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "13. Ar-Ra'd — The Thunder",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "14. Ibrahim — Abraham",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "15. Al-Hijr — The Rocky Tract",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "16. An-Nahl — The Bee",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "17. Al-Isra — The Night Journey",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "18. Al-Kahf — The Cave",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "19. Maryam — Mary",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "20. Taha — Ta-Ha",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "21. Al-Anbya — The Prophets",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "22. Al-Hajj — The Pilgrimage",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "23. Al-Mu'minun — The Believers",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "24. An-Nur — The Light",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "25. Al-Furqan — The Criterion",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "26. Ash-Shu'ara — The Poets",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "27. An-Naml — The Ant",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "28. Al-Qasas — The Stories",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "29. Al-'Ankabut — The Spider",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "30. Ar-Rum — The Romans",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "31. Luqman — Luqman",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "32. As-Sajdah — The Prostration",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "33. Al-Ahzab — The Combined Forces",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "34. Saba — Sheba",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "35. Fatir — Originator",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "36. Ya-Sin — Ya Sin",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "37. As-Saffat — Those who set the Ranks",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "38. Sad — The Letter \"Saad\"",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "39. Az-Zumar — The Troops",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "40. Ghafir — The Forgiver",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "41. Fussilat — Explained in Detail",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "42. Ash-Shuraa — The Consultation",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "43. Az-Zukhruf — The Ornaments of Gold",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "44. Ad-Dukhan — The Smoke",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "45. Al-Jathiyah — The Crouching",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "46. Al-Ahqaf — The Wind-Curved Sandhills",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "47. Muhammad — Muhammad",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "48. Al-Fath — The Victory",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "49. Al-Hujurat — The Rooms",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "50. Qaf — The Letter \"Qaf\"",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "51. Adh-Dhariyat — The Winnowing Winds",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "52. At-Tur — The Mount",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "53. An-Najm — The Star",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "54. Al-Qamar — The Moon",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "55. Ar-Rahman — The Beneficent",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "56. Al-Waqi'ah — The Inevitable",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "57. Al-Hadid — The Iron",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "58. Al-Mujadila — The Pleading Woman",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "59. Al-Hashr — The Exile",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "60. Al-Mumtahanah — She that is to be examined",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "61. As-Saf — The Ranks",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "62. Al-Jumu'ah — The Congregation, Friday",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "63. Al-Munafiqun — The Hypocrites",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "64. At-Taghabun — The Mutual Disillusion",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "65. At-Talaq — The Divorce",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "66. At-Tahrim — The Prohibition",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "67. Al-Mulk — The Sovereignty",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "68. Al-Qalam — The Pen",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "69. Al-Haqqah — The Reality",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "70. Al-Ma'arij — The Ascending Stairways",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "71. Nuh — Noah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "72. Al-Jinn — The Jinn",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "73. Al-Muzzammil — The Enshrouded One",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "74. Al-Muddaththir — The Cloaked One",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "75. Al-Qiyamah — The Resurrection",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "76. Al-Insan — The Man",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "77. Al-Mursalat — The Emissaries",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "78. An-Naba — The Tidings",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "79. An-Nazi'at — Those who drag forth",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "80. 'Abasa — He Frowned",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "81. At-Takwir — The Overthrowing",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "82. Al-Infitar — The Cleaving",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "83. Al-Mutaffifin — The Defrauding",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "84. Al-Inshiqaq — The Sundering",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "85. Al-Buruj — The Mansions of the Stars",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "86. At-Tariq — The Nightcommer",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "87. Al-A'la — The Most High",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "88. Al-Ghashiyah — The Overwhelming",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "89. Al-Fajr — The Dawn",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "90. Al-Balad — The City",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "91. Ash-Shams — The Sun",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "92. Al-Layl — The Night",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "93. Ad-Duhaa — The Morning Hours",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "94. Ash-Sharh — The Relief",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "95. At-Tin — The Fig",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "96. Al-'Alaq — The Clot",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "97. Al-Qadr — The Power",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "98. Al-Bayyinah — The Clear Proof",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "99. Az-Zalzalah — The Earthquake",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "100. Al-'Adiyat — The Courser",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "101. Al-Qari'ah — The Calamity",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "102. At-Takathur — The Rivalry in world increase",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "103. Al-'Asr — The Declining Day",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "104. Al-Humazah — The Traducer",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "105. Al-Fil — The Elephant",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "106. Quraysh — Quraysh",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "107. Al-Ma'un — The Small kindnesses",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "108. Al-Kawthar — The Abundance",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "109. Al-Kafirun — The Disbelievers",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "110. An-Nasr — The Divine Support",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "111. Al-Masad — The Palm Fiber",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "112. Al-Ikhlas — The Sincerity",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "113. Al-Falaq — The Daybreak",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-quran",
+   "chip": "114. An-Nas — Mankind",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "quran_pickthall.json",
+     "work": "The Holy Quran",
+     "translator": "Marmaduke Pickthall",
+     "year": 1930,
+     "url": "?text=quran_pickthall.json"
+    },
+    {
+     "df": "quran_uthmani-tanzil.json",
+     "work": "The Holy Quran",
+     "translator": "Uthmani Script",
+     "year": null,
+     "label": "Arabic text (Uthmānī, Tanzil)",
+     "url": "?text=quran_uthmani-tanzil.json"
+    },
+    {
+     "df": "quran_ahmed-raza-khan-urdu.json",
+     "work": "The Holy Quran",
+     "translator": "Ahmed Raza Khan",
+     "year": null,
+     "label": "Urdu — Kanzul Īmān, 1921",
+     "url": "?text=quran_ahmed-raza-khan-urdu.json"
+    }
+   ],
+   "contained_in": "within The Holy Qurʾān, tr. Pickthall (1930)"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Ṣaḥīḥ al-Bukhārī (d.870)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Ṣaḥīḥ Muslim (d.875)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Sunan Abī Dāwūd (d.889)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Jāmiʿ al-Tirmidhī (d.892)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Sunan al-Nasāʾī (d.915)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Sunan Ibn Mājah (d.887)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Muwaṭṭaʾ Mālik (d.795)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Musnad Aḥmad ibn Ḥanbal (d.855)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "al-Kāfī (al-Kulaynī, d.941)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Man lā yaḥḍuruhu al-Faqīh (al-Ṣadūq, d.991)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "Tahdhīb al-Aḥkām (al-Ṭūsī, d.1067)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-hadith",
+   "chip": "al-Istibṣār (al-Ṭūsī)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sira",
+   "chip": "Ibn Isḥāq / Ibn Hishām — Sīrat Rasūl Allāh",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sira",
+   "chip": "al-Ṭabarī — History (Tārīkh)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sira",
+   "chip": "Ibn Saʿd — Kitāb al-Ṭabaqāt",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sira",
+   "chip": "al-Wāqidī — Kitāb al-Maghāzī",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "Tafsīr al-Ṭabarī (d.923)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "Tafsīr Ibn Kathīr (d.1373)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "Tafsīr al-Jalālayn (d.1459/1505)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "al-Kashshāf (al-Zamakhsharī, d.1144)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-tafsir",
+   "chip": "Mafātīḥ al-Ghayb (al-Rāzī, d.1210)",
+   "pd": "r",
+   "state": "none"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "Rūmī — the Masnavī",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "rumi-masnavi_whinfield.json",
+     "work": "The Masnavi",
+     "translator": "E.H. Whinfield",
+     "year": 1898,
+     "url": "?text=rumi-masnavi_whinfield.json"
+    },
+    {
+     "df": "mesnavi-acts-adepts-redhouse_redhouse-acts.json",
+     "work": "The Masnavi",
+     "translator": "James W. Redhouse",
+     "year": 1881,
+     "label": "Redhouse 1881: Book I + the Acts of the Adepts",
+     "url": "?text=mesnavi-acts-adepts-redhouse_redhouse-acts.json"
+    }
+   ]
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "ʿAṭṭār — Conference of the Birds",
+   "pd": "g",
+   "state": "restricted",
+   "reason_class": "rights-or-quality hold"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "Saʿdī — Gulistān · Būstān",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "bustan-sadi-edwards_edwards.json",
+     "work": "The Bustan of Sa'di",
+     "translator": "A. Hart Edwards",
+     "year": 1911,
+     "url": "?text=bustan-sadi-edwards_edwards.json"
+    }
+   ]
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "ʿUmar Khayyām — Rubáiyát",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "al-Ghazālī — Iḥyāʾ ʿUlūm al-Dīn",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "is-sufi",
+   "chip": "Ibn ʿArabī — Fuṣūṣ · Futūḥāt",
+   "pd": "r",
+   "state": "none"
+  }
+ ]
+}

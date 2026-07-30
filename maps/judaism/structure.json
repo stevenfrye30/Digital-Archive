@@ -1,0 +1,917 @@
+{
+ "tradition": "judaism",
+ "title": "The Map of Abrahamic Texts",
+ "grammar": "basket-fam",
+ "source": "The Map of Sacred Texts.mhtml (artifact fea77718) — extracted 2026-07-28; editorial artifact, never regenerated silently",
+ "zones": [
+  {
+   "id": "ju-tanakh",
+   "name": "Tanakh — the Hebrew Bible",
+   "territory": "39 texts",
+   "territory_count": 39,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "24 books (39 individual) · shared spine",
+   "blurb": "The whole Tanakh is public-domain in English via the JPS 1917 translation. This is the shared spine — the same books as the Christian Old Testament.",
+   "groups": [
+    {
+     "heading": "Torah",
+     "chips": [
+      {
+       "name": "Genesis",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Exodus",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Leviticus",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Numbers",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Deuteronomy",
+       "pd": "g",
+       "note": ""
+      }
+     ],
+     "range": "the Five Books",
+     "authored_count": 5,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Neviʾim — Prophets",
+     "chips": [
+      {
+       "name": "Joshua",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Judges",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "I Samuel",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "II Samuel",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "I Kings",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "II Kings",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Isaiah",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Jeremiah",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Ezekiel",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Hosea",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Joel",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Amos",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Obadiah",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Jonah",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Micah",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Nahum",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Habakkuk",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Zephaniah",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Haggai",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Zechariah",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Malachi",
+       "pd": "g",
+       "note": ""
+      }
+     ],
+     "range": "the Former & Latter Prophets",
+     "authored_count": 21,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Ketuvim — Writings",
+     "chips": [
+      {
+       "name": "Psalms",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Proverbs",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Job",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Song of Songs",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Ruth",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Lamentations",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Ecclesiastes",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Esther",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Daniel",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Ezra",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "Nehemiah",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "I Chronicles",
+       "pd": "g",
+       "note": ""
+      },
+      {
+       "name": "II Chronicles",
+       "pd": "g",
+       "note": ""
+      }
+     ],
+     "range": "Psalms → Chronicles",
+     "authored_count": 13,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "ju-mishnah",
+   "name": "Mishnah",
+   "territory": "63 texts",
+   "territory_count": 63,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "6 orders · 63 tractates",
+   "blurb": "The 63 tractates of the Mishnah. Danby’s 1933 English is the standard — worldwide-PD in life+70 terms but under the US copyright clock until 2029, so amber (Pirkei Avot has older PD translations).",
+   "groups": [
+    {
+     "heading": "Seder Zeraim",
+     "chips": [
+      {
+       "name": "Berakhot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Peah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Demai",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Kilayim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Sheviit",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Terumot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Maasrot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Maaser Sheni",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Challah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Orlah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Bikkurim",
+       "pd": "a",
+       "note": ""
+      }
+     ],
+     "authored_count": 11,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Seder Moed",
+     "chips": [
+      {
+       "name": "Shabbat",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Eruvin",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Pesachim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Shekalim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Yoma",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Sukkah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Beitzah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Rosh Hashanah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Ta'anit",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Megillah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Moed Katan",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Chagigah",
+       "pd": "a",
+       "note": ""
+      }
+     ],
+     "authored_count": 12,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Seder Nashim",
+     "chips": [
+      {
+       "name": "Yevamot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Ketubot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Nedarim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Nazir",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Sotah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Gittin",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Kiddushin",
+       "pd": "a",
+       "note": ""
+      }
+     ],
+     "authored_count": 7,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Seder Nezikin",
+     "chips": [
+      {
+       "name": "Bava Kamma",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Bava Metzia",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Bava Batra",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Sanhedrin",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Makkot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Shevuot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Eduyot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Avodah Zarah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Pirkei Avot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Horayot",
+       "pd": "a",
+       "note": ""
+      }
+     ],
+     "authored_count": 10,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Seder Kodashim",
+     "chips": [
+      {
+       "name": "Zevachim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Menachot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Chullin",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Bekhorot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Arakhin",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Temurah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Keritot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Meilah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Tamid",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Middot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Kinnim",
+       "pd": "a",
+       "note": ""
+      }
+     ],
+     "authored_count": 11,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Seder Tahorot",
+     "chips": [
+      {
+       "name": "Kelim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Oholot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Negaim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Parah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Tahorot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Mikvaot",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Niddah",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Makhshirin",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Zavim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Tevul Yom",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Yadayim",
+       "pd": "a",
+       "note": ""
+      },
+      {
+       "name": "Oktzin",
+       "pd": "a",
+       "note": ""
+      }
+     ],
+     "authored_count": 12,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "ju-talmud",
+   "name": "Talmud & Tosefta",
+   "territory": "3 texts",
+   "territory_count": 3,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "",
+   "blurb": "Gemara — the great Aramaic analysis of the Mishnah. The one worldwide-PD English is Rodkinson’s (partial, weak); the standard Soncino is ©, and the flagship Steinsaltz is CC-BY-NC (free but non-commercial).",
+   "groups": [
+    {
+     "heading": "The Talmuds",
+     "chips": [
+      {
+       "name": "Babylonian Talmud (Bavli) — Gemara on 37 of the 63 tractates",
+       "pd": "a",
+       "note": "Rodkinson 1896–1903 PD (partial); Soncino ©"
+      },
+      {
+       "name": "Jerusalem Talmud (Yerushalmi)",
+       "pd": "a",
+       "note": "© / Sefaria CC"
+      },
+      {
+       "name": "Tosefta",
+       "pd": "a",
+       "note": "© / Sefaria CC"
+      }
+     ],
+     "authored_count": 3,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "ju-midrash",
+   "name": "Midrash & Targum",
+   "territory": "10 texts",
+   "territory_count": 10,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "",
+   "blurb": "Homiletic & legal expansion of scripture, and the Aramaic Targums (Etheridge’s Targums are green).",
+   "groups": [
+    {
+     "heading": "Midrash",
+     "chips": [
+      {
+       "name": "Midrash Rabbah (10 books)",
+       "pd": "a",
+       "note": "Soncino 1939 ©"
+      },
+      {
+       "name": "Mekhilta of Rabbi Ishmael",
+       "pd": "a",
+       "note": "Lauterbach — US till ~2029"
+      },
+      {
+       "name": "Sifra (Leviticus)",
+       "pd": "a",
+       "note": "© / partial"
+      },
+      {
+       "name": "Sifre (Numbers & Deuteronomy)",
+       "pd": "a",
+       "note": "© / partial"
+      },
+      {
+       "name": "Tanchuma",
+       "pd": "a",
+       "note": "© / partial"
+      },
+      {
+       "name": "Pirkei de-Rabbi Eliezer",
+       "pd": "g",
+       "note": "Friedlander 1916 (PD)"
+      },
+      {
+       "name": "Pesikta",
+       "pd": "a",
+       "note": "©"
+      },
+      {
+       "name": "Yalkut Shimoni",
+       "pd": "a",
+       "note": "© / untransl."
+      }
+     ],
+     "authored_count": 8,
+     "bar_authored": {
+      "g": 12.5,
+      "a": 87.5,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Targum",
+     "chips": [
+      {
+       "name": "Targum Onkelos (Torah)",
+       "pd": "g",
+       "note": "Etheridge 1862 (PD)"
+      },
+      {
+       "name": "Targum Jonathan (Prophets)",
+       "pd": "g",
+       "note": "Etheridge 1865 (PD)"
+      }
+     ],
+     "authored_count": 2,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "ju-halakhah",
+   "name": "Halakhah & thought",
+   "territory": "7 texts",
+   "territory_count": 7,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "",
+   "blurb": "The legal codes and the classics of medieval Jewish philosophy.",
+   "groups": [
+    {
+     "heading": "Codes",
+     "chips": [
+      {
+       "name": "Mishneh Torah (Maimonides)",
+       "pd": "a",
+       "note": "no complete PD English"
+      },
+      {
+       "name": "Shulchan Aruch (Karo)",
+       "pd": "a",
+       "note": "no complete PD English"
+      },
+      {
+       "name": "Arbaʿah Turim (Jacob ben Asher)",
+       "pd": "a",
+       "note": "untranslated"
+      }
+     ],
+     "authored_count": 3,
+     "bar_authored": {
+      "g": 0.0,
+      "a": 100.0,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Philosophy",
+     "chips": [
+      {
+       "name": "Guide for the Perplexed (Maimonides)",
+       "pd": "g",
+       "note": "Friedländer 1904 (PD)"
+      },
+      {
+       "name": "Kuzari (Judah Halevi)",
+       "pd": "g",
+       "note": "Hirschfeld 1905 (PD)"
+      },
+      {
+       "name": "Emunot ve-Deot (Saadia Gaon)",
+       "pd": "a",
+       "note": "Rosenblatt © / Rossi partial"
+      },
+      {
+       "name": "Chovot ha-Levavot (Bahya)",
+       "pd": "g",
+       "note": "Hyamson 1925 (PD/US-2021)"
+      }
+     ],
+     "authored_count": 4,
+     "bar_authored": {
+      "g": 75.0,
+      "a": 25.0,
+      "r": 0.0
+     }
+    }
+   ]
+  },
+  {
+   "id": "ju-kabbalah",
+   "name": "Kabbalah & Liturgy",
+   "territory": "6 texts",
+   "territory_count": 6,
+   "territory_soft": false,
+   "territory_comparable": true,
+   "subtitle": "",
+   "blurb": "The mystical tradition and the prayer book.",
+   "groups": [
+    {
+     "heading": "Mysticism",
+     "chips": [
+      {
+       "name": "Zohar",
+       "pd": "a",
+       "note": "Soncino 1934 © — no green complete"
+      },
+      {
+       "name": "Sefer Yetzirah",
+       "pd": "g",
+       "note": "Westcott 1887 (PD)"
+      },
+      {
+       "name": "Sefer ha-Bahir",
+       "pd": "a",
+       "note": "© / partial"
+      }
+     ],
+     "authored_count": 3,
+     "bar_authored": {
+      "g": 33.33333333333333,
+      "a": 66.66666666666666,
+      "r": 0.0
+     }
+    },
+    {
+     "heading": "Liturgy",
+     "chips": [
+      {
+       "name": "Siddur — Daily Prayer Book",
+       "pd": "g",
+       "note": "Singer 1890 (PD)"
+      },
+      {
+       "name": "Machzor — Festival Prayers",
+       "pd": "g",
+       "note": "older PD editions"
+      },
+      {
+       "name": "Passover Haggadah",
+       "pd": "g",
+       "note": "many PD editions"
+      }
+     ],
+     "authored_count": 3,
+     "bar_authored": {
+      "g": 100.0,
+      "a": 0.0,
+      "r": 0.0
+     }
+    }
+   ]
+  }
+ ],
+ "deep_views": [
+  {
+   "id": "view-over",
+   "cells": 0
+  },
+  {
+   "id": "view-jud",
+   "cells": 39
+  },
+  {
+   "id": "view-chr",
+   "cells": 52
+  },
+  {
+   "id": "view-isl",
+   "cells": 114
+  }
+ ]
+}

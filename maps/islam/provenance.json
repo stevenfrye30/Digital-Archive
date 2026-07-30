@@ -1,0 +1,194 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — Task 45 three-way partition of the christian nodes file",
+ "source_nodes_file": "05_scripts/nodes/christian.json",
+ "nodes": {
+  "qur-an": {
+   "title": "Qurʾān",
+   "path": [
+    "Islam",
+    "Scripture",
+    "Qurʾān"
+   ],
+   "type": "work",
+   "description": "The central scripture of Islam, 114 suras, canonical in Arabic. Public-domain English translations exist (e.g. Rodwell, Palmer) but none is currently held in the archive.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "The Qur'an, tr. E.H. Palmer, SBE 6/9 (1880)",
+     "translator": "E.H. Palmer",
+     "year": 1880,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/isl/sbe06/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "is-quran": {
+   "title": "Qurʾān",
+   "path": [
+    "Islam",
+    "Scripture",
+    "Qurʾān"
+   ],
+   "type": "work",
+   "description": "The central scripture of Islam, 114 suras, canonical in Arabic. Public-domain English translations exist (e.g. Rodwell, Palmer) but none is currently held in the archive.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "The Qur'an, tr. E.H. Palmer, SBE 6/9 (1880)",
+     "translator": "E.H. Palmer",
+     "year": 1880,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/isl/sbe06/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "the-qur-an": {
+   "title": "Qurʾān",
+   "path": [
+    "Islam",
+    "Scripture",
+    "Qurʾān"
+   ],
+   "type": "work",
+   "description": "The central scripture of Islam, 114 suras, canonical in Arabic. Public-domain English translations exist (e.g. Rodwell, Palmer) but none is currently held in the archive.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "The Qur'an, tr. E.H. Palmer, SBE 6/9 (1880)",
+     "translator": "E.H. Palmer",
+     "year": 1880,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/isl/sbe06/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "quran": {
+   "title": "Qurʾān",
+   "path": [
+    "Islam",
+    "Scripture",
+    "Qurʾān"
+   ],
+   "type": "work",
+   "description": "The central scripture of Islam, 114 suras, canonical in Arabic. Public-domain English translations exist (e.g. Rodwell, Palmer) but none is currently held in the archive.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "The Qur'an, tr. E.H. Palmer, SBE 6/9 (1880)",
+     "translator": "E.H. Palmer",
+     "year": 1880,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/isl/sbe06/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "hadith": {
+   "title": "Hadith",
+   "path": [
+    "Islam",
+    "Sunna",
+    "Hadith"
+   ],
+   "type": "collection",
+   "description": "Reports of the sayings and acts of the Prophet Muhammad. The major English collections are largely modern and copyrighted; none is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "is-hadith": {
+   "title": "Hadith",
+   "path": [
+    "Islam",
+    "Sunna",
+    "Hadith"
+   ],
+   "type": "collection",
+   "description": "Reports of the sayings and acts of the Prophet Muhammad. The major English collections are largely modern and copyrighted; none is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "sira": {
+   "title": "Sīra",
+   "path": [
+    "Islam",
+    "History",
+    "Sīra"
+   ],
+   "type": "collection",
+   "description": "The traditional biography of the Prophet. No public-domain English edition is currently held.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "is-sira": {
+   "title": "Sīra",
+   "path": [
+    "Islam",
+    "History",
+    "Sīra"
+   ],
+   "type": "collection",
+   "description": "The traditional biography of the Prophet. No public-domain English edition is currently held.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "sira-history": {
+   "title": "Sīra",
+   "path": [
+    "Islam",
+    "History",
+    "Sīra"
+   ],
+   "type": "collection",
+   "description": "The traditional biography of the Prophet. No public-domain English edition is currently held.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "tafsir": {
+   "title": "Tafsīr",
+   "path": [
+    "Islam",
+    "Commentary",
+    "Tafsīr"
+   ],
+   "type": "collection",
+   "description": "Qurʾānic exegesis. English tafsīr is mostly modern and copyrighted; none is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "is-tafsir": {
+   "title": "Tafsīr",
+   "path": [
+    "Islam",
+    "Commentary",
+    "Tafsīr"
+   ],
+   "type": "collection",
+   "description": "Qurʾānic exegesis. English tafsīr is mostly modern and copyrighted; none is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "tafsir-commentary": {
+   "title": "Tafsīr",
+   "path": [
+    "Islam",
+    "Commentary",
+    "Tafsīr"
+   ],
+   "type": "collection",
+   "description": "Qurʾānic exegesis. English tafsīr is mostly modern and copyrighted; none is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  }
+ }
+}

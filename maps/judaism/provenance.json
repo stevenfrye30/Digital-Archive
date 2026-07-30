@@ -1,0 +1,112 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — Task 45 three-way partition of the christian nodes file",
+ "source_nodes_file": "05_scripts/nodes/christian.json",
+ "nodes": {
+  "tanakh": {
+   "title": "Tanakh",
+   "path": [
+    "Judaism",
+    "Hebrew Bible",
+    "Tanakh"
+   ],
+   "type": "canon-division",
+   "description": "The Hebrew Bible — the shared scriptural spine of Judaism and Christianity's Old Testament, in three parts: Torah, Nevi'im and Ketuvim.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "JPS Tanakh (1917)",
+     "translator": "JPS",
+     "year": 1917,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/bib/jps/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "ju-tanakh": {
+   "title": "Tanakh",
+   "path": [
+    "Judaism",
+    "Hebrew Bible",
+    "Tanakh"
+   ],
+   "type": "canon-division",
+   "description": "The Hebrew Bible — the shared scriptural spine of Judaism and Christianity's Old Testament, in three parts: Torah, Nevi'im and Ketuvim.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "JPS Tanakh (1917)",
+     "translator": "JPS",
+     "year": 1917,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/bib/jps/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "torah": {
+   "title": "Torah",
+   "path": [
+    "Judaism",
+    "Hebrew Bible",
+    "Torah"
+   ],
+   "type": "canon-division",
+   "description": "The five books of Moses (Genesis–Deuteronomy) — the foundational law and narrative of the Hebrew Bible.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "mishnah": {
+   "title": "Mishnah",
+   "path": [
+    "Judaism",
+    "Rabbinic literature",
+    "Mishnah"
+   ],
+   "type": "collection",
+   "description": "The first written compilation of the Jewish oral law (c. 200 CE), organised into six orders. Foundational to the Talmud.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "ju-mishnah": {
+   "title": "Mishnah",
+   "path": [
+    "Judaism",
+    "Rabbinic literature",
+    "Mishnah"
+   ],
+   "type": "collection",
+   "description": "The first written compilation of the Jewish oral law (c. 200 CE), organised into six orders. Foundational to the Talmud.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "talmud": {
+   "title": "Talmud",
+   "path": [
+    "Judaism",
+    "Rabbinic literature",
+    "Talmud"
+   ],
+   "type": "collection",
+   "description": "The central rabbinic work of law and commentary — the Mishnah together with the Gemara. The standard complete English translations remain in copyright.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "ju-talmud": {
+   "title": "Talmud",
+   "path": [
+    "Judaism",
+    "Rabbinic literature",
+    "Talmud"
+   ],
+   "type": "collection",
+   "description": "The central rabbinic work of law and commentary — the Mishnah together with the Gemara. The standard complete English translations remain in copyright.",
+   "desc_confidence": "reviewed",
+   "external": []
+  }
+ }
+}

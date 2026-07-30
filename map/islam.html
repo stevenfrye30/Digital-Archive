@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Archive · The Map of Islamic Texts</title>
+<!-- Ported from The Map of Sacred Texts (artifact fea77718) per Task 20;
+     archive dress per Sacred Map Harmonization + Map Node States. -->
+<style>
+@charset "utf-8";
+
+:root { --bg: #f2efe6; --surface: #fffdf9; --panel: #f7f4ec; --ink: #20242c; --ink-soft: #545c68; --ink-faint: #8a92a0; --line: #e3ddce; --line2: #cfc7b4; --accent: #2f5b8f; --accent-ink: #284c78; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --track: #e7e1d3; --serif: "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif; --sans: ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+
+:root[data-theme="light"] { --bg: #f2efe6; --surface: #fffdf9; --panel: #f7f4ec; --ink: #20242c; --ink-soft: #545c68; --ink-faint: #8a92a0; --line: #e3ddce; --line2: #cfc7b4; --accent: #2f5b8f; --accent-ink: #284c78; --g: #2E7D32; --a: #B7791F; --r: #B03A48; --g-t: #e6efe1; --a-t: #f2e8d2; --r-t: #f4dfe0; --g-t2: #edf3ea; --track: #e7e1d3; }
+
+:root[data-theme="dark"] { --bg: #0f1216; --surface: #181c22; --panel: #1c2129; --ink: #e7ebf1; --ink-soft: #a3abb8; --ink-faint: #727b89; --line: #2a2f38; --line2: #3a414d; --accent: #6fa0d8; --accent-ink: #8fb6e4; --g: #5cb36a; --a: #d99a3c; --r: #e0687a; --g-t: #16261a; --a-t: #28230f; --r-t: #2a1a20; --g-t2: #142013; --track: #242a33; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+.page { max-width: 1240px; margin: 0px auto; padding: clamp(1.2rem, 4vw, 2.6rem) clamp(1rem, 4vw, 2.2rem) 5rem; }
+
+.mast { text-align: center; border-bottom: 1px solid var(--line); padding-bottom: 1.2rem; margin-bottom: 1rem; }
+
+.mast .star { font-size: 1.6rem; letter-spacing: 0.12em; }
+
+.mast h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.8rem, 5.2vw, 2.9rem); margin: 0.3rem 0px 0.15rem; letter-spacing: -0.01em; text-wrap: balance; }
+
+.mast p { margin: 0.3rem auto 0px; max-width: 64ch; color: var(--ink-soft); font-size: 0.94rem; }
+
+.mast .he { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
+
+.switch { display: flex; justify-content: center; gap: 0.25rem; margin: 1rem auto 0px; background: var(--panel); border: 1px solid var(--line); border-radius: 99px; padding: 0.28rem; width: max-content; max-width: 100%; flex-wrap: wrap; }
+
+.switch button { font-family: var(--serif); font-size: 0.9rem; color: var(--ink-soft); background: transparent; border: 0px; border-radius: 99px; padding: 0.42rem 1rem; cursor: pointer; white-space: nowrap; }
+
+.switch button:hover { color: var(--ink); }
+
+.switch button.on { background: var(--surface); color: var(--accent-ink); box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 3px; font-weight: 600; }
+
+.switch button small { font-weight: 400; color: var(--ink-faint); font-size: 0.68rem; margin-left: 0.3em; font-family: var(--sans); }
+
+.view { display: none; margin-top: 1.5rem; }
+
+.view.on { display: block; animation: 0.25s ease 0s 1 normal none running fade; }
+
+@keyframes fade { 
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view.on { animation: auto ease 0s 1 normal none running none; }
+}
+
+.legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.82rem; color: var(--ink-soft); align-items: center; justify-content: center; margin: 0px 0px 1.3rem; padding: 0.7rem 0px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.legend b { color: var(--ink); }
+
+.lg { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+#view-over .gradient { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1.3rem; }
+
+#view-over .gradient h2 { font-family: var(--serif); font-size: 1.05rem; margin: 0px 0px 0.1rem; }
+
+#view-over .gradient .cap { font-size: 0.82rem; color: var(--ink-faint); margin: 0px 0px 0.8rem; }
+
+#view-over .grow { display: grid; grid-template-columns: 9rem 1fr auto; gap: 0.5rem 0.8rem; align-items: center; margin: 0.35rem 0px; }
+
+#view-over .gl { font-size: 0.86rem; font-weight: 600; }
+
+#view-over .gbar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--track); }
+
+#view-over .gbar i { display: block; height: 100%; }
+
+.gbar .bg { background: var(--g); }
+
+.gbar .ba { background: var(--a); }
+
+.gbar .br { background: var(--r); }
+
+#view-over .gnum { font-size: 0.75rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+#view-over .insight { margin: 0px 0px 1.8rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
+
+#view-over .insight b { color: var(--ink); }
+
+#view-over .pillars { display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 1rem; align-items: start; }
+
+@media (max-width: 900px) {
+  #view-over .pillars { grid-template-columns: 1fr; }
+}
+
+#view-over .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem; }
+
+#view-over .pillar-h { border-bottom: 2px solid var(--line2); padding-bottom: 0.6rem; margin-bottom: 0.8rem; }
+
+#view-over .pn { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; }
+
+#view-over .pw { font-size: 0.78rem; color: var(--accent-ink); font-weight: 600; margin-top: 0.1rem; }
+
+#view-over .pnote { font-size: 0.76rem; color: var(--ink-faint); margin-top: 0.15rem; }
+
+#view-over .pmini { display: flex; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); margin-top: 0.55rem; }
+
+#view-over .pmini i { display: block; height: 100%; }
+
+.pmini .mg { background: var(--g); }
+
+.pmini .ma { background: var(--a); }
+
+.pmini .mr { background: var(--r); }
+
+#view-over .godeep { margin-top: 0.7rem; }
+
+#view-over .godeep button { font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 0.8rem; color: var(--accent-ink); background: var(--g-t2); border: 1px solid var(--accent); border-radius: 99px; padding: 0.3rem 0.8rem; cursor: pointer; width: 100%; }
+
+#view-over .sec { margin: 0px 0px 0.9rem; }
+
+#view-over .sec h3 { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 0.9rem; color: var(--ink-soft); margin: 0px 0px 0.45rem; display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+
+#view-over .sec h3 .sc { font-size: 0.68rem; color: var(--ink-faint); font-style: normal; font-family: var(--sans); }
+
+#view-over .chips { display: flex; flex-direction: column; gap: 0.32rem; }
+
+#view-over .chip { display: flex; align-items: flex-start; gap: 0.45em; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.8rem; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-left-color: ; border-left-style: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left-width: 3px; background: var(--surface); line-height: 1.35; }
+
+#view-over .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; margin-top: 0.42em; }
+
+#view-over .chip.g { border-left-color: var(--g); background: var(--g-t2); }
+
+.chip.g .dot { background: var(--g); }
+
+#view-over .chip.a { border-left-color: var(--a); background: var(--a-t); }
+
+.chip.a .dot { background: var(--a); }
+
+#view-over .chip.r { border-left-color: var(--r); background: var(--r-t); }
+
+.chip.r .dot { background: var(--r); }
+
+#view-over .shared { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--accent); border-radius: 4px; padding: 0px 0.25em; margin-left: 0.3em; vertical-align: 1px; }
+
+.deep .statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0px 0px 0.4rem; }
+
+.deep .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 80px; }
+
+.deep .stat b { display: block; font-family: var(--serif); font-size: 1.25rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+
+.deep .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.deep .greenline { max-width: 74ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.9rem; color: var(--ink-soft); }
+
+.deep .greenline b { color: var(--g); }
+
+.deep .greenline .amb { color: var(--a); font-weight: 600; }
+
+.deep nav.toc { position: sticky; top: 0px; z-index: 20; background: color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin: 0px -2.2rem 1.4rem; padding: 0.55rem 2.2rem; display: flex; gap: 0.15rem; flex-wrap: wrap; justify-content: center; }
+
+.deep nav.toc a { font-size: 0.8rem; color: var(--ink-soft); text-decoration: none; padding: 0.25rem 0.6rem; border-radius: 99px; white-space: nowrap; cursor: pointer; }
+
+.deep nav.toc a:hover { background: var(--panel); color: var(--accent-ink); }
+
+.deep .basket { margin: 0px 0px 1.8rem; scroll-margin-top: 3.2rem; }
+
+.deep .basket > h2 { font-family: var(--serif); font-weight: 600; font-size: 1.4rem; margin: 0px 0px 0.1rem; display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap; border-bottom: 2px solid var(--line2); padding-bottom: 0.35rem; }
+
+.deep .basket > h2 .pi { font-size: 0.78rem; font-style: italic; color: var(--accent-ink); font-family: var(--serif); font-weight: 400; }
+
+.deep .basket > h2 .ct { margin-left: auto; font-size: 0.72rem; color: var(--ink-faint); font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.deep .basket > .blurb { font-size: 0.85rem; color: var(--ink-faint); margin: 0.5rem 0px 1rem; max-width: 82ch; }
+
+.deep details.fam { border: 1px solid var(--line); border-radius: 9px; margin: 0px 0px 0.4rem; background: var(--surface); }
+
+.deep details.fam > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.75rem; font-family: var(--serif); font-size: 0.96rem; }
+
+.deep details.fam > summary::-webkit-details-marker { display: none; }
+
+.deep details.fam > summary::before { content: "▶"; font-size: 0.62rem; color: var(--ink-faint); transition: transform 0.15s; flex: 0 0 auto; }
+
+.deep details.fam[open] > summary::before { transform: rotate(90deg); }
+
+.deep .famname { font-weight: 600; }
+
+.deep .famr { font-size: 0.68rem; color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+
+.deep details.fam > summary em { font-style: italic; font-weight: 400; color: var(--ink-faint); font-size: 0.76rem; }
+
+.deep .fambar { margin-left: auto; display: flex; width: 60px; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); flex: 0 0 auto; }
+
+.deep .fambar i { display: block; height: 100%; }
+
+.fambar .mg { background: var(--g); }
+
+.fambar .ma { background: var(--a); }
+
+.fambar .mr { background: var(--r); }
+
+.deep .famct { font-size: 0.7rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; min-width: 2.2em; text-align: right; flex: 0 0 auto; }
+
+.deep .fambody { padding: 0.15rem 0.75rem 0.65rem; }
+
+.deep .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 0.3rem; }
+
+.deep .tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+
+.deep .tc .tl { color: var(--ink); }
+
+.deep .tc .te { font-size: 0.69rem; color: var(--ink-soft); font-style: italic; }
+
+.deep .tc.g { border-left-color: var(--g); background: var(--g-t2); }
+
+.deep .tc.a { border-left-color: var(--a); background: var(--a-t); }
+
+.deep .tc.r { border-left-color: var(--r); background: var(--r-t); }
+
+.deep .caveat { font-size: 0.76rem; color: var(--ink-faint); background: var(--panel); border-left: 3px solid var(--a); border-radius: 0px 7px 7px 0px; padding: 0.55rem 0.8rem; margin: 0px 0px 1rem; line-height: 1.5; }
+
+.deep .caveat b { color: var(--ink-soft); }
+
+footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1rem; font-size: 0.77rem; color: var(--ink-faint); line-height: 1.6; }
+
+.toggle { position: fixed; top: 0.7rem; right: 0.7rem; background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft); border-radius: 99px; padding: 0.32rem 0.68rem; font-size: 0.76rem; cursor: pointer; z-index: 30; }
+
+@media (max-width: 560px) {
+  .deep nav.toc { margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem; }
+}
+</style>
+<style>
+
+/* ── archive dress: ground tokens (per Sacred Map Harmonization §III) ──
+   per-tradition --accent/--accent-ink are KEPT; the ground converges. */
+:root, :root[data-theme="light"] {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #a09080;
+  --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Georgia, 'Times New Roman', serif;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+}
+/* archive top strip */
+#arch-topbar { display:flex; justify-content:space-between; align-items:center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: #7a5c3a; }
+#arch-topnav { display: flex; gap: 22px; }
+
+/* ── five-state chip dress (Map Node States specimen, verbatim tokens) ── */
+.m-held, .m-several { background: #f1ebe1 !important;
+  border-color: #e0d8c8 !important; border-left: 3px solid #7a5c3a !important; }
+.m-possible { background: none !important;
+  border-color: #ddd0b8 !important; border-left: 3px solid #c9ab7a !important; }
+.m-none { background: none !important;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-restricted { background: none !important;
+  border: 1px dashed #b8ab99 !important; border-left: 3px dashed #a09080 !important; }
+.m-unmapped { background: none !important; opacity: .75;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-held .nm, .m-several .nm, .m-held .tl, .m-several .tl { color: var(--ink) !important; }
+.m-possible .nm, .m-possible .tl { color: var(--ink-soft) !important; }
+.m-none .nm, .m-none .tl, .m-unmapped .nm, .m-unmapped .tl { color: var(--ink-faint) !important; }
+.m-restricted .nm, .m-restricted .tl { color: var(--ink-faint) !important; }
+.mdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  display: inline-block; margin-right: 2px; box-sizing: border-box; }
+.m-held .mdot { background: #7a5c3a; }
+.m-several .mdot { background: #7a5c3a; box-shadow: 0 0 0 1.5px #f1ebe1, 0 0 0 3px #7a5c3a; }
+.m-possible .mdot { border: 1.5px solid #a8865a; }
+.m-none .mdot, .m-unmapped .mdot { background: #ddd6c8; }
+.m-restricted .mdot { border: 1.5px dashed #a09080; }
+.m-held .dot, .m-several .dot, .m-possible .dot, .m-none .dot,
+.m-restricted .dot, .m-unmapped .dot { display: none; }
+a.m-link { text-decoration: none; }
+:root[data-theme="dark"] .m-held, :root[data-theme="dark"] .m-several {
+  background: #2a2620 !important; border-left-color: #c4a060 !important; }
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background: #c4a060; }
+:root[data-theme="dark"] .m-several .mdot { box-shadow: 0 0 0 1.5px #2a2620, 0 0 0 3px #c4a060; }
+
+/* derived four-band zone bar */
+.zb { display: inline-flex; height: 6px; width: 170px; border-radius: 3px;
+  overflow: hidden; background: var(--track); vertical-align: middle; }
+.zb i { display: block; height: 100%; }
+.zb .zb-held { background: #7a5c3a; }
+.zb .zb-poss { background: none; border-top: 6px double #a8865a; box-sizing: border-box; }
+.zb .zb-none { background: #ddd6c8; }
+.zb .zb-res  { background: repeating-linear-gradient(45deg, #a09080 0 2px, #eee9e0 2px 4px); }
+
+/* legend strip */
+#m-legend { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2); padding: 12px 0; margin: 18px 0 26px;
+  font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em; text-transform: uppercase; }
+#m-legend span { display: inline-flex; align-items: center; gap: 7px; }
+#m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
+  margin: -14px 0 26px; max-width: 46em; }
+
+/* chooser inset (specimen form) */
+.m-chooser { border-left: 2px solid #7a5c3a; background: #f6f2ea;
+  margin: 8px 0 14px 12px; padding: 12px 18px; max-width: 30em; }
+:root[data-theme="dark"] .m-chooser { background: #26232c; }
+.m-chooser .mc-head { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
+.m-chooser a { display: block; font: 400 14px/1.5 var(--serif); color: var(--ink);
+  text-decoration: none; }
+.m-chooser a:hover { color: #7a5c3a; }
+.m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
+.m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
+
+/* fraction line under the mast */
+#m-fraction { text-align: center;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); margin: 4px 0 0; }
+#m-fraction b { color: #7a5c3a; font-weight: 400; }
+
+/* deep views: shown stacked (the artifact's tab JS was not captured) */
+section.view { display: block !important; }
+
+</style>
+</head>
+<body data-map="islam">
+<div id="arch-topbar"><a href="../hall/">&larr; The Religion Hall</a><nav id="arch-topnav"><a href="../">The Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="m-legend" aria-label="Node states">
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
+<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
+<span style="color:#a8865a"><span class="mdot" style="border:1.5px solid #a8865a"></span>public domain &middot; not yet held</span>
+<span style="color:#a09080"><span class="mdot" style="background:#ddd6c8"></span>no PD translation</span>
+<span style="color:#a09080"><span class="mdot" style="border:1.5px dashed #a09080"></span>held &middot; restricted</span>
+</div>
+<button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
+<div class="page">
+  <header class="mast"><div class="sym" aria-hidden="true">☪</div><h1>The Map of Islamic Texts</h1><p>The Qurʾān, the hadith collections, the sīra, tafsīr, and the Sufi classics.</p></header>
+
+  <div class="statband" id="isl-stat"><div class="stat"><b>141</b><span>texts</span></div><div class="stat"><b>118</b><span>green</span></div><div class="stat"><b>1</b><span>amber</span></div><div class="stat"><b>22</b><span>red</span></div></div><p class="greenline" id="isl-green"><b>118 green</b> (the whole Qurʾān + the Sufi poets) — but <b style="color:var(--r)">22 red</b>: every Hadith collection, the Sīra, and the tafsīrs are Arabic-ancient but English-©.</p><nav class="toc" id="isl-toc"><a data-j="is-quran">The Qurʾān</a><a data-j="is-hadith">Hadith — the Sunna</a><a data-j="is-sira">Sīra &amp; History</a><a data-j="is-tafsir">Tafsīr — commentary</a><a data-j="is-sufi">Sufi &amp; theology</a></nav><div class="legend"><span class="lg"><span class="sw" style="background:var(--g)"></span> worldwide-PD</span><span class="lg"><span class="sw" style="background:var(--r)"></span> Arabic PD, English ©</span><span class="lg" style="color:var(--ink-faint)">hover for edition</span></div><main id="isl-main"><section class="basket" id="is-quran"><h2>The Qurʾān <span class="pi">114 suras · Arabic is canonical</span><span class="ct">114 texts</span></h2><div class="blurb">The whole Qurʾān is public-domain in English via Sale (1734), Rodwell (1861), Palmer (SBE, 1880) and — newly, since 1 Jan 2026 — Pickthall (1930). Only the Arabic is doctrinally canonical; these are "interpretations."</div><details class="fam" open=""><summary><span class="famname">The 114 Suras</span><span class="famr">Al-Fātiḥah → An-Nās</span><em>Sale · Palmer · Pickthall (PD)</em><span class="fambar"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i></span><span class="famct">114</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">1. Al-Fatihah — The Opener</span><span class="te">7 verses · Meccan</span></span><span class="tc g"><span class="tl">2. Al-Baqarah — The Cow</span><span class="te">286 verses · Medinan</span></span><span class="tc g"><span class="tl">3. Ali 'Imran — Family of Imran</span><span class="te">200 verses · Medinan</span></span><span class="tc g"><span class="tl">4. An-Nisa — The Women</span><span class="te">176 verses · Medinan</span></span><span class="tc g"><span class="tl">5. Al-Ma'idah — The Table Spread</span><span class="te">120 verses · Medinan</span></span><span class="tc g"><span class="tl">6. Al-An'am — The Cattle</span><span class="te">165 verses · Meccan</span></span><span class="tc g"><span class="tl">7. Al-A'raf — The Heights</span><span class="te">206 verses · Meccan</span></span><span class="tc g"><span class="tl">8. Al-Anfal — The Spoils of War</span><span class="te">75 verses · Medinan</span></span><span class="tc g"><span class="tl">9. At-Tawbah — The Repentance</span><span class="te">129 verses · Medinan</span></span><span class="tc g"><span class="tl">10. Yunus — Jonah</span><span class="te">109 verses · Meccan</span></span><span class="tc g"><span class="tl">11. Hud — Hud</span><span class="te">123 verses · Meccan</span></span><span class="tc g"><span class="tl">12. Yusuf — Joseph</span><span class="te">111 verses · Meccan</span></span><span class="tc g"><span class="tl">13. Ar-Ra'd — The Thunder</span><span class="te">43 verses · Medinan</span></span><span class="tc g"><span class="tl">14. Ibrahim — Abraham</span><span class="te">52 verses · Meccan</span></span><span class="tc g"><span class="tl">15. Al-Hijr — The Rocky Tract</span><span class="te">99 verses · Meccan</span></span><span class="tc g"><span class="tl">16. An-Nahl — The Bee</span><span class="te">128 verses · Meccan</span></span><span class="tc g"><span class="tl">17. Al-Isra — The Night Journey</span><span class="te">111 verses · Meccan</span></span><span class="tc g"><span class="tl">18. Al-Kahf — The Cave</span><span class="te">110 verses · Meccan</span></span><span class="tc g"><span class="tl">19. Maryam — Mary</span><span class="te">98 verses · Meccan</span></span><span class="tc g"><span class="tl">20. Taha — Ta-Ha</span><span class="te">135 verses · Meccan</span></span><span class="tc g"><span class="tl">21. Al-Anbya — The Prophets</span><span class="te">112 verses · Meccan</span></span><span class="tc g"><span class="tl">22. Al-Hajj — The Pilgrimage</span><span class="te">78 verses · Medinan</span></span><span class="tc g"><span class="tl">23. Al-Mu'minun — The Believers</span><span class="te">118 verses · Meccan</span></span><span class="tc g"><span class="tl">24. An-Nur — The Light</span><span class="te">64 verses · Medinan</span></span><span class="tc g"><span class="tl">25. Al-Furqan — The Criterion</span><span class="te">77 verses · Meccan</span></span><span class="tc g"><span class="tl">26. Ash-Shu'ara — The Poets</span><span class="te">227 verses · Meccan</span></span><span class="tc g"><span class="tl">27. An-Naml — The Ant</span><span class="te">93 verses · Meccan</span></span><span class="tc g"><span class="tl">28. Al-Qasas — The Stories</span><span class="te">88 verses · Meccan</span></span><span class="tc g"><span class="tl">29. Al-'Ankabut — The Spider</span><span class="te">69 verses · Meccan</span></span><span class="tc g"><span class="tl">30. Ar-Rum — The Romans</span><span class="te">60 verses · Meccan</span></span><span class="tc g"><span class="tl">31. Luqman — Luqman</span><span class="te">34 verses · Meccan</span></span><span class="tc g"><span class="tl">32. As-Sajdah — The Prostration</span><span class="te">30 verses · Meccan</span></span><span class="tc g"><span class="tl">33. Al-Ahzab — The Combined Forces</span><span class="te">73 verses · Medinan</span></span><span class="tc g"><span class="tl">34. Saba — Sheba</span><span class="te">54 verses · Meccan</span></span><span class="tc g"><span class="tl">35. Fatir — Originator</span><span class="te">45 verses · Meccan</span></span><span class="tc g"><span class="tl">36. Ya-Sin — Ya Sin</span><span class="te">83 verses · Meccan</span></span><span class="tc g"><span class="tl">37. As-Saffat — Those who set the Ranks</span><span class="te">182 verses · Meccan</span></span><span class="tc g"><span class="tl">38. Sad — The Letter "Saad"</span><span class="te">88 verses · Meccan</span></span><span class="tc g"><span class="tl">39. Az-Zumar — The Troops</span><span class="te">75 verses · Meccan</span></span><span class="tc g"><span class="tl">40. Ghafir — The Forgiver</span><span class="te">85 verses · Meccan</span></span><span class="tc g"><span class="tl">41. Fussilat — Explained in Detail</span><span class="te">54 verses · Meccan</span></span><span class="tc g"><span class="tl">42. Ash-Shuraa — The Consultation</span><span class="te">53 verses · Meccan</span></span><span class="tc g"><span class="tl">43. Az-Zukhruf — The Ornaments of Gold</span><span class="te">89 verses · Meccan</span></span><span class="tc g"><span class="tl">44. Ad-Dukhan — The Smoke</span><span class="te">59 verses · Meccan</span></span><span class="tc g"><span class="tl">45. Al-Jathiyah — The Crouching</span><span class="te">37 verses · Meccan</span></span><span class="tc g"><span class="tl">46. Al-Ahqaf — The Wind-Curved Sandhills</span><span class="te">35 verses · Meccan</span></span><span class="tc g"><span class="tl">47. Muhammad — Muhammad</span><span class="te">38 verses · Medinan</span></span><span class="tc g"><span class="tl">48. Al-Fath — The Victory</span><span class="te">29 verses · Medinan</span></span><span class="tc g"><span class="tl">49. Al-Hujurat — The Rooms</span><span class="te">18 verses · Medinan</span></span><span class="tc g"><span class="tl">50. Qaf — The Letter "Qaf"</span><span class="te">45 verses · Meccan</span></span><span class="tc g"><span class="tl">51. Adh-Dhariyat — The Winnowing Winds</span><span class="te">60 verses · Meccan</span></span><span class="tc g"><span class="tl">52. At-Tur — The Mount</span><span class="te">49 verses · Meccan</span></span><span class="tc g"><span class="tl">53. An-Najm — The Star</span><span class="te">62 verses · Meccan</span></span><span class="tc g"><span class="tl">54. Al-Qamar — The Moon</span><span class="te">55 verses · Meccan</span></span><span class="tc g"><span class="tl">55. Ar-Rahman — The Beneficent</span><span class="te">78 verses · Medinan</span></span><span class="tc g"><span class="tl">56. Al-Waqi'ah — The Inevitable</span><span class="te">96 verses · Meccan</span></span><span class="tc g"><span class="tl">57. Al-Hadid — The Iron</span><span class="te">29 verses · Medinan</span></span><span class="tc g"><span class="tl">58. Al-Mujadila — The Pleading Woman</span><span class="te">22 verses · Medinan</span></span><span class="tc g"><span class="tl">59. Al-Hashr — The Exile</span><span class="te">24 verses · Medinan</span></span><span class="tc g"><span class="tl">60. Al-Mumtahanah — She that is to be examined</span><span class="te">13 verses · Medinan</span></span><span class="tc g"><span class="tl">61. As-Saf — The Ranks</span><span class="te">14 verses · Medinan</span></span><span class="tc g"><span class="tl">62. Al-Jumu'ah — The Congregation, Friday</span><span class="te">11 verses · Medinan</span></span><span class="tc g"><span class="tl">63. Al-Munafiqun — The Hypocrites</span><span class="te">11 verses · Medinan</span></span><span class="tc g"><span class="tl">64. At-Taghabun — The Mutual Disillusion</span><span class="te">18 verses · Medinan</span></span><span class="tc g"><span class="tl">65. At-Talaq — The Divorce</span><span class="te">12 verses · Medinan</span></span><span class="tc g"><span class="tl">66. At-Tahrim — The Prohibition</span><span class="te">12 verses · Medinan</span></span><span class="tc g"><span class="tl">67. Al-Mulk — The Sovereignty</span><span class="te">30 verses · Meccan</span></span><span class="tc g"><span class="tl">68. Al-Qalam — The Pen</span><span class="te">52 verses · Meccan</span></span><span class="tc g"><span class="tl">69. Al-Haqqah — The Reality</span><span class="te">52 verses · Meccan</span></span><span class="tc g"><span class="tl">70. Al-Ma'arij — The Ascending Stairways</span><span class="te">44 verses · Meccan</span></span><span class="tc g"><span class="tl">71. Nuh — Noah</span><span class="te">28 verses · Meccan</span></span><span class="tc g"><span class="tl">72. Al-Jinn — The Jinn</span><span class="te">28 verses · Meccan</span></span><span class="tc g"><span class="tl">73. Al-Muzzammil — The Enshrouded One</span><span class="te">20 verses · Meccan</span></span><span class="tc g"><span class="tl">74. Al-Muddaththir — The Cloaked One</span><span class="te">56 verses · Meccan</span></span><span class="tc g"><span class="tl">75. Al-Qiyamah — The Resurrection</span><span class="te">40 verses · Meccan</span></span><span class="tc g"><span class="tl">76. Al-Insan — The Man</span><span class="te">31 verses · Medinan</span></span><span class="tc g"><span class="tl">77. Al-Mursalat — The Emissaries</span><span class="te">50 verses · Meccan</span></span><span class="tc g"><span class="tl">78. An-Naba — The Tidings</span><span class="te">40 verses · Meccan</span></span><span class="tc g"><span class="tl">79. An-Nazi'at — Those who drag forth</span><span class="te">46 verses · Meccan</span></span><span class="tc g"><span class="tl">80. 'Abasa — He Frowned</span><span class="te">42 verses · Meccan</span></span><span class="tc g"><span class="tl">81. At-Takwir — The Overthrowing</span><span class="te">29 verses · Meccan</span></span><span class="tc g"><span class="tl">82. Al-Infitar — The Cleaving</span><span class="te">19 verses · Meccan</span></span><span class="tc g"><span class="tl">83. Al-Mutaffifin — The Defrauding</span><span class="te">36 verses · Meccan</span></span><span class="tc g"><span class="tl">84. Al-Inshiqaq — The Sundering</span><span class="te">25 verses · Meccan</span></span><span class="tc g"><span class="tl">85. Al-Buruj — The Mansions of the Stars</span><span class="te">22 verses · Meccan</span></span><span class="tc g"><span class="tl">86. At-Tariq — The Nightcommer</span><span class="te">17 verses · Meccan</span></span><span class="tc g"><span class="tl">87. Al-A'la — The Most High</span><span class="te">19 verses · Meccan</span></span><span class="tc g"><span class="tl">88. Al-Ghashiyah — The Overwhelming</span><span class="te">26 verses · Meccan</span></span><span class="tc g"><span class="tl">89. Al-Fajr — The Dawn</span><span class="te">30 verses · Meccan</span></span><span class="tc g"><span class="tl">90. Al-Balad — The City</span><span class="te">20 verses · Meccan</span></span><span class="tc g"><span class="tl">91. Ash-Shams — The Sun</span><span class="te">15 verses · Meccan</span></span><span class="tc g"><span class="tl">92. Al-Layl — The Night</span><span class="te">21 verses · Meccan</span></span><span class="tc g"><span class="tl">93. Ad-Duhaa — The Morning Hours</span><span class="te">11 verses · Meccan</span></span><span class="tc g"><span class="tl">94. Ash-Sharh — The Relief</span><span class="te">8 verses · Meccan</span></span><span class="tc g"><span class="tl">95. At-Tin — The Fig</span><span class="te">8 verses · Meccan</span></span><span class="tc g"><span class="tl">96. Al-'Alaq — The Clot</span><span class="te">19 verses · Meccan</span></span><span class="tc g"><span class="tl">97. Al-Qadr — The Power</span><span class="te">5 verses · Meccan</span></span><span class="tc g"><span class="tl">98. Al-Bayyinah — The Clear Proof</span><span class="te">8 verses · Medinan</span></span><span class="tc g"><span class="tl">99. Az-Zalzalah — The Earthquake</span><span class="te">8 verses · Medinan</span></span><span class="tc g"><span class="tl">100. Al-'Adiyat — The Courser</span><span class="te">11 verses · Meccan</span></span><span class="tc g"><span class="tl">101. Al-Qari'ah — The Calamity</span><span class="te">11 verses · Meccan</span></span><span class="tc g"><span class="tl">102. At-Takathur — The Rivalry in world increase</span><span class="te">8 verses · Meccan</span></span><span class="tc g"><span class="tl">103. Al-'Asr — The Declining Day</span><span class="te">3 verses · Meccan</span></span><span class="tc g"><span class="tl">104. Al-Humazah — The Traducer</span><span class="te">9 verses · Meccan</span></span><span class="tc g"><span class="tl">105. Al-Fil — The Elephant</span><span class="te">5 verses · Meccan</span></span><span class="tc g"><span class="tl">106. Quraysh — Quraysh</span><span class="te">4 verses · Meccan</span></span><span class="tc g"><span class="tl">107. Al-Ma'un — The Small kindnesses</span><span class="te">7 verses · Meccan</span></span><span class="tc g"><span class="tl">108. Al-Kawthar — The Abundance</span><span class="te">3 verses · Meccan</span></span><span class="tc g"><span class="tl">109. Al-Kafirun — The Disbelievers</span><span class="te">6 verses · Meccan</span></span><span class="tc g"><span class="tl">110. An-Nasr — The Divine Support</span><span class="te">3 verses · Medinan</span></span><span class="tc g"><span class="tl">111. Al-Masad — The Palm Fiber</span><span class="te">5 verses · Meccan</span></span><span class="tc g"><span class="tl">112. Al-Ikhlas — The Sincerity</span><span class="te">4 verses · Meccan</span></span><span class="tc g"><span class="tl">113. Al-Falaq — The Daybreak</span><span class="te">5 verses · Meccan</span></span><span class="tc g"><span class="tl">114. An-Nas — Mankind</span><span class="te">6 verses · Meccan</span></span></div></div></details></section><section class="basket" id="is-hadith"><h2>Hadith — the Sunna <span class="pi">Arabic ancient · English all ©</span><span class="ct">12 texts</span></h2><div class="blurb">Every canonical Hadith collection exists in English only under modern copyright (Muhsin Khan, Siddiqui, Darussalam) — the Arabic is ancient/PD, the English is not.</div><details class="fam" open=""><summary><span class="famname">Kutub al-Sittah — the Six Sunni Books</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">6</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Ṣaḥīḥ al-Bukhārī (d.870)</span><span class="te">~7,563 hadith · English ©</span></span><span class="tc r"><span class="tl">Ṣaḥīḥ Muslim (d.875)</span><span class="te">~7,500 · English ©</span></span><span class="tc r"><span class="tl">Sunan Abī Dāwūd (d.889)</span><span class="te">~5,274 · ©</span></span><span class="tc r"><span class="tl">Jāmiʿ al-Tirmidhī (d.892)</span><span class="te">~4,400 · ©</span></span><span class="tc r"><span class="tl">Sunan al-Nasāʾī (d.915)</span><span class="te">~5,758 · ©</span></span><span class="tc r"><span class="tl">Sunan Ibn Mājah (d.887)</span><span class="te">~4,341 · ©</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Appended Sunni collections</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">2</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Muwaṭṭaʾ Mālik (d.795)</span><span class="te">earliest · English ©</span></span><span class="tc r"><span class="tl">Musnad Aḥmad ibn Ḥanbal (d.855)</span><span class="te">~27,000+ · ©</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Shia — the Four Books</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">al-Kāfī (al-Kulaynī, d.941)</span><span class="te">16,199 · ©</span></span><span class="tc r"><span class="tl">Man lā yaḥḍuruhu al-Faqīh (al-Ṣadūq, d.991)</span><span class="te">©</span></span><span class="tc r"><span class="tl">Tahdhīb al-Aḥkām (al-Ṭūsī, d.1067)</span><span class="te">©</span></span><span class="tc r"><span class="tl">al-Istibṣār (al-Ṭūsī)</span><span class="te">©</span></span></div></div></details></section><section class="basket" id="is-sira"><h2>Sīra &amp; History <span class="pi"></span><span class="ct">4 texts</span></h2><div class="blurb">The prophetic biography and early histories — no public-domain English exists.</div><details class="fam" open=""><summary><span class="famname">Biography &amp; chronicle</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Ibn Isḥāq / Ibn Hishām — Sīrat Rasūl Allāh</span><span class="te">Guillaume 1955 ©</span></span><span class="tc r"><span class="tl">al-Ṭabarī — History (Tārīkh)</span><span class="te">SUNY 40-vol ©</span></span><span class="tc r"><span class="tl">Ibn Saʿd — Kitāb al-Ṭabaqāt</span><span class="te">© / partial</span></span><span class="tc r"><span class="tl">al-Wāqidī — Kitāb al-Maghāzī</span><span class="te">© / partial</span></span></div></div></details></section><section class="basket" id="is-tafsir"><h2>Tafsīr — commentary <span class="pi"></span><span class="ct">5 texts</span></h2><div class="blurb">The great Qurʾān commentaries: mostly untranslated, the rest modern ©.</div><details class="fam" open=""><summary><span class="famname">The major commentaries</span><span class="fambar"><i class="mg" style="width:0%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:100%"></i></span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Tafsīr al-Ṭabarī (d.923)</span><span class="te">partial © / untransl.</span></span><span class="tc r"><span class="tl">Tafsīr Ibn Kathīr (d.1373)</span><span class="te">Darussalam © abridged</span></span><span class="tc r"><span class="tl">Tafsīr al-Jalālayn (d.1459/1505)</span><span class="te">Hamza/Bewley ©</span></span><span class="tc r"><span class="tl">al-Kashshāf (al-Zamakhsharī, d.1144)</span><span class="te">untranslated</span></span><span class="tc r"><span class="tl">Mafātīḥ al-Ghayb (al-Rāzī, d.1210)</span><span class="te">untranslated</span></span></div></div></details></section><section class="basket" id="is-sufi"><h2>Sufi &amp; theology <span class="pi">the green islands</span><span class="ct">6 texts</span></h2><div class="blurb">Where the copyright wall thins — the Persian Sufi poets reached the Victorian translators.</div><details class="fam" open=""><summary><span class="famname">The classics</span><span class="fambar"><i class="mg" style="width:66.66666666666666%"></i><i class="ma" style="width:16.666666666666664%"></i><i class="mr" style="width:16.666666666666664%"></i></span><span class="famct">6</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Rūmī — the Masnavī</span><span class="te">Whinfield 1887 · early Nicholson (PD)</span></span><span class="tc g"><span class="tl">ʿAṭṭār — Conference of the Birds</span><span class="te">FitzGerald 1889 (PD)</span></span><span class="tc g"><span class="tl">Saʿdī — Gulistān · Būstān</span><span class="te">Eastwick/Ross 1880s (PD)</span></span><span class="tc g"><span class="tl">ʿUmar Khayyām — Rubáiyát</span><span class="te">FitzGerald 1859 (PD)</span></span><span class="tc a"><span class="tl">al-Ghazālī — Iḥyāʾ ʿUlūm al-Dīn</span><span class="te">Field partials PD; complete ©</span></span><span class="tc r"><span class="tl">Ibn ʿArabī — Fuṣūṣ · Futūḥāt</span><span class="te">modern © / untranslated</span></span></div></div></details></section><!-- reception-layer:start (generated by build_reception_layers.py — Task 32 ruling 1, the Shintō precedent; derived from the live reader-only set, never retyped) --><section class="basket" id="is-reception"><h2>Held in this archive <span class="pi">awaiting placement</span><span class="ct">20 texts</span></h2><div class="blurb">Texts of this tradition the archive holds that have no chip on this map and no room placement &mdash; browsable here honestly; each awaits a reviewed binding or a structure-growth pass (the stays-reception rulings of the placement program, 2026-07).</div><div class="fambody"><div class="tgrid"><a class="tc g" href="../?text=avicenna-soul_berg.json" style="text-decoration:none"><span class="tl">A Compendium on the Soul</span><span class="te">Edward Abbott van Dyck 1906 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=arabian-poetry-clouston_clouston.json" style="text-decoration:none"><span class="tl">Arabian Poetry</span><span class="te">W.A. Clouston 1881 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=arabian-wisdom-wortabet_wortabet.json" style="text-decoration:none"><span class="tl">Arabian Wisdom</span><span class="te">John Wortabet 1913 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=history-literary-of-the-arabs-reynold-nicholson_anonymous.json" style="text-decoration:none"><span class="tl">History (Literary) of the Arabs</span><span class="te">Reynold Nicholson 1900 &middot; a work about the tradition — stays reception (R1) &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=oriental-mysticism-palmer_palmer.json" style="text-decoration:none"><span class="tl">Oriental Mysticism</span><span class="te">E.H. Palmer 1867 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=salaman-absal-fitzgerald_fitzgerald.json" style="text-decoration:none"><span class="tl">Salámán and Absál</span><span class="te">Edward FitzGerald 1856 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=afghan-poetry-dorn_raverty.json" style="text-decoration:none"><span class="tl">Selections from the Poetry of the Afghans</span><span class="te">H.G. Raverty 1862 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=some-religious-and-moral-teachings-al-ghazzali_anonymous.json" style="text-decoration:none"><span class="tl">Some religious and moral teachings</span><span class="te">Al-Ghazzali 1900 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=ghazzali-confessions_field.json" style="text-decoration:none"><span class="tl">The Confessions of Al-Ghazzali</span><span class="te">Claud Field 1909 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=diwan-abu-al-ala-nicholson_nicholson-abulala.json" style="text-decoration:none"><span class="tl">The Diwan of Abu'l-ʿAla al-Maʿarri</span><span class="te">Reynold A. Nicholson 1921 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=diwan-zeb-un-nissa-westbrook_westbrook.json" style="text-decoration:none"><span class="tl">The Diwan of Zeb-un-Nissa</span><span class="te">Magan Lal, Jessie Duncan Westbrook 1913 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=rumi-divan-festival_hastie.json" style="text-decoration:none"><span class="tl">The Festival of Spring</span><span class="te">William Hastie 1903 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=hujviri-kashf_nicholson.json" style="text-decoration:none"><span class="tl">The Kashf al-Mahjub</span><span class="te">Reynold A. Nicholson 1911 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=love-letters-rumi_anonymous.json" style="text-decoration:none"><span class="tl">The Love Letters</span><span class="te">Anonymous 1905 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=nicholson-mystics-islam_nicholson.json" style="text-decoration:none"><span class="tl">The Mystics of Islam</span><span class="te">Reynold A. Nicholson 1914 &middot; a work about the tradition — stays reception (R1) &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=persian-mystics-rumi_davis.json" style="text-decoration:none"><span class="tl">The Persian Mystics: Jalalu'd-din Rumi</span><span class="te">F. Hadland Davis 1912 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=the-philosophy-and-theology-averroes_anonymous.json" style="text-decoration:none"><span class="tl">The Philosophy and Theology</span><span class="te">Averroes 1900 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=wollaston-religion-koran_wollaston.json" style="text-decoration:none"><span class="tl">The Religion of the Koran</span><span class="te">Arthur N. Wollaston 1911 &middot; a work about the tradition — stays reception (R1) &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=secret-rose-garden-shabistari_lederer.json" style="text-decoration:none"><span class="tl">The Secret Rose Garden</span><span class="te">Florence Lederer 1920 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=iqbal-secrets-of-self_nicholson.json" style="text-decoration:none"><span class="tl">The Secrets of the Self (Asrār-i Khudī)</span><span class="te">Reynold A. Nicholson 1920 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a></div></div></section><!-- reception-layer:end --></main>
+
+
+  <footer id="foot">A structural atlas of the three Abrahamic traditions, enumerated to 490 named texts — coloured by <b>worldwide</b> public-domain English availability (translator death + 70 AND the US 95-yr term). Sources: Sefaria (Tanakh 39, Mishnah 63), quran-json (114 suras), KJV/ASV, CCEL (ANF/NPNF titles — PD text, own structure), JPS 1917, SBE. Hadith/tafsīr counts are collection-level. Best-effort scholarship, not legal advice.</footer>
+</div>
+
+
+<script>
+(function () {
+  var KEY = 'da-dark-mode';
+  if (localStorage.getItem(KEY) === 'true')
+    document.documentElement.setAttribute('data-theme', 'dark');
+  else
+    document.documentElement.setAttribute('data-theme', 'light');
+  function flip() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    localStorage.setItem(KEY, dark ? 'false' : 'true');
+    label();
+  }
+  function label() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+      b.textContent = dark ? 'Light' : 'Dark';
+    });
+  }
+  document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
+    b.addEventListener('click', flip);
+  });
+  label();
+
+  function norm(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+            .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+  }
+  // Task 41a — one chooser popover at a time; ESC / outside-click /
+  // scroll close it, focus returns to the opening chip.
+  window.__mcPop = null; window.__mcOpener = null;
+  window.__mcClose = function () {
+    if (window.__mcPop) { window.__mcPop.remove(); window.__mcPop = null; }
+    if (window.__mcOpener) {
+      try { window.__mcOpener.focus(); } catch (e) {}
+      window.__mcOpener = null;
+    }
+  };
+  document.addEventListener('click', function (e) {
+    if (window.__mcPop && !window.__mcPop.contains(e.target) &&
+        !(window.__mcOpener && window.__mcOpener.contains(e.target)))
+      window.__mcClose();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') window.__mcClose();
+  });
+  window.addEventListener('scroll', function () { window.__mcClose(); }, true);
+  window.addEventListener('resize', function () { window.__mcClose(); });
+
+  var SLUG = document.body.getAttribute('data-map');
+  if (!SLUG) return;
+  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  .then(function (B) {
+    var byKey = {};
+    B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      var zid = sec.id.replace(/^zone-/, '');
+      var states = [];
+      sec.querySelectorAll('.chip, .tc, .su').forEach(function (el) {
+        var nmEl = el.querySelector('.nm') || el.querySelector('.tl') ||
+                   el.querySelector('span:last-child');
+        if (!nmEl) return;
+        var b = byKey[zid + '||' + norm(nmEl.textContent)];
+        if (!b) return;
+        states.push(b.state);
+        el.classList.add('m-' + b.state.replace('held-several', 'several'));
+        if (!el.querySelector('.mdot')) {
+          var d = document.createElement('span');
+          d.className = 'mdot';
+          el.insertBefore(d, el.firstChild);
+        }
+        if (b.restricted_note) {
+          el.title = (el.title ? el.title + ' — ' : '') + b.restricted_note.length +
+                     ' related record(s) held restricted (' +
+                     b.restricted_note[0].reason_class + ')';
+        }
+        if (b.contained_in) {
+          el.title = (el.title ? el.title + ' — ' : '') + b.contained_in;
+        }
+        if (false) { // 42a: the single-held direct-link retired — every held chip pops the chooser
+        } else if ((b.state === 'held' || b.state === 'held-several') && b.read && b.read.length) {
+          el.style.cursor = 'pointer';
+          // 42a — keyboard access in structure mode, the rights-mode pattern
+          el.setAttribute('role', 'button');
+          el.setAttribute('tabindex', '0');
+          el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+          });
+          el.addEventListener('click', function () {
+            // Task 41a — anchored popover: no document reflow, ever.
+            // Second click on the same chip closes.
+            if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+            if (window.__mcOpener === el) { window.__mcClose(); return; }
+            window.__mcClose();
+            var box = document.createElement('div');
+            box.className = 'm-chooser m-chooser-pop';
+            box.tabIndex = -1;
+            var kind = (b.read.length === 1) ? ''
+                     : (b.chooser === 'works') ? b.read.length + ' works held — choose'
+                                               : b.read.length + ' translations held — choose';
+            box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
+                            (kind || 'held — read') +
+                            (b.contained_in ? ' · ' + b.contained_in : '') + '</div>';
+            b.read.forEach(function (r) {
+              var a = document.createElement('a');
+              a.href = '../' + r.url;
+              var label = (b.chooser === 'works')
+                  ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
+                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
+                    ' <span class="mc-sub">· ' + r.work + '</span>';
+              a.innerHTML = label + ' <span class="mc-go">→ read</span>';
+              box.appendChild(a);
+            });
+            document.body.appendChild(box);
+            var rr = el.getBoundingClientRect();
+            var bw = box.offsetWidth, bh = box.offsetHeight;
+            var left = Math.min(Math.max(8, rr.left), window.innerWidth - bw - 8);
+            var top = rr.bottom + 6;
+            if (top + bh > window.innerHeight - 8) top = rr.top - bh - 6;
+            if (top < 8) top = 8;
+            box.style.left = left + 'px';
+            box.style.top = top + 'px';
+            window.__mcPop = box; window.__mcOpener = el;
+            box.focus();
+          });
+        }
+      });
+      if (states.length) {
+        var held = 0, poss = 0, none = 0, res = 0;
+        states.forEach(function (s) {
+          if (s === 'held' || s === 'held-several') held++;
+          else if (s === 'possible') poss++;
+          else if (s === 'restricted') res++;
+          else none++;
+        });
+        var n = states.length;
+        var bar = document.createElement('span');
+        bar.className = 'zb';
+        bar.innerHTML = '<i class="zb-held" style="width:' + (held * 100 / n) + '%"></i>' +
+                        '<i class="zb-poss" style="width:' + (poss * 100 / n) + '%"></i>' +
+                        '<i class="zb-none" style="width:' + (none * 100 / n) + '%"></i>' +
+                        '<i class="zb-res" style="width:' + (res * 100 / n) + '%"></i>';
+        var old = sec.querySelector('.mini, .fambar');
+        var head = sec.querySelector('.zone-h, h2');
+        if (old && old.closest('section') === sec) old.replaceWith(bar);
+        else if (head) head.appendChild(bar);
+      }
+    });
+    // mast fraction line — derived, never typed
+    var held = (B.counts['held'] || 0) + (B.counts['held-several'] || 0);
+    var poss = B.counts['possible'] || 0;
+    fetch('../maps/doors.json').then(function (r) { return r.json(); })
+    .then(function (D) {
+      var door = D.doors.filter(function (d) { return d.tradition === SLUG; })[0];
+      var mast = document.querySelector('.mast');
+      if (!mast || !door) return;
+      var p = document.createElement('p');
+      p.id = 'm-fraction';
+      p.innerHTML = door.sub.replace(/ texts$/, ' texts in the tradition') +
+                    ' · <b>' + held + ' readable here</b> · ' + poss + ' more possible';
+      mast.appendChild(p);
+    });
+  });
+})();
+</script>
+<!-- map-lens:start (generated — edit 05_scripts/map_lens_block.py) -->
+<style>
+/* ── Task 35: the Rights & provenance lens ── */
+#lens-toggle { display:inline-flex; gap:0; margin-right:18px; border:1px solid var(--line2); border-radius:999px; overflow:hidden; }
+#lens-toggle button { font:400 10px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; letter-spacing:.12em; text-transform:uppercase; padding:6px 12px; color:var(--ink-faint); background:none; border:none; cursor:pointer; }
+#lens-toggle button[aria-pressed="true"] { background:var(--accent, #7a5c3a); color:var(--surface, #fff); }
+body[data-lens="rights"] .chip, body[data-lens="rights"] .su, body[data-lens="rights"] .tc,
+body[data-lens="rights"] section[id] h2, body[data-lens="rights"] .zone-h,
+body[data-lens="rights"] .group h3 { cursor:help; }
+/* 36a — the lens switch must be VISIBLE: a state banner + a per-chip
+   mark, so rights mode can never read as inert. */
+#lens-banner { display:none; font:italic 400 13px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142);
+  background:var(--panel,#eeebe5); border-bottom:1px solid var(--line2,#d8d3cc);
+  padding:8px 20px; }
+body[data-lens="rights"] #lens-banner { display:block; }
+body[data-lens="rights"] .chip .nm::after, body[data-lens="rights"] .su::after,
+body[data-lens="rights"] .tc .tl::after {
+  content:" \24D8"; font-size:.85em; opacity:.6; }
+#rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
+#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
+body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
+#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
+#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
+#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
+#rl-panel .rl-sec { margin:0 0 16px; }
+#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
+#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
+#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
+#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
+#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
+#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
+#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
+#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
+.rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
+.rl-ed:hover { border-color:var(--accent,#7a5c3a); }
+.rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
+.rl-relh { font:italic 400 12px/1.4 Georgia,serif; color:var(--ink-faint); margin:10px 0 2px; }
+.rl-none { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-faint); }
+/* ── Task 38: the Rights lens LOOKS like rights ──
+   The chips' native g/a/r classes are buried under the binder's m-*
+   holdings rules (!important); rights mode un-buries them in the
+   specimen palette. The g/a/r instruments (ported legend strip,
+   canon-share triads, family bars) ride ONLY the rights lens; the
+   holdings legend and zone bars ride ONLY the base. */
+body[data-lens="rights"] .chip.g, body[data-lens="rights"] .su.g, body[data-lens="rights"] .tc.g {
+  background:#e5efe1 !important; border-color:#cfe0c8 !important; border-left:3px solid #2E7D32 !important; opacity:1; }
+body[data-lens="rights"] .chip.a, body[data-lens="rights"] .su.a, body[data-lens="rights"] .tc.a {
+  background:#f2e8d3 !important; border-color:#e4d4b4 !important; border-left:3px solid #B7791F !important; opacity:1; }
+body[data-lens="rights"] .chip.r, body[data-lens="rights"] .su.r, body[data-lens="rights"] .tc.r {
+  background:#f5ddd8 !important; border-color:#e6c4bc !important; border-left:3px solid #C0392B !important; opacity:1; }
+body[data-lens="rights"] .chip.x, body[data-lens="rights"] .su.x, body[data-lens="rights"] .tc.x {
+  background:none !important; border-left:3px solid #ddd6c8 !important; opacity:.8; }
+body[data-lens="rights"] .chip .nm, body[data-lens="rights"] .su, body[data-lens="rights"] .tc .tl {
+  color:#241f18 !important; }
+body[data-lens="rights"] .chip.g .mdot { background:#2E7D32 !important; border:none !important; box-shadow:none !important; }
+body[data-lens="rights"] .chip.a .mdot { background:#B7791F !important; border:none !important; box-shadow:none !important; }
+body[data-lens="rights"] .chip.r .mdot { background:#C0392B !important; border:none !important; box-shadow:none !important; }
+body[data-lens="rights"] .zb { display:none !important; }
+/* legend swap: the ported g/a/r legend is the rights legend; the
+   binder's holdings legend is the base's */
+.legend { display:none !important; }
+body[data-lens="rights"] .legend { display:flex !important; }
+body[data-lens="rights"] #m-legend { display:none !important; }
+/* canon-share triads + family bars are g/a/r figures — rights only */
+#gradient, .fambar { display:none !important; }
+body[data-lens="rights"] #gradient { display:block !important; }
+body[data-lens="rights"] .fambar { display:inline-flex !important; }
+/* 38b — the zone-key cards speak holdings in base: their g/a/r
+   share bars and PD counts ride the rights lens only */
+.keyrow .mini { display:none !important; }
+body[data-lens="rights"] .keyrow .mini { display:inline-flex !important; }
+/* 40a — working sub-tradition tabs: a hidden view beats the ported
+   frames' stacked-view rule by specificity */
+section.view[hidden] { display:none !important; }
+[data-view][aria-pressed="true"] { background:var(--accent,#7a5c3a); color:var(--surface,#fff); }
+/* 41a — the read-chooser is an anchored popover: fixed, above the
+   page, never reflowing the grid; mobile gets the bottom-sheet dress */
+.m-chooser-pop { position:fixed; z-index:55; max-width:min(30em,92vw); max-height:60vh;
+  overflow:auto; margin:0; box-shadow:0 8px 28px rgba(0,0,0,.22); border-radius:8px;
+  background:var(--surface,#f6f2ea); outline:none; }
+/* per-mode sentence spans (footer, mast ledes, key counts) */
+.r-only { display:none; }
+body[data-lens="rights"] .r-only { display:inline; }
+body[data-lens="rights"] .b-only { display:none; }
+/* ── Task 37: the content overlays (Held editions · Reception) ── */
+#ov-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.4); z-index:70; }
+#ov-sheet { display:none; position:fixed; inset:5vh 6vw; overflow:auto; z-index:71;
+  background:var(--surface,#fffdf7); border:1px solid var(--line2,#d8d3cc); border-radius:10px;
+  box-shadow:0 10px 40px rgba(0,0,0,.25); padding:26px 30px 40px; }
+body.ov-open #ov-bg, body.ov-open #ov-sheet { display:block; }
+/* the toggle row stays operational above an open overlay — the
+   one-at-a-time grammar needs direct Held↔Reception switching */
+body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#faf8f5); }
+#ov-sheet .ov-close { float:right; font-size:16px; background:none; border:none; cursor:pointer; color:var(--ink-faint,#a09080); }
+#ov-sheet h2 { font:400 20px/1.3 Georgia,serif; margin:0 0 18px; color:var(--ink,#2c2c2c); }
+#ov-sheet .ov-zone { margin:0 0 22px; }
+#ov-sheet .ov-zone h3 { font:400 13px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint,#a09080);
+  border-bottom:1px solid var(--line,#e6e1d9); padding-bottom:5px; margin:0 0 8px; }
+#ov-sheet .rl-ed { display:inline-block; width:calc(50% - 12px); vertical-align:top; margin:4px 6px 4px 0; }
+#held-btn { display:block; margin:14px auto 0; font:400 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--accent,#7a5c3a);
+  background:none; border:1px solid var(--line2,#d8d3cc); border-radius:999px;
+  padding:9px 20px; cursor:pointer; }
+#held-btn:hover { border-color:var(--accent,#7a5c3a); }
+/* 37 dress fixes — the reception section inside the sheet: archive
+   palette (never default blue), per-row blocks, breathing h2 spans */
+#ov-sheet a { color:var(--ink,#2c2c2c); text-decoration:none; }
+/* 39 — the merged sheet: the relocated section's own h2 would double
+   the group header; the header carries the count now */
+#ov-sheet #ov-reception h2 { display:none; }
+#ov-sheet .ov-rec-h { font:400 13px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint,#a09080);
+  border-bottom:1px solid var(--line,#e6e1d9); padding-bottom:5px; margin:26px 0 8px; }
+#ov-sheet #ov-reception h2 .pi { font-style:italic; font-size:13px; color:var(--ink-faint,#a09080); margin-left:10px; }
+#ov-sheet #ov-reception h2 .ct { font-size:12px; color:var(--ink-faint,#a09080); margin-left:10px; }
+#ov-sheet #ov-reception .blurb { font:italic 400 13px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); margin:0 0 14px; }
+#ov-sheet #ov-reception .tgrid { display:block; }
+#ov-sheet #ov-reception .tc { display:block; padding:8px 10px; margin:6px 0;
+  border:1px solid var(--line,#e6e1d9); border-radius:6px; }
+#ov-sheet #ov-reception .tc:hover { border-color:var(--accent,#7a5c3a); }
+#ov-sheet #ov-reception .tl { display:block; font:400 14px/1.5 Georgia,serif; color:var(--ink,#2c2c2c); }
+#ov-sheet #ov-reception .te { display:block; font:400 11.5px/1.5 Georgia,serif; color:var(--ink-faint,#a09080); }
+@media (max-width:720px) {
+  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
+  #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
+  #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
+  #lens-toggle { margin-right:8px; }
+  #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
+  .m-chooser-pop { left:0 !important; right:0; bottom:0; top:auto !important;
+    max-width:none; width:auto; border-radius:14px 14px 0 0;
+    box-shadow:0 -6px 24px rgba(0,0,0,.25); }
+  #ov-sheet .rl-ed { width:100%; margin:4px 0; }
+}
+</style>
+<script>
+(function () {
+  var SLUG = document.body.getAttribute('data-map');
+  if (!SLUG) return;
+  function norm(s) {
+    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+            .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+  }
+  function nid(s) {
+    s = (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    s = s.split('\u2014')[0].split(' \u00b7 ')[0].split(' (')[0];
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  function dupLabel(r) {
+    // a chooser label that merely repeats translator+year is
+    // suppressed (37 dress fix 4: 'Hume, 1921 \u2014 Hume, 1921')
+    if (!r.label) return '';
+    var ty = ((r.translator || '') + (r.year ? ', ' + r.year : '')).toLowerCase().replace(/\s+/g, ' ').trim();
+    var lb = String(r.label).toLowerCase().replace(/\s+/g, ' ').trim();
+    return lb === ty ? '' : ' \u2014 ' + r.label;
+  }
+  var LKEY = 'da-map-lens';
+  var LENSES = ['structure', 'rights', 'held'];
+  function normLens(v) {
+    if (v === 'holdings') return 'structure';   // pre-Task-37 stored value
+    if (v === 'reception') return 'held';       // Task 39: one held surface
+    return LENSES.indexOf(v) >= 0 ? v : 'structure';
+  }
+  var params = new URLSearchParams(location.search);
+  var lens = normLens(params.get('lens') || localStorage.getItem(LKEY) || 'structure');
+  var B = null, PROV = {};
+  // 36a race guard: a chip clicked before these resolve must never
+  // render a false not-held — open() waits on this promise.
+  var _ready = Promise.all([
+    fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+      .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); })
+      .catch(function () { B = {}; }),
+    fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { if (j && j.nodes) PROV = j.nodes; }).catch(function () {})
+  ]);
+
+  // toggle pills — the reader's Reading/Interactive grammar
+  // Task 37: the reception section (Task 32's inline layer) becomes an
+  // OVERLAY — find it now; when absent the Reception toggle is omitted.
+  var recSec = document.querySelector('section[id$="-reception"]');
+  var nav = document.getElementById('arch-topnav');
+  var tg = document.createElement('span');
+  tg.id = 'lens-toggle';
+  tg.innerHTML = '<button type="button" data-lens="structure">Structure</button>' +
+                 '<button type="button" data-lens="rights">Rights</button>';
+  if (nav) nav.insertBefore(tg, nav.firstChild);
+  // 36a — the visible lens state: a banner right under the topbar
+  var banner = document.createElement('div');
+  banner.id = 'lens-banner';
+  banner.innerHTML = 'Rights &amp; provenance lens — click any text or section ' +
+                     'heading for its rights class, sources, and what the archive holds. ' +
+                     'Reading routes are one toggle away.';
+  var topbar = document.getElementById('arch-topbar');
+  if (topbar && topbar.parentNode)
+    topbar.parentNode.insertBefore(banner, topbar.nextSibling);
+  function setLens(v, writeUrl) {
+    lens = v;
+    document.body.setAttribute('data-lens', v);
+    try { localStorage.setItem(LKEY, v); } catch (e) {}
+    var rowV = (v === 'held') ? 'structure' : v;   // 41b: the sheet rides over the base
+    tg.querySelectorAll('button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-lens') === rowV ? 'true' : 'false');
+    });
+    if (writeUrl) {
+      var u = new URL(location);
+      if (v !== 'structure') u.searchParams.set('lens', v);
+      else u.searchParams.delete('lens');
+      history.replaceState(null, '', u);
+    }
+    if (v !== 'rights') close();
+    // the two content overlays — one at a time; structure/rights close both
+    if (v === 'held') { openOverlay(); }
+    else { closeOverlay(); }
+    if (typeof updateMandala === 'function') updateMandala();
+  }
+  tg.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (b) setLens(b.getAttribute('data-lens'), true);
+  });
+
+  // ── Task 37: the two content overlays (Held editions · Reception) ──
+  var ovbg = document.createElement('div'); ovbg.id = 'ov-bg';
+  var sheet = document.createElement('div'); sheet.id = 'ov-sheet';
+  sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true');
+  sheet.tabIndex = -1;
+  sheet.innerHTML = '<button class="ov-close" aria-label="Back to the structure">✕</button>' +
+                    '<div class="ov-inner"></div>';
+  document.body.appendChild(ovbg); document.body.appendChild(sheet);
+  var ovInner = sheet.querySelector('.ov-inner');
+  var heldBuilt = null, recWrap = null;
+  if (recSec) {
+    // the inline reception layer relocates into the overlay — the base
+    // view is pure structure now (the one-page shape); the section's
+    // markup (and its file presence for the reachability scan) is kept.
+    recWrap = document.createElement('div'); recWrap.id = 'ov-reception';
+    recWrap.style.display = 'none';
+    recWrap.appendChild(recSec);
+    ovInner.appendChild(recWrap);
+  }
+  function zoneTitle(sec) {
+    var h = sec.querySelector('h2, .zone-h, h3');
+    return h ? (h.childNodes[0] && h.childNodes[0].textContent || h.textContent).trim() : sec.id;
+  }
+  function buildHeld() {
+    if (heldBuilt) return heldBuilt;
+    heldBuilt = document.createElement('div'); heldBuilt.id = 'ov-held';
+    var seen = {};
+    var total = 0;
+    var frag = '';
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      if (/-reception$/.test(sec.id)) return;
+      var zid = sec.id.replace(/^zone-/, '');
+      var rows = '';
+      sec.querySelectorAll('.chip, .su, .tc').forEach(function (el) {
+        var nmEl = el.querySelector('.nm') || el.querySelector('.tl') || el;
+        var b = B ? B[zid + '||' + norm((nmEl.textContent || '').trim())] : null;
+        if (!b || !b.read) return;
+        b.read.forEach(function (r) {
+          if (seen[r.df]) return;
+          seen[r.df] = 1; total++;
+          var head = (r.translator || r.work) + (r.year ? ', ' + r.year : '') + dupLabel(r);
+          rows += '<a class="rl-ed" href="../' + r.url + '"><b style="font-weight:400">' +
+                  esc(r.work) + '</b><span class="rl-em">' + esc(head) +
+                  ' · read in the archive ↗</span></a>';
+        });
+      });
+      if (rows) frag += '<div class="ov-zone"><h3>' + esc(zoneTitle(sec)) +
+                        ' — held editions</h3>' + rows + '</div>';
+    });
+    heldBuilt.innerHTML = '<h2>Held in this archive — ' + total +
+                          ' edition' + (total === 1 ? '' : 's') + '</h2>' +
+                          (frag || '<div class="rl-none">Nothing from this map is readable here yet.</div>');
+    heldBuilt.style.display = 'none';
+    ovInner.appendChild(heldBuilt);
+    // Task 39 — one held surface: reception rides the same sheet as a
+    // final group ("held here, not yet placed in the structure")
+    if (recWrap) {
+      var recN = recWrap.querySelectorAll('.tc').length;
+      var rh = document.createElement('h3');
+      rh.className = 'ov-rec-h';
+      rh.textContent = 'Reception — held here, not yet placed in the structure · + ' +
+                       recN + ' in reception';
+      recWrap.insertBefore(rh, recWrap.firstChild);
+      ovInner.appendChild(recWrap);
+    }
+    // the header button derives its count from the same pass
+    var hb = document.getElementById('held-btn');
+    if (hb) {
+      hb.textContent = 'Browse the ' + total + ' held editions →';
+      // 41b: a genuinely empty overlay (no placed editions, no
+      // reception) hides its one opener rather than advertise zero
+      if (total === 0 && !recWrap) hb.style.display = 'none';
+    }
+    return heldBuilt;
+  }
+  function openOverlay() {
+    _ready.then(function () {
+      buildHeld();
+      if (heldBuilt) heldBuilt.style.display = '';
+      if (recWrap) recWrap.style.display = '';
+      if (recSec) recSec.style.display = '';
+      document.body.classList.add('ov-open');
+      sheet.focus();
+    });
+  }
+  function closeOverlay() {
+    document.body.classList.remove('ov-open');
+  }
+  ovbg.addEventListener('click', function () { setLens('structure', true); });
+  sheet.querySelector('.ov-close').addEventListener('click', function () { setLens('structure', true); });
+  // the mast button — the room's "Browse the N held editions" opener,
+  // carried over; same overlay, two openers
+  var mast = document.querySelector('.mast');
+  if (mast) {
+    var hb = document.createElement('button');
+    hb.type = 'button'; hb.id = 'held-btn';
+    hb.textContent = 'Browse the held editions →';
+    hb.addEventListener('click', function () {
+      setLens(lens === 'held' ? 'structure' : 'held', true);
+    });
+    mast.appendChild(hb);
+    _ready.then(function () { buildHeld(); });
+  }
+  // ── Task 38: one geometry, two derivations — the mandala recounts
+  // from bindings in the base view; rights restores the compiled
+  // g/a/r. Same paths, new fills; aria recounts per mode.
+  var HCOLOR = { held: '#7a5c3a', possible: '#c9ab7a', none: '#ddd6c8', restricted: 'url(#rl-stripes)' };
+  function pathAngles(p) {
+    var nums = (p.getAttribute('d') || '').split(/[^0-9.eE-]+/).filter(Boolean).map(Number);
+    if (nums.length < 4) return null;
+    var x1 = nums[2], y1 = nums[3], x2 = nums[nums.length - 2], y2 = nums[nums.length - 1];
+    var a1 = Math.atan2(y1, x1), a2 = Math.atan2(y2, x2);
+    var span = a2 - a1;
+    while (span <= 0) span += Math.PI * 2;
+    return { start: a1, span: span };
+  }
+  function updateMandala() {
+    var svg = document.getElementById('mandala');
+    if (!svg) return;
+    if (!svg.dataset.rSaved) {
+      svg.dataset.rAria = svg.getAttribute('aria-label') || '';
+      svg.querySelectorAll('path.seg').forEach(function (p) { p.dataset.rFill = p.getAttribute('fill'); });
+      svg.querySelectorAll('g.zone').forEach(function (z) { z.dataset.rZaria = z.getAttribute('aria-label') || ''; });
+      if (!svg.querySelector('#rl-stripes')) {
+        var NS = 'http://www.w3.org/2000/svg';
+        var defs = document.createElementNS(NS, 'defs');
+        var pat = document.createElementNS(NS, 'pattern');
+        pat.setAttribute('id', 'rl-stripes'); pat.setAttribute('width', '4'); pat.setAttribute('height', '4');
+        pat.setAttribute('patternUnits', 'userSpaceOnUse'); pat.setAttribute('patternTransform', 'rotate(45)');
+        var r1 = document.createElementNS(NS, 'rect');
+        r1.setAttribute('width', '4'); r1.setAttribute('height', '4'); r1.setAttribute('fill', '#eee9e0');
+        var r2 = document.createElementNS(NS, 'rect');
+        r2.setAttribute('width', '2'); r2.setAttribute('height', '4'); r2.setAttribute('fill', '#a09080');
+        pat.appendChild(r1); pat.appendChild(r2); defs.appendChild(pat); svg.insertBefore(defs, svg.firstChild);
+      }
+      svg.dataset.rSaved = '1';
+    }
+    var zones = svg.querySelectorAll('g.zone');
+    var secs = document.querySelectorAll('section[id^="zone-"]');
+    if (lens === 'rights' || !B) {
+      svg.setAttribute('aria-label', svg.dataset.rAria);
+      svg.querySelectorAll('path.seg').forEach(function (p) { p.setAttribute('fill', p.dataset.rFill); });
+      zones.forEach(function (z) { z.setAttribute('aria-label', z.dataset.rZaria); });
+      return;
+    }
+    svg.setAttribute('aria-label',
+      'Concentric-ring diagram of the Hindu textual tradition, coloured by what the archive holds');
+    zones.forEach(function (z, zi) {
+      var sec = secs[zi];
+      var zid = sec ? sec.id.replace('zone-', '') : null;
+      var m = { held: 0, possible: 0, none: 0, restricted: 0 };
+      if (zid) Object.keys(B).forEach(function (k) {
+        if (k.split('||')[0] !== zid) return;
+        var s = B[k].state;
+        if (s === 'held' || s === 'held-several') m.held++;
+        else if (s === 'possible') m.possible++;
+        else if (s === 'restricted') m.restricted++;
+        else m.none++;
+      });
+      var total = m.held + m.possible + m.none + m.restricted;
+      var segs = [];
+      z.querySelectorAll('path.seg').forEach(function (p) {
+        var a = pathAngles(p); if (a) segs.push({ p: p, a: a });
+      });
+      if (!total || !segs.length) return;
+      segs.sort(function (x, y) { return x.a.start - y.a.start; });
+      var totalSpan = 0; segs.forEach(function (s) { totalSpan += s.a.span; });
+      var bands = [], cum = 0;
+      ['held', 'possible', 'none', 'restricted'].forEach(function (st) {
+        cum += m[st] / total; bands.push({ st: st, upto: cum });
+      });
+      var walked = 0;
+      segs.forEach(function (s) {
+        var mid = (walked + s.a.span / 2) / totalSpan; walked += s.a.span;
+        var st = 'restricted';
+        for (var i = 0; i < bands.length; i++) { if (mid <= bands[i].upto + 1e-9) { st = bands[i].st; break; } }
+        s.p.setAttribute('fill', HCOLOR[st]);
+      });
+      var name = (z.dataset.rZaria || '').split(':')[0];
+      z.setAttribute('aria-label', name + ': ' + m.held + ' readable here, ' + m.possible +
+        ' possible, ' + m.none + ' none' + (m.restricted ? ', ' + m.restricted + ' restricted' : ''));
+    });
+  }
+  // the footer's colour sentence is true only under the rights lens
+  var foot = document.getElementById('foot');
+  var FOOTSENT = 'Colour = best English translation available on a worldwide public-domain (life+70) bar.';
+  if (foot && foot.innerHTML.indexOf(FOOTSENT) >= 0) {
+    foot.innerHTML = foot.innerHTML.replace(FOOTSENT,
+      '<span class="b-only">Colour = what the archive holds; the Rights lens re-colours by public-domain reality.</span>' +
+      '<span class="r-only">' + FOOTSENT + '</span>');
+  }
+  // 38b — stale mast ledes: the PD-colour sentence is true only under
+  // the rights lens; base states the holdings meaning. Three phrasings
+  // live across the 13 pages; the scoper catches the sentence shape.
+  var LEDE_RE = /[Cc]olou?r(ed|-coded) by (whether a|the copyright of)[^.]*[.]/;
+  var BASE_LEDE = 'coloured by what the archive holds (the Rights lens shows public-domain reality).';
+  document.querySelectorAll('.mast p, header p').forEach(function (el) {
+    if (el.querySelector('.r-only')) return;
+    // the sentence lives in ONE text node — split it there so entity
+    // forms in surrounding markup can never defeat the match
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      var m2 = node.nodeValue.match(LEDE_RE);
+      if (!m2) continue;
+      var after = node.splitText(m2.index);
+      after.splitText(m2[0].length);
+      var wrap = document.createElement('span');
+      var baseTwin = m2[0].charAt(0) === 'C'
+        ? BASE_LEDE.charAt(0).toUpperCase() + BASE_LEDE.slice(1) : BASE_LEDE;
+      wrap.innerHTML = '<span class="b-only">' + baseTwin + '</span>' +
+                       '<span class="r-only">' + esc(m2[0]) + '</span>';
+      after.parentNode.replaceChild(wrap, after);
+      break;
+    }
+    // fallback: the sentence runs through inline markup to the end of
+    // the paragraph (indigenous: "…that should <em>not</em> be mapped
+    // shown as such.") — wrap from the match to the paragraph's end
+    var walker2 = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    if (el.querySelector('.r-only')) return;
+    while ((node = walker2.nextNode())) {
+      var m3 = node.nodeValue.match(/[Cc]olou?r(ed|-coded) by (whether a|the copyright of)/);
+      if (!m3) continue;
+      var tail = node.splitText(m3.index);
+      var range = document.createRange();
+      range.setStartBefore(tail);
+      range.setEnd(el, el.childNodes.length);
+      var frag = range.extractContents();
+      var rspan = document.createElement('span'); rspan.className = 'r-only'; rspan.appendChild(frag);
+      var bspan = document.createElement('span'); bspan.className = 'b-only';
+      bspan.textContent = m3[0].charAt(0) === 'C'
+        ? BASE_LEDE.charAt(0).toUpperCase() + BASE_LEDE.slice(1) : BASE_LEDE;
+      el.appendChild(bspan); el.appendChild(rspan);
+      break;
+    }
+  });
+  // 38b — the zone-key "· N PD" counts are a rights datum
+  document.querySelectorAll('.keyrow .ksub').forEach(function (s) {
+    if (s.querySelector('.r-only')) return;
+    var parts = (s.textContent || '').split(' · ');
+    if (parts.length === 2 && parts[1].slice(-3) === ' PD') {
+      s.innerHTML = esc(parts[0]) + '<span class="r-only"> · ' + esc(parts[1]) + '</span>';
+    }
+  });
+
+  // 40a — the sub-tradition pills were NEVER wired when the frames
+  // were ported (the artifact's tab JS was not captured; the views
+  // shipped stacked). Wire them: one view at a time, first pill =
+  // the default, aria-pressed carries the state. Works in both
+  // lenses (the rights capture handler ignores [data-view] buttons).
+  var viewPills = document.querySelectorAll('[data-view]');
+  if (viewPills.length) {
+    var showView = function (k) {
+      document.querySelectorAll('section.view').forEach(function (v) {
+        v.hidden = (v.id !== 'view-' + k);
+      });
+      viewPills.forEach(function (b2) {
+        b2.setAttribute('aria-pressed', b2.getAttribute('data-view') === k ? 'true' : 'false');
+      });
+    };
+    viewPills.forEach(function (b2) {
+      b2.addEventListener('click', function () { showView(b2.getAttribute('data-view')); });
+    });
+    showView(viewPills[0].getAttribute('data-view'));
+  }
+
+  _ready.then(updateMandala);
+
+  setLens(lens, false);
+
+  // the panel
+  var bg = document.createElement('div'); bg.id = 'rl-bg';
+  var panel = document.createElement('div'); panel.id = 'rl-panel';
+  panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'true');
+  panel.tabIndex = -1;
+  document.body.appendChild(bg); document.body.appendChild(panel);
+  var opener = null;
+  function close() {
+    document.body.classList.remove('rl-open');
+    if (opener) { try { opener.focus(); } catch (e) {} opener = null; }
+  }
+  bg.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (document.body.classList.contains('ov-open')) setLens('structure', true);
+    else close();
+  });
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  var RIGHTS = {
+    g: 'Green \u2014 a complete public-domain or openly-reusable English translation exists.',
+    a: 'Amber \u2014 an English translation exists but is copyrighted, partial, restricted, or not publicly redistributable.',
+    r: 'Red \u2014 no English translation has been identified.',
+    x: 'Unmapped \u2014 an oral or non-textual tradition; there is no scripture to hold.'
+  };
+  function edRow(r, chooser) {
+    var head = (chooser === 'works')
+      ? r.work + (r.translator ? ' \u00b7 ' + r.translator + (r.year ? ', ' + r.year : '') : '')
+      : (r.translator || r.work) + (r.year ? ', ' + r.year : '') + dupLabel(r);
+    return '<a class="rl-ed" href="../' + r.url + '"><b style="font-weight:400">' + esc(head) + '</b>' +
+           '<span class="rl-em">' + esc(r.work) + ' \u00b7 read in the archive \u2197</span></a>';
+  }
+  function open(el) {
+    if (B === null) { _ready.then(function () { open(el); }); return; }
+    opener = el;
+    var nmEl = el.querySelector('.nm') || el.querySelector('.tl') || el;
+    var name = (nmEl.textContent || '').trim();
+    if (el.dataset.rlHeading && el.childNodes.length) {
+      // headings carry appended zone-bars/count spans — the name is the
+      // leading text node only
+      name = (el.childNodes[0].textContent || name).trim();
+    }
+    var sec = el.closest('section[id]');
+    var zid = sec ? sec.id.replace(/^zone-/, '') : '';
+    var b = B ? B[zid + '||' + norm(name)] : null;
+    var p = PROV[nid(name)] || null;
+    var pd = (b && b.pd) || ['g', 'a', 'r', 'x'].filter(function (k) { return el.classList.contains(k); })[0] || null;
+    var note = el.getAttribute('title') || '';
+    var groupH = el.closest('.group') ? el.closest('.group').querySelector('h3') : null;
+    var secH = sec ? sec.querySelector('h2, .zone-h') : null;
+    var h = '<button class="rl-close" aria-label="Close">\u2715</button>';
+    h += '<p class="rl-eyebrow">' + esc((p && p.type) || 'structural node') + '</p>';
+    h += '<h3>' + esc((p && p.title) || name) + '</h3>';
+    h += '<div class="rl-sec"><div class="rl-lbl">About</div><div class="rl-body">' +
+         (p ? esc(p.description) + (p.desc_confidence && p.desc_confidence !== 'reviewed'
+              ? ' <span class="rl-conf">\u00b7 derived</span>' : '')
+            : 'A fuller reviewed description of this node has not yet been recorded.') + '</div></div>';
+    var path = (p && p.path) ? p.path.join(' \u2192 ')
+             : [secH ? secH.childNodes[0].textContent.trim() : '', groupH ? groupH.textContent.trim() : '']
+               .filter(Boolean).join(' \u2192 ');
+    h += '<div class="rl-sec"><div class="rl-lbl">Place in the tradition</div><div class="rl-body">' +
+         (esc(path) || '\u2014') + '</div></div>';
+    h += '<div class="rl-sec"><div class="rl-lbl">Rights / access (worldwide-PD bar)</div>' +
+         (pd ? '<span class="rl-rights ' + pd + '">' + RIGHTS[pd] + '</span>' : '<div class="rl-none">Not classified on this map.</div>') +
+         (note ? '<div class="rl-note"><b>Map note:</b> ' + esc(note) + '</div>' : '') + '</div>';
+    h += '<div class="rl-sec"><div class="rl-lbl">Read or access online</div>' +
+         ((p && p.external && p.external.length)
+           ? p.external.map(function (x) {
+               return '<a class="rl-ed" href="' + esc(x.url) + '" target="_blank" rel="noopener"><b style="font-weight:400">' +
+                      esc(x.edition) + '</b><span class="rl-em">' + esc([x.host, x.access].filter(Boolean).join(' \u00b7 ')) +
+                      ' \u00b7 open \u2197</span></a>';
+             }).join('')
+           : '<div class="rl-none">No exact lawful online source has been recorded yet.</div>') + '</div>';
+    // Held in this archive — bindings-derived ONLY (one truth with the holdings lens)
+    h += '<div class="rl-sec"><div class="rl-lbl">Held in this archive</div>';
+    if (el.dataset.rlHeading) {
+      // section/group heading: a derived summary across its chips
+      var scope = el.closest('.group') || sec;
+      var cs = scope ? scope.querySelectorAll('.chip, .su') : [];
+      var m = { read: 0, poss: 0, res: 0, none: 0, n: 0 };
+      Array.prototype.forEach.call(cs, function (cel) {
+        var cn = cel.querySelector('.nm') || cel.querySelector('.tl') || cel;
+        var cb = B ? B[zid + '||' + norm((cn.textContent || '').trim())] : null;
+        if (!cb) return;
+        m.n++;
+        if (cb.read && cb.read.length) m.read++;
+        else if (cb.state === 'possible') m.poss++;
+        else if (cb.state === 'restricted') m.res++;
+        else m.none++;
+      });
+      h += m.n
+        ? '<div class="rl-body">' + m.read + ' of ' + m.n + ' works in this section are readable here' +
+          (m.poss ? ' \u00b7 ' + m.poss + ' possible' : '') +
+          (m.res ? ' \u00b7 ' + m.res + ' held restricted' : '') + '.</div>'
+        : '<div class="rl-none">A structural section \u2014 holdings live on its individual works.</div>';
+    } else if (b && b.read && b.read.length) {
+      h += '<div class="rl-relh">' + (b.contained_in
+            ? 'Available within held complete editions \u2014 ' + esc(b.contained_in)
+            : (b.read.length > 1 ? b.read.length + ' held editions' : 'Held edition of this work')) + '</div>';
+      h += b.read.map(function (r) { return edRow(r, b.chooser); }).join('');
+      (b.restricted_note || []).forEach(function (n) {
+        h += '<div class="rl-none">Also held restricted: ' + esc(n.title) + ' (' + esc(n.reason_class) + ').</div>';
+      });
+    } else if (b && b.state === 'restricted') {
+      h += '<div class="rl-none">Held, but restricted (' + esc(b.reason_class || 'rights-or-quality hold') + ') \u2014 not publicly readable.</div>';
+    } else if (b && b.state === 'possible') {
+      h += '<div class="rl-none">Not held yet \u2014 a public-domain translation exists in the world (amber-possible on this map).</div>';
+    } else if (pd === 'x') {
+      h += '<div class="rl-none">Nothing to hold \u2014 this node marks an oral tradition.</div>';
+    } else {
+      h += '<div class="rl-none">No reader-ready edition of this work is held' +
+           (pd === 'r' ? ' \u2014 no English translation is known to exist' : '') + '.</div>';
+    }
+    h += '</div>';
+    panel.innerHTML = h;
+    panel.querySelector('.rl-close').addEventListener('click', close);
+    document.body.classList.add('rl-open');
+    panel.focus();
+  }
+  // rights mode intercepts chip clicks at capture — navigation and
+  // choosers never fire; reception tiles keep their reader links.
+  document.addEventListener('click', function (e) {
+    if (lens !== 'rights') return;
+    var el = e.target.closest('.chip, .su, .tc');
+    var isHeading = false;
+    if (!el) {
+      el = e.target.closest('section[id] h2, .zone-h, .group h3');
+      isHeading = !!el;
+    }
+    if (!el) return;
+    var sec = el.closest('section[id]');
+    if (sec && /-reception$/.test(sec.id)) return;
+    e.preventDefault(); e.stopPropagation();
+    if (isHeading) el.dataset.rlHeading = '1';
+    open(el);
+  }, true);
+})();
+</script>
+<!-- map-lens:end -->
+</body>
+</html>

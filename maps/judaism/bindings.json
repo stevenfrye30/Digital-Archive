@@ -1,0 +1,2374 @@
+{
+ "tradition": "judaism",
+ "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
+ "provisional": true,
+ "counts": {
+  "held-several": 40,
+  "held": 23,
+  "none": 59,
+  "possible": 6
+ },
+ "chips": [
+  {
+   "zone": "ju-tanakh",
+   "chip": "Genesis",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Exodus",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Leviticus",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Numbers",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Deuteronomy",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Joshua",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Judges",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "I Samuel",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "II Samuel",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "I Kings",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "II Kings",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Isaiah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Jeremiah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Ezekiel",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Hosea",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Joel",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Amos",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Obadiah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Jonah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Micah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Nahum",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Habakkuk",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Zephaniah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Haggai",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Zechariah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Malachi",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Psalms",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Proverbs",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Job",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Song of Songs",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "song-of-songs-translation_anonymous.json",
+     "work": "The Song of Songs",
+     "translator": "Christian D. Ginsburg",
+     "year": 1857,
+     "url": "?text=song-of-songs-translation_anonymous.json"
+    },
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ]
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Ruth",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Lamentations",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Ecclesiastes",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Esther",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Daniel",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Ezra",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "Nehemiah",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "I Chronicles",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-tanakh",
+   "chip": "II Chronicles",
+   "pd": "g",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "tanakh_jps.json",
+     "work": "The Tanakh",
+     "translator": "Jewish Publication Society",
+     "year": 1917,
+     "url": "?text=tanakh_jps.json"
+    },
+    {
+     "df": "tanakh_leeser.json",
+     "work": "The Tanakh",
+     "translator": "Isaac Leeser",
+     "year": 1853,
+     "url": "?text=tanakh_leeser.json"
+    },
+    {
+     "df": "tanakh_masoretic.json",
+     "work": "The Tanakh",
+     "translator": "The Masoretes",
+     "year": null,
+     "label": "Hebrew text (Masoretic)",
+     "url": "?text=tanakh_masoretic.json"
+    },
+    {
+     "df": "tanakh_wlc.json",
+     "work": "The Tanakh",
+     "translator": "Westminster Theological Seminary",
+     "year": 2016,
+     "label": "Hebrew text (Westminster Leningrad Codex)",
+     "url": "?text=tanakh_wlc.json"
+    }
+   ],
+   "contained_in": "within The Tanakh (JPS 1917)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Berakhot",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Berachoth",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Peah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Demai",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Kilayim",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Kilaim",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Sheviit",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Terumot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Maasrot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Maaser Sheni",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Challah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Orlah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bikkurim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Shabbat",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Sabbath",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Eruvin",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Erubin",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Pesachim",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Pesachim",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Shekalim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Yoma",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Yomah — chapter VIII only",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Sukkah",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Succah",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Beitzah",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Yom Tob (Beitzah)",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Rosh Hashanah",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Rosh Hashanah",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Ta'anit",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Taanith",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Megillah",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Meguillah",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Moed Katan",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Moed Katan",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Chagigah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Yevamot",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Yebamoth",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Ketubot",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Kethuboth",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Nedarim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Nazir",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Sotah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Gittin",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Gittin",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Kiddushin",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Kedushin",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bava Kamma",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bava Metzia",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bava Batra",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Sanhedrin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Makkot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Shevuot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Eduyot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Avodah Zarah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Pirkei Avot",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "pirke-avot_gorfinkle.json",
+     "work": "Pirke Avot (The Sayings of the Jewish Fathers)",
+     "translator": "Joseph I. Gorfinkle",
+     "year": 1913,
+     "url": "?text=pirke-avot_gorfinkle.json"
+    }
+   ]
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Horayot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Zevachim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Menachot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Chullin",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Cholin",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Bekhorot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Arakhin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Temurah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Keritot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Meilah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Tamid",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Middot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Kinnim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Kelim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Oholot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Negaim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Parah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Tahorot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Mikvaot",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Niddah",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Makhshirin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Zavim",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Tevul Yom",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Yadayim",
+   "pd": "a",
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Yadaim",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
+  },
+  {
+   "zone": "ju-mishnah",
+   "chip": "Oktzin",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-talmud",
+   "chip": "Babylonian Talmud (Bavli) — Gemara on 37 of the 63 tractates",
+   "pd": "a",
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "babylonian-talmud-rodkinson_rodkinson.json",
+     "work": "The Babylonian Talmud",
+     "translator": "Michael L. Rodkinson",
+     "year": 1903,
+     "url": "?text=babylonian-talmud-rodkinson_rodkinson.json"
+    },
+    {
+     "df": "talmud-polano_polano.json",
+     "work": "The Talmud: Selections",
+     "translator": "H. Polano",
+     "year": 1876,
+     "label": "selections",
+     "url": "?text=talmud-polano_polano.json"
+    }
+   ]
+  },
+  {
+   "zone": "ju-talmud",
+   "chip": "Jerusalem Talmud (Yerushalmi)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-talmud",
+   "chip": "Tosefta",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Midrash Rabbah (10 books)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Mekhilta of Rabbi Ishmael",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Sifra (Leviticus)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Sifre (Numbers & Deuteronomy)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Tanchuma",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Pirkei de-Rabbi Eliezer",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Pesikta",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Yalkut Shimoni",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Targum Onkelos (Torah)",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "targum-onkelos-etheridge_etheridge.json",
+     "work": "Targum Onkelos (Etheridge English)",
+     "translator": "John Wesley Etheridge",
+     "year": 1862,
+     "url": "?text=targum-onkelos-etheridge_etheridge.json"
+    }
+   ]
+  },
+  {
+   "zone": "ju-midrash",
+   "chip": "Targum Jonathan (Prophets)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Mishneh Torah (Maimonides)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Shulchan Aruch (Karo)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Arbaʿah Turim (Jacob ben Asher)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Guide for the Perplexed (Maimonides)",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "maimonides-guide_friedlander.json",
+     "work": "The Guide for the Perplexed",
+     "translator": "M. Friedländer",
+     "year": 1881,
+     "url": "?text=maimonides-guide_friedlander.json"
+    }
+   ]
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Kuzari (Judah Halevi)",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "halevi-kuzari_hirschfeld.json",
+     "work": "The Kuzari (Kitab al-Khazari)",
+     "translator": "Hartwig Hirschfeld",
+     "year": 1905,
+     "url": "?text=halevi-kuzari_hirschfeld.json"
+    }
+   ]
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Emunot ve-Deot (Saadia Gaon)",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-halakhah",
+   "chip": "Chovot ha-Levavot (Bahya)",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Zohar",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Sefer Yetzirah",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Sefer ha-Bahir",
+   "pd": "a",
+   "state": "none"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Siddur — Daily Prayer Book",
+   "pd": "g",
+   "state": "held",
+   "read": [
+    {
+     "df": "standard-prayer-book-singer_singer.json",
+     "work": "The Standard Prayer Book",
+     "translator": "Simeon Singer",
+     "year": 1890,
+     "url": "?text=standard-prayer-book-singer_singer.json"
+    }
+   ]
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Machzor — Festival Prayers",
+   "pd": "g",
+   "state": "possible"
+  },
+  {
+   "zone": "ju-kabbalah",
+   "chip": "Passover Haggadah",
+   "pd": "g",
+   "state": "possible"
+  }
+ ]
+}

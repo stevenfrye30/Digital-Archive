@@ -1,0 +1,257 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — Task 45 three-way partition of the christian nodes file",
+ "source_nodes_file": "05_scripts/nodes/christian.json",
+ "nodes": {
+  "old-testament": {
+   "title": "Old Testament",
+   "path": [
+    "Christianity",
+    "Bible",
+    "Old Testament"
+   ],
+   "type": "canon-division",
+   "description": "The Christian Old Testament — the Hebrew scriptures (and, in Catholic/Orthodox canons, the deuterocanon). The archive holds complete public-domain Bible editions that contain it.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "KJV (1769)",
+     "translator": "—",
+     "year": 1769,
+     "host": "Project Gutenberg",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://www.gutenberg.org/ebooks/10",
+     "checked": true
+    }
+   ]
+  },
+  "ch-ot": {
+   "title": "Old Testament",
+   "path": [
+    "Christianity",
+    "Bible",
+    "Old Testament"
+   ],
+   "type": "canon-division",
+   "description": "The Christian Old Testament — the Hebrew scriptures (and, in Catholic/Orthodox canons, the deuterocanon). The archive holds complete public-domain Bible editions that contain it.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "KJV (1769)",
+     "translator": "—",
+     "year": 1769,
+     "host": "Project Gutenberg",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://www.gutenberg.org/ebooks/10",
+     "checked": true
+    }
+   ]
+  },
+  "new-testament": {
+   "title": "New Testament",
+   "path": [
+    "Christianity",
+    "Bible",
+    "New Testament"
+   ],
+   "type": "canon-division",
+   "description": "The 27 books of the New Testament — Gospels, Acts, Epistles and Revelation. Held here within complete public-domain Bible editions.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "KJV (1769)",
+     "translator": "—",
+     "year": 1769,
+     "host": "Project Gutenberg",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://www.gutenberg.org/ebooks/10",
+     "checked": true
+    }
+   ]
+  },
+  "ch-nt": {
+   "title": "New Testament",
+   "path": [
+    "Christianity",
+    "Bible",
+    "New Testament"
+   ],
+   "type": "canon-division",
+   "description": "The 27 books of the New Testament — Gospels, Acts, Epistles and Revelation. Held here within complete public-domain Bible editions.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "KJV (1769)",
+     "translator": "—",
+     "year": 1769,
+     "host": "Project Gutenberg",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://www.gutenberg.org/ebooks/10",
+     "checked": true
+    }
+   ]
+  },
+  "gospels": {
+   "title": "Gospels",
+   "path": [
+    "Christianity",
+    "New Testament",
+    "Gospels"
+   ],
+   "type": "work",
+   "description": "The four canonical gospels (Matthew, Mark, Luke, John). Available within the held complete Bible editions.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "apostolic-fathers": {
+   "title": "Apostolic Fathers",
+   "path": [
+    "Christianity",
+    "Patristics",
+    "Apostolic Fathers & Patristics"
+   ],
+   "type": "collection",
+   "description": "The earliest post-apostolic Christian writers and the wider patristic corpus (Ante-Nicene and Nicene/Post-Nicene Fathers). The archive holds many public-domain patristic editions.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Ante-/Post-Nicene Fathers (ANF/NPNF)",
+     "translator": "ed. Schaff et al.",
+     "year": 1885,
+     "host": "CCEL",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://www.ccel.org/fathers.html",
+     "checked": true
+    }
+   ]
+  },
+  "ch-fathers": {
+   "title": "Apostolic Fathers",
+   "path": [
+    "Christianity",
+    "Patristics",
+    "Apostolic Fathers & Patristics"
+   ],
+   "type": "collection",
+   "description": "The earliest post-apostolic Christian writers and the wider patristic corpus (Ante-Nicene and Nicene/Post-Nicene Fathers). The archive holds many public-domain patristic editions.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Ante-/Post-Nicene Fathers (ANF/NPNF)",
+     "translator": "ed. Schaff et al.",
+     "year": 1885,
+     "host": "CCEL",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://www.ccel.org/fathers.html",
+     "checked": true
+    }
+   ]
+  },
+  "apostolic-fathers-patristics": {
+   "title": "Apostolic Fathers",
+   "path": [
+    "Christianity",
+    "Patristics",
+    "Apostolic Fathers & Patristics"
+   ],
+   "type": "collection",
+   "description": "The earliest post-apostolic Christian writers and the wider patristic corpus (Ante-Nicene and Nicene/Post-Nicene Fathers). The archive holds many public-domain patristic editions.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Ante-/Post-Nicene Fathers (ANF/NPNF)",
+     "translator": "ed. Schaff et al.",
+     "year": 1885,
+     "host": "CCEL",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://www.ccel.org/fathers.html",
+     "checked": true
+    }
+   ]
+  },
+  "augustine": {
+   "title": "Augustine",
+   "path": [
+    "Christianity",
+    "Patristics",
+    "Augustine of Hippo"
+   ],
+   "type": "work",
+   "description": "Augustine of Hippo (354–430), the most influential Latin Father. The archive holds several of his works.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "creeds": {
+   "title": "Creeds",
+   "path": [
+    "Christianity",
+    "Creeds & Councils"
+   ],
+   "type": "collection",
+   "description": "The ecumenical creeds and conciliar definitions of the early Church. No dedicated public-domain creeds edition is currently held; related material appears in the patristic and Reformation collections.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "ch-creeds": {
+   "title": "Creeds",
+   "path": [
+    "Christianity",
+    "Creeds & Councils"
+   ],
+   "type": "collection",
+   "description": "The ecumenical creeds and conciliar definitions of the early Church. No dedicated public-domain creeds edition is currently held; related material appears in the patristic and Reformation collections.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "creeds-councils": {
+   "title": "Creeds",
+   "path": [
+    "Christianity",
+    "Creeds & Councils"
+   ],
+   "type": "collection",
+   "description": "The ecumenical creeds and conciliar definitions of the early Church. No dedicated public-domain creeds edition is currently held; related material appears in the patristic and Reformation collections.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "apocrypha": {
+   "title": "Apocrypha",
+   "path": [
+    "Christianity",
+    "Apocrypha & Pseudepigrapha"
+   ],
+   "type": "collection",
+   "description": "Deuterocanonical and pseudepigraphal writings outside the Protestant canon. The archive holds several public-domain editions.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "ch-apoc": {
+   "title": "Apocrypha",
+   "path": [
+    "Christianity",
+    "Apocrypha & Pseudepigrapha"
+   ],
+   "type": "collection",
+   "description": "Deuterocanonical and pseudepigraphal writings outside the Protestant canon. The archive holds several public-domain editions.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "apocrypha-pseudepigrapha": {
+   "title": "Apocrypha",
+   "path": [
+    "Christianity",
+    "Apocrypha & Pseudepigrapha"
+   ],
+   "type": "collection",
+   "description": "Deuterocanonical and pseudepigraphal writings outside the Protestant canon. The archive holds several public-domain editions.",
+   "desc_confidence": "reviewed",
+   "external": []
+  }
+ }
+}
