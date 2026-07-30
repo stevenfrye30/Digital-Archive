@@ -472,6 +472,39 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
 .rl-relh { font:italic 400 12px/1.4 Georgia,serif; color:var(--ink-faint); margin:10px 0 2px; }
 .rl-none { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-faint); }
+/* ── Task 38: the Rights lens LOOKS like rights ──
+   The chips' native g/a/r classes are buried under the binder's m-*
+   holdings rules (!important); rights mode un-buries them in the
+   specimen palette. The g/a/r instruments (ported legend strip,
+   canon-share triads, family bars) ride ONLY the rights lens; the
+   holdings legend and zone bars ride ONLY the base. */
+body[data-lens="rights"] .chip.g, body[data-lens="rights"] .su.g, body[data-lens="rights"] .tc.g {
+  background:#e5efe1 !important; border-color:#cfe0c8 !important; border-left:3px solid #2E7D32 !important; opacity:1; }
+body[data-lens="rights"] .chip.a, body[data-lens="rights"] .su.a, body[data-lens="rights"] .tc.a {
+  background:#f2e8d3 !important; border-color:#e4d4b4 !important; border-left:3px solid #B7791F !important; opacity:1; }
+body[data-lens="rights"] .chip.r, body[data-lens="rights"] .su.r, body[data-lens="rights"] .tc.r {
+  background:#f5ddd8 !important; border-color:#e6c4bc !important; border-left:3px solid #C0392B !important; opacity:1; }
+body[data-lens="rights"] .chip.x, body[data-lens="rights"] .su.x, body[data-lens="rights"] .tc.x {
+  background:none !important; border-left:3px solid #ddd6c8 !important; opacity:.8; }
+body[data-lens="rights"] .chip .nm, body[data-lens="rights"] .su, body[data-lens="rights"] .tc .tl {
+  color:#241f18 !important; }
+body[data-lens="rights"] .chip.g .mdot { background:#2E7D32 !important; border:none !important; box-shadow:none !important; }
+body[data-lens="rights"] .chip.a .mdot { background:#B7791F !important; border:none !important; box-shadow:none !important; }
+body[data-lens="rights"] .chip.r .mdot { background:#C0392B !important; border:none !important; box-shadow:none !important; }
+body[data-lens="rights"] .zb { display:none !important; }
+/* legend swap: the ported g/a/r legend is the rights legend; the
+   binder's holdings legend is the base's */
+.legend { display:none !important; }
+body[data-lens="rights"] .legend { display:flex !important; }
+body[data-lens="rights"] #m-legend { display:none !important; }
+/* canon-share triads + family bars are g/a/r figures — rights only */
+#gradient, .fambar { display:none !important; }
+body[data-lens="rights"] #gradient { display:block !important; }
+body[data-lens="rights"] .fambar { display:inline-flex !important; }
+/* the mandala footer sentence is true per mode */
+#foot .r-only { display:none; }
+body[data-lens="rights"] #foot .r-only { display:inline; }
+body[data-lens="rights"] #foot .b-only { display:none; }
 /* ── Task 37: the content overlays (Held editions · Reception) ── */
 #ov-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.4); z-index:70; }
 #ov-sheet { display:none; position:fixed; inset:5vh 6vw; overflow:auto; z-index:71;
@@ -594,6 +627,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     if (v === 'held') { openOverlay('held'); }
     else if (v === 'reception') { openOverlay('reception'); }
     else { closeOverlay(); }
+    if (typeof updateMandala === 'function') updateMandala();
   }
   tg.addEventListener('click', function (e) {
     var b = e.target.closest('button');
@@ -686,6 +720,96 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     mast.appendChild(hb);
     _ready.then(function () { buildHeld(); });
   }
+  // ── Task 38: one geometry, two derivations — the mandala recounts
+  // from bindings in the base view; rights restores the compiled
+  // g/a/r. Same paths, new fills; aria recounts per mode.
+  var HCOLOR = { held: '#7a5c3a', possible: '#c9ab7a', none: '#ddd6c8', restricted: 'url(#rl-stripes)' };
+  function pathAngles(p) {
+    var nums = (p.getAttribute('d') || '').split(/[^0-9.eE-]+/).filter(Boolean).map(Number);
+    if (nums.length < 4) return null;
+    var x1 = nums[2], y1 = nums[3], x2 = nums[nums.length - 2], y2 = nums[nums.length - 1];
+    var a1 = Math.atan2(y1, x1), a2 = Math.atan2(y2, x2);
+    var span = a2 - a1;
+    while (span <= 0) span += Math.PI * 2;
+    return { start: a1, span: span };
+  }
+  function updateMandala() {
+    var svg = document.getElementById('mandala');
+    if (!svg) return;
+    if (!svg.dataset.rSaved) {
+      svg.dataset.rAria = svg.getAttribute('aria-label') || '';
+      svg.querySelectorAll('path.seg').forEach(function (p) { p.dataset.rFill = p.getAttribute('fill'); });
+      svg.querySelectorAll('g.zone').forEach(function (z) { z.dataset.rZaria = z.getAttribute('aria-label') || ''; });
+      if (!svg.querySelector('#rl-stripes')) {
+        var NS = 'http://www.w3.org/2000/svg';
+        var defs = document.createElementNS(NS, 'defs');
+        var pat = document.createElementNS(NS, 'pattern');
+        pat.setAttribute('id', 'rl-stripes'); pat.setAttribute('width', '4'); pat.setAttribute('height', '4');
+        pat.setAttribute('patternUnits', 'userSpaceOnUse'); pat.setAttribute('patternTransform', 'rotate(45)');
+        var r1 = document.createElementNS(NS, 'rect');
+        r1.setAttribute('width', '4'); r1.setAttribute('height', '4'); r1.setAttribute('fill', '#eee9e0');
+        var r2 = document.createElementNS(NS, 'rect');
+        r2.setAttribute('width', '2'); r2.setAttribute('height', '4'); r2.setAttribute('fill', '#a09080');
+        pat.appendChild(r1); pat.appendChild(r2); defs.appendChild(pat); svg.insertBefore(defs, svg.firstChild);
+      }
+      svg.dataset.rSaved = '1';
+    }
+    var zones = svg.querySelectorAll('g.zone');
+    var secs = document.querySelectorAll('section[id^="zone-"]');
+    if (lens === 'rights' || !B) {
+      svg.setAttribute('aria-label', svg.dataset.rAria);
+      svg.querySelectorAll('path.seg').forEach(function (p) { p.setAttribute('fill', p.dataset.rFill); });
+      zones.forEach(function (z) { z.setAttribute('aria-label', z.dataset.rZaria); });
+      return;
+    }
+    svg.setAttribute('aria-label',
+      'Concentric-ring diagram of the Hindu textual tradition, coloured by what the archive holds');
+    zones.forEach(function (z, zi) {
+      var sec = secs[zi];
+      var zid = sec ? sec.id.replace('zone-', '') : null;
+      var m = { held: 0, possible: 0, none: 0, restricted: 0 };
+      if (zid) Object.keys(B).forEach(function (k) {
+        if (k.split('||')[0] !== zid) return;
+        var s = B[k].state;
+        if (s === 'held' || s === 'held-several') m.held++;
+        else if (s === 'possible') m.possible++;
+        else if (s === 'restricted') m.restricted++;
+        else m.none++;
+      });
+      var total = m.held + m.possible + m.none + m.restricted;
+      var segs = [];
+      z.querySelectorAll('path.seg').forEach(function (p) {
+        var a = pathAngles(p); if (a) segs.push({ p: p, a: a });
+      });
+      if (!total || !segs.length) return;
+      segs.sort(function (x, y) { return x.a.start - y.a.start; });
+      var totalSpan = 0; segs.forEach(function (s) { totalSpan += s.a.span; });
+      var bands = [], cum = 0;
+      ['held', 'possible', 'none', 'restricted'].forEach(function (st) {
+        cum += m[st] / total; bands.push({ st: st, upto: cum });
+      });
+      var walked = 0;
+      segs.forEach(function (s) {
+        var mid = (walked + s.a.span / 2) / totalSpan; walked += s.a.span;
+        var st = 'restricted';
+        for (var i = 0; i < bands.length; i++) { if (mid <= bands[i].upto + 1e-9) { st = bands[i].st; break; } }
+        s.p.setAttribute('fill', HCOLOR[st]);
+      });
+      var name = (z.dataset.rZaria || '').split(':')[0];
+      z.setAttribute('aria-label', name + ': ' + m.held + ' readable here, ' + m.possible +
+        ' possible, ' + m.none + ' none' + (m.restricted ? ', ' + m.restricted + ' restricted' : ''));
+    });
+  }
+  // the footer's colour sentence is true only under the rights lens
+  var foot = document.getElementById('foot');
+  var FOOTSENT = 'Colour = best English translation available on a worldwide public-domain (life+70) bar.';
+  if (foot && foot.innerHTML.indexOf(FOOTSENT) >= 0) {
+    foot.innerHTML = foot.innerHTML.replace(FOOTSENT,
+      '<span class="b-only">Colour = what the archive holds; the Rights lens re-colours by public-domain reality.</span>' +
+      '<span class="r-only">' + FOOTSENT + '</span>');
+  }
+  _ready.then(updateMandala);
+
   setLens(lens, false);
 
   // the panel
