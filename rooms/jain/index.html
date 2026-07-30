@@ -325,6 +325,25 @@ const AR=(function(){
     }
   });
   document.querySelectorAll('main .zb, main .mini, main .zheld-toggle').forEach(function (x) { x.remove(); });
+  // 36c remnant (steward walk): the mandala-key zone CARDS keep their
+  // names as anchors; their tradition-wide counts (.ksub) and coverage
+  // bars (.mini) retire. The mandala itself, the mast lede, the colour
+  // legend, and the document's own comparative content all stay.
+  var KEYZ = {'\u25c9':'core','1':'ring1','2':'ring2','3':'ring3','4':'ring4','5':'ring5',
+              'A':'branchA','B':'branchB','C':'branchC','D':'branchD','\u00a7':'appendix'};
+  document.querySelectorAll('.keyrow').forEach(function (btn) {
+    var s = btn.querySelector('.ksub'); if (s) s.remove();
+    btn.querySelectorAll('.mini').forEach(function (x) { x.remove(); });
+    // drop the original closure listener (its target zone may be
+    // retired and would throw); re-wire a guarded scroll by glyph
+    var c2 = btn.cloneNode(true);
+    btn.parentNode.replaceChild(c2, btn);
+    var g = (c2.querySelector('.idx') || {}).textContent || '';
+    var zk = KEYZ[g.trim()];
+    var tgt = zk ? document.getElementById('zone-' + zk) : null;
+    if (tgt) c2.addEventListener('click', function () { tgt.scrollIntoView({behavior: 'smooth', block: 'start'}); });
+    else { c2.style.cursor = 'default'; c2.disabled = true; c2.style.opacity = '.75'; }
+  });
   function dearp() {
     document.querySelectorAll('[data-arp]').forEach(function (el) {
       var c = el.cloneNode(true);
