@@ -472,11 +472,34 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
 #rl-panel .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
 #rl-panel .rl-relh { font:italic 400 12px/1.4 Georgia,serif; color:var(--ink-faint); margin:10px 0 2px; }
 #rl-panel .rl-none { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-faint); }
+/* ── Task 37: the content overlays (Held editions · Reception) ── */
+#ov-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.4); z-index:70; }
+#ov-sheet { display:none; position:fixed; inset:5vh 6vw; overflow:auto; z-index:71;
+  background:var(--surface,#fffdf7); border:1px solid var(--line2,#d8d3cc); border-radius:10px;
+  box-shadow:0 10px 40px rgba(0,0,0,.25); padding:26px 30px 40px; }
+body.ov-open #ov-bg, body.ov-open #ov-sheet { display:block; }
+/* the toggle row stays operational above an open overlay — the
+   one-at-a-time grammar needs direct Held↔Reception switching */
+body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#faf8f5); }
+#ov-sheet .ov-close { float:right; font-size:16px; background:none; border:none; cursor:pointer; color:var(--ink-faint,#a09080); }
+#ov-sheet h2 { font:400 20px/1.3 Georgia,serif; margin:0 0 18px; color:var(--ink,#2c2c2c); }
+#ov-sheet .ov-zone { margin:0 0 22px; }
+#ov-sheet .ov-zone h3 { font:400 13px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint,#a09080);
+  border-bottom:1px solid var(--line,#e6e1d9); padding-bottom:5px; margin:0 0 8px; }
+#ov-sheet .rl-ed { display:inline-block; width:calc(50% - 12px); vertical-align:top; margin:4px 6px 4px 0; }
+#held-btn { display:block; margin:14px auto 0; font:400 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--accent,#7a5c3a);
+  background:none; border:1px solid var(--line2,#d8d3cc); border-radius:999px;
+  padding:9px 20px; cursor:pointer; }
+#held-btn:hover { border-color:var(--accent,#7a5c3a); }
 @media (max-width:720px) {
   #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #lens-toggle { margin-right:8px; }
+  #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
+  #ov-sheet .rl-ed { width:100%; margin:4px 0; }
 }
 </style>
 <script>
@@ -493,10 +516,13 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
     return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   }
   var LKEY = 'da-map-lens';
+  var LENSES = ['structure', 'rights', 'held', 'reception'];
+  function normLens(v) {
+    if (v === 'holdings') return 'structure';   // pre-Task-37 stored value
+    return LENSES.indexOf(v) >= 0 ? v : 'structure';
+  }
   var params = new URLSearchParams(location.search);
-  var lens = params.get('lens') === 'rights' ? 'rights'
-           : params.get('lens') === 'holdings' ? 'holdings'
-           : (localStorage.getItem(LKEY) === 'rights' ? 'rights' : 'holdings');
+  var lens = normLens(params.get('lens') || localStorage.getItem(LKEY) || 'structure');
   var B = null, PROV = {};
   // 36a race guard: a chip clicked before these resolve must never
   // render a false not-held — open() waits on this promise.
@@ -509,11 +535,16 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
   ]);
 
   // toggle pills — the reader's Reading/Interactive grammar
+  // Task 37: the reception section (Task 32's inline layer) becomes an
+  // OVERLAY — find it now; when absent the Reception toggle is omitted.
+  var recSec = document.querySelector('section[id$="-reception"]');
   var nav = document.getElementById('arch-topnav');
   var tg = document.createElement('span');
   tg.id = 'lens-toggle';
-  tg.innerHTML = '<button type="button" data-lens="holdings">Holdings</button>' +
-                 '<button type="button" data-lens="rights">Rights &amp; provenance</button>';
+  tg.innerHTML = '<button type="button" data-lens="structure">Structure</button>' +
+                 '<button type="button" data-lens="rights">Rights</button>' +
+                 '<button type="button" data-lens="held">Held editions</button>' +
+                 (recSec ? '<button type="button" data-lens="reception">Reception</button>' : '');
   if (nav) nav.insertBefore(tg, nav.firstChild);
   // 36a — the visible lens state: a banner right under the topbar
   var banner = document.createElement('div');
@@ -533,16 +564,108 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
     });
     if (writeUrl) {
       var u = new URL(location);
-      if (v === 'rights') u.searchParams.set('lens', 'rights');
+      if (v !== 'structure') u.searchParams.set('lens', v);
       else u.searchParams.delete('lens');
       history.replaceState(null, '', u);
     }
     if (v !== 'rights') close();
+    // the two content overlays — one at a time; structure/rights close both
+    if (v === 'held') { openOverlay('held'); }
+    else if (v === 'reception') { openOverlay('reception'); }
+    else { closeOverlay(); }
   }
   tg.addEventListener('click', function (e) {
     var b = e.target.closest('button');
     if (b) setLens(b.getAttribute('data-lens'), true);
   });
+
+  // ── Task 37: the two content overlays (Held editions · Reception) ──
+  var ovbg = document.createElement('div'); ovbg.id = 'ov-bg';
+  var sheet = document.createElement('div'); sheet.id = 'ov-sheet';
+  sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-modal', 'true');
+  sheet.tabIndex = -1;
+  sheet.innerHTML = '<button class="ov-close" aria-label="Back to the structure">✕</button>' +
+                    '<div class="ov-inner"></div>';
+  document.body.appendChild(ovbg); document.body.appendChild(sheet);
+  var ovInner = sheet.querySelector('.ov-inner');
+  var heldBuilt = null, recWrap = null;
+  if (recSec) {
+    // the inline reception layer relocates into the overlay — the base
+    // view is pure structure now (the one-page shape); the section's
+    // markup (and its file presence for the reachability scan) is kept.
+    recWrap = document.createElement('div'); recWrap.id = 'ov-reception';
+    recWrap.style.display = 'none';
+    recWrap.appendChild(recSec);
+    ovInner.appendChild(recWrap);
+  }
+  function zoneTitle(sec) {
+    var h = sec.querySelector('h2, .zone-h, h3');
+    return h ? (h.childNodes[0] && h.childNodes[0].textContent || h.textContent).trim() : sec.id;
+  }
+  function buildHeld() {
+    if (heldBuilt) return heldBuilt;
+    heldBuilt = document.createElement('div'); heldBuilt.id = 'ov-held';
+    var seen = {};
+    var total = 0;
+    var frag = '';
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      if (/-reception$/.test(sec.id)) return;
+      var zid = sec.id.replace(/^zone-/, '');
+      var rows = '';
+      sec.querySelectorAll('.chip, .su, .tc').forEach(function (el) {
+        var nmEl = el.querySelector('.nm') || el.querySelector('.tl') || el;
+        var b = B ? B[zid + '||' + norm((nmEl.textContent || '').trim())] : null;
+        if (!b || !b.read) return;
+        b.read.forEach(function (r) {
+          if (seen[r.df]) return;
+          seen[r.df] = 1; total++;
+          var head = (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
+                     (r.label ? ' — ' + r.label : '');
+          rows += '<a class="rl-ed" href="../' + r.url + '"><b style="font-weight:400">' +
+                  esc(r.work) + '</b><span class="rl-em">' + esc(head) +
+                  ' · read in the archive ↗</span></a>';
+        });
+      });
+      if (rows) frag += '<div class="ov-zone"><h3>' + esc(zoneTitle(sec)) +
+                        ' — held editions</h3>' + rows + '</div>';
+    });
+    heldBuilt.innerHTML = '<h2>Held in this archive — ' + total +
+                          ' edition' + (total === 1 ? '' : 's') + '</h2>' +
+                          (frag || '<div class="rl-none">Nothing from this map is readable here yet.</div>');
+    heldBuilt.style.display = 'none';
+    ovInner.appendChild(heldBuilt);
+    // the header button derives its count from the same pass
+    var hb = document.getElementById('held-btn');
+    if (hb) hb.textContent = 'Browse the ' + total + ' held editions →';
+    return heldBuilt;
+  }
+  function openOverlay(kind) {
+    _ready.then(function () {
+      var tgt = kind === 'held' ? buildHeld() : recWrap;
+      if (!tgt) { setLens('structure', true); return; }
+      if (heldBuilt) heldBuilt.style.display = kind === 'held' ? '' : 'none';
+      if (recWrap) recWrap.style.display = kind === 'reception' ? '' : 'none';
+      if (recSec) recSec.style.display = '';
+      document.body.classList.add('ov-open');
+      sheet.focus();
+    });
+  }
+  function closeOverlay() {
+    document.body.classList.remove('ov-open');
+  }
+  ovbg.addEventListener('click', function () { setLens('structure', true); });
+  sheet.querySelector('.ov-close').addEventListener('click', function () { setLens('structure', true); });
+  // the mast button — the room's "Browse the N held editions" opener,
+  // carried over; same overlay, two openers
+  var mast = document.querySelector('.mast');
+  if (mast) {
+    var hb = document.createElement('button');
+    hb.type = 'button'; hb.id = 'held-btn';
+    hb.textContent = 'Browse the held editions →';
+    hb.addEventListener('click', function () { setLens('held', true); });
+    mast.appendChild(hb);
+    _ready.then(function () { buildHeld(); });
+  }
   setLens(lens, false);
 
   // the panel
@@ -557,7 +680,11 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
     if (opener) { try { opener.focus(); } catch (e) {} opener = null; }
   }
   bg.addEventListener('click', close);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    if (document.body.classList.contains('ov-open')) setLens('structure', true);
+    else close();
+  });
   function esc(s) {
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
