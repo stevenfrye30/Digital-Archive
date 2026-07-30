@@ -403,3 +403,9 @@ data/jaina-sutras-part-2-hermann-jacobi-1884_anonymous.json.gz
 # Arnold 1900 malformed duplicate re-ingest: retired.
 data/bhagavad-gita_anonymous.json
 data/bhagavad-gita_anonymous.json.gz
+
+# Task 33b (design ruling 2026-07-30): the read mark is LOCAL-ONLY.
+# Derived from records/READ_LEDGER.md (Finished only) by
+# 05_scripts/build_read_marks.py; the live site 404s to nothing.
+# Publishing it later is a steward-reserved decision, default private.
+data/read_marks.json

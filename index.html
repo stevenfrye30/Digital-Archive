@@ -2022,6 +2022,16 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
+/* Task 33b — the quiet read mark on the cover: bookplate register,
+   small caps feel, muted. Local-only (see _readMarks). */
+.cc-read-mark {
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  color: var(--chrome-muted, #8a7a5c);
+  margin-top: 6px;
+}
+
 /* Task 33 ruling (2026-07-30) — the first-open actions row. On
    non-Bible codex covers begin/resume sit ABOVE the contents grid
    as clearly visible actions (the old right-aligned 0.8em pill
@@ -12596,6 +12606,22 @@ let metaVisible    = false;
 let currentEntry   = null;          // currently loaded index entry
 let indexGroups    = {};             // text_id → [entry, ...]
 const dataFileToEntry = {};           // data_file → {entry, li}
+// Task 33b (design ruling 2026-07-30) — the quiet "read" marks, derived
+// from the steward-told READ_LEDGER's Finished table by
+// 05_scripts/build_read_marks.py. data/read_marks.json is gitignored
+// (LOCAL-ONLY by the ruling): on the live site this fetch 404s and the
+// map stays empty — the reader shows nothing, by design. The reader
+// never writes anything ledger-ward; the mark derives from declaration
+// only.
+let _readMarks = {};                  // data_file → {declared, declaration}
+fetch('data/read_marks.json')
+  .then(r => r.ok ? r.json() : null)
+  .then(j => {
+    if (j && Array.isArray(j.marks))
+      for (const m of j.marks) _readMarks[m.text] = m;
+  })
+  .catch(() => {});
+
 let pendingPid     = null;            // passage id to jump to on enterReading
 let pendingSection = null;            // section name to jump to on loadText (cross-tradition deep link)
 let bookmarkTimer  = null;
@@ -15520,6 +15546,11 @@ function showCover(data, entry) {
   if (trTxt)     html += `<div class="cc-translator">${escapeHTML(trTxt)}</div>`;
   if (dateParts.length) html += `<div class="cc-year">${escapeHTML(dateParts.join(' \u00b7 '))}</div>`;
   if (ssHtml)    html += `<div class="cc-source">${ssHtml}</div>`;
+  // Task 33b — the quiet read mark: bookplate register, declaration
+  // only. Renders solely where the local-only read_marks.json declares
+  // this text finished; the live site never has the file.
+  const _rm = _readMarks[entry.data_file];
+  if (_rm) html += `<div class="cc-read-mark">✦ read — declared ${escapeHTML(_rm.declared)}</div>`;
   if (data.framing) html += `<div class="framing-line">${escapeHTML(data.framing)}</div>`;
   if (data.restricted) html += `<div class="cc-restricted">🔒 Restricted — copyrighted, local only. Not on public site.</div>`;
 
