@@ -26,8 +26,8 @@ generated reader at `03_web_app/`.
 
 | Measure | Count | Source of truth |
 |---|---:|---|
-| Index entries (web app reader) | **1,195** | `03_web_app/data/_generated/index.json` (entry count) |
-| — of which public | **1,095** | same (`restricted` ≠ true) |
+| Index entries (web app reader) | **1,193** | `03_web_app/data/_generated/index.json` (entry count) |
+| — of which public | **1,093** | same (`restricted` ≠ true) |
 | — of which restricted (locked, metadata-only) | **100** | same (`restricted` = true) — incl. nostradamus-roberts (uncertain-copyright, withdrawn 2026-07-28: body does not match its stated Ward 1891 source) |
 | Distinct ids | 1,106 | unique `id` — 32 ids legitimately shared across 122 entries (Jātaka ×8, bilingual pairs, multi-volume works) |
 | `text.json` files on disk | 1,055 *(2026-07-27)* | `01_library/library/texts/**/text.json` |

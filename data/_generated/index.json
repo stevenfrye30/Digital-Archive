@@ -10294,35 +10294,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "upanishads",
-      "title": "The Upanishads",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "upanishad",
-        "section",
-        "verse"
-      ],
-      "data_file": "upanishads_muller.json",
-      "source": "sacredtexts",
-      "author": [],
-      "translator": [
-        "F. Max Müller"
-      ],
-      "year": 1879,
-      "translation_label": "The Upanishads (Sacred Books of the East, Vols. I and XV)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Upanishads (Sacred Books of the East, Vols. I and XV)* F. Max Müller (1879). Via Oxford University Press / Sacred-texts.com.",
-      "importance_rank": 8,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "shelf_scope": "family-only",
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "upanishads-muller-part1",
       "title": "The Upanishads (Müller, Part 1)",
       "tradition": "Hindu",
@@ -10508,35 +10479,6 @@
     },
     {
       "id": "mahabharata",
-      "title": "Mahabharata",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "mahabharata_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "Romesh Dutt"
-      ],
-      "translator": [
-        "Romesh Dutt"
-      ],
-      "year": 1900,
-      "translation_label": "Mahabharata",
-      "translation_short_label": null,
-      "volume_label": "Romesh Dutt (1899)",
-      "quality": "derivative",
-      "source_summary": "*Mahabharata* Romesh Dutt (1899)_ (1900). Via SacredTexts.com.",
-      "importance_rank": 15,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "mahabharata",
       "title": "The Mahabharata",
       "tradition": "Hindu",
       "collection": "sacred",
@@ -10559,6 +10501,35 @@
       "volume_label": null,
       "quality": "primary",
       "source_summary": "*The Mahabharata of Krishna-Dwaipayana Vyasa* Kisari Mohan Ganguli (1896). Via SacredTexts.com.",
+      "importance_rank": 15,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "mahabharata",
+      "title": "The Mahabharata (condensed into English verse)",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "mahabharata_anonymous.json",
+      "source": "sacredtexts",
+      "author": [
+        "Romesh Dutt"
+      ],
+      "translator": [
+        "Romesh Dutt"
+      ],
+      "year": 1899,
+      "translation_label": "Mahabharata",
+      "translation_short_label": null,
+      "volume_label": "Romesh Dutt (1899)",
+      "quality": "derivative",
+      "source_summary": "*Mahabharata* Romesh Dutt (1899)_ (1900). Via SacredTexts.com.",
       "importance_rank": 15,
       "cross_sections": null,
       "cross_traditions": null,
@@ -17070,7 +17041,7 @@
     },
     {
       "id": "the-udana-gm-strong-1902-no",
-      "title": "The Udana",
+      "title": "The Udana, or the Solemn Utterances of the Buddha",
       "tradition": "Buddhist",
       "collection": "other",
       "hierarchy": [
@@ -17082,9 +17053,9 @@
         "GM-Strong"
       ],
       "translator": [
-        "GM-Strong"
+        "G. M. Strong"
       ],
-      "year": 1900,
+      "year": 1902,
       "translation_label": "The Udana",
       "translation_short_label": null,
       "volume_label": null,
@@ -23882,39 +23853,6 @@
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "atharva-veda-hymns-ralph-griffith-1895",
-      "title": "Atharva Veda hymns",
-      "tradition": "Hindu",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "atharva-veda-hymns-ralph-griffith-1895_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "Ralph Griffith"
-      ],
-      "translator": [
-        "Ralph Griffith"
-      ],
-      "year": 1900,
-      "translation_label": "Atharva Veda hymns",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Atharva Veda hymns* by Ralph Griffith (1895). Translated by Ralph Griffith (1895) (1900). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "searchable_passages": false,
-      "searchable_metadata": true,
-      "search_frequency_corpus": true,
-      "shelf_scope": "legacy-direct-only",
       "reading_status": "pass",
       "reading_status_certified": true
     },

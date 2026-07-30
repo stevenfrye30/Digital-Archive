@@ -1,11 +1,11 @@
 {
- "generated": "2026-07-30T02:37:29Z",
+ "generated": "2026-07-30T03:08:21Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "8f84da63b49e17e9afa77788bbe4a38d05bfc31d",
- "library_fingerprint": "sha256:9782db6aa821a7b5c6eec26f648b78639d3b598cbb2380785477ab45d89accb0",
+ "exporter_rev": "2da83312f6d16299c6bb65da79b082eef9282b3d",
+ "library_fingerprint": "sha256:e8be8d96e428fa1b84b1385a5cb1619b8a54677ab3009e0f522821d913f02def",
  "counts": {
-  "entries": 1195,
-  "public": 1095,
+  "entries": 1193,
+  "public": 1093,
   "restricted": 100
  },
  "texts": {
@@ -784,18 +784,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:22Z"
-  },
-  "atharva-veda-hymns-ralph-griffith-1895_anonymous": {
-   "source_hash": "sha256:03dfe78d12f89c8d614a0d1df03213615f2a4b688c735e5df456a729469a9b5d",
-   "data_file": "atharva-veda-hymns-ralph-griffith-1895_anonymous.json.gz",
-   "data_hash": "sha256:1857fd77fe4d1371c004e5b005254db7e0b30263b25606b1bab753d993070c3f",
-   "data_bytes": 323182,
-   "passages": 1312,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-01T20:10:53Z"
   },
   "athenian-constitution_kenyon": {
    "source_hash": "sha256:4208b30b948a275e3d17307dc7f095556cff47fed582191c933088d3faaa290f",
@@ -7606,16 +7594,16 @@
    "exported": "2026-07-10T17:31:05Z"
   },
   "mahabharata_anonymous": {
-   "source_hash": "sha256:f8ffad8bf4118b91e576811ff7b0571e9d63586e9b919fd378788010df2cc6d7",
+   "source_hash": "sha256:d83e5833049f2a4598e0bb39331f399acbb91096df38e97b1f3f7982d40be1ac",
    "data_file": "mahabharata_anonymous.json.gz",
-   "data_hash": "sha256:2d16e5d59c58cbce97d49d0ca79193acf679781e5520f3d5fcb1df8e8b8cf5c0",
-   "data_bytes": 96322,
+   "data_hash": "sha256:402c181975c978d2d2557bf4ccd24c22e4f4a152d9b382631d4d80c8e0cb76c9",
+   "data_bytes": 96346,
    "passages": 20,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
+   "exported": "2026-07-30T02:56:14Z"
   },
   "mahabharata_ganguli": {
    "source_hash": "sha256:4d95eb8b1d355d7b55181055464c087eb1327bce9d2f63092ac94d487de0168e",
@@ -13149,16 +13137,16 @@
    "exported": "2026-07-10T17:31:29Z"
   },
   "the-udana-gm-strong-1902-no_anonymous": {
-   "source_hash": "sha256:1f83968ff31cdc043fd0aef8d9189db68ab13b632aeb425e1130fc4c3a7244db",
+   "source_hash": "sha256:8fe9369474e329bb01f7d4622e7ce4848fef2d25b404dee9e851d0b555f15267",
    "data_file": "the-udana-gm-strong-1902-no_anonymous.json.gz",
-   "data_hash": "sha256:4b3604dcc0f3f471db04cbb6b8600c76f8e682a013a9c54654740570966a5585",
-   "data_bytes": 58481,
+   "data_hash": "sha256:205cf26e8664115c093b5a57e9e101d40f238e4a5730a7f70f3b0f52b8cc693d",
+   "data_bytes": 58494,
    "passages": 894,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-01T20:10:54Z"
+   "exported": "2026-07-30T02:54:52Z"
   },
   "the-varieties-of-religous-experience-william-james-1902_anonymous": {
    "source_hash": "sha256:fac7606b77cde35e6e1baba2080a31b4eb3da171de92be6b733476efb03e542e",
@@ -13721,18 +13709,6 @@
    "restricted_reason": "steward-hold",
    "apparatus": false,
    "exported": null
-  },
-  "upanishads_muller": {
-   "source_hash": "sha256:0b91551ec4917379ed3ddcde28d18d60e6f093132b2c7f708d20683de2535169",
-   "data_file": "upanishads_muller.json.gz",
-   "data_hash": "sha256:2364cc0b1fd71886638c00d7aaeaf44de5aaa34960c7394b3abf7568a94f676e",
-   "data_bytes": 177718,
-   "passages": 1831,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:32Z"
   },
   "upayika-dhammadinna_dhammadinna": {
    "source_hash": "sha256:76ee8cb5d8e415f884ee6878631620efd0bca3b7f33f635d46d6c9b3101b3f0e",
