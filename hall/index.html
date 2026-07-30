@@ -4,7 +4,7 @@
 <!-- LIGHT-FIRST theme boot: runs before paint; light unless the shared key says dark; invalid/absent ⇒ light -->
 <script>(function(){try{var t=localStorage.getItem("archive_theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
 <meta name="robots" content="noindex">
-<!-- Religion Hall preview | enabled rooms: hindu -&gt; /Digital-Archive/rooms/hindu/ sha256=4ba38d6a5c67e5241ad343dc1862da6501bfa5c9594502b28dd95ca3cdf83c46; christian -&gt; /Digital-Archive/rooms/christian/ sha256=9ee80ff4a409e79529f6d46c38d5eb5ecdc30f1839e337988dc305736334765c; buddhist -&gt; /Digital-Archive/rooms/buddhist/ sha256=c60dc799d0ef873d724fa52b4a6cef011732a57f883fc15b87ce62e5ac807363; eastasian -&gt; /Digital-Archive/rooms/eastasian/ sha256=8f7e50934ac1474e4fb70a6409f7c4e1c0a0db0c14d7e9702616d53fda4b3d22; zoroastrian -&gt; /Digital-Archive/rooms/zoroastrian/ sha256=72228db08a8779b975101da28e72532e58929aa4219f0763bdf3fee980e1b2e2; sikh -&gt; /Digital-Archive/rooms/sikh/ sha256=dd841c8ca8c9bec2a960790dedf6dd0bddfafde4b90da019b7c7719103cc2e3d; jain -&gt; /Digital-Archive/rooms/jain/ sha256=fe83c258721fb1637da8b0e8f6f6301e6300a06ac0dd1a556b82d283a6b91844; ancient -&gt; /Digital-Archive/rooms/ancient/ sha256=7440cbf1f1e390beadb963c72f5075ff7aaadabc0991d9e4298ea9524931fe25; gnostic -&gt; /Digital-Archive/rooms/gnostic/ sha256=413be73bd403e3fc928edac5913f5f8c34e4bda5f87e8e370d0f511c6410195e; indigenous -&gt; /Digital-Archive/rooms/indigenous/ sha256=86f60d0204f4eeed7e6b8a5d8e423e8fa50254e83908ed569813949fe116c69c; modern -&gt; /Digital-Archive/rooms/modern/ sha256=35e18c051564e159201fb7b954da1fe2e167531710a1b4ad8dbd149dee0dafdc -->
+<!-- Religion Hall preview | enabled rooms: hindu -&gt; /Digital-Archive/rooms/hindu/ sha256=18f4f1bbc722410ad17ba421cc77cecac1f976a14d0e7be6eba3e11528225f9d; christian -&gt; /Digital-Archive/rooms/christian/ sha256=9e3e50d48aab210440fa46cc96bfe93cb1ef8d91dcecd1653a9d0a38e74787dc; buddhist -&gt; /Digital-Archive/rooms/buddhist/ sha256=f65a3bb1c42704f812801abd468093f0f7b439453a12246b99cc590253d1a769; eastasian -&gt; /Digital-Archive/rooms/eastasian/ sha256=8f7e50934ac1474e4fb70a6409f7c4e1c0a0db0c14d7e9702616d53fda4b3d22; zoroastrian -&gt; /Digital-Archive/rooms/zoroastrian/ sha256=72228db08a8779b975101da28e72532e58929aa4219f0763bdf3fee980e1b2e2; sikh -&gt; /Digital-Archive/rooms/sikh/ sha256=dd841c8ca8c9bec2a960790dedf6dd0bddfafde4b90da019b7c7719103cc2e3d; jain -&gt; /Digital-Archive/rooms/jain/ sha256=fe83c258721fb1637da8b0e8f6f6301e6300a06ac0dd1a556b82d283a6b91844; ancient -&gt; /Digital-Archive/rooms/ancient/ sha256=7440cbf1f1e390beadb963c72f5075ff7aaadabc0991d9e4298ea9524931fe25; gnostic -&gt; /Digital-Archive/rooms/gnostic/ sha256=413be73bd403e3fc928edac5913f5f8c34e4bda5f87e8e370d0f511c6410195e; indigenous -&gt; /Digital-Archive/rooms/indigenous/ sha256=86f60d0204f4eeed7e6b8a5d8e423e8fa50254e83908ed569813949fe116c69c; modern -&gt; /Digital-Archive/rooms/modern/ sha256=35e18c051564e159201fb7b954da1fe2e167531710a1b4ad8dbd149dee0dafdc -->
 <style>
   :root{
     --bg:#f3efe4; --bg2:#ece5d6; --panel:#faf6ec; --ink:#141220; --ink-soft:#4a4636; --ink-faint:#7c7261;
@@ -67,6 +67,12 @@
     border-radius:50%; font-size:.9rem; border:1px solid var(--line2); }
   .lg.open .mk{ color:var(--arch-open); border-color:var(--arch-open); }
   .lg.forth .mk{ color:var(--ink-faint); }
+  .map-door{ margin:2rem 0 .4rem; padding:.8rem 1rem; border:1px solid var(--line);
+    border-radius:.7rem; background:var(--panel); box-shadow:var(--shadow);
+    font-size:.88rem; color:var(--ink-soft); }
+  .map-door a{ font-family:var(--serif); color:var(--gold); font-weight:600;
+    text-decoration:none; margin-right:.5rem; }
+  .map-door a:hover{ text-decoration:underline; }
 
   .colonnade{ display:grid; gap:clamp(.9rem,2vw,1.4rem);
     grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); }
@@ -177,6 +183,14 @@
     <a class="door open" data-k="indigenous" data-name="Indigenous &amp; Oral" data-status="available" href="/Digital-Archive/rooms/indigenous/" aria-label="Enter the Indigenous &amp; Oral room — Room open. Use your browser Back to return to the Hall."><span class="keyline" aria-hidden="true"></span><h3>Indigenous &amp; Oral</h3><p class="blurb">Living oral and land-based traditions, recorded with care.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">◉</span>Room open</span><span class="cta">Enter →</span></span></a>
     <a class="door open" data-k="modern" data-name="Modern &amp; New" data-status="available" href="/Digital-Archive/rooms/modern/" aria-label="Enter the Modern &amp; New room — Room open. Use your browser Back to return to the Hall."><span class="keyline" aria-hidden="true"></span><h3>Modern &amp; New</h3><p class="blurb">Bahá&#x27;í, Theosophy, and the modern scriptures.</p><span class="foot"><span class="status"><span class="mk" aria-hidden="true">◉</span>Room open</span><span class="cta">Enter →</span></span></a>
   </nav>
+
+  <!-- Task 34 (2026-07-30): the Hall is the front door; the Map is the
+       other way in — a standing cross-link, asserted by the battery. -->
+  <div class="map-door" role="note" aria-label="The Map of Sacred Texts">
+    <a href="/Digital-Archive/map/">The Map of Sacred Texts &rarr;</a>
+    <span>every tradition&rsquo;s whole territory on one wall, colour-coded
+    by public-domain reality — holdings, possibilities, and the honest gaps.</span>
+  </div>
 
   <div class="fallback" id="fallback" role="alert"></div>
   <p class="sr" id="live" role="status" aria-live="polite"></p>

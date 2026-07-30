@@ -2276,10 +2276,10 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   color: var(--chrome-active);
   margin-top: 12px;
 }
-/* ===== Religion Hall band ("Another way in") =====
-   Built as a doorway band: the steward intends the Hall to eventually
-   replace the Religion shelf, so the band and the shelf cards share the
-   same anchor-friendly inner structure. */
+/* ===== "Another way in" band =====
+   Task 34 (2026-07-30): the steward's intention landed — the Hall took
+   the Religion card, and this band is the Map of Sacred Texts' door
+   now. Single text column; the room-link list left with the Hall. */
 #home-hall-feature {
   margin: 56px 0 0;
   background: var(--chrome-bg);
@@ -2292,7 +2292,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   gap: 32px;
   text-align: left;
 }
-.hall-feature-text { max-width: 30em; }
+.hall-feature-text { max-width: 44em; }
 .hall-feature-kicker {
   font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: 0.18em;
@@ -2315,22 +2315,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   color: #5a5048;
   margin: 0;
 }
-.hall-rooms {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex-shrink: 0;
-}
-#home-hall-feature .hall-room-link {
-  font: 400 14.5px/1.4 Georgia, serif;
-  color: var(--chrome-active);
-  text-decoration: none;
-  border-bottom: 1px solid var(--chrome-border);
-  padding: 4px 2px;
-}
-.hall-rooms .hall-room-link:last-child { border-bottom: none; }
-#home-hall-feature .hall-room-link:hover { color: var(--reader-fg); }
-#home-hall-feature .hall-room-link:focus-visible { outline: 3px solid var(--chrome-active); outline-offset: 2px; }
+/* (.hall-rooms / .hall-room-link rules retired with the list — Task 34.) */
 #home-search {
   max-width: 560px;
   margin: 30px auto 0;
@@ -2559,8 +2544,6 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
     padding: 22px 20px;
     margin-top: 40px;
   }
-  .hall-rooms { flex-direction: row; flex-wrap: wrap; gap: 14px; }
-  .hall-rooms .hall-room-link { border-bottom: 1px solid var(--chrome-border); }
   #home-footer { margin-top: 44px; }
 }
 @media (max-height: 600px) {
@@ -11860,9 +11843,12 @@ body.viewer-active .folio-leaf-colophon {
           <div id="welcome-home">
             <div id="home-topbar">
               <a href="https://stevenfrye30.github.io/Workspace/" id="home-hub-link">&larr; Workspace</a>
+              <!-- Task 34 header-nav call (terminal): the Hall link DROPS —
+                   the Religion card directly below is the Hall's front door
+                   now, and a second link four lines above it rendered as
+                   duplication, not affordance. The topnav stays minimal. -->
               <nav id="home-topnav">
                 <a href="press.html">The Press</a>
-                <a href="hall/">The Religion Hall</a>
                 <button id="dark-toggle" type="button" onclick="toggleDarkMode()">Dark</button>
               </nav>
             </div>
@@ -11879,16 +11865,16 @@ body.viewer-active .folio-leaf-colophon {
             <div id="home-shelves">
               <div id="home-shelves-head"><h2>The four shelves</h2></div>
               <div id="home-categories">
-                <!-- Task 21 rider + Task 32 retirement: the Religion door IS the
-                     Map of Sacred Texts. The flat Religion shelf is retired
-                     (Task 32 ruling, 2026-07-29): per-tradition reception
-                     lives on the map pages; the tradition-blind A-Z survives
-                     as All Texts; the card's line derives from
-                     maps/summary.json — the same source as the maps. -->
-                <a class="home-cat" data-cat="Religion" href="map/">
+                <!-- Task 34 (steward ruling A, 2026-07-30): the Religion door
+                     IS the Religion Hall — the steward's original vision. The
+                     Map moved to the "Another way in" band below. The flat
+                     shelf stays retired (Task 32); the card's line derives
+                     from maps/summary.json (rooms_open + traditions, written
+                     by build_map_bindings.py) — no authored counts. -->
+                <a class="home-cat" data-cat="Religion" href="hall/">
                   <span class="home-cat-titleline"><span class="home-cat-label">Religion</span><span class="home-cat-count"></span></span>
                   <span class="home-cat-scent">The Rig-Veda &middot; The City of God &middot; The Analects &middot; the world&rsquo;s scriptures<span class="home-cat-trads"></span></span>
-                  <span class="home-cat-browse">Enter the Map &rarr;</span>
+                  <span class="home-cat-browse">Enter the Religion Hall &rarr;</span>
                 </a>
                 <button class="home-cat" data-cat="Philosophy" type="button">
                   <span class="home-cat-titleline"><span class="home-cat-label">Philosophy</span><span class="home-cat-count"></span></span>
@@ -11907,25 +11893,15 @@ body.viewer-active .folio-leaf-colophon {
                 </button>
               </div>
             </div>
+            <!-- Task 34: the band is the Map's now — the Hall took the card
+                 above; the room list moved out (the Hall itself is one click
+                 away). The readable count derives from maps/summary.json in
+                 the same fetch that fills the card. -->
             <section id="home-hall-feature" aria-labelledby="home-hall-heading">
               <div class="hall-feature-text">
                 <div class="hall-feature-kicker">Another way in</div>
-                <h2 id="home-hall-heading" class="hall-feature-title"><a href="hall/">The Religion Hall</a></h2>
-                <p class="hall-feature-sub">Step into a tradition&rsquo;s own room &mdash; its structure on the walls, its texts on the shelves. Eleven rooms stand open; every other tradition stands mapped.</p>
-              </div>
-              <div class="hall-rooms" role="group" aria-label="Rooms open now">
-                <a class="hall-room-link" href="rooms/hindu/">Hinduism &rarr;</a>
-                <a class="hall-room-link" href="rooms/buddhist/">Buddhism &rarr;</a>
-                <a class="hall-room-link" href="rooms/christian/">The Abrahamic Room &rarr;</a>
-                <a class="hall-room-link" href="rooms/eastasian/">East Asia &rarr;</a>
-                <a class="hall-room-link" href="rooms/zoroastrian/">Zoroastrianism &rarr;</a>
-                <a class="hall-room-link" href="rooms/ancient/">The Ancient World &rarr;</a>
-                <a class="hall-room-link" href="rooms/gnostic/">Gnosticism &rarr;</a>
-                <a class="hall-room-link" href="rooms/jain/">Jainism &rarr;</a>
-                <a class="hall-room-link" href="rooms/sikh/">Sikhism &rarr;</a>
-                <a class="hall-room-link" href="rooms/modern/">Modern Movements &rarr;</a>
-                <a class="hall-room-link" href="rooms/indigenous/">Indigenous Traditions &rarr;</a>
-                <a class="hall-room-link" href="map/">The Map of Sacred Texts &rarr;</a>
+                <h2 id="home-hall-heading" class="hall-feature-title"><a href="map/">The Map of Sacred Texts</a></h2>
+                <p class="hall-feature-sub">Every tradition&rsquo;s whole territory on one wall &mdash; not only what the archive holds, but the full canon, colour-coded by public-domain reality: readable here, possible, or honestly out of reach.<span id="hall-map-readable"></span></p>
               </div>
             </section>
             <div id="home-workroom" style="display:none;">
@@ -23052,8 +23028,9 @@ let browseHistory = []; // stack of {fn, args} for back button
 /** Level 1: show traditions for a category */
 function browseCategory(cat) {
   if (cat === 'Religion') {
-    // Task 32: the flat Religion shelf is retired — the Map is the door.
-    location.href = 'map/';
+    // Task 32: the flat Religion shelf is retired. Task 34 (ruling A):
+    // the HALL is the Religion door now; the Map is the other way in.
+    location.href = 'hall/';
     return;
   }
   if (!browseTree) browseTree = buildBrowseData();
@@ -27942,13 +27919,18 @@ function updateHomeCounts() {
     const tradCount = Object.keys(traditions).length;
     shelfTotal += textCount;
     if (cat === 'Religion') {
-      // Task 32 ruling 2: the shelf-count binding is retired. The card
-      // asserts what the Map asserts — one truth, one source
-      // (maps/summary.json, written by build_map_bindings.py).
+      // Task 34 (steward ruling A): the card is the HALL's door; its line
+      // derives from the Hall's own truth (rooms_open, counted from the
+      // deployed rooms at build) + traditions — one truth, one source
+      // (maps/summary.json, written by build_map_bindings.py; the Task 32
+      // no-authored-counts rule stands). The same fetch fills the Map
+      // band's readable count below.
       const cEl = btn.querySelector('.home-cat-count');
       cEl.textContent = '';
       fetch('maps/summary.json').then(r => r.json()).then(s => {
-        cEl.textContent = `${s.traditions} traditions · ${s.readable_routes} readable here`;
+        cEl.textContent = `${s.rooms_open} rooms open · ${s.traditions} traditions mapped`;
+        const mr = document.getElementById('hall-map-readable');
+        if (mr) mr.textContent = ` ${s.readable_routes} texts are readable on it today.`;
       }).catch(() => {});
       const tr0 = btn.querySelector('.home-cat-trads');
       if (tr0) tr0.textContent = '';

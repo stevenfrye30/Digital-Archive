@@ -54,6 +54,25 @@ def surfaces():
     return pub, mapped, roomed, reader_only
 
 
+def surface_cross_links() -> list[str]:
+    """Task 34: the Hall and the Map must link each other — asserted, not
+    assumed, so neither entrance surface loses reachability when the other
+    takes the front door. (Guard check 6 protects the texts; this protects
+    the surfaces.)"""
+    probs = []
+    hall = REPO / "hall" / "index.html"
+    if not hall.is_file():
+        probs.append("hall/index.html is missing — the Religion front door is gone")
+    elif 'href="/Digital-Archive/map/"' not in hall.read_text(encoding="utf-8"):
+        probs.append("hall/index.html carries no link to map/ — the Map is "
+                     "unreachable from the Hall (rebuild via 05_scripts/deploy_hall.py)")
+    for f in sorted((REPO / "map").glob("*.html")):
+        if "hall" not in f.read_text(encoding="utf-8"):
+            probs.append(f"map/{f.name} carries no Hall link — the Hall is "
+                         "unreachable from that map page")
+    return probs
+
+
 def problems() -> list[str]:
     if not LEDGER.exists():
         return ["tools/reachability_ledger.json is missing — the reachability "
@@ -63,7 +82,8 @@ def problems() -> list[str]:
     new = [df for df in reader_only if df not in ledger]
     return [f"UNREACHABLE from every structural surface and not in the ledger: {df} "
             "(bind it, place it in a room, or record the decision with "
-            "tools/check_reachability.py --write-ledger)" for df in new]
+            "tools/check_reachability.py --write-ledger)" for df in new] \
+        + surface_cross_links()
 
 
 def main() -> int:
