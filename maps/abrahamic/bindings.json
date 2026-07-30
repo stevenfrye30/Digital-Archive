@@ -4,8 +4,8 @@
  "provisional": true,
  "counts": {
   "held-several": 248,
-  "none": 108,
-  "held": 42,
+  "held": 60,
+  "none": 90,
   "possible": 91,
   "restricted": 1
  },
@@ -1580,7 +1580,18 @@
    "zone": "ju-mishnah",
    "chip": "Berakhot",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Berachoth",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
@@ -1598,7 +1609,18 @@
    "zone": "ju-mishnah",
    "chip": "Kilayim",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Kilaim",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
@@ -1646,19 +1668,52 @@
    "zone": "ju-mishnah",
    "chip": "Shabbat",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Sabbath",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Eruvin",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Erubin",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Pesachim",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Pesachim",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
@@ -1670,43 +1725,120 @@
    "zone": "ju-mishnah",
    "chip": "Yoma",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Yomah — chapter VIII only",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Sukkah",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Succah",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Beitzah",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Yom Tob (Beitzah)",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Rosh Hashanah",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Rosh Hashanah",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Ta'anit",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Taanith",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Megillah",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Meguillah",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Moed Katan",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Moed Katan",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
@@ -1718,13 +1850,35 @@
    "zone": "ju-mishnah",
    "chip": "Yevamot",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Yebamoth",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Ketubot",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Kethuboth",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
@@ -1748,13 +1902,35 @@
    "zone": "ju-mishnah",
    "chip": "Gittin",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Gittin",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
    "chip": "Kiddushin",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Kedushin",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
@@ -1841,7 +2017,18 @@
    "zone": "ju-mishnah",
    "chip": "Chullin",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Cholin",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
@@ -1955,7 +2142,18 @@
    "zone": "ju-mishnah",
    "chip": "Yadayim",
    "pd": "a",
-   "state": "none"
+   "state": "held",
+   "read": [
+    {
+     "df": "mishna-18-rabbinowicz_desola-raphall.json",
+     "work": "Eighteen Treatises from the Mishna",
+     "translator": "D.A. De Sola, M.J. Raphall",
+     "year": 1843,
+     "label": "Treatise Yadaim",
+     "url": "?text=mishna-18-rabbinowicz_desola-raphall.json"
+    }
+   ],
+   "contained_in": "within Eighteen Treatises from the Mishna (De Sola & Raphall, 1843)"
   },
   {
    "zone": "ju-mishnah",
