@@ -1,0 +1,92 @@
+{
+ "version": 1,
+ "text_id": "quran",
+ "translation_id": "pickthall",
+ "scope_note": "Hand-authored gloss seed for the daily Qurʾān practice (suras 1–2 opening), Task 33a. Layer-5 editorial voice on the Jātaka pattern. Bodies design-drafted in the steward's voice; ALL TWELVE reviewed and approved by the steward as written, 2026-07-30 (review/quran-readalong/gloss_seed_suras1-2.md). Terms are verbatim strings from passages_pickthall.json — asserted 12/12 at apply time, fail-closed. The seed's editorial-note candidate (Pickthall's foreword) was CUT per its own inline verification order: the foreword is not in the ingest (0 front-matter passages), and nothing is asserted from memory. kind/headword fields are mechanical file-shape metadata, not steward prose.",
+ "glosses": [
+  {
+   "term": "Allah",
+   "headword": "Allah",
+   "kind": "name",
+   "pid": "1.1",
+   "body": "The Arabic name of God — al-ilāh, \"the God,\" contracted by long use. Pickthall keeps it untranslated throughout: not a different God but the Arabic-speaking Abrahamic name for the one God."
+  },
+  {
+   "term": "the Beneficent, the Merciful",
+   "headword": "the Beneficent, the Merciful",
+   "kind": "name",
+   "pid": "1.1",
+   "body": "Ar-Raḥmān, ar-Raḥīm — both from the root r-ḥ-m, whose home meaning is the womb. Raḥmān names mercy as permanent nature; Raḥīm mercy in act, toward particular creatures. English needs two words where Arabic needs two intensities."
+  },
+  {
+   "term": "Lord of the Worlds",
+   "headword": "Lord of the Worlds",
+   "kind": "phrase",
+   "pid": "1.2",
+   "body": "Rabb al-ʿālamīn. ʿĀlamīn is the plural of ʿālam — every created order at once: humans, jinn, all beings, all ages."
+  },
+  {
+   "term": "Master of the Day of Judgment",
+   "headword": "Master of the Day of Judgment",
+   "kind": "phrase",
+   "pid": "1.4",
+   "body": "Māliki yawm ad-dīn. Dīn here means judgment, requital — the same word elsewhere rendered \"religion\"; the double sense is native to the Arabic."
+  },
+  {
+   "term": "the straight path",
+   "headword": "the straight path",
+   "kind": "phrase",
+   "pid": "1.6",
+   "body": "Aṣ-ṣirāṭ al-mustaqīm. Ṣirāṭ is likely an old loan from Latin strata — a paved road — already naturalized in pre-Islamic Arabic."
+  },
+  {
+   "term": "those who go astray",
+   "headword": "those who go astray",
+   "kind": "phrase",
+   "pid": "1.7",
+   "body": "Aḍ-ḍāllīn — wanderers from the way, the closing word of the sura as recited."
+  },
+  {
+   "term": "Alif. Lam. Mim.",
+   "headword": "Alif. Lam. Mim.",
+   "kind": "letters",
+   "pid": "2.1",
+   "body": "The muqaṭṭaʿāt, \"disconnected letters\" — three Arabic letter-names. Twenty-nine suras open with such letters; their meaning is genuinely unknown, and the classical commentators mostly let them stand as mystery. The reader meets, in the Qurʾān's second verse, a text announcing it will not explain everything."
+  },
+  {
+   "term": "the Scripture",
+   "headword": "the Scripture",
+   "kind": "word",
+   "pid": "2.2",
+   "body": "Al-kitāb, \"the Book\" — the Qurʾān's name for itself here."
+  },
+  {
+   "term": "who ward off (evil)",
+   "headword": "who ward off (evil)",
+   "kind": "phrase",
+   "pid": "2.2",
+   "body": "Al-muttaqīn, from taqwā — often \"God-consciousness,\" a guarding attentiveness. The parenthesis is Pickthall's: \"(evil)\" is his supplement, not the Arabic's."
+  },
+  {
+   "term": "the Unseen",
+   "headword": "the Unseen",
+   "kind": "word",
+   "pid": "2.3",
+   "body": "Al-ghayb — what lies beyond perception: the divine order, the hereafter, what no witness can attest."
+  },
+  {
+   "term": "establish worship",
+   "headword": "establish worship",
+   "kind": "phrase",
+   "pid": "2.3",
+   "body": "Yuqīmūna aṣ-ṣalāh — the ritual prayer. Pickthall renders ṣalāh as \"worship\" throughout the translation; where he writes \"worship,\" the Arabic names the five daily prayers."
+  },
+  {
+   "term": "(Muhammad)",
+   "headword": "(Muhammad)",
+   "kind": "insertion",
+   "pid": "2.4",
+   "body": "Pickthall's parentheses mark his own insertions — words the Arabic implies but does not say. Here the unnamed addressee of \"revealed unto thee\" is made explicit."
+  }
+ ]
+}

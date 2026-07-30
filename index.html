@@ -13838,7 +13838,8 @@ function _wrapGlossTerm(div, g) {
     const line = document.createElement('div');
     line.className = 'gl-line';
     line.innerHTML = '<strong style="font-weight:400">' + escapeHTML(g.headword || g.term) +
-      '</strong> <span class="gl-etym">· ' + escapeHTML(g.etym || '') + '</span>' +
+      '</strong>' +
+      (g.etym ? ' <span class="gl-etym">· ' + escapeHTML(g.etym) + '</span>' : '') +
       '<span class="gl-kind">' + escapeHTML(g.kind || 'word') + '</span>';
     leaf.appendChild(line);
     const body = document.createElement('p');
