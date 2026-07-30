@@ -218,7 +218,7 @@ section.view { display: block !important; }
 </style>
 </head>
 <body data-map="bahai">
-<div id="arch-topbar"><a href="../hall/">&larr; The Religion Hall</a><nav id="arch-topnav"><a href="./">The Map of Sacred Texts</a><a href="../">The Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="arch-topbar"><a href="../hall/">&larr; The Religion Hall</a><nav id="arch-topnav"><a href="../">The Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
 <div id="m-legend" aria-label="Node states">
 <span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
 <span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
@@ -476,7 +476,12 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 /* 37 dress fixes — the reception section inside the sheet: archive
    palette (never default blue), per-row blocks, breathing h2 spans */
 #ov-sheet a { color:var(--ink,#2c2c2c); text-decoration:none; }
-#ov-sheet #ov-reception h2 { font:400 18px/1.4 Georgia,serif; margin:0 0 6px; }
+/* 39 — the merged sheet: the relocated section's own h2 would double
+   the group header; the header carries the count now */
+#ov-sheet #ov-reception h2 { display:none; }
+#ov-sheet .ov-rec-h { font:400 13px/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint,#a09080);
+  border-bottom:1px solid var(--line,#e6e1d9); padding-bottom:5px; margin:26px 0 8px; }
 #ov-sheet #ov-reception h2 .pi { font-style:italic; font-size:13px; color:var(--ink-faint,#a09080); margin-left:10px; }
 #ov-sheet #ov-reception h2 .ct { font-size:12px; color:var(--ink-faint,#a09080); margin-left:10px; }
 #ov-sheet #ov-reception .blurb { font:italic 400 13px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); margin:0 0 14px; }
@@ -517,9 +522,10 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     return lb === ty ? '' : ' \u2014 ' + r.label;
   }
   var LKEY = 'da-map-lens';
-  var LENSES = ['structure', 'rights', 'held', 'reception'];
+  var LENSES = ['structure', 'rights', 'held'];
   function normLens(v) {
     if (v === 'holdings') return 'structure';   // pre-Task-37 stored value
+    if (v === 'reception') return 'held';       // Task 39: one held surface
     return LENSES.indexOf(v) >= 0 ? v : 'structure';
   }
   var params = new URLSearchParams(location.search);
@@ -544,8 +550,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   tg.id = 'lens-toggle';
   tg.innerHTML = '<button type="button" data-lens="structure">Structure</button>' +
                  '<button type="button" data-lens="rights">Rights</button>' +
-                 '<button type="button" data-lens="held">Held editions</button>' +
-                 (recSec ? '<button type="button" data-lens="reception">Reception</button>' : '');
+                 '<button type="button" data-lens="held">Held editions</button>';
   if (nav) nav.insertBefore(tg, nav.firstChild);
   // 36a — the visible lens state: a banner right under the topbar
   var banner = document.createElement('div');
@@ -571,8 +576,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     }
     if (v !== 'rights') close();
     // the two content overlays — one at a time; structure/rights close both
-    if (v === 'held') { openOverlay('held'); }
-    else if (v === 'reception') { openOverlay('reception'); }
+    if (v === 'held') { openOverlay(); }
     else { closeOverlay(); }
     if (typeof updateMandala === 'function') updateMandala();
   }
@@ -635,17 +639,27 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
                           (frag || '<div class="rl-none">Nothing from this map is readable here yet.</div>');
     heldBuilt.style.display = 'none';
     ovInner.appendChild(heldBuilt);
+    // Task 39 — one held surface: reception rides the same sheet as a
+    // final group ("held here, not yet placed in the structure")
+    if (recWrap) {
+      var recN = recWrap.querySelectorAll('.tc').length;
+      var rh = document.createElement('h3');
+      rh.className = 'ov-rec-h';
+      rh.textContent = 'Reception — held here, not yet placed in the structure · + ' +
+                       recN + ' in reception';
+      recWrap.insertBefore(rh, recWrap.firstChild);
+      ovInner.appendChild(recWrap);
+    }
     // the header button derives its count from the same pass
     var hb = document.getElementById('held-btn');
     if (hb) hb.textContent = 'Browse the ' + total + ' held editions →';
     return heldBuilt;
   }
-  function openOverlay(kind) {
+  function openOverlay() {
     _ready.then(function () {
-      var tgt = kind === 'held' ? buildHeld() : recWrap;
-      if (!tgt) { setLens('structure', true); return; }
-      if (heldBuilt) heldBuilt.style.display = kind === 'held' ? '' : 'none';
-      if (recWrap) recWrap.style.display = kind === 'reception' ? '' : 'none';
+      buildHeld();
+      if (heldBuilt) heldBuilt.style.display = '';
+      if (recWrap) recWrap.style.display = '';
       if (recSec) recSec.style.display = '';
       document.body.classList.add('ov-open');
       sheet.focus();
