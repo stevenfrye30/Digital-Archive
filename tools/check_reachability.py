@@ -37,18 +37,19 @@ LEDGER = REPO / "tools" / "reachability_ledger.json"
 def surfaces():
     ix = json.loads(INDEX.read_text(encoding="utf-8"))["texts"]
     pub = [e for e in ix if not e.get("restricted") and e.get("data_file")]
+    # Task 37 (one page per tradition): the surfaces are the Map's —
+    # structure routes (bindings read[], which is also the held-editions
+    # overlay's derivation) and the map pages' own content (the
+    # reception overlays live in the page files). The rooms are
+    # permanent redirect stubs and no longer a surface.
     mapped = set()
     for f in sorted((REPO / "maps").glob("*/bindings.json")):
         for c in json.loads(f.read_text(encoding="utf-8"))["chips"]:
             for r in (c.get("read") or []):
                 mapped.add(r["df"])
-    room_html = "".join(f.read_text(encoding="utf-8")
-                        for f in sorted((REPO / "rooms").glob("*/index.html")))
-    # Task 32 ruling 1: the map pages' reception layers are structural
-    # surfaces too (the Shintō precedent, extended) — scanned like rooms.
-    room_html += "".join(f.read_text(encoding="utf-8")
-                         for f in sorted((REPO / "map").glob("*.html")))
-    roomed = {e["data_file"] for e in pub if e["data_file"] in room_html}
+    map_html = "".join(f.read_text(encoding="utf-8")
+                       for f in sorted((REPO / "map").glob("*.html")))
+    roomed = {e["data_file"] for e in pub if e["data_file"] in map_html}
     reader_only = sorted(e["data_file"] for e in pub
                          if e["data_file"] not in mapped and e["data_file"] not in roomed)
     return pub, mapped, roomed, reader_only
@@ -81,7 +82,7 @@ def problems() -> list[str]:
     _, _, _, reader_only = surfaces()
     new = [df for df in reader_only if df not in ledger]
     return [f"UNREACHABLE from every structural surface and not in the ledger: {df} "
-            "(bind it, place it in a room, or record the decision with "
+            "(bind it, place it on a map surface, or record the decision with "
             "tools/check_reachability.py --write-ledger)" for df in new] \
         + surface_cross_links()
 
@@ -93,7 +94,7 @@ def main() -> int:
     pub, mapped, roomed, reader_only = surfaces()
     on = len({e["data_file"] for e in pub} & (mapped | roomed))
     print(f"public {len(pub)} · map-bound {len(mapped & {e['data_file'] for e in pub})} "
-          f"· room-listed {len(roomed)} · on a structural surface {on} "
+          f"· map-page-listed {len(roomed)} · on a structural surface {on} "
           f"· reader-only {len(reader_only)}")
     if a.write_ledger:
         LEDGER.write_text(json.dumps(

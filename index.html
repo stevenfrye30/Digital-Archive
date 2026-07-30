@@ -27868,7 +27868,7 @@ function updateHomeCounts() {
       const cEl = btn.querySelector('.home-cat-count');
       cEl.textContent = '';
       fetch('maps/summary.json').then(r => r.json()).then(s => {
-        cEl.textContent = `${s.rooms_open} rooms open · ${s.traditions} traditions mapped`;
+        cEl.textContent = `${s.traditions} traditions mapped · ${s.readable_routes} readable here`;
       }).catch(() => {});
       const tr0 = btn.querySelector('.home-cat-trads');
       if (tr0) tr0.textContent = '';
