@@ -1,0 +1,61 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/gnostic.json",
+ "nodes": {
+  "pistis-sophia": {
+   "title": "Pistis Sophia (the Askew Codex)",
+   "path": [
+    "Gnostic & Dualist",
+    "Gnosticism",
+    "Pistis Sophia"
+   ],
+   "type": "gnostic gospel",
+   "description": "The great Coptic gnostic gospel of the Askew Codex — the risen Jesus teaching the mysteries, and the repentances of Pistis Sophia. The archive holds G.R.S. Mead's translation in its revised form.",
+   "desc_confidence": "draft"
+  },
+  "fragments-of-a-faith-forgotten": {
+   "title": "Fragments of a Faith Forgotten (Valentinus · Basilides · the Sethians)",
+   "path": [
+    "Gnostic & Dualist",
+    "Gnosticism",
+    "Fragments of a Faith Forgotten"
+   ],
+   "type": "survey with sources",
+   "description": "Mead's great gathering of the gnostic teachers and schools — Valentinus, Basilides, the Sethians — with the surviving fragments rendered in full.",
+   "desc_confidence": "draft"
+  },
+  "the-nag-hammadi-library": {
+   "title": "The Nag Hammadi Library (Gospel of Truth · Philip · Apocryphon of John…)",
+   "path": [
+    "Gnostic & Dualist",
+    "Gnosticism",
+    "The Nag Hammadi Library"
+   ],
+   "type": "codex library",
+   "description": "The Coptic library found at Nag Hammadi in 1945. The archive holds two of its works in public-domain-clear renderings — the Gospel of Philip and the Gospel of Truth; the full library's modern translations remain under copyright (noted honestly).",
+   "desc_confidence": "draft"
+  },
+  "the-gospel-of-thomas": {
+   "title": "The Gospel of Thomas — the complete Coptic text",
+   "path": [
+    "Gnostic & Dualist",
+    "Gnosticism",
+    "The Gospel of Thomas"
+   ],
+   "type": "sayings gospel",
+   "description": "The one hundred fourteen sayings of Jesus from the Nag Hammadi find. The archive holds a rights-clear composite text; the standard scholarly translations remain under copyright (noted honestly).",
+   "desc_confidence": "draft"
+  },
+  "the-gospel-of-mary": {
+   "title": "The Gospel of Mary (the Berlin Codex)",
+   "path": [
+    "Gnostic & Dualist",
+    "Gnosticism",
+    "The Gospel of Mary"
+   ],
+   "type": "gnostic gospel",
+   "description": "The gospel of the Berlin Codex in which Mary Magdalene teaches the disciples the soul's ascent. The archive holds a rights-clear rendering of the surviving pages.",
+   "desc_confidence": "draft"
+  }
+ }
+}

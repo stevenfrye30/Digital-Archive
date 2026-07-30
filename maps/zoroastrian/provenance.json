@@ -1,0 +1,402 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/zoroastrian.json",
+ "nodes": {
+  "ahunavaiti-gatha": {
+   "title": "Ahunavaitī Gāthā (Yasna 28–34)",
+   "path": [
+    "The Avesta",
+    "The Gāthās",
+    "Ahunavaitī Gāthā"
+   ],
+   "type": "gāthā collection",
+   "description": "The first Gāthā collection, Yasna 28–34 — the oldest stratum of the Avesta, hymns in the ancient dialect attributed to Zarathustra himself.",
+   "desc_confidence": "draft"
+  },
+  "ustavaiti-gatha": {
+   "title": "Uštavaitī Gāthā (Yasna 43–46)",
+   "path": [
+    "The Avesta",
+    "The Gāthās",
+    "Uštavaitī Gāthā"
+   ],
+   "type": "gāthā collection",
+   "description": "The second Gāthā collection, Yasna 43–46 — 'hymns of bliss', continuing the oldest Avestan stratum attributed to Zarathustra.",
+   "desc_confidence": "draft"
+  },
+  "spenta-mainyu-gatha": {
+   "title": "Spentā-Mainyū Gāthā (Yasna 47–50)",
+   "path": [
+    "The Avesta",
+    "The Gāthās",
+    "Spentā-Mainyū Gāthā"
+   ],
+   "type": "gāthā collection",
+   "description": "The third Gāthā collection, Yasna 47–50, named for the Bounteous Spirit invoked in its opening.",
+   "desc_confidence": "draft"
+  },
+  "vohu-khsathra-gatha": {
+   "title": "Vohu-Khšathrā Gāthā (Yasna 51)",
+   "path": [
+    "The Avesta",
+    "The Gāthās",
+    "Vohu-Khšathrā Gāthā"
+   ],
+   "type": "gāthā collection",
+   "description": "The fourth Gāthā collection, the single long hymn of Yasna 51, named for the Good Dominion.",
+   "desc_confidence": "draft"
+  },
+  "vahistoisti-gatha": {
+   "title": "Vahištōišti Gāthā (Yasna 53)",
+   "path": [
+    "The Avesta",
+    "The Gāthās",
+    "Vahištōišti Gāthā"
+   ],
+   "type": "gāthā collection",
+   "description": "The fifth and last Gāthā, Yasna 53 — traditionally associated with the marriage of Zarathustra's daughter.",
+   "desc_confidence": "draft"
+  },
+  "the-yasna": {
+   "title": "The Yasna · 72 chapters (hā)",
+   "path": [
+    "The Avesta",
+    "The Yasna & Visperad",
+    "The Yasna"
+   ],
+   "type": "liturgy",
+   "description": "The chief liturgical text of the Avesta — seventy-two chapters (hā) recited in the central act of worship, enclosing the Gāthās at its heart.",
+   "desc_confidence": "draft"
+  },
+  "the-yasna-hapta-haiti": {
+   "title": "The Yasna Haptaŋhāiti (Yasna 35–41)",
+   "path": [
+    "The Avesta",
+    "The Yasna & Visperad",
+    "The Yasna Haptaŋhāiti"
+   ],
+   "type": "liturgy",
+   "description": "The 'Worship of the Seven Chapters', Yasna 35–41 — old Avestan prose nearly as ancient as the Gāthās themselves.",
+   "desc_confidence": "draft"
+  },
+  "the-visperad": {
+   "title": "The Visperad · ~24 sections",
+   "path": [
+    "The Avesta",
+    "The Yasna & Visperad",
+    "The Visperad"
+   ],
+   "type": "liturgy",
+   "description": "A collection of supplements to the Yasna — invocations of 'all the lords' (vīspe ratavo) — recited with it at seasonal festivals.",
+   "desc_confidence": "draft"
+  },
+  "1-hormazd-yast": {
+   "title": "1. Hormazd Yašt (Ahura Mazdā)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "1. Hormazd Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 1 of the twenty-one hymns to the yazatas, addressed to Ahura Mazdā. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "2-haptan-yast": {
+   "title": "2. Haptān Yašt (the Amesha Spentas)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "2. Haptān Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 2 of the twenty-one hymns to the yazatas, addressed to the Amesha Spentas. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "3-ardvahist-yast": {
+   "title": "3. Ardvahišt Yašt (Aša Vahišta)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "3. Ardvahišt Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 3 of the twenty-one hymns to the yazatas, addressed to Aša Vahišta. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "4-hordad-yast": {
+   "title": "4. Hordād Yašt (Haurvatāt)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "4. Hordād Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 4 of the twenty-one hymns to the yazatas, addressed to Haurvatāt. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "5-aban-yast": {
+   "title": "5. Ābān Yašt (Arədvī Sūrā Anāhitā)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "5. Ābān Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 5 of the twenty-one hymns to the yazatas, addressed to Arədvī Sūrā Anāhitā. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "6-khorsed-yast": {
+   "title": "6. Khoršēd Yašt (the Sun)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "6. Khoršēd Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 6 of the twenty-one hymns to the yazatas, addressed to the Sun. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "7-mah-yast": {
+   "title": "7. Māh Yašt (the Moon)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "7. Māh Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 7 of the twenty-one hymns to the yazatas, addressed to the Moon. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "8-tir-tistar-yast": {
+   "title": "8. Tīr / Tištar Yašt (Sirius)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "8. Tīr / Tištar Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 8 of the twenty-one hymns to the yazatas, addressed to Sirius. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "9-gos-drvasp-yast": {
+   "title": "9. Gōš / Drvāsp Yašt",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "9. Gōš / Drvāsp Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 9 of the twenty-one hymns to the yazatas. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "10-mihr-yast": {
+   "title": "10. Mihr Yašt (Mithra)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "10. Mihr Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 10 of the twenty-one hymns to the yazatas, addressed to Mithra. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "11-sraos-yast": {
+   "title": "11. Sraoš Yašt (Sraoša)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "11. Sraoš Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 11 of the twenty-one hymns to the yazatas, addressed to Sraoša. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "12-rasn-yast": {
+   "title": "12. Rašn Yašt (Rašnu)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "12. Rašn Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 12 of the twenty-one hymns to the yazatas, addressed to Rašnu. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "13-frawardin-yast": {
+   "title": "13. Frawardīn Yašt (the Fravašis)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "13. Frawardīn Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 13 of the twenty-one hymns to the yazatas, addressed to the Fravašis. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "14-bahram-yast": {
+   "title": "14. Bahrām Yašt (Vərəθraγna)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "14. Bahrām Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 14 of the twenty-one hymns to the yazatas, addressed to Vərəθraγna. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "15-ram-yast": {
+   "title": "15. Rām Yašt (Vayu)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "15. Rām Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 15 of the twenty-one hymns to the yazatas, addressed to Vayu. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "16-den-yast": {
+   "title": "16. Dēn Yašt (Čistā)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "16. Dēn Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 16 of the twenty-one hymns to the yazatas, addressed to Čistā. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "17-ard-asi-yast": {
+   "title": "17. Ard / Aši Yašt (Aši Vanguhī)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "17. Ard / Aši Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 17 of the twenty-one hymns to the yazatas, addressed to Aši Vanguhī. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "18-astad-yast": {
+   "title": "18. Aštād Yašt (Arštāt)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "18. Aštād Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 18 of the twenty-one hymns to the yazatas, addressed to Arštāt. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "19-zamyad-yast": {
+   "title": "19. Zamyād Yašt (the Earth & the Khvarənah)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "19. Zamyād Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 19 of the twenty-one hymns to the yazatas, addressed to the Earth & the Khvarənah. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "20-hom-yast": {
+   "title": "20. Hōm Yašt (Haoma)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "20. Hōm Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 20 of the twenty-one hymns to the yazatas, addressed to Haoma. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "21-vanant-yast": {
+   "title": "21. Vanant Yašt (the star Vanant)",
+   "path": [
+    "The Avesta",
+    "The Yašts",
+    "21. Vanant Yašt"
+   ],
+   "type": "hymn (yašt)",
+   "description": "Yašt 21 of the twenty-one hymns to the yazatas, addressed to the star Vanant. Held within Darmesteter's Zend-Avesta Part 2 (SBE 23).",
+   "desc_confidence": "draft"
+  },
+  "fargard-1": {
+   "title": "Fargard 1 — the sixteen lands",
+   "path": [
+    "The Avesta",
+    "The Vendidād",
+    "Fargard 1"
+   ],
+   "type": "section of the Vendidād",
+   "description": "The Vendidād's opening chapter: the sixteen good lands created by Ahura Mazdā and the counter-creations set against each.",
+   "desc_confidence": "draft"
+  },
+  "fargard-2": {
+   "title": "Fargard 2 — Yima and the vara",
+   "path": [
+    "The Avesta",
+    "The Vendidād",
+    "Fargard 2"
+   ],
+   "type": "section of the Vendidād",
+   "description": "The story of Yima, the first king, and the vara — the enclosure built to preserve the seeds of life through the deadly winters.",
+   "desc_confidence": "draft"
+  },
+  "fargards-3-22": {
+   "title": "Fargards 3–22 — purity law, penances, medicine, praise",
+   "path": [
+    "The Avesta",
+    "The Vendidād",
+    "Fargards 3–22"
+   ],
+   "type": "sections of the Vendidād",
+   "description": "The body of the Vendidād — the law against the demons: purity regulations, penances, care of the dead, medicine, and praise.",
+   "desc_confidence": "draft"
+  },
+  "khorsed": {
+   "title": "Khoršēd · Mihr · Māh · Ābān · Ātaš Niyāyišn",
+   "path": [
+    "The Avesta",
+    "The Khordeh Avesta",
+    "Khoršēd"
+   ],
+   "type": "daily prayers",
+   "description": "The five Niyāyišn — the litanies of daily devotion to the Sun, Mithra, the Moon, the Waters, and Fire.",
+   "desc_confidence": "draft"
+  },
+  "the-5-gahs": {
+   "title": "The 5 Gāhs (watches of the day)",
+   "path": [
+    "The Avesta",
+    "The Khordeh Avesta",
+    "The 5 Gāhs"
+   ],
+   "type": "daily prayers",
+   "description": "The prayers of the five watches into which the Zoroastrian day is divided, each with its guardian spirit.",
+   "desc_confidence": "draft"
+  },
+  "the-2-sirozas": {
+   "title": "The 2 Sīrōzas (the 30 day-divinities)",
+   "path": [
+    "The Avesta",
+    "The Khordeh Avesta",
+    "The 2 Sīrōzas"
+   ],
+   "type": "calendar devotions",
+   "description": "The two 'thirty days' — invocations of the divinity presiding over each day of the month, in shorter and longer form.",
+   "desc_confidence": "draft"
+  },
+  "the-afrinagans": {
+   "title": "The Āfrīnagāns (blessings)",
+   "path": [
+    "The Avesta",
+    "The Khordeh Avesta",
+    "The Āfrīnagāns"
+   ],
+   "type": "blessings",
+   "description": "The Āfrīnagān blessings — liturgies of benediction recited in honor of the departed, at the season-festivals, and at the turning of the year.",
+   "desc_confidence": "draft"
+  }
+ }
+}

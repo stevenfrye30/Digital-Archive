@@ -1,0 +1,26 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/indigenous.json",
+ "nodes": {
+  "the-holy-piby": {
+   "title": "The Holy Piby (the Blackman’s Bible)",
+   "path": [
+    "The African Diaspora",
+    "The Holy Piby"
+   ],
+   "type": "proto-Rastafari scripture",
+   "description": "Robert Athlyi Rogers' Holy Piby (1924), the 'Blackman's Bible' of the Athlican faith and a wellspring of Rastafari. Bound here (in-diaspora); the modern map's Rastafari scope defers to this chip.",
+   "desc_confidence": "draft"
+  },
+  "navajo-dine": {
+   "title": "Navajo / Diné — the emergence legends & the Blessingway",
+   "path": [
+    "Native North America",
+    "Navajo / Diné"
+   ],
+   "type": "recorded ceremony",
+   "description": "The Diné emergence legends and Blessingway material as recorded by Washington Matthews (1897). Recorded ceremonial material; treated with the map's own stated caveat.",
+   "desc_confidence": "draft"
+  }
+ }
+}

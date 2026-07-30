@@ -218,7 +218,7 @@ section.view { display: block !important; }
 </style>
 </head>
 <body data-map="ancient">
-<div id="arch-topbar"><a href="../">&larr; The Archive</a><nav id="arch-topnav"><a href="./">The Map of Sacred Texts</a><a href="../hall/">The Religion Hall</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="arch-topbar"><a href="../hall/">&larr; The Religion Hall</a><nav id="arch-topnav"><a href="./">The Map of Sacred Texts</a><a href="../">The Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
 <div id="m-legend" aria-label="Node states">
 <span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
 <span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
@@ -379,5 +379,228 @@ archive&rsquo;s own holdings.</p><button class="toggle" id="themeBtn" aria-label
 })();
 
 </script>
+<!-- map-lens:start (generated — edit 05_scripts/map_lens_block.py) -->
+<style>
+/* ── Task 35: the Rights & provenance lens ── */
+#lens-toggle { display:inline-flex; gap:0; margin-right:18px; border:1px solid var(--line2); border-radius:999px; overflow:hidden; }
+#lens-toggle button { font:400 10px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; letter-spacing:.12em; text-transform:uppercase; padding:6px 12px; color:var(--ink-faint); background:none; border:none; cursor:pointer; }
+#lens-toggle button[aria-pressed="true"] { background:var(--accent, #7a5c3a); color:var(--surface, #fff); }
+body[data-lens="rights"] .chip, body[data-lens="rights"] .su, body[data-lens="rights"] .tc,
+body[data-lens="rights"] section[id] h2, body[data-lens="rights"] .zone-h,
+body[data-lens="rights"] .group h3 { cursor:help; }
+#rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
+#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
+body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
+#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
+#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
+#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
+#rl-panel .rl-sec { margin:0 0 16px; }
+#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
+#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
+#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
+#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
+#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
+#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
+#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
+#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
+#rl-panel .rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
+#rl-panel .rl-ed:hover { border-color:var(--accent,#7a5c3a); }
+#rl-panel .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
+#rl-panel .rl-relh { font:italic 400 12px/1.4 Georgia,serif; color:var(--ink-faint); margin:10px 0 2px; }
+#rl-panel .rl-none { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-faint); }
+@media (max-width:720px) {
+  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
+  #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
+  #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
+  #lens-toggle { margin-right:8px; }
+}
+</style>
+<script>
+(function () {
+  var SLUG = document.body.getAttribute('data-map');
+  if (!SLUG) return;
+  function norm(s) {
+    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+            .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+  }
+  function nid(s) {
+    s = (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    s = s.split('\u2014')[0].split(' \u00b7 ')[0].split(' (')[0];
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  var LKEY = 'da-map-lens';
+  var params = new URLSearchParams(location.search);
+  var lens = params.get('lens') === 'rights' ? 'rights'
+           : params.get('lens') === 'holdings' ? 'holdings'
+           : (localStorage.getItem(LKEY) === 'rights' ? 'rights' : 'holdings');
+  var B = null, PROV = {};
+  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+    .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); });
+  fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) { if (j && j.nodes) PROV = j.nodes; }).catch(function () {});
+
+  // toggle pills — the reader's Reading/Interactive grammar
+  var nav = document.getElementById('arch-topnav');
+  var tg = document.createElement('span');
+  tg.id = 'lens-toggle';
+  tg.innerHTML = '<button type="button" data-lens="holdings">Holdings</button>' +
+                 '<button type="button" data-lens="rights">Rights &amp; provenance</button>';
+  if (nav) nav.insertBefore(tg, nav.firstChild);
+  function setLens(v, writeUrl) {
+    lens = v;
+    document.body.setAttribute('data-lens', v);
+    try { localStorage.setItem(LKEY, v); } catch (e) {}
+    tg.querySelectorAll('button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-lens') === v ? 'true' : 'false');
+    });
+    if (writeUrl) {
+      var u = new URL(location);
+      if (v === 'rights') u.searchParams.set('lens', 'rights');
+      else u.searchParams.delete('lens');
+      history.replaceState(null, '', u);
+    }
+    if (v !== 'rights') close();
+  }
+  tg.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (b) setLens(b.getAttribute('data-lens'), true);
+  });
+  setLens(lens, false);
+
+  // the panel
+  var bg = document.createElement('div'); bg.id = 'rl-bg';
+  var panel = document.createElement('div'); panel.id = 'rl-panel';
+  panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'true');
+  panel.tabIndex = -1;
+  document.body.appendChild(bg); document.body.appendChild(panel);
+  var opener = null;
+  function close() {
+    document.body.classList.remove('rl-open');
+    if (opener) { try { opener.focus(); } catch (e) {} opener = null; }
+  }
+  bg.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  var RIGHTS = {
+    g: 'Green \u2014 a complete public-domain or openly-reusable English translation exists.',
+    a: 'Amber \u2014 an English translation exists but is copyrighted, partial, restricted, or not publicly redistributable.',
+    r: 'Red \u2014 no English translation has been identified.',
+    x: 'Unmapped \u2014 an oral or non-textual tradition; there is no scripture to hold.'
+  };
+  function edRow(r, chooser) {
+    var head = (chooser === 'works')
+      ? r.work + (r.translator ? ' \u00b7 ' + r.translator + (r.year ? ', ' + r.year : '') : '')
+      : (r.translator || r.work) + (r.year ? ', ' + r.year : '') + (r.label ? ' \u2014 ' + r.label : '');
+    return '<a class="rl-ed" href="../' + r.url + '"><b style="font-weight:400">' + esc(head) + '</b>' +
+           '<span class="rl-em">' + esc(r.work) + ' \u00b7 read in the archive \u2197</span></a>';
+  }
+  function open(el) {
+    opener = el;
+    var nmEl = el.querySelector('.nm') || el.querySelector('.tl') || el;
+    var name = (nmEl.textContent || '').trim();
+    if (el.dataset.rlHeading && el.childNodes.length) {
+      // headings carry appended zone-bars/count spans — the name is the
+      // leading text node only
+      name = (el.childNodes[0].textContent || name).trim();
+    }
+    var sec = el.closest('section[id]');
+    var zid = sec ? sec.id.replace(/^zone-/, '') : '';
+    var b = B ? B[zid + '||' + norm(name)] : null;
+    var p = PROV[nid(name)] || null;
+    var pd = (b && b.pd) || ['g', 'a', 'r', 'x'].filter(function (k) { return el.classList.contains(k); })[0] || null;
+    var note = el.getAttribute('title') || '';
+    var groupH = el.closest('.group') ? el.closest('.group').querySelector('h3') : null;
+    var secH = sec ? sec.querySelector('h2, .zone-h') : null;
+    var h = '<button class="rl-close" aria-label="Close">\u2715</button>';
+    h += '<p class="rl-eyebrow">' + esc((p && p.type) || 'structural node') + '</p>';
+    h += '<h3>' + esc((p && p.title) || name) + '</h3>';
+    h += '<div class="rl-sec"><div class="rl-lbl">About</div><div class="rl-body">' +
+         (p ? esc(p.description) + (p.desc_confidence && p.desc_confidence !== 'reviewed'
+              ? ' <span class="rl-conf">\u00b7 derived</span>' : '')
+            : 'A fuller reviewed description of this node has not yet been recorded.') + '</div></div>';
+    var path = (p && p.path) ? p.path.join(' \u2192 ')
+             : [secH ? secH.childNodes[0].textContent.trim() : '', groupH ? groupH.textContent.trim() : '']
+               .filter(Boolean).join(' \u2192 ');
+    h += '<div class="rl-sec"><div class="rl-lbl">Place in the tradition</div><div class="rl-body">' +
+         (esc(path) || '\u2014') + '</div></div>';
+    h += '<div class="rl-sec"><div class="rl-lbl">Rights / access (worldwide-PD bar)</div>' +
+         (pd ? '<span class="rl-rights ' + pd + '">' + RIGHTS[pd] + '</span>' : '<div class="rl-none">Not classified on this map.</div>') +
+         (note ? '<div class="rl-note"><b>Map note:</b> ' + esc(note) + '</div>' : '') + '</div>';
+    h += '<div class="rl-sec"><div class="rl-lbl">Read or access online</div>' +
+         ((p && p.external && p.external.length)
+           ? p.external.map(function (x) {
+               return '<a class="rl-ed" href="' + esc(x.url) + '" target="_blank" rel="noopener"><b style="font-weight:400">' +
+                      esc(x.edition) + '</b><span class="rl-em">' + esc([x.host, x.access].filter(Boolean).join(' \u00b7 ')) +
+                      ' \u00b7 open \u2197</span></a>';
+             }).join('')
+           : '<div class="rl-none">No exact lawful online source has been recorded yet.</div>') + '</div>';
+    // Held in this archive — bindings-derived ONLY (one truth with the holdings lens)
+    h += '<div class="rl-sec"><div class="rl-lbl">Held in this archive</div>';
+    if (el.dataset.rlHeading) {
+      // section/group heading: a derived summary across its chips
+      var scope = el.closest('.group') || sec;
+      var cs = scope ? scope.querySelectorAll('.chip, .su') : [];
+      var m = { read: 0, poss: 0, res: 0, none: 0, n: 0 };
+      Array.prototype.forEach.call(cs, function (cel) {
+        var cn = cel.querySelector('.nm') || cel.querySelector('.tl') || cel;
+        var cb = B ? B[zid + '||' + norm((cn.textContent || '').trim())] : null;
+        if (!cb) return;
+        m.n++;
+        if (cb.read && cb.read.length) m.read++;
+        else if (cb.state === 'possible') m.poss++;
+        else if (cb.state === 'restricted') m.res++;
+        else m.none++;
+      });
+      h += m.n
+        ? '<div class="rl-body">' + m.read + ' of ' + m.n + ' works in this section are readable here' +
+          (m.poss ? ' \u00b7 ' + m.poss + ' possible' : '') +
+          (m.res ? ' \u00b7 ' + m.res + ' held restricted' : '') + '.</div>'
+        : '<div class="rl-none">A structural section \u2014 holdings live on its individual works.</div>';
+    } else if (b && b.read && b.read.length) {
+      h += '<div class="rl-relh">' + (b.contained_in
+            ? 'Available within held complete editions \u2014 ' + esc(b.contained_in)
+            : (b.read.length > 1 ? b.read.length + ' held editions' : 'Held edition of this work')) + '</div>';
+      h += b.read.map(function (r) { return edRow(r, b.chooser); }).join('');
+      (b.restricted_note || []).forEach(function (n) {
+        h += '<div class="rl-none">Also held restricted: ' + esc(n.title) + ' (' + esc(n.reason_class) + ').</div>';
+      });
+    } else if (b && b.state === 'restricted') {
+      h += '<div class="rl-none">Held, but restricted (' + esc(b.reason_class || 'rights-or-quality hold') + ') \u2014 not publicly readable.</div>';
+    } else if (b && b.state === 'possible') {
+      h += '<div class="rl-none">Not held yet \u2014 a public-domain translation exists in the world (amber-possible on this map).</div>';
+    } else if (pd === 'x') {
+      h += '<div class="rl-none">Nothing to hold \u2014 this node marks an oral tradition.</div>';
+    } else {
+      h += '<div class="rl-none">No reader-ready edition of this work is held' +
+           (pd === 'r' ? ' \u2014 no English translation is known to exist' : '') + '.</div>';
+    }
+    h += '</div>';
+    panel.innerHTML = h;
+    panel.querySelector('.rl-close').addEventListener('click', close);
+    document.body.classList.add('rl-open');
+    panel.focus();
+  }
+  // rights mode intercepts chip clicks at capture — navigation and
+  // choosers never fire; reception tiles keep their reader links.
+  document.addEventListener('click', function (e) {
+    if (lens !== 'rights') return;
+    var el = e.target.closest('.chip, .su, .tc');
+    var isHeading = false;
+    if (!el) {
+      el = e.target.closest('section[id] h2, .zone-h, .group h3');
+      isHeading = !!el;
+    }
+    if (!el) return;
+    var sec = el.closest('section[id]');
+    if (sec && /-reception$/.test(sec.id)) return;
+    e.preventDefault(); e.stopPropagation();
+    if (isHeading) el.dataset.rlHeading = '1';
+    open(el);
+  }, true);
+})();
+</script>
+<!-- map-lens:end -->
 </body>
 </html>

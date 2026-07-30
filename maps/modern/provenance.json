@@ -1,0 +1,66 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/modern.json",
+ "nodes": {
+  "the-book-of-mormon": {
+   "title": "The Book of Mormon",
+   "path": [
+    "The Latter Day Saint Movement",
+    "The Book of Mormon"
+   ],
+   "type": "scripture",
+   "description": "The founding scripture of the Latter Day Saint movement, in the public-domain 1830 first edition. The row is shelved with the archive's Christian texts; it binds here by the cross-scope precedent.",
+   "desc_confidence": "draft"
+  },
+  "oahspe-a-new-bible": {
+   "title": "Oahspe: A New Bible",
+   "path": [
+    "Spiritualist, Spiritist & Esoteric",
+    "Oahspe: A New Bible"
+   ],
+   "type": "channeled scripture",
+   "description": "Newbrough's 1882 'new Bible', among the first typewritten channeled scriptures. Shelved with the Christian texts; bound here cross-scope.",
+   "desc_confidence": "draft"
+  },
+  "the-aquarian-gospel-of-jesus-the-christ": {
+   "title": "The Aquarian Gospel of Jesus the Christ",
+   "path": [
+    "Spiritualist, Spiritist & Esoteric",
+    "The Aquarian Gospel of Jesus the Christ"
+   ],
+   "type": "channeled gospel",
+   "description": "Levi Dowling's 1908 Aquarian Gospel of Jesus the Christ. Shelved with the Christian texts; bound here cross-scope.",
+   "desc_confidence": "draft"
+  },
+  "theosophy": {
+   "title": "Theosophy — Isis Unveiled · The Secret Doctrine · The Voice of the Silence",
+   "path": [
+    "Spiritualist, Spiritist & Esoteric",
+    "Theosophy"
+   ],
+   "type": "founding corpus",
+   "description": "Blavatsky's founding corpus of the Theosophical Society — Isis Unveiled (1877), The Secret Doctrine (1888), and The Key to Theosophy (1889), held complete in seven volumes.",
+   "desc_confidence": "draft"
+  },
+  "anthroposophy": {
+   "title": "Anthroposophy — Occult Science · Knowledge of the Higher Worlds",
+   "path": [
+    "Spiritualist, Spiritist & Esoteric",
+    "Anthroposophy"
+   ],
+   "type": "esoteric teaching",
+   "description": "Steiner's path of spiritual training. One of the chip's two named works is held — Knowledge of the Higher Worlds (Metcalfe's rendering); Occult Science is not. Stated plainly.",
+   "desc_confidence": "draft"
+  },
+  "new-thought": {
+   "title": "New Thought — Unity (Fillmore) · Science of Getting Rich (Wattles) · As a Man Thinketh (Allen)",
+   "path": [
+    "Spiritualist, Spiritist & Esoteric",
+    "New Thought"
+   ],
+   "type": "movement writings",
+   "description": "The New Thought stream. The chip names Unity, Wattles, and Allen; the archive holds Wattles' The Science of Getting Rich (1910), shelved with the Hermetic texts and bound here cross-scope.",
+   "desc_confidence": "draft"
+  }
+ }
+}

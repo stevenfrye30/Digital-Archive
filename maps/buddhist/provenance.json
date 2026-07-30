@@ -1,0 +1,511 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/buddhist.json",
+ "nodes": {
+  "dhammapada": {
+   "title": "Dhammapada",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Khuddaka Nikāya",
+    "Dhammapada"
+   ],
+   "type": "work",
+   "description": "The most-read Buddhist scripture — 423 verses of the Buddha's teaching, in the Khuddaka Nikāya of the Pāli Canon. Multiple public-domain and CC0 English editions exist.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Dhammapada, tr. Müller, SBE X (1881)",
+     "translator": "F. Max Müller",
+     "year": 1881,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/bud/sbe10/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "digha-nikaya": {
+   "title": "Dīgha Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Dīgha Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Long Discourses' — 34 of the longest suttas of the Pāli Canon, including the Buddha's last days. Dedicated to the public domain (CC0) by Bhikkhu Sujato.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Dīgha Nikāya, tr. Bhikkhu Sujato",
+     "translator": "Bhikkhu Sujato",
+     "year": 2018,
+     "host": "SuttaCentral",
+     "access": "Openly licensed (CC0) full text",
+     "label": "Read online",
+     "url": "https://suttacentral.net/dn",
+     "checked": true
+    }
+   ]
+  },
+  "p-digha": {
+   "title": "Dīgha Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Dīgha Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Long Discourses' — 34 of the longest suttas of the Pāli Canon, including the Buddha's last days. Dedicated to the public domain (CC0) by Bhikkhu Sujato.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Dīgha Nikāya, tr. Bhikkhu Sujato",
+     "translator": "Bhikkhu Sujato",
+     "year": 2018,
+     "host": "SuttaCentral",
+     "access": "Openly licensed (CC0) full text",
+     "label": "Read online",
+     "url": "https://suttacentral.net/dn",
+     "checked": true
+    }
+   ]
+  },
+  "digha": {
+   "title": "Dīgha Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Dīgha Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Long Discourses' — 34 of the longest suttas of the Pāli Canon, including the Buddha's last days. Dedicated to the public domain (CC0) by Bhikkhu Sujato.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Dīgha Nikāya, tr. Bhikkhu Sujato",
+     "translator": "Bhikkhu Sujato",
+     "year": 2018,
+     "host": "SuttaCentral",
+     "access": "Openly licensed (CC0) full text",
+     "label": "Read online",
+     "url": "https://suttacentral.net/dn",
+     "checked": true
+    }
+   ]
+  },
+  "jataka": {
+   "title": "Jātaka",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Khuddaka Nikāya",
+    "Jātaka"
+   ],
+   "type": "collection",
+   "description": "The 547 'birth-stories' of the Buddha's past lives — a major narrative and ethical corpus. The archive holds the historic six-volume Cambridge translation and others.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "saddharma-pundarika": {
+   "title": "Saddharma-Puṇḍarīka",
+   "path": [
+    "Buddhism",
+    "Mahāyāna",
+    "Sūtra",
+    "Lotus Sūtra"
+   ],
+   "type": "work",
+   "description": "The Lotus Sūtra — a foundational Mahāyāna scripture. Held here in H. Kern's public-domain SBE translation.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Saddharma-Puṇḍarīka, tr. Kern, SBE XXI (1884)",
+     "translator": "H. Kern",
+     "year": 1884,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/bud/lotus/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "lotus-sutra": {
+   "title": "Saddharma-Puṇḍarīka",
+   "path": [
+    "Buddhism",
+    "Mahāyāna",
+    "Sūtra",
+    "Lotus Sūtra"
+   ],
+   "type": "work",
+   "description": "The Lotus Sūtra — a foundational Mahāyāna scripture. Held here in H. Kern's public-domain SBE translation.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Saddharma-Puṇḍarīka, tr. Kern, SBE XXI (1884)",
+     "translator": "H. Kern",
+     "year": 1884,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/bud/lotus/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "lotus": {
+   "title": "Saddharma-Puṇḍarīka",
+   "path": [
+    "Buddhism",
+    "Mahāyāna",
+    "Sūtra",
+    "Lotus Sūtra"
+   ],
+   "type": "work",
+   "description": "The Lotus Sūtra — a foundational Mahāyāna scripture. Held here in H. Kern's public-domain SBE translation.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Saddharma-Puṇḍarīka, tr. Kern, SBE XXI (1884)",
+     "translator": "H. Kern",
+     "year": 1884,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/bud/lotus/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "diamond-sutra": {
+   "title": "Diamond Sūtra",
+   "path": [
+    "Buddhism",
+    "Mahāyāna",
+    "Prajñāpāramitā",
+    "Diamond Sūtra"
+   ],
+   "type": "work",
+   "description": "A short, influential Perfection-of-Wisdom (Prajñāpāramitā) sūtra. Held here in Gemmell's public-domain translation and in the Chinese text.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "vajracchedika": {
+   "title": "Diamond Sūtra",
+   "path": [
+    "Buddhism",
+    "Mahāyāna",
+    "Prajñāpāramitā",
+    "Diamond Sūtra"
+   ],
+   "type": "work",
+   "description": "A short, influential Perfection-of-Wisdom (Prajñāpāramitā) sūtra. Held here in Gemmell's public-domain translation and in the Chinese text.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "kangyur": {
+   "title": "Kangyur",
+   "path": [
+    "Buddhism",
+    "Tibetan Canon",
+    "Kangyur"
+   ],
+   "type": "collection",
+   "description": "The 'translated word' of the Buddha in Tibetan — ~1,100 texts. Open-access English exists via 84000, but not as worldwide public domain; no reader edition is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "t-kangyur": {
+   "title": "Kangyur",
+   "path": [
+    "Buddhism",
+    "Tibetan Canon",
+    "Kangyur"
+   ],
+   "type": "collection",
+   "description": "The 'translated word' of the Buddha in Tibetan — ~1,100 texts. Open-access English exists via 84000, but not as worldwide public domain; no reader edition is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "tengyur": {
+   "title": "Tengyur",
+   "path": [
+    "Buddhism",
+    "Tibetan Canon",
+    "Tengyur"
+   ],
+   "type": "collection",
+   "description": "The 'translated treatises' — ~3,600 Tibetan commentarial works. Very little exists in English; none is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "t-tengyur": {
+   "title": "Tengyur",
+   "path": [
+    "Buddhism",
+    "Tibetan Canon",
+    "Tengyur"
+   ],
+   "type": "collection",
+   "description": "The 'translated treatises' — ~3,600 Tibetan commentarial works. Very little exists in English; none is held here.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "majjhima-nikaya": {
+   "title": "Majjhima Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Majjhima Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Middle Discourses' — 152 medium-length suttas of the Pāli Canon (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "p-majjhima": {
+   "title": "Majjhima Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Majjhima Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Middle Discourses' — 152 medium-length suttas of the Pāli Canon (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "majjhima": {
+   "title": "Majjhima Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Majjhima Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Middle Discourses' — 152 medium-length suttas of the Pāli Canon (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "samyutta-nikaya": {
+   "title": "Saṃyutta Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Saṃyutta Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Linked Discourses' — thematically grouped suttas of the Pāli Canon (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "p-samyutta": {
+   "title": "Saṃyutta Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Saṃyutta Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Linked Discourses' — thematically grouped suttas of the Pāli Canon (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "samyutta": {
+   "title": "Saṃyutta Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Saṃyutta Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Linked Discourses' — thematically grouped suttas of the Pāli Canon (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "anguttara-nikaya": {
+   "title": "Aṅguttara Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Aṅguttara Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Numbered Discourses' — suttas arranged by number (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "p-anguttara": {
+   "title": "Aṅguttara Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Aṅguttara Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Numbered Discourses' — suttas arranged by number (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "anguttara": {
+   "title": "Aṅguttara Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Sutta Piṭaka",
+    "Aṅguttara Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'Numbered Discourses' — suttas arranged by number (CC0, Bhikkhu Sujato).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "sutta-nipata": {
+   "title": "Sutta-Nipāta",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Khuddaka Nikāya",
+    "Sutta-Nipāta"
+   ],
+   "type": "work",
+   "description": "An early verse anthology of the Khuddaka Nikāya. Multiple public-domain and CC0 editions held.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "milindapanha": {
+   "title": "Milindapañha",
+   "path": [
+    "Buddhism",
+    "Para-canonical",
+    "Milindapañha"
+   ],
+   "type": "work",
+   "description": "'The Questions of King Milinda' — a dialogue between the Greco-Bactrian king Menander and the monk Nāgasena.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "milinda": {
+   "title": "Milindapañha",
+   "path": [
+    "Buddhism",
+    "Para-canonical",
+    "Milindapañha"
+   ],
+   "type": "work",
+   "description": "'The Questions of King Milinda' — a dialogue between the Greco-Bactrian king Menander and the monk Nāgasena.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "vinaya-pitaka": {
+   "title": "Vinaya Piṭaka",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Vinaya Piṭaka"
+   ],
+   "type": "collection",
+   "description": "The 'basket of discipline' — the monastic code and its origin-stories. Held here in Bhikkhu Brahmali's CC0 translation.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "p-vinaya": {
+   "title": "Vinaya Piṭaka",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Vinaya Piṭaka"
+   ],
+   "type": "collection",
+   "description": "The 'basket of discipline' — the monastic code and its origin-stories. Held here in Bhikkhu Brahmali's CC0 translation.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "khuddaka-nikaya": {
+   "title": "Khuddaka Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Khuddaka Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'minor collection' — 18 books of verse and story including the Dhammapada, Sutta-Nipāta, Theragāthā, Therīgāthā and the Jātaka. The archive holds many of these.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "p-khuddaka": {
+   "title": "Khuddaka Nikāya",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Khuddaka Nikāya"
+   ],
+   "type": "collection",
+   "description": "The 'minor collection' — 18 books of verse and story including the Dhammapada, Sutta-Nipāta, Theragāthā, Therīgāthā and the Jātaka. The archive holds many of these.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "abhidhamma-pitaka": {
+   "title": "Abhidhamma Piṭaka",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Abhidhamma Piṭaka"
+   ],
+   "type": "collection",
+   "description": "The systematic-philosophy 'basket' — seven analytical books. Held here as Pāli source texts (no complete public-domain English).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "p-abhidhamma": {
+   "title": "Abhidhamma Piṭaka",
+   "path": [
+    "Buddhism",
+    "Pāli Canon",
+    "Abhidhamma Piṭaka"
+   ],
+   "type": "collection",
+   "description": "The systematic-philosophy 'basket' — seven analytical books. Held here as Pāli source texts (no complete public-domain English).",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "para-canonical": {
+   "title": "Para-canonical",
+   "path": [
+    "Buddhism",
+    "Pāli tradition",
+    "Para-canonical"
+   ],
+   "type": "collection",
+   "description": "Later Pāli works outside the three baskets, such as the Milindapañha and the exegetical Netti and Peṭakopadesa.",
+   "desc_confidence": "reviewed",
+   "external": []
+  },
+  "p-paracanon": {
+   "title": "Para-canonical",
+   "path": [
+    "Buddhism",
+    "Pāli tradition",
+    "Para-canonical"
+   ],
+   "type": "collection",
+   "description": "Later Pāli works outside the three baskets, such as the Milindapañha and the exegetical Netti and Peṭakopadesa.",
+   "desc_confidence": "reviewed",
+   "external": []
+  }
+ }
+}

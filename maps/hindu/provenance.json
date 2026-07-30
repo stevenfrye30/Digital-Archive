@@ -1,0 +1,87 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/hindu.json",
+ "nodes": {
+  "rgveda-samhita": {
+   "title": "Ṛgveda Saṃhitā",
+   "path": [
+    "Hinduism",
+    "Śruti core",
+    "Veda",
+    "Ṛgveda"
+   ],
+   "type": "work",
+   "description": "The oldest Veda — over a thousand hymns to the deities, the fountainhead of the tradition. Held here via Griffith's and Müller's public-domain hymn translations.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Ṛgveda, tr. Griffith (1896)",
+     "translator": "R.T.H. Griffith",
+     "year": 1896,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/hin/rigveda/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "the-principal-upanisads": {
+   "title": "The Principal Upaniṣads",
+   "path": [
+    "Hinduism",
+    "Śruti core",
+    "Upaniṣads"
+   ],
+   "type": "collection",
+   "description": "The philosophical culmination of the Veda — dialogues on self, brahman and liberation. The archive holds Johnson's principal set and Aiyar's thirty minor Upaniṣads.",
+   "desc_confidence": "reviewed"
+  },
+  "brahma-sutra": {
+   "title": "Brahma-sūtra",
+   "path": [
+    "Hinduism",
+    "Six Darśanas",
+    "Vedānta",
+    "Brahma-sūtra"
+   ],
+   "type": "work",
+   "description": "The aphoristic foundation of Vedānta. Held here with both Śaṅkara's (Advaita) and Rāmānuja's (Viśiṣṭādvaita) commentaries in Thibaut's public-domain translations.",
+   "desc_confidence": "reviewed"
+  },
+  "mahabharata": {
+   "title": "Mahābhārata",
+   "path": [
+    "Hinduism",
+    "Epics",
+    "Mahābhārata"
+   ],
+   "type": "work",
+   "description": "The vast epic of the Bhārata war (~1.8M words), containing the Bhagavad-Gītā. Held here in Ganguli's complete public-domain prose translation.",
+   "desc_confidence": "reviewed",
+   "external": [
+    {
+     "edition": "Mahābhārata, tr. Ganguli (1883–96)",
+     "translator": "K.M. Ganguli",
+     "year": 1896,
+     "host": "Internet Sacred Text Archive",
+     "access": "Public-domain full text",
+     "label": "Read online",
+     "url": "https://sacred-texts.com/hin/maha/index.htm",
+     "checked": true
+    }
+   ]
+  },
+  "ramayana": {
+   "title": "Rāmāyaṇa",
+   "path": [
+    "Hinduism",
+    "Epics",
+    "Rāmāyaṇa"
+   ],
+   "type": "work",
+   "description": "Vālmīki's epic of Rāma (~24,000 verses). Held here in Griffith's verse and Dutt's prose public-domain translations.",
+   "desc_confidence": "reviewed"
+  }
+ }
+}

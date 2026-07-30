@@ -1,0 +1,28 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/jain.json",
+ "nodes": {
+  "sutrakrtanga": {
+   "title": "Sūtrakṛtāṅga (2nd Aṅga — doctrine)",
+   "path": [
+    "The Jain Canons",
+    "The Śvetāmbara Āgamas",
+    "Sūtrakṛtāṅga"
+   ],
+   "type": "aṅga",
+   "description": "The second Aṅga — doctrine argued against rival schools, on karma, conduct, and the way of the ascetic. Held within Jacobi's Jaina Sūtras Part 2 (SBE 45).",
+   "desc_confidence": "draft"
+  },
+  "uttaradhyayana-sutra": {
+   "title": "Uttarādhyayana Sūtra (Mūlasūtra — Mahāvīra’s last sermon)",
+   "path": [
+    "The Jain Canons",
+    "The Śvetāmbara Āgamas",
+    "Uttarādhyayana Sūtra"
+   ],
+   "type": "mūlasūtra",
+   "description": "Mahāvīra's last sermon — thirty-six lectures on the path, the discipline, and release. The archive holds Jacobi's translation both standalone and within Jaina Sūtras Part 2 (SBE 45).",
+   "desc_confidence": "draft"
+  }
+ }
+}

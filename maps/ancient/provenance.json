@@ -1,0 +1,160 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/ancient.json",
+ "nodes": {
+  "the-book-of-the-dead": {
+   "title": "The Book of the Dead (Coming Forth by Day)",
+   "path": [
+    "The Ancient World",
+    "Egyptian",
+    "The Book of the Dead"
+   ],
+   "type": "funerary corpus",
+   "description": "The Egyptian spells for coming forth by day — the great funerary corpus placed with the dead. The archive holds Wallis Budge's 1900 translation and the Renouf–Naville rendering of 1904.",
+   "desc_confidence": "draft"
+  },
+  "enuma-elis": {
+   "title": "Enūma Eliš (the Babylonian creation)",
+   "path": [
+    "The Ancient World",
+    "Mesopotamian",
+    "Enūma Eliš"
+   ],
+   "type": "creation epic",
+   "description": "The Babylonian creation epic — Marduk's victory over Tiamat and the ordering of the world, recited at the new year. The archive holds L. W. King's Seven Tablets of Creation (1902) and Budge's abridged 1921 presentation.",
+   "desc_confidence": "draft"
+  },
+  "the-epic-of-gilgamesh": {
+   "title": "The Epic of Gilgamesh",
+   "path": [
+    "The Ancient World",
+    "Mesopotamian",
+    "The Epic of Gilgamesh"
+   ],
+   "type": "epic",
+   "description": "The Akkadian epic of the king of Uruk — the flood, the wild man Enkidu, and the search for life without death. The archive holds Stephen Langdon's 1917 edition.",
+   "desc_confidence": "draft"
+  },
+  "hesiod": {
+   "title": "Hesiod — Theogony & Works and Days",
+   "path": [
+    "The Ancient World",
+    "Greek",
+    "Hesiod"
+   ],
+   "type": "didactic poems",
+   "description": "Hesiod's two great poems — the genealogy of the gods and the almanac of just labor. Held within Elton's Remains of Hesiod (1815), which carries both with the Shield of Hercules.",
+   "desc_confidence": "draft"
+  },
+  "lucian": {
+   "title": "Lucian — On the Syrian Goddess (De Dea Syria)",
+   "path": [
+    "The Ancient World",
+    "Greek",
+    "Lucian"
+   ],
+   "type": "treatise",
+   "description": "Lucian's first-hand account of the temple and rites of the Syrian goddess at Hierapolis. The archive holds the Strong–Garstang translation of 1913.",
+   "desc_confidence": "draft"
+  },
+  "the-prose-edda": {
+   "title": "The Prose Edda (Snorri Sturluson)",
+   "path": [
+    "The Ancient World",
+    "Norse & Northern Europe",
+    "The Prose Edda"
+   ],
+   "type": "mythological handbook",
+   "description": "Snorri Sturluson's handbook of Norse myth and poetics — the Gylfaginning's mythology, the poetic diction, and the old stories preserved for skalds. The archive holds Rasmus B. Anderson's 1879 translation.",
+   "desc_confidence": "draft"
+  },
+  "the-volsunga-saga": {
+   "title": "The Völsunga Saga",
+   "path": [
+    "The Ancient World",
+    "Norse & Northern Europe",
+    "The Völsunga Saga"
+   ],
+   "type": "legendary saga",
+   "description": "The saga of the Völsungs — Sigurd, the dragon Fafnir, Brynhild, and the doom of the Nibelung gold. The archive holds the Magnússon–Morris translation of 1888.",
+   "desc_confidence": "draft"
+  },
+  "the-kalevala": {
+   "title": "The Kalevala (Finnish pagan epic)",
+   "path": [
+    "The Ancient World",
+    "Norse & Northern Europe",
+    "The Kalevala"
+   ],
+   "type": "epic",
+   "description": "The Finnish national epic woven from oral runo-song — Väinämöinen, the Sampo, and the world's singing into shape. The archive holds John Martin Crawford's 1888 translation.",
+   "desc_confidence": "draft"
+  },
+  "the-mabinogion": {
+   "title": "The Mabinogion (the four branches)",
+   "path": [
+    "The Ancient World",
+    "Celtic",
+    "The Mabinogion"
+   ],
+   "type": "mythological tales",
+   "description": "The four branches of the Mabinogi with their companion tales — the medieval Welsh gathering of British myth. The archive holds Lady Charlotte Guest's translation (1877 edition).",
+   "desc_confidence": "draft"
+  },
+  "the-tain-bo-cuailnge": {
+   "title": "The Táin Bó Cúailnge (Cattle Raid of Cooley)",
+   "path": [
+    "The Ancient World",
+    "Celtic",
+    "The Táin Bó Cúailnge"
+   ],
+   "type": "epic",
+   "description": "The central epic of the Ulster cycle — Cú Chulainn's single-handed defence of Ulster in the cattle raid of Cooley. The archive holds Joseph Dunn's 1914 translation.",
+   "desc_confidence": "draft"
+  },
+  "lady-gregory": {
+   "title": "Lady Gregory — Cuchulain of Muirthemne · Gods and Fighting Men",
+   "path": [
+    "The Ancient World",
+    "Celtic",
+    "Lady Gregory"
+   ],
+   "type": "retellings",
+   "description": "Lady Gregory's two great arrangements of the Irish cycles — the Ulster stories of Cuchulain and the mythological and Fenian matter of Gods and Fighting Men (1902 and 1904).",
+   "desc_confidence": "draft"
+  },
+  "the-popol-vuh": {
+   "title": "The Popol Vuh (the K’iche’ Maya creation)",
+   "path": [
+    "The Ancient World",
+    "The New World",
+    "The Popol Vuh"
+   ],
+   "type": "creation narrative",
+   "description": "The K'iche' Maya book of council — the creation, the hero twins in Xibalba, and the dawn of the people. The archive holds Lewis Spence's 1908 presentation.",
+   "desc_confidence": "draft"
+  },
+  "the-aztec-sacred-hymns": {
+   "title": "The Aztec sacred hymns (to the gods)",
+   "path": [
+    "The Ancient World",
+    "The New World",
+    "The Aztec sacred hymns"
+   ],
+   "type": "hymn corpus",
+   "description": "The Nahuatl hymns to the gods preserved by Sahagún — published by Daniel G. Brinton as the Rig Veda Americanus (1890), the archive's held edition.",
+   "desc_confidence": "draft"
+  },
+  "the-hermetica": {
+   "title": "The Hermetica (Corpus Hermeticum)",
+   "path": [
+    "The Ancient World",
+    "Greek",
+    "The Hermetica"
+   ],
+   "type": "philosophical-religious corpus",
+   "description": "The Greek Hermetic corpus — the revelations of Hermes Trismegistus on mind, cosmos, and rebirth. The archive holds Everard's classic 1650 Pymander, Mead's 1906 rendering (the Corpus proper and the Stobaeus fragments), and the Kingsford–Maitland Virgin of the World. Bound here by the gnostic lane's cross-map ruling.",
+   "desc_confidence": "draft"
+  }
+ }
+}
