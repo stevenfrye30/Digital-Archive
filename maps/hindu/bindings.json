@@ -3,11 +3,11 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "held-several": 11,
-  "held": 38,
+  "held-several": 23,
+  "held": 39,
   "none": 170,
   "restricted": 1,
-  "possible": 112
+  "possible": 99
  },
  "chips": [
   {
@@ -253,13 +253,53 @@
    "zone": "core",
    "chip": "Aitareya (1)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part1_muller-part1.json",
+     "work": "The Upanishads (Müller, Part 1)",
+     "translator": "Max Müller",
+     "year": 1879,
+     "label": "Müller, SBE 1",
+     "url": "?text=upanishads-muller-part1_muller-part1.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within the Aitareya-Āraṇyaka (SBE 1) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
    "chip": "Kauṣītaki (2)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part1_muller-part1.json",
+     "work": "The Upanishads (Müller, Part 1)",
+     "translator": "Max Müller",
+     "year": 1879,
+     "label": "Müller, SBE 1",
+     "url": "?text=upanishads-muller-part1_muller-part1.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part I (SBE 1) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
@@ -333,13 +373,53 @@
    "zone": "core",
    "chip": "Kena (62)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part1_muller-part1.json",
+     "work": "The Upanishads (Müller, Part 1)",
+     "translator": "Max Müller",
+     "year": 1879,
+     "label": "Müller, SBE 1",
+     "url": "?text=upanishads-muller-part1_muller-part1.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part I (SBE 1) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
    "chip": "Chāndogya (63)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part1_muller-part1.json",
+     "work": "The Upanishads (Müller, Part 1)",
+     "translator": "Max Müller",
+     "year": 1879,
+     "label": "Müller, SBE 1",
+     "url": "?text=upanishads-muller-part1_muller-part1.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part I (SBE 1) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
@@ -351,7 +431,27 @@
    "zone": "core",
    "chip": "Maitrāyaṇi (Maitrī) (65)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part2_muller-part2.json",
+     "work": "The Upanishads (Müller, Part 2)",
+     "translator": "Max Müller",
+     "year": 1884,
+     "label": "Müller, SBE 15",
+     "url": "?text=upanishads-muller-part2_muller-part2.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part II (SBE 15) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
@@ -449,13 +549,53 @@
    "zone": "core",
    "chip": "Īśā (11)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part1_muller-part1.json",
+     "work": "The Upanishads (Müller, Part 1)",
+     "translator": "Max Müller",
+     "year": 1879,
+     "label": "Müller, SBE 1",
+     "url": "?text=upanishads-muller-part1_muller-part1.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part I (SBE 1) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
    "chip": "Bṛhadāraṇyaka (12)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part2_muller-part2.json",
+     "work": "The Upanishads (Müller, Part 2)",
+     "translator": "Max Müller",
+     "year": 1884,
+     "label": "Müller, SBE 15",
+     "url": "?text=upanishads-muller-part2_muller-part2.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part II (SBE 15) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
@@ -643,13 +783,53 @@
    "zone": "core",
    "chip": "Kaṭha (30)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part2_muller-part2.json",
+     "work": "The Upanishads (Müller, Part 2)",
+     "translator": "Max Müller",
+     "year": 1884,
+     "label": "Müller, SBE 15",
+     "url": "?text=upanishads-muller-part2_muller-part2.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part II (SBE 15) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
    "chip": "Taittirīya (31)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part2_muller-part2.json",
+     "work": "The Upanishads (Müller, Part 2)",
+     "translator": "Max Müller",
+     "year": 1884,
+     "label": "Müller, SBE 15",
+     "url": "?text=upanishads-muller-part2_muller-part2.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part II (SBE 15) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
@@ -687,7 +867,27 @@
    "zone": "core",
    "chip": "Śvetāśvatara (34)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part2_muller-part2.json",
+     "work": "The Upanishads (Müller, Part 2)",
+     "translator": "Max Müller",
+     "year": 1884,
+     "label": "Müller, SBE 15",
+     "url": "?text=upanishads-muller-part2_muller-part2.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part II (SBE 15) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
@@ -985,19 +1185,70 @@
    "zone": "core",
    "chip": "Praśna (78)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part2_muller-part2.json",
+     "work": "The Upanishads (Müller, Part 2)",
+     "translator": "Max Müller",
+     "year": 1884,
+     "label": "Müller, SBE 15",
+     "url": "?text=upanishads-muller-part2_muller-part2.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part II (SBE 15) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
    "chip": "Muṇḍaka (79)",
    "pd": "g",
-   "state": "possible"
+   "state": "held-several",
+   "chooser": "translations",
+   "read": [
+    {
+     "df": "upanishads-muller-part2_muller-part2.json",
+     "work": "The Upanishads (Müller, Part 2)",
+     "translator": "Max Müller",
+     "year": 1884,
+     "label": "Müller, SBE 15",
+     "url": "?text=upanishads-muller-part2_muller-part2.json"
+    },
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Upanishads, Part II (SBE 15) · The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
    "chip": "Māṇḍūkya (80)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "upanishads-hume-1921_hume.json",
+     "work": "The Thirteen Principal Upanishads (Hume 1921)",
+     "translator": "Robert Ernest Hume",
+     "year": 1921,
+     "label": "Hume, 1921",
+     "url": "?text=upanishads-hume-1921_hume.json"
+    }
+   ],
+   "contained_in": "within The Thirteen Principal Upanishads (Hume, 1921)"
   },
   {
    "zone": "core",
