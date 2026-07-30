@@ -112,6 +112,11 @@
   direction: rtl;
   text-align: right;
   line-height: 2.2;
+  /* Task 33 ruling (2026-07-30) — script-conditional size: naskh at
+     the Latin body size reads visibly smaller than its Latin
+     equivalent; +~3px at the 18px base equalizes. em so every
+     viewport scales proportionally. */
+  font-size: 1.17em;
 }
 .reader-rtl .ref,
 .reader-rtl .genealogy-ref,
@@ -374,12 +379,15 @@ body.cols-dual #reader { padding-left: 32px; padding-right: 32px; }
    (body.in-reading); on the title leaf the bible-cover-layout uses
    the wider base #reader-inner measure for its canon grid. */
 body.in-reading.cols-single #reader-inner {
-  /* Single — the codex column. Calibrated so the scripture sits
-     comfortably centered while leaving symmetric viewport margins
-     (~240px each side at 1440 viewport) to host the folio sidebar
-     as a true manuscript margin, without ever overlapping the
-     scripture column regardless of whether the folio is shown. */
-  max-width: 960px;
+  /* Single — the codex column. Task 33 ruling (2026-07-30): capped
+     at a true reading measure (~68 characters at the 18px body) —
+     960px ran ~95–100 chars/line, past the comfortable band. Wide
+     and dual remain the reader's explicit larger choices, and the
+     chapter-room companion spread keeps its own composed 960px
+     scripture column (it carries marginalia in the same grid). The
+     narrower column also widens the symmetric margins that host
+     the folio sidebar, so nothing overlaps. */
+  max-width: 660px;
   column-count: 1;
 }
 body.in-reading.cols-wide #reader-inner {
@@ -2012,6 +2020,24 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .cc-begin:hover {
   background: #3d3210;
   box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* Task 33 ruling (2026-07-30) — the first-open actions row. On
+   non-Bible codex covers begin/resume sit ABOVE the contents grid
+   as clearly visible actions (the old right-aligned 0.8em pill
+   below the grid was invisible enough that the ergonomics audit
+   itself missed it). The resume pill precedes begin everywhere it
+   appears; on flat covers the row is resume-only. */
+.cc-actions-top { text-align: center; margin: 4px 0 18px; }
+.cc-actions-top .cc-begin { display: inline-block; }
+.cc-resume { margin-right: 10px; }
+.bible-cover-layout .cc-actions-top {
+  text-align: left;
+  margin: 12px 0 14px;
+}
+.bible-cover-layout .cc-actions-top .cc-begin {
+  font-size: 13px;
+  padding: 8px 20px;
 }
 
 /* ── Browse toolbar ───────────────────────────────────────────────── */
@@ -15307,8 +15333,57 @@ function showCover(data, entry) {
   if (data.date)     dateParts.push(data.date);
   if (tr && tr.year) dateParts.push('Translation ' + tr.year);
   const ss = data.source_summary;
-  const ssHtml = ss
-    ? escapeHTML(ss).replace(/\*([^*]+)\*/g, '<em>$1</em>')
+  // Task 33 ruling (2026-07-30), fix 5 — the cover's translation list
+  // DERIVES from the live witness set the switcher serves. An authored
+  // "N translations" claim is the stale-copy class (the Qurʾān cover
+  // advertised 20, most retired since) and never renders: derivation
+  // makes the class impossible, the same cure as the entrance-card
+  // counts. A trailing "Via …" clause is provenance, not a claim — it
+  // is carried over from the authored line unchanged.
+  let ssShown = ss;
+  const _sibs = (indexGroups[entry.id] || [])
+    .filter(e => !e.restricted && !_isMetadataOnly(e));
+  if (ss && /\b\d+\s+translations?\b/i.test(ss) && _sibs.length) {
+    const _names = _sibs.map(translationLabel);
+    const _via = (ss.match(/\bvia\s+[A-Za-z0-9._\- ]+\.?\s*$/i) || [''])[0].trim();
+    ssShown = (_sibs.length === 1
+      ? 'Held here in one version: ' + _names[0]
+      : 'Held here in ' + _sibs.length + ' versions: ' + _names.join(' · '))
+      + '.' + (_via ? ' ' + _via : '');
+  }
+  const ssHtml = ssShown
+    ? escapeHTML(ssShown).replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    : '';
+  // Task 33 ruling, fix 2 — the cover's own resume affordance (the
+  // plain URL must never lose the place). Same records the home
+  // Continue card reads: da-last first, then this text's da-recents
+  // row so the offer survives reading other texts in between.
+  let _resume = null;
+  try {
+    const _dl = JSON.parse(localStorage.getItem('da-last') || 'null');
+    if (_dl && _dl.data_file === entry.data_file && _dl.pid) _resume = _dl;
+    if (!_resume) {
+      const _rc = JSON.parse(localStorage.getItem('da-recents') || '[]');
+      _resume = _rc.find(x => x && x.data_file === entry.data_file && x.pid) || null;
+    }
+  } catch (e) {}
+  let _resumeLabel = '';
+  if (_resume) {
+    let _where = '';
+    try {
+      const _bk = _resume.book;
+      if (_bk && _bk !== '__fm__' && _bk !== '__all__') {
+        _where = groupName(_bk) || '';
+        const _pidS = String(_resume.pid);
+        if (_where && _pidS.indexOf(String(_bk) + '.') === 0)
+          _where += ' ' + _pidS.slice(String(_bk).length + 1);
+      }
+    } catch (e) {}
+    if (!_where) _where = String(_resume.pid).replace(/\./g, ':');
+    _resumeLabel = 'Continue at ' + _where + ' →';
+  }
+  const _resumePill = (extraCls) => _resume
+    ? `<div class="cc-begin cc-resume${extraCls ? ' ' + extraCls : ''}" id="cc-resume-btn">${escapeHTML(_resumeLabel)}</div>`
     : '';
 
   // Bible-shaped texts use a compact title-leaf layout: title +
@@ -15527,6 +15602,18 @@ function showCover(data, entry) {
     html += `<div class="bcl-contents-note" data-mode="${escapeHTML(_override.mode || '')}">${_override.note}</div>`;
   }
 
+  // Task 33 ruling (2026-07-30), fix 4 — on non-Bible codex covers the
+  // begin/resume actions are FIRST-OPEN actions: promoted above the
+  // contents grid instead of the understated right-aligned pill below
+  // it (which the ergonomics audit itself failed to find). The Bible
+  // keeps its ceremonial bottom-center "Enter the Reading Room";
+  // plain covers keep their centered pill — both gain the resume pill
+  // in place.
+  if (useCodexLayout && !isBibleCover && grouped) {
+    html += `<div class="cc-begin-wrap cc-actions-top">${_resumePill('bcl-enter-btn')}` +
+            `<div class="cc-begin bcl-enter-btn" id="cc-begin-btn">Read from beginning &rarr;</div></div>`;
+  }
+
   // Front Matter button — always first if it exists, UNLESS a
   // per-text override has suppressed it (because its fm passages
   // are editorial boilerplate, not a meaningful reader entry).
@@ -15663,7 +15750,9 @@ function showCover(data, entry) {
     html += '</section>';
   } else {
     // Flat / non-enumerable text — a single "Read the full text"
-    // plate (no codex shell wrapping this branch).
+    // plate (no codex shell wrapping this branch). A saved position
+    // gets its resume pill above the plate (Task 33 fix 2).
+    if (_resume) html += `<div class="cc-begin-wrap cc-actions-top">${_resumePill('')}</div>`;
     html += '<ul class="cc-toc-list">';
     html += `<li data-book="__all__"><span class="cc-toc-num">&rarr;</span><span class="cc-toc-name">Read the full text</span></li>`;
     html += '</ul>';
@@ -15679,15 +15768,15 @@ function showCover(data, entry) {
             '</button></div>';
   }
 
-  if (grouped) {
-    // Same "Enter / Read from beginning" CTA in the codex-leaf
-    // family for every enumerable text. Bible uses the explicit
-    // Reading-Room threshold label; other codex texts use a
-    // plainer rubric.
+  if (grouped && (isBibleCover || !useCodexLayout)) {
+    // Bible keeps the explicit Reading-Room threshold label at the
+    // bottom of the leaf; plain grouped covers keep the centered
+    // pill. (Non-Bible codex covers now carry these actions in the
+    // promoted cc-actions-top row above the grid — Task 33 fix 4.)
     const label = isBibleCover ? 'Enter the Reading Room' : 'Read from beginning &rarr;';
     const cls   = useCodexLayout ? 'cc-begin bcl-enter-btn' : 'cc-begin';
     const wrap  = useCodexLayout ? 'cc-begin-wrap bcl-enter-wrap' : 'cc-begin-wrap';
-    html += `<div class="${wrap}"><div class="${cls}" id="cc-begin-btn">${label}</div></div>`;
+    html += `<div class="${wrap}">${_resumePill(useCodexLayout ? 'bcl-enter-btn' : '')}<div class="${cls}" id="cc-begin-btn">${label}</div></div>`;
   }
   html += '</div>';
 
@@ -15831,6 +15920,18 @@ function showCover(data, entry) {
         : keys[0];
       currentBook = k;
       enterReading(k);
+    });
+  }
+
+  // Wire "Continue at …" — the cover's resume affordance rides the
+  // exact funnel the home Continue card uses (loadText's pendingPid
+  // path), so it gets the pinned 'start' landing for free.
+  const resumeBtn = document.getElementById('cc-resume-btn');
+  if (resumeBtn && _resume) {
+    resumeBtn.addEventListener('click', () => {
+      const rec = dataFileToEntry[entry.data_file];
+      pendingPid = _resume.pid;
+      loadText(entry, rec && rec.li);
     });
   }
 
@@ -16086,7 +16187,7 @@ function passageById(pid) {
 //       `$reader.scrollTop = 0`, chapter-heading insertion, folio render, or a
 //       web-font/layout shift — re-assert the position after layout settles.
 // An unknown id keeps the prior behavior: return false (loadText then shows cover).
-function jumpToPassage(pid, highlight) {
+function jumpToPassage(pid, highlight, align) {
   let el = $passages.querySelector(`.passage[data-pid="${CSS.escape(pid)}"]`);
   if (!el) {
     if (!passageById(pid)) { _citationPid = null; return false; }   // truly-missing id
@@ -16116,7 +16217,7 @@ function jumpToPassage(pid, highlight) {
   if (el.classList.contains('footnote-body')) {
     el.classList.add('fn-visible');
   }
-  _scrollPassageIntoReader(el, highlight);
+  _scrollPassageIntoReader(el, highlight, align);
   return true;
 }
 
@@ -16126,8 +16227,16 @@ function jumpToPassage(pid, highlight) {
 // `$reader.scrollTop = 0` — which can leave the target off-screen at the section
 // top. Scroll, then re-verify across two animation frames and correct at most
 // twice. Bounded: no observers, timers, or unbounded retries.
-function _scrollPassageIntoReader(el, highlight) {
-  _guardScroll(() => el.scrollIntoView({ block: 'center' }));   // programmatic: never releases the citation
+function _scrollPassageIntoReader(el, highlight, align) {
+  // Task 33 ruling (2026-07-30) — two landing alignments. The reading
+  // position is SAVED as the top-visible passage, so a position
+  // restore (?p= / Continue) must land the pid at the TOP ('start')
+  // to be the faithful inverse — centering it put ~3 already-read
+  // verses back above it, the drift a daily reader met every morning.
+  // Citation jumps (in-text refs, Codex Index) keep 'center': those
+  // are "look at this verse" flows, not position restores.
+  const block = align === 'start' ? 'start' : 'center';
+  _guardScroll(() => el.scrollIntoView({ block }));   // programmatic: never releases the citation
   if (highlight) {
     el.classList.add('passage-highlight');
     setTimeout(() => el.classList.remove('passage-highlight'), 2000);
@@ -16137,9 +16246,13 @@ function _scrollPassageIntoReader(el, highlight) {
     const rt = $reader.getBoundingClientRect();
     const r = el.getBoundingClientRect();
     const offscreen = r.bottom < rt.top || r.top > rt.bottom;   // reset pushed it away
-    if (offscreen && corrections < 2) {
+    // In 'start' mode late layout (chapter plate, folio, font swap)
+    // can push the target down while still on-screen — re-assert the
+    // top alignment too, same bounded correction budget.
+    const drifted = block === 'start' && (r.top - rt.top > 40);
+    if ((offscreen || drifted) && corrections < 2) {
       corrections++;
-      _guardScroll(() => el.scrollIntoView({ block: 'center' }));
+      _guardScroll(() => el.scrollIntoView({ block }));
       requestAnimationFrame(verify);
     }
   };
@@ -22235,7 +22348,10 @@ async function loadText(entry, listItem) {
         // would call jumpToPassage(null) — the no-op that lost every deep link).
         const _jumpPid = pendingPid;
         pendingPid = null;
-        requestAnimationFrame(() => jumpToPassage(_jumpPid, true));
+        // 'start': every pendingPid landing is a position restore or a
+        // route to a unit head — both want the pid AT the top, where
+        // the save/anchor semantics put it (Task 33 landing pin).
+        requestAnimationFrame(() => jumpToPassage(_jumpPid, true, 'start'));
       } else {
         pendingPid = null;
         showCover(data, entry);
