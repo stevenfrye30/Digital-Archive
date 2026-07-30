@@ -1,11 +1,11 @@
 {
- "generated": "2026-07-30T02:07:12Z",
+ "generated": "2026-07-30T02:37:29Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "14ee9506ab4f9a28e88641b1cadcd9959bc21d68",
- "library_fingerprint": "sha256:418fff3c45900f6012eb3af1a5a6dea618f08f13609bebea9994fcb8afe05bde",
+ "exporter_rev": "8f84da63b49e17e9afa77788bbe4a38d05bfc31d",
+ "library_fingerprint": "sha256:9782db6aa821a7b5c6eec26f648b78639d3b598cbb2380785477ab45d89accb0",
  "counts": {
-  "entries": 1196,
-  "public": 1096,
+  "entries": 1195,
+  "public": 1095,
   "restricted": 100
  },
  "texts": {
@@ -10703,18 +10703,6 @@
    "data_hash": "sha256:85f063fe1fe46844ec412a264d6c87eaf3eaa09497591705f1313f6c7ea343e6",
    "data_bytes": 26932,
    "passages": 143,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:19Z"
-  },
-  "rumi-masnavi_redhouse": {
-   "source_hash": "sha256:348d4369da2d839cb2ee9d2f956edbba5716f8b958c833c0510504b389a9be15",
-   "data_file": "rumi-masnavi_redhouse.json.gz",
-   "data_hash": "sha256:42089adee1d98f33163ab534a89b24cf27dcae7ee37b6b7ad6f322d92cb543c7",
-   "data_bytes": 87172,
-   "passages": 160,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
