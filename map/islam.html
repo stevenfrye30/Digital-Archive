@@ -330,7 +330,7 @@ section.view { display: block !important; }
 
 </style>
 </head>
-<body data-map="islam">
+<body data-map="islam" class="deep">
 <div id="arch-topbar"><a href="../hall/">&larr; The Religion Hall</a><nav id="arch-topnav"><a href="../">The Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
 <div id="m-legend" aria-label="Node states">
 <span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
@@ -578,6 +578,11 @@ body[data-lens="rights"] .zb { display:none !important; }
 .legend { display:none !important; }
 body[data-lens="rights"] .legend { display:flex !important; }
 body[data-lens="rights"] #m-legend { display:none !important; }
+/* 46 — the stat tiles and their narrative line are g/a/r figures:
+   rights lens only, original tile dress (the Task 38 rule) */
+.statband, .greenline { display:none !important; }
+body[data-lens="rights"] .statband { display:flex !important; }
+body[data-lens="rights"] .greenline { display:block !important; }
 /* canon-share triads + family bars are g/a/r figures — rights only */
 #gradient, .fambar { display:none !important; }
 body[data-lens="rights"] #gradient { display:block !important; }
