@@ -248,7 +248,6 @@ section.view { display: block !important; }
 </div>
 
 <script>
-
 (function () {
   var KEY = 'da-dark-mode';
   if (localStorage.getItem(KEY) === 'true')
@@ -276,6 +275,27 @@ section.view { display: block !important; }
     return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
             .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
   }
+  // Task 41a — one chooser popover at a time; ESC / outside-click /
+  // scroll close it, focus returns to the opening chip.
+  window.__mcPop = null; window.__mcOpener = null;
+  window.__mcClose = function () {
+    if (window.__mcPop) { window.__mcPop.remove(); window.__mcPop = null; }
+    if (window.__mcOpener) {
+      try { window.__mcOpener.focus(); } catch (e) {}
+      window.__mcOpener = null;
+    }
+  };
+  document.addEventListener('click', function (e) {
+    if (window.__mcPop && !window.__mcPop.contains(e.target) &&
+        !(window.__mcOpener && window.__mcOpener.contains(e.target)))
+      window.__mcClose();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') window.__mcClose();
+  });
+  window.addEventListener('scroll', function () { window.__mcClose(); }, true);
+  window.addEventListener('resize', function () { window.__mcClose(); });
+
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
   fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
@@ -313,12 +333,14 @@ section.view { display: block !important; }
         } else if (b.state === 'held-several' && b.read) {
           el.style.cursor = 'pointer';
           el.addEventListener('click', function () {
-            var next = el.nextElementSibling;
-            if (next && next.classList && next.classList.contains('m-chooser')) {
-              next.remove(); return;
-            }
+            // Task 41a — anchored popover: no document reflow, ever.
+            // Second click on the same chip closes.
+            if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+            if (window.__mcOpener === el) { window.__mcClose(); return; }
+            window.__mcClose();
             var box = document.createElement('div');
-            box.className = 'm-chooser';
+            box.className = 'm-chooser m-chooser-pop';
+            box.tabIndex = -1;
             var kind = (b.chooser === 'works') ? ' works held — choose'
                                                : ' translations held — choose';
             box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
@@ -329,12 +351,22 @@ section.view { display: block !important; }
               a.href = '../' + r.url;
               var label = (b.chooser === 'works')
                   ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
-                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') + (r.label ? ' — ' + r.label : '') +
+                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
                     ' <span class="mc-sub">· ' + r.work + '</span>';
               a.innerHTML = label + ' <span class="mc-go">→ read</span>';
               box.appendChild(a);
             });
-            el.parentNode.insertBefore(box, el.nextSibling);
+            document.body.appendChild(box);
+            var rr = el.getBoundingClientRect();
+            var bw = box.offsetWidth, bh = box.offsetHeight;
+            var left = Math.min(Math.max(8, rr.left), window.innerWidth - bw - 8);
+            var top = rr.bottom + 6;
+            if (top + bh > window.innerHeight - 8) top = rr.top - bh - 6;
+            if (top < 8) top = 8;
+            box.style.left = left + 'px';
+            box.style.top = top + 'px';
+            window.__mcPop = box; window.__mcOpener = el;
+            box.focus();
           });
         }
       });
@@ -375,7 +407,6 @@ section.view { display: block !important; }
     });
   });
 })();
-
 </script>
 <!-- map-lens:start (generated — edit 05_scripts/map_lens_block.py) -->
 <style>
@@ -452,6 +483,11 @@ body[data-lens="rights"] .keyrow .mini { display:inline-flex !important; }
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
 [data-view][aria-pressed="true"] { background:var(--accent,#7a5c3a); color:var(--surface,#fff); }
+/* 41a — the read-chooser is an anchored popover: fixed, above the
+   page, never reflowing the grid; mobile gets the bottom-sheet dress */
+.m-chooser-pop { position:fixed; z-index:55; max-width:min(30em,92vw); max-height:60vh;
+  overflow:auto; margin:0; box-shadow:0 8px 28px rgba(0,0,0,.22); border-radius:8px;
+  background:var(--surface,#f6f2ea); outline:none; }
 /* per-mode sentence spans (footer, mast ledes, key counts) */
 .r-only { display:none; }
 body[data-lens="rights"] .r-only { display:inline; }
@@ -501,6 +537,9 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #lens-toggle { margin-right:8px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
+  .m-chooser-pop { left:0 !important; right:0; bottom:0; top:auto !important;
+    max-width:none; width:auto; border-radius:14px 14px 0 0;
+    box-shadow:0 -6px 24px rgba(0,0,0,.25); }
   #ov-sheet .rl-ed { width:100%; margin:4px 0; }
 }
 </style>
@@ -553,8 +592,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   var tg = document.createElement('span');
   tg.id = 'lens-toggle';
   tg.innerHTML = '<button type="button" data-lens="structure">Structure</button>' +
-                 '<button type="button" data-lens="rights">Rights</button>' +
-                 '<button type="button" data-lens="held">Held editions</button>';
+                 '<button type="button" data-lens="rights">Rights</button>';
   if (nav) nav.insertBefore(tg, nav.firstChild);
   // 36a — the visible lens state: a banner right under the topbar
   var banner = document.createElement('div');
@@ -569,8 +607,9 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     lens = v;
     document.body.setAttribute('data-lens', v);
     try { localStorage.setItem(LKEY, v); } catch (e) {}
+    var rowV = (v === 'held') ? 'structure' : v;   // 41b: the sheet rides over the base
     tg.querySelectorAll('button').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-lens') === v ? 'true' : 'false');
+      b.setAttribute('aria-pressed', b.getAttribute('data-lens') === rowV ? 'true' : 'false');
     });
     if (writeUrl) {
       var u = new URL(location);
@@ -656,7 +695,12 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     }
     // the header button derives its count from the same pass
     var hb = document.getElementById('held-btn');
-    if (hb) hb.textContent = 'Browse the ' + total + ' held editions →';
+    if (hb) {
+      hb.textContent = 'Browse the ' + total + ' held editions →';
+      // 41b: a genuinely empty overlay (no placed editions, no
+      // reception) hides its one opener rather than advertise zero
+      if (total === 0 && !recWrap) hb.style.display = 'none';
+    }
     return heldBuilt;
   }
   function openOverlay() {
@@ -681,7 +725,9 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     var hb = document.createElement('button');
     hb.type = 'button'; hb.id = 'held-btn';
     hb.textContent = 'Browse the held editions →';
-    hb.addEventListener('click', function () { setLens('held', true); });
+    hb.addEventListener('click', function () {
+      setLens(lens === 'held' ? 'structure' : 'held', true);
+    });
     mast.appendChild(hb);
     _ready.then(function () { buildHeld(); });
   }
