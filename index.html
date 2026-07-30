@@ -12538,6 +12538,17 @@ fetch('data/read_marks.json')
   })
   .catch(() => {});
 
+// Task 42b — the steady chain: a religion text's cover walks BACK to
+// its tradition's map page, one step (never the shelf-era browse
+// chain, never a redirect stub). The tradition→map mapping derives
+// from the reception GROUPS truth (maps/trad2map.json, emitted by
+// build_reception_layers.py) — nothing hand-typed per text.
+let _trad2map = {};
+fetch('maps/trad2map.json')
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.trad2map) _trad2map = j.trad2map; })
+  .catch(() => {});
+
 let pendingPid     = null;            // passage id to jump to on enterReading
 let pendingSection = null;            // section name to jump to on loadText (cross-tradition deep link)
 let bookmarkTimer  = null;
@@ -15434,10 +15445,16 @@ function showCover(data, entry) {
   //   Other codex texts: → All Texts (the library/shelf view the
   //          reader came from). Same visual register, slightly
   //          different label.
+  // Task 42b — the steady chain: religion texts walk back one step to
+  // their tradition's MAP page (derived via trad2map, never per-text).
+  // Non-mapped traditions (Philosophy/Literature/Esoteric — phase-5
+  // surfaces) keep the family/catalog chain.
+  const _mapSlug = (entry && entry.tradition && _trad2map[entry.tradition]) || null;
   if (isBibleCover) {
     html += '<button type="button" class="bcl-back-to-versions" ' +
-            'title="Back to Bible versions">' +
-            '&larr; Bible Versions' +
+            (_mapSlug ? 'data-mapslug="' + escapeHTML(_mapSlug) + '" ' : '') +
+            'title="' + (_mapSlug ? 'Back to the map' : 'Back to Bible versions') + '">' +
+            (_mapSlug ? '&larr; Map &middot; ' + escapeHTML(entry.tradition) : '&larr; Bible Versions') +
             '</button>';
   } else if (useCodexLayout) {
     // v98 — If this text is a family member, label the back
@@ -15446,9 +15463,12 @@ function showCover(data, entry) {
     // generic "← All Texts").
     const _famHere = (typeof _familyForTextId === 'function' && entry && entry.id)
       ? _familyForTextId(entry.id) : null;
-    const backLabel = _famHere ? _famHere.title : 'All Texts';
-    const backTitle = _famHere ? ('Back to ' + _famHere.title) : 'Back to all texts';
+    const backLabel = _mapSlug ? ('Map · ' + entry.tradition)
+                    : _famHere ? _famHere.title : 'All Texts';
+    const backTitle = _mapSlug ? 'Back to the tradition\'s map'
+                    : _famHere ? ('Back to ' + _famHere.title) : 'Back to all texts';
     html += '<button type="button" class="bcl-back-to-versions bcl-back-to-library" ' +
+            (_mapSlug ? 'data-mapslug="' + escapeHTML(_mapSlug) + '" ' : '') +
             'title="' + escapeHTML(backTitle) + '">' +
             '&larr; ' + escapeHTML(backLabel) +
             '</button>';
@@ -15774,6 +15794,11 @@ function showCover(data, entry) {
   const backBtn = $textHeader.querySelector('.bcl-back-to-versions');
   if (backBtn) {
     backBtn.addEventListener('click', () => {
+      // Task 42b — the steady chain short-circuit: a mapped tradition
+      // walks straight to its map page; the shelf-era chain below
+      // survives only for the phase-5 shelves.
+      const _ms = backBtn.getAttribute('data-mapslug');
+      if (_ms) { location.href = 'map/' + _ms + '.html'; return; }
       const trd = currentEntry && currentEntry.tradition;
       const cat = (trd && typeof bucketFor === 'function') ? bucketFor(trd) : null;
       const textId = currentEntry && currentEntry.id;

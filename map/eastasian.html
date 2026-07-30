@@ -441,12 +441,15 @@ section.view { display: block !important; }
         if (b.contained_in) {
           el.title = (el.title ? el.title + ' — ' : '') + b.contained_in;
         }
-        if (b.state === 'held' && b.read && b.read.length === 1) {
-          var a = document.createElement('a');
-          a.className = 'm-link'; a.href = '../' + b.read[0].url;
-          el.parentNode.insertBefore(a, el); a.appendChild(el);
-        } else if (b.state === 'held-several' && b.read) {
+        if (false) { // 42a: the single-held direct-link retired — every held chip pops the chooser
+        } else if ((b.state === 'held' || b.state === 'held-several') && b.read && b.read.length) {
           el.style.cursor = 'pointer';
+          // 42a — keyboard access in structure mode, the rights-mode pattern
+          el.setAttribute('role', 'button');
+          el.setAttribute('tabindex', '0');
+          el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+          });
           el.addEventListener('click', function () {
             // Task 41a — anchored popover: no document reflow, ever.
             // Second click on the same chip closes.
@@ -456,10 +459,11 @@ section.view { display: block !important; }
             var box = document.createElement('div');
             box.className = 'm-chooser m-chooser-pop';
             box.tabIndex = -1;
-            var kind = (b.chooser === 'works') ? ' works held — choose'
-                                               : ' translations held — choose';
+            var kind = (b.read.length === 1) ? ''
+                     : (b.chooser === 'works') ? b.read.length + ' works held — choose'
+                                               : b.read.length + ' translations held — choose';
             box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
-                            b.read.length + kind +
+                            (kind || 'held — read') +
                             (b.contained_in ? ' · ' + b.contained_in : '') + '</div>';
             b.read.forEach(function (r) {
               var a = document.createElement('a');
