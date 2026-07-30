@@ -220,9 +220,7 @@ section.view { display: block !important; }
 <span style="color:#a09080"><span class="mdot" style="background:#ddd6c8"></span>no PD translation</span>
 <span style="color:#a09080"><span class="mdot" style="border:1.5px dashed #a09080"></span>held &middot; restricted</span>
 </div>
-<p id="m-legend-note">Territory colour (the mandala and zone key) says whether a
-public-domain translation exists in the world; the chip dress above shows the
-archive&rsquo;s own holdings.</p><button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
+<button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
 <div class="page">
   <header class="mast">
     <div class="sym" aria-hidden="true">🔥</div>
@@ -439,10 +437,14 @@ body[data-lens="rights"] #m-legend { display:none !important; }
 #gradient, .fambar { display:none !important; }
 body[data-lens="rights"] #gradient { display:block !important; }
 body[data-lens="rights"] .fambar { display:inline-flex !important; }
-/* the mandala footer sentence is true per mode */
-#foot .r-only { display:none; }
-body[data-lens="rights"] #foot .r-only { display:inline; }
-body[data-lens="rights"] #foot .b-only { display:none; }
+/* 38b — the zone-key cards speak holdings in base: their g/a/r
+   share bars and PD counts ride the rights lens only */
+.keyrow .mini { display:none !important; }
+body[data-lens="rights"] .keyrow .mini { display:inline-flex !important; }
+/* per-mode sentence spans (footer, mast ledes, key counts) */
+.r-only { display:none; }
+body[data-lens="rights"] .r-only { display:inline; }
+body[data-lens="rights"] .b-only { display:none; }
 /* ── Task 37: the content overlays (Held editions · Reception) ── */
 #ov-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.4); z-index:70; }
 #ov-sheet { display:none; position:fixed; inset:5vh 6vw; overflow:auto; z-index:71;
@@ -746,6 +748,60 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
       '<span class="b-only">Colour = what the archive holds; the Rights lens re-colours by public-domain reality.</span>' +
       '<span class="r-only">' + FOOTSENT + '</span>');
   }
+  // 38b — stale mast ledes: the PD-colour sentence is true only under
+  // the rights lens; base states the holdings meaning. Three phrasings
+  // live across the 13 pages; the scoper catches the sentence shape.
+  var LEDE_RE = /[Cc]olou?r(ed|-coded) by (whether a|the copyright of)[^.]*[.]/;
+  var BASE_LEDE = 'coloured by what the archive holds (the Rights lens shows public-domain reality).';
+  document.querySelectorAll('.mast p, header p').forEach(function (el) {
+    if (el.querySelector('.r-only')) return;
+    // the sentence lives in ONE text node — split it there so entity
+    // forms in surrounding markup can never defeat the match
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      var m2 = node.nodeValue.match(LEDE_RE);
+      if (!m2) continue;
+      var after = node.splitText(m2.index);
+      after.splitText(m2[0].length);
+      var wrap = document.createElement('span');
+      var baseTwin = m2[0].charAt(0) === 'C'
+        ? BASE_LEDE.charAt(0).toUpperCase() + BASE_LEDE.slice(1) : BASE_LEDE;
+      wrap.innerHTML = '<span class="b-only">' + baseTwin + '</span>' +
+                       '<span class="r-only">' + esc(m2[0]) + '</span>';
+      after.parentNode.replaceChild(wrap, after);
+      break;
+    }
+    // fallback: the sentence runs through inline markup to the end of
+    // the paragraph (indigenous: "…that should <em>not</em> be mapped
+    // shown as such.") — wrap from the match to the paragraph's end
+    var walker2 = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    if (el.querySelector('.r-only')) return;
+    while ((node = walker2.nextNode())) {
+      var m3 = node.nodeValue.match(/[Cc]olou?r(ed|-coded) by (whether a|the copyright of)/);
+      if (!m3) continue;
+      var tail = node.splitText(m3.index);
+      var range = document.createRange();
+      range.setStartBefore(tail);
+      range.setEnd(el, el.childNodes.length);
+      var frag = range.extractContents();
+      var rspan = document.createElement('span'); rspan.className = 'r-only'; rspan.appendChild(frag);
+      var bspan = document.createElement('span'); bspan.className = 'b-only';
+      bspan.textContent = m3[0].charAt(0) === 'C'
+        ? BASE_LEDE.charAt(0).toUpperCase() + BASE_LEDE.slice(1) : BASE_LEDE;
+      el.appendChild(bspan); el.appendChild(rspan);
+      break;
+    }
+  });
+  // 38b — the zone-key "· N PD" counts are a rights datum
+  document.querySelectorAll('.keyrow .ksub').forEach(function (s) {
+    if (s.querySelector('.r-only')) return;
+    var parts = (s.textContent || '').split(' · ');
+    if (parts.length === 2 && parts[1].slice(-3) === ' PD') {
+      s.innerHTML = esc(parts[0]) + '<span class="r-only"> · ' + esc(parts[1]) + '</span>';
+    }
+  });
+
   _ready.then(updateMandala);
 
   setLens(lens, false);
