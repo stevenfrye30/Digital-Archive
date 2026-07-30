@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Task 47d: one theme key everywhere, applied before first paint -->
+<script>(function(){try{var t=localStorage.getItem("da-theme");if(!t){t=(localStorage.getItem("da-dark-mode")==="true"||localStorage.getItem("archive_theme")==="dark")?"dark":"light";localStorage.setItem("da-theme",t);}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="codex-build" content="v133-steven-developer-handbook">
@@ -11860,7 +11862,10 @@ body.viewer-active .folio-leaf-colophon {
 // ── Dark mode (apply before paint) ───────────────────────────────────────────
 
 (function() {
-  const saved = localStorage.getItem('da-dark-mode');
+  // Task 47d — one shared key (da-theme); legacy value migrated at boot
+  const saved = localStorage.getItem('da-theme') === 'dark' ? 'true'
+              : localStorage.getItem('da-theme') === 'light' ? 'false'
+              : localStorage.getItem('da-dark-mode');
   if (saved === 'true') document.documentElement.setAttribute('data-theme', 'dark');
 })();
 
@@ -11869,9 +11874,11 @@ function toggleDarkMode() {
   if (isDark) {
     document.documentElement.removeAttribute('data-theme');
     localStorage.setItem('da-dark-mode', 'false');
+    localStorage.setItem('da-theme', 'light');
   } else {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('da-dark-mode', 'true');
+    localStorage.setItem('da-theme', 'dark');
   }
   const btn = document.getElementById('dark-toggle');
   if (btn) btn.textContent = isDark ? 'Dark' : 'Light';

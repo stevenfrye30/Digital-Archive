@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){try{var t=localStorage.getItem("da-theme");if(!t){t=(localStorage.getItem("da-dark-mode")==="true"||localStorage.getItem("archive_theme")==="dark")?"dark":"light";localStorage.setItem("da-theme",t);}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Map of Hindu Texts — Digital Archive</title>
@@ -304,15 +305,13 @@ section.view { display: block !important; }
 
 <script>
 (function () {
-  var KEY = 'da-dark-mode';
-  if (localStorage.getItem(KEY) === 'true')
-    document.documentElement.setAttribute('data-theme', 'dark');
-  else
-    document.documentElement.setAttribute('data-theme', 'light');
+  // Task 47d — ONE theme key (da-theme), already applied pre-paint by
+  // the head boot; the toggle writes the shared key.
+  var KEY = 'da-theme';
   function flip() {
     var dark = document.documentElement.getAttribute('data-theme') === 'dark';
     document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
-    localStorage.setItem(KEY, dark ? 'false' : 'true');
+    localStorage.setItem(KEY, dark ? 'light' : 'dark');
     label();
   }
   function label() {
@@ -535,6 +534,23 @@ body[data-lens="rights"] #m-legend { display:none !important; }
 .statband, .greenline { display:none !important; }
 body[data-lens="rights"] .statband { display:flex !important; }
 body[data-lens="rights"] .greenline { display:block !important; }
+/* 47d — one toggle: the ported frames' own #themeBtn duplicates the
+   topbar's #arch-dark (stacked over it on the split pages) — the
+   topbar toggle is the one switch */
+#themeBtn { display:none !important; }
+/* 47b — third sweep: colour-narrative callouts (.insight) and the
+   hindu topline bar (+its band shell) are g/a/r figures — rights only */
+.insight, #totalbar, .band { display:none !important; }
+body[data-lens="rights"] .insight { display:block !important; }
+body[data-lens="rights"] #totalbar { display:block !important; }
+body[data-lens="rights"] .band { display:block !important; }
+/* 47c — the mandala navigates: zone labels, hover sync */
+.mz-lbl { font: 700 9px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  fill: #5a5048; stroke: rgba(250,248,245,.85); stroke-width: 2.5px;
+  paint-order: stroke; pointer-events: none; }
+[data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
+g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
+.keyrow.mz-hl { background: rgba(122,92,58,.12); }
 /* canon-share triads + family bars are g/a/r figures — rights only */
 #gradient, .fambar { display:none !important; }
 body[data-lens="rights"] #gradient { display:block !important; }
@@ -958,7 +974,64 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     showView(viewPills[0].getAttribute('data-view'));
   }
 
-  _ready.then(updateMandala);
+  // 47c — the mandala earns its place: persistent numeral labels at
+  // each zone (matching the zone-key card numerals), click-to-jump
+  // via window.scrollTo (never scrollIntoView on the shared surface),
+  // and hover sync with the zone-key cards.
+  function mandalaNav() {
+    var svg = document.getElementById('mandala');
+    if (!svg || svg.dataset.navved) return;
+    svg.dataset.navved = '1';
+    var zones = svg.querySelectorAll('g.zone');
+    var secs = document.querySelectorAll('section[id^="zone-"]');
+    var keyrows = document.querySelectorAll('.keyrow');
+    var LBL = ['◉', '1', '2', '3', '4', '5', 'A', 'B', 'C', 'D'];
+    var NS = 'http://www.w3.org/2000/svg';
+    zones.forEach(function (z, zi) {
+      var pts = [];
+      z.querySelectorAll('path.seg').forEach(function (pp) {
+        var a = pathAngles(pp);
+        var nums = (pp.getAttribute('d') || '').split(/[^0-9.eE-]+/).filter(Boolean).map(Number);
+        if (a) pts.push({ mid: a.start + a.span / 2, r: nums.length > 4 ? nums[4] : 40 });
+      });
+      if (pts.length && LBL[zi]) {
+        var mid = pts[0].mid, r = 0;
+        pts.forEach(function (q) { if (q.r > r) r = q.r; });
+        var t = document.createElementNS(NS, 'text');
+        t.setAttribute('x', (Math.cos(mid) * r * 0.72).toFixed(1));
+        t.setAttribute('y', (Math.sin(mid) * r * 0.72).toFixed(1));
+        t.setAttribute('class', 'mz-lbl');
+        t.setAttribute('text-anchor', 'middle');
+        t.setAttribute('dominant-baseline', 'central');
+        t.textContent = LBL[zi];
+        z.appendChild(t);
+      }
+      z.style.cursor = 'pointer';
+      function jump() {
+        var sec = secs[zi];
+        if (!sec) return;
+        var top = sec.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+        var hh = sec.querySelector('h2, .zone-h');
+        if (hh) {
+          if (!hh.hasAttribute('tabindex')) hh.setAttribute('tabindex', '-1');
+          hh.focus({ preventScroll: true });
+        }
+      }
+      z.addEventListener('click', jump);
+      z.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); jump(); }
+      });
+      var kr = keyrows[zi];
+      if (kr) {
+        z.addEventListener('mouseenter', function () { kr.classList.add('mz-hl'); });
+        z.addEventListener('mouseleave', function () { kr.classList.remove('mz-hl'); });
+        kr.addEventListener('mouseenter', function () { z.classList.add('mz-hl'); });
+        kr.addEventListener('mouseleave', function () { z.classList.remove('mz-hl'); });
+      }
+    });
+  }
+  _ready.then(function () { updateMandala(); mandalaNav(); });
 
   setLens(lens, false);
 

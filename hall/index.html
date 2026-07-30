@@ -2,7 +2,7 @@
 <title>The Archive · The Religion Hall</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- LIGHT-FIRST theme boot: runs before paint; light unless the shared key says dark; invalid/absent ⇒ light -->
-<script>(function(){try{var t=localStorage.getItem("archive_theme");document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();</script>
+<script>(function(){try{var t=localStorage.getItem("da-theme");if(!t){t=(localStorage.getItem("da-dark-mode")==="true"||localStorage.getItem("archive_theme")==="dark")?"dark":"light";localStorage.setItem("da-theme",t);}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
 <meta name="robots" content="noindex">
 <!-- Religion Hall preview | enabled rooms: none -->
 <style>
@@ -145,7 +145,11 @@
   .door .keyline{ display:none; }
   .door .sym{ display:none; }
   .door{ padding:.85rem 1.05rem; border-radius:.7rem; min-height:0; }
-  .door h3{ font-size:1.02rem; margin:0 0 .2rem; }
+  .door h3{ font-size:1.02rem; margin:0 0 .2rem; text-align:center; }
+  .door .blurb{ text-align:center; }
+  .door .doorn{ position:absolute; top:.55rem; right:.75rem;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.72rem; color:var(--ink-faint); }
   .door .blurb{ font-size:.8rem; margin:0 0 .45rem; }
   .door .foot{ margin-top:0; font-size:.78rem; }
   .colonnade{ grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.8rem; }
@@ -176,21 +180,21 @@
   <!-- doorways legend retired (Task 40b): one door state needs no legend -->
 
   <nav id="doors" class="colonnade" aria-label="Tradition doorways">
-    <a class="door" data-k="hindu" data-name="Hinduism" data-status="mapped" href="/Digital-Archive/map/hindu.html" aria-label="Hinduism — 60 readable here. Opens the tradition&#x27;s page."><h3>Hinduism</h3><p class="blurb">Śruti and smṛti — the Vedas and Brāhmaṇas to the epics, the six darśanas, and the devotional poets.</p><span class="foot"><span class="status">60 readable here</span></span></a>
-    <a class="door" data-k="judaism" data-name="Judaism" data-status="mapped" href="/Digital-Archive/map/judaism.html" aria-label="Judaism — 13 readable here. Opens the tradition&#x27;s page."><h3>Judaism</h3><p class="blurb">Tanakh, Mishnah, Talmud, midrash, halakhah, and Kabbalah.</p><span class="foot"><span class="status">13 readable here</span></span></a>
-    <a class="door" data-k="christianity" data-name="Christianity" data-status="mapped" href="/Digital-Archive/map/christianity.html" aria-label="Christianity — 79 readable here. Opens the tradition&#x27;s page."><h3>Christianity</h3><p class="blurb">The Old Testament and the New, the Fathers, the creeds, and the apocrypha.</p><span class="foot"><span class="status">79 readable here</span></span></a>
-    <a class="door" data-k="islam" data-name="Islam" data-status="mapped" href="/Digital-Archive/map/islam.html" aria-label="Islam — 6 readable here. Opens the tradition&#x27;s page."><h3>Islam</h3><p class="blurb">The Qurʾān, the hadith collections, the sīra, tafsīr, and the Sufi classics.</p><span class="foot"><span class="status">6 readable here</span></span></a>
-    <a class="door" data-k="buddhist" data-name="Buddhism" data-status="mapped" href="/Digital-Archive/map/buddhist.html" aria-label="Buddhism — 63 readable here. Opens the tradition&#x27;s page."><h3>Buddhism</h3><p class="blurb">The teachings of the Buddha — early Pāli discourses, the Jātaka birth-stories, and the Mahāyāna sūtras.</p><span class="foot"><span class="status">63 readable here</span></span></a>
-    <a class="door" data-k="eastasian" data-name="East Asian" data-status="mapped" href="/Digital-Archive/map/eastasian.html" aria-label="East Asian — 14 readable here. Opens the tradition&#x27;s page."><h3>East Asian</h3><p class="blurb">The Confucian classics and the Daoist canon.</p><span class="foot"><span class="status">14 readable here</span></span></a>
-    <a class="door" data-k="zoroastrian" data-name="Zoroastrianism" data-status="mapped" href="/Digital-Archive/map/zoroastrian.html" aria-label="Zoroastrianism — 3 readable here. Opens the tradition&#x27;s page."><h3>Zoroastrianism</h3><p class="blurb">The Avesta and the Pahlavi books.</p><span class="foot"><span class="status">3 readable here</span></span></a>
-    <a class="door" data-k="sikh" data-name="Sikhism" data-status="mapped" href="/Digital-Archive/map/sikh.html" aria-label="Sikhism — 5 readable here. Opens the tradition&#x27;s page."><h3>Sikhism</h3><p class="blurb">The Gurū Granth Sāhib and its hymns.</p><span class="foot"><span class="status">5 readable here</span></span></a>
-    <a class="door" data-k="jain" data-name="Jainism" data-status="mapped" href="/Digital-Archive/map/jain.html" aria-label="Jainism — 2 readable here. Opens the tradition&#x27;s page."><h3>Jainism</h3><p class="blurb">The Āgamas and the teachings of the Tīrthaṅkaras.</p><span class="foot"><span class="status">2 readable here</span></span></a>
-    <a class="door" data-k="shinto" data-name="Shintō" data-status="mapped" href="/Digital-Archive/map/shinto.html" aria-label="Shintō — 1 readable here. Opens the tradition&#x27;s page."><h3>Shintō</h3><p class="blurb">The Kojiki, the Nihon Shoki, and the way of the kami.</p><span class="foot"><span class="status">1 readable here</span></span></a>
+    <a class="door" data-k="hindu" data-name="Hinduism" data-status="mapped" href="/Digital-Archive/map/hindu.html" aria-label="Hinduism — 60 readable here. Opens the tradition&#x27;s page."><span class="doorn">60</span><h3>Hinduism</h3><p class="blurb">Śruti and smṛti — the Vedas and Brāhmaṇas to the epics, the six darśanas, and the devotional poets.</p></a>
+    <a class="door" data-k="judaism" data-name="Judaism" data-status="mapped" href="/Digital-Archive/map/judaism.html" aria-label="Judaism — 13 readable here. Opens the tradition&#x27;s page."><span class="doorn">13</span><h3>Judaism</h3><p class="blurb">Tanakh, Mishnah, Talmud, midrash, halakhah, and Kabbalah.</p></a>
+    <a class="door" data-k="christianity" data-name="Christianity" data-status="mapped" href="/Digital-Archive/map/christianity.html" aria-label="Christianity — 79 readable here. Opens the tradition&#x27;s page."><span class="doorn">79</span><h3>Christianity</h3><p class="blurb">The Old Testament and the New, the Fathers, the creeds, and the apocrypha.</p></a>
+    <a class="door" data-k="islam" data-name="Islam" data-status="mapped" href="/Digital-Archive/map/islam.html" aria-label="Islam — 6 readable here. Opens the tradition&#x27;s page."><span class="doorn">6</span><h3>Islam</h3><p class="blurb">The Qurʾān, the hadith collections, the sīra, tafsīr, and the Sufi classics.</p></a>
+    <a class="door" data-k="buddhist" data-name="Buddhism" data-status="mapped" href="/Digital-Archive/map/buddhist.html" aria-label="Buddhism — 63 readable here. Opens the tradition&#x27;s page."><span class="doorn">63</span><h3>Buddhism</h3><p class="blurb">The teachings of the Buddha — early Pāli discourses, the Jātaka birth-stories, and the Mahāyāna sūtras.</p></a>
+    <a class="door" data-k="eastasian" data-name="East Asian" data-status="mapped" href="/Digital-Archive/map/eastasian.html" aria-label="East Asian — 14 readable here. Opens the tradition&#x27;s page."><span class="doorn">14</span><h3>East Asian</h3><p class="blurb">The Confucian classics and the Daoist canon.</p></a>
+    <a class="door" data-k="zoroastrian" data-name="Zoroastrianism" data-status="mapped" href="/Digital-Archive/map/zoroastrian.html" aria-label="Zoroastrianism — 3 readable here. Opens the tradition&#x27;s page."><span class="doorn">3</span><h3>Zoroastrianism</h3><p class="blurb">The Avesta and the Pahlavi books.</p></a>
+    <a class="door" data-k="sikh" data-name="Sikhism" data-status="mapped" href="/Digital-Archive/map/sikh.html" aria-label="Sikhism — 5 readable here. Opens the tradition&#x27;s page."><span class="doorn">5</span><h3>Sikhism</h3><p class="blurb">The Gurū Granth Sāhib and its hymns.</p></a>
+    <a class="door" data-k="jain" data-name="Jainism" data-status="mapped" href="/Digital-Archive/map/jain.html" aria-label="Jainism — 2 readable here. Opens the tradition&#x27;s page."><span class="doorn">2</span><h3>Jainism</h3><p class="blurb">The Āgamas and the teachings of the Tīrthaṅkaras.</p></a>
+    <a class="door" data-k="shinto" data-name="Shintō" data-status="mapped" href="/Digital-Archive/map/shinto.html" aria-label="Shintō — 1 readable here. Opens the tradition&#x27;s page."><span class="doorn">1</span><h3>Shintō</h3><p class="blurb">The Kojiki, the Nihon Shoki, and the way of the kami.</p></a>
     <a class="door" data-k="bahai" data-name="The Bahá&#x27;í Faith" data-status="mapped" href="/Digital-Archive/map/bahai.html" aria-label="The Bahá&#x27;í Faith — Opens with Browne&#x27;s translations. Opens the tradition&#x27;s page."><h3>The Bahá&#x27;í Faith</h3><p class="blurb">The Báb and Bahá&#x27;u&#x27;lláh — the Kitáb-i-Aqdas and the Íqán; the youngest of the mapped traditions.</p><span class="foot"><span class="status">Opens with Browne&#x27;s translations</span></span></a>
-    <a class="door" data-k="ancient" data-name="Ancient World" data-status="mapped" href="/Digital-Archive/map/ancient.html" aria-label="Ancient World — 20 readable here. Opens the tradition&#x27;s page."><h3>Ancient World</h3><p class="blurb">Greco-Roman, Egyptian, and Mesopotamian sacred texts.</p><span class="foot"><span class="status">20 readable here</span></span></a>
-    <a class="door" data-k="gnostic" data-name="Gnostic &amp; Hermetic" data-status="mapped" href="/Digital-Archive/map/gnostic.html" aria-label="Gnostic &amp; Hermetic — 6 readable here. Opens the tradition&#x27;s page."><h3>Gnostic &amp; Hermetic</h3><p class="blurb">The Nag Hammadi library and the Hermetica.</p><span class="foot"><span class="status">6 readable here</span></span></a>
-    <a class="door" data-k="indigenous" data-name="Indigenous &amp; Oral" data-status="mapped" href="/Digital-Archive/map/indigenous.html" aria-label="Indigenous &amp; Oral — 2 readable here. Opens the tradition&#x27;s page."><h3>Indigenous &amp; Oral</h3><p class="blurb">Living oral and land-based traditions, recorded with care.</p><span class="foot"><span class="status">2 readable here</span></span></a>
-    <a class="door" data-k="modern" data-name="Modern &amp; New" data-status="mapped" href="/Digital-Archive/map/modern.html" aria-label="Modern &amp; New — 12 readable here. Opens the tradition&#x27;s page."><h3>Modern &amp; New</h3><p class="blurb">Theosophy, the Latter Day Saints, and the modern scriptures of the last two centuries.</p><span class="foot"><span class="status">12 readable here</span></span></a>
+    <a class="door" data-k="ancient" data-name="Ancient World" data-status="mapped" href="/Digital-Archive/map/ancient.html" aria-label="Ancient World — 20 readable here. Opens the tradition&#x27;s page."><span class="doorn">20</span><h3>Ancient World</h3><p class="blurb">Greco-Roman, Egyptian, and Mesopotamian sacred texts.</p></a>
+    <a class="door" data-k="gnostic" data-name="Gnostic &amp; Hermetic" data-status="mapped" href="/Digital-Archive/map/gnostic.html" aria-label="Gnostic &amp; Hermetic — 6 readable here. Opens the tradition&#x27;s page."><span class="doorn">6</span><h3>Gnostic &amp; Hermetic</h3><p class="blurb">The Nag Hammadi library and the Hermetica.</p></a>
+    <a class="door" data-k="indigenous" data-name="Indigenous &amp; Oral" data-status="mapped" href="/Digital-Archive/map/indigenous.html" aria-label="Indigenous &amp; Oral — 2 readable here. Opens the tradition&#x27;s page."><span class="doorn">2</span><h3>Indigenous &amp; Oral</h3><p class="blurb">Living oral and land-based traditions, recorded with care.</p></a>
+    <a class="door" data-k="modern" data-name="Modern &amp; New" data-status="mapped" href="/Digital-Archive/map/modern.html" aria-label="Modern &amp; New — 12 readable here. Opens the tradition&#x27;s page."><span class="doorn">12</span><h3>Modern &amp; New</h3><p class="blurb">Theosophy, the Latter Day Saints, and the modern scriptures of the last two centuries.</p></a>
   </nav>
 
   <!-- map-door band retired (Task 40b): map/index.html is a redirect stub to the Hall now -->
@@ -211,7 +215,7 @@
   var root=document.documentElement;
   /* ---- shared theme contract: light-first default (set pre-paint), manual choice persists across Hall + rooms
          via one localStorage key ("archive_theme") ---- */
-  var tb=document.getElementById("themeBtn"), tl=document.getElementById("themeLbl"), THEME_KEY="archive_theme";
+  var tb=document.getElementById("themeBtn"), tl=document.getElementById("themeLbl"), THEME_KEY="da-theme";
   function curTheme(){ return root.getAttribute("data-theme")==="dark"?"dark":"light"; }
   function setTheme(t){ t=(t==="dark")?"dark":"light"; root.setAttribute("data-theme",t);
     if(tl) tl.textContent=(t==="dark"?"Dark":"Light"); try{ localStorage.setItem(THEME_KEY,t); }catch(e){} }
