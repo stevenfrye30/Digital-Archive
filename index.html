@@ -438,37 +438,8 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin: 32px 0 12px;
 }
 
-#continue-btn {
-  background: #5a4a1e;
-  color: #faf6ec;
-  border: none;
-  font-family: Georgia, serif;
-  font-size: 15px;
-  padding: 10px 24px;
-  border-radius: 999px;
-  cursor: pointer;
-  max-width: 90%;
-  white-space: normal;
-  line-height: 1.35;
-}
-#continue-btn:hover { background: #3d3210; }
+/* (#continue-btn styles retired with the entrance card — Task 43) */
 
-#recent-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 520px;
-  text-align: left;
-}
-#recent-list li {
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--chrome-border);
-  cursor: pointer;
-  font-style: normal;
-  color: var(--reader-fg);
-  font-size: 14px;
-}
-#recent-list li:hover { background: rgba(0,0,0,0.04); }
 #welcome-search {
   max-width: 640px;
   margin: 0 auto 12px;
@@ -514,12 +485,6 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   color: var(--chrome-muted);
   margin-top: 2px;
   font-style: italic;
-}
-#recent-list li .recent-sub {
-  display: block;
-  font-size: 12px;
-  color: var(--chrome-muted);
-  margin-top: 2px;
 }
 
 .passage-highlight {
@@ -2162,8 +2127,13 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   inset: 0;
   overflow-y: auto;
   font-family: Georgia, 'Times New Roman', serif;
-  color: var(--reader-fg);
+  /* Task 43 — the entrance wears the archive dress PERMANENTLY:
+     pinned literals so no reading-room theme can tint the front
+     door (the reading room keeps its own themes untouched). */
+  background: #faf8f5;
+  color: #2c2c2c;
 }
+[data-theme="dark"] #welcome-home { background: #1a1a1e; color: #d4d0c8; }
 #home-topbar {
   display: flex;
   justify-content: space-between;
@@ -2230,52 +2200,44 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 #home-categories {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  margin-top: 6px;
+  gap: 12px;
+  margin-top: 14px;
 }
+/* Task 43 — the hall's card grammar: title · blurb · derived count;
+   the whole card is the link; CTAs retired. */
 .home-cat {
   display: block;
-  padding: 22px 22px 20px 22px;
+  padding: 16px 18px 14px;
   font-family: Georgia, serif;
   text-align: left;
-  color: var(--reader-fg);
-  background: none;
-  border: none;
-  border-left: 1px solid #e6e1d9;
-  border-radius: 0;
+  color: #2c2c2c;
+  text-decoration: none;
+  background: #fbfaf7;
+  border: 1px solid var(--chrome-border);
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: border-color 0.15s, transform 0.15s;
 }
-.home-cat:first-child { border-left: none; padding-left: 0; }
-.home-cat:last-child { padding-right: 0; }
-.home-cat:hover { background: #f7f4ef; }
-.home-cat-titleline {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin: 0 0 10px;
-}
+.home-cat:hover { border-color: var(--chrome-active); transform: translateY(-2px); }
 .home-cat .home-cat-label {
-  font: 400 24px/1.2 Georgia, serif;
-  color: var(--reader-fg);
-}
-.home-cat .home-cat-count {
-  font: 400 12px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  color: #a09080;
+  display: block;
+  font: 400 21px/1.2 Georgia, serif;
+  color: inherit;
+  margin: 0 0 6px;
 }
 .home-cat-scent {
   display: block;
-  font: italic 400 13px/1.7 Georgia, serif;
+  font: italic 400 12.5px/1.6 Georgia, serif;
   color: var(--chrome-muted);
+  margin: 0 0 10px;
 }
-.home-cat-browse {
+.home-cat .home-cat-count {
   display: block;
   font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--chrome-active);
-  margin-top: 12px;
+  letter-spacing: 0.06em;
+  color: #a09080;
 }
+[data-theme="dark"] .home-cat { background: #222226; color: #d4d0c8; }
 /* (the "Another way in" band CSS retired with the band — Task 36b) */
 #home-search {
   max-width: 560px;
@@ -2287,10 +2249,10 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   box-sizing: border-box;
   padding: 13px 18px;
   font: 400 16px/1.4 Georgia, serif;
-  color: var(--reader-fg);
-  background: #ffffff;
+  color: #2c2c2c;
+  background: #fbfaf7;
   border: 1px solid var(--chrome-border);
-  border-radius: 2px;
+  border-radius: 8px;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -2305,7 +2267,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin: 4px 0 0;
   max-height: 300px;
   overflow-y: auto;
-  background: white;
+  background: #fbfaf7;
   border: 1px solid var(--chrome-border);
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
@@ -2331,32 +2293,12 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin-top: 2px;
 }
 
-#home-restricted {
-  margin-top: clamp(12px, 2vh, 20px);
+/* Task 43 — the Workroom/Restricted pills demoted to the footer row */
+.home-footlink {
+  font: inherit; letter-spacing: inherit; text-transform: inherit;
+  color: inherit; background: none; border: none; padding: 0; cursor: pointer;
 }
-.home-restricted-btn {
-  padding: 8px 20px;
-  font-size: 13px;
-  font-family: system-ui, sans-serif;
-  color: #8a5a1a;
-  background: #fff3e0;
-  border: 1px solid #e8c080;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-}
-.home-restricted-btn:hover {
-  background: #ffe8c0;
-  border-color: #c4993a;
-}
-/* Archive Workroom — distinct from Restricted (parchment/ink, not amber-lock).
-   Reads as intentional preparation, never an error state. */
-#home-workroom { margin-top: clamp(12px, 2vh, 20px); }
-.home-workroom-btn {
-  color: #4a5a3a;
-  background: #f0efe6;
-  border-color: #c9c4ad;
-}
+.home-footlink:hover { color: var(--chrome-active); }
 .home-workroom-btn:hover {
   background: #e7e6da;
   border-color: #a8a283;
@@ -2420,67 +2362,9 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin: 0;
 }
 
-#home-recent-panel {
-  position: absolute;
-  top: 66px;
-  right: 24px;
-  width: 200px;
-  font-size: 13px;
-  font-family: system-ui, sans-serif;
-  color: var(--chrome-muted);
-}
-#home-recent-panel .welcome-section-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--chrome-muted);
-  margin-bottom: 6px;
-}
-#home-recent-panel #continue-btn {
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: white;
-  border: 1px solid var(--chrome-border);
-  border-radius: 6px;
-  padding: 8px 12px;
-  font-size: 12px;
-  font-family: Georgia, serif;
-  color: var(--chrome-fg);
-  cursor: pointer;
-  transition: border-color 0.15s;
-  margin-bottom: 12px;
-}
-#home-recent-panel #continue-btn:hover { border-color: var(--chrome-active); }
-#home-recent-panel #recent-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-#home-recent-panel #recent-list li {
-  padding: 5px 0;
-  font-size: 12px;
-  cursor: pointer;
-  color: var(--chrome-fg);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  transition: color 0.15s;
-}
-#home-recent-panel #recent-list li:hover { color: var(--chrome-active); }
-#home-recent-panel #recent-list li .recent-sub {
-  display: block;
-  font-size: 10px;
-  color: var(--chrome-muted);
-}
+/* (#home-recent-panel styles retired — Task 43) */
 
 @media (max-width: 700px) {
-  #home-recent-panel {
-    position: static;
-    width: auto;
-    max-width: 300px;
-    margin: 20px auto 0;
-    text-align: center;
-  }
 }
 
 /* Mobile: the shelves stack as rows and the masthead holds the
@@ -11169,11 +11053,6 @@ body.viewer-active .folio-leaf-colophon {
   --chrome-active: #c4a060;
 }
 [data-theme="dark"] #home-search-input,
-[data-theme="dark"] #home-recent-panel #continue-btn {
-  background: #2a2a2e;
-  color: var(--chrome-fg);
-  border-color: var(--chrome-border);
-}
 [data-theme="dark"] #home-search-results,
 [data-theme="dark"] .bt-sort select {
   background: #2a2a2e;
@@ -11181,11 +11060,6 @@ body.viewer-active .folio-leaf-colophon {
   border-color: var(--chrome-border);
 }
 [data-theme="dark"] #home-search-results li:hover { background: #333338; }
-[data-theme="dark"] .home-restricted-btn {
-  background: #3a3020;
-  color: #d4a040;
-  border-color: #5a4a2a;
-}
 [data-theme="dark"] .home-restricted-btn:hover {
   background: #4a4030;
   border-color: #7a6a3a;
@@ -11818,24 +11692,24 @@ body.viewer-active .folio-leaf-colophon {
                      from maps/summary.json (rooms_open + traditions, written
                      by build_map_bindings.py) — no authored counts. -->
                 <a class="home-cat" data-cat="Religion" href="hall/">
-                  <span class="home-cat-titleline"><span class="home-cat-label">Religion</span><span class="home-cat-count"></span></span>
+                  <span class="home-cat-label">Religion</span>
                   <span class="home-cat-scent">The Rig-Veda &middot; The City of God &middot; The Analects &middot; the world&rsquo;s scriptures<span class="home-cat-trads"></span></span>
-                  <span class="home-cat-browse">Enter the Religion Hall &rarr;</span>
+                  <span class="home-cat-count"></span>
                 </a>
                 <button class="home-cat" data-cat="Philosophy" type="button">
-                  <span class="home-cat-titleline"><span class="home-cat-label">Philosophy</span><span class="home-cat-count"></span></span>
+                  <span class="home-cat-label">Philosophy</span>
                   <span class="home-cat-scent">Aristotle&rsquo;s Metaphysics &middot; Bacon&rsquo;s Essays &middot; the Stoics, the Legalists, the moderns</span>
-                  <span class="home-cat-browse">Browse &rarr;</span>
+                  <span class="home-cat-count"></span>
                 </button>
                 <button class="home-cat" data-cat="Literature" type="button">
-                  <span class="home-cat-titleline"><span class="home-cat-label">Literature</span><span class="home-cat-count"></span></span>
+                  <span class="home-cat-label">Literature</span>
                   <span class="home-cat-scent">Beowulf &middot; The Arabian Nights &middot; the Aeneid &middot; epics and tales<span class="home-cat-trads"></span></span>
-                  <span class="home-cat-browse">Browse &rarr;</span>
+                  <span class="home-cat-count"></span>
                 </button>
                 <button class="home-cat" data-cat="Esoteric" type="button">
-                  <span class="home-cat-titleline"><span class="home-cat-label">Esoteric</span><span class="home-cat-count"></span></span>
+                  <span class="home-cat-label">Esoteric</span>
                   <span class="home-cat-scent">Thrice-Greatest Hermes &middot; Atlantis &middot; Aradia &middot; the hermetic and the strange</span>
-                  <span class="home-cat-browse">Browse &rarr;</span>
+                  <span class="home-cat-count"></span>
                 </button>
               </div>
             </div>
@@ -11844,12 +11718,6 @@ body.viewer-active .folio-leaf-colophon {
                  front doors are the Hall's own surfaces (each door card +
                  the Hall's standing map-door band), asserted by the
                  surface_cross_links battery. -->
-            <div id="home-workroom" style="display:none;">
-              <button class="home-restricted-btn home-workroom-btn" onclick="browseWorkroom()">⚒ Archive Workroom <span id="home-workroom-count" class="home-workroom-count"></span></button>
-            </div>
-            <div id="home-restricted" style="display:none;">
-              <button class="home-restricted-btn" onclick="browseRestricted()">🔒 Restricted Library</button>
-            </div>
             <div id="home-footer">
               <div id="home-footer-links">
                 <a href="sources.html">Sources &amp; attribution</a>
@@ -11857,24 +11725,14 @@ body.viewer-active .folio-leaf-colophon {
                 <a href="translators.html">Translators</a>
                 <a href="wishlist.html">Wishlist</a>
                 <a href="press.html">The Press</a>
+                <button type="button" id="foot-workroom" class="home-footlink" onclick="browseWorkroom()" style="display:none">The Workroom <span id="home-workroom-count"></span></button>
+                <button type="button" id="foot-restricted" class="home-footlink" onclick="browseRestricted()" style="display:none">Restricted Library</button>
               </div>
               <p id="home-colophon">Public-domain texts with stable provenance. Built slowly, read slowly, maintained without hurry.</p>
             </div>
             </div>
-            <!-- Recent-reads panel: lives inside #welcome-home so it
-                 participates in the flex column on mobile (where it would
-                 otherwise overlap because its desktop position:absolute
-                 cannot be cancelled cleanly from a sibling of an
-                 absolutely-positioned welcome-home). On desktop it
-                 continues to use position:absolute relative to
-                 #welcome-home (same containing block as before). -->
-            <div id="home-recent-panel">
-              <div id="welcome-continue" style="display:none;">
-                <div class="welcome-section-label">Continue reading</div>
-                <button type="button" id="continue-btn"></button>
-              </div>
-              <!-- "Recently read" section removed by request. -->
-            </div>
+            <!-- Continue Reading card tossed (Task 43): resume lives in the
+                 reader itself (cover pill + ?p= restore), not the entrance. -->
             <div id="welcome-search" style="display:none;">
               <div class="welcome-section-label">Search across the corpus</div>
               <input type="search" id="global-search" placeholder="Find texts containing &hellip;" autocomplete="off">
@@ -12483,8 +12341,6 @@ const $tocSubtitle = document.getElementById('toc-subtitle');
 const $tocList     = document.getElementById('toc-list');
 const $tocBack     = document.getElementById('toc-back');
 const $tocBegin    = document.getElementById('toc-begin');
-const $welcomeContinue = document.getElementById('welcome-continue');
-const $continueBtn = document.getElementById('continue-btn');
 const $welcomeRecent = document.getElementById('welcome-recent');
 const $recentList  = document.getElementById('recent-list');
 const $globalSearch  = document.getElementById('global-search');
@@ -16380,25 +16236,9 @@ $reader.addEventListener('scroll', () => {
 }, { passive: true });
 
 function renderWelcome() {
-  let last = null, recents = [];
-  try { last = JSON.parse(localStorage.getItem('da-last') || 'null'); } catch (e) {}
-  try { recents = JSON.parse(localStorage.getItem('da-recents') || '[]'); } catch (e) {}
-
-  if (last && dataFileToEntry[last.data_file]) {
-    const lastPct = last.pct || getReadingProgress(last.data_file);
-    const pctBadge = lastPct > 0 ? ` (${lastPct}%)` : '';
-    $continueBtn.textContent = last.title + (last.translator ? ' — ' + last.translator : '') + pctBadge;
-    $continueBtn.onclick = () => {
-      const { entry, li } = dataFileToEntry[last.data_file];
-      pendingPid = last.pid;
-      loadText(entry, li);
-    };
-    $welcomeContinue.style.display = 'block';
-  } else {
-    $welcomeContinue.style.display = 'none';
-  }
-
-  // "Recently read" section removed by request — nothing to render here.
+  // Task 43 — the entrance's Continue Reading card is retired; the
+  // entrance neither reads nor writes reading positions. Resume
+  // lives in the reader (the cover's Continue pill, ?p= URLs).
 }
 
 $reader.addEventListener('scroll', scheduleBookmark, { passive: true });
@@ -27741,7 +27581,7 @@ function browseRestricted() {
   showBrowse();
   browseHistory = [{fn: browseHome}];
   $browseCrumb.innerHTML = `<a onclick="browseHome()">Home</a><span class="sep">›</span>Restricted`;
-  $browseTitle.textContent = '🔒 Restricted Library';
+  $browseTitle.textContent = 'Restricted Library';
   document.getElementById('browse-toolbar').style.display = 'none';
   $browseTiles.className = 'tile-list';
 
@@ -27807,7 +27647,7 @@ function browseWorkroom() {
   showBrowse();
   browseHistory = [{fn: browseHome}];
   $browseCrumb.innerHTML = `<a onclick="browseHome()">Home</a><span class="sep">›</span>Archive Workroom`;
-  $browseTitle.textContent = '⚒ Archive Workroom';
+  $browseTitle.textContent = 'The Archive Workroom';
   document.getElementById('browse-toolbar').style.display = 'none';
   $browseTiles.className = 'tile-list';
 
@@ -27863,8 +27703,8 @@ function updateHomeCounts() {
 
   // Show restricted button if any restricted texts exist
   const hasRestricted = Object.values(indexGroups).some(entries => entries.some(e => e.restricted));
-  const restrictedPanel = document.getElementById('home-restricted');
-  if (restrictedPanel) restrictedPanel.style.display = hasRestricted ? 'block' : 'none';
+  const restrictedPanel = document.getElementById('foot-restricted');
+  if (restrictedPanel) restrictedPanel.style.display = hasRestricted ? '' : 'none';
 
   // Archive Workroom button + live count — public text-ids not certified pass
   // (review/defer/fix under the conservative rollup). Counted from live data.
@@ -27872,8 +27712,8 @@ function updateHomeCounts() {
   for (const entries of Object.values(indexGroups)) {
     if (_textRoom(entries) === 'workroom') workroomCount++;
   }
-  const workroomPanel = document.getElementById('home-workroom');
-  if (workroomPanel) workroomPanel.style.display = workroomCount ? 'block' : 'none';
+  const workroomPanel = document.getElementById('foot-workroom');
+  if (workroomPanel) workroomPanel.style.display = workroomCount ? '' : 'none';
   const workroomCountEl = document.getElementById('home-workroom-count');
   if (workroomCountEl) workroomCountEl.textContent = workroomCount ? `· ${workroomCount} texts` : '';
   let shelfTotal = 0;
@@ -27899,7 +27739,7 @@ function updateHomeCounts() {
       if (tr0) tr0.textContent = '';
       return;
     }
-    btn.querySelector('.home-cat-count').textContent = textCount.toLocaleString('en-US');
+    btn.querySelector('.home-cat-count').textContent = textCount.toLocaleString('en-US') + ' texts';
     // Scent-line tradition phrase where the copy carries one — bound live,
     // never literal.
     const tr = btn.querySelector('.home-cat-trads');
