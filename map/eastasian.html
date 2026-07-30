@@ -563,6 +563,10 @@ body[data-lens="rights"] .fambar { display:inline-flex !important; }
    share bars and PD counts ride the rights lens only */
 .keyrow .mini { display:none !important; }
 body[data-lens="rights"] .keyrow .mini { display:inline-flex !important; }
+/* 40a — working sub-tradition tabs: a hidden view beats the ported
+   frames' stacked-view rule by specificity */
+section.view[hidden] { display:none !important; }
+[data-view][aria-pressed="true"] { background:var(--accent,#7a5c3a); color:var(--surface,#fff); }
 /* per-mode sentence spans (footer, mast ledes, key counts) */
 .r-only { display:none; }
 body[data-lens="rights"] .r-only { display:inline; }
@@ -937,6 +941,27 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
       s.innerHTML = esc(parts[0]) + '<span class="r-only"> · ' + esc(parts[1]) + '</span>';
     }
   });
+
+  // 40a — the sub-tradition pills were NEVER wired when the frames
+  // were ported (the artifact's tab JS was not captured; the views
+  // shipped stacked). Wire them: one view at a time, first pill =
+  // the default, aria-pressed carries the state. Works in both
+  // lenses (the rights capture handler ignores [data-view] buttons).
+  var viewPills = document.querySelectorAll('[data-view]');
+  if (viewPills.length) {
+    var showView = function (k) {
+      document.querySelectorAll('section.view').forEach(function (v) {
+        v.hidden = (v.id !== 'view-' + k);
+      });
+      viewPills.forEach(function (b2) {
+        b2.setAttribute('aria-pressed', b2.getAttribute('data-view') === k ? 'true' : 'false');
+      });
+    };
+    viewPills.forEach(function (b2) {
+      b2.addEventListener('click', function () { showView(b2.getAttribute('data-view')); });
+    });
+    showView(viewPills[0].getAttribute('data-view'));
+  }
 
   _ready.then(updateMandala);
 

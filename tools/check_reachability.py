@@ -64,9 +64,17 @@ def surface_cross_links() -> list[str]:
     hall = REPO / "hall" / "index.html"
     if not hall.is_file():
         probs.append("hall/index.html is missing — the Religion front door is gone")
-    elif 'href="/Digital-Archive/map/"' not in hall.read_text(encoding="utf-8"):
-        probs.append("hall/index.html carries no link to map/ — the Map is "
-                     "unreachable from the Hall (rebuild via 05_scripts/deploy_hall.py)")
+    else:
+        # Task 40b: the Hall IS the all-traditions view (map/index.html
+        # is a redirect stub back to it) — every tradition page must be
+        # one door away.
+        h = hall.read_text(encoding="utf-8")
+        for slug in ("hindu", "buddhist", "abrahamic", "eastasian", "zoroastrian",
+                     "sikh", "jain", "shinto", "bahai", "ancient", "gnostic",
+                     "indigenous", "modern"):
+            if f"map/{slug}.html" not in h:
+                probs.append(f"hall/index.html carries no door to map/{slug}.html "
+                             "(rebuild via 05_scripts/deploy_hall.py)")
     for f in sorted((REPO / "map").glob("*.html")):
         if "hall" not in f.read_text(encoding="utf-8"):
             probs.append(f"map/{f.name} carries no Hall link — the Hall is "
