@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- Task 47d: one theme key everywhere, applied before first paint -->
-<script>(function(){try{var t=localStorage.getItem("da-theme");if(!t){t=(localStorage.getItem("da-dark-mode")==="true"||localStorage.getItem("archive_theme")==="dark")?"dark":"light";localStorage.setItem("da-theme",t);}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
+<script>(function(){try{if(/[?&]text=/.test(location.search))return;/* Task 51a: the reader never reads or writes da-theme */var t=localStorage.getItem("da-theme");if(!t){t=(localStorage.getItem("da-dark-mode")==="true"||localStorage.getItem("archive_theme")==="dark")?"dark":"light";localStorage.setItem("da-theme",t);}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="codex-build" content="v133-steven-developer-handbook">
@@ -11864,23 +11864,34 @@ body.viewer-active .folio-leaf-colophon {
 // ── Dark mode (apply before paint) ───────────────────────────────────────────
 
 (function() {
-  // Task 47d — one shared key (da-theme); legacy value migrated at boot
-  const saved = localStorage.getItem('da-theme') === 'dark' ? 'true'
-              : localStorage.getItem('da-theme') === 'light' ? 'false'
-              : localStorage.getItem('da-dark-mode');
-  if (saved === 'true') document.documentElement.setAttribute('data-theme', 'dark');
+  // Task 51a — the shared da-theme key stops at the map's edge: the
+  // reader (?text= landings) never reads it; its own chrome key decides.
+  // Entrance landings were already painted by the head boot from da-theme.
+  const _onEntrance = !/[?&]text=/.test(location.search);
+  if (!_onEntrance && localStorage.getItem('da-dark-mode') === 'true')
+    document.documentElement.setAttribute('data-theme', 'dark');
 })();
+
+function _entranceVisible() {
+  // Task 51a — the entrance is index.html's only da-theme surface; the
+  // reader's theme choice never writes the shared key. Layout truth
+  // (client rects), not computed display — the welcome sits inside a
+  // view wrapper, and a hidden PARENT leaves the child's computed
+  // display untouched.
+  const w = document.getElementById('welcome-home');
+  return !!(w && w.getClientRects().length);
+}
 
 function toggleDarkMode() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   if (isDark) {
     document.documentElement.removeAttribute('data-theme');
     localStorage.setItem('da-dark-mode', 'false');
-    localStorage.setItem('da-theme', 'light');
+    if (_entranceVisible()) localStorage.setItem('da-theme', 'light');
   } else {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('da-dark-mode', 'true');
-    localStorage.setItem('da-theme', 'dark');
+    if (_entranceVisible()) localStorage.setItem('da-theme', 'dark');
   }
   const btn = document.getElementById('dark-toggle');
   if (btn) btn.textContent = isDark ? 'Dark' : 'Light';
@@ -12449,6 +12460,17 @@ let _trad2map = {};
 fetch('maps/trad2map.json')
   .then(r => r.ok ? r.json() : null)
   .then(j => { if (j && j.trad2map) _trad2map = j.trad2map; })
+  .catch(() => {});
+
+// Task 51b — the cover crumb derives from where the text is PLACED
+// (maps/df2map.json, one truth with the bindings — the Enoch rule:
+// tradition "Jewish" but chip-placed in the christian zones walks to
+// christianity). The catalog tradition label only backstops texts with
+// no chip placement (the reception rows).
+let _df2map = {};
+fetch('maps/df2map.json')
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if (j && j.df2map) _df2map = j.df2map; })
   .catch(() => {});
 
 let pendingPid     = null;            // passage id to jump to on enterReading
@@ -15351,12 +15373,16 @@ function showCover(data, entry) {
   // their tradition's MAP page (derived via trad2map, never per-text).
   // Non-mapped traditions (Philosophy/Literature/Esoteric — phase-5
   // surfaces) keep the family/catalog chain.
-  const _mapSlug = (entry && entry.tradition && _trad2map[entry.tradition]) || null;
+  // Task 51b — placement first (df2map, one truth with the bindings);
+  // the tradition label backstops unplaced (reception) texts only.
+  const _pl = (entry && entry.data_file && _df2map[entry.data_file]) || null;
+  const _mapSlug = (_pl && _pl[0]) || (entry && entry.tradition && _trad2map[entry.tradition]) || null;
+  const _mapName = (_pl && _pl[1]) || (entry && entry.tradition) || '';
   if (isBibleCover) {
     html += '<button type="button" class="bcl-back-to-versions" ' +
             (_mapSlug ? 'data-mapslug="' + escapeHTML(_mapSlug) + '" ' : '') +
             'title="' + (_mapSlug ? 'Back to the map' : 'Back to Bible versions') + '">' +
-            (_mapSlug ? '&larr; Map &middot; ' + escapeHTML(entry.tradition) : '&larr; Bible Versions') +
+            (_mapSlug ? '&larr; Map &middot; ' + escapeHTML(_mapName) : '&larr; Bible Versions') +
             '</button>';
   } else if (useCodexLayout) {
     // v98 — If this text is a family member, label the back
@@ -15365,7 +15391,7 @@ function showCover(data, entry) {
     // generic "← All Texts").
     const _famHere = (typeof _familyForTextId === 'function' && entry && entry.id)
       ? _familyForTextId(entry.id) : null;
-    const backLabel = _mapSlug ? ('Map · ' + entry.tradition)
+    const backLabel = _mapSlug ? ('Map · ' + _mapName)
                     : _famHere ? _famHere.title : 'All Texts';
     const backTitle = _mapSlug ? 'Back to the tradition\'s map'
                     : _famHere ? ('Back to ' + _famHere.title) : 'Back to all texts';
@@ -27781,11 +27807,10 @@ function updateHomeCounts() {
       // band's readable count below.
       const cEl = btn.querySelector('.home-cat-count');
       cEl.textContent = '';
-      // Task 50 — hall card grammar: the numeral is the derived tradition
-      // count alone; the "285 readable" detail DROPPED (ruled option — the
-      // hall doors carry the per-tradition readables).
+      // Task 51c — one unit across the four cards: TEXTS behind the door
+      // (the derived readable count from maps/summary.json, never typed).
       fetch('maps/summary.json').then(r => r.json()).then(s => {
-        cEl.textContent = s.traditions;
+        cEl.textContent = s.readable_routes;
       }).catch(() => {});
       const tr0 = btn.querySelector('.home-cat-trads');
       if (tr0) tr0.textContent = '';
