@@ -11762,9 +11762,8 @@ body.viewer-active .folio-leaf-colophon {
                 <a href="sources.html">Sources &amp; attribution</a>
                 <a href="integrity.html">Integrity proof</a>
                 <a href="translators.html">Translators</a>
-                <a href="wishlist.html">Wishlist</a>
                 <a href="press.html">The Press</a>
-                <button type="button" id="foot-workroom" class="home-footlink" onclick="browseWorkroom()" style="display:none">The Workroom <span id="home-workroom-count"></span></button>
+                <button type="button" id="foot-workroom" class="home-footlink" onclick="browseWorkroom()" style="display:none">The Workroom</button>
                 <button type="button" id="foot-restricted" class="home-footlink" onclick="browseRestricted()" style="display:none">Restricted Library</button>
               </div>
               <p id="home-colophon">Public-domain texts with stable provenance. Built slowly, read slowly, maintained without hurry.</p>
@@ -27713,9 +27712,12 @@ function browseWorkroom() {
     groups[k].sort((a, b) => (a.title || '').localeCompare(b.title || ''));
   }
 
+  // Task 49b — the Wishlist is a working document: it lives here, not
+  // in the entrance footer (this link is its one inbound; no orphaning).
   let html = '<div class="workroom-intro">These texts are readable but not yet ' +
              'certified for the main Reading Room. Their contents or structure are ' +
-             'still being prepared.</div>';
+             'still being prepared. The <a href="wishlist.html">wishlist</a> — texts ' +
+             'the archive still seeks — is kept here too.</div>';
   let any = false;
   for (const sec of SECTIONS) {
     const items = groups[sec.key];
@@ -27759,8 +27761,7 @@ function updateHomeCounts() {
   }
   const workroomPanel = document.getElementById('foot-workroom');
   if (workroomPanel) workroomPanel.style.display = workroomCount ? '' : 'none';
-  const workroomCountEl = document.getElementById('home-workroom-count');
-  if (workroomCountEl) workroomCountEl.textContent = workroomCount ? `· ${workroomCount} texts` : '';
+  // Task 49b — the Workroom pill dropped its count (just "The Workroom").
   let shelfTotal = 0;
   document.querySelectorAll('.home-cat').forEach(btn => {
     const cat = btn.dataset.cat;

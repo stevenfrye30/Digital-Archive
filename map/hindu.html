@@ -257,11 +257,10 @@ section.view { display: block !important; }
 <body data-map="hindu">
 <div id="arch-topbar"><a href="../hall/">&larr; The Religion Hall</a><nav id="arch-topnav"><a href="../">The Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
 <div id="m-legend" aria-label="Node states">
-<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a"></span>held &middot; readable</span>
-<span style="color:#7a5c3a"><span class="mdot" style="background:#7a5c3a; box-shadow:0 0 0 1.5px #faf8f5, 0 0 0 3px #7a5c3a"></span>held &middot; several translations</span>
-<span style="color:#a8865a"><span class="mdot" style="border:1.5px solid #a8865a"></span>public domain &middot; not yet held</span>
-<span style="color:#a09080"><span class="mdot" style="background:#ddd6c8"></span>no PD translation</span>
-<span style="color:#a09080"><span class="mdot" style="border:1.5px dashed #a09080"></span>held &middot; restricted</span>
+<span style="color:#7a5c3a" title="held &mdash; one or several translations"><span class="mdot" style="background:#7a5c3a"></span>Held</span>
+<span style="color:#a8865a" title="public domain &mdash; not yet held"><span class="mdot" style="border:1.5px solid #a8865a"></span>PD</span>
+<span style="color:#a09080" title="no public-domain translation"><span class="mdot" style="background:#ddd6c8"></span>No PD</span>
+<span style="color:#a09080" title="held &mdash; restricted"><span class="mdot" style="border:1.5px dashed #a09080"></span>Restricted</span>
 </div>
 <button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
 <div class="page">
@@ -527,7 +526,10 @@ body[data-lens="rights"] .zb { display:none !important; }
 /* legend swap: the ported g/a/r legend is the rights legend; the
    binder's holdings legend is the base's */
 .legend { display:none !important; }
-body[data-lens="rights"] .legend { display:flex !important; }
+/* Task 49a — both legends center: the rights G/A/R legend… */
+body[data-lens="rights"] .legend { display:flex !important; justify-content:center; flex-wrap:wrap; }
+/* …and the base holdings legend to match */
+#m-legend { justify-content:center; }
 body[data-lens="rights"] #m-legend { display:none !important; }
 /* 46 — the stat tiles and their narrative line are g/a/r figures:
    rights lens only, original tile dress (the Task 38 rule) */
