@@ -164,3 +164,5 @@ Task 28 — the consolidated rights lane (final, 2026-07-29):
 - ADDED as ruled: WLC Hebrew line (39 ju-tanakh families, registry "Public Domain") · Majority Text Greek line (27 ch-nt families, Unlicense dedication verified at the recorded byztxt source). Lit counts unchanged on every map (asserted).
 - PASSED, bind-eligible, LISTED for design riders: SBL-GNT (CC BY 4.0 recorded) · LXX-2012 (publisher dedication verified; FINDING: the df text is ENGLISH — the 2012 Brenton revision — despite its Greek language tag; metadata correction before any bind).
 - SWEEP CLOSED: SuttaCentral ×47 (bilara LICENSE.md CC0 on disk) · bible_web (publisher PD) · enchiridion_higginson (PG catalog: d. 1911; index year 1948 is an edition artifact — metadata-year correction candidate). NO other public row sits in the class.
+
+Task 31e rider (2026-07-29): RIGHTS-QUEUE ENTRY OPENED — poems-robert-frost (Selected Poems, Henry Holt 1923; original English work, no translator shield; verified from the raw's own imprint). The rights lane applies the worldwide bar per Task 28 procedure: author death-date from provenance, restrict fail-closed if it fails the bar.
