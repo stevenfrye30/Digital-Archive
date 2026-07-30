@@ -6,23 +6,27 @@
 <meta name="robots" content="noindex">
 <!-- Religion Hall preview | enabled rooms: none -->
 <style>
+  /* ── Task 50: ONE token set — the doctrine dress (cream / ink /
+     chrome / muted / accent, Georgia), converged with the map GROUND
+     and the entrance. --gold/--arch* survive as ALIASES of the one
+     accent so no rule dangles; the per-door --hindu/--christian
+     accents are RETIRED (one palette). LIGHT-FIRST: light is the base
+     :root; dark is the entrance's NEUTRAL set via [data-theme="dark"]
+     only (no prefers-color-scheme); the legacy third
+     :root[data-theme="light"] block is retired. ── */
   :root{
-    --bg:#f3efe4; --bg2:#ece5d6; --panel:#faf6ec; --ink:#141220; --ink-soft:#4a4636; --ink-faint:#7c7261;
-    --line:#ddd3bf; --line2:#ccbfa6;
-    --gold:#a6801f; --gold-soft:#c9a84e;
-    --hindu:#a96e14; --christian:#3f5aa6;
-    --arch:#c9bfa6; --arch-open:#b8942e;
-    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --shadow:0 1px 2px rgba(20,18,32,.05),0 8px 24px rgba(20,18,32,.06);
+    --bg:#faf8f5; --bg2:#f4f1ec; --panel:#ffffff; --ink:#2c2c2c; --ink-soft:#5a5048; --ink-faint:#8a7a6a;
+    --line:#e6e1d9; --line2:#d8d3cc;
+    --accent:#7a5c3a;
+    --gold:#7a5c3a; --gold-soft:#7a5c3a;
+    --arch:#d8d3cc; --arch-open:#7a5c3a;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:Georgia,"Times New Roman",serif;
+    --shadow:0 1px 2px rgba(44,44,44,.05),0 8px 24px rgba(44,44,44,.06);
   }
-  /* LIGHT-FIRST: light is the base :root above; dark applies ONLY via [data-theme="dark"] (no prefers-color-scheme). */
-  :root[data-theme="dark"]{ --bg:#141220; --bg2:#100e1a; --panel:#1c1a2a; --ink:#ece7f3; --ink-soft:#b7b1c4;
-    --ink-faint:#8f8799; --line:#2d2940; --line2:#3a3552; --gold:#d8b45a; --gold-soft:#b7902f;
-    --hindu:#d69a3c; --christian:#8098d8; --arch:#3a3552; --arch-open:#d8b45a; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); }
-  :root[data-theme="light"]{ --bg:#f3efe4; --bg2:#e9e1d0; --panel:#fbf7ee; --ink:#201c14; --ink-soft:#5a5142;
-    --ink-faint:#6f6551; --line:#e0d8c5; --line2:#c8bda3; --gold:#8f7320; --gold-soft:#b89a3e;
-    --hindu:#a2680f; --christian:#39508f; --arch:#c2b697; --arch-open:#a9862a; --shadow:0 1px 2px rgba(20,18,32,.05),0 8px 24px rgba(20,18,32,.06); }
+  :root[data-theme="dark"]{ --bg:#1a1a1e; --bg2:#18181c; --panel:#222226; --ink:#d4d0c8; --ink-soft:#c8c4bc;
+    --ink-faint:#8a8680; --line:#3a3a3e; --line2:#4a4a4e; --accent:#c4a060; --gold:#c4a060; --gold-soft:#c4a060;
+    --arch:#3a3a3e; --arch-open:#c4a060; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); }
 
   *{box-sizing:border-box}
   html,body{margin:0}
@@ -36,43 +40,25 @@
   header.hall{ border-bottom:1px solid var(--line); background:color-mix(in srgb,var(--panel) 70%,transparent);
     backdrop-filter:saturate(1.1) blur(2px); position:sticky; top:0; z-index:10; }
   .bar{ max-width:1140px; margin:0 auto; padding:.7rem clamp(1rem,3vw,2rem); display:flex; align-items:center; gap:1rem; }
-  .brand{ font-family:var(--serif); font-size:.95rem; letter-spacing:.02em; color:var(--ink-soft); }
-  .brand b{ color:var(--ink); margin-left:.5rem; }
+  /* Task 50 — ONE topbar grammar (the entrance/map mono dress):
+     back-link left, page context, controls right; the crumb and brand
+     generations retire. */
+  .bar a.tb-back, .bar .theme{
+    font:400 11px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
+    text-decoration:none; background:none; border:none; cursor:pointer; padding:0; }
+  .bar a.tb-back:hover, .bar .theme:hover{ color:var(--accent); }
+  .bar a.tb-back:focus-visible, .bar .theme:focus-visible{ outline:2.5px solid var(--accent); outline-offset:2px; }
   .barnote{ margin-left:auto; font-size:.76rem; color:var(--ink-faint); }
-  nav.crumbs ol{ list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:.1rem; margin:0; padding:0;
-    font-family:var(--serif); font-size:.86rem; }
-  nav.crumbs li{ display:inline-flex; align-items:center; }
-  nav.crumbs li+li::before{ content:"›"; margin:0 .4rem; color:var(--ink-faint); }
-  nav.crumbs a{ color:var(--gold); text-decoration:none; }
-  nav.crumbs a:hover{ text-decoration:underline; }
-  nav.crumbs a:focus-visible{ outline:2.5px solid var(--gold); outline-offset:2px; border-radius:4px; }
-  nav.crumbs .crumb-shelf{ color:var(--ink); font-weight:600; }
-  .theme{ border:1px solid var(--line2); background:transparent; color:var(--ink-soft); border-radius:99px;
-    padding:.3rem .7rem; font:inherit; font-size:.8rem; cursor:pointer; display:inline-flex; gap:.4rem; align-items:center; }
-  .theme:hover{ border-color:var(--gold); color:var(--ink); }
 
   main{ max-width:1140px; margin:0 auto; padding:clamp(1.4rem,4vw,3rem) clamp(1rem,3vw,2rem) 4rem; }
   .intro{ max-width:70ch; }
-  .eyebrow{ font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:700; }
   h1{ font-family:var(--serif); font-weight:600; font-size:clamp(2rem,6vw,3.4rem); line-height:1.03;
     margin:.35rem 0 .5rem; text-wrap:balance; }
   .lede{ font-family:var(--serif); font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--ink-soft); margin:0 0 1.2rem; }
 
-  .legend{ display:flex; flex-wrap:wrap; gap:1rem 1.6rem; align-items:center; margin:.4rem 0 2rem;
-    padding:.8rem 1rem; border:1px solid var(--line); border-radius:.7rem; background:var(--panel); box-shadow:var(--shadow); }
-  .legend h2{ font-family:var(--serif); font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--ink-faint); margin:0; font-weight:600; }
-  .lg{ display:inline-flex; gap:.5rem; align-items:center; font-size:.88rem; color:var(--ink-soft); }
-  .lg .mk{ display:inline-flex; width:1.5rem; height:1.5rem; align-items:center; justify-content:center;
-    border-radius:50%; font-size:.9rem; border:1px solid var(--line2); }
-  .lg.open .mk{ color:var(--arch-open); border-color:var(--arch-open); }
-  .lg.forth .mk{ color:var(--ink-faint); }
-  .map-door{ margin:2rem 0 .4rem; padding:.8rem 1rem; border:1px solid var(--line);
-    border-radius:.7rem; background:var(--panel); box-shadow:var(--shadow);
-    font-size:.88rem; color:var(--ink-soft); }
-  .map-door a{ font-family:var(--serif); color:var(--gold); font-weight:600;
-    text-decoration:none; margin-right:.5rem; }
-  .map-door a:hover{ text-decoration:underline; }
+  /* Task 50 cleanup: the doorways-legend and map-door-band CSS retired
+     (their markup left in Task 40b). */
 
   .colonnade{ display:grid; gap:clamp(.9rem,2vw,1.4rem);
     grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); }
@@ -104,8 +90,8 @@
   .door.mapped:hover{ border-color:#a8865a; }
   .door.open .status{ color:var(--arch-open); }
   .door.open .cta{ color:var(--accent, var(--gold)); }
-  .door.open[data-k="hindu"]{ --accent:var(--hindu); }
-  .door.open[data-k="christian"]{ --accent:var(--christian); }
+  /* Task 50 (item 6): per-door accent keys RETIRED — the data-k values
+     were pre-split ('christian') and the one-palette rule stands. */
   .door.open .sym{ filter:none; }
   .door.open:hover{ transform:translateY(-3px); border-color:var(--accent,var(--gold));
     box-shadow:0 6px 14px rgba(20,18,32,.12),0 18px 40px rgba(20,18,32,.10); }
@@ -159,20 +145,18 @@
 
 <header class="hall" role="banner">
   <div class="bar">
-    <nav class="crumbs" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="https://stevenfrye30.github.io/Digital-Archive/">Archive Home</a></li>
-        <li><span class="crumb-shelf" aria-current="page">Religion Hall</span></li>
-      </ol>
-    </nav>
+    <!-- Task 50: one topbar grammar, one name — "Digital Archive"
+         (the crumb generation and the "Archive Home" variant retire) -->
+    <a class="tb-back" href="https://stevenfrye30.github.io/Digital-Archive/">&larr; Digital Archive</a>
     <span class="barnote" id="barnote">The sacred-text traditions — one page each.</span>
-    <button class="theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme">◐ <span id="themeLbl">Light</span></button>
+    <button class="theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme"><span id="themeLbl">Light</span></button>
   </div>
 </header>
 
 <main>
   <section class="intro" aria-labelledby="halltitle">
-    <p class="eyebrow">The Archive</p>
+    <!-- Task 50: the "The Archive" eyebrow retired — the second topbar
+         generation that ghosted under the sticky bar (the w48 defect) -->
     <h1 id="halltitle">The Religion Hall</h1>
     <!-- lede retired (Task 40b): the topbar line carries the message -->
   </section>

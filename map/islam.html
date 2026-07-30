@@ -239,16 +239,26 @@ footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1re
    per-tradition --accent/--accent-ink are KEPT; the ground converges. */
 :root, :root[data-theme="light"] {
   --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
-  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #a09080;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #8a7a6a;
   --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
   --serif: Georgia, 'Times New Roman', serif;
   --sans: Georgia, 'Times New Roman', serif;
+  /* Task 50 — ONE palette: the per-tradition accent dialect (amber
+     #a96e14 etc., kept by harmonization §III) is SUPERSEDED by the
+     one-palette rule; the doctrine accent everywhere. */
+  --accent: #7a5c3a; --accent-ink: #7a5c3a;
 }
 :root[data-theme="dark"] {
   --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
   --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
   --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+  --accent: #c4a060; --accent-ink: #c4a060;
 }
+/* Task 50 (item 3, stated choice): the mast glyphs RETIRE — five of the
+   fifteen (🏺 🐍 🫘 🌱 🔥) are true emoji with no text
+   presentation, so forcing \uFE0E would leave a mixed bag; the markup
+   stays (withdrawn, not deleted). */
+.mast .sym { display: none; }
 /* archive top strip */
 #arch-topbar { display:flex; justify-content:space-between; align-items:center;
   padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg); }
@@ -332,7 +342,7 @@ section.view { display: block !important; }
 </style>
 </head>
 <body data-map="islam" class="deep">
-<div id="arch-topbar"><a href="../hall/">&larr; The Religion Hall</a><nav id="arch-topnav"><a href="../">The Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="arch-topbar"><a href="../hall/">&larr; The Religion Hall</a><nav id="arch-topnav"><a href="../">Digital Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
 <div id="m-legend" aria-label="Node states">
 <span style="color:#7a5c3a" title="held &mdash; one or several translations"><span class="mdot" style="background:#7a5c3a"></span>Held</span>
 <span style="color:#a8865a" title="public domain &mdash; not yet held"><span class="mdot" style="border:1.5px solid #a8865a"></span>PD</span>

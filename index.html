@@ -2238,9 +2238,10 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
    the whole card is the link; CTAs retired. */
 .home-cat {
   display: block;
+  position: relative; /* Task 50 — hall card grammar: numeral pins top-right */
   padding: 16px 18px 14px;
   font-family: Georgia, serif;
-  text-align: left;
+  text-align: center;
   color: #2c2c2c;
   text-decoration: none;
   background: #fbfaf7;
@@ -2255,6 +2256,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   font: 400 21px/1.2 Georgia, serif;
   color: inherit;
   margin: 0 0 6px;
+  text-align: center; /* Task 50 — hall card grammar */
 }
 .home-cat-scent {
   display: block;
@@ -2263,10 +2265,11 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin: 0 0 10px;
 }
 .home-cat .home-cat-count {
-  display: block;
+  /* Task 50 — the quiet mono numeral, top-right (the 47a hall shape) */
+  position: absolute; top: 10px; right: 12px;
   font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: 0.06em;
-  color: #a09080;
+  color: #8a7a6a;
 }
 [data-theme="dark"] .home-cat { background: #222226; color: #d4d0c8; }
 /* (the "Another way in" band CSS retired with the band — Task 36b) */
@@ -27778,14 +27781,18 @@ function updateHomeCounts() {
       // band's readable count below.
       const cEl = btn.querySelector('.home-cat-count');
       cEl.textContent = '';
+      // Task 50 — hall card grammar: the numeral is the derived tradition
+      // count alone; the "285 readable" detail DROPPED (ruled option — the
+      // hall doors carry the per-tradition readables).
       fetch('maps/summary.json').then(r => r.json()).then(s => {
-        cEl.textContent = `${s.traditions} traditions mapped · ${s.readable_routes} readable here`;
+        cEl.textContent = s.traditions;
       }).catch(() => {});
       const tr0 = btn.querySelector('.home-cat-trads');
       if (tr0) tr0.textContent = '';
       return;
     }
-    btn.querySelector('.home-cat-count').textContent = textCount.toLocaleString('en-US') + ' texts';
+    // Task 50 — bare numeral (hall grammar; the label said 'texts')
+    btn.querySelector('.home-cat-count').textContent = textCount.toLocaleString('en-US');
     // Scent-line tradition phrase where the copy carries one — bound live,
     // never literal.
     const tr = btn.querySelector('.home-cat-trads');
