@@ -1997,6 +1997,35 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin-top: 6px;
 }
 
+/* Task 44a — one visual hierarchy on every cover: Continue is the
+   filled-accent PRIMARY; beside it, Read from beginning goes quiet
+   (borderless text-link). When no position is saved, the begin
+   button stands alone and keeps today's dress — the sibling
+   selector below fires only when a resume pill precedes it. */
+.cc-resume,
+.bible-cover-layout .cc-actions-top .cc-resume,
+.bible-cover-layout .cc-resume {
+  background: #7a5c3a;
+  color: #faf6ec;
+  border-color: #7a5c3a;
+}
+.cc-resume:hover { background: #5f4527; }
+[data-theme="dark"] .cc-resume,
+[data-theme="dark"] .bible-cover-layout .cc-resume,
+[data-theme="dark"] .bible-cover-layout .cc-actions-top .cc-resume {
+  background: #c4a060; color: #1a1a1e; border-color: #c4a060;
+}
+.cc-resume + .cc-begin,
+.bible-cover-layout .cc-resume + .cc-begin {
+  background: none;
+  border: none;
+  color: var(--chrome-active);
+  box-shadow: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cc-resume + .cc-begin:hover { color: var(--reader-fg); background: none; box-shadow: none; }
+
 /* Task 33 ruling (2026-07-30) — the first-open actions row. On
    non-Bible codex covers begin/resume sit ABOVE the contents grid
    as clearly visible actions (the old right-aligned 0.8em pill
@@ -5191,6 +5220,14 @@ body:not(.in-reading):not(.atlas-index-active):not(.on-shelf-page) #reader {
   padding-top: 70px;
   padding-bottom: 24px;
   overflow: hidden;
+}
+/* Task 44b — the contents ALWAYS reach: a text-contents page whose
+   list outgrows the viewport (40-key covers on mobile ran ~1700px
+   deep with no scroll anywhere — html/body are locked) scrolls
+   inside the reader pane. Short covers are unaffected (no overflow,
+   no scrollbar); the Home entrance stays locked. */
+body.on-text-contents #reader {
+  overflow-y: auto;
 }
 body.atlas-index-active #reader {
   padding-top: 48px;
