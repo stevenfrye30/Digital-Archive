@@ -11843,10 +11843,12 @@ body.viewer-active .folio-leaf-colophon {
             <div id="home-shelves">
               <div id="home-shelves-head"><h2>The four shelves</h2></div>
               <div id="home-categories">
-                <!-- Task 21 rider: the doorway swap the card was built for —
-                     the Religion shelf now opens as The Map of Sacred Texts.
-                     The flat shelf list stays reachable from the map itself;
-                     class + data-cat keep the count binding unchanged. -->
+                <!-- Task 21 rider + Task 32 retirement: the Religion door IS the
+                     Map of Sacred Texts. The flat Religion shelf is retired
+                     (Task 32 ruling, 2026-07-29): per-tradition reception
+                     lives on the map pages; the tradition-blind A-Z survives
+                     as All Texts; the card's line derives from
+                     maps/summary.json — the same source as the maps. -->
                 <a class="home-cat" data-cat="Religion" href="map/">
                   <span class="home-cat-titleline"><span class="home-cat-label">Religion</span><span class="home-cat-count"></span></span>
                   <span class="home-cat-scent">The Rig-Veda &middot; The City of God &middot; The Analects &middot; the world&rsquo;s scriptures<span class="home-cat-trads"></span></span>
@@ -22901,6 +22903,11 @@ let browseHistory = []; // stack of {fn, args} for back button
 
 /** Level 1: show traditions for a category */
 function browseCategory(cat) {
+  if (cat === 'Religion') {
+    // Task 32: the flat Religion shelf is retired — the Map is the door.
+    location.href = 'map/';
+    return;
+  }
   if (!browseTree) browseTree = buildBrowseData();
   showBrowse();
   browseHistory = [{fn: browseHome}];
@@ -26516,10 +26523,10 @@ function _bibleWitnessTileHTML(e) {
 }
 
 function _bibleCrumb(cat, trd, title, tail) {
+  // Task 32 ruling 3: the Bible-family crumbs point at the structure —
+  // "Home › Map · Abrahamic › …" — never the retired Religion shelf.
   return `<a onclick="browseHome()">Home</a><span class="sep">›</span>` +
-    `<a onclick="browseCategory('${escH(cat)}')">${escH(cat)}</a>` +
-    `<span class="sep">›</span>` +
-    `<a onclick="browseTradition('${escH(cat)}','${escH(trd)}')">${escH(trd)}</a>` +
+    `<a href="map/abrahamic.html">Map · Abrahamic</a>` +
     `<span class="sep">›</span>` +
     (tail
       ? `<a onclick="browseBibleLanguages('${escH(cat)}','${escH(trd)}')">${escH(title)}</a>` +
@@ -27786,13 +27793,25 @@ function updateHomeCounts() {
     const textCount = Object.values(traditions).reduce((s, t) => s + t.length, 0);
     const tradCount = Object.keys(traditions).length;
     shelfTotal += textCount;
+    if (cat === 'Religion') {
+      // Task 32 ruling 2: the shelf-count binding is retired. The card
+      // asserts what the Map asserts — one truth, one source
+      // (maps/summary.json, written by build_map_bindings.py).
+      const cEl = btn.querySelector('.home-cat-count');
+      cEl.textContent = '';
+      fetch('maps/summary.json').then(r => r.json()).then(s => {
+        cEl.textContent = `${s.traditions} traditions · ${s.readable_routes} readable here`;
+      }).catch(() => {});
+      const tr0 = btn.querySelector('.home-cat-trads');
+      if (tr0) tr0.textContent = '';
+      return;
+    }
     btn.querySelector('.home-cat-count').textContent = textCount.toLocaleString('en-US');
     // Scent-line tradition phrase where the copy carries one — bound live,
     // never literal.
     const tr = btn.querySelector('.home-cat-trads');
     if (tr) {
-      tr.textContent = cat === 'Religion' ? `, ${tradCount} traditions`
-                     : cat === 'Literature' ? ` in ${tradCount} literatures`
+      tr.textContent = cat === 'Literature' ? ` in ${tradCount} literatures`
                      : '';
     }
   });

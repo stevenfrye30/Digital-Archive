@@ -44,6 +44,10 @@ def surfaces():
                 mapped.add(r["df"])
     room_html = "".join(f.read_text(encoding="utf-8")
                         for f in sorted((REPO / "rooms").glob("*/index.html")))
+    # Task 32 ruling 1: the map pages' reception layers are structural
+    # surfaces too (the Shintō precedent, extended) — scanned like rooms.
+    room_html += "".join(f.read_text(encoding="utf-8")
+                         for f in sorted((REPO / "map").glob("*.html")))
     roomed = {e["data_file"] for e in pub if e["data_file"] in room_html}
     reader_only = sorted(e["data_file"] for e in pub
                          if e["data_file"] not in mapped and e["data_file"] not in roomed)
