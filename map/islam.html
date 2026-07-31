@@ -358,7 +358,7 @@ section.view { display: block !important; }
 </style>
 </head>
 <body data-map="islam" class="deep">
-<div id="arch-topbar"><a class="tb-arrow" href="../hall/" title="The Religion Hall">&larr;</a><nav id="arch-topnav"><a href="../">Digital Archive</a><button id="arch-dark" type="button" class="tb-arrow" aria-label="Switch theme">☾</button></nav></div>
+<div id="arch-topbar"><a class="tb-arrow" href="../hall/" title="The Religion Hall">&larr;</a><nav id="arch-topnav"><a href="../">Digital Archive</a><button id="arch-fav" type="button" class="tb-arrow" data-fav-shelf aria-label="Favorites">☆</button><button id="arch-dark" type="button" class="tb-arrow" aria-label="Switch theme">☾</button></nav></div>
 <div id="m-legend" aria-label="Node states">
 <span style="color:#7a5c3a" title="held &mdash; one or several translations"><span class="mdot" style="background:#7a5c3a"></span>Held</span>
 <span style="color:#a8865a" title="public domain &mdash; not yet held"><span class="mdot" style="border:1.5px solid #a8865a"></span>PD</span>
@@ -1303,5 +1303,18 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 })();
 </script>
 <!-- map-lens:end -->
+<style>
+/* Task 84 — map chips center their text; the state dot rides inline
+   with the centered name (never pinned to a corner). */
+.deep .tc, .tc, .su { text-align: center; display: block; }
+.tc .tl { display: inline; }
+.tc .te { display: block; }
+.chip { justify-content: center; }
+.tc .mdot, .su .mdot, .chip .mdot {
+  display: inline-block; position: static;
+  vertical-align: middle; margin: 0 6px 0 0;
+}
+</style>
+<script src="../assets/fav-shelf.js" defer></script>
 </body>
 </html>

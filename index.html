@@ -11728,7 +11728,13 @@ body.viewer-active .folio-leaf-colophon {
      on mobile. Same register as the other apparatus controls. */
   /* Task 74 — the single·wide dress retired with the switcher */
 
-  /* Task 74 — the single·wide switcher fully retired */
+  /* Task 84 — the permanent header furniture */
+#home-topnav #fav-shelf-btn, #home-topnav #dark-toggle { font-size: 17px; }
+#cover-bar .cb-right { margin-left: auto; display: flex; gap: 8px; }
+#cover-bar .cb-right .tb-arrow { font-size: 16px; }
+#rr-fav, #rr-theme { font-size: 16px; margin-left: 6px; }
+
+/* Task 74 — the single·wide switcher fully retired */
 }
 
 @media (max-width: 720px) {
@@ -11812,6 +11818,9 @@ body.viewer-active .folio-leaf-colophon {
       <button type="button" id="press-print" title="Print or save this chapter" onclick="window.print()">Press</button>
       <button type="button" id="companion-toggle" title="Show companion folio beside the text" aria-pressed="false">Folio</button>
       <button type="button" id="companion-swap" title="Switch folio to the other side of the manuscript" aria-pressed="false">&#8646; Folio side</button>
+      <!-- Task 84 — the permanent header furniture, far right -->
+      <button type="button" id="rr-fav" class="tb-arrow" data-fav-shelf aria-label="Favorites">☆</button>
+      <button type="button" id="rr-theme" class="tb-arrow da-glyph" onclick="toggleDarkMode()" aria-label="Switch theme"></button>
     </div>
 
     <div id="info-bar">
@@ -11879,11 +11888,11 @@ body.viewer-active .folio-leaf-colophon {
                    now, and a second link four lines above it rendered as
                    duplication, not affordance. The topnav stays minimal. -->
               <nav id="home-topnav">
-                <button type="button" id="fav-info">Favorites</button>
                 <button type="button" id="press-info">The Press</button>
                 <!-- Task 52: Atlas is an archive instrument — its doorway
                      retired from the Workspace front page; target unchanged -->
                 <button type="button" id="atlas-info">Atlas</button>
+                <button id="fav-shelf-btn" type="button" class="tb-arrow" data-fav-shelf aria-label="Favorites">☆</button>
                 <button id="dark-toggle" type="button" class="tb-arrow" onclick="toggleDarkMode()" aria-label="Switch theme">☾</button>
               </nav>
             </div>
@@ -12041,6 +12050,15 @@ function _entranceVisible() {
   return !!(w && w.getClientRects().length);
 }
 
+// Task 84 — paints every da-theme glyph (sun in dark → click for
+// light; moon in light → click for dark; text presentation).
+function _paintDaGlyphs() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.querySelectorAll('#dark-toggle, .da-glyph').forEach(b => {
+    b.textContent = dark ? '☀︎' : '☾';
+  });
+}
+
 function toggleDarkMode() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   if (isDark) {
@@ -12052,10 +12070,8 @@ function toggleDarkMode() {
     localStorage.setItem('da-dark-mode', 'true');
     if (_entranceVisible()) localStorage.setItem('da-theme', 'dark');
   }
-  // Task 76 — glyph, not label: sun shown in dark (click → light),
-  // moon in light (click → dark); text presentation, never emoji.
-  const btn = document.getElementById('dark-toggle');
-  if (btn) btn.textContent = isDark ? '☾' : '☀︎';
+  // Task 84 — one painter for every sun/moon on the document
+  _paintDaGlyphs();
 }
 
 // ── Surah name map (1-indexed) ────────────────────────────────────────────────
@@ -15497,6 +15513,10 @@ function showCover(data, entry) {
                   : _famHere ? _famHere.title : 'All Texts';
     html = '<div id="cover-bar">' +
            '<a class="tb-arrow" href="' + escapeHTML(backHref) + '" title="' + escapeHTML(backCtx) + '">&larr;</a>' +
+           '<span class="cb-right">' +
+           '<button type="button" class="tb-arrow" data-fav-shelf aria-label="Favorites">☆</button>' +
+           '<button type="button" class="tb-arrow da-glyph" onclick="toggleDarkMode()" aria-label="Switch theme"></button>' +
+           '</span>' +
            '</div>' + html;
   }
   html += '<div id="continuous-cover">';
@@ -15751,6 +15771,14 @@ function showCover(data, entry) {
 
   $textHeader.innerHTML = html;
   $textHeader.style.display = 'block';
+  // Task 84 — the header furniture on the cover: wire the shared
+  // shelf star; paint the theme glyph to the current state.
+  if (window.FavShelf) {
+    $textHeader.querySelectorAll('#cover-bar [data-fav-shelf]').forEach(function (b) {
+      window.FavShelf.wire(b);
+    });
+  }
+  if (typeof _paintDaGlyphs === 'function') _paintDaGlyphs();
   // Task 81 — a quiet star on every cover: toggles this text in the
   // da-favorites list (data_file route keys — the reader's ?text=
   // grammar; no other key is touched). State survives reload.
@@ -15767,16 +15795,26 @@ function showCover(data, entry) {
     var b = document.createElement('button');
     b.type = 'button';
     b.className = 'cc-fav';
+    // Task 84 — rows carry {df, title, trad} so the shared shelf
+    // reads them on every layer without an index; legacy bare-df
+    // strings from 81 still match and display.
+    function _has(f) {
+      return f.some(function (r) { return (r && r.df ? r.df : r) === df; });
+    }
     function paint() {
-      var on = favs().indexOf(df) >= 0;
-      b.textContent = on ? '\u2605' : '\u2606';
+      var on = _has(favs());
+      b.textContent = on ? '★' : '☆';
       b.title = on ? 'Remove from favorites' : 'Add to favorites';
       b.classList.toggle('on', on);
     }
     b.addEventListener('click', function () {
       var f = favs();
-      var i = f.indexOf(df);
-      if (i >= 0) f.splice(i, 1); else f.push(df);
+      if (_has(f)) {
+        f = f.filter(function (r) { return (r && r.df ? r.df : r) !== df; });
+      } else {
+        f.push({ df: df, title: (entry.title || df),
+                 trad: (entry.tradition || '') });
+      }
       localStorage.setItem(FKEY, JSON.stringify(f));
       paint();
     });
@@ -22743,9 +22781,8 @@ function renderSidebarTree({ firstLoad = false } = {}) {
   if (firstLoad && !autoLoaded) renderWelcome();
   if (firstLoad) updateHomeCounts();
   // Sync dark mode toggle label
-  const dtBtn = document.getElementById('dark-toggle');
-  // Task 76 — glyph, not label (sun in dark, moon in light)
-  if (dtBtn) dtBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀︎' : '☾';
+  // Task 84 — the one painter covers every glyph at boot
+  if (typeof _paintDaGlyphs === 'function') _paintDaGlyphs();
 }
 
 // (Sidebar search removed — replaced by home page search)
@@ -28319,54 +28356,19 @@ loadIndex();
       current = pop;
     });
   });
-  // Task 81 — the Favorites shelf: a dynamic popover in the same
-  // grammar (title · tradition, each a link to its cover).
-  var favBtn = document.getElementById('fav-info');
-  if (favBtn) favBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (current && current.id === 'fav-pop') { shutPop(); return; }
-    shutPop();
-    var pop = document.createElement('div');
-    pop.id = 'fav-pop';
-    pop.className = 'hd-pop';
-    pop.setAttribute('role', 'dialog');
-    var f = [];
-    try { f = JSON.parse(localStorage.getItem('da-favorites')) || []; } catch (err) {}
-    var rows = '';
-    f.forEach(function (df) {
-      var meta = null;
-      try {
-        for (var id in indexGroups) {
-          for (var k = 0; k < indexGroups[id].length; k++) {
-            if (indexGroups[id][k].data_file === df) { meta = indexGroups[id][k]; break; }
-          }
-          if (meta) break;
-        }
-      } catch (err) {}
-      var title = meta ? meta.title : df.replace(/\.json$/, '');
-      var trad = (meta && meta.tradition) ? ' \u00b7 ' + meta.tradition : '';
-      rows += '<a class="fav-row" href="?text=' + encodeURIComponent(df) + '">' +
-              escapeHTML(title) + '<span class="fav-trad">' + escapeHTML(trad) + '</span></a>';
-    });
-    pop.innerHTML = '<span class="hd-rubric">Favorites</span>' +
-      (rows || '<p class="fav-empty">No favorites yet \u2014 star any text from its cover.</p>');
-    document.body.appendChild(pop);
-    current = pop;
-  });
+  // Task 84 — the Favorites shelf is a SHARED piece now
+  // (assets/fav-shelf.js); the 81 entrance popover retired.
   document.addEventListener('click', function (e) {
     if (current && !current.contains(e.target)) shutPop();
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') shutPop();
   });
-  // Task 76 — the theme glyph boots to the current state
-  var t = document.getElementById('dark-toggle');
-  if (t) {
-    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    t.textContent = dark ? '\u2600\ufe0e' : '\u263e';
-  }
+  // Task 84 — the one painter covers every glyph at boot
+  if (typeof _paintDaGlyphs === 'function') _paintDaGlyphs();
 })();
 </script>
+<script src="assets/fav-shelf.js" defer></script>
 </body>
 </html>
 <script id="philosophy-shelf-hook">
