@@ -15034,6 +15034,10 @@ function showCover(data, entry) {
   // hierarchical grid rightly. Read it as “hierarchicalCover”.
   const isBibleCover = data.hierarchy && data.hierarchy[0] === 'book'
                                       && data.hierarchy[1] === 'chapter';
+  // Task 58 — the IDENTITY flag, hoisted: Bible-only affordances
+  // (canon names, Codex Index, the Versions crumb fallback) gate on
+  // this, never on the structural flag above.
+  const _isBibleFamily = /^bible_/.test((entry && entry.data_file) || '');
 
   // ── Pre-compute TOC keys + grouping ──────────────────────────
   // Hoisted before HTML assembly so the codex-leaf shell decision
@@ -15139,7 +15143,6 @@ function showCover(data, entry) {
   // only), never leaked onto hierarchy-shaped texts like Aristotle
   // (whose no-map fallback used to read ← Bible Versions).
   {
-    const _isBibleFamily = /^bible_/.test((entry && entry.data_file) || '');
     const _famHere = (typeof _familyForTextId === 'function' && entry && entry.id)
       ? _familyForTextId(entry.id) : null;
     const backLabel = _mapSlug ? ('Map · ' + _mapName)
@@ -15256,7 +15259,11 @@ function showCover(data, entry) {
     html += '<div class="cc-fm-btn-wrap"><div class="cc-fm-btn" data-book="__fm__">✦ Front Matter</div></div>';
   }
 
-  if (isBibleCover && grouped) {
+  if (isBibleCover && grouped && _isBibleFamily) {
+    // Task 58a — IDENTITY-gated: these canon names belong to the Bible
+    // alone. A non-Bible hierarchical text (Aristotle's fourteen books)
+    // takes the generic grid below — its own numbered sections, no
+    // canon header (its data carries no higher grouping).
     // Canonical sections — Old Testament, Apocrypha/Deuterocanon,
     // New Testament — segmented by actual book CODE, not by fixed
     // positional slices. This block used to hardcode the 80-book KJV
@@ -15389,8 +15396,8 @@ function showCover(data, entry) {
     // exists) · Read from beginning (quiet) · Front Matter as a quiet
     // chip beside the begin action. Entry keeps the full-stream path
     // (enterReading(), exactly the old __all__ plate).
-    html += `<div class="cc-begin-wrap cc-actions-top cc-flat-actions">${_resumePill('')}` +
-            `<div class="cc-begin" id="cc-begin-btn" data-flat="1">Read from beginning &rarr;</div>` +
+    html += `<div class="cc-begin-wrap cc-actions-top cc-flat-actions">${_resumePill('bcl-enter-btn')}` +
+            `<div class="cc-begin bcl-enter-btn" id="cc-begin-btn" data-flat="1">Read from beginning &rarr;</div>` +
             (hasFrontMatter ? '<div class="cc-fm-btn cc-fm-chip" data-book="__fm__">✦ Front Matter</div>' : '') +
             '</div>';
   }
@@ -15398,7 +15405,7 @@ function showCover(data, entry) {
   // (surveyed): the ledger is Bible-only in SUBSTANCE — on non-Bible
   // hierarchical texts it rendered an empty shell (Aristotle → 0
   // rows). Gated on IDENTITY, not hierarchy shape.
-  if (isBibleCover && /^bible_/.test((entry && entry.data_file) || '')) {
+  if (isBibleCover && _isBibleFamily) {
     html += '<div class="bcl-atlas-index-wrap">' +
             '<button type="button" class="bcl-atlas-index-btn" ' +
             'id="cc-atlas-index-btn">' +
