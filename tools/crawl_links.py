@@ -12,9 +12,13 @@ text data). Classes reported:
   BROKEN-PARAM  ?text= route whose data file is absent
   STUB-FIRSTHOP a live (non-stub) page linking onto a redirect stub —
                 first hops must never land a stub (the Task 42 rule)
-  ORPHAN        an HTML surface no live page links to (reported, never
-                deleted — the steward rules on orphans); redirect stubs
-                are permanence artifacts, listed separately, not orphans
+  ORPHAN        a TRACKED HTML surface no live page links to (reported,
+                never deleted — the steward rules on orphans); redirect
+                stubs are permanence artifacts, not orphans
+  LOCAL-ONLY    an untracked (gitignored) HTML file in the working tree —
+                never deployed, never public; the live site is the
+                TRACKED set (Task 61 lesson: the first sweep mislabeled
+                four of these as public orphans)
   EXTERNAL      deduped external URLs (report-only; checked with --net)
 
 Report-only by default; exits 1 when a mechanical class (DEAD /
@@ -92,6 +96,15 @@ def main() -> int:
             continue
         pages[rel] = Path(p).read_text(encoding="utf-8", errors="replace")
     stubs = {r for r, t in pages.items() if is_stub(t)}
+    # the PUBLIC tree is the tracked set — untracked files never deploy
+    try:
+        import subprocess
+        tracked = set(subprocess.run(
+            ["git", "ls-files"], cwd=WEB, capture_output=True, text=True,
+            check=True).stdout.split())
+    except Exception:
+        tracked = set(pages)          # no git → treat all as public
+    local_only = sorted(r for r in pages if r not in tracked)
     ids = {r: set(ID_ATTR.findall(t)) for r, t in pages.items()}
 
     ix = json.loads((WEB / "data/_generated/index.json").read_text(encoding="utf-8"))["texts"]
@@ -182,9 +195,11 @@ def main() -> int:
                 if kind == "int":
                     check_int("data/" + df, tgt, frag)
 
-    # 3 — orphans (stubs excluded: permanence artifacts by design)
+    # 3 — orphans: TRACKED, un-linked, not a stub (untracked files are
+    # LOCAL-ONLY — not public surfaces, not orphans)
     orphans = sorted(r for r in pages
-                     if r not in inbound and r not in stubs and r != "index.html")
+                     if r in tracked and r not in inbound
+                     and r not in stubs and r != "index.html")
 
     # 4 — externals (checked only with --net)
     ext_fail = []
@@ -216,6 +231,9 @@ def main() -> int:
         print(f"  {s} -> {t}")
     print(f"ORPHANS (report-only; steward rules): {len(orphans)}")
     for r in orphans:
+        print(f"  {r}")
+    print(f"LOCAL-ONLY (untracked; never public): {len(local_only)}")
+    for r in local_only:
         print(f"  {r}")
     print(f"EXTERNAL (deduped): {len(externals)}" + ("" if net else "  [--net to check]"))
     for u, err in ext_fail:
