@@ -90,7 +90,7 @@ footer { border-top: 1px solid var(--chrome-border); padding: 16px 28px; text-al
 <body>
 <header>
   <a class="tb-arrow back" href="./" title="Digital Archive">&larr;</a>
-  <h1><a class="room-path" href="https://stevenfrye30.github.io/Workspace/philosophy/" title="The Philosophy Room — 271 thinkers">Philosophy <span class="rp-arrow">&#10230;</span></a></h1>
+  <h1><a class="room-path" href="https://stevenfrye30.github.io/Workspace/philosophy/?from=archive" title="The Philosophy Room — 271 thinkers">Philosophy <span class="rp-arrow">&#10230;</span></a></h1>
   <span class="hdr-right"><button id="arch-fav" type="button" class="tb-arrow" data-fav-shelf aria-label="Favorites">☆</button><button id="arch-dark" type="button" class="tb-arrow" aria-label="Switch theme">☾</button></span>
 </header>
 <main>
@@ -198,7 +198,7 @@ function render(model){
 function panel(a){
   let h = '<div class="panel"><div class="who"><b>' + a.n + '</b>' +
     (a.d ? '<span class="dates">' + a.d + '</span>' : '') +
-    '<a href="https://stevenfrye30.github.io/Workspace/philosophy/#/philosopher/' + encodeURIComponent(a.n.replace(/\s*\([^)]*\)/,"")) + '">their card in the Room &#10230;</a></div>' +
+    '<a href="https://stevenfrye30.github.io/Workspace/philosophy/?from=archive#/philosopher/' + encodeURIComponent(a.n.replace(/\s*\([^)]*\)/,"")) + '">their card in the Room &#10230;</a></div>' +
     (a.b ? '<p class="blurb">' + a.b + '</p>' : '') + '<div class="works">';
   if (a.reg) groupWorks(a.reg.entries).forEach(g => {
     const t0 = g[0];
