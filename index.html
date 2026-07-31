@@ -364,6 +364,21 @@ body.on-text-contents #reader {
   background: #1a1a1e;
   color: #d4d0c8;
 }
+/* Task 66 — the cover's sticky header bar (sticky within #reader,
+   which is the scroll container on contents pages) */
+#cover-bar {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; gap: 12px;
+  margin: -4px -32px 10px; padding: 10px 20px;
+  background: #faf8f5; border-bottom: 1px solid #e6e1d9;
+}
+#cover-bar .tb-arrow { color: #8a7a6a; }
+#cover-bar .tb-arrow:hover { color: #7a5c3a; }
+#cover-bar .tb-ctx { color: #8a7a6a; }
+[data-theme="dark"] #cover-bar {
+  background: #1a1a1e; border-bottom-color: #3a3a3e;
+}
+[data-theme="dark"] #cover-bar .tb-arrow:hover { color: #c4a060; }
 /* v98 — On the specific text contents page the metadata is already
    on the leaf itself; the "About this text" info-bar above it is
    redundant chrome that pushes the leaf down by ~52px. Hide it
@@ -2138,12 +2153,21 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   color: #2c2c2c;
 }
 [data-theme="dark"] #welcome-home { background: #1a1a1e; color: #d4d0c8; }
+/* Task 66 — the archive-wide header grammar: sticky, one quiet arrow */
+.tb-arrow { font-size: 15px !important; line-height: 1 !important; text-decoration: none; }
+.tb-ctx {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--chrome-muted);
+  margin-right: auto;
+}
 #home-topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 32px;
-  border-bottom: 1px solid #e6e1d9;
+  position: sticky; top: 0; z-index: 60;
+  background: var(--chrome-bg);
+  border-bottom: 1px solid var(--chrome-border);
 }
 #home-topbar a,
 #home-topbar button {
@@ -2420,6 +2444,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   gap: 12px;
   margin-bottom: 16px;
 }
+#browse-breadcrumb { display: none; } /* Task 66: chains retire */
 #browse-back {
   display: inline-flex;
   align-items: center;
@@ -11617,7 +11642,10 @@ body.viewer-active .folio-leaf-colophon {
         <div id="welcome">
           <div id="welcome-home">
             <div id="home-topbar">
-              <a href="https://stevenfrye30.github.io/Workspace/" id="home-hub-link">&larr; Workspace</a>
+              <!-- Task 66: one arrow, one layer out (entrance → workspace);
+                   the layer's own name rides as quiet context -->
+              <a href="https://stevenfrye30.github.io/Workspace/" id="home-hub-link" class="tb-arrow" title="Workspace">&larr;</a>
+              <span class="tb-ctx">Digital Archive</span>
               <!-- Task 34 header-nav call (terminal): the Hall link DROPS —
                    the Religion card directly below is the Hall's front door
                    now, and a second link four lines above it rendered as
@@ -11702,7 +11730,9 @@ body.viewer-active .folio-leaf-colophon {
         <!-- Browse view: drill-down tile navigation -->
         <div id="browse" style="display:none;">
           <div id="browse-nav">
-            <button id="browse-back">&larr; Back</button>
+            <!-- Task 66: catalog surfaces → the entrance, one arrow,
+                 a real link (no JS hijack); the breadcrumb chain retires -->
+            <a id="browse-back" class="tb-arrow" href="./" title="Digital Archive">&larr;</a>
             <div id="browse-breadcrumb"></div>
           </div>
           <div id="browse-title"></div>
@@ -15196,20 +15226,26 @@ function showCover(data, entry) {
   // the "Bible Versions" label is IDENTITY-gated (real Bible witnesses
   // only), never leaked onto hierarchy-shaped texts like Aristotle
   // (whose no-map fallback used to read ← Bible Versions).
+  // Task 66 — the cover's back affordance is the sticky header bar's
+  // one quiet arrow, a REAL LINK (no JS hijack), one layer out:
+  // placed → its map; unplaced non-sacred → its shelf page; else the
+  // entrance. The plate's corner crumb button retires into the bar.
   {
     const _famHere = (typeof _familyForTextId === 'function' && entry && entry.id)
       ? _familyForTextId(entry.id) : null;
-    const backLabel = _mapSlug ? ('Map · ' + _mapName)
-                    : _isBibleFamily ? 'Bible Versions'
-                    : _famHere ? _famHere.title : 'All Texts';
-    const backTitle = _mapSlug ? 'Back to the tradition\'s map'
-                    : _isBibleFamily ? 'Back to Bible versions'
-                    : _famHere ? ('Back to ' + _famHere.title) : 'Back to all texts';
-    html += '<button type="button" class="bcl-back-to-versions bcl-back-to-library" ' +
-            (_mapSlug ? 'data-mapslug="' + escapeHTML(_mapSlug) + '" ' : '') +
-            'title="' + escapeHTML(backTitle) + '">' +
-            '&larr; ' + escapeHTML(backLabel) +
-            '</button>';
+    const _shelfCat = (entry && entry.tradition && typeof bucketFor === 'function')
+      ? bucketFor(entry.tradition) : null;
+    const _shelfSlug = ({Philosophy: 'philosophy', Literature: 'literature',
+                         Esoteric: 'esoteric'})[_shelfCat] || null;
+    const backHref = _mapSlug ? ('map/' + _mapSlug + '.html')
+                   : _shelfSlug ? ('shelf/' + _shelfSlug + '.html') : './';
+    const backCtx = _mapSlug ? ('Map · ' + _mapName)
+                  : _shelfSlug ? _shelfCat
+                  : _famHere ? _famHere.title : 'All Texts';
+    html = '<div id="cover-bar">' +
+           '<a class="tb-arrow" href="' + escapeHTML(backHref) + '" title="' + escapeHTML(backCtx) + '">&larr;</a>' +
+           '<span class="tb-ctx">' + escapeHTML(backCtx) + '</span>' +
+           '</div>' + html;
   }
   html += '<div id="continuous-cover">';
   // v100 — Allow per-text titleOverride to clean up source-quirky
@@ -27741,14 +27777,8 @@ document.querySelectorAll('button.home-cat').forEach(btn => {
 
 
 // Wire browse back button
-document.getElementById('browse-back').addEventListener('click', () => {
-  if (browseHistory.length > 0) {
-    const prev = browseHistory[browseHistory.length - 1];
-    prev.fn(...(prev.args || []));
-  } else {
-    browseHome();
-  }
-});
+// Task 66 — the browse back is a plain link now (← to the
+// entrance); its SPA listener retired.
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
 
