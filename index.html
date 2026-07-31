@@ -11533,6 +11533,8 @@ body.viewer-active .folio-leaf-colophon {
     margin-left: 6px;
   }
   body.in-reading #ctrl-columns { display: inline-flex; }
+  /* Task 69: single/wide lives inside the Formatting apparatus now */
+  .display-options #ctrl-columns { margin-left: 0; }
   #ctrl-columns .col-opt {
     cursor: pointer;
     padding: 1px 1px;
@@ -11622,6 +11624,14 @@ body.viewer-active .folio-leaf-colophon {
           <label>Text</label>
           <input type="color" id="ctrl-fg" value="#2c2c2c">
         </div>
+        <div class="ctrl-group">
+          <label>Measure</label>
+          <span id="ctrl-columns" role="group" aria-label="Reading column layout">
+                <span class="col-opt active" data-cols="single" role="button" tabindex="0" title="Codex reading column">single</span>
+                <span class="col-sep" aria-hidden="true">·</span>
+                <span class="col-opt" data-cols="wide" role="button" tabindex="0" title="Wide illuminated page">wide</span>
+      </span>
+        </div>
       </details>
       <div class="ctrl-group" id="ctrl-book-group">
         <label>Book</label>
@@ -11634,11 +11644,6 @@ body.viewer-active .folio-leaf-colophon {
         <button class="search-nav-btn" id="search-prev" disabled title="Previous match">&#9650;</button>
         <button class="search-nav-btn" id="search-next" disabled title="Next match">&#9660;</button>
       </div>
-      <span id="ctrl-columns" role="group" aria-label="Reading column layout">
-        <span class="col-opt active" data-cols="single" role="button" tabindex="0" title="Codex reading column">single</span>
-        <span class="col-sep" aria-hidden="true">·</span>
-        <span class="col-opt" data-cols="wide" role="button" tabindex="0" title="Wide illuminated page">wide</span>
-      </span>
       <button type="button" id="reading-mode-toggle" title="Summon formatting controls" aria-pressed="false">Formatting</button>
       <button type="button" id="companion-toggle" title="Show companion folio beside the text" aria-pressed="false">Folio</button>
       <button type="button" id="companion-swap" title="Switch folio to the other side of the manuscript" aria-pressed="false">&#8646; Folio side</button>
