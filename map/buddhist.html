@@ -400,10 +400,11 @@ a.m-link { text-decoration: none; }
 .m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
 .m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
 
-/* fraction line under the mast */
-#m-fraction { text-align: center;
+/* fraction line under the mast — Task 53b: full mast width, one
+   centered block (the mast's p max-width capped it left-of-center) */
+#m-fraction { text-align: center; max-width: none;
   font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  color: var(--ink-faint); margin: 4px 0 0; }
+  color: var(--ink-faint); margin: 4px auto 0; }
 #m-fraction b { color: #7a5c3a; font-weight: 400; }
 
 /* deep views: shown stacked (the artifact's tab JS was not captured) */
