@@ -1822,8 +1822,8 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   z-index: 45;
 }
 [data-theme="dark"] .bible-cover-layout .cite-corner .cc-citations {
-  background: #222226;
-  border-color: #3a3a3e;
+  background: #222226 !important;
+  border-color: #3a3a3e !important;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
 }
 .bible-cover-layout .cite-corner .cc-citations::before {
@@ -2472,6 +2472,37 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin-bottom: 16px;
 }
 #browse-breadcrumb { display: none; } /* Task 66: chains retire */
+/* ── Task 69: the reading room header slims ─────────────────── */
+#ctrl-home { display: none !important; }
+#ctrl-contents.tb-arrow { font-size: 16px; }
+#ctrl-nofm {
+  font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .08em; color: var(--chrome-muted); margin-left: 10px;
+  white-space: nowrap;
+}
+#nav-bar {
+  display: block; height: 0; padding: 0 !important; margin: 0 !important;
+  border: none !important; background: none !important; overflow: visible;
+}
+#nav-location, #nav-subtitle, #mode-switch, #nav-bar .nav-info, #nav-info
+  { display: none !important; }
+#nav-prev, #nav-next {
+  position: fixed; top: 60px; z-index: 55;
+  padding: 8px 12px; border-radius: 999px;
+  background: var(--chrome-bg); border: 1px solid var(--chrome-border);
+  color: var(--chrome-muted); cursor: pointer; font-size: 12px;
+}
+#nav-prev { left: 12px; }
+#nav-next { right: 12px; }
+#nav-prev:hover, #nav-next:hover { color: var(--chrome-active); border-color: var(--chrome-active); }
+#nav-prev:disabled, #nav-next:disabled { display: none; }
+/* the folio-side control lives at the folio's own top edge */
+#folio-topbar {
+  padding: 8px 10px; text-align: right;
+  border-bottom: 1px solid var(--chrome-border);
+}
+#companion-swap { position: static !important; }
+
 #browse-back {
   display: inline-flex;
   align-items: center;
@@ -11558,8 +11589,9 @@ body.viewer-active .folio-leaf-colophon {
   <div id="panel">
 
     <div id="controls" style="display:none;">
-      <button id="ctrl-home" type="button" onclick="browseHome()" title="Back to home">&larr; Home</button>
-      <button id="ctrl-contents" type="button" onclick="backToContents()" title="Back to title &amp; contents" style="display:none;">&larr; Contents</button>
+      <!-- Task 69: the Home button retires — back is back, one layer
+           (the arrow goes to this text's contents) -->
+      <button id="ctrl-contents" type="button" class="tb-arrow" title="Contents" aria-label="Back to contents">&larr;</button>
       <details class="display-options">
         <summary>Display</summary>
         <div class="ctrl-group">
@@ -11640,6 +11672,7 @@ body.viewer-active .folio-leaf-colophon {
       <button id="compare-btn" type="button" style="display:none;">Compare&hellip;</button>
       <select id="compare-select" style="display:none;"></select>
       <span id="compare-note"></span>
+      <span id="ctrl-nofm"></span>
     </div>
 
     <div id="nav-bar">
@@ -12320,6 +12353,19 @@ const BUCKET_FOR_TRADITION = {
   'Witchcraft / Folk Religion':'Esoteric',
 };
 const bucketFor = trd => BUCKET_FOR_TRADITION[trd] || 'Other';
+
+// Task 69 — the folio-side control moves into the folio's own top edge
+// (its click handler travels with the node).
+(function () {
+  const f = document.getElementById('folio');
+  const s = document.getElementById('companion-swap');
+  if (f && s) {
+    const h = document.createElement('div');
+    h.id = 'folio-topbar';
+    h.appendChild(s);
+    f.insertBefore(h, f.firstChild);
+  }
+})();
 
 let _cachedTextGroups = null;
 
@@ -14474,7 +14520,7 @@ function updateNav() {
     $navBar.style.display = 'none';
     return;
   }
-  $navBar.style.display = 'flex';
+  $navBar.style.display = 'block'; // Task 69: a zero-height shell for the fixed arrows
   $navPrev.disabled = (groupIndex <= 0);
   $navNext.disabled = (groupIndex >= groupKeys.length - 1);
   // Desktop: single text line in #nav-location, as before.
@@ -14482,6 +14528,9 @@ function updateNav() {
   // and the position + translation short-label from #nav-subtitle.
   const chapterName = groupName(groupKeys[groupIndex]);
   const position    = `${groupIndex + 1} of ${groupKeys.length}`;
+  // Task 69 — the chapter line folds into the main row
+  const _nofm = document.getElementById('ctrl-nofm');
+  if (_nofm) _nofm.textContent = chapterName + ' · ' + position;
   // Update only the inner label so that any sibling elements moved into
   // #nav-location by the mobile-reading-state relocation (e.g.
   // ctrl-book-group, which sits absolutely positioned for tap-to-open
@@ -15755,7 +15804,7 @@ function enterReading(targetGroupKey) {
     if (idx >= 0) groupIndex = idx;
   } else {
     // Always show nav bar
-    $navBar.style.display = 'flex';
+    $navBar.style.display = 'block'; // Task 69: a zero-height shell for the fixed arrows
     if (needsGroupSelector() && currentBook && currentBook !== '__fm__') {
       // Structured text with chapters — enable prev/next
       const idx = groupKeys.indexOf(currentBook);
