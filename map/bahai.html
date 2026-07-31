@@ -245,7 +245,7 @@ section.view { display: block !important; }
 </style>
 </head>
 <body data-map="bahai">
-<div id="arch-topbar"><a class="tb-arrow" href="../hall/" title="The Religion Hall">&larr;</a><nav id="arch-topnav"><a href="../">Digital Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="arch-topbar"><a class="tb-arrow" href="../hall/" title="The Religion Hall">&larr;</a><nav id="arch-topnav"><a href="../">Digital Archive</a><button id="arch-dark" type="button" class="tb-arrow" aria-label="Switch theme">☾</button></nav></div>
 <div id="m-legend" aria-label="Node states">
 <span style="color:#7a5c3a" title="held &mdash; one or several translations"><span class="mdot" style="background:#7a5c3a"></span>Held</span>
 <span style="color:#a8865a" title="public domain &mdash; not yet held"><span class="mdot" style="border:1.5px solid #a8865a"></span>PD</span>
@@ -287,7 +287,7 @@ section.view { display: block !important; }
   function label() {
     var dark = document.documentElement.getAttribute('data-theme') === 'dark';
     document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {
-      b.textContent = dark ? 'Light' : 'Dark';
+      b.textContent = dark ? '☀︎' : '☾';
     });
   }
   document.querySelectorAll('#arch-dark, #themeBtn').forEach(function (b) {

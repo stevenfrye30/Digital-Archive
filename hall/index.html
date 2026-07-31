@@ -65,7 +65,16 @@
     letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); }
   .bar a.tb-back:focus-visible, .bar .theme:focus-visible{ outline:2.5px solid var(--accent); outline-offset:2px; }
   /* Task 75: the barnote retired; the theme control takes the spacer */
-  .bar .theme{ margin-left:auto; }
+  /* Task 77 — the theme control wears the Task 72 button dress */
+  .bar .theme{
+    margin-left:auto;
+    display:inline-flex; align-items:center; justify-content:center;
+    width:38px; height:38px; box-sizing:border-box;
+    border:1px solid var(--line) !important; border-radius:6px;
+    background:var(--panel); color:var(--ink);
+    font-size:17px; line-height:1; cursor:pointer; padding:0;
+  }
+  .bar .theme:hover{ color:var(--accent); border-color:var(--accent) !important; }
 
   main{ max-width:1140px; margin:0 auto; padding:clamp(1.4rem,4vw,3rem) clamp(1rem,3vw,2rem) 4rem; }
   .intro{ max-width:70ch; }
@@ -166,7 +175,7 @@
     <!-- Task 66: one arrow (← the entrance); the hall's own name as context -->
     <a class="tb-back tb-arrow" href="https://stevenfrye30.github.io/Digital-Archive/" title="Digital Archive">&larr;</a>
     <!-- Task 75: the header text retired — arrow + theme only -->
-    <button class="theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme"><span id="themeLbl">Light</span></button>
+    <button class="theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme"><span id="themeLbl">☾</span></button>
   </div>
 </header>
 
@@ -181,22 +190,22 @@
   <!-- doorways legend retired (Task 40b): one door state needs no legend -->
 
   <nav id="doors" class="colonnade" aria-label="Tradition doorways">
-    <a class="door" data-k="hindu" data-name="Hinduism" data-status="mapped" href="/Digital-Archive/map/hindu.html" aria-label="Hinduism — 60 readable here. Opens the tradition&#x27;s page."><span class="doorn">60</span><h3>Hinduism</h3><p class="blurb">Śruti and smṛti — the Vedas and Brāhmaṇas to the epics, the six darśanas, and the devotional poets.</p></a>
-    <a class="door" data-k="judaism" data-name="Judaism" data-status="mapped" href="/Digital-Archive/map/judaism.html" aria-label="Judaism — 13 readable here. Opens the tradition&#x27;s page."><span class="doorn">13</span><h3>Judaism</h3><p class="blurb">Tanakh, Mishnah, Talmud, midrash, halakhah, and Kabbalah.</p></a>
     <a class="door" data-k="christianity" data-name="Christianity" data-status="mapped" href="/Digital-Archive/map/christianity.html" aria-label="Christianity — 79 readable here. Opens the tradition&#x27;s page."><span class="doorn">79</span><h3>Christianity</h3><p class="blurb">The Old Testament and the New, the Fathers, the creeds, and the apocrypha.</p></a>
-    <a class="door" data-k="islam" data-name="Islam" data-status="mapped" href="/Digital-Archive/map/islam.html" aria-label="Islam — 6 readable here. Opens the tradition&#x27;s page."><span class="doorn">6</span><h3>Islam</h3><p class="blurb">The Qurʾān, the hadith collections, the sīra, tafsīr, and the Sufi classics.</p></a>
     <a class="door" data-k="buddhist" data-name="Buddhism" data-status="mapped" href="/Digital-Archive/map/buddhist.html" aria-label="Buddhism — 63 readable here. Opens the tradition&#x27;s page."><span class="doorn">63</span><h3>Buddhism</h3><p class="blurb">The teachings of the Buddha — early Pāli discourses, the Jātaka birth-stories, and the Mahāyāna sūtras.</p></a>
+    <a class="door" data-k="hindu" data-name="Hinduism" data-status="mapped" href="/Digital-Archive/map/hindu.html" aria-label="Hinduism — 60 readable here. Opens the tradition&#x27;s page."><span class="doorn">60</span><h3>Hinduism</h3><p class="blurb">Śruti and smṛti — the Vedas and Brāhmaṇas to the epics, the six darśanas, and the devotional poets.</p></a>
+    <a class="door" data-k="ancient" data-name="Ancient World" data-status="mapped" href="/Digital-Archive/map/ancient.html" aria-label="Ancient World — 20 readable here. Opens the tradition&#x27;s page."><span class="doorn">20</span><h3>Ancient World</h3><p class="blurb">Greco-Roman, Egyptian, and Mesopotamian sacred texts.</p></a>
+    <a class="door" data-k="judaism" data-name="Judaism" data-status="mapped" href="/Digital-Archive/map/judaism.html" aria-label="Judaism — 13 readable here. Opens the tradition&#x27;s page."><span class="doorn">13</span><h3>Judaism</h3><p class="blurb">Tanakh, Mishnah, Talmud, midrash, halakhah, and Kabbalah.</p></a>
+    <a class="door" data-k="modern" data-name="Modern &amp; New" data-status="mapped" href="/Digital-Archive/map/modern.html" aria-label="Modern &amp; New — 12 readable here. Opens the tradition&#x27;s page."><span class="doorn">12</span><h3>Modern &amp; New</h3><p class="blurb">Theosophy, the Latter Day Saints, and the modern scriptures of the last two centuries.</p></a>
     <a class="door" data-k="confucian" data-name="Confucianism" data-status="mapped" href="/Digital-Archive/map/confucian.html" aria-label="Confucianism — 9 readable here. Opens the tradition&#x27;s page."><span class="doorn">9</span><h3>Confucianism</h3><p class="blurb">The Four Books, the Five and Thirteen Classics, and the Neo-Confucian synthesis.</p></a>
+    <a class="door" data-k="gnostic" data-name="Gnostic &amp; Hermetic" data-status="mapped" href="/Digital-Archive/map/gnostic.html" aria-label="Gnostic &amp; Hermetic — 6 readable here. Opens the tradition&#x27;s page."><span class="doorn">6</span><h3>Gnostic &amp; Hermetic</h3><p class="blurb">The Nag Hammadi library and the Hermetica.</p></a>
+    <a class="door" data-k="islam" data-name="Islam" data-status="mapped" href="/Digital-Archive/map/islam.html" aria-label="Islam — 6 readable here. Opens the tradition&#x27;s page."><span class="doorn">6</span><h3>Islam</h3><p class="blurb">The Qurʾān, the hadith collections, the sīra, tafsīr, and the Sufi classics.</p></a>
     <a class="door" data-k="daoist" data-name="Daoism" data-status="mapped" href="/Digital-Archive/map/daoist.html" aria-label="Daoism — 5 readable here. Opens the tradition&#x27;s page."><span class="doorn">5</span><h3>Daoism</h3><p class="blurb">Laozi and Zhuangzi, the alchemical texts, and the Daozang.</p></a>
-    <a class="door" data-k="zoroastrian" data-name="Zoroastrianism" data-status="mapped" href="/Digital-Archive/map/zoroastrian.html" aria-label="Zoroastrianism — 3 readable here. Opens the tradition&#x27;s page."><span class="doorn">3</span><h3>Zoroastrianism</h3><p class="blurb">The Avesta and the Pahlavi books.</p></a>
     <a class="door" data-k="sikh" data-name="Sikhism" data-status="mapped" href="/Digital-Archive/map/sikh.html" aria-label="Sikhism — 5 readable here. Opens the tradition&#x27;s page."><span class="doorn">5</span><h3>Sikhism</h3><p class="blurb">The Gurū Granth Sāhib and its hymns.</p></a>
+    <a class="door" data-k="zoroastrian" data-name="Zoroastrianism" data-status="mapped" href="/Digital-Archive/map/zoroastrian.html" aria-label="Zoroastrianism — 3 readable here. Opens the tradition&#x27;s page."><span class="doorn">3</span><h3>Zoroastrianism</h3><p class="blurb">The Avesta and the Pahlavi books.</p></a>
+    <a class="door" data-k="indigenous" data-name="Indigenous &amp; Oral" data-status="mapped" href="/Digital-Archive/map/indigenous.html" aria-label="Indigenous &amp; Oral — 2 readable here. Opens the tradition&#x27;s page."><span class="doorn">2</span><h3>Indigenous &amp; Oral</h3><p class="blurb">Living oral and land-based traditions, recorded with care.</p></a>
     <a class="door" data-k="jain" data-name="Jainism" data-status="mapped" href="/Digital-Archive/map/jain.html" aria-label="Jainism — 2 readable here. Opens the tradition&#x27;s page."><span class="doorn">2</span><h3>Jainism</h3><p class="blurb">The Āgamas and the teachings of the Tīrthaṅkaras.</p></a>
     <a class="door" data-k="shinto" data-name="Shintō" data-status="mapped" href="/Digital-Archive/map/shinto.html" aria-label="Shintō — 1 readable here. Opens the tradition&#x27;s page."><span class="doorn">1</span><h3>Shintō</h3><p class="blurb">The Kojiki, the Nihon Shoki, and the way of the kami.</p></a>
     <a class="door" data-k="bahai" data-name="The Bahá&#x27;í Faith" data-status="mapped" href="/Digital-Archive/map/bahai.html" aria-label="The Bahá&#x27;í Faith — Opens with Browne&#x27;s translations. Opens the tradition&#x27;s page."><h3>The Bahá&#x27;í Faith</h3><p class="blurb">The Báb and Bahá&#x27;u&#x27;lláh — the Kitáb-i-Aqdas and the Íqán; the youngest of the mapped traditions.</p><span class="foot"><span class="status">Opens with Browne&#x27;s translations</span></span></a>
-    <a class="door" data-k="ancient" data-name="Ancient World" data-status="mapped" href="/Digital-Archive/map/ancient.html" aria-label="Ancient World — 20 readable here. Opens the tradition&#x27;s page."><span class="doorn">20</span><h3>Ancient World</h3><p class="blurb">Greco-Roman, Egyptian, and Mesopotamian sacred texts.</p></a>
-    <a class="door" data-k="gnostic" data-name="Gnostic &amp; Hermetic" data-status="mapped" href="/Digital-Archive/map/gnostic.html" aria-label="Gnostic &amp; Hermetic — 6 readable here. Opens the tradition&#x27;s page."><span class="doorn">6</span><h3>Gnostic &amp; Hermetic</h3><p class="blurb">The Nag Hammadi library and the Hermetica.</p></a>
-    <a class="door" data-k="indigenous" data-name="Indigenous &amp; Oral" data-status="mapped" href="/Digital-Archive/map/indigenous.html" aria-label="Indigenous &amp; Oral — 2 readable here. Opens the tradition&#x27;s page."><span class="doorn">2</span><h3>Indigenous &amp; Oral</h3><p class="blurb">Living oral and land-based traditions, recorded with care.</p></a>
-    <a class="door" data-k="modern" data-name="Modern &amp; New" data-status="mapped" href="/Digital-Archive/map/modern.html" aria-label="Modern &amp; New — 12 readable here. Opens the tradition&#x27;s page."><span class="doorn">12</span><h3>Modern &amp; New</h3><p class="blurb">Theosophy, the Latter Day Saints, and the modern scriptures of the last two centuries.</p></a>
   </nav>
 
   <!-- map-door band retired (Task 40b): map/index.html is a redirect stub to the Hall now -->
@@ -223,7 +232,7 @@
   var tb=document.getElementById("themeBtn"), tl=document.getElementById("themeLbl"), THEME_KEY="da-theme";
   function curTheme(){ return root.getAttribute("data-theme")==="dark"?"dark":"light"; }
   function setTheme(t){ t=(t==="dark")?"dark":"light"; root.setAttribute("data-theme",t);
-    if(tl) tl.textContent=(t==="dark"?"Dark":"Light"); try{ localStorage.setItem(THEME_KEY,t); }catch(e){} }
+    if(tl) tl.textContent=(t==="dark"?"☀︎":"☾"); try{ localStorage.setItem(THEME_KEY,t); }catch(e){} }
   setTheme(curTheme());   // sync the toggle label to the pre-painted theme
   if(tb) tb.addEventListener("click",function(){ setTheme(curTheme()==="dark"?"light":"dark"); });
 
