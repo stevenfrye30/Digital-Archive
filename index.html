@@ -2640,7 +2640,18 @@ details.cite-corner > summary:hover,
 #browse-breadcrumb { display: none; } /* Task 66: chains retire */
 /* ── Task 70: five comfort themes — the swatch row ───────────── */
 #ctrl-themes { display: inline-flex; gap: 8px; align-items: center; }
-#ctrl-themes .theme-swatch {
+#ctrl-themes .face-btn {
+  font-size: 12.5px; line-height: 1; padding: 5px 10px;
+  background: none; border: 1px solid var(--chrome-border);
+  border-radius: 6px; color: var(--chrome-fg); cursor: pointer;
+}
+.face-btn[data-face-key="georgia"] { font-family: Georgia, serif; }
+.face-btn[data-face-key="palatino"] { font-family: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif; }
+.face-btn[data-face-key="constantia"] { font-family: Constantia, 'Iowan Old Style', Cambria, Georgia, serif; }
+.face-btn:hover { border-color: var(--chrome-active); color: var(--chrome-active); }
+.face-btn.active { border-color: var(--chrome-active); color: var(--chrome-active); }
+
+.theme-swatch {
   width: 22px; height: 22px; border-radius: 50%; padding: 0;
   border: 1px solid var(--chrome-border); cursor: pointer;
   position: relative;
@@ -11772,7 +11783,16 @@ body.viewer-active .folio-leaf-colophon {
 #home-topnav #fav-shelf-btn, #home-topnav #dark-toggle { font-size: 17px; }
 #cover-bar .cb-right { margin-left: auto; display: flex; gap: 8px; }
 #cover-bar .cb-right .tb-arrow { font-size: 16px; }
-#rr-fav, #rr-theme { font-size: 16px; margin-left: 6px; }
+#rr-fav { font-size: 16px; margin-left: 6px; }
+#rr-atlas {
+  margin-left: 6px;
+  background: transparent; border: none;
+  color: var(--chrome-muted);
+  font-size: 12px; font-family: Georgia, serif; font-style: italic;
+  padding: 3px 4px; cursor: pointer; opacity: 0.6;
+  letter-spacing: 0.02em; transition: opacity 0.2s;
+}
+#rr-atlas:hover { color: var(--chrome-active); opacity: 1; }
 
 /* Task 74 — the single·wide switcher fully retired */
 }
@@ -11826,6 +11846,14 @@ body.viewer-active .folio-leaf-colophon {
           </span>
         </div>
         <div class="ctrl-group">
+          <label>Font</label>
+          <span id="ctrl-faces" role="group" aria-label="Reading typeface">
+            <button type="button" class="face-btn" data-face-key="georgia">Georgia</button>
+            <button type="button" class="face-btn" data-face-key="palatino">Palatino</button>
+            <button type="button" class="face-btn" data-face-key="constantia">Constantia</button>
+          </span>
+        </div>
+        <div class="ctrl-group">
           <label>Size</label>
           <input type="range" id="ctrl-size" min="12" max="30" step="1" value="18">
           <span class="val" id="ctrl-size-val">18px</span>
@@ -11860,7 +11888,7 @@ body.viewer-active .folio-leaf-colophon {
       <button type="button" id="companion-swap" title="Switch folio to the other side of the manuscript" aria-pressed="false">&#8646; Folio side</button>
       <!-- Task 84 — the permanent header furniture, far right -->
       <button type="button" id="rr-fav" class="tb-arrow" data-fav-shelf aria-label="Favorites">☆</button>
-      <button type="button" id="rr-theme" class="tb-arrow da-glyph" onclick="toggleDarkMode()" aria-label="Switch theme"></button>
+      <button type="button" id="rr-atlas" onclick="location.href='https://stevenfrye30.github.io/Atlas/'" title="The Atlas — the workspace’s companion">Atlas</button>
     </div>
 
     <div id="info-bar">
@@ -22967,6 +22995,33 @@ function applyReaderTheme(key) {
   applyReaderTheme(key);
   document.querySelectorAll('#ctrl-themes .theme-swatch').forEach(b =>
     b.addEventListener('click', () => applyReaderTheme(b.dataset.themeKey)));
+})();
+
+// Task 88 — three reading faces. Only the LATIN tail changes: the
+// ReaderGreek/ReaderHebrew/ReaderArabic faces always resolve first
+// so Greek, Hebrew, and Arabic scripture keep their own type.
+const READER_FACES = {
+  georgia:    { label: 'Georgia',    latin: "Georgia, serif" },
+  palatino:   { label: 'Palatino',   latin: "'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif" },
+  constantia: { label: 'Constantia', latin: "Constantia, 'Iowan Old Style', Cambria, Georgia, serif" },
+};
+function applyReaderFace(key) {
+  const f = READER_FACES[key]; if (!f) return;
+  root.style.setProperty('--reader-font',
+    "'ReaderGreek', 'ReaderHebrew', 'ReaderArabic', " + f.latin);
+  localStorage.setItem('r-face', key);
+  document.querySelectorAll('#ctrl-faces .face-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.faceKey === key));
+  // Type changes shift verse offsets; the folio reflows after layout.
+  if (typeof _positionFolioEntries === 'function') {
+    requestAnimationFrame(() => _positionFolioEntries());
+  }
+}
+(function bootReaderFace() {
+  const key = localStorage.getItem('r-face');
+  applyReaderFace(READER_FACES[key] ? key : 'georgia');
+  document.querySelectorAll('#ctrl-faces .face-btn').forEach(b =>
+    b.addEventListener('click', () => applyReaderFace(b.dataset.faceKey)));
 })();
 
 // Display-options disclosure: open by default on desktop so the
