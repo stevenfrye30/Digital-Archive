@@ -568,7 +568,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   font-family: Georgia, serif;
   font-size: 1.8em;
   font-weight: 700;
-  color: var(--chrome-active);
+  color: var(--reader-accent, var(--chrome-active));
   text-align: center;
   padding: 40px 0 32px;
   letter-spacing: 0.01em;
@@ -2472,6 +2472,35 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   margin-bottom: 16px;
 }
 #browse-breadcrumb { display: none; } /* Task 66: chains retire */
+/* ── Task 70: five comfort themes — the swatch row ───────────── */
+#ctrl-themes { display: inline-flex; gap: 8px; align-items: center; }
+#ctrl-themes .theme-swatch {
+  width: 22px; height: 22px; border-radius: 50%; padding: 0;
+  border: 1px solid var(--chrome-border); cursor: pointer;
+  position: relative;
+}
+#ctrl-themes .theme-swatch::after {
+  /* the ink dot — each swatch shows its own bg + ink pair */
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.theme-swatch[data-theme-key="parchment"] { background: #ecdfc9; }
+.theme-swatch[data-theme-key="parchment"]::after { background: #3b3126; }
+.theme-swatch[data-theme-key="cream"] { background: #faf8f5; }
+.theme-swatch[data-theme-key="cream"]::after { background: #2c2c2c; }
+.theme-swatch[data-theme-key="sepia"] { background: #dcc7a5; }
+.theme-swatch[data-theme-key="sepia"]::after { background: #3f2d1d; }
+.theme-swatch[data-theme-key="slate"] { background: #232830; }
+.theme-swatch[data-theme-key="slate"]::after { background: #c6cdd6; }
+.theme-swatch[data-theme-key="ink"] { background: #1a1a1e; }
+.theme-swatch[data-theme-key="ink"]::after { background: #d4d0c8; }
+#ctrl-themes .theme-swatch:hover { border-color: var(--chrome-active); }
+#ctrl-themes .theme-swatch.active {
+  border-color: var(--chrome-active);
+  box-shadow: 0 0 0 2px var(--chrome-active);
+}
+
 /* ── Task 69: the reading room header slims ─────────────────── */
 #ctrl-home { display: none !important; }
 #ctrl-contents.tb-arrow { font-size: 16px; }
@@ -4509,7 +4538,7 @@ body[data-canon-genre="apocalypse"]  .passage { margin-bottom: 1.35em; }
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.62em;
   font-weight: 600;
-  color: var(--chrome-muted);
+  color: var(--reader-muted, var(--chrome-muted));
   letter-spacing: 0.03em;
   line-height: var(--reader-leading);
   user-select: none;
@@ -11128,7 +11157,7 @@ body.viewer-active .folio-leaf-colophon {
 [data-theme="dark"] .passage { border-bottom-color: var(--chrome-border); }
 [data-theme="dark"] code { background: #2a2a2e; }
 [data-theme="dark"] mark.search-hl { background: #5a4a10; color: #f0e0a0; }
-[data-theme="dark"] .chapter-heading { color: var(--chrome-active); border-bottom-color: var(--chrome-border); }
+[data-theme="dark"] .chapter-heading { color: var(--reader-accent, var(--chrome-active)); border-bottom-color: var(--chrome-border); }
 [data-theme="dark"] #ctrl-search,
 [data-theme="dark"] #ctrl-book { background: #2a2a2e; color: var(--chrome-fg); border-color: var(--chrome-border); }
 [data-theme="dark"] #back-to-top { background: var(--chrome-active); }
@@ -11601,15 +11630,17 @@ body.viewer-active .folio-leaf-colophon {
       <button id="ctrl-contents" type="button" class="tb-arrow" title="Contents" aria-label="Back to contents">&larr;</button>
       <details class="display-options">
         <summary>Display</summary>
+        <!-- Task 70: the free font/color pickers retire for five
+             curated comfort presets. Font stays the reader stack. -->
         <div class="ctrl-group">
-          <label>Font</label>
-          <select id="ctrl-font">
-            <option value="Georgia, serif">Georgia</option>
-            <option value="'Palatino Linotype', Palatino, serif">Palatino</option>
-            <option value="'Times New Roman', Times, serif">Times New Roman</option>
-            <option value="system-ui, -apple-system, sans-serif">System Sans</option>
-            <option value="'Courier New', Courier, monospace">Courier</option>
-          </select>
+          <label>Theme</label>
+          <span id="ctrl-themes" role="group" aria-label="Reading comfort theme">
+            <button type="button" class="theme-swatch" data-theme-key="parchment" title="Parchment" aria-label="Parchment theme"></button>
+            <button type="button" class="theme-swatch" data-theme-key="cream" title="Cream" aria-label="Cream theme"></button>
+            <button type="button" class="theme-swatch" data-theme-key="sepia" title="Sepia" aria-label="Sepia theme"></button>
+            <button type="button" class="theme-swatch" data-theme-key="slate" title="Slate night" aria-label="Slate night theme"></button>
+            <button type="button" class="theme-swatch" data-theme-key="ink" title="Ink night" aria-label="Ink night theme"></button>
+          </span>
         </div>
         <div class="ctrl-group">
           <label>Size</label>
@@ -11621,14 +11652,7 @@ body.viewer-active .folio-leaf-colophon {
           <input type="range" id="ctrl-spacing" min="1.2" max="3.0" step="0.1" value="1.9">
           <span class="val" id="ctrl-spacing-val">1.9</span>
         </div>
-        <div class="ctrl-group">
-          <label>Background</label>
-          <input type="color" id="ctrl-bg" value="#faf8f5">
-        </div>
-        <div class="ctrl-group">
-          <label>Text</label>
-          <input type="color" id="ctrl-fg" value="#2c2c2c">
-        </div>
+
         <div class="ctrl-group">
           <label>Measure</label>
           <span id="ctrl-columns" role="group" aria-label="Reading column layout">
@@ -22512,11 +22536,63 @@ function wire(id, prop, storageKey, toCSS, displayId) {
   });
 }
 
-wire('ctrl-font',    '--reader-font',    'r-font',    v => v,        null);
 wire('ctrl-size',    '--reader-size',    'r-size',    v => v + 'px', 'ctrl-size-val');
 wire('ctrl-spacing', '--reader-leading', 'r-leading', v => v,        'ctrl-spacing-val');
-wire('ctrl-bg',      '--reader-bg',      'r-bg',      v => v,        null);
-wire('ctrl-fg',      '--reader-fg',      'r-fg',      v => v,        null);
+
+// ── Task 70 — five comfort themes ─────────────────────────────────────────
+// The free font/color pickers retire. Each preset = background +
+// ink + accent, tuned for long reading (all pairs clear WCAG AA at
+// body size). Font stays the reader stack — the Greek/Hebrew/Arabic
+// faces resolve first, Georgia carries the Latin.
+const READER_THEMES = {
+  parchment: { label: 'Parchment',   bg: '#ecdfc9', fg: '#3b3126', accent: '#7a5232', muted: '#75634e' },
+  cream:     { label: 'Cream',       bg: '#faf8f5', fg: '#2c2c2c', accent: '#7a5c3a', muted: '#8a7a6a' },
+  sepia:     { label: 'Sepia',       bg: '#dcc7a5', fg: '#3f2d1d', accent: '#74401f', muted: '#6f5c47' },
+  slate:     { label: 'Slate night', bg: '#232830', fg: '#c6cdd6', accent: '#9db4cc', muted: '#8d99a8' },
+  ink:       { label: 'Ink night',   bg: '#1a1a1e', fg: '#d4d0c8', accent: '#c4a060', muted: '#918d84' }
+};
+function applyReaderTheme(key) {
+  const t = READER_THEMES[key]; if (!t) return;
+  root.style.setProperty('--reader-bg', t.bg);
+  root.style.setProperty('--reader-fg', t.fg);
+  root.style.setProperty('--reader-accent', t.accent);
+  root.style.setProperty('--reader-muted', t.muted);
+  localStorage.setItem('r-theme', key);
+  document.querySelectorAll('#ctrl-themes .theme-swatch').forEach(b =>
+    b.classList.toggle('active', b.dataset.themeKey === key));
+}
+(function bootReaderTheme() {
+  let key = localStorage.getItem('r-theme');
+  if (!key || !READER_THEMES[key]) {
+    // Migration — stored custom colors map to the NEAREST preset:
+    // background distance decides; ink decides only when no
+    // background was stored. Position and every other pref stay.
+    const hex = v => v && /^#[0-9a-f]{6}$/i.test(v)
+      ? [1, 3, 5].map(i => parseInt(v.slice(i, i + 2), 16)) : null;
+    const oldBg = hex(localStorage.getItem('r-bg'));
+    const oldFg = hex(localStorage.getItem('r-fg'));
+    const ref = oldBg || oldFg;
+    if (ref) {
+      const prop = oldBg ? 'bg' : 'fg';
+      let best = 'cream', bestD = Infinity;
+      for (const k of Object.keys(READER_THEMES)) {
+        const p = hex(READER_THEMES[k][prop]);
+        const d = (p[0] - ref[0]) ** 2 + (p[1] - ref[1]) ** 2 + (p[2] - ref[2]) ** 2;
+        if (d < bestD) { bestD = d; best = k; }
+      }
+      key = best;
+    } else {
+      key = 'cream';
+    }
+  }
+  // The retired keys leave storage; the full reader font stack returns.
+  localStorage.removeItem('r-font');
+  localStorage.removeItem('r-bg');
+  localStorage.removeItem('r-fg');
+  applyReaderTheme(key);
+  document.querySelectorAll('#ctrl-themes .theme-swatch').forEach(b =>
+    b.addEventListener('click', () => applyReaderTheme(b.dataset.themeKey)));
+})();
 
 // Display-options disclosure: open by default on desktop so the
 // typographic controls flow inline; closed by default on mobile so
