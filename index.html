@@ -2448,7 +2448,15 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   padding: 34px 0 48px;
   text-align: center;
 }
-#home-shelves { margin-bottom: 72px; }
+/* Task 73 — the shelves absorb the room's free height; the four
+   door-cards stretch with the section (grid rows fill it). */
+#home-shelves {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin-bottom: 48px;
+}
+#home-categories { flex: 1 1 auto; }
 #home-footer-links {
   display: flex;
   justify-content: center;
