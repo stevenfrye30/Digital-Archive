@@ -2298,7 +2298,9 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 210px;
+  /* Task 73b — a door's height comes from proportion, not stretched
+     emptiness: ~300–320px at 1080p, the old floor on short rooms. */
+  min-height: clamp(210px, 28vh, 320px);
   position: relative; /* Task 50 — hall card grammar: numeral pins top-right */
   padding: 30px 24px 26px;
   font-family: Georgia, serif;
@@ -2339,9 +2341,13 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 [data-theme="dark"] .home-cat { background: #222226; color: #d4d0c8; }
 /* (the "Another way in" band CSS retired with the band — Task 36b) */
 #home-search {
+  /* Task 73b — auto side margins disable flex stretch; width:100%
+     restores the box, max-width still caps it. */
+  width: 100%;
   max-width: 560px;
   margin: 30px auto 0;
   position: relative;
+  box-sizing: border-box;
 }
 #home-search-input {
   width: 100%;
@@ -2448,15 +2454,17 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   padding: 34px 0 48px;
   text-align: center;
 }
-/* Task 73 — the shelves absorb the room's free height; the four
-   door-cards stretch with the section (grid rows fill it). */
+/* Task 73b — the shelves still absorb the room's free height, but
+   the cards no longer stretch with it: the section centers its
+   group, so the void falls evenly ABOVE and BELOW the shelves,
+   never inside the card borders. */
 #home-shelves {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  justify-content: center;
   margin-bottom: 48px;
 }
-#home-categories { flex: 1 1 auto; }
 #home-footer-links {
   display: flex;
   justify-content: center;
