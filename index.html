@@ -2274,6 +2274,14 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   color: var(--chrome-muted);
   margin-top: 2px;
 }
+/* Task 59 — map-chip results: a quiet mono kind tag */
+.hs-kind {
+  font: 400 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #8a7a6a; border: 1px solid #d8d3cc; border-radius: 999px;
+  padding: 2px 7px; margin-left: 6px; vertical-align: 2px;
+}
+[data-theme="dark"] .hs-kind { color: #8a8680; border-color: #4a4a4e; }
 
 /* Task 43 — the Workroom/Restricted pills demoted to the footer row */
 .home-footlink {
@@ -27582,6 +27590,20 @@ function updateHomeCounts() {
   const input = document.getElementById('home-search-input');
   const results = document.getElementById('home-search-results');
   if (!input || !results) return;
+  // Task 59 — the search index widens to the maps' chips (derived
+  // maps/chip_index.json). Search stays the entrance's tool; chip hits
+  // deep-link to map/<slug>.html?chip=<norm>. Diacritic-insensitive
+  // both ways via _dnorm.
+  const _dnorm = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  let _chips = null;
+  fetch('maps/chip_index.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(j => {
+      if (!j || !j.chips) return;
+      _chips = j.chips;
+      for (const r of _chips) r._hay = _dnorm(r.n + ' ' + r.z + ' ' + r.t);
+    })
+    .catch(() => {});
   let timer;
   input.addEventListener('input', () => {
     clearTimeout(timer);
@@ -27603,11 +27625,29 @@ function updateHomeCounts() {
           if (matches.length >= 15) break;
         }
       }
-      if (matches.length === 0) {
+      // Task 59 — map-chip hits ride BELOW the held texts (a held
+      // chip's reader entry therefore ranks first by construction;
+      // the map hit serves the unheld/unplaced case).
+      const qn = qWords.map(_dnorm);
+      const chipHits = [];
+      if (_chips) {
+        for (const r of _chips) {
+          if (qn.every(w => r._hay.includes(w))) {
+            chipHits.push(r);
+            if (chipHits.length >= 8) break;
+          }
+        }
+      }
+      if (matches.length === 0 && chipHits.length === 0) {
         results.innerHTML = '<li><span class="hs-meta">No results</span></li>';
         results.classList.add('open');
         return;
       }
+      const chipRows = chipHits.map(r =>
+        `<li class="hs-chip" data-map="${escapeHTML(r.m)}" data-chip="${escapeHTML(r.d)}">
+          <div class="hs-title">${escapeHTML(r.n)} <span class="hs-kind">on the map</span></div>
+          <div class="hs-meta">${escapeHTML(r.t)} · ${escapeHTML(r.z)}</div>
+        </li>`).join('');
       results.innerHTML = matches.map(e => {
         const author = (e.author||[]).filter(a=>a&&a!=='Anonymous').join(', ');
         const meta = [author, e.tradition, e.year].filter(Boolean).join(' · ');
@@ -27617,10 +27657,16 @@ function updateHomeCounts() {
           <div class="hs-title">${escapeHTML(e.title)}</div>
           ${meta ? `<div class="hs-meta">${escapeHTML(meta)}</div>` : ''}
         </li>`;
-      }).join('');
+      }).join('') + chipRows;
       results.classList.add('open');
       results.querySelectorAll('li').forEach(li => {
         li.addEventListener('click', () => {
+          // Task 59 — a chip hit walks to its map page, chip flagged
+          if (li.dataset.map) {
+            location.href = 'map/' + li.dataset.map + '.html?chip=' +
+                            encodeURIComponent(li.dataset.chip);
+            return;
+          }
           const cat = li.dataset.cat;
           const trd = li.dataset.trd;
           const id = li.dataset.id;
