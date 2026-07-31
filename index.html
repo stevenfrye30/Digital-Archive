@@ -845,6 +845,33 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 [data-theme="dark"] .cc-pager button { border-color: #4a4a4e; color: #8a8680; }
 [data-theme="dark"] .cc-pager button:hover:not(:disabled) { color: #c4a060; border-color: #c4a060; }
 
+/* Task 75 — the quiet Other-editions block at the plate's foot */
+.cc-other-editions {
+  margin: 26px auto 6px;
+  padding: 12px 0 0;
+  border-top: 1px solid #e6e1d9;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 13px;
+}
+.cc-other-editions .cc-oe-rubric {
+  display: block;
+  font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #8a7a6a; margin-bottom: 8px;
+}
+.cc-other-editions a {
+  display: inline-block; margin: 2px 10px; color: #2c2c2c;
+  text-decoration: none; border-bottom: 1px solid rgba(122, 92, 58, .35);
+}
+.cc-other-editions a:hover { color: #7a5c3a; border-bottom-color: #7a5c3a; }
+.cc-other-editions .cc-oe-work { color: #8a7a6a; font-style: italic; }
+[data-theme="dark"] .cc-other-editions { border-top-color: #3a3a3e; }
+[data-theme="dark"] .cc-other-editions a { color: #d4d0c8; }
+[data-theme="dark"] .cc-other-editions a:hover { color: #c4a060; }
+[data-theme="dark"] .cc-other-editions .cc-oe-rubric,
+[data-theme="dark"] .cc-other-editions .cc-oe-work { color: #918d84; }
+
 /* Task 62 — the quiet contents rule: a hairline with a mono label */
 .cc-contents-rule {
   display: flex;
@@ -15680,6 +15707,41 @@ function showCover(data, entry) {
 
   $textHeader.innerHTML = html;
   $textHeader.style.display = 'block';
+  // Task 75 (ruling 3) — the cover carries the edition choice: for a
+  // work with several held witnesses, a quiet block lists the archive's
+  // other editions of the SAME WORK (the chip's read[] siblings from
+  // the placed map's bindings — derived, never typed). Each entry lands
+  // on that edition's cover; texts without a chip stay quiet.
+  (function etchOtherEditions() {
+    if (!_mapSlug || !entry || !entry.data_file) return;
+    var myDf = entry.data_file;
+    fetch('maps/' + _mapSlug + '/bindings.json')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (B) {
+        if (!B || !B.chips) return;
+        var chip = null;
+        B.chips.forEach(function (ch) {
+          if (!chip && (ch.read || []).some(function (r2) { return r2.df === myDf; }) &&
+              ch.read.length > 1) chip = ch;
+        });
+        if (!chip) return;
+        var plate = $textHeader.querySelector('.bible-cover-layout');
+        if (!plate || plate.querySelector('.cc-other-editions')) return;
+        var others = chip.read.filter(function (r2) { return r2.df !== myDf; });
+        if (!others.length) return;
+        var box = document.createElement('div');
+        box.className = 'cc-other-editions';
+        var rows = others.map(function (r2) {
+          var who = (r2.translator || r2.work) + (r2.year ? ', ' + r2.year : '');
+          return '<a href="?text=' + encodeURIComponent(r2.df) + '">' +
+                 escapeHTML(who) +
+                 ' <span class="cc-oe-work">· ' + escapeHTML(r2.work) + '</span></a>';
+        }).join('');
+        box.innerHTML = '<span class="cc-oe-rubric">Other editions of this work</span>' + rows;
+        plate.appendChild(box);
+      })
+      .catch(function () {});
+  })();
   // v97 — Mark the body as on a specific text contents page.
   // CSS uses this to compact #reader padding (the broader title-leaf
   // overflow:hidden rule applies via :not(.in-reading):not(.atlas-

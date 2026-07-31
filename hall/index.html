@@ -64,7 +64,8 @@
   .bar .tb-hallctx{ font:400 11px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
     letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); }
   .bar a.tb-back:focus-visible, .bar .theme:focus-visible{ outline:2.5px solid var(--accent); outline-offset:2px; }
-  .barnote{ margin-left:auto; font-size:.76rem; color:var(--ink-faint); }
+  /* Task 75: the barnote retired; the theme control takes the spacer */
+  .bar .theme{ margin-left:auto; }
 
   main{ max-width:1140px; margin:0 auto; padding:clamp(1.4rem,4vw,3rem) clamp(1rem,3vw,2rem) 4rem; }
   .intro{ max-width:70ch; }
@@ -164,7 +165,7 @@
          (the crumb generation and the "Archive Home" variant retire) -->
     <!-- Task 66: one arrow (← the entrance); the hall's own name as context -->
     <a class="tb-back tb-arrow" href="https://stevenfrye30.github.io/Digital-Archive/" title="Digital Archive">&larr;</a>
-    <span class="barnote" id="barnote">The sacred-text traditions — one page each.</span>
+    <!-- Task 75: the header text retired — arrow + theme only -->
     <button class="theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme"><span id="themeLbl">Light</span></button>
   </div>
 </header>
