@@ -49,6 +49,10 @@ def surfaces():
                 mapped.add(r["df"])
     map_html = "".join(f.read_text(encoding="utf-8")
                        for f in sorted((REPO / "map").glob("*.html")))
+    # Task 65 Lane C — the three shelf pages are surfaces too (the
+    # phase-5 front doors; the reader-only ledger burns down here).
+    map_html += "".join(f.read_text(encoding="utf-8")
+                        for f in sorted((REPO / "shelf").glob("*.html")))
     roomed = {e["data_file"] for e in pub if e["data_file"] in map_html}
     reader_only = sorted(e["data_file"] for e in pub
                          if e["data_file"] not in mapped and e["data_file"] not in roomed)

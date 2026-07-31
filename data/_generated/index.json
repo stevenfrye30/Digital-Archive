@@ -8483,7 +8483,7 @@
       "data_file": "history-chinese-literature-giles_giles.json",
       "source": "gutenberg",
       "author": [
-        "Herbert Giles"
+        "Herbert A. Giles"
       ],
       "translator": [
         "Herbert A. Giles"
@@ -8717,7 +8717,7 @@
       "data_file": "religions-ancient-china-giles_giles-relig.json",
       "source": "gutenberg",
       "author": [
-        "Herbert Giles"
+        "Herbert A. Giles"
       ],
       "translator": [
         "Herbert A. Giles"
@@ -8861,7 +8861,7 @@
       "data_file": "egyptian-myth-legend_mackenzie.json",
       "source": "sacredtexts",
       "author": [
-        "Donald Mackenzie"
+        "Donald A. Mackenzie"
       ],
       "translator": [
         "Donald Mackenzie"
@@ -9238,7 +9238,7 @@
       "data_file": "the-book-of-the-dead-wallis-budge_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Wallis Budge"
+        "E.A. Wallis Budge"
       ],
       "translator": [
         "Wallis Budge"
@@ -9660,7 +9660,7 @@
     {
       "id": "astrology-greeks-romans-cumont",
       "title": "Astrology and Religion Among the Greeks and Romans",
-      "tradition": "Greek",
+      "tradition": "Greek Literature",
       "collection": "sacred",
       "hierarchy": [
         "chapter",
@@ -9689,7 +9689,7 @@
     {
       "id": "bloomfield-cerberus",
       "title": "Cerberus, the Dog of Hades",
-      "tradition": "Greek",
+      "tradition": "Greek Literature",
       "collection": "sacred",
       "hierarchy": [
         "chapter",
@@ -9718,7 +9718,7 @@
     {
       "id": "hesiodi-carmina-latin-hesiod",
       "title": "Hesiodi Carmina (Latin)",
-      "tradition": "Greek",
+      "tradition": "Greek Literature",
       "collection": "sacred",
       "hierarchy": [
         "section"
@@ -9737,209 +9737,6 @@
       "volume_label": null,
       "quality": "derivative",
       "source_summary": "*Hesiodi Carmina (Latin)* by Hesiod. Translated by Hesiod (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "myths-crete-mackenzie",
-      "title": "Myths of Crete and Pre-Hellenic Europe",
-      "tradition": "Greek",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "myths-crete-mackenzie_mackenzie.json",
-      "source": "sacredtexts",
-      "author": [
-        "Donald A. Mackenzie"
-      ],
-      "translator": [
-        "Donald A. Mackenzie"
-      ],
-      "year": 1917,
-      "translation_label": "Myths of Crete and Pre-Hellenic Europe",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Myths of Crete and Pre-Hellenic Europe* by Donald A. Mackenzie. Translated by Donald A. Mackenzie (1917). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "migration-fables-muller",
-      "title": "On the Migration of Fables",
-      "tradition": "Greek",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "migration-fables-muller_muller.json",
-      "source": "sacredtexts",
-      "author": [
-        "Max Müller"
-      ],
-      "translator": [
-        "Max Müller"
-      ],
-      "year": 1881,
-      "translation_label": "On the Migration of Fables",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*On the Migration of Fables* by Max Müller. Translated by Max Müller (1881). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "roman-greek-questions-plutarch",
-      "title": "Plutarch's Roman and Greek Questions",
-      "tradition": "Greek",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "roman-greek-questions-plutarch_goodwin.json",
-      "source": "sacredtexts",
-      "author": [
-        "Plutarch"
-      ],
-      "translator": [
-        "William W. Goodwin"
-      ],
-      "year": 1874,
-      "translation_label": "Plutarch's Roman and Greek Questions",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Plutarch's Roman and Greek Questions* by Plutarch. Translated by William W. Goodwin (1874). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "eleusinian-mysteries-taylor",
-      "title": "The Eleusinian and Bacchic Mysteries",
-      "tradition": "Greek",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "eleusinian-mysteries-taylor_taylor.json",
-      "source": "sacredtexts",
-      "author": [
-        "Thomas Taylor"
-      ],
-      "translator": [
-        "Thomas Taylor"
-      ],
-      "year": 1891,
-      "translation_label": "The Eleusinian and Bacchic Mysteries",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Eleusinian and Bacchic Mysteries* by Thomas Taylor. Translated by Thomas Taylor (1891). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "evil-eye-elworthy",
-      "title": "The Evil Eye",
-      "tradition": "Greek",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "evil-eye-elworthy_elworthy.json",
-      "source": "sacredtexts",
-      "author": [
-        "Frederick Thomas Elworthy"
-      ],
-      "translator": [
-        "Frederick Thomas Elworthy"
-      ],
-      "year": 1895,
-      "translation_label": "The Evil Eye",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Evil Eye* by Frederick Thomas Elworthy. Translated by Frederick Thomas Elworthy (1895). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "hesiod-shield-hercules-elton",
-      "title": "The Remains of Hesiod the Ascræan & The Shield of Hercules",
-      "tradition": "Greek",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "hesiod-shield-hercules-elton_elton.json",
-      "source": "gutenberg",
-      "author": [
-        "Hesiod"
-      ],
-      "translator": [
-        "Charles Abraham Elton"
-      ],
-      "year": 1815,
-      "translation_label": "The Remains of Hesiod the Ascræan & The Shield of Hercules",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Remains of Hesiod the Ascræan & The Shield of Hercules* by Hesiod. Translated by Charles Abraham Elton (1815). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "syrian-goddess-lucian",
-      "title": "The Syrian Goddess (De Dea Syria)",
-      "tradition": "Greek",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "syrian-goddess-lucian_strong-garstang.json",
-      "source": "sacredtexts",
-      "author": [
-        "Lucian of Samosata"
-      ],
-      "translator": [
-        "Herbert A. Strong",
-        "John Garstang"
-      ],
-      "year": 1913,
-      "translation_label": "The Syrian Goddess (De Dea Syria)",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Syrian Goddess (De Dea Syria)* by Lucian of Samosata. Translated by Herbert A. Strong and John Garstang (1913). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -9975,6 +9772,35 @@
       "reading_status_certified": true
     },
     {
+      "id": "myths-crete-mackenzie",
+      "title": "Myths of Crete and Pre-Hellenic Europe",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "myths-crete-mackenzie_mackenzie.json",
+      "source": "sacredtexts",
+      "author": [
+        "Donald A. Mackenzie"
+      ],
+      "translator": [
+        "Donald A. Mackenzie"
+      ],
+      "year": 1917,
+      "translation_label": "Myths of Crete and Pre-Hellenic Europe",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*Myths of Crete and Pre-Hellenic Europe* by Donald A. Mackenzie. Translated by Donald A. Mackenzie (1917). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
       "id": "oedipus-king-of-thebes-sophocles",
       "title": "Oedipus King of Thebes",
       "tradition": "Greek Literature",
@@ -9997,6 +9823,34 @@
       "volume_label": null,
       "quality": "derivative",
       "source_summary": "*Oedipus King of Thebes* by Sophocles. Translated by Sophocles (1900). Via Project Gutenberg.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "migration-fables-muller",
+      "title": "On the Migration of Fables",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "migration-fables-muller_muller.json",
+      "source": "sacredtexts",
+      "author": [
+        "Max Müller"
+      ],
+      "translator": [
+        "Max Müller"
+      ],
+      "year": 1881,
+      "translation_label": "On the Migration of Fables",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "*On the Migration of Fables* by Max Müller. Translated by Max Müller (1881). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -10062,6 +9916,93 @@
       "reading_status_certified": true
     },
     {
+      "id": "roman-greek-questions-plutarch",
+      "title": "Plutarch's Roman and Greek Questions",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "roman-greek-questions-plutarch_goodwin.json",
+      "source": "sacredtexts",
+      "author": [
+        "Plutarch"
+      ],
+      "translator": [
+        "William W. Goodwin"
+      ],
+      "year": 1874,
+      "translation_label": "Plutarch's Roman and Greek Questions",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*Plutarch's Roman and Greek Questions* by Plutarch. Translated by William W. Goodwin (1874). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "eleusinian-mysteries-taylor",
+      "title": "The Eleusinian and Bacchic Mysteries",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "eleusinian-mysteries-taylor_taylor.json",
+      "source": "sacredtexts",
+      "author": [
+        "Thomas Taylor"
+      ],
+      "translator": [
+        "Thomas Taylor"
+      ],
+      "year": 1891,
+      "translation_label": "The Eleusinian and Bacchic Mysteries",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "*The Eleusinian and Bacchic Mysteries* by Thomas Taylor. Translated by Thomas Taylor (1891). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "evil-eye-elworthy",
+      "title": "The Evil Eye",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "evil-eye-elworthy_elworthy.json",
+      "source": "sacredtexts",
+      "author": [
+        "Frederick Thomas Elworthy"
+      ],
+      "translator": [
+        "Frederick Thomas Elworthy"
+      ],
+      "year": 1895,
+      "translation_label": "The Evil Eye",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "*The Evil Eye* by Frederick Thomas Elworthy. Translated by Frederick Thomas Elworthy (1895). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
       "id": "aeschylus-house-atreus",
       "title": "The House of Atreus (Oresteia)",
       "tradition": "Greek Literature",
@@ -10120,6 +10061,35 @@
       "reading_status_certified": true
     },
     {
+      "id": "hesiod-shield-hercules-elton",
+      "title": "The Remains of Hesiod the Ascræan & The Shield of Hercules",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "hesiod-shield-hercules-elton_elton.json",
+      "source": "gutenberg",
+      "author": [
+        "Hesiod"
+      ],
+      "translator": [
+        "Charles Abraham Elton"
+      ],
+      "year": 1815,
+      "translation_label": "The Remains of Hesiod the Ascræan & The Shield of Hercules",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*The Remains of Hesiod the Ascræan & The Shield of Hercules* by Hesiod. Translated by Charles Abraham Elton (1815). Via Project Gutenberg.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
       "id": "the-seven-plays-in-english-verse-sophocles",
       "title": "The Seven Plays in English Verse",
       "tradition": "Greek Literature",
@@ -10142,6 +10112,36 @@
       "volume_label": null,
       "quality": "derivative",
       "source_summary": "*The Seven Plays in English Verse* by Sophocles. Translated by Sophocles (1900). Via Project Gutenberg.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "syrian-goddess-lucian",
+      "title": "The Syrian Goddess (De Dea Syria)",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "syrian-goddess-lucian_strong-garstang.json",
+      "source": "sacredtexts",
+      "author": [
+        "Lucian of Samosata"
+      ],
+      "translator": [
+        "Herbert A. Strong",
+        "John Garstang"
+      ],
+      "year": 1913,
+      "translation_label": "The Syrian Goddess (De Dea Syria)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "*The Syrian Goddess (De Dea Syria)* by Lucian of Samosata. Translated by Herbert A. Strong and John Garstang (1913). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -12531,7 +12531,7 @@
       "data_file": "history-literary-of-the-arabs-reynold-nicholson_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Reynold Nicholson"
+        "Reynold A. Nicholson"
       ],
       "translator": [
         "Reynold Nicholson"
@@ -14870,7 +14870,7 @@
       "data_file": "babylonian-creation-king_king.json",
       "source": "sacredtexts",
       "author": [
-        "E. A. Wallis Budge"
+        "E.A. Wallis Budge"
       ],
       "translator": [
         "E. A. Wallis Budge"
@@ -16907,7 +16907,7 @@
       "data_file": "poems-ralph-emerson_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Ralph Emerson"
+        "Ralph Waldo Emerson"
       ],
       "translator": [
         "Ralph Emerson"
@@ -17588,7 +17588,7 @@
       "data_file": "faust-der-trag-die-erster-teil-johann-goethe_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Johann Goethe"
+        "Johann Wolfgang von Goethe"
       ],
       "translator": [
         "Johann Goethe"
@@ -17617,7 +17617,7 @@
       "data_file": "faust-in-original-metres-part-1-johann-goethe_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Johann Goethe"
+        "Johann Wolfgang von Goethe"
       ],
       "translator": [
         "Johann Goethe"
@@ -22387,7 +22387,7 @@
       "data_file": "gypsy-sorcery-leland_leland.json",
       "source": "sacredtexts",
       "author": [
-        "Charles G. Leland"
+        "Charles Godfrey Leland"
       ],
       "translator": [
         "Charles G. Leland"
@@ -24447,7 +24447,7 @@
       "data_file": "a-very-pleasaunt-fruitful-diologe-called-the-epicur-erasmus_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Erasmus"
+        "Desiderius Erasmus"
       ],
       "translator": [
         "Erasmus"
@@ -25171,7 +25171,7 @@
       "data_file": "essays-chance-love-logic-charles-peirce_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Charles Peirce"
+        "Charles Sanders Peirce"
       ],
       "translator": [
         "Charles Peirce"
@@ -26007,7 +26007,7 @@
       "data_file": "montaignes-travels-in-italy-by-way-of-switzerland-montaigne_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Montaigne"
+        "Michel de Montaigne"
       ],
       "translator": [
         "Montaigne"
@@ -26701,7 +26701,7 @@
       "data_file": "selected-writings-kierkegaard_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Kierkegaard"
+        "Søren Kierkegaard"
       ],
       "translator": [
         "Kierkegaard"
@@ -26933,7 +26933,7 @@
       "data_file": "the-colloquies-of-erasmus-vol-1-erasmus_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Erasmus"
+        "Desiderius Erasmus"
       ],
       "translator": [
         "Erasmus"
@@ -27687,7 +27687,7 @@
       "data_file": "jung-theory-psychoanalysis_jung.json",
       "source": "gutenberg",
       "author": [
-        "C. G. Jung"
+        "Carl Jung"
       ],
       "translator": [
         "C. G. Jung"
@@ -28296,7 +28296,7 @@
       "data_file": "viettelij-n-p-iv-kirja-kierkegaard_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Kierkegaard"
+        "Søren Kierkegaard"
       ],
       "translator": [
         "Kierkegaard"
@@ -28411,7 +28411,7 @@
       "data_file": "wissenschaft-der-logik-band-1-hegel_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Hegel"
+        "G.W.F. Hegel"
       ],
       "translator": [
         "Hegel"
@@ -28875,7 +28875,7 @@
       "data_file": "discourses-on-the-first-decade-of-titus-livius-machiavelli_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Machiavelli"
+        "Niccolò Machiavelli"
       ],
       "translator": [
         "Machiavelli"
@@ -28904,7 +28904,7 @@
       "data_file": "gandhi-freedoms-battle_gandhi.json",
       "source": "gutenberg",
       "author": [
-        "M.K. Gandhi"
+        "Mohandas K. Gandhi"
       ],
       "translator": [
         "M.K. Gandhi"
@@ -28965,7 +28965,7 @@
       "author": [
         "Plutarch",
         "More",
-        "Bacon",
+        "Francis Bacon",
         "Campanella",
         "Hall"
       ],
@@ -28996,7 +28996,7 @@
       "data_file": "gandhi-indian-home-rule_gandhi.json",
       "source": "gutenberg",
       "author": [
-        "M.K. Gandhi"
+        "Mohandas K. Gandhi"
       ],
       "translator": [
         "M.K. Gandhi"
@@ -29054,7 +29054,7 @@
       "data_file": "landmarks-of-scientific-socialism-anti-duehring-engels_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Engels"
+        "Friedrich Engels"
       ],
       "translator": [
         "Engels"
@@ -29635,7 +29635,7 @@
       "data_file": "the-origin-of-the-family-private-property-the-engels_anonymous.json",
       "source": "gutenberg",
       "author": [
-        "Engels"
+        "Friedrich Engels"
       ],
       "translator": [
         "Engels"
