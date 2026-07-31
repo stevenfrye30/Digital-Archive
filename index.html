@@ -2267,7 +2267,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 #home-main {
   max-width: 1060px;
   margin: 0 auto;
-  padding: 64px 32px 0;
+  padding: 40px 32px 0; /* Task 76 — the title sits slightly higher */
   /* Task 73 — the page fills the room; the footer sits at a natural
      rest below (margin-top:auto), no filler content. */
   display: flex;
@@ -2334,16 +2334,19 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   text-align: center;
   color: #2c2c2c;
   text-decoration: none;
-  background: #fbfaf7;
-  border: 1px solid var(--chrome-border);
+  /* Task 76 — the doors step forward: surface a step off the page,
+     a firmer border, a real hover lift. Same dress family. */
+  background: #fffefb;
+  border: 1px solid #cfc5b4;
   border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(60, 45, 25, 0.05);
   cursor: pointer;
-  transition: border-color 0.15s, transform 0.15s;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
 }
-.home-cat:hover { border-color: var(--chrome-active); transform: translateY(-2px); }
+.home-cat:hover { border-color: var(--chrome-active); transform: translateY(-3px); box-shadow: 0 12px 28px rgba(60, 45, 25, 0.12); }
 .home-cat .home-cat-label {
   display: block;
-  font: 400 21px/1.2 Georgia, serif;
+  font: 400 26px/1.2 Georgia, serif; /* Task 76 — larger titles */
   color: inherit;
   margin: 0 0 6px;
   text-align: center; /* Task 50 — hall card grammar */
@@ -2365,7 +2368,8 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   letter-spacing: 0.06em;
   color: #8a7a6a;
 }
-[data-theme="dark"] .home-cat { background: #222226; color: #d4d0c8; }
+[data-theme="dark"] .home-cat { background: #232329; color: #d4d0c8; border-color: #44444c; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
+[data-theme="dark"] .home-cat:hover { box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5); }
 /* (the "Another way in" band CSS retired with the band — Task 36b) */
 #home-search {
   /* Task 73b — auto side margins disable flex stretch; width:100%
@@ -11773,6 +11777,7 @@ body.viewer-active .folio-leaf-colophon {
              on the field navigates matches (wired below). -->
       </div>
       <button type="button" id="reading-mode-toggle" title="Summon formatting controls" aria-pressed="false">Formatting</button>
+      <button type="button" id="press-print" title="Print or save this chapter" onclick="window.print()">Press</button>
       <button type="button" id="companion-toggle" title="Show companion folio beside the text" aria-pressed="false">Folio</button>
       <button type="button" id="companion-swap" title="Switch folio to the other side of the manuscript" aria-pressed="false">&#8646; Folio side</button>
     </div>
@@ -11842,25 +11847,20 @@ body.viewer-active .folio-leaf-colophon {
                    now, and a second link four lines above it rendered as
                    duplication, not affordance. The topnav stays minimal. -->
               <nav id="home-topnav">
-                <a href="press.html">The Press</a>
+                <button type="button" id="press-info">The Press</button>
                 <!-- Task 52: Atlas is an archive instrument — its doorway
                      retired from the Workspace front page; target unchanged -->
-                <a href="https://stevenfrye30.github.io/Atlas/">Atlas</a>
-                <button id="dark-toggle" type="button" onclick="toggleDarkMode()">Dark</button>
+                <button type="button" id="atlas-info">Atlas</button>
+                <button id="dark-toggle" type="button" class="tb-arrow" onclick="toggleDarkMode()" aria-label="Switch theme">☾</button>
               </nav>
             </div>
             <div id="home-main">
             <div id="home-header">
               <h1 id="home-title">Digital Archive</h1>
-              <p id="home-subtitle">A reading room for sacred, philosophical, and literary texts</p>
-              <p id="home-countline"><span id="home-count-total"></span>every passage verified against its source</p>
+              <p id="home-countline"><span id="home-count-total"></span></p>
             </div>
-            <div id="home-search">
-              <input type="search" id="home-search-input" placeholder="Search all texts — title, translator, tradition…" autocomplete="off">
-              <ul id="home-search-results"></ul>
-            </div>
+            <!-- Task 76: search moved below the shelves -->
             <div id="home-shelves">
-              <div id="home-shelves-head"><h2>The four shelves</h2></div>
               <div id="home-categories">
                 <!-- Task 34 (steward ruling A, 2026-07-30): the Religion door
                      IS the Religion Hall — the steward's original vision. The
@@ -11890,6 +11890,10 @@ body.viewer-active .folio-leaf-colophon {
                 </a>
               </div>
             </div>
+            <div id="home-search">
+              <input type="search" id="home-search-input" placeholder="Search all texts — title, translator, tradition…" autocomplete="off">
+              <ul id="home-search-results"></ul>
+            </div>
             <!-- Task 36b (steward: "two buttons"): the Map band RETIRED from
                  the entrance — the Hall is the ONE religion door; the Map's
                  front doors are the Hall's own surfaces (each door card +
@@ -11897,15 +11901,11 @@ body.viewer-active .folio-leaf-colophon {
                  surface_cross_links battery. -->
             <div id="home-footer">
               <div id="home-footer-links">
-                <a href="sources.html">Sources &amp; attribution</a>
                 <a href="integrity.html">Integrity proof</a>
-                <a href="translators.html">Translators</a>
-                <a href="press.html">The Press</a>
                 <button type="button" id="foot-workroom" class="home-footlink" onclick="browseWorkroom()" style="display:none">The Workroom</button>
                 <button type="button" id="foot-restricted" class="home-footlink" onclick="browseRestricted()" style="display:none">Restricted Library</button>
               </div>
-              <p id="home-colophon">Public-domain texts with stable provenance. Built slowly, read slowly, maintained without hurry.</p>
-            </div>
+                          </div>
             </div>
             <!-- Continue Reading card tossed (Task 43): resume lives in the
                  reader itself (cover pill + ?p= restore), not the entrance. -->
@@ -12019,8 +12019,10 @@ function toggleDarkMode() {
     localStorage.setItem('da-dark-mode', 'true');
     if (_entranceVisible()) localStorage.setItem('da-theme', 'dark');
   }
+  // Task 76 — glyph, not label: sun shown in dark (click → light),
+  // moon in light (click → dark); text presentation, never emoji.
   const btn = document.getElementById('dark-toggle');
-  if (btn) btn.textContent = isDark ? 'Dark' : 'Light';
+  if (btn) btn.textContent = isDark ? '☾' : '☀︎';
 }
 
 // ── Surah name map (1-indexed) ────────────────────────────────────────────────
@@ -22613,7 +22615,8 @@ function renderSidebarTree({ firstLoad = false } = {}) {
   if (firstLoad) updateHomeCounts();
   // Sync dark mode toggle label
   const dtBtn = document.getElementById('dark-toggle');
-  if (dtBtn) dtBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? 'Light' : 'Dark';
+  // Task 76 — glyph, not label (sun in dark, moon in light)
+  if (dtBtn) dtBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀︎' : '☾';
 }
 
 // (Sidebar search removed — replaced by home page search)
@@ -27886,7 +27889,9 @@ function browseWorkroom() {
   let html = '<div class="workroom-intro">These texts are readable but not yet ' +
              'certified for the main Reading Room. Their contents or structure are ' +
              'still being prepared. The <a href="wishlist.html">wishlist</a> — texts ' +
-             'the archive still seeks — is kept here too.</div>';
+             'the archive still seeks — is kept here too, with the registers of ' +
+             '<a href="sources.html">sources &amp; attribution</a> and ' +
+             '<a href="translators.html">translators</a>.</div>';
   let any = false;
   for (const sec of SECTIONS) {
     const items = groups[sec.key];
@@ -27956,7 +27961,7 @@ function updateHomeCounts() {
   const totalEl = document.getElementById('home-count-total');
   if (totalEl) {
     totalEl.textContent =
-      `${shelfTotal.toLocaleString('en-US')} public texts across four shelves · `;
+      `${shelfTotal.toLocaleString('en-US')} public texts across four shelves`;
   }
 }
 
@@ -28095,6 +28100,109 @@ document.querySelectorAll('button.home-cat').forEach(btn => {
 
 loadIndex();
 
+</script>
+
+<style>
+/* ── Task 76 ── the entrance relayout ─────────────────────────── */
+#home-search { margin: 34px auto 0; }
+#home-topnav #dark-toggle { font-size: 17px; }
+#press-print {
+  background: transparent; border: none; color: var(--chrome-muted);
+  font: italic 12px Georgia, serif; padding: 3px 4px; cursor: pointer;
+  opacity: 0.6; letter-spacing: 0.02em; transition: opacity 0.2s;
+}
+#press-print:hover { opacity: 1; }
+/* the info popovers — each dressed to its identity, one palette */
+.hd-pop {
+  position: fixed; z-index: 90; top: 74px; right: 24px;
+  width: min(340px, 92vw); background: #faf8f5; color: #2c2c2c;
+  border: 1px solid #cfc5b4; border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .22);
+  padding: 18px 20px 16px; font: 14px/1.55 Georgia, serif;
+}
+.hd-pop .hd-rubric {
+  display: block; text-align: center; margin-bottom: 8px;
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .18em; text-transform: uppercase; color: #7a5c3a;
+}
+.hd-pop .hd-open { display: block; margin-top: 10px; text-align: center;
+  font-style: italic; color: #7a5c3a; text-decoration: none; }
+.hd-pop .hd-open:hover { text-decoration: underline; }
+/* The Press — a printer's plate: double rule, centered pilcrow */
+#press-pop { border-style: double; border-width: 4px; }
+#press-pop .hd-mark { display: block; text-align: center; font-size: 20px;
+  color: #7a5c3a; margin-bottom: 6px; }
+/* Atlas — a map cartouche: framed corners, italic body */
+#atlas-pop { border-radius: 2px; outline: 1px solid #cfc5b4; outline-offset: 4px; }
+#atlas-pop p { font-style: italic; }
+[data-theme="dark"] .hd-pop { background: #232329; color: #d4d0c8;
+  border-color: #44444c; }
+[data-theme="dark"] .hd-pop .hd-rubric, [data-theme="dark"] .hd-pop .hd-open,
+[data-theme="dark"] #press-pop .hd-mark { color: #c4a060; }
+[data-theme="dark"] #atlas-pop { outline-color: #44444c; }
+/* the reading room prints clean: chrome leaves, the column expands */
+@media print {
+  body.in-reading #controls, body.in-reading #nav-bar,
+  body.in-reading #info-bar, body.in-reading #folio,
+  body.in-reading #text-meta, body.in-reading #translation-bar,
+  body.in-reading #cover-bar { display: none !important; }
+  body.in-reading #reader {
+    position: static !important; overflow: visible !important;
+    height: auto !important;
+  }
+  body.in-reading #reader-inner { max-width: 100% !important; }
+  body.in-reading { background: #fff !important; }
+}
+</style>
+<script>
+(function () {
+  // Task 76 — header info popovers (popover grammar: ESC / outside).
+  var defs = [
+    ['press-info', 'press-pop',
+     '<span class="hd-mark">¶</span>' +
+     '<span class="hd-rubric">The Press</span>' +
+     '<p>The archive\u2019s small typesetting bench \u2014 it sets a passage ' +
+     'as a pocket-sized print sheet, folded for carrying.</p>' +
+     '<a class="hd-open" href="press.html">Open the Press \u2192</a>'],
+    ['atlas-info', 'atlas-pop',
+     '<span class="hd-rubric">Atlas</span>' +
+     '<p>The workspace\u2019s atlas \u2014 an instrument panel over the ' +
+     'archive\u2019s wider apparatus, kept outside the reading room.</p>' +
+     '<a class="hd-open" href="https://stevenfrye30.github.io/Atlas/">Open the Atlas \u2192</a>']
+  ];
+  var current = null;
+  function shutPop() {
+    if (current) { current.remove(); current = null; }
+  }
+  defs.forEach(function (d) {
+    var btn = document.getElementById(d[0]);
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (current && current.id === d[1]) { shutPop(); return; }
+      shutPop();
+      var pop = document.createElement('div');
+      pop.id = d[1];
+      pop.className = 'hd-pop';
+      pop.setAttribute('role', 'dialog');
+      pop.innerHTML = d[2];
+      document.body.appendChild(pop);
+      current = pop;
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (current && !current.contains(e.target)) shutPop();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') shutPop();
+  });
+  // Task 76 — the theme glyph boots to the current state
+  var t = document.getElementById('dark-toggle');
+  if (t) {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    t.textContent = dark ? '\u2600\ufe0e' : '\u263e';
+  }
+})();
 </script>
 </body>
 </html>
