@@ -415,7 +415,7 @@ body.in-reading.cols-single #reader-inner {
      scripture column (it carries marginalia in the same grid). The
      narrower column also widens the symmetric margins that host
      the folio sidebar, so nothing overlaps. */
-  max-width: 660px;
+  max-width: var(--reader-measure, 660px); /* Task 74 — the spectrum */
   column-count: 1;
 }
 body.in-reading.cols-wide #reader-inner {
@@ -11663,47 +11663,12 @@ body.viewer-active .folio-leaf-colophon {
      (single · dual · wide) that select the folio layout. Visible
      only inside an active reading room; hidden on title leaf and
      on mobile. Same register as the other apparatus controls. */
-  #ctrl-columns {
-    display: none;
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: 12px;
-    color: var(--chrome-muted);
-    opacity: 0.6;
-    letter-spacing: 0.02em;
-    align-items: baseline;
-    gap: 6px;
-    margin-left: 6px;
-  }
-  body.in-reading #ctrl-columns { display: inline-flex; }
-  /* Task 69: single/wide lives inside the Formatting apparatus now */
-  .display-options #ctrl-columns { margin-left: 0; }
-  #ctrl-columns .col-opt {
-    cursor: pointer;
-    padding: 1px 1px;
-    color: inherit;
-    transition: color 0.2s, opacity 0.2s;
-  }
-  #ctrl-columns .col-opt:hover { color: var(--chrome-active); }
-  #ctrl-columns .col-opt.active {
-    color: var(--chrome-active);
-    opacity: 1;
-    border-bottom: 1px solid currentColor;
-  }
-  #ctrl-columns .col-sep { opacity: 0.4; padding: 0 1px; }
-  /* The dual geometry was retired; if a stale cached copy of
-     the page still renders the data-cols="dual" option, hide
-     it (and its preceding separator) so the switcher reads
-     cleanly as "single · wide". */
-  #ctrl-columns .col-opt[data-cols="dual"],
-  #ctrl-columns .col-opt[data-cols="dual"] + .col-sep,
-  #ctrl-columns .col-opt[data-cols="dual"] ~ .col-sep:nth-of-type(1) {
-    display: none;
-  }
+  /* Task 74 — the single·wide dress retired with the switcher */
+
+  /* Task 74 — the single·wide switcher fully retired */
 }
 
 @media (max-width: 720px) {
-  #ctrl-columns { display: none !important; }
 }
 
 /* Hide the toggle on mobile — the consolidated running header is
@@ -11764,11 +11729,8 @@ body.viewer-active .folio-leaf-colophon {
 
         <div class="ctrl-group">
           <label>Measure</label>
-          <span id="ctrl-columns" role="group" aria-label="Reading column layout">
-                <span class="col-opt active" data-cols="single" role="button" tabindex="0" title="Codex reading column">single</span>
-                <span class="col-sep" aria-hidden="true">·</span>
-                <span class="col-opt" data-cols="wide" role="button" tabindex="0" title="Wide illuminated page">wide</span>
-      </span>
+          <input type="range" id="ctrl-measure" min="660" max="1320" step="20" value="660">
+          <span class="val" id="ctrl-measure-val">660px</span>
         </div>
       </details>
       <div class="ctrl-group" id="ctrl-book-group">
@@ -11780,8 +11742,8 @@ body.viewer-active .folio-leaf-colophon {
         <label>Search</label>
         <input type="search" id="ctrl-search" placeholder="within this text…">
         <span id="ctrl-search-count"></span>
-        <button class="search-nav-btn" id="search-prev" disabled title="Previous match">&#9650;</button>
-        <button class="search-nav-btn" id="search-next" disabled title="Next match">&#9660;</button>
+        <!-- Task 74: the ▲▼ match buttons retire; Enter / Shift-Enter
+             on the field navigates matches (wired below). -->
       </div>
       <button type="button" id="reading-mode-toggle" title="Summon formatting controls" aria-pressed="false">Formatting</button>
       <button type="button" id="companion-toggle" title="Show companion folio beside the text" aria-pressed="false">Folio</button>
@@ -12523,8 +12485,10 @@ const $bookSelect   = document.getElementById('ctrl-book');
 const $searchGroup  = document.getElementById('ctrl-search-group');
 const $search       = document.getElementById('ctrl-search');
 const $searchCount  = document.getElementById('ctrl-search-count');
-const $searchPrev   = document.getElementById('search-prev');
-const $searchNext   = document.getElementById('search-next');
+// Task 74 — the visible buttons retired; detached stubs keep the
+// match-navigation wiring (Enter/Shift-Enter clicks them).
+const $searchPrev   = document.getElementById('search-prev') || document.createElement('button');
+const $searchNext   = document.getElementById('search-next') || document.createElement('button');
 const $metaPanel    = document.getElementById('text-meta');
 const $metaTitle    = document.getElementById('meta-title');
 const $metaDesc     = document.getElementById('meta-desc');
@@ -16470,28 +16434,10 @@ $reader.addEventListener('scroll', () => {
 // once at startup; never persisted, so each new room begins in
 // the most readerly state). cols-dual is preserved internally
 // for legacy CSS but no longer exposed in the UI.
-(function wireColumnSwitcher() {
-  const root = document.getElementById('ctrl-columns');
-  if (!root) return;
-  const APPLY_CLASSES = ['cols-single', 'cols-dual', 'cols-wide'];
-  function apply(mode) {
-    APPLY_CLASSES.forEach(c => document.body.classList.remove(c));
-    document.body.classList.add('cols-' + mode);
-    root.querySelectorAll('.col-opt').forEach(el => {
-      el.classList.toggle('active', el.dataset.cols === mode);
-    });
-  }
-  apply('single');
-  root.querySelectorAll('.col-opt').forEach(el => {
-    el.addEventListener('click', () => apply(el.dataset.cols));
-    el.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        apply(el.dataset.cols);
-      }
-    });
-  });
-})();
+// Task 74 — the single·wide switcher retired with the Measure
+// slider; the room keeps single-mode semantics permanently (the
+// folio and companion machinery key off cols-single, unchanged).
+document.body.classList.add('cols-single');
 
 // Formatting toggle (desktop). The reading room defaults to a
 // compact reading posture; this button summons the formatting
@@ -22635,6 +22581,7 @@ function wire(id, prop, storageKey, toCSS, displayId) {
     // the scripture column. Run after layout settles.
     if (prop === '--reader-size'
         || prop === '--reader-leading'
+        || prop === '--reader-measure'
         || prop === '--reader-font') {
       if (typeof _positionFolioEntries === 'function') {
         requestAnimationFrame(() => _positionFolioEntries());
@@ -22645,6 +22592,10 @@ function wire(id, prop, storageKey, toCSS, displayId) {
 
 wire('ctrl-size',    '--reader-size',    'r-size',    v => v + 'px', 'ctrl-size-val');
 wire('ctrl-spacing', '--reader-leading', 'r-leading', v => v,        'ctrl-spacing-val');
+// Task 74 — the measure spectrum: today's single (660px) to today's
+// wide (1320px). The old single·wide toggle never persisted a key,
+// so there is nothing to migrate; r-measure is the first stored value.
+wire('ctrl-measure', '--reader-measure', 'r-measure', v => v + 'px', 'ctrl-measure-val');
 
 // ── Task 70 — five comfort themes ─────────────────────────────────────────
 // The free font/color pickers retire. Each preset = background +
