@@ -565,13 +565,16 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 /* ── Chapter heading at top of reading view ──────────────────────── */
 
 .chapter-heading {
+  /* Task 83 — the considered setting: regular weight at a fuller
+     size; NO ornament (bold display + rules read as web dressing —
+     large regular Georgia IS a book's chapter opening). */
   font-family: Georgia, serif;
-  font-size: 1.8em;
-  font-weight: 700;
+  font-size: 2em;
+  font-weight: 400;
   color: var(--reader-accent, var(--chrome-active));
   text-align: center;
-  padding: 40px 0 32px;
-  letter-spacing: 0.01em;
+  padding: 44px 0 34px;
+  letter-spacing: 0.04em;
   line-height: 1.2;
 }
 
@@ -925,6 +928,16 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   border-radius: 8px;
   transition: background 0.15s, border-color 0.15s;
 }
+@media (prefers-reduced-motion: no-preference) {
+  #passages.ch-fade { animation: chFade 150ms ease-out; }
+  @keyframes chFade { from { opacity: 0; } }
+}
+
+/* Task 83 — drop caps TRIED AND DROPPED: at the 1.9 leading a
+   2-line cap straddles ~1.6 lines with a ragged shoulder, and the
+   corpus's opening characters (quotes, digits, diacritics) make it
+   inconsistent — a web flourish, not set type. No cap. */
+
 /* Task 82 — entry text centers within the button (all covers) */
 .cc-toc-list li { justify-content: center; }
 .cc-toc-list li:hover {
@@ -4564,7 +4577,8 @@ details.display-options > summary {
 .passage {
   position: relative;
   padding-left: 110px;
-  margin-bottom: 1.1em;
+  margin-bottom: 1.25em; /* Task 83 — ~2/3 line at the 1.9 leading */
+  text-wrap: pretty;      /* quiet enhancement where supported */
 }
 
 /* Continuation passages (join_prev:true): a page-split paragraph fragment
@@ -4694,19 +4708,18 @@ body[data-canon-genre="apocalypse"]  .passage { margin-bottom: 1.35em; }
 }
 
 .ref {
+  /* Task 83 — one register: the archive's apparatus mono at a FIXED
+     size — the numeral never scales with the body, never competes. */
   position: absolute;
   left: 0;
-  top: 0.25em;
+  top: 0.55em;
   width: 100px;
   text-align: right;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 0.62em;
-  font-weight: 600;
+  font: 400 10.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   color: var(--reader-muted, var(--chrome-muted));
-  letter-spacing: 0.03em;
-  line-height: var(--reader-leading);
+  letter-spacing: 0.06em;
   user-select: none;
-  opacity: 0.65;
+  opacity: 0.8;
 }
 
 /* ── Scrollbars ────────────────────────────────────────────────────────────── */
@@ -6368,18 +6381,13 @@ body.folio-left #companion-swap {
    Mixed-case italic, no caps transformation, no letter-spacing —
    reads as a manuscript page heading rather than a UI label. */
 .folio-chapter-header {
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  border: none;
-  padding: 0 0 32px 0;
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 0.95em;
-  color: var(--chrome-muted);
-  cursor: default;
-  opacity: 0.78;
+  /* Task 83 — the folio matches the column's register */
+  display: block; width: 100%; text-align: left;
+  background: transparent; border: none;
+  padding: 0 0 34px 0;
+  font-family: Georgia, serif; font-style: italic;
+  font-size: 1em; font-weight: 400; letter-spacing: 0.03em;
+  color: var(--chrome-muted); cursor: default; opacity: 0.82;
 }
 .folio-chapter-header.has-next {
   cursor: pointer;
@@ -14826,6 +14834,15 @@ function _buildChapterHeading() {
 // of filterAndRender / render with this so the heading and body
 // re-render together.
 function _installChapterHeading() {
+  // Task 83 — chapter swaps fade in (opacity only, 150ms; never
+  // fights the scroll restore — nothing moves). This runs on every
+  // chapter render, whichever path drew it.
+  var _pv = document.getElementById('passages');
+  if (_pv) {
+    _pv.classList.remove('ch-fade');
+    void _pv.offsetWidth;
+    _pv.classList.add('ch-fade');
+  }
   const existing = $passages.querySelector('.chapter-heading');
   if (existing) existing.remove();
   const heading = _buildChapterHeading();
