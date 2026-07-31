@@ -2241,6 +2241,12 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   max-width: 1060px;
   margin: 0 auto;
   padding: 64px 32px 0;
+  /* Task 73 — the page fills the room; the footer sits at a natural
+     rest below (margin-top:auto), no filler content. */
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 75px);
+  box-sizing: border-box;
 }
 #home-header {
   text-align: center;
@@ -2281,15 +2287,20 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 #home-categories {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 14px;
+  gap: 18px;
+  margin-top: 18px;
 }
 /* Task 43 — the hall's card grammar: title · blurb · derived count;
    the whole card is the link; CTAs retired. */
 .home-cat {
-  display: block;
+  /* Task 73 — the four doors grow into the room: taller, centered,
+     equal heights (grid stretch), two-line scent. */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 210px;
   position: relative; /* Task 50 — hall card grammar: numeral pins top-right */
-  padding: 16px 18px 14px;
+  padding: 30px 24px 26px;
   font-family: Georgia, serif;
   text-align: center;
   color: #2c2c2c;
@@ -2309,10 +2320,14 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   text-align: center; /* Task 50 — hall card grammar */
 }
 .home-cat-scent {
-  display: block;
-  font: italic 400 12.5px/1.6 Georgia, serif;
+  /* Task 73 — max two lines, no ragged bottoms */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font: italic 400 13px/1.65 Georgia, serif;
   color: var(--chrome-muted);
-  margin: 0 0 10px;
+  margin: 0;
 }
 .home-cat .home-cat-count {
   /* Task 50 — the quiet mono numeral, top-right (the 47a hall shape) */
@@ -2428,11 +2443,12 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 /* Colophon footer */
 #home-workroom, #home-restricted { text-align: center; }
 #home-footer {
-  margin: 64px 0 0;
+  margin: auto 0 0;
   border-top: 1px solid var(--chrome-border);
-  padding: 26px 0 40px;
+  padding: 34px 0 48px;
   text-align: center;
 }
+#home-shelves { margin-bottom: 72px; }
 #home-footer-links {
   display: flex;
   justify-content: center;
@@ -2468,6 +2484,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   #home-main { padding: clamp(18px, 5vh, 40px) 20px 0; }
   #home-shelves { margin-top: 36px; }
   #home-categories { grid-template-columns: 1fr; }
+  .home-cat { min-height: 150px; }
   .home-cat {
     border-left: none;
     border-top: 1px solid #e6e1d9;
@@ -11848,22 +11865,22 @@ body.viewer-active .folio-leaf-colophon {
                      by build_map_bindings.py) — no authored counts. -->
                 <a class="home-cat" data-cat="Religion" href="hall/">
                   <span class="home-cat-label">Religion</span>
-                  <span class="home-cat-scent">The Rig-Veda &middot; The City of God &middot; The Analects &middot; the world&rsquo;s scriptures<span class="home-cat-trads"></span></span>
+                  <span class="home-cat-scent">The Rig-Veda &middot; The City of God &middot; the world&rsquo;s scriptures<span class="home-cat-trads"></span></span>
                   <span class="home-cat-count"></span>
                 </a>
                 <a class="home-cat" data-cat="Philosophy" href="shelf/philosophy.html">
                   <span class="home-cat-label">Philosophy</span>
-                  <span class="home-cat-scent">Aristotle&rsquo;s Metaphysics &middot; Bacon&rsquo;s Essays &middot; the Stoics, the Legalists, the moderns</span>
+                  <span class="home-cat-scent">Aristotle&rsquo;s Metaphysics &middot; the Stoics, the moderns</span>
                   <span class="home-cat-count"></span>
                 </a>
                 <a class="home-cat" data-cat="Literature" href="shelf/literature.html">
                   <span class="home-cat-label">Literature</span>
-                  <span class="home-cat-scent">Beowulf &middot; The Arabian Nights &middot; the Aeneid &middot; epics and tales<span class="home-cat-trads"></span></span>
+                  <span class="home-cat-scent">Beowulf &middot; The Arabian Nights &middot; epics and tales<span class="home-cat-trads"></span></span>
                   <span class="home-cat-count"></span>
                 </a>
                 <a class="home-cat" data-cat="Esoteric" href="shelf/esoteric.html">
                   <span class="home-cat-label">Esoteric</span>
-                  <span class="home-cat-scent">Thrice-Greatest Hermes &middot; Atlantis &middot; Aradia &middot; the hermetic and the strange</span>
+                  <span class="home-cat-scent">Thrice-Greatest Hermes &middot; Atlantis &middot; the strange</span>
                   <span class="home-cat-count"></span>
                 </a>
               </div>
@@ -27892,24 +27909,10 @@ function updateHomeCounts() {
     const textCount = Object.values(traditions).reduce((s, t) => s + t.length, 0);
     const tradCount = Object.keys(traditions).length;
     shelfTotal += textCount;
-    if (cat === 'Religion') {
-      // Task 34 (steward ruling A): the card is the HALL's door; its line
-      // derives from the Hall's own truth (rooms_open, counted from the
-      // deployed rooms at build) + traditions — one truth, one source
-      // (maps/summary.json, written by build_map_bindings.py; the Task 32
-      // no-authored-counts rule stands). The same fetch fills the Map
-      // band's readable count below.
-      const cEl = btn.querySelector('.home-cat-count');
-      cEl.textContent = '';
-      // Task 51c — one unit across the four cards: TEXTS behind the door
-      // (the derived readable count from maps/summary.json, never typed).
-      fetch('maps/summary.json').then(r => r.json()).then(s => {
-        cEl.textContent = s.readable_routes;
-      }).catch(() => {});
-      const tr0 = btn.querySelector('.home-cat-trads');
-      if (tr0) tr0.textContent = '';
-      return;
-    }
+    // Task 73 — one truth for the counts: every card numeral is its
+    // shelf's certified contents (browseTree), Religion included, and
+    // the masthead line is their exact sum. The 34/51c maps/summary
+    // basis for Religion is re-based here under the 73 ruling.
     // Task 50 — bare numeral (hall grammar; the label said 'texts')
     btn.querySelector('.home-cat-count').textContent = textCount.toLocaleString('en-US');
     // Scent-line tradition phrase where the copy carries one — bound live,
