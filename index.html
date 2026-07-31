@@ -513,68 +513,8 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 .copy-toast.show { opacity: 0.95; }
 
-/* ── Text cover page ──────────────────────────────────────────────────────── */
-
-#text-cover {
-  margin: 120px auto 0;
-  max-width: 640px;
-  text-align: center;
-  font-family: var(--reader-font);
-  color: var(--reader-fg);
-  padding: 0 20px 80px;
-}
-
-#cover-title {
-  font-size: 2.6em;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-  margin-bottom: 0.7em;
-}
-
-#cover-author {
-  font-size: 1.15em;
-  font-style: italic;
-  color: var(--chrome-muted);
-  margin-bottom: 0.3em;
-}
-
-#cover-translator {
-  font-size: 0.95em;
-  color: var(--chrome-muted);
-  margin-bottom: 0.3em;
-}
-
-#cover-year {
-  font-size: 1em;
-  color: var(--chrome-muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 2.2em;
-}
-
-#cover-begin {
-  display: inline-block;
-  background: #5a4a1e;
-  color: #faf6ec;
-  border: none;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  padding: 12px 34px;
-  border-radius: 999px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: background 0.1s, box-shadow 0.1s, transform 0.05s;
-}
-
-#cover-begin:hover {
-  background: #3d3210;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-}
-
-#cover-begin:active {
-  transform: translateY(1px);
-}
+/* Task 57 Lane A — the #text-cover dress retired with its markup
+   (the old cover → TOC chain was dead: nothing ever showed it). */
 
 /* ── Load more button ────────────────────────────────────────────── */
 .load-more-btn {
@@ -1964,6 +1904,13 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
+/* Task 57 — the flat plate's centered 44a actions row + FM chip */
+.cc-flat-actions {
+  display: flex; justify-content: center; align-items: center;
+  gap: 10px; flex-wrap: wrap; margin: 18px 0 6px;
+}
+.cc-fm-chip { display: inline-flex; align-items: center; }
+
 .cc-fm-btn:hover {
   background: #ffe8c0;
   border-color: #c4993a;
@@ -4156,102 +4103,8 @@ details.display-options > summary {
   }
 }
 
-#cover-source-summary {
-  max-width: 520px;
-  margin: 32px auto 0;
-  padding: 14px 20px;
-  border-top: 1px solid var(--chrome-border, #d8d1c4);
-  border-bottom: 1px solid var(--chrome-border, #d8d1c4);
-  font-size: 0.88em;
-  line-height: 1.55;
-  font-style: normal;
-  color: var(--chrome-muted, #6a5f4b);
-  text-align: center;
-}
-#cover-source-summary em {
-  color: var(--reader-fg, #3a3228);
-  font-style: italic;
-}
 
-/* Group cover (multi-translation book chooser) */
-#group-cover {
-  margin: 80px auto 0;
-  max-width: 640px;
-  padding: 0 24px 60px;
-  text-align: center;
-  font-family: var(--reader-font);
-  color: var(--reader-fg);
-}
-#group-cover-title {
-  font-size: 2em;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin-bottom: 6px;
-}
-#group-cover-author {
-  font-size: 1em;
-  color: var(--chrome-muted, #6a5f4b);
-  margin-bottom: 36px;
-  font-style: italic;
-}
-#group-cover-hint {
-  font-size: 0.85em;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--chrome-muted, #6a5f4b);
-  margin-bottom: 18px;
-}
-#group-cover-translations {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: stretch;
-}
-.group-translation-btn {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 14px 20px;
-  background: var(--tint, #f5f2ed);
-  border: 1px solid var(--chrome-border, #d8d1c4);
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 1em;
-  color: inherit;
-  cursor: pointer;
-  transition: background-color 0.15s, border-color 0.15s;
-}
-.group-translation-btn:hover {
-  background: #eee5d4;
-  border-color: var(--chrome-active, #864);
-}
-.group-translation-btn .gt-label {
-  font-weight: 600;
-  display: block;
-}
-.group-translation-btn .gt-sub {
-  display: block;
-  font-size: 0.85em;
-  color: var(--chrome-muted, #6a5f4b);
-  margin-top: 3px;
-}
-.group-translation-btn .gt-star {
-  color: var(--chrome-active, #864);
-  margin-right: 6px;
-}
-/* Language section heading on the grouped Bible cover (Option B grouping).
-   Calm, restrained — a quiet ledger divider, not a redesign. */
-.gt-lang-heading {
-  font-size: 0.78em;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--chrome-muted, #6a5f4b);
-  margin: 14px 2px 2px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid var(--chrome-border, #d8d1c4);
-}
-.gt-lang-heading:first-child { margin-top: 0; }
+/* Task 57 Lane A — the #group-cover dress retired with showGroupCover. */
 
 /* ── Table of contents page ───────────────────────────────────────────────── */
 
@@ -11824,20 +11677,9 @@ body.viewer-active .folio-leaf-colophon {
           </div>
           <div id="browse-tiles"></div>
         </div>
-        <div id="text-cover" style="display:none;">
-          <div id="cover-title"></div>
-          <div id="cover-author"></div>
-          <div id="cover-year"></div>
-          <div id="cover-translator"></div>
-          <div id="cover-source-summary"></div>
-          <button id="cover-begin" type="button">View contents</button>
-        </div>
-        <div id="group-cover" style="display:none;">
-          <div id="group-cover-title"></div>
-          <div id="group-cover-author"></div>
-          <div id="group-cover-hint">Choose a translation:</div>
-          <div id="group-cover-translations"></div>
-        </div>
+        <!-- Task 57 Lane A: #text-cover and #group-cover retired — the
+             old cover→TOC chain and the translation-chooser cover were
+             dead code (never shown; survey 56). -->
         <div id="text-toc" style="display:none;">
           <div id="toc-title">Contents</div>
           <div id="toc-subtitle"></div>
@@ -12391,17 +12233,9 @@ const $metaGrid     = document.getElementById('meta-grid');
 const $metaToggle   = document.getElementById('meta-toggle');
 const $metaFrontMatter = document.getElementById('meta-front-matter');
 const $infoBar      = document.getElementById('info-bar');
-const $cover       = document.getElementById('text-cover');
-const $coverTitle  = document.getElementById('cover-title');
-const $coverAuthor = document.getElementById('cover-author');
-const $coverYear   = document.getElementById('cover-year');
-const $coverTrans  = document.getElementById('cover-translator');
-const $coverSourceSummary = document.getElementById('cover-source-summary');
-const $groupCover         = document.getElementById('group-cover');
-const $groupCoverTitle    = document.getElementById('group-cover-title');
-const $groupCoverAuthor   = document.getElementById('group-cover-author');
-const $groupCoverTranslations = document.getElementById('group-cover-translations');
-const $coverBegin  = document.getElementById('cover-begin');
+// Task 57 Lane A — the dead cover consts retired ($cover, $coverTitle,
+// $coverAuthor, $coverYear, $coverTrans, $coverSourceSummary,
+// $groupCover ×4, $coverBegin — their elements are gone).
 const $toc         = document.getElementById('text-toc');
 const $tocSubtitle = document.getElementById('toc-subtitle');
 const $tocList     = document.getElementById('toc-list');
@@ -15051,99 +14885,8 @@ const BIBLE_CANON_TIER_BY_FILE = {
 
 // ── Cover page ───────────────────────────────────────────────────────────────
 
-function showGroupCover(group, listItem) {
-  // Activate this sidebar item
-  if (activeItem) activeItem.classList.remove('active');
-  listItem.classList.add('active');
-  activeItem = listItem;
-  currentEntry = null;
-
-  $welcome.style.display     = 'none';
-  $cover.style.display       = 'none';
-  $toc.style.display         = 'none';
-  $passages.style.display    = 'none';
-  $bookGroup.style.display   = 'none';
-  $searchGroup.style.display = 'none';
-  $navBar.style.display      = 'none';
-  $trBar.style.display       = 'none';
-  $metaPanel.style.display   = 'none';
-  $infoBar.style.display     = 'none';
-  $readerInner.classList.remove('compare-mode');
-  clearSearch();
-
-  const primaryEntry = group.entries.find(e => e.quality === 'primary') || group.entries[0];
-  const authors = (primaryEntry.author && primaryEntry.author.length)
-    ? primaryEntry.author.join(', ') : '';
-
-  $groupCoverTitle.textContent = group.title;
-  $groupCoverAuthor.textContent = authors;
-  $groupCoverAuthor.style.display = authors ? 'block' : 'none';
-
-  $groupCoverTranslations.innerHTML = '';
-  // Sort: primary first, then by translator name. For the grouped Bible
-  // (Option B, UI-only) sort instead by language section, so the existing
-  // loop below can emit a calm heading at each language boundary. Every
-  // witness is still iterated exactly once (unmapped -> 'Other'), so none
-  // can be dropped or duplicated and the rendered button count is unchanged.
-  const isBibleGroup = group.id === 'bible';
-  const bibleLangIndex = (e) => {
-    const i = BIBLE_LANGUAGE_ORDER.indexOf(BIBLE_LANGUAGE_BY_FILE[e.data_file] || 'Other');
-    return i === -1 ? BIBLE_LANGUAGE_ORDER.length : i;
-  };
-  const sortedEntries = group.entries.slice().sort((a, b) => {
-    if (isBibleGroup) {
-      const la = bibleLangIndex(a), lb = bibleLangIndex(b);
-      if (la !== lb) return la - lb;
-      if ((a.quality === 'primary') !== (b.quality === 'primary'))
-        return a.quality === 'primary' ? -1 : 1;
-      const ta = BIBLE_CANON_TIER_BY_FILE[a.data_file] || 1;
-      const tb = BIBLE_CANON_TIER_BY_FILE[b.data_file] || 1;
-      if (ta !== tb) return ta - tb;
-      const ya = a.year || 999999, yb = b.year || 999999;
-      if (ya !== yb) return ya - yb;
-      return translationLabel(a).localeCompare(translationLabel(b));
-    }
-    if ((a.quality === 'primary') !== (b.quality === 'primary')) {
-      return a.quality === 'primary' ? -1 : 1;
-    }
-    const at = (a.translator || []).join(' ');
-    const bt = (b.translator || []).join(' ');
-    return at.localeCompare(bt);
-  });
-  let _lastBibleLang = null;
-  for (const entry of sortedEntries) {
-    if (isBibleGroup) {
-      const lang = BIBLE_LANGUAGE_BY_FILE[entry.data_file] || 'Other';
-      if (lang !== _lastBibleLang) {
-        const n = sortedEntries.filter(
-          e => (BIBLE_LANGUAGE_BY_FILE[e.data_file] || 'Other') === lang).length;
-        const h = document.createElement('div');
-        h.className = 'gt-lang-heading';
-        h.textContent = lang + ' · ' + n;
-        $groupCoverTranslations.appendChild(h);
-        _lastBibleLang = lang;
-      }
-    }
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'group-translation-btn';
-    const label = translationLabel(entry);
-    const translator = (entry.translator && entry.translator.length)
-      ? entry.translator.join(', ') : '';
-    const star = entry.quality === 'primary' ? '<span class="gt-star">\u2605</span>' : '';
-    const yearTxt = entry.year ? ` · ${entry.year}` : '';
-    btn.innerHTML =
-      `<span class="gt-label">${star}${escapeHTML(label)}</span>` +
-      (translator ? `<span class="gt-sub">${escapeHTML(translator)}${escapeHTML(yearTxt)}</span>` : '');
-    btn.addEventListener('click', () => loadText(entry, listItem));
-    $groupCoverTranslations.appendChild(btn);
-  }
-
-  $groupCover.style.display = 'block';
-  $infoBar.style.display = 'flex';
-  $reader.style.overflow = '';
-  $reader.scrollTop = 0;
-}
+// Task 57 Lane A — showGroupCover retired (0 callers since the browse
+// chain replaced the sidebar group chooser; survey 56).
 
 // ════════════════════════════════════════════════════════════════
 //  DIGITAL ARCHIVE PAGE TYPES (v97 doctrine)
@@ -15203,8 +14946,6 @@ function showGroupCover(group, listItem) {
 function showCover(data, entry) {
   // ── Title page + TOC as separate view from reading ──
   const $textHeader = document.getElementById('text-header');
-  $groupCover.style.display = 'none';
-  $cover.style.display      = 'none';
   $toc.style.display        = 'none';
   $infoBar.style.display    = 'flex';
   $passages.style.display   = 'none';
@@ -15288,6 +15029,9 @@ function showCover(data, entry) {
   // affordances (canon segmentation, Codex Index, Bible-Versions
   // back-arrow) remain gated on `isBibleCover`. See
   // STATIC_CONTENTS_PAGES.md.
+  // Task 57 Lane C (ruled): this flag keys on STRUCTURE (book+chapter
+  // hierarchy), not Bible identity — Aristotle and Augustine wear the
+  // hierarchical grid rightly. Read it as “hierarchicalCover”.
   const isBibleCover = data.hierarchy && data.hierarchy[0] === 'book'
                                       && data.hierarchy[1] === 'chapter';
 
@@ -15319,7 +15063,11 @@ function showCover(data, entry) {
   // Numeric single sections (separately mis-parsed) keep the flat fallback.
   const _singleMeaningful = keys.length === 1 && !/^\d+$/.test(String(keys[0]));
   const grouped = needsGroupSelector() && (keys.length > 1 || _singleMeaningful) && keys.length <= 200;
-  const useCodexLayout = isBibleCover || grouped;
+  // Task 57 Lane B — ONE cover grammar: every text wears the codex
+  // plate. `grouped` still decides the SHAPE (contents grid vs the
+  // flat plate); the shell, back-crumb, 44a actions, and corner
+  // citations are universal.
+  const useCodexLayout = true;
   // Front Matter button shows for either fm passages OR a structured
   // front_matter block (e.g. a Gutenberg title page held in data.front_matter
   // with no fm passages). Presentation only — no source mutation.
@@ -15364,11 +15112,8 @@ function showCover(data, entry) {
   }
 
   let html = '';
-  if (useCodexLayout) {
-    // Codex-leaf shell for every enumerable text. Bible carries
-    // canon segmentation + Codex Index + back-to-versions; other
-    // codex texts get one generic grid + a single "Read from
-    // beginning" CTA. Both share the same composition.
+  // Task 57 — the codex-leaf shell wraps EVERY cover (Lane B).
+  {
     const layoutClasses = isBibleCover
       ? 'bible-cover-layout'
       : 'bible-cover-layout codex-cover-layout';
@@ -15389,22 +15134,19 @@ function showCover(data, entry) {
   const _pl = (entry && entry.data_file && _df2map[entry.data_file]) || null;
   const _mapSlug = (_pl && _pl[0]) || (entry && entry.tradition && _trad2map[entry.tradition]) || null;
   const _mapName = (_pl && _pl[1]) || (entry && entry.tradition) || '';
-  if (isBibleCover) {
-    html += '<button type="button" class="bcl-back-to-versions" ' +
-            (_mapSlug ? 'data-mapslug="' + escapeHTML(_mapSlug) + '" ' : '') +
-            'title="' + (_mapSlug ? 'Back to the map' : 'Back to Bible versions') + '">' +
-            (_mapSlug ? '&larr; Map &middot; ' + escapeHTML(_mapName) : '&larr; Bible Versions') +
-            '</button>';
-  } else if (useCodexLayout) {
-    // v98 — If this text is a family member, label the back
-    // button with the family title so the user can see exactly
-    // where it returns to ("← The Upanishads" rather than the
-    // generic "← All Texts").
+  // Task 57 Lane C — ONE crumb renderer naming the true destination;
+  // the "Bible Versions" label is IDENTITY-gated (real Bible witnesses
+  // only), never leaked onto hierarchy-shaped texts like Aristotle
+  // (whose no-map fallback used to read ← Bible Versions).
+  {
+    const _isBibleFamily = /^bible_/.test((entry && entry.data_file) || '');
     const _famHere = (typeof _familyForTextId === 'function' && entry && entry.id)
       ? _familyForTextId(entry.id) : null;
     const backLabel = _mapSlug ? ('Map · ' + _mapName)
+                    : _isBibleFamily ? 'Bible Versions'
                     : _famHere ? _famHere.title : 'All Texts';
     const backTitle = _mapSlug ? 'Back to the tradition\'s map'
+                    : _isBibleFamily ? 'Back to Bible versions'
                     : _famHere ? ('Back to ' + _famHere.title) : 'Back to all texts';
     html += '<button type="button" class="bcl-back-to-versions bcl-back-to-library" ' +
             (_mapSlug ? 'data-mapslug="' + escapeHTML(_mapSlug) + '" ' : '') +
@@ -15458,35 +15200,19 @@ function showCover(data, entry) {
   //   title leaf, added after #continuous-cover closes.
   //   Flat / non-enumerable texts: citations are centered inline
   //   beneath the title, as before.
-  if (!useCodexLayout) {
-    html += citationsHTML;
-  }
-
   if (data.stewardship_history_url) {
     html += `<div class="cc-stewardship"><a class="stewardship-link" href="${escapeHTML(data.stewardship_history_url)}">Stewardship history</a></div>`;
   }
 
-  if (!useCodexLayout) html += '<div class="cc-rule"></div>';
   html += '</div>';
 
-  if (useCodexLayout) {
-    html += '<details class="cite-corner">' +
-            '<summary>Cite this text</summary>' +
-            citationsHTML +
-            '</details>';
-  }
+  html += '<details class="cite-corner">' +
+          '<summary>Cite this text</summary>' +
+          citationsHTML +
+          '</details>';
 
   html += '<div id="continuous-toc">';
-  if (!useCodexLayout) {
-    html += `<div class="cc-toc-heading">Contents</div>`;
-    if (_override && _override.summary) {
-      html += `<div class="cc-toc-sub">${escapeHTML(_override.summary)}</div>`;
-    } else if (grouped) {
-      html += `<div class="cc-toc-sub">${keys.length} ${hier[0] || 'section'}s \u00b7 ${bodyCount.toLocaleString()} passages</div>`;
-    } else {
-      html += `<div class="cc-toc-sub">${bodyCount.toLocaleString()} passages</div>`;
-    }
-  } else if (!isBibleCover) {
+  if (!isBibleCover) {
     // Codex-leaf sub-rubric — quiet italic line under the title
     // declaring the count + the L1 type ("18 chapters · 295
     // passages"). Mirrors the Bible's silent canon-rubric tone.
@@ -15512,11 +15238,11 @@ function showCover(data, entry) {
   // Task 33 ruling (2026-07-30), fix 4 — on non-Bible codex covers the
   // begin/resume actions are FIRST-OPEN actions: promoted above the
   // contents grid instead of the understated right-aligned pill below
-  // it (which the ergonomics audit itself failed to find). The Bible
-  // keeps its ceremonial bottom-center "Enter the Reading Room";
-  // plain covers keep their centered pill — both gain the resume pill
-  // in place.
-  if (useCodexLayout && !isBibleCover && grouped) {
+  // it (which the ergonomics audit itself failed to find). The
+  // hierarchical cover keeps its ceremonial bottom-center action —
+  // speaking the standard verb since Task 57 — and both gain the
+  // resume pill in place.
+  if (!isBibleCover && grouped) {
     html += `<div class="cc-begin-wrap cc-actions-top">${_resumePill('bcl-enter-btn')}` +
             `<div class="cc-begin bcl-enter-btn" id="cc-begin-btn">Read from beginning &rarr;</div></div>`;
   }
@@ -15524,7 +15250,9 @@ function showCover(data, entry) {
   // Front Matter button — always first if it exists, UNLESS a
   // per-text override has suppressed it (because its fm passages
   // are editorial boilerplate, not a meaningful reader entry).
-  if (hasFrontMatter) {
+  // Task 57 — grid covers keep the standalone Front Matter pill; the
+  // flat plate carries it as a quiet chip inside its actions row.
+  if (hasFrontMatter && grouped) {
     html += '<div class="cc-fm-btn-wrap"><div class="cc-fm-btn" data-book="__fm__">✦ Front Matter</div></div>';
   }
 
@@ -15656,18 +15384,21 @@ function showCover(data, entry) {
     html += '</ul>';
     html += '</section>';
   } else {
-    // Flat / non-enumerable text — a single "Read the full text"
-    // plate (no codex shell wrapping this branch). A saved position
-    // gets its resume pill above the plate (Task 33 fix 2).
-    if (_resume) html += `<div class="cc-begin-wrap cc-actions-top">${_resumePill('')}</div>`;
-    html += '<ul class="cc-toc-list">';
-    html += `<li data-book="__all__"><span class="cc-toc-num">&rarr;</span><span class="cc-toc-name">Read the full text</span></li>`;
-    html += '</ul>';
+    // Task 57 (ruled) — the flat plate wears the standard 44a actions
+    // row CENTERED under the title: Continue (filled, when a position
+    // exists) · Read from beginning (quiet) · Front Matter as a quiet
+    // chip beside the begin action. Entry keeps the full-stream path
+    // (enterReading(), exactly the old __all__ plate).
+    html += `<div class="cc-begin-wrap cc-actions-top cc-flat-actions">${_resumePill('')}` +
+            `<div class="cc-begin" id="cc-begin-btn" data-flat="1">Read from beginning &rarr;</div>` +
+            (hasFrontMatter ? '<div class="cc-fm-btn cc-fm-chip" data-book="__fm__">✦ Front Matter</div>' : '') +
+            '</div>';
   }
-  // Codex Index — quiet manuscriptal utility above the Reading
-  // Room threshold. Bible only — the Codex Index ledger is wired
-  // to the Bible's chapter/verse witness structure.
-  if (isBibleCover) {
+  // Codex Index — quiet manuscriptal utility. Task 57 Lane C
+  // (surveyed): the ledger is Bible-only in SUBSTANCE — on non-Bible
+  // hierarchical texts it rendered an empty shell (Aristotle → 0
+  // rows). Gated on IDENTITY, not hierarchy shape.
+  if (isBibleCover && /^bible_/.test((entry && entry.data_file) || '')) {
     html += '<div class="bcl-atlas-index-wrap">' +
             '<button type="button" class="bcl-atlas-index-btn" ' +
             'id="cc-atlas-index-btn">' +
@@ -15675,19 +15406,17 @@ function showCover(data, entry) {
             '</button></div>';
   }
 
-  if (grouped && (isBibleCover || !useCodexLayout)) {
-    // Bible keeps the explicit Reading-Room threshold label at the
-    // bottom of the leaf; plain grouped covers keep the centered
-    // pill. (Non-Bible codex covers now carry these actions in the
-    // promoted cc-actions-top row above the grid — Task 33 fix 4.)
-    const label = isBibleCover ? 'Enter the Reading Room' : 'Read from beginning &rarr;';
-    const cls   = useCodexLayout ? 'cc-begin bcl-enter-btn' : 'cc-begin';
-    const wrap  = useCodexLayout ? 'cc-begin-wrap bcl-enter-wrap' : 'cc-begin-wrap';
-    html += `<div class="${wrap}">${_resumePill(useCodexLayout ? 'bcl-enter-btn' : '')}<div class="${cls}" id="cc-begin-btn">${label}</div></div>`;
+  if (grouped && isBibleCover) {
+    // Task 57 Lane C (ruled) — one verb set for all 1,093: “Enter the
+    // Reading Room” retires; the hierarchical cover keeps its
+    // ceremonial bottom-center position and dress, speaking the
+    // standard 44a grammar.
+    html += `<div class="cc-begin-wrap bcl-enter-wrap">${_resumePill('bcl-enter-btn')}` +
+            `<div class="cc-begin bcl-enter-btn" id="cc-begin-btn">Read from beginning &rarr;</div></div>`;
   }
   html += '</div>';
 
-  if (useCodexLayout) html += '</div>';
+  html += '</div>';
 
   $textHeader.innerHTML = html;
   $textHeader.style.display = 'block';
@@ -15827,6 +15556,9 @@ function showCover(data, entry) {
   const beginBtn = document.getElementById('cc-begin-btn');
   if (beginBtn) {
     beginBtn.addEventListener('click', () => {
+      // Task 57 — flat plates keep the full-stream entry (the old
+      // __all__ path); sectioned texts enter their first section.
+      if (beginBtn.dataset.flat) { enterReading(); return; }
       const k = chapterScoped
         ? _firstChapterOfBook(keys[0], currentData)
         : keys[0];
@@ -15859,7 +15591,6 @@ function enterReading(targetGroupKey) {
   if ($th) $th.style.display = 'none';
   document.body.classList.remove('on-text-contents');
   document.body.classList.remove('on-shelf-page');
-  $cover.style.display    = 'none';
   $toc.style.display      = 'none';
   $passages.style.display = '';
 
@@ -15977,7 +15708,6 @@ function enterReading(targetGroupKey) {
 }
 
 function showToc(data, entry) {
-  $cover.style.display    = 'none';
   $toc.style.display      = 'block';
   $passages.style.display = 'none';
   $infoBar.style.display  = 'flex';
@@ -16041,7 +15771,9 @@ function showToc(data, entry) {
   }
 }
 
-$coverBegin.addEventListener('click', () => showToc(currentData, currentEntry));
+// Task 57 Lane A — $coverBegin listener retired with #text-cover. NOTE:
+// showToc/#text-toc are now trigger-less (flagged in STATUS; a future
+// lane may retire them).
 $tocBack.addEventListener('click', () => showCover(currentData, currentEntry));
 $tocBegin.addEventListener('click', () => enterReading());
 
@@ -22168,8 +21900,6 @@ async function loadText(entry, listItem) {
   document.getElementById('text-header').style.display = 'none';
   document.body.classList.remove('on-text-contents');
   document.body.classList.remove('on-shelf-page');
-  $cover.style.display       = 'none';
-  if ($groupCover) $groupCover.style.display = 'none';
   $toc.style.display         = 'none';
   $bookGroup.style.display   = 'none';
   $searchGroup.style.display = 'none';
@@ -22780,8 +22510,6 @@ function escH(s) {
 /** Hide all reader panels and show the browse view */
 function showBrowse() {
   document.getElementById('welcome').style.display    = 'none';
-  document.getElementById('text-cover').style.display  = 'none';
-  document.getElementById('group-cover').style.display = 'none';
   document.getElementById('text-toc').style.display    = 'none';
   const _th = document.getElementById('text-header');
   if (_th) { _th.innerHTML = ''; _th.style.display = 'none'; }
@@ -27346,7 +27074,6 @@ function _openAtlasIndex(data, entry) {
   // calm surface.
   document.body.classList.remove('companion-mode');
   document.body.classList.remove('viewer-active');
-  $cover.style.display    = 'none';
   $toc.style.display      = 'none';
   $passages.style.display = 'none';
   if ($navBar) $navBar.style.display = 'none';
@@ -27538,8 +27265,6 @@ function browseHome() {
   document.getElementById('controls').style.display = 'none';
   document.getElementById('welcome').style.display = '';
   // Hide any open text panels
-  document.getElementById('text-cover').style.display = 'none';
-  document.getElementById('group-cover').style.display = 'none';
   document.getElementById('text-toc').style.display = 'none';
   document.getElementById('text-header').style.display = 'none';
   document.getElementById('text-header').innerHTML = '';
