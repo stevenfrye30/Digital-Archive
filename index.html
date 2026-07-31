@@ -341,17 +341,18 @@ body {
   line-height: var(--reader-leading);
 }
 body.chapter-room #reader { padding-top: 20px; }
-/* v96 — Specific text contents pages don't scroll. The codex-leaf
-   sits high in the viewport (~10-12px from the top), reader padding
-   is compacted, and #reader is overflow-locked. Range chips handle
-   long contents in lieu of scrolling. Shelf/category pages
-   (showBrowse) and reading pages (.in-reading) are untouched.
+/* v96 · Task 55 — contents pages: compact padding; they SCROLL when
+   their content outgrows the viewport (range chips stage long
+   contents, but staging is a courtesy, not the reachability
+   mechanism). Shelf/category pages (showBrowse) and reading pages
+   (.in-reading) are untouched.
    v98 — top padding trimmed further so the codex leaf nearly
    touches the page chrome; the leaf's own border keeps it visually
    floating. */
 body.on-text-contents #reader {
   padding: 4px 32px 10px;
-  overflow: hidden;
+  /* Task 55: the v96 overflow lock retired — contents pages scroll
+     when tall (the universal rule); short covers show no scrollbar. */
 }
 /* v98 — On the specific text contents page the metadata is already
    on the leaf itself; the "About this text" info-bar above it is
@@ -5221,7 +5222,12 @@ body:not(.in-reading) #meta-toggle .info-icon {
    `on-shelf-page`, which showBrowse() sets and every exit path
    clears. See the DIGITAL ARCHIVE PAGE TYPES block near
    showCover() for the full doctrine. */
-body:not(.in-reading):not(.atlas-index-active):not(.on-shelf-page) #reader {
+/* Task 55 — EVERY between-surface scrolls when tall; only the HOME
+   entrance stays locked. The :not() chain carries specificity (1,3,1),
+   which silently BEAT the 44b body.on-text-contents auto rule (1,1,1)
+   — that is why old-style covers could not be entered. Excluding
+   .on-text-contents here ends the fight; the 44b rule below wins. */
+body:not(.in-reading):not(.atlas-index-active):not(.on-shelf-page):not(.on-text-contents) #reader {
   padding-top: 70px;
   padding-bottom: 24px;
   overflow: hidden;
@@ -15165,9 +15171,9 @@ function showGroupCover(group, listItem) {
 //   3. SPECIFIC TEXT CONTENTS   body.on-text-contents
 //      · Bible KJV / Tao / Gita / Iliad / Odyssey / Quran title
 //        leaf — the formal entry into one chosen text.
-//      · STATIC OR STAGED — fits one viewport. Long contents use
-//        range chips (~24-29 buttons per range) rather than
-//        scrolling.
+//      · SCROLLS WHEN TALL (Task 55). Range chips still stage long
+//        contents as a courtesy, but reachability never depends on
+//        fitting one viewport.
 //      · Material: museum ivory codex-leaf (v95/v96), with the
 //        plate-edge ring + drop shadow. Distinct from shelf
 //        cards and from reading-room parchment.
@@ -15184,12 +15190,14 @@ function showGroupCover(group, listItem) {
 //  Cross-cutting CSS gate (line ~3572):
 //
 //    body:not(.in-reading):not(.atlas-index-active):not(.on-shelf-page)
-//      #reader { overflow: hidden; ... }
+//      :not(.on-text-contents) #reader { overflow: hidden; ... }
 //
-//  This locks #reader for the Home and Text Contents page types
-//  while leaving Shelf, Reading Room, and Codex Index free to
-//  scroll. Whenever a new "static" page type is added, route it
-//  through this rule (not into a new exception).
+//  Task 55: this locks #reader for the HOME entrance ONLY. Every
+//  surface between the entrance and the reading view (contents
+//  covers of every generation, pickers, family pages, the Codex
+//  Index) scrolls when its content outgrows the viewport. A new
+//  page type must set one of the marker classes (on-text-contents /
+//  on-shelf-page) so it scrolls — never add a new lock.
 // ════════════════════════════════════════════════════════════════
 
 function showCover(data, entry) {
