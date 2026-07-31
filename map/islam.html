@@ -453,7 +453,19 @@ section.view { display: block !important; }
         if (b.contained_in) {
           el.title = (el.title ? el.title + ' — ' : '') + b.contained_in;
         }
-        if (false) { // 42a: the single-held direct-link retired — every held chip pops the chooser
+        if (b.state === 'held' && b.read && b.read.length === 1) {
+          // Task 82 — the steward reverses 42a for single-held: one
+          // edition, one destination — straight to its cover. Multi-
+          // held keeps the chooser below.
+          el.style.cursor = 'pointer';
+          el.setAttribute('role', 'link');
+          el.setAttribute('tabindex', '0');
+          el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
+          });
+          el.addEventListener('click', function () {
+            location.href = '../' + b.read[0].url;
+          });
         } else if ((b.state === 'held' || b.state === 'held-several') && b.read && b.read.length) {
           el.style.cursor = 'pointer';
           // 42a — keyboard access in structure mode, the rights-mode pattern

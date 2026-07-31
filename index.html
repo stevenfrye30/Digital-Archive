@@ -835,9 +835,11 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   letter-spacing: 0.1em; color: #8a7a6a;
 }
 .cc-pager button {
-  font: inherit; font-size: 14px; line-height: 1;
-  background: none; border: 1px solid #d8d3cc; border-radius: 999px;
-  color: #8a7a6a; width: 26px; height: 26px; cursor: pointer;
+  /* Task 82 — the Task 72 button dress: bordered squares, obvious */
+  font: inherit; font-size: 16px; line-height: 1;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid #d8d3cc; border-radius: 6px;
+  color: #2c2c2c; width: 30px; height: 30px; cursor: pointer;
 }
 .cc-pager button:hover:not(:disabled) { color: #7a5c3a; border-color: #7a5c3a; }
 .cc-pager button:disabled { opacity: 0.35; cursor: default; }
@@ -846,43 +848,59 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 [data-theme="dark"] .cc-pager button:hover:not(:disabled) { color: #c4a060; border-color: #c4a060; }
 
 /* Task 75 — the quiet Other-editions block at the plate's foot */
-.cc-other-editions {
-  margin: 26px auto 6px;
-  padding: 12px 0 0;
-  border-top: 1px solid #e6e1d9;
-  text-align: center;
-  font-family: Georgia, serif;
-  font-size: 13px;
-}
-.cc-other-editions .cc-oe-rubric {
-  display: block;
+/* Task 82 — the corner affordance (top-left, mirroring Cite) */
+.cc-editions-corner {
+  position: absolute; top: 22px; left: 36px; z-index: 2;
   font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: #8a7a6a; margin-bottom: 8px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: #8a7a6a; background: none; border: none;
+  cursor: pointer; padding: 4px 0;
 }
-.cc-other-editions a {
-  display: inline-block; margin: 2px 10px; color: #2c2c2c;
-  text-decoration: none; border-bottom: 1px solid rgba(122, 92, 58, .35);
+.cc-editions-corner:hover { color: #7a5c3a; }
+.cc-ed-pop {
+  position: absolute; top: 44px; left: 36px; z-index: 6;
+  background: #faf8f5; border: 1px solid #e6e1d9; border-radius: 8px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+  padding: 10px 14px; font-family: Georgia, serif; font-size: 13px;
+  text-align: left; max-width: 320px;
 }
-.cc-other-editions a:hover { color: #7a5c3a; border-bottom-color: #7a5c3a; }
-.cc-other-editions .cc-oe-work { color: #8a7a6a; font-style: italic; }
-[data-theme="dark"] .cc-other-editions { border-top-color: #3a3a3e; }
-[data-theme="dark"] .cc-other-editions a { color: #d4d0c8; }
-[data-theme="dark"] .cc-other-editions a:hover { color: #c4a060; }
-[data-theme="dark"] .cc-other-editions .cc-oe-rubric,
-[data-theme="dark"] .cc-other-editions .cc-oe-work { color: #918d84; }
+.cc-ed-pop a { display: block; margin: 4px 0; color: #2c2c2c;
+  text-decoration: none; border-bottom: 1px solid rgba(122, 92, 58, .3); }
+.cc-ed-pop a:hover { color: #7a5c3a; }
+[data-theme="dark"] .cc-ed-pop { background: #222226; border-color: #3a3a3e; }
+[data-theme="dark"] .cc-ed-pop a { color: #d4d0c8; }
+[data-theme="dark"] .cc-editions-corner { color: #918d84; }
+[data-theme="dark"] .cc-editions-corner:hover { color: #c4a060; }
+/* the 81 star — the actions-row square (cover literals, pinned) */
+.cc-fav {
+  width: 30px; height: 30px; box-sizing: border-box;
+  border: 1px solid #e6e1d9; border-radius: 6px;
+  background: rgba(0, 0, 0, 0.02); color: #8a7a6a;
+  font-size: 15px; line-height: 1; cursor: pointer; padding: 0;
+}
+.cc-fav:hover { color: #7a5c3a; border-color: #7a5c3a; }
+.cc-fav.on { color: #7a5c3a; }
+[data-theme="dark"] .cc-fav { border-color: #3a3a3e; color: #918d84;
+  background: rgba(255, 255, 255, 0.04); }
+[data-theme="dark"] .cc-fav.on, [data-theme="dark"] .cc-fav:hover { color: #c4a060; }
+/* the entrance Favorites popover rows */
+.hd-pop .fav-row { display: block; padding: 4px 0; color: #2c2c2c;
+  text-decoration: none; font-size: 13.5px; }
+.hd-pop .fav-row:hover { color: #7a5c3a; }
+.hd-pop .fav-trad { color: #8a7a6a; font-style: italic; }
+.hd-pop .fav-empty { font-style: italic; color: #8a7a6a; }
+[data-theme="dark"] .hd-pop .fav-row { color: #d4d0c8; }
+[data-theme="dark"] .hd-pop .fav-row:hover { color: #c4a060; }
+[data-theme="dark"] .hd-pop .fav-trad,
+[data-theme="dark"] .hd-pop .fav-empty { color: #918d84; }
 
-/* Task 62 — the quiet contents rule: a hairline with a mono label */
-.cc-contents-rule {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 22px 0 14px;
-  color: var(--chrome-muted);
-  font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
+
+
+
+
+[data-theme="dark"] 
+[data-theme="dark"] 
+
 .cc-contents-rule::before,
 .cc-contents-rule::after {
   content: '';
@@ -907,6 +925,8 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   border-radius: 8px;
   transition: background 0.15s, border-color 0.15s;
 }
+/* Task 82 — entry text centers within the button (all covers) */
+.cc-toc-list li { justify-content: center; }
 .cc-toc-list li:hover {
   background: rgba(0,0,0,0.03);
   border-color: var(--chrome-border);
@@ -11851,6 +11871,7 @@ body.viewer-active .folio-leaf-colophon {
                    now, and a second link four lines above it rendered as
                    duplication, not affordance. The topnav stays minimal. -->
               <nav id="home-topnav">
+                <button type="button" id="fav-info">Favorites</button>
                 <button type="button" id="press-info">The Press</button>
                 <!-- Task 52: Atlas is an archive instrument — its doorway
                      retired from the Workspace front page; target unchanged -->
@@ -15713,6 +15734,38 @@ function showCover(data, entry) {
 
   $textHeader.innerHTML = html;
   $textHeader.style.display = 'block';
+  // Task 81 — a quiet star on every cover: toggles this text in the
+  // da-favorites list (data_file route keys — the reader's ?text=
+  // grammar; no other key is touched). State survives reload.
+  (function etchFavStar() {
+    if (!entry || !entry.data_file) return;
+    var row = $textHeader.querySelector('.cc-actions-top');
+    if (!row || row.querySelector('.cc-fav')) return;
+    var FKEY = 'da-favorites';
+    function favs() {
+      try { return JSON.parse(localStorage.getItem(FKEY)) || []; }
+      catch (e) { return []; }
+    }
+    var df = entry.data_file;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'cc-fav';
+    function paint() {
+      var on = favs().indexOf(df) >= 0;
+      b.textContent = on ? '\u2605' : '\u2606';
+      b.title = on ? 'Remove from favorites' : 'Add to favorites';
+      b.classList.toggle('on', on);
+    }
+    b.addEventListener('click', function () {
+      var f = favs();
+      var i = f.indexOf(df);
+      if (i >= 0) f.splice(i, 1); else f.push(df);
+      localStorage.setItem(FKEY, JSON.stringify(f));
+      paint();
+    });
+    paint();
+    row.appendChild(b);
+  })();
   // Task 75 (ruling 3) — the cover carries the edition choice: for a
   // work with several held witnesses, a quiet block lists the archive's
   // other editions of the SAME WORK (the chip's read[] siblings from
@@ -15732,19 +15785,42 @@ function showCover(data, entry) {
         });
         if (!chip) return;
         var plate = $textHeader.querySelector('.bible-cover-layout');
-        if (!plate || plate.querySelector('.cc-other-editions')) return;
+        if (!plate || plate.querySelector('.cc-editions-corner')) return;
+        // Task 82 — the affordance moves to the top-LEFT corner
+        // (mirroring Cite this text); Bible witnesses keep their own
+        // Versions grammar there, so they are skipped (stated).
+        if (_isBibleFamily) return;
         var others = chip.read.filter(function (r2) { return r2.df !== myDf; });
         if (!others.length) return;
-        var box = document.createElement('div');
-        box.className = 'cc-other-editions';
-        var rows = others.map(function (r2) {
-          var who = (r2.translator || r2.work) + (r2.year ? ', ' + r2.year : '');
-          return '<a href="?text=' + encodeURIComponent(r2.df) + '">' +
-                 escapeHTML(who) +
-                 ' <span class="cc-oe-work">· ' + escapeHTML(r2.work) + '</span></a>';
-        }).join('');
-        box.innerHTML = '<span class="cc-oe-rubric">Other editions of this work</span>' + rows;
-        plate.appendChild(box);
+        var corner = document.createElement('button');
+        corner.type = 'button';
+        corner.className = 'cc-editions-corner';
+        corner.textContent = others.length + ' other edition' + (others.length > 1 ? 's' : '');
+        var pop = null;
+        function shutEd() {
+          if (pop) { pop.remove(); pop = null; }
+        }
+        corner.addEventListener('click', function (ev) {
+          ev.stopPropagation();
+          if (pop) { shutEd(); return; }
+          pop = document.createElement('div');
+          pop.className = 'cc-ed-pop';
+          pop.setAttribute('role', 'dialog');
+          pop.innerHTML = others.map(function (r2) {
+            var who = (r2.translator || r2.work) + (r2.year ? ', ' + r2.year : '');
+            return '<a href="?text=' + encodeURIComponent(r2.df) + '">' +
+                   escapeHTML(who) +
+                   ' <span class="cc-oe-work">\u00b7 ' + escapeHTML(r2.work) + '</span></a>';
+          }).join('');
+          corner.after(pop);
+        });
+        document.addEventListener('click', function (ev) {
+          if (pop && !pop.contains(ev.target) && ev.target !== corner) shutEd();
+        });
+        document.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Escape') shutEd();
+        });
+        plate.appendChild(corner);
       })
       .catch(function () {});
   })();
@@ -15890,6 +15966,12 @@ function showCover(data, entry) {
   // first row); range-chip texts keep their staging (the chips ARE
   // pagination) and are excluded here.
   if (!$textHeader.querySelector('.bcl-codex-ranges')) {
+    // Task 82 — one paginated grid: the pager sits under the actions
+    // row (above the CONTENTS rule); several paginated sections keep
+    // a pager ABOVE each section's own grid (one pager cannot drive
+    // two sections — the split is stated in STATUS).
+    const _pagUls = [...$textHeader.querySelectorAll('#continuous-toc ul.cc-toc-list')]
+      .filter(u => u.querySelectorAll('li[data-book]').length > 24);
     $textHeader.querySelectorAll('#continuous-toc ul.cc-toc-list').forEach(ul => {
       const rows = [...ul.querySelectorAll('li[data-book]')];
       if (rows.length <= 24) return;
@@ -15915,7 +15997,9 @@ function showCover(data, entry) {
       prev.addEventListener('click', () => show(cur - 1));
       next.addEventListener('click', () => show(cur + 1));
       pager.append(lab, prev, next);
-      ul.after(pager);
+      const _rule = $textHeader.querySelector('.cc-contents-rule');
+      if (_pagUls.length === 1 && _rule) _rule.before(pager);
+      else ul.before(pager);
       show(0);
     });
   }
@@ -28217,6 +28301,40 @@ loadIndex();
       document.body.appendChild(pop);
       current = pop;
     });
+  });
+  // Task 81 — the Favorites shelf: a dynamic popover in the same
+  // grammar (title · tradition, each a link to its cover).
+  var favBtn = document.getElementById('fav-info');
+  if (favBtn) favBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (current && current.id === 'fav-pop') { shutPop(); return; }
+    shutPop();
+    var pop = document.createElement('div');
+    pop.id = 'fav-pop';
+    pop.className = 'hd-pop';
+    pop.setAttribute('role', 'dialog');
+    var f = [];
+    try { f = JSON.parse(localStorage.getItem('da-favorites')) || []; } catch (err) {}
+    var rows = '';
+    f.forEach(function (df) {
+      var meta = null;
+      try {
+        for (var id in indexGroups) {
+          for (var k = 0; k < indexGroups[id].length; k++) {
+            if (indexGroups[id][k].data_file === df) { meta = indexGroups[id][k]; break; }
+          }
+          if (meta) break;
+        }
+      } catch (err) {}
+      var title = meta ? meta.title : df.replace(/\.json$/, '');
+      var trad = (meta && meta.tradition) ? ' \u00b7 ' + meta.tradition : '';
+      rows += '<a class="fav-row" href="?text=' + encodeURIComponent(df) + '">' +
+              escapeHTML(title) + '<span class="fav-trad">' + escapeHTML(trad) + '</span></a>';
+    });
+    pop.innerHTML = '<span class="hd-rubric">Favorites</span>' +
+      (rows || '<p class="fav-empty">No favorites yet \u2014 star any text from its cover.</p>');
+    document.body.appendChild(pop);
+    current = pop;
   });
   document.addEventListener('click', function (e) {
     if (current && !current.contains(e.target)) shutPop();
