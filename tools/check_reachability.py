@@ -73,10 +73,12 @@ def surface_cross_links() -> list[str]:
         # is a redirect stub back to it) — every tradition page must be
         # one door away.
         h = hall.read_text(encoding="utf-8")
-        # Task 45: the Abrahamic door split into three
+        # Task 45: the Abrahamic door split into three;
+        # Task 67b: the East Asian door split into two
         for slug in ("hindu", "buddhist", "judaism", "christianity", "islam",
-                     "eastasian", "zoroastrian", "sikh", "jain", "shinto",
-                     "bahai", "ancient", "gnostic", "indigenous", "modern"):
+                     "confucian", "daoist", "zoroastrian", "sikh", "jain",
+                     "shinto", "bahai", "ancient", "gnostic", "indigenous",
+                     "modern"):
             if f"map/{slug}.html" not in h:
                 probs.append(f"hall/index.html carries no door to map/{slug}.html "
                              "(rebuild via 05_scripts/deploy_hall.py)")

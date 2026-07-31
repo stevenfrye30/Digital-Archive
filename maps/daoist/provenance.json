@@ -1,0 +1,94 @@
+{
+ "generated_by": "05_scripts/build_map_provenance.py — reviewed node descriptions migrated from 05_scripts/nodes/ (Task 35); holdings NEVER live here (bindings.json is that truth)",
+ "source_nodes_file": "05_scripts/nodes/eastasian.json",
+ "nodes": {
+  "analects": {
+   "title": "Analects · Lúnyǔ 論語",
+   "path": [
+    "Confucianism",
+    "The Four Books",
+    "Analects"
+   ],
+   "type": "work",
+   "description": "The sayings and conversations of Confucius as compiled by his school — the foundation text of the Confucian tradition. The archive holds James Legge's 1893 translation and Leonard A. Lyall's 1909 rendering.",
+   "desc_confidence": "reviewed"
+  },
+  "great-learning": {
+   "title": "Great Learning · Dàxué 大學",
+   "path": [
+    "Confucianism",
+    "The Four Books",
+    "Great Learning"
+   ],
+   "type": "work",
+   "description": "The short chapter on self-cultivation and ordered society, lifted from the Book of Rites into the Four Books by Zhu Xi. The archive holds James Legge's 1893 translation.",
+   "desc_confidence": "reviewed"
+  },
+  "doctrine-of-the-mean": {
+   "title": "Doctrine of the Mean · Zhōngyōng 中庸",
+   "path": [
+    "Confucianism",
+    "The Four Books",
+    "Doctrine of the Mean"
+   ],
+   "type": "work",
+   "description": "The Zhōngyōng — equilibrium and sincerity as the way of the noble person; the most metaphysical of the Four Books. The archive holds James Legge's 1893 translation.",
+   "desc_confidence": "reviewed"
+  },
+  "zhuangzi": {
+   "title": "Zhuāngzǐ 莊子",
+   "path": [
+    "Daoism",
+    "The Foundational Classics",
+    "Zhuāngzǐ"
+   ],
+   "type": "work",
+   "description": "The second great Daoist classic — parable, paradox, and the free-and-easy wandering of the perfected person, in thirty-three chapters. The archive holds Herbert A. Giles's 1889 translation.",
+   "desc_confidence": "reviewed"
+  },
+  "mencius": {
+   "title": "Mencius · Mèngzǐ 孟子",
+   "path": [
+    "Confucianism",
+    "The Four Books",
+    "Mencius"
+   ],
+   "type": "work",
+   "description": "The dialogues and arguments of Mencius (Mèngzǐ), the second sage of the Confucian school — the fourth of the Four Books. The archive holds James Legge's 1861 translation.",
+   "desc_confidence": "reviewed"
+  },
+  "classic-of-poetry": {
+   "title": "Classic of Poetry · Shījīng 詩經",
+   "path": [
+    "Confucianism",
+    "The Five Classics",
+    "Classic of Poetry"
+   ],
+   "type": "work",
+   "description": "The oldest anthology of Chinese poetry — 305 odes, hymns, and songs gathered in the early Zhou. The archive holds three renderings: James Legge's 1876 metrical version, William Jennings's 1891 translation, and Legge's prose selection from Sacred Books of the East vol. III.",
+   "desc_confidence": "reviewed"
+  },
+  "classic-of-filial-piety": {
+   "title": "Classic of Filial Piety · Xiàojīng 孝經",
+   "path": [
+    "Confucianism",
+    "The Thirteen Classics",
+    "Classic of Filial Piety"
+   ],
+   "type": "work",
+   "description": "A short dialogue on filial devotion as the root of all virtue, long a primer of Confucian moral teaching. The archive holds Ivan Chen's 1908 translation.",
+   "desc_confidence": "reviewed"
+  },
+  "dao-de-jing": {
+   "title": "Dào Dé Jīng 道德經 (Laozi)",
+   "path": [
+    "Daoism",
+    "The Foundational Classics",
+    "Dào Dé Jīng"
+   ],
+   "type": "work",
+   "description": "The founding classic of Daoism — eighty-one brief chapters on the Way and its power, attributed to Laozi. The archive holds four renderings: James Legge (1891), C. Spurgeon Medhurst (1905), Dwight Goddard and Henri Borel (1919), and Lionel Giles's 1904 selections.",
+   "desc_confidence": "reviewed"
+  }
+ }
+}
