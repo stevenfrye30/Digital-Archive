@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- Task 47d: one theme key everywhere, applied before first paint -->
-<script>(function(){try{if(/[?&]text=/.test(location.search))return;/* Task 51a: the reader never reads or writes da-theme */var t=localStorage.getItem("da-theme");if(!t){t=(localStorage.getItem("da-dark-mode")==="true"||localStorage.getItem("archive_theme")==="dark")?"dark":"light";localStorage.setItem("da-theme",t);}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
+<script>(function(){try{/* Task 87: ONE theme key up to the reading room’s door (revises 51a; the room’s presets own the room — 84 probe) */var t=localStorage.getItem("da-theme");if(!t){t=(localStorage.getItem("da-dark-mode")==="true"||localStorage.getItem("archive_theme")==="dark")?"dark":"light";localStorage.setItem("da-theme",t);}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="codex-build" content="v133-steven-developer-handbook">
@@ -947,6 +947,40 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .cc-toc-list li:hover .cc-toc-name { color: #7a5c3a; }
 [data-theme="dark"] .cc-toc-list li:hover { background: rgba(255,255,255,0.05); }
 [data-theme="dark"] .cc-toc-list li:hover .cc-toc-name { color: #c4a060; }
+
+/* Task 87 — the contents room tunes to the archive theme */
+.cc-title { color: var(--chrome-active); }
+.cc-toc-list li .cc-toc-name,
+.bible-cover-layout .bcl-canon-list li .cc-toc-name { color: #7a5c3a; }
+[data-theme="dark"] .cc-toc-list li .cc-toc-name,
+[data-theme="dark"] .bible-cover-layout .bcl-canon-list li .cc-toc-name { color: #c4a060; }
+[data-theme="dark"] .cc-toc-list li,
+[data-theme="dark"] .bible-cover-layout .bcl-canon-list li {
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+}
+/* the ONE contents row: label · counts ── Front Matter · pager */
+.cc-contents-rule.ccr-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.cc-contents-rule.ccr-row::before, .cc-contents-rule.ccr-row::after { content: none; }
+.ccr-line { flex: 1 1 auto; border-top: 1px solid var(--chrome-border, #d8d3cc); opacity: 0.6; }
+.cc-contents-rule .cc-fm-btn {
+  display: inline-block; padding: 4px 12px; font-size: 11px;
+  font-family: system-ui, sans-serif; white-space: nowrap;
+  color: #7a5c3a; background: transparent;
+  border: 1px solid var(--chrome-border, #d8d3cc); border-radius: 6px;
+  cursor: pointer; transition: border-color 0.15s, color 0.15s;
+}
+.cc-contents-rule .cc-fm-btn:hover { border-color: #7a5c3a; background: transparent; }
+[data-theme="dark"] .cc-contents-rule .cc-fm-btn { color: #c4a060; border-color: #4a4a4e; }
+[data-theme="dark"] .cc-contents-rule .cc-fm-btn:hover { border-color: #c4a060; }
+.cc-contents-rule .cc-pager { margin: 0; }
+/* the range chips read in dark */
+[data-theme="dark"] .bcl-codex-range { background: rgba(255, 255, 255, 0.04); color: #8a8680; }
+[data-theme="dark"] .bcl-codex-range--active { color: #c4a060; }
+/* the cite affordance steps forward */
+details.cite-corner > summary,
+.bible-cover-layout details.cite-corner > summary { color: var(--chrome-active); opacity: 0.75; }
+details.cite-corner > summary:hover,
+.bible-cover-layout details.cite-corner > summary:hover { opacity: 1; }
 .cc-toc-list li:focus-visible {
   outline: 2px solid #7a5c3a;
   outline-offset: 2px;
@@ -1650,12 +1684,10 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   border-radius: 2px;
   line-height: 1.08;
   cursor: pointer;
-  /* Subtle engraved relief — a paper-pale top highlight and a
-     hair-line shadow at the foot make each plate read as a
-     carved object embedded in the parchment, not a flat tag. */
-  box-shadow:
-    inset 0 1px 0 rgba(255, 252, 245, 0.55),
-    inset 0 -1px 0 rgba(120, 90, 50, 0.045);
+  /* Task 87 — the paper-pale top highlight retired (it read as a
+     white line above every button, glaring in dark); the quiet
+     foot hairline stays. */
+  box-shadow: inset 0 -1px 0 rgba(120, 90, 50, 0.045);
   transition:
     background-color 0.18s ease-out,
     border-color 0.18s ease-out,
@@ -1792,6 +1824,14 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   color: inherit;
   line-height: 1.22;
 }
+
+/* Task 87 — the doorway names speak the accent (the codex chain's
+   own specificity, stated AFTER its inherit rule so it wins). The
+   ordinal numeral keeps its muted register. */
+.bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list .cc-toc-name,
+.bible-cover-layout .bcl-canon-list .cc-toc-name { color: #7a5c3a; }
+[data-theme="dark"] .bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list .cc-toc-name,
+[data-theme="dark"] .bible-cover-layout .bcl-canon-list .cc-toc-name { color: #c4a060; }
 .bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list .cc-toc-num {
   align-self: flex-start;
   padding-top: 2px;
@@ -12031,14 +12071,8 @@ body.viewer-active .folio-leaf-colophon {
 
 // ── Dark mode (apply before paint) ───────────────────────────────────────────
 
-(function() {
-  // Task 51a — the shared da-theme key stops at the map's edge: the
-  // reader (?text= landings) never reads it; its own chrome key decides.
-  // Entrance landings were already painted by the head boot from da-theme.
-  const _onEntrance = !/[?&]text=/.test(location.search);
-  if (!_onEntrance && localStorage.getItem('da-dark-mode') === 'true')
-    document.documentElement.setAttribute('data-theme', 'dark');
-})();
+// Task 87 — the head boot paints every landing from da-theme now
+// (the old 51a ?text= gate retired); nothing to re-apply here.
 
 function _entranceVisible() {
   // Task 51a — the entrance is index.html's only da-theme surface; the
@@ -12064,11 +12098,11 @@ function toggleDarkMode() {
   if (isDark) {
     document.documentElement.removeAttribute('data-theme');
     localStorage.setItem('da-dark-mode', 'false');
-    if (_entranceVisible()) localStorage.setItem('da-theme', 'light');
+    localStorage.setItem('da-theme', 'light'); // Task 87 — one key, every surface
   } else {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('da-dark-mode', 'true');
-    if (_entranceVisible()) localStorage.setItem('da-theme', 'dark');
+    localStorage.setItem('da-theme', 'dark'); // Task 87 — one key, every surface
   }
   // Task 84 — one painter for every sun/moon on the document
   _paintDaGlyphs();
@@ -16058,6 +16092,55 @@ function showCover(data, entry) {
       show(0);
     });
   }
+
+  // Task 87 — the ONE contents row: label · counts ── Front Matter ·
+  // pager. Post-build relocation so every cover variant shares the
+  // grammar without touching each builder branch. Listeners ride the
+  // moved nodes; multi-section covers keep their per-section pagers.
+  (function () {
+    const rule = $textHeader.querySelector('.cc-contents-rule');
+    if (!rule) return;
+    rule.classList.add('ccr-row');
+    const span = rule.querySelector('span');
+    try {
+      const hier = currentData.hierarchy || [];
+      const leaf = hier.length ? String(hier[hier.length - 1]) : 'passage';
+      const n = currentData.passages.length;
+      const word = (n === 1) ? leaf : leaf + (leaf.endsWith('s') ? '' : 's');
+      if (span) span.textContent += ` \u00b7 ${n.toLocaleString()} ${word}`;
+    } catch (e) {}
+    const line = document.createElement('span');
+    line.className = 'ccr-line';
+    rule.appendChild(line);
+    const fm = $textHeader.querySelector('.cc-fm-btn');
+    if (fm) rule.appendChild(fm);
+    const pagers = $textHeader.querySelectorAll('.cc-pager');
+    if (pagers.length === 1) {
+      rule.appendChild(pagers[0]);
+    } else if (!pagers.length) {
+      const ranges = $textHeader.querySelector('.bcl-codex-ranges');
+      if (ranges) {
+        const step = (d) => {
+          const chips = [...ranges.querySelectorAll('.bcl-codex-range')];
+          const i = chips.findIndex(ch => ch.classList.contains('bcl-codex-range--active'));
+          const nx = chips[i + d];
+          if (nx) nx.click();
+        };
+        const pg = document.createElement('div');
+        pg.className = 'cc-pager';
+        const prev = document.createElement('button');
+        prev.type = 'button'; prev.textContent = '\u2039';
+        prev.setAttribute('aria-label', 'Previous range');
+        const next = document.createElement('button');
+        next.type = 'button'; next.textContent = '\u203a';
+        next.setAttribute('aria-label', 'Next range');
+        prev.addEventListener('click', () => step(-1));
+        next.addEventListener('click', () => step(1));
+        pg.append(prev, next);
+        rule.appendChild(pg);
+      }
+    }
+  })();
 
   // Wire "Read from beginning"
   const beginBtn = document.getElementById('cc-begin-btn');
