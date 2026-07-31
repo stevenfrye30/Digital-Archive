@@ -120,7 +120,7 @@
 </tbody>
 </table>
 <hr />
-<h2>STW-MUN-000</h2>
+<h2 id="stw-mun-000">STW-MUN-000</h2>
 <p><strong>entry_id.</strong> STW-MUN-000
 <strong>date.</strong> 2026-05-08
 <strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
@@ -149,7 +149,7 @@ None for this entry. Future Reading Room renderings may surface annotation entri
 <p><strong>steward_notes.</strong>
 The format used here follows the design proposed in the cycle's prior planning phase. If the format proves insufficient or burdensome in practice, future entries may evolve it; existing entries are not retroactively reformatted.</p>
 <hr />
-<h2>STW-MUN-001</h2>
+<h2 id="stw-mun-001">STW-MUN-001</h2>
 <p><strong>entry_id.</strong> STW-MUN-001
 <strong>date.</strong> 2026-05-08
 <strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
@@ -179,7 +179,7 @@ Reading Room rendering of passage 5.84 will read <code>5. The lower knowledge...
 First worked execution of an internally-recoverable deletion under the cycle's articulated framework. The discipline test is procedural rather than deliberative — even a two-character deletion is recorded with the same care as a substantive change.</p>
 <p>A forward-pointing finding: this edit produces a canonical that is no longer a verbatim subsequence of raw at this passage. The archive's integrity tool <code>05_scripts/text_preservation_proof.py</code> verifies that passages are "a faithful subsequence of the raw source (modulo normalization)." Whether this edit's two-character deletion falls within the proof's normalization tolerance is unknown until the proof is run; if the proof now reports divergence, that divergence is itself a constitutional finding for a future cycle (the integrity tool's tolerance for stewardship divergences is currently undocumented). The edit is performed regardless because the user has authorized the cycle and the proof's possible failure is information, not a blocker.</p>
 <hr />
-<h2>STW-MUN-002</h2>
+<h2 id="stw-mun-002">STW-MUN-002</h2>
 <p><strong>entry_id.</strong> STW-MUN-002
 <strong>date.</strong> 2026-05-08
 <strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
@@ -209,7 +209,7 @@ Reading Room rendering will read <code>...divine, inconceivable...</code> rather
 Same procedural shape as STW-MUN-001. Together, these two entries establish the pattern: small, internally-recoverable, fully recorded. The repairs themselves are minor; the discipline of recording them is the work.</p>
 <p>The same forward-pointing finding about <code>text_preservation_proof.py</code> applies: this edit further increases canonical-raw divergence by one character.</p>
 <hr />
-<h2>STW-MUN-003</h2>
+<h2 id="stw-mun-003">STW-MUN-003</h2>
 <p><strong>entry_id.</strong> STW-MUN-003
 <strong>date.</strong> 2026-05-08
 <strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
@@ -247,7 +247,7 @@ This entry is more important than its visible scope suggests. It is the first re
 <p>If a future steward inherits this archive and reads only this entry from this cycle, they will know: the archive looked at <em>thine</em>, considered the substitution, refused it, and explained why. Looked, considered, refused, explained. That sequence is the archive's mode of attention in operation. The other entries in this log are easier; this one is the one that teaches.</p>
 <p>A note on the reader-visibility gap: the annotation is recorded at full strength here but is not yet surfaced in the Reading Room because the rendering pipeline is not modified in this cycle. A reader of passage 5.130 in the current Reading Room therefore encounters the corruption without the annotation. This is acceptable for one cycle but is an obligation: the next time Reading Room rendering is touched, this annotation should be wired through. Recording the gap explicitly is itself part of the discipline.</p>
 <hr />
-<h2>STW-MUN-004</h2>
+<h2 id="stw-mun-004">STW-MUN-004</h2>
 <p><strong>entry_id.</strong> STW-MUN-004
 <strong>date.</strong> 2026-05-08
 <strong>cycle.</strong> First conscious stewardship cycle — Mundaka pilot
@@ -286,7 +286,7 @@ References Candidate 13 (transmission strata in metadata schema) and Candidate 1
 This entry exemplifies an annotation that surfaces a transmission-layer feature without any state change. The full record lives in this log; the metadata schema is not extended in this cycle. The pattern preserves discipline (record fully) while respecting architectural caution (do not extend schema casually).</p>
 <p>The 1879/1884 case has a quietly instructive shape. The simplest "fix" — rename the file — would produce a tidier archive that hides its own history. The cycle's discipline is to prefer the messier archive that remembers how it got messy.</p>
 <hr />
-<h2>STW-MUN-005</h2>
+<h2 id="stw-mun-005">STW-MUN-005</h2>
 <p><strong>entry_id.</strong> STW-MUN-005
 <strong>date.</strong> 2026-05-08
 <strong>cycle.</strong> First architectural recovery cycle — apparatus restoration
@@ -319,7 +319,7 @@ STW-MUN-006 (page mapping recovery using this schema field). STW-MUN-007 (appara
 The first <code>architectural</code> action_type in the log. Schema extensions are heavier than text edits because they ramify across all texts (any text may now declare an <code>apparatus_file</code>). The constitutional case for this extension is clean — Müller's apparatus is part of his witness, present in raw, recoverable internally to the held chain — but the precedent is significant. Future architectural extensions should be subjected to the same legitimacy framework: they must address a witness-narrowing that internal recoverability authorizes repair of, and they must not impose categorical structures the witness did not declare.</p>
 <p>The existing schema validator (<code>05_scripts/validate_metadata.py</code>) does not reject unknown text.json fields. The <code>apparatus_file</code> field will pass current validation silently. A future cycle could optionally add validator logic to check that, when present, <code>apparatus_file</code> points to an existing file with the apparatus shape. This is not implemented here because the user-facing instruction was to update validator logic only "if necessary," and the cycle's discipline is to defer non-essential architecture.</p>
 <hr />
-<h2>STW-MUN-006</h2>
+<h2 id="stw-mun-006">STW-MUN-006</h2>
 <p><strong>entry_id.</strong> STW-MUN-006
 <strong>date.</strong> 2026-05-08
 <strong>cycle.</strong> First architectural recovery cycle — apparatus restoration
@@ -354,7 +354,7 @@ STW-MUN-005 (the schema extension that made the apparatus file possible). STW-MU
 <p><strong>steward_notes.</strong>
 A subtle finding from the recovery: <code>[p. 39]</code> appears in raw twice — once as a primary page boundary (offset ~15831 in the Mundaka body region) and once <em>inside</em> a footnote body (the body of <code>^38:3</code>, which crosses page 38/39 in print and contains <code>[p. 39]</code> mid-body). The mapping recovery filters the latter as a sub-marker rather than a primary page boundary. Footnote-internal page markers are preserved verbatim within the body field; they are not promoted to structural page-keying. This is the minimum-classification discipline operating: Müller's print contained <code>[p. 39]</code> inside a footnote because his typesetter wrapped the footnote across pages, and the witness preserves that. Imposing structural meaning on the embedded marker would be over-classification.</p>
 <hr />
-<h2>STW-MUN-007</h2>
+<h2 id="stw-mun-007">STW-MUN-007</h2>
 <p><strong>entry_id.</strong> STW-MUN-007
 <strong>date.</strong> 2026-05-08
 <strong>cycle.</strong> First architectural recovery cycle — apparatus restoration
