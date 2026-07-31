@@ -2398,6 +2398,12 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 #home-search-input::placeholder { color: var(--chrome-muted); }
 #home-search-results {
+  /* Task 78 — the dropdown OVERLAYS the shelf cards (never pushes) */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 40;
   list-style: none;
   padding: 0;
   margin: 4px 0 0;
@@ -11857,7 +11863,10 @@ body.viewer-active .folio-leaf-colophon {
               <h1 id="home-title">Digital Archive</h1>
               <p id="home-countline"><span id="home-count-total"></span></p>
             </div>
-            <!-- Task 76: search moved below the shelves -->
+            <div id="home-search">
+              <input type="search" id="home-search-input" placeholder="Search all texts — title, translator, tradition…" autocomplete="off">
+              <ul id="home-search-results"></ul>
+            </div>
             <div id="home-shelves">
               <div id="home-categories">
                 <!-- Task 34 (steward ruling A, 2026-07-30): the Religion door
@@ -11888,10 +11897,7 @@ body.viewer-active .folio-leaf-colophon {
                 </a>
               </div>
             </div>
-            <div id="home-search">
-              <input type="search" id="home-search-input" placeholder="Search all texts — title, translator, tradition…" autocomplete="off">
-              <ul id="home-search-results"></ul>
-            </div>
+            <!-- Task 78: search moved back above the shelves -->
             <!-- Task 36b (steward: "two buttons"): the Map band RETIRED from
                  the entrance — the Hall is the ONE religion door; the Map's
                  front doors are the Hall's own surfaces (each door card +
@@ -28126,7 +28132,7 @@ loadIndex();
 
 <style>
 /* ── Task 76 ── the entrance relayout ─────────────────────────── */
-#home-search { margin: clamp(20px, 4vh, 44px) auto 0; }
+#home-search { margin: clamp(16px, 3vh, 32px) auto 0; } /* Task 78 — under the count line */
 #home-topnav #dark-toggle { font-size: 17px; }
 #press-print {
   background: transparent; border: none; color: var(--chrome-muted);
