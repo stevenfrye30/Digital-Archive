@@ -827,6 +827,24 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   text-align: center;
   margin-bottom: 20px;
 }
+/* Task 68 — the quiet pager under long grids */
+.cc-pager {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin: 10px 0 4px;
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.1em; color: #8a7a6a;
+}
+.cc-pager button {
+  font: inherit; font-size: 14px; line-height: 1;
+  background: none; border: 1px solid #d8d3cc; border-radius: 999px;
+  color: #8a7a6a; width: 26px; height: 26px; cursor: pointer;
+}
+.cc-pager button:hover:not(:disabled) { color: #7a5c3a; border-color: #7a5c3a; }
+.cc-pager button:disabled { opacity: 0.35; cursor: default; }
+[data-theme="dark"] .cc-pager { color: #8a8680; }
+[data-theme="dark"] .cc-pager button { border-color: #4a4a4e; color: #8a8680; }
+[data-theme="dark"] .cc-pager button:hover:not(:disabled) { color: #c4a060; border-color: #c4a060; }
+
 /* Task 62 — the quiet contents rule: a hairline with a mono label */
 .cc-contents-rule {
   display: flex;
@@ -866,6 +884,14 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   background: rgba(0,0,0,0.03);
   border-color: var(--chrome-border);
 }
+.cc-toc-list li:hover .cc-toc-name { color: #7a5c3a; }
+[data-theme="dark"] .cc-toc-list li:hover { background: rgba(255,255,255,0.05); }
+[data-theme="dark"] .cc-toc-list li:hover .cc-toc-name { color: #c4a060; }
+.cc-toc-list li:focus-visible {
+  outline: 2px solid #7a5c3a;
+  outline-offset: 2px;
+}
+[data-theme="dark"] .cc-toc-list li:focus-visible { outline-color: #c4a060; }
 .cc-toc-num {
   flex-shrink: 0;
   width: 26px;
@@ -882,8 +908,9 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 .cc-toc-name {
   font-family: Georgia, serif;
-  font-size: 0.95em;
-  color: var(--chrome-fg);
+  /* Task 68 — the doorways read: full-strength ink, a size step up */
+  font-size: 1.02em;
+  color: inherit;
   line-height: 1.3;
 }
 .cc-toc-list li.cc-toc-front {
@@ -1700,7 +1727,9 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size: 0.78em;
+  /* Task 68 — a step up from 0.78em; ink at full strength */
+  font-size: 0.88em;
+  color: inherit;
   line-height: 1.22;
 }
 .bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list .cc-toc-num {
@@ -1774,70 +1803,68 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .bible-cover-layout .cite-corner > summary:hover { opacity: 0.9; }
 .bible-cover-layout .cite-corner[open] > summary { opacity: 0.85; }
 .bible-cover-layout .cite-corner .cc-citations {
-  /* Anchored in the upper-right of the viewport, well above the
-     canon grid (which begins around y=217 at 1440×900). The
-     summary stays in its corner inside the title leaf; the
-     panel hangs above the canon as a separate scholarly slip
-     in the empty chrome territory. fixed positioning means
-     this stays robust regardless of layout shifts. */
-  position: fixed;
-  top: 8px;
-  right: 36px;
+  /* Task 68 — the plate-dress citation panel: anchored UNDER the
+     link, cream/chrome literals in both themes (the old gradient
+     followed --reader-bg — the gold bleed class again). */
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
   left: auto;
-  bottom: auto;
-  width: 380px;
+  width: 400px;
   margin: 0;
-  /* Apparatus drawer — a slightly cooler scholarly slip layered
-     above the parchment. The faint shadow gives it edge
-     definition without ever feeling like a UI panel; the inner
-     highlight reads as a separately prepared sheet. */
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--reader-bg) 92%, #faf4e0 8%) 0%,
-    color-mix(in srgb, var(--reader-bg) 96%, #6a4a20 4%) 100%
-  );
-  border: 1px solid rgba(120, 90, 50, 0.32);
-  border-top-color: rgba(120, 90, 50, 0.42);
-  box-shadow:
-    0 12px 28px rgba(80, 55, 25, 0.16),
-    0 2px 6px rgba(80, 55, 25, 0.10),
-    inset 0 1px 0 rgba(255, 250, 240, 0.55);
-  padding: 14px 18px 12px;
+  background: #faf8f5;
+  border: 1px solid #d8d3cc;
+  border-radius: 6px;
+  box-shadow: 0 10px 26px rgba(44, 44, 44, 0.14);
+  padding: 12px 16px;
   text-align: left;
   font-family: Georgia, serif;
+  z-index: 45;
 }
-/* A small ornamental rubric above the entries — "Cite" — so the
-   drawer reads as a labeled scholarly slip rather than two raw
-   lines of bibliography. */
+[data-theme="dark"] .bible-cover-layout .cite-corner .cc-citations {
+  background: #222226;
+  border-color: #3a3a3e;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+}
 .bible-cover-layout .cite-corner .cc-citations::before {
-  content: 'Citation';
+  content: 'Cite this text';
   display: block;
-  font-family: Georgia, "Palatino Linotype", Palatino, serif;
-  font-style: italic;
-  font-variant: small-caps;
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  color: rgba(120, 65, 25, 0.78);
-  margin-bottom: 8px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid rgba(120, 90, 50, 0.18);
+  font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a7a6a;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e6e1d9;
+}
+[data-theme="dark"] .bible-cover-layout .cite-corner .cc-citations::before {
+  color: #8a8680;
+  border-bottom-color: #3a3a3e;
 }
 .bible-cover-layout .cite-corner .cc-cite-heading { display: none; }
 .bible-cover-layout .cite-corner .cc-cite {
   background: transparent;
   padding: 4px 0;
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.55;
   border-radius: 0;
   margin: 0;
-  color: rgba(45, 35, 25, 0.92);
+  color: #2c2c2c;
 }
+[data-theme="dark"] .bible-cover-layout .cite-corner .cc-cite { color: #d4d0c8; }
+.bible-cover-layout .cite-corner .cc-cite .cc-cite-label {
+  font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.1em;
+  color: #7a5c3a;
+}
+[data-theme="dark"] .bible-cover-layout .cite-corner .cc-cite .cc-cite-label { color: #c4a060; }
 .bible-cover-layout .cite-corner .cc-cite + .cc-cite {
-  border-top: 1px solid rgba(120, 90, 50, 0.10);
+  border-top: 1px solid #e6e1d9;
   margin-top: 2px;
   padding-top: 6px;
 }
-.bible-cover-layout .cite-corner .cc-cite:hover { background: rgba(120, 90, 50, 0.045); }
+[data-theme="dark"] .bible-cover-layout .cite-corner .cc-cite + .cc-cite { border-top-color: #3a3a3e; }
+.bible-cover-layout .cite-corner .cc-cite:hover { background: rgba(122, 92, 58, 0.06); }
 .bible-cover-layout .cite-corner .cc-cite::after {
   right: 4px;
   font-size: 9px;
@@ -15400,7 +15427,7 @@ function showCover(data, entry) {
         html += `<div class="bcl-canon-label">${ROMAN[si]} · ${secName}</div>`;
         html += '<ul class="cc-toc-list bcl-canon-list">';
         books.forEach((k) => {
-          html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${n + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+          html += `<li data-book="${escapeHTML(k)}" tabindex="0" role="link"><span class="cc-toc-num">${n + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
           n++;
         });
         html += '</ul>';
@@ -15422,7 +15449,7 @@ function showCover(data, entry) {
         html += '<ul class="cc-toc-list bcl-canon-list">';
         books.forEach((k, j) => {
           const i = sec.from + j;
-          html += `<li data-book="${escapeHTML(k)}"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
+          html += `<li data-book="${escapeHTML(k)}" tabindex="0" role="link"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(groupName(k))}</span></li>`;
         });
         html += '</ul>';
         html += '</section>';
@@ -15463,7 +15490,7 @@ function showCover(data, entry) {
       // instead of "Chapter N — Sarvasara-Upanishad of ...").
       const labelText = (_overrideLabelMap && _overrideLabelMap.get(k))
         || groupName(k);
-      html += `<li data-book="${escapeHTML(k)}" data-rangepos="${i}"${styleAttr}><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(labelText)}</span></li>`;
+      html += `<li data-book="${escapeHTML(k)}" data-rangepos="${i}"${styleAttr} tabindex="0" role="link"><span class="cc-toc-num">${i + 1}</span><span class="cc-toc-name">${escapeHTML(labelText)}</span></li>`;
     });
     html += '</ul>';
     html += '</section>';
@@ -15614,6 +15641,10 @@ function showCover(data, entry) {
                          currentMeta.hierarchy[0] === 'book' &&
                          currentMeta.hierarchy[1] === 'chapter');
   $textHeader.querySelectorAll('.cc-toc-list li').forEach(li => {
+    // Task 68 — keyboard doorway: Enter/Space act as the click
+    li.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); li.click(); }
+    });
     li.addEventListener('click', () => {
       const book = li.dataset.book;
       if (book === '__fm__') {
@@ -15630,6 +15661,42 @@ function showCover(data, entry) {
       }
     });
   });
+
+  // Task 68 — contents paginate: any grid of more than 24 rows shows
+  // pages of 20 with a quiet pager under it. Canon-sectioned texts
+  // paginate WITHIN each section (a header never splits from its
+  // first row); range-chip texts keep their staging (the chips ARE
+  // pagination) and are excluded here.
+  if (!$textHeader.querySelector('.bcl-codex-ranges')) {
+    $textHeader.querySelectorAll('#continuous-toc ul.cc-toc-list').forEach(ul => {
+      const rows = [...ul.querySelectorAll('li[data-book]')];
+      if (rows.length <= 24) return;
+      const PER = 20;
+      const pages = Math.ceil(rows.length / PER);
+      let cur = 0;
+      const pager = document.createElement('div');
+      pager.className = 'cc-pager';
+      const lab = document.createElement('span');
+      const prev = document.createElement('button');
+      prev.type = 'button'; prev.textContent = '‹'; prev.setAttribute('aria-label', 'Previous page');
+      const next = document.createElement('button');
+      next.type = 'button'; next.textContent = '›'; next.setAttribute('aria-label', 'Next page');
+      function show(p) {
+        cur = Math.max(0, Math.min(pages - 1, p));
+        rows.forEach((li, i) => {
+          li.style.display = (i >= cur * PER && i < (cur + 1) * PER) ? '' : 'none';
+        });
+        lab.textContent = `${cur * PER + 1}–${Math.min(rows.length, (cur + 1) * PER)} of ${rows.length}`;
+        prev.disabled = cur === 0;
+        next.disabled = cur === pages - 1;
+      }
+      prev.addEventListener('click', () => show(cur - 1));
+      next.addEventListener('click', () => show(cur + 1));
+      pager.append(lab, prev, next);
+      ul.after(pager);
+      show(0);
+    });
+  }
 
   // Wire "Read from beginning"
   const beginBtn = document.getElementById('cc-begin-btn');
