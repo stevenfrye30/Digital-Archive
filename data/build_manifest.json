@@ -1,8 +1,8 @@
 {
- "generated": "2026-07-31T21:08:44Z",
+ "generated": "2026-07-31T21:33:22Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "9de1ad0cb4fc6b19e8279756a8cf679babe7275f",
- "library_fingerprint": "sha256:67d3deb8bfb891efbc298f51e28397bcaaab0ab50d6c2d14b55927ffd7e337e5",
+ "exporter_rev": "80d29aae0b64459d0854e66731f4098e2c9c94d5",
+ "library_fingerprint": "sha256:f81ac816ab5e6cbc024317f35f4daf84a9d6bfab9351be823ce57d92274d2b37",
  "counts": {
   "entries": 1171,
   "public": 1059,
@@ -1211,16 +1211,16 @@
    "exported": "2026-07-10T17:30:25Z"
   },
   "beyond-good-and-evil_zimmern": {
-   "source_hash": "sha256:a746cbc238b8431fdb80949c403a04477075369e27f01f48efa22dade9ebd7cb",
+   "source_hash": "sha256:94397ad38716cf0672c33956bba5af6d9955a6f266daa3d0570bf75e8f25243c",
    "data_file": "beyond-good-and-evil_zimmern.json.gz",
-   "data_hash": "sha256:2f6931df6f1951bebc3fa28d6b6b5517db30fc1cc6e15c4af2ebffb4fd188f82",
-   "data_bytes": 153359,
+   "data_hash": "sha256:d6c93240953a961766e071e13ec23181713901602172e812f8929d7ab3411090",
+   "data_bytes": 153382,
    "passages": 335,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:25Z"
+   "exported": "2026-07-31T21:30:37Z"
   },
   "bhagavad-gita_arnold": {
    "source_hash": "sha256:ec64cc14eb75894ce50714a4f747425dbda8144390c81d803caa0635d89396c4",
@@ -2054,16 +2054,16 @@
    "source_note": "no canonical dir (derived provider record)"
   },
   "brett-gassendi_brett": {
-   "source_hash": "sha256:d0227b4c143d6cba057711b9d7a36209ce59dba8d288a128321dac2112068f98",
+   "source_hash": "sha256:06f3b8612a8730f5f46b6f7bdf051e3e3918d7d7a8eb685baa8ecd872fdddf54",
    "data_file": "brett-gassendi_brett.json.gz",
-   "data_hash": "sha256:fafe57c7ff98a7c9bd417f7dc37b9fbd54e0949d0e9d68a5dd47074699d7c4a2",
-   "data_bytes": 201971,
+   "data_hash": "sha256:f8fb41a440633606b07b8b2ea5f4a1574997fb2ddfc913aa2cf3ae5c53cb5166",
+   "data_bytes": 201970,
    "passages": 774,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:42Z"
+   "exported": "2026-07-31T21:30:38Z"
   },
   "bruno-heroic-enthusiasts_williams": {
    "source_hash": "sha256:7594ffbe6e0c59000b63afce791d15cbfebc63961124c9a061b6374cf79a7f32",
@@ -3792,7 +3792,7 @@
    "exported": "2026-07-10T17:30:48Z"
   },
   "emerson-nature_emerson": {
-   "source_hash": "sha256:6f728e5451dfa78a602bf52b38d4da663b7d47d2d6b316ef6cd1a9fe8fce50d2",
+   "source_hash": "sha256:045f9d5c73f5e51a96ecaedc1100199510e8bc177fa1d3d23ec1aed349706dd6",
    "data_file": "emerson-nature_emerson.json.gz",
    "data_hash": "sha256:085c345f2bc394617928eb96c9d0bcc784de3d0dde56195d4e77e17f6a83028e",
    "data_bytes": 36234,
@@ -3804,16 +3804,16 @@
    "exported": "2026-07-10T17:30:48Z"
   },
   "emerson-representative-men_emerson": {
-   "source_hash": "sha256:c1cc195e246c69ea4b0e61ecc3e00c8572eeddd21d6e544c68bfd6a6cca0aaf6",
+   "source_hash": "sha256:d6b15d75f78fdd38daf7c8a441f01652dd3c719e4c190096620039b806697f7e",
    "data_file": "emerson-representative-men_emerson.json.gz",
-   "data_hash": "sha256:d43f24ba9254cdd8f7b9e867d4449be060aeb7c87703261dba766042ec685b74",
-   "data_bytes": 134421,
+   "data_hash": "sha256:6764e5c479bccb66fd4138fa4e2d55c1923ab393e254d1102d049cb5b3d73041",
+   "data_bytes": 134511,
    "passages": 298,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:48Z"
+   "exported": "2026-07-31T21:30:38Z"
   },
   "enchiridion_higginson": {
    "source_hash": "sha256:6633bc4985ec04b4d23293ed62a33b5e57db998cdc3200f87ae465e0bc03b016",
@@ -3861,7 +3861,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:30:48Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "engels-socialism-utopian_aveling": {
    "source_hash": "sha256:89f2369a9e80ece1a41a2daedc37550df539c9e40cb6bb7e8f26abe221bc0ca7",
@@ -4415,16 +4415,16 @@
    "exported": "2026-07-10T17:30:51Z"
   },
   "freud-interpretation-dreams_brill": {
-   "source_hash": "sha256:7e1341397486cf674c299a341b14f08769d4b51fd2f7a589615a44f44bcdbc26",
+   "source_hash": "sha256:ba5dfb49824f5279e9ce22256c28fa1cc9cf789bc249f8251f3282aaa0a1b0bf",
    "data_file": "freud-interpretation-dreams_brill.json.gz",
-   "data_hash": "sha256:c376bfba0a4484501d6830b3977899101aafbf1a0b9905570b02423f7f38e7d9",
-   "data_bytes": 453239,
+   "data_hash": "sha256:d766d533e5c4ef8f02e3475d20f1ad54ab23ae0d8f4a6bd00da48483c7327185",
+   "data_bytes": 453240,
    "passages": 2704,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:51Z"
+   "exported": "2026-07-31T21:30:39Z"
   },
   "freud-psychoanalysis_hall": {
    "source_hash": "sha256:a486a118951c340b88472b86070a03e698e10bbf457087a227444daff461f118",
@@ -4729,16 +4729,16 @@
    "exported": "2026-07-10T17:30:52Z"
   },
   "giordano-bruno_anonymous": {
-   "source_hash": "sha256:b2cb40ba43ebb38387281b2875417e182281590ad279b7db454e31d5abe3f954",
+   "source_hash": "sha256:5e155a3b8f8cd5d7532b89616816fdab60120fd2b9cb1367e7028f124b2a852f",
    "data_file": "giordano-bruno_anonymous.json.gz",
-   "data_hash": "sha256:996a82ae78dbdcb25848b27a8c134bed904bef6d5a14a0a50192e19f19c6cfac",
-   "data_bytes": 232231,
+   "data_hash": "sha256:92a751583dceb2691ff0896b0a2d4856da819b18685e28b154e9c45a611e240c",
+   "data_bytes": 232230,
    "passages": 843,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:52Z"
+   "exported": "2026-07-31T21:30:39Z"
   },
   "gleanings-buddha-fields-hearn_hearn": {
    "source_hash": "sha256:3d13c2408898bc1fe2ccac64244472315cdd54acaa62ed0956edb848f09707f4",
@@ -4802,16 +4802,16 @@
    "exported": "2026-07-10T17:30:53Z"
   },
   "goethe-maxims_saunders": {
-   "source_hash": "sha256:1f5f4cdf35b46dae7538aedaa50a4662506c4352dc0cead942953a104c30acd0",
+   "source_hash": "sha256:d4c49caefc9c8fa6292c3636cc69949a2e50b101aca54a749c7dddafc8e36f01",
    "data_file": "goethe-maxims_saunders.json.gz",
-   "data_hash": "sha256:fbff34d44cd87970b42890dfb2c3b50410fbccab9e58d35b19503fdbbde7759c",
+   "data_hash": "sha256:526c234525d45e2204ade8769cf823c7c6da885a1d62392b606f257ab34cbfc4",
    "data_bytes": 85940,
    "passages": 1299,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:53Z"
+   "exported": "2026-07-31T21:30:39Z"
   },
   "goethe-poems_bowring": {
    "source_hash": "sha256:fafe2c9591311d7ab1aff7abf7def39ea63d2b5f7b6989e7318075f17648bc6e",
@@ -4838,16 +4838,16 @@
    "exported": "2026-07-10T17:30:53Z"
   },
   "goethe-wilhelm-meister-vol1_carlyle": {
-   "source_hash": "sha256:5f168f41663163f65d251d1d2bee59ee12721ba45780febb38eaea9326ba1d0d",
+   "source_hash": "sha256:9b8e66e83162d755e1bb981ad5fe169a23416c87fde9d28923f605bfef18f165",
    "data_file": "goethe-wilhelm-meister-vol1_carlyle.json.gz",
-   "data_hash": "sha256:cdafab4ca030c05aa316110477c4287ecd515ca341589603cee8b4a46c9bad1a",
-   "data_bytes": 422180,
+   "data_hash": "sha256:701ccc4357aed116f327b3c1eaa5762ce959c25f130eb9d189d6a55705eae6a9",
+   "data_bytes": 422179,
    "passages": 2407,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:06:06Z"
+   "exported": "2026-07-31T21:30:39Z"
   },
   "goethe-wilhelm-meister-vol2_carlyle": {
    "source_hash": "sha256:0eb053a17e7bd186283b47cefb8eb2528da50a5cfd94ce9bff1a792c4a6ec4ce",
@@ -5155,64 +5155,64 @@
    "exported": "2026-07-10T17:30:54Z"
   },
   "hegel-lectures-history-vol1_haldane": {
-   "source_hash": "sha256:07be1bcb9699df16aa570d70a3b9d42b60afae9b6fdd4efdd50e912d42c92a4e",
+   "source_hash": "sha256:c780e6296d2794ddb96684169ac81a2f2ef077c94cce883cdb34c1b355283fc4",
    "data_file": "hegel-lectures-history-vol1_haldane.json.gz",
-   "data_hash": "sha256:e342b09aecbd4fb7bda9416cddbf555b263c555fbd360eaf8bfc61e36debf2f8",
+   "data_hash": "sha256:63d8a5019145fe4a785cd466d99e2b93416f73c77d0e182314c568fb00d04cfa",
    "data_bytes": 344447,
    "passages": 970,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:54Z"
+   "exported": "2026-07-31T21:30:40Z"
   },
   "hegel-lectures-history-vol2_haldane": {
-   "source_hash": "sha256:ac3e8c8b16a788d58dba20d5dc81406715e866d34968923cfe604e03ca1dd472",
+   "source_hash": "sha256:fd1aef6e0b78439be4b14b6fe88053bee3c2ac75cbc3fbe45e78a10261f685d5",
    "data_file": "hegel-lectures-history-vol2_haldane.json.gz",
-   "data_hash": "sha256:41dd548d7dc220436e1c2ab889802e952c3ff1e3b3543dd4fce414e5f4791538",
-   "data_bytes": 313833,
+   "data_hash": "sha256:bba1899ef919826f62dd118998fda92e28297b4c75b83c26224fd7c17dd6ca0d",
+   "data_bytes": 313832,
    "passages": 807,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:54Z"
+   "exported": "2026-07-31T21:30:40Z"
   },
   "hegel-lectures-history-vol3_haldane": {
-   "source_hash": "sha256:b10b56b1fea58a87c5d55f7949c8007efcf17a06b5732450a24c338403450999",
+   "source_hash": "sha256:b6ea845c2972f75b52194715b699229c5464b0c300c4c1401565e80ae237e4ed",
    "data_file": "hegel-lectures-history-vol3_haldane.json.gz",
-   "data_hash": "sha256:b72071070a47cca2be895cb1bbb4914203dd31647800cf97e56c419fe05c9896",
+   "data_hash": "sha256:0d463c3132f4185724759b018776b4028825998a758f8062188a0e3cf4ad2ab5",
    "data_bytes": 398240,
    "passages": 2002,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:54Z"
+   "exported": "2026-07-31T21:30:40Z"
   },
   "hegel-logic_wallace": {
-   "source_hash": "sha256:bc370be0bef9decb830f81ab373b2f29196667770d9b5fd7add65cf59f7e9d50",
+   "source_hash": "sha256:03f869e90b693d70bf40a487af3b387e19639978b762ab42261b84693bb5d838",
    "data_file": "hegel-logic_wallace.json.gz",
-   "data_hash": "sha256:fe47665a9d47e15d825a146e31058baca6ea4ea44e195c579a0d5f662bedaabb",
-   "data_bytes": 315865,
+   "data_hash": "sha256:fe199c0fba9c5567822286fa426a8a339972e9e41ade618c33b702b36f8496e1",
+   "data_bytes": 315866,
    "passages": 1150,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:54Z"
+   "exported": "2026-07-31T21:30:40Z"
   },
   "hegel-philosophy-fine-art-vol1_osmaston": {
-   "source_hash": "sha256:a10a53292572b7e3e15a11b4c2e11a4d93379a722eedb57e7207561d61f79348",
+   "source_hash": "sha256:f74bb6979b1c91ed09e0ef4dec2b00fb5a1ab826c7dce2072db8020c592a14e2",
    "data_file": "hegel-philosophy-fine-art-vol1_osmaston.json.gz",
-   "data_hash": "sha256:b9608b770bfb584cd2413713d775bdabfbb1d6ccb4a5f57e35af310e337ee4f7",
-   "data_bytes": 301852,
+   "data_hash": "sha256:f55a2e2d44ed648b70c9da2bd5e036838c06f8a7379f78e15328e50827632420",
+   "data_bytes": 301853,
    "passages": 849,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:54Z"
+   "exported": "2026-07-31T21:30:40Z"
   },
   "hegel-philosophy-fine-art-vol2_osmaston": {
    "source_hash": "sha256:ecca0e49afd1b59f4e918dc1ed709e2cd9ad2996f702025ec2f9c18ac7716d28",
@@ -5227,16 +5227,16 @@
    "exported": "2026-07-10T17:30:54Z"
   },
   "hegel-philosophy-fine-art-vol3_osmaston": {
-   "source_hash": "sha256:1717ab512b3a92b19c88720546bdf503ff021c8a6a146017770aab0f05715bcc",
+   "source_hash": "sha256:5f82c68b29d922e3edaf9179b5e3923776616e2081c1692a4bb40a2bd98f73ab",
    "data_file": "hegel-philosophy-fine-art-vol3_osmaston.json.gz",
-   "data_hash": "sha256:297986f1a303dc188f61d402dd458676bb864188df042daeab3312b9ef26e037",
-   "data_bytes": 315939,
+   "data_hash": "sha256:67ddc182846ba27c7a6de1efe84ed774d2b2ff70a738c2848dae21b4522b289a",
+   "data_bytes": 315940,
    "passages": 880,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:54Z"
+   "exported": "2026-07-31T21:30:40Z"
   },
   "hegel-philosophy-fine-art-vol4_osmaston": {
    "source_hash": "sha256:3d6bd2ad722a868e03f2f1709aec95eb1b1546d4e9515b9732e632a532fbe98c",
@@ -5662,7 +5662,7 @@
    "exported": "2026-07-10T17:30:56Z"
   },
   "hume-enquiry-morals_hume": {
-   "source_hash": "sha256:7c2220eafca8ce54948260364ff4f6583befe84ffcda13ef1a0b9178b6928724",
+   "source_hash": "sha256:c2d7d2728ebf521000ebce5c6f7d3eaf723fee2f9558a1cf4e42cda89587fc71",
    "data_file": "hume-enquiry-morals_hume.json.gz",
    "data_hash": "sha256:f81c81465d8738aec0d8d87de568b98429b8780c5e8c4f6fb84c7398852382bf",
    "data_bytes": 109382,
@@ -6012,19 +6012,19 @@
    "exported": "2026-07-10T17:30:58Z"
   },
   "james-meaning-truth_james": {
-   "source_hash": "sha256:5121281171e8c47bb5f0073811510413eaf1ba6751c27d0c0414a835053153a2",
+   "source_hash": "sha256:91af8f63cfd3798fe90ed138998bab0b8de38d801379d11953c9c61a2c5ed5b8",
    "data_file": "james-meaning-truth_james.json.gz",
-   "data_hash": "sha256:5cc1dc3323aa84efc5f07500efa512b9eaf8a62d360a581750aa457bd36a6b7c",
+   "data_hash": "sha256:a664567eaa6e949fabcf277132d750365c0fe93d24e879e42c01dbb8a4fd0100",
    "data_bytes": 128822,
    "passages": 431,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:58Z"
+   "exported": "2026-07-31T21:30:41Z"
   },
   "james-pluralistic-universe_james": {
-   "source_hash": "sha256:ed8a7af8ef3ac941e161a632069cf48e1551a212f7f08721058c4fa26ed686fa",
+   "source_hash": "sha256:076bd131a8aa57b7c6cd4666bdc1cd904a792dd61f26aa472774a27fafc3aa0b",
    "data_file": "james-pluralistic-universe_james.json.gz",
    "data_hash": "sha256:e5574042c5174b12be33e7789aed8526affae14d2062351b096defd48e18b1b5",
    "data_bytes": 166054,
@@ -6084,7 +6084,7 @@
    "exported": "2026-07-10T17:30:58Z"
   },
   "james-radical-empiricism_james": {
-   "source_hash": "sha256:426bc20853262e80862b825080a3c7a1399abf797db59005d1e2073f0a40a862",
+   "source_hash": "sha256:5d28762311da29514bf2316ca3c89a224efff2b2b00588a87c6356dc0a63f572",
    "data_file": "james-radical-empiricism_james.json.gz",
    "data_hash": "sha256:aff124658c16900c66acd2e416fca57e930f566669c5c1dfca219229b2849f91",
    "data_bytes": 112806,
@@ -6429,7 +6429,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:00Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "jung-theory-psychoanalysis_jung": {
    "source_hash": "sha256:41a070539d6556f8773255a54608a5bfd097ac422d9e4c337481628cc044148b",
@@ -6441,7 +6441,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-31T03:49:05Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "kabir-songs-tagore_tagore": {
    "source_hash": "sha256:21fbe6715bc9a3b5b75555dd5c06a533341a2b1a6b47e7416d8c2c3ae8ec20da",
@@ -6530,16 +6530,16 @@
    "exported": "2026-07-10T17:31:00Z"
   },
   "kant-critique-judgement_bernard": {
-   "source_hash": "sha256:af94df8d33dc99dded9b88a6fe34e2ed2ccaecbe34d58b8ee074a7763e7fe92f",
+   "source_hash": "sha256:8e94b0ece477b4750c0957fe299def0c67cbfc819dce1d1c3b7014a91d73188d",
    "data_file": "kant-critique-judgement_bernard.json.gz",
-   "data_hash": "sha256:2d9deb231b4b7c1c35637ead1a160916e12d87dbe1e300d6d88d66bed893060f",
+   "data_hash": "sha256:b18cc465bdea7ce35377c4111f660d217823a34694b8410803bda3357ef0a665",
    "data_bytes": 259539,
    "passages": 1118,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:00Z"
+   "exported": "2026-07-31T21:30:42Z"
   },
   "kant-critique-practical-reason_abbott": {
    "source_hash": "sha256:fac074d2b109b4c2a607b385b563efc770d9fcd964071692f90f35a309006736",
@@ -6554,16 +6554,16 @@
    "exported": "2026-07-10T17:31:00Z"
   },
   "kant-critique-pure-reason_meiklejohn": {
-   "source_hash": "sha256:fa4294384b08ef8a72d0a7b1db943ec9bf087b041d332fdc75abba4343542aa3",
+   "source_hash": "sha256:b74339d69d939bdd471d0965658a5157993ddeab828e8fd2d79dcf1e3e4f9345",
    "data_file": "kant-critique-pure-reason_meiklejohn.json.gz",
-   "data_hash": "sha256:12021c819280676a50d8e13a853fbfe6d831ceb536b6a9e979d5a239cfee6277",
-   "data_bytes": 384266,
+   "data_hash": "sha256:6c9e0ef374266b1d9aba40eb0eb40a0852f14cf9b8b93a5630a1a46e24765321",
+   "data_bytes": 384265,
    "passages": 1423,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:00Z"
+   "exported": "2026-07-31T21:30:42Z"
   },
   "kant-fundamental-principles_abbott": {
    "source_hash": "sha256:cacb7845f54b41b3f86c64abc4f7e1ad9407ca7841eb72894e156a649dea5440",
@@ -6578,16 +6578,16 @@
    "exported": "2026-07-10T17:31:00Z"
   },
   "kant-metaphysical-ethics_abbott": {
-   "source_hash": "sha256:34db41e67c5a681292f8aa2f66312cec85eebb67c995f8c0fe12cd7344e2ad26",
+   "source_hash": "sha256:a7c0f9154187e51803367b12d2ab5f41674c99423b458e2984c694474968365e",
    "data_file": "kant-metaphysical-ethics_abbott.json.gz",
-   "data_hash": "sha256:42354e2ad309700dce5d4a292a5db0fe908371963125531d3879a90e8429d8a7",
-   "data_bytes": 27238,
+   "data_hash": "sha256:d45093ce8edd5400f38285c379cb60378f132440b705552debf690bfaafe4925",
+   "data_bytes": 27253,
    "passages": 169,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:00Z"
+   "exported": "2026-07-31T21:30:42Z"
   },
   "kant-perpetual-peace_campbell-smith": {
    "source_hash": "sha256:ae01d9cf31cca35ce36bba5387fea2cc96b4f9d1b3436a9e9e293c878b85487d",
@@ -6602,16 +6602,16 @@
    "exported": "2026-07-10T17:31:00Z"
   },
   "kant-prolegomena_mahaffy-bernard": {
-   "source_hash": "sha256:f49110d9d82ad732fdcd77b525eaba61688ba02d1b5e67582aba95eb969a234d",
+   "source_hash": "sha256:4a60fdb57b48fcd29553d87ad860a417dd06f233212894f78972ad56e049df57",
    "data_file": "kant-prolegomena_mahaffy-bernard.json.gz",
-   "data_hash": "sha256:fdc78acbe491051209a4c960fc5efd6f11bf074e0cc77517c99aa491f109a6ea",
-   "data_bytes": 96313,
+   "data_hash": "sha256:624b3546d40461b005dd191739e42e94bbc8823fcac2b87ea2e0b7cf5dccab3b",
+   "data_bytes": 96393,
    "passages": 406,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:00Z"
+   "exported": "2026-07-31T21:30:42Z"
   },
   "kathavatthu-pali_pli": {
    "source_hash": "sha256:bfab4c639cc28a81ed6de2c0ac0e2d9cf91d4bc31a3f854fc29684a805ca72c9",
@@ -7208,16 +7208,16 @@
    "exported": "2026-07-10T17:31:03Z"
   },
   "locke-essay-vol2_locke": {
-   "source_hash": "sha256:61054e6375c56dc31e6acbfc667a636ba37ac582e73edfff3284c65e8079002b",
+   "source_hash": "sha256:1bb2f6e0d9ff3869052f178a7e8b51a4091cdabb1a6e54d80f65b6dd5e1187ec",
    "data_file": "locke-essay-vol2_locke.json.gz",
-   "data_hash": "sha256:05921dd194702b4640e91db003ac57ca62fce848c9a15f7243db6d5698fc140c",
-   "data_bytes": 243659,
+   "data_hash": "sha256:5346832faf3209e1fd501b4f0ed442215903e08b52b85f63489c423094876454",
+   "data_bytes": 243689,
    "passages": 1112,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:03Z"
+   "exported": "2026-07-31T21:30:43Z"
   },
   "locke-second-treatise_locke": {
    "source_hash": "sha256:eb2094b45cea884e6defa988362d5d159eb1c635d7490b0f0ab6be314235f2c5",
@@ -7741,16 +7741,16 @@
    "exported": "2026-07-10T17:31:06Z"
   },
   "mazes-and-labyriths-wh-matthews-1922_anonymous": {
-   "source_hash": "sha256:5d0e8bf9b863b717ba73c5987f338f1369780cc88abb87534e627a31f2bdef9f",
+   "source_hash": "sha256:3c808668a2504db3aed151916cbc05043488e88b1d475770ff5e9576efeddf12",
    "data_file": "mazes-and-labyriths-wh-matthews-1922_anonymous.json.gz",
-   "data_hash": "sha256:c96d6e0f80a16ba8b42fed2b0ca4906d9b4da3819d13c8956af261a567ec27be",
-   "data_bytes": 155379,
+   "data_hash": "sha256:c4c0b92a369e553106d66e239f7eed6118683a4eaa493dc0491876a757137b41",
+   "data_bytes": 155377,
    "passages": 1607,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:06:10Z"
+   "exported": "2026-07-31T21:30:43Z"
   },
   "mazes-labyrinths-matthews_matthews": {
    "source_hash": "sha256:5dbd72a7037454ecca7fd0290216a89e6e34cdc6f6c0714f212ebb05ea38f280",
@@ -7995,16 +7995,16 @@
    "exported": "2026-07-10T17:31:07Z"
   },
   "mill-system-logic-vol2_mill": {
-   "source_hash": "sha256:3dae3dc319db4a1946ebf8435582651621ac88d3f4c66d0c5256a3105c499613",
+   "source_hash": "sha256:bfd1a90d882df75f0e97da91a00aa2c33a661f1849514a9820b13bd2b29cf2a8",
    "data_file": "mill-system-logic-vol2_mill.json.gz",
-   "data_hash": "sha256:194ee63d159c201363653e76c98b9072d8a308ffaabb8468f04ebb64f3e79519",
-   "data_bytes": 398145,
+   "data_hash": "sha256:12db19bd81cf51dbfdcd6eada56382ea290cf3bc64f9977960d63101b0964458",
+   "data_bytes": 398142,
    "passages": 1367,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:08Z"
+   "exported": "2026-07-31T21:30:43Z"
   },
   "milton-poems_milton": {
    "source_hash": "sha256:9261725b73da3d003defba17a910d8b2e6a3aa0739dcb1dc997c77089376d6f8",
@@ -8067,28 +8067,28 @@
    "exported": "2026-07-10T17:31:08Z"
   },
   "montaigne-travels-vol2_waters": {
-   "source_hash": "sha256:69f1c0dd4f8fcddcff54cd6153b914a047f913fa635fdd709fc66d54de2c4be6",
+   "source_hash": "sha256:62fa466525b8b7e3207185349b342a184fb8c20521341cc9e2423f9dcf3fe4e8",
    "data_file": "montaigne-travels-vol2_waters.json.gz",
-   "data_hash": "sha256:f3f8eb331ffd385df9d49949dc59af4c9089eaf8a07bcd14276857c8bfe50638",
+   "data_hash": "sha256:d086a4ada22656a384b3542440be80dfc0d5b657236f2531b5d1cd9d8ad7b6a1",
    "data_bytes": 90785,
    "passages": 343,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:08Z"
+   "exported": "2026-07-31T21:30:50Z"
   },
   "montaigne-travels-vol3_waters": {
-   "source_hash": "sha256:2140ed947e1ab496f3b7a0df36252bd985a854e1c021ecb866238e1ab1773c3b",
+   "source_hash": "sha256:2af17e3f4ab482506785908ae669190e056e959f6918fbdba7f66627cee006ac",
    "data_file": "montaigne-travels-vol3_waters.json.gz",
-   "data_hash": "sha256:7e3095b1e12c6f8e2be50b5ce50dc89f987c520ee918d51ced764103ea89816f",
+   "data_hash": "sha256:a09840fa2efb6699a1ee730f37664643aa0c3461ab403e2ceb46c3e2b4fb52c4",
    "data_bytes": 94799,
    "passages": 690,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:08Z"
+   "exported": "2026-07-31T21:30:50Z"
   },
   "moon-lore-harley_harley": {
    "source_hash": "sha256:26ebfe87020647fa1c7ba415baad96be943fa2f61f5d3bc8a4463d74c92a06da",
@@ -8112,7 +8112,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:08Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "moore-principia-ethica_moore": {
    "source_hash": "sha256:e17ec07ed70415ceddef5ce9853bf73854ddbaabc9848145e940b1e7b0441746",
@@ -8124,7 +8124,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:08Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "morals-dogma-pike_pike": {
    "source_hash": "sha256:2b4b3358f7c34d3e93e9fcf3736b7c3efab184af0e207667ff812d8eade5b0a0",
@@ -8519,7 +8519,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:10Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "niralamba-upanishad-aiyar-1914_aiyar": {
    "source_hash": null,
@@ -9084,16 +9084,16 @@
    "exported": "2026-07-10T17:31:12Z"
   },
   "peirce-chance-love-logic_peirce": {
-   "source_hash": "sha256:950a148a698721e7203d09bc0034245da3706551894239314ac63315466b83fb",
+   "source_hash": "sha256:fc2158cf072f6926cc82e1b3c1c7e9303189480bccf513dcbea90e252c527145",
    "data_file": "peirce-chance-love-logic_peirce.json.gz",
-   "data_hash": "sha256:fd0adcf3a9e85f10cc5a1b074aa139619867238234b2303d288a1ace51c8879d",
-   "data_bytes": 207593,
+   "data_hash": "sha256:058dc3853a7c2a2e1aa8e6cfe9531bca4c673c7914fb5630f3f92a0811fca167",
+   "data_bytes": 207590,
    "passages": 1086,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:12Z"
+   "exported": "2026-07-31T21:30:44Z"
   },
   "persian-mystics-rumi_davis": {
    "source_hash": "sha256:4c1689485cf9f9e7d87ef0dce17a60e2d53ce2bb01a56d1a90053f33c054520b",
@@ -9662,16 +9662,16 @@
    "exported": "2026-07-31T21:06:12Z"
   },
   "plotinos-complete-works-vol-4-plotinos_anonymous": {
-   "source_hash": "sha256:5dfbad55d813a84f3a6dbee5a33b1e1aff832c3f5ca5b9ee3ed4694b1d930751",
+   "source_hash": "sha256:c60800ea5a79e20a8289f1a119553a376eb8f2291793d8c0fef26bfc7de7e467",
    "data_file": "plotinos-complete-works-vol-4-plotinos_anonymous.json.gz",
-   "data_hash": "sha256:61c7b5f699e35ca97d62760ee12d23342cd7e0b359d53f9543f599a8ce6fe5c2",
+   "data_hash": "sha256:a8c71fa3126886626804ca9e96d01713098858c35ef5d679b79e2749bedbd86f",
    "data_bytes": 325108,
    "passages": 5726,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:06:12Z"
+   "exported": "2026-07-31T21:30:44Z"
   },
   "plotinus-complete-vol1_guthrie": {
    "source_hash": "sha256:7f07ad0e7fc0b8e12009bc7b8265ff47590db018a563174af409c8920d335d99",
@@ -10491,7 +10491,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:19Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "rousseau-social-contract-discourses_cole": {
    "source_hash": "sha256:3ed0da33c57857f64226490c8b274eab52ba20c04589c1a8938ad0bfda7d9952",
@@ -10503,7 +10503,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:19Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "rubaiyat-omar-khayyam_fitzgerald": {
    "source_hash": "sha256:80f104c6990f42965f41dfd8a17bdbeab0150ceef2c39e97cb2dba01cefcefa6",
@@ -10917,16 +10917,16 @@
    "exported": "2026-07-10T17:31:21Z"
   },
   "schopenhauer-art-literature_saunders": {
-   "source_hash": "sha256:f2ae89ec49a67335b4005807d1769687eb9271a3cab708b73417761fb95a30ce",
+   "source_hash": "sha256:cce9640383e42fb5c8cd8111a63ca3b007b019e78b7c7532b4c89df96b4b7271",
    "data_file": "schopenhauer-art-literature_saunders.json.gz",
-   "data_hash": "sha256:665364a2221efa0fa2ea2edf56fc9c919861729acfc374f2194ba1dfa88db8b6",
-   "data_bytes": 78997,
+   "data_hash": "sha256:f559b6403bd7b09ecf187f50a9e55b7b7914b5ce7db35e6d8970864c2dc720d0",
+   "data_bytes": 79047,
    "passages": 303,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:21Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "schopenhauer-basis-morality_bullock": {
    "source_hash": "sha256:71fe50ff7deb2262fc6bd04f086b1f384ab8581ccfa8ad96e77a3f18b430bbc8",
@@ -10941,16 +10941,16 @@
    "exported": "2026-07-10T17:31:21Z"
   },
   "schopenhauer-controversy_saunders-controversy": {
-   "source_hash": "sha256:7a1e5f24bbe61c73c0c56f2699c4b3bc2725101b8f1471f3b0548ddf104869ad",
+   "source_hash": "sha256:dcca5f31a4b88f90e30286e68cff04186b98ba277201f48235e7b0248941f618",
    "data_file": "schopenhauer-controversy_saunders-controversy.json.gz",
-   "data_hash": "sha256:137680e38b718cb2cdb328c02c5928ba0ce43f4c8754f8070689020e31493019",
-   "data_bytes": 62474,
+   "data_hash": "sha256:ebc2dffe3a2e6ae402986e28c3f0632dc05cccb6ad4b38f8bf7a4cb672480e27",
+   "data_bytes": 62630,
    "passages": 336,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:21Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "schopenhauer-counsels-maxims_saunders": {
    "source_hash": "sha256:e42cb23ed90519d61860ddc71165962d4dde300e47af1566b40491c89cee4000",
@@ -10965,28 +10965,28 @@
    "exported": "2026-07-10T17:31:21Z"
   },
   "schopenhauer-religion-dialogue_saunders-religion": {
-   "source_hash": "sha256:e6093c0461a181bc328bee23a0fc7c972f05070d1513cb26e87595abb44c77e0",
+   "source_hash": "sha256:34aa3911ad401408560fe80a4eb53a5aca1f3ce7c969a0c63eeb8c340e057377",
    "data_file": "schopenhauer-religion-dialogue_saunders-religion.json.gz",
-   "data_hash": "sha256:07974d3851fdd77908c85b8352fd318953d0ef6852de887ad84bcf9b2efe28b0",
-   "data_bytes": 65165,
+   "data_hash": "sha256:c6c33d2e99a4f0dc40a86272d34022970159afc9c23b1f0ff998ad76b3ed0a24",
+   "data_bytes": 65331,
    "passages": 195,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:21Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "schopenhauer-studies-pessimism_saunders": {
-   "source_hash": "sha256:cc8ab28830364428bb417b19495392f0f1b818295af44d923757f030b9b200e4",
+   "source_hash": "sha256:3be6ff169d92746ae325ca54d3dbcecdc706c104305b05fefd89698369eb8a32",
    "data_file": "schopenhauer-studies-pessimism_saunders.json.gz",
-   "data_hash": "sha256:8dbe1a9141f5ee047e95415ac797aaebbc0606c0c61a05708085618d3c36d008",
-   "data_bytes": 63950,
+   "data_hash": "sha256:4dd4cabef9db95bdb5c212a1c16731d156a9ce3d324536f94deee0d681b8b7b1",
+   "data_bytes": 64050,
    "passages": 248,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:21Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "schopenhauer-sufficient-reason_hillebrand": {
    "source_hash": "sha256:0c95c51f966de187b02c425db80f71c43f5bcc4eeb05bf603902abb23fe4c4c9",
@@ -11013,28 +11013,28 @@
    "exported": "2026-07-10T17:31:21Z"
   },
   "schopenhauer-world-will-vol1_haldane-kemp": {
-   "source_hash": "sha256:a24e77d36cd9a42ab3a4b9a5bb8a6ac36af2ed84d819c56aac48e7d44e09ee3a",
+   "source_hash": "sha256:11c8aa5fc41c84fb8e9d8694bd0f4cf6af6b99a80d872fc7ae6bdf3aa3cd98f8",
    "data_file": "schopenhauer-world-will-vol1_haldane-kemp.json.gz",
-   "data_hash": "sha256:050c7b83cfe49713baa2968a974daf4013d1f42cc760eeef06da8ed553d8df6d",
-   "data_bytes": 372693,
+   "data_hash": "sha256:a0030c8de16438b937129842b5d8d381bf93b57f852d300879a86d0afcf7968b",
+   "data_bytes": 372777,
    "passages": 617,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:21Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "schopenhauer-world-will-vol2_haldane-kemp": {
-   "source_hash": "sha256:86a91b90f03bc8bbf47996b9f1ffc22f22bf40adc021b20de8894e37020352ca",
+   "source_hash": "sha256:919c2617a0f04626dae2b129ea56b876234ecbd7fd232f96ee0090445e93c45a",
    "data_file": "schopenhauer-world-will-vol2_haldane-kemp.json.gz",
-   "data_hash": "sha256:d0beabae4e3eaf53bacc189703d9b7a3bf8dace2ef6bc829a489f626579c612f",
-   "data_bytes": 342725,
+   "data_hash": "sha256:95e393081bce31d355cbb99c35e9e174e8bb3cb90e96ebd36fb1bfe5f42f9827",
+   "data_bytes": 342813,
    "passages": 615,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:21Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "schopenhauer-world-will-vol3_haldane-kemp": {
    "source_hash": "sha256:f9408947ca2e4a1e19200034af19d2c3fae70914f1b14ce697b72ebe54c312f5",
@@ -11182,16 +11182,16 @@
    "exported": "2026-07-10T17:31:22Z"
   },
   "selected-writings-kierkegaard_anonymous": {
-   "source_hash": "sha256:51102c80e715086b1f5f8a031059cb65eb5a98db1614e994dda4ab3faf672004",
+   "source_hash": "sha256:01559df7ab21b6330a6f4c56f5b76d6a01ab8ab5c50151aba5678809afeb901c",
    "data_file": "selected-writings-kierkegaard_anonymous.json.gz",
-   "data_hash": "sha256:b671421a38502f4193283c4c70235a168c4c94312342687619aa6c1ee42a91bc",
+   "data_hash": "sha256:942643232cb9583a97a707932e841a5098e79754d0bc298be16e6f541bed356f",
    "data_bytes": 175375,
    "passages": 557,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:06:13Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "selestors-men-of-atlantis-clara-iza-von-ravn-1_anonymous": {
    "source_hash": null,
@@ -12049,7 +12049,7 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "spinoza-ethics_elwes": {
-   "source_hash": "sha256:85ccfcfd24163c227b7b57a840155a364b4707f596d123b12b2bc35582233849",
+   "source_hash": "sha256:64a84bd46d550d5c23c8ea77e76b556c8cd02dfae725c82c33154f44044bc576",
    "data_file": "spinoza-ethics_elwes.json.gz",
    "data_hash": "sha256:53d9282a89ef5f80c8ad6a36dba8c9f62914f23410e0a608f84fadb3cf08ded8",
    "data_bytes": 150461,
@@ -12073,28 +12073,28 @@
    "exported": "2026-07-10T17:31:24Z"
   },
   "spinoza-theologico-1_elwes": {
-   "source_hash": "sha256:d762d4656c140f21aa6cb8b1b310f7a6238d73c09db01592f9a0fd9e953d38d2",
+   "source_hash": "sha256:6176b88c1578c231a13b008ed618f56d66799c0e8d9fd710acbfb19934fe7dab",
    "data_file": "spinoza-theologico-1_elwes.json.gz",
-   "data_hash": "sha256:3e1cf8775b19b920968e57e3c53c1233a409f42a8ab6c267cb0944c2a40ad60a",
-   "data_bytes": 64697,
+   "data_hash": "sha256:af2db732a40b2cf2ac879660111eeb2a457ccf24a15ce470826f484a9490c9d9",
+   "data_bytes": 64736,
    "passages": 209,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:24Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "spinoza-theologico-2_elwes": {
-   "source_hash": "sha256:aa03919aaa271bad8e598fb8fb9bffdeb26457b612b1a202a333428b427ce7be",
+   "source_hash": "sha256:5a7cf770e3814b01f51baaa9b6213dd00aaa25f94d7b12234991c25b6ba02909",
    "data_file": "spinoza-theologico-2_elwes.json.gz",
-   "data_hash": "sha256:ef0772b5911a3b9d4f18bef364d5ec4e010b7bfa5a696088e5ea75a52165172b",
-   "data_bytes": 67261,
+   "data_hash": "sha256:85647a9887436d599964bae267a64ba2723c133319fcfdc50e6d30b5f6713e10",
+   "data_bytes": 67299,
    "passages": 273,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:24Z"
+   "exported": "2026-07-31T21:30:45Z"
   },
   "spiritual-exercises-ignatius_mullan": {
    "source_hash": "sha256:2c70df88bb336324dd2e439cceeac24ea37bcff211f8f9f2ac6ca77e4dfd4893",
@@ -13127,16 +13127,16 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "thus-spake-zarathustra_common": {
-   "source_hash": "sha256:443130d345feba4673324e28a083f76e7554c1f4c8fac6bfabff587b21c64640",
+   "source_hash": "sha256:8097e3392892f4481029d600677fd86e36104853df2140d51526a3d1b5bcd131",
    "data_file": "thus-spake-zarathustra_common.json.gz",
-   "data_hash": "sha256:b1f77c38b6990c74e8d0b3d51d9617e59dc0f98df1bb27020c52e10478e4fc0f",
-   "data_bytes": 282640,
+   "data_hash": "sha256:53e58abb247564fedceae696b1ae2c0b486425f073dc70cfc2dca6bf315d76fd",
+   "data_bytes": 283196,
    "passages": 3776,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:31Z"
+   "exported": "2026-07-31T21:30:46Z"
   },
   "tibetan-folk-tales_shelton": {
    "source_hash": "sha256:ea49366fa2f0d38649e673e70f83db2402e45a3dc01a3677aaf09374a49d793d",
@@ -13282,7 +13282,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:32Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "udana-sujato_pli": {
    "source_hash": "sha256:67526c8d3d74f7f8c8de2950e834ec84525d2caa25a7ce24f3e9444aff0456dd",
@@ -13807,7 +13807,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:33Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "will-to-power-3-4_ludovici": {
    "source_hash": "sha256:714a65a6c2141fc56b12fc6eda4448fa0c798bdf80fe04c24a473c5319f6842f",
@@ -13819,7 +13819,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:33Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "wisdom-talmud-bokser_bokser": {
    "source_hash": null,
@@ -13869,7 +13869,7 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:31:34Z"
+   "exported": "2026-07-31T21:10:21Z"
   },
   "wollaston-religion-koran_wollaston": {
    "source_hash": "sha256:17b7e31978db67bff944d561d0a8cf61c98abffe39a18ba580de535942b57237",
