@@ -264,8 +264,19 @@ footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1re
   padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg);
   /* Task 66 — the header follows you */
   position: sticky; top: 0; z-index: 60; }
-#arch-topbar .tb-arrow { font-size: 15px; line-height: 1; text-decoration: none; }
-#arch-topbar .tb-ctx { margin-right: auto; margin-left: 12px; color: var(--ink-faint); }
+/* Task 72 — the arrow is a real button; the context label leaves */
+#arch-topbar .tb-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; flex: 0 0 auto; box-sizing: border-box;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--panel); color: var(--ink);
+  font-size: 19px; line-height: 1; text-decoration: none; cursor: pointer;
+  padding: 0;
+}
+#arch-topbar .tb-arrow:hover { color: var(--accent); border-color: var(--accent); }
+#arch-topbar .tb-arrow:active { transform: translateY(1px); }
+#arch-topbar .tb-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#arch-topbar .tb-ctx { display: none; }
 #arch-topbar a, #arch-topbar button {
   font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
@@ -347,7 +358,7 @@ section.view { display: block !important; }
 </style>
 </head>
 <body data-map="christianity" class="deep">
-<div id="arch-topbar"><a class="tb-arrow" href="../hall/" title="The Religion Hall">&larr;</a><span class="tb-ctx">The Map of Christian Texts</span><nav id="arch-topnav"><a href="../">Digital Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
+<div id="arch-topbar"><a class="tb-arrow" href="../hall/" title="The Religion Hall">&larr;</a><nav id="arch-topnav"><a href="../">Digital Archive</a><button id="arch-dark" type="button">Dark</button></nav></div>
 <div id="m-legend" aria-label="Node states">
 <span style="color:#7a5c3a" title="held &mdash; one or several translations"><span class="mdot" style="background:#7a5c3a"></span>Held</span>
 <span style="color:#a8865a" title="public domain &mdash; not yet held"><span class="mdot" style="border:1.5px solid #a8865a"></span>PD</span>

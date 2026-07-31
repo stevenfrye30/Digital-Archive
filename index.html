@@ -372,9 +372,9 @@ body.on-text-contents #reader {
   margin: -4px -32px 10px; padding: 10px 20px;
   background: #faf8f5; border-bottom: 1px solid #e6e1d9;
 }
-#cover-bar .tb-arrow { color: #8a7a6a; }
-#cover-bar .tb-arrow:hover { color: #7a5c3a; }
-#cover-bar .tb-ctx { color: #8a7a6a; }
+#cover-bar .tb-arrow { color: #2c2c2c; border-color: #e6e1d9; }
+#cover-bar .tb-arrow:hover { color: #7a5c3a; border-color: #7a5c3a; }
+[data-theme="dark"] #cover-bar .tb-arrow { color: #d4d0c8; border-color: #3a3a3e; }
 [data-theme="dark"] #cover-bar {
   background: #1a1a1e; border-bottom-color: #3a3a3e;
 }
@@ -2181,12 +2181,27 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 [data-theme="dark"] #welcome-home { background: #1a1a1e; color: #d4d0c8; }
 /* Task 66 — the archive-wide header grammar: sticky, one quiet arrow */
-.tb-arrow { font-size: 15px !important; line-height: 1 !important; text-decoration: none; }
-.tb-ctx {
-  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: .14em; text-transform: uppercase; color: var(--chrome-muted);
-  margin-right: auto;
+/* Task 72 — a real button: square hit area, visible affordance,
+   only the glyph. The layer-context labels leave entirely; the
+   page's own heading says where you are. */
+.tb-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; flex: 0 0 auto; box-sizing: border-box;
+  border: 1px solid var(--chrome-border); border-radius: 6px;
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--chrome-fg);
+  font-size: 19px; line-height: 1; text-decoration: none; cursor: pointer;
+  padding: 0;
 }
+.tb-arrow:hover {
+  color: var(--chrome-active); border-color: var(--chrome-active);
+  background: rgba(0, 0, 0, 0.05);
+}
+.tb-arrow:active { transform: translateY(1px); }
+.tb-arrow:focus-visible { outline: 2px solid var(--chrome-active); outline-offset: 2px; }
+[data-theme="dark"] .tb-arrow { background: rgba(255, 255, 255, 0.04); }
+[data-theme="dark"] .tb-arrow:hover { background: rgba(255, 255, 255, 0.07); }
+.tb-ctx { display: none !important; }
 #home-topbar {
   display: flex;
   justify-content: space-between;
@@ -2210,6 +2225,17 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 #home-topbar a:hover,
 #home-topbar button:hover { color: var(--chrome-active); }
+/* Task 72 — the arrow button outranks the topbar's generic link dress */
+#home-topbar a.tb-arrow {
+  font-size: 19px; line-height: 1; letter-spacing: 0;
+  border: 1px solid var(--chrome-border); border-radius: 6px;
+  background: rgba(0, 0, 0, 0.03); color: var(--chrome-fg);
+}
+#home-topbar a.tb-arrow:hover {
+  color: var(--chrome-active); border-color: var(--chrome-active);
+  background: rgba(0, 0, 0, 0.05);
+}
+[data-theme="dark"] #home-topbar a.tb-arrow { background: rgba(255, 255, 255, 0.04); }
 #home-topnav { display: flex; gap: 26px; }
 #home-main {
   max-width: 1060px;
@@ -2501,9 +2527,59 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   box-shadow: 0 0 0 2px var(--chrome-active);
 }
 
+/* ── Task 70b — the chrome follows the reading theme ───────────
+   The two night presets bring a matching dark chrome (surface a
+   step off the reading bg, same ink/muted family); the light
+   presets keep today's cream chrome. Reading-room-internal only. */
+body.in-reading.rt-slate {
+  --chrome-bg: #2b313b; --chrome-fg: #c6cdd6; --chrome-border: #3a424e;
+  --chrome-muted: #8d99a8; --chrome-active: #9db4cc;
+}
+body.in-reading.rt-ink {
+  --chrome-bg: #24242a; --chrome-fg: #d4d0c8; --chrome-border: #35353b;
+  --chrome-muted: #918d84; --chrome-active: #c4a060;
+}
+body.in-reading.rt-slate #controls, body.in-reading.rt-ink #controls {
+  background: var(--chrome-bg);
+  border-bottom-color: var(--chrome-border);
+}
+body.in-reading.rt-slate #controls select,
+body.in-reading.rt-slate #controls input,
+body.in-reading.rt-ink #controls select,
+body.in-reading.rt-ink #controls input {
+  background: var(--chrome-bg); color: var(--chrome-fg);
+  border: 1px solid var(--chrome-border);
+}
+body.in-reading.rt-slate #controls button, body.in-reading.rt-ink #controls button {
+  color: var(--chrome-fg);
+}
+body.in-reading.rt-slate .tb-arrow, body.in-reading.rt-ink .tb-arrow {
+  background: rgba(255, 255, 255, 0.04);
+}
+body.in-reading.rt-slate #folio-topbar, body.in-reading.rt-ink #folio-topbar {
+  background: var(--chrome-bg);
+}
+@media (max-width: 720px) {
+  body.in-reading.rt-slate #nav-bar, body.in-reading.rt-ink #nav-bar {
+    background: var(--chrome-bg);
+    border-color: var(--chrome-border);
+  }
+}
+
 /* ── Task 69: the reading room header slims ─────────────────── */
 #ctrl-home { display: none !important; }
-#ctrl-contents.tb-arrow { font-size: 16px; }
+/* Task 72 — the arrow button outranks the controls-strip button dress */
+#controls button.tb-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; box-sizing: border-box;
+  border: 1px solid var(--chrome-border); border-radius: 6px;
+  background: rgba(0, 0, 0, 0.03); color: var(--chrome-fg);
+  font-size: 19px; line-height: 1; padding: 0;
+}
+#controls button.tb-arrow:hover {
+  color: var(--chrome-active); border-color: var(--chrome-active);
+  background: rgba(0, 0, 0, 0.05);
+}
 #ctrl-nofm {
   font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .08em; color: var(--chrome-muted); margin-left: 10px;
@@ -2519,16 +2595,16 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   }
   #nav-location, #nav-subtitle, #nav-bar .nav-info, #nav-info
     { display: none !important; }
-  #nav-prev, #nav-next {
+  #nav-bar #nav-prev, #nav-bar #nav-next {
     position: fixed; top: 60px; z-index: 55;
     padding: 8px 12px; border-radius: 999px;
     background: var(--chrome-bg); border: 1px solid var(--chrome-border);
     color: var(--chrome-muted); cursor: pointer; font-size: 12px;
   }
-  #nav-prev { left: 12px; }
-  #nav-next { right: 12px; }
-  #nav-prev:hover, #nav-next:hover { color: var(--chrome-active); border-color: var(--chrome-active); }
-  #nav-prev:disabled, #nav-next:disabled { display: none; }
+  #nav-bar #nav-prev { left: 12px; }
+  #nav-bar #nav-next { right: 12px; }
+  #nav-bar #nav-prev:hover, #nav-bar #nav-next:hover { color: var(--chrome-active); border-color: var(--chrome-active); }
+  #nav-bar #nav-prev:disabled, #nav-bar #nav-next:disabled { display: none; }
 }
 /* the folio-side control lives at the folio's own top edge */
 #folio-topbar {
@@ -11627,7 +11703,7 @@ body.viewer-active .folio-leaf-colophon {
     <div id="controls" style="display:none;">
       <!-- Task 69: the Home button retires — back is back, one layer
            (the arrow goes to this text's contents) -->
-      <button id="ctrl-contents" type="button" class="tb-arrow" title="Contents" aria-label="Back to contents">&larr;</button>
+      <button id="ctrl-contents" type="button" class="tb-arrow" onclick="backToContents()" title="Contents" aria-label="Back to contents">&larr;</button>
       <details class="display-options">
         <summary>Display</summary>
         <!-- Task 70: the free font/color pickers retire for five
@@ -11739,7 +11815,6 @@ body.viewer-active .folio-leaf-colophon {
               <!-- Task 66: one arrow, one layer out (entrance → workspace);
                    the layer's own name rides as quiet context -->
               <a href="https://stevenfrye30.github.io/Workspace/" id="home-hub-link" class="tb-arrow" title="Workspace">&larr;</a>
-              <span class="tb-ctx">Digital Archive</span>
               <!-- Task 34 header-nav call (terminal): the Hall link DROPS —
                    the Religion card directly below is the Hall's front door
                    now, and a second link four lines above it rendered as
@@ -15354,7 +15429,6 @@ function showCover(data, entry) {
                   : _famHere ? _famHere.title : 'All Texts';
     html = '<div id="cover-bar">' +
            '<a class="tb-arrow" href="' + escapeHTML(backHref) + '" title="' + escapeHTML(backCtx) + '">&larr;</a>' +
-           '<span class="tb-ctx">' + escapeHTML(backCtx) + '</span>' +
            '</div>' + html;
   }
   html += '<div id="continuous-cover">';
@@ -22557,6 +22631,9 @@ function applyReaderTheme(key) {
   root.style.setProperty('--reader-fg', t.fg);
   root.style.setProperty('--reader-accent', t.accent);
   root.style.setProperty('--reader-muted', t.muted);
+  // Task 70b — the night presets bring a matching chrome register
+  document.body.classList.toggle('rt-slate', key === 'slate');
+  document.body.classList.toggle('rt-ink', key === 'ink');
   localStorage.setItem('r-theme', key);
   document.querySelectorAll('#ctrl-themes .theme-swatch').forEach(b =>
     b.classList.toggle('active', b.dataset.themeKey === key));
