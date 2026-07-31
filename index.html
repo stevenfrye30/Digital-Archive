@@ -2480,22 +2480,27 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   letter-spacing: .08em; color: var(--chrome-muted); margin-left: 10px;
   white-space: nowrap;
 }
-#nav-bar {
-  display: block; height: 0; padding: 0 !important; margin: 0 !important;
-  border: none !important; background: none !important; overflow: visible;
+#mode-switch { display: none !important; }
+/* Desktop only — mobile (≤720px) keeps its May-2026 running header,
+   where #nav-bar IS the single reading header. */
+@media (min-width: 721px) {
+  #nav-bar {
+    height: 0; padding: 0 !important; margin: 0 !important;
+    border: none !important; background: none !important; overflow: visible;
+  }
+  #nav-location, #nav-subtitle, #nav-bar .nav-info, #nav-info
+    { display: none !important; }
+  #nav-prev, #nav-next {
+    position: fixed; top: 60px; z-index: 55;
+    padding: 8px 12px; border-radius: 999px;
+    background: var(--chrome-bg); border: 1px solid var(--chrome-border);
+    color: var(--chrome-muted); cursor: pointer; font-size: 12px;
+  }
+  #nav-prev { left: 12px; }
+  #nav-next { right: 12px; }
+  #nav-prev:hover, #nav-next:hover { color: var(--chrome-active); border-color: var(--chrome-active); }
+  #nav-prev:disabled, #nav-next:disabled { display: none; }
 }
-#nav-location, #nav-subtitle, #mode-switch, #nav-bar .nav-info, #nav-info
-  { display: none !important; }
-#nav-prev, #nav-next {
-  position: fixed; top: 60px; z-index: 55;
-  padding: 8px 12px; border-radius: 999px;
-  background: var(--chrome-bg); border: 1px solid var(--chrome-border);
-  color: var(--chrome-muted); cursor: pointer; font-size: 12px;
-}
-#nav-prev { left: 12px; }
-#nav-next { right: 12px; }
-#nav-prev:hover, #nav-next:hover { color: var(--chrome-active); border-color: var(--chrome-active); }
-#nav-prev:disabled, #nav-next:disabled { display: none; }
 /* the folio-side control lives at the folio's own top edge */
 #folio-topbar {
   padding: 8px 10px; text-align: right;
@@ -11637,6 +11642,7 @@ body.viewer-active .folio-leaf-colophon {
         <label>Book</label>
         <select id="ctrl-book"></select>
       </div>
+      <span id="ctrl-nofm"></span>
       <div class="ctrl-group" id="ctrl-search-group" style="display:none;border-left:1px solid var(--chrome-border);padding-left:18px;">
         <label>Search</label>
         <input type="search" id="ctrl-search" placeholder="within this text…">
@@ -11677,7 +11683,6 @@ body.viewer-active .folio-leaf-colophon {
       <button id="compare-btn" type="button" style="display:none;">Compare&hellip;</button>
       <select id="compare-select" style="display:none;"></select>
       <span id="compare-note"></span>
-      <span id="ctrl-nofm"></span>
     </div>
 
     <div id="nav-bar">
@@ -14525,7 +14530,7 @@ function updateNav() {
     $navBar.style.display = 'none';
     return;
   }
-  $navBar.style.display = 'block'; // Task 69: a zero-height shell for the fixed arrows
+  $navBar.style.display = 'flex'; // Task 69: desktop CSS collapses this to a zero-height shell
   $navPrev.disabled = (groupIndex <= 0);
   $navNext.disabled = (groupIndex >= groupKeys.length - 1);
   // Desktop: single text line in #nav-location, as before.
@@ -15809,7 +15814,7 @@ function enterReading(targetGroupKey) {
     if (idx >= 0) groupIndex = idx;
   } else {
     // Always show nav bar
-    $navBar.style.display = 'block'; // Task 69: a zero-height shell for the fixed arrows
+    $navBar.style.display = 'flex'; // Task 69: desktop CSS collapses this to a zero-height shell
     if (needsGroupSelector() && currentBook && currentBook !== '__fm__') {
       // Structured text with chapters — enable prev/next
       const idx = groupKeys.indexOf(currentBook);
