@@ -2650,6 +2650,16 @@ details.cite-corner > summary:hover,
 .face-btn[data-face-key="constantia"] { font-family: Constantia, 'Iowan Old Style', Cambria, Georgia, serif; }
 .face-btn:hover { border-color: var(--chrome-active); color: var(--chrome-active); }
 .face-btn.active { border-color: var(--chrome-active); color: var(--chrome-active); }
+/* Task 90 — the generic #controls button dress (ID specificity) was
+   putting a light pill under the face buttons; in the night presets
+   that meant light-on-light. The strip's own vars carry the ink. */
+#controls .face-btn, #controls .face-btn:hover, #controls .face-btn.active {
+  background: none;
+}
+#controls .face-btn { color: var(--chrome-fg); border: 1px solid var(--chrome-border); }
+#controls .face-btn:hover, #controls .face-btn.active {
+  color: var(--chrome-active); border-color: var(--chrome-active);
+}
 
 .theme-swatch {
   width: 22px; height: 22px; border-radius: 50%; padding: 0;
