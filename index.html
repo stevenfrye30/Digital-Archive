@@ -16015,12 +16015,49 @@ function showCover(data, entry) {
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (B) {
         if (!B || !B.chips) return;
-        var chip = null;
+        // Task 99 — THE SHELF IS THE WORK FAMILY. The old shelf took the
+        // first chip holding this witness, which for the Bible is a
+        // per-BOOK chip: standing on the KJV it counted the witnesses
+        // containing Genesis (26), on a Greek NT the ones containing
+        // Matthew (39). Neither is 'the other editions of this work'.
+        // The archive already records the family — every witness of one
+        // work shares an index id — so the family leads and the chip's
+        // siblings join it (a chip may bind editions filed under other
+        // ids). Every witness keeps the translator/year/language the
+        // binder derived, wherever in the map it was bound.
+        var byDf = {};
         B.chips.forEach(function (ch) {
-          if (!chip && (ch.read || []).some(function (r2) { return r2.df === myDf; }) &&
-              ch.read.length > 1) chip = ch;
+          (ch.read || []).forEach(function (r2) {
+            if (r2 && r2.df && !byDf[r2.df]) byDf[r2.df] = r2;
+          });
         });
-        if (!chip) return;
+        var famDf = [];
+        try {
+          (indexGroups[entry.id] || []).forEach(function (e) {
+            if (e && e.data_file && !e.restricted) famDf.push(e.data_file);
+          });
+        } catch (e) { famDf = []; }
+        var chipDf = [];
+        B.chips.forEach(function (ch) {
+          if ((ch.read || []).some(function (r2) { return r2.df === myDf; })) {
+            (ch.read || []).forEach(function (r2) { chipDf.push(r2.df); });
+          }
+        });
+        // The family LEADS when it has more than this one witness: it is
+        // the archive's own record of 'the same work'. The chip is the
+        // fallback for works whose editions are filed under separate ids
+        // (Budge's and Renouf's Books of the Dead — 82 such texts), and
+        // it is only ever a fallback, because a chip can bind several
+        // distinct works: the Song of Songs chip holds every Bible that
+        // contains the book AND Ginsburg's standalone edition of it,
+        // which is not an edition of the Bible.
+        var seenDf = {}, union = [];
+        var source = (famDf.filter(function (d) { return d !== myDf; }).length)
+          ? famDf : chipDf;
+        source.forEach(function (d) {
+          if (d && d !== myDf && !seenDf[d]) { seenDf[d] = 1; union.push(d); }
+        });
+        if (!union.length) return;
         var plate = $textHeader.querySelector('.bible-cover-layout');
         if (!plate || plate.querySelector('.cc-editions-corner')) return;
         // Task 82 — the affordance sits in the top-LEFT corner
@@ -16028,8 +16065,28 @@ function showCover(data, entry) {
         // its 27 witnesses are the archive's deepest edition shelf,
         // and the corner is the one grammar for every multi-edition
         // text (the old Bible-only Versions detour retires).
-        var others = chip.read.filter(function (r2) { return r2.df !== myDf; });
+        // Each witness carries what the binder derived for it; a family
+        // member the map never bound falls back to its own index row.
+        var others = union.map(function (d) {
+          if (byDf[d]) return byDf[d];
+          var row = null;
+          try {
+            (indexGroups[entry.id] || []).forEach(function (e) {
+              if (e && e.data_file === d) row = e;
+            });
+          } catch (e) {}
+          if (!row) return null;
+          return { df: d, work: row.title,
+                   translator: (row.translator || [])[0] || '',
+                   year: row.year || null };
+        }).filter(Boolean);
         if (!others.length) return;
+        // The shelf reads as a history: oldest translation first, the
+        // undated last.
+        others.sort(function (x, y) {
+          var a = x.year || 9999, b = y.year || 9999;
+          return a - b;
+        });
         var corner = document.createElement('button');
         corner.type = 'button';
         corner.className = 'cc-editions-corner';
