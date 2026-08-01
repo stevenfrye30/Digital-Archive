@@ -865,10 +865,13 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   background: #faf8f5; border: 1px solid #e6e1d9; border-radius: 8px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
   padding: 10px 14px; font-family: Georgia, serif; font-size: 13px;
-  text-align: left; max-width: 320px;
+  text-align: left; max-width: 340px; min-width: 250px;
 }
 .cc-ed-pop a { display: block; margin: 4px 0; color: #2c2c2c;
-  text-decoration: none; border-bottom: 1px solid rgba(122, 92, 58, .3); }
+  text-decoration: none; border-bottom: 1px solid rgba(122, 92, 58, .3);
+  /* Task 96 — one line per edition: the shelf reads as a list, never as
+     paragraphs. A long name clips rather than wrapping to a second line. */
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cc-ed-pop a:hover { color: #7a5c3a; }
 /* Task 92 — the Bible's 27 witnesses: the shelf scrolls, never runs
    off the plate. */
@@ -16042,6 +16045,12 @@ function showCover(data, entry) {
           // own line, each named by the language it speaks.
           var _en = others.filter(function (r2) { return !r2.lang || r2.lang === 'en'; });
           var _other = others.filter(function (r2) { return r2.lang && r2.lang !== 'en'; });
+          // Task 96 — these are editions OF ONE WORK, so repeating its
+          // title on every row says nothing ('· The Holy Bible' ×26). The
+          // work is named only when the shelf really spans several works.
+          var _works = {};
+          others.forEach(function (r2) { if (r2.work) _works[r2.work] = 1; });
+          var _multiWork = Object.keys(_works).length > 1;
           function _rowHTML(r2) {
             // Task 92 — name each witness honestly: the translator when
             // the binding knows one, else the edition's own name read from
@@ -16055,7 +16064,7 @@ function showCover(data, entry) {
             var who = name + (r2.year ? ', ' + r2.year : '');
             return '<a href="?text=' + encodeURIComponent(r2.df) + '">' +
                    escapeHTML(who) +
-                   ((r2.work && r2.work !== name) ? ' <span class="cc-oe-work">\u00b7 ' + escapeHTML(r2.work) + '</span>' : '') +
+                   ((_multiWork && r2.work && r2.work !== name) ? ' <span class="cc-oe-work">\u00b7 ' + escapeHTML(r2.work) + '</span>' : '') +
                    ((r2.lang && r2.lang !== 'en')
                      ? ' <span class="cc-oe-lang">' +
                        escapeHTML(LANG_NAMES[r2.lang] || r2.lang) + '</span>' : '') +
