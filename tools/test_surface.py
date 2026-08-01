@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import argparse
 import http.server
+import json
 import socket
 import socketserver
 import sys
@@ -549,6 +550,31 @@ def g_lens(pg, base, R):
         R.check("7 lens", f"{room}: no chooser popover survives",
                 pg.evaluate("""() => !document.querySelector('.m-chooser-pop')
                   && typeof window.__mcClose === 'undefined'"""))
+
+    # Task 109 — THE DOOR SPEAKS ENGLISH. The chip is the one door now, so
+    # read[0] decides what an English reader lands on; before this rule
+    # 268 of 557 multi-held chips opened a Pāli/Arabic/Hebrew/Greek text.
+    # A chip may still open a non-English door ONLY when it holds no
+    # English witness at all — that is an acquisition gap, not a sort
+    # failure, so the check names those instead of failing on them.
+    maps_dir = Path(__file__).resolve().parent.parent / "maps"
+    offenders, gaps = [], []
+    for d in sorted(p for p in maps_dir.iterdir() if p.is_dir()):
+        b = d / "bindings.json"
+        if not b.is_file():
+            continue
+        for ch in json.loads(b.read_text(encoding="utf-8")).get("chips", []):
+            read = ch.get("read") or []
+            if len(read) < 2 or not read[0].get("lang"):
+                continue
+            if any(not r.get("lang") for r in read):
+                offenders.append(f"{d.name}:{ch.get('chip')}")
+            else:
+                gaps.append(f"{d.name}:{ch.get('chip')}")
+    R.check("7 lens", "the door speaks English wherever an English witness exists",
+            not offenders, "; ".join(offenders[:3]))
+    R.check("7 lens", "chips with no English witness are a known, listed set",
+            len(gaps) == 5, f"{len(gaps)}: " + "; ".join(g.split(':')[1] for g in gaps[:5]))
 
 
 # Task 107 — what the eye sees, not what the box says. The union of the

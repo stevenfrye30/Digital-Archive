@@ -16261,7 +16261,15 @@ function showCover(data, entry) {
             // its file stem (bible_geneva-bible → Geneva Bible). The work
             // follows only when it adds something — two rows had been
             // reading 'The Holy Bible · The Holy Bible', naming nothing.
-            var name = r2.translator ||
+            // Task 109 — the binding's OWN label comes before the file
+            // stem. Ruling 1 moved every original-language witness out of
+            // the door and into this corner, and the stem rendered
+            // long-discourses-sujato_pli as 'Pli' on ~263 pages. The
+            // binder already recorded what it is — 'Pāli text
+            // (SuttaCentral)' — so the row says that instead, and the
+            // language chip stands down because the label already names it.
+            var _byLabel = !r2.translator && !!r2.label;
+            var name = r2.translator || r2.label ||
               String(r2.df || '').replace(/[.]json$/, '').split('_').slice(1).join(' ')
                 .replace(/-/g, ' ')
                 .replace(/(^|\s)([a-z])/g, function (m, a, b2) { return a + b2.toUpperCase(); });
@@ -16269,7 +16277,7 @@ function showCover(data, entry) {
             return '<a href="?text=' + encodeURIComponent(r2.df) + '">' +
                    escapeHTML(who) +
                    ((_multiWork && r2.work && r2.work !== name) ? ' <span class="cc-oe-work">\u00b7 ' + escapeHTML(r2.work) + '</span>' : '') +
-                   ((r2.lang && r2.lang !== 'en')
+                   ((r2.lang && r2.lang !== 'en' && !_byLabel)
                      ? ' <span class="cc-oe-lang">' +
                        escapeHTML(LANG_NAMES[r2.lang] || r2.lang) + '</span>' : '') +
                    '</a>';
