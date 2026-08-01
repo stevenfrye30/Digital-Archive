@@ -974,6 +974,95 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 [data-theme="dark"] .cc-toc-list li:hover { background: rgba(255,255,255,0.05); }
 [data-theme="dark"] .cc-toc-list li:hover .cc-toc-name { color: #c4a060; }
 
+/* ── Task 106-P2 — the mobile sheet, and the 44px floor ──────────────
+   A phone is held low, so the apparatus rises from the BOTTOM edge and
+   is operable one-handed. The sheet scrolls inside itself; the reading
+   surface stays visible above it. */
+#fmt-sheet { position: fixed; inset: 0; z-index: 120; }
+#fmt-sheet[hidden] { display: none; }
+#fmt-sheet-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.38); }
+#fmt-sheet-panel {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  max-height: 78vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: var(--chrome-bg); color: var(--chrome-fg);
+  border-top: 1px solid var(--chrome-border);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -12px 40px rgba(0,0,0,0.28);
+  padding: 6px 18px calc(20px + env(safe-area-inset-bottom, 0px));
+  transform: translateY(0); transition: transform 0.2s ease-out;
+}
+#fmt-sheet.closing #fmt-sheet-panel { transform: translateY(100%); }
+#fmt-grip { width: 40px; height: 4px; border-radius: 99px; margin: 6px auto 12px;
+  background: var(--chrome-border); }
+#fmt-sheet .ctrl-group { display: flex; align-items: center; gap: 12px;
+  min-height: 44px; margin: 0; padding: 4px 0; border: none; }
+#fmt-sheet .ctrl-group > label { flex: 0 0 5.2em; font-size: 13px;
+  color: var(--chrome-muted); text-align: left; }
+#fmt-sheet .ctrl-group input[type=range] { flex: 1 1 auto; height: 44px; }
+#fmt-sheet .theme-swatch { width: 34px; height: 34px; }
+#fmt-sheet #ctrl-themes, #fmt-sheet #ctrl-faces { display: flex; gap: 10px;
+  flex-wrap: wrap; align-items: center; }
+#fmt-sheet .face-btn { min-height: 40px; padding: 8px 12px; }
+#fmt-sheet details.display-options > summary { display: none; }
+#fmt-sheet details.display-options { display: block !important; }
+#fmt-sheet-doors { margin-top: 6px; border-top: 1px solid var(--chrome-border);
+  padding-top: 6px; }
+#fmt-sheet-doors > * { display: flex !important; align-items: center;
+  width: 100%; min-height: 44px; margin: 0; padding: 0 2px;
+  background: none; border: none; border-radius: 0;
+  font: 400 15px/1.2 Georgia, serif; color: var(--chrome-fg);
+  text-align: left; letter-spacing: 0; opacity: 1; cursor: pointer; }
+#fmt-sheet-doors > * + * { border-top: 1px solid var(--chrome-border); }
+/* the rows read as rows: the mobile rule that hides control labels is
+   right for a cramped strip and wrong inside the sheet, and the doors
+   must each say what they are rather than wearing their desktop dress
+   (the star is a glyph; Press is a quiet italic apparatus button). */
+#fmt-sheet .ctrl-group > label { display: block !important; }
+#fmt-sheet-doors > #rr-fav { justify-content: flex-start !important; }
+#fmt-sheet-doors > #rr-fav::after { content: "Favorites"; margin-left: 12px;
+  font: 400 15px/1.2 Georgia, serif; }
+#fmt-sheet-doors > #press-print { opacity: 1 !important; font-style: normal !important;
+  font-size: 15px !important; }
+#fmt-sheet-doors > #rr-atlas { opacity: 1 !important; font-style: normal !important;
+  font-size: 15px !important; }
+#nav-bar #nav-fmt-toggle { flex: 0 0 auto; border: 1px solid transparent;
+  background: transparent; color: var(--chrome-active);
+  font: 600 15px/1 Georgia, serif; cursor: pointer; }
+@media (min-width: 721px) { #nav-bar #nav-fmt-toggle { display: none; } }
+
+/* The 44px floor, phone widths only. Desktop keeps its 38px squares —
+   a deliberate split: a mouse is precise, a thumb is not. */
+@media (max-width: 720px) {
+  .tb-arrow, #fav-shelf-btn, #dark-toggle, #arch-fav, #arch-dark,
+  #favBtn, #themeBtn, .bar .theme, #back-to-top,
+  #home-hub-link, #press-info, #atlas-info {
+    min-width: 44px !important; min-height: 44px !important;
+  }
+  #nav-bar #nav-prev, #nav-bar #nav-next, #nav-bar #nav-meta-toggle,
+  #nav-bar #nav-fmt-toggle {
+    min-width: 44px; min-height: 44px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  #nav-bar #nav-location { min-height: 44px; }
+  .cc-toc-list li, .bcl-canon-list li, .cc-canon-btn, .cc-pager button,
+  .toc-all, nav.toc a { min-height: 44px; }
+  .cc-fav, .cc-editions-corner, .cite-corner > summary, .cc-begin,
+  .cc-fm-btn, .bcl-codex-range {
+    min-height: 44px; display: inline-flex; align-items: center;
+    justify-content: center;
+  }
+  .cc-editions-corner, .cite-corner > summary { min-width: 44px; }
+  .cc-toc-list li, .bcl-canon-list li { align-items: center; }
+  /* Task 106-P2 — the citation panel is clamped to the screen: it opened
+     400px wide at left −79 in a 390px viewport. */
+  .cite-corner .cc-citations {
+    position: fixed !important; left: 12px !important; right: 12px !important;
+    top: auto !important; bottom: 12px !important;
+    width: auto !important; max-width: none !important;
+    max-height: 60vh; overflow-y: auto;
+  }
+}
+
 /* Task 98 — the gold reaches every title: the four entrance doors
    name themselves in the archive's own gold when the lamp is low. */
 [data-theme="dark"] .home-cat .home-cat-label { color: #c4a060; }
@@ -12015,7 +12104,18 @@ body.viewer-active .folio-leaf-colophon {
       <span id="compare-note"></span>
     </div>
 
-    <div id="nav-bar">
+    <!-- Task 106-P2 — the reading room's mobile home for the apparatus.
+     It holds no controls of its own: the real ones move in here at
+     phone widths and move back on desktop. -->
+<div id="fmt-sheet" hidden>
+  <div id="fmt-sheet-bg"></div>
+  <div id="fmt-sheet-panel" role="dialog" aria-modal="true" aria-label="Display">
+    <div id="fmt-grip" aria-hidden="true"></div>
+    <div id="fmt-sheet-body"></div>
+    <div id="fmt-sheet-doors"></div>
+  </div>
+</div>
+<div id="nav-bar">
       <button id="nav-prev" disabled>&#9664; Prev</button>
       <span id="nav-location"><span class="nav-location-label"></span></span>
       <!-- Mobile-only secondary line under the chapter title: position +
@@ -12031,7 +12131,7 @@ body.viewer-active .folio-leaf-colophon {
       <!-- Mobile-only metadata-access trigger. Opens the existing
            #text-meta panel inline. Hidden on desktop, where the
            #info-bar pill carries this affordance. -->
-      <button id="nav-meta-toggle" type="button" title="About this text, translation, and search">&#9432;</button>
+      <button id="nav-fmt-toggle" type="button" aria-expanded="false" aria-controls="fmt-sheet" title="Display — theme, face, size">Aa</button><button id="nav-meta-toggle" type="button" title="About this text, translation, and search">&#9432;</button>
     </div>
 
     <div id="status"></div>
@@ -17049,6 +17149,42 @@ document.body.classList.add('cols-single');
     // out. The button is never the loudest thing in the room.
     btn.setAttribute('aria-pressed', String(!compact));
   });
+})();
+
+// Task 106-P2 — the sheet opens from the running header and closes by
+// backdrop tap, ESC, or a downward swipe on its own body. It never
+// traps the reader.
+(function wireFormatSheet() {
+  const sheet = document.getElementById('fmt-sheet');
+  const btn = document.getElementById('nav-fmt-toggle');
+  if (!sheet || !btn) return;
+  const panel = document.getElementById('fmt-sheet-panel');
+  function open() {
+    sheet.hidden = false;
+    sheet.classList.remove('closing');
+    btn.setAttribute('aria-expanded', 'true');
+    const first = panel.querySelector('button, input, select');
+    if (first) first.focus({ preventScroll: true });
+  }
+  function shut() {
+    sheet.classList.add('closing');
+    btn.setAttribute('aria-expanded', 'false');
+    setTimeout(() => { sheet.hidden = true; sheet.classList.remove('closing'); }, 200);
+    try { btn.focus({ preventScroll: true }); } catch (e) {}
+  }
+  btn.addEventListener('click', () => (sheet.hidden ? open() : shut()));
+  document.getElementById('fmt-sheet-bg').addEventListener('click', shut);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !sheet.hidden) shut();
+  });
+  let y0 = null;
+  panel.addEventListener('touchstart', (e) => { y0 = e.touches[0].clientY; }, { passive: true });
+  panel.addEventListener('touchend', (e) => {
+    if (y0 === null) return;
+    const dy = e.changedTouches[0].clientY - y0;
+    if (dy > 70 && panel.scrollTop <= 0) shut();
+    y0 = null;
+  }, { passive: true });
 })();
 
 // Companion folio prototype — desktop/tablet only.
@@ -23330,7 +23466,22 @@ function applyReaderFace(key) {
     if (detailsEl && detailsEl.parentNode) {
       desktopHomes['__details__'] = { parent: detailsEl.parentNode, next: detailsEl.nextSibling };
     }
+    ['rr-fav', 'press-print', 'rr-atlas'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.parentNode) {
+        desktopHomes['__door_' + id] = { parent: el.parentNode, next: el.nextSibling };
+      }
+    });
   }
+
+  // Task 106-P2 — at phone widths the apparatus lives in the sheet.
+  // These are the SAME nodes the desktop panel uses; nothing is cloned,
+  // so every key, handler and preset stays single-sourced.
+  const sheetBody = () => document.getElementById('fmt-sheet-body');
+  const sheetDoors = () => document.getElementById('fmt-sheet-doors');
+  const DOOR_IDS = ['rr-fav', 'press-print', 'rr-atlas'];   // Folio is NOT
+  // brought to the phone: it is a side-by-side affordance and 390px has
+  // no second column (ruled, Task 106-P2 item 3).
 
   function applyMobile() {
     moves.forEach(m => {
@@ -23340,10 +23491,21 @@ function applyReaderFace(key) {
         newParent.appendChild(el);
       }
     });
-    // Display-options: append to text-meta if not already there
-    if (detailsEl) {
-      const tm = document.getElementById('text-meta');
-      if (tm && detailsEl.parentNode !== tm) tm.appendChild(detailsEl);
+    // Display-options moves into the sheet, not the meta panel: the
+    // meta panel is not reachable while reading on a phone.
+    const sb = sheetBody();
+    if (detailsEl && sb && detailsEl.parentNode !== sb) sb.appendChild(detailsEl);
+    // In the sheet the disclosure IS the sheet: a <details> keeps its
+    // content collapsed until open, and its summary is hidden here, so
+    // the panel must be held open or the controls exist but cannot be
+    // touched.
+    if (detailsEl && sb && detailsEl.parentNode === sb) detailsEl.open = true;
+    const sd = sheetDoors();
+    if (sd) {
+      DOOR_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.parentNode !== sd) sd.appendChild(el);
+      });
     }
     // Mark the chapter title as picker-tappable when chapter selector
     // is present and has options.
@@ -23357,6 +23519,16 @@ function applyReaderFace(key) {
 
   function applyDesktop() {
     if (!desktopHomes) return;
+    // the doors go home too, or a resize would strand them in the sheet
+    DOOR_IDS.forEach(id => {
+      const el = document.getElementById(id);
+      const home = desktopHomes['__door_' + id];
+      if (el && home && el.parentNode !== home.parent) {
+        if (home.next && home.next.parentNode === home.parent) {
+          home.parent.insertBefore(el, home.next);
+        } else { home.parent.appendChild(el); }
+      }
+    });
     moves.forEach(m => {
       const el = document.getElementById(m.id);
       const home = desktopHomes[m.id];

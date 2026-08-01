@@ -291,3 +291,16 @@
 })();
 </script>
 <script src="../assets/fav-shelf.js" defer></script>
+<style>
+/* Task 106-P2 — the 44px floor at phone widths. Desktop keeps its 38px
+   squares: a mouse is precise, a thumb is not. */
+@media (max-width: 720px) {
+  .tb-arrow, .tb-back, #favBtn, #themeBtn, .bar .theme,
+  .bar a, .bar button {
+    min-width: 44px !important; min-height: 44px !important;
+    display: inline-flex !important; align-items: center;
+    justify-content: center;
+  }
+  .door { min-height: 44px; }
+}
+</style>

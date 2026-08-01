@@ -1512,5 +1512,33 @@ nav.toc.toc-bare { justify-content: flex-start; }
   sync();
 })();
 </script>
+<style>
+/* Task 106-P2 — the 44px floor, phone widths only. A mouse is precise
+   and a thumb is not, so desktop keeps its 38px squares: a deliberate
+   split, not drift. */
+@media (max-width: 720px) {
+  .tb-arrow, #arch-fav, #arch-dark, #favBtn, #themeBtn, .bar .theme,
+  #back-to-top, .toc-all, .cc-fav, .cc-editions-corner {
+    min-width: 44px !important; min-height: 44px !important;
+    display: inline-flex !important; align-items: center;
+    justify-content: center;
+  }
+  nav.toc a, .bcl-codex-range, .cc-canon-btn, .cc-pager button,
+  .abtn, .home-cat, .fam > summary, .flagship, .room-path,
+  #arch-topnav a, .toggle, #themeBtn, .lg, .keyrow {
+    min-height: 44px;
+  }
+  #lens-toggle button, .lens-toggle button, #held-btn, .toggle,
+  .zone-h button, .keyrow, .bcl-codex-range {
+    min-height: 44px !important;
+    display: inline-flex !important; align-items: center;
+  }
+  nav.toc a, .bcl-codex-range, #arch-topnav a, .room-path {
+    display: inline-flex; align-items: center;
+  }
+  .cite-corner > summary { min-height: 44px; display: inline-flex;
+    align-items: center; }
+}
+</style>
 </body>
 </html>

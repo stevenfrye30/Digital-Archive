@@ -39,6 +39,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 REPO = Path(__file__).resolve().parent.parent
+_BROWSER = [None]   # the running browser, shared with the mobile group
 SHOTS = REPO / "reports" / "surface_battery"
 
 GOLD = "rgb(196, 160, 96)"      # the archive's accent, dark
@@ -467,9 +468,103 @@ def g_lens(pg, base, R):
                     landed, pg.url.split("/")[-1][:60])
 
 
+def g_mobile(pg_unused, base, R):
+    """Task 106-P2 phase 3 — the phone. This group exists because the
+    battery only ever ran at 1440px, and a whole viewport class hid a
+    defect for twenty lanes: at phone widths the reading room had no
+    formatting apparatus at all."""
+    LAYERS = [("entrance", ""), ("hall", "hall/"),
+              ("map", "map/christianity.html"), ("shelf", "shelf/philosophy.html"),
+              ("philosophy", "philosophy.html"),
+              ("cover", "?text=bible_kjv.json")]
+    TAP_JS = """() => {
+      const vw = innerWidth, small = [];
+      document.querySelectorAll('a, button, select, summary, [role=button], [role=link]')
+        .forEach(e => { const r = e.getBoundingClientRect();
+          if (!r.width || !r.height) return;
+          if (r.bottom < 0 || r.top > innerHeight) return;
+          if (getComputedStyle(e).position === 'fixed' && r.width < 2) return;
+          if (r.height < 44 || r.width < 24)
+            small.push((e.id ? '#'+e.id : e.tagName + '.' + String(e.className).slice(0,20))
+                       + ' ' + Math.round(r.width) + 'x' + Math.round(r.height)); });
+      return { overflow: Math.round(document.documentElement.scrollWidth - vw),
+               small: [...new Set(small)].slice(0, 6) }; }"""
+    # the phone gets its own context on the SAME browser: a nested
+    # sync_playwright() inside the running one raises.
+    ctx = _BROWSER[0].new_context(viewport={"width": 390, "height": 844},
+                                  is_mobile=True, has_touch=True)
+    pg = ctx.new_page()
+    try:
+        for name, path in LAYERS:
+            pg.goto(base + path, wait_until="networkidle")
+            pg.wait_for_timeout(1100)
+            m = pg.evaluate(TAP_JS)
+            R.check("8 mobile", f"{name}: no horizontal overflow at 390px",
+                    m["overflow"] <= 2, f"+{m['overflow']}px")
+            R.check("8 mobile", f"{name}: every visible target ≥ 44px",
+                    not m["small"], "; ".join(m["small"][:3]))
+        # the reading room and its sheet
+        pg.goto(base + "?text=thus-spake-zarathustra_common.json", wait_until="networkidle")
+        pg.wait_for_timeout(1200)
+        pg.evaluate("""() => { const b = [...document.querySelectorAll('button')]
+          .find(x => /Read from beginning/.test(x.textContent)); b && b.click(); }""")
+        pg.wait_for_timeout(1200)
+        m = pg.evaluate(TAP_JS)
+        R.check("8 mobile", "reading: no horizontal overflow", m["overflow"] <= 2, f"+{m['overflow']}px")
+        R.check("8 mobile", "reading: every visible target ≥ 44px",
+                not m["small"], "; ".join(m["small"][:3]))
+        col = pg.evaluate("""() => { const p = document.querySelector('.passage');
+          const r = p.getBoundingClientRect();
+          return [Math.round(r.left), Math.round(innerWidth - r.right)]; }""")
+        R.check("8 mobile", "reading: the column is symmetric",
+                abs(col[0] - col[1]) <= 2, f"{col[0]}px / {col[1]}px")
+        has = pg.evaluate("() => !!document.getElementById('nav-fmt-toggle')")
+        R.check("8 mobile", "reading: the sheet has a handle in the running header", has)
+        if has:
+            pg.click("#nav-fmt-toggle"); pg.wait_for_timeout(500)
+            s = pg.evaluate("""() => {
+              const sh = document.getElementById('fmt-sheet');
+              const p = document.getElementById('fmt-sheet-panel');
+              if (!sh || sh.hidden) return null;
+              const r = p.getBoundingClientRect();
+              const inside = id => { const e = document.getElementById(id);
+                return !!(e && p.contains(e) && e.getClientRects().length); };
+              const rows = [...p.querySelectorAll('.ctrl-group, #fmt-sheet-doors > *')]
+                .filter(e => e.getClientRects().length)
+                .map(e => Math.round(e.getBoundingClientRect().height));
+              return { within: r.top >= 0 && r.bottom <= innerHeight + 1,
+                       themes: inside('ctrl-themes'), faces: inside('ctrl-faces'),
+                       size: inside('ctrl-size'), spacing: inside('ctrl-spacing'),
+                       measure: inside('ctrl-measure'), fav: inside('rr-fav'),
+                       press: inside('press-print'), atlas: inside('rr-atlas'),
+                       folio: inside('companion-toggle'),
+                       minRow: rows.length ? Math.min(...rows) : 0 }; }""")
+            R.check("8 mobile", "the sheet opens fully within the viewport",
+                    bool(s) and s["within"], str(s and s["within"]))
+            for k in ("themes", "faces", "size", "spacing", "measure"):
+                R.check("8 mobile", f"the sheet holds {k} and it is reachable",
+                        bool(s) and s[k])
+            for k in ("fav", "press", "atlas"):
+                R.check("8 mobile", f"the sheet holds the {k} door", bool(s) and s[k])
+            R.check("8 mobile", "Folio does NOT come to the phone (ruled)",
+                    bool(s) and not s["folio"])
+            R.check("8 mobile", "every sheet row ≥ 44px",
+                    bool(s) and s["minRow"] >= 44, f"min {s and s['minRow']}px")
+            # it actually formats
+            pg.click('#fmt-sheet .theme-swatch[data-theme-key="ink"]'); pg.wait_for_timeout(400)
+            R.check("8 mobile", "a preset chosen in the sheet reaches the page",
+                    pg.evaluate("() => document.body.classList.contains('rt-ink')"))
+            pg.keyboard.press("Escape"); pg.wait_for_timeout(400)
+            R.check("8 mobile", "ESC dismisses the sheet",
+                    pg.evaluate("() => document.getElementById('fmt-sheet').hidden"))
+    finally:
+        ctx.close()
+
+
 GROUPS = {
     "furniture": g_furniture,
     "lens": g_lens,
+    "mobile": g_mobile,
     "boundary": g_boundary,
     "chrome": g_room_chrome,
     "contrast": g_contrast,
@@ -490,6 +585,7 @@ def main() -> int:
     R = Result()
     with sync_playwright() as pw:
         b = pw.chromium.launch()
+        _BROWSER[0] = b
         ctx = b.new_context(viewport={"width": 1440, "height": 1000})
         pg = ctx.new_page()
         for name in chosen:
