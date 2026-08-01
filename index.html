@@ -12136,6 +12136,31 @@ function toggleDarkMode() {
   _paintDaGlyphs();
 }
 
+// Task 89 — the archive theme stops at the reading room's door FOR
+// REAL: the 87 unification stamped data-theme on every landing, and
+// the room's chrome ([data-theme="dark"] picker/pills/buttons) took
+// it while the paper kept its preset — dark furniture on cream. The
+// room's five presets own ALL its color; the attribute leaves while
+// body.in-reading and returns on orientation surfaces (cover,
+// entrance). One observer covers every enter/exit path, present and
+// future.
+function _syncDaThemeToSurface() {
+  const inReading = document.body.classList.contains('in-reading');
+  if (inReading) {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    const t = localStorage.getItem('da-theme');
+    const dark = t ? t === 'dark'
+                   : localStorage.getItem('da-dark-mode') === 'true';
+    if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+  if (typeof _paintDaGlyphs === 'function') _paintDaGlyphs();
+}
+new MutationObserver(_syncDaThemeToSurface)
+  .observe(document.body, { attributes: true, attributeFilter: ['class'] });
+_syncDaThemeToSurface();
+
 // ── Surah name map (1-indexed) ────────────────────────────────────────────────
 
 const SURAH_NAMES = {
