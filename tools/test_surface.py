@@ -387,6 +387,32 @@ def g_covers(pg, base, R):
     R.check("5 covers", "the second group names the chip it came through",
             g and g["head"] and "Song of Songs" in g["head"], str(g and g["head"]))
 
+    # Task 110 — the first group is the index work family and NOTHING
+    # else. Standing on Ginsburg's standalone Song of Songs it used to
+    # fill from the chip and offer three whole Tanakhs as 'other
+    # editions' of one book; now it is empty and they sit beneath, under
+    # a heading true of every case. This is the case that proves the
+    # first group never falls back.
+    g = corner_groups("song-of-songs-translation_anonymous.json", "songofsongs")
+    R.check("5 covers", "Ginsburg: the first group is empty, not filled from the chip",
+            g and len(g["first"]) == 0, f"{len(g['first']) if g else '?'} rows")
+    R.check("5 covers", "Ginsburg: it no longer claims 'other editions'",
+            g and "other edition" not in g["label"], str(g and g["label"]))
+    R.check("5 covers", "Ginsburg: the whole Bibles are still reachable, labelled",
+            g and len(g["also"]) == 4 and any("Tanakh" in t for t in g["also"]),
+            f"{len(g['also']) if g else '?'} in the second group")
+    # nothing is lost where the fallback WAS legitimate
+    g = corner_groups("the-book-of-the-dead-wallis-budge_anonymous.json")
+    R.check("5 covers", "Books of the Dead: Renouf stays reachable, only the heading moved",
+            g and any("Renouf" in t or "Book of the Dead" in t for t in g["also"]),
+            str(g and g["also"])[:60])
+    # a family of one that the map binds alone shows no corner at all
+    pg.goto(f"{base}?text=adhyatma-upanishad-aiyar-1914_aiyar.json",
+            wait_until="networkidle")
+    pg.wait_for_timeout(1400)
+    R.check("5 covers", "a lone text shows no editions corner at all",
+            pg.evaluate("() => !document.querySelector('.cc-editions-corner')"))
+
     # the ruling's test case: Ganguli's complete prose reachable again
     g = corner_groups("mahabharata_ganguli.json", "mahabharata18parvas18mwords")
     R.check("5 covers", "Mahabharata: the four Ganguli volumes are reachable again",

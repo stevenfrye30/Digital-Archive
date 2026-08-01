@@ -16159,27 +16159,28 @@ function showCover(data, entry) {
             if (e && e.data_file && !e.restricted) famDf.push(e.data_file);
           });
         } catch (e) { famDf = []; }
-        var chipDf = [];
-        B.chips.forEach(function (ch) {
-          if ((ch.read || []).some(function (r2) { return r2.df === myDf; })) {
-            (ch.read || []).forEach(function (r2) { chipDf.push(r2.df); });
-          }
-        });
-        // The family LEADS when it has more than this one witness: it is
-        // the archive's own record of 'the same work'. The chip is the
-        // fallback for works whose editions are filed under separate ids
-        // (Budge's and Renouf's Books of the Dead — 82 such texts), and
-        // it is only ever a fallback, because a chip can bind several
-        // distinct works: the Song of Songs chip holds every Bible that
-        // contains the book AND Ginsburg's standalone edition of it,
-        // which is not an edition of the Bible.
+        // Task 110 — THE FIRST GROUP SAYS ONLY WHAT IT CAN PROVE. It is
+        // the index work family and nothing else; when that family is a
+        // singleton it is simply empty. The chip's own list used to fill
+        // in behind it, which read correctly for works whose editions are
+        // filed under separate ids (Budge's and Renouf's Books of the
+        // Dead — 82 such texts) and falsely for everything else: standing
+        // on Ginsburg's standalone Song of Songs it offered Leeser's
+        // Tanakh, JPS 1917 and the Westminster Leningrad Codex as 'other
+        // editions' — whole Bibles presented as editions of one book.
+        // Nothing is lost by retiring it, because Task 108's second group
+        // already holds exactly this material under a heading that is
+        // true of BOTH cases: the Books of the Dead siblings really are
+        // also bound at that chip, and so are the Tanakhs. No judgement
+        // about which fallback was legitimate is needed — which is why
+        // this works where a filter could not.
         var seenDf = {}, union = [];
-        var source = (famDf.filter(function (d) { return d !== myDf; }).length)
-          ? famDf : chipDf;
-        source.forEach(function (d) {
+        famDf.forEach(function (d) {
           if (d && d !== myDf && !seenDf[d]) { seenDf[d] = 1; union.push(d); }
         });
-        if (!union.length) return;
+        // NB: no early return on an empty family any more — the second
+        // group may still have rows. The only 'nothing to show' test is
+        // the one below, after both groups are built.
         var plate = $textHeader.querySelector('.bible-cover-layout');
         if (!plate || plate.querySelector('.cc-editions-corner')) return;
         // Task 82 — the affordance sits in the top-LEFT corner
