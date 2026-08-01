@@ -347,7 +347,11 @@ def g_covers(pg, base, R):
 
 def g_rooms(pg, base, R):
     """Task 95/97/98 — the room grammar, in every room that has sections."""
-    rooms = ["christianity", "judaism", "islam", "buddhist", "hindu", "zoroastrian"]
+    # Task 102 — every room, not a sample: the furniture is doctrine and
+    # one room behaving differently is a seam.
+    rooms = ["ancient", "bahai", "buddhist", "christianity", "confucian",
+             "daoist", "gnostic", "hindu", "indigenous", "islam", "jain",
+             "judaism", "modern", "shinto", "sikh", "zoroastrian"]
     for room in rooms:
         pg.goto(f"{base}map/{room}.html")
         pg.evaluate("localStorage.setItem('da-theme','dark')")
@@ -367,12 +371,29 @@ def g_rooms(pg, base, R):
                     .filter(e => e.offsetParent !== null).length,
             markerLeft: marker ? marker.position === 'absolute' : null,
             collapse: !!document.querySelector('.toc-all'),
-            fams: document.querySelectorAll('details.fam').length };
+            fams: document.querySelectorAll('details.fam').length,
+            // Task 102 — a sub-line repeated identically under every chip
+            // in a family belongs to the family, not the chip.
+            uniform: (() => {
+              const bad = [];
+              document.querySelectorAll('details.fam').forEach(f => {
+                const tes = [...f.querySelectorAll('.te')].map(e => e.textContent);
+                const tls = f.querySelectorAll('.tl').length;
+                if (tes.length >= 2 && tes.length === tls && new Set(tes).size === 1) {
+                  const n = f.querySelector('.famname');
+                  bad.push((n ? n.textContent : '?') + ' \\u00d7' + tes.length);
+                }
+              });
+              return bad;
+            })() };
         }""")
         R.check("6 rooms", f"{room}: title gold in dark", m["titleColor"] == GOLD, str(m["titleColor"]))
         if m["centered"] is not None:
             R.check("6 rooms", f"{room}: title centered", m["centered"])
         R.check("6 rooms", f"{room}: no summary bars", m["bars"] == 0, f"{m['bars']} visible")
+        R.check("6 rooms", f"{room}: no family repeats one sub-line under every chip",
+                not m["uniform"], "; ".join(m["uniform"][:3]))
+        R.check("6 rooms", f"{room}: has collapsible families", m["fams"] > 0, f"{m['fams']}")
         if m["fams"]:
             R.check("6 rooms", f"{room}: disclosure arrow held left", m["markerLeft"])
             R.check("6 rooms", f"{room}: collapse control present", m["collapse"])
