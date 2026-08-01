@@ -873,6 +873,26 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 /* Task 92 — the Bible's 27 witnesses: the shelf scrolls, never runs
    off the plate. */
 .cc-ed-pop { max-height: min(60vh, 460px); overflow-y: auto; }
+/* Task 93 — the other-language shelf: its own line inside the same
+   popover, closed until asked for. */
+.cc-oe-other { margin-top: 8px; border-top: 1px solid #e6e1d9; padding-top: 6px; }
+.cc-oe-other > summary {
+  list-style: none; cursor: pointer;
+  font: 400 9.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #8a7a6a;
+  padding: 3px 0;
+}
+.cc-oe-other > summary::-webkit-details-marker { display: none; }
+.cc-oe-other > summary:hover { color: #7a5c3a; }
+.cc-oe-lang {
+  font: 400 9.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #8a7a6a;
+  margin-left: 6px;
+}
+[data-theme="dark"] .cc-oe-other { border-top-color: #3a3a3e; }
+[data-theme="dark"] .cc-oe-other > summary,
+[data-theme="dark"] .cc-oe-lang { color: #918d84; }
+[data-theme="dark"] .cc-oe-other > summary:hover { color: #c4a060; }
 [data-theme="dark"] .cc-ed-pop { background: #222226; border-color: #3a3a3e; }
 [data-theme="dark"] .cc-ed-pop a { color: #d4d0c8; }
 [data-theme="dark"] .cc-editions-corner { color: #918d84; }
@@ -15201,6 +15221,7 @@ const LANG_NAMES = {
   pi: 'Pali', ar: 'Arabic', syc: 'Syriac', zh: 'Chinese', de: 'German',
   ur: 'Urdu', fa: 'Persian', ru: 'Russian', fr: 'French', es: 'Spanish',
   it: 'Italian', nl: 'Dutch', pt: 'Portuguese', id: 'Indonesian', tr: 'Turkish',
+  sa: 'Sanskrit',
 };
 
 // v133 (H4) — a derived work record: one Upanishad, carved from a collected volume. The
@@ -16016,7 +16037,12 @@ function showCover(data, entry) {
           pop = document.createElement('div');
           pop.className = 'cc-ed-pop';
           pop.setAttribute('role', 'dialog');
-          pop.innerHTML = others.map(function (r2) {
+          // Task 93 — two shelves, never mixed: the English editions
+          // read plainly; the other-language witnesses wait behind their
+          // own line, each named by the language it speaks.
+          var _en = others.filter(function (r2) { return !r2.lang || r2.lang === 'en'; });
+          var _other = others.filter(function (r2) { return r2.lang && r2.lang !== 'en'; });
+          function _rowHTML(r2) {
             // Task 92 — name each witness honestly: the translator when
             // the binding knows one, else the edition's own name read from
             // its file stem (bible_geneva-bible → Geneva Bible). The work
@@ -16029,8 +16055,18 @@ function showCover(data, entry) {
             var who = name + (r2.year ? ', ' + r2.year : '');
             return '<a href="?text=' + encodeURIComponent(r2.df) + '">' +
                    escapeHTML(who) +
-                   ((r2.work && r2.work !== name) ? ' <span class="cc-oe-work">\u00b7 ' + escapeHTML(r2.work) + '</span>' : '') + '</a>';
-          }).join('');
+                   ((r2.work && r2.work !== name) ? ' <span class="cc-oe-work">\u00b7 ' + escapeHTML(r2.work) + '</span>' : '') +
+                   ((r2.lang && r2.lang !== 'en')
+                     ? ' <span class="cc-oe-lang">' +
+                       escapeHTML(LANG_NAMES[r2.lang] || r2.lang) + '</span>' : '') +
+                   '</a>';
+          }
+          pop.innerHTML = _en.map(_rowHTML).join('') +
+            (_other.length
+              ? '<details class="cc-oe-other"><summary>' + _other.length +
+                ' in other languages</summary>' +
+                _other.map(_rowHTML).join('') + '</details>'
+              : '');
           corner.after(pop);
         });
         document.addEventListener('click', function (ev) {
