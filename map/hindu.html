@@ -1393,6 +1393,10 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   --g: #8ba86a; --a: #c4a060; --r: #c07a6a;
   --g-t: #202320; --a-t: #24211a; --r-t: #241d1b; --g-t2: #1e211e;
 }
+/* Task 101 — the overview sheet's own h2 is set at ID specificity,
+   which quietly beat the ruled gold. Restated at the same weight so the
+   rule holds wherever a title appears. */
+[data-theme="dark"] #ov-sheet h2 { color: #c4a060; }
 [data-theme="dark"] .mast h1,
 [data-theme="dark"] .basket h2,
 [data-theme="dark"] .zone-h .zn,
