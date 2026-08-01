@@ -23325,6 +23325,35 @@ wire('ctrl-spacing', '--reader-leading', 'r-leading', v => v,        'ctrl-spaci
 // so there is nothing to migrate; r-measure is the first stored value.
 wire('ctrl-measure', '--reader-measure', 'r-measure', v => v + 'px', 'ctrl-measure-val');
 
+// Task 107 — the same control, adapted to the medium. On a phone every
+// value in the 660–1320 band is wider than the screen, so the column
+// cannot answer it; --m-t restates that one stored value as a 0–1 ratio
+// and the mobile block spends it on the column's side margins. Nothing
+// is duplicated: r-measure remains the only key, ctrl-measure the only
+// control, and the ratio is derived from the slider itself so the two
+// cannot drift apart. The readout follows suit — "1320px" on a 390px
+// screen is a number the reader can do nothing with, so at phone widths
+// it shows the margin the slider actually produces.
+(function measureAdaptsToThePhone() {
+  const el = document.getElementById('ctrl-measure');
+  const out = document.getElementById('ctrl-measure-val');
+  if (!el) return;
+  const MIN = Number(el.min) || 660, MAX = Number(el.max) || 1320;
+  function sync() {
+    const v = Math.min(MAX, Math.max(MIN, Number(el.value) || MIN));
+    const t = (MAX > MIN) ? (v - MIN) / (MAX - MIN) : 0;
+    root.style.setProperty('--m-t', String(t));
+    if (out && window.matchMedia('(max-width: 720px)').matches) {
+      out.textContent = Math.round(12 + t * (window.innerWidth * 0.15 - 12)) + 'px';
+    } else if (out) {
+      out.textContent = v + 'px';
+    }
+  }
+  el.addEventListener('input', sync);
+  window.addEventListener('resize', sync);
+  sync();
+})();
+
 // ── Task 70 — five comfort themes ─────────────────────────────────────────
 // The free font/color pickers retire. Each preset = background +
 // ink + accent, tuned for long reading (all pairs clear WCAG AA at
@@ -28866,6 +28895,34 @@ loadIndex();
 [data-theme="dark"] .hd-pop .hd-rubric, [data-theme="dark"] .hd-pop .hd-open,
 [data-theme="dark"] #press-pop .hd-mark { color: #c4a060; }
 [data-theme="dark"] #atlas-pop { outline-color: #44444c; }
+/* ── Task 107 — the phone's reading column ───────────────────────────
+   (a) CENTRING. `.passage` reserves a 110px left gutter for the verse
+   numeral, which is absolutely positioned into it. At ≤720px the
+   numeral leaves the gutter and becomes a block line above the verse —
+   but the rule that removed the gutter sits EARLIER in this sheet at
+   the same specificity as the base rule, and a media query adds no
+   specificity, so the base rule won and the gutter stayed. The text
+   began 126px from a 390px screen's left edge with 18px on the right.
+   Restated here at both winning order and winning weight.
+
+   (b) MEASURE. Its band is 660–1320px and every value of it exceeds a
+   phone viewport, so the slider moved and the column never did. Here
+   the same control and the same stored key drive the SIDE MARGINS
+   instead: at the low end the text runs to the edge as it always has,
+   at the high end it draws into a narrow centred column. --m-t is the
+   same r-measure value read as a 0–1 ratio (set beside the control, so
+   the two can never disagree). */
+@media (max-width: 720px) {
+  body.in-reading .passage { padding-left: 0; }
+  body.in-reading .passage .ref {
+    position: static; display: block; width: auto; text-align: left;
+  }
+  body.in-reading #reader {
+    padding-left:  calc(12px + var(--m-t, 0) * (15vw - 12px));
+    padding-right: calc(12px + var(--m-t, 0) * (15vw - 12px));
+  }
+}
+
 /* the reading room prints clean: chrome leaves, the column expands */
 @media print {
   body.in-reading #controls, body.in-reading #nav-bar,

@@ -333,17 +333,6 @@ a.m-link { text-decoration: none; }
 #m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
   margin: -14px 0 26px; max-width: 46em; }
 
-/* chooser inset (specimen form) */
-.m-chooser { border-left: 2px solid #7a5c3a; background: #f6f2ea;
-  margin: 8px 0 14px 12px; padding: 12px 18px; max-width: 30em; }
-:root[data-theme="dark"] .m-chooser { background: #26232c; }
-.m-chooser .mc-head { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 8px; }
-.m-chooser a { display: block; font: 400 14px/1.5 var(--serif); color: var(--ink);
-  text-decoration: none; }
-.m-chooser a:hover { color: #7a5c3a; }
-.m-chooser .mc-sub { font: italic 400 12px var(--serif); color: var(--ink-faint); }
-.m-chooser .mc-go { font: 400 12px var(--serif); color: #7a5c3a; }
 
 /* fraction line under the mast — Task 53b: full mast width, one
    centered block (the mast's p max-width capped it left-of-center) */
@@ -403,26 +392,6 @@ section.view { display: block !important; }
     return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
             .replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
   }
-  // Task 41a — one chooser popover at a time; ESC / outside-click /
-  // scroll close it, focus returns to the opening chip.
-  window.__mcPop = null; window.__mcOpener = null;
-  window.__mcClose = function () {
-    if (window.__mcPop) { window.__mcPop.remove(); window.__mcPop = null; }
-    if (window.__mcOpener) {
-      try { window.__mcOpener.focus(); } catch (e) {}
-      window.__mcOpener = null;
-    }
-  };
-  document.addEventListener('click', function (e) {
-    if (window.__mcPop && !window.__mcPop.contains(e.target) &&
-        !(window.__mcOpener && window.__mcOpener.contains(e.target)))
-      window.__mcClose();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') window.__mcClose();
-  });
-  window.addEventListener('scroll', function () { window.__mcClose(); }, true);
-  window.addEventListener('resize', function () { window.__mcClose(); });
 
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
@@ -454,10 +423,13 @@ section.view { display: block !important; }
         if (b.contained_in) {
           el.title = (el.title ? el.title + ' — ' : '') + b.contained_in;
         }
-        if (b.state === 'held' && b.read && b.read.length === 1) {
-          // Task 82 — the steward reverses 42a for single-held: one
-          // edition, one destination — straight to its cover. Multi-
-          // held keeps the chooser below.
+        if ((b.state === 'held' || b.state === 'held-several') && b.read && b.read.length) {
+          // Task 107 — the chip is the door, and the door has ONE
+          // destination. The chooser popover retires: it put a choice
+          // between editions one layer BEFORE the contents page offers
+          // the same choice better — inside the work's own plate, with
+          // "N other editions" (Tasks 82/99). Single-held behaviour is
+          // unchanged; it is now the only behaviour, in both views.
           el.style.cursor = 'pointer';
           el.setAttribute('role', 'link');
           el.setAttribute('tabindex', '0');
@@ -466,51 +438,6 @@ section.view { display: block !important; }
           });
           el.addEventListener('click', function () {
             location.href = '../' + b.read[0].url;
-          });
-        } else if ((b.state === 'held' || b.state === 'held-several') && b.read && b.read.length) {
-          el.style.cursor = 'pointer';
-          // 42a — keyboard access in structure mode, the rights-mode pattern
-          el.setAttribute('role', 'button');
-          el.setAttribute('tabindex', '0');
-          el.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
-          });
-          el.addEventListener('click', function () {
-            // Task 41a — anchored popover: no document reflow, ever.
-            // Second click on the same chip closes.
-            if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
-            if (window.__mcOpener === el) { window.__mcClose(); return; }
-            window.__mcClose();
-            var box = document.createElement('div');
-            box.className = 'm-chooser m-chooser-pop';
-            box.tabIndex = -1;
-            var kind = (b.read.length === 1) ? ''
-                     : (b.chooser === 'works') ? b.read.length + ' works held — choose'
-                                               : b.read.length + ' translations held — choose';
-            box.innerHTML = '<div class="mc-head">' + b.chip + ' · ' +
-                            (kind || 'held — read') +
-                            (b.contained_in ? ' · ' + b.contained_in : '') + '</div>';
-            b.read.forEach(function (r) {
-              var a = document.createElement('a');
-              a.href = '../' + r.url;
-              var label = (b.chooser === 'works')
-                  ? r.work + (r.translator ? ' <span class="mc-sub">· ' + r.translator + (r.year ? ', ' + r.year : '') + '</span>' : '')
-                  : (r.translator || r.work) + (r.year ? ', ' + r.year : '') +
-                    ' <span class="mc-sub">· ' + r.work + '</span>';
-              a.innerHTML = label + ' <span class="mc-go">→ read</span>';
-              box.appendChild(a);
-            });
-            document.body.appendChild(box);
-            var rr = el.getBoundingClientRect();
-            var bw = box.offsetWidth, bh = box.offsetHeight;
-            var left = Math.min(Math.max(8, rr.left), window.innerWidth - bw - 8);
-            var top = rr.bottom + 6;
-            if (top + bh > window.innerHeight - 8) top = rr.top - bh - 6;
-            if (top < 8) top = 8;
-            box.style.left = left + 'px';
-            box.style.top = top + 'px';
-            window.__mcPop = box; window.__mcOpener = el;
-            box.focus();
           });
         }
       });
@@ -665,11 +592,6 @@ body[data-lens="rights"] .keyrow .mini { display:inline-flex !important; }
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
 [data-view][aria-pressed="true"] { background:var(--accent,#7a5c3a); color:var(--surface,#fff); }
-/* 41a — the read-chooser is an anchored popover: fixed, above the
-   page, never reflowing the grid; mobile gets the bottom-sheet dress */
-.m-chooser-pop { position:fixed; z-index:55; max-width:min(30em,92vw); max-height:60vh;
-  overflow:auto; margin:0; box-shadow:0 8px 28px rgba(0,0,0,.22); border-radius:8px;
-  background:var(--surface,#f6f2ea); outline:none; }
 /* per-mode sentence spans (footer, mast ledes, key counts) */
 .r-only { display:none; }
 body[data-lens="rights"] .r-only { display:inline; }
@@ -719,9 +641,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #lens-toggle { margin-right:8px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
-  .m-chooser-pop { left:0 !important; right:0; bottom:0; top:auto !important;
-    max-width:none; width:auto; border-radius:14px 14px 0 0;
-    box-shadow:0 -6px 24px rgba(0,0,0,.25); }
   #ov-sheet .rl-ed { width:100%; margin:4px 0; }
 }
 </style>
@@ -1290,8 +1209,10 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     document.body.classList.add('rl-open');
     panel.focus();
   }
-  // rights mode intercepts chip clicks at capture — navigation and
-  // choosers never fire; reception tiles keep their reader links.
+  // Rights mode opens the panel only for chips WITHOUT a door: a chip
+  // the binder gave a route keeps its click in BOTH views (Task 103),
+  // and that route is now one destination, never a chooser (Task 107).
+  // Reception tiles keep their reader links.
   document.addEventListener('click', function (e) {
     if (lens !== 'rights') return;
     var el = e.target.closest('.chip, .su, .tc');

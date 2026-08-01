@@ -466,6 +466,55 @@ def g_lens(pg, base, R):
                 landed = False
             R.check("7 lens", f"{room}: a held chip is still a door in Rights",
                     landed, pg.url.split("/")[-1][:60])
+            # Task 107 — and the door has ONE destination. A multi-held
+            # chip used to open a chooser popover here; the contents page
+            # it now lands on carries the same choice one layer later,
+            # inside the work's own plate. Proving BOTH halves matters:
+            # that no popover opens, and that what it reached instead is
+            # a contents page rather than a URL that merely looks right.
+            if landed:
+                # the URL changes before the app has drawn anything, so
+                # the state has to be waited for — the same lesson Task
+                # 103 learned about reading location straight after a
+                # click, one layer further in.
+                try:
+                    pg.wait_for_function(
+                        "() => document.body.classList.contains('on-text-contents')",
+                        timeout=8000)
+                    on_contents = True
+                except Exception:
+                    on_contents = False
+                R.check("7 lens", f"{room}: the chip lands on a contents page",
+                        on_contents, pg.url.split("text=")[-1][:44])
+        R.check("7 lens", f"{room}: no chooser popover survives",
+                pg.evaluate("""() => !document.querySelector('.m-chooser-pop')
+                  && typeof window.__mcClose === 'undefined'"""))
+
+
+# Task 107 — what the eye sees, not what the box says. The union of the
+# text nodes' OWN client rects is the ink on the screen; the right gap is
+# measured to the longest line, so ragged-right wrapping leaves it a few
+# px short of the left gap and the tolerance allows for that — but not
+# for the 110px skew this replaces.
+TEXT_GAPS_JS = r"""() => {
+  const p = document.querySelector('.passage');
+  if (!p) return null;
+  const w = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+  let lo = Infinity, hi = -Infinity;
+  while (w.nextNode()) {
+    const t = w.currentNode;
+    if (!t.nodeValue.trim()) continue;
+    const rg = document.createRange(); rg.selectNodeContents(t);
+    for (const r of rg.getClientRects()) {
+      if (r.width < 1) continue;
+      lo = Math.min(lo, r.left); hi = Math.max(hi, r.right);
+    }
+  }
+  if (lo === Infinity) return null;
+  const b = p.getBoundingClientRect();
+  return { left: Math.round(lo), right: Math.round(innerWidth - hi),
+           boxLeft: Math.round(b.left), boxRight: Math.round(innerWidth - b.right) };
+}"""
 
 
 def g_mobile(pg_unused, base, R):
@@ -513,11 +562,17 @@ def g_mobile(pg_unused, base, R):
         R.check("8 mobile", "reading: no horizontal overflow", m["overflow"] <= 2, f"+{m['overflow']}px")
         R.check("8 mobile", "reading: every visible target ≥ 44px",
                 not m["small"], "; ".join(m["small"][:3]))
-        col = pg.evaluate("""() => { const p = document.querySelector('.passage');
-          const r = p.getBoundingClientRect();
-          return [Math.round(r.left), Math.round(innerWidth - r.right)]; }""")
-        R.check("8 mobile", "reading: the column is symmetric",
-                abs(col[0] - col[1]) <= 2, f"{col[0]}px / {col[1]}px")
+        # Task 107 — measure the RENDERED TEXT, not the wrapper. The old
+        # assertion read .passage's own box, which was symmetric at 16/16
+        # while the text inside it began 126px from a 390px screen's left
+        # edge: the box reserved a 110px gutter for a numeral that, at
+        # phone widths, no longer sits in it. A check that measures the
+        # container it was handed can only ever prove the container.
+        col = pg.evaluate(TEXT_GAPS_JS)
+        R.check("8 mobile", "reading: the rendered text is centred",
+                col and abs(col["left"] - col["right"]) <= 12,
+                f"text {col['left']}px / {col['right']}px (box "
+                f"{col['boxLeft']}px / {col['boxRight']}px)" if col else "no text")
         has = pg.evaluate("() => !!document.getElementById('nav-fmt-toggle')")
         R.check("8 mobile", "reading: the sheet has a handle in the running header", has)
         if has:
@@ -554,9 +609,40 @@ def g_mobile(pg_unused, base, R):
             pg.click('#fmt-sheet .theme-swatch[data-theme-key="ink"]'); pg.wait_for_timeout(400)
             R.check("8 mobile", "a preset chosen in the sheet reaches the page",
                     pg.evaluate("() => document.body.classList.contains('rt-ink')"))
+            # Task 107 — and Measure is not inert. Its 660–1320px band is
+            # wider than any phone, so on the desktop reading the column
+            # could not answer it at all; at phone widths the same key
+            # drives the side margins. An inert control is worse than no
+            # control, so the battery proves it MOVES, both ways.
+            pg.evaluate("""() => { const s = document.getElementById('ctrl-measure');
+              s.value = s.min; s.dispatchEvent(new Event('input', {bubbles:true})); }""")
+            pg.wait_for_timeout(350)
+            lo = pg.evaluate(TEXT_GAPS_JS)
+            pg.evaluate("""() => { const s = document.getElementById('ctrl-measure');
+              s.value = s.max; s.dispatchEvent(new Event('input', {bubbles:true})); }""")
+            pg.wait_for_timeout(350)
+            hi = pg.evaluate(TEXT_GAPS_JS)
+            R.check("8 mobile", "Measure moves the column on a phone",
+                    lo and hi and abs(hi["left"] - lo["left"]) >= 20,
+                    f"{lo and lo['left']}px → {hi and hi['left']}px")
+            R.check("8 mobile", "Measure's wide end runs the text to the edge",
+                    lo and lo["left"] <= 16, f"{lo and lo['left']}px")
+            for nm, g in (("narrow", hi), ("wide", lo)):
+                R.check("8 mobile", f"the column stays centred at Measure's {nm} end",
+                        g and abs(g["left"] - g["right"]) <= 12,
+                        f"{g and g['left']}px / {g and g['right']}px")
             pg.keyboard.press("Escape"); pg.wait_for_timeout(400)
             R.check("8 mobile", "ESC dismisses the sheet",
                     pg.evaluate("() => document.getElementById('fmt-sheet').hidden"))
+        # Task 107 — 360 is the other phone the steward walks. The 390
+        # checks above would pass a rule written in px that breaks at a
+        # narrower screen, so the centring is re-proved here.
+        pg.set_viewport_size({"width": 360, "height": 740})
+        pg.wait_for_timeout(500)
+        g = pg.evaluate(TEXT_GAPS_JS)
+        R.check("8 mobile", "reading: the text is centred at 360 too",
+                g and abs(g["left"] - g["right"]) <= 12,
+                f"{g and g['left']}px / {g and g['right']}px")
     finally:
         ctx.close()
 
