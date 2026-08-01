@@ -870,6 +870,9 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .cc-ed-pop a { display: block; margin: 4px 0; color: #2c2c2c;
   text-decoration: none; border-bottom: 1px solid rgba(122, 92, 58, .3); }
 .cc-ed-pop a:hover { color: #7a5c3a; }
+/* Task 92 — the Bible's 27 witnesses: the shelf scrolls, never runs
+   off the plate. */
+.cc-ed-pop { max-height: min(60vh, 460px); overflow-y: auto; }
 [data-theme="dark"] .cc-ed-pop { background: #222226; border-color: #3a3a3e; }
 [data-theme="dark"] .cc-ed-pop a { color: #d4d0c8; }
 [data-theme="dark"] .cc-editions-corner { color: #918d84; }
@@ -1832,6 +1835,60 @@ details.cite-corner > summary:hover,
 .bible-cover-layout .bcl-canon-list .cc-toc-name { color: #7a5c3a; }
 [data-theme="dark"] .bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list .cc-toc-name,
 [data-theme="dark"] .bible-cover-layout .bcl-canon-list .cc-toc-name { color: #c4a060; }
+
+/* Task 92 — ONE plate dress for every Bible book, the same the rest
+   of the archive's contents rooms wear. The old per-canon tints
+   (warm OT, faded italic Apocrypha, pale NT) retire: three styles in
+   one room read as three kinds of thing, and they are all books. */
+.bible-cover-layout .bcl-canon-section[data-canon="old-testament"] .bcl-canon-list,
+.bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .bcl-canon-list,
+.bible-cover-layout .bcl-canon-section[data-canon="new-testament"] .bcl-canon-list,
+.bible-cover-layout .bcl-canon-section[data-canon="other"] .bcl-canon-list {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 5px 14px;
+}
+.bible-cover-layout .bcl-canon-section[data-canon="old-testament"] .bcl-canon-list li,
+.bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .bcl-canon-list li,
+.bible-cover-layout .bcl-canon-section[data-canon="new-testament"] .bcl-canon-list li,
+.bible-cover-layout .bcl-canon-section[data-canon="other"] .bcl-canon-list li {
+  background: rgba(120, 90, 50, 0.04);
+  border-color: rgba(120, 90, 50, 0.08);
+  padding: 5px 9px 5px 6px;
+  line-height: 1.2;
+  opacity: 1;
+}
+.bible-cover-layout .bcl-canon-section[data-canon="old-testament"] .bcl-canon-list li:hover,
+.bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .bcl-canon-list li:hover,
+.bible-cover-layout .bcl-canon-section[data-canon="new-testament"] .bcl-canon-list li:hover,
+.bible-cover-layout .bcl-canon-section[data-canon="other"] .bcl-canon-list li:hover {
+  background: rgba(120, 90, 50, 0.12);
+  border-color: rgba(120, 90, 50, 0.3);
+  opacity: 1;
+}
+.bible-cover-layout .bcl-canon-section[data-canon="apocrypha"] .cc-toc-name { font-style: normal; }
+
+/* Task 92 — the canon row: the Bible's own second row, under the
+   contents line. Only the canons this edition actually carries. */
+.cc-canon-row { display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 10px; margin: 2px 0 16px; }
+.cc-canon-btn {
+  font-family: Georgia, serif; font-size: 13px; letter-spacing: 0.02em;
+  color: #7a5c3a; background: transparent;
+  border: 1px solid var(--chrome-border, #d8d3cc); border-radius: 7px;
+  padding: 7px 20px; cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.cc-canon-btn:hover { border-color: #7a5c3a; }
+.cc-canon-btn.active { background: #7a5c3a; color: #faf6ec; border-color: #7a5c3a; }
+[data-theme="dark"] .cc-canon-btn { color: #c4a060; border-color: #4a4a4e; }
+[data-theme="dark"] .cc-canon-btn:hover { border-color: #c4a060; }
+[data-theme="dark"] .cc-canon-btn.active { background: #c4a060; color: #1a1a1e; border-color: #c4a060; }
+[data-theme="dark"] .bible-cover-layout .bcl-canon-section .bcl-canon-list li {
+  background: rgba(255, 255, 255, 0.028); border-color: rgba(255, 255, 255, 0.06);
+}
+[data-theme="dark"] .bible-cover-layout .bcl-canon-section .bcl-canon-list li:hover {
+  background: rgba(255, 255, 255, 0.07); border-color: rgba(196, 160, 96, 0.4);
+}
 .bible-cover-layout .bcl-canon-section[data-canon="codex"] .bcl-canon-list .cc-toc-num {
   align-self: flex-start;
   padding-top: 2px;
@@ -15938,10 +15995,11 @@ function showCover(data, entry) {
         if (!chip) return;
         var plate = $textHeader.querySelector('.bible-cover-layout');
         if (!plate || plate.querySelector('.cc-editions-corner')) return;
-        // Task 82 — the affordance moves to the top-LEFT corner
-        // (mirroring Cite this text); Bible witnesses keep their own
-        // Versions grammar there, so they are skipped (stated).
-        if (_isBibleFamily) return;
+        // Task 82 — the affordance sits in the top-LEFT corner
+        // (mirroring Cite this text). Task 92: the Bible joins it —
+        // its 27 witnesses are the archive's deepest edition shelf,
+        // and the corner is the one grammar for every multi-edition
+        // text (the old Bible-only Versions detour retires).
         var others = chip.read.filter(function (r2) { return r2.df !== myDf; });
         if (!others.length) return;
         var corner = document.createElement('button');
@@ -15959,10 +16017,19 @@ function showCover(data, entry) {
           pop.className = 'cc-ed-pop';
           pop.setAttribute('role', 'dialog');
           pop.innerHTML = others.map(function (r2) {
-            var who = (r2.translator || r2.work) + (r2.year ? ', ' + r2.year : '');
+            // Task 92 — name each witness honestly: the translator when
+            // the binding knows one, else the edition's own name read from
+            // its file stem (bible_geneva-bible → Geneva Bible). The work
+            // follows only when it adds something — two rows had been
+            // reading 'The Holy Bible · The Holy Bible', naming nothing.
+            var name = r2.translator ||
+              String(r2.df || '').replace(/[.]json$/, '').split('_').slice(1).join(' ')
+                .replace(/-/g, ' ')
+                .replace(/(^|\s)([a-z])/g, function (m, a, b2) { return a + b2.toUpperCase(); });
+            var who = name + (r2.year ? ', ' + r2.year : '');
             return '<a href="?text=' + encodeURIComponent(r2.df) + '">' +
                    escapeHTML(who) +
-                   ' <span class="cc-oe-work">\u00b7 ' + escapeHTML(r2.work) + '</span></a>';
+                   ((r2.work && r2.work !== name) ? ' <span class="cc-oe-work">\u00b7 ' + escapeHTML(r2.work) + '</span>' : '') + '</a>';
           }).join('');
           corner.after(pop);
         });
@@ -16203,6 +16270,48 @@ function showCover(data, entry) {
         rule.appendChild(pg);
       }
     }
+  })();
+
+  // Task 92 — THE BIBLE'S CANON ROW. The Bible is the archive's one
+  // text with a canon above its books, so it gets a second row under
+  // the contents line: Old Testament · Apocrypha · New Testament —
+  // only the canons this edition actually carries (an NT-only witness
+  // shows no buttons and simply displays its books; a 66-book Bible
+  // shows two). Choosing a canon opens it IN FULL — the 20-row
+  // pagination is the wrong grammar when the canon itself is the
+  // page, so any pager inside this cover retires and every book shows.
+  (function bibleCanonRow() {
+    const secs = [...$textHeader.querySelectorAll(
+      '#continuous-toc .bcl-canon-section[data-canon]')]
+      .filter(s => s.dataset.canon && s.dataset.canon !== 'codex');
+    if (secs.length < 2) return;
+    const rule = $textHeader.querySelector('.cc-contents-rule');
+    if (!rule) return;
+    // the canon IS the page: pagination and its arrows stand down
+    $textHeader.querySelectorAll('.cc-pager').forEach(p => p.remove());
+    $textHeader.querySelectorAll('#continuous-toc li[data-book]')
+      .forEach(li => { li.style.display = ''; });
+    const row = document.createElement('div');
+    row.className = 'cc-canon-row';
+    secs.forEach((sec, i) => {
+      const lab = sec.querySelector('.bcl-canon-label');
+      const name = lab
+        ? lab.textContent.replace(/^\s*[ivxIVX]+\s*[\u00b7.\-]\s*/, '').trim()
+        : 'Part ' + (i + 1);
+      if (lab) lab.style.display = 'none';   // the active button names it
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'cc-canon-btn';
+      b.textContent = name;
+      b.addEventListener('click', () => {
+        secs.forEach(s => { s.style.display = (s === sec) ? '' : 'none'; });
+        row.querySelectorAll('.cc-canon-btn').forEach(
+          x => x.classList.toggle('active', x === b));
+      });
+      row.appendChild(b);
+    });
+    rule.after(row);
+    row.querySelector('.cc-canon-btn').click();   // the first canon opens
   })();
 
   // Wire "Read from beginning"
