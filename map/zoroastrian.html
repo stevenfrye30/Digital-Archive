@@ -1206,5 +1206,18 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 }
 </style>
 <script src="../assets/fav-shelf.js" defer></script>
+<style>
+/* Task 95 — ONE room grammar: below the section links everything
+   stands centered — the section title with its count, the note under
+   it, and every family name. Additive and keyed to the shared class
+   names, so each room keeps whatever base rules it already had. */
+.basket h2 { justify-content: center; text-align: center; }
+.deep .basket > h2 .ct, .basket h2 .ct { margin-left: 0; }
+.deep .basket > h2, .basket h2 { justify-content: center; text-align: center; }
+.deep .fam > summary .fambar, .fam > summary .fambar { margin-left: 0; }
+.basket .blurb { text-align: center; margin-left: auto; margin-right: auto; }
+.fam > summary { justify-content: center; }
+.fam > summary .fambar { margin-left: 0; }
+</style>
 </body>
 </html>
