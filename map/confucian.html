@@ -434,7 +434,13 @@ section.view { display: block !important; }
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
           });
           el.addEventListener('click', function () {
-            location.href = '../' + b.read[0].url;
+            // Task 108 — the contents page is told WHICH chip sent the
+            // reader. It decides two things there: the 'also bound here'
+            // group (witnesses this chip binds that are not editions of
+            // the landing work) and the arrival line. norm() is the
+            // lens's own, so the reader matches it back to the binding.
+            location.href = '../' + b.read[0].url +
+                            '&chip=' + encodeURIComponent(norm(b.chip));
           });
         }
       });

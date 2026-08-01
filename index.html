@@ -16125,6 +16125,28 @@ function showCover(data, entry) {
         // siblings join it (a chip may bind editions filed under other
         // ids). Every witness keeps the translator/year/language the
         // binder derived, wherever in the map it was bound.
+        // Task 108 — which chip sent the reader here. The map appends
+        // &chip=<norm>; without it (search, a favourite, a shared link)
+        // we fall back to every chip that binds this text, which is what
+        // the page did before and stays true.
+        var _chipNorm = function (s) {
+          // MUST mirror the lens norm() and the builder's _searchnorm.
+          return (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase().replace(/^the\s+/, '').replace(/[^a-z0-9]+/g, '');
+        };
+        var _wantChip = null;
+        try {
+          _wantChip = new URLSearchParams(location.search).get('chip') || null;
+        } catch (e) { _wantChip = null; }
+        var _mine = B.chips.filter(function (ch) {
+          return (ch.read || []).some(function (r2) { return r2.df === myDf; });
+        });
+        var _theChip = null;
+        if (_wantChip) {
+          _theChip = _mine.filter(function (ch) {
+            return _chipNorm(ch.chip) === _wantChip;
+          })[0] || null;
+        }
         var byDf = {};
         B.chips.forEach(function (ch) {
           (ch.read || []).forEach(function (r2) {
@@ -16180,7 +16202,26 @@ function showCover(data, entry) {
                    translator: (row.translator || [])[0] || '',
                    year: row.year || null };
         }).filter(Boolean);
-        if (!others.length) return;
+        // Task 108 ruling 2 — the second group. Whatever the chip binds
+        // that the first group does NOT show is not a hidden edition of
+        // this work; it is another thing the map binds at the same place
+        // — a containing volume, or a witness filed under its own id.
+        // Naming it separately recovers all fifteen chips the retired
+        // chooser used to reach WITHOUT claiming any of them is an
+        // edition of this work (the Song of Songs test: Ginsburg is
+        // bound to the chip, and is not an edition of the Bible).
+        var _alsoSrc = _theChip ? [_theChip] : _mine;
+        var _alsoSeen = {};
+        var also = [];
+        _alsoSrc.forEach(function (ch) {
+          (ch.read || []).forEach(function (r2) {
+            if (!r2 || !r2.df || r2.df === myDf) return;
+            if (seenDf[r2.df] || _alsoSeen[r2.df]) return;
+            _alsoSeen[r2.df] = 1;
+            also.push(r2);
+          });
+        });
+        if (!others.length && !also.length) return;
         // The shelf reads as a history: oldest translation first, the
         // undated last.
         others.sort(function (x, y) {
@@ -16190,7 +16231,9 @@ function showCover(data, entry) {
         var corner = document.createElement('button');
         corner.type = 'button';
         corner.className = 'cc-editions-corner';
-        corner.textContent = others.length + ' other edition' + (others.length > 1 ? 's' : '');
+        corner.textContent = others.length
+          ? others.length + ' other edition' + (others.length > 1 ? 's' : '')
+          : also.length + ' also bound here';
         var pop = null;
         function shutEd() {
           if (pop) { pop.remove(); pop = null; }
@@ -16231,12 +16274,42 @@ function showCover(data, entry) {
                        escapeHTML(LANG_NAMES[r2.lang] || r2.lang) + '</span>' : '') +
                    '</a>';
           }
+          // Task 108 — 'Also bound on the map', not 'Also bound to this
+          // chip': the reader may have arrived from search or a link and
+          // have no chip in mind, and the heading has to stay true on
+          // that path too. The chip is named underneath when we know it,
+          // which says more than the pronoun would.
+          var _alsoHTML = '';
+          if (also.length) {
+            _alsoHTML = '<div class="cc-oe-also">' +
+              '<div class="cc-oe-alsohead">Also bound on the map' +
+              (_theChip ? ' <span class="cc-oe-chip">\u00b7 ' +
+                          escapeHTML(_theChip.chip) + '</span>' : '') +
+              '</div>' +
+              also.map(function (r2) {
+                // these may sit in ANOTHER index family, so the family
+                // lookup above cannot serve them — dataFileToEntry is the
+                // archive-wide map from data file to its index row.
+                var row2 = (dataFileToEntry[r2.df] || {}).entry || null;
+                var nm = (r2.translator || '') ||
+                  ((row2 && row2.translator || [])[0] || '');
+                var what = r2.work || (row2 && row2.title) || r2.df;
+                return '<a href="?text=' + encodeURIComponent(r2.df) + '">' +
+                       escapeHTML(what) +
+                       (nm ? ' <span class="cc-oe-work">\u00b7 ' +
+                             escapeHTML(nm + (r2.year ? ', ' + r2.year : '')) +
+                             '</span>' : '') +
+                       (r2.label ? ' <span class="cc-oe-work">\u00b7 ' +
+                                   escapeHTML(r2.label) + '</span>' : '') +
+                       '</a>';
+              }).join('') + '</div>';
+          }
           pop.innerHTML = _en.map(_rowHTML).join('') +
             (_other.length
               ? '<details class="cc-oe-other"><summary>' + _other.length +
                 ' in other languages</summary>' +
                 _other.map(_rowHTML).join('') + '</details>'
-              : '');
+              : '') + _alsoHTML;
           corner.after(pop);
         });
         document.addEventListener('click', function (ev) {
@@ -16246,6 +16319,26 @@ function showCover(data, entry) {
           if (ev.key === 'Escape') shutEd();
         });
         plate.appendChild(corner);
+        // Task 108 ruling 3 — contained_in comes home, pointed the right
+        // way. The field reads 'within the Long Discourses, tr. Sujato'
+        // and the page it lands on IS the Long Discourses, so as a fact
+        // about this text it would be circular. What it actually records
+        // is where the CHIP sits inside this volume — so it is rendered
+        // as the account of an arrival, and only when we know which chip
+        // the reader followed. The recorded prose is used verbatim.
+        if (_theChip && _theChip.contained_in) {
+          var tb = $textHeader.querySelector('.cc-translator') ||
+                   $textHeader.querySelector('.cc-author') ||
+                   $textHeader.querySelector('.cc-title');
+          if (tb && !$textHeader.querySelector('.cc-arrived')) {
+            var line = document.createElement('div');
+            line.className = 'cc-arrived';
+            line.innerHTML = 'Followed from the map as <em>' +
+              escapeHTML(_theChip.chip) + '</em> \u2014 ' +
+              escapeHTML(_theChip.contained_in);
+            tb.after(line);
+          }
+        }
       })
       .catch(function () {});
   })();
@@ -28895,6 +28988,22 @@ loadIndex();
 [data-theme="dark"] .hd-pop .hd-rubric, [data-theme="dark"] .hd-pop .hd-open,
 [data-theme="dark"] #press-pop .hd-mark { color: #c4a060; }
 [data-theme="dark"] #atlas-pop { outline-color: #44444c; }
+/* Task 108 — the second group in the editions corner, and the arrival
+   line. Both are quiet: the corner's own rows lead, the second group is
+   set off by a hair rule and a small caps-ish head, and the arrival line
+   sits under the translator in the title block at the muted weight the
+   other cover lines use. */
+.cc-oe-also { border-top: 1px solid var(--chrome-border); margin-top: 6px;
+  padding-top: 6px; }
+.cc-oe-alsohead { font: 400 9px/1.5 ui-monospace, SFMono-Regular, Menlo,
+  Consolas, monospace; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--chrome-muted); margin: 0 0 4px; }
+.cc-oe-alsohead .cc-oe-chip { text-transform: none; letter-spacing: 0;
+  font-style: italic; }
+.cc-arrived { font: italic 400 13px/1.6 Georgia, serif;
+  color: var(--chrome-muted); margin-top: 4px; }
+.cc-arrived em { font-style: normal; color: var(--chrome-fg); }
+
 /* ── Task 107 — the phone's reading column ───────────────────────────
    (a) CENTRING. `.passage` reserves a 110px left gutter for the verse
    numeral, which is absolutely positioned into it. At ≤720px the

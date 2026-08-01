@@ -319,7 +319,13 @@ def g_covers(pg, base, R):
     pg.wait_for_timeout(350)
     m = pg.evaluate("""() => {
       const p = document.querySelector('.cc-ed-pop');
-      const rows = [...p.querySelectorAll('a')];
+      // Task 108 — these Task 96 rules are about the FIRST group, which
+      // holds editions of one work. The second group ('Also bound on the
+      // map') names each work on purpose, because those are different
+      // works — so it is excluded here rather than allowed to fail a
+      // rule that was never written about it.
+      const also = p.querySelector('.cc-oe-also');
+      const rows = [...p.querySelectorAll('a')].filter(a => !also || !also.contains(a));
       // each SHELF carries its own chronology: the English editions, then
       // the other-language shelf beneath its own line. Sortedness is
       // asserted within a shelf, never across the two.
@@ -344,6 +350,55 @@ def g_covers(pg, base, R):
     m = cover(QURAN)
     R.check("5 covers", "Qur'an: contents row speaks surahs and ayahs",
             m["rule"] and "surah" in m["rule"] and "ayah" in m["rule"], str(m["rule"]))
+
+    # ── Task 108 — the second group, and the arrival line ──────────────
+    # A labelled group is not a union: the first says "editions of this
+    # work", the second says "other things the map binds here". The Song
+    # of Songs is the case that decides it — Ginsburg's standalone
+    # edition must appear ONLY in the second group, because it is not an
+    # edition of the whole Bible.
+    def corner_groups(df, chip=None):
+        pg.goto(f"{base}?text={df}" + (f"&chip={chip}" if chip else ""),
+                wait_until="networkidle")
+        pg.wait_for_timeout(1500)
+        return pg.evaluate("""() => {
+          const c = document.querySelector('.cc-editions-corner');
+          if (!c) return null;
+          c.click();
+          const p = document.querySelector('.cc-ed-pop');
+          const also = p.querySelector('.cc-oe-also');
+          const txt = n => [...n.querySelectorAll('a')].map(a => a.textContent);
+          const first = [...p.querySelectorAll('a')]
+            .filter(a => !also || !also.contains(a)).map(a => a.textContent);
+          const arrived = document.querySelector('.cc-arrived');
+          return { label: c.textContent.trim(), first,
+                   also: also ? txt(also) : [],
+                   head: also ? also.querySelector('.cc-oe-alsohead').textContent : null,
+                   arrived: arrived ? arrived.textContent.trim() : null };
+        }""")
+
+    g = corner_groups("bible_kjv.json", "songofsongs")
+    R.check("5 covers", "Song of Songs: Ginsburg is NOT an edition of the Bible",
+            g and not any("Song of Songs" in t for t in g["first"]),
+            f"{len(g['first']) if g else '?'} rows in the first group")
+    R.check("5 covers", "Song of Songs: Ginsburg IS reachable, in the second group",
+            g and any("Song of Songs" in t for t in g["also"]), str(g and g["also"])[:70])
+    R.check("5 covers", "the second group names the chip it came through",
+            g and g["head"] and "Song of Songs" in g["head"], str(g and g["head"]))
+
+    # the ruling's test case: Ganguli's complete prose reachable again
+    g = corner_groups("mahabharata_ganguli.json", "mahabharata18parvas18mwords")
+    R.check("5 covers", "Mahabharata: the four Ganguli volumes are reachable again",
+            g and len([t for t in g["also"] if "Vol" in t]) == 4,
+            f"{len(g['also']) if g else '?'} in the second group")
+
+    # ruling 3 — the arrival line, and it must not be circular
+    g = corner_groups("long-discourses-sujato_pli.json", "brahmajala")
+    R.check("5 covers", "the arrival line names the chip the reader followed",
+            g and g["arrived"] and "Brahmaj" in g["arrived"], str(g and g["arrived"])[:70])
+    g2 = corner_groups("long-discourses-sujato_pli.json")
+    R.check("5 covers", "no chip, no arrival line (it would name no arrival)",
+            g2 and not g2["arrived"], str(g2 and g2["arrived"]))
 
 
 def g_rooms(pg, base, R):
@@ -486,6 +541,11 @@ def g_lens(pg, base, R):
                     on_contents = False
                 R.check("7 lens", f"{room}: the chip lands on a contents page",
                         on_contents, pg.url.split("text=")[-1][:44])
+                # Task 108 — and it says WHICH chip it was, or the
+                # contents page cannot name the second group or the
+                # arrival.
+                R.check("7 lens", f"{room}: the chip identity rides the URL",
+                        "chip=" in pg.url, pg.url.split("?")[-1][:52])
         R.check("7 lens", f"{room}: no chooser popover survives",
                 pg.evaluate("""() => !document.querySelector('.m-chooser-pop')
                   && typeof window.__mcClose === 'undefined'"""))
