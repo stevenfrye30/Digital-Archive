@@ -1259,8 +1259,33 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     if (!el) return;
     var sec = el.closest('section[id]');
     if (sec && /-reception$/.test(sec.id)) return;
+    // Task 103 — the chip is always the door. A chip the binder gave a
+    // route (role=link for a single witness, role=button for a chooser)
+    // keeps its click in BOTH views; the lens may recolour it, never
+    // intercept it. The rights panel is reachable from the state dot,
+    // which works in both views. Chips with no door are unchanged —
+    // their panel is where "why isn't this here, and when" lives.
+    var role = el.getAttribute('role');
+    var hasDoor = (role === 'link' || role === 'button');
+    var onDot = !!(e.target.closest && e.target.closest('.mdot, .dot'));
+    if (hasDoor && !onDot) return;
     e.preventDefault(); e.stopPropagation();
     if (isHeading) el.dataset.rlHeading = '1';
+    open(el);
+  }, true);
+  // Task 103 — the state dot opens the rights panel in BOTH views, so
+  // the provenance a reader wants is never behind a mode switch.
+  document.addEventListener('click', function (e) {
+    var dot = e.target.closest && e.target.closest('.mdot, .dot');
+    if (!dot) return;
+    var el = dot.closest('.chip, .su, .tc');
+    if (!el) return;
+    var sec = el.closest('section[id]');
+    if (sec && /-reception$/.test(sec.id)) return;
+    var role = el.getAttribute('role');
+    if (role !== 'link' && role !== 'button') return;   // no door: the
+    // chip's own click already opens the panel in rights view
+    e.preventDefault(); e.stopPropagation();
     open(el);
   }, true);
 })();
