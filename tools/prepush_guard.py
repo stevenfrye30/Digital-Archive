@@ -180,6 +180,27 @@ def main():
     else:
         elapsed = "skipped (--fast)"
 
+    # 6b. orphan bodies (Task 100, 2026-08-01): a body in data/ that no
+    #     index row names is a text the archive retired but whose artifact
+    #     was never swept. Fifty of them had accumulated; two were tracked,
+    #     so the site served withdrawn Bible bodies at unlisted URLs. The
+    #     guard could not see them because checks 1-5 compare the manifest
+    #     with the index and never look at the directory itself.
+    SITE_ARTIFACTS = {
+        "build_manifest.json", "finalized.json", "integrity.json",
+        "search_index.json", "source_manifest.json", "index.json",
+        "restricted_sources_register.json", "chip_index.json", "read_marks.json",
+    }
+    orphans = sorted(
+        p.name[:-3] for p in (REPO / "data").glob("*.json.gz")
+        if p.name[:-3] not in idx_dfs and p.name[:-3] not in SITE_ARTIFACTS
+    )
+    if orphans:
+        fail("Bodies in data/ that no index row names (retired texts whose "
+             "artifacts were never swept — they would deploy unreachable):\n  "
+             + "\n  ".join(orphans[:20])
+             + "\nRemove them from data/ (the sources stay in 01_library).")
+
     # 6. reachability (Task 27 closer, 2026-07-29): every public row must be
     #    reachable from a structural surface (map binding or room listing) or
     #    be a recorded decision in tools/reachability_ledger.json. Fails on
