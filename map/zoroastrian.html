@@ -457,9 +457,15 @@ body[data-lens="rights"] .group h3 { cursor:help; }
   background:var(--panel,#eeebe5); border-bottom:1px solid var(--line2,#d8d3cc);
   padding:8px 20px; }
 body[data-lens="rights"] #lens-banner { display:block; }
-body[data-lens="rights"] .chip .nm::after, body[data-lens="rights"] .su::after,
-body[data-lens="rights"] .tc .tl::after {
-  content:" \24D8"; font-size:.85em; opacity:.6; }
+/* Task 105 — the rights marker leaves the chip name. It was appended
+   only in Rights view, and because the grid fixes chip width the extra
+   glyph could only spend itself on HEIGHT: in a room whose names run
+   long ("The Huarochirí Manuscript (Andean myths)") it rewrapped them
+   onto a second line and every row below moved. That, and nothing else,
+   was ancient's remaining 62-chip drift. The affordance lives on the
+   state dot now (Task 103), which is present in BOTH views — so the
+   marker is not lost, it stopped being conditional. */
+.tc .mdot, .su .mdot, .chip .mdot { cursor: help; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
 #rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }

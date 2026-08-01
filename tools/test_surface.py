@@ -423,11 +423,10 @@ def g_lens(pg, base, R):
     rooms = ["ancient", "bahai", "buddhist", "christianity", "confucian",
              "daoist", "gnostic", "hindu", "indigenous", "islam", "jain",
              "judaism", "modern", "shinto", "sikh", "zoroastrian"]
-    # ancient's Rights lens grows the chips themselves (per-chip rights
-    # text), which reflows its grid. The masthead causes are fixed; this
-    # residue is reported to the design side and awaits a ruling. The
-    # ceiling holds the line so it can only get better.
-    ALLOW = {"ancient": 62}
+    # Task 105 closed the last exception: the rights marker that rewrapped
+    # ancient's long chip names moved off the chip, so every room is held
+    # to the same rule — a lens may recolour, never relocate.
+    ALLOW = {}
     SNAP = """() => { const o = {};
       document.querySelectorAll('.tc, .chip, .su').forEach((c, i) => {
         const r = c.getBoundingClientRect();
