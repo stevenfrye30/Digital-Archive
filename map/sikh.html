@@ -34,17 +34,11 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
 
-.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
-
 .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
 
 .stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
 
 .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
-
-.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
-
-.greenline b { color: var(--g); }
 
 .insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
 
@@ -94,7 +88,7 @@ details.fam[open] > summary::before { transform: rotate(90deg); }
 
 .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
 
-.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3;  ;  ;  ;  ;  ;  ;  ; border-left: 3px solid var(--line2); background: var(--surface); }
 
 .tc .tl { color: var(--ink); }
 
@@ -211,8 +205,6 @@ a.m-link { text-decoration: none; }
   font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .1em; text-transform: uppercase; }
 #m-legend span { display: inline-flex; align-items: center; gap: 7px; }
-#m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
-  margin: -14px 0 26px; max-width: 46em; }
 
 
 /* fraction line under the mast — Task 53b: full mast width, one
@@ -241,17 +233,11 @@ section.view { display: block !important; }
     <div class="sym" aria-hidden="true">☬</div>
     <h1>The Map of Sikh Texts</h1>
     
-    <div class="statband" id="statband"><div class="stat"><b>15</b><span>texts</span></div><div class="stat"><b>6</b><span>green</span></div><div class="stat"><b>7</b><span>amber</span></div><div class="stat"><b>2</b><span>red</span></div></div>
-    <p class="greenline" id="greenline"><b>6 of 15 green</b> — the Guru Granth Sahib reads green through Macauliffe’s 1909 <i>Sikh Religion</i> and Trumpp’s 1877 <i>Ādi Granth</i>; the Dasam Granth and companion texts are mostly modern ©.</p>
+    
+    
   </header>
   <div class="insight"><b>One book, treated as a living Guru.</b> The Guru Granth Sahib (1,430 pages, 31 rāgas, 5,894 hymns) gathers the poetry of six Gurus and fifteen Hindu &amp; Muslim <span class="em">bhagats</span>. Its green anchor is <b>Max Arthur Macauliffe’s six-volume <i>The Sikh Religion</i> (1909)</b>, which translated great swaths of it into public-domain English — but there is <b>no complete worldwide-PD English Guru Granth</b> (the complete modern translations, including the ubiquitous Sant Singh Khalsa, are all copyright). Past the scripture, the contested <b>Dasam Granth</b> and the companion texts stay mostly amber.</div>
-  <div class="legend">
-    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
-    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
-    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
-    <span class="lg" id="xleg" style="display:none"></span>
-    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
-  </div>
+  
   <nav class="toc toc-bare"><button type="button" class="toc-all">Collapse all</button></nav>
 <main id="main"><section class="basket" id="sk-ggs"><h2>The Guru Granth Sahib<span class="h2-meta"><span class="pi">ਆਦਿ ਗ੍ਰੰਥ · 1,430 angs · 31 rāgas</span><span class="ct">6 texts</span></span></h2><div class="blurb">The primary scripture, compiled by Guru Arjan (1604, scribed by Bhai Gurdas) and invested as the eternal Guru by Guru Gobind Singh (1708). Macauliffe’s 1909 work is the public-domain window into it.</div><details class="fam" open=""><summary><span class="famname">The scripture</span><span class="famct">6</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Japji Sāhib (Guru Nanak’s opening)</span></span><span class="tc g"><span class="tl">So Dar &amp; Sohila (the daily prayers)</span></span><span class="tc g"><span class="tl">Bāṇī of the six Gurus (Nanak → Tegh Bahadur)</span></span><span class="tc g"><span class="tl">Bhagat Bāṇī — 15 bhagats (Kabir, Farid, Namdev, Ravidas…)</span></span><span class="tc g"><span class="tl">The 31 Rāga sections (5,894 shabads)</span></span><span class="tc a"><span class="tl">Complete Guru Granth in English</span></span></div></div></details></section><section class="basket" id="sk-dasam"><h2>The Dasam Granth<span class="h2-meta"><span class="pi">attributed to Guru Gobind Singh · authorship contested</span><span class="ct">5 texts</span></span></h2><div class="blurb">The "Tenth Book" — martial and devotional compositions; parts (esp. the Charitropakhyan) are historically disputed as to authorship.</div><details class="fam" open=""><summary><span class="famname">The compositions</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Jāp Sāhib (199-verse invocation)</span></span><span class="tc a"><span class="tl">Akāl Ustat · Bachitar Nātak</span></span><span class="tc a"><span class="tl">Benti Chaupai (Chaupai Sāhib)</span></span><span class="tc a"><span class="tl">Zafarnāma (Persian epistle to Aurangzeb, 1706)</span></span><span class="tc r"><span class="tl">Charitropakhyān</span></span></div></div></details></section><section class="basket" id="sk-companion"><h2>Companion &amp; tradition texts<span class="h2-meta"><span class="pi"></span><span class="ct">4 texts</span></span></h2><div class="blurb">The exegetical, historical, and conduct literature around the two Granths.</div><details class="fam" open=""><summary><span class="famname">Exegesis, history &amp; conduct</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Vārān of Bhai Gurdas (40 vārs — the "key")</span></span><span class="tc g"><span class="tl">The Janamsākhīs (lives of Guru Nanak)</span></span><span class="tc a"><span class="tl">The Rehatnāmās (codes of conduct)</span></span><span class="tc r"><span class="tl">Sarbloh Granth (Nihang; contested)</span><span class="te">untranslated / contested</span></span></div></div></details></section></main>
   <footer id="foot">The Guru Granth Sahib’s structure is factual/PD; its best PD English is Macauliffe (1909, d.1913) and Trumpp (1877, d.1885). Complete modern translations (Gopal Singh, Manmohan Singh, Sant Singh Khalsa) are ©. Sources: Macauliffe &amp; Trumpp via archive.org; the Shabad OS Database (PD data). Best-effort scholarship, not legal advice.</footer>
@@ -286,7 +272,7 @@ section.view { display: block !important; }
 
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
-  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
   .then(function (B) {
     var byKey = {};
     B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
@@ -469,20 +455,7 @@ section[id] h2, .zone-h { cursor:help; }
   background:none !important; border:none !important; box-shadow:none !important; }
 :root[data-theme="dark"] .m-restricted .mdot::before { color:#d97b6c; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
-#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
-#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
-#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
-#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
-#rl-panel .rl-sec { margin:0 0 16px; }
-#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
-#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
-#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
-#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
-#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
-#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
-#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
-#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
 .rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
 .rl-ed:hover { border-color:var(--accent,#7a5c3a); }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
@@ -516,7 +489,6 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
    in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
 .statband, .greenline, .insight, #totalbar, .band,
 .canon-gap, .fam-empty { display:none !important; }
-.statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
 /* the gold must be stated at !important: the rooms carry
    `.deep nav.toc a { color: var(--ink-soft) }`, which outranks a bare
@@ -564,8 +536,6 @@ details.fam > *:not(summary) { display:block !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
    competing with the centred zone titles */
 .flagship-wrap { text-align:left !important; }
-/* Task 59 — search deep-link emphasis (one quiet pulse) */
-.chip-sought { animation: chip-sought 3s ease-out; }
 @keyframes chip-sought {
   0%   { box-shadow: 0 0 0 3px #7a5c3a; }
   70%  { box-shadow: 0 0 0 3px rgba(122,92,58,.4); }
@@ -597,7 +567,6 @@ details.fam > *:not(summary) { display:block !important; }
   paint-order: stroke; pointer-events: none; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
-.keyrow.mz-hl { background: rgba(122,92,58,.12); }
 /* Task 119e — .fambar RETIRES, reversing 119b. It was kept as "the only
    way to read a family's shape without counting chips" — an argument
    about a figure that turned out never to have been on screen: 170
@@ -609,7 +578,6 @@ g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
    .keyrow .mini (hindu) retire with it — single-room devices that
    restate the marks. */
 #gradient { display:none !important; }
-.keyrow .mini { display:none !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
@@ -665,7 +633,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 #ov-sheet #ov-reception .tl { display:block; font:400 14px/1.5 Georgia,serif; color:var(--ink,#2c2c2c); }
 #ov-sheet #ov-reception .te { display:block; font:400 11.5px/1.5 Georgia,serif; color:var(--ink-faint,#a09080); }
 @media (max-width:720px) {
-  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
@@ -739,7 +706,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // 36a race guard: a chip clicked before these resolve must never
   // render a false not-held — open() waits on this promise.
   var _ready = Promise.all([
-    fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+    (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
       .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); })
       .catch(function () { B = {}; }),
     fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
@@ -1615,7 +1582,13 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2, .basket h2 { display: block; text-align: center; }
 .h2-meta { display: block; font-size: 0.62em; font-weight: 400; }
 .deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
-.deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
+/* Task 126 §1.6 — the count must not abut its gloss. In nine rooms
+   the zone header sits inside .basket > h2, so `.basket h2 .ct
+   {margin-left:0}` (0,2,1) beat `.h2-meta .ct` (0,2,0) and the count
+   rendered hard against the gloss: "the Forerunner5 texts". Specificity,
+   not order (doctrine 8.3) — the separating rule now carries the
+   .basket path too. */
+.deep .basket > h2 .h2-meta .ct, .basket h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
 .fam > summary .zb,
 .keyrow .mini,
@@ -1735,15 +1708,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 </style>
 
-<style>
-/* Task 113 — the stated gap. A blank division body reads as a
-   rendering bug; this is the archive's own grammar for an absence. */
-.canon-gap {
-  font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
-  color: var(--ink-faint);
-  padding: 0.35rem 0.75rem 0.6rem 1.9rem;
-  margin: 0;
-}
+
 </style>
 <script>
 (function () {

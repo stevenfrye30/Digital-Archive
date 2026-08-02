@@ -585,8 +585,47 @@ def g_rooms(pg, base, R):
             titleColor: title ? getComputedStyle(title).color : null,
             centered: title ? getComputedStyle(title).textAlign === 'center'
                             || getComputedStyle(title.parentElement).textAlign === 'center' : null,
-            bars: [...document.querySelectorAll('.zb, .fambar, .mini')]
-                    .filter(e => e.offsetParent !== null).length,
+            // Task 126 §1.3 — DERIVED, NOT ENUMERATED.
+            //
+            // This read `.zb, .fambar, .mini` — the bars retired by Tasks
+            // 119b and 119e. Task 123 then retired `.statband` and
+            // `.greenline` and nobody extended the list, so ancient.html
+            // shipped a visible five-tile statband while a check called
+            // "no summary bars" reported green inside a 161/161 group.
+            // A list of class names has a shelf life; the ruling does not.
+            //
+            // So the subject is derived from what Task 123 item 3 actually
+            // ruled: a band that states a RIGHTS AGGREGATE goes, a band
+            // that states a structural fact stays. Two shapes, both read
+            // off the rendered page (§8.1), neither naming a class:
+            //   1. a tile row — 3+ visible children, each a bare count
+            //      paired with a rights word;
+            //   2. the narrative line — "N of M green".
+            // This catches a statband under any class name it is ever
+            // rewritten under, which is the whole point.
+            bars: (() => {
+              const RIGHTS = /^(texts?|held|pd|no pd|restricted|green|amber|red|public[- ]domain)$/i;
+              const vis = e => e.getClientRects().length > 0;
+              let n = 0;
+              for (const el of document.querySelectorAll('div, section, p, ul')) {
+                if (!vis(el)) continue;
+                const kids = [...el.children].filter(vis);
+                if (kids.length >= 3) {
+                  const tiles = kids.filter(k => {
+                    const t = (k.textContent || '').replace(/\s+/g, ' ').trim();
+                    const m = t.match(/^([\d,]+)\s*(.+)$/);
+                    return m && RIGHTS.test(m[2].trim());
+                  });
+                  if (tiles.length === kids.length) { n++; continue; }
+                }
+                let own = '';
+                for (const c of el.childNodes) if (c.nodeType === 3) own += c.textContent;
+                if (/\b\d[\d,]*\s+of\s+\d[\d,]*\s+green\b/i.test(
+                      (el.textContent || '').replace(/\s+/g, ' '))
+                    && el.querySelectorAll('div, section, p, ul').length === 0) n++;
+              }
+              return n;
+            })(),
             markerLeft: marker ? marker.position === 'absolute' : null,
             collapse: !!document.querySelector('.toc-all'),
             fams: document.querySelectorAll('details.fam').length,
@@ -1393,12 +1432,13 @@ def g_grammar(pg, base, R):
         "legend": "#m-legend",
         "section heading": "section[id] h2, .zone-h, .basket > h2",
         "collapse control": ".toc-all",
-        # the interpretive line. Written as .greenline in most rooms and
-        # .insight in hindu — asserting only .greenline failed hindu and
-        # would have reported a missing element that is on the screen.
-        # Task 114's `span.te` / `div.ed` error, repeated here and fixed
-        # the same way: name every class the thing is written in.
-        "interpretive line": ".greenline, .insight, .gl",
+        # NOTE — "interpretive line" WAS universal here, selected as
+        # `.greenline, .insight, .gl`. Task 123 item 3 retired the
+        # narrative line ("213 green of 221 — the entire Bible…"), and in
+        # five rooms that line was the ONLY thing the selector matched, so
+        # a universal requirement now demands the thing the ruling
+        # removed. It is no longer universal; the surviving `.insight`
+        # blocks are asserted below on content instead. Task 126 §1.4.
         "footer": "footer#foot",
         "theme button": "#arch-dark",
         "star button": "#arch-fav",
@@ -1419,23 +1459,47 @@ def g_grammar(pg, base, R):
           const band = document.querySelector('.statband');
           out.__band = band ? [...band.querySelectorAll('.stat span')]
             .map(s => (s.textContent || '').trim().toLowerCase()) : null;
+          // the surviving interpretive line, if the room has one
+          const ins = document.querySelector('.greenline, .insight, .gl');
+          out.__insight = ins && ins.getClientRects().length
+            ? (ins.textContent || '').replace(/\s+/g, ' ').trim() : null;
           out.__second = document.querySelectorAll('.chip .nm').length;
           out.__fambar = document.querySelectorAll('.fambar').length;
           out.__lens = document.querySelectorAll('#lens-toggle, #lens-banner').length;
           return out; }""", UNIVERSAL)
         for name, _sel in UNIVERSAL.items():
             R.check("9 grammar", f"{room}: has {name}", m[name] >= 1, f"{m[name]}")
-        # the statband exception, both directions
+        # Task 126 §1.4 — THE GATE IS THE CONTENT, NOT A ROOM LIST.
+        #
+        # This used to assert the statband is PRESENT in every room except
+        # a named list. Task 123 item 3 then retired it archive-wide, with
+        # one gate: "if a band states a structural fact rather than a
+        # rights aggregate, keep it." The assertion was never moved, so
+        # after the retirement it failed in fifteen rooms for doing
+        # exactly what was ruled — an assertion measuring the old world in
+        # the new one (§8.1c).
+        #
+        # Restated as the ruling actually reads, and derived: a band may
+        # exist ONLY if its own labels are not the rights aggregate. No
+        # room list, so a room that grows or loses a band needs no edit
+        # here — and a rights band reappearing anywhere fails, which is
+        # the thing worth catching.
         has_band = m["__band"] is not None
-        R.check("9 grammar", f"{room}: statband present unless named absent",
-                has_band != (room in NO_STATBAND),
-                f"band={has_band}, named-absent={room in NO_STATBAND}")
         if has_band:
-            structural = not ({"held", "pd", "no pd"} <= set(m["__band"]))
-            R.check("9 grammar",
-                    f"{room}: statband is {'structural' if room in STAT_STRUCTURAL else 'the four marks'}",
-                    structural == (room in STAT_STRUCTURAL),
-                    " · ".join(m["__band"])[:58])
+            labels = set(m["__band"])
+            rights_aggregate = bool({"green", "amber", "red"} & labels) or \
+                {"held", "pd", "no pd"} <= labels
+            R.check("9 grammar", f"{room}: any surviving band is structural",
+                    not rights_aggregate, " · ".join(m["__band"])[:58])
+        # Task 126 §1.4 — the interpretive line is optional now, but where
+        # a room keeps one it must not be the retired narrative line. The
+        # shape Task 123 named is "N of M green" / "N green of M"; derived
+        # from the text so it catches the sentence under any class.
+        if m["__insight"]:
+            R.check("9 grammar", f"{room}: the interpretive line is not a rights tally",
+                    not re.search(r"\b\d[\d,]*\s+(of\s+\d[\d,]*\s+)?green\b",
+                                  m["__insight"][:160], re.I),
+                    m["__insight"][:56])
         # the second chip grammar lives in exactly two rooms
         R.check("9 grammar", f"{room}: chip grammar is the one named for it",
                 (m["__second"] > 0) == (room in SECOND_CHIP_GRAMMAR),

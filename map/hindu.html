@@ -62,18 +62,6 @@ svg.mandala g.zone:hover .seg.hot { opacity: 1; }
 
 .keylist { list-style: none; margin: 0px; padding: 0px; display: flex; flex-direction: column; gap: 0.35rem; }
 
-.keyrow { display: grid; grid-template-columns: 1.4rem 1fr auto; gap: 0.6rem; align-items: center; width: 100%; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 0.5rem 0.7rem; cursor: pointer; color: inherit; font: inherit; }
-
-.keyrow:hover { border-color: var(--line2); background: var(--panel); }
-
-.keyrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-.keyrow .idx { font-family: var(--serif); font-weight: 700; color: var(--accent); text-align: center; }
-
-.keyrow .knm { font-size: 0.9rem; font-weight: 600; }
-
-.keyrow .ksub { font-size: 0.74rem; color: var(--ink-faint); display: block; font-weight: 400; }
-
 .mini { display: flex; height: 8px; width: 74px; border-radius: 99px; overflow: hidden; background: var(--track); }
 
 .mini i { display: block; height: 100%; }
@@ -85,10 +73,6 @@ svg.mandala g.zone:hover .seg.hot { opacity: 1; }
 .mini .mr { background: var(--r); }
 
 .band { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.25rem; margin: 0px 0px 1.4rem; }
-
-.totalbar { display: flex; height: 30px; border-radius: 8px; overflow: hidden; margin: 0.2rem 0px 0.7rem; }
-
-.totalbar span { display: flex; align-items: center; justify-content: center; color: rgb(255, 255, 255); font-size: 0.82rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 
 .tg { background: var(--g); }
 
@@ -128,7 +112,7 @@ svg.mandala g.zone:hover .seg.hot { opacity: 1; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
-.chip { display: inline-flex; align-items: center; gap: 0.42em; padding: 0.3em 0.62em; border-radius: 7px; font-size: 0.8rem; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-left-color: ; border-left-style: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left-width: 3px; background: var(--surface); cursor: default; max-width: 100%; }
+.chip { display: inline-flex; align-items: center; gap: 0.42em; padding: 0.3em 0.62em; border-radius: 7px; font-size: 0.8rem;  ;  ;  ;  ;  ;  ;  ;  ; border-left-width: 3px; background: var(--surface); cursor: default; max-width: 100%; }
 
 .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
 
@@ -253,8 +237,6 @@ a.m-link { text-decoration: none; }
   font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .1em; text-transform: uppercase; }
 #m-legend span { display: inline-flex; align-items: center; gap: 7px; }
-#m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
-  margin: -14px 0 26px; max-width: 46em; }
 
 
 /* fraction line under the mast — Task 53b: full mast width, one
@@ -297,11 +279,11 @@ section.view { display: block !important; }
     </div>
 <div class="key">
       <h2>The eight zones</h2>
-      <ul class="keylist" id="keylist"><button class="keyrow"><span class="idx">◉</span><span><span class="knm">Śruti core</span><span class="ksub">129 texts · 55 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:42.63565891472868%"></i><i class="ma" style="width:55.81395348837209%"></i><i class="mr" style="width:1.550387596899225%"></i></span></button><button class="keyrow"><span class="idx">1</span><span><span class="knm">Ring 1 · Vedāṅgas &amp; Sūtras</span><span class="ksub">26 texts · 15 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:57.692307692307686%"></i><i class="ma" style="width:30.76923076923077%"></i><i class="mr" style="width:11.538461538461538%"></i></span></button><button class="keyrow"><span class="idx">2</span><span><span class="knm">Ring 2 · Darśanas</span><span class="ksub">7 texts · 7 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i></span></button><button class="keyrow"><span class="idx">3</span><span><span class="knm">Ring 3 · Epics</span><span class="ksub">4 texts · 4 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:100%"></i><i class="ma" style="width:0%"></i><i class="mr" style="width:0%"></i></span></button><button class="keyrow"><span class="idx">4</span><span><span class="knm">Ring 4 · Purāṇas (+ Upapurāṇas)</span><span class="ksub">26 texts · 8 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:30.76923076923077%"></i><i class="ma" style="width:61.53846153846154%"></i><i class="mr" style="width:7.6923076923076925%"></i></span></button><button class="keyrow"><span class="idx">5</span><span><span class="knm">Ring 5 · Upaveda &amp; Śāstras</span><span class="ksub">14 texts · 8 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:57.14285714285714%"></i><i class="ma" style="width:42.857142857142854%"></i><i class="mr" style="width:0%"></i></span></button><button class="keyrow"><span class="idx">A</span><span><span class="knm">Branch A · Āgama / Tantra</span><span class="ksub">6 texts · 3 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:50%"></i><i class="ma" style="width:33.33333333333333%"></i><i class="mr" style="width:16.666666666666664%"></i></span></button><button class="keyrow"><span class="idx">B</span><span><span class="knm">Branch B · Bhakti</span><span class="ksub">14 texts · 6 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:42.857142857142854%"></i><i class="ma" style="width:57.14285714285714%"></i><i class="mr" style="width:0%"></i></span></button><button class="keyrow"><span class="idx">C</span><span><span class="knm">Branch C · Commentators</span><span class="ksub">57 texts · 22 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:38.59649122807017%"></i><i class="ma" style="width:40.35087719298245%"></i><i class="mr" style="width:21.052631578947366%"></i></span></button><button class="keyrow"><span class="idx">D</span><span><span class="knm">Branch D · Hymn, Gītā &amp; Yoga</span><span class="ksub">15 texts · 13 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:86.66666666666667%"></i><i class="ma" style="width:13.333333333333334%"></i><i class="mr" style="width:0%"></i></span></button><button class="keyrow"><span class="idx">§</span><span><span class="knm">Appendix · Kāvya &amp; living corpus</span><span class="ksub">34 texts · 21 PD</span></span><span class="mini" aria-hidden="true"><i class="mg" style="width:61.76470588235294%"></i><i class="ma" style="width:32.35294117647059%"></i><i class="mr" style="width:5.88235294117647%"></i></span></button></ul>
+      <ul class="keylist" id="keylist"></ul>
     </div>
 
 <section class="band">
-    <div class="totalbar" id="totalbar"><span class="tg" style="width:48.795180722891565%">162 public-domain</span><span class="ta" style="width:44.57831325301205%">148 copyright</span><span class="tr" style="width:6.626506024096386%" title="22 no English">22</span></div>
+    
     <div class="legend">
       <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — complete public-domain English (ingestible)</span>
       <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — copyright / partial only</span>
@@ -357,7 +339,7 @@ section.view { display: block !important; }
 
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
-  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
   .then(function (B) {
     var byKey = {};
     B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
@@ -540,20 +522,7 @@ section[id] h2, .zone-h { cursor:help; }
   background:none !important; border:none !important; box-shadow:none !important; }
 :root[data-theme="dark"] .m-restricted .mdot::before { color:#d97b6c; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
-#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
-#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
-#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
-#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
-#rl-panel .rl-sec { margin:0 0 16px; }
-#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
-#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
-#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
-#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
-#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
-#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
-#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
-#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
 .rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
 .rl-ed:hover { border-color:var(--accent,#7a5c3a); }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
@@ -587,7 +556,6 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
    in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
 .statband, .greenline, .insight, #totalbar, .band,
 .canon-gap, .fam-empty { display:none !important; }
-.statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
 /* the gold must be stated at !important: the rooms carry
    `.deep nav.toc a { color: var(--ink-soft) }`, which outranks a bare
@@ -635,8 +603,6 @@ details.fam > *:not(summary) { display:block !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
    competing with the centred zone titles */
 .flagship-wrap { text-align:left !important; }
-/* Task 59 — search deep-link emphasis (one quiet pulse) */
-.chip-sought { animation: chip-sought 3s ease-out; }
 @keyframes chip-sought {
   0%   { box-shadow: 0 0 0 3px #7a5c3a; }
   70%  { box-shadow: 0 0 0 3px rgba(122,92,58,.4); }
@@ -668,7 +634,6 @@ details.fam > *:not(summary) { display:block !important; }
   paint-order: stroke; pointer-events: none; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
-.keyrow.mz-hl { background: rgba(122,92,58,.12); }
 /* Task 119e — .fambar RETIRES, reversing 119b. It was kept as "the only
    way to read a family's shape without counting chips" — an argument
    about a figure that turned out never to have been on screen: 170
@@ -680,7 +645,6 @@ g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
    .keyrow .mini (hindu) retire with it — single-room devices that
    restate the marks. */
 #gradient { display:none !important; }
-.keyrow .mini { display:none !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
@@ -736,7 +700,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 #ov-sheet #ov-reception .tl { display:block; font:400 14px/1.5 Georgia,serif; color:var(--ink,#2c2c2c); }
 #ov-sheet #ov-reception .te { display:block; font:400 11.5px/1.5 Georgia,serif; color:var(--ink-faint,#a09080); }
 @media (max-width:720px) {
-  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
@@ -810,7 +773,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // 36a race guard: a chip clicked before these resolve must never
   // render a false not-held — open() waits on this promise.
   var _ready = Promise.all([
-    fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+    (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
       .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); })
       .catch(function () { B = {}; }),
     fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
@@ -1643,10 +1606,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 #diagram-panel .key h2 { font-size: 1.02rem; margin: 0 0 8px; }
 /* the count bars stack cleanly: proportional rows, labels never overlap */
 #diagram-panel .totalbar { flex-direction: column; height: auto; gap: 4px; overflow: visible; }
-#diagram-panel .totalbar span {
-  justify-content: flex-start; min-width: max-content;
-  padding: 3px 10px; height: 24px; border-radius: 6px; box-sizing: border-box;
-}
 /* the pattern prose — a small quiet info box at the legend's bottom-left */
 #diagram-panel .insight {
   font-size: .82rem; max-width: 48ch; margin: 12px auto 4px 0;
@@ -1776,7 +1735,13 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2, .basket h2 { display: block; text-align: center; }
 .h2-meta { display: block; font-size: 0.62em; font-weight: 400; }
 .deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
-.deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
+/* Task 126 §1.6 — the count must not abut its gloss. In nine rooms
+   the zone header sits inside .basket > h2, so `.basket h2 .ct
+   {margin-left:0}` (0,2,1) beat `.h2-meta .ct` (0,2,0) and the count
+   rendered hard against the gloss: "the Forerunner5 texts". Specificity,
+   not order (doctrine 8.3) — the separating rule now carries the
+   .basket path too. */
+.deep .basket > h2 .h2-meta .ct, .basket h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
 .fam > summary .zb,
 .keyrow .mini,
@@ -1931,15 +1896,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 </style>
 
-<style>
-/* Task 113 — the stated gap. A blank division body reads as a
-   rendering bug; this is the archive's own grammar for an absence. */
-.canon-gap {
-  font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
-  color: var(--ink-faint);
-  padding: 0.35rem 0.75rem 0.6rem 1.9rem;
-  margin: 0;
-}
+
 </style>
 <script>
 (function () {

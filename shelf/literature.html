@@ -139,6 +139,11 @@ entrance.</footer>
      >= 44px" because that predicate enforced width at 24 (§8.1d). These
      are the "36 philosophy-shelf targets" 106-P2 item 4 named. */
   .rows li a.t { min-width: 44px; justify-content: flex-start; }
+  /* Task 126 §1.11 — the on-map pill is a door to the tradition room and
+     sat at 15px tall, under the ruled floor. The pill keeps its 9px
+     lettering; the BOX grows to the floor. */
+  .rows a.on-map { min-height: 44px; min-width: 44px;
+    display: inline-flex; align-items: center; justify-content: center; }
   nav.toc a, .bcl-codex-range, #arch-topnav a, .room-path {
     display: inline-flex; align-items: center;
   }

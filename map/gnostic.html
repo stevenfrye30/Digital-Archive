@@ -34,17 +34,11 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
 
-.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
-
 .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
 
 .stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
 
 .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
-
-.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
-
-.greenline b { color: var(--g); }
 
 .insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
 
@@ -94,7 +88,7 @@ details.fam[open] > summary::before { transform: rotate(90deg); }
 
 .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
 
-.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3;  ;  ;  ;  ;  ;  ;  ; border-left: 3px solid var(--line2); background: var(--surface); }
 
 .tc .tl { color: var(--ink); }
 
@@ -211,8 +205,6 @@ a.m-link { text-decoration: none; }
   font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .1em; text-transform: uppercase; }
 #m-legend span { display: inline-flex; align-items: center; gap: 7px; }
-#m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
-  margin: -14px 0 26px; max-width: 46em; }
 
 
 /* fraction line under the mast — Task 53b: full mast width, one
@@ -241,17 +233,11 @@ section.view { display: block !important; }
     <div class="sym" aria-hidden="true">🐍</div>
     <h1>The Map of Gnostic &amp; Dualist Texts</h1>
     
-    <div class="statband" id="statband"><div class="stat"><b>24</b><span>texts</span></div><div class="stat"><b>9</b><span>green</span></div><div class="stat"><b>1</b><span>amber</span></div><div class="stat"><b>14</b><span>red</span></div></div>
-    <p class="greenline" id="greenline"><b>9 of 24 green</b> — the Church Fathers who quoted them (the Ante-Nicene Fathers) and G.R.S. Mead’s recoveries (Pistis Sophia, Fragments of a Faith Forgotten) are public-domain — the red is everything dug from the sand in the twentieth century (Nag Hammadi, the Manichaean and Mandaean codices), still under copyright.</p>
+    
+    
   </header>
   <div class="insight"><b>What the heresy-hunters quoted survives; what the heretics wrote does not.</b> Gnostic religion reaches us two ways. The first is <b>public-domain</b>: the Church Fathers’ hostile summaries (the Ante-Nicene Fathers, 1867–85) and the recoveries of <b>G.R.S. Mead</b> (Pistis Sophia 1896, Fragments of a Faith Forgotten 1900) — a luminous green core. The second is a <b>red frontier</b>: the heretics’ own books, buried in the sand and dug up only in the twentieth century — the entire <b>Nag Hammadi library</b> (1945), the Manichaean codices (1930), the Gospels of Mary and Judas — every one still under copyright. Living <b>Mandaeism</b>, the last Gnostic religion, has <b>no public-domain English scripture at all</b>. The mystery-cult neighbours (the Hermetica, the Mithras Liturgy, the Orphic Hymns, the Chaldean Oracles) live on the <span class="em">Ancient World</span> door.</div>
-  <div class="legend">
-    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
-    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
-    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
-    <span class="lg" id="xleg" style="display:none"></span>
-    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
-  </div>
+  
   <nav class="toc toc-bare"><button type="button" class="toc-all">Collapse all</button></nav>
 <main id="main"><section class="basket" id="gn-gnostic"><h2>Gnosticism<span class="h2-meta"><span class="pi">Sethian &amp; Valentinian · 2nd–4th c. CE</span><span class="ct">10 texts</span></span></h2><div class="blurb">The classical Gnostic schools of Valentinus, Basilides and the Sethians. What the Fathers quoted — and what G.R.S. Mead recovered from the Askew Codex — is public-domain; the codices dug up in the 20th century are not.</div><details class="fam" open=""><summary><span class="famname">The public-domain core — what the Fathers quoted &amp; Mead recovered</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Pistis Sophia (the Askew Codex)</span></span><span class="tc g"><span class="tl">Fragments of a Faith Forgotten (Valentinus · Basilides · the Sethians)</span></span><span class="tc g"><span class="tl">The Valentinian fragments (Ptolemy’s Letter to Flora · Heracleon)</span></span><span class="tc g"><span class="tl">Simon Magus &amp; the Simonians (the Apophasis Megalē)</span></span><span class="tc g"><span class="tl">The Gospel of Thomas — the Greek fragments (Oxyrhynchus)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The buried codices — discovered too late, all ©</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">The Nag Hammadi Library (Gospel of Truth · Philip · Apocryphon of John…)</span></span><span class="tc r"><span class="tl">The Gospel of Thomas — the complete Coptic text</span></span><span class="tc r"><span class="tl">The Gospel of Mary (the Berlin Codex)</span></span><span class="tc r"><span class="tl">The Gospel of Judas (Codex Tchacos)</span></span><span class="tc a"><span class="tl">The Bruce Codex (the Books of Jeu · the Untitled Text)</span></span></div></div></details></section><section class="basket" id="gn-mani"><h2>Manichaeism<span class="h2-meta"><span class="pi">Mani’s world religion · 3rd c. CE, Rome to China</span><span class="ct">5 texts</span></span></h2><div class="blurb">Once a rival to Christianity from North Africa to China, now wholly extinct. Mani wrote his own scriptures — and almost none survive in public-domain English; the church is visible mainly through the Fathers who condemned it.</div><details class="fam" open=""><summary><span class="famname">The lost church of Light</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Mani’s own scriptures (the Living Gospel · the Shābuhragān · the Book of Giants)</span></span><span class="tc r"><span class="tl">The Kephalaia (the Coptic Medinet Madi codices)</span></span><span class="tc r"><span class="tl">The Cologne Mani-Codex (On the Origin of His Body)</span></span><span class="tc r"><span class="tl">The Chinese Manichaean texts (the Hymnscroll · the Compendium)</span></span><span class="tc g"><span class="tl">Augustine against the Manichees (Contra Faustum)</span></span></div></div></details></section><section class="basket" id="gn-mandaean"><h2>Mandaeism<span class="h2-meta"><span class="pi">the last living Gnostics · Iraq &amp; Iran</span><span class="ct">3 texts</span></span></h2><div class="blurb">The only Gnostic religion to survive to the present day — and, strikingly, the one with no public-domain English scripture at all. Its holy books exist in English only in modern copyrighted or German editions.</div><details class="fam" open=""><summary><span class="famname">A living faith with no public-domain scripture</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">The Ginza Rabbā (the Great Treasure)</span></span><span class="tc r"><span class="tl">The Book of John (Drašā d-Yahia)</span></span><span class="tc r"><span class="tl">The Qolastā (the canonical prayerbook)</span></span></div></div></details></section><section class="basket" id="gn-dualist"><h2>Dualist heresies &amp; the late-antique fringe<span class="h2-meta"><span class="pi">Cathars, Bogomils, Paulicians, Marcionites</span><span class="ct">6 texts</span></span></h2><div class="blurb">The medieval dualist churches and the great late-antique heresies. Two survive in surprising public-domain English (the Cathar Secret Supper and the Paulician Key of Truth); the rest are © or unrecovered.</div><details class="fam" open=""><summary><span class="famname">The dualist churches</span><span class="famct">6</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Secret Supper (Interrogatio Iohannis — the Cathar/Bogomil gospel)</span></span><span class="tc g"><span class="tl">The Key of Truth (the Paulician / Tondrakian manual)</span></span><span class="tc g"><span class="tl">Marcion’s Gospel &amp; Apostolikon (reconstructed)</span></span><span class="tc r"><span class="tl">The Cathar rituals (the Lyon Ritual · the Book of the Two Principles)</span></span><span class="tc r"><span class="tl">Priscillian (the Würzburg Tractates)</span></span><span class="tc r"><span class="tl">The Sabians of Harran (the star-worshippers)</span></span></div></div></details></section><!-- reception-layer:start (generated by build_reception_layers.py — Task 32 ruling 1, the Shintō precedent; derived from the live reader-only set, never retyped) --><section class="basket" id="gn-reception"><h2>Held in this archive<span class="h2-meta"><span class="pi">awaiting placement</span><span class="ct">3 texts</span></span></h2><div class="blurb">Texts of this tradition the archive holds that have no chip on this map and no room placement &mdash; browsable here honestly; each awaits a reviewed binding or a structure-growth pass (the stays-reception rulings of the placement program, 2026-07).</div><div class="fambody"><div class="tgrid"><a class="tc g" href="../?text=gnostics-remains-king_king.json" style="text-decoration:none"><span class="tl">The Gnostics and Their Remains</span><span class="te">C.W. King 1887 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=kybalion-three-initiates_three-initiates.json" style="text-decoration:none"><span class="tl">The Kybalion</span><span class="te">Three Initiates 1908 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=thrice-greatest-hermes-vol1_mead.json" style="text-decoration:none"><span class="tl">Thrice-Greatest Hermes, Vol 1</span><span class="te">G.R.S. Mead 1906 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a></div></div></section><!-- reception-layer:end --></main>
   <footer id="foot">PD backbones: G.R.S. Mead (d.1933) and the Ante-Nicene / Nicene Fathers series (Roberts-Donaldson 1867–85, Schaff 1886–90). No PD English: the 20th-century manuscript finds (Nag Hammadi 1945, the Berlin &amp; Tchacos codices, the Manichaean Medinet Madi corpus, the Mandaean scrolls) — all still ©. The mystery/wisdom traditions (Hermetica, Mithras Liturgy, Orphic Hymns, Chaldean Oracles) are cross-referenced to the Ancient World door, not duplicated here. Sources: sacred-texts.com, archive.org, gnosis.org. Best-effort scholarship, not legal advice.</footer>
@@ -286,7 +272,7 @@ section.view { display: block !important; }
 
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
-  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
   .then(function (B) {
     var byKey = {};
     B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
@@ -469,20 +455,7 @@ section[id] h2, .zone-h { cursor:help; }
   background:none !important; border:none !important; box-shadow:none !important; }
 :root[data-theme="dark"] .m-restricted .mdot::before { color:#d97b6c; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
-#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
-#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
-#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
-#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
-#rl-panel .rl-sec { margin:0 0 16px; }
-#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
-#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
-#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
-#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
-#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
-#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
-#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
-#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
 .rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
 .rl-ed:hover { border-color:var(--accent,#7a5c3a); }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
@@ -516,7 +489,6 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
    in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
 .statband, .greenline, .insight, #totalbar, .band,
 .canon-gap, .fam-empty { display:none !important; }
-.statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
 /* the gold must be stated at !important: the rooms carry
    `.deep nav.toc a { color: var(--ink-soft) }`, which outranks a bare
@@ -564,8 +536,6 @@ details.fam > *:not(summary) { display:block !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
    competing with the centred zone titles */
 .flagship-wrap { text-align:left !important; }
-/* Task 59 — search deep-link emphasis (one quiet pulse) */
-.chip-sought { animation: chip-sought 3s ease-out; }
 @keyframes chip-sought {
   0%   { box-shadow: 0 0 0 3px #7a5c3a; }
   70%  { box-shadow: 0 0 0 3px rgba(122,92,58,.4); }
@@ -597,7 +567,6 @@ details.fam > *:not(summary) { display:block !important; }
   paint-order: stroke; pointer-events: none; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
-.keyrow.mz-hl { background: rgba(122,92,58,.12); }
 /* Task 119e — .fambar RETIRES, reversing 119b. It was kept as "the only
    way to read a family's shape without counting chips" — an argument
    about a figure that turned out never to have been on screen: 170
@@ -609,7 +578,6 @@ g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
    .keyrow .mini (hindu) retire with it — single-room devices that
    restate the marks. */
 #gradient { display:none !important; }
-.keyrow .mini { display:none !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
@@ -665,7 +633,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 #ov-sheet #ov-reception .tl { display:block; font:400 14px/1.5 Georgia,serif; color:var(--ink,#2c2c2c); }
 #ov-sheet #ov-reception .te { display:block; font:400 11.5px/1.5 Georgia,serif; color:var(--ink-faint,#a09080); }
 @media (max-width:720px) {
-  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
@@ -739,7 +706,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // 36a race guard: a chip clicked before these resolve must never
   // render a false not-held — open() waits on this promise.
   var _ready = Promise.all([
-    fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+    (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
       .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); })
       .catch(function () { B = {}; }),
     fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
@@ -1615,7 +1582,13 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2, .basket h2 { display: block; text-align: center; }
 .h2-meta { display: block; font-size: 0.62em; font-weight: 400; }
 .deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
-.deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
+/* Task 126 §1.6 — the count must not abut its gloss. In nine rooms
+   the zone header sits inside .basket > h2, so `.basket h2 .ct
+   {margin-left:0}` (0,2,1) beat `.h2-meta .ct` (0,2,0) and the count
+   rendered hard against the gloss: "the Forerunner5 texts". Specificity,
+   not order (doctrine 8.3) — the separating rule now carries the
+   .basket path too. */
+.deep .basket > h2 .h2-meta .ct, .basket h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
 .fam > summary .zb,
 .keyrow .mini,
@@ -1735,15 +1708,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 </style>
 
-<style>
-/* Task 113 — the stated gap. A blank division body reads as a
-   rendering bug; this is the archive's own grammar for an absence. */
-.canon-gap {
-  font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
-  color: var(--ink-faint);
-  padding: 0.35rem 0.75rem 0.6rem 1.9rem;
-  margin: 0;
-}
+
 </style>
 <script>
 (function () {

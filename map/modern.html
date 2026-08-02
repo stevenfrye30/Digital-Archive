@@ -34,17 +34,11 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
 
-.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
-
 .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
 
 .stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
 
 .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
-
-.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
-
-.greenline b { color: var(--g); }
 
 .insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
 
@@ -94,7 +88,7 @@ details.fam[open] > summary::before { transform: rotate(90deg); }
 
 .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
 
-.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3;  ;  ;  ;  ;  ;  ;  ; border-left: 3px solid var(--line2); background: var(--surface); }
 
 .tc .tl { color: var(--ink); }
 
@@ -211,8 +205,6 @@ a.m-link { text-decoration: none; }
   font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .1em; text-transform: uppercase; }
 #m-legend span { display: inline-flex; align-items: center; gap: 7px; }
-#m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
-  margin: -14px 0 26px; max-width: 46em; }
 
 
 /* fraction line under the mast — Task 53b: full mast width, one
@@ -241,17 +233,11 @@ section.view { display: block !important; }
     <div class="sym" aria-hidden="true">🌱</div>
     <h1>The Map of Modern &amp; New Religions</h1>
     
-    <div class="statband" id="statband"><div class="stat"><b>30</b><span>texts</span></div><div class="stat"><b>19</b><span>green</span></div><div class="stat"><b>7</b><span>amber</span></div><div class="stat"><b>4</b><span>red</span></div></div>
-    <p class="greenline" id="greenline"><b>19 of 30 green</b> — most new religions are already public-domain because their founders wrote in English and died before 1955 (Joseph Smith, Mary Baker Eddy, Ellen White, Blavatsky, Kardec) — the amber is corporate copyright (the New World Translation, Religious Science) or a missing English translation of an old source (Tenrikyo, Cao Đài); the red is the enforced 20th-c canons (Scientology, Wicca, Unification).</p>
+    
+    
   </header>
   <div class="insight"><b>A new faith is not a closed book.</b> Unlike the ancient scriptures, these were written within living memory — yet most are already <b>public-domain</b>, because their founders wrote in English and died before 1955: the <b>Book of Mormon</b> (1830), <b>Science and Health</b> (1875), Ellen White, Blavatsky, Kardec. The line falls almost exactly at the <b>institutional twentieth century</b>: the amber and red belong to movements whose scripture is <b>corporately controlled</b> (the New World Translation, Scientology, the Divine Principle) — or, for the <b>Japanese and Vietnamese</b> new religions (Tenrikyo, Cao Đài), whose source text is old and public-domain but whose <i>only English translation</i> is a modern copyright. This is the mirror of the <span class="em">Bahá’í</span> door, whose authorized translator died in 1957 and left it nearly all amber. Rastafari lives on the <span class="em">Indigenous</span> door; the Ahmadiyya reform of Islam on the <span class="em">Abrahamic</span> door.</div>
-  <div class="legend">
-    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
-    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
-    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
-    <span class="lg" id="xleg" style="display:none"></span>
-    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
-  </div>
+  
   <nav class="toc toc-bare"><button type="button" class="toc-all">Collapse all</button></nav>
 <main id="main"><section class="basket" id="mn-lds"><h2>The Latter Day Saint Movement<span class="h2-meta"><span class="pi">Mormonism · from 1830 · ~17 million</span><span class="ct">4 texts</span></span></h2><div class="blurb">The Restoration founded by Joseph Smith. Its scriptures are unambiguously public-domain — only the modern LDS typeset apparatus (chapter headings, footnotes, the Topical Guide) is copyright, never the text itself.</div><details class="fam" open=""><summary><span class="famname">The Restoration scriptures</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Book of Mormon</span></span><span class="tc g"><span class="tl">The Doctrine and Covenants</span></span><span class="tc g"><span class="tl">The Pearl of Great Price (Moses · Abraham · Articles of Faith)</span></span><span class="tc g"><span class="tl">The Joseph Smith Translation (Inspired Version)</span></span></div></div></details></section><section class="basket" id="mn-advent"><h2>Restorationist &amp; Adventist<span class="h2-meta"><span class="pi">19th-century American Christianity, remade</span><span class="ct">7 texts</span></span></h2><div class="blurb">The wave of new churches that grew from American Protestantism — each producing a new distinct scripture or authoritative canon. Almost all are green; only the mid-20th-century New World Translation is corporately held.</div><details class="fam" open=""><summary><span class="famname">The new American scriptures</span><span class="famct">7</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Christian Science — Science and Health with Key to the Scriptures</span></span><span class="tc g"><span class="tl">Seventh-day Adventist — Ellen G. White (Great Controversy · Desire of Ages · Steps to Christ)</span></span><span class="tc g"><span class="tl">Jehovah’s Witnesses — Russell’s Studies in the Scriptures</span></span><span class="tc a"><span class="tl">The New World Translation (the JW Bible)</span></span><span class="tc g"><span class="tl">Christadelphians — Elpis Israel</span></span><span class="tc g"><span class="tl">The Shakers — Testimony of Christ’s Second Appearing (the "Shaker Bible")</span></span><span class="tc g"><span class="tl">The Millerites — Evidence… of the Second Coming</span></span></div></div></details></section><section class="basket" id="mn-esoteric"><h2>Spiritualist, Spiritist &amp; Esoteric<span class="h2-meta"><span class="pi">the channeled &amp; the revealed</span><span class="ct">10 texts</span></span></h2><div class="blurb">The revealed and channeled cluster — new bibles dictated by spirits or masters, and the metaphysical currents (Theosophy, New Thought) that grew alongside them. A near-solid green front, their founders all long dead.</div><details class="fam" open=""><summary><span class="famname">Channeled &amp; revealed scriptures</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Swedenborg — Heaven and Hell · True Christian Religion</span></span><span class="tc g"><span class="tl">Spiritism — Kardec’s The Spirits’ Book · The Gospel According to Spiritism</span></span><span class="tc g"><span class="tl">Oahspe: A New Bible</span></span><span class="tc g"><span class="tl">The Aquarian Gospel of Jesus the Christ</span></span><span class="tc g"><span class="tl">The Urantia Book</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Theosophy, Anthroposophy &amp; New Thought</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Theosophy — Isis Unveiled · The Secret Doctrine · The Voice of the Silence</span></span><span class="tc g"><span class="tl">Anthroposophy — Occult Science · Knowledge of the Higher Worlds</span></span><span class="tc g"><span class="tl">Modern Spiritualism — The Great Harmonia</span></span><span class="tc g"><span class="tl">New Thought — Unity (Fillmore) · Science of Getting Rich (Wattles) · As a Man Thinketh (Allen)</span></span><span class="tc a"><span class="tl">Religious Science — The Science of Mind</span></span></div></div></details></section><section class="basket" id="mn-modern"><h2>The 20th-Century &amp; Global Movements<span class="h2-meta"><span class="pi">the institutional century</span><span class="ct">9 texts</span></span></h2><div class="blurb">The newest faiths — where the map goes dark. In Asia the source scripture is old and public-domain but the only English is a modern church translation; in the West the canon is a corporately-enforced copyright.</div><details class="fam" open=""><summary><span class="famname">The Asian new religions — ancient source, © English</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Tenrikyo — the Ofudesaki · Mikagura-uta · Osashizu</span></span><span class="tc a"><span class="tl">Oomoto — the Ofudesaki (Nao) · Reikai Monogatari</span></span><span class="tc a"><span class="tl">Konkokyo — the Konko Kyoten</span></span><span class="tc a"><span class="tl">Cao Đài — Thánh Ngôn Hiệp Tuyển · Pháp Chánh Truyền</span></span><span class="tc a"><span class="tl">Falun Gong — Zhuan Falun</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The controlled canons — © by design</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Scientology — Dianetics</span></span><span class="tc r"><span class="tl">Wicca — the Book of Shadows · Witchcraft Today</span></span><span class="tc r"><span class="tl">Nation of Islam — Message to the Blackman in America</span></span><span class="tc r"><span class="tl">Unification Church — the Divine Principle</span></span></div></div></details></section><!-- reception-layer:start (generated by build_reception_layers.py — Task 32 ruling 1, the Shintō precedent; derived from the live reader-only set, never retyped) --><section class="basket" id="mo-reception"><h2>Held in this archive<span class="h2-meta"><span class="pi">awaiting placement</span><span class="ct">3 texts</span></span></h2><div class="blurb">Texts of this tradition the archive holds that have no chip on this map and no room placement &mdash; browsable here honestly; each awaits a reviewed binding or a structure-growth pass (the stays-reception rulings of the placement program, 2026-07).</div><div class="fambody"><div class="tgrid"><a class="tc g" href="../?text=a-dweller-on-two-planets-frederick-oliver-189_anonymous.json" style="text-decoration:none"><span class="tl">A Dweller on Two Planets</span><span class="te">Frederick Oliver 1905 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=a-wanderer-in-the-sprit-lands-franchezzo-1896_anonymous.json" style="text-decoration:none"><span class="tl">A Wanderer in the Spirit Lands</span><span class="te">Franchezzo 1896 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=caves-jungles-hindostan-blavatsky_blavatsky.json" style="text-decoration:none"><span class="tl">From the Caves and Jungles of Hindostan</span><span class="te">H. P. Blavatsky 1892 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a></div></div></section><!-- reception-layer:end --></main>
   <footer id="foot">The green front = 19th-c founders who wrote in English and died pre-1955 (Smith d.1844, Eddy d.1910, White d.1915, Russell d.1916, Blavatsky d.1891, Kardec d.1869/Blackwell tr. 1875). Not public domain: corporate/institutional © (New World Translation, Holmes d.1960, Urantia) OR an old PD source with only a modern © English translation (Tenrikyo, Oomoto, Konkokyo, Cao Đài — "translation-blocked, not text-blocked"). No PD English: enforced 20th-c canons (Scientology, Wicca, Nation of Islam, Unification). Mormon note: the scripture text is PD; the modern LDS typeset apparatus (headings/footnotes/Topical Guide) is © Intellectual Reserve. Cross-refs: Rastafari (Indigenous door), Ahmadiyya (Abrahamic door). Sources: archive.org, Project Gutenberg, sacred-texts.com. Best-effort scholarship, not legal advice.</footer>
@@ -286,7 +272,7 @@ section.view { display: block !important; }
 
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
-  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
   .then(function (B) {
     var byKey = {};
     B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
@@ -469,20 +455,7 @@ section[id] h2, .zone-h { cursor:help; }
   background:none !important; border:none !important; box-shadow:none !important; }
 :root[data-theme="dark"] .m-restricted .mdot::before { color:#d97b6c; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
-#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
-#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
-#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
-#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
-#rl-panel .rl-sec { margin:0 0 16px; }
-#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
-#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
-#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
-#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
-#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
-#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
-#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
-#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
 .rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
 .rl-ed:hover { border-color:var(--accent,#7a5c3a); }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
@@ -516,7 +489,6 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
    in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
 .statband, .greenline, .insight, #totalbar, .band,
 .canon-gap, .fam-empty { display:none !important; }
-.statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
 /* the gold must be stated at !important: the rooms carry
    `.deep nav.toc a { color: var(--ink-soft) }`, which outranks a bare
@@ -564,8 +536,6 @@ details.fam > *:not(summary) { display:block !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
    competing with the centred zone titles */
 .flagship-wrap { text-align:left !important; }
-/* Task 59 — search deep-link emphasis (one quiet pulse) */
-.chip-sought { animation: chip-sought 3s ease-out; }
 @keyframes chip-sought {
   0%   { box-shadow: 0 0 0 3px #7a5c3a; }
   70%  { box-shadow: 0 0 0 3px rgba(122,92,58,.4); }
@@ -597,7 +567,6 @@ details.fam > *:not(summary) { display:block !important; }
   paint-order: stroke; pointer-events: none; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
-.keyrow.mz-hl { background: rgba(122,92,58,.12); }
 /* Task 119e — .fambar RETIRES, reversing 119b. It was kept as "the only
    way to read a family's shape without counting chips" — an argument
    about a figure that turned out never to have been on screen: 170
@@ -609,7 +578,6 @@ g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
    .keyrow .mini (hindu) retire with it — single-room devices that
    restate the marks. */
 #gradient { display:none !important; }
-.keyrow .mini { display:none !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
@@ -665,7 +633,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 #ov-sheet #ov-reception .tl { display:block; font:400 14px/1.5 Georgia,serif; color:var(--ink,#2c2c2c); }
 #ov-sheet #ov-reception .te { display:block; font:400 11.5px/1.5 Georgia,serif; color:var(--ink-faint,#a09080); }
 @media (max-width:720px) {
-  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
@@ -739,7 +706,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // 36a race guard: a chip clicked before these resolve must never
   // render a false not-held — open() waits on this promise.
   var _ready = Promise.all([
-    fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+    (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
       .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); })
       .catch(function () { B = {}; }),
     fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
@@ -1615,7 +1582,13 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2, .basket h2 { display: block; text-align: center; }
 .h2-meta { display: block; font-size: 0.62em; font-weight: 400; }
 .deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
-.deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
+/* Task 126 §1.6 — the count must not abut its gloss. In nine rooms
+   the zone header sits inside .basket > h2, so `.basket h2 .ct
+   {margin-left:0}` (0,2,1) beat `.h2-meta .ct` (0,2,0) and the count
+   rendered hard against the gloss: "the Forerunner5 texts". Specificity,
+   not order (doctrine 8.3) — the separating rule now carries the
+   .basket path too. */
+.deep .basket > h2 .h2-meta .ct, .basket h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
 .fam > summary .zb,
 .keyrow .mini,
@@ -1735,15 +1708,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 </style>
 
-<style>
-/* Task 113 — the stated gap. A blank division body reads as a
-   rendering bug; this is the archive's own grammar for an absence. */
-.canon-gap {
-  font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
-  color: var(--ink-faint);
-  padding: 0.35rem 0.75rem 0.6rem 1.9rem;
-  margin: 0;
-}
+
 </style>
 <script>
 (function () {

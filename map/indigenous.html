@@ -34,17 +34,11 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
 
-.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
-
 .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
 
 .stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
 
 .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
-
-.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
-
-.greenline b { color: var(--g); }
 
 .insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
 
@@ -94,7 +88,7 @@ details.fam[open] > summary::before { transform: rotate(90deg); }
 
 .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
 
-.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3;  ;  ;  ;  ;  ;  ;  ; border-left: 3px solid var(--line2); background: var(--surface); }
 
 .tc .tl { color: var(--ink); }
 
@@ -211,8 +205,6 @@ a.m-link { text-decoration: none; }
   font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .1em; text-transform: uppercase; }
 #m-legend span { display: inline-flex; align-items: center; gap: 7px; }
-#m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
-  margin: -14px 0 26px; max-width: 46em; }
 
 
 /* fraction line under the mast — Task 53b: full mast width, one
@@ -241,17 +233,11 @@ section.view { display: block !important; }
     <div class="sym" aria-hidden="true">🪘</div>
     <h1>The Map of Indigenous &amp; African Texts</h1>
     
-    <div class="statband" id="statband"><div class="stat"><b>22</b><span>texts</span></div><div class="stat"><b>11</b><span>green</span></div><div class="stat"><b>5</b><span>amber</span></div><div class="stat"><b>2</b><span>red</span></div><div class="stat"><b>4</b><span>not mapped</span></div></div>
-    <p class="greenline" id="greenline"><b>11 of 22 green</b> — the green is the pre-1931 transcribers of living oral tradition — Callaway’s Zulu, the Bleek–Lloyd |Xam archive, Rattray’s Ashanti, Queen Liliʻuokalani’s Kumulipo, and the young Rastafari scriptures — while the deepest sacred material stays grey, unmapped by design.</p>
+    
+    
   </header>
   <div class="insight"><b>Public-domain is a fact about a book, not permission from a community.</b> Almost none of these traditions canonize a scripture; their sacred knowledge is <b>oral</b>, and often initiatory or restricted. This map colours the copyright status of <i>already-published ethnographic transcriptions</i> — it indexes what exists, it does not reproduce restricted content. The green is largely the work of transcribers who recorded oral tradition before 1931 (Callaway’s Zulu, the Bleek–Lloyd |Xam archive, Queen Liliʻuokalani’s Kumulipo). The <b>grey is the honest part</b>: the <b>Australian Aboriginal Dreaming</b>, Haitian <b>Vodou</b>, Cuban <b>Santería</b> and Brazilian <b>Candomblé</b> are <b>deliberately not mapped</b> — living, oral, and held rather than printed — and the <b>Walam Olum</b> is a debunked forgery. Those absences are the finding.</div>
-  <div class="legend">
-    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
-    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
-    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
-    <span class="lg" id="xleg" style=""><span class="sw" style="background:var(--x)"></span> <b>grey</b> — not mapped (living / oral / restricted)</span>
-    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
-  </div>
+  
   <nav class="toc toc-bare"><button type="button" class="toc-all">Collapse all</button></nav>
 <main id="main"><section class="basket" id="in-africa"><h2>African Traditional<span class="h2-meta"><span class="pi">the orisha, the ancestors &amp; the diviners</span><span class="ct">8 texts</span></span></h2><div class="blurb">The traditional religions of sub-Saharan Africa. The green here is a handful of pre-1931 bilingual transcriptions (Callaway, Bleek–Lloyd) that record diviners’ own words; the great divination corpora (Ifá, Fa) survive as oral verse and reach English only in modern copyright.</div><details class="fam" open=""><summary><span class="famname">Verbatim oral corpora — the ethical models</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Zulu — the religious system of the amaZulu (izangoma testimony)</span></span><span class="tc g"><span class="tl">San / |Xam — Bushman folklore &amp; the |Kaggen myths</span></span><span class="tc g"><span class="tl">Thonga / Tsonga — the religious life</span></span><span class="tc g"><span class="tl">Akan / Ashanti — religion, the Golden Stool &amp; the dirges</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Divination corpora — described, not translated</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Yoruba — the Ifá corpus (256 Odù) &amp; the orisha</span></span><span class="tc a"><span class="tl">Fon / Dahomey — Vodun &amp; the Fa oracle</span></span><span class="tc a"><span class="tl">Maasai — myth, prayer &amp; the high god</span></span><span class="tc r"><span class="tl">Nuer &amp; Dinka — the Nilotic high god</span></span></div></div></details></section><section class="basket" id="in-diaspora"><h2>The African Diaspora<span class="h2-meta"><span class="pi">the New World religions of the enslaved</span><span class="ct">6 texts</span></span></h2><div class="blurb">The faiths carried across the Atlantic. Rastafari is the anomaly — young enough to have written and published its own scriptures; the Afro-Caribbean and Brazilian religions are initiatory and oral, held rather than printed, with no public-domain text to map.</div><details class="fam" open=""><summary><span class="famname">Rastafari — the young, self-written scriptures</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">The Kebra Nagast (the Glory of Kings)</span></span><span class="tc g"><span class="tl">The Holy Piby (the Blackman’s Bible)</span></span><span class="tc a"><span class="tl">The Royal Parchment Scroll of Black Supremacy</span></span><span class="tc r"><span class="tl">The Promised Key</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Held, not printed — no scripture to map</span><span class="famct">2</span></summary><div class="fambody"><div class="tgrid"><span class="tc x"><span class="tl">Haitian Vodou</span></span><span class="tc x"><span class="tl">Cuban Lucumí / Santería · Brazilian Candomblé</span><span class="te">initiatory &amp; oral; libretas passed hand-to-hand, unpublished</span></span></div></div></details></section><section class="basket" id="in-pacific"><h2>Pacific &amp; Oceanic<span class="h2-meta"><span class="pi">the atua, the mana &amp; the creation chants</span><span class="ct">4 texts</span></span></h2><div class="blurb">The religions of Polynesia — the least ethically fraught pillar, because the tradition-bearers often held the pen themselves. Queen Liliʻuokalani translated the Kumulipo during her imprisonment; Māori and Hawaiian narrators shaped their own transcriptions.</div><details class="fam" open=""><summary><span class="famname">Where the tradition-bearers held the pen</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Hawaiian — the Kumulipo (the 2,102-line creation chant)</span></span><span class="tc g"><span class="tl">Hawaiian — the Fornander Collection (mele &amp; moʻolelo)</span></span><span class="tc g"><span class="tl">Māori — the myths &amp; the atua (Ranginui, Papatūānuku, Māui)</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Deliberately not mapped</span><span class="famct">1</span></summary><div class="fambody"><div class="tgrid"><span class="tc x"><span class="tl">Australian Aboriginal — the Dreaming (Tjukurpa)</span><span class="te">living, oral &amp; secret-sacred; no fixed text — mapping would misrepresent &amp; risk restricted material</span></span></div></div></details></section><section class="basket" id="in-namerica"><h2>Native North America<span class="h2-meta"><span class="pi">living &amp; often sacred-restricted</span><span class="ct">4 texts</span></span></h2><div class="blurb">The most delicate pillar. Public-domain ethnography exists, but several items are ceremonial texts the originating nations actively wish were not in circulation — copyright-free is not the same as ethically free. These are flagged, not celebrated.</div><details class="fam" open=""><summary><span class="famname">Published, but the nations did not consent</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Navajo / Diné — the emergence legends &amp; the Blessingway</span></span><span class="tc g"><span class="tl">Zuni — the creation myths</span></span><span class="tc a"><span class="tl">Plains &amp; Chippewa ceremonial song</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Excluded</span><span class="famr">a demonstrated 19th-c. hoax (Rafinesque 1836) — not a genuine Lenape text</span><span class="famct">1</span></summary><div class="fambody"><div class="tgrid"><span class="tc x"><span class="tl">The Walam Olum (the alleged Lenape migration)</span></span></div></div></details></section><!-- reception-layer:start (generated by build_reception_layers.py — Task 32 ruling 1, the Shintō precedent; derived from the live reader-only set, never retyped) --><section class="basket" id="in-reception"><h2>Held in this archive<span class="h2-meta"><span class="pi">awaiting placement</span><span class="ct">16 texts</span></span></h2><div class="blurb">Texts of this tradition the archive holds that have no chip on this map and no room placement &mdash; browsable here honestly; each awaits a reviewed binding or a structure-growth pass (the stays-reception rulings of the placement program, 2026-07).</div><div class="fambody"><div class="tgrid"><a class="tc g" href="../?text=back-black-mans-mind-dennett_dennett.json" style="text-decoration:none"><span class="tl">At the Back of the Black Man's Mind</span><span class="te">R.E. Dennett 1906 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=fjort-folklore-dennett_dennett.json" style="text-decoration:none"><span class="tl">Notes on the Folklore of the Fjort</span><span class="te">R.E. Dennett 1898 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=womans-mysteries-briffault_talbot.json" style="text-decoration:none"><span class="tl">Woman's Mysteries of a Primitive People</span><span class="te">D. Amaury Talbot 1915 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=diegueno-waterman_waterman.json" style="text-decoration:none"><span class="tl">Ceremonies and Traditions of the Diegueño Indians</span><span class="te">T.T. Waterman 1910 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=iroquoian-cosmology-hewitt_hewitt.json" style="text-decoration:none"><span class="tl">Iroquoian Cosmology</span><span class="te">J.N.B. Hewitt 1903 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=own-land-myths-skinner_skinner.json" style="text-decoration:none"><span class="tl">Myths and Legends of Our Own Land</span><span class="te">Charles M. Skinner 1896 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=old-indian-legends-zitkala_zitkala.json" style="text-decoration:none"><span class="tl">Old Indian Legends</span><span class="te">Zitkála-Šá 1901 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=algonquin-legends-leland_leland.json" style="text-decoration:none"><span class="tl">The Algonquin Legends of New England</span><span class="te">Charles G. Leland 1884 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=dawn-world-merriam_merriam.json" style="text-decoration:none"><span class="tl">The Dawn of the World</span><span class="te">C. Hart Merriam 1910 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=old-north-trail-mcclintock_mcclintock.json" style="text-decoration:none"><span class="tl">The Old North Trail</span><span class="te">Walter McClintock 1910 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=soul-indian-eastman_eastman.json" style="text-decoration:none"><span class="tl">The Soul of the Indian</span><span class="te">Charles A. Eastman 1911 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=traditions-hopi-voth_voth.json" style="text-decoration:none"><span class="tl">The Traditions of the Hopi</span><span class="te">H.R. Voth 1905 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=yana-texts-sapir_sapir.json" style="text-decoration:none"><span class="tl">Yana Texts</span><span class="te">Edward Sapir 1910 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=hawaiian-folk-tales-thrum_thrum.json" style="text-decoration:none"><span class="tl">Hawaiian Folk Tales</span><span class="te">Thomas G. Thrum 1907 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=maui-legends-westervelt_westervelt.json" style="text-decoration:none"><span class="tl">Legends of Ma-ui, a Demi-God of Polynesia</span><span class="te">W.D. Westervelt 1910 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=unwritten-hawaii-emerson_emerson.json" style="text-decoration:none"><span class="tl">Unwritten Literature of Hawaii</span><span class="te">Nathaniel B. Emerson 1909 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a></div></div></section><!-- reception-layer:end --></main>
   <footer id="foot">A structural atlas of indigenous &amp; African sacred oral traditions — colouring the copyright of published transcriptions, NOT the traditions themselves, which are living and often oral or restricted. <b>Public-domain status does not imply a community’s consent to circulate.</b> Green transcribers: Callaway (Zulu, d.1890), Bleek &amp; Lloyd (|Xam, d.1914), Junod (Thonga, d.1934), Rattray (Ashanti, d.1938), Liliʻuokalani (Kumulipo, d.1917), Fornander (Hawaiʻi, d.1887), Grey (Māori, d.1898), Budge (Kebra Nagast, d.1934), Rogers (Holy Piby, d.1931). Grey = deliberately not mapped (Australian Aboriginal Dreaming; Haitian Vodou; Cuban Santería &amp; Brazilian Candomblé; the Walam Olum hoax). Ceremonial material published without consent (Navajo/Zuni) is flagged. Sources: sacred-texts.com, archive.org, the Bleek-Lloyd Archive. Best-effort scholarship; not legal advice, and not a claim of permission.</footer>
@@ -286,7 +272,7 @@ section.view { display: block !important; }
 
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
-  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
   .then(function (B) {
     var byKey = {};
     B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
@@ -469,20 +455,7 @@ section[id] h2, .zone-h { cursor:help; }
   background:none !important; border:none !important; box-shadow:none !important; }
 :root[data-theme="dark"] .m-restricted .mdot::before { color:#d97b6c; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
-#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
-#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
-#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
-#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
-#rl-panel .rl-sec { margin:0 0 16px; }
-#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
-#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
-#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
-#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
-#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
-#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
-#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
-#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
 .rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
 .rl-ed:hover { border-color:var(--accent,#7a5c3a); }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
@@ -516,7 +489,6 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
    in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
 .statband, .greenline, .insight, #totalbar, .band,
 .canon-gap, .fam-empty { display:none !important; }
-.statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
 /* the gold must be stated at !important: the rooms carry
    `.deep nav.toc a { color: var(--ink-soft) }`, which outranks a bare
@@ -564,8 +536,6 @@ details.fam > *:not(summary) { display:block !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
    competing with the centred zone titles */
 .flagship-wrap { text-align:left !important; }
-/* Task 59 — search deep-link emphasis (one quiet pulse) */
-.chip-sought { animation: chip-sought 3s ease-out; }
 @keyframes chip-sought {
   0%   { box-shadow: 0 0 0 3px #7a5c3a; }
   70%  { box-shadow: 0 0 0 3px rgba(122,92,58,.4); }
@@ -597,7 +567,6 @@ details.fam > *:not(summary) { display:block !important; }
   paint-order: stroke; pointer-events: none; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
-.keyrow.mz-hl { background: rgba(122,92,58,.12); }
 /* Task 119e — .fambar RETIRES, reversing 119b. It was kept as "the only
    way to read a family's shape without counting chips" — an argument
    about a figure that turned out never to have been on screen: 170
@@ -609,7 +578,6 @@ g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
    .keyrow .mini (hindu) retire with it — single-room devices that
    restate the marks. */
 #gradient { display:none !important; }
-.keyrow .mini { display:none !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
@@ -665,7 +633,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 #ov-sheet #ov-reception .tl { display:block; font:400 14px/1.5 Georgia,serif; color:var(--ink,#2c2c2c); }
 #ov-sheet #ov-reception .te { display:block; font:400 11.5px/1.5 Georgia,serif; color:var(--ink-faint,#a09080); }
 @media (max-width:720px) {
-  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
@@ -739,7 +706,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // 36a race guard: a chip clicked before these resolve must never
   // render a false not-held — open() waits on this promise.
   var _ready = Promise.all([
-    fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+    (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
       .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); })
       .catch(function () { B = {}; }),
     fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
@@ -1615,7 +1582,13 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2, .basket h2 { display: block; text-align: center; }
 .h2-meta { display: block; font-size: 0.62em; font-weight: 400; }
 .deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
-.deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
+/* Task 126 §1.6 — the count must not abut its gloss. In nine rooms
+   the zone header sits inside .basket > h2, so `.basket h2 .ct
+   {margin-left:0}` (0,2,1) beat `.h2-meta .ct` (0,2,0) and the count
+   rendered hard against the gloss: "the Forerunner5 texts". Specificity,
+   not order (doctrine 8.3) — the separating rule now carries the
+   .basket path too. */
+.deep .basket > h2 .h2-meta .ct, .basket h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
 .fam > summary .zb,
 .keyrow .mini,
@@ -1735,15 +1708,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 </style>
 
-<style>
-/* Task 113 — the stated gap. A blank division body reads as a
-   rendering bug; this is the archive's own grammar for an absence. */
-.canon-gap {
-  font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
-  color: var(--ink-faint);
-  padding: 0.35rem 0.75rem 0.6rem 1.9rem;
-  margin: 0;
-}
+
 </style>
 <script>
 (function () {

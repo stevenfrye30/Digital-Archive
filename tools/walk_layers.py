@@ -155,12 +155,29 @@ def serve(root: Path, port: int):
     return httpd
 
 
-def enter_reading(pg):
-    """Click through a cover into the body of the text."""
-    pg.evaluate("""() => { const b = [...document.querySelectorAll('button,a')]
+def enter_reading(pg, timeout=30000):
+    """Click through a cover into the body of the text.
+
+    Task 126 §1.10 — this used to `wait_for_timeout(1800)`, a fixed sleep,
+    and Phase C then measured ~2,000ms time-to-text for a 45 KB dialogue
+    and a 4.4 MB epic alike. The number was the sleep, not the archive.
+    A harness that reports the wall-clock of its own wait is measuring
+    itself (§8.1), so it now waits on the EVENT — the first passage
+    rendering — and returns how long that took.
+    """
+    FIND = """() => [...document.querySelectorAll('button,a')]
         .find(x => /Read from beginning|Begin reading|Start reading/i
-                   .test(x.textContent)); b && b.click(); }""")
-    pg.wait_for_timeout(1800)
+                   .test(x.textContent)) || null"""
+    try:
+        # wait for the control, don't assume the caller settled the cover
+        pg.wait_for_function("(%s)() !== null" % FIND, timeout=timeout)
+        pg.evaluate("(%s)().click()" % FIND)
+        pg.wait_for_function(
+            "() => document.querySelectorAll('.passage').length > 0",
+            timeout=timeout)
+    except Exception:
+        return None
+    return pg.evaluate("() => Math.round(performance.now())")
 
 
 def main() -> int:

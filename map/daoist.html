@@ -65,12 +65,6 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
 
-#view-over .gradient { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1.3rem; }
-
-#view-over .gradient h2 { font-family: var(--serif); font-size: 1.05rem; margin: 0px 0px 0.1rem; }
-
-#view-over .gradient .cap { font-size: 0.82rem; color: var(--ink-faint); margin: 0px 0px 0.8rem; }
-
 #view-over .grow { display: grid; grid-template-columns: 9rem 1fr auto; gap: 0.5rem 0.8rem; align-items: center; margin: 0.35rem 0px; }
 
 #view-over .gl { font-size: 0.86rem; font-weight: 600; }
@@ -129,7 +123,7 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 #view-over .chips { display: flex; flex-direction: column; gap: 0.32rem; }
 
-#view-over .chip { display: flex; align-items: flex-start; gap: 0.45em; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.8rem; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-left-color: ; border-left-style: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left-width: 3px; background: var(--surface); line-height: 1.35; }
+#view-over .chip { display: flex; align-items: flex-start; gap: 0.45em; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.8rem;  ;  ;  ;  ;  ;  ;  ;  ; border-left-width: 3px; background: var(--surface); line-height: 1.35; }
 
 #view-over .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; margin-top: 0.42em; }
 
@@ -147,19 +141,11 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 #view-over .shared { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--accent); border-radius: 4px; padding: 0px 0.25em; margin-left: 0.3em; vertical-align: 1px; }
 
-.deep .statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0px 0px 0.4rem; }
-
 .deep .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 80px; }
 
 .deep .stat b { display: block; font-family: var(--serif); font-size: 1.25rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
 
 .deep .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
-
-.deep .greenline { max-width: 74ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.9rem; color: var(--ink-soft); }
-
-.deep .greenline b { color: var(--g); }
-
-.deep .greenline .amb { color: var(--a); font-weight: 600; }
 
 .deep nav.toc { position: sticky; top: 0px; z-index: 20; background: color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin: 0px -2.2rem 1.4rem; padding: 0.55rem 2.2rem; display: flex; gap: 0.15rem; flex-wrap: wrap; justify-content: center; }
 
@@ -204,7 +190,7 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .deep .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
 
-.deep .tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+.deep .tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3;  ;  ;  ;  ;  ;  ;  ; border-left: 3px solid var(--line2); background: var(--surface); }
 
 .deep .tc .tl { color: var(--ink); }
 
@@ -321,8 +307,6 @@ a.m-link { text-decoration: none; }
   font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .1em; text-transform: uppercase; }
 #m-legend span { display: inline-flex; align-items: center; gap: 7px; }
-#m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
-  margin: -14px 0 26px; max-width: 46em; }
 
 
 /* fraction line under the mast — Task 53b: full mast width, one
@@ -357,7 +341,7 @@ section.view { display: block !important; }
   </header>
   
   
-  <section class="view deep on" id="view-dao"><div class="statband" id="dao-stat"><div class="stat"><b>26</b><span>texts</span></div><div class="stat"><b>5</b><span>green</span></div><div class="stat"><b>8</b><span>amber</span></div><div class="stat"><b>13</b><span>red</span></div></div><p class="greenline" id="dao-green"><b>5 green</b> classics (Dao De Jing, Zhuangzi, Liezi) — but <b style="color:var(--r)">13 red</b>: the ~1,500-text Daozang is a largely-untranslated ocean.</p><nav class="toc" id="dao-toc"><button type="button" class="toc-all">Collapse all</button><a data-j="dao-classics">The Foundational Classics</a><a data-j="dao-daozang">The Daozang — the Daoist Canon</a><a data-j="dao-schools">The Schools</a></nav><div class="legend"><span class="lg"><span class="sw" style="background:var(--g)"></span> worldwide-PD</span><span class="lg"><span class="sw" style="background:var(--a)"></span> © / partial</span><span class="lg"><span class="sw" style="background:var(--r)"></span> untranslated Daozang</span></div><main id="dao-main"><section class="basket" id="dao-classics"><h2>The Foundational Classics<span class="h2-meta"><span class="pi">the green core</span><span class="ct">13 texts</span></span></h2><div class="blurb">The small band of classics that reached the Victorian translators — Legge’s "Texts of Taoism" (SBE 39–40) and Giles. This is the green glow atop a dark canon.</div><details class="fam" open=""><summary><span class="famname">The great classics</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Dào Dé Jīng 道德經 (Laozi) — 81 chapters</span></span><span class="tc g"><span class="tl">Zhuāngzǐ 莊子 — 33 chapters</span></span><span class="tc a"><span class="tl">Lièzǐ 列子 — 8 chapters</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The minor classics (SBE 39/40 appendix)</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Qīngjìng Jīng 清靜經 (Classic of Purity)</span></span><span class="tc g"><span class="tl">Yīnfú Jīng 陰符經 (Hidden Talisman)</span></span><span class="tc g"><span class="tl">Tàishàng Gǎnyìng Piān 感應篇</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Han &amp; alchemical texts</span><span class="famct">7</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Cantong qi 參同契 (Kinship of the Three)</span></span><span class="tc a"><span class="tl">Huáinánzǐ 淮南子</span></span><span class="tc a"><span class="tl">Nèiyè 內業 (Inward Training)</span></span><span class="tc a"><span class="tl">Bàopǔzǐ 抱朴子 (Ge Hong)</span></span><span class="tc a"><span class="tl">Secret of the Golden Flower 太乙金華宗旨</span></span><span class="tc r"><span class="tl">Wénzǐ 文子</span><span class="te">no authoritative English</span></span><span class="tc r"><span class="tl">Tàipíng Jīng 太平經 (Great Peace)</span><span class="te">no complete English</span></span></div></div></details></section><section class="basket" id="dao-daozang"><h2>The Daozang — the Daoist Canon<span class="h2-meta"><span class="pi">道藏 · ~1,500 texts · mostly untranslated</span><span class="ct">8 texts</span></span></h2><div class="blurb">The Ming Zhengtong Daozang (1445) holds ~1,500 texts in ~5,300 scrolls — the overwhelming majority never translated into English (the Daoist parallel to the Tengyur). Shown by structure; no open catalogue exists (the Schipper–Verellen index is ©).</div><details class="fam" open=""><summary><span class="famname">The Three Grottoes · Sān Dòng 三洞</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Dòngzhēn 洞真 — Shangqing (Highest Clarity) revelations</span></span><span class="tc a"><span class="tl">Dòngxuán 洞玄 — Lingbao (Numinous Treasure) scriptures</span></span><span class="tc r"><span class="tl">Dòngshén 洞神 — Sanhuang (Three Sovereigns) texts</span><span class="te">untranslated</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The Four Supplements · Sì Fǔ 四輔</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Tàixuán 太玄 — around the Dao De Jing</span><span class="te">mostly untranslated</span></span><span class="tc r"><span class="tl">Tàipíng 太平 — around the Taiping Jing</span><span class="te">mostly untranslated</span></span><span class="tc r"><span class="tl">Tàiqīng 太清 — the alchemical corpus</span><span class="te">mostly untranslated</span></span><span class="tc r"><span class="tl">Zhèngyī 正一 — the Celestial Masters corpus</span><span class="te">ritual texts, untranslated</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The uncounted remainder</span><span class="famr">no open English catalogue</span><span class="famct">1</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">~1,500 Daozang texts — the untranslated ocean</span></span></div></div></details></section><section class="basket" id="dao-schools"><h2>The Schools<span class="h2-meta"><span class="pi"></span><span class="ct">5 texts</span></span></h2><div class="blurb">The organized movements — their scriptural and ritual corpora are largely untranslated or under modern ©.</div><details class="fam" open=""><summary><span class="famname">The Daoist movements</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Celestial Masters · Tiānshī 天師道 (142 CE)</span><span class="te">core texts untranslated</span></span><span class="tc r"><span class="tl">Shangqing · 上清 (364 CE)</span></span><span class="tc a"><span class="tl">Lingbao · 靈寶</span></span><span class="tc r"><span class="tl">Quanzhen · 全真 (Complete Perfection, 1167)</span></span><span class="tc r"><span class="tl">Zhengyi · 正一 (Orthodox Unity)</span><span class="te">ritual corpus untranslated</span></span></div></div></details></section><!-- reception-layer:start (generated by build_reception_layers.py — Task 32 ruling 1, the Shintō precedent; derived from the live reader-only set, never retyped) --><section class="basket" id="da-reception"><h2>Held in this archive<span class="h2-meta"><span class="pi">awaiting placement</span><span class="ct">10 texts</span></span></h2><div class="blurb">Texts of this tradition the archive holds that have no chip on this map and no room placement &mdash; browsable here honestly; each awaits a reviewed binding or a structure-growth pass (the stays-reception rulings of the placement program, 2026-07).</div><div class="fambody"><div class="tgrid"><a class="tc g" href="../?text=history-chinese-literature-giles_giles.json" style="text-decoration:none"><span class="tl">A History of Chinese Literature</span><span class="te">Herbert A. Giles 1901 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=myths-legends-china-werner_werner.json" style="text-decoration:none"><span class="tl">Myths and Legends of China</span><span class="te">E.T.C. Werner 1922 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=sacred-places-china-edkins_edkins.json" style="text-decoration:none"><span class="tl">Sacred Places in China</span><span class="te">Joseph Edkins 1910 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=strange-stories-chinese-studio-giles_giles-strange.json" style="text-decoration:none"><span class="tl">Strange Stories from a Chinese Studio</span><span class="te">Herbert A. Giles 1880 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=chinese-fairy-book-wilhelm_wilhelm.json" style="text-decoration:none"><span class="tl">The Chinese Fairy Book</span><span class="te">Richard Wilhelm 1921 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=civilization-china-giles_giles-civ.json" style="text-decoration:none"><span class="tl">The Civilization of China</span><span class="te">Herbert A. Giles 1911 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=religions-ancient-china-giles_giles-relig.json" style="text-decoration:none"><span class="tl">The Religions of Ancient China</span><span class="te">Herbert A. Giles 1905 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=feng-shui-eitel_eitel.json" style="text-decoration:none"><span class="tl">Feng Shui</span><span class="te">E.J. Eitel 1873 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=kung-fu-tauist-medical-gymnastics-john-dudgeon-1895_anonymous.json" style="text-decoration:none"><span class="tl">Kung-Fu - Tauist Medical Gymnastics</span><span class="te">John Dudgeon 1895 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=carus-laotzu-study_carus.json" style="text-decoration:none"><span class="tl">Lao-tze: A Study in Chinese Philosophy</span><span class="te">Paul Carus 1898 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a></div></div></section><!-- reception-layer:end --></main></section>
+  <section class="view deep on" id="view-dao"><nav class="toc" id="dao-toc"><button type="button" class="toc-all">Collapse all</button><a data-j="dao-classics">The Foundational Classics</a><a data-j="dao-daozang">The Daozang — the Daoist Canon</a><a data-j="dao-schools">The Schools</a></nav><div class="legend"><span class="lg"><span class="sw" style="background:var(--g)"></span> worldwide-PD</span><span class="lg"><span class="sw" style="background:var(--a)"></span> © / partial</span><span class="lg"><span class="sw" style="background:var(--r)"></span> untranslated Daozang</span></div><main id="dao-main"><section class="basket" id="dao-classics"><h2>The Foundational Classics<span class="h2-meta"><span class="pi">the green core</span><span class="ct">13 texts</span></span></h2><div class="blurb">The small band of classics that reached the Victorian translators — Legge’s "Texts of Taoism" (SBE 39–40) and Giles. This is the green glow atop a dark canon.</div><details class="fam" open=""><summary><span class="famname">The great classics</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Dào Dé Jīng 道德經 (Laozi) — 81 chapters</span></span><span class="tc g"><span class="tl">Zhuāngzǐ 莊子 — 33 chapters</span></span><span class="tc a"><span class="tl">Lièzǐ 列子 — 8 chapters</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The minor classics (SBE 39/40 appendix)</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Qīngjìng Jīng 清靜經 (Classic of Purity)</span></span><span class="tc g"><span class="tl">Yīnfú Jīng 陰符經 (Hidden Talisman)</span></span><span class="tc g"><span class="tl">Tàishàng Gǎnyìng Piān 感應篇</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">Han &amp; alchemical texts</span><span class="famct">7</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Cantong qi 參同契 (Kinship of the Three)</span></span><span class="tc a"><span class="tl">Huáinánzǐ 淮南子</span></span><span class="tc a"><span class="tl">Nèiyè 內業 (Inward Training)</span></span><span class="tc a"><span class="tl">Bàopǔzǐ 抱朴子 (Ge Hong)</span></span><span class="tc a"><span class="tl">Secret of the Golden Flower 太乙金華宗旨</span></span><span class="tc r"><span class="tl">Wénzǐ 文子</span><span class="te">no authoritative English</span></span><span class="tc r"><span class="tl">Tàipíng Jīng 太平經 (Great Peace)</span><span class="te">no complete English</span></span></div></div></details></section><section class="basket" id="dao-daozang"><h2>The Daozang — the Daoist Canon<span class="h2-meta"><span class="pi">道藏 · ~1,500 texts · mostly untranslated</span><span class="ct">8 texts</span></span></h2><div class="blurb">The Ming Zhengtong Daozang (1445) holds ~1,500 texts in ~5,300 scrolls — the overwhelming majority never translated into English (the Daoist parallel to the Tengyur). Shown by structure; no open catalogue exists (the Schipper–Verellen index is ©).</div><details class="fam" open=""><summary><span class="famname">The Three Grottoes · Sān Dòng 三洞</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Dòngzhēn 洞真 — Shangqing (Highest Clarity) revelations</span></span><span class="tc a"><span class="tl">Dòngxuán 洞玄 — Lingbao (Numinous Treasure) scriptures</span></span><span class="tc r"><span class="tl">Dòngshén 洞神 — Sanhuang (Three Sovereigns) texts</span><span class="te">untranslated</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The Four Supplements · Sì Fǔ 四輔</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Tàixuán 太玄 — around the Dao De Jing</span><span class="te">mostly untranslated</span></span><span class="tc r"><span class="tl">Tàipíng 太平 — around the Taiping Jing</span><span class="te">mostly untranslated</span></span><span class="tc r"><span class="tl">Tàiqīng 太清 — the alchemical corpus</span><span class="te">mostly untranslated</span></span><span class="tc r"><span class="tl">Zhèngyī 正一 — the Celestial Masters corpus</span><span class="te">ritual texts, untranslated</span></span></div></div></details><details class="fam" open=""><summary><span class="famname">The uncounted remainder</span><span class="famr">no open English catalogue</span><span class="famct">1</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">~1,500 Daozang texts — the untranslated ocean</span></span></div></div></details></section><section class="basket" id="dao-schools"><h2>The Schools<span class="h2-meta"><span class="pi"></span><span class="ct">5 texts</span></span></h2><div class="blurb">The organized movements — their scriptural and ritual corpora are largely untranslated or under modern ©.</div><details class="fam" open=""><summary><span class="famname">The Daoist movements</span><span class="famct">5</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">Celestial Masters · Tiānshī 天師道 (142 CE)</span><span class="te">core texts untranslated</span></span><span class="tc r"><span class="tl">Shangqing · 上清 (364 CE)</span></span><span class="tc a"><span class="tl">Lingbao · 靈寶</span></span><span class="tc r"><span class="tl">Quanzhen · 全真 (Complete Perfection, 1167)</span></span><span class="tc r"><span class="tl">Zhengyi · 正一 (Orthodox Unity)</span><span class="te">ritual corpus untranslated</span></span></div></div></details></section><!-- reception-layer:start (generated by build_reception_layers.py — Task 32 ruling 1, the Shintō precedent; derived from the live reader-only set, never retyped) --><section class="basket" id="da-reception"><h2>Held in this archive<span class="h2-meta"><span class="pi">awaiting placement</span><span class="ct">10 texts</span></span></h2><div class="blurb">Texts of this tradition the archive holds that have no chip on this map and no room placement &mdash; browsable here honestly; each awaits a reviewed binding or a structure-growth pass (the stays-reception rulings of the placement program, 2026-07).</div><div class="fambody"><div class="tgrid"><a class="tc g" href="../?text=history-chinese-literature-giles_giles.json" style="text-decoration:none"><span class="tl">A History of Chinese Literature</span><span class="te">Herbert A. Giles 1901 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=myths-legends-china-werner_werner.json" style="text-decoration:none"><span class="tl">Myths and Legends of China</span><span class="te">E.T.C. Werner 1922 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=sacred-places-china-edkins_edkins.json" style="text-decoration:none"><span class="tl">Sacred Places in China</span><span class="te">Joseph Edkins 1910 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=strange-stories-chinese-studio-giles_giles-strange.json" style="text-decoration:none"><span class="tl">Strange Stories from a Chinese Studio</span><span class="te">Herbert A. Giles 1880 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=chinese-fairy-book-wilhelm_wilhelm.json" style="text-decoration:none"><span class="tl">The Chinese Fairy Book</span><span class="te">Richard Wilhelm 1921 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=civilization-china-giles_giles-civ.json" style="text-decoration:none"><span class="tl">The Civilization of China</span><span class="te">Herbert A. Giles 1911 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=religions-ancient-china-giles_giles-relig.json" style="text-decoration:none"><span class="tl">The Religions of Ancient China</span><span class="te">Herbert A. Giles 1905 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=feng-shui-eitel_eitel.json" style="text-decoration:none"><span class="tl">Feng Shui</span><span class="te">E.J. Eitel 1873 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=kung-fu-tauist-medical-gymnastics-john-dudgeon-1895_anonymous.json" style="text-decoration:none"><span class="tl">Kung-Fu - Tauist Medical Gymnastics</span><span class="te">John Dudgeon 1895 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=carus-laotzu-study_carus.json" style="text-decoration:none"><span class="tl">Lao-tze: A Study in Chinese Philosophy</span><span class="te">Paul Carus 1898 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a></div></div></section><!-- reception-layer:end --></main></section>
   <footer id="foot">The classical canon is enumerable and green (Legge, SBE / Chinese Classics); the Daozang (~1,500 texts) has no open English catalogue and is shown by structure. Sources: Legge (SBE 3/16/27/28/39/40, Chinese Classics), Giles, ctext.org, Wikipedia. Best-effort scholarship, not legal advice.</footer>
 </div>
 
@@ -390,7 +374,7 @@ section.view { display: block !important; }
 
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
-  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
   .then(function (B) {
     var byKey = {};
     B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
@@ -573,20 +557,7 @@ section[id] h2, .zone-h { cursor:help; }
   background:none !important; border:none !important; box-shadow:none !important; }
 :root[data-theme="dark"] .m-restricted .mdot::before { color:#d97b6c; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
-#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
-#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
-#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
-#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
-#rl-panel .rl-sec { margin:0 0 16px; }
-#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
-#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
-#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
-#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
-#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
-#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
-#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
-#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
 .rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
 .rl-ed:hover { border-color:var(--accent,#7a5c3a); }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
@@ -620,7 +591,6 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
    in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
 .statband, .greenline, .insight, #totalbar, .band,
 .canon-gap, .fam-empty { display:none !important; }
-.statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
 /* the gold must be stated at !important: the rooms carry
    `.deep nav.toc a { color: var(--ink-soft) }`, which outranks a bare
@@ -668,8 +638,6 @@ details.fam > *:not(summary) { display:block !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
    competing with the centred zone titles */
 .flagship-wrap { text-align:left !important; }
-/* Task 59 — search deep-link emphasis (one quiet pulse) */
-.chip-sought { animation: chip-sought 3s ease-out; }
 @keyframes chip-sought {
   0%   { box-shadow: 0 0 0 3px #7a5c3a; }
   70%  { box-shadow: 0 0 0 3px rgba(122,92,58,.4); }
@@ -701,7 +669,6 @@ details.fam > *:not(summary) { display:block !important; }
   paint-order: stroke; pointer-events: none; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
-.keyrow.mz-hl { background: rgba(122,92,58,.12); }
 /* Task 119e — .fambar RETIRES, reversing 119b. It was kept as "the only
    way to read a family's shape without counting chips" — an argument
    about a figure that turned out never to have been on screen: 170
@@ -713,7 +680,6 @@ g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
    .keyrow .mini (hindu) retire with it — single-room devices that
    restate the marks. */
 #gradient { display:none !important; }
-.keyrow .mini { display:none !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
@@ -769,7 +735,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 #ov-sheet #ov-reception .tl { display:block; font:400 14px/1.5 Georgia,serif; color:var(--ink,#2c2c2c); }
 #ov-sheet #ov-reception .te { display:block; font:400 11.5px/1.5 Georgia,serif; color:var(--ink-faint,#a09080); }
 @media (max-width:720px) {
-  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
@@ -843,7 +808,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // 36a race guard: a chip clicked before these resolve must never
   // render a false not-held — open() waits on this promise.
   var _ready = Promise.all([
-    fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+    (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
       .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); })
       .catch(function () { B = {}; }),
     fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
@@ -1719,7 +1684,13 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2, .basket h2 { display: block; text-align: center; }
 .h2-meta { display: block; font-size: 0.62em; font-weight: 400; }
 .deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
-.deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
+/* Task 126 §1.6 — the count must not abut its gloss. In nine rooms
+   the zone header sits inside .basket > h2, so `.basket h2 .ct
+   {margin-left:0}` (0,2,1) beat `.h2-meta .ct` (0,2,0) and the count
+   rendered hard against the gloss: "the Forerunner5 texts". Specificity,
+   not order (doctrine 8.3) — the separating rule now carries the
+   .basket path too. */
+.deep .basket > h2 .h2-meta .ct, .basket h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
 .fam > summary .zb,
 .keyrow .mini,
@@ -1839,15 +1810,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 </style>
 
-<style>
-/* Task 113 — the stated gap. A blank division body reads as a
-   rendering bug; this is the archive's own grammar for an absence. */
-.canon-gap {
-  font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
-  color: var(--ink-faint);
-  padding: 0.35rem 0.75rem 0.6rem 1.9rem;
-  margin: 0;
-}
+
 </style>
 <script>
 (function () {

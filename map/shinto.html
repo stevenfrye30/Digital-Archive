@@ -34,17 +34,11 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .mast .em { font-family: var(--serif); font-style: italic; color: var(--accent-ink); }
 
-.statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1rem 0px 0.4rem; }
-
 .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 0.45rem 0.8rem; text-align: center; min-width: 82px; }
 
 .stat b { display: block; font-family: var(--serif); font-size: 1.3rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
 
 .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
-
-.greenline { max-width: 76ch; margin: 0.7rem auto 1.2rem; text-align: center; font-size: 0.92rem; color: var(--ink-soft); }
-
-.greenline b { color: var(--g); }
 
 .insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
 
@@ -94,7 +88,7 @@ details.fam[open] > summary::before { transform: rotate(90deg); }
 
 .tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.3rem; }
 
-.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 3px solid var(--line2); background: var(--surface); }
+.tc { display: flex; flex-direction: column; gap: 0.06rem; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.79rem; line-height: 1.3;  ;  ;  ;  ;  ;  ;  ; border-left: 3px solid var(--line2); background: var(--surface); }
 
 .tc .tl { color: var(--ink); }
 
@@ -211,8 +205,6 @@ a.m-link { text-decoration: none; }
   font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .1em; text-transform: uppercase; }
 #m-legend span { display: inline-flex; align-items: center; gap: 7px; }
-#m-legend-note { font: italic 400 12px/1.6 var(--serif); color: var(--ink-faint);
-  margin: -14px 0 26px; max-width: 46em; }
 
 
 /* fraction line under the mast — Task 53b: full mast width, one
@@ -241,17 +233,11 @@ section.view { display: block !important; }
     <div class="sym" aria-hidden="true">⛩</div>
     <h1>The Map of Shintō Texts</h1>
     
-    <div class="statband" id="statband"><div class="stat"><b>13</b><span>texts</span></div><div class="stat"><b>3</b><span>green</span></div><div class="stat"><b>3</b><span>amber</span></div><div class="stat"><b>7</b><span>red</span></div></div>
-    <p class="greenline" id="greenline"><b>3 of 13 green</b> — the mythic core (Kojiki, Nihongi) is fully public-domain through Chamberlain and Aston; the liturgy (Norito, Engishiki) and later theology stay amber or red.</p>
+    
+    
   </header>
   <div class="insight"><b>A green mythic core, a red liturgy.</b> Shintō has no single scripture — but its two great foundation-stones, the <b>Kojiki</b> (712) and the <b>Nihon Shoki</b> (720), were translated into public domain by <b>Chamberlain (1882)</b> and <b>Aston (1896)</b>, so the whole mythology of the kami is freely readable. Past that, the map darkens: the <b>Norito</b> ritual prayers and the <b>Engishiki</b> have no clean public-domain English (only Florenz’s German or copyrighted Philippi), the great <b>Man’yōshū</b> anthology is ©, and the later theology stays red.</div>
-  <div class="legend">
-    <span class="lg"><span class="sw" style="background:var(--g)"></span> <b>green</b> — worldwide public-domain</span>
-    <span class="lg"><span class="sw" style="background:var(--a)"></span> <b>amber</b> — © / US-PD-only / partial</span>
-    <span class="lg"><span class="sw" style="background:var(--r)"></span> <b>red</b> — no PD English / untranslated</span>
-    <span class="lg" id="xleg" style="display:none"></span>
-    <span class="lg" style="color:var(--ink-faint)">hover any text for its edition</span>
-  </div>
+  
   <nav class="toc toc-bare"><button type="button" class="toc-all">Collapse all</button></nav>
 <main id="main"><section class="basket" id="sh-chron"><h2>The Ancient Chronicles<span class="h2-meta"><span class="pi">the mythic foundation</span><span class="ct">6 texts</span></span></h2><div class="blurb">The 8th–9th-century records of the age of the kami and the imperial line — the closest thing Shintō has to scripture, and fully public-domain in English.</div><details class="fam" open=""><summary><span class="famname">The records</span><span class="famct">6</span></summary><div class="fambody"><div class="tgrid"><span class="tc g"><span class="tl">Kojiki (712 — Records of Ancient Matters, 3 books)</span></span><span class="tc g"><span class="tl">Nihon Shoki / Nihongi (720 — Chronicles of Japan, 30 books)</span></span><span class="tc g"><span class="tl">Aston, "Shinto: The Way of the Gods" (1905)</span></span><span class="tc a"><span class="tl">Kogoshūi (807 — the Inbe clan history)</span></span><span class="tc a"><span class="tl">Sendai Kuji Hongi / Kujiki (10 books)</span></span><span class="tc r"><span class="tl">Fudoki (713 — the provincial gazetteers)</span></span></div></div></details></section><section class="basket" id="sh-liturgy"><h2>The Liturgy<span class="h2-meta"><span class="pi">Engishiki · the Norito</span><span class="ct">3 texts</span></span></h2><div class="blurb">The ritual prayers of the kami-cult and the 10th-century procedural code that preserves them — with no clean public-domain English.</div><details class="fam" open=""><summary><span class="famname">Ritual prayers &amp; codes</span><span class="famct">3</span></summary><div class="fambody"><div class="tgrid"><span class="tc r"><span class="tl">The Engishiki (927 — 50 vols; the Norito in book 8)</span></span><span class="tc r"><span class="tl">The 27 Norito (ritual invocations)</span></span><span class="tc r"><span class="tl">Ō-harae no Kotoba (the Great Purification)</span></span></div></div></details></section><section class="basket" id="sh-later"><h2>Poetry &amp; later tradition<span class="h2-meta"><span class="pi"></span><span class="ct">3 texts</span></span></h2><div class="blurb">The great poetry anthology and the medieval–Edo theology that made Shintō self-conscious.</div><details class="fam" open=""><summary><span class="famname">Anthology, theology &amp; commentary</span><span class="famct">4</span></summary><div class="fambody"><div class="tgrid"><span class="tc a"><span class="tl">Man’yōshū (759 — 20 books, ~4,500 poems)</span></span><span class="tc r"><span class="tl">Jinnō Shōtōki (Kitabatake, 1339)</span></span><span class="tc r"><span class="tl">The Five Books of Shintō (Watarai / Ise)</span></span><span class="tc r"><span class="tl">Motoori Norinaga — Kojiki-den (44 vols)</span><span class="te">no complete English translation</span></span></div></div></details></section><section class="basket" id="sh-reception"><h2>Held in this archive<span class="h2-meta"><span class="pi">awaiting placement</span><span class="ct">4 texts</span></span></h2><div class="blurb">Japanese texts the archive holds that have no chip on this map &mdash; browsable here honestly; each awaits a reviewed binding or a structure-growth pass (shinto supplement verdicts, 2026-07-28). The Kojiki above is held and opens in the reader.</div><!-- reception rows: derived from the index 2026-07-28 (shinto supplement lane); the twin pair below is on the dedup queue and will merge in the dedup lane --><div class="fambody"><div class="tgrid"><a class="tc g" href="../?text=hyakunin-isshu-porter_porter.json" style="text-decoration:none"><span class="tl">A Hundred Verses from Old Japan (Hyakunin Isshu)</span></a><a class="tc g" href="../?text=genji-monogatari-suematsu_suematsu.json" style="text-decoration:none"><span class="tl">The Tale of Genji (abridged)</span></a><a class="tc g" href="../?text=japan-folklore-smith_smith.json" style="text-decoration:none"><span class="tl">Ancient Tales and Folklore of Japan</span></a></div></div></section><!-- reception-layer:start (generated by build_reception_layers.py — Task 32 ruling 1, the Shintō precedent; derived from the live reader-only set, never retyped) --><section class="basket" id="sh-reception"><h2>Held in this archive<span class="h2-meta"><span class="pi">awaiting placement</span><span class="ct">3 texts</span></span></h2><div class="blurb">Texts of this tradition the archive holds that have no chip on this map and no room placement &mdash; browsable here honestly; each awaits a reviewed binding or a structure-growth pass (the stays-reception rulings of the placement program, 2026-07).</div><div class="fambody"><div class="tgrid"><a class="tc g" href="../?text=hyakunin-isshu-porter_porter.json" style="text-decoration:none"><span class="tl">A Hundred Verses from Old Japan</span><span class="te">William N. Porter 1909 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=japan-folklore-smith_smith.json" style="text-decoration:none"><span class="tl">Ancient Tales and Folklore of Japan</span><span class="te">Richard Gordon Smith 1918 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a><a class="tc g" href="../?text=genji-monogatari-suematsu_suematsu.json" style="text-decoration:none"><span class="tl">The Tale of Genji (Abridged)</span><span class="te">Suematsu Kenchō 1900 &middot; awaits a reviewed binding or structure growth &middot; read in the archive ↗</span></a></div></div></section><!-- reception-layer:end --></main>
   <footer id="foot">PD anchors: Kojiki (Chamberlain 1882, d.1935) + Nihongi (Aston 1896, d.1911) + Aston’s <i>Shinto</i> (1905). Kogoshūi (Katō &amp; Hoshino 1924) is US-PD only (worldwide ~2036). Norito/Engishiki/Man’yōshū/Jinnō Shōtōki have no worldwide-PD English (Philippi/Varley/NGS all ©; Florenz German PD). Shintō has no closed canon. Sources: sacred-texts.com/shi, archive.org. Best-effort scholarship, not legal advice.</footer>
@@ -286,7 +272,7 @@ section.view { display: block !important; }
 
   var SLUG = document.body.getAttribute('data-map');
   if (!SLUG) return;
-  fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+  (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
   .then(function (B) {
     var byKey = {};
     B.chips.forEach(function (c) { byKey[c.zone + '||' + norm(c.chip)] = c; });
@@ -469,20 +455,7 @@ section[id] h2, .zone-h { cursor:help; }
   background:none !important; border:none !important; box-shadow:none !important; }
 :root[data-theme="dark"] .m-restricted .mdot::before { color:#d97b6c; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
-#rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
-#rl-panel .rl-close { float:right; font-size:15px; background:none; border:none; cursor:pointer; color:var(--ink-faint); }
-#rl-panel .rl-eyebrow { font:400 10px/1 ui-monospace,monospace; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); margin:2px 0 8px; }
-#rl-panel h3 { font:400 20px/1.3 Georgia,serif; margin:0 0 14px; color:var(--ink); }
-#rl-panel .rl-sec { margin:0 0 16px; }
-#rl-panel .rl-lbl { font:400 10px/1 ui-monospace,monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 6px; }
-#rl-panel .rl-body { font:400 13.5px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142); }
-#rl-panel .rl-conf { font-style:italic; color:var(--ink-faint); font-size:12px; }
-#rl-panel .rl-rights { display:inline-block; font:400 12.5px/1.5 Georgia,serif; padding:6px 10px; border-radius:6px; border:1px solid var(--line2); }
-#rl-panel .rl-rights.g { background:rgba(46,125,50,.10); }
-#rl-panel .rl-rights.a { background:rgba(183,121,31,.12); }
-#rl-panel .rl-rights.r { background:rgba(192,57,43,.10); }
-#rl-panel .rl-note { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-soft); margin-top:6px; }
 .rl-ed { display:block; padding:8px 10px; margin:6px 0; border:1px solid var(--line); border-radius:6px; text-decoration:none; color:var(--ink); font:400 13px/1.5 Georgia,serif; }
 .rl-ed:hover { border-color:var(--accent,#7a5c3a); }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
@@ -516,7 +489,6 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
    in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
 .statband, .greenline, .insight, #totalbar, .band,
 .canon-gap, .fam-empty { display:none !important; }
-.statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
 /* the gold must be stated at !important: the rooms carry
    `.deep nav.toc a { color: var(--ink-soft) }`, which outranks a bare
@@ -564,8 +536,6 @@ details.fam > *:not(summary) { display:block !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
    competing with the centred zone titles */
 .flagship-wrap { text-align:left !important; }
-/* Task 59 — search deep-link emphasis (one quiet pulse) */
-.chip-sought { animation: chip-sought 3s ease-out; }
 @keyframes chip-sought {
   0%   { box-shadow: 0 0 0 3px #7a5c3a; }
   70%  { box-shadow: 0 0 0 3px rgba(122,92,58,.4); }
@@ -597,7 +567,6 @@ details.fam > *:not(summary) { display:block !important; }
   paint-order: stroke; pointer-events: none; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
-.keyrow.mz-hl { background: rgba(122,92,58,.12); }
 /* Task 119e — .fambar RETIRES, reversing 119b. It was kept as "the only
    way to read a family's shape without counting chips" — an argument
    about a figure that turned out never to have been on screen: 170
@@ -609,7 +578,6 @@ g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
    .keyrow .mini (hindu) retire with it — single-room devices that
    restate the marks. */
 #gradient { display:none !important; }
-.keyrow .mini { display:none !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
@@ -665,7 +633,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 #ov-sheet #ov-reception .tl { display:block; font:400 14px/1.5 Georgia,serif; color:var(--ink,#2c2c2c); }
 #ov-sheet #ov-reception .te { display:block; font:400 11.5px/1.5 Georgia,serif; color:var(--ink-faint,#a09080); }
 @media (max-width:720px) {
-  #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
@@ -739,7 +706,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // 36a race guard: a chip clicked before these resolve must never
   // render a false not-held — open() waits on this promise.
   var _ready = Promise.all([
-    fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })
+    (window.__bindingsP || (window.__bindingsP = fetch('../maps/' + SLUG + '/bindings.json').then(function (r) { return r.json(); })))
       .then(function (j) { B = {}; j.chips.forEach(function (c) { B[c.zone + '||' + norm(c.chip)] = c; }); })
       .catch(function () { B = {}; }),
     fetch('../maps/' + SLUG + '/provenance.json').then(function (r) { return r.ok ? r.json() : null; })
@@ -1615,7 +1582,13 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2, .basket h2 { display: block; text-align: center; }
 .h2-meta { display: block; font-size: 0.62em; font-weight: 400; }
 .deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
-.deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
+/* Task 126 §1.6 — the count must not abut its gloss. In nine rooms
+   the zone header sits inside .basket > h2, so `.basket h2 .ct
+   {margin-left:0}` (0,2,1) beat `.h2-meta .ct` (0,2,0) and the count
+   rendered hard against the gloss: "the Forerunner5 texts". Specificity,
+   not order (doctrine 8.3) — the separating rule now carries the
+   .basket path too. */
+.deep .basket > h2 .h2-meta .ct, .basket h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
 .fam > summary .zb,
 .keyrow .mini,
@@ -1735,15 +1708,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 </style>
 
-<style>
-/* Task 113 — the stated gap. A blank division body reads as a
-   rendering bug; this is the archive's own grammar for an absence. */
-.canon-gap {
-  font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
-  color: var(--ink-faint);
-  padding: 0.35rem 0.75rem 0.6rem 1.9rem;
-  margin: 0;
-}
+
 </style>
 <script>
 (function () {
