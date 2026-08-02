@@ -1019,6 +1019,103 @@ TEXT_GAPS_JS = r"""() => {
 }"""
 
 
+def g_layers(pg, base, R):
+    """Task 126 Phase B — the single-instance layers, asserted.
+
+    Task 120 skipped these five on the ground that a layer with one
+    instance has nothing to diverge from. True of drift, false of
+    grammar: a single-instance layer can still grow furniture belonging
+    to another layer, and nothing can be asserted about a layer whose
+    furniture was never written down. `plans/layer_grammar.md` writes it
+    down; this group is the half of it that is checkable and cheap.
+
+    Everything the walk found but no ruling covers is marked [OPEN] in
+    that document and is deliberately NOT asserted here — freezing an
+    undecided shape into a test is how an assertion outlives the rule it
+    encoded (§8.1c).
+    """
+    # ── the hall: sixteen doors, each one real ────────────────────────
+    pg.goto(base + "hall/", wait_until="networkidle")
+    doors = pg.evaluate("""() => [...document.querySelectorAll('a[href*="map/"]')]
+        .filter(a => a.getClientRects().length)
+        .map(a => (a.getAttribute('href') || '').split('/').pop())""")
+    R.check("10 layers", "the hall holds exactly 16 tradition doors",
+            len(doors) == 16, f"{len(doors)} doors", population=len(doors))
+    missing = [d for d in doors if not (REPO / "map" / d).exists()]
+    R.check("10 layers", "every hall door has a page behind it",
+            not missing, ", ".join(missing) or f"{len(doors)} verified",
+            population=len(doors))
+
+    # ── the entrance: the trio, and where it goes ─────────────────────
+    pg.goto(base, wait_until="networkidle")
+    pg.wait_for_timeout(600)
+    ent = pg.evaluate("""() => {
+      const on = s => [...document.querySelectorAll(s)]
+                        .filter(e => e.getClientRects().length).length;
+      const hrefs = [...document.querySelectorAll('a[href]')]
+        .filter(a => a.getClientRects().length)
+        .map(a => a.getAttribute('href') || '');
+      return { back: on('#home-hub-link'), star: on('#fav-shelf-btn'),
+               theme: on('#dark-toggle'),
+               hall: hrefs.filter(h => /(^|\\/)hall\\/?$/.test(h)).length,
+               shelves: new Set(hrefs.filter(h => /shelf\\//.test(h))).size,
+               rooms: hrefs.filter(h => /map\\/[a-z]+\\.html/.test(h)).length }; }""")
+    for name, key in (("back arrow", "back"), ("star", "star"),
+                      ("theme button", "theme")):
+        R.check("10 layers", f"the entrance carries the permanent {name}",
+                ent[key] >= 1, f"{ent[key]}")
+    R.check("10 layers", "the entrance routes to the hall",
+            ent["hall"] >= 1, f"{ent['hall']} link(s)")
+    R.check("10 layers", "the entrance routes to three shelves",
+            ent["shelves"] == 3, f"{ent['shelves']} shelf routes")
+    # the entrance never shortcuts a tradition — the hall owns those doors
+    R.check("10 layers", "the entrance carries no tradition door",
+            ent["rooms"] == 0, f"{ent['rooms']} map link(s)")
+
+    # ── the shelves: three instances, one form ────────────────────────
+    shapes = []
+    for name in ("philosophy", "literature", "esoteric"):
+        pg.goto(f"{base}shelf/{name}.html", wait_until="networkidle")
+        shapes.append(pg.evaluate("""() => {
+          const on = s => [...document.querySelectorAll(s)]
+                            .filter(e => e.getClientRects().length).length;
+          return { back: on('.tb-arrow') > 0, star: on('#arch-fav') > 0,
+                   theme: on('#arch-dark') > 0, h1: on('h1') === 1,
+                   trads: on('.trad') > 0, rows: on('.rows a.t') > 0 }; }"""))
+    R.check("10 layers", "all three shelves carry the same furniture",
+            len({json.dumps(s, sort_keys=True) for s in shapes}) == 1,
+            "; ".join(str(s) for s in shapes[:1]), population=len(shapes))
+
+    # ── the reading room: the border holds ────────────────────────────
+    pg.goto(f"{base}?text={CODEX}", wait_until="networkidle")
+    pg.wait_for_timeout(900)
+    pg.evaluate("""() => { const b = [...document.querySelectorAll('button,a')]
+        .find(x => /Read from beginning/i.test(x.textContent)); b && b.click(); }""")
+    pg.wait_for_timeout(1400)
+    rr = pg.evaluate("""() => {
+      const on = s => [...document.querySelectorAll(s)]
+                        .filter(e => e.getClientRects().length).length;
+      return { inReading: document.body.classList.contains('in-reading'),
+               theme: document.documentElement.getAttribute('data-theme'),
+               archiveTheme: on('#arch-dark, #themeBtn, #dark-toggle'),
+               archiveStar: on('#arch-fav, #favBtn, #fav-shelf-btn'),
+               own: on('#rr-fav') + on('#ctrl-contents') }; }""")
+    R.check("10 layers", "the walk actually entered the text",
+            rr["inReading"], "body.in-reading")
+    # the subject gate (§8.1c): the absences below mean nothing unless the
+    # room rendered its OWN furniture, so prove that first.
+    R.check("10 layers", "the reading room rendered its own furniture",
+            rr["own"] >= 2, f"{rr['own']} of its own controls",
+            population=rr["own"])
+    R.check("10 layers",
+            "the archive theme key stops at the reading room's door",
+            rr["theme"] is None, f"data-theme={rr['theme']!r}")
+    R.check("10 layers", "the reading room carries no archive theme button",
+            rr["archiveTheme"] == 0, f"{rr['archiveTheme']} found")
+    R.check("10 layers", "the reading room carries no archive star",
+            rr["archiveStar"] == 0, f"{rr['archiveStar']} found")
+
+
 def g_centring(pg, base, R):
     """Task 126-R — the reading column is centred AT EVERY WIDTH.
 
@@ -1353,6 +1450,7 @@ GROUPS = {
     "furniture": g_furniture,
     "marks": g_lens,
     "grammar": g_grammar,
+    "layers": g_layers,
     "centring": g_centring,
     "mobile": g_mobile,
     "boundary": g_boundary,
