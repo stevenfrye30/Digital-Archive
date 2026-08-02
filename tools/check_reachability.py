@@ -107,6 +107,18 @@ def main() -> int:
     ap.add_argument("--write-ledger", action="store_true")
     a = ap.parse_args()
     pub, mapped, roomed, reader_only = surfaces()
+    # Task 122 — prove the check looked before it reports that it saw.
+    # "REACHABILITY OK" is `not probs`, and probs is derived by walking
+    # the public corpus: an EMPTY corpus produces no problems and reports
+    # OK. That is the dead-fixture failure in another costume — an index
+    # that failed to load, or a surface set that silently came back
+    # empty, would be blessed rather than caught. None of these
+    # populations has ever legitimately been zero.
+    if not pub or not (mapped or roomed):
+        print(f"REACHABILITY REFUSED — nothing to examine: public={len(pub)}, "
+              f"map-bound={len(mapped)}, map-page-listed={len(roomed)}. "
+              "An empty corpus yields no problems and would report OK.")
+        return 1
     on = len({e["data_file"] for e in pub} & (mapped | roomed))
     print(f"public {len(pub)} · map-bound {len(mapped & {e['data_file'] for e in pub})} "
           f"· map-page-listed {len(roomed)} · on a structural surface {on} "

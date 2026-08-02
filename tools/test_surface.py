@@ -130,6 +130,28 @@ def serve(port: int):
 
 # ── the groups ───────────────────────────────────────────────────────────
 
+def subject(pg, R, group, label, selector, minimum=1):
+    """Task 122 — prove the check looked before it reports that it saw.
+
+    An assertion whose pass condition is an ABSENCE ("no lens toggle
+    survives", "no summary bars", "every target >= 44px") passes
+    identically whether the thing is correctly gone or the page never
+    rendered. Those are indistinguishable from outside, which is how the
+    dead FLAT fixture stayed green for lanes. So before a group asserts
+    absences about a page, it asserts the page HAS a subject: enough
+    matching elements to make the absence meaningful.
+
+    Returns True when the subject is present, so callers can skip the
+    dependent checks — but the skip is itself reported as a failure
+    above, never a silent continue.
+    """
+    n = pg.evaluate("(sel) => document.querySelectorAll(sel).length", selector)
+    R.check(group, f"{label}: found its subject to examine", n >= minimum,
+            f"{n} x {selector}")
+    return n >= minimum
+
+
+
 def g_furniture(pg, base, R):
     """Task 84/91 — the permanent header: back at the far left, the star
     and the lamp at the far right, 38px squares, star before lamp."""
@@ -185,7 +207,11 @@ def g_boundary(pg, base, R):
 
 
 def g_room_chrome(pg, base, R):
-    """Task 88 — the room's lamp retired for Atlas; three reading faces."""
+    """Task 88 — the room's lamp retired for Atlas; three reading faces.
+
+    Task 122 — "no theme button in the room" is an absence, so the room
+    must be proved entered first; on a page that never rendered, the
+    lamp is absent for the wrong reason."""
     pg.goto(f"{base}?text={CODEX}", wait_until="networkidle")
     pg.wait_for_timeout(1100)
     pg.evaluate("""() => { const b = [...document.querySelectorAll('button')]
@@ -196,6 +222,9 @@ def g_room_chrome(pg, base, R):
       atlas: (document.getElementById('rr-atlas') || {}).textContent || null,
       faces: [...document.querySelectorAll('.face-btn')].map(b => b.textContent),
       star: !!document.getElementById('rr-fav') })""")
+    R.check("3 room chrome", "the reading room was entered (subject exists)",
+            pg.evaluate("() => document.body.classList.contains('in-reading')"),
+            "body.in-reading")
     R.check("3 room chrome", "no theme button in the room (presets own it)", not m["lamp"])
     R.check("3 room chrome", "Atlas holds the seat", m["atlas"] == "Atlas", str(m["atlas"]))
     R.check("3 room chrome", "star still present", m["star"])
@@ -551,6 +580,8 @@ def g_rooms(pg, base, R):
         R.check("6 rooms", f"{room}: no family repeats one sub-line under every chip",
                 not m["uniform"], "; ".join(m["uniform"][:3]))
         R.check("6 rooms", f"{room}: has collapsible families", m["fams"] > 0, f"{m['fams']}")
+        if not subject(pg, R, "6 rooms", room, "section[id], .basket, .zone-h"):
+            continue
         if m["fams"]:
             R.check("6 rooms", f"{room}: disclosure arrow held left", m["markerLeft"])
             R.check("6 rooms", f"{room}: collapse control present", m["collapse"])
@@ -621,6 +652,8 @@ def g_lens(pg, base, R):
     for room in rooms:
         pg.goto(f"{base}map/{room}.html", wait_until="networkidle")
         pg.wait_for_timeout(700)
+        if not subject(pg, R, "7 marks", room, ".tc, .chip, .su"):
+            continue
         m = pg.evaluate(MARKS)
         # nothing of the lens may survive — not the control, not the
         # state, not a single rule still gated on a mode that is gone
@@ -842,17 +875,21 @@ def g_mobile(pg_unused, base, R):
               ("map", "map/christianity.html"), ("shelf", "shelf/philosophy.html"),
               ("philosophy", "philosophy.html"),
               ("cover", "?text=bible_kjv.json")]
+    # Task 122 — the count of targets EXAMINED rides back with the
+    # offenders: "no target under 44px" and "no targets at all" are the
+    # same report otherwise, and the second is a page that failed to load.
     TAP_JS = """() => {
-      const vw = innerWidth, small = [];
+      const vw = innerWidth, small = []; let seen = 0;
       document.querySelectorAll('a, button, select, summary, [role=button], [role=link]')
         .forEach(e => { const r = e.getBoundingClientRect();
           if (!r.width || !r.height) return;
           if (r.bottom < 0 || r.top > innerHeight) return;
           if (getComputedStyle(e).position === 'fixed' && r.width < 2) return;
+          seen++;
           if (r.height < 44 || r.width < 24)
             small.push((e.id ? '#'+e.id : e.tagName + '.' + String(e.className).slice(0,20))
                        + ' ' + Math.round(r.width) + 'x' + Math.round(r.height)); });
-      return { overflow: Math.round(document.documentElement.scrollWidth - vw),
+      return { seen: seen, overflow: Math.round(document.documentElement.scrollWidth - vw),
                small: [...new Set(small)].slice(0, 6) }; }"""
     # the phone gets its own context on the SAME browser: a nested
     # sync_playwright() inside the running one raises.
@@ -866,8 +903,10 @@ def g_mobile(pg_unused, base, R):
             m = pg.evaluate(TAP_JS)
             R.check("8 mobile", f"{name}: no horizontal overflow at 390px",
                     m["overflow"] <= 2, f"+{m['overflow']}px")
+            R.check("8 mobile", f"{name}: found targets to measure",
+                    m["seen"] > 0, f"{m['seen']} tap targets")
             R.check("8 mobile", f"{name}: every visible target ≥ 44px",
-                    not m["small"], "; ".join(m["small"][:3]))
+                    m["seen"] > 0 and not m["small"], "; ".join(m["small"][:3]))
         # the reading room and its sheet
         pg.goto(base + "?text=thus-spake-zarathustra_common.json", wait_until="networkidle")
         pg.wait_for_timeout(1200)
@@ -876,8 +915,10 @@ def g_mobile(pg_unused, base, R):
         pg.wait_for_timeout(1200)
         m = pg.evaluate(TAP_JS)
         R.check("8 mobile", "reading: no horizontal overflow", m["overflow"] <= 2, f"+{m['overflow']}px")
+        R.check("8 mobile", "reading: found targets to measure",
+                m["seen"] > 0, f"{m['seen']} tap targets")
         R.check("8 mobile", "reading: every visible target ≥ 44px",
-                not m["small"], "; ".join(m["small"][:3]))
+                m["seen"] > 0 and not m["small"], "; ".join(m["small"][:3]))
         # Task 107 — measure the RENDERED TEXT, not the wrapper. The old
         # assertion read .passage's own box, which was symmetric at 16/16
         # while the text inside it began 126px from a 390px screen's left
@@ -1002,6 +1043,8 @@ def g_grammar(pg, base, R):
     for room in rooms:
         pg.goto(f"{base}map/{room}.html", wait_until="networkidle")
         pg.wait_for_timeout(600)
+        if not subject(pg, R, "9 grammar", room, "header.mast, section[id]", 2):
+            continue
         m = pg.evaluate("""(sels) => {
           const out = {};
           for (const k in sels) out[k] = document.querySelectorAll(sels[k]).length;
