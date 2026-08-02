@@ -16,6 +16,94 @@
   ],
   "sample": "Coloured by what the archive holds (the Rights lens shows public-domain reality)."
  },
+ "A structural atlas of the ancient world’s sacred texts across eight traditions — coloured by worldwide public-domain English availability (translator death+N AND US N-year term).": {
+  "rooms": [
+   "ancient"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of the ancient world’s sacred texts across eight traditions — coloured by worldwide public-domain English availability (translator death+70 AND US 95-year term)."
+ },
+ "Coloured by whether a worldwide-public-domain English translation exists.": {
+  "rooms": [
+   "ancient",
+   "bahai",
+   "gnostic",
+   "jain",
+   "shinto",
+   "sikh",
+   "zoroastrian"
+  ],
+  "views": [
+   "rights"
+  ],
+  "sample": "Coloured by whether a worldwide-public-domain English translation exists."
+ },
+ "A structural atlas of the Bahá’í canon — coloured by worldwide public-domain English availability.": {
+  "rooms": [
+   "bahai"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of the Bahá’í canon — coloured by worldwide public-domain English availability."
+ },
+ "Pāli is enumerated to every named text (N discourses, SuttaCentral IDs on hover); Chinese and Tibetan are now enumerated to every catalogued text (N Taishō from CBETA + N Tōhoku from N), in expandable families coloured by translation availability.": {
+  "rooms": [
+   "buddhist"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "Pāli is enumerated to every named text (253 discourses, SuttaCentral IDs on hover); Chinese and Tibetan are now enumerated to every catalogued text (2459 Taishō from CBETA + 4355 Tōhoku from 84000), in expandable families coloured by translation availability."
+ },
+ "Colour = worldwide public-domain / CCN availability (life+N AND the US N-yr term); N & BDK are open-access but © (amber), not PD.": {
+  "rooms": [
+   "buddhist"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "Colour = worldwide public-domain / CC0 availability (life+70 AND the US 95-yr term); 84000 & BDK are open-access but © (amber), not PD."
+ },
+ "A structural atlas of the three Abrahamic traditions, enumerated to N named texts — coloured by worldwide public-domain English availability (translator death + N AND the US N-yr term).": {
+  "rooms": [
+   "christianity",
+   "islam",
+   "judaism"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of the three Abrahamic traditions, enumerated to 490 named texts — coloured by worldwide public-domain English availability (translator death + 70 AND the US 95-yr term)."
+ },
+ "A structural atlas of China’s two indigenous teachings, enumerated to N named texts & divisions — coloured by worldwide public-domain English availability.": {
+  "rooms": [
+   "confucian",
+   "daoist"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of China’s two indigenous teachings, enumerated to 51 named texts & divisions — coloured by worldwide public-domain English availability."
+ },
+ "A structural atlas of Gnostic, Manichaean, Mandaean and dualist scripture — coloured by worldwide public-domain English availability.": {
+  "rooms": [
+   "gnostic"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of Gnostic, Manichaean, Mandaean and dualist scripture — coloured by worldwide public-domain English availability."
+ },
  "The whole tradition as concentric rings around the śruti core — N texts across five smṛti rings, four non-Vedic branches, and a beyond-the-canon appendix — each coloured by what the archive holds (the Rights lens shows public-domain reality).": {
   "rooms": [
    "hindu"
@@ -33,5 +121,91 @@
    "structure"
   ],
   "sample": "Colour = what the archive holds; the Rights lens re-colours by public-domain reality."
+ },
+ "The whole tradition as concentric rings around the śruti core — N texts across five smṛti rings, four non-Vedic branches, and a beyond-the-canon appendix — each colour-coded by whether a public-domain English translation exists.": {
+  "rooms": [
+   "hindu"
+  ],
+  "views": [
+   "rights"
+  ],
+  "sample": "The whole tradition as concentric rings around the śruti core — 332 texts across five smṛti rings, four non-Vedic branches, and a beyond-the-canon appendix — each colour-coded by whether a public-domain English translation exists."
+ },
+ "Colour = best English translation available on a worldwide public-domain (life+N) bar.": {
+  "rooms": [
+   "hindu"
+  ],
+  "views": [
+   "rights"
+  ],
+  "sample": "Colour = best English translation available on a worldwide public-domain (life+70) bar."
+ },
+ "Coloured by the copyright of the published transcription — with the traditions that should not be mapped shown as such.": {
+  "rooms": [
+   "indigenous"
+  ],
+  "views": [
+   "rights"
+  ],
+  "sample": "Coloured by the copyright of the published transcription — with the traditions that should not be mapped shown as such."
+ },
+ "A structural atlas of the Jain canon — coloured by worldwide public-domain English availability.": {
+  "rooms": [
+   "jain"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of the Jain canon — coloured by worldwide public-domain English availability."
+ },
+ "A structural atlas of modern & new religious movements — coloured by worldwide public-domain English availability.": {
+  "rooms": [
+   "modern"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of modern & new religious movements — coloured by worldwide public-domain English availability."
+ },
+ "Coloured by whether a worldwide-public-domain English edition exists.": {
+  "rooms": [
+   "modern"
+  ],
+  "views": [
+   "rights"
+  ],
+  "sample": "Coloured by whether a worldwide-public-domain English edition exists."
+ },
+ "A structural atlas of the Shintō corpus — coloured by worldwide public-domain English availability.": {
+  "rooms": [
+   "shinto"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of the Shintō corpus — coloured by worldwide public-domain English availability."
+ },
+ "A structural atlas of the Sikh canon — coloured by worldwide public-domain English availability.": {
+  "rooms": [
+   "sikh"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of the Sikh canon — coloured by worldwide public-domain English availability."
+ },
+ "A structural atlas of the Zoroastrian canon, enumerated to N named texts & divisions — coloured by worldwide public-domain English availability.": {
+  "rooms": [
+   "zoroastrian"
+  ],
+  "views": [
+   "rights",
+   "structure"
+  ],
+  "sample": "A structural atlas of the Zoroastrian canon, enumerated to 53 named texts & divisions — coloured by worldwide public-domain English availability."
  }
 }

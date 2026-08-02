@@ -50,6 +50,24 @@ NAMING = re.compile(
     r"\bthis view\b|\bthe other view\b|\bboth views\b|\bre-?colou?rs?\b|"
     r"\btoggle\b|\bswitch(?:ing)? to\b|\blens\b)", re.I)
 
+# Task 119c — THE SHARPER TEST, which supersedes NAMING as the gate:
+# not "does the sentence name the lens" but "is the sentence still TRUE
+# once one mark carries four states". A sentence can name no instrument
+# and still be false — "Coloured by what the archive holds" is the case
+# that proved it: strip the lens parenthetical and it passes a
+# lens-naming test while asserting the marks mean holdings, which after
+# the merge they do not (held is one of four).
+MEANING = re.compile(
+    r"\bcolou?r(?:ed|s|ing)?\b|\bmarks?\b|\bdot\b|\bshaded?\b|"
+    r"\bgreen\b|\bamber\b|\bred\b|\borange\b|\bhollow\b|\bfilled\b", re.I)
+
+# a claim about what the colour/mark MEANS, as opposed to a count that
+# merely uses the word (e.g. "213 green of 221")
+CLAIM = re.compile(
+    r"\bcolou?r(?:ed|ing)?\s+by\b|\bcolou?r\s*=|\bmeans?\b|\bshows?\b|"
+    r"\bindicates?\b|\bmarks?\b(?!\s+\d)|\bwhat the archive holds\b|"
+    r"\bcoloured by\b|\bcolou?r-coded\b", re.I)
+
 COLOUR = re.compile(r"\b(green|amber|red|colour|color)\b", re.I)
 
 VISIBLE_TEXT = """
@@ -100,11 +118,17 @@ def main():
                 for block in pg.evaluate(VISIBLE_TEXT):
                     for m in SENT.finditer(block):
                         s = " ".join(m.group().split())
-                        if len(s) < 13 or not NAMING.search(s):
+                        if len(s) < 13:
+                            continue
+                        names = bool(NAMING.search(s))
+                        # the sharper gate: asserts what a mark MEANS
+                        claims = bool(MEANING.search(s) and CLAIM.search(s))
+                        if not (names or claims):
                             continue
                         key = re.sub(r"\d+", "N", s)
                         d = found.setdefault(key, {"rooms": set(), "views": set(),
-                                                   "sample": s})
+                                                   "sample": s, "names": names,
+                                                   "claims": claims})
                         d["rooms"].add(room)
                         d["views"].add(view)
         pg.close()
@@ -117,9 +141,10 @@ def main():
         return
     print("  %d distinct reader-visible sentences name the lens.\n" % len(found))
     for key, d in sorted(found.items(), key=lambda kv: -len(kv[1]["rooms"])):
-        also = " + colour-meaning" if COLOUR.search(d["sample"]) else ""
-        print("  [%2d/16 rooms · %s]%s" %
-              (len(d["rooms"]), "+".join(sorted(d["views"])), also))
+        tag = ("NAMES-LENS" if d["names"] else "") +               (" + " if d["names"] and d["claims"] else "") +               ("CLAIMS-MEANING" if d["claims"] else "")
+        newly = "   <== MISSED BY THE FIRST SWEEP" if (d["claims"] and not d["names"]) else ""
+        print("  [%2d/16 rooms · %s] %s%s" %
+              (len(d["rooms"]), "+".join(sorted(d["views"])), tag, newly))
         print("      %s" % d["sample"][:300])
         if len(d["rooms"]) < len(ROOMS):
             print("      rooms: %s" % ", ".join(sorted(d["rooms"])))
