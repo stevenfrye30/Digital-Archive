@@ -1323,18 +1323,18 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 [data-theme="dark"] body[data-lens="rights"] .chip.g,
 [data-theme="dark"] body[data-lens="rights"] .su.g,
 [data-theme="dark"] body[data-lens="rights"] .tc.g {
-  background: #1e241e !important; border-color: #33402f !important;
-  border-left: 3px solid #8ba86a !important; color: #d4d0c8 !important; }
+  background: transparent !important; border-color: #33402f !important;
+  border-left: 3px solid #87a67a !important; color: #d4d0c8 !important; }
 [data-theme="dark"] body[data-lens="rights"] .chip.a,
 [data-theme="dark"] body[data-lens="rights"] .su.a,
 [data-theme="dark"] body[data-lens="rights"] .tc.a {
-  background: #26221a !important; border-color: #453c28 !important;
-  border-left: 3px solid #c4a060 !important; color: #d4d0c8 !important; }
+  background: transparent !important; border-color: #453c28 !important;
+  border-left: 3px solid #b8974f !important; color: #d4d0c8 !important; }
 [data-theme="dark"] body[data-lens="rights"] .chip.r,
 [data-theme="dark"] body[data-lens="rights"] .su.r,
 [data-theme="dark"] body[data-lens="rights"] .tc.r {
-  background: #261d1b !important; border-color: #47332e !important;
-  border-left: 3px solid #c07a6a !important; color: #d4d0c8 !important; }
+  background: transparent !important; border-color: #47332e !important;
+  border-left: 3px solid #bd8279 !important; color: #d4d0c8 !important; }
 [data-theme="dark"] body[data-lens="rights"] .chip.x,
 [data-theme="dark"] body[data-lens="rights"] .su.x,
 [data-theme="dark"] body[data-lens="rights"] .tc.x {
@@ -1479,7 +1479,9 @@ nav.toc.toc-bare { justify-content: flex-start; }
    left-aligned labels. (The family summaries already centre with their
    arrow pinned left — that was settled in Tasks 98/102 and is left
    alone.) */
-[data-theme="dark"] { --g: #87a67a; --a: #b8974f; --r: #bd8279; }
+/* :root[data-theme="dark"] earlier in this file is (0,2,0); a bare
+   attribute selector is (0,1,0) and loses however late it sits. */
+:root[data-theme="dark"] { --g: #87a67a; --a: #b8974f; --r: #bd8279; }
 
 nav.toc:not(.toc-bare) { justify-content: center; }
 nav.toc:not(.toc-bare) > .toc-all {
