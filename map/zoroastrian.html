@@ -364,7 +364,7 @@ section.view { display: block !important; }
       var p = document.createElement('p');
       p.id = 'm-fraction';
       p.innerHTML = door.sub.replace(/ texts$/, ' texts in the tradition') +
-                    ' · <b>' + held + ' readable here</b> · ' + poss + ' more acquirable';
+                    ' · <b>' + held + ' readable in the archive</b> · ' + poss + ' more acquirable';
       mast.appendChild(p);
     });
   });
@@ -508,7 +508,8 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
    A band that states a STRUCTURAL fact is kept; that gate lives in the
    script, which reads what the band says rather than which room it is
    in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
-.statband, .greenline, .insight, #totalbar, .band { display:none !important; }
+.statband, .greenline, .insight, #totalbar, .band,
+.canon-gap, .fam-empty { display:none !important; }
 .statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
 /* the gold must be stated at !important: the rooms carry
@@ -541,9 +542,9 @@ section.zone-shut > *:not(h2):not(.zone-h):not(.zone-note) { display:none !impor
 /* the inner families stop being collapsible — one control per zone,
    not three inside it. The marker goes and the summary stops taking
    clicks; the content itself is untouched. */
-details.fam-flat > summary { pointer-events:none; list-style:none; }
-details.fam-flat > summary::-webkit-details-marker { display:none; }
-details.fam-flat > summary::before { display:none !important; }
+details.fam > summary { pointer-events:none; list-style:none; }
+details.fam > summary::-webkit-details-marker { display:none; }
+details.fam > summary::before { display:none !important; }
 /* Task 123b — a non-collapsible division shows its body whatever the
    `open` attribute says. The rooms' Task-115 rule still forces an EMPTY
    division closed, which was right when the division was the fold; it
@@ -551,7 +552,7 @@ details.fam-flat > summary::before { display:none !important; }
    race neither wins reliably. Stating it in CSS ends the fight — the
    attribute may flap, the content stays put. An empty division has
    nothing to show, so it simply stands open and quiet, as ruled. */
-details.fam-flat > *:not(summary) { display:block !important; }
+details.fam > *:not(summary) { display:block !important; }
 /* 6. section descriptions centre, in every room */
 .blurb, .zone-desc, .sec-desc { text-align:center !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
@@ -569,27 +570,21 @@ details.fam-flat > *:not(summary) { display:block !important; }
    order, wearing the same glyphs the chips wear. It is describing
    marks a reader can see at all times rather than a mode they enter. */
 #m-legend { justify-content:center; }
-/* Task 119 item 4 — the furniture that STAYS, always visible, each
-   because it states a fact the four marks do not:
-     .statband  — the TOTAL ("221 texts · 213 green · 8 amber · 0 red").
-                  The marks give one chip's state; they never aggregate,
-                  and no reader counts 221 chips by eye.
-     .greenline — INTERPRETATION: which families are the exceptions and
-                  why ("the only amber is the Nag Hammadi library").  */
-.statband { display:flex !important; }
-.greenline { display:block !important; }
+/* Task 119 item 4's keep-rules and their comment are DELETED — Task
+   124b item 5. They asserted the statband and greenline "STAY, always
+   visible" and, sitting later in the sheet at equal specificity and
+   !important, they beat Task 123's own retirement rule above. The
+   retirement only ever happened because JS stamped an inline style at
+   `_ready` — after two fetches, one of them a 572 KB bindings.json — so
+   the retired furniture painted for ~54ms locally and longer over the
+   wire. False documentation in a shipped file is worse than none, and
+   this program has now twice been misled by its own comments. */
 /* 47d — one toggle: the ported frames' own #themeBtn duplicates the
    topbar's #arch-dark (stacked over it on the split pages) — the
    topbar toggle is the one switch */
 #themeBtn { display:none !important; }
-/*   .insight  — a claim, not a restatement ("the public-domain frontier
-                  follows the calendar of scholarship, not the age of
-                  the texts").
-     #totalbar/.band — hindu's aggregate (162 PD / 148 ©), the .statband
-                  fact in the room that has no statband.              */
-.insight { display:block !important; }
-#totalbar { display:block !important; }
-.band { display:block !important; }
+/*   .insight, #totalbar and .band retire with them — same lane, same
+     reason (Task 123 item 3, enforced in the cascade at Task 124b). */
 /* 47c — the mandala navigates: zone labels, hover sync */
 .mz-lbl { font: 700 9px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   fill: #5a5048; stroke: rgba(250,248,245,.85); stroke-width: 2.5px;
@@ -822,14 +817,18 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
       var rh = document.createElement('h3');
       rh.className = 'ov-rec-h';
       rh.textContent = 'Reception — held here, not yet placed in the structure · + ' +
-                       recN + ' in reception';
+                       recN + ' texts in reception';
       recWrap.insertBefore(rh, recWrap.firstChild);
       ovInner.appendChild(recWrap);
     }
     // the header button derives its count from the same pass
     var hb = document.getElementById('held-btn');
     if (hb) {
-      hb.textContent = 'Browse the ' + total + ' held editions →';
+      // Task 124b item 6 — say which population. This counts EDITIONS
+      // reachable from chips on THIS MAP; the line below it counts TEXTS
+      // readable anywhere in the archive, and the two differ by more than
+      // their units. Both were true and neither said which it was.
+      hb.textContent = 'Browse the ' + total + ' held editions on this map →';
       // 41b: a genuinely empty overlay (no placed editions, no
       // reception) hides its one opener rather than advertise zero
       if (total === 0 && !recWrap) hb.style.display = 'none';
@@ -1140,23 +1139,19 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
       var structural = labels.length && !labels.some(function (l) {
         return RIGHTS.indexOf(l) >= 0 || l === '©' || l.indexOf('pd') >= 0;
       });
-      if (structural) {
-        band.classList.add('structural');
-        band.style.setProperty('display', 'flex', 'important');
-      } else {
-        band.style.setProperty('display', 'none', 'important');
-      }
+      // Task 124b item 5 — decide the CLASS; the stylesheet does the
+      // showing. No inline style, so nothing here has to win a race with
+      // the cascade, and a band wrongly marked structural in markup is
+      // un-marked by this derivation rather than merely out-specified.
+      band.classList.toggle('structural', !!structural);
     });
     // Task 123b item 1/2 — the per-canon gap line retires with the
     // bands. Task 115 seated it beside the greenline, which is gone,
     // and the ZONE note now carries that statement one level up where
     // the fold is. Leaving it would state the same fact twice.
-    ['.canon-gap', '.fam-empty',
-     '.greenline', '.insight', '#totalbar', '.band'].forEach(function (sel) {
-      document.querySelectorAll(sel).forEach(function (el) {
-        el.style.setProperty('display', 'none', 'important');
-      });
-    });
+    // the six selectors this used to hide with inline styles are hidden
+    // by the stylesheet now (Task 124b item 5) — at first paint, with no
+    // fetch in front of them.
   }
 
   // ── Task 123 item 4 — the TOC navigates ──
@@ -1226,15 +1221,16 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     document.querySelectorAll('section[id]').forEach(function (sec) {
       if (!isZone(sec)) return;
       var head = sec.querySelector('h2, .zone-h');
-      // the families stop being collapsible — forced open, marker gone
-      sec.querySelectorAll('details.fam').forEach(function (d) {
-        d.open = true;
-        d.classList.add('fam-flat');
-      });
-      if (sec.dataset.z123) {           // default set ONCE, then it is the reader's
-        if (!zoneHasContent(sec)) setZone(sec, false);
-        return;
-      }
+      // Task 124b item 1 — the family loop is gone. Forcing `open` and
+      // stamping `fam-flat` here was half of the fight; CSS keyed on
+      // `details.fam` now decides what a division shows, on its own.
+      // Task 124b item 2 — DERIVE THE DEFAULT ONCE, THEN IT IS THE
+      // READER'S — empty or not. The old early-return said exactly that
+      // in a comment and then re-closed every contentless zone one line
+      // below it, on every run: UNFOLD opened the zone, 125px → 605px,
+      // and ~700ms later it snapped shut on its own. A control that
+      // visibly does the thing and undoes it is worse than an inert one.
+      if (sec.dataset.z123) return;
       sec.dataset.z123 = '1';
       if (!sec.querySelector('.zone-toggle')) {
         var btn = document.createElement('button');
@@ -1271,61 +1267,82 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // CLONED first: cloneNode drops every listener bound to the original,
   // which is the cleanest way to retire a handler whose source lives in
   // a file this block does not own.
+  // Task 124b item 4 — ONE CONTROL PER VIEW, AND ITS REACH STOPS THERE.
+  // `querySelector('.toc-all')` singular was the whole bug. Buddhist
+  // carries a nav.toc per canon and only Pāli's markup had a button, so
+  // the Chinese and Tibetan views had no control at all — six and two
+  // shut zones and no way to open them — while the one button that did
+  // exist reached across views: pressed while the reader was in Chinese,
+  // it folded Pāli's eight zones, out of sight. Every nav.toc gets a
+  // control, and each acts only on the view that holds it.
   function rewireCollapseAll() {
-    var old = document.querySelector('.toc-all');
-    if (!old || old.dataset.t123) return;
-    var btn = old.cloneNode(true);
-    btn.dataset.t123 = '1';
-    old.parentNode.replaceChild(btn, old);
-    function zones() {
-      return [].filter.call(document.querySelectorAll('section[id]'), isZone);
-    }
-    function sync() {
-      var anyOpen = zones().some(function (z) { return !z.classList.contains('zone-shut'); });
-      btn.textContent = anyOpen ? 'Collapse all' : 'Expand all';
-    }
-    btn.addEventListener('click', function () {
-      var all = zones();
-      var anyOpen = all.some(function (z) { return !z.classList.contains('zone-shut'); });
-      all.forEach(function (z) {
-        // an EMPTY zone is not re-opened by "Expand all": its default is
-        // derived from content, and there is nothing to expand into.
-        if (!anyOpen && !zoneHasContent(z)) return;
-        setZone(z, !anyOpen);
+    document.querySelectorAll('nav.toc').forEach(function (nav) {
+      var scope = nav.closest('section.view') || document;
+      var old = nav.querySelector(':scope > .toc-all');
+      var btn;
+      if (old) {
+        if (old.dataset.t123) return;
+        btn = old.cloneNode(true);
+        old.parentNode.replaceChild(btn, old);
+      } else {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'toc-all';
+        nav.insertBefore(btn, nav.firstChild);
+      }
+      btn.dataset.t123 = '1';
+      function zones() {
+        return [].filter.call(scope.querySelectorAll('section[id]'), isZone);
+      }
+      function sync() {
+        var anyOpen = zones().some(function (z) { return !z.classList.contains('zone-shut'); });
+        btn.textContent = anyOpen ? 'Collapse all' : 'Expand all';
+      }
+      btn.addEventListener('click', function () {
+        var all = zones();
+        var anyOpen = all.some(function (z) { return !z.classList.contains('zone-shut'); });
+        // Task 124b item 2 — "Expand all" opens an EMPTY zone too. The old
+        // rule skipped them, which made this control inert in exactly the
+        // two views where every zone is empty. The default is derived
+        // once; past that the zone is the reader's, empty or not, and the
+        // reader has just asked for it open.
+        all.forEach(function (z) { setZone(z, !anyOpen); });
+        sync();
       });
       sync();
     });
-    sync();
   }
-  // The rooms carry Task 115's own openness derivation, which re-closes
-  // an empty `details.fam` whenever the region re-renders. That rule was
-  // right when the FAMILY was the collapsing level; with the zone
-  // collapsing it fights this lane and wins, because it runs later. So
-  // family openness is re-asserted on mutation — the emptiness Task 115
-  // cared about is now stated by the ZONE's note instead, one level up,
-  // which is where the ruling moved it.
-  var _reasserting = false;
-  function holdFamiliesOpen() {
-    if (_reasserting) return;
-    _reasserting = true;
-    document.querySelectorAll('details.fam').forEach(function (d) {
-      d.classList.add('fam-flat');
-      if (!d.open) d.open = true;
-    });
-    _reasserting = false;
-  }
+  // Task 124b item 1 — THE LOOP DIES AT ITS CAUSE.
+  // Task 123b re-asserted family openness on every mutation, from an
+  // observer watching ['open','class'] — the attributes its own callback
+  // wrote. Task 115's derivation re-closed the same empty divisions from
+  // the other side. Each woke the other: 3,212 mutations/sec on buddhist,
+  // idle, forever; 0/sec at the commit before. Stating the content in CSS
+  // fixed what a reader SAW and left the fight burning underneath it.
+  // So neither rule survives. The fold is the ZONE (Task 123 item 5), and
+  // a division's body is shown by ONE rule — `details.fam > *:not(summary)`
+  // in CSS, keyed on a class that is in the static markup. Nothing writes
+  // `open` on a family any more, so there is nothing left to race over,
+  // and the division renders correctly with JS switched off entirely.
+  // THE RULE THIS LEAVES BEHIND: an observer must never watch what its
+  // own callback writes. Nothing here observes at all now — the chips are
+  // static markup, so one pass after _ready is the whole job.
   _ready.then(function () {
     keepStructuralBands(); setupZones(); wireToc(); rewireCollapseAll();
-    holdFamiliesOpen();
-    var mo = new MutationObserver(function () {
-      clearTimeout(mo._t);
-      mo._t = setTimeout(function () {
-        holdFamiliesOpen(); setupZones(); keepStructuralBands();
-      }, 40);
-    });
-    mo.observe(document.body, { childList: true, subtree: true, attributes: true,
-                                attributeFilter: ['open', 'class'] });
+    flattenFamilies();
   });
+  // item 7 — the families' keyboard collapse retires with the mouse one.
+  // pointer-events:none stopped the pointer and left <summary> in the tab
+  // order at tabIndex 0, still toggling on Enter/Space: 25 dead stops per
+  // room announcing an expanded/collapsed state that the loop above made
+  // flap. One pass, idempotent, writing an attribute nothing observes.
+  function flattenFamilies() {
+    document.querySelectorAll('details.fam > summary').forEach(function (s) {
+      s.setAttribute('tabindex', '-1');
+      s.removeAttribute('role');
+      s.setAttribute('aria-hidden', 'true');
+    });
+  }
 
   function restatBand() {
     var band = document.querySelector('.statband');
@@ -1628,28 +1645,13 @@ nav.toc.toc-bare { justify-content: flex-start; }
   background: rgba(255, 255, 255, 0.07); border-color: #c4a060; color: #c4a060; }
 </style>
 <script>
-/* Task 98 — collapse or open every section at once. Reads the room's
-   own state each time, so the label is never out of step with a
-   section the reader opened by hand. */
-(function () {
-  var btn = document.querySelector(".toc-all");
-  if (!btn) return;
-  function fams() {
-    return Array.prototype.slice.call(document.querySelectorAll("details.fam"));
-  }
-  function sync() {
-    btn.textContent = fams().some(function (d) { return d.open; })
-      ? "Collapse all" : "Expand all";
-  }
-  btn.addEventListener("click", function () {
-    var all = fams();
-    var anyOpen = all.some(function (d) { return d.open; });
-    all.forEach(function (d) { d.open = !anyOpen; });
-    sync();
-  });
-  document.addEventListener("toggle", sync, true);
-  sync();
-})();
+/* Task 98's collapse handler RETIRED — Task 124b item 1.
+   It folded `details.fam`, and the division stopped being a fold at Task
+   123 item 5. It was the third writer of `open` on a family, alongside
+   the two that were fighting; Task 123b only neutralised it by cloning
+   the button out from under it, which left the handler live and looking
+   for a control. The zone-level control in the block above replaces it,
+   and nothing writes family openness any more. */
 </script>
 <style>
 /* Task 106-P2 — the 44px floor, phone widths only. A mouse is precise
@@ -1732,69 +1734,17 @@ nav.toc:not(.toc-bare) > .toc-all {
 }
 </style>
 <script>
-(function deriveEmptyCanons() {
-  // Task 115 — all three parts derived, as Task 113 was: the day
-  // CBETA/84000 lands, the divisions open themselves and the canon line
-  // disappears without a hand touching it.
-  //   1. openness follows content    2. one canon-level line
-  //   3. no per-division note        (the canon line says it once)
-  var LINE = 'Indexed from the catalogue — no per-text entries held yet.';
-  var busy = false;
-  function real(b) {
-    var n = 0;
-    for (var i = 0; i < b.children.length; i++)
-      if (!b.children[i].classList.contains('fam-empty')) n++;
-    return n;
-  }
-  function mark() {
-    if (busy) return;
-    busy = true;
-    try {
-      // 3 — the per-division note retires wherever it survives
-      document.querySelectorAll('.fam-empty').forEach(function (p) { p.remove(); });
-      // 1 — openness derives from content
-      var emptyIn = {};
-      document.querySelectorAll('details.fam').forEach(function (d) {
-        var b = d.querySelector(':scope > .fambody');
-        if (!b) return;
-        var filled = real(b) > 0;
-        // An empty division is ALWAYS closed — it has nothing to show.
-        // A populated one takes its derived state ONCE and then belongs
-        // to the reader: re-asserting it on every mutation fought the
-        // Collapse-all control, which re-opened everything it closed.
-        if (!filled) { if (d.open) d.open = false; }
-        else if (!d.dataset.t115) { d.dataset.t115 = '1'; if (!d.open) d.open = true; }
-        if (!filled) {
-          var v = d.closest('section.view') || d.closest('main') || document.body;
-          if (v) { if (!v.id) v.id = 'canon-scope'; emptyIn[v.id] = true; }
-        }
-      });
-      // 2 — one line per canon that has any empty division, seated with
-      //     the greenline it belongs beside
-      document.querySelectorAll('.canon-gap').forEach(function (n) {
-        var v = n.closest('section.view') || n.closest('main') || document.body;
-        if (!v || !emptyIn[v.id]) n.remove();
-      });
-      Object.keys(emptyIn).forEach(function (id) {
-        var v = document.getElementById(id);
-        if (!v || v.querySelector(':scope > .canon-gap')) return;
-        var p = document.createElement('p');
-        p.className = 'canon-gap';
-        p.textContent = LINE;
-        var g = v.querySelector(':scope > .greenline');
-        if (g) g.after(p); else v.insertBefore(p, v.firstChild);
-      });
-    } finally { busy = false; }
-  }
-  function watch() {
-    mark();
-    new MutationObserver(function () {
-      clearTimeout(window.__t115);
-      window.__t115 = setTimeout(mark, 30);
-    }).observe(document.body, { childList: true, subtree: true });
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch);
-  else watch();
+(function () {
+  // Task 124b item 1 — deriveEmptyCanons RETIRED, all three parts.
+  //   1. openness follows content — retired: the zone is the fold, and
+  //      this half of the fight re-closed what Task 123b re-opened.
+  //   2. one `.canon-gap` line per canon — retired at Task 123b, which
+  //      moved the statement up to the ZONE's note. It was still being
+  //      built here and then hidden by keepStructuralBands: a figure
+  //      constructed in order to be suppressed.
+  //   3. per-division `.fam-empty` notes — retired at Task 123b item 1.
+  // It also ran a MutationObserver on childList that mutated childList,
+  // which is the same trap as the ['open','class'] filter above.
 })();
 </script>
 

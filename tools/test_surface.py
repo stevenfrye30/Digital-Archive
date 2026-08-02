@@ -84,10 +84,42 @@ window.__ratio = function (sel) {
 
 
 class Result:
+    """Task 124b item 8 — THE SEVENTH COSTUME.
+
+    A check must prove it LOOKED before it reports it saw. The 123c walk
+    found three greens in this file that examined nothing:
+
+      · the Task 113 pair ran on the reading room, because a chip click
+        earlier in the loop had navigated the page and nothing navigated
+        back — `0 empty / 0 full` in 15 of 16 rooms, both assertions
+        trivially true over an empty set;
+      · buddhist reached `R.check(..., True, ...)` — a literal — and
+        skipped the two assertions Task 123 item 5 exists for, in the one
+        room where that ruling costs most;
+      · `emptyOpen == 0` went on passing after Task 123b inverted the
+        rule it encoded, because it measured an attribute that had
+        stopped meaning anything.
+
+    Task 122 was the vacuity audit and all three came through it green,
+    so the audit's own coverage is the thing to distrust — a rule that
+    has to be remembered at each call site is the shape that failed.
+    Hence `population`: state the subject set's size and emptiness FAILS,
+    unless emptiness is itself what you are asserting (`allow_empty`).
+    """
+
     def __init__(self):
         self.rows: list[tuple[str, str, bool, str]] = []
 
-    def check(self, group: str, what: str, ok: bool, detail: str = "") -> None:
+    def check(self, group: str, what: str, ok: bool, detail: str = "",
+              population: int | None = None, allow_empty: bool = False) -> None:
+        if ok is True and population is None and not allow_empty:
+            # A literal True is not a check. Callers that genuinely assert
+            # a constant must say so with allow_empty=True.
+            pass
+        if population is not None and not allow_empty and population <= 0:
+            ok = False
+            detail = (detail + "  " if detail else "") + \
+                     "[REFUSED: examined 0 — a check over an empty set proves nothing]"
         self.rows.append((group, what, bool(ok), detail))
 
     def failures(self):
@@ -585,17 +617,36 @@ def g_rooms(pg, base, R):
         if m["fams"]:
             R.check("6 rooms", f"{room}: disclosure arrow held left", m["markerLeft"])
             R.check("6 rooms", f"{room}: collapse control present", m["collapse"])
-            # Some rooms open on an overview and keep their deep view (with
-            # the sections AND this control) behind a walk — the Buddhist
-            # canons do. The control is exercised where the reader can
-            # actually reach it; being gated is the room's design, not a
-            # regression.
+            # Task 124b item 8(b) — WALK TO IT, OR FAIL LOUDLY.
+            # Some rooms open on an overview and keep their sections and
+            # this control behind a view — the Buddhist canons do. That is
+            # the room's design. What was NOT the design is what this used
+            # to do about it: record `R.check(..., True, ...)`, a literal
+            # that cannot fail, and `continue` past the two assertions
+            # Task 123 item 5 exists for — in buddhist, the one room where
+            # that ruling costs most and the one 123b asked to be walked.
+            # So: enter the view where the reader would find it. If no
+            # view exposes it, that is a finding, not an exemption.
             visible = pg.evaluate("""() => { const b = document.querySelector('.toc-all');
               return !!(b && b.getClientRects().length); }""")
             if not visible:
-                R.check("6 rooms", f"{room}: control gated behind the room's own view",
-                        True, "not on the landing view — by design")
-                continue
+                entered = pg.evaluate("""() => {
+                  for (const t of document.querySelectorAll('[data-view]')) {
+                    t.click();
+                    const b = document.querySelector('.toc-all');
+                    if (b && b.getClientRects().length)
+                      return t.getAttribute('data-view');
+                  }
+                  return null; }""")
+                pg.wait_for_timeout(300)
+                visible = pg.evaluate("""() => { const b = document.querySelector('.toc-all');
+                  return !!(b && b.getClientRects().length); }""")
+                R.check("6 rooms", f"{room}: the collapse control is reachable",
+                        visible,
+                        f"reached via view '{entered}'" if visible
+                        else "NO view exposes a .toc-all — the control cannot be reached")
+                if not visible:
+                    continue
             # Task 123 item 5 — COLLAPSE MOVED UP A LEVEL, so this
             # assertion moves with it rather than being deleted: the
             # control folds ZONES now, and the inner families are no
@@ -610,24 +661,44 @@ def g_rooms(pg, base, R):
               // filter counted view-chinese as a zone that failed to
               // fold, which is the battery disagreeing with the page
               // about what it is measuring.
-              const z = [...document.querySelectorAll('section[id]')]
+              const sc0 = (document.querySelector('.toc-all')
+                             .closest('section.view')) || document;
+              const z = [...sc0.querySelectorAll('section[id]')]
                 .filter(s => !/-reception$/.test(s.id)
                           && !s.classList.contains('view')
                           && s.querySelector('h2, .zone-h'));
+              // the CONTROL is per-view (Task 124b item 4), so the zones it
+              // must fold are its own view's; non-collapsibility is an
+              // archive-wide property and is counted document-wide, or a
+              // room whose control sits in a view holding no divisions
+              // (pāli) would assert it over nothing.
+              const scope = document.querySelector('.toc-all')
+                              .closest('section.view') || document;
+              const sums = [...document.querySelectorAll('details.fam > summary')];
               return { zones: z.length,
                        openZones: z.filter(s => !s.classList.contains('zone-shut')).length,
                        fams: document.querySelectorAll('details.fam').length,
-                       famsCollapsible: [...document.querySelectorAll('details.fam')]
-                         .filter(d => !d.classList.contains('fam-flat')).length,
+                       // Task 124b item 8(c) — measure the BEHAVIOUR, not a
+                       // marker class. This counted `details.fam` without
+                       // `fam-flat`, a class JS stamped on; item 1 retired
+                       // the stamping (CSS keys on `details.fam` now), so a
+                       // marker check would fail a page that is correct.
+                       // Collapsible means: the pointer can toggle it, or
+                       // the keyboard can.
+                       famsCollapsible: sums.filter(s =>
+                         getComputedStyle(s).pointerEvents !== 'none' || s.tabIndex >= 0).length,
+                       nSummaries: sums.length,
                        label: document.querySelector('.toc-all').textContent }; }""")
-            # every zone that HAS content folds; an empty one was already
-            # closed and stays closed, so it is not counted as a failure
+            # every zone folds — including an empty one, which the reader
+            # may now open and which "Collapse all" must therefore close
+            # again (Task 124b item 2)
             R.check("6 rooms", f"{room}: the control folds every zone",
                     after["openZones"] == 0 and after["label"] == "Expand all",
-                    str(after))
+                    str(after), population=after["zones"])
             R.check("6 rooms", f"{room}: inner families are no longer collapsible",
                     after["famsCollapsible"] == 0,
-                    f"{after['famsCollapsible']} of {after['fams']} still collapsible")
+                    f"{after['famsCollapsible']} of {after['nSummaries']} still collapsible",
+                    population=after["nSummaries"])
 
 
 def g_lens(pg, base, R):
@@ -811,31 +882,81 @@ def g_lens(pg, base, R):
             R.check("7 marks", "the mark is computed-identical in all 16 rooms",
                     len(set(boxes.values())) == 1,
                     f"{sorted(set(boxes.values()))}")
-        # Task 113 — no division body is ever both empty and silent. A
-        # blank body reads as a rendering bug; the archive states its
-        # gaps. Derived at render time, so this also fails the day a
-        # populated body is wrongly labelled empty.
-        gap = pg.evaluate("""() => {
-          const d = [...document.querySelectorAll('details.fam')];
-          const real = b => [...b.children]
-            .filter(x => !x.classList.contains('fam-empty')).length;
+        # Task 124b item 8(a) — GO BACK TO THE ROOM FIRST. The `if has:`
+        # block above clicks a held chip and lets the page navigate to the
+        # reader; nothing brought it back, so everything below used to
+        # measure the reading room. `details.fam` does not exist there, so
+        # the two checks reported 0 empty / 0 full and passed over nothing,
+        # in 15 of 16 rooms, for as long as the chip click has existed.
+        if "text=" in pg.url:
+            pg.goto(f"{base}map/{room}.html", wait_until="networkidle")
+        # Task 113, restated for what Task 123/124b actually ship: a
+        # division is no longer a fold, so `open` decides nothing and the
+        # CSS shows the body either way. What must hold is that every
+        # division BODY is visible — an empty one stands open and quiet
+        # (123b item 1), a full one shows its chips — and that no division
+        # is collapsible by pointer or by keyboard (123 item 5).
+        # A division inside a hidden canon view measures 0px tall for the
+        # honest reason that its view is not on screen — buddhist keeps
+        # all 48 behind Chinese and Tibetan. Measuring the landing view
+        # alone would have reported "48 hidden of 48" and, worse, a room
+        # whose divisions all sit behind views would have been examined at
+        # a population of zero. So walk every view, as a reader would.
+        VIEW_GAP = """() => {
+          const vis = x => x.getClientRects().length > 0;
+          const d = [...document.querySelectorAll('details.fam')]
+            .filter(x => { const v = x.closest('section.view'); return !v || vis(v); });
           const body = x => x.querySelector(':scope > .fambody');
-          const empty = d.filter(x => body(x) && real(body(x)) === 0);
-          const full  = d.filter(x => body(x) && real(body(x)) > 0);
-          return { emptyOpen: empty.filter(x => x.open).length,
-                   fullClosed: full.filter(x => !x.open).length,
-                   silentCanon: empty.length > 0
-                     && document.querySelectorAll('.canon-gap').length === 0,
-                   strayLine: full.length > 0 && empty.length === 0
-                     && document.querySelectorAll('.canon-gap').length > 0,
-                   nEmpty: empty.length, nFull: full.length }; }""")
-        R.check("7 marks", f"{room}: openness derives from content",
-                gap["emptyOpen"] == 0 and gap["fullClosed"] == 0,
-                f"{gap['emptyOpen']} empty-open, {gap['fullClosed']} full-closed "
-                f"({gap['nEmpty']} empty / {gap['nFull']} full)")
-        R.check("7 marks", f"{room}: no empty canon is silent, no full canon labelled",
-                not gap["silentCanon"] and not gap["strayLine"],
-                f"silent={gap['silentCanon']} stray={gap['strayLine']}")
+          const real = x => { const b = body(x); return b ? b.children.length : 0; };
+          const sums = d.map(x => x.querySelector(':scope > summary')).filter(Boolean);
+          return { n: d.length,
+                   nEmpty: d.filter(x => body(x) && real(x) === 0).length,
+                   nFull:  d.filter(x => body(x) && real(x) > 0).length,
+                   bodiesHidden: d.filter(x => body(x) &&
+                     body(x).getBoundingClientRect().height === 0).length,
+                   pointerCollapsible:
+                     sums.filter(s => getComputedStyle(s).pointerEvents !== 'none').length,
+                   keyCollapsible: sums.filter(s => s.tabIndex >= 0).length,
+                   nSummaries: sums.length }; }"""
+        views = pg.evaluate(
+            "() => [...document.querySelectorAll('[data-view]')].map(b => b.getAttribute('data-view'))")
+        gap = {k: 0 for k in ("n", "nEmpty", "nFull", "bodiesHidden",
+                              "pointerCollapsible", "keyCollapsible", "nSummaries")}
+        for v in ([None] + views):
+            if v is not None:
+                pg.evaluate("v => [...document.querySelectorAll('[data-view]')]"
+                            ".find(b => b.getAttribute('data-view') === v).click()", v)
+                pg.wait_for_timeout(200)
+            # A FOLDED ZONE HIDES ITS DIVISIONS, correctly — that is Task
+            # 123 item 5 working. So open the zones the way a reader would
+            # before asking whether the divisions inside them render; the
+            # alternative is measuring 48 bodies behind a fold and calling
+            # them broken, or excluding them and asserting over nothing.
+            # the VISIBLE view's control — `querySelector('.toc-all')`
+            # singular would grab Pāli's, hidden, and fold its zones
+            # instead: the same bug item 4 fixed in the room, reproduced
+            # here while checking the fix for it.
+            pg.evaluate("""() => {
+              for (const b of document.querySelectorAll('.toc-all')) {
+                if (!b.getClientRects().length) continue;
+                if (/expand/i.test(b.textContent)) b.click();
+              } }""")
+            pg.wait_for_timeout(250)
+            for k, n in pg.evaluate(VIEW_GAP).items():
+                gap[k] += n
+        R.check("7 marks", f"{room}: every division body is shown, empty or full",
+                gap["bodiesHidden"] == 0,
+                f"{gap['bodiesHidden']} hidden of {gap['n']} "
+                f"({gap['nEmpty']} empty / {gap['nFull']} full)",
+                population=gap["n"])
+        # Task 124b item 8(c) — this replaces `emptyOpen == 0`, which had
+        # asserted the OPPOSITE of the shipped rule since 123b and passed
+        # anyway by reading an attribute that no longer means anything.
+        R.check("7 marks", f"{room}: no division is collapsible, by pointer or by key",
+                gap["pointerCollapsible"] == 0 and gap["keyCollapsible"] == 0,
+                f"pointer={gap['pointerCollapsible']} keyboard={gap['keyCollapsible']} "
+                f"of {gap['nSummaries']}",
+                population=gap["nSummaries"])
         R.check("7 marks", f"{room}: no chooser popover survives",
                 pg.evaluate("""() => !document.querySelector('.m-chooser-pop')
                   && typeof window.__mcClose === 'undefined'"""))
@@ -847,7 +968,7 @@ def g_lens(pg, base, R):
     # English witness at all — that is an acquisition gap, not a sort
     # failure, so the check names those instead of failing on them.
     maps_dir = Path(__file__).resolve().parent.parent / "maps"
-    offenders, gaps = [], []
+    offenders, gaps, examined = [], [], 0
     for d in sorted(p for p in maps_dir.iterdir() if p.is_dir()):
         b = d / "bindings.json"
         if not b.is_file():
@@ -856,12 +977,18 @@ def g_lens(pg, base, R):
             read = ch.get("read") or []
             if len(read) < 2 or not read[0].get("lang"):
                 continue
+            examined += 1
             if any(not r.get("lang") for r in read):
                 offenders.append(f"{d.name}:{ch.get('chip')}")
             else:
                 gaps.append(f"{d.name}:{ch.get('chip')}")
+    # Task 124b item 8 — this one sits outside any room loop, so the
+    # `subject()` gate never covered it: a renamed maps/ directory or an
+    # unreadable bindings.json would have left `offenders` empty and the
+    # door-English rule green over nothing.
     R.check("7 marks", "the door speaks English wherever an English witness exists",
-            not offenders, "; ".join(offenders[:3]))
+            not offenders, f"{examined} multi-held chips examined; " +
+            "; ".join(offenders[:3]), population=examined)
     R.check("7 marks", "chips with no English witness are a known, listed set",
             len(gaps) == 5, f"{len(gaps)}: " + "; ".join(g.split(':')[1] for g in gaps[:5]))
 
