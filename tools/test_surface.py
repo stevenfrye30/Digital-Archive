@@ -596,12 +596,31 @@ def g_rooms(pg, base, R):
                 R.check("6 rooms", f"{room}: control gated behind the room's own view",
                         True, "not on the landing view — by design")
                 continue
+            # Task 123 item 5 — COLLAPSE MOVED UP A LEVEL, so this
+            # assertion moves with it rather than being deleted: the
+            # control folds ZONES now, and the inner families are no
+            # longer collapsible at all. Measuring details.fam here
+            # would be asserting the old behaviour of a page that has
+            # deliberately changed.
             pg.click(".toc-all")
-            pg.wait_for_timeout(300)
-            after = pg.evaluate("""() => ({ open: [...document.querySelectorAll('details.fam')]
-              .filter(d => d.open).length, label: document.querySelector('.toc-all').textContent })""")
-            R.check("6 rooms", f"{room}: the control closes every section",
-                    after["open"] == 0 and after["label"] == "Expand all", str(after))
+            pg.wait_for_timeout(400)
+            after = pg.evaluate("""() => {
+              const z = [...document.querySelectorAll('section[id]')]
+                .filter(s => !/-reception$/.test(s.id) && s.querySelector('h2, .zone-h'));
+              return { zones: z.length,
+                       openZones: z.filter(s => !s.classList.contains('zone-shut')).length,
+                       fams: document.querySelectorAll('details.fam').length,
+                       famsCollapsible: [...document.querySelectorAll('details.fam')]
+                         .filter(d => !d.classList.contains('fam-flat')).length,
+                       label: document.querySelector('.toc-all').textContent }; }""")
+            # every zone that HAS content folds; an empty one was already
+            # closed and stays closed, so it is not counted as a failure
+            R.check("6 rooms", f"{room}: the control folds every zone",
+                    after["openZones"] == 0 and after["label"] == "Expand all",
+                    str(after))
+            R.check("6 rooms", f"{room}: inner families are no longer collapsible",
+                    after["famsCollapsible"] == 0,
+                    f"{after['famsCollapsible']} of {after['fams']} still collapsible")
 
 
 def g_lens(pg, base, R):

@@ -424,7 +424,7 @@ section.view { display: block !important; }
   <header class="mast">
     <div class="wheel" aria-hidden="true">☸️</div>
     <h1>The Map of Buddhist Texts</h1>
-    <p>One root that split into <strong>three great canons</strong> — the <span class="pali">Pāli</span>, Chinese, and Tibetan.</p>
+    
     <div class="switch" id="switch">
       <button data-view="atlas" class="on">The Three Canons</button>
       <button data-view="pali">Pāli <small>253 suttas</small></button>
@@ -747,6 +747,55 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
 /* the ported g/a/r legend strip retires for good — #m-legend below is
    the one permanent legend, and it already speaks the four marks */
 .legend { display:none !important; }
+/* ── Task 123 — the room's head clears ── */
+/* 1. the wordmark leaves the ROOM header. The ← arrow already says
+   where back goes, so on a tradition page the mark is furniture that
+   states nothing. Rooms only: the entrance keeps its wordmark, being
+   the one page that has to name the building. */
+#arch-topbar .brand, #arch-topnav > a[href="../"] { display:none !important; }
+/* 3. the statband, its narrative line and hindu's totalbar RETIRE.
+   Seeing them re-derived in 119e/121 is what showed they were not
+   wanted: the derived count line under the browse button already
+   carries the aggregate in one sentence. The 119e work is superseded,
+   not wasted — it made the redundancy visible.
+   A band that states a STRUCTURAL fact is kept; that gate lives in the
+   script, which reads what the band says rather than which room it is
+   in, so buddhist's "5 Vinaya · 34 Dīgha …" survives by construction. */
+.statband, .greenline, .insight, #totalbar, .band { display:none !important; }
+.statband.structural { display:flex !important; }
+/* 4. the TOC is the room's table of contents, and it navigates */
+nav.toc a { color:var(--accent, #7a5c3a); cursor:pointer; text-decoration:none;
+  border-bottom:1px solid transparent; }
+nav.toc a:hover, nav.toc a:focus { border-bottom-color:var(--accent, #7a5c3a); }
+:root[data-theme="dark"] nav.toc a { color:#c4a060; }
+:root[data-theme="dark"] nav.toc a:hover { border-bottom-color:#c4a060; }
+/* 5. collapse moves up a level: the ZONE folds, its families do not.
+   A closed zone keeps its heading and hides everything else. */
+section.zone-shut > *:not(h2):not(.zone-h):not(.zone-note) { display:none !important; }
+.zone-toggle { font:400 10px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint,#8a7a6a);
+  background:none; border:1px solid var(--line2,#d8d3cc); border-radius:999px;
+  padding:5px 12px; margin-left:12px; cursor:pointer; vertical-align:middle; }
+.zone-toggle:hover { border-color:var(--accent,#7a5c3a); color:var(--accent,#7a5c3a); }
+/* the 38/44 split (Task 106-P2): a mouse is precise, a thumb is not.
+   The first version of this button was 53x22 and failed the phone floor
+   — caught by the battery, not by me. */
+@media (max-width: 720px) {
+  .zone-toggle { min-height:44px; min-width:44px; padding:12px 16px; }
+}
+.zone-note { font:italic 400 12.5px/1.6 Georgia,serif; color:var(--ink-faint,#8a7a6a);
+  text-align:center; margin:6px 0 0; }
+/* the inner families stop being collapsible — one control per zone,
+   not three inside it. The marker goes and the summary stops taking
+   clicks; the content itself is untouched. */
+details.fam-flat > summary { pointer-events:none; list-style:none; }
+details.fam-flat > summary::-webkit-details-marker { display:none; }
+details.fam-flat > summary::before { display:none !important; }
+/* 6. section descriptions centre, in every room */
+.blurb, .zone-desc, .sec-desc { text-align:center !important; }
+/* 7. the room's flagship opener moves to the far left so it stops
+   competing with the centred zone titles */
+.flagship-wrap { text-align:left !important; }
 /* Task 59 — search deep-link emphasis (one quiet pulse) */
 .chip-sought { animation: chip-sought 3s ease-out; }
 @keyframes chip-sought {
@@ -1300,6 +1349,195 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   document.addEventListener('click', function (e) {
     if (e.target && e.target.closest && e.target.closest('#arch-dark, #themeBtn'))
       setTimeout(restateTotalbar, 0);
+  });
+
+  // ── Task 123 item 3 — the bands retire, EXCEPT a structural one ──
+  // The gate is the one from 119e, reused rather than restated: read
+  // what the band SAYS. A band whose tiles are rights states is the
+  // aggregate the derived count line already carries in a sentence, and
+  // it goes. A band whose tiles are structural divisions ("5 Vinaya ·
+  // 34 Dīgha · 152 Majjhima …") states a fact nothing else on the page
+  // states, and it stays — marked, so the stylesheet can show it.
+  // The retirement is done in JS with an INLINE !important rather than
+  // by a stylesheet rule. A class rule has to win a cascade it does not
+  // control — the rooms' own sheets are stamped after this block and
+  // have beaten it before — whereas an inline important declaration is
+  // beaten by nothing. It also lets the structural exception be decided
+  // by reading the band, which a stylesheet cannot do.
+  function keepStructuralBands() {
+    var RIGHTS = ['texts', 'held', 'pd', 'no pd', 'restricted',
+                  'green', 'amber', 'red'];
+    document.querySelectorAll('.statband').forEach(function (band) {
+      var labels = [].map.call(band.querySelectorAll('.stat span'), function (s) {
+        return (s.textContent || '').trim().toLowerCase();
+      });
+      // structural means NO rights word appears — not merely "some
+      // label is unfamiliar". Buddhist carries a mixed band
+      // ("texts · PD · © · divisions") that the looser test called
+      // structural and would have kept: a rights aggregate wearing one
+      // structural label is still the aggregate the count line states.
+      var structural = labels.length && !labels.some(function (l) {
+        return RIGHTS.indexOf(l) >= 0 || l === '©' || l.indexOf('pd') >= 0;
+      });
+      if (structural) {
+        band.classList.add('structural');
+        band.style.setProperty('display', 'flex', 'important');
+      } else {
+        band.style.setProperty('display', 'none', 'important');
+      }
+    });
+    ['.greenline', '.insight', '#totalbar', '.band'].forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        el.style.setProperty('display', 'none', 'important');
+      });
+    });
+  }
+
+  // ── Task 123 item 4 — the TOC navigates ──
+  // Its links carried a data-j zone id and NO handler: they had never
+  // navigated. Now they scroll to the zone, and open it first if the
+  // reader had folded it (item 5), so a table of contents cannot send
+  // someone to a heading with nothing under it.
+  function wireToc() {
+    document.querySelectorAll('nav.toc a[data-j]').forEach(function (a) {
+      if (a.dataset.t123) return;
+      a.dataset.t123 = '1';
+      a.setAttribute('role', 'link');
+      a.setAttribute('tabindex', '0');
+      var go = function (e) {
+        e.preventDefault();
+        var id = a.getAttribute('data-j');
+        var sec = document.getElementById(id) || document.getElementById('zone-' + id);
+        if (!sec) return;
+        if (sec.classList.contains('zone-shut')) setZone(sec, true);
+        sec.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      };
+      a.addEventListener('click', go);
+      a.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') go(e);
+      });
+    });
+  }
+
+  // ── Task 123 item 5 — COLLAPSE MOVES UP ONE LEVEL ──
+  // The zone folds; its families do not. This reverses part of Tasks
+  // 98/102/115 deliberately, so Task 115's derivation moves UP with the
+  // behaviour rather than being deleted: DERIVE THE DEFAULT, NEVER THE
+  // CURRENT VALUE. A zone with no visible content starts closed and
+  // says why; a populated zone starts open; after that the zone belongs
+  // to the reader and only emptiness is re-asserted.
+  function zoneBody(sec) {
+    return [].filter.call(sec.children, function (c) {
+      return !/^(H2)$/.test(c.tagName) && !c.classList.contains('zone-h')
+             && !c.classList.contains('zone-note');
+    });
+  }
+  function zoneHasContent(sec) {
+    return !!sec.querySelector('.tc, .chip, .su');
+  }
+  function setZone(sec, open) {
+    sec.classList.toggle('zone-shut', !open);
+    var btn = sec.querySelector('.zone-toggle');
+    if (btn) {
+      btn.textContent = open ? 'Fold' : 'Unfold';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  }
+  function setupZones() {
+    document.querySelectorAll('section[id]').forEach(function (sec) {
+      if (/-reception$/.test(sec.id)) return;
+      var head = sec.querySelector('h2, .zone-h');
+      if (!head) return;
+      // the families stop being collapsible — forced open, marker gone
+      sec.querySelectorAll('details.fam').forEach(function (d) {
+        d.open = true;
+        d.classList.add('fam-flat');
+      });
+      if (sec.dataset.z123) {           // default set ONCE, then it is the reader's
+        if (!zoneHasContent(sec)) setZone(sec, false);
+        return;
+      }
+      sec.dataset.z123 = '1';
+      if (!sec.querySelector('.zone-toggle')) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'zone-toggle';
+        btn.addEventListener('click', function () {
+          setZone(sec, sec.classList.contains('zone-shut'));
+        });
+        head.appendChild(btn);
+      }
+      var populated = zoneHasContent(sec);
+      if (!populated && !sec.querySelector('.zone-note')) {
+        var note = document.createElement('p');
+        note.className = 'zone-note';
+        note.textContent = 'Nothing indexed in this zone yet.';
+        head.parentNode.insertBefore(note, head.nextSibling);
+      }
+      setZone(sec, populated);
+    });
+  }
+  // "Collapse all" folds ZONES now. The room's own Task-98 handler
+  // folds `details.fam` and would fight this one, so the button is
+  // CLONED first: cloneNode drops every listener bound to the original,
+  // which is the cleanest way to retire a handler whose source lives in
+  // a file this block does not own.
+  function rewireCollapseAll() {
+    var old = document.querySelector('.toc-all');
+    if (!old || old.dataset.t123) return;
+    var btn = old.cloneNode(true);
+    btn.dataset.t123 = '1';
+    old.parentNode.replaceChild(btn, old);
+    function zones() {
+      return [].filter.call(document.querySelectorAll('section[id]'), function (s) {
+        return !/-reception$/.test(s.id) && s.querySelector('h2, .zone-h');
+      });
+    }
+    function sync() {
+      var anyOpen = zones().some(function (z) { return !z.classList.contains('zone-shut'); });
+      btn.textContent = anyOpen ? 'Collapse all' : 'Expand all';
+    }
+    btn.addEventListener('click', function () {
+      var all = zones();
+      var anyOpen = all.some(function (z) { return !z.classList.contains('zone-shut'); });
+      all.forEach(function (z) {
+        // an EMPTY zone is not re-opened by "Expand all": its default is
+        // derived from content, and there is nothing to expand into.
+        if (!anyOpen && !zoneHasContent(z)) return;
+        setZone(z, !anyOpen);
+      });
+      sync();
+    });
+    sync();
+  }
+  // The rooms carry Task 115's own openness derivation, which re-closes
+  // an empty `details.fam` whenever the region re-renders. That rule was
+  // right when the FAMILY was the collapsing level; with the zone
+  // collapsing it fights this lane and wins, because it runs later. So
+  // family openness is re-asserted on mutation — the emptiness Task 115
+  // cared about is now stated by the ZONE's note instead, one level up,
+  // which is where the ruling moved it.
+  var _reasserting = false;
+  function holdFamiliesOpen() {
+    if (_reasserting) return;
+    _reasserting = true;
+    document.querySelectorAll('details.fam').forEach(function (d) {
+      d.classList.add('fam-flat');
+      if (!d.open) d.open = true;
+    });
+    _reasserting = false;
+  }
+  _ready.then(function () {
+    keepStructuralBands(); setupZones(); wireToc(); rewireCollapseAll();
+    holdFamiliesOpen();
+    var mo = new MutationObserver(function () {
+      clearTimeout(mo._t);
+      mo._t = setTimeout(function () {
+        holdFamiliesOpen(); setupZones(); keepStructuralBands();
+      }, 40);
+    });
+    mo.observe(document.body, { childList: true, subtree: true, attributes: true,
+                                attributeFilter: ['open', 'class'] });
   });
 
   function restatBand() {
