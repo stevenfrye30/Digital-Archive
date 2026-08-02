@@ -605,8 +605,15 @@ def g_rooms(pg, base, R):
             pg.click(".toc-all")
             pg.wait_for_timeout(400)
             after = pg.evaluate("""() => {
+              // Task 123b — the SAME zone definition the page uses: a
+              // canon is a VIEW, not a zone. Asserting against a looser
+              // filter counted view-chinese as a zone that failed to
+              // fold, which is the battery disagreeing with the page
+              // about what it is measuring.
               const z = [...document.querySelectorAll('section[id]')]
-                .filter(s => !/-reception$/.test(s.id) && s.querySelector('h2, .zone-h'));
+                .filter(s => !/-reception$/.test(s.id)
+                          && !s.classList.contains('view')
+                          && s.querySelector('h2, .zone-h'));
               return { zones: z.length,
                        openZones: z.filter(s => !s.classList.contains('zone-shut')).length,
                        fams: document.querySelectorAll('details.fam').length,

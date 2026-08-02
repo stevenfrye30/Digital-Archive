@@ -621,6 +621,14 @@ section.zone-shut > *:not(h2):not(.zone-h):not(.zone-note) { display:none !impor
 details.fam-flat > summary { pointer-events:none; list-style:none; }
 details.fam-flat > summary::-webkit-details-marker { display:none; }
 details.fam-flat > summary::before { display:none !important; }
+/* Task 123b — a non-collapsible division shows its body whatever the
+   `open` attribute says. The rooms' Task-115 rule still forces an EMPTY
+   division closed, which was right when the division was the fold; it
+   is not the fold now, and two scripts setting the same attribute is a
+   race neither wins reliably. Stating it in CSS ends the fight — the
+   attribute may flap, the content stays put. An empty division has
+   nothing to show, so it simply stands open and quiet, as ruled. */
+details.fam-flat > *:not(summary) { display:block !important; }
 /* 6. section descriptions centre, in every room */
 .blurb, .zone-desc, .sec-desc { text-align:center !important; }
 /* 7. the room's flagship opener moves to the far left so it stops
@@ -1216,7 +1224,12 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
         band.style.setProperty('display', 'none', 'important');
       }
     });
-    ['.greenline', '.insight', '#totalbar', '.band'].forEach(function (sel) {
+    // Task 123b item 1/2 — the per-canon gap line retires with the
+    // bands. Task 115 seated it beside the greenline, which is gone,
+    // and the ZONE note now carries that statement one level up where
+    // the fold is. Leaving it would state the same fact twice.
+    ['.canon-gap', '.fam-empty',
+     '.greenline', '.insight', '#totalbar', '.band'].forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (el) {
         el.style.setProperty('display', 'none', 'important');
       });
@@ -1256,6 +1269,19 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // CURRENT VALUE. A zone with no visible content starts closed and
   // says why; a populated zone starts open; after that the zone belongs
   // to the reader and only emptiness is re-asserted.
+  // Task 123b — WHAT COUNTS AS A ZONE, stated once.
+  // A canon is a VIEW, not the nearest section[id] — Task 115 learned
+  // this when `closest('section[id]')` landed on the basket and wrote
+  // eight canon lines instead of one, and I walked into the same hole
+  // from the other side: `section.view` (view-chinese, view-tibetan)
+  // matched the zone test, so the canon view grew its own fold and its
+  // own note ON TOP of the baskets inside it — a zone within a zone,
+  // and the statement said twice.
+  function isZone(sec) {
+    return !/-reception$/.test(sec.id)
+        && !sec.classList.contains('view')
+        && !!sec.querySelector('h2, .zone-h');
+  }
   function zoneBody(sec) {
     return [].filter.call(sec.children, function (c) {
       return !/^(H2)$/.test(c.tagName) && !c.classList.contains('zone-h')
@@ -1275,9 +1301,8 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   }
   function setupZones() {
     document.querySelectorAll('section[id]').forEach(function (sec) {
-      if (/-reception$/.test(sec.id)) return;
+      if (!isZone(sec)) return;
       var head = sec.querySelector('h2, .zone-h');
-      if (!head) return;
       // the families stop being collapsible — forced open, marker gone
       sec.querySelectorAll('details.fam').forEach(function (d) {
         d.open = true;
@@ -1299,9 +1324,20 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
       }
       var populated = zoneHasContent(sec);
       if (!populated && !sec.querySelector('.zone-note')) {
+        // Task 123b item 2 — the zone's note is the ONE statement, and
+        // it says what the canon actually is. The two cases are
+        // DERIVABLE, never listed by room name:
+        //   · the zone holds divisions but no texts — it is indexed
+        //     from a catalogue and the per-text entries are not held.
+        //     That is the Chinese and Tibetan case, and it takes Task
+        //     115's own wording, moved up to the fold.
+        //   · the zone holds nothing at all — the generic line.
+        var catalogued = !!sec.querySelector('details.fam');
         var note = document.createElement('p');
         note.className = 'zone-note';
-        note.textContent = 'Nothing indexed in this zone yet.';
+        note.textContent = catalogued
+          ? 'Indexed from the catalogue — no per-text entries held yet.'
+          : 'Nothing indexed in this zone yet.';
         head.parentNode.insertBefore(note, head.nextSibling);
       }
       setZone(sec, populated);
@@ -1319,9 +1355,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     btn.dataset.t123 = '1';
     old.parentNode.replaceChild(btn, old);
     function zones() {
-      return [].filter.call(document.querySelectorAll('section[id]'), function (s) {
-        return !/-reception$/.test(s.id) && s.querySelector('h2, .zone-h');
-      });
+      return [].filter.call(document.querySelectorAll('section[id]'), isZone);
     }
     function sync() {
       var anyOpen = zones().some(function (z) { return !z.classList.contains('zone-shut'); });
