@@ -1,0 +1,106 @@
+/* ── archive dress: ground tokens (per Sacred Map Harmonization §III) ──
+   per-tradition --accent/--accent-ink are KEPT; the ground converges. */
+:root, :root[data-theme="light"] {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #8a7a6a;
+  --line: #e6e1d9; --line2: #d8d3cc; --track: #eee9e0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: Georgia, 'Times New Roman', serif;
+  /* Task 50 — ONE palette: the per-tradition accent dialect (amber
+     #a96e14 etc., kept by harmonization §III) is SUPERSEDED by the
+     one-palette rule; the doctrine accent everywhere. */
+  --accent: #7a5c3a; --accent-ink: #7a5c3a;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --track: #2e2e33;
+  --accent: #c4a060; --accent-ink: #c4a060;
+}
+/* Task 50 (item 3, stated choice): the mast glyphs RETIRE — five of the
+   fifteen (🏺 🐍 🫘 🌱 🔥) are true emoji with no text
+   presentation, so forcing \uFE0E would leave a mixed bag; the markup
+   stays (withdrawn, not deleted). */
+.mast .sym, .mast .om, .mast .wheel { display: none; }
+/* archive top strip */
+#arch-topbar { display:flex; justify-content:space-between; align-items:center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg);
+  /* Task 66 — the header follows you */
+  position: sticky; top: 0; z-index: 60; }
+/* Task 72 — the arrow is a real button; the context label leaves */
+#arch-topbar .tb-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; flex: 0 0 auto; box-sizing: border-box;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--panel); color: var(--ink);
+  font-size: 19px; line-height: 1; text-decoration: none; cursor: pointer;
+  padding: 0;
+}
+#arch-topbar .tb-arrow:hover { color: var(--accent); border-color: var(--accent); }
+#arch-topbar .tb-arrow:active { transform: translateY(1px); }
+#arch-topbar .tb-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#arch-topbar .tb-ctx { display: none; }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: #7a5c3a; }
+#arch-topnav { display: flex; gap: 22px; }
+
+/* ── five-state chip dress (Map Node States specimen, verbatim tokens) ── */
+.m-held, .m-several { background: #f1ebe1 !important;
+  border-color: #e0d8c8 !important; border-left: 3px solid #7a5c3a !important; }
+.m-possible { background: none !important;
+  border-color: #ddd0b8 !important; border-left: 3px solid #c9ab7a !important; }
+.m-none { background: none !important;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-restricted { background: none !important;
+  border: 1px dashed #b8ab99 !important; border-left: 3px dashed #a09080 !important; }
+.m-unmapped { background: none !important; opacity: .75;
+  border-color: #e6e1d9 !important; border-left: 3px solid #ddd6c8 !important; }
+.m-held .nm, .m-several .nm, .m-held .tl, .m-several .tl { color: var(--ink) !important; }
+.m-possible .nm, .m-possible .tl { color: var(--ink-soft) !important; }
+.m-none .nm, .m-none .tl, .m-unmapped .nm, .m-unmapped .tl { color: var(--ink-faint) !important; }
+.m-restricted .nm, .m-restricted .tl { color: var(--ink-faint) !important; }
+.mdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  display: inline-block; margin-right: 2px; box-sizing: border-box; }
+.m-held .mdot { background: #7a5c3a; }
+.m-several .mdot { background: #7a5c3a; box-shadow: 0 0 0 1.5px #f1ebe1, 0 0 0 3px #7a5c3a; }
+.m-possible .mdot { border: 1.5px solid #a8865a; }
+.m-none .mdot, .m-unmapped .mdot { background: #ddd6c8; }
+.m-restricted .mdot { border: 1.5px dashed #a09080; }
+.m-held .dot, .m-several .dot, .m-possible .dot, .m-none .dot,
+.m-restricted .dot, .m-unmapped .dot { display: none; }
+a.m-link { text-decoration: none; }
+:root[data-theme="dark"] .m-held, :root[data-theme="dark"] .m-several {
+  background: #2a2620 !important; border-left-color: #c4a060 !important; }
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background: #c4a060; }
+:root[data-theme="dark"] .m-several .mdot { box-shadow: 0 0 0 1.5px #2a2620, 0 0 0 3px #c4a060; }
+
+/* derived four-band zone bar */
+.zb { display: inline-flex; height: 6px; width: 170px; border-radius: 3px;
+  overflow: hidden; background: var(--track); vertical-align: middle; }
+.zb i { display: block; height: 100%; }
+.zb .zb-held { background: #7a5c3a; }
+.zb .zb-poss { background: none; border-top: 6px double #a8865a; box-sizing: border-box; }
+.zb .zb-none { background: #ddd6c8; }
+.zb .zb-res  { background: repeating-linear-gradient(45deg, #a09080 0 2px, #eee9e0 2px 4px); }
+
+/* legend strip */
+#m-legend { display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line2); padding: 12px 0; margin: 18px 0 26px;
+  font: 400 10px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .1em; text-transform: uppercase; }
+#m-legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+
+/* fraction line under the mast — Task 53b: full mast width, one
+   centered block (the mast's p max-width capped it left-of-center) */
+#m-fraction { text-align: center; max-width: none;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); margin: 4px auto 0; }
+#m-fraction b { color: #7a5c3a; font-weight: 400; }
+
+/* deep views: shown stacked (the artifact's tab JS was not captured) */
+section.view { display: block !important; }

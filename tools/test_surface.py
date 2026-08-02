@@ -1058,6 +1058,77 @@ TEXT_GAPS_JS = r"""() => {
 }"""
 
 
+def g_shared(pg_unused, base_unused, R):
+    """Task 126 — the sixteen rooms stop storing the same thing sixteen times.
+
+    This group is the reason the shared-file lane was worth running. The
+    bytes were the smaller argument; the real one was drift. Nine rooms
+    diverged from seven for the length of a program because every ruling
+    was applied sixteen times BY HAND — and the three archive-wide
+    defects Phase C found were each present in some rooms and not others
+    for exactly that reason.
+
+    So the assertion is not "the three files exist". It is the general
+    rule, derived: **if a block is byte-identical in all sixteen rooms,
+    it is not sixteen blocks — it is one file, and the rooms should link
+    it.** That catches the next shared block somebody pastes sixteen
+    times, which is the failure this lane exists to end, rather than
+    only the three that were extracted today.
+    """
+    import hashlib
+    rooms = sorted(p for p in (REPO / "map").glob("*.html")
+                   if p.name not in ("index.html", "abrahamic.html",
+                                     "eastasian.html"))
+    R.check("11 shared", "the sixteen rooms are on disk to compare",
+            len(rooms) == 16, f"{len(rooms)} rooms", population=len(rooms))
+    if len(rooms) != 16:
+        return
+
+    # every room must link the shared files, or it has a private copy
+    texts = {p.name: p.read_text(encoding="utf-8", errors="replace") for p in rooms}
+    # derived, not a hardcoded list: whatever map/_room*.{css,js} exists
+    # must be linked by all sixteen. A new shared file is covered the day
+    # it is created; a stale name in a list could never be.
+    shared = sorted(p.name for p in (REPO / "map").glob("_room*")
+                    if p.suffix in (".css", ".js"))
+    R.check("11 shared", "there are shared room files to check",
+            bool(shared), f"{len(shared)} file(s)", population=len(shared))
+    for f in shared:
+        missing = sorted(n for n, s in texts.items() if f not in s)
+        R.check("11 shared", f"every room links {f}",
+                not missing, ", ".join(missing) or "16/16",
+                population=len(texts))
+
+    # THE GENERAL RULE. A block identical in all sixteen is a file.
+    #
+    # ONE NAMED EXCEPTION (doctrine 7.1 — a named exception is grammar):
+    # the pre-paint theme boot. It stamps data-theme on <html> before the
+    # first paint, so it CANNOT be a fetched file — an external script
+    # would let the page paint in the wrong theme and flash. It is
+    # identified by what it does, not by a filename.
+    blocks = re.compile(r"<style[\s\S]*?</style>|<script[\s\S]*?</script>")
+    per_room = {}
+    for n, s in texts.items():
+        per_room[n] = {hashlib.sha1(b.group(0).encode()).hexdigest(): b.group(0)
+                       for b in blocks.finditer(s)
+                       # a <script src> is the LINK, not a copy of the thing
+                       if not re.match(r"<script[^>]*\bsrc=", b.group(0))}
+    common = set.intersection(*(set(v) for v in per_room.values()))
+    first = next(iter(per_room.values()))
+    offenders = []
+    for h in sorted(common):
+        b = first[h]
+        prepaint = ("data-theme" in b and "setAttribute" in b
+                    and len(b) < 600 and "<script>" in b)
+        if not prepaint:
+            offenders.append(f"{len(b)}B: {b[:52].strip()!r}")
+    R.check("11 shared",
+            "no block is inlined identically in all sixteen rooms",
+            not offenders, "; ".join(offenders[:2]) or
+            f"{len(common)} common block(s), all accounted for",
+            population=len(common))
+
+
 def g_layers(pg, base, R):
     """Task 126 Phase B — the single-instance layers, asserted.
 
@@ -1514,6 +1585,7 @@ GROUPS = {
     "furniture": g_furniture,
     "marks": g_lens,
     "grammar": g_grammar,
+    "shared": g_shared,
     "layers": g_layers,
     "centring": g_centring,
     "mobile": g_mobile,

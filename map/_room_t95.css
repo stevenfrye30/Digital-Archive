@@ -1,0 +1,13 @@
+/* Task 95 — ONE room grammar: below the section links everything
+   stands centered — the section title with its count, the note under
+   it, and every family name. Additive and keyed to the shared class
+   names, so each room keeps whatever base rules it already had. */
+.basket h2 { justify-content: center; text-align: center; }
+.deep .basket > h2 .ct, .basket h2 .ct { margin-left: 0; }
+.deep .basket > h2, .basket h2 { justify-content: center; text-align: center; }
+.basket /* the range span carried margin-left:auto, which eats every pixel of
+   free space — so justify-content:center was set and could do nothing.
+   The title, its gloss and its range now centre together as one run. */
+.vagga > h3 .pn { margin-left: 0; }
+.blurb { text-align: center; margin-left: auto; margin-right: auto; }
+.fam > summary { justify-content: center; }

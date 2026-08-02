@@ -1,0 +1,30 @@
+/* Task 97 — ONE dark dress across every religion room.
+   (1) Titles speak the archive's gold, the same the entrance masthead
+       uses. (2) The state palette is tuned warm: two hundred plates on
+       a page must not shout. (3) The Rights lens gets a dark register
+       — its light literals were painting pale chips under light ink,
+       which read at roughly 1.1:1. Meaning is unchanged: green still
+       means public-domain, amber the copyright clock, red no PD. */
+:root[data-theme="dark"] {
+  --g: #8ba86a; --a: #c4a060; --r: #c07a6a;
+  --g-t: #202320; --a-t: #24211a; --r-t: #241d1b; --g-t2: #1e211e;
+}
+/* Task 101 — the overview sheet's own h2 is set at ID specificity,
+   which quietly beat the ruled gold. Restated at the same weight so the
+   rule holds wherever a title appears. */
+[data-theme="dark"] #ov-sheet h2 { color: #c4a060; }
+[data-theme="dark"] .mast h1,
+[data-theme="dark"] .basket h2,
+[data-theme="dark"] .zone-h .zn,
+[data-theme="dark"] .famname,
+[data-theme="dark"] .group h3,
+[data-theme="dark"] .knm { color: #c4a060; }
+[data-theme="dark"] .zn .zn-gloss { color: #918d84; }
+[data-theme="dark"] .tc { border-color: #3a3a3e; }
+[data-theme="dark"] .tc .tl { color: #d4d0c8; }
+[data-theme="dark"] .tc .te { color: #918d84; }
+[data-theme="dark"] .tc:hover { border-color: #c4a060; }
+
+/* the lens also repaints the chip's own text dark for its light
+   register — in the dark room that lands ink-on-ink, so the names
+   are restated here (the lens keeps its meaning, not its palette). */

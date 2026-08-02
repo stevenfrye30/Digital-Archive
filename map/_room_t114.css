@@ -1,0 +1,73 @@
+/* ── Task 114 — DARK MODE HAS A VALUE HIERARCHY ──────────────────────
+   (1) GOLD IS SCARCE. In dark, #c4a060 is reserved for ONE role:
+   titles — zone, section, vagga, family. Everything else that had gone
+   gold (chip names, ranges, counts, glosses, section counts) drops to
+   the reading registers the reading room already uses: a warm off-white
+   for content (#e8e2d6, 12.73:1 on the ground) and a muted grey for
+   apparatus (#a09a90, 5.88:1). Fewer colours, not more.
+   (2) STRUCTURE VIEW CARRIES NO STATE COLOUR. Structure is about SHAPE.
+   Its chips are neutral surfaces with off-white text and an uncoloured
+   dot; held-ness shows as a hairline, never a hue. Rights is the only
+   view that colours (Task 103).
+   (3) THE STATES, RIGHTS ONLY. Gold is spoken for, so the states take
+   hues that do not compete with it — every one is >= dE 29.7 from the
+   title gold and >= 5.5:1 on the ground. The dot carries the state and
+   the fill stays absent (Task 112). */
+
+/* ---- 1. gold to titles only ---- */
+[data-theme="dark"] .tc .tl, [data-theme="dark"] .chip .nm,
+[data-theme="dark"] .su .tl, [data-theme="dark"] .su,
+[data-theme="dark"] .tc { color: #e8e2d6 !important; }
+[data-theme="dark"] .tc .te, [data-theme="dark"] .ed,
+[data-theme="dark"] .sec > h3 .sc, [data-theme="dark"] .vagga > h3 .pn,
+[data-theme="dark"] .famr, [data-theme="dark"] .famct,
+[data-theme="dark"] .h2-meta .ct, [data-theme="dark"] .fam > summary em,
+[data-theme="dark"] .vagga > h3 em, [data-theme="dark"] .pn,
+[data-theme="dark"] .sc, [data-theme="dark"] .blurb,
+[data-theme="dark"] .canon-gap,
+[data-theme="dark"] .su b, [data-theme="dark"] .tc b,
+[data-theme="dark"] .chip b, [data-theme="dark"] nav.toc a b { color: #a09a90 !important; }
+/* the titles keep the gold, and now own it alone */
+[data-theme="dark"] .basket > h2, [data-theme="dark"] .zone-h .zn,
+[data-theme="dark"] .famname, [data-theme="dark"] .sec > h3,
+[data-theme="dark"] .vagga > h3, [data-theme="dark"] .group h3,
+[data-theme="dark"] .mast h1 { color: #c4a060 !important; }
+
+/* ---- 2. Structure view: shape, not state ---- */
+[data-theme="dark"] .tc,
+[data-theme="dark"] .chip,
+[data-theme="dark"] .su {
+  background: transparent !important;
+  border-color: #34343a !important;
+  border-left: 1px solid #34343a !important;
+}
+[data-theme="dark"] .tc.m-held,
+[data-theme="dark"] .tc.m-several,
+[data-theme="dark"] .chip.m-held,
+[data-theme="dark"] .chip.m-several,
+[data-theme="dark"] .su.m-held,
+[data-theme="dark"] .su.m-several {
+  /* held-ness is a weight, not a hue */
+  border-left: 2px solid #55555e !important;
+}
+[data-theme="dark"] .dot,
+[data-theme="dark"] .mdot {
+  background: #55555e !important; border-color: #55555e !important;
+  box-shadow: none !important;
+}
+
+/* ---- 3. the states, in Rights only ---- */
+:root[data-theme="dark"] { --g: #7fae86; --a: #8aa6cc; --r: #cc8478; }
+
+/* Task 119 - the legend wears the chips' own glyphs */
+#m-legend .mdot { width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:6px; line-height:9px; text-align:center; box-shadow:none !important; }
+#m-legend .lg-held { background:#2E7D32 !important; border:none !important; }
+#m-legend .lg-pd { background:transparent !important; border:1.5px solid #2E7D32 !important; }
+#m-legend .lg-nopd { background:#B7791F !important; border:none !important; }
+#m-legend .lg-x { background:none !important; border:none !important; }
+#m-legend .lg-x::before { content:"\2715"; display:block; color:#C0392B; font:700 9px/9px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; text-align:center; }
+:root[data-theme="dark"] #m-legend .lg-held { background:#7fae86 !important; }
+:root[data-theme="dark"] #m-legend .lg-pd { background:transparent !important; border:1.5px solid #7fae86 !important; }
+:root[data-theme="dark"] #m-legend .lg-nopd { background:#d9a05b !important; }
+:root[data-theme="dark"] #m-legend .lg-x { background:none !important; }
+:root[data-theme="dark"] #m-legend .lg-x::before { color:#d97b6c; }

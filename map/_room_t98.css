@@ -1,0 +1,54 @@
+/* Task 98 — the room's own corrections.
+   (a) The section title stands ALONE on its centered line; its counts
+       drop beneath it, quieter — the Hindu ring pattern, now the rule.
+   (b) The summary bars retire: the held/PD/no-PD/restricted bar was a
+       second telling of what the chips themselves already say.
+   (c) The disclosure arrow never centers — it holds the far left,
+       where the eye goes to open and close.
+   (d) The Bible door wears the plate dress, one size up. */
+/* the title line stops being a flex row — as a block it simply
+   centers, and the meta line centers under it (stated at the Task 95
+   specificity so the .deep chain does not reclaim them). */
+.deep .basket > h2, .basket h2 { display: block; text-align: center; }
+.h2-meta { display: block; font-size: 0.62em; font-weight: 400; }
+.deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
+/* Task 126 §1.6 — the count must not abut its gloss. In nine rooms
+   the zone header sits inside .basket > h2, so `.basket h2 .ct
+   {margin-left:0}` (0,2,1) beat `.h2-meta .ct` (0,2,0) and the count
+   rendered hard against the gloss: "the Forerunner5 texts". Specificity,
+   not order (doctrine 8.3) — the separating rule now carries the
+   .basket path too. */
+.deep .basket > h2 .h2-meta .ct, .basket h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
+
+.fam > summary .zb,
+.keyrow .mini,
+.zone-h .mini, .zone-h .zb, .mini, .zb { display: none !important; }
+
+.deep .fam > summary, .fam > summary { position: relative; padding-left: 1.9rem; }
+.deep details.fam > summary::before, .fam > summary::before {
+  position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%); }
+.deep details.fam[open] > summary::before, .fam[open] > summary::before {
+  transform: translateY(-50%) rotate(90deg); }
+
+a.flagship {
+  font-size: 1.15em; padding: 12px 32px; border-radius: 7px;
+  background: rgba(120, 90, 50, 0.05);
+  border: 1px solid rgba(120, 90, 50, 0.25); color: #7a5c3a; }
+a.flagship:hover {
+  background: rgba(120, 90, 50, 0.12); border-color: rgba(120, 90, 50, 0.5);
+  color: #7a5c3a; }
+
+/* (e) One control opens or closes every section, held at the far left
+   of the section-links line. */
+.toc-all {
+  margin-right: auto; font-family: inherit; font-size: 0.72rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink-faint); background: none;
+  border: 1px solid var(--line2); border-radius: 99px;
+  padding: 0.25rem 0.7rem; cursor: pointer; white-space: nowrap; }
+.toc-all:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
+nav.toc.toc-bare { justify-content: flex-start; }
+[data-theme="dark"] a.flagship {
+  background: rgba(255, 255, 255, 0.03); border-color: #3a3a3e; color: #c4a060; }
+[data-theme="dark"] a.flagship:hover {
+  background: rgba(255, 255, 255, 0.07); border-color: #c4a060; color: #c4a060; }
