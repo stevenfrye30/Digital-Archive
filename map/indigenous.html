@@ -236,17 +236,17 @@ section.view { display: block !important; }
 <body data-map="indigenous">
 <div id="arch-topbar"><a class="tb-arrow" href="../hall/" title="The Religion Hall">&larr;</a><nav id="arch-topnav"><a href="../">Digital Archive</a><button id="arch-fav" type="button" class="tb-arrow" data-fav-shelf aria-label="Favorites">☆</button><button id="arch-dark" type="button" class="tb-arrow" aria-label="Switch theme">☾</button></nav></div>
 <div id="m-legend" aria-label="Node states">
-<span style="color:#7a5c3a" title="held &mdash; one or several translations"><span class="mdot" style="background:#7a5c3a"></span>Held</span>
-<span style="color:#a8865a" title="public domain &mdash; not yet held"><span class="mdot" style="border:1.5px solid #a8865a"></span>PD</span>
-<span style="color:#a09080" title="no public-domain translation"><span class="mdot" style="background:#ddd6c8"></span>No PD</span>
-<span style="color:#a09080" title="held &mdash; restricted"><span class="mdot" style="border:1.5px dashed #a09080"></span>Restricted</span>
+<span title="public domain and held in this archive"><span class="mdot lg-held"></span>Held</span>
+<span title="a public-domain English translation exists — not held here yet"><span class="mdot lg-pd"></span>PD</span>
+<span title="no public-domain English translation exists"><span class="mdot lg-nopd"></span>No PD</span>
+<span title="held under restriction — not publicly readable"><span class="mdot lg-x"></span>Restricted</span>
 </div>
 <button class="toggle" id="themeBtn" aria-label="Toggle light or dark theme">◐ theme</button>
 <div class="page">
   <header class="mast">
     <div class="sym" aria-hidden="true">🪘</div>
     <h1>The Map of Indigenous &amp; African Texts</h1>
-    <p>The sacred oral traditions of <span class="em">Africa, the diaspora, Oceania, and Native America</span> — mostly unwritten, living faiths whose “texts” are colonial-era transcriptions of oral practice. Coloured by the copyright of the published transcription — with the traditions that should <em>not</em> be mapped shown as such.</p>
+    <p>The sacred oral traditions of <span class="em">Africa, the diaspora, Oceania, and Native America</span> — mostly unwritten, living faiths whose “texts” are colonial-era transcriptions of oral practice. The traditions that should not be mapped are shown as such.</p>
     <div class="statband" id="statband"><div class="stat"><b>22</b><span>texts</span></div><div class="stat"><b>11</b><span>green</span></div><div class="stat"><b>5</b><span>amber</span></div><div class="stat"><b>2</b><span>red</span></div><div class="stat"><b>4</b><span>not mapped</span></div></div>
     <p class="greenline" id="greenline"><b>11 of 22 green</b> — the green is the pre-1931 transcribers of living oral tradition — Callaway’s Zulu, the Bleek–Lloyd |Xam archive, Rattray’s Ashanti, Queen Liliʻuokalani’s Kumulipo, and the young Rastafari scriptures — while the deepest sacred material stays grey, unmapped by design.</p>
   </header>
@@ -385,27 +385,95 @@ section.view { display: block !important; }
 <!-- map-lens:start (generated — edit 05_scripts/map_lens_block.py) -->
 <style>
 /* ── Task 35: the Rights & provenance lens ── */
-#lens-toggle { display:inline-flex; gap:0; margin-right:18px; border:1px solid var(--line2); border-radius:999px; overflow:hidden; }
-#lens-toggle button { font:400 10px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; letter-spacing:.12em; text-transform:uppercase; padding:6px 12px; color:var(--ink-faint); background:none; border:none; cursor:pointer; }
-#lens-toggle button[aria-pressed="true"] { background:var(--accent, #7a5c3a); color:var(--surface, #fff); }
-body[data-lens="rights"] .chip, body[data-lens="rights"] .su, body[data-lens="rights"] .tc,
-body[data-lens="rights"] section[id] h2, body[data-lens="rights"] .zone-h,
-body[data-lens="rights"] .group h3 { cursor:help; }
-/* 36a — the lens switch must be VISIBLE: a state banner + a per-chip
-   mark, so rights mode can never read as inert. */
-#lens-banner { display:none; font:italic 400 13px/1.6 Georgia,serif; color:var(--ink-soft,#5a5142);
-  background:var(--panel,#eeebe5); border-bottom:1px solid var(--line2,#d8d3cc);
-  padding:8px 20px; }
-body[data-lens="rights"] #lens-banner { display:block; }
+/* ── Task 119: the two views become ONE ──
+   Structure and Rights were never two questions a reader holds
+   separately. The toggle, its banner, its stored state and its
+   ?lens= URL are retired; the rights fact is now ONE MARK at the far
+   left of every chip, in four states, visible at all times.
+
+   What this rests on, found by probing the RENDERED rooms rather than
+   the markup: the mark did not have to be invented. The base view's
+   runtime .mdot was ALREADY a four-state element driven by the
+   binder's m-* classes, and #m-legend already read Held · PD · No PD
+   · Restricted (Task 49). So this is a re-glyph and a re-colour of a
+   derivation that already existed — not a new one. 1,149 of the 1,179
+   chip boxes a reader can see already carry it. */
+section[id] h2, .zone-h { cursor:help; }
 /* Task 105 — the rights marker leaves the chip name. It was appended
    only in Rights view, and because the grid fixes chip width the extra
    glyph could only spend itself on HEIGHT: in a room whose names run
    long ("The Huarochirí Manuscript (Andean myths)") it rewrapped them
    onto a second line and every row below moved. That, and nothing else,
    was ancient's remaining 62-chip drift. The affordance lives on the
-   state dot now (Task 103), which is present in BOTH views — so the
-   marker is not lost, it stopped being conditional. */
+   state dot now (Task 103) — so the marker is not lost, it stopped
+   being conditional. */
 .tc .mdot, .su .mdot, .chip .mdot { cursor: help; }
+/* ── THE FOUR MARKS — one rule set, one offset, all 16 rooms ──
+   ● filled green  public domain AND held here   (m-held · m-several)
+   ○ hollow green  public domain, not held       (m-possible)
+   ● filled orange no public-domain translation  (m-none)
+   ✕ red           restricted                    (m-restricted)
+   The box dress is NOT normalised in markup (Task 119 item 5): one
+   CSS rule set reaches all six box forms — span.tc, a.tc, span.chip,
+   div.chip, span.su, span.big.chip — and a reversible CSS change beats
+   an irreversible structural one. */
+.tc .mdot, .su .mdot, .chip .mdot {
+  width:9px; height:9px; border-radius:50%; flex-shrink:0;
+  margin:0 6px 0 0; box-sizing:border-box;
+  background:transparent; border:none; box-shadow:none;
+  display:inline-block; line-height:9px; text-align:center; }
+.m-held .mdot, .m-several .mdot {
+  background:#2E7D32 !important; border:none !important; box-shadow:none !important; }
+.m-possible .mdot {
+  background:transparent !important; border:1.5px solid #2E7D32 !important; box-shadow:none !important; }
+.m-none .mdot {
+  background:#B7791F !important; border:none !important; box-shadow:none !important; }
+/* m-unmapped has NO ruled mark and is deliberately not given one. Its
+   four chips are indigenous' Haitian Vodou, Lucumí/Candomblé, the
+   Australian Dreaming and the Walam Olum — living or oral traditions
+   the room declines to map, which is the ethical position Task 119d
+   preserved, not "no public-domain translation exists". Painting them
+   orange would state a rights fact the archive has never claimed, so
+   they keep a neutral hollow mark until the design side rules. */
+.m-unmapped .mdot {
+  background:transparent !important; border:1.5px solid #b3ab9e !important;
+  box-shadow:none !important; }
+/* The ✕ is INLINE CONTENT of the mark, never an absolutely-positioned
+   overlay. The first attempt used `::before{position:absolute;inset:0}`
+   and it cost three rooms their "Collapse all" button: Task 84 sets
+   `.tc .mdot,.su .mdot,.chip .mdot{position:static}` in a style block
+   that sits AFTER this one — deliberately, so the dot rides inline with
+   the centred name — so at equal specificity the LATER rule won, my
+   `position:relative` never applied, and the ::before anchored to a
+   distant ancestor instead. inset:0 against that ancestor made each
+   restricted mark a page-sized invisible sheet that swallowed clicks.
+   Nothing looked wrong; only bahai, gnostic and hindu happened to have
+   a restricted chip whose sheet lay over the control, which is why the
+   battery caught three rooms and not five. Inline content needs no
+   positioning and cannot overlay anything. */
+.m-restricted .mdot {
+  background:none !important; border:none !important; box-shadow:none !important;
+  width:9px; height:9px; line-height:9px; text-align:center; }
+.m-restricted .mdot::before {
+  content:"\2715"; display:block; color:#C0392B;
+  font:700 9px/9px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+/* the marks in dark — same four states, re-valued for the neutral
+   ground (#1a1a1e / #222226), never re-ordered */
+:root[data-theme="dark"] .m-held .mdot, :root[data-theme="dark"] .m-several .mdot {
+  background:#7fae86 !important; }
+:root[data-theme="dark"] .m-possible .mdot {
+  background:transparent !important; border:1.5px solid #7fae86 !important; }
+:root[data-theme="dark"] .m-none .mdot {
+  background:#d9a05b !important; }
+:root[data-theme="dark"] .m-unmapped .mdot {
+  background:transparent !important; border:1.5px solid #6f6a62 !important; }
+/* the restricted mark is a GLYPH, not a disc: the rooms' own dark rule
+   paints every .mdot #55555e with !important, and at equal specificity
+   it was filling the ✕'s box behind it. Stated at :root weight so the
+   box stays empty and only the glyph reads. */
+:root[data-theme="dark"] .m-restricted .mdot {
+  background:none !important; border:none !important; box-shadow:none !important; }
+:root[data-theme="dark"] .m-restricted .mdot::before { color:#d97b6c; }
 #rl-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.35); z-index:60; }
 #rl-panel { display:none; position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); overflow:auto; z-index:61; background:var(--surface,#fffdf7); border-left:1px solid var(--line2); box-shadow:-6px 0 24px rgba(0,0,0,.18); padding:22px 24px 34px; }
 body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
@@ -426,28 +494,17 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
 .rl-ed .rl-em { display:block; font-size:11.5px; color:var(--ink-faint); }
 .rl-relh { font:italic 400 12px/1.4 Georgia,serif; color:var(--ink-faint); margin:10px 0 2px; }
 .rl-none { font:italic 400 12.5px/1.55 Georgia,serif; color:var(--ink-faint); }
-/* ── Task 38: the Rights lens LOOKS like rights ──
-   The chips' native g/a/r classes are buried under the binder's m-*
-   holdings rules (!important); rights mode un-buries them in the
-   specimen palette. The g/a/r instruments (ported legend strip,
-   canon-share triads, family bars) ride ONLY the rights lens; the
-   holdings legend and zone bars ride ONLY the base. */
-body[data-lens="rights"] .chip.g, body[data-lens="rights"] .su.g, body[data-lens="rights"] .tc.g {
-  background:#e5efe1 !important; border-color:#cfe0c8 !important; border-left:3px solid #2E7D32 !important; opacity:1; }
-body[data-lens="rights"] .chip.a, body[data-lens="rights"] .su.a, body[data-lens="rights"] .tc.a {
-  background:#f2e8d3 !important; border-color:#e4d4b4 !important; border-left:3px solid #B7791F !important; opacity:1; }
-body[data-lens="rights"] .chip.r, body[data-lens="rights"] .su.r, body[data-lens="rights"] .tc.r {
-  background:#f5ddd8 !important; border-color:#e6c4bc !important; border-left:3px solid #C0392B !important; opacity:1; }
-body[data-lens="rights"] .chip.x, body[data-lens="rights"] .su.x, body[data-lens="rights"] .tc.x {
-  background:none !important; border-left:3px solid #ddd6c8 !important; opacity:.8; }
-body[data-lens="rights"] .chip .nm, body[data-lens="rights"] .su, body[data-lens="rights"] .tc .tl {
-  color:#241f18 !important; }
-body[data-lens="rights"] .chip.g .mdot { background:#2E7D32 !important; border:none !important; box-shadow:none !important; }
-body[data-lens="rights"] .chip.a .mdot { background:#B7791F !important; border:none !important; box-shadow:none !important; }
-body[data-lens="rights"] .chip.r .mdot { background:#C0392B !important; border:none !important; box-shadow:none !important; }
-body[data-lens="rights"] .zb { display:none !important; }
-/* legend swap: the ported g/a/r legend is the rights legend; the
-   binder's holdings legend is the base's */
+/* Task 38's rights-only chip dress RETIRES with the lens. It re-coloured
+   the whole box from the static g/a/r classes; the merged page carries
+   the rights fact in the mark instead, and the box stays one neutral
+   shape in every room (Task 114 item 2: held-ness is a weight, not a
+   hue). The g/a/r classes stay in the markup, inert — the ruling is
+   explicit that markup is not normalised. `.zb` and `.group h3` are
+   gone entirely rather than hidden: the rendered sweep found ZERO
+   occurrences of either in any of the 16 rooms, so they were dead
+   rules in the shared source, not furniture. */
+/* the ported g/a/r legend strip retires for good — #m-legend below is
+   the one permanent legend, and it already speaks the four marks */
 .legend { display:none !important; }
 /* Task 59 — search deep-link emphasis (one quiet pulse) */
 .chip-sought { animation: chip-sought 3s ease-out; }
@@ -456,26 +513,32 @@ body[data-lens="rights"] .zb { display:none !important; }
   70%  { box-shadow: 0 0 0 3px rgba(122,92,58,.4); }
   100% { box-shadow: 0 0 0 0 rgba(122,92,58,0); }
 }
-/* Task 49a — both legends center: the rights G/A/R legend… */
-body[data-lens="rights"] .legend { display:flex !important; justify-content:center; flex-wrap:wrap; }
-/* …and the base holdings legend to match */
+/* Task 119 item 3 — THE LEGEND IS PERMANENT. #m-legend is the one
+   legend now: four entries, held · PD · no PD · restricted, in that
+   order, wearing the same glyphs the chips wear. It is describing
+   marks a reader can see at all times rather than a mode they enter. */
 #m-legend { justify-content:center; }
-body[data-lens="rights"] #m-legend { display:none !important; }
-/* 46 — the stat tiles and their narrative line are g/a/r figures:
-   rights lens only, original tile dress (the Task 38 rule) */
-.statband, .greenline { display:none !important; }
-body[data-lens="rights"] .statband { display:flex !important; }
-body[data-lens="rights"] .greenline { display:block !important; }
+/* Task 119 item 4 — the furniture that STAYS, always visible, each
+   because it states a fact the four marks do not:
+     .statband  — the TOTAL ("221 texts · 213 green · 8 amber · 0 red").
+                  The marks give one chip's state; they never aggregate,
+                  and no reader counts 221 chips by eye.
+     .greenline — INTERPRETATION: which families are the exceptions and
+                  why ("the only amber is the Nag Hammadi library").  */
+.statband { display:flex !important; }
+.greenline { display:block !important; }
 /* 47d — one toggle: the ported frames' own #themeBtn duplicates the
    topbar's #arch-dark (stacked over it on the split pages) — the
    topbar toggle is the one switch */
 #themeBtn { display:none !important; }
-/* 47b — third sweep: colour-narrative callouts (.insight) and the
-   hindu topline bar (+its band shell) are g/a/r figures — rights only */
-.insight, #totalbar, .band { display:none !important; }
-body[data-lens="rights"] .insight { display:block !important; }
-body[data-lens="rights"] #totalbar { display:block !important; }
-body[data-lens="rights"] .band { display:block !important; }
+/*   .insight  — a claim, not a restatement ("the public-domain frontier
+                  follows the calendar of scholarship, not the age of
+                  the texts").
+     #totalbar/.band — hindu's aggregate (162 PD / 148 ©), the .statband
+                  fact in the room that has no statband.              */
+.insight { display:block !important; }
+#totalbar { display:block !important; }
+.band { display:block !important; }
 /* 47c — the mandala navigates: zone labels, hover sync */
 .mz-lbl { font: 700 9px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   fill: #5a5048; stroke: rgba(250,248,245,.85); stroke-width: 2.5px;
@@ -483,22 +546,30 @@ body[data-lens="rights"] .band { display:block !important; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
 .keyrow.mz-hl { background: rgba(122,92,58,.12); }
-/* canon-share triads + family bars are g/a/r figures — rights only */
-#gradient, .fambar { display:none !important; }
-body[data-lens="rights"] #gradient { display:block !important; }
-body[data-lens="rights"] .fambar { display:inline-flex !important; }
-/* 38b — the zone-key cards speak holdings in base: their g/a/r
-   share bars and PD counts ride the rights lens only */
+/* .fambar STAYS (Task 119b): it does not state a new fact — it
+   aggregates the marks one level up — but it is the only way to read a
+   FAMILY's shape without counting chips, and buddhist's 48 families are
+   exactly where that matters. #gradient (buddhist) and .keyrow .mini
+   (hindu) RETIRE: single-room devices that restate the marks, and
+   retiring them closes two of hindu's three Task 118 outlier rows. */
+.fambar { display:inline-flex !important; }
+#gradient { display:none !important; }
 .keyrow .mini { display:none !important; }
-body[data-lens="rights"] .keyrow .mini { display:inline-flex !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
    frames' stacked-view rule by specificity */
 section.view[hidden] { display:none !important; }
 [data-view][aria-pressed="true"] { background:var(--accent,#7a5c3a); color:var(--surface,#fff); }
-/* per-mode sentence spans (footer, mast ledes, key counts) */
-.r-only { display:none; }
-body[data-lens="rights"] .r-only { display:inline; }
-body[data-lens="rights"] .b-only { display:none; }
+/* 41a — the read-chooser is an anchored popover: fixed, above the
+   page, never reflowing the grid; mobile gets the bottom-sheet dress */
+.m-chooser-pop { position:fixed; z-index:55; max-width:min(30em,92vw); max-height:60vh;
+  overflow:auto; margin:0; box-shadow:0 8px 28px rgba(0,0,0,.22); border-radius:8px;
+  background:var(--surface,#f6f2ea); outline:none; }
+/* the Task 38b per-mode sentence spans retire with the lens: with one
+   view there is no second phrasing to swap to. Any span the rooms'
+   own scripts may still inject is neutralised here so a stale copy
+   can never print a mode-specific clause on a page with no modes. */
+.r-only { display:none !important; }
+.b-only { display:inline; }
 /* ── Task 37: the content overlays (Held editions · Reception) ── */
 #ov-bg { display:none; position:fixed; inset:0; background:rgba(20,18,14,.4); z-index:70; }
 #ov-sheet { display:none; position:fixed; inset:5vh 6vw; overflow:auto; z-index:71;
@@ -542,8 +613,10 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   #rl-panel { top:auto; left:0; right:0; bottom:0; width:auto; max-height:75vh; border-left:none; border-top:1px solid var(--line2); border-radius:14px 14px 0 0; box-shadow:0 -6px 24px rgba(0,0,0,.2); }
   #arch-topbar { flex-wrap:wrap; gap:8px 12px; }
   #arch-topnav { flex-wrap:wrap; gap:10px 14px; }
-  #lens-toggle { margin-right:8px; }
   #ov-sheet { inset:0; border-radius:0; padding:18px 16px 40px; }
+  .m-chooser-pop { left:0 !important; right:0; bottom:0; top:auto !important;
+    max-width:none; width:auto; border-radius:14px 14px 0 0;
+    box-shadow:0 -6px 24px rgba(0,0,0,.25); }
   #ov-sheet .rl-ed { width:100%; margin:4px 0; }
 }
 </style>
@@ -568,15 +641,12 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     var lb = String(r.label).toLowerCase().replace(/\s+/g, ' ').trim();
     return lb === ty ? '' : ' \u2014 ' + r.label;
   }
-  var LKEY = 'da-map-lens';
-  var LENSES = ['structure', 'rights', 'held'];
-  function normLens(v) {
-    if (v === 'holdings') return 'structure';   // pre-Task-37 stored value
-    if (v === 'reception') return 'held';       // Task 39: one held surface
-    return LENSES.indexOf(v) >= 0 ? v : 'structure';
-  }
+  // Task 119 — the lens is retired. `da-map-lens` is no longer read or
+  // written, and ?lens= is no longer honoured: a stored 'rights' would
+  // otherwise put returning readers into a mode that no longer exists.
+  // The one stale key is cleared so nothing outlives the toggle.
+  try { localStorage.removeItem('da-map-lens'); } catch (e) {}
   var params = new URLSearchParams(location.search);
-  var lens = normLens(params.get('lens') || localStorage.getItem(LKEY) || 'structure');
   // Task 59 — search deep-link: ?chip=<norm> scrolls to the chip and
   // flashes it once (no lens change; the entrance is the one finder).
   var chipSought = params.get('chip');
@@ -625,45 +695,17 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // Task 37: the reception section (Task 32's inline layer) becomes an
   // OVERLAY — find it now; when absent the Reception toggle is omitted.
   var recSec = document.querySelector('section[id$="-reception"]');
-  var nav = document.getElementById('arch-topnav');
-  var tg = document.createElement('span');
-  tg.id = 'lens-toggle';
-  tg.innerHTML = '<button type="button" data-lens="structure">Structure</button>' +
-                 '<button type="button" data-lens="rights">Rights</button>';
-  if (nav) nav.insertBefore(tg, nav.firstChild);
-  // 36a — the visible lens state: a banner right under the topbar
-  var banner = document.createElement('div');
-  banner.id = 'lens-banner';
-  banner.innerHTML = 'Rights &amp; provenance lens — click any text or section ' +
-                     'heading for its rights class, sources, and what the archive holds. ' +
-                     'Reading routes are one toggle away.';
-  var topbar = document.getElementById('arch-topbar');
-  if (topbar && topbar.parentNode)
-    topbar.parentNode.insertBefore(banner, topbar.nextSibling);
-  function setLens(v, writeUrl) {
-    lens = v;
-    document.body.setAttribute('data-lens', v);
-    try { localStorage.setItem(LKEY, v); } catch (e) {}
-    var rowV = (v === 'held') ? 'structure' : v;   // 41b: the sheet rides over the base
-    tg.querySelectorAll('button').forEach(function (b) {
-      b.setAttribute('aria-pressed', b.getAttribute('data-lens') === rowV ? 'true' : 'false');
-    });
-    if (writeUrl) {
-      var u = new URL(location);
-      if (v !== 'structure') u.searchParams.set('lens', v);
-      else u.searchParams.delete('lens');
-      history.replaceState(null, '', u);
-    }
-    if (v !== 'rights') close();
-    // the two content overlays — one at a time; structure/rights close both
-    if (v === 'held') { openOverlay(); }
-    else { closeOverlay(); }
-    if (typeof updateMandala === 'function') updateMandala();
-  }
-  tg.addEventListener('click', function (e) {
-    var b = e.target.closest('button');
-    if (b) setLens(b.getAttribute('data-lens'), true);
-  });
+  // Task 119 — the STRUCTURE / RIGHTS toggle and its banner are gone.
+  // What survives is the HELD-EDITIONS SHEET, which the retired toggle
+  // happened to carry as a third 'held' lens value: setLens('held')
+  // was what opened it. That was the one real trap in this merge —
+  // deleting the lens naively would have taken the sheet with it — so
+  // the sheet now owns its own open/close and no longer pretends to be
+  // a view. The sheet is a surface over the page, not a mode of it.
+  var sheetOpen = false;
+  function showSheet() { sheetOpen = true; close(); openOverlay(); }
+  function hideSheet() { sheetOpen = false; closeOverlay(); }
+  function toggleSheet() { if (sheetOpen) hideSheet(); else showSheet(); }
 
   // ── Task 37: the two content overlays (Held editions · Reception) ──
   var ovbg = document.createElement('div'); ovbg.id = 'ov-bg';
@@ -753,8 +795,8 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   function closeOverlay() {
     document.body.classList.remove('ov-open');
   }
-  ovbg.addEventListener('click', function () { setLens('structure', true); });
-  sheet.querySelector('.ov-close').addEventListener('click', function () { setLens('structure', true); });
+  ovbg.addEventListener('click', function () { hideSheet(); });
+  sheet.querySelector('.ov-close').addEventListener('click', function () { hideSheet(); });
   // the mast button — the room's "Browse the N held editions" opener,
   // carried over; same overlay, two openers
   var mast = document.querySelector('.mast');
@@ -763,7 +805,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     hb.type = 'button'; hb.id = 'held-btn';
     hb.textContent = 'Browse the held editions →';
     hb.addEventListener('click', function () {
-      setLens(lens === 'held' ? 'structure' : 'held', true);
+      toggleSheet();
     });
     mast.appendChild(hb);
     _ready.then(function () { buildHeld(); });
@@ -804,7 +846,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
     }
     var zones = svg.querySelectorAll('g.zone');
     var secs = document.querySelectorAll('section[id^="zone-"]');
-    if (lens === 'rights' || !B) {
+    if (!B) {   // Task 119: the bindings derivation is the only one now
       svg.setAttribute('aria-label', svg.dataset.rAria);
       svg.querySelectorAll('path.seg').forEach(function (p) { p.setAttribute('fill', p.dataset.rFill); });
       zones.forEach(function (z) { z.setAttribute('aria-label', z.dataset.rZaria); });
@@ -848,67 +890,22 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
         ' possible, ' + m.none + ' none' + (m.restricted ? ', ' + m.restricted + ' restricted' : ''));
     });
   }
-  // the footer's colour sentence is true only under the rights lens
-  var foot = document.getElementById('foot');
-  var FOOTSENT = 'Colour = best English translation available on a worldwide public-domain (life+70) bar.';
-  if (foot && foot.innerHTML.indexOf(FOOTSENT) >= 0) {
-    foot.innerHTML = foot.innerHTML.replace(FOOTSENT,
-      '<span class="b-only">Colour = what the archive holds; the Rights lens re-colours by public-domain reality.</span>' +
-      '<span class="r-only">' + FOOTSENT + '</span>');
-  }
-  // 38b — stale mast ledes: the PD-colour sentence is true only under
-  // the rights lens; base states the holdings meaning. Three phrasings
-  // live across the 13 pages; the scoper catches the sentence shape.
-  var LEDE_RE = /[Cc]olou?r(ed|-coded) by (whether a|the copyright of)[^.]*[.]/;
-  var BASE_LEDE = 'coloured by what the archive holds (the Rights lens shows public-domain reality).';
-  document.querySelectorAll('.mast p, header p').forEach(function (el) {
-    if (el.querySelector('.r-only')) return;
-    // the sentence lives in ONE text node — split it there so entity
-    // forms in surrounding markup can never defeat the match
-    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-    var node;
-    while ((node = walker.nextNode())) {
-      var m2 = node.nodeValue.match(LEDE_RE);
-      if (!m2) continue;
-      var after = node.splitText(m2.index);
-      after.splitText(m2[0].length);
-      var wrap = document.createElement('span');
-      var baseTwin = m2[0].charAt(0) === 'C'
-        ? BASE_LEDE.charAt(0).toUpperCase() + BASE_LEDE.slice(1) : BASE_LEDE;
-      wrap.innerHTML = '<span class="b-only">' + baseTwin + '</span>' +
-                       '<span class="r-only">' + esc(m2[0]) + '</span>';
-      after.parentNode.replaceChild(wrap, after);
-      break;
-    }
-    // fallback: the sentence runs through inline markup to the end of
-    // the paragraph (indigenous: "…that should <em>not</em> be mapped
-    // shown as such.") — wrap from the match to the paragraph's end
-    var walker2 = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-    if (el.querySelector('.r-only')) return;
-    while ((node = walker2.nextNode())) {
-      var m3 = node.nodeValue.match(/[Cc]olou?r(ed|-coded) by (whether a|the copyright of)/);
-      if (!m3) continue;
-      var tail = node.splitText(m3.index);
-      var range = document.createRange();
-      range.setStartBefore(tail);
-      range.setEnd(el, el.childNodes.length);
-      var frag = range.extractContents();
-      var rspan = document.createElement('span'); rspan.className = 'r-only'; rspan.appendChild(frag);
-      var bspan = document.createElement('span'); bspan.className = 'b-only';
-      bspan.textContent = m3[0].charAt(0) === 'C'
-        ? BASE_LEDE.charAt(0).toUpperCase() + BASE_LEDE.slice(1) : BASE_LEDE;
-      el.appendChild(bspan); el.appendChild(rspan);
-      break;
-    }
-  });
-  // 38b — the zone-key "· N PD" counts are a rights datum
-  document.querySelectorAll('.keyrow .ksub').forEach(function (s) {
-    if (s.querySelector('.r-only')) return;
-    var parts = (s.textContent || '').split(' · ');
-    if (parts.length === 2 && parts[1].slice(-3) === ' PD') {
-      s.innerHTML = esc(parts[0]) + '<span class="r-only"> · ' + esc(parts[1]) + '</span>';
-    }
-  });
+  // Task 119 — THE TASK 38b LEDE-SWAP MACHINERY IS RETIRED. It existed
+  // to say one thing in the base view and another in Rights: it split
+  // the mast lede at its colour sentence, wrapped each phrasing in
+  // .b-only / .r-only, and did the same for the footer sentence and the
+  // zone-key "· N PD" counts. With one view there is no second phrasing
+  // to swap to, so the machinery goes and the twenty colour sentences
+  // are retired from the rooms' own markup rather than re-scoped here.
+  //
+  // Two consequences worth stating, because neither is a deletion:
+  //  · the zone-key "· N PD" count stops being conditional and is
+  //    simply visible. It is an aggregate per zone — the .statband
+  //    argument exactly — so it survives while the .keyrow .mini BARS
+  //    (which restate the marks) retire.
+  //  · indigenous' clause "with the traditions that should not be
+  //    mapped shown as such" is NOT a colour gloss but the room's
+  //    ethical position, and is kept by the sentence retirement.
 
   // 40a — the sub-tradition pills were NEVER wired when the frames
   // were ported (the artifact's tab JS was not captured; the views
@@ -990,7 +987,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   }
   _ready.then(function () { updateMandala(); mandalaNav(); });
 
-  setLens(lens, false);
+  _ready.then(function () { if (typeof updateMandala === 'function') updateMandala(); });
 
   // the panel
   var bg = document.createElement('div'); bg.id = 'rl-bg';
@@ -1006,7 +1003,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   bg.addEventListener('click', close);
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
-    if (document.body.classList.contains('ov-open')) setLens('structure', true);
+    if (document.body.classList.contains('ov-open')) hideSheet();
     else close();
   });
   function esc(s) {
@@ -1217,38 +1214,9 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 [data-theme="dark"] .tc .te { color: #918d84; }
 [data-theme="dark"] .tc:hover { border-color: #c4a060; }
 
-[data-theme="dark"] body[data-lens="rights"] .chip.g,
-[data-theme="dark"] body[data-lens="rights"] .su.g,
-[data-theme="dark"] body[data-lens="rights"] .tc.g {
-  background: transparent !important; border-color: #33402f !important;
-  border-left: 3px solid #87a67a !important; color: #d4d0c8 !important; }
-[data-theme="dark"] body[data-lens="rights"] .chip.a,
-[data-theme="dark"] body[data-lens="rights"] .su.a,
-[data-theme="dark"] body[data-lens="rights"] .tc.a {
-  background: transparent !important; border-color: #453c28 !important;
-  border-left: 3px solid #b8974f !important; color: #d4d0c8 !important; }
-[data-theme="dark"] body[data-lens="rights"] .chip.r,
-[data-theme="dark"] body[data-lens="rights"] .su.r,
-[data-theme="dark"] body[data-lens="rights"] .tc.r {
-  background: transparent !important; border-color: #47332e !important;
-  border-left: 3px solid #bd8279 !important; color: #d4d0c8 !important; }
-[data-theme="dark"] body[data-lens="rights"] .chip.x,
-[data-theme="dark"] body[data-lens="rights"] .su.x,
-[data-theme="dark"] body[data-lens="rights"] .tc.x {
-  background: none !important; border-left: 3px solid #4a4a4e !important;
-  color: #918d84 !important; }
 /* the lens also repaints the chip's own text dark for its light
    register — in the dark room that lands ink-on-ink, so the names
    are restated here (the lens keeps its meaning, not its palette). */
-[data-theme="dark"] body[data-lens="rights"] .chip .nm,
-[data-theme="dark"] body[data-lens="rights"] .chip .tl,
-[data-theme="dark"] body[data-lens="rights"] .su,
-[data-theme="dark"] body[data-lens="rights"] .su .nm,
-[data-theme="dark"] body[data-lens="rights"] .tc .tl,
-[data-theme="dark"] body[data-lens="rights"] .tc .nm { color: #d4d0c8 !important; }
-[data-theme="dark"] body[data-lens="rights"] .tc .te,
-[data-theme="dark"] body[data-lens="rights"] .chip .te { color: #a8a49c !important; }
-[data-theme="dark"] body[data-lens="rights"] .tc.x .tl { color: #918d84 !important; }
 </style>
 <style>
 /* Task 98 — the room's own corrections.
@@ -1268,8 +1236,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
 .fam > summary .zb, .fam > summary .fambar,
-body[data-lens="rights"] .fam > summary .fambar,
-.keyrow .mini, body[data-lens="rights"] .keyrow .mini,
+.keyrow .mini,
 .zone-h .mini, .zone-h .zb, .mini, .zb { display: none !important; }
 
 .deep .fam > summary, .fam > summary { position: relative; padding-left: 1.9rem; }
@@ -1509,62 +1476,43 @@ nav.toc:not(.toc-bare) > .toc-all {
 [data-theme="dark"] .mast h1 { color: #c4a060 !important; }
 
 /* ---- 2. Structure view: shape, not state ---- */
-[data-theme="dark"] body:not([data-lens="rights"]) .tc,
-[data-theme="dark"] body:not([data-lens="rights"]) .chip,
-[data-theme="dark"] body:not([data-lens="rights"]) .su {
+[data-theme="dark"] .tc,
+[data-theme="dark"] .chip,
+[data-theme="dark"] .su {
   background: transparent !important;
   border-color: #34343a !important;
   border-left: 1px solid #34343a !important;
 }
-[data-theme="dark"] body:not([data-lens="rights"]) .tc.m-held,
-[data-theme="dark"] body:not([data-lens="rights"]) .tc.m-several,
-[data-theme="dark"] body:not([data-lens="rights"]) .chip.m-held,
-[data-theme="dark"] body:not([data-lens="rights"]) .chip.m-several,
-[data-theme="dark"] body:not([data-lens="rights"]) .su.m-held,
-[data-theme="dark"] body:not([data-lens="rights"]) .su.m-several {
+[data-theme="dark"] .tc.m-held,
+[data-theme="dark"] .tc.m-several,
+[data-theme="dark"] .chip.m-held,
+[data-theme="dark"] .chip.m-several,
+[data-theme="dark"] .su.m-held,
+[data-theme="dark"] .su.m-several {
   /* held-ness is a weight, not a hue */
   border-left: 2px solid #55555e !important;
 }
-[data-theme="dark"] body:not([data-lens="rights"]) .dot,
-[data-theme="dark"] body:not([data-lens="rights"]) .mdot {
+[data-theme="dark"] .dot,
+[data-theme="dark"] .mdot {
   background: #55555e !important; border-color: #55555e !important;
   box-shadow: none !important;
 }
 
 /* ---- 3. the states, in Rights only ---- */
 :root[data-theme="dark"] { --g: #7fae86; --a: #8aa6cc; --r: #cc8478; }
-[data-theme="dark"] body[data-lens="rights"] .tc.g,
-[data-theme="dark"] body[data-lens="rights"] .chip.g,
-[data-theme="dark"] body[data-lens="rights"] .su.g {
-  border-left: 3px solid #7fae86 !important; }
-[data-theme="dark"] body[data-lens="rights"] .tc.a,
-[data-theme="dark"] body[data-lens="rights"] .chip.a,
-[data-theme="dark"] body[data-lens="rights"] .su.a {
-  border-left: 3px solid #8aa6cc !important; }
-[data-theme="dark"] body[data-lens="rights"] .tc.r,
-[data-theme="dark"] body[data-lens="rights"] .chip.r,
-[data-theme="dark"] body[data-lens="rights"] .su.r {
-  border-left: 3px solid #cc8478 !important; }
-[data-theme="dark"] body[data-lens="rights"] .m-restricted {
-  border-left: 3px solid #a894c4 !important; }
-[data-theme="dark"] body[data-lens="rights"] .tc.g .dot,
-[data-theme="dark"] body[data-lens="rights"] .chip.g .dot,
-[data-theme="dark"] body[data-lens="rights"] .su.g .dot,
-[data-theme="dark"] body[data-lens="rights"] .g .mdot {
-  background: #7fae86 !important; border-color: #7fae86 !important; }
-[data-theme="dark"] body[data-lens="rights"] .tc.a .dot,
-[data-theme="dark"] body[data-lens="rights"] .chip.a .dot,
-[data-theme="dark"] body[data-lens="rights"] .su.a .dot,
-[data-theme="dark"] body[data-lens="rights"] .a .mdot {
-  background: #8aa6cc !important; border-color: #8aa6cc !important; }
-[data-theme="dark"] body[data-lens="rights"] .tc.r .dot,
-[data-theme="dark"] body[data-lens="rights"] .chip.r .dot,
-[data-theme="dark"] body[data-lens="rights"] .su.r .dot,
-[data-theme="dark"] body[data-lens="rights"] .r .mdot {
-  background: #cc8478 !important; border-color: #cc8478 !important; }
-[data-theme="dark"] body[data-lens="rights"] .m-restricted .mdot,
-[data-theme="dark"] body[data-lens="rights"] .m-restricted .dot {
-  background: #a894c4 !important; border-color: #a894c4 !important; }
+
+/* Task 119 - the legend wears the chips' own glyphs */
+#m-legend .mdot { width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:6px; line-height:9px; text-align:center; box-shadow:none !important; }
+#m-legend .lg-held { background:#2E7D32 !important; border:none !important; }
+#m-legend .lg-pd { background:transparent !important; border:1.5px solid #2E7D32 !important; }
+#m-legend .lg-nopd { background:#B7791F !important; border:none !important; }
+#m-legend .lg-x { background:none !important; border:none !important; }
+#m-legend .lg-x::before { content:"\2715"; display:block; color:#C0392B; font:700 9px/9px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; text-align:center; }
+:root[data-theme="dark"] #m-legend .lg-held { background:#7fae86 !important; }
+:root[data-theme="dark"] #m-legend .lg-pd { background:transparent !important; border:1.5px solid #7fae86 !important; }
+:root[data-theme="dark"] #m-legend .lg-nopd { background:#d9a05b !important; }
+:root[data-theme="dark"] #m-legend .lg-x { background:none !important; }
+:root[data-theme="dark"] #m-legend .lg-x::before { color:#d97b6c; }
 </style>
 </body>
 </html>

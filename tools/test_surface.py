@@ -248,23 +248,20 @@ def g_contrast(pg, base, R):
                 R.check("4 contrast", f"{name} dark: {what}", False, "element not found")
             else:
                 R.check("4 contrast", f"{name} dark: {what} ≥ 4.5", val >= 4.5, f"{val}:1")
-    # the Rights lens in the dark room (was 1.1:1 before Task 97)
+    # Task 119 — there is no Rights lens to reach any more. The check
+    # this replaced clicked "RIGHTS" and then measured the chip text;
+    # the measurement was the point and it survives, on the merged view.
     pg.goto("%smap/christianity.html" % base)
     pg.evaluate("localStorage.setItem('da-theme','dark')")
     pg.reload(wait_until="networkidle")
     pg.wait_for_timeout(700)
-    try:
-        pg.click("text=RIGHTS", timeout=4000)
-        pg.wait_for_timeout(500)
-        pg.add_script_tag(content=CONTRAST_JS)
-        val = pg.evaluate("""() => { const tl = document.querySelector('.tc.g .tl');
-          if (!tl) return null;
-          return window.__cr(getComputedStyle(tl).color,
-                             getComputedStyle(tl.closest('.tc')).backgroundColor); }""")
-        R.check("4 contrast", "Rights lens in dark: chip text ≥ 4.5",
-                val is not None and val >= 4.5, f"{val}:1")
-    except Exception as e:
-        R.check("4 contrast", "Rights lens reachable", False, str(e)[:60])
+    pg.add_script_tag(content=CONTRAST_JS)
+    val = pg.evaluate("""() => { const tl = document.querySelector('.tc .tl');
+      if (!tl) return null;
+      return window.__cr(getComputedStyle(tl).color,
+                         getComputedStyle(tl.closest('.tc')).backgroundColor); }""")
+    R.check("4 contrast", "merged view in dark: chip text ≥ 4.5",
+            val is not None and val >= 4.5, f"{val}:1")
 
 
 def g_covers(pg, base, R):
@@ -500,38 +497,95 @@ def g_rooms(pg, base, R):
 
 
 def g_lens(pg, base, R):
-    """Task 103 — a lens changes how objects LOOK, never what they ARE or
-    where they sit: no chip may move across the toggle, and a chip with a
-    route must open it in both views."""
+    """Task 119 — the two views are one. What the retired lens used to
+    be asked (does the grid hold still across the toggle) is replaced by
+    what the merged page must now guarantee: the rights fact reads as
+    ONE mark, in four distinguishable states, at one offset in all 16
+    rooms, under a permanent legend — and nothing of the lens survives.
+    The door assertions below are unchanged: a held chip still opens its
+    contents page, and still says which chip it was."""
     rooms = ["ancient", "bahai", "buddhist", "christianity", "confucian",
              "daoist", "gnostic", "hindu", "indigenous", "islam", "jain",
              "judaism", "modern", "shinto", "sikh", "zoroastrian"]
-    # Task 105 closed the last exception: the rights marker that rewrapped
-    # ancient's long chip names moved off the chip, so every room is held
-    # to the same rule — a lens may recolour, never relocate.
-    ALLOW = {}
-    SNAP = """() => { const o = {};
-      document.querySelectorAll('.tc, .chip, .su').forEach((c, i) => {
-        const r = c.getBoundingClientRect();
-        o[i] = [Math.round(r.left), Math.round(r.top + scrollY), Math.round(r.width)];
-      }); return o; }"""
+    # Task 119 — THE LENS IS RETIRED, so the question changes: not "does
+    # the grid hold still across the toggle" (there is no toggle) but
+    # "is the rights fact readable, in one mark, identically everywhere".
+    MARKS = """() => {
+      const px = v => Math.round(parseFloat(v) || 0);
+      const dress = sel => { const e = document.querySelector(sel + ' .mdot');
+        if (!e) return null; const s = getComputedStyle(e);
+        const b = getComputedStyle(e, '::before');
+        return {bg: s.backgroundColor, bc: s.borderTopColor, bw: px(s.borderTopWidth),
+                w: px(s.width), h: px(s.height), mr: px(s.marginRight),
+                glyph: (b.content || '').replace(/"/g, '')}; };
+      const leg = [...document.querySelectorAll('#m-legend .mdot')].map(e => {
+        const s = getComputedStyle(e), b = getComputedStyle(e, '::before');
+        return {bg: s.backgroundColor, bc: s.borderTopColor,
+                glyph: (b.content || '').replace(/"/g, '')}; });
+      return {
+        held: dress('.m-held') || dress('.m-several'),
+        pd: dress('.m-possible'), nopd: dress('.m-none'),
+        restricted: dress('.m-restricted'),
+        legend: leg,
+        legendText: ((document.querySelector('#m-legend') || {}).innerText || '')
+                      .replace(/\\s+/g, ' ').trim(),
+        legendShown: !!((document.querySelector('#m-legend') ||
+                        {getClientRects: () => []}).getClientRects().length),
+        toggle: !!document.getElementById('lens-toggle'),
+        banner: !!document.getElementById('lens-banner'),
+        lensAttr: document.body.getAttribute('data-lens'),
+        lensGated: [...document.styleSheets].reduce((n, ss) => {
+          let rs; try { rs = ss.cssRules } catch (e) { return n }
+          for (const r of rs) if (r.selectorText &&
+              r.selectorText.indexOf('data-lens') >= 0) n++;
+          return n; }, 0)
+      }; }"""
+    boxes = {}
     for room in rooms:
         pg.goto(f"{base}map/{room}.html", wait_until="networkidle")
         pg.wait_for_timeout(700)
-        if not pg.evaluate("""() => !!document.querySelector('[data-lens="rights"]')"""):
-            continue
-        before = pg.evaluate(SNAP)
-        pg.evaluate("""() => { const b = document.querySelector('[data-lens="rights"]');
-          b && b.click(); }""")
-        pg.wait_for_timeout(600)
-        after = pg.evaluate(SNAP)
-        moved = sum(1 for k, v in before.items() if k in after and
-                    max(abs(v[0] - after[k][0]), abs(v[1] - after[k][1]),
-                        abs(v[2] - after[k][2])) > 1)
-        ceiling = ALLOW.get(room, 0)
-        R.check("7 lens", f"{room}: the grid holds still across the lens"
-                + (" (known residue)" if ceiling else ""),
-                moved <= ceiling, f"{moved} of {len(before)} chips move")
+        m = pg.evaluate(MARKS)
+        # nothing of the lens may survive — not the control, not the
+        # state, not a single rule still gated on a mode that is gone
+        R.check("7 marks", f"{room}: no lens toggle, banner or state",
+                not m["toggle"] and not m["banner"] and not m["lensAttr"],
+                f"toggle={m['toggle']} banner={m['banner']} attr={m['lensAttr']}")
+        R.check("7 marks", f"{room}: no rule is still gated on the lens",
+                m["lensGated"] == 0, f"{m['lensGated']} lens-gated rules")
+        # the legend is permanent and speaks the four in the ruled order
+        R.check("7 marks", f"{room}: the legend is always visible",
+                m["legendShown"] and "HELD" in m["legendText"].upper(),
+                m["legendText"][:60])
+        R.check("7 marks", f"{room}: the legend states four marks",
+                len(m["legend"]) == 4, f"{len(m['legend'])} swatches")
+        # the marks the room actually shows must be distinguishable —
+        # a filled disc, a hollow ring, a second filled disc of another
+        # hue, and a glyph. Compared by DRESS, not by name.
+        shown = {k: v for k, v in m.items()
+                 if k in ("held", "pd", "nopd", "restricted") and v}
+        for k, v in shown.items():
+            if k == "restricted":
+                R.check("7 marks", f"{room}: restricted is a glyph, not a disc",
+                        v["glyph"] not in ("", "none") and
+                        v["bg"] in ("rgba(0, 0, 0, 0)", "transparent"),
+                        f"glyph={v['glyph']!r} bg={v['bg']}")
+            else:
+                R.check("7 marks", f"{room}: {k} mark is 9px at one offset",
+                        v["w"] == 9 and v["h"] == 9 and v["mr"] == 6,
+                        f"{v['w']}x{v['h']} mr={v['mr']}")
+        if "pd" in shown:
+            R.check("7 marks", f"{room}: PD is hollow, not filled",
+                    shown["pd"]["bg"] in ("rgba(0, 0, 0, 0)", "transparent")
+                    and shown["pd"]["bw"] >= 1,
+                    f"bg={shown['pd']['bg']} border={shown['pd']['bw']}px")
+        if "held" in shown and "nopd" in shown:
+            R.check("7 marks", f"{room}: held and no-PD are different fills",
+                    shown["held"]["bg"] != shown["nopd"]["bg"],
+                    f"{shown['held']['bg']} vs {shown['nopd']['bg']}")
+        # ONE box in every room: the mark's geometry may not drift
+        if shown:
+            first = next(iter(shown.values()))
+            boxes[room] = (first["w"], first["h"], first["mr"])
         # a chip with a route opens it in Rights view. The click starts a
         # navigation, so the assertion has to WAIT for it — reading
         # location straight after the click reports the old page and
@@ -546,7 +600,7 @@ def g_lens(pg, base, R):
                 landed = True
             except Exception:
                 landed = False
-            R.check("7 lens", f"{room}: a held chip is still a door in Rights",
+            R.check("7 marks", f"{room}: a held chip is still a door",
                     landed, pg.url.split("/")[-1][:60])
             # Task 107 — and the door has ONE destination. A multi-held
             # chip used to open a chooser popover here; the contents page
@@ -566,13 +620,20 @@ def g_lens(pg, base, R):
                     on_contents = True
                 except Exception:
                     on_contents = False
-                R.check("7 lens", f"{room}: the chip lands on a contents page",
+                R.check("7 marks", f"{room}: the chip lands on a contents page",
                         on_contents, pg.url.split("text=")[-1][:44])
                 # Task 108 — and it says WHICH chip it was, or the
                 # contents page cannot name the second group or the
                 # arrival.
-                R.check("7 lens", f"{room}: the chip identity rides the URL",
+                R.check("7 marks", f"{room}: the chip identity rides the URL",
                         "chip=" in pg.url, pg.url.split("?")[-1][:52])
+        # ONE box in every room — asserted across the whole sweep, not
+        # per room: a mark that is 9px here and 8px there is the drift
+        # this lane exists to end.
+        if len(boxes) == len(rooms) and room == rooms[-1]:
+            R.check("7 marks", "the mark is computed-identical in all 16 rooms",
+                    len(set(boxes.values())) == 1,
+                    f"{sorted(set(boxes.values()))}")
         # Task 113 — no division body is ever both empty and silent. A
         # blank body reads as a rendering bug; the archive states its
         # gaps. Derived at render time, so this also fails the day a
@@ -591,14 +652,14 @@ def g_lens(pg, base, R):
                    strayLine: full.length > 0 && empty.length === 0
                      && document.querySelectorAll('.canon-gap').length > 0,
                    nEmpty: empty.length, nFull: full.length }; }""")
-        R.check("7 lens", f"{room}: openness derives from content",
+        R.check("7 marks", f"{room}: openness derives from content",
                 gap["emptyOpen"] == 0 and gap["fullClosed"] == 0,
                 f"{gap['emptyOpen']} empty-open, {gap['fullClosed']} full-closed "
                 f"({gap['nEmpty']} empty / {gap['nFull']} full)")
-        R.check("7 lens", f"{room}: no empty canon is silent, no full canon labelled",
+        R.check("7 marks", f"{room}: no empty canon is silent, no full canon labelled",
                 not gap["silentCanon"] and not gap["strayLine"],
                 f"silent={gap['silentCanon']} stray={gap['strayLine']}")
-        R.check("7 lens", f"{room}: no chooser popover survives",
+        R.check("7 marks", f"{room}: no chooser popover survives",
                 pg.evaluate("""() => !document.querySelector('.m-chooser-pop')
                   && typeof window.__mcClose === 'undefined'"""))
 
@@ -622,9 +683,9 @@ def g_lens(pg, base, R):
                 offenders.append(f"{d.name}:{ch.get('chip')}")
             else:
                 gaps.append(f"{d.name}:{ch.get('chip')}")
-    R.check("7 lens", "the door speaks English wherever an English witness exists",
+    R.check("7 marks", "the door speaks English wherever an English witness exists",
             not offenders, "; ".join(offenders[:3]))
-    R.check("7 lens", "chips with no English witness are a known, listed set",
+    R.check("7 marks", "chips with no English witness are a known, listed set",
             len(gaps) == 5, f"{len(gaps)}: " + "; ".join(g.split(':')[1] for g in gaps[:5]))
 
 
@@ -786,7 +847,7 @@ def g_mobile(pg_unused, base, R):
 
 GROUPS = {
     "furniture": g_furniture,
-    "lens": g_lens,
+    "marks": g_lens,
     "mobile": g_mobile,
     "boundary": g_boundary,
     "chrome": g_room_chrome,
