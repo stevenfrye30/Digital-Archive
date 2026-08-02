@@ -573,6 +573,19 @@ def g_lens(pg, base, R):
                 # arrival.
                 R.check("7 lens", f"{room}: the chip identity rides the URL",
                         "chip=" in pg.url, pg.url.split("?")[-1][:52])
+        # Task 113 — no division body is ever both empty and silent. A
+        # blank body reads as a rendering bug; the archive states its
+        # gaps. Derived at render time, so this also fails the day a
+        # populated body is wrongly labelled empty.
+        gap = pg.evaluate("""() => {
+          const b = [...document.querySelectorAll('details.fam > .fambody')];
+          const note = x => x.querySelector(':scope > .fam-empty');
+          return { silent: b.filter(x => x.children.length === 0).length,
+                   lying: b.filter(x => note(x) && x.children.length > 1).length,
+                   n: b.length }; }""")
+        R.check("7 lens", f"{room}: no division is both empty and silent",
+                gap["silent"] == 0 and gap["lying"] == 0,
+                f"{gap['silent']} silent, {gap['lying']} mislabelled of {gap['n']}")
         R.check("7 lens", f"{room}: no chooser popover survives",
                 pg.evaluate("""() => !document.querySelector('.m-chooser-pop')
                   && typeof window.__mcClose === 'undefined'"""))

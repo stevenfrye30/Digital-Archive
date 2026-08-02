@@ -1512,5 +1512,54 @@ nav.toc:not(.toc-bare) > .toc-all {
 [data-theme="dark"] .sec > h3 .sc, [data-theme="dark"] .vagga > h3 .pn { color: #c4a060; }
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 </style>
+
+<style>
+/* Task 113 — the stated gap. A blank division body reads as a
+   rendering bug; this is the archive's own grammar for an absence. */
+.fam-empty {
+  font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
+  color: var(--ink-faint);
+  padding: 0.35rem 0.75rem 0.6rem 1.9rem;
+  margin: 0;
+}
+</style>
+<script>
+(function stateTheEmptyDivisions() {
+  // Ruled derived, not authored: the line comes from the body BEING
+  // empty, so a future population pass removes it silently. It is
+  // re-derived on every mutation because the room rewrites division
+  // bodies when the reader switches canon — a one-shot pass wrote the
+  // line and the next view-switch wiped it.
+  var GAP = 'No per-text index for this canon yet — the division ' +
+            'counts are from the catalogue.';
+  var busy = false;
+  function mark() {
+    if (busy) return;
+    busy = true;
+    try {
+      document.querySelectorAll('details.fam > .fambody').forEach(function (b) {
+        var note = b.querySelector(':scope > .fam-empty');
+        var real = b.children.length - (note ? 1 : 0);
+        if (real > 0) { if (note) note.remove(); return; }
+        if (note) return;
+        var p = document.createElement('p');
+        p.className = 'fam-empty';
+        p.textContent = GAP;
+        b.appendChild(p);
+      });
+    } finally { busy = false; }
+  }
+  function watch() {
+    mark();
+    new MutationObserver(function () {
+      clearTimeout(window.__t113);
+      window.__t113 = setTimeout(mark, 30);
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', watch);
+  } else { watch(); }
+})();
+</script>
 </body>
 </html>
