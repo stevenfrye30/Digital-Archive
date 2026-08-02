@@ -1,0 +1,3382 @@
+{
+ "ancient": {
+  "n_names": 71,
+  "light": {
+   "span.tc": {
+    "n": 69,
+    "tag": "span",
+    "classes": "tc g m-several",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 17,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 31,
+    "sample": "The Book of the Dead (Coming Forth by Da",
+    "states": {
+     "g+m-several": {
+      "n": 4,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g": {
+      "n": 38,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "r": {
+      "n": 9,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g+m-held": {
+      "n": 9,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "a": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g+m-restricted": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(160, 144, 128)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "a+m-held": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 71,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "The Book of the Dead (Coming Forth by Da",
+    "states": {
+     "none": {
+      "n": 71,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 27.2,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "nameLeft": 41.2,
+    "sample": "The Yazidi sacred books (Kitāb al-Jilwa ",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 69,
+    "tag": "span",
+    "classes": "tc g m-several",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 16.5,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 30.5,
+    "sample": "The Book of the Dead (Coming Forth by Da",
+    "states": {
+     "g+m-several": {
+      "n": 4,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 38,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 9,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 9,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-restricted": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a+m-held": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 71,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "The Book of the Dead (Coming Forth by Da",
+    "states": {
+     "none": {
+      "n": 71,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(212, 208, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 26.2,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 40.2,
+    "sample": "The Yazidi sacred books (Kitāb al-Jilwa ",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(212, 208, 200)",
+      "borderW": "0px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   }
+  }
+ },
+ "bahai": {
+  "n_names": 30,
+  "light": {
+   "span.tc": {
+    "n": 29,
+    "tag": "span",
+    "classes": "tc r m-none",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(221, 214, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 11.1,
+     "bg": "rgb(221, 214, 200)"
+    },
+    "nameLeft": 25.1,
+    "sample": "Qayyúmuʼl-Asmáʼ (1844 — \"the Qurʼán of t",
+    "states": {
+     "r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "a": {
+      "n": 22,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "a+m-restricted": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(160, 144, 128)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "g": {
+      "n": 5,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 30,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(138, 122, 106)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(138, 122, 106)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Qayyúmuʼl-Asmáʼ (1844 — \"the Qurʼán of t",
+    "states": {
+     "none": {
+      "n": 30,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(138, 122, 106)",
+      "borderW": "0px",
+      "color": "rgb(138, 122, 106)",
+      "dotBg": null
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 29,
+    "tag": "span",
+    "classes": "tc r m-none",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/1px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(52, 52, 58)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 10.1,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 24.1,
+    "sample": "Qayyúmuʼl-Asmáʼ (1844 — \"the Qurʼán of t",
+    "states": {
+     "r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 22,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a+m-restricted": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 5,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 30,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Qayyúmuʼl-Asmáʼ (1844 — \"the Qurʼán of t",
+    "states": {
+     "none": {
+      "n": 30,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   }
+  }
+ },
+ "buddhist": {
+  "n_names": 286,
+  "light": {
+   "div.sec": {
+    "n": 1,
+    "tag": "div",
+    "classes": "sec",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 7,
+     "h": 7,
+     "fromLeft": 7,
+     "bg": "rgb(46, 125, 50)"
+    },
+    "nameLeft": 71.5,
+    "sample": "Yamaka",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(46, 125, 50)"
+     }
+    }
+   }
+  },
+  "dark": {
+   "div.sec": {
+    "n": 1,
+    "tag": "div",
+    "classes": "sec",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(212, 208, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 7,
+     "h": 7,
+     "fromLeft": 8,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 71.5,
+    "sample": "Yamaka",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(212, 208, 200)",
+      "borderW": "0px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   }
+  }
+ },
+ "christianity": {
+  "n_names": 221,
+  "light": {
+   "span.tc": {
+    "n": 221,
+    "tag": "span",
+    "classes": "tc g m-several",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 113.9,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 127.9,
+    "sample": "Genesis",
+    "states": {
+     "g+m-several": {
+      "n": 93,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g+m-held": {
+      "n": 36,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g": {
+      "n": 84,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "a": {
+      "n": 8,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 221,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Genesis",
+    "states": {
+     "none": {
+      "n": 221,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 221,
+    "tag": "span",
+    "classes": "tc g m-several",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 113.4,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 127.4,
+    "sample": "Genesis",
+    "states": {
+     "g+m-several": {
+      "n": 93,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 36,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 84,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 8,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 221,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Genesis",
+    "states": {
+     "none": {
+      "n": 221,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   }
+  }
+ },
+ "confucian": {
+  "n_names": 25,
+  "light": {
+   "span.tc": {
+    "n": 21,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 56.6,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 70.6,
+    "sample": "Great Learning · Dàxué 大學",
+    "states": {
+     "g+m-held": {
+      "n": 4,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g+m-several": {
+      "n": 2,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g": {
+      "n": 5,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "a": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "r": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 25,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Great Learning · Dàxué 大學",
+    "states": {
+     "none": {
+      "n": 25,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 21,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 56.1,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 70.1,
+    "sample": "Great Learning · Dàxué 大學",
+    "states": {
+     "g+m-held": {
+      "n": 4,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-several": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 5,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 25,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Great Learning · Dàxué 大學",
+    "states": {
+     "none": {
+      "n": 25,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   }
+  }
+ },
+ "daoist": {
+  "n_names": 26,
+  "light": {
+   "span.tc": {
+    "n": 16,
+    "tag": "span",
+    "classes": "tc g m-several",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 19.2,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 33.2,
+    "sample": "Dào Dé Jīng 道德經 (Laozi) — 81 chapters",
+    "states": {
+     "g+m-several": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "a": {
+      "n": 8,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "r": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 26,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Dào Dé Jīng 道德經 (Laozi) — 81 chapters",
+    "states": {
+     "none": {
+      "n": 26,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 32.8,
+     "bg": "rgb(221, 214, 200)"
+    },
+    "nameLeft": 46.8,
+    "sample": "~1,500 Daozang texts — the untranslated ",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 16,
+    "tag": "span",
+    "classes": "tc g m-several",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 18.7,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 32.7,
+    "sample": "Dào Dé Jīng 道德經 (Laozi) — 81 chapters",
+    "states": {
+     "g+m-several": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 8,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 26,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Dào Dé Jīng 道德經 (Laozi) — 81 chapters",
+    "states": {
+     "none": {
+      "n": 26,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(212, 208, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 31.8,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 45.8,
+    "sample": "~1,500 Daozang texts — the untranslated ",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(212, 208, 200)",
+      "borderW": "0px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   }
+  }
+ },
+ "gnostic": {
+  "n_names": 24,
+  "light": {
+   "span.tc": {
+    "n": 24,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 38.5,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 52.5,
+    "sample": "Pistis Sophia (the Askew Codex)",
+    "states": {
+     "g+m-held": {
+      "n": 2,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "m-several+r": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "m-held+r": {
+      "n": 2,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "r": {
+      "n": 10,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "a": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "m-restricted+r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(160, 144, 128)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 24,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Pistis Sophia (the Askew Codex)",
+    "states": {
+     "none": {
+      "n": 24,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 24,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 38,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 52,
+    "sample": "Pistis Sophia (the Askew Codex)",
+    "states": {
+     "g+m-held": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "m-several+r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "m-held+r": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 10,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "m-restricted+r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 24,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Pistis Sophia (the Askew Codex)",
+    "states": {
+     "none": {
+      "n": 24,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   }
+  }
+ },
+ "hindu": {
+  "n_names": 332,
+  "light": {
+   "span.chip": {
+    "n": 245,
+    "tag": "span",
+    "classes": "chip g m-several",
+    "pad": "3.84px 7.936px 3.84px 7.936px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.8px/400",
+    "display": "flex",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 10.9,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 30.3,
+    "sample": "Ṛgveda Saṃhitā",
+    "states": {
+     "g+m-several": {
+      "n": 3,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g+m-held": {
+      "n": 37,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "a": {
+      "n": 126,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "r": {
+      "n": 12,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g+m-restricted": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(160, 144, 128)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "g": {
+      "n": 66,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     }
+    }
+   },
+   "span.big.chip": {
+    "n": 64,
+    "tag": "span",
+    "classes": "chip r big m-none",
+    "pad": "3.84px 7.936px 3.84px 7.936px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(221, 214, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.8px/400",
+    "display": "flex",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 10.9,
+     "bg": "rgb(221, 214, 200)"
+    },
+    "nameLeft": 30.3,
+    "sample": "Chandas — Piṅgala, Chandaḥsūtra (meter)",
+    "states": {
+     "r": {
+      "n": 8,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g": {
+      "n": 29,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "a": {
+      "n": 19,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g+m-several": {
+      "n": 7,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 10,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 22.9,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "nameLeft": 42.3,
+    "sample": "Śulba-sūtras — Baudhāyana · Āpastamba · ",
+    "states": {
+     "none": {
+      "n": 10,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.chip": {
+    "n": 245,
+    "tag": "span",
+    "classes": "chip g m-several",
+    "pad": "3.84px 7.936px 3.84px 7.936px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "12.8px/400",
+    "display": "flex",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 9.9,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 29.3,
+    "sample": "Ṛgveda Saṃhitā",
+    "states": {
+     "g+m-several": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 37,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 126,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 12,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-restricted": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 66,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.big.chip": {
+    "n": 64,
+    "tag": "span",
+    "classes": "chip r big m-none",
+    "pad": "3.84px 7.936px 3.84px 7.936px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/1px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(52, 52, 58)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "12.8px/400",
+    "display": "flex",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 8.9,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 28.3,
+    "sample": "Chandas — Piṅgala, Chandaḥsūtra (meter)",
+    "states": {
+     "r": {
+      "n": 8,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 29,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 19,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-several": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 10,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(212, 208, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 20.9,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 40.3,
+    "sample": "Śulba-sūtras — Baudhāyana · Āpastamba · ",
+    "states": {
+     "none": {
+      "n": 10,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(212, 208, 200)",
+      "borderW": "0px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   }
+  }
+ },
+ "indigenous": {
+  "n_names": 22,
+  "light": {
+   "span.tc": {
+    "n": 19,
+    "tag": "span",
+    "classes": "tc g m-possible",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(201, 171, 122)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 33.9,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "nameLeft": 47.9,
+    "sample": "Zulu — the religious system of the amaZu",
+    "states": {
+     "g": {
+      "n": 9,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "a": {
+      "n": 5,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "r": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g+m-held": {
+      "n": 2,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "x": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 22,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(90, 80, 72)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(90, 80, 72)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0.1,
+    "sample": "Zulu — the religious system of the amaZu",
+    "states": {
+     "none": {
+      "n": 22,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(90, 80, 72)",
+      "borderW": "0px",
+      "color": "rgb(90, 80, 72)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 34.8,
+     "bg": "rgb(221, 214, 200)"
+    },
+    "nameLeft": 48.8,
+    "sample": "The Walam Olum (the alleged Lenape migra",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 19,
+    "tag": "span",
+    "classes": "tc g m-possible",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/1px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(52, 52, 58)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 32.9,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 46.9,
+    "sample": "Zulu — the religious system of the amaZu",
+    "states": {
+     "g": {
+      "n": 9,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 5,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "x": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 22,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0.1,
+    "sample": "Zulu — the religious system of the amaZu",
+    "states": {
+     "none": {
+      "n": 22,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(212, 208, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 33.8,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 47.8,
+    "sample": "The Walam Olum (the alleged Lenape migra",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(212, 208, 200)",
+      "borderW": "0px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   }
+  }
+ },
+ "islam": {
+  "n_names": 141,
+  "light": {
+   "span.tl": {
+    "n": 141,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "1. Al-Fatihah — The Opener",
+    "states": {
+     "none": {
+      "n": 141,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   },
+   "span.tc": {
+    "n": 25,
+    "tag": "span",
+    "classes": "tc r m-none",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(221, 214, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 67,
+     "bg": "rgb(221, 214, 200)"
+    },
+    "nameLeft": 81,
+    "sample": "Ṣaḥīḥ al-Bukhārī (d.870)",
+    "states": {
+     "r": {
+      "n": 20,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g+m-several": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g+m-restricted": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(160, 144, 128)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "a": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tl": {
+    "n": 141,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "1. Al-Fatihah — The Opener",
+    "states": {
+     "none": {
+      "n": 141,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   },
+   "span.tc": {
+    "n": 25,
+    "tag": "span",
+    "classes": "tc r m-none",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/1px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(52, 52, 58)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 66,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 80,
+    "sample": "Ṣaḥīḥ al-Bukhārī (d.870)",
+    "states": {
+     "r": {
+      "n": 20,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-several": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-restricted": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   }
+  }
+ },
+ "jain": {
+  "n_names": 18,
+  "light": {
+   "span.tc": {
+    "n": 11,
+    "tag": "span",
+    "classes": "tc g m-possible",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(201, 171, 122)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 25,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "nameLeft": 39,
+    "sample": "Ācārāṅga Sūtra (1st Aṅga — monastic cond",
+    "states": {
+     "g": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g+m-several": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "a": {
+      "n": 6,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 18,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(90, 80, 72)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(90, 80, 72)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Ācārāṅga Sūtra (1st Aṅga — monastic cond",
+    "states": {
+     "none": {
+      "n": 18,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(90, 80, 72)",
+      "borderW": "0px",
+      "color": "rgb(90, 80, 72)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 25.2,
+     "bg": "rgba(0, 0, 0, 0)"
+    },
+    "nameLeft": 39.2,
+    "sample": "Tattvārtha Sūtra (Umāsvāti / Umāsvāmī)",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 11,
+    "tag": "span",
+    "classes": "tc g m-possible",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/1px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(52, 52, 58)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 24,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 38,
+    "sample": "Ācārāṅga Sūtra (1st Aṅga — monastic cond",
+    "states": {
+     "g": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-several": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 6,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 18,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Ācārāṅga Sūtra (1st Aṅga — monastic cond",
+    "states": {
+     "none": {
+      "n": 18,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(212, 208, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 24.2,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 38.2,
+    "sample": "Tattvārtha Sūtra (Umāsvāti / Umāsvāmī)",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(212, 208, 200)",
+      "borderW": "0px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   }
+  }
+ },
+ "judaism": {
+  "n_names": 128,
+  "light": {
+   "span.tc": {
+    "n": 127,
+    "tag": "span",
+    "classes": "tc g m-several",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 113.9,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 127.9,
+    "sample": "Genesis",
+    "states": {
+     "g+m-several": {
+      "n": 39,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "a+m-held": {
+      "n": 19,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "a": {
+      "n": 58,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "a+m-several": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g": {
+      "n": 6,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "g+m-held": {
+      "n": 4,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 128,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Genesis",
+    "states": {
+     "none": {
+      "n": 128,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 127,
+    "tag": "span",
+    "classes": "tc g m-several",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 113.4,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 127.4,
+    "sample": "Genesis",
+    "states": {
+     "g+m-several": {
+      "n": 39,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a+m-held": {
+      "n": 19,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 58,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a+m-several": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 6,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-held": {
+      "n": 4,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 128,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Genesis",
+    "states": {
+     "none": {
+      "n": 128,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   }
+  }
+ },
+ "modern": {
+  "n_names": 30,
+  "light": {
+   "span.tc": {
+    "n": 30,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 68.6,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 82.6,
+    "sample": "The Book of Mormon",
+    "states": {
+     "g+m-held": {
+      "n": 5,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g": {
+      "n": 13,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "a": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g+m-several": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "r": {
+      "n": 4,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 30,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "The Book of Mormon",
+    "states": {
+     "none": {
+      "n": 30,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 30,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 68.1,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 82.1,
+    "sample": "The Book of Mormon",
+    "states": {
+     "g+m-held": {
+      "n": 5,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 13,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-several": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 4,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 30,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "The Book of Mormon",
+    "states": {
+     "none": {
+      "n": 30,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   }
+  }
+ },
+ "shinto": {
+  "n_names": 13,
+  "light": {
+   "span.tc": {
+    "n": 12,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 11.7,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 25.7,
+    "sample": "Kojiki (712 — Records of Ancient Matters",
+    "states": {
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     },
+     "a": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "r": {
+      "n": 6,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 13,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Kojiki (712 — Records of Ancient Matters",
+    "states": {
+     "none": {
+      "n": 13,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 12,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 11.2,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 25.2,
+    "sample": "Kojiki (712 — Records of Ancient Matters",
+    "states": {
+     "g+m-held": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 3,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 6,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 13,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Kojiki (712 — Records of Ancient Matters",
+    "states": {
+     "none": {
+      "n": 13,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   }
+  }
+ },
+ "sikh": {
+  "n_names": 15,
+  "light": {
+   "span.tc": {
+    "n": 14,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 28.2,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 42.2,
+    "sample": "Japji Sāhib (Guru Nanak’s opening)",
+    "states": {
+     "g+m-held": {
+      "n": 4,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "g+m-several": {
+      "n": 2,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "a": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 15,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Japji Sāhib (Guru Nanak’s opening)",
+    "states": {
+     "none": {
+      "n": 15,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 14,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 27.7,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 41.7,
+    "sample": "Japji Sāhib (Guru Nanak’s opening)",
+    "states": {
+     "g+m-held": {
+      "n": 4,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g+m-several": {
+      "n": 2,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 7,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "r": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 15,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Japji Sāhib (Guru Nanak’s opening)",
+    "states": {
+     "none": {
+      "n": 15,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   }
+  }
+ },
+ "zoroastrian": {
+  "n_names": 53,
+  "light": {
+   "span.tc": {
+    "n": 51,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/3px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(122, 92, 58)",
+    "bg": "rgb(241, 235, 225)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 36.2,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 50.2,
+    "sample": "Ahunavaitī Gāthā (Yasna 28–34)",
+    "states": {
+     "g+m-held": {
+      "n": 35,
+      "bg": "rgb(241, 235, 225)",
+      "borderC": "rgb(122, 92, 58)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     },
+     "a": {
+      "n": 4,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(221, 214, 200)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(221, 214, 200)"
+     },
+     "g": {
+      "n": 12,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(201, 171, 122)",
+      "borderW": "3px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgba(0, 0, 0, 0)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 53,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Ahunavaitī Gāthā (Yasna 28–34)",
+    "states": {
+     "none": {
+      "n": 53,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(44, 44, 44)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(44, 44, 44)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 43.7,
+     "bg": "rgb(122, 92, 58)"
+    },
+    "nameLeft": 57.7,
+    "sample": "Khoršēd · Mihr · Māh · Ābān · Ātaš Niyāy",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(44, 44, 44)",
+      "borderW": "0px",
+      "color": "rgb(44, 44, 44)",
+      "dotBg": "rgb(122, 92, 58)"
+     }
+    }
+   }
+  },
+  "dark": {
+   "span.tc": {
+    "n": 51,
+    "tag": "span",
+    "classes": "tc g m-held",
+    "pad": "4.2976px 6.952px 4.2976px 6.952px",
+    "radius": "7px/7px",
+    "borderW": "0px/0px/0px/2px",
+    "borderS": "none/none/none/solid",
+    "borderC": "rgb(85, 85, 94)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 35.7,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 49.7,
+    "sample": "Ahunavaitī Gāthā (Yasna 28–34)",
+    "states": {
+     "g+m-held": {
+      "n": 35,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(85, 85, 94)",
+      "borderW": "2px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "a": {
+      "n": 4,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     },
+     "g": {
+      "n": 12,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(52, 52, 58)",
+      "borderW": "1px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   },
+   "span.tl": {
+    "n": 53,
+    "tag": "span",
+    "classes": "tl",
+    "pad": "0px 0px 0px 0px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(232, 226, 214)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(232, 226, 214)",
+    "font": "12.64px/400",
+    "display": "inline",
+    "dot": null,
+    "nameLeft": 0,
+    "sample": "Ahunavaitī Gāthā (Yasna 28–34)",
+    "states": {
+     "none": {
+      "n": 53,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(232, 226, 214)",
+      "borderW": "0px",
+      "color": "rgb(232, 226, 214)",
+      "dotBg": null
+     }
+    }
+   },
+   "div.fambody": {
+    "n": 1,
+    "tag": "div",
+    "classes": "fambody",
+    "pad": "2.4px 12px 10.4px 12px",
+    "radius": "0px/0px",
+    "borderW": "0px/0px/0px/0px",
+    "borderS": "none/none/none/none",
+    "borderC": "rgb(212, 208, 200)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(212, 208, 200)",
+    "font": "16px/400",
+    "display": "block",
+    "dot": {
+     "w": 8,
+     "h": 8,
+     "fromLeft": 43.2,
+     "bg": "rgb(85, 85, 94)"
+    },
+    "nameLeft": 57.2,
+    "sample": "Khoršēd · Mihr · Māh · Ābān · Ātaš Niyāy",
+    "states": {
+     "none": {
+      "n": 1,
+      "bg": "rgba(0, 0, 0, 0)",
+      "borderC": "rgb(212, 208, 200)",
+      "borderW": "0px",
+      "color": "rgb(212, 208, 200)",
+      "dotBg": "rgb(85, 85, 94)"
+     }
+    }
+   }
+  }
+ }
+}
