@@ -15801,7 +15801,12 @@ function showCover(data, entry) {
            '</span>' +
            '</div>' + html;
   }
-  html += '<div id="continuous-cover">';
+  // Task 121 — anatomy HOOKS ONLY. Four stable class names so the
+  // Task 62 order (crumb · cite · title · actions · rule · grid) can
+  // be asserted; the covers render byte-identically apart from these
+  // class attributes. No dress, no restructuring — nothing in the
+  // stylesheet matches .cc-title-block, .cc-actions or .cc-grid.
+  html += '<div id="continuous-cover" class="cc-title-block">';
   // v100 — Allow per-text titleOverride to clean up source-quirky
   // titles ("The_Upanishads" → "The Upanishads — legacy reprint").
   const _displayTitle = (_override && _override.titleOverride)
@@ -15860,7 +15865,7 @@ function showCover(data, entry) {
           citationsHTML +
           '</details>';
 
-  html += '<div id="continuous-toc">';
+  html += '<div id="continuous-toc" class="cc-grid">';
   // Task 62 — ONE anatomy on every cover, one order: crumb top-left ·
   // cite top-right · centered title block · centered actions row
   // (begin/Continue + Front Matter TOGETHER) · the quiet contents
@@ -15868,7 +15873,7 @@ function showCover(data, entry) {
   // ceremonial bottom action; the standalone Front Matter pill)
   // retire into this one row.
   if (grouped) {
-    html += `<div class="cc-begin-wrap cc-actions-top">${_resumePill('bcl-enter-btn')}` +
+    html += `<div class="cc-begin-wrap cc-actions cc-actions-top">${_resumePill('bcl-enter-btn')}` +
             `<div class="cc-begin bcl-enter-btn" id="cc-begin-btn">Read from beginning &rarr;</div>` +
             (hasFrontMatter ? '<div class="cc-fm-btn cc-fm-chip" data-book="__fm__">✦ Front Matter</div>' : '') +
             '</div>';
@@ -16027,7 +16032,7 @@ function showCover(data, entry) {
     // exists) · Read from beginning (quiet) · Front Matter as a quiet
     // chip beside the begin action. Entry keeps the full-stream path
     // (enterReading(), exactly the old __all__ plate).
-    html += `<div class="cc-begin-wrap cc-actions-top cc-flat-actions">${_resumePill('bcl-enter-btn')}` +
+    html += `<div class="cc-begin-wrap cc-actions cc-actions-top cc-flat-actions">${_resumePill('bcl-enter-btn')}` +
             `<div class="cc-begin bcl-enter-btn" id="cc-begin-btn" data-flat="1">Read from beginning &rarr;</div>` +
             (hasFrontMatter ? '<div class="cc-fm-btn cc-fm-chip" data-book="__fm__">✦ Front Matter</div>' : '') +
             '</div>';

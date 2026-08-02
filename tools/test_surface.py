@@ -30,6 +30,7 @@ from __future__ import annotations
 import argparse
 import http.server
 import json
+import re
 import socket
 import socketserver
 import sys
@@ -47,7 +48,12 @@ GOLD = "rgb(196, 160, 96)"      # the archive's accent, dark
 INK_DARK = "rgb(212, 208, 200)"
 
 # a text per cover shape the archive holds
-FLAT = "kierkegaard-fear-trembling_anonymous.json"
+# Task 121 — this pointed at kierkegaard-fear-trembling_ANONYMOUS, which
+# does not exist: the file was replaced by the Lowrie witness in an
+# earlier cleanup and the fixture was never re-pointed. Every "flat"
+# assertion in this group had been passing by matching nothing. The
+# liveness check below now fails loudly on a dead fixture.
+FLAT = "plato-charmides_jowett.json"
 CODEX = "thus-spake-zarathustra_common.json"
 BIBLE_80 = "bible_kjv.json"
 BIBLE_66 = "bible_asv.json"
@@ -267,14 +273,48 @@ def g_contrast(pg, base, R):
 def g_covers(pg, base, R):
     """Task 87/92/96/99 — the contents row, the canon row, the shelf.
 
-    Task 120 item 3 TRIED to add an anatomy-order check here and could
-    not: the plate's parts (title block, actions row, contents rule) are
-    unclassed <div>s, so there is nothing to assert against. Adding the
-    hooks is a renderer change across 1,059 covers and belongs to its own
-    lane, not to a doctrine lane. Recorded as unassertable in
-    `plans/cover_grammar.md` rather than left as a check that passes by
-    matching nothing.
+    Task 121 item 1 — THE ANATOMY ORDER IS NOW ASSERTED. Task 120
+    found it unassertable (the plate's parts were unclassed <div>s) and
+    reverted rather than ship a check that passes by matching nothing;
+    the hooks were then ruled in. `.cc-title-block` · `.cc-actions` ·
+    `.cc-contents-rule` · `.cc-grid` carry no dress — the covers were
+    proved to render byte-identically apart from those class attributes,
+    on all five shapes, before this check was written.
     """
+
+    def anatomy(df, label):
+        pg.goto(f"{base}?text={df}", wait_until="networkidle")
+        pg.wait_for_timeout(1400)
+        y = pg.evaluate("""() => {
+          const top = s => { const e = document.querySelector(s);
+            if (!e) return null; const r = e.getBoundingClientRect();
+            return r.height ? Math.round(r.top + scrollY) : null; };
+          return { title: top('.cc-title-block'), actions: top('.cc-actions'),
+                   rule: top('.cc-contents-rule'), grid: top('.cc-grid') }; }""")
+        # the grid CONTAINS the actions row and the rule, so the order is
+        # asserted on the parts' own tops within it, not against the
+        # container's top — measuring the container instead of the ink is
+        # the archive's oldest recurring error.
+        order = [k for k in ("title", "actions", "rule") if y.get(k) is not None]
+        vals = [y[k] for k in order]
+        R.check("5 covers", f"{label}: anatomy order title < actions < rule",
+                vals == sorted(vals) and len(order) >= 2,
+                " < ".join(f"{k}@{y[k]}" for k in order))
+        if y.get("rule") is not None and y.get("grid") is not None:
+            # the actions row and the rule both live INSIDE .cc-grid, so
+            # "the first thing in the grid" is not the first ROW. Take the
+            # first grid child that is neither — the container-vs-ink
+            # error, one layer in.
+            rows = pg.evaluate("""() => { const g = document.querySelector('.cc-grid');
+              if (!g) return null;
+              const r = [...g.children].find(c =>
+                !c.classList.contains('cc-actions') &&
+                !c.classList.contains('cc-contents-rule'));
+              if (!r) return null; const b = r.getBoundingClientRect();
+              return b.height ? Math.round(b.top + scrollY) : null; }""")
+            if rows is not None:
+                R.check("5 covers", f"{label}: the rule sits above the first row",
+                        y["rule"] < rows, f"rule@{y['rule']} < row@{rows}")
     def cover(df):
         pg.goto(f"{base}?text={df}", wait_until="networkidle")
         pg.wait_for_timeout(1400)
@@ -291,6 +331,19 @@ def g_covers(pg, base, R):
             corner: corner ? corner.textContent : null };
         }""")
 
+    for df, label in ((CODEX, "codex"), (FLAT, "flat"),
+                      (BIBLE_80, "bible-80"), (QURAN, "quran")):
+        # Task 121 — assert the fixture is ALIVE before asserting
+        # anything about it. A fixture naming a deleted text renders an
+        # empty page, and every check about it then passes by matching
+        # nothing — which is exactly what FLAT did until this lane.
+        pg.goto(f"{base}?text={df}", wait_until="networkidle")
+        pg.wait_for_timeout(1400)
+        alive = pg.evaluate("() => !!document.querySelector('.cc-title-block')")
+        R.check("5 covers", f"{label}: the fixture renders a cover", alive, df)
+        if alive:
+            anatomy(df, label)
+
     m = cover(CODEX)
     R.check("5 covers", "codex: contents row names its own units",
             bool(m["rule"]) and "chapters" in m["rule"], str(m["rule"]))
@@ -298,7 +351,22 @@ def g_covers(pg, base, R):
     R.check("5 covers", "codex: no canon row (not a Bible)", not m["canon"])
 
     m = cover(FLAT)
-    R.check("5 covers", "flat text: no contents row", m["rule"] is None, str(m["rule"]))
+    # Task 121 — this asserted "flat text: no contents row" and passed for
+    # lanes because the fixture named a deleted text and matched nothing.
+    # A REAL flat plate carries the same anatomy as every other cover
+    # (Task 57 Lane B / Task 62): the centred actions row AND the contents
+    # rule. The corrected assertion is what the grammar actually rules.
+    R.check("5 covers", "flat plate: wears the centred flat actions row",
+            pg.evaluate("() => !!document.querySelector('.cc-flat-actions')"),
+            FLAT)
+    # …and it carries NO contents rule: a flat plate has no book/chapter
+    # division to count. That was the original assertion and it was RIGHT
+    # about the grammar — it had simply never been checked against a live
+    # cover. (I briefly "corrected" it on a sample whose branches were
+    # mutually exclusive, so flat texts skipped the rule test entirely:
+    # answering a different question than the one asked, again.)
+    R.check("5 covers", "flat plate: no contents rule (nothing to count)",
+            m["rule"] is None, str(m["rule"]))
 
     m = cover(BIBLE_80)
     R.check("5 covers", "Bible 80: three canons", m["canon"] == ["Old Testament", "Apocrypha", "New Testament"], str(m["canon"]))
@@ -621,6 +689,17 @@ def g_lens(pg, base, R):
                 R.check("7 marks", f"{room}: structural statband left alone",
                         not ({"green", "amber", "red"} & set(keys)),
                         " · ".join(keys)[:60])
+        # Task 121 — hindu's #totalbar is the statband figure under
+        # another name and re-derives by the same gate. Asserted for
+        # every room, so a bar re-appearing elsewhere is caught too.
+        tb = pg.evaluate("""() => { const t = document.querySelector('#totalbar');
+          if (!t) return null;
+          return { text: (t.textContent || '').toLowerCase(),
+                   segs: [...t.children].map(c => c.textContent.trim()) }; }""")
+        if tb:
+            R.check("7 marks", f"{room}: totalbar speaks the marks, not colours",
+                    not re.search(r"public-domain|copyright|no english", tb["text"]),
+                    " · ".join(tb["segs"])[:60])
         # ONE box in every room: the mark's geometry may not drift
         if shown:
             first = next(iter(shown.values()))

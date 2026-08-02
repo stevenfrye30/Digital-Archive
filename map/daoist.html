@@ -1102,6 +1102,63 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   // "5 Vinaya · 34 Dīgha · 152 Majjhima · 56 Saṃyutta …" — and
   // re-deriving it would have destroyed a real count. A band that does
   // not speak green/amber/red is left exactly as it stands.
+  // the four-mark counts, one derivation shared by the statband and the
+  // totalbar — the two names the same aggregate goes by
+  function markCounts() {
+    var c = { held: 0, possible: 0, none: 0, restricted: 0, unmapped: 0 }, total = 0;
+    Object.keys(B).forEach(function (k) {
+      var s = B[k].state; total++;
+      if (s === 'held' || s === 'held-several') c.held++;
+      else if (s === 'possible') c.possible++;
+      else if (s === 'restricted') c.restricted++;
+      else if (s === 'unmapped') c.unmapped++;
+      else c.none++;
+    });
+    c.total = total;
+    return c;
+  }
+
+  // Task 121 item 2 — HINDU'S #totalbar RE-DERIVES, by the same gate.
+  // It is the statband figure under another name: hindu is the one room
+  // with no statband, and its proportional bar was still reading
+  // "162 public-domain · 148 copyright · 22 no English" — the partition
+  // the page stopped showing. Same rule as the band: act only if the
+  // element speaks the OLD vocabulary, so a bar that has been re-authored
+  // (or any future room's) is left alone by construction.
+  function restateTotalbar() {
+    var bar = document.querySelector('#totalbar');
+    if (!bar || !B) return;
+    var txt = (bar.textContent || '').toLowerCase();
+    if (!/public-domain|copyright|no english/.test(txt)) return;
+    var c = markCounts();
+    if (!c.total) return;
+    // the mark palette, as FILLS — a proportional bar cannot be hollow,
+    // so 'PD but unheld' takes the light green of the same family rather
+    // than a fourth hue, keeping the legend's vocabulary intact
+    var segs = [
+      { n: c.held, cls: 'tg', bg: '#2E7D32', dark: '#7fae86', label: 'held' },
+      { n: c.possible, cls: 'tp', bg: '#8cbf92', dark: '#5f8f68', label: 'PD' },
+      { n: c.none, cls: 'ta', bg: '#B7791F', dark: '#d9a05b', label: 'no PD' },
+      { n: c.restricted, cls: 'tr', bg: '#C0392B', dark: '#d97b6c', label: 'restricted' }
+    ].filter(function (s) { return s.n > 0; });
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    bar.innerHTML = segs.map(function (s) {
+      var pct = (s.n / c.total * 100);
+      return '<span class="' + s.cls + '" style="width:' + pct + '%;background:' +
+             (dark ? s.dark : s.bg) + '" title="' + s.n + ' ' + esc(s.label) + '">' +
+             s.n + ' ' + esc(s.label) + '</span>';
+    }).join('');
+    bar.setAttribute('aria-label',
+      segs.map(function (s) { return s.n + ' ' + s.label; }).join(', '));
+  }
+  _ready.then(restateTotalbar);
+  // the bar carries literal fills, so it must be repainted when the
+  // reader flips the lamp — the statband uses tokens and does not
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.closest && e.target.closest('#arch-dark, #themeBtn'))
+      setTimeout(restateTotalbar, 0);
+  });
+
   function restatBand() {
     var band = document.querySelector('.statband');
     if (!band || !B) return;
@@ -1112,15 +1169,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
       return labels.indexOf(w) >= 0;
     });
     if (!isRights) return;
-    var c = { held: 0, possible: 0, none: 0, restricted: 0, unmapped: 0 }, total = 0;
-    Object.keys(B).forEach(function (k) {
-      var s = B[k].state; total++;
-      if (s === 'held' || s === 'held-several') c.held++;
-      else if (s === 'possible') c.possible++;
-      else if (s === 'restricted') c.restricted++;
-      else if (s === 'unmapped') c.unmapped++;
-      else c.none++;
-    });
+    var c = markCounts(), total = c.total;
     var rows = [[total, 'texts'], [c.held, 'held'], [c.possible, 'PD'],
                 [c.none, 'no PD'], [c.restricted, 'restricted']];
     // the fifth state is named only where it exists — indigenous alone
