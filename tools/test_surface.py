@@ -582,6 +582,36 @@ def g_lens(pg, base, R):
             R.check("7 marks", f"{room}: held and no-PD are different fills",
                     shown["held"]["bg"] != shown["nopd"]["bg"],
                     f"{shown['held']['bg']} vs {shown['nopd']['bg']}")
+        # Task 119e — the fambar is retired, markup and rules. It is not
+        # hidden: a hidden figure is what caused 119b to keep something
+        # nobody could see, so the assertion is ABSENCE, not invisibility.
+        R.check("7 marks", f"{room}: no fambar survives",
+                pg.evaluate("() => document.querySelectorAll('.fambar').length") == 0,
+                "0 in the DOM")
+        # Task 119e — the statband speaks the marks' vocabulary, and its
+        # total still equals the room's chip count. Gated on the band
+        # being a RIGHTS band: buddhist's is a structural count
+        # ("5 Vinaya · 34 Dīgha …") and must be left alone.
+        band = pg.evaluate("""() => { const b = document.querySelector('.statband');
+          if (!b) return null;
+          return [...b.querySelectorAll('.stat')].map(s => ({
+            n: parseInt(s.querySelector('b').textContent.replace(/,/g, ''), 10),
+            k: (s.querySelector('span').textContent || '').trim().toLowerCase() })); }""")
+        if band:
+            keys = [t["k"] for t in band]
+            if "texts" in keys:
+                R.check("7 marks", f"{room}: statband speaks the marks, not colours",
+                        not ({"green", "amber", "red"} & set(keys))
+                        and keys[:5] == ["texts", "held", "pd", "no pd", "restricted"],
+                        " · ".join(keys))
+                total = next(t["n"] for t in band if t["k"] == "texts")
+                parts = sum(t["n"] for t in band if t["k"] != "texts")
+                R.check("7 marks", f"{room}: the statband's parts sum to its total",
+                        parts == total, f"{parts} vs {total}")
+            else:
+                R.check("7 marks", f"{room}: structural statband left alone",
+                        not ({"green", "amber", "red"} & set(keys)),
+                        " · ".join(keys)[:60])
         # ONE box in every room: the mark's geometry may not drift
         if shown:
             first = next(iter(shown.values()))

@@ -424,7 +424,7 @@ section.view { display: block !important; }
                         '<i class="zb-poss" style="width:' + (poss * 100 / n) + '%"></i>' +
                         '<i class="zb-none" style="width:' + (none * 100 / n) + '%"></i>' +
                         '<i class="zb-res" style="width:' + (res * 100 / n) + '%"></i>';
-        var old = sec.querySelector('.mini, .fambar');
+        var old = sec.querySelector('.mini');
         var head = sec.querySelector('.zone-h, h2');
         if (old && old.closest('section') === sec) old.replaceWith(bar);
         else if (head) head.appendChild(bar);
@@ -611,13 +611,16 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
 [data-theme="dark"] .mz-lbl { fill: #c8c4bc; stroke: rgba(26,26,30,.85); }
 g.zone.mz-hl path.seg { stroke: var(--accent, #7a5c3a); stroke-width: 1.5px; }
 .keyrow.mz-hl { background: rgba(122,92,58,.12); }
-/* .fambar STAYS (Task 119b): it does not state a new fact — it
-   aggregates the marks one level up — but it is the only way to read a
-   FAMILY's shape without counting chips, and buddhist's 48 families are
-   exactly where that matters. #gradient (buddhist) and .keyrow .mini
-   (hindu) RETIRE: single-room devices that restate the marks, and
-   retiring them closes two of hindu's three Task 118 outlier rows. */
-.fambar { display:inline-flex !important; }
+/* Task 119e — .fambar RETIRES, reversing 119b. It was kept as "the only
+   way to read a family's shape without counting chips" — an argument
+   about a figure that turned out never to have been on screen: 170
+   present in the markup, 0 visible, in every room, for several lanes,
+   because each sits inside a <summary> that every room hid with
+   !important. The markup and its rules are gone rather than un-hidden;
+   a family-shape figure, if ever wanted, gets designed deliberately
+   instead of restored by accident. #gradient (buddhist) and
+   .keyrow .mini (hindu) retire with it — single-room devices that
+   restate the marks. */
 #gradient { display:none !important; }
 .keyrow .mini { display:none !important; }
 /* 40a — working sub-tradition tabs: a hidden view beats the ported
@@ -1052,6 +1055,49 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
   }
   _ready.then(function () { updateMandala(); mandalaNav(); });
 
+  // Task 119e — THE STATBAND RE-DERIVES FROM THE FOUR MARKS.
+  // Task 119 item 4 kept it because it states the aggregate the marks
+  // cannot; after the merge it was still counting the OLD g/a/r
+  // partition, which cuts the corpus differently — jain proves it:
+  // green 5 = held 2 + PD 3, while amber 6 + red 7 = no-PD 13. An
+  // aggregate of a partition the page no longer shows states nothing
+  // the page means. The tiles now count the binder's m-* states, in the
+  // legend's order and vocabulary, derived from bindings, never typed.
+  //
+  // GATED ON WHAT THE BAND SAYS, NOT ON WHICH ROOM IT IS. Buddhist's
+  // statband is not a rights figure at all but a structural one —
+  // "5 Vinaya · 34 Dīgha · 152 Majjhima · 56 Saṃyutta …" — and
+  // re-deriving it would have destroyed a real count. A band that does
+  // not speak green/amber/red is left exactly as it stands.
+  function restatBand() {
+    var band = document.querySelector('.statband');
+    if (!band || !B) return;
+    var labels = [].map.call(band.querySelectorAll('.stat span'), function (s) {
+      return (s.textContent || '').trim().toLowerCase();
+    });
+    var isRights = ['green', 'amber', 'red'].some(function (w) {
+      return labels.indexOf(w) >= 0;
+    });
+    if (!isRights) return;
+    var c = { held: 0, possible: 0, none: 0, restricted: 0, unmapped: 0 }, total = 0;
+    Object.keys(B).forEach(function (k) {
+      var s = B[k].state; total++;
+      if (s === 'held' || s === 'held-several') c.held++;
+      else if (s === 'possible') c.possible++;
+      else if (s === 'restricted') c.restricted++;
+      else if (s === 'unmapped') c.unmapped++;
+      else c.none++;
+    });
+    var rows = [[total, 'texts'], [c.held, 'held'], [c.possible, 'PD'],
+                [c.none, 'no PD'], [c.restricted, 'restricted']];
+    // the fifth state is named only where it exists — indigenous alone
+    if (c.unmapped) rows.push([c.unmapped, 'not mapped']);
+    band.innerHTML = rows.map(function (r) {
+      return '<div class="stat"><b>' + r[0] + '</b><span>' + esc(r[1]) + '</span></div>';
+    }).join('');
+  }
+  _ready.then(restatBand);
+
   _ready.then(function () { if (typeof updateMandala === 'function') updateMandala(); });
 
   // the panel
@@ -1320,14 +1366,12 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .basket h2 { justify-content: center; text-align: center; }
 .deep .basket > h2 .ct, .basket h2 .ct { margin-left: 0; }
 .deep .basket > h2, .basket h2 { justify-content: center; text-align: center; }
-.deep .fam > summary .fambar, .fam > summary .fambar { margin-left: 0; }
 .basket /* the range span carried margin-left:auto, which eats every pixel of
    free space — so justify-content:center was set and could do nothing.
    The title, its gloss and its range now centre together as one run. */
 .vagga > h3 .pn { margin-left: 0; }
 .blurb { text-align: center; margin-left: auto; margin-right: auto; }
 .fam > summary { justify-content: center; }
-.fam > summary .fambar { margin-left: 0; }
 </style>
 <style>
 /* Task 95 — the Hindu room's zones follow the same centered grammar:
@@ -1390,7 +1434,7 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 .deep .basket > h2 .h2-meta .pi, .h2-meta .pi { margin-left: 0; }
 .deep .basket > h2 .h2-meta .ct, .h2-meta .ct { margin-left: 0.6em; }
 
-.fam > summary .zb, .fam > summary .fambar,
+.fam > summary .zb,
 .keyrow .mini,
 .zone-h .mini, .zone-h .zb, .mini, .zb { display: none !important; }
 
