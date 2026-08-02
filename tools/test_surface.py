@@ -578,14 +578,26 @@ def g_lens(pg, base, R):
         # gaps. Derived at render time, so this also fails the day a
         # populated body is wrongly labelled empty.
         gap = pg.evaluate("""() => {
-          const b = [...document.querySelectorAll('details.fam > .fambody')];
-          const note = x => x.querySelector(':scope > .fam-empty');
-          return { silent: b.filter(x => x.children.length === 0).length,
-                   lying: b.filter(x => note(x) && x.children.length > 1).length,
-                   n: b.length }; }""")
-        R.check("7 lens", f"{room}: no division is both empty and silent",
-                gap["silent"] == 0 and gap["lying"] == 0,
-                f"{gap['silent']} silent, {gap['lying']} mislabelled of {gap['n']}")
+          const d = [...document.querySelectorAll('details.fam')];
+          const real = b => [...b.children]
+            .filter(x => !x.classList.contains('fam-empty')).length;
+          const body = x => x.querySelector(':scope > .fambody');
+          const empty = d.filter(x => body(x) && real(body(x)) === 0);
+          const full  = d.filter(x => body(x) && real(body(x)) > 0);
+          return { emptyOpen: empty.filter(x => x.open).length,
+                   fullClosed: full.filter(x => !x.open).length,
+                   silentCanon: empty.length > 0
+                     && document.querySelectorAll('.canon-gap').length === 0,
+                   strayLine: full.length > 0 && empty.length === 0
+                     && document.querySelectorAll('.canon-gap').length > 0,
+                   nEmpty: empty.length, nFull: full.length }; }""")
+        R.check("7 lens", f"{room}: openness derives from content",
+                gap["emptyOpen"] == 0 and gap["fullClosed"] == 0,
+                f"{gap['emptyOpen']} empty-open, {gap['fullClosed']} full-closed "
+                f"({gap['nEmpty']} empty / {gap['nFull']} full)")
+        R.check("7 lens", f"{room}: no empty canon is silent, no full canon labelled",
+                not gap["silentCanon"] and not gap["strayLine"],
+                f"silent={gap['silentCanon']} stray={gap['strayLine']}")
         R.check("7 lens", f"{room}: no chooser popover survives",
                 pg.evaluate("""() => !document.querySelector('.m-chooser-pop')
                   && typeof window.__mcClose === 'undefined'"""))

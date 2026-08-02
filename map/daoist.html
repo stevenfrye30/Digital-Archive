@@ -1501,7 +1501,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 <style>
 /* Task 113 — the stated gap. A blank division body reads as a
    rendering bug; this is the archive's own grammar for an absence. */
-.fam-empty {
+.canon-gap {
   font: italic 400 12.5px/1.6 var(--serif, Georgia, serif);
   color: var(--ink-faint);
   padding: 0.35rem 0.75rem 0.6rem 1.9rem;
@@ -1509,41 +1509,69 @@ nav.toc:not(.toc-bare) > .toc-all {
 }
 </style>
 <script>
-(function stateTheEmptyDivisions() {
-  // Ruled derived, not authored: the line comes from the body BEING
-  // empty, so a future population pass removes it silently. It is
-  // re-derived on every mutation because the room rewrites division
-  // bodies when the reader switches canon — a one-shot pass wrote the
-  // line and the next view-switch wiped it.
-  var GAP = 'No per-text index for this canon yet — the division ' +
-            'counts are from the catalogue.';
+(function deriveEmptyCanons() {
+  // Task 115 — all three parts derived, as Task 113 was: the day
+  // CBETA/84000 lands, the divisions open themselves and the canon line
+  // disappears without a hand touching it.
+  //   1. openness follows content    2. one canon-level line
+  //   3. no per-division note        (the canon line says it once)
+  var LINE = 'Indexed from the catalogue — no per-text entries held yet.';
   var busy = false;
+  function real(b) {
+    var n = 0;
+    for (var i = 0; i < b.children.length; i++)
+      if (!b.children[i].classList.contains('fam-empty')) n++;
+    return n;
+  }
   function mark() {
     if (busy) return;
     busy = true;
     try {
-      document.querySelectorAll('details.fam > .fambody').forEach(function (b) {
-        var note = b.querySelector(':scope > .fam-empty');
-        var real = b.children.length - (note ? 1 : 0);
-        if (real > 0) { if (note) note.remove(); return; }
-        if (note) return;
+      // 3 — the per-division note retires wherever it survives
+      document.querySelectorAll('.fam-empty').forEach(function (p) { p.remove(); });
+      // 1 — openness derives from content
+      var emptyIn = {};
+      document.querySelectorAll('details.fam').forEach(function (d) {
+        var b = d.querySelector(':scope > .fambody');
+        if (!b) return;
+        var filled = real(b) > 0;
+        // An empty division is ALWAYS closed — it has nothing to show.
+        // A populated one takes its derived state ONCE and then belongs
+        // to the reader: re-asserting it on every mutation fought the
+        // Collapse-all control, which re-opened everything it closed.
+        if (!filled) { if (d.open) d.open = false; }
+        else if (!d.dataset.t115) { d.dataset.t115 = '1'; if (!d.open) d.open = true; }
+        if (!filled) {
+          var v = d.closest('section.view') || d.closest('main') || document.body;
+          if (v) { if (!v.id) v.id = 'canon-scope'; emptyIn[v.id] = true; }
+        }
+      });
+      // 2 — one line per canon that has any empty division, seated with
+      //     the greenline it belongs beside
+      document.querySelectorAll('.canon-gap').forEach(function (n) {
+        var v = n.closest('section.view') || n.closest('main') || document.body;
+        if (!v || !emptyIn[v.id]) n.remove();
+      });
+      Object.keys(emptyIn).forEach(function (id) {
+        var v = document.getElementById(id);
+        if (!v || v.querySelector(':scope > .canon-gap')) return;
         var p = document.createElement('p');
-        p.className = 'fam-empty';
-        p.textContent = GAP;
-        b.appendChild(p);
+        p.className = 'canon-gap';
+        p.textContent = LINE;
+        var g = v.querySelector(':scope > .greenline');
+        if (g) g.after(p); else v.insertBefore(p, v.firstChild);
       });
     } finally { busy = false; }
   }
   function watch() {
     mark();
     new MutationObserver(function () {
-      clearTimeout(window.__t113);
-      window.__t113 = setTimeout(mark, 30);
+      clearTimeout(window.__t115);
+      window.__t115 = setTimeout(mark, 30);
     }).observe(document.body, { childList: true, subtree: true });
   }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', watch);
-  } else { watch(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch);
+  else watch();
 })();
 </script>
 
@@ -1574,7 +1602,7 @@ nav.toc:not(.toc-bare) > .toc-all {
 [data-theme="dark"] .h2-meta .ct, [data-theme="dark"] .fam > summary em,
 [data-theme="dark"] .vagga > h3 em, [data-theme="dark"] .pn,
 [data-theme="dark"] .sc, [data-theme="dark"] .blurb,
-[data-theme="dark"] .fam-empty,
+[data-theme="dark"] .canon-gap,
 [data-theme="dark"] .su b, [data-theme="dark"] .tc b,
 [data-theme="dark"] .chip b, [data-theme="dark"] nav.toc a b { color: #a09a90 !important; }
 /* the titles keep the gold, and now own it alone */
