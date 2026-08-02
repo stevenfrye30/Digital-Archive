@@ -265,7 +265,16 @@ def g_contrast(pg, base, R):
 
 
 def g_covers(pg, base, R):
-    """Task 87/92/96/99 — the contents row, the canon row, the shelf."""
+    """Task 87/92/96/99 — the contents row, the canon row, the shelf.
+
+    Task 120 item 3 TRIED to add an anatomy-order check here and could
+    not: the plate's parts (title block, actions row, contents rule) are
+    unclassed <div>s, so there is nothing to assert against. Adding the
+    hooks is a renderer change across 1,059 covers and belongs to its own
+    lane, not to a doctrine lane. Recorded as unassertable in
+    `plans/cover_grammar.md` rather than left as a check that passes by
+    matching nothing.
+    """
     def cover(df):
         pg.goto(f"{base}?text={df}", wait_until="networkidle")
         pg.wait_for_timeout(1400)
@@ -875,9 +884,82 @@ def g_mobile(pg_unused, base, R):
         ctx.close()
 
 
+def g_grammar(pg, base, R):
+    """Task 120 item 1 — the room grammar, asserted.
+
+    `plans/room_grammar.md` names the ONE ruled form of every element
+    class and the exceptions that are content rather than drift. This
+    group is the half that can be checked: the universal classes must be
+    present in all sixteen rooms, and the NAMED exceptions must hold
+    exactly where they are named — a room may not quietly join or leave
+    one. Anything else is drift and fails here rather than waiting for a
+    steward to walk the room.
+    """
+    rooms = ["ancient", "bahai", "buddhist", "christianity", "confucian",
+             "daoist", "gnostic", "hindu", "indigenous", "islam", "jain",
+             "judaism", "modern", "shinto", "sikh", "zoroastrian"]
+    # §1 — universal, keyed by a selector that finds the thing itself
+    UNIVERSAL = {
+        "masthead": "header.mast",
+        "lede": "header.mast p",
+        "legend": "#m-legend",
+        "section heading": "section[id] h2, .zone-h, .basket > h2",
+        "collapse control": ".toc-all",
+        # the interpretive line. Written as .greenline in most rooms and
+        # .insight in hindu — asserting only .greenline failed hindu and
+        # would have reported a missing element that is on the screen.
+        # Task 114's `span.te` / `div.ed` error, repeated here and fixed
+        # the same way: name every class the thing is written in.
+        "interpretive line": ".greenline, .insight, .gl",
+        "footer": "footer#foot",
+        "theme button": "#arch-dark",
+        "star button": "#arch-fav",
+        "back arrow": "#arch-topbar .tb-arrow",
+    }
+    # §2 — the named exceptions, and the ONLY rooms they may appear in
+    STAT_STRUCTURAL = {"buddhist"}          # §2.4
+    NO_STATBAND = {"hindu"}                 # §2.3
+    SECOND_CHIP_GRAMMAR = {"buddhist", "hindu"}   # §2.1
+    for room in rooms:
+        pg.goto(f"{base}map/{room}.html", wait_until="networkidle")
+        pg.wait_for_timeout(600)
+        m = pg.evaluate("""(sels) => {
+          const out = {};
+          for (const k in sels) out[k] = document.querySelectorAll(sels[k]).length;
+          const band = document.querySelector('.statband');
+          out.__band = band ? [...band.querySelectorAll('.stat span')]
+            .map(s => (s.textContent || '').trim().toLowerCase()) : null;
+          out.__second = document.querySelectorAll('.chip .nm').length;
+          out.__fambar = document.querySelectorAll('.fambar').length;
+          out.__lens = document.querySelectorAll('#lens-toggle, #lens-banner').length;
+          return out; }""", UNIVERSAL)
+        for name, _sel in UNIVERSAL.items():
+            R.check("9 grammar", f"{room}: has {name}", m[name] >= 1, f"{m[name]}")
+        # the statband exception, both directions
+        has_band = m["__band"] is not None
+        R.check("9 grammar", f"{room}: statband present unless named absent",
+                has_band != (room in NO_STATBAND),
+                f"band={has_band}, named-absent={room in NO_STATBAND}")
+        if has_band:
+            structural = not ({"held", "pd", "no pd"} <= set(m["__band"]))
+            R.check("9 grammar",
+                    f"{room}: statband is {'structural' if room in STAT_STRUCTURAL else 'the four marks'}",
+                    structural == (room in STAT_STRUCTURAL),
+                    " · ".join(m["__band"])[:58])
+        # the second chip grammar lives in exactly two rooms
+        R.check("9 grammar", f"{room}: chip grammar is the one named for it",
+                (m["__second"] > 0) == (room in SECOND_CHIP_GRAMMAR),
+                f"{m['__second']} .chip .nm")
+        # retired archive-wide — absence, not invisibility
+        R.check("9 grammar", f"{room}: no retired furniture returns",
+                m["__fambar"] == 0 and m["__lens"] == 0,
+                f"fambar={m['__fambar']} lens={m['__lens']}")
+
+
 GROUPS = {
     "furniture": g_furniture,
     "marks": g_lens,
+    "grammar": g_grammar,
     "mobile": g_mobile,
     "boundary": g_boundary,
     "chrome": g_room_chrome,
