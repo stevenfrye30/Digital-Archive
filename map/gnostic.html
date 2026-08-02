@@ -517,8 +517,14 @@ body.rl-open #rl-bg, body.rl-open #rl-panel { display:block; }
 .statband, .greenline, .insight, #totalbar, .band { display:none !important; }
 .statband.structural { display:flex !important; }
 /* 4. the TOC is the room's table of contents, and it navigates */
-nav.toc a { color:var(--accent, #7a5c3a); cursor:pointer; text-decoration:none;
-  border-bottom:1px solid transparent; }
+/* the gold must be stated at !important: the rooms carry
+   `.deep nav.toc a { color: var(--ink-soft) }`, which outranks a bare
+   `nav.toc a` AND is stamped later. Task 67c recorded this exact trap —
+   the .deep scope class quietly reclaiming a dress — and it caught this
+   lane too: the TOC shipped ink-soft and only a computed-value check
+   showed it. */
+nav.toc a { color:var(--accent, #7a5c3a) !important; cursor:pointer;
+  text-decoration:none; border-bottom:1px solid transparent; }
 nav.toc a:hover, nav.toc a:focus { border-bottom-color:var(--accent, #7a5c3a); }
 :root[data-theme="dark"] nav.toc a { color:#c4a060; }
 :root[data-theme="dark"] nav.toc a:hover { border-bottom-color:#c4a060; }
