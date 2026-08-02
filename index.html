@@ -1030,6 +1030,20 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
    must each say what they are rather than wearing their desktop dress
    (the star is a glyph; Press is a quiet italic apparatus button). */
 #fmt-sheet .ctrl-group > label { display: block !important; }
+/* Task 126 — the contents door says what it is. As a bare ← it reads as
+   "collapse" inside a list of named rows; the label is what the other
+   doors already do. Its own dress (a 38px bordered arrow) is desktop
+   chrome and is dropped here so the row matches its siblings. */
+#fmt-sheet-doors > #ctrl-contents {
+  justify-content: flex-start !important;
+  width: 100% !important; height: auto !important;
+  border: none !important; border-radius: 0 !important;
+  font-size: 15px !important;
+}
+#fmt-sheet-doors > #ctrl-contents::after {
+  content: "Contents"; margin-left: 12px;
+  font: 400 15px/1.2 Georgia, serif;
+}
 #fmt-sheet-doors > #rr-fav { justify-content: flex-start !important; }
 #fmt-sheet-doors > #rr-fav::after { content: "Favorites"; margin-left: 12px;
   font: 400 15px/1.2 Georgia, serif; }
@@ -11764,6 +11778,23 @@ body.viewer-active .folio-leaf-colophon {
      the subtitle below already carries that information ("1 of 66"). */
   #nav-bar #nav-location .nav-label-position { display: none; }
 
+  /* Task 126 — THE HEADER IS CLAMPED. Its height was a function of the
+     title's length: 67px on "Section 3", 123px — 15% of an 844px screen
+     — on "Chapter 80 — HOW ZARATHUSTRA CAME INTO BEING", which wrapped
+     to five lines and ate the reading surface before a word of text.
+     Task 106's original complaint was that the header is too tall; the
+     apparatus was fixed and the height was never bounded. Two lines,
+     then ellipsis. The full title stays in the picker and in the
+     subtitle, so nothing is lost — only the header stops growing. */
+  #nav-bar #nav-location .nav-location-label,
+  #nav-bar #nav-location .nav-label-chapter {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+  }
+
   /* Subtitle line: position + translation short-label, restrained. */
   #nav-bar #nav-subtitle {
     display: block;
@@ -16723,6 +16754,36 @@ function enterReading(targetGroupKey) {
 
   const chapterRoom = _isChapterScopedHierarchy() && currentBook && currentBook !== '__fm__';
   document.body.classList.toggle('chapter-room', !!chapterRoom);
+
+  // Task 126 — THE FOLIO IS OFFERED ONLY WHERE IT HAS SOMETHING TO SHOW.
+  //
+  // The steward's walk found a 300px column, 21% of the desktop width,
+  // whose entire content was "No augmentation in the companion-folio
+  // prototype scope." — prototype scaffolding facing a reader, behind a
+  // control the apparatus strip advertises as "Folio".
+  //
+  // Retiring the control outright was the obvious move and would have
+  // been wrong: `companion-mode` is the ONLY route into the chapter
+  // room's witness spread as well, so deleting the toggle would have
+  // taken a live, populated feature with it. Doctrine 6.3 — list what
+  // routes THROUGH a control before retiring it — caught this.
+  //
+  // So the control is derived rather than retired: it appears when the
+  // text has folio content and is absent when it does not. Nobody meets
+  // the apology, because nobody is offered the door to it. A text that
+  // gains augmentation later grows the control back with no edit here.
+  (function _folioOfferedOnlyWhenItHasContent() {
+    let has = false;
+    try {
+      has = !!chapterRoom || (typeof _availableFolioChapters === 'function'
+                              && _availableFolioChapters().length > 0);
+    } catch (e) { has = false; }
+    for (const id of ['companion-toggle', 'companion-swap']) {
+      const el = document.getElementById(id);
+      if (el) el.hidden = !has;
+    }
+    if (!has) document.body.classList.remove('companion-mode', 'folio-left');
+  })();
 
   if (chapterRoom) {
     // Chapter-room mode — the reading room is bounded to one
@@ -22316,10 +22377,12 @@ function renderCompanionFolio() {
       _openFolioRecordId = null;
       _setViewerActive(false);
     }
-    const empty = document.createElement('div');
-    empty.className = 'folio-empty';
-    empty.textContent = 'No augmentation in the companion-folio prototype scope.';
-    inner.appendChild(empty);
+    // Task 126 — the apology is retired, not hidden (doctrine 6.2). It
+    // read "No augmentation in the companion-folio prototype scope." —
+    // the archive explaining its own scaffolding to a reader. The folio
+    // control is now derived from whether there IS content (see
+    // _folioOfferedOnlyWhenItHasContent), so this branch is reached only
+    // by internal re-renders, and it renders nothing at all.
     return;
   }
   if (!_currentFolioChapterKey || !chapters.includes(_currentFolioChapterKey)) {
@@ -23651,7 +23714,9 @@ function applyReaderFace(key) {
     if (detailsEl && detailsEl.parentNode) {
       desktopHomes['__details__'] = { parent: detailsEl.parentNode, next: detailsEl.nextSibling };
     }
-    ['rr-fav', 'press-print', 'rr-atlas'].forEach(id => {
+    // one list, used here and by applyMobile — it was written twice and
+    // the two copies are exactly the kind of enumeration that drifts
+    DOOR_IDS.forEach(id => {
       const el = document.getElementById(id);
       if (el && el.parentNode) {
         desktopHomes['__door_' + id] = { parent: el.parentNode, next: el.nextSibling };
@@ -23664,9 +23729,21 @@ function applyReaderFace(key) {
   // so every key, handler and preset stays single-sourced.
   const sheetBody = () => document.getElementById('fmt-sheet-body');
   const sheetDoors = () => document.getElementById('fmt-sheet-doors');
-  const DOOR_IDS = ['rr-fav', 'press-print', 'rr-atlas'];   // Folio is NOT
-  // brought to the phone: it is a side-by-side affordance and 390px has
-  // no second column (ruled, Task 106-P2 item 3).
+  // Task 126 — CONTENTS LEADS THE DOORS. At phone widths #ctrl-contents
+  // did not render anywhere, and the sheet's ruled contents (Theme ·
+  // Face · Size · Spacing · Measure, then Favorites · Press · Atlas)
+  // carried no route out of the text. A reader who opened a text on a
+  // phone could leave it only by the browser's back button — the deepest
+  // layer in the archive with no door of its own.
+  //
+  // It is the SAME node the desktop back arrow uses, relocated by the
+  // same mechanism as the other three and restored on the way back, so
+  // there is no second implementation and `backToContents()` stays the
+  // one route (Task 106-P2 item 2's rule about the sheet being a new
+  // HOME for controls, never a copy of them).
+  const DOOR_IDS = ['ctrl-contents', 'rr-fav', 'press-print', 'rr-atlas'];
+  // Folio is NOT brought to the phone: it is a side-by-side affordance
+  // and 390px has no second column (ruled, Task 106-P2 item 3).
 
   function applyMobile() {
     moves.forEach(m => {
