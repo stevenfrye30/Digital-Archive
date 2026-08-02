@@ -1871,6 +1871,12 @@ details.fam > summary::before { content: "▶"; font-size: 0.62rem;
   #arch-topnav a, .toggle, #themeBtn, .lg, .keyrow {
     min-height: 44px;
   }
+  /* Task 126-R — the text chip is a DOOR (Tasks 103/107: the chip is
+     always the door), and at 332x25 it sat under the ruled 44px floor
+     on the surface a phone reader taps most. Phone-scoped only: 106-P2
+     item 4 kept desktop at 38px deliberately, and the map's desktop
+     density is the dress Tasks 111/114/116 tuned. */
+  .tc { min-height: 44px; justify-content: center; }
   #lens-toggle button, .lens-toggle button, #held-btn, .toggle,
   .zone-h button, .keyrow, .bcl-codex-range {
     min-height: 44px !important;

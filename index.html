@@ -415,7 +415,15 @@ body.in-reading.cols-single #reader-inner {
      scripture column (it carries marginalia in the same grid). The
      narrower column also widens the symmetric margins that host
      the folio sidebar, so nothing overlaps. */
-  max-width: var(--reader-measure, 660px); /* Task 74 — the spectrum */
+  /* Task 126-R — the measure is widened by ONE gutter so the symmetric
+     .passage padding below leaves the INK exactly as wide as it was
+     (measure − 110) while centring it. Before: container centred, ink
+     110px right of centre at every width, in every cover shape, because
+     the reference gutter was padded on one side and compensated on
+     neither. Task 107 item 2 ruled the column actually centred and did
+     not scope that to phones; the phone was fixed and the desktop was
+     never re-measured. */
+  max-width: calc(var(--reader-measure, 660px) + 110px);
   column-count: 1;
 }
 body.in-reading.cols-wide #reader-inner {
@@ -999,10 +1007,14 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 #fmt-sheet .ctrl-group > label { flex: 0 0 5.2em; font-size: 13px;
   color: var(--chrome-muted); text-align: left; }
 #fmt-sheet .ctrl-group input[type=range] { flex: 1 1 auto; height: 44px; }
-#fmt-sheet .theme-swatch { width: 34px; height: 34px; }
+/* Task 126-R — 44x44, the ruled floor (106-P2 item 4), on the controls
+   the thumb lands on. The row was already 44 and the battery measured
+   the ROW, so a 34px swatch inside a 44px row reported green: §8.1d in
+   the surface that lane built. */
+#fmt-sheet .theme-swatch { width: 44px; height: 44px; }
 #fmt-sheet #ctrl-themes, #fmt-sheet #ctrl-faces { display: flex; gap: 10px;
   flex-wrap: wrap; align-items: center; }
-#fmt-sheet .face-btn { min-height: 40px; padding: 8px 12px; }
+#fmt-sheet .face-btn { min-height: 44px; min-width: 44px; padding: 8px 12px; }
 #fmt-sheet details.display-options > summary { display: none; }
 #fmt-sheet details.display-options { display: block !important; }
 #fmt-sheet-doors { margin-top: 6px; border-top: 1px solid var(--chrome-border);
@@ -1028,6 +1040,27 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 #nav-bar #nav-fmt-toggle { flex: 0 0 auto; border: 1px solid transparent;
   background: transparent; color: var(--chrome-active);
   font: 600 15px/1 Georgia, serif; cursor: pointer; }
+/* Task 126-R — THE 44px FLOOR, on the controls that were below it.
+   106-P2 item 4 ruled the floor archive-wide at phone widths and kept
+   desktop at 38px, so every rule here is phone-scoped: the split is
+   deliberate, not drift.
+
+   None of these were new regressions. They had passed since the mobile
+   group was written, because its predicate enforced width at 24 and
+   returned early on anything below the fold — the entrance's footer
+   controls sit below the fold and were never examined at all (§8.1d). */
+@media (max-width: 720px) {
+  /* the entrance footer — 114x11, 91x11, 137x11 */
+  #home-footer-links a,
+  #home-footer-links .home-footlink {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; min-width: 44px; padding: 0 6px;
+  }
+  /* the cover's star and the codex-index door — 30x44 and 170x28 */
+  .cc-fav { width: 44px; height: 44px; }
+  .bible-cover-layout .bcl-atlas-index-btn,
+  .cc-atlas-index-btn { min-height: 44px; min-width: 44px; }
+}
 @media (min-width: 721px) { #nav-bar #nav-fmt-toggle { display: none; } }
 
 /* The 44px floor, phone widths only. Desktop keeps its 38px squares —
@@ -4557,7 +4590,11 @@ body.in-reading.rt-slate #folio-topbar, body.in-reading.rt-ink #folio-topbar {
      as soon as the chrome ends. Bottom padding kept generous so the
      last passage clears the safe area. */
   #reader { padding: 12px 16px 60px; }
-  .passage { padding-left: 0; margin-bottom: 0.8em; }
+  /* Task 126-R — both sides. The gutter collapses at phone widths (the
+     .ref goes static and block above the text), so the desktop
+     counterweight must collapse with it or the column would sit 110px
+     LEFT of centre — the same defect mirrored. */
+  .passage { padding-left: 0; padding-right: 0; margin-bottom: 0.8em; }
   .passage .ref {
     position: static;
     display: block;
@@ -4811,6 +4848,13 @@ details.display-options > summary {
 .passage {
   position: relative;
   padding-left: 110px;
+  /* Task 126-R — the counterweight. The .ref well below is absolutely
+     positioned in the left 100px, so the left padding is structural; this
+     right padding exists only so the ink sits centred inside a centred
+     container. Ink width is unchanged (the measure carries the extra
+     110px), and the chapter heading — centred on the container — now
+     lands on the ink's centre too rather than 55px left of it. */
+  padding-right: 110px;
   margin-bottom: 1.25em; /* Task 83 — ~2/3 line at the 1.9 leading */
   text-wrap: pretty;      /* quiet enhancement where supported */
 }
@@ -29036,7 +29080,7 @@ loadIndex();
    same r-measure value read as a 0–1 ratio (set beside the control, so
    the two can never disagree). */
 @media (max-width: 720px) {
-  body.in-reading .passage { padding-left: 0; }
+  body.in-reading .passage { padding-left: 0; padding-right: 0; }
   body.in-reading .passage .ref {
     position: static; display: block; width: auto; text-align: left;
   }

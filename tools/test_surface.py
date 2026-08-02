@@ -1019,6 +1019,85 @@ TEXT_GAPS_JS = r"""() => {
 }"""
 
 
+def g_centring(pg, base, R):
+    """Task 126-R — the reading column is centred AT EVERY WIDTH.
+
+    Task 107 item 2 ruled "the column must be centred, actually centred"
+    and did not scope that to phones. The assertion was nonetheless
+    written inside the mobile group and nowhere else, so for twenty lanes
+    it proved the phone and said nothing about the desktop — where the
+    column sat 103-109px right of centre in every cover shape, because
+    `.passage` carried a 110px reference gutter on one side and a
+    counterweight on neither.
+
+    An assertion that lives in ONE group only is why that survived. This
+    group is the fix for the fix: it walks the same rule across the
+    widths the archive is actually read at, and it measures the rendered
+    INK (§8.1) rather than the container, which was centred all along and
+    would have reported green.
+
+    Tolerance is 12px because the right edge is ragged: the rightmost ink
+    is the longest line's end, not the column's edge, so texts differ by a
+    few px. The LEFT edge is deterministic and is asserted tightly.
+
+    §8.1 again, on the subject rather than the property: this group does
+    NOT reuse TEXT_GAPS_JS, which reads `querySelector('.passage')` — the
+    FIRST passage, which in most texts is a chapter heading. A heading is
+    centred, short, and has its `.ref` suppressed, so its gaps describe a
+    different box than the body column the ruling is about. Measuring it
+    reported 409/447 for a column that is actually 445/446.
+    """
+    COLUMN_INK_JS = r"""() => {
+      const ps = [...document.querySelectorAll('.passage')].filter(p =>
+        p.getAttribute('data-role') !== 'heading'
+        && (p.textContent || '').trim().length > 80
+        && getComputedStyle(p).display !== 'none');
+      if (!ps.length) return null;
+      let lo = Infinity, hi = -Infinity;
+      for (const p of ps.slice(0, 10)) {
+        for (const n of p.childNodes) {
+          if (n.nodeType !== 3 || !n.nodeValue.trim()) continue;
+          const rg = document.createRange(); rg.selectNodeContents(n);
+          for (const r of rg.getClientRects()) {
+            if (r.width < 2) continue;
+            lo = Math.min(lo, r.left); hi = Math.max(hi, r.right);
+          }
+        }
+      }
+      if (lo === Infinity) return null;
+      return { left: Math.round(lo), right: Math.round(innerWidth - hi),
+               seen: ps.length };
+    }"""
+    WIDTHS = [(1440, 900), (1024, 800), (768, 900)]
+    TEXTS = [("codex", CODEX), ("bible-80", BIBLE_80), ("flat", FLAT)]
+    ctx = _BROWSER[0].new_context(viewport={"width": 1440, "height": 900})
+    p2 = ctx.new_page()
+    try:
+        for w, h in WIDTHS:
+            p2.set_viewport_size({"width": w, "height": h})
+            lefts = []
+            for label, df in TEXTS:
+                p2.goto(f"{base}?text={df}", wait_until="networkidle")
+                p2.wait_for_timeout(700)
+                p2.evaluate("""() => { const b = [...document.querySelectorAll('button,a')]
+                    .find(x => /Read from beginning/i.test(x.textContent)); b && b.click(); }""")
+                p2.wait_for_timeout(900)
+                g = p2.evaluate(COLUMN_INK_JS)
+                R.check("9 centring", f"{w}px, {label}: the ink is centred",
+                        g is not None and abs(g["left"] - g["right"]) <= 12,
+                        f"{g and g['left']}px left / {g and g['right']}px right",
+                        population=(g or {}).get("seen", 0))
+                if g:
+                    lefts.append(g["left"])
+            # the left edge is deterministic, so every text must share it:
+            # a per-text left gap means the gutter, not the ragged margin.
+            R.check("9 centring", f"{w}px: every text shares one left edge",
+                    len(set(lefts)) == 1 if lefts else False,
+                    f"{sorted(set(lefts))}", population=len(lefts))
+    finally:
+        ctx.close()
+
+
 def g_mobile(pg_unused, base, R):
     """Task 106-P2 phase 3 — the phone. This group exists because the
     battery only ever ran at 1440px, and a whole viewport class hid a
@@ -1031,18 +1110,36 @@ def g_mobile(pg_unused, base, R):
     # Task 122 — the count of targets EXAMINED rides back with the
     # offenders: "no target under 44px" and "no targets at all" are the
     # same report otherwise, and the second is a page that failed to load.
+    # Task 126-R / doctrine §8.1d — THE NAME MUST NOT ASSERT MORE THAN THE
+    # PREDICATE TESTS. Two defects lived in the four lines below, and both
+    # were invisible because the label read correctly:
+    #
+    #   `if (r.height < 44 || r.width < 24)`  — the ruled floor is 44x44
+    #   (Task 106-P2 item 4). Width was enforced at 24, so a 30x44 star on
+    #   every cover shape and a 24x44 shelf link passed a check named
+    #   "every visible target >= 44px".
+    #
+    #   `if (r.bottom < 0 || r.top > innerHeight) return;` — a name saying
+    #   EVERY over a predicate that examines only the first screen. The
+    #   entrance's three 11px footer controls were never measured at all.
+    #
+    # Task 122's vacuity audit read this exact line, fixed its vacuity with
+    # subject(), and saw neither. 8.1b asks whether the check looked; this
+    # asks whether it looked for what it claimed.
     TAP_JS = """() => {
-      const vw = innerWidth, small = []; let seen = 0;
+      const vw = innerWidth, small = []; let seen = 0, offscreen = 0;
       document.querySelectorAll('a, button, select, summary, [role=button], [role=link]')
         .forEach(e => { const r = e.getBoundingClientRect();
           if (!r.width || !r.height) return;
-          if (r.bottom < 0 || r.top > innerHeight) return;
           if (getComputedStyle(e).position === 'fixed' && r.width < 2) return;
+          // a control below the fold is still a control the reader taps
+          if (r.bottom < 0 || r.top > innerHeight) offscreen++;
           seen++;
-          if (r.height < 44 || r.width < 24)
+          if (r.height < 44 || r.width < 44)
             small.push((e.id ? '#'+e.id : e.tagName + '.' + String(e.className).slice(0,20))
                        + ' ' + Math.round(r.width) + 'x' + Math.round(r.height)); });
-      return { seen: seen, overflow: Math.round(document.documentElement.scrollWidth - vw),
+      return { seen: seen, offscreen: offscreen,
+               overflow: Math.round(document.documentElement.scrollWidth - vw),
                small: [...new Set(small)].slice(0, 6) }; }"""
     # the phone gets its own context on the SAME browser: a nested
     # sync_playwright() inside the running one raises.
@@ -1097,7 +1194,21 @@ def g_mobile(pg_unused, base, R):
               const rows = [...p.querySelectorAll('.ctrl-group, #fmt-sheet-doors > *')]
                 .filter(e => e.getClientRects().length)
                 .map(e => Math.round(e.getBoundingClientRect().height));
+              // §8.1d — the reader taps the CONTROL, not the row that
+              // contains it. "every sheet row >= 44px" measured the row and
+              // passed while .theme-swatch was 34x34 and .face-btn 40 tall.
+              const tapped = [...p.querySelectorAll(
+                  'button, input, select, a, summary, [role=button]')]
+                .filter(e => e.getClientRects().length)
+                .map(e => { const b = e.getBoundingClientRect();
+                  return { w: Math.round(b.width), h: Math.round(b.height),
+                           id: (e.className ? '.' + String(e.className).slice(0,20)
+                                            : e.tagName) }; });
+              const smallCtrl = tapped.filter(t => t.h < 44 || t.w < 44)
+                .map(t => t.id + ' ' + t.w + 'x' + t.h);
               return { within: r.top >= 0 && r.bottom <= innerHeight + 1,
+                       ctrlSeen: tapped.length,
+                       smallCtrl: [...new Set(smallCtrl)].slice(0, 6),
                        themes: inside('ctrl-themes'), faces: inside('ctrl-faces'),
                        size: inside('ctrl-size'), spacing: inside('ctrl-spacing'),
                        measure: inside('ctrl-measure'), fav: inside('rr-fav'),
@@ -1115,6 +1226,13 @@ def g_mobile(pg_unused, base, R):
                     bool(s) and not s["folio"])
             R.check("8 mobile", "every sheet row ≥ 44px",
                     bool(s) and s["minRow"] >= 44, f"min {s and s['minRow']}px")
+            # §8.1d — and every control INSIDE those rows, which is what the
+            # reader's thumb actually lands on.
+            R.check("8 mobile", "every sheet control ≥ 44px",
+                    bool(s) and not s["smallCtrl"],
+                    "; ".join(s["smallCtrl"][:3]) if s and s["smallCtrl"]
+                    else f"{s and s['ctrlSeen']} controls",
+                    population=(s or {}).get("ctrlSeen", 0))
             # it actually formats
             pg.click('#fmt-sheet .theme-swatch[data-theme-key="ink"]'); pg.wait_for_timeout(400)
             R.check("8 mobile", "a preset chosen in the sheet reaches the page",
@@ -1235,6 +1353,7 @@ GROUPS = {
     "furniture": g_furniture,
     "marks": g_lens,
     "grammar": g_grammar,
+    "centring": g_centring,
     "mobile": g_mobile,
     "boundary": g_boundary,
     "chrome": g_room_chrome,
