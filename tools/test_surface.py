@@ -1534,6 +1534,8 @@ def g_grammar(pg, base, R):
           const ins = document.querySelector('.greenline, .insight, .gl');
           out.__insight = ins && ins.getClientRects().length
             ? (ins.textContent || '').replace(/\s+/g, ' ').trim() : null;
+          out.__famr = [...document.querySelectorAll('.famr')]
+            .map(e => (e.textContent || '').replace(/\s+/g, ' ').trim());
           out.__second = document.querySelectorAll('.chip .nm').length;
           out.__fambar = document.querySelectorAll('.fambar').length;
           out.__lens = document.querySelectorAll('#lens-toggle, #lens-banner').length;
@@ -1571,6 +1573,35 @@ def g_grammar(pg, base, R):
                     not re.search(r"\b\d[\d,]*\s+(of\s+\d[\d,]*\s+)?green\b",
                                   m["__insight"][:160], re.I),
                     m["__insight"][:56])
+        # Task 126 — NO EDITION CREDIT ON A FAMILY HEADER.
+        #
+        # Task 111 item 6 took edition info off every chip ("SBE 13/17
+        # (PD) · Brahmali CC0" and its kin) because the contents page owns
+        # it; Task 102b then ruled that where a retired line carried
+        # MEANING it moves to the family header, but "only plain edition
+        # credits are dropped outright." Four survived on family headers
+        # anyway — christianity's "M.R. James 1924" and "R.H. Charles
+        # 1913", zoroastrian's two "Darmesteter, SBE …" lines.
+        #
+        # Derived on the SHAPE the rulings describe — a short line ending
+        # in a publication year — so it cannot be dodged by a new
+        # translator's name, and so it does not catch the lines that
+        # legitimately live here: a canon gloss ("Catholic & Orthodox"), a
+        # date span ("c. 90–160"), a volume location ("NPNF 1, vols 1–8"),
+        # a containment ("within Yasna 28–53"), or the archive's own note
+        # ("a demonstrated 19th-c. hoax (Rafinesque 1836) — not a genuine
+        # Lenape text"), which mentions a year but is prose and is MEANING.
+        # First draft of this rule flagged buddhist's "T1421–1504" — a
+        # Taishō catalogue range whose second number reads as a year. A
+        # credit names a PERSON and ends in a publication year; a
+        # catalogue line is a RANGE. So a numeric range disqualifies,
+        # which is the property that actually separates them.
+        credits = [c for c in m["__famr"]
+                   if len(c) <= 34
+                   and re.search(r"\b1[5-9]\d\d\s*$|\b20\d\d\s*$", c)
+                   and not re.search(r"\d\s*[–—-]\s*\d", c)]
+        R.check("9 grammar", f"{room}: no family header carries an edition credit",
+                not credits, "; ".join(credits[:3]) or f"{len(m['__famr'])} lines")
         # the second chip grammar lives in exactly two rooms
         R.check("9 grammar", f"{room}: chip grammar is the one named for it",
                 (m["__second"] > 0) == (room in SECOND_CHIP_GRAMMAR),
