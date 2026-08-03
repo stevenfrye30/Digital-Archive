@@ -63,12 +63,9 @@ NOISE = {"0", "1", "2", "100"}
 NOISE |= {"0.03928", "0.055", "1.055", "2.4", "12.92", "0.2126", "0.7152",
           "0.0722", "255"}
 
-# Nor is a SANITY BOUND a threshold. 21 is the maximum contrast ratio that
-# can exist (pure black on pure white) and 255 the maximum channel; a probe
-# that refuses values outside them is checking ITSELF, not the page. Doctrine
-# 8.1f asks probes to do exactly that, so the sweep must not read the guard
-# it mandated as a second floor beside the named one.
-NOISE |= {"21"}
+# The by-value excuse for 21 was RETIRED in Task 133: strip_guards() now
+# recognises a sanity bound by its refusing branch, so the value never has
+# to be named. That is the whole point — the list stopped growing.
 
 # A SCOPE defect excludes elements from EXAMINATION. A `.slice(0, N)` on
 # the offenders being *reported* is not one — the predicate still scanned
@@ -100,6 +97,42 @@ THRESHOLD = re.compile(
 
 # a comparison against a constant, in JS or python
 COMPARISON = re.compile(r"[<>]=?\s*(\d+(?:\.\d+)?)")
+
+
+# ── guard comparisons vs assertion comparisons (Task 133) ────────────
+#
+# Doctrine 8.1f tells a probe to sanity-check its OWN output — a ratio
+# outside [1,21], a channel outside [0,255]. Rule 1b then read those
+# bounds as a second threshold beside the check's named one, so the two
+# clauses pulled against each other and the answer was a growing list of
+# excused values: 21, then 3, then whatever came next. A list of values is
+# exactly the enumeration this tool exists to argue against (8.1e).
+#
+# The distinction is STRUCTURAL, not numeric. A comparison whose branch
+# RAISES OR REFUSES is checking the instrument; a comparison that feeds
+# the check's own pass/fail is checking the page. So drop the refusing
+# statements and read thresholds from what remains — the same move as
+# excluding `.slice()` reporting caps by shape rather than by their bounds.
+REFUSE = re.compile(r"\bthrow\b|\braise\b|\bfail\s*\(|\bdie\s*\(")
+
+
+def strip_guards(text: str) -> str:
+    """Blank every line that refuses, and the condition line above it.
+
+    Two shapes cover the JS and Python in this repo:
+        if (!(r >= 1 && r <= 21)) throw new Error(...)      one line
+        if (!opaque)                                        two lines
+            throw new Error(...)
+    A line-walk rather than a regex because the two-line form needs to see
+    its neighbour, and a pattern that spans newlines is how the first
+    attempt at this silently ate half the file.
+    """
+    lines = text.split("\n")
+    kept = []
+    for i, ln in enumerate(lines):
+        nxt = lines[i + 1] if i + 1 < len(lines) else ""
+        kept.append(" " if (REFUSE.search(ln) or REFUSE.search(nxt)) else ln)
+    return "\n".join(kept)
 
 
 def js_blocks(src: str) -> str:
@@ -181,13 +214,16 @@ def scan(path: Path):
         named = {m.group(1) or m.group(2) for m in THRESHOLD.finditer(what)}
         named -= NOISE
         if named and not missing:
-            # A LENGTH TEST IS NOT A THRESHOLD. `m.length > 3` asks whether
-            # a colour string carried an alpha channel; it says nothing
-            # about the value being asserted. Leaving it in made the
-            # contrast checks read as "promises 4.5, also enforces 3" —
-            # the sweep crying wolf on structural arithmetic, which is
-            # how a checker trains its reader to skip it.
-            pool_cmp = re.sub(r"\.length\s*[<>]=?\s*\d+", " ", pool)
+            # Both exclusions are by SHAPE, never by value (Task 133):
+            #  · a comparison in a REFUSING branch is checking the
+            #    instrument — 8.1f asks for exactly those, so the sweep
+            #    must not read them as a second floor;
+            #  · a `.length` test is checking the SHAPE OF THE DATA, not a
+            #    measured value: `m.length > 3` asks whether a colour
+            #    string carried an alpha channel.
+            # Neither names a number, so neither grows a list.
+            pool_cmp = strip_guards(pool)
+            pool_cmp = re.sub(r"\.length\s*[<>]=?\s*\d+", " ", pool_cmp)
             cmps = {c for c in COMPARISON.findall(pool_cmp)} - NOISE
             stray = sorted(cmps - named)
             if stray:
