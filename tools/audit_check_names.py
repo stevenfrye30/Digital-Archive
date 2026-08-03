@@ -63,6 +63,13 @@ NOISE = {"0", "1", "2", "100"}
 NOISE |= {"0.03928", "0.055", "1.055", "2.4", "12.92", "0.2126", "0.7152",
           "0.0722", "255"}
 
+# Nor is a SANITY BOUND a threshold. 21 is the maximum contrast ratio that
+# can exist (pure black on pure white) and 255 the maximum channel; a probe
+# that refuses values outside them is checking ITSELF, not the page. Doctrine
+# 8.1f asks probes to do exactly that, so the sweep must not read the guard
+# it mandated as a second floor beside the named one.
+NOISE |= {"21"}
+
 # A SCOPE defect excludes elements from EXAMINATION. A `.slice(0, N)` on
 # the offenders being *reported* is not one — the predicate still scanned
 # everything and only the printout is capped. Flagging those was this

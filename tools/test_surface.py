@@ -62,13 +62,36 @@ BIBLE_5 = "bible_tyndale-pentateuch.json"
 QURAN = "quran_pickthall.json"
 
 CONTRAST_JS = """
+// Task 132 / doctrine 8.1f — THE PROBE SANITY-CHECKS ITS OWN OUTPUT.
+// Three lanes in a row shipped a figure that cannot physically occur (a
+// 1.65:1 between two near-opposite colours; a near-white ground parsed
+// as near-black) and each was trusted until a human noticed the
+// impossibility. A contrast ratio lives in [1, 21] by construction and a
+// parsed channel lives in [0, 255]. Anything else is a PARSE FAILURE
+// wearing the shape of data, so it throws rather than returning a number
+// the caller will believe.
+window.__chan = function (nm, v) {
+  if (!isFinite(v) || v < 0 || v > 255)
+    throw new Error('__cr: ' + nm + ' channel out of range: ' + v +
+                    ' — the colour string did not parse as expected');
+  return v; };
 window.__cr = function (fg, bg) {
-  const lum = c => { const m = c.match(/\\d+(\\.\\d+)?/g).map(Number);
-    const f = v => { v /= 255; return v <= 0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4); };
-    return 0.2126*f(m[0]) + 0.7152*f(m[1]) + 0.0722*f(m[2]); };
+  const lum = c => {
+    const m = (c || '').match(/[0-9.]+/g);
+    if (!m || m.length < 3)
+      throw new Error('__cr: unparseable colour ' + JSON.stringify(c));
+    let v = m.slice(0, 3).map(Number);
+    // color(srgb r g b / a) is 0-1; rgb()/rgba() is 0-255.
+    if (/^color\(/i.test(c)) v = v.map(x => x * 255);
+    v.forEach((x, i) => window.__chan('rgb'[i], x));
+    const f = x => { x /= 255; return x <= 0.03928 ? x/12.92 : Math.pow((x+0.055)/1.055, 2.4); };
+    return 0.2126*f(v[0]) + 0.7152*f(v[1]) + 0.0722*f(v[2]); };
   const L1 = Math.max(lum(fg), lum(bg)), L2 = Math.min(lum(fg), lum(bg));
-  return Math.round(((L1 + 0.05) / (L2 + 0.05)) * 100) / 100;
-};
+  const r = Math.round(((L1 + 0.05) / (L2 + 0.05)) * 100) / 100;
+  if (!(r >= 1 && r <= 21))
+    throw new Error('__cr: ' + r + ':1 is not a contrast ratio (fg=' + fg +
+                    ', bg=' + bg + ') — the probe is wrong, not the page');
+  return r; };
 // Task 131 — TWO BUGS, both of which made this probe report figures that
 // cannot happen. (1) It returned the first non-transparent background,
 // treating a chip's translucent fill as opaque — that reported an
@@ -79,19 +102,32 @@ window.__cr = function (fg, bg) {
 // units, down to the page ground.
 window.__px = function (s) {
   s = s || ''; const m = s.match(/[\d.]+/g) || [];
+  // 8.1f, found BY 8.1f: a detached element's backgroundColor is the
+  // EMPTY STRING, and this returned {v:[0,0,0], a:1} for it — opaque
+  // black, invented out of nothing. That is the clause's own failure
+  // shape appearing in the retrofit written for the clause. No channels
+  // parsed means NO COLOUR, which composites as fully transparent and
+  // lets __bgOf report a missing ground instead of a black one.
+  if (m.length < 3) return { v: [0, 0, 0], a: 0, unparsed: true };
   let v = m.slice(0, 3).map(Number);
   let a = m.length > 3 ? parseFloat(m[3]) : 1;
   if (/^color\(/i.test(s)) v = v.map(function (x) { return x * 255; });
-  return { v: v.length ? v : [0, 0, 0], a: isNaN(a) ? 1 : a };
+  return { v: v, a: isNaN(a) ? 1 : a };
 };
 window.__bgOf = function (el) {
   const L = []; let n = el;
   while (n && n !== document.documentElement) {
     L.push(window.__px(getComputedStyle(n).backgroundColor)); n = n.parentElement; }
   L.push(window.__px(getComputedStyle(document.documentElement).backgroundColor));
-  let acc = [255, 255, 255];
+  let acc = [255, 255, 255], opaque = false;
   for (let i = L.length - 1; i >= 0; i--) { const l = L[i]; if (l.a <= 0) continue;
+    opaque = true;
     acc = [0, 1, 2].map(function (k) { return l.v[k] * l.a + acc[k] * (1 - l.a); }); }
+  // 8.1f — a ground nobody painted is a MISSING ground, not a white one.
+  // Returning white silently is how an unpainted element reports a
+  // flattering ratio it never had.
+  if (!opaque)
+    throw new Error('__bgOf: no opaque ancestor — any ratio taken here is invented');
   return 'rgb(' + acc.map(Math.round).join(', ') + ')';
 };
 window.__ratio = function (sel) {
