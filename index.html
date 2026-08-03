@@ -2792,6 +2792,24 @@ details.cite-corner > summary:hover,
   flex: 0 0 auto;
   margin: clamp(20px, 4.5vh, 48px) 0 0;
 }
+/* Task 130 — the disclaimer sits with the colophon's own apparatus
+   register (grey, small), quieter than the links above it: it is a
+   standing caveat, not a door. */
+#home-rights-note {
+  margin: 14px auto 0;
+  max-width: 46ch;
+  font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* NOT var(--chrome-muted). Taking the colophon's own muted token put
+     this at 4.79 dark / 3.91 light — the same value as the "Integrity
+     proof" link beside it, and BELOW AA in light. Matching a neighbour is
+     the right instinct for a register and the wrong one for a caveat: a
+     disclaimer nobody can read is a disclaimer in name. Measured against
+     the real colophon ground; both now clear doctrine §4.1's 5.88 for
+     apparatus. The link's own 3.91 is pre-existing and untouched — see
+     STATUS, it is a colophon-wide question, not this line's. */
+  color: #6b5d4e;
+}
+[data-theme="dark"] #home-rights-note { color: #a09a90; }
 #home-footer-links {
   display: flex;
   justify-content: center;
@@ -12289,6 +12307,18 @@ body.viewer-active .folio-leaf-colophon {
                 <button type="button" id="foot-workroom" class="home-footlink" onclick="browseWorkroom()" style="display:none">The Workroom</button>
                 <button type="button" id="foot-restricted" class="home-footlink" onclick="browseRestricted()" style="display:none">Restricted Library</button>
               </div>
+              <!-- Task 130 — THE RIGHTS DISCLAIMER'S ONE HOME.
+                   Task 128 retired the per-room footers and, with them, the
+                   only public carrier of this sentence: it stood in 16 of 16
+                   tradition maps and nowhere else. Ruled back as ONE line
+                   here, beside the integrity link rather than re-added per
+                   room.
+                   WRITTEN OUT, NOT LINKED: integrity.html carries no
+                   equivalent claim — it is about source-file hashing and
+                   passage verification, not about rights determination — so
+                   there was nothing to quote or point at. -->
+              <p id="home-rights-note">Rights and public-domain determinations here are
+                best-effort scholarship, not legal advice.</p>
                           </div>
             </div>
             <!-- Continue Reading card tossed (Task 43): resume lives in the
