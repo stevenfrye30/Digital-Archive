@@ -69,11 +69,30 @@ window.__cr = function (fg, bg) {
   const L1 = Math.max(lum(fg), lum(bg)), L2 = Math.min(lum(fg), lum(bg));
   return Math.round(((L1 + 0.05) / (L2 + 0.05)) * 100) / 100;
 };
+// Task 131 — TWO BUGS, both of which made this probe report figures that
+// cannot happen. (1) It returned the first non-transparent background,
+// treating a chip's translucent fill as opaque — that reported an
+// off-white name at 1.65:1. (2) It could not read `color(srgb r g b / a)`,
+// whose channels are 0-1 rather than 0-255, so a near-WHITE ground
+// (0.98) parsed as near-black and five passing links looked like
+// failures. Both are fixed by compositing the real stack, in the real
+// units, down to the page ground.
+window.__px = function (s) {
+  s = s || ''; const m = s.match(/[\d.]+/g) || [];
+  let v = m.slice(0, 3).map(Number);
+  let a = m.length > 3 ? parseFloat(m[3]) : 1;
+  if (/^color\(/i.test(s)) v = v.map(function (x) { return x * 255; });
+  return { v: v.length ? v : [0, 0, 0], a: isNaN(a) ? 1 : a };
+};
 window.__bgOf = function (el) {
-  let e = el;
-  while (e) { const b = getComputedStyle(e).backgroundColor;
-    if (b && !b.includes('0, 0, 0, 0')) return b; e = e.parentElement; }
-  return getComputedStyle(document.body).backgroundColor || 'rgb(255,255,255)';
+  const L = []; let n = el;
+  while (n && n !== document.documentElement) {
+    L.push(window.__px(getComputedStyle(n).backgroundColor)); n = n.parentElement; }
+  L.push(window.__px(getComputedStyle(document.documentElement).backgroundColor));
+  let acc = [255, 255, 255];
+  for (let i = L.length - 1; i >= 0; i--) { const l = L[i]; if (l.a <= 0) continue;
+    acc = [0, 1, 2].map(function (k) { return l.v[k] * l.a + acc[k] * (1 - l.a); }); }
+  return 'rgb(' + acc.map(Math.round).join(', ') + ')';
 };
 window.__ratio = function (sel) {
   const el = document.querySelector(sel);
@@ -305,16 +324,23 @@ def g_contrast(pg, base, R):
          {"author pill": ".abtn", "section head": ".wing h2"}),
     ]:
         pg.goto(base + path)
-        pg.evaluate("localStorage.setItem('da-theme','dark')")
-        pg.reload(wait_until="networkidle")
-        pg.wait_for_timeout(800)
-        pg.add_script_tag(content=CONTRAST_JS)
-        for what, sel in sels.items():
-            val = pg.evaluate("(s) => window.__ratio(s)", sel)
-            if val is None:
-                R.check("4 contrast", f"{name} dark: {what}", False, "element not found")
-            else:
-                R.check("4 contrast", f"{name} dark: {what} ≥ 4.5", val >= 4.5, f"{val}:1")
+        # Task 131 — BOTH THEMES. This set da-theme=dark and reloaded, so
+        # LIGHT WAS NEVER MEASURED on any chrome layer. The group is named
+        # "AA on the text a reader actually reads" and read one of the two
+        # readers; light carried 652 sub-AA elements while it stayed green.
+        # A theme the check never enters is a theme the check never covers.
+        for theme in ("dark", "light"):
+            pg.evaluate("(t) => localStorage.setItem('da-theme', t)", theme)
+            pg.reload(wait_until="networkidle")
+            pg.wait_for_timeout(800)
+            pg.add_script_tag(content=CONTRAST_JS)
+            for what, sel in sels.items():
+                val = pg.evaluate("(s) => window.__ratio(s)", sel)
+                if val is None:
+                    R.check("4 contrast", f"{name} {theme}: {what}", False, "element not found")
+                else:
+                    R.check("4 contrast", f"{name} {theme}: {what} ≥ 4.5",
+                            val >= 4.5, f"{val}:1")
     # Task 119 — there is no Rights lens to reach any more. The check
     # this replaced clicked "RIGHTS" and then measured the chip text;
     # the measurement was the point and it survives, on the merged view.

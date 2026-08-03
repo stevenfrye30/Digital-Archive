@@ -174,7 +174,14 @@ def scan(path: Path):
         named = {m.group(1) or m.group(2) for m in THRESHOLD.finditer(what)}
         named -= NOISE
         if named and not missing:
-            cmps = {c for c in COMPARISON.findall(pool)} - NOISE
+            # A LENGTH TEST IS NOT A THRESHOLD. `m.length > 3` asks whether
+            # a colour string carried an alpha channel; it says nothing
+            # about the value being asserted. Leaving it in made the
+            # contrast checks read as "promises 4.5, also enforces 3" —
+            # the sweep crying wolf on structural arithmetic, which is
+            # how a checker trains its reader to skip it.
+            pool_cmp = re.sub(r"\.length\s*[<>]=?\s*\d+", " ", pool)
+            cmps = {c for c in COMPARISON.findall(pool_cmp)} - NOISE
             stray = sorted(cmps - named)
             if stray:
                 findings.append({

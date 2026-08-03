@@ -81,7 +81,7 @@
   --chrome-bg:      #eeebe5;
   --chrome-fg:      #3a3530;
   --chrome-border:  #d8d3cc;
-  --chrome-muted:   #8a7a6a;
+  --chrome-muted:   #635546;
   --chrome-active:  #7a5c3a;
   --sidebar-width:  260px;
 }
@@ -164,6 +164,12 @@ body {
 
 /* ── Back to top button ──────────────────────────────────────────── */
 #back-to-top {
+  /* Its ground is --chrome-active, which INVERTS between themes: a dark
+     brown rgb(122,92,58) in light, the gold rgb(196,160,96) in dark. So
+     one text colour cannot serve both — white measured 2.46 in dark, and
+     the obvious "fix" of dark ink measured 2.27 in light. Each theme gets
+     the ink its own ground needs. */
+  color: #ffffff;
   position: fixed;
   bottom: 24px;
   right: 24px;
@@ -843,7 +849,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   margin: 10px 0 4px;
   font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: 0.1em; color: #8a7a6a;
+  letter-spacing: 0.1em; color: #635546;
 }
 .cc-pager button {
   /* Task 82 — the Task 72 button dress: bordered squares, obvious */
@@ -854,8 +860,8 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 }
 .cc-pager button:hover:not(:disabled) { color: #7a5c3a; border-color: #7a5c3a; }
 .cc-pager button:disabled { opacity: 0.35; cursor: default; }
-[data-theme="dark"] .cc-pager { color: #8a8680; }
-[data-theme="dark"] .cc-pager button { border-color: #4a4a4e; color: #8a8680; }
+[data-theme="dark"] .cc-pager { color: #a09a90; }
+[data-theme="dark"] .cc-pager button { border-color: #4a4a4e; color: #a09a90; }
 [data-theme="dark"] .cc-pager button:hover:not(:disabled) { color: #c4a060; border-color: #c4a060; }
 
 /* Task 75 — the quiet Other-editions block at the plate's foot */
@@ -864,7 +870,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   position: absolute; top: 22px; left: 36px; z-index: 2;
   font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: .12em; text-transform: uppercase;
-  color: #8a7a6a; background: none; border: none;
+  color: #635546; background: none; border: none;
   cursor: pointer; padding: 4px 0;
 }
 .cc-editions-corner:hover { color: #7a5c3a; }
@@ -890,14 +896,14 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .cc-oe-other > summary {
   list-style: none; cursor: pointer;
   font: 400 9.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: 0.12em; text-transform: uppercase; color: #8a7a6a;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #635546;
   padding: 3px 0;
 }
 .cc-oe-other > summary::-webkit-details-marker { display: none; }
 .cc-oe-other > summary:hover { color: #7a5c3a; }
 .cc-oe-lang {
   font: 400 9.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: 0.1em; text-transform: uppercase; color: #8a7a6a;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #635546;
   margin-left: 6px;
 }
 [data-theme="dark"] .cc-oe-other { border-top-color: #3a3a3e; }
@@ -912,7 +918,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 .cc-fav {
   width: 30px; height: 30px; box-sizing: border-box;
   border: 1px solid #e6e1d9; border-radius: 6px;
-  background: rgba(0, 0, 0, 0.02); color: #8a7a6a;
+  background: rgba(0, 0, 0, 0.02); color: #635546;
   font-size: 15px; line-height: 1; cursor: pointer; padding: 0;
 }
 .cc-fav:hover { color: #7a5c3a; border-color: #7a5c3a; }
@@ -920,12 +926,19 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 [data-theme="dark"] .cc-fav { border-color: #3a3a3e; color: #918d84;
   background: rgba(255, 255, 255, 0.04); }
 [data-theme="dark"] .cc-fav.on, [data-theme="dark"] .cc-fav:hover { color: #c4a060; }
+/* Light-contrast lane — the dark halves of two cover elements whose
+   grounds run opposite to the light theme's, so one colour could not
+   clear both. These belong HERE: the cover is index.html, and the
+   map/_room_*.css files this lane also touched are never loaded by it. */
+[data-theme="dark"] .bible-cover-layout .bcl-atlas-index-btn { color: #c9995e; }
+[data-theme="dark"] .cc-fav { color: #b0aaa0; }
+[data-theme="dark"] #back-to-top { color: #2c2c2c; }
 /* the entrance Favorites popover rows */
 .hd-pop .fav-row { display: block; padding: 4px 0; color: #2c2c2c;
   text-decoration: none; font-size: 13.5px; }
 .hd-pop .fav-row:hover { color: #7a5c3a; }
-.hd-pop .fav-trad { color: #8a7a6a; font-style: italic; }
-.hd-pop .fav-empty { font-style: italic; color: #8a7a6a; }
+.hd-pop .fav-trad { color: #635546; font-style: italic; }
+.hd-pop .fav-empty { font-style: italic; color: #635546; }
 [data-theme="dark"] .hd-pop .fav-row { color: #d4d0c8; }
 [data-theme="dark"] .hd-pop .fav-row:hover { color: #c4a060; }
 [data-theme="dark"] .hd-pop .fav-trad,
@@ -1140,7 +1153,7 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
 [data-theme="dark"] .cc-contents-rule .cc-fm-btn:hover { border-color: #c4a060; }
 .cc-contents-rule .cc-pager { margin: 0; }
 /* the range chips read in dark */
-[data-theme="dark"] .bcl-codex-range { background: rgba(255, 255, 255, 0.04); color: #8a8680; }
+[data-theme="dark"] .bcl-codex-range { background: rgba(255, 255, 255, 0.04); color: #a09a90; }
 [data-theme="dark"] .bcl-codex-range--active { color: #c4a060; }
 /* the cite affordance steps forward */
 details.cite-corner > summary,
@@ -1285,7 +1298,14 @@ details.cite-corner > summary:hover,
   letter-spacing: 0.20em;
   padding: 6px 36px;
   background: transparent;
-  color: rgba(110, 65, 25, 0.78);
+  /* light-contrast lane — 1.84:1 in dark, the worst text in the archive.
+     The alpha was doing the fading and the dark ground did the rest;
+     the other ten uses of this same rgba() sit on grounds where they
+     PASS, and were left alone rather than swept with it. */
+  /* Solved per theme, because the grounds run opposite ways: light sits
+     on [239,234,221] and needs a DARKER ink; dark sits on [34,34,38]
+     and needs a LIGHTER one. One colour could not clear both. */
+  color: #6b4a22;
   border: 1px solid rgba(120, 90, 50, 0.26);
   border-radius: 1px;
   cursor: pointer;
@@ -2152,13 +2172,13 @@ details.cite-corner > summary:hover,
   font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8a7a6a;
+  color: #635546;
   padding-bottom: 8px;
   margin-bottom: 10px;
   border-bottom: 1px solid #e6e1d9;
 }
 [data-theme="dark"] .bible-cover-layout .cite-corner .cc-citations::before {
-  color: #8a8680;
+  color: #a09a90;
   border-bottom-color: #3a3a3e;
 }
 .bible-cover-layout .cite-corner .cc-cite-heading { display: none; }
@@ -2585,7 +2605,7 @@ details.cite-corner > summary:hover,
 }
 #home-countline {
   font: 400 12.5px/1.6 Georgia, serif;
-  color: #a09080;
+  color: #6e6357;   /* light-contrast lane: was #a09080 at 2.92:1 */
   margin: 0;
 }
 /* The four shelves */
@@ -2659,7 +2679,7 @@ details.cite-corner > summary:hover,
   position: absolute; top: 10px; right: 12px;
   font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: 0.06em;
-  color: #8a7a6a;
+  color: #635546;
 }
 [data-theme="dark"] .home-cat { background: #232329; color: #d4d0c8; border-color: #44444c; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); }
 [data-theme="dark"] .home-cat:hover { box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5); }
@@ -2731,10 +2751,10 @@ details.cite-corner > summary:hover,
 .hs-kind {
   font: 400 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: 0.08em; text-transform: uppercase;
-  color: #8a7a6a; border: 1px solid #d8d3cc; border-radius: 999px;
+  color: #635546; border: 1px solid #d8d3cc; border-radius: 999px;
   padding: 2px 7px; margin-left: 6px; vertical-align: 2px;
 }
-[data-theme="dark"] .hs-kind { color: #8a8680; border-color: #4a4a4e; }
+[data-theme="dark"] .hs-kind { color: #a09a90; border-color: #4a4a4e; }
 
 /* Task 43 — the Workroom/Restricted pills demoted to the footer row */
 .home-footlink {
@@ -2827,7 +2847,7 @@ details.cite-corner > summary:hover,
 #home-footer-links a:hover { color: var(--chrome-active); }
 #home-colophon {
   font: italic 400 13px/1.6 Georgia, serif;
-  color: #a09080;
+  color: #6e6357;   /* light-contrast lane: was #a09080 at 2.92:1 */
   margin: 0;
 }
 
@@ -3082,7 +3102,7 @@ body.in-reading.rt-slate #folio-topbar, body.in-reading.rt-ink #folio-topbar {
   cursor: pointer;
   text-align: center;
   color: white;
-  background: linear-gradient(135deg, #6b5a4a, #8a7a6a);
+  background: linear-gradient(135deg, #6b5a4a, #635546);
   transition: box-shadow 0.25s, transform 0.15s;
   position: relative;
   overflow: hidden;
@@ -5150,7 +5170,7 @@ mark.search-hl-active {
 .apparatus-body.open { display: block; }
 .apparatus-body .apparatus-meta {
   font-size: 0.85em;
-  color: #8a7a6a;
+  color: #635546;
   font-style: italic;
   margin-bottom: 4px;
   display: block;
@@ -5228,7 +5248,7 @@ mark.search-hl-active {
   font: 400 10.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 14px;
   cursor: pointer; border: none; border-radius: 0; white-space: nowrap;
-  background: none; color: #8a7a6a;
+  background: none; color: #635546;
 }
 #mode-switch button.active, #nav-bar #mode-switch button.active {
   background: #7a5c3a; color: #faf8f5;
@@ -5271,7 +5291,7 @@ mark.search-hl-active {
   color: #b0b0aa; margin: 6px 0 0;
 }
 .cl-editorial   { border-color: #c9b99f; background: #f6f2ea; }
-.cl-editorial .cl-head { color: #8a7a6a; }
+.cl-editorial .cl-head { color: #635546; }
 .cl-editorial .cl-body { color: #3c362e; }
 .cl-scholarship { border-color: #9aa8a2; background: #f2f4f2; }
 .cl-scholarship .cl-head { color: #5a6a6a; }
@@ -11282,7 +11302,7 @@ body.viewer-active .folio-leaf-colophon {
   color: #6a6258;
 }
 .apparatus-body.gap .apparatus-meta {
-  color: #8a7a6a;
+  color: #635546;
 }
 .apparatus-body.gap .apparatus-text {
   font-style: italic;
@@ -11294,7 +11314,7 @@ body.viewer-active .folio-leaf-colophon {
 
 .framing-line {
   font-size: 0.82em;
-  color: #8a7a6a;
+  color: #635546;
   font-style: italic;
   margin: 6px 0 0 0;
   letter-spacing: 0.01em;
@@ -11582,7 +11602,7 @@ body.viewer-active .folio-leaf-colophon {
   --chrome-bg:     #222226;
   --chrome-fg:     #c8c4bc;
   --chrome-border: #3a3a3e;
-  --chrome-muted:  #8a8680;
+  --chrome-muted:  #a09a90;
   --chrome-active: #c4a060;
 }
 /* Task 63b — the cover is WHOLE in dark: the plate takes the ruled
@@ -14095,7 +14115,7 @@ const _CL_DRESS = {
   traditional: { glyph: '◌', label: 'traditional commentary' },
   ai:          { glyph: '⌸', label: 'machine suggestion' },
 };
-const _CL_CHIP_COLORS = { editorial: '#8a7a6a', scholarship: '#5a6a6a',
+const _CL_CHIP_COLORS = { editorial: '#635546', scholarship: '#5a6a6a',
                           traditional: '#8a7a5a', ai: '#8a8a86' };
 
 function _hasInteractive() {
@@ -14257,7 +14277,7 @@ function _renderCommentaryStrip(target) {
     const chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'cs-chip';
-    const color = _CL_CHIP_COLORS[layer] || '#8a7a6a';
+    const color = _CL_CHIP_COLORS[layer] || '#635546';
     chip.dataset.color = color;
     chip.style.color = color;
     let tail;
@@ -23715,7 +23735,7 @@ wire('ctrl-measure', '--reader-measure', 'r-measure', v => v + 'px', 'ctrl-measu
 // faces resolve first, Georgia carries the Latin.
 const READER_THEMES = {
   parchment: { label: 'Parchment',   bg: '#ecdfc9', fg: '#3b3126', accent: '#7a5232', muted: '#75634e' },
-  cream:     { label: 'Cream',       bg: '#faf8f5', fg: '#2c2c2c', accent: '#7a5c3a', muted: '#8a7a6a' },
+  cream:     { label: 'Cream',       bg: '#faf8f5', fg: '#2c2c2c', accent: '#7a5c3a', muted: '#635546' },
   sepia:     { label: 'Sepia',       bg: '#dcc7a5', fg: '#3f2d1d', accent: '#74401f', muted: '#6f5c47' },
   slate:     { label: 'Slate night', bg: '#232830', fg: '#c6cdd6', accent: '#9db4cc', muted: '#8d99a8' },
   ink:       { label: 'Ink night',   bg: '#1a1a1e', fg: '#d4d0c8', accent: '#c4a060', muted: '#918d84' }

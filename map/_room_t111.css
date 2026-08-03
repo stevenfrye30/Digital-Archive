@@ -167,3 +167,16 @@ h3.vagga-h .pn {
 [data-theme="dark"] .deep .tc b,
 [data-theme="dark"] .deep .tc.g b,
 [data-theme="dark"] .basket .su b { color: #c0b9ac; }
+
+/* Light-contrast lane — two survivors of the token raise, both on their
+   own painted grounds rather than the page ground, so the token could
+   not reach them. Measured, not guessed. */
+/* .toc-all IS LEFT ALONE — deliberately, and this comment is the record.
+   Two "fixes" were applied here and both were wrong, because the probe
+   that measured them was wrong: it read `color(srgb 0.98 0.97 0.96/.88)`
+   as 0-255 instead of 0-1, so the TOC bar's near-WHITE ground measured as
+   near-black. On that false reading the label looked dark-on-dark, was
+   bound to --ink-soft (2.30 -> 2.11), then to #d4d0c8 (1.45 — genuinely
+   broken, light on light). With the parser fixed the original colour
+   measures fine. Doctrine 8.1: probe the rendered page — and check the
+   probe before believing it. */
