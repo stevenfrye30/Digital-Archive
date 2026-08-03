@@ -221,16 +221,34 @@ listed once with the link entering at the first chapter.
 
 ## Known Issues
 
-- **33 build artifacts still ship under `maps/` (1,196 KB).** Task 137 moved
-  `seed_bindings.json` out of the published tree; the guard extension then
-  found 33 siblings of the same class — 16 per-room `structure.json` (build
-  state for the `apply_*_supplement` passes), 3 `*.retired.json` snapshots,
-  14 `*_sheet.md` human review sheets. No page fetches any of them; all are
-  tracked, so all are served at public URLs. Each is recorded with its reason
-  in `tools/maps_served_ledger.json`, so the guard is honest about what ships
-  today and loud about anything new. **Moving them is the same move Task 137
-  made for `seed_bindings.json` and needs the same ruling — surveyed here,
-  not decided.**
+- **11 review sheets still ship under `maps/` (77 KB) — by ruling.** Task 138
+  moved the 22 files a build stage actually reads. These eleven are the ones
+  nothing parses: their job is to be opened and marked up by a person, and the
+  ruling says leave those where a maintainer finds them. Recorded with reasons
+  in `tools/maps_served_ledger.json`. **Open question nobody has ruled on:**
+  they are internal working documents — candidate bindings, rights holds, the
+  design side's deliberations — and being tracked they are *served at public
+  URLs*. Leaving them in place was ruled; publishing them was never separately
+  considered. No scripture body is exposed, so this is not a rights leak.
+- **The 12 `map/*.html` reception sections are stale (found in Task 138).**
+  Re-running `build_reception_layers.py` rewrites the reception section of
+  every map page; everything *outside* those sections is byte-identical, and
+  the regeneration is deterministic across runs. So the committed pages were
+  generated from an older `index.json` and have drifted since. Not caused by
+  the Task 138 move — `ancient` is not in the generator's `SHEETS` map at all
+  (its sheet text is `""` before and after), yet it drifted too. The
+  regeneration was **reverted, not committed**: it is out of Task 138's scope
+  and deserves its own lane, the same shape as Task 136's hall reconciliation.
+- **`tools/inventory_chips.py` overwrites its tracked output with an empty
+  result** when run without the local server it needs — 3,377 lines to 2, no
+  error. Reverted, not committed. Same shape as doctrine §8.1b: an empty
+  population should refuse, not write.
+- **`maps/trad2map.json` churned on every build until Task 138.** Its key order
+  came from iterating Python **sets**, so randomized string hashing reordered
+  it each run — three consecutive builds produced three different sha256s. It
+  is now emitted sorted. Pre-existing and unrelated to the file moves, but it
+  silently defeated the byte-identical proof discipline the deploy rests on.
+  Worth a sweep for the same shape in other generators.
 
 - Archive-shelf front shelf still holds 5 entries by design; the other
   200 are now listed by tradition on `shelves.html` (Phase 2). The
@@ -264,6 +282,23 @@ listed once with the link entering at the first chapter.
   (`plans/library_wishlist.md`) are unchanged.
 
 ---
+
+## What's actually urgent
+
+**0. The backup pack — now the lead item, above all styling work.**
+Tasks 137 and 138 moved 23 build inputs (1,208 KB) out of the served tree
+and into `05_scripts/configs/`. That was the right move: they were
+shipping to Pages at public URLs for no reason. But the parent repo
+**has no remote**, and `03_web_app` does — so until now those files were
+being backed up *by accident*, as a side effect of the mistake. Correcting
+the mistake removed their only offsite copy.
+
+These are not regenerable from the archive: `seed_bindings.json` carries
+the design side's confirmed verdicts, and the 16 `structure.json` files
+are the hand-reviewed zone/chip skeletons every room's bindings derive
+from. Losing this machine loses them. **This is a regression introduced by
+Tasks 137–138, however correct both moves were, and it outranks any
+further UI work until the standing backup pack exists.**
 
 ## Next Priorities
 

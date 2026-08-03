@@ -30,6 +30,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 MAP = os.path.join(REPO, "map")
 MAPS = os.path.join(REPO, "maps")
+# structure.json left the served tree in Task 138 — it is a build input, and
+# maps/ is deployed. It now sits with the scripts that build from it, which
+# lives in the PARENT repo, one level above this one.
+CFG_MAPS = os.path.join(REPO, os.pardir, "05_scripts", "configs", "maps")
 
 ROOMS = sorted(
     f[:-5] for f in os.listdir(MAP)
@@ -39,7 +43,7 @@ ROOMS = sorted(
 
 
 def chip_names(room):
-    p = os.path.join(MAPS, room, "structure.json")
+    p = os.path.join(CFG_MAPS, room, "structure.json")
     if not os.path.exists(p):
         return []
     d = json.load(io.open(p, encoding="utf-8"))
