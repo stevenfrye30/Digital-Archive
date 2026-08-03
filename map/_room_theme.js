@@ -101,7 +101,9 @@
     });
     // mast fraction line — derived, never typed
     var held = (B.counts['held'] || 0) + (B.counts['held-several'] || 0);
-    var poss = B.counts['possible'] || 0;
+    // Task 128 item 4 — the "N more acquirable" clause is DELETED, not
+    // moved. `poss` went with it rather than being left computed and
+    // unused, which is how a retired figure creeps back.
     fetch('../maps/doors.json').then(function (r) { return r.json(); })
     .then(function (D) {
       var door = D.doors.filter(function (d) { return d.tradition === SLUG; })[0];
@@ -109,8 +111,14 @@
       if (!mast || !door) return;
       var p = document.createElement('p');
       p.id = 'm-fraction';
-      p.innerHTML = door.sub.replace(/ texts$/, ' texts in the tradition') +
-                    ' · <b>' + held + ' readable in the archive</b> · ' + poss + ' more acquirable';
+      // Task 128 item 4 — TWO centred lines under the browse button, and
+      // nothing else. Both derived from the binder and the door record,
+      // never hand-typed.
+      p.innerHTML =
+        '<span class="m-l1">' +
+          door.sub.replace(/ texts$/, ' texts in the tradition') +
+        '</span>' +
+        '<span class="m-l2">' + held + ' readable in the archive</span>';
       mast.appendChild(p);
     });
   });

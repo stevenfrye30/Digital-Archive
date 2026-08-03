@@ -23,10 +23,17 @@
 [data-theme="dark"] .famr, [data-theme="dark"] .famct,
 [data-theme="dark"] .h2-meta .ct, [data-theme="dark"] .fam > summary em,
 [data-theme="dark"] .vagga > h3 em, [data-theme="dark"] .pn,
+/* Task 128 item 2 — the CHIP numerals (.su b, .tc b, .chip b) left this
+   list. Task 114 put the whole apparatus family on #a09a90 with
+   !important, which is right for prose apparatus but held the chip
+   ordinal at 5.38:1 against its own chip ground while the name beside it
+   sits at 9.78 — the gap the steward reported. They are now governed by
+   the Task 128 rule in _room_t111.css; taking them out of an !important
+   list is cleaner than out-shouting it, and keeps one owner per property.
+   nav.toc a b stays: it is a different element on a different ground. */
 [data-theme="dark"] .sc, [data-theme="dark"] .blurb,
 [data-theme="dark"] .canon-gap,
-[data-theme="dark"] .su b, [data-theme="dark"] .tc b,
-[data-theme="dark"] .chip b, [data-theme="dark"] nav.toc a b { color: #a09a90 !important; }
+[data-theme="dark"] nav.toc a b { color: #a09a90 !important; }
 /* the titles keep the gold, and now own it alone */
 [data-theme="dark"] .basket > h2, [data-theme="dark"] .zone-h .zn,
 [data-theme="dark"] .famname, [data-theme="dark"] .sec > h3,

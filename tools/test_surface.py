@@ -1646,7 +1646,13 @@ def g_grammar(pg, base, R):
         # a universal requirement now demands the thing the ruling
         # removed. It is no longer universal; the surviving `.insight`
         # blocks are asserted below on content instead. Task 126 §1.4.
-        "footer": "footer#foot",
+        # Task 128 item 3 — THE FOOTER RETIRED, archive-wide, so the
+        # assertion that named it moves with it in the same lane
+        # (§8.1e). Asserting its presence now demands the thing the
+        # ruling removed — the same failure the statband assertion
+        # made in Task 126, in the same file, one lane apart.
+        # Its absence is asserted below instead.
+
         "theme button": "#arch-dark",
         "star button": "#arch-fav",
         "back arrow": "#arch-topbar .tb-arrow",
@@ -1670,6 +1676,7 @@ def g_grammar(pg, base, R):
           const ins = document.querySelector('.greenline, .insight, .gl');
           out.__insight = ins && ins.getClientRects().length
             ? (ins.textContent || '').replace(/\s+/g, ' ').trim() : null;
+          out.__footer = document.querySelectorAll('footer').length;
           out.__famr = [...document.querySelectorAll('.famr')]
             .map(e => (e.textContent || '').replace(/\s+/g, ' ').trim());
           out.__second = document.querySelectorAll('.chip .nm').length;
@@ -1700,6 +1707,8 @@ def g_grammar(pg, base, R):
                 {"held", "pd", "no pd"} <= labels
             R.check("9 grammar", f"{room}: any surviving band is structural",
                     not rights_aggregate, " · ".join(m["__band"])[:58])
+        R.check("9 grammar", f"{room}: no footer returns",
+                m["__footer"] == 0, f"{m['__footer']} footer(s)")
         # Task 126 §1.4 — the interpretive line is optional now, but where
         # a room keeps one it must not be the retired narrative line. The
         # shape Task 123 named is "N of M green" / "N green of M"; derived

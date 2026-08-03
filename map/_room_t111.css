@@ -104,3 +104,66 @@ section.basket, section.zone {
 @media (max-width: 720px) {
   .zone-arrow { top: 2px; left: 2px; width: 44px; height: 44px; }
 }
+
+/* Task 128 item 4 — the mast fraction is two centred lines under the
+   browse button. It replaces the single "~N · N readable · N acquirable"
+   run; the acquirable clause is gone, not hidden. */
+#m-fraction { text-align: center; }
+#m-fraction .m-l1, #m-fraction .m-l2 { display: block; }
+#m-fraction .m-l2 { font-weight: 600; }
+
+/* Task 128 item 1 — THE VAGGA HEADER BECOMES THREE STACKED LINES.
+   It was one run: "Mūlapariyāya-vagga Root Fifty · I MN 1–10". Now the
+   Pāli title, the English beneath it, the MN range beneath that — all
+   centred, in the room's existing registers rather than new ones:
+   gold for the title (§4.1 — gold is titles), italic muted for the
+   translation, mono muted for the range. Buddhist is the only room with
+   this pattern: `span.pn` appears in no other room (measured). */
+/* The h3 is a FLEX ROW (`.deep .vagga h3 { display:flex; align-items:
+   baseline; gap:.4rem }`), so `display:block` on the children did NOT
+   stack them — they stayed flex items in a row, and the header measured
+   20px tall with all three at top 0/2/2. Geometry caught what the
+   computed `display` did not: block children of a flex parent are still
+   laid out by the parent. The column direction is the actual fix. */
+.deep .vagga h3.vagga-h, h3.vagga-h {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0; text-align: center;
+}
+h3.vagga-h .vg-title,
+h3.vagga-h .vg-en,
+h3.vagga-h .pn { display: block; }
+h3.vagga-h .vg-title {
+  font-size: 1.02em; color: var(--accent); letter-spacing: 0.01em;
+}
+h3.vagga-h .vg-en {
+  font-style: italic; font-size: 0.88em; color: var(--ink-faint);
+  margin-top: 1px;
+}
+h3.vagga-h .pn {
+  font: 400 0.76em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.06em; color: var(--ink-faint); margin-top: 2px;
+}
+
+/* Task 128 item 2 — THE CHIP NUMERAL LEAVES THE STATE COLOUR.
+   The ordinal in front of each sutta name was painted `var(--g)` — the
+   HELD green. Two things wrong with that, and the steward saw the second
+   before the first: it gives a state hue to something that carries no
+   state (§4.3, one mark one meaning), and it reads far fainter than the
+   name beside it. Measured against the real chip ground, compositing the
+   translucent chip fill rather than treating it as opaque:
+
+       theme   numeral was      name        gap
+       dark    5.38             9.78        -4.40
+       light   4.32 (fails AA)  11.78       -7.46
+
+   Now on the apparatus register in BOTH themes, chosen from measured
+   candidates rather than picked by eye — above doctrine §4.1's 5.88 for
+   apparatus, and still quieter than the name so the hierarchy holds:
+
+       dark  #c0b9ac -> 7.72      light #5a5248 -> 6.48                */
+.deep .su b, .deep .tc b, .deep .tc.g b,
+.deep .su b, .basket .su b { color: #5a5248; }
+[data-theme="dark"] .deep .su b,
+[data-theme="dark"] .deep .tc b,
+[data-theme="dark"] .deep .tc.g b,
+[data-theme="dark"] .basket .su b { color: #c0b9ac; }
