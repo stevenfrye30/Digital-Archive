@@ -13175,6 +13175,84 @@ async function getJSON(url) {
   return r.json();
 }
 
+// ── Split bodies: head + rest ─────────────────────────────────────────────────
+//
+// Six texts exceed 2.4 MB gzipped and the reader used to fetch each whole
+// before painting a line — Mahābhārata is 4.4 MB to draw 200 passages.
+// Those now ship as a PAIR: `<stem>.json.gz` carries the metadata, the
+// first RENDER_BATCH passages and an `_index` of EVERY passage's
+// {id, path, fm, range_end}; `<stem>.rest.json.gz` carries the remainder.
+// Per-chapter was surveyed and struck (plans/text_splitting_survey_2026-08.md).
+//
+// THE RULE THIS CODE EXISTS TO KEEP: no surface may state something false
+// while the rest is in flight. Two mechanisms, and both are needed —
+//
+//   passageIndex(rec)  for the consumers that reason over the WHOLE array
+//                      but need no TEXT (chapter selector, contents counts,
+//                      front-matter split, citation-label injectivity).
+//                      They read `_index`, which is complete at first paint,
+//                      so their answers never change when the rest lands.
+//   whenComplete()     for the consumers that genuinely need bodies
+//                      (in-text search). They await the rest rather than
+//                      answering early. A background fetch costs a moment;
+//                      a search that says "no results" because the reader
+//                      had not scrolled is a silent wrong answer.
+//
+// `rest` is fetched EAGERLY, immediately after the head renders.
+
+function passageIndex(rec) {
+  // Complete for every record, split or not: `_index` when the body was
+  // split, the passages themselves otherwise.
+  if (!rec) return [];
+  return rec._index || rec.passages || [];
+}
+
+let _restPromise = null;      // in-flight rest for the CURRENT record
+let _restToken   = 0;         // guards against a text switch mid-flight
+
+function whenComplete() {
+  // Resolves once currentData.passages holds every passage.
+  return _restPromise || Promise.resolve();
+}
+
+// Fetch a record whose passages are COMPLETE. Used wherever a record other
+// than the one being read is loaded (compare mode, sibling ids) — those
+// callers compare whole passage sets, so a head alone would silently
+// under-report.
+async function getRecordFull(dataFile) {
+  const d = await getJSON(`data/${dataFile}`);
+  if (d && d._split && d._split.rest) {
+    const r = await getJSON(`data/${d._split.rest}`);
+    if (r && Array.isArray(r.passages)) d.passages = d.passages.concat(r.passages);
+    delete d._split;
+  }
+  return d;
+}
+
+// Start the eager rest fetch for the record just rendered. Splices in
+// place so `allPassages` and `currentData.passages` stay the same arrays
+// the rest of the reader already holds references to.
+function beginRestFetch(rec) {
+  _restPromise = null;
+  if (!rec || !rec._split || !rec._split.rest) return;
+  const token = ++_restToken;
+  const expect = rec._split.total;
+  _restPromise = getJSON(`data/${rec._split.rest}`).then(r => {
+    if (token !== _restToken) return;            // the reader moved on
+    if (!r || !Array.isArray(r.passages)) return;
+    rec.passages.push.apply(rec.passages, r.passages);
+    if (rec.passages.length !== expect) {
+      console.warn('[split] expected ' + expect + ' passages, have '
+                   + rec.passages.length + ' for ' + rec.id);
+    }
+    delete rec._split;
+    if (typeof _pendingPassages !== 'undefined' && Array.isArray(_pendingPassages)) {
+      // the renderer had queued only what the head carried
+      _pendingPassages = rec.passages.slice(RENDER_BATCH);
+    }
+  }).catch(e => { console.warn('[split] rest fetch failed', e); });
+}
+
 // ── Reference formatting ──────────────────────────────────────────────────────
 
 // ── Citation-label injectivity (record-level) ────────────────────────────────
@@ -13196,7 +13274,13 @@ let _refMode = 'path';                 // 'path' (normal) | 'id' (uniform fallba
 
 function _buildRefIndex() {
   _refMode = 'path';
-  const ps = currentData && currentData.passages;
+  // split-safe: the _index carries every passage's {id, path, range_end},
+  // which is exactly what _formatRefPath reads — so the label MODE this
+  // derives is identical whether or not the rest has landed. Reading
+  // currentData.passages here would decide injectivity from 200 of
+  // 34,334 passages and could pick 'path' where the whole record needs
+  // 'id' — a citation naming the wrong passage.
+  const ps = passageIndex(currentData);
   if (!Array.isArray(ps) || !ps.length) return;
   const ids = new Set(ps.map(p => p.id));
   const seen = new Set();
@@ -14947,7 +15031,8 @@ function _isChapterScopedHierarchy() {
 // the cover view). Defaults to '.1' if the book has no entries
 // (shouldn't happen in practice).
 function _firstChapterOfBook(bookKey, data) {
-  const ps = (data && data.passages) || allPassages || [];
+  const ps = (data && passageIndex(data).length ? passageIndex(data) : null)
+             || allPassages || [];   // split-safe: paths only
   for (const p of ps) {
     if (p.path && String(p.path[0]) === String(bookKey)) {
       return `${bookKey}.${p.path[1]}`;
@@ -15326,6 +15411,23 @@ function filterAndRender() {
   const queryLower = query.toLowerCase();
 
   if (queryLower) {
+    // SPLIT-SAFE, and this is the one consumer that cannot be served by
+    // the `_index`: searching needs passage TEXT. On a split record the
+    // rest is fetched eagerly, but "eagerly" is not "already" — a query
+    // typed in the first moment would otherwise be answered from the
+    // head's 200 passages and report "no results" for a word that IS in
+    // the text. A search that is silently incomplete is a surface stating
+    // something false, which this archive does not do. So: if the rest is
+    // still in flight, say the search is still reading, and re-run when
+    // it lands rather than answering early.
+    if (currentData && currentData._split) {
+      render([], '');
+      setStatus('Reading the whole text…');
+      whenComplete().then(() => {
+        if ($search.value.trim().toLowerCase() === queryLower) filterAndRender();
+      });
+      return;
+    }
     passages = passages.filter(p => p.text.toLowerCase().includes(queryLower));
   }
 
@@ -15771,7 +15873,7 @@ function showCover(data, entry) {
   // Canonical section keys via the shared builder (excludes front matter;
   // path[0] level to match the codex-cover grid). The reader dropdown uses the
   // same sectionKeys() builder, so contents and dropdown stay in lock-step.
-  const keys = sectionKeys(data.passages, false);
+  const keys = sectionKeys(passageIndex(data), false);   // split-safe
   if (keys.every(k => /^\d+$/.test(k))) {
     keys.sort((a, b) => Number(a) - Number(b));
   }
@@ -15790,9 +15892,9 @@ function showCover(data, entry) {
   // Front Matter button shows for either fm passages OR a structured
   // front_matter block (e.g. a Gutenberg title page held in data.front_matter
   // with no fm passages). Presentation only — no source mutation.
-  let hasFrontMatter = data.passages.some(p => p.fm)
+  let hasFrontMatter = passageIndex(data).some(p => p.fm)   // split-safe
     || !!(data.front_matter && data.front_matter.length);
-  const bodyCount = data.passages.filter(p => !p.fm).length;
+  const bodyCount = passageIndex(data).filter(p => !p.fm).length;   // split-safe
 
   // v100 — Apply per-text contents overrides BEFORE downstream
   // ranges/labels are computed. An override may:
@@ -16628,7 +16730,7 @@ function showCover(data, entry) {
     try {
       const hier = currentData.hierarchy || [];
       const leaf = hier.length ? String(hier[hier.length - 1]) : 'passage';
-      const n = currentData.passages.length;
+      const n = passageIndex(currentData).length;   // split-safe
       const word = (n === 1) ? leaf : leaf + (leaf.endsWith('s') ? '' : 's');
       if (span) span.textContent += ` \u00b7 ${n.toLocaleString()} ${word}`;
     } catch (e) {}
@@ -16907,15 +17009,15 @@ function showToc(data, entry) {
   // Compute distinct top-level group keys in order
   const seen = new Set();
   const keys = [];
-  for (const p of data.passages) {
+  for (const p of passageIndex(data)) {   // split-safe
     const k = String(p.path[0]);
     if (!seen.has(k)) { seen.add(k); keys.push(k); }
   }
 
   const grouped = needsGroupSelector() && keys.length > 1 && keys.length <= 200;
   $tocSubtitle.textContent = grouped
-    ? `${keys.length} ${hier[0]}s \u00b7 ${data.passages.length.toLocaleString()} passages`
-    : `${data.passages.length.toLocaleString()} passages`;
+    ? `${keys.length} ${hier[0]}s \u00b7 ${passageIndex(data).length.toLocaleString()} passages`
+    : `${passageIndex(data).length.toLocaleString()} passages`;
 
   $tocList.innerHTML = '';
   const chapterScoped = (data.hierarchy && data.hierarchy[0] === 'book'
@@ -23148,6 +23250,9 @@ async function loadText(entry, listItem) {
     currentMeta  = { hierarchy: data.hierarchy };
     allPassages  = data.passages;
     currentBook  = null;
+    // EAGER: the rest is requested as soon as the head is in hand, so it
+    // is usually already landed by the time a reader reaches batch two.
+    beginRestFetch(data);
 
     // v132 (H2) — resolve the Aiyar work scope for THIS load. Order matters:
     //   1. an explicit work route (a byUpanishad card, or ?w=<key>) — authoritative
@@ -23289,7 +23394,7 @@ async function activateCompare() {
   if (!dataFile) return;
   try {
     setStatus('Loading secondary translation\u2026');
-    const secondary = await getJSON(`data/${dataFile}`);
+    const secondary = await getRecordFull(dataFile);   // split-safe: whole record
     clearStatus();
     compareEntry = secondary;
     // Build {id → text} map
@@ -23364,7 +23469,7 @@ $trSelect.addEventListener('change', async () => {
     }
     const wantPid = _citationPid || topPid;
     let sibIds = null;
-    try { const d = await getJSON(`data/${dataFile}`); sibIds = new Set(d.passages.map(p => p.id)); } catch (e) {}
+    try { const d = await getRecordFull(dataFile); sibIds = new Set(passageIndex(d).map(p => p.id)); } catch (e) {}
     if (sibIds && wantPid && sibIds.has(wantPid))    pendingPid = wantPid;   // exact citation / position
     else if (sibIds && topPid && sibIds.has(topPid)) pendingPid = topPid;    // fall back to top-visible
     else if (typeof currentBook === 'string' && currentBook && currentBook !== '__fm__') {
@@ -28375,7 +28480,7 @@ function _buildAtlasIndexTree(data) {
   // Discover every chapter that exists in this text's passage
   // list so we can detect which chapters carry zero records.
   const allChaptersPerBook = new Map();
-  for (const p of (data.passages || [])) {
+  for (const p of passageIndex(data)) {   // split-safe: paths only
     if (!p.path || p.path.length < 2 || p.fm) continue;
     const bk = p.path[0];
     const ch = Number(p.path[1]);

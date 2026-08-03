@@ -440,14 +440,21 @@
   "aquinas-summa-theologica_english-dominicans": {
    "source_hash": "sha256:1f7ae641c5d77a74afd784c5eab64e078a36161abdd2475b13a3457ebdd13174",
    "data_file": "aquinas-summa-theologica_english-dominicans.json.gz",
-   "data_hash": "sha256:71afdb3eaeffa7f23584be70f92bf3e687657852c6551634320432e0670a8346",
-   "data_bytes": 3888684,
+   "data_hash": "sha256:025e542073ec103be2f82267086f02e26ef271a6f77dc67bba0b4e51a63cf706",
+   "data_bytes": 190863,
    "passages": 34334,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:21Z"
+   "exported": "2026-07-10T17:30:21Z",
+   "parts": [
+    {
+     "data_file": "aquinas-summa-theologica_english-dominicans.rest.json.gz",
+     "data_hash": "sha256:b16b87164c89fbf768a2bbfda20f2daa8e7273a9830e98a0b65ab6ef2585a231",
+     "data_bytes": 3866668
+    }
+   ]
   },
   "arab-conquests-central-asia-gibb_gibb": {
    "source_hash": "sha256:c1db8c1bc3c036b8950e545d5b7d59be672e972aac537b547a96729e46e8c67b",
@@ -948,14 +955,21 @@
   "babylonian-talmud-rodkinson_rodkinson": {
    "source_hash": "sha256:c77cab3b32f552b85bce214702b6605c8cd091d718f6de6c5c5130ae73b8402c",
    "data_file": "babylonian-talmud-rodkinson_rodkinson.json.gz",
-   "data_hash": "sha256:c6d9b68860a3b7ea908b8aed5d35d3dbc95c322010c6272629242b165bbb5fbf",
-   "data_bytes": 3520598,
+   "data_hash": "sha256:3d72270f13032857b476e21e04628f26b584f2787a0779bec4b8d10f603d16fc",
+   "data_bytes": 138329,
    "passages": 19619,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:24Z"
+   "exported": "2026-07-10T17:30:24Z",
+   "parts": [
+    {
+     "data_file": "babylonian-talmud-rodkinson_rodkinson.rest.json.gz",
+     "data_hash": "sha256:92ee6656c1981bd65d8120b3650fbf5d12b3ed9a4266ab1e0d1fd22c58133748",
+     "data_bytes": 3482227
+    }
+   ]
   },
   "back-black-mans-mind-dennett_dennett": {
    "source_hash": "sha256:3ee56615bc56bf3a10564303eb97b128ce3e430be943c2725ccb2f986ffe4576",
@@ -4622,14 +4636,21 @@
   "gibbon-decline-fall_gibbon": {
    "source_hash": "sha256:bab8d512b61eca7d6f12f125520bafd1d2e9f788049d0c251e3c5d7d4c49d686",
    "data_file": "gibbon-decline-fall_gibbon.json.gz",
-   "data_hash": "sha256:fff1ee0d710489156e48740e6390c42eeb8ab5e0de2e8c7340e7ee5bb12b8373",
-   "data_bytes": 3668845,
+   "data_hash": "sha256:0090d8dffd8232c4bd6e24e165ab807bfa635441158c5a0f26a77003523c03d4",
+   "data_bytes": 64848,
    "passages": 12099,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:05:55Z"
+   "exported": "2026-07-31T04:05:55Z",
+   "parts": [
+    {
+     "data_file": "gibbon-decline-fall_gibbon.rest.json.gz",
+     "data_hash": "sha256:42f98469562ffcb654c4b1cd76a8455fe0863fd0a6d85b907237de77e1a4d654",
+     "data_bytes": 3663563
+    }
+   ]
   },
   "gilgamesh-langdon_langdon": {
    "source_hash": "sha256:26be154b36fc6e0303d133df7f93c2024bda6b8e4ed705fd8965a34b681c3de5",
@@ -5905,15 +5926,22 @@
   "internet-book-shadows_various": {
    "source_hash": null,
    "data_file": "internet-book-shadows_various.json.gz",
-   "data_hash": "sha256:6da795c98bdab0f04a3e13a9c5482b3e376ab6a3c69d95866a6a2b5c29eaf86f",
-   "data_bytes": 2669423,
+   "data_hash": "sha256:8a96cfa264c37e96d0b96870ab7656d9caeab497ff44299b3422733bff908669",
+   "data_bytes": 153383,
    "passages": 26737,
    "license": null,
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:57Z",
-   "source_note": "no canonical dir (restricted local body)"
+   "source_note": "no canonical dir (restricted local body)",
+   "parts": [
+    {
+     "data_file": "internet-book-shadows_various.rest.json.gz",
+     "data_hash": "sha256:44d239246ff3f56b946916c34dbd1265a21c5312be0cbbfe18223ed68685508e",
+     "data_bytes": 2624335
+    }
+   ]
   },
   "invasion-india-alexander_mccrindle": {
    "source_hash": "sha256:f5df987c4191618938f1adb8980e0da583f321ec463adab6f4f5ecd88be3bad5",
@@ -7500,14 +7528,21 @@
   "mahabharata_ganguli": {
    "source_hash": "sha256:4d95eb8b1d355d7b55181055464c087eb1327bce9d2f63092ac94d487de0168e",
    "data_file": "mahabharata_ganguli.json.gz",
-   "data_hash": "sha256:084a9f82d532db7d8ae5b66df5e6cfb9ebde65a926a15ae4add83a85e1860b99",
-   "data_bytes": 4532645,
+   "data_hash": "sha256:ea2d4d2bdfd5a8e72d518570302e268988f69ddb467f2f728492505f39975c12",
+   "data_bytes": 102010,
    "passages": 7479,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:06Z"
+   "exported": "2026-07-10T17:31:06Z",
+   "parts": [
+    {
+     "data_file": "mahabharata_ganguli.rest.json.gz",
+     "data_hash": "sha256:af615bc0d362efc86327680345fbf16e9e2533986718242f8726246d3d4fcf04",
+     "data_bytes": 4469428
+    }
+   ]
   },
   "mahaniddesa-pali_pli": {
    "source_hash": "sha256:e9124841656fd78ae83f664c1d7857499941d4d4867ce30cfbe5a9774f158d1a",
@@ -11329,14 +11364,21 @@
   "shakespeare-complete_shakespeare": {
    "source_hash": "sha256:f09201baee175fe78e09d1a1de1798fabaa080a63a688444db4e247787c1f106",
    "data_file": "shakespeare-complete_shakespeare.json.gz",
-   "data_hash": "sha256:46fbf5c74629e45e81b1e2d941172509601a68b5a6409aa68fc58a5b512fd215",
-   "data_bytes": 2547294,
+   "data_hash": "sha256:37c713d4be69cde876b3450084278db084f5c8dc71dd68c7a62365633bd225a6",
+   "data_bytes": 171115,
    "passages": 38951,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:06:05Z"
+   "exported": "2026-07-31T04:06:05Z",
+   "parts": [
+    {
+     "data_file": "shakespeare-complete_shakespeare.rest.json.gz",
+     "data_hash": "sha256:fb95e607e0bdc9f47558ddf84f1f1d1288be429b933ce50033c4823a0753dca6",
+     "data_bytes": 2517793
+    }
+   ]
   },
   "shakespeare-cymbeline_shakespeare": {
    "source_hash": "sha256:ce7307232e828138c1d86b746891ebbd31449fb8d5c31a6a36e4562e50b37261",

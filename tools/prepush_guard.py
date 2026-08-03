@@ -159,15 +159,24 @@ def main():
         t0 = time.time()
         bad, gone = [], []
         for key, e in mtexts.items():
-            df, want = e.get("data_file"), e.get("data_hash")
-            if not df or not want:
-                continue
-            p = REPO / "data" / df
-            if not p.exists():
-                gone.append(df)
-            elif sha256_file(p) != want:
-                bad.append(df)
-            hashed += 1
+            # A split row ships its head under `data_file` and the
+            # remainder under `parts`. Both are artifacts this deploy
+            # serves, so BOTH are hashed — the invariant is unchanged in
+            # meaning (every artifact the manifest declares exists and
+            # matches), it simply now sees all of them. Rows without
+            # `parts` behave exactly as before.
+            declared = [(e.get("data_file"), e.get("data_hash"))]
+            for part in (e.get("parts") or []):
+                declared.append((part.get("data_file"), part.get("data_hash")))
+            for df, want in declared:
+                if not df or not want:
+                    continue
+                p = REPO / "data" / df
+                if not p.exists():
+                    gone.append(df)
+                elif sha256_file(p) != want:
+                    bad.append(df)
+                hashed += 1
         if gone:
             fail("Manifest data files missing on disk:\n  "
                  + "\n  ".join(gone[:20]))
@@ -191,9 +200,22 @@ def main():
         "search_index.json", "source_manifest.json", "index.json",
         "restricted_sources_register.json", "chip_index.json", "read_marks.json",
     }
+    # A split row's `rest` artifact is named by the MANIFEST rather than by
+    # an index row, so it must be recognised here or it reads as a retired
+    # body. Derived from the contract itself — the set of declared parts —
+    # never from a filename suffix: a suffix rule would bless any file
+    # somebody named `.rest.json.gz`, which is exactly the hole 6b exists
+    # to close. A part declared by no row is still an orphan.
+    declared_parts = {
+        part.get("data_file")
+        for e in mtexts.values() for part in (e.get("parts") or [])
+        if part.get("data_file")
+    }
     orphans = sorted(
-        p.name[:-3] for p in (REPO / "data").glob("*.json.gz")
-        if p.name[:-3] not in idx_dfs and p.name[:-3] not in SITE_ARTIFACTS
+        p.name for p in (REPO / "data").glob("*.json.gz")
+        if p.name[:-3] not in idx_dfs
+        and p.name[:-3] not in SITE_ARTIFACTS
+        and p.name not in declared_parts
     )
     if orphans:
         fail("Bodies in data/ that no index row names (retired texts whose "

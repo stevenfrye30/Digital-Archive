@@ -1135,6 +1135,65 @@ TEXT_GAPS_JS = r"""() => {
 }"""
 
 
+def g_split(pg, base, R):
+    """The six split bodies read exactly like whole ones.
+
+    Head/rest exists so a 4.4 MB epic paints without downloading 4.4 MB
+    first. It is allowed ONLY because nothing a reader can see differs:
+    the head carries an `_index` of every passage's {id, path, fm,
+    range_end}, so the consumers that reason over the whole array answer
+    identically at first paint, and the rest is fetched eagerly for the
+    one consumer that needs bodies. This group asserts that equivalence
+    rather than the mechanism.
+    """
+    import gzip as _gz
+    split = sorted(p for p in (REPO / "data").glob("*.rest.json.gz"))
+    R.check("12 split", "the split set is the six ruled texts",
+            len(split) == 6, f"{len(split)} split", population=len(split))
+    # the head's window must equal the reader's render batch, or the head
+    # stops being exactly one screen and the seam drifts
+    m = re.search(r"const RENDER_BATCH = (\d+)", (REPO / "index.html").read_text(
+        encoding="utf-8", errors="replace"))
+    sys.path.insert(0, str(REPO.parent / "05_scripts"))
+    import split_bodies                                     # noqa: E402
+    R.check("12 split", "the head window equals the reader's RENDER_BATCH",
+            bool(m) and int(m.group(1)) == split_bodies.HEAD_PASSAGES,
+            f"RENDER_BATCH={m and m.group(1)} vs HEAD_PASSAGES={split_bodies.HEAD_PASSAGES}")
+
+    for rest in split:
+        stem = rest.name[:-len(split_bodies.REST_SUFFIX)]
+        head = json.loads(_gz.decompress((REPO / "data" / f"{stem}.json.gz").read_bytes()))
+        tail = json.loads(_gz.decompress(rest.read_bytes()))
+        total = len(head.get("passages", [])) + len(tail.get("passages", []))
+        # the head's own claim, the index, and the two files must agree —
+        # three independent statements of one number
+        R.check("12 split", f"{stem[:26]}: head+rest == the declared total",
+                head.get("_split", {}).get("total") == total, f"{total}")
+        R.check("12 split", f"{stem[:26]}: _index covers every passage",
+                len(head.get("_index") or []) == total,
+                f"{len(head.get('_index') or [])} of {total}")
+        R.check("12 split", f"{stem[:26]}: _index carries what a citation reads",
+                all(("id" in e and "path" in e) for e in (head.get("_index") or [])[:500]),
+                "id+path on every sampled entry",
+                population=min(500, len(head.get("_index") or [])))
+
+    # and end to end: the reader reassembles one of them completely
+    stem = split[0].name[:-len(split_bodies.REST_SUFFIX)]
+    pg.goto(f"{base}?text={stem}.json", wait_until="networkidle")
+    pg.wait_for_timeout(800)
+    pg.evaluate("""() => { const b = [...document.querySelectorAll('button,a')]
+        .find(x => /Read from beginning/i.test(x.textContent)); b && b.click(); }""")
+    try:
+        pg.wait_for_function("() => currentData && !currentData._split", timeout=30000)
+        joined = pg.evaluate("() => currentData.passages.length")
+    except Exception:
+        joined = -1
+    head = json.loads(_gz.decompress((REPO / "data" / f"{stem}.json.gz").read_bytes()))
+    R.check("12 split", f"{stem[:26]}: the reader ends up with every passage",
+            joined == head["_split"]["total"],
+            f"{joined} of {head['_split']['total']}")
+
+
 def g_shared(pg_unused, base_unused, R):
     """Task 126 — the sixteen rooms stop storing the same thing sixteen times.
 
@@ -1693,6 +1752,7 @@ GROUPS = {
     "furniture": g_furniture,
     "marks": g_lens,
     "grammar": g_grammar,
+    "split": g_split,
     "shared": g_shared,
     "layers": g_layers,
     "centring": g_centring,

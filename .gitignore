@@ -162,6 +162,10 @@ data/quran_yusufali.json.gz
 # (.json already covered by data/*.json; .json.gz must be ignored or it re-leaks on gzip.)
 data/internet-book-shadows_various.json
 data/internet-book-shadows_various.json.gz
+# 2026-08-03 — head/rest split: a restricted body's REST twin is the same
+# body. The head is ignored above; without this line the twin is merely
+# untracked, and one `git add -A` would push a copyrighted text.
+data/internet-book-shadows_various.rest.json.gz
 data/tibetan-tantra-muses_muses.json
 data/tibetan-tantra-muses_muses.json.gz
 data/abominable-snowmen-ivan-sanderson-1961_anonymous.json
