@@ -221,6 +221,17 @@ listed once with the link entering at the first chapter.
 
 ## Known Issues
 
+- **33 build artifacts still ship under `maps/` (1,196 KB).** Task 137 moved
+  `seed_bindings.json` out of the published tree; the guard extension then
+  found 33 siblings of the same class — 16 per-room `structure.json` (build
+  state for the `apply_*_supplement` passes), 3 `*.retired.json` snapshots,
+  14 `*_sheet.md` human review sheets. No page fetches any of them; all are
+  tracked, so all are served at public URLs. Each is recorded with its reason
+  in `tools/maps_served_ledger.json`, so the guard is honest about what ships
+  today and loud about anything new. **Moving them is the same move Task 137
+  made for `seed_bindings.json` and needs the same ruling — surveyed here,
+  not decided.**
+
 - Archive-shelf front shelf still holds 5 entries by design; the other
   200 are now listed by tradition on `shelves.html` (Phase 2). The
   shelves page collapses multi-chapter works into one entry each, so
