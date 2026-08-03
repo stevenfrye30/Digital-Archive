@@ -537,13 +537,33 @@
   function zoneHasContent(sec) {
     return !!sec.querySelector('.tc, .chip, .su');
   }
+  // Task 127 — THE PILL RETIRES FOR A CORNER ARROW.
+  //
+  // Task 125 item 3 ruled the per-zone FOLD pill retires and the zone's
+  // own heading becomes its control. What shipped was a pill under every
+  // zone title reading FOLD / UNFOLD: the pill did not retire, it moved.
+  // Ruled now: one disclosure arrow in the zone box's upper-left corner,
+  // and no control beneath the title at all. The arrow's DIRECTION states
+  // the state — ▾ open, ▸ shut — so the control says what it did without
+  // a word of label.
   function setZone(sec, open) {
     sec.classList.toggle('zone-shut', !open);
-    var btn = sec.querySelector('.zone-toggle');
-    if (btn) {
-      btn.textContent = open ? 'Fold' : 'Unfold';
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var arrow = sec.querySelector('.zone-arrow');
+    if (arrow) {
+      arrow.textContent = open ? '▾' : '▸';
+      arrow.setAttribute('aria-expanded', open ? 'true' : 'false');
+      arrow.setAttribute('aria-label', (open ? 'Fold ' : 'Unfold ') + zoneName(sec));
+      arrow.title = (open ? 'Fold ' : 'Unfold ') + zoneName(sec);
     }
+  }
+  function zoneName(sec) {
+    var h = sec.querySelector('h2, .zone-h');
+    if (!h) return 'this section';
+    var t = '';
+    for (var i = 0; i < h.childNodes.length; i++) {
+      if (h.childNodes[i].nodeType === 3) t += h.childNodes[i].textContent;
+    }
+    return (t || h.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
   }
   function setupZones() {
     document.querySelectorAll('section[id]').forEach(function (sec) {
@@ -560,14 +580,37 @@
       // visibly does the thing and undoes it is worse than an inert one.
       if (sec.dataset.z123) return;
       sec.dataset.z123 = '1';
-      if (!sec.querySelector('.zone-toggle')) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'zone-toggle';
-        btn.addEventListener('click', function () {
+      // Task 127 — any pill a previous pass left under the title goes,
+      // wherever it was put. Removed by ROLE, not by position, so a
+      // control that moved again is still caught.
+      [].forEach.call(sec.querySelectorAll('.zone-toggle'), function (old) {
+        old.parentNode && old.parentNode.removeChild(old);
+      });
+      if (!sec.querySelector('.zone-arrow')) {
+        var arrow = document.createElement('button');
+        arrow.type = 'button';
+        arrow.className = 'zone-arrow';
+        arrow.addEventListener('click', function (e) {
+          e.stopPropagation();
           setZone(sec, sec.classList.contains('zone-shut'));
         });
-        head.appendChild(btn);
+        // the arrow belongs to the BOX, not the heading — it is placed
+        // first so it sits in the corner ahead of everything the zone
+        // draws, and CSS pins it there.
+        sec.insertBefore(arrow, sec.firstChild);
+      }
+      // "may also fold on click if that is free" — it is: the heading
+      // carries no control of its own now, so the whole line is spare.
+      // The arrow stays the visible and ruled control; this is a
+      // convenience on top of it, and it must not swallow a click on a
+      // link or a chip inside the heading.
+      if (head && !head.dataset.z127) {
+        head.dataset.z127 = '1';
+        head.style.cursor = 'pointer';
+        head.addEventListener('click', function (e) {
+          if (e.target.closest('a, button, summary, input, select')) return;
+          setZone(sec, sec.classList.contains('zone-shut'));
+        });
       }
       var populated = zoneHasContent(sec);
       if (!populated && !sec.querySelector('.zone-note')) {

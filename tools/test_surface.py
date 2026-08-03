@@ -563,6 +563,38 @@ def g_covers(pg, base, R):
             g2 and not g2["arrived"], str(g2 and g2["arrived"]))
 
 
+ZONE_JS = """() => {
+  const vis = e => e.getClientRects().length > 0;
+
+              const zones = [...document.querySelectorAll('section[id]')].filter(s =>
+                vis(s) && !/-reception$/.test(s.id)
+                && !s.classList.contains('view')
+                && !!s.querySelector('h2, .zone-h'));
+              let withArrow = 0, many = 0, titleCtl = 0, blurbOff = 0;
+              for (const z of zones) {
+                const arrows = z.querySelectorAll(':scope > .zone-arrow');
+                if (arrows.length === 1) withArrow++;
+                if (arrows.length > 1) many++;
+                // a control sitting in or under the zone's TITLE
+                const head = z.querySelector('h2, .zone-h');
+                if (head) {
+                  titleCtl += [...head.querySelectorAll('button, summary, [role=button]')]
+                    .filter(vis).length;
+                  const next = head.nextElementSibling;
+                  if (next && vis(next) && /^(BUTTON|SUMMARY)$/.test(next.tagName)) titleCtl++;
+                }
+                const b = z.querySelector('.blurb');
+                if (b && vis(b)) {
+                  const p = z.getBoundingClientRect(), r = b.getBoundingClientRect();
+                  if (Math.abs((r.left - p.left) - (p.right - r.right)) > 4) blurbOff++;
+                }
+              }
+              return { zones: zones.length, zonesWithArrow: withArrow,
+                       zonesManyArrows: many, titleControls: titleCtl,
+                       blurbOff: blurbOff };
+            }"""
+
+
 def g_rooms(pg, base, R):
     """Task 95/97/98 — the room grammar, in every room that has sections."""
     # Task 102 — every room, not a sample: the furniture is doctrine and
@@ -648,6 +680,51 @@ def g_rooms(pg, base, R):
         if m["centered"] is not None:
             R.check("6 rooms", f"{room}: title centered", m["centered"])
         R.check("6 rooms", f"{room}: no summary bars", m["bars"] == 0, f"{m['bars']} visible")
+        # Task 127 — the pill retires for a corner arrow. Derived (§8.1e):
+        # a ZONE is defined the way the room defines it — a titled section
+        # that is not a reception list and not a canon view — so a room
+        # that gains or loses one needs no edit here. Writing the probe
+        # against `section.basket` alone reported shinto as missing an
+        # arrow; the fourth box was sh-reception, which is not a zone.
+        z = pg.evaluate(ZONE_JS)
+        if z["zones"] == 0:
+            # §8.1c — buddhist and hindu keep their zones behind a canon
+            # view. WALK to it; do not exempt the room and do not let the
+            # population guard pass a room off as unexaminable.
+            # The success condition is the PROBE ITSELF, not a proxy. A
+            # first draft asked "does any section[id] h2 exist?", which
+            # was already true before any click, so the walk stopped on
+            # the first view and reported buddhist as having no zones —
+            # while its seven Pāli baskets sat one view away, each with
+            # its arrow. A walk that does not re-measure has not walked.
+            entered = None
+            for view in pg.evaluate(
+                    """() => [...document.querySelectorAll('[data-view]')]
+                              .map(t => t.getAttribute('data-view'))"""):
+                pg.evaluate("""(v) => { const t =
+                    document.querySelector('[data-view="' + v + '"]'); t && t.click(); }""",
+                            view)
+                pg.wait_for_timeout(450)
+                z = pg.evaluate(ZONE_JS)
+                if z["zones"]:
+                    entered = view
+                    break
+            R.check("6 rooms", f"{room}: its zones are reachable",
+                    z["zones"] > 0,
+                    f"reached via view '{entered}'" if z["zones"]
+                    else "NO view exposes a zone")
+        R.check("6 rooms", f"{room}: every zone box has exactly one arrow",
+                z["zonesWithArrow"] == z["zones"] and z["zonesManyArrows"] == 0,
+                f"{z['zonesWithArrow']}/{z['zones']} zones, "
+                f"{z['zonesManyArrows']} with more than one",
+                population=z["zones"])
+        R.check("6 rooms", f"{room}: no zone title carries a fold control",
+                z["titleControls"] == 0,
+                f"{z['titleControls']} control(s) under a zone title",
+                population=z["zones"])
+        R.check("6 rooms", f"{room}: the zone description's box is centred",
+                z["blurbOff"] == 0, f"{z['blurbOff']} off-centre",
+                population=z["zones"])
         R.check("6 rooms", f"{room}: no family repeats one sub-line under every chip",
                 not m["uniform"], "; ".join(m["uniform"][:3]))
         R.check("6 rooms", f"{room}: has collapsible families", m["fams"] > 0, f"{m['fams']}")
