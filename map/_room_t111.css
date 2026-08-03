@@ -180,3 +180,24 @@ h3.vagga-h .pn {
    broken, light on light). With the parser fixed the original colour
    measures fine. Doctrine 8.1: probe the rendered page — and check the
    probe before believing it. */
+
+/* ── Task 135b ─────────────────────────────────────────────────────────
+   THE FAMILY CARD RETIRES. Each family ("Pentateuch", "Historical",
+   "RING 1 — Vedāṅgas & Kalpa-sūtras") sat in a bordered AND shaded box —
+   `.deep details.fam { border: 1px solid var(--line); background:
+   var(--surface) }` — inside the zone box, so a reader met two nested
+   frames before reaching a chip. Buddhist never had it and is the
+   reference dress: heading, gloss, range, hairline rule, then chips on
+   the page ground.
+
+   Only the border and the fill go. The heading/gloss/range/rule and the
+   chip grid keep the layout they already have, and the ZONE box
+   (section.basket / section.zone — bordered, no fill, carrying the Task
+   127 corner arrow) is untouched in all 16 rooms including buddhist.
+   Confirmed distinct before editing: swept by computed style, the zone
+   wrapper paints border-without-fill at depth 0 and this card paints
+   border-AND-fill at depth 1. */
+.deep details.fam, details.fam {
+  border: none;
+  background: none;
+}
