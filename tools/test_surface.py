@@ -1544,11 +1544,25 @@ def g_mobile(pg_unused, base, R):
             small.push((e.id ? '#'+e.id : e.tagName + '.' + String(e.className).slice(0,20))
                        + ' ' + Math.round(r.width) + 'x' + Math.round(r.height)); });
       return { seen: seen, offscreen: offscreen,
+               // Task 143 — REPORT THE RAW NUMBERS AND LET THE CALLER JUDGE.
+               // `scrollWidth - innerWidth` cannot detect the thing it was
+               // written to detect. Under is_mobile=True (which this context
+               // sets) Playwright honours the page's meta viewport, so the
+               // LAYOUT VIEWPORT GROWS TO FIT OVERFLOWING CONTENT: on
+               // indigenous, innerWidth read 465 rather than 390 and the
+               // difference came out 0. The fault inflated its own yardstick,
+               // so the check was structurally incapable of failing — green
+               // for as long as the overflow existed. Measured both ways to
+               // be sure: a plain 390 context reports scrollWidth 464 against
+               // innerWidth 390, the same page, the same pixels.
+               scrollW: Math.round(document.documentElement.scrollWidth),
+               innerW: Math.round(vw),
                overflow: Math.round(document.documentElement.scrollWidth - vw),
                small: [...new Set(small)].slice(0, 6) }; }"""
     # the phone gets its own context on the SAME browser: a nested
     # sync_playwright() inside the running one raises.
-    ctx = _BROWSER[0].new_context(viewport={"width": 390, "height": 844},
+    PHONE_W = 390
+    ctx = _BROWSER[0].new_context(viewport={"width": PHONE_W, "height": 844},
                                   is_mobile=True, has_touch=True)
     pg = ctx.new_page()
     try:
@@ -1556,12 +1570,65 @@ def g_mobile(pg_unused, base, R):
             pg.goto(base + path, wait_until="networkidle")
             pg.wait_for_timeout(1100)
             m = pg.evaluate(TAP_JS)
+            # against the DEVICE width this context was created with, never
+            # against innerWidth, which the overflow itself inflates.
             R.check("8 mobile", f"{name}: no horizontal overflow at 390px",
-                    m["overflow"] <= 2, f"+{m['overflow']}px")
+                    m["scrollW"] - PHONE_W <= 2,
+                    f"scrollW {m['scrollW']} vs {PHONE_W} (innerWidth reported "
+                    f"{m['innerW']})")
             R.check("8 mobile", f"{name}: found targets to measure",
                     m["seen"] > 0, f"{m['seen']} tap targets")
             R.check("8 mobile", f"{name}: every visible target ≥ 44px",
                     m["seen"] > 0 and not m["small"], "; ".join(m["small"][:3]))
+
+        # Task 143 — EVERY ROOM, not one standing for sixteen.
+        #
+        # LAYERS above names `map/christianity.html` as "the map layer", so
+        # the horizontal-overflow check visited exactly one of eighteen room
+        # pages. indigenous overflowed to scrollWidth 464 at 390px for as
+        # long as its Task 102b family note existed, and this group stayed
+        # green the whole time — not because the predicate was wrong (it is
+        # `overflow <= 2`, which is right) but because the room was never
+        # opened. A sound check pointed at a sample of one.
+        #
+        # The room list is DERIVED from disk (8.1e), so a new room is swept
+        # the day it lands rather than the day someone remembers to add it
+        # here. Only the overflow assertion runs per-room: it costs one goto
+        # and one evaluate, while the 44px sweep needs the settle time the
+        # named layers get.
+        rooms = sorted(p.name for p in (REPO / "map").glob("*.html")
+                       if p.stem != "index")
+        if not rooms:
+            R.check("8 mobile", "room sweep: found rooms to measure", False,
+                    "no map/*.html found — the sweep would pass vacuously")
+        # Two pages are RECORDED, not excused. abrahamic and eastasian carry
+        # no mobile viewport meta at all, so a phone lays them out at 980px.
+        # That is the open question in plans/archive_plan_2026-08.md §2.6(f):
+        # they are full pages, they are not among the hall's sixteen doors,
+        # and room_grammar.md calls them "redirect stubs" when they are not.
+        # Naming them here with their reason keeps this sweep green today and
+        # still loud about any NEW page that overflows — the same shape as
+        # guard 6b's ledger. Deleting them from the list is not the fix;
+        # ruling on what they are is.
+        RECORDED_WIDE = {
+            "abrahamic.html": "no phone block; §2.6(f) — stub or page, unruled",
+            "eastasian.html": "no phone block; §2.6(f) — stub or page, unruled",
+        }
+        for rn in rooms:
+            pg.goto(base + "map/" + rn, wait_until="networkidle")
+            pg.wait_for_timeout(250)
+            mo = pg.evaluate(TAP_JS)
+            over = mo["scrollW"] - PHONE_W
+            if rn in RECORDED_WIDE:
+                R.check("8 mobile",
+                        f"room {rn[:-5]}: overflow is a RECORDED open question",
+                        over > 2, f"scrollW {mo['scrollW']} — {RECORDED_WIDE[rn]}")
+                continue
+            R.check("8 mobile", f"room {rn[:-5]}: no horizontal overflow at 390px",
+                    over <= 2,
+                    f"scrollW {mo['scrollW']} vs {PHONE_W} (innerWidth "
+                    f"{mo['innerW']})")
+
         # the reading room and its sheet
         pg.goto(base + "?text=thus-spake-zarathustra_common.json", wait_until="networkidle")
         pg.wait_for_timeout(1200)
@@ -1569,7 +1636,9 @@ def g_mobile(pg_unused, base, R):
           .find(x => /Read from beginning/.test(x.textContent)); b && b.click(); }""")
         pg.wait_for_timeout(1200)
         m = pg.evaluate(TAP_JS)
-        R.check("8 mobile", "reading: no horizontal overflow", m["overflow"] <= 2, f"+{m['overflow']}px")
+        R.check("8 mobile", "reading: no horizontal overflow",
+                m["scrollW"] - PHONE_W <= 2,
+                f"scrollW {m['scrollW']} vs {PHONE_W}")
         R.check("8 mobile", "reading: found targets to measure",
                 m["seen"] > 0, f"{m['seen']} tap targets")
         R.check("8 mobile", "reading: every visible target ≥ 44px",

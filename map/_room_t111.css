@@ -61,6 +61,20 @@ nav.toc a:hover { background: var(--panel); }
    matched confucian perfectly and still overflowed. */
 @media (max-width: 560px) {
   nav.toc a { white-space: normal; }
+  /* Task 143 — the SAME fault one element over. `.famr` carries
+     `white-space: nowrap` inline in every room, which is fine until a
+     family header note is long: indigenous's Task 102b line ("a
+     demonstrated 19th-c. hoax (Rafinesque 1836) — not a genuine Lenape
+     text") is unbreakable at 390px and pushed scrollWidth to 464. One
+     room of eighteen overflows, but the rule is archive-wide, so the
+     fix is too — the next long note would do the same thing.
+
+     Specificity, not !important (8.3): the inline `.famr` is (0,1,0)
+     and is stamped after this file, so a bare `.famr` here would lose
+     on order. `summary .famr` is (0,1,1) and wins on weight regardless
+     of order. `min-width: 0` because a flex item will not shrink below
+     its content width without it, so wrapping alone would not settle it. */
+  summary .famr { white-space: normal; min-width: 0; }
 }
 
 nav.toc:not(.toc-bare) { justify-content: center; }
