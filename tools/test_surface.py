@@ -657,6 +657,37 @@ ZONE_JS = """() => {
             }"""
 
 
+TOC_ROW_JS = r"""() => {
+  const nav = [...document.querySelectorAll('nav.toc')].find(
+      n => n.getClientRects().length);
+  if (!nav) return null;
+  const btn = nav.querySelector('.toc-all');
+  const pills = [...nav.querySelectorAll('a')].filter(a => a.getClientRects().length);
+  if (!btn || !btn.getClientRects().length || !pills.length) return null;
+  // rows by rendered top, so "the first row" is what the reader sees
+  // wrap, not what the markup order suggests.
+  const rows = {};
+  for (const p of pills) {
+    const r = p.getBoundingClientRect();
+    (rows[Math.round(r.top)] = rows[Math.round(r.top)] || []).push(r);
+  }
+  const keys = Object.keys(rows).map(Number).sort((a, b) => a - b);
+  const first = rows[keys[0]];
+  const top = Math.min(...first.map(r => r.top));
+  const bot = Math.max(...first.map(r => r.bottom));
+  const b = btn.getBoundingClientRect();
+  return {
+    pills: pills.length, rows: keys.length,
+    dy: +((b.top + b.bottom) / 2 - (top + bot) / 2).toFixed(1),
+    overlap: pills.filter(p => {
+      const r = p.getBoundingClientRect();
+      return !(r.right < b.left || r.left > b.right ||
+               r.bottom < b.top || r.top > b.bottom);
+    }).length,
+  };
+}"""
+
+
 def g_rooms(pg, base, R):
     """Task 95/97/98 — the room grammar, in every room that has sections."""
     # Task 102 — every room, not a sample: the furniture is doctrine and
@@ -825,6 +856,32 @@ def g_rooms(pg, base, R):
                         else "NO view exposes a .toc-all — the control cannot be reached")
                 if not visible:
                     continue
+            # Task 149 item 1 — THE CONTROL SITS ON THE PILLS' FIRST ROW,
+            # AND NO PILL RUNS UNDER IT. Neither was asserted anywhere
+            # until now, which is how the same rule shipped three lanes
+            # running (142's dress, 144's positioned ancestor, this
+            # lane's wrapped row) with hindu still reading +31px and
+            # "Collapse all" painted over "SIBLING BRANCH A", both
+            # strings illegible, on the live page.
+            #
+            # Measured against the rendered FIRST ROW (§8.1), never the
+            # nav box: in fifteen rooms the pills fit one line and the
+            # two measurements agree, so a check written against the nav
+            # would have passed the one room it exists to catch. The
+            # overlap half is separate on purpose — a control can sit at
+            # exactly the right height and still be unreadable, and
+            # §8.1d says a name may not promise more than it tests.
+            row = pg.evaluate(TOC_ROW_JS)
+            R.check("6 rooms",
+                    f"{room}: the collapse control sits on the pills' first row",
+                    row is not None and abs(row["dy"]) <= 3,
+                    f"dy {row and row['dy']}px vs row 1 of {row and row['rows']}",
+                    population=(row or {}).get("pills", 0))
+            R.check("6 rooms",
+                    f"{room}: no pill runs under the collapse control",
+                    row is not None and row["overlap"] == 0,
+                    f"{row and row['overlap']} pill(s) overlapping the control",
+                    population=(row or {}).get("pills", 0))
             # Task 123 item 5 — COLLAPSE MOVED UP A LEVEL, so this
             # assertion moves with it rather than being deleted: the
             # control folds ZONES now, and the inner families are no

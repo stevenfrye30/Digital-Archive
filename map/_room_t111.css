@@ -94,6 +94,45 @@ nav.toc:not(.toc-bare) { justify-content: center; }
 nav.toc:not(.toc-bare) > .toc-all {
   position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
 }
+/* Task 149 item 1 — WHEN THE PILLS WRAP, `top: 50%` CENTRES ON THE BLOCK,
+   NOT ON A ROW. Fifteen rooms fit their pills on one line at desktop, so
+   "centred on the nav" and "on the pills' row" were the same measurement
+   and nobody had to choose. Hindu's eleven zone names wrap to three rows
+   (nav 89px tall), and there the two readings diverge: the button centred
+   on an 89px block sits +31px below the first row — beside the SECOND row,
+   which it has no relation to — and, measured, it was painted ON TOP of
+   that row's first pill: "Collapse all" and "SIBLING BRANCH A" rendered
+   over each other, both illegible. The offset was the reported symptom;
+   the collision was the real defect underneath it.
+
+   RULED (the block delegated this choice): the control tracks the pills'
+   FIRST row. That is what fifteen rooms already read — dy 0 against row
+   one — so first-row alignment is the archive's actual constant and
+   block-centring only ever agreed with it by accident. `align-self:
+   flex-start` puts an absolutely-positioned flex child's static position
+   at the container's content-box top, which is exactly where the first
+   flex line starts, in every room, with no per-room constant.
+
+   The 2px is not a guess and not a tuning: the pill row measures 28.19px
+   (0.8rem × 1.5 line-height + 0.5rem padding + 1px rule) and this control
+   24px, so half the difference re-centres it on the row. Measured after:
+   dy 0 (±0.1) in all sixteen.
+
+   AND THE LANE IS RESERVED. The control is an overlay at `left: 1rem`,
+   so centred pills run underneath it as soon as a row fills the width —
+   which is why hindu collided. 9rem clears the control's 132px (116 wide
+   + 16 left) with a gutter, and it is applied to BOTH sides so the pills
+   stay centred exactly where they are today: fifteen rooms are visually
+   unchanged, hindu wraps to four rows instead of three and stops
+   overlapping. Scoped to the width where the control is an overlay at
+   all — below 901px it is back in the flow and needs neither. */
+@media (min-width: 901px) {
+  nav.toc:not(.toc-bare) { padding-left: 9rem; padding-right: 9rem; }
+  nav.toc:not(.toc-bare) > .toc-all {
+    top: auto; bottom: auto; transform: none;
+    align-self: flex-start; margin-top: 2px;
+  }
+}
 @media (max-width: 900px) {
   nav.toc:not(.toc-bare) { justify-content: flex-start; }
   nav.toc:not(.toc-bare) > .toc-all { position: static; transform: none; }
