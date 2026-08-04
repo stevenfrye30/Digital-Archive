@@ -17,3 +17,26 @@ refresh; they are not regenerated automatically.
 | `shelves_drift.md` | `tools/check_shelves_drift.py` | What entries are not yet on the curated shelves. |
 
 The full refresh sequence is in `../MAINTENANCE.md`.
+
+## Lane audits and design doctrine (moved here 2026-08-04, Task 153)
+
+Twenty audit/report documents that had accumulated at the repo root,
+directly beside `index.html`, were moved into this directory: the
+`WITNESS_*` / `OBJECT_*` / `LEAF_*` / `FOLIO_*` constitutions and audits,
+the `GENESIS_*` roadmap/coverage/harmonization set, the
+`CIVILIZATIONAL_*` and `CODEX_`/`COSMOGRAM_` audits,
+`ATLAS_EDITORIAL_AUDIT.md`, `READING_CHOREOGRAPHY.md` and
+`DUPLICATE_IDS.md`. They are records of completed lanes, not live
+tooling output, so they are not in the table above.
+
+`index.html` carries CSS comments of the form `/* … See
+OBJECT_FAMILY_CONSTITUTION.md. */` — nine of them. Those name the file
+without a path and were deliberately left alone rather than edited: they
+still identify the document, and rewriting comments in the deployed
+entrance page is more risk than the precision is worth. Look here.
+
+Two root documents were deliberately **not** moved:
+`BIBLE_FOLIO_OBJECT_INDEX.md`, which `05_scripts/build_folio_object_index.py`
+regenerates at the root and `reports/diag_v63_usability_documentation.py`
+asserts is there; and `SENECA_RESTORATION_2026.md`, which is a published
+restoration record with a live root URL.

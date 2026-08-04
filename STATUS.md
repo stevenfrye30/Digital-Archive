@@ -159,7 +159,8 @@ witness families given distinct manuscript identities, the leaf
 redefined from modal overlay to prepared sheet, five Doré plates staged
 behind a museum scrim, and a portrait cosmogram of the five Hebrew
 cosmic strata. This work is **shipped** — the reader's build meta reads
-v133 — and its design doctrine lives beside this file in `03_web_app/`:
+v133 — and its design doctrine lives in `03_web_app/reports/` (it sat
+beside this file at the repo root until Task 153, 2026-08-04):
 `WITNESS_FAMILY_CONSTITUTION.md`, `OBJECT_FAMILY_CONSTITUTION.md`,
 `FOLIO_OBJECT_ARCHITECTURE.md`, `READING_CHOREOGRAPHY.md`, the
 `GENESIS_*` roadmap/coverage/harmonization set, and the audit records

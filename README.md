@@ -45,7 +45,7 @@ are:
 - **[STATUS.md](STATUS.md)** — current counts, validation state, what's
   canonical, what's legacy. The truth surface; the pre-push guard reads
   its numbers as the deploy invariant.
-- **[DUPLICATE_IDS.md](DUPLICATE_IDS.md)** — what counts as a duplicate
+- **[DUPLICATE_IDS.md](reports/DUPLICATE_IDS.md)** — what counts as a duplicate
   in the corpus, and what does not.
 - **[SENECA_RESTORATION_2026.md](SENECA_RESTORATION_2026.md)** — the
   Seneca minor-dialogues re-path: restoration record for the third
@@ -68,17 +68,17 @@ portrait cosmogram of the five Hebrew cosmic strata. The work is
 shipped (build meta v133) and its design doctrine sits beside this
 file:
 
-- **[WITNESS_FAMILY_CONSTITUTION.md](WITNESS_FAMILY_CONSTITUTION.md)** —
+- **[WITNESS_FAMILY_CONSTITUTION.md](reports/WITNESS_FAMILY_CONSTITUTION.md)** —
   how each witness family earns a distinct manuscript identity.
-- **[OBJECT_FAMILY_CONSTITUTION.md](OBJECT_FAMILY_CONSTITUTION.md)** —
+- **[OBJECT_FAMILY_CONSTITUTION.md](reports/OBJECT_FAMILY_CONSTITUTION.md)** —
   the object families and their material rules.
-- **[FOLIO_OBJECT_ARCHITECTURE.md](FOLIO_OBJECT_ARCHITECTURE.md)** —
+- **[FOLIO_OBJECT_ARCHITECTURE.md](reports/FOLIO_OBJECT_ARCHITECTURE.md)** —
   the leaf as prepared sheet: archival margins, entrance cadence.
-- **[READING_CHOREOGRAPHY.md](READING_CHOREOGRAPHY.md)** — movement,
+- **[READING_CHOREOGRAPHY.md](reports/READING_CHOREOGRAPHY.md)** — movement,
   cadence, orientation, temporality.
-- **[GENESIS_MATURATION_ROADMAP.md](GENESIS_MATURATION_ROADMAP.md)**,
-  **[GENESIS_EXPANDED_COVERAGE_PLAN.md](GENESIS_EXPANDED_COVERAGE_PLAN.md)**,
-  **[GENESIS_HARMONIZATION_PASS.md](GENESIS_HARMONIZATION_PASS.md)** —
+- **[GENESIS_MATURATION_ROADMAP.md](reports/GENESIS_MATURATION_ROADMAP.md)**,
+  **[GENESIS_EXPANDED_COVERAGE_PLAN.md](reports/GENESIS_EXPANDED_COVERAGE_PLAN.md)**,
+  **[GENESIS_HARMONIZATION_PASS.md](reports/GENESIS_HARMONIZATION_PASS.md)** —
   the living plan: waves, coverage, harmonization.
 - The audit records (leaf, orientation, temporality, cosmogram,
   civilizational inheritance and geography, reading flow) sit in the
