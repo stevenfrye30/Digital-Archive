@@ -147,7 +147,7 @@ def main():
     push("")
     push(
         "*Auto-generated from `data/bible_kjv.json`. "
-        "Run `05_scripts/build_folio_object_index.py` to regenerate.*"
+        "Run `object_scripts/build_folio_object_index.py` to regenerate.*"
     )
     push("")
     push(

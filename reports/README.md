@@ -36,7 +36,13 @@ still identify the document, and rewriting comments in the deployed
 entrance page is more risk than the precision is worth. Look here.
 
 Two root documents were deliberately **not** moved:
-`BIBLE_FOLIO_OBJECT_INDEX.md`, which `05_scripts/build_folio_object_index.py`
+`BIBLE_FOLIO_OBJECT_INDEX.md`, which `object_scripts/build_folio_object_index.py`
 regenerates at the root and `reports/diag_v63_usability_documentation.py`
 asserts is there; and `SENECA_RESTORATION_2026.md`, which is a published
 restoration record with a live root URL.
+
+*(That generator lived at `03_web_app/05_scripts/` when this note was
+written; Task 154 renamed the directory to `object_scripts/` on
+2026-08-04. Bare `05_scripts/` in this repo — including the three rows
+in the table above — now unambiguously means the parent working tree's
+`05_scripts/`, which is the convention `../STATUS.md` already states.)*
