@@ -23,6 +23,46 @@
    attribute selector is (0,1,0) and loses however late it sits. */
 :root[data-theme="dark"] { --g: #87a67a; --a: #b8974f; --r: #bd8279; }
 
+/* Task 142 — the pill DRESS reaches every room, not only the .deep six.
+   The TOC dress lives in each page as `.deep nav.toc a { padding; 99px
+   radius; nowrap }`, and it is present in all sixteen rooms. But the
+   `.deep` wrapper class is NOT: it exists on exactly buddhist,
+   christianity, confucian, daoist, islam and judaism — the same six that
+   already had pill rows. In the other ten the rule simply never matched,
+   so Task 140's pills rendered as bare anchors running together.
+
+   So this was never a markup fault. build_room_toc.py emits the same
+   `<a data-j="…">` confucian has, character for character; the survey
+   in Task 142 confirmed it. What Task 140 got wrong was the CLAIM: its
+   MATCH test compared (id, label) PAIRS and I reported it as reproducing
+   working rooms "byte-identically". A check whose name outruns its
+   predicate — 8.1d, and mine.
+
+   De-scoped rather than adding `.deep` to ten pages: that class carries
+   a whole page layout (hindu is a mandala, not a basket stack) and would
+   change far more than a TOC. The sticky positioning and the -2.2rem
+   bleed margins are deliberately NOT copied — they are tuned to the
+   .deep page gutter, and applying them where that gutter differs is how
+   a room gets horizontal scroll at 390px. Colour is left alone too: the
+   lens block already sets `nav.toc a` colour at !important. */
+nav.toc { display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem; }
+nav.toc a {
+  font-size: 0.8rem; text-decoration: none; padding: 0.25rem 0.6rem;
+  border-radius: 99px; white-space: nowrap; cursor: pointer;
+}
+nav.toc a:hover { background: var(--panel); }
+/* `nowrap` is confucian's, and correct for ITS labels — "The Four Books"
+   is short. Applied archive-wide it broke hindu at 390px: its derived
+   zone names are long ("RING 1 — Vedāṅgas & Kalpa-sūtras"), so a single
+   unbreakable pill measured 381px inside a 390px viewport and pushed
+   scrollWidth to 397. Horizontal scroll is the one thing the mobile
+   grammar forbids outright, so below the room breakpoint a long label
+   wraps instead. Caught by measuring, not by looking — the pill dress
+   matched confucian perfectly and still overflowed. */
+@media (max-width: 560px) {
+  nav.toc a { white-space: normal; }
+}
+
 nav.toc:not(.toc-bare) { justify-content: center; }
 nav.toc:not(.toc-bare) > .toc-all {
   position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
