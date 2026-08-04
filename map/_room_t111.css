@@ -45,7 +45,20 @@
    .deep page gutter, and applying them where that gutter differs is how
    a room gets horizontal scroll at 390px. Colour is left alone too: the
    lens block already sets `nav.toc a` colour at !important. */
-nav.toc { display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem; }
+/* Task 144 item 2 — `position: relative` is what makes Collapse-all sit on
+   the pill row in EVERY room. `.toc-all` is absolutely positioned with
+   `top:50%; translateY(-50%)`, which centres it against its CONTAINING
+   BLOCK — and that requires a positioned ancestor. The six .deep rooms
+   have one, because `.deep nav.toc { position: sticky }` establishes it;
+   the other ten had none, so the button resolved against a further
+   ancestor and sat off the row: dy +47px in seven rooms, +93 in bahai,
+   −36 in hindu, against 0 in all six .deep rooms. Measured, not guessed.
+   The .deep six are unaffected — their inline `sticky` outranks this on
+   specificity and already establishes the same containing block.
+   This is the third lane running of one shape: a shared rule silently
+   depending on a wrapper only some pages carry (142: the dress, 143: the
+   overflow metric, now this). */
+nav.toc { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem; }
 nav.toc a {
   font-size: 0.8rem; text-decoration: none; padding: 0.25rem 0.6rem;
   border-radius: 99px; white-space: nowrap; cursor: pointer;
