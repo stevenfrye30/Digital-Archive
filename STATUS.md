@@ -245,7 +245,25 @@ listed once with the link entering at the first chapter.
 - **`tools/inventory_chips.py` overwrites its tracked output with an empty
   result** when run without the local server it needs — 3,377 lines to 2, no
   error. Reverted, not committed. Same shape as doctrine §8.1b: an empty
-  population should refuse, not write.
+  population should refuse, not write. **Half-closed in Task 148, and only
+  half:** the *room-selection* emptiness is fixed — both inventories derived
+  their room set from the string `"Task 111 "` appearing in a page, which
+  decayed to one room and then (at Task 146) to zero while both still
+  reported findings; the set is now derived from what a file is (a room is a
+  `map/*.html` that is not a `<meta http-equiv="refresh">` redirect stub) and
+  both refuse on empty, proven by running them against an empty `map/`. The
+  *no-server* case above is untouched and still open: if Playwright reaches
+  no page, the sweep is legitimately empty and gets written.
+- **Both inventory artifacts were frozen from 2026-08-02 to 2026-08-04** and
+  are only now regenerated on a real 16-room sweep. They were last written at
+  `8f508631`, the commit *before* Task 126's shared-block extraction — and
+  that same extraction deleted the `"Task 111 "` comments the tools keyed on,
+  so the lane that made the artifacts stale also blinded the tool that would
+  have caught it. Note when reading them: they count **per-page markup in
+  `map/*.html` only**, so anything Task 126 moved into a shared file reads as
+  "absent" without having left the archive (`canon note` 16/16 → 0/16,
+  `collapse ctl` 4 → 2 per room, `stat line` 15 rooms → 0 all trace to
+  `e838922e` alone). The report now says so in its own banner.
 - **`maps/trad2map.json` churned on every build until Task 138.** Its key order
   came from iterating Python **sets**, so randomized string hashing reordered
   it each run — three consecutive builds produced three different sha256s. It
@@ -320,32 +338,65 @@ listed once with the link entering at the first chapter.
 
 ## What's actually urgent
 
-**0. The backup pack — now the lead item, above all styling work.**
-Tasks 137 and 138 moved 23 build inputs (1,208 KB) out of the served tree
-and into `05_scripts/configs/`. That was the right move: they were
-shipping to Pages at public URLs for no reason. But the parent repo
-**has no remote**, and `03_web_app` does — so until now those files were
-being backed up *by accident*, as a side effect of the mistake. Correcting
-the mistake removed their only offsite copy.
+**0. The backup pack — the Tasks 137–138 regression is CLOSED; the standing
+habit is not.** Tasks 137 and 138 moved 23 build inputs (1,208 KB) out of
+the served tree and into `05_scripts/configs/`. That was the right move:
+they were shipping to Pages at public URLs for no reason. But the parent
+repo **has no remote**, and `03_web_app` does — so until then those files
+were being backed up *by accident*, as a side effect of the mistake.
+Correcting the mistake removed their only offsite copy.
 
 These are not regenerable from the archive: `seed_bindings.json` carries
 the design side's confirmed verdicts, and the 16 `structure.json` files
 are the hand-reviewed zone/chip skeletons every room's bindings derive
-from. Losing this machine loses them. **This is a regression introduced by
-Tasks 137–138, however correct both moves were, and it outranks any
-further UI work until the standing backup pack exists.**
+from. Losing this machine loses them.
 
-**Status 2026-08-03 — scope fixed, run pending.** `05_scripts/configs` is
-now in `backup_canonical.py`'s `INCLUDE_ROOTS`, so all 23 files (the 22
-moved plus `seed_bindings.json`) are in the pack manifest — verified by
-listing `collect_files()`, not assumed. Note `collect_files()` is a plain
-`rglob` and never consults `.gitignore`, so the gitignored `configs/maps/**`
-and `configs/sheets/**` are covered by naming the directory there; they
-remain untracked by git, which is a separate question nobody has ruled on.
-Two `--pack` runs on 2026-08-03 wrote unopenable archives (a passphrase
-whitespace defect, since fixed and proven) and were deleted; the two
-verified July 28 packs are intact. **The remaining action is the steward's:
-run `--pack` then `--verify` with the passphrase.**
+The 2026-08-03 pack below closed that specific hole — the 23 files are in
+it and verified. What has NOT changed is the underlying exposure: **every
+parent-repo commit is one machine away from gone until the next pack**, and
+packs are steward-only by design (the passphrase never touches this
+machine). So this stays at the top of the list, no longer as an emergency
+but as the one item that has to be re-run rather than finished.
+
+**Scope fixed 2026-08-03.** `05_scripts/configs` is now in
+`backup_canonical.py`'s `INCLUDE_ROOTS`, so all 23 files (the 22 moved plus
+`seed_bindings.json`) are in the pack manifest — verified by listing
+`collect_files()`, not assumed. Note `collect_files()` is a plain `rglob`
+and never consults `.gitignore`, so the gitignored `configs/maps/**` and
+`configs/sheets/**` are covered by naming the directory there; they remain
+untracked by git, which is a separate question nobody has ruled on. Two
+`--pack` runs on 2026-08-03 wrote unopenable archives (a passphrase
+whitespace defect, since fixed and proven) and were deleted.
+
+**RUN AND VERIFIED 2026-08-03 21:29 local.** From `logs/backups.log`, which
+is the source of truth for this row — not this file:
+
+```
+20260804T012922Z PACK   files=30240 bytes=5,748,862,457
+                        fp=sha256:f81ac816…  archive_sha=c6a116b06d19
+                        -> D:\Archive Backups\digital-archive-backup_20260804T012922Z.tar.gz.enc
+20260804T015146Z VERIFY result=OK bad=0 missing=0 fp=ok
+```
+
+The `files=` count rising 30,120 → 30,240 is the 23 moved config files
+entering the pack, which is the regression above closing. Two verified July
+28 packs are also intact.
+
+**This row was stale for one day and said the opposite.** It read "run
+pending" after the run had happened and verified, and that wording was
+repeated back to the steward as fact more than once. Timestamps in
+`backups.log` are UTC (`Z`); local is UTC−4, so `20260804T012922Z` is the
+evening of **August 3** local — the off-by-one is easy to make and is why
+the log line is quoted verbatim here rather than paraphrased.
+
+**What the verified pack does NOT contain.** It predates the morning of
+2026-08-04 by about four hours, so Tasks 146, 147 and 148 are outside it:
+parent commits `8ed83b7`, `b664165`, `3c5a7e6` (including Task 148's 16
+resynced `map_sources/` files, ~1.19 MB) and hindu's gitignored
+`configs/maps/hindu/structure.json` gloss edit. The parent repo has no
+remote, so for those files the pack is the only offsite copy that will ever
+exist. **Next action, steward-only: another `--pack` + `--verify` once the
+external drive is connected.**
 
 ## Next Priorities
 
