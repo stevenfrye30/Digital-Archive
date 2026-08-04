@@ -35,11 +35,38 @@ MAPS = os.path.join(REPO, "maps")
 # lives in the PARENT repo, one level above this one.
 CFG_MAPS = os.path.join(REPO, os.pardir, "05_scripts", "configs", "maps")
 
+# Task 148 item 2 — THE ROOM SET IS DERIVED FROM WHAT A FILE IS.
+#
+# This used to read `"Task 111 " in <page text>`: a room was any page
+# still carrying a comment from a 2026-07 lane. That is not a property of
+# a room, it is a property of an editorial note, and lanes kept deleting
+# them. By HEAD before this fix exactly ONE page still matched — and
+# Task 146 removed the comment carrying it, taking the population to
+# ZERO — while this file went on printing its findings and writing its
+# artifact. A survey that had stopped looking still reported that it saw.
+#
+# What actually distinguishes the three non-rooms is that they are
+# REDIRECT STUBS: map/index.html, map/abrahamic.html and
+# map/eastasian.html are noindex pages whose whole body is a
+# `<meta http-equiv="refresh">` to the Hall (Tasks 40b and 45). That is
+# a fact about the file, so a page that becomes a stub, or a stub that
+# becomes a room, needs no edit here (§8.1e).
+#
+# Validated the way build_room_toc.py validates its own derivation: this
+# rule reproduces the {index, abrahamic, eastasian} set that tool names
+# by hand, exactly — 3 stubs, 16 rooms.
+def _is_stub(path):
+    return 'http-equiv="refresh"' in io.open(path, encoding="utf-8").read()
+
+
 ROOMS = sorted(
     f[:-5] for f in os.listdir(MAP)
-    if f.endswith(".html")
-    and "Task 111 " in io.open(os.path.join(MAP, f), encoding="utf-8").read()
+    if f.endswith(".html") and not _is_stub(os.path.join(MAP, f))
 )
+# §8.1b — an empty population must REFUSE, not pass.
+if not ROOMS:
+    raise SystemExit("inventory_chips: the room set is EMPTY — refusing to "
+                     "report on nothing. Check map/*.html.")
 
 
 def chip_names(room):
