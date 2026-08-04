@@ -8,295 +8,260 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 
 | Source | Auth | Parse | Texts | Proven | Avg fidelity | @100% | Skipped | Note |
 |---|:--:|---|--:|--:|--:|--:|--:|---|
-| NO_RAW_FILE | ? | n/a | 132 | 36 | 99.99% | 30 | 96 | UNANCHORED: no raw source recorded; this translation is outside the integrity guarantee. |
-| DERIVED_JSON | ? | n/a | 21 | 21 | 99.99% | 17 | 0 | ANCHOR GAP: raw_file points to a processed web-app JSON, not a hashed raw download in 02_raw_sources/. |
-| Suttacentral.net | A | Easy | 23 | 23 | 99.86% | 19 | 0 | Modern curated Buddhist canon; consistent structure, scholarly translators. |
+| NO_RAW_FILE | ? | n/a | 67 | 11 | 99.30% | 5 | 56 | UNANCHORED: no raw source recorded; this translation is outside the integrity guarantee. |
+| __________Unified | ? | ? | 16 | 15 | 98.92% | 12 | 0 | Unprofiled source. |
+| OTHER | ? | n/a | 8 | 0 | — | 0 | 8 | Unclassified raw path. |
+| ebible.org | ? | ? | 7 | 7 | 99.94% | 2 | 0 | Unprofiled source. |
+| getbible.net | ? | ? | 6 | 6 | 91.07% | 2 | 0 | Unprofiled source. |
+| DERIVED_JSON | ? | n/a | 6 | 6 | 89.80% | 5 | 0 | ANCHOR GAP: raw_file points to a processed web-app JSON, not a hashed raw download in 02_raw_sources/. |
+| crosswire.org | ? | ? | 2 | 0 | — | 0 | 0 | Unprofiled source. |
+| alquran.cloud | ? | ? | 2 | 2 | 67.39% | 0 | 0 | Unprofiled source. |
+| biblicalhumanities.org | ? | ? | 1 | 1 | 99.95% | 0 | 0 | Unprofiled source. |
+| morphgnt.org | ? | ? | 1 | 0 | — | 0 | 0 | Unprofiled source. |
+| wikisource.org | ? | ? | 1 | 1 | 99.93% | 0 | 0 | Unprofiled source. |
+| studybible.info | ? | ? | 1 | 0 | — | 0 | 0 | Unprofiled source. |
+| Suttacentral.net | A | Easy | 22 | 22 | 95.33% | 11 | 0 | Modern curated Buddhist canon; consistent structure, scholarly translators. |
 | ccel.org | A | Easy | 18 | 18 | 99.99% | 15 | 0 | Christian Classics Ethereal Library; clean patristic/Reformation editions. |
-| Gutenberg.org | B | Easy-Medium | 625 | 625 | 99.75% | 410 | 0 | Public-domain editions; clean text, but edition age/quality varies widely. |
-| SacredTexts.com | B | Medium | 340 | 340 | 99.81% | 191 | 0 | Large PD religious-texts archive; mostly 19th-early-20thc editions, some OCR cruft. |
-| Internetarchive | C | Hard | 37 | 36 | 99.84% | 23 | 0 | OCR scans; lowest text quality, highest cleanup/parse burden. |
+| Tanzil.net | A | Easy | 8 | 8 | 99.99% | 7 | 0 | Tanzil Qur'an project; verified Arabic + standard translations. Gold standard. |
+| Gutenberg.org | B | Easy-Medium | 599 | 599 | 99.74% | 385 | 0 | Public-domain editions; clean text, but edition age/quality varies widely. |
+| SacredTexts.com | B | Medium | 332 | 331 | 99.78% | 177 | 0 | Large PD religious-texts archive; mostly 19th-early-20thc editions, some OCR cruft. |
+| Internetarchive | C | Hard | 34 | 34 | 99.29% | 22 | 0 | OCR scans; lowest text quality, highest cleanup/parse burden. |
+| gnosis.org | C | Medium | 2 | 2 | 100.00% | 2 | 0 | Small esoteric archive; marginal authority. |
 
-## Integrity gap: anchored to derived JSON, not raw download (21)
+## Integrity gap: anchored to derived JSON, not raw download (6)
 
 | text_id | translation_id | source | fidelity | tradition |
 |---|---|---|---|---|
 | bible | asv | DERIVED_JSON | 100.0 | Christian |
-| bible | brenton-en | DERIVED_JSON | 100.0 | Christian |
-| bible | brenton-gr | DERIVED_JSON | 100.0 | Christian |
 | bible | darby | DERIVED_JSON | 100.0 | Christian |
-| bible | geneva | DERIVED_JSON | 100.0 | Christian |
-| bible | jps | DERIVED_JSON | 100.0 | Christian |
-| bible | leeser | DERIVED_JSON | 100.0 | Christian |
-| bible | lxx | DERIVED_JSON | 100.0 | Christian |
-| bible | majority-nt | DERIVED_JSON | 100.0 | Christian |
-| bible | rv | DERIVED_JSON | 100.0 | Christian |
-| bible | salkinson | DERIVED_JSON | 100.0 | Christian |
-| bible | sbl-nt | DERIVED_JSON | 100.0 | Christian |
 | bible | tr | DERIVED_JSON | 100.0 | Christian |
 | bible | vulgate | DERIVED_JSON | 100.0 | Christian |
 | bible | web | DERIVED_JSON | 100.0 | Christian |
-| bible | wlc | DERIVED_JSON | 100.0 | Christian |
-| bible | wycliffe | DERIVED_JSON | 100.0 | Christian |
-| bible | ylt | DERIVED_JSON | 100.0 | Christian |
-| bible | masoretic | DERIVED_JSON | 99.88 | Christian |
-| bible | bbe | DERIVED_JSON | 99.95 | Christian |
-| bible | tyndale | DERIVED_JSON | 99.99 | Christian |
+| bible | sbl-nt | DERIVED_JSON | 38.79 | Christian |
 
-## Integrity gap: no raw source at all (unanchored) (132)
+## Integrity gap: no raw source at all (unanchored) (67)
 
 | text_id | translation_id | source | fidelity | tradition |
 |---|---|---|---|---|
-| budge-egyptian-future | budge | NO_RAW_FILE |  | Egyptian |
-| the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no | anonymous | NO_RAW_FILE |  | Greek Literature |
 | cicero-de-officiis | miller | NO_RAW_FILE |  | Roman Philosophy |
-| flying-saucers-keyhoe | keyhoe | NO_RAW_FILE |  | Hermetic |
-| huna-theory-long | long | NO_RAW_FILE |  | Hermetic |
-| initiation-bailey | bailey | NO_RAW_FILE |  | Hermetic |
-| internet-book-shadows | various | NO_RAW_FILE |  | Hermetic |
-| lore-unicorn-shepard | shepard | NO_RAW_FILE |  | Hermetic |
-| sacred-symbols-mu-churchward | churchward | NO_RAW_FILE |  | Hermetic |
-| secret-science-miracles-long | long | NO_RAW_FILE |  | Hermetic |
-| stolen-legacy-james | james | NO_RAW_FILE |  | Hermetic |
-| wild-talents-fort | fort | NO_RAW_FILE |  | Hermetic |
-| don-quixote | ormsby | NO_RAW_FILE |  | None |
-| book-of-knowledge-oahspe | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| jaina-sutras-part-2-hermann-jacobi-1884 | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| kierkegaard-sickness-unto-death | lowrie | NO_RAW_FILE |  | Modern Philosophy |
-| midrash-tanuma-no | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| poems-edgar-allan-poe | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| poems-goethe-tr-edgar-bowr | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| the-sutta-nipata-v-fausboll-1881-no | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| the-udana-gm-strong-1902-no | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| wittgenstein-tractatus | ogden | NO_RAW_FILE |  | Modern Philosophy |
-| yajur-veda-black-arthur-keith-1914-no | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| yajur-veda-white-ralph-griffith-1899 | anonymous | NO_RAW_FILE |  | Modern Philosophy |
-| bruno-heroic-enthusiasts | williams | NO_RAW_FILE |  | Modern Philosophy |
-| buddhavamsa-cariyapitaka | morris | NO_RAW_FILE |  | Buddhist |
-| dialogues-buddha-rhys-davids | rhys-davids | NO_RAW_FILE |  | Buddhist |
-| she-rab-dong-bu-nagarjuna-tr-wl-camp | anonymous | NO_RAW_FILE |  | Buddhist |
-| sherab-dongbu-campbell | campbell | NO_RAW_FILE |  | Buddhist |
-| therigatha-davids | rhys-davids | NO_RAW_FILE |  | Buddhist |
-| tibetan-tantra-muses | muses | NO_RAW_FILE |  | Buddhist |
-| folk-tales-brittany-spence | masson | NO_RAW_FILE |  | Celtic |
+| apadana-thera-pali | pli | NO_RAW_FILE |  | Buddhist |
+| apadana-theri-pali | pli | NO_RAW_FILE |  | Buddhist |
+| buddhavamsa-pali | pli | NO_RAW_FILE |  | Buddhist |
+| cariyapitaka-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| cariyapitaka-sujato | sujato | NO_RAW_FILE |  | Buddhist |
+| culaniddesa-pali | pli | NO_RAW_FILE |  | Buddhist |
+| dhammapada-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| dhammasangani-pali | pli | NO_RAW_FILE |  | Buddhist |
+| dhatukatha-pali | pli | NO_RAW_FILE |  | Buddhist |
+| itivuttaka-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| jataka-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| jataka-sujato | sujato | NO_RAW_FILE |  | Buddhist |
+| kathavatthu-pali | pli | NO_RAW_FILE |  | Buddhist |
+| khuddakapatha-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| khuddakapatha-sujato | sujato | NO_RAW_FILE |  | Buddhist |
+| linked-discourses-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| long-discourses-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| mahaniddesa-pali | pli | NO_RAW_FILE |  | Buddhist |
+| middle-discourses-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| milindapanha-kelly | pli | NO_RAW_FILE |  | Buddhist |
+| milindapanha-kelly | kelly | NO_RAW_FILE |  | Buddhist |
+| nettippakarana-pali | pli | NO_RAW_FILE |  | Buddhist |
+| numbered-discourses-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| patisambhidamagga-pali | pli | NO_RAW_FILE |  | Buddhist |
+| patthana-pali | pli | NO_RAW_FILE |  | Buddhist |
+| petakopadesa-pali | pli | NO_RAW_FILE |  | Buddhist |
+| petavatthu-kovilo | pli | NO_RAW_FILE |  | Buddhist |
+| puggalapannatti-pali | pli | NO_RAW_FILE |  | Buddhist |
+| sutta-nipata-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| theragatha-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| theravada-vinaya | pli | NO_RAW_FILE |  | Buddhist |
+| therigatha-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| udana-sujato | pli | NO_RAW_FILE |  | Buddhist |
+| vibhanga-pali | pli | NO_RAW_FILE |  | Buddhist |
+| vimanavatthu-pali | pli | NO_RAW_FILE |  | Buddhist |
+| yamaka-pali | pli | NO_RAW_FILE |  | Buddhist |
+| bible | westcott-hort-greek-new-testament | NO_RAW_FILE |  | Christian |
+| bible | twentieth-century-new-testament | NO_RAW_FILE |  | Christian |
+| bible | scrivener-textus-receptus-1894 | NO_RAW_FILE |  | Christian |
+| bible | rotherham-emphasized-bible-1902 | NO_RAW_FILE |  | Christian |
+| bible | stephanus-textus-receptus-1550 | NO_RAW_FILE |  | Christian |
+| bible | elzevir-textus-receptus-1624 | NO_RAW_FILE |  | Christian |
+| bible | antoniades-patriarchal-1904 | NO_RAW_FILE |  | Christian |
+| bible | tregelles-greek-new-testament | NO_RAW_FILE |  | Christian |
 | bible | peshitta | NO_RAW_FILE |  | Christian |
-| bible | bible-in-basic-english | NO_RAW_FILE |  | Christian |
-| bible | brenton-septuagint-greek | NO_RAW_FILE |  | Christian |
-| bible | brenton-septuagint-translation | NO_RAW_FILE |  | Christian |
-| bible | douay-rheims-bible | NO_RAW_FILE |  | Christian |
-| bible | geneva-bible | NO_RAW_FILE |  | Christian |
-| bible | isaac-leeser-tanakh | NO_RAW_FILE |  | Christian |
-| bible | jps-tanakh | NO_RAW_FILE |  | Christian |
-| bible | lxx-septuagint | NO_RAW_FILE |  | Christian |
-| bible | majority-text-new-testament | NO_RAW_FILE |  | Christian |
-| bible | masoretic-old-testament | NO_RAW_FILE |  | Christian |
-| bible | revised-version-with-apocrypha | NO_RAW_FILE |  | Christian |
-| bible | salkinson-new-testament | NO_RAW_FILE |  | Christian |
-| bible | sbl-greek-new-testament | NO_RAW_FILE |  | Christian |
-| bible | textus-receptus | NO_RAW_FILE |  | Christian |
-| bible | tyndale-new-testament | NO_RAW_FILE |  | Christian |
-| bible | vulgate-clementina | NO_RAW_FILE |  | Christian |
-| bible | westminster-leningrad-codex | NO_RAW_FILE |  | Christian |
-| bible | wycliffe-bible | NO_RAW_FILE |  | Christian |
-| bible | youngs-literal-translation | NO_RAW_FILE |  | Christian |
-| bible | peshitta | NO_RAW_FILE |  | Christian |
-| pagan-regeneration-willoughby | willoughby | NO_RAW_FILE |  | Christian |
-| pageant-popes-farrow | farrow | NO_RAW_FILE |  | Christian |
-| prayers-middle-ages | potts | NO_RAW_FILE |  | Christian |
-| the-amish-smith | smith | NO_RAW_FILE |  | Christian |
-| apocryphon-of-john | wisse | NO_RAW_FILE |  | Gnostic |
-| gospel-of-mary | anonymous | NO_RAW_FILE |  | Gnostic |
-| gospel-of-thomas-various | lambdin | NO_RAW_FILE |  | Gnostic |
-| gospel-of-truth | grant | NO_RAW_FILE |  | Gnostic |
-| greek-popular-religion-nilsson | nilsson | NO_RAW_FILE |  | Greek |
-| kundalini-gherwal | gherwal | NO_RAW_FILE |  | Hindu |
-| mahabharata | ganguli | NO_RAW_FILE |  | Hindu |
+| aitareya-aranyaka-muller | muller | NO_RAW_FILE |  | Hindu |
+| aitareya-brahmana-keith | keith | NO_RAW_FILE |  | Hindu |
+| atharva-veda-bloomfield | bloomfield | NO_RAW_FILE |  | Hindu |
+| atharva-veda-griffith | griffith | NO_RAW_FILE |  | Hindu |
+| kausitaki-brahmana-keith | keith | NO_RAW_FILE |  | Hindu |
 | rig-veda-griffith | griffith | NO_RAW_FILE |  | Hindu |
-| sama-veda-griffith | griffith | NO_RAW_FILE |  | Hindu |
-| yoga-vasishtha-gherwal | gherwal | NO_RAW_FILE |  | Hindu |
-| conference-of-the-birds | darbandi-davis | NO_RAW_FILE |  | Islam |
-| nahjul-balagha | al-jibouri | NO_RAW_FILE |  | Islam |
-| quran | abul-aala-maududi | NO_RAW_FILE |  | Islam |
-| quran | ahmed-raza-khan-urdu | NO_RAW_FILE |  | Islam |
-| quran | bahasa-indonesia-indonesian | NO_RAW_FILE |  | Islam |
-| quran | elmalili-hamdi-yazir | NO_RAW_FILE |  | Islam |
-| quran | ma-jian-chinese | NO_RAW_FILE |  | Islam |
-| quran | mohammad-mahdi-fooladvand | NO_RAW_FILE |  | Islam |
-| quran | talal-itani | NO_RAW_FILE |  | Islam |
-| quran | uthmani-tanzil | NO_RAW_FILE |  | Islam |
-| jaina-sutras-part2 | jacobi | NO_RAW_FILE |  | Jain |
-| uttaradhyayana-sutra | jacobi | NO_RAW_FILE |  | Jain |
+| sankhayana-aranyaka-keith | keith | NO_RAW_FILE |  | Hindu |
+| satapatha-brahmana-eggeling | eggeling | NO_RAW_FILE |  | Hindu |
+| yajur-veda-keith | keith | NO_RAW_FILE |  | Hindu |
 | babylonian-talmud-rodkinson | rodkinson | NO_RAW_FILE |  | Jewish |
-| golden-mountain-levin | levin | NO_RAW_FILE |  | Jewish |
-| midrash-tales-maxims-rapaport | rapaport | NO_RAW_FILE |  | Jewish |
-| philo-judaeus-conybeare | conybeare | NO_RAW_FILE |  | Jewish |
-| wisdom-talmud-bokser | bokser | NO_RAW_FILE |  | Jewish |
-| dancing-gods-fergusson | fergusson | NO_RAW_FILE |  | Mesoamerican |
-| nam-tales-thompson | thompson | NO_RAW_FILE |  | Mesoamerican |
-| spider-woman-reichard | reichard | NO_RAW_FILE |  | Mesoamerican |
-| tewa-songs-spinden | spinden | NO_RAW_FILE |  | Mesoamerican |
-| thunderbird-tootooch-kirk | kirk | NO_RAW_FILE |  | Mesoamerican |
-| records-past-vol1 | sayce | NO_RAW_FILE |  | Mesopotamian |
-| records-past-vol2 | sayce | NO_RAW_FILE |  | Mesopotamian |
-| records-past-vol3 | sayce | NO_RAW_FILE |  | Mesopotamian |
-| prose-edda | anderson | NO_RAW_FILE |  | Norse |
-| genji-monogatari-suematsu | suematsu | NO_RAW_FILE |  | Shinto |
-| pillow-book-sei-shonagon | waley | NO_RAW_FILE |  | Shinto |
-| hujviri-kashf | nicholson | NO_RAW_FILE |  | Islam |
 | bible | kjv | NO_RAW_FILE | 100.0 | Christian |
-| bible | asv | NO_RAW_FILE | 100.0 | Christian |
-| bible | brenton | NO_RAW_FILE | 100.0 | Christian |
-| bible | brenton_greek | NO_RAW_FILE | 100.0 | Christian |
-| bible | darby | NO_RAW_FILE | 100.0 | Christian |
-| bible | douay | NO_RAW_FILE | 100.0 | Christian |
-| bible | geneva | NO_RAW_FILE | 100.0 | Christian |
-| bible | lxx_eng | NO_RAW_FILE | 100.0 | Christian |
-| bible | majority_nt | NO_RAW_FILE | 100.0 | Christian |
-| bible | rv | NO_RAW_FILE | 100.0 | Christian |
-| bible | salkinson_nt | NO_RAW_FILE | 100.0 | Christian |
-| bible | sbl_nt | NO_RAW_FILE | 100.0 | Christian |
-| bible | textus_receptus | NO_RAW_FILE | 100.0 | Christian |
-| bible | vulgate | NO_RAW_FILE | 100.0 | Christian |
-| bible | web | NO_RAW_FILE | 100.0 | Christian |
-| bible | wycliffe | NO_RAW_FILE | 100.0 | Christian |
-| bible | ylt | NO_RAW_FILE | 100.0 | Christian |
 | quran | saheeh | NO_RAW_FILE | 100.0 | Islam |
 | quran | pickthall | NO_RAW_FILE | 100.0 | Islam |
 | quran | yusufali | NO_RAW_FILE | 100.0 | Islam |
-| quran | talal_itani | NO_RAW_FILE | 100.0 | Islam |
-| quran | uthmani | NO_RAW_FILE | 100.0 | Islam |
-| quran | maududi | NO_RAW_FILE | 100.0 | Islam |
-| quran | ahmed_raza_khan | NO_RAW_FILE | 100.0 | Islam |
-| quran | bahasa_indonesia | NO_RAW_FILE | 100.0 | Islam |
-| quran | ma_jian | NO_RAW_FILE | 100.0 | Islam |
-| quran | fooladvand | NO_RAW_FILE | 100.0 | Islam |
 | tanakh | leeser | NO_RAW_FILE | 100.0 | Jewish |
 | tanakh | jps | NO_RAW_FILE | 100.0 | Jewish |
 | tanakh | wlc | NO_RAW_FILE | 100.0 | Jewish |
-| mozi | mei | NO_RAW_FILE | 100.0 | Mohist |
+| theravada-vinaya | brahmali | NO_RAW_FILE | 93.86 | Buddhist |
+| budge-egyptian-future | budge | NO_RAW_FILE | 98.57 | Egyptian |
 | tanakh | masoretic | NO_RAW_FILE | 99.88 | Jewish |
-| quran | elmalili | NO_RAW_FILE | 99.94 | Islam |
-| bible | bbe | NO_RAW_FILE | 99.95 | Christian |
 | quran | arberry | NO_RAW_FILE | 99.98 | Islam |
-| bible | tyndale | NO_RAW_FILE | 99.99 | Christian |
 
-## Unverified by proof (skipped / no proof entry) (1)
-
-| text_id | translation_id | source | fidelity | tradition |
-|---|---|---|---|---|
-| jataka | cowell-rouse-vol6 | Internetarchive |  | Buddhist |
-
-## Needs cleanup: proven below 99% fidelity (67)
+## Unverified by proof (skipped / no proof entry) (14)
 
 | text_id | translation_id | source | fidelity | tradition |
 |---|---|---|---|---|
+| buddhacarita-cowell | e-b-cowell | OTHER |  | Buddhist |
+| buddhacarita-cowell-book-2 | e-b-cowell | OTHER |  | Buddhist |
+| buddhacarita-cowell-book-3 | e-b-cowell | OTHER |  | Buddhist |
+| buddhacarita-cowell-book-4 | e-b-cowell | OTHER |  | Buddhist |
+| buddhacarita-cowell-book-5 | e-b-cowell | OTHER |  | Buddhist |
+| buddhacarita-cowell-book-6 | e-b-cowell | OTHER |  | Buddhist |
+| buddhacarita-cowell-book-7 | e-b-cowell | OTHER |  | Buddhist |
+| buddhacarita-cowell-book-8 | e-b-cowell | OTHER |  | Buddhist |
+| bible | majority-text-new-testament | __________Unified |  | Christian |
+| bible | etheridge-peshitta-new-testament | crosswire.org |  | Christian |
+| bible | murdock-peshitta-new-testament | crosswire.org |  | Christian |
+| bible | tischendorf-greek-new-testament | morphgnt.org |  | Christian |
+| bible | emphatic-diaglott-interlinear-1864 | studybible.info |  | Christian |
+| bhagavad-gita | telang | SacredTexts.com |  | Hindu |
+
+## Needs cleanup: proven below 99% fidelity (88)
+
+| text_id | translation_id | source | fidelity | tradition |
+|---|---|---|---|---|
+| bible | sbl-nt | DERIVED_JSON | 38.79 | Christian |
+| bible | webster-bible | getbible.net | 54.62 | Christian |
+| quran | muhammad-asad | alquran.cloud | 61.47 | Islam |
+| quran | hilali-khan | alquran.cloud | 73.31 | Islam |
+| upanishads-hume-1921 | hume | Internetarchive | 78.96 | Hindu |
+| linked-discourses-sujato | sujato | Suttacentral.net | 82.53 | Buddhist |
+| numbered-discourses-sujato | sujato | Suttacentral.net | 83.44 | Buddhist |
+| bible | wycliffe-bible | __________Unified | 83.94 | Christian |
+| udana-sujato | sujato | Suttacentral.net | 89.21 | Buddhist |
+| sutta-nipata-sujato | sujato | Suttacentral.net | 89.64 | Buddhist |
+| theragatha-sujato | sujato | Suttacentral.net | 89.83 | Buddhist |
+| long-discourses-sujato | sujato | Suttacentral.net | 91.02 | Buddhist |
+| bible | weymouth-new-testament | getbible.net | 91.8 | Christian |
+| middle-discourses-sujato | sujato | Suttacentral.net | 92.35 | Buddhist |
+| therigatha-sujato | sujato | Suttacentral.net | 92.55 | Buddhist |
+| itivuttaka-sujato | sujato | Suttacentral.net | 92.79 | Buddhist |
+| theravada-vinaya | brahmali | NO_RAW_FILE | 93.86 | Buddhist |
+| a-very-pleasaunt-fruitful-diologe-called-the-epicur-erasmus | anonymous | Gutenberg.org | 94.44 | Modern Philosophy |
 | hindu-mythology | wilkins | SacredTexts.com | 95.01 | Hindu |
 | literature-ancient-egyptians-budge | budge-lit | Gutenberg.org | 95.35 | Egyptian |
-| a-very-pleasaunt-fruitful-diologe-called-the-epicur-erasmus | anonymous | Gutenberg.org | 95.45 | Modern Philosophy |
-| erasmus-dialoge-two-persons | anonymous | Gutenberg.org | 95.83 | Christian |
+| erasmus-dialoge-two-persons | anonymous | Gutenberg.org | 95.65 | Christian |
+| dhammapada-sujato | sujato | Suttacentral.net | 95.85 | Buddhist |
 | herodotus-history-rawlinson | rawlinson | SacredTexts.com | 95.86 | Greek Literature |
+| archimedes-heath | heath | Gutenberg.org | 96.23 | Greek Philosophy |
 | tagore-home-world | tagore | Gutenberg.org | 96.23 | Hindu |
-| shakespeare-cymbeline | shakespeare | Gutenberg.org | 96.44 | Greek Literature |
-| prolegomena-to-the-history-of-israel-julius-wellhausen | anonymous | Gutenberg.org | 96.44 | Jewish |
-| shakespeare-the-second-part-of-king-henry | shakespeare | Gutenberg.org | 96.45 | Greek Literature |
+| aristotle-poetics | butcher | Gutenberg.org | 96.43 | Greek Philosophy |
+| prolegomena-to-the-history-of-israel-julius-wellhausen | anonymous | Gutenberg.org | 96.43 | Jewish |
+| shakespeare-cymbeline | shakespeare | Gutenberg.org | 96.44 | English Literature |
+| shakespeare-the-second-part-of-king-henry | shakespeare | Gutenberg.org | 96.45 | English Literature |
 | book-of-enoch | charles | SacredTexts.com | 96.55 | Jewish |
-| archimedes-heath | heath | Gutenberg.org | 96.86 | Greek Philosophy |
-| archimedes-thomas-heath | anonymous | Gutenberg.org | 96.86 | Modern Philosophy |
 | new-light-alchymie-sedziwoj | french | Gutenberg.org | 96.87 | Hermetic |
-| cicero-brutus | jones | Gutenberg.org | 96.97 | Roman Philosophy |
+| cicero-brutus | jones | Gutenberg.org | 96.96 | Roman Philosophy |
+| spinoza-improvement | elwes | Gutenberg.org | 97.09 | Modern Philosophy |
 | origin-pyramid-staniland-wake | staniland-wake | SacredTexts.com | 97.13 | Hermetic |
-| aristotle-poetics | butcher | Gutenberg.org | 97.21 | Greek Philosophy |
-| shakespeare-the-tragedy-of-hamlet-prince-of | shakespeare | Gutenberg.org | 97.23 | Greek Literature |
+| yajur-veda-white-griffith | griffith-white | SacredTexts.com | 97.18 | Hindu |
+| shakespeare-the-tragedy-of-hamlet-prince-of | shakespeare | Gutenberg.org | 97.23 | English Literature |
 | jerahmeel-gaster | gaster | SacredTexts.com | 97.25 | Jewish |
-| shakespeare-twelfth-night-or-what-you-will | shakespeare | Gutenberg.org | 97.39 | Greek Literature |
-| spinoza-improvement | elwes | Gutenberg.org | 97.57 | Modern Philosophy |
+| vedic-hymns-part2 | oldenberg | SacredTexts.com | 97.36 | Hindu |
+| shakespeare-twelfth-night-or-what-you-will | shakespeare | Gutenberg.org | 97.39 | English Literature |
 | demonology-witchcraft-scott | scott | SacredTexts.com | 97.67 | Hermetic |
-| shakespeare-the-winters-tale | shakespeare | Gutenberg.org | 97.96 | Greek Literature |
+| shakespeare-the-winters-tale | shakespeare | Gutenberg.org | 97.96 | English Literature |
+| vedic-hymns-part1 | muller-vedic | SacredTexts.com | 97.97 | Hindu |
 | upayika-dhammadinna | dhammadinna | Suttacentral.net | 98.0 | Buddhist |
-| shakespeare-the-two-gentlemen-of-verona | shakespeare | Gutenberg.org | 98.02 | Greek Literature |
-| shakespeare-king-henry-the-eighth | shakespeare | Gutenberg.org | 98.03 | Greek Literature |
+| shakespeare-the-two-gentlemen-of-verona | shakespeare | Gutenberg.org | 98.02 | English Literature |
+| shakespeare-king-henry-the-eighth | shakespeare | Gutenberg.org | 98.03 | English Literature |
 | morals-dogma-pike | pike | SacredTexts.com | 98.04 | Hermetic |
-| shakespeare-the-tragedy-of-king-lear | shakespeare | Gutenberg.org | 98.04 | Greek Literature |
-| shakespeare-king-richard-the-third | shakespeare | Gutenberg.org | 98.07 | Greek Literature |
-| the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer | anonymous | SacredTexts.com | 98.1 | Modern Philosophy |
+| shakespeare-the-tragedy-of-king-lear | shakespeare | Gutenberg.org | 98.04 | English Literature |
+| shakespeare-king-richard-the-third | shakespeare | Gutenberg.org | 98.07 | English Literature |
+| the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer | anonymous | SacredTexts.com | 98.1 | English Literature |
 | shankara-select-works | venkataramanan | SacredTexts.com | 98.11 | Hindu |
-| shakespeare-loves-labours-lost | shakespeare | Gutenberg.org | 98.12 | Greek Literature |
-| shakespeare-pericles-prince-of-tyre | shakespeare | Gutenberg.org | 98.12 | Greek Literature |
-| shakespeare-the-tempest | shakespeare | Gutenberg.org | 98.12 | Greek Literature |
+| shakespeare-loves-labours-lost | shakespeare | Gutenberg.org | 98.12 | English Literature |
+| shakespeare-pericles-prince-of-tyre | shakespeare | Gutenberg.org | 98.12 | English Literature |
+| shakespeare-the-tempest | shakespeare | Gutenberg.org | 98.12 | English Literature |
 | frege-foundations-arithmetic | frege | Gutenberg.org | 98.16 | Modern Philosophy |
 | pirke-avot | gorfinkle | Gutenberg.org | 98.21 | Jewish |
-| shakespeare-the-merry-wives-of-windsor | shakespeare | Gutenberg.org | 98.26 | Greek Literature |
-| the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl | anonymous | Gutenberg.org | 98.26 | Modern Philosophy |
+| the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl | anonymous | Gutenberg.org | 98.25 | Jewish |
+| shakespeare-the-merry-wives-of-windsor | shakespeare | Gutenberg.org | 98.26 | English Literature |
 | upanishads | muller | SacredTexts.com | 98.29 | Hindu |
-| shakespeare-the-life-and-death-of-king | shakespeare | Gutenberg.org | 98.34 | Greek Literature |
-| shakespeare-the-tragedy-of-titus-andronicus | shakespeare | Gutenberg.org | 98.34 | Greek Literature |
-| shakespeare-the-tragedy-of-othello-the-moor | shakespeare | Gutenberg.org | 98.41 | Greek Literature |
-| shakespeare-alls-well-that-ends-well | shakespeare | Gutenberg.org | 98.44 | Greek Literature |
+| shakespeare-the-life-and-death-of-king | shakespeare | Gutenberg.org | 98.34 | English Literature |
+| shakespeare-the-tragedy-of-titus-andronicus | shakespeare | Gutenberg.org | 98.34 | English Literature |
+| shakespeare-the-tragedy-of-othello-the-moor | shakespeare | Gutenberg.org | 98.41 | English Literature |
+| shakespeare-alls-well-that-ends-well | shakespeare | Gutenberg.org | 98.44 | English Literature |
 | studies-in-religious-personality-harold-begbie | anonymous | Gutenberg.org | 98.44 | Modern Philosophy |
-| ginza-rabba | lidzbarski | Internetarchive | 98.46 | Mandaean |
 | landmarks-of-scientific-socialism-anti-duehring-engels | anonymous | Gutenberg.org | 98.52 | Political Philosophy |
 | engels-antiduehring | austin-lewis | Gutenberg.org | 98.54 | Political Philosophy |
-| shakespeare-complete | shakespeare | Gutenberg.org | 98.62 | Greek Literature |
+| budge-egyptian-future | budge | NO_RAW_FILE | 98.57 | Egyptian |
+| shakespeare-complete | shakespeare | Gutenberg.org | 98.62 | English Literature |
 | sacred-books-east-wilson | wilson | Gutenberg.org | 98.63 | Comparative Religion |
 | goldziher-hebrew-mythology | martineau | Gutenberg.org | 98.64 | Jewish |
-| shakespeare-measure-for-measure | shakespeare | Gutenberg.org | 98.67 | Greek Literature |
-| shakespeare-the-first-part-of-henry-the | shakespeare | Gutenberg.org | 98.67 | Greek Literature |
+| shakespeare-measure-for-measure | shakespeare | Gutenberg.org | 98.67 | English Literature |
+| shakespeare-the-first-part-of-henry-the | shakespeare | Gutenberg.org | 98.67 | English Literature |
+| kojiki-chamberlain | chamberlain | SacredTexts.com | 98.68 | Shinto |
 | kant-critique-practical-reason | abbott | Gutenberg.org | 98.69 | Modern Philosophy |
-| kojiki-chamberlain | chamberlain | SacredTexts.com | 98.69 | Shinto |
-| shakespeare-the-tragedy-of-romeo-and-juliet | shakespeare | Gutenberg.org | 98.73 | Greek Literature |
+| shakespeare-the-tragedy-of-romeo-and-juliet | shakespeare | Gutenberg.org | 98.73 | English Literature |
 | dasgupta-indian-philosophy | dasgupta | Gutenberg.org | 98.74 | Hindu |
 | georgian-folk-tales | wardrop | SacredTexts.com | 98.76 | Slavic |
-| newman-essays | newman-grammar-of-assent | Gutenberg.org | 98.81 | Christian |
+| newman-essays | newman-grammar-of-assent | Gutenberg.org | 98.79 | Christian |
 | slavonic-folktales-wratislaw | wratislaw | SacredTexts.com | 98.81 | Norse |
 | legends-babylon-egypt-king | king-legends | Gutenberg.org | 98.82 | Jewish |
 | wissenschaft-der-logik-band-1-hegel | anonymous | Gutenberg.org | 98.84 | Modern Philosophy |
 | enchiridion | higginson | Gutenberg.org | 98.85 | Stoic |
-| shakespeare-the-tragedy-of-macbeth | shakespeare | Gutenberg.org | 98.95 | Greek Literature |
+| sherab-dongbu-campbell | campbell | SacredTexts.com | 98.92 | Buddhist |
+| shakespeare-the-tragedy-of-macbeth | shakespeare | Gutenberg.org | 98.95 | English Literature |
 | oera-linda-sandbach | sandbach | SacredTexts.com | 98.95 | Norse |
-| shakespeare-the-third-part-of-king-henry | shakespeare | Gutenberg.org | 98.98 | Greek Literature |
-| shakespeare-the-tragedy-of-julius-caesar | shakespeare | Gutenberg.org | 98.99 | Greek Literature |
+| shakespeare-the-third-part-of-king-henry | shakespeare | Gutenberg.org | 98.98 | English Literature |
+| shakespeare-the-tragedy-of-julius-caesar | shakespeare | Gutenberg.org | 98.99 | English Literature |
 | shinran-lloyd | lloyd | SacredTexts.com | 98.99 | Buddhist |
-| the-works-of-hsuntze-homer-dubs-1928 | anonymous | Internetarchive | 98.99 | Greek Literature |
+| the-works-of-hsuntze-homer-dubs-1928 | anonymous | Internetarchive | 98.99 | Confucian |
 
-## Edition upgrade candidates (low-authority source) (37)
+## Edition upgrade candidates (low-authority source) (36)
 
 | text_id | translation_id | source | fidelity | tradition |
 |---|---|---|---|---|
-| jataka | cowell-rouse-vol6 | Internetarchive |  | Buddhist |
-| aeneid | dryden | Internetarchive | 100.0 | Greek Literature |
+| aeneid | dryden | Internetarchive | 100.0 | Latin Literature |
 | aristophanes-birds | anonymous | Internetarchive | 100.0 | Greek Literature |
 | aristophanes-clouds | anonymous | Internetarchive | 100.0 | Greek Literature |
 | aristophanes-frogs | anonymous | Internetarchive | 100.0 | Greek Literature |
 | aristophanes-peace | anonymous | Internetarchive | 100.0 | Greek Literature |
 | hippocrates-instruments-of-reduction | adams | Internetarchive | 100.0 | Greek Literature |
-| ovid-metamorphoses | garth | Internetarchive | 100.0 | Greek Literature |
+| ovid-metamorphoses | garth | Internetarchive | 100.0 | Latin Literature |
 | aristotle-rhetoric | roberts | Internetarchive | 100.0 | Greek Philosophy |
 | hippocrates-airs-waters | adams | Internetarchive | 100.0 | Greek Philosophy |
 | hippocrates-ancient-medicine | adams | Internetarchive | 100.0 | Greek Philosophy |
 | hippocrates-aphorisms | adams | Internetarchive | 100.0 | Greek Philosophy |
 | porphyry-on-images | gifford | Internetarchive | 100.0 | Greek Philosophy |
-| on-airs-waters-and-places-hippocrates | anonymous | Internetarchive | 100.0 | Modern Philosophy |
-| the-aeneid-virgil-tr-john-dryde | anonymous | Internetarchive | 100.0 | Modern Philosophy |
-| the-rubaiyat-omar-khayyam | anonymous | Internetarchive | 100.0 | Modern Philosophy |
+| on-airs-waters-and-places-hippocrates | anonymous | Internetarchive | 100.0 | Greek Philosophy |
+| the-aeneid-virgil-tr-john-dryde | anonymous | Internetarchive | 100.0 | Latin Literature |
+| the-rubaiyat-omar-khayyam | anonymous | Internetarchive | 100.0 | Persian Literature |
 | gulistan-sadi | rehatsek | Internetarchive | 100.0 | Persian Literature |
 | rubaiyat-omar-khayyam | fitzgerald | Internetarchive | 100.0 | Persian Literature |
 | aristotle-metaphysics | ross | Internetarchive | 100.0 | Greek Philosophy |
 | plato-seventh-letter | harward | Internetarchive | 100.0 | Greek Philosophy |
+| gospel-of-mary | anonymous | gnosis.org | 100.0 | Gnostic |
+| gospel-of-truth | grant | gnosis.org | 100.0 | Gnostic |
 | holy-piby | rogers | Internetarchive | 100.0 | Rastafari |
 | sikh-religion-vol2-macauliffe | macauliffe | Internetarchive | 100.0 | Sikh |
 | sikh-religion-vol3-macauliffe | macauliffe | Internetarchive | 100.0 | Sikh |
-| bardo-thodol-evans-wentz | evans-wentz | Internetarchive | 100.0 | Tibetan Buddhist |
-| ginza-rabba | lidzbarski | Internetarchive | 98.46 | Mandaean |
-| the-works-of-hsuntze-homer-dubs-1928 | anonymous | Internetarchive | 98.99 | Greek Literature |
-| kitab-i-aqdas | uhj | Internetarchive | 99.14 | Bahai |
+| upanishads-hume-1921 | hume | Internetarchive | 78.96 | Hindu |
+| the-works-of-hsuntze-homer-dubs-1928 | anonymous | Internetarchive | 98.99 | Confucian |
 | aradia-gospel-witches-leland | leland | Internetarchive | 99.37 | Witchcraft / Folk Religion |
-| milarepa-evans-wentz | evans-wentz | Internetarchive | 99.44 | Tibetan Buddhist |
-| songs-russian-people-ralston | ralston | Internetarchive | 99.74 | Slavic |
+| songs-russian-people-ralston | ralston | Internetarchive | 99.71 | Slavic |
 | sikh-religion-vol5-macauliffe | macauliffe | Internetarchive | 99.76 | Sikh |
 | sikh-religion-vol6-macauliffe | macauliffe | Internetarchive | 99.82 | Sikh |
 | zend-avesta-part2 | darmesteter | Internetarchive | 99.84 | Zoroastrian |
 | zend-avesta-part3 | mills | Internetarchive | 99.84 | Zoroastrian |
 | aristotle-physics | hardie-gaye | Internetarchive | 99.85 | Greek Philosophy |
 | sikh-religion-vol1-macauliffe | macauliffe | Internetarchive | 99.94 | Sikh |
+| jataka | cowell-rouse-vol6 | Internetarchive | 99.97 | Buddhist |
 | zend-avesta-part1 | darmesteter | Internetarchive | 99.97 | Zoroastrian |
 
 ## Files
