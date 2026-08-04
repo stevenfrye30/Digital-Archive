@@ -50,9 +50,18 @@ nav.toc:not(.toc-bare) > .toc-all {
    (`.fam { border: 1px solid var(--line); border-radius: 9px }`) and
    held one step quieter so the zone frames its families rather than
    competing with them. */
+/* Task 140 item 4 — the section box reads as a block, not a line.
+   It was 1px solid var(--line): the SAME weight as the .fam family box
+   one level inside it. The comment above says the zone is "held one step
+   quieter" so it frames its families rather than competing — but at equal
+   weight there was no hierarchy to read, and the top-level boundary
+   between e.g. shinto's "The Records" and "The Liturgy" looked like just
+   another divider. 2px restores the step: the outer box is now heavier
+   than what it contains, which is the direction the nesting implies.
+   Section level ONLY — .fam and the TOC-entry boxes are untouched. */
 section.basket, section.zone {
   position: relative;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 11px;
   padding: 10px 12px 12px;
   margin-bottom: 1rem;
