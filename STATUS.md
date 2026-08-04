@@ -300,6 +300,18 @@ from. Losing this machine loses them. **This is a regression introduced by
 Tasks 137–138, however correct both moves were, and it outranks any
 further UI work until the standing backup pack exists.**
 
+**Status 2026-08-03 — scope fixed, run pending.** `05_scripts/configs` is
+now in `backup_canonical.py`'s `INCLUDE_ROOTS`, so all 23 files (the 22
+moved plus `seed_bindings.json`) are in the pack manifest — verified by
+listing `collect_files()`, not assumed. Note `collect_files()` is a plain
+`rglob` and never consults `.gitignore`, so the gitignored `configs/maps/**`
+and `configs/sheets/**` are covered by naming the directory there; they
+remain untracked by git, which is a separate question nobody has ruled on.
+Two `--pack` runs on 2026-08-03 wrote unopenable archives (a passphrase
+whitespace defect, since fixed and proven) and were deleted; the two
+verified July 28 packs are intact. **The remaining action is the steward's:
+run `--pack` then `--verify` with the passphrase.**
+
 ## Next Priorities
 
 1. Triage the top 10 duplicate-ID texts (parser work, mostly).
