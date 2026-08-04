@@ -1,8 +1,11 @@
 # Digital Archive — Project Status
 
-*Last refreshed: 2026-07-27 (index counts re-verified against
-`data/_generated/index.json`; validation metrics below are from the 2026-06-07
-run and are dated where they appear).*
+*Last refreshed: 2026-08-03 — full validation suite re-run, and the
+validation metrics below now come from THAT run rather than the 2026-06-07
+one they were stuck on. The staleness had a cause, not just neglect: two of
+the suite's scripts had stopped loading the corpus at all (see Known Issues).
+Numbers here should only ever come from script output; the refresh sequence
+is at the foot of this file.*
 
 A single trustworthy view of the project's current state. When numbers
 here disagree with anything else in the project, this file is the one
@@ -254,22 +257,54 @@ listed once with the link entering at the first chapter.
   200 are now listed by tradition on `shelves.html` (Phase 2). The
   shelves page collapses multi-chapter works into one entry each, so
   the page stays human-scale rather than database-shaped.
-- Source Integrity Standard v1 migration is at 10 / 205.
-- Schema validator emits 233 content-level warnings (missing
-  `source.url`, `source_quality`, `original_*`). These need per-text
-  review, not closed-set extension.
-- 40 texts have structural duplicate-ID issues; the top 10
-  (`ambrose-select-works`, `eusebius-church-history`,
-  `augustine-confessions-enchiridion-ccel`, `jerome-letters-works`,
-  `athanasius-select-works`, etc. — the CCEL Christian patristic
-  cluster) account for most of the 12,779 excess passage-id duplicates
-  and need parser work or manual restructuring. The Quran's previously
-  reported 158,458 collisions turned out to be a measurement artifact
-  in `corpus_audit.py` and were resolved by the May 2026 restoration
-  (`records/QURAN_RESTORATION_2026.md`); the audit now groups per translation
-  so multi-translation works do not surface false alarms.
-  Distinguished from legitimate directory-level shared `id`s in
+- Source Integrity Standard v1 migration is at **77 / 269** Reading Room
+  entries (was 10 / 205).
+- Schema validation is at **0 errors, 220 warnings** across 1,055 texts
+  (missing `source.url`, `source_quality`, `original_*`) — was 233. These
+  need per-text review, not closed-set extension. Note
+  `logs/ingestion_issues.json` holds 6,424 entries, but it is a CUMULATIVE
+  history across every run, not a current state; `archive_health.md` used to
+  present it as "schema warnings / schema errors" and now labels it honestly.
+  Its single logged error is an *ingestion* error, not a schema one — see
+  Diogenes Laertius below.
+- **Duplicate IDs: RESOLVED.** The 2026-08-03 suite reports **0 texts, 0
+  excess duplicates** across 3,293,485 passages in 1,076 texts, and
+  `final_validation` agrees (0 texts with residual dups). The former claim —
+  40 texts and 12,779 excess ids, led by the CCEL patristic cluster — is
+  retired. The cleanup lanes since June closed it. The Quran's once-reported
+  158,458 collisions were a measurement artifact resolved by the May 2026
+  restoration (`records/QURAN_RESTORATION_2026.md`). Legitimate
+  directory-level shared `id`s remain distinguished in
   `01_library/library/DUPLICATE_IDS.md`.
+- **The validators were measuring nothing (found 2026-08-03).** Both
+  `corpus_audit.py` and `final_validation.py` crashed on the six restricted
+  rows that carry `data_file: null` by design, and both looked for
+  `data/<name>.json` when the deploy layer leaves `data/<name>.json.gz` —
+  1,177 gzipped bodies against 4 plain ones. So every body was skipped and
+  the audit reported "0 texts, 0 excess dups, 0 missing front matter" from a
+  corpus of zero, which reads as a clean bill of health. Both now fall back
+  to the gzip and both REFUSE an empty population (doctrine §8.1b). This is
+  the likeliest reason the corpus metrics sat unchanged from 2026-06-07.
+- **162 texts are missing front matter**, and 104,854 short stubs are
+  triaged 51,337 keep / 36,283 review / 17,234 drop
+  (`logs/reports/corpus_audit_report.md`).
+- **Heading leakage is now the top structural fault**, not duplicates:
+  `ramayana-griffith` (498), `book-of-dead-renouf` (430),
+  `anf01-early-fathers` (395), `proclus-theology-plato` (371),
+  `uttaradhyayana-sutra` (276). 265 of 1,076 texts are "needs work" on this
+  measure; 715 (66.4%) are fully clean.
+- **Passage-fidelity proof reads 90.50%** (2,328,378 / 2,572,799), 641 texts
+  at 100%. **Treat the headline as understated.** Eleven texts report exactly
+  0.0% — every non-English Bible witness (Russian Synodal, Arabic Van Dyck,
+  Louis Segond, Chinese Union, Reina-Valera, Luther, Nestle Greek, both
+  Peshitta NTs) plus Targum Onkelos, and `sbl-nt` at 38.8%. A whole text
+  matching zero of 31,141 passages is an instrument reading, not a corpus
+  reading (doctrine §8.1f): the normalizer is almost certainly ASCII-centric.
+  Those 11 account for 216,868 of the 244,421 unverified passages — 88.7%. If
+  the normalizer is the fault, true fidelity is ≈98.9%. **Not fixed: this
+  needs a real encoding investigation, not a guess.**
+- **One ingestion error outstanding:** "The Lives and Opinions of Eminent
+  Philosophers" (Diogenes Laertius) — *Parser produced 0 passages*.
 - `sappho-fragment-31` has no `library_id` — intentional; its body
   text records that the canonical library does not yet hold a Sappho
   text. Documented in `MAINTENANCE.md`.
@@ -314,16 +349,23 @@ run `--pack` then `--verify` with the passphrase.**
 
 ## Next Priorities
 
-1. Triage the top 10 duplicate-ID texts (parser work, mostly).
-2. Decide whether the Source Integrity Standard migration continues
-   incrementally or is paused at v1's 10 pilot entries.
-3. Reduce the 233 content-level schema warnings as texts come up
-   for review.
-4. Re-examine `newman-essays` (3 different works share one id) and
+*Re-baselined 2026-08-03 from a full suite run. The duplicate-ID triage that
+led this list for two months is done — it reports zero.*
+
+1. **Investigate the passage-fidelity normalizer.** Eleven texts read
+   exactly 0.0%, all non-English or non-Latin script. They are 88.7% of all
+   unverified passages. Either the archive has a real corruption confined to
+   every non-English witness at once, or the normalizer cannot read them —
+   and the second is far likelier. This is the single largest number on the
+   board and probably not a corpus problem at all.
+2. Reduce the 220 content-level schema warnings as texts come up for review.
+3. Decide whether the Source Integrity Standard migration continues
+   incrementally or pauses at 77 / 269.
+4. Front matter: 162 texts missing; and work the 36,283 "review" stubs.
+5. Fix the Diogenes Laertius ingestion error (parser produced 0 passages).
+6. Re-examine `newman-essays` (3 different works share one id) and
    `seneca-minor-dialogues` (duplicated under both `greek-philosophy`
    and `roman-philosophy`) when convenient.
-5. Re-run the full validation suite so the 2026-06-07-dated metrics
-   above catch up with the July 2026 corpus growth.
 
 ---
 
