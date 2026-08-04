@@ -246,14 +246,40 @@ def main():
     base = "http://127.0.0.1:%d/" % port
 
     report = {}
+    # Task 149 item 3 — §8.1b, THE OTHER EMPTINESS. Task 148 fixed the
+    # room SET; this is the SWEEP going empty underneath a room set that
+    # is perfectly correct. If nothing renders — the block named a
+    # missing server, but a bad REPO root, a moved structure.json, a page
+    # that 404s under a renamed path and a browser that fails to paint
+    # all land in the same place — every per-room sweep returns {} and
+    # this file used to serialize that over the tracked artifact and exit
+    # 0. The truncation IS the report, and it looks exactly like a sweep
+    # that found the archive had no chips.
+    #
+    # So the guard is written on the OUTCOME rather than on any one
+    # cause, and it runs BEFORE the write: nothing is serialized until
+    # the sweep has proved it looked.
+    refusals = []
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": 1280, "height": 900})
         for room in ROOMS:
             names = chip_names(room)
             report[room] = {"n_names": len(names)}
+            if not names:
+                refusals.append(
+                    "%s: 0 authored chip names — structure.json missing under "
+                    "%s" % (room, os.path.normpath(CFG_MAPS)))
             for mode in ("light", "dark"):
-                pg.goto(base + "map/%s.html" % room, wait_until="networkidle")
+                resp = pg.goto(base + "map/%s.html" % room,
+                               wait_until="networkidle")
+                # the page it THINKS it is on (Task 124b item 1): a 404
+                # body renders happily and sweeps to nothing.
+                if resp is None or not resp.ok:
+                    refusals.append("%s/%s: page did not load (%s)" % (
+                        room, mode, "no response" if resp is None
+                        else "HTTP %d" % resp.status))
+                    continue
                 pg.evaluate(
                     "(m)=>document.documentElement.setAttribute('data-theme',m)",
                     mode)
@@ -261,9 +287,24 @@ def main():
                 pg.evaluate(OPEN_ALL)
                 pg.wait_for_timeout(260)
                 report[room][mode] = pg.evaluate(SWEEP, names)
+                if not sum(v["n"] for v in report[room][mode].values()):
+                    refusals.append(
+                        "%s/%s: swept 0 chips from %d authored names"
+                        % (room, mode, len(names)))
         pg.close()
         b.close()
     httpd.shutdown()
+
+    if refusals:
+        print("inventory_chips: REFUSING TO WRITE — the sweep did not look "
+              "at what it claims to report on (%d finding(s)):" % len(refusals))
+        for r in refusals[:20]:
+            print("  · " + r)
+        if len(refusals) > 20:
+            print("  · … and %d more" % (len(refusals) - 20))
+        print("tools/chip_inventory.json is UNCHANGED. An empty sweep is a "
+              "broken instrument, not a finding about the archive.")
+        raise SystemExit(1)
 
     out = os.path.join(HERE, "chip_inventory.json")
     io.open(out, "w", encoding="utf-8", newline="\n").write(
