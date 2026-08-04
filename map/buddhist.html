@@ -40,11 +40,7 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .switch button:hover { color: var(--ink); }
 
-.switch button.on { background: var(--surface); color: var(--accent-ink); box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 3px; font-weight: 600; }
-
 .switch button small { font-weight: 400; color: var(--ink-faint); font-size: 0.68rem; margin-left: 0.3em; font-family: var(--sans); }
-
-.switch button.on small { color: var(--accent); }
 
 .view { display: none; margin-top: 1.6rem; }
 
@@ -66,96 +62,6 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 .lg { display: inline-flex; align-items: center; gap: 0.4rem; }
 
 .sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
-
-#view-atlas .grow { display: grid; grid-template-columns: 9.5rem 1fr auto; gap: 0.5rem 0.8rem; align-items: center; margin: 0.35rem 0px; }
-
-#view-atlas .grow .gl { font-size: 0.86rem; font-weight: 600; }
-
-#view-atlas .grow .gl small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 0.72rem; }
-
-#view-atlas .gbar { display: flex; height: 20px; border-radius: 5px; overflow: hidden; background: var(--track); }
-
-#view-atlas .gbar i { display: block; height: 100%; }
-
-#view-atlas .gbar .bg { background: var(--g); }
-
-#view-atlas .gbar .ba { background: var(--a); }
-
-#view-atlas .gbar .br { background: var(--r); }
-
-#view-atlas .gnum { font-size: 0.76rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
-
-#view-atlas .insight { margin: 0px 0px 2rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.94rem; color: var(--ink-soft); }
-
-#view-atlas .insight b { color: var(--ink); }
-
-#view-atlas .pillars { display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 1rem; align-items: start; }
-
-@media (max-width: 900px) {
-  #view-atlas .pillars { grid-template-columns: 1fr; }
-}
-
-#view-atlas .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1rem 1.2rem; min-width: 0px; }
-
-#view-atlas /* Task 129 — the divider and the gap below it went with the thing they
-   separated. .pillar-h used to be split from the sub-structure preview
-   beneath it; with the preview gone the border ruled the card off from
-   nothing and the margin left ~50px of dead space under the button
-   (pillar 177px vs header 127px). Doctrine 6.1 — a retirement sweeps
-   what it makes meaningless, in the same edit. */
-.pillar-h { padding-bottom: 0; margin-bottom: 0; }
-
-#view-atlas .pillar-h .pn { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; color: var(--ink); letter-spacing: -0.01em; }
-
-#view-atlas .pillar-h .pw { font-size: 0.78rem; color: var(--accent-ink); font-weight: 600; margin-top: 0.1rem; }
-
-#view-atlas .pillar-h .pnote { font-size: 0.76rem; color: var(--ink-faint); margin-top: 0.15rem; }
-
-#view-atlas .pmini { display: flex; height: 7px; border-radius: 99px; overflow: hidden; background: var(--track); margin-top: 0.55rem; }
-
-#view-atlas .pmini i { display: block; height: 100%; }
-
-#view-atlas .pmini .mg { background: var(--g); }
-
-#view-atlas .pmini .ma { background: var(--a); }
-
-#view-atlas .pmini .mr { background: var(--r); }
-
-#view-atlas .godeep { margin-top: 0.7rem; }
-
-#view-atlas .godeep button { font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 0.8rem; color: var(--accent-ink); background: var(--g-t2); border: 1px solid var(--g); border-radius: 99px; padding: 0.3rem 0.8rem; cursor: pointer; width: 100%; }
-
-#view-atlas .godeep button:hover { background: var(--g-t); }
-
-#view-atlas .sec { margin: 0px 0px 0.9rem; }
-
-#view-atlas .sec h3 { font-family: var(--serif); font-style: italic; font-weight: 600; font-size: 0.9rem; color: var(--ink-soft); margin: 0px 0px 0.45rem; display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
-
-#view-atlas .sec h3 .sc { font-size: 0.68rem; color: var(--ink-faint); font-style: normal; font-family: var(--sans); }
-
-#view-atlas .chips { display: flex; flex-direction: column; gap: 0.32rem; }
-
-#view-atlas .chip { display: flex; align-items: flex-start; gap: 0.45em; padding: 0.34em 0.55em; border-radius: 7px; font-size: 0.8rem;  ;  ;  ;  ;  ;  ;  ;  ; border-left-width: 3px; background: var(--surface); cursor: default; line-height: 1.35; }
-
-#view-atlas .chip .dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; margin-top: 0.42em; }
-
-#view-atlas .chip.g { border-left-color: var(--g); background: var(--g-t2); }
-
-#view-atlas .chip.g .dot { background: var(--g); }
-
-#view-atlas .chip.a { border-left-color: var(--a); background: var(--a-t); }
-
-#view-atlas .chip.a .dot { background: var(--a); }
-
-#view-atlas .chip.r { border-left-color: var(--r); background: var(--r-t); }
-
-#view-atlas .chip.r .dot { background: var(--r); }
-
-#view-atlas .chip .nm { flex: 1 1 0%; min-width: 0px; }
-
-#view-atlas .chip:hover { border-color: var(--line2); }
-
-#view-atlas .shared { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--accent); border-radius: 4px; padding: 0px 0.25em; margin-left: 0.3em; vertical-align: 1px; }
 
 .deep .statband { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0px 0px 0.4rem; }
 
@@ -314,29 +220,21 @@ footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1re
     <div class="wheel" aria-hidden="true">☸️</div>
     <h1>The Map of Buddhist Texts</h1>
     
+    <!-- Task 146 — the "The Three Canons" overview RETIRED, and
+         Pāli is the default view. The overview held three cards
+         whose only content was a button to a tab one click away;
+         measured, those buttons did not even do that — no
+         [data-goto] handler is loaded by this page, so all three
+         were dead controls. No `class="on"` is stamped on the
+         first tab: the switcher in _room.js derives the default
+         from viewPills[0] and states the selection in
+         aria-pressed, so the tab row has one source of truth. -->
     <div class="switch" id="switch">
-      <button data-view="atlas" class="on">The Three Canons</button>
       <button data-view="pali">Pāli <small>253 suttas</small></button>
       <button data-view="chinese">Chinese <small>2,920</small></button>
       <button data-view="tibetan">Tibetan <small>~4,569</small></button>
     </div>
   </header>
-
-  <!-- ============ ATLAS ============ -->
-  <section class="view on" id="view-atlas">
-    <!-- Task 124b item 3 — the `.gradient` container RETIRED.
-         Task 111 item 3 took its heading and caption; Task 119e took
-         its only remaining child, the #gradient bars. Neither took the
-         box, so it went on painting its background, 1px border and 12px
-         radius around nothing — 1170x37 of dressed vacancy, and the
-         first thing under the head of the atlas view. Two lanes each
-         removed one thing; the container outlived both. -->
-    
-    <div class="insight">
-      <b>The exact inverse of Hinduism.</b> There, the ancient core was green and the edges went amber. Here the <b>oldest, southernmost canon is the greenest</b> — the entire Pāli Sutta Piṭaka is CC0 (Sujato/SuttaCentral) on top of a century of public-domain PTS &amp; SBE scholarship — and the map <b>darkens as the tradition moved north and east</b>, because the expansion into Mahāyāna and Vajrayāna generated <em>vaster</em> literatures (2,920 Chinese texts, ~4,000 Tibetan treatises) faster than anyone could render them. The frontier here isn’t copyright — it’s the <b>untranslated ocean</b>: the Tibetan Tengyur isn’t projected to be finished in English until <b>2110</b>. Tap <b>▸ open</b> on any pillar to walk into it.
-    </div>
-    <div class="pillars" id="pillars"><div class="pillar"><div class="pillar-h"><div class="pn">Pāli Tipiṭaka</div><div class="pw">Theravāda · S &amp; SE Asia</div><div class="pnote">3 baskets</div><div class="godeep"><button data-goto="pali">▸ open the complete Pāli canon</button></div></div></div><div class="pillar"><div class="pillar-h"><div class="pn">Chinese Taishō</div><div class="pw">East Asia · China, Korea, Japan</div><div class="pnote">2,920 texts / 85 vols</div><div class="godeep"><button data-goto="chinese">▸ open the Chinese canon</button></div></div></div><div class="pillar"><div class="pillar-h"><div class="pn">Kangyur + Tengyur</div><div class="pw">Vajrayāna · Tibet, Mongolia</div><div class="pnote">~4,569 texts (Tōhoku)</div><div class="godeep"><button data-goto="tibetan">▸ open the Tibetan canon</button></div></div></div></div>
-  </section>
 
   <!-- ============ PĀLI ============ -->
   <section class="view deep" id="view-pali">
