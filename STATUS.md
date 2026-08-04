@@ -327,7 +327,7 @@ listed once with the link entering at the first chapter.
   text records that the canonical library does not yet hold a Sappho
   text. Documented in `MAINTENANCE.md`.
 - The 8-entry `metadata/texts.json` bootstrap fixture has been
-  archived to `01_library/_archive/bootstrap-fixtures/` with a README
+  archived to `01_library/_retired/bootstrap-fixtures/` with a README
   explaining its history. The authoritative metadata is
   `registry.json`.
 - The 39-entry manual-acquisition wishlist
