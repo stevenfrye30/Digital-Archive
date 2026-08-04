@@ -40,9 +40,7 @@ body { margin: 0px; background: var(--bg); color: var(--ink); font-family: var(-
 
 .stat span { font-size: 0.66rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
 
-.insight { margin: 0px 0px 1.6rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.93rem; color: var(--ink-soft); }
 
-.insight b { color: var(--ink); }
 
 .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; font-size: 0.82rem; color: var(--ink-soft); align-items: center; justify-content: center; margin: 0px 0px 1.3rem; padding: 0.7rem 0px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
@@ -437,9 +435,15 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
    rights legend to Rights view, so switching grew the masthead by
    200px and pushed 71 chips down the page (up to 484px). Every other
    room shows this furniture in both views; now this one does too, and
-   the grid cannot reflow. */
+   the grid cannot reflow.
+   Task 149 item 2 — THE INSIGHT LINE OF THIS BLOCK IS GONE, with the
+   box it was force-showing. Task 145 removed ancient's `.insight`
+   under the steward's explicit override and its STATUS reported the
+   force-show gone with it; the rule was still here, holding a
+   `display: block !important` over an element that no longer exists
+   in any room. What remains below force-shows only what this room
+   still has markup for. */
 .statband, .greenline { display: flex !important; }
-.insight { display: block !important; }
 .legend { display: flex !important; justify-content: center; flex-wrap: wrap; }
 /* the base legend is hidden in Rights, and in this room it sits IN the
    flow — hiding it pulled every chip 48px up. It keeps its space now

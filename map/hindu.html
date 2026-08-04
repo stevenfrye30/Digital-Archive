@@ -90,9 +90,7 @@ svg.mandala g.zone:hover .seg.hot { opacity: 1; }
 
 .star { color: var(--accent); font-size: 0.9em; }
 
-.insight { margin: 1.4rem 0px 2.2rem; border-left: 3px solid var(--accent); background: var(--panel); border-radius: 0px 8px 8px 0px; padding: 0.9rem 1.15rem; font-size: 0.95rem; color: var(--ink-soft); }
 
-.insight b { color: var(--ink); }
 
 .zone { margin: 0px 0px 2.2rem; scroll-margin-top: 1rem; }
 
@@ -177,9 +175,6 @@ footer { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1.1re
     
     
   </section>
-<div class="insight">
-    <b>The pattern the colours reveal:</b> the public-domain frontier follows the calendar of <em>scholarship</em>, not the age of the texts. Green dominates the śruti core and inner rings — the 19th- and early-20th-century Indologists (Müller, Griffith, Keith, Wilson, Thibaut, Ganguli, Woodroffe, Pope) translated the Vedas, Darśanas and epics long ago. Amber takes over at the Purāṇas and the branches, translated mostly <em>after 1970</em> and still in copyright. The edge of what a public archive can freely hold isn't the edge of the tradition — it's roughly the year <b>1930</b>.
-  </div>
 </div>
 <!-- Task 75b: the eight zones moved into the diagram panel -->
 
@@ -511,11 +506,6 @@ body.ov-open #arch-topbar { position:relative; z-index:72; background:var(--bg,#
 /* the count bars stack cleanly: proportional rows, labels never overlap */
 #diagram-panel .totalbar { flex-direction: column; height: auto; gap: 4px; overflow: visible; }
 /* the pattern prose — a small quiet info box at the legend's bottom-left */
-#diagram-panel .insight {
-  font-size: .82rem; max-width: 48ch; margin: 12px auto 4px 0;
-  border: 1px dotted var(--line); border-left: 3px solid var(--accent);
-  padding: .7rem .9rem;
-}
 [data-theme="dark"] #diagram-panel { background: var(--bg); }
 </style>
 <script>
