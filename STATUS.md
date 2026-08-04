@@ -437,6 +437,6 @@ python 05_scripts/lint_archive.py
 ```
 
 Then update the *Last refreshed* date at the top and any numbers that
-moved. Older runs are preserved under `logs/_archive/<date>/`. The
+moved. Older runs are preserved under `logs/_before_snapshots/<date>/`. The
 pre-push guard reads the Canonical Library counts, so a push after an
 export lane will be blocked until they are refreshed here.
