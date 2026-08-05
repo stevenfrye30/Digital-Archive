@@ -980,6 +980,15 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   @keyframes chFade { from { opacity: 0; } }
 }
 
+/* Task 156 — a unit jumped to from the middle-level selector says so briefly,
+   the same courtesy the map's chip-sought pulse pays. Colour only; nothing
+   moves, and reduced-motion readers get the tint without the fade. */
+.passage.passage-sought { background: rgba(122, 92, 58, 0.10); border-radius: 6px; }
+[data-theme="dark"] .passage.passage-sought { background: rgba(196, 160, 96, 0.16); }
+@media (prefers-reduced-motion: no-preference) {
+  .passage.passage-sought { transition: background 600ms ease-out; }
+}
+
 /* Task 83 — drop caps TRIED AND DROPPED: at the 1.9 leading a
    2-line cap straddles ~1.6 lines with a ragged shoulder, and the
    corpus's opening characters (quotes, digits, diacritics) make it
@@ -12175,6 +12184,10 @@ body.viewer-active .folio-leaf-colophon {
         <label>Book</label>
         <select id="ctrl-book"></select>
       </div>
+      <div class="ctrl-group" id="ctrl-unit-group" style="display:none;">
+        <label id="ctrl-unit-label">Section</label>
+        <select id="ctrl-unit"></select>
+      </div>
       <span id="ctrl-nofm"></span>
       <div class="ctrl-group" id="ctrl-search-group" style="display:none;border-left:1px solid var(--chrome-border);padding-left:18px;">
         <label>Search</label>
@@ -15185,7 +15198,142 @@ function buildBookSelector() {
   $bookGroup.style.display = 'flex';
   $navBar.style.display    = 'flex';
   updateNav();
+  buildUnitSelector();
 }
+
+// ── The middle level (Task 156) ──────────────────────────────────────────────
+// A three-level text has a level BETWEEN the book selector and the verse, and
+// until now the reader offered no way to reach it: the Ramayana's canto level
+// was promoted out of its verse stream — 493 units with names — and a reader
+// could open Book 4 and then only scroll. The titles shipped in the body and
+// nothing consumed them.
+//
+// This is driven by the record's own hierarchy, not by any text: when
+// `hierarchy` has three levels, the units of the current book are collected
+// from the rendered passages and labelled from `<level>_titles` (keyed
+// "<book>.<unit>", the shape the promotion pass writes) with a plain
+// "<Level> <n>" fallback. Texts with two levels are untouched — the control
+// stays hidden, exactly as before.
+//
+// The title is deliberately NOT re-printed above the passage. For a promoted
+// text the unit's opening passage IS its heading line ("Canto LXXII. Bharat's
+// Inquiry."), so a title heading would print it twice. Titles belong to
+// navigation here, not to the page.
+function _unitLevelName() {
+  const h = (currentData && currentData.hierarchy) || [];
+  return h.length >= 3 ? String(h[1]) : null;
+}
+
+function _unitTitles() {
+  const lvl = _unitLevelName();
+  if (!lvl || !currentData) return null;
+  return currentData[lvl + '_titles'] || null;
+}
+
+function buildUnitSelector() {
+  const group = document.getElementById('ctrl-unit-group');
+  const sel   = document.getElementById('ctrl-unit');
+  if (!group || !sel) return;
+  const lvl = _unitLevelName();
+  if (!lvl || currentBook === '__fm__' || !currentBook) {
+    group.style.display = 'none';
+    return;
+  }
+  // The units of the book on screen, in reading order, ignoring front matter
+  // and the unit-0 bucket the promotion uses for a book's own contents.
+  const seen = new Set();
+  const units = [];
+  for (const p of allPassages) {
+    if (p.fm || !p.path || p.path.length < 3) continue;
+    if (String(p.path[0]) !== String(currentBook)) continue;
+    const u = p.path[1];
+    if (u === 0 || u === '0' || seen.has(String(u))) continue;
+    seen.add(String(u));
+    units.push({unit: u, pid: p.id});
+  }
+  if (units.length < 2) {
+    group.style.display = 'none';
+    return;
+  }
+  const titles = _unitTitles() || {};
+  const word   = lvl.charAt(0).toUpperCase() + lvl.slice(1);
+  document.getElementById('ctrl-unit-label').textContent = word;
+  sel.innerHTML = '';
+  for (const u of units) {
+    const t = titles[currentBook + '.' + u.unit] || titles[String(u.unit)];
+    const opt = document.createElement('option');
+    opt.value       = u.pid;
+    opt.textContent = t ? `${u.unit}. ${t}` : `${word} ${u.unit}`;
+    sel.appendChild(opt);
+  }
+  group.style.display = 'flex';
+  _syncUnitSelectorToView();
+}
+
+// Keep the selector honest about where the reader actually IS. The first
+// version read the first passage in the DOM, which is only the same thing when
+// the reader is at the top: a deep link to canto 72 opened at canto 72 and the
+// selector said "1. The Heir Apparent". A control that misreports position is
+// worse than no control, so it reads the topmost passage actually in view, and
+// follows the scroll.
+function _syncUnitSelectorToView() {
+  const sel = document.getElementById('ctrl-unit');
+  if (!sel || !sel.options.length || !$passages) return;
+  const nodes = $passages.querySelectorAll('.passage[data-pid]');
+  if (!nodes.length) return;
+  const top = ($reader ? $reader.getBoundingClientRect().top : 0) + 8;
+  let pid = nodes[0].dataset.pid;
+  for (const n of nodes) {
+    const r = n.getBoundingClientRect();
+    if (r.bottom >= top) { pid = n.dataset.pid; break; }
+  }
+  const parts = String(pid).split('.');
+  if (parts.length < 3) return;
+  const curUnit = Number(parts[1]);
+  // Exact match first; then the last unit at or before this one. The fallback
+  // is not decoration: a book opens in its unit-0 bucket (the contents the
+  // promotion keeps in place), which has no option of its own, and an exact
+  // match alone left the selector showing whatever it said last — reporting
+  // canto 5 while the reader sat at the top of the book.
+  let best = null;
+  for (const o of sel.options) {
+    const u = Number(String(o.value).split('.')[1]);
+    if (u === curUnit) { best = o; break; }
+    if (u < curUnit && (!best || u > Number(String(best.value).split('.')[1]))) best = o;
+  }
+  if (!best) best = sel.options[0];
+  if (best && sel.value !== best.value) sel.value = best.value;
+}
+
+// The reader scrolls inside #reader, so that is what to listen to. Throttled
+// with rAF: the sync is a few getBoundingClientRect reads, but a scroll handler
+// is the one place where "a few" becomes "every frame".
+(function () {
+  let queued = false;
+  const onScroll = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      const g = document.getElementById('ctrl-unit-group');
+      if (g && g.style.display !== 'none') _syncUnitSelectorToView();
+    });
+  };
+  // This script is inline at the foot of a 1.2 MB document, so DOMContentLoaded
+  // has usually ALREADY fired by the time this runs — registering only on that
+  // event meant the listener was never attached and the selector never followed
+  // the scroll. Attach now when the document is ready, and on the event when it
+  // genuinely is not.
+  const attach = () => {
+    const r = document.getElementById('reader');
+    if (r) r.addEventListener('scroll', onScroll, {passive: true});
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach);
+  } else {
+    attach();
+  }
+})();
 
 // ── Navigation ───────────────────────────────────────────────────────────────
 
@@ -15515,7 +15663,31 @@ $bookSelect.addEventListener('change', () => {
   _stampCanonGenre();
   _installChapterHeading();
   _installChapterTraverseTop();
+  buildUnitSelector();
   $reader.scrollTop = 0;
+});
+
+// Jumping to a unit is navigation within the book already on screen.
+//
+// The first version queried `.passage[data-pid=…]` itself and silently did
+// nothing when the element was absent — which is most of the time, because the
+// reader renders in RENDER_BATCH chunks and canto 100 of 119 simply is not in
+// the DOM yet. The selector moved and the page did not. jumpToPassage() is the
+// reader's own answer to exactly that: it renders forward until the target
+// exists, stops the moment it does, keeps the "Load more" affordance honest,
+// and returns false for an id that is real but not in this section. Use the
+// machinery that already knows, rather than a second, worse copy of it.
+document.getElementById('ctrl-unit').addEventListener('change', (ev) => {
+  const pid = ev.target.value;
+  if (!pid) return;
+  _citationPid = null; _userScrollArmed = 0;      // an explicit jump is user navigation
+  if (jumpToPassage(pid, false, 'start')) {
+    const el = $passages.querySelector('.passage[data-pid="' + CSS.escape(pid) + '"]');
+    if (el) {
+      el.classList.add('passage-sought');
+      setTimeout(() => el.classList.remove('passage-sought'), 1600);
+    }
+  }
 });
 
 $search.addEventListener('input', () => {
