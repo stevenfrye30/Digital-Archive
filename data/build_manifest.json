@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-05T07:53:06Z",
+ "generated": "2026-08-05T08:03:03Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "5c5869c01ee2f1f60e40d09986eda7e689b5dfe6",
- "library_fingerprint": "sha256:8c498e83c0b7433813396104612c9e459812ee81b90b60fc37a6ffff3004d1ff",
+ "exporter_rev": "09d75c1642a87df5be602fd50bf4b1375194f0ac",
+ "library_fingerprint": "sha256:efa5c5d6c0c8ada00d0191c5795602813a59c1ac53479b0e123180f9d9d14c84",
  "counts": {
   "entries": 1171,
   "public": 1059,
@@ -941,16 +941,16 @@
    "exported": "2026-07-10T17:30:23Z"
   },
   "babylonian-creation-king_king": {
-   "source_hash": "sha256:145087c94f56a3a9b97437ce407b927ecd89e0896f8af3099c412397eff877b8",
+   "source_hash": "sha256:eda94fdd05e6ce01033a01996307b2d4e780d994fbe78d579b429c6598de8602",
    "data_file": "babylonian-creation-king_king.json.gz",
-   "data_hash": "sha256:1f0062204b29ccedc6c6beacd0b6b7f6728ed6d1fd62c72ed432b27c03a3920b",
-   "data_bytes": 40270,
+   "data_hash": "sha256:49c8e599ee28c78876dc616d5087f432d363df7166e32944a38e53ae212ecf9f",
+   "data_bytes": 43142,
    "passages": 820,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T03:50:51Z"
+   "exported": "2026-08-05T08:01:59Z"
   },
   "babylonian-talmud-rodkinson_rodkinson": {
    "source_hash": "sha256:c77cab3b32f552b85bce214702b6605c8cd091d718f6de6c5c5130ae73b8402c",
@@ -1958,16 +1958,16 @@
    "exported": "2026-07-10T17:30:42Z"
   },
   "book-of-enoch_charles": {
-   "source_hash": "sha256:2050fc96c872e0570dc337e293c233bbd9e7531b6374a45edaa4caf3c339c8ae",
+   "source_hash": "sha256:46ca22c427e3cb26dff8af3f6dfc3849f42d034c014c82ead26e4384e2c17dcf",
    "data_file": "book-of-enoch_charles.json.gz",
-   "data_hash": "sha256:8b95bce3a967a0a7e3eb1316610c07544356a7245e8a572a8508ffb622d5073b",
-   "data_bytes": 89073,
+   "data_hash": "sha256:570260548000e53cd78e89fd6195d91f7622a78757bc303d1feb53f3de8a2545",
+   "data_bytes": 91849,
    "passages": 885,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:42Z"
+   "exported": "2026-08-05T08:01:53Z"
   },
   "book-of-filial-duty_chen": {
    "source_hash": "sha256:fd8ffb87d1e0e8a4c350ab2ec060b0bff2a24be523a7c70a9546ad3c07ce7647",
@@ -2733,28 +2733,28 @@
    "exported": "2026-07-10T17:30:45Z"
   },
   "chrysostom-priesthood_stephens": {
-   "source_hash": "sha256:b9d166b88c608fba330b6394ab1346da30242236d4a5b4b2340d3ec67719db0b",
+   "source_hash": "sha256:2e8f21c2f4faf17064009370a6398b64754e0c3251142be91fa8f07b15ee692a",
    "data_file": "chrysostom-priesthood_stephens.json.gz",
-   "data_hash": "sha256:f33434870080f1a30705a4455f41d4245bbb180244d719e10b26d4db5f27d27c",
-   "data_bytes": 96269,
+   "data_hash": "sha256:6ba3f3d93f2492676e73bfa254c6d68fd16c474e8e9520965fe244255c503cdf",
+   "data_bytes": 97374,
    "passages": 314,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:45Z"
+   "exported": "2026-08-05T08:01:33Z"
   },
   "cicero-brutus_jones": {
-   "source_hash": "sha256:701135a29155b7bda61afd929530f95fa9c170b4bd9817ac1c96395179b0b9e9",
+   "source_hash": "sha256:be5997d5c30a11069e806deb428f9c0a033bfbc741170ad7fcb3531199675543",
    "data_file": "cicero-brutus_jones.json.gz",
-   "data_hash": "sha256:7cd7e0ca395fcefc35687279962affeedf3d7a743e409b5061f89a3e7080f182",
-   "data_bytes": 165334,
+   "data_hash": "sha256:0658560fdb17b316409ea196965d883b5aeb0df7e1d86c1bb03449414b3435f8",
+   "data_bytes": 166574,
    "passages": 271,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:45Z"
+   "exported": "2026-08-05T08:00:27Z"
   },
   "cicero-de-amicitia_peabody": {
    "source_hash": "sha256:4d04993385887c71366eaebce04a50ee8e25ecf6f1610ba0aa6842cd50fe7f65",
@@ -3289,16 +3289,16 @@
    "exported": "2026-07-31T21:06:05Z"
   },
   "demonology-witchcraft-scott_scott": {
-   "source_hash": "sha256:deca1d442e1fd6ad8c6b6bb4896f79a08e8d5552ee2681b942ebc1894d05abe3",
+   "source_hash": "sha256:c0567520a20bb79bb45cfa08dd212d300b90debb1fe156f13f15d634bb79d0e9",
    "data_file": "demonology-witchcraft-scott_scott.json.gz",
-   "data_hash": "sha256:52b19909436953082baefdf7d59d6b0e99ea84285faf9271e355035cf7a4a441",
-   "data_bytes": 234283,
+   "data_hash": "sha256:50d38fd8879c81239a5d359e93a5235e676fc9255fb847855109ad21de0c5e0e",
+   "data_bytes": 234515,
    "passages": 54,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:47Z"
+   "exported": "2026-08-05T08:00:23Z"
   },
   "descartes-meditations_molyneux": {
    "source_hash": "sha256:6641bc9f786fa07098c3243f8cfb35215ae736b75430cf9972c5401aadbcda94",
@@ -9046,16 +9046,16 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "paradise-lost_anonymous": {
-   "source_hash": "sha256:656de09c29568c9034d242b01f96a7096b64c005ac7a780e3f4ba37ab64e2f54",
+   "source_hash": "sha256:6c325dc469072a16b2da1b053603d19aa82fdf3c747a320216a23c964f494f09",
    "data_file": "paradise-lost_anonymous.json.gz",
-   "data_hash": "sha256:30758b9c6fce3afd382701dd0cc56fb11569548e77572a217af4a37d338a30a0",
-   "data_bytes": 198849,
+   "data_hash": "sha256:a420d46bb0e16fe15e0b3409caa9ef36537dcb7e784d5d8cebebfde57d1c7871",
+   "data_bytes": 201576,
    "passages": 711,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:05:51Z"
+   "exported": "2026-08-05T08:00:26Z"
   },
   "pater-renaissance_pater": {
    "source_hash": "sha256:9201044c96093cc9d8a4260babf037181d71cbcd9d672dc4563f1e38db14e6ed",
@@ -10505,16 +10505,16 @@
    "exported": "2026-07-10T17:31:19Z"
   },
   "rousseau-confessions_anonymous": {
-   "source_hash": "sha256:c7de08a0960522a5a6f5278710496d8910003e6863ec53837156ef48278fdd1e",
+   "source_hash": "sha256:d9f9001a955ca9fcd3ede5465336d56eb60ed2774a090ddb96d21f2f253f2483",
    "data_file": "rousseau-confessions_anonymous.json.gz",
-   "data_hash": "sha256:7ff1fd4f79266572f2579b4438cd5a592ea104cb57621d9c32a77e7f3f909ec8",
-   "data_bytes": 567420,
+   "data_hash": "sha256:d832fd7b3c1a8fc5833e782b1f5de18570fa2c679e4b1c37ef9ed1d320885bcc",
+   "data_bytes": 573273,
    "passages": 1523,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:19Z"
+   "exported": "2026-08-05T08:00:42Z"
   },
   "rousseau-emile_foxley": {
    "source_hash": "sha256:ddca7c22d7631b4880e93a88826bb431f9d65b04947f341a2fe78d965b069c3b",
