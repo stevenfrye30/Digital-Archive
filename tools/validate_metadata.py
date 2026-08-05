@@ -122,10 +122,16 @@ def validate_text(meta, path):
     elif not isinstance(author, list):
         err(f"author must be array, got {type(author).__name__}")
 
-    # hierarchy: array of 1-4 strings (1 = flat text with no group structure)
+    # hierarchy: array of 1-5 strings (1 = flat text with no group structure).
+    # Raised from 4 to 5 on 2026-08-05 by steward ruling, for milindapanha-kelly
+    # ['book','vagga','pañha','paragraph','segment'] — its modal path depth is 5
+    # and a 4-level declaration left 7,348 of 8,021 rows deeper than declared.
+    # The old bound of 4 was a bare limit with no stated rationale; nothing in the
+    # reader or the build asserts a maximum (the reader's only depth-sensitive
+    # test is `h.length >= 3`, open-ended, and it indexes no further than h[1]).
     hier = meta.get("hierarchy", [])
-    if not isinstance(hier, list) or len(hier) < 1 or len(hier) > 4:
-        err(f"hierarchy must be array of 1-4 strings, got {hier}")
+    if not isinstance(hier, list) or len(hier) < 1 or len(hier) > 5:
+        err(f"hierarchy must be array of 1-5 strings, got {hier}")
 
     # ── Translations ─────────────────────────────────────────────────────
 

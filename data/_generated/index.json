@@ -749,8 +749,9 @@
       "collection": "sacred",
       "hierarchy": [
         "book",
-        "chapter",
-        "section",
+        "vagga",
+        "pañha",
+        "paragraph",
         "segment"
       ],
       "data_file": "milindapanha-kelly_pli.json",
@@ -766,8 +767,8 @@
       "importance_rank": 12,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "review",
-      "reading_status_certified": false
+      "reading_status": "pass",
+      "reading_status_certified": true
     },
     {
       "id": "milindapanha-kelly",
@@ -776,8 +777,9 @@
       "collection": "sacred",
       "hierarchy": [
         "book",
-        "chapter",
-        "section",
+        "vagga",
+        "pañha",
+        "paragraph",
         "segment"
       ],
       "data_file": "milindapanha-kelly_kelly.json",

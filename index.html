@@ -15227,9 +15227,21 @@ function needsGroupSelector() {
 // than book by book, and the chapter sits in its own room with
 // witnesses integrated into the same scroll. Non-Bible texts are
 // untouched.
+// Level-2 names that mean "chapter" for grouping purposes. `vagga` is the
+// Pali word for exactly this unit, and milindapanha-kelly was re-declared
+// ['book','vagga','pañha','paragraph','segment'] on 2026-08-05. Without it
+// here the rename would silently collapse that text's navigation from 134
+// groups (largest 821 rows) to 8 (largest 2,213) — a renaming of levels is
+// not supposed to change how the book is walked. Exactly one record matches
+// book+vagga, so this cannot affect the 34 book+chapter texts.
+const CHAPTER_LEVEL_NAMES = new Set(['chapter', 'vagga']);
+
+function _isChapterScopedHier(h) {
+  return Array.isArray(h) && h[0] === 'book' && CHAPTER_LEVEL_NAMES.has(h[1]);
+}
+
 function _isChapterScopedHierarchy() {
-  const h = currentMeta && currentMeta.hierarchy;
-  return Array.isArray(h) && h[0] === 'book' && h[1] === 'chapter';
+  return _isChapterScopedHier(currentMeta && currentMeta.hierarchy);
 }
 // Compute the first chapter group key for a book code (e.g.
 // 'gen' -> 'gen.1'). Scans data.passages so it works before
@@ -16214,8 +16226,7 @@ function showCover(data, entry) {
   // Task 57 Lane C (ruled): this flag keys on STRUCTURE (book+chapter
   // hierarchy), not Bible identity — Aristotle and Augustine wear the
   // hierarchical grid rightly. Read it as “hierarchicalCover”.
-  const isBibleCover = data.hierarchy && data.hierarchy[0] === 'book'
-                                      && data.hierarchy[1] === 'chapter';
+  const isBibleCover = _isChapterScopedHier(data.hierarchy);
   // Task 58 — the IDENTITY flag, hoisted: Bible-only affordances
   // (canon names, Codex Index, the Versions crumb fallback) gate on
   // this, never on the structural flag above.
@@ -17014,9 +17025,7 @@ function showCover(data, entry) {
   // For Bible-shaped texts the click on a book enters that book's
   // first chapter (e.g. clicking Genesis → Genesis 1 room), not the
   // whole book as one stream.
-  const chapterScoped = (currentMeta && currentMeta.hierarchy &&
-                         currentMeta.hierarchy[0] === 'book' &&
-                         currentMeta.hierarchy[1] === 'chapter');
+  const chapterScoped = _isChapterScopedHier(currentMeta && currentMeta.hierarchy);
   $textHeader.querySelectorAll('.cc-toc-list li').forEach(li => {
     // Task 68 — keyboard doorway: Enter/Space act as the click
     li.addEventListener('keydown', (ev) => {
@@ -17385,8 +17394,7 @@ function showToc(data, entry) {
     : `${passageIndex(data).length.toLocaleString()} passages`;
 
   $tocList.innerHTML = '';
-  const chapterScoped = (data.hierarchy && data.hierarchy[0] === 'book'
-                                        && data.hierarchy[1] === 'chapter');
+  const chapterScoped = _isChapterScopedHier(data.hierarchy);
   if (grouped) {
     keys.forEach((k, i) => {
       const li = document.createElement('li');
@@ -23646,8 +23654,7 @@ async function loadText(entry, listItem) {
     else           url.searchParams.delete('w');
     history.replaceState(null, '', url);
 
-    const chapterScoped = data.hierarchy && data.hierarchy[0] === 'book'
-                                         && data.hierarchy[1] === 'chapter';
+    const chapterScoped = _isChapterScopedHier(data.hierarchy);
     if (pendingPid) {
       const target = passageById(pendingPid);
       if (target) {
@@ -29075,9 +29082,7 @@ function _openAtlasIndex(data, entry) {
       const pid = btn.dataset.pid || '';
       if (!pid) return;
       document.body.classList.remove('atlas-index-active');
-      const chapterScoped = data.hierarchy &&
-                            data.hierarchy[0] === 'book' &&
-                            data.hierarchy[1] === 'chapter';
+      const chapterScoped = _isChapterScopedHier(data.hierarchy);
       const parts = pid.split('.');
       if (chapterScoped && parts.length >= 2) {
         currentBook = `${parts[0]}.${parts[1]}`;
