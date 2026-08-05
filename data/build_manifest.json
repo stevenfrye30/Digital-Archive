@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-05T04:40:58Z",
+ "generated": "2026-08-05T05:07:42Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "f860b5d2792359241c59a50efab1fa75a4deef75",
- "library_fingerprint": "sha256:c5ead0b49de5fdf616cfa076a20f52efc1a4ce42199f72f768397450fd3e4f42",
+ "exporter_rev": "7f5a07ae91655c1e679858c88347a4360163a3ff",
+ "library_fingerprint": "sha256:321a44fc59a7904121fba91a141352b99503814996946b039ee266a3f945e20d",
  "counts": {
   "entries": 1171,
   "public": 1059,
@@ -6862,28 +6862,28 @@
    "exported": "2026-07-30T03:16:37Z"
   },
   "lang-fairy-brown_lang": {
-   "source_hash": "sha256:c34804a9e6e3709b37ef9ee3c8c3c1a9db8711aee654eefd3d0cdc3792a8244b",
+   "source_hash": "sha256:cf020b7c4dbd05eaef4de548914bf2e7dc3ebb9a28f3a2db3a51e8475c0e1342",
    "data_file": "lang-fairy-brown_lang.json.gz",
-   "data_hash": "sha256:b2d2ac12f4967a9aae4e2f5c9372a0005160cf28f6bf4268895373b975392932",
-   "data_bytes": 203632,
+   "data_hash": "sha256:426ebb5ea1458ebc36d883b7af72170246570685d0dcaa62ab4655dec94fb01e",
+   "data_bytes": 202623,
    "passages": 1742,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
+   "exported": "2026-08-05T05:05:45Z"
   },
   "lang-fairy-crimson_lang": {
-   "source_hash": "sha256:70fae3aeb6f1bbb441c6ad6a5d6b1b0006eae932a4f9e4ed16d96a467009ad23",
+   "source_hash": "sha256:728a1a480b0e50c712982df2c40e9fbcd7dc704ee2d85cab95597e02d9358a77",
    "data_file": "lang-fairy-crimson_lang.json.gz",
-   "data_hash": "sha256:0a4094f6b729ed662b99830ca1baa5bab87c7e222f5dbaf0361d035907632d7f",
-   "data_bytes": 199318,
+   "data_hash": "sha256:2b0e992aa3275fecef14043e1d1532bdd6402154c347838424010e493e3d43a2",
+   "data_bytes": 198283,
    "passages": 1772,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
+   "exported": "2026-08-05T05:05:45Z"
   },
   "lang-fairy-green_lang": {
    "source_hash": "sha256:1c80c7a65bc0016f6a4de8e2151b80d945b5611da14689dd2078980481dda3e5",
@@ -6898,28 +6898,28 @@
    "exported": "2026-07-30T03:16:38Z"
   },
   "lang-fairy-grey_lang": {
-   "source_hash": "sha256:a5685ccafb30092345cb14e6b3dd4123456896669ca27cf26768bd3f98f24646",
+   "source_hash": "sha256:61672224d4e7f8f82270c9e81aafef21710eac8a3b26f5c9be860112c0654f9c",
    "data_file": "lang-fairy-grey_lang.json.gz",
-   "data_hash": "sha256:7eaa5102c39d03a0180e9fa06e1981ab83a8957788fc7fbd4e8d4361448add3e",
-   "data_bytes": 206361,
+   "data_hash": "sha256:a95b69bcf2f46f07bc54a4a59efc035289f3f13a18e588618909d4c1dcf45a6a",
+   "data_bytes": 205066,
    "passages": 2240,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
+   "exported": "2026-08-05T05:05:45Z"
   },
   "lang-fairy-lilac_lang": {
-   "source_hash": "sha256:8d25ceec32310b908f17380a0285c8447bbb1b3c799e86b60f1530475695d797",
+   "source_hash": "sha256:21a0864356c1456486af7fffec43d3eda39c7236c6232f016eeb12c22e3e3d09",
    "data_file": "lang-fairy-lilac_lang.json.gz",
-   "data_hash": "sha256:bf238c8e3c60530ac9390a040c6554a264478a004053330ec0c2a1746b164585",
-   "data_bytes": 211184,
+   "data_hash": "sha256:8cbb3b99009490c679237b6abf02bff29ff110fa59d024875b77cecf61eeb28e",
+   "data_bytes": 210070,
    "passages": 2136,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
+   "exported": "2026-08-05T05:05:45Z"
   },
   "lang-fairy-olive_lang": {
    "source_hash": "sha256:e030bd5aa4bbd7851b7c684408756bb277e1e10748dc9a40d79eaf9fbee98ab0",
@@ -6934,28 +6934,28 @@
    "exported": "2026-07-10T17:31:01Z"
   },
   "lang-fairy-orange_lang": {
-   "source_hash": "sha256:a5fd0cac242bc09566f48adb858d2898f6dc37ac67bf7f9cfce4bc9fbd4077ab",
+   "source_hash": "sha256:9f3023d825f222760533794e6a3fc99990a8f6fb23c9e3d02cf0906aa4786fd5",
    "data_file": "lang-fairy-orange_lang.json.gz",
-   "data_hash": "sha256:93daaf539b3fbc93b6067517dad939bdb5f82df0d5ff347cd466c38c13023f89",
-   "data_bytes": 209794,
+   "data_hash": "sha256:6a2eb7860c866d48ac436e47ad5e8e89ec98f0e67c2ac700fa0db0dc50947c42",
+   "data_bytes": 208526,
    "passages": 2138,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
+   "exported": "2026-08-05T05:05:45Z"
   },
   "lang-fairy-pink_lang": {
-   "source_hash": "sha256:0f7ff5d6cf6829561fd366918536d2b72552f96667b14b676e9f0e294c63d512",
+   "source_hash": "sha256:06b5b4a6a4e5614a96e785717277ea8a4136cc8704477f14a24d97e7d7e8ccba",
    "data_file": "lang-fairy-pink_lang.json.gz",
-   "data_hash": "sha256:cd8817a4b6dfc82a3015e1c59f7e85d9019ba1ff61ca390a71795347667a4a7f",
-   "data_bytes": 201633,
+   "data_hash": "sha256:7ec18da93979af88ff0f089da8e1cc0d1e8f0499f9342f597dcf7f3caadae659",
+   "data_bytes": 200256,
    "passages": 2162,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
+   "exported": "2026-08-05T05:05:45Z"
   },
   "lang-fairy-red_lang": {
    "source_hash": "sha256:9b541f75292aea44cf27e698c883508c4f8022b1eb78ebafeac0379d7f1dd4fa",
@@ -8715,16 +8715,16 @@
    "exported": "2026-07-10T17:31:11Z"
   },
   "odyssey-pope_pope": {
-   "source_hash": "sha256:b6fb7492baf9b393c8cdc62c1ca1226d4e4a01f11efacf92917783944e1ad3cc",
+   "source_hash": "sha256:5363d847b04b9078353b6b211fe7241cace2f184b3f5791d82faaac914a3e5fc",
    "data_file": "odyssey-pope_pope.json.gz",
-   "data_hash": "sha256:4d98c46cb2fc15eb8da300ff7b174c4d2d4473ed18087463f3de3384bf4d3162",
-   "data_bytes": 298394,
+   "data_hash": "sha256:64a055e49866c6be0debaef76f6778e26609619201ef918bd5ccc517b45f87ef",
+   "data_bytes": 297758,
    "passages": 1171,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:11Z"
+   "exported": "2026-08-05T05:06:26Z"
   },
   "odyssey_butler": {
    "source_hash": "sha256:629b9e7f9d4a4a7047b1471b4cfb2dcfacbf8666676b1ce511a2d28a873d2c82",
