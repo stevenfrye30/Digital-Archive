@@ -286,10 +286,33 @@ def main():
     if reach:
         fail("Reachability check (6) failed:\n  " + "\n  ".join(reach[:10]))
 
+    # 7. private/public lane separation (Task 156). The fail-closed separation
+    #    guard lives in the parent tree, and until now its ONLY caller was
+    #    05_scripts/check_restricted_invariants.py — which had been dying on a
+    #    moved index path since July, so the check had not run on a push in
+    #    months and nothing said so. A guard nobody calls is not a guard.
+    #    It belongs here, on the path every push actually takes.
+    sep_state = "SKIPPED (no parent tree)"
+    sep_script = REPO.parent / "05_scripts" / "check_public_private_separation.py"
+    if sep_script.exists():
+        sep = subprocess.run([sys.executable, str(sep_script)],
+                             capture_output=True, text=True)
+        if sep.returncode != 0:
+            tail = (sep.stdout or sep.stderr or "").strip().splitlines()
+            fail("Private/public separation (7) FAILED — a local-only record or "
+                 "body would ship:\n  " + "\n  ".join(tail[-6:]))
+        sep_state = (sep.stdout or "").strip().splitlines()[-1] if sep.stdout else "OK"
+    elif (REPO.parent / "_private_library").exists():
+        # The private lane exists but its guard does not: refuse rather than
+        # report a separation nobody verified.
+        fail("Private/public separation (7) could not run: _private_library/ "
+             "is present but 05_scripts/check_public_private_separation.py is "
+             "missing. Refusing to push an unverified boundary.")
+
     print(f"pre-push guard v2: OK — {actual['entries']} = {actual['public']} "
           f"public + {actual['restricted']} restricted; reasons complete; "
           f"boundary clean; {hashed} artifact hashes verified; "
-          f"reachability OK ({elapsed}).")
+          f"reachability OK; separation: {sep_state} ({elapsed}).")
 
 
 if __name__ == "__main__":
