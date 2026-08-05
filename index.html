@@ -4887,9 +4887,15 @@ details.display-options > summary {
    sentence reads as written. A passage that is nothing but a page mark is a
    page boundary and renders as a rule. Stored text is untouched in both
    cases — this is display only. */
+/* Colour is INHERITED, never named. The reader ships five themes — Parchment,
+   Cream, Sepia, Slate night, Ink night — and a literal hex that suits the light
+   three is unreadable on the dark two. Dimming the theme's own ink instead keeps
+   these faint wherever they land. 0.8 is the floor that clears WCAG 4.5 in all
+   five (worst case Sepia, 4.97); the shipped #8a8377 managed 2.28–4.62. */
 .passage .page-ref {
   font-variant-numeric: oldstyle-nums;
-  color: #8a8377;
+  color: inherit;
+  opacity: 0.8;
   cursor: help;
 }
 .passage.page-mark {
@@ -4912,10 +4918,14 @@ details.display-options > summary {
    text, not scrape debris: `<b>` wraps the root text a commentary quotes
    before glossing it — `<b>Kathamdassi</b>ti kidisena...` is "the word
    Kathamdassi means...". Rendered as the offset the source intends, so the
-   boundary between quotation and gloss survives on screen. */
+   boundary between quotation and gloss survives on screen. Also carries the
+   balanced `<b>` pairs in genealogy-of-morals, which are Nietzsche's emphasis.
+   Weight only, no colour: `<b>` means stylistically offset, not recoloured, and
+   inheriting the theme's ink is the only way that holds across all five. The
+   shipped #3a352c scored 1.22 on Slate night and 1.43 on Ink night — dark ink on
+   a dark ground, i.e. Nietzsche's emphasis was invisible in half the themes. */
 .passage .lemma {
   font-weight: 600;
-  color: #3a352c;
 }
 .passage.footnote-body {
   font-size: 0.82em;
