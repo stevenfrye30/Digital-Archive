@@ -4882,6 +4882,32 @@ details.display-options > summary {
   background: var(--tint, #f5f2ed);
   text-decoration: underline;
 }
+/* Page marks from the sacred-texts scrape. Inline `<page 260>` is the
+   author's own cross-reference; it renders as the locator, faintly, so the
+   sentence reads as written. A passage that is nothing but a page mark is a
+   page boundary and renders as a rule. Stored text is untouched in both
+   cases — this is display only. */
+.passage .page-ref {
+  font-variant-numeric: oldstyle-nums;
+  color: #8a8377;
+  cursor: help;
+}
+.passage.page-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  margin: 1.4em 0;
+  opacity: 0.55;
+}
+.passage.page-mark .ref { display: none; }
+.passage.page-mark::before,
+.passage.page-mark::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid currentColor;
+  opacity: 0.35;
+}
+.passage.page-mark::after { order: 3; }
 .passage.footnote-body {
   font-size: 0.82em;
   color: #777;
@@ -14536,9 +14562,45 @@ window.addEventListener('popstate', () => {
   _gotoPassage(pid, false);
 });
 
+// ── Page marks from the sacred-texts scrape ──────────────────────────────────
+// 177 texts carry `<page 260>` tokens — 54,548 of them — and they are TWO
+// different things wearing one syntax:
+//
+//   standalone   a passage whose entire text is `<page 5>` — a page boundary
+//                in the printed source (7,203 rows)
+//   inline       the author's own cross-reference, where the scrape turned
+//                `<a href="page260.htm">260</a>` into a pseudo-tag:
+//                "The two figures on page <page 260> represent vases…"
+//                "(See pp. <page 251>, <page 260>, <page 261>…)"   (21,731)
+//
+// The reader inserts body text with textContent, so both render as literal
+// angle brackets on screen. Stripping them in the data would be a text edit —
+// forbidden by the Task 29 rule the whole corpus is held to — so this is a
+// DISPLAY fix: the stored text is untouched, and copy/search still see the
+// original. Inline marks render as the locator they always were; standalone
+// marks render as a page rule instead of a stray line of markup.
+const PAGE_MARK_RE = /<page\s*([^>]*)>/i;
+const PAGE_SPLIT_RE = /(\[\*?\d+\]|<page\s*[^>]*>)/i;
+
+function _pageLocator(part) {
+  const m = part.match(/^<page\s*([^>]*)>$/i);
+  return m ? m[1].trim() : null;
+}
+
+function _appendPageRef(targetNode, loc) {
+  const s = document.createElement('span');
+  s.className = 'page-ref';
+  s.textContent = loc;
+  s.title = 'Page ' + loc + ' in the printed source';
+  targetNode.appendChild(s);
+}
+
 function _renderInlineText(targetNode, rawText, ownerDiv, p) {
-  const parts = rawText.split(/(\[\*?\d+\])/);
+  const parts = rawText.split(PAGE_SPLIT_RE);
   for (const part of parts) {
+    if (part === undefined) continue;
+    const pgLoc = _pageLocator(part);
+    if (pgLoc !== null) { _appendPageRef(targetNode, pgLoc); continue; }
     const fnMatch = part.match(/^\[(\d+)\]$/);
     const apMatch = part.match(/^\[\*(\d+)\]$/);
     if (fnMatch) {
@@ -14677,6 +14739,15 @@ function _renderBatch(passages, query, frag) {
       }
     }
 
+    // A passage whose whole text is a page mark is a page boundary from the
+    // printed source, not a line of prose. Render it as a rule carrying the
+    // locator rather than as a stray `<page 5>`.
+    const pageOnly = flatText.trim().match(/^<page\s*([^>]*)>$/i);
+    if (pageOnly) {
+      div.classList.add('page-mark');
+      div.dataset.page = pageOnly[1].trim();
+    }
+
     // Detect footnote-body passages: text starting "[N] ..."
     const fnBodyMatch = flatText.match(/^\[(\d+)\]\s+(.+)$/s);
     if (fnBodyMatch) {
@@ -14689,8 +14760,11 @@ function _renderBatch(passages, query, frag) {
     // [*N] -> apparatus-ref (Müller's footnote bodies stored in currentData.apparatus,
     //                        rendered inline below the passage on click)
     function renderTextWithFnRefs(targetNode, rawText) {
-      const parts = rawText.split(/(\[\*?\d+\])/);
+      const parts = rawText.split(PAGE_SPLIT_RE);
       for (const part of parts) {
+        if (part === undefined) continue;
+        const pgLoc = _pageLocator(part);
+        if (pgLoc !== null) { _appendPageRef(targetNode, pgLoc); continue; }
         const fnMatch = part.match(/^\[(\d+)\]$/);
         const apMatch = part.match(/^\[\*(\d+)\]$/);
         if (fnMatch && !fnBodyMatch) {
