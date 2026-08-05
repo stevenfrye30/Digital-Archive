@@ -23516,8 +23516,35 @@ async function loadText(entry, listItem) {
         // opened a room that could never contain them and the deep link
         // died in jumpToPassage ("valid, but not in this section").
         // '__fm__' is the existing pseudo-book that renders exactly these.
+        // `fm` alone does not mean "front matter" any more. Since the Gap-5
+        // cleanup it also marks STRUCTURAL HEADINGS (`role: "heading"`), which
+        // belong to a real unit even though `fm` keeps them out of the body
+        // view — and after the collapsed-chapter repair every chapter opens
+        // with one, so `?p=<chapter>.1`, the most natural link anyone can
+        // build, was the case that broke. Routing all of them to '__fm__'
+        // rendered the text's heading rows instead of the chapter: 38 rows for
+        // vindication-rights-woman, 50 for odyssey-pope, 169 for don-quixote —
+        // each exactly that text's fm count.
+        //
+        // So ask the question that actually distinguishes the two: does the
+        // target's own unit contain anything readable? If it does, the target
+        // is a heading — open its unit and land on its first body row. Only a
+        // passage whose unit has NO readable row is true front matter, and
+        // that still goes to the pseudo-book built for it.
+        const groupKey = p => (chapterScoped && p.path.length > 1)
+          ? `${p.path[0]}.${p.path[1]}`
+          : String(p.path[0]);
+        let landPid = pendingPid;
         if (target.fm) {
-          currentBook = '__fm__';
+          const tKey = (target.path && target.path.length) ? groupKey(target) : null;
+          const firstBody = tKey && allPassages.find(
+            p => !p.fm && p.path && p.path.length && groupKey(p) === tKey);
+          if (firstBody) {
+            currentBook = tKey;
+            landPid = firstBody.id;
+          } else {
+            currentBook = '__fm__';
+          }
         } else if (target.path && target.path.length) {
           currentBook = chapterScoped
             ? `${target.path[0]}.${target.path[1]}`
@@ -23528,7 +23555,7 @@ async function loadText(entry, listItem) {
         // Capture the id: the deferred jump runs next frame, after the line
         // below nulls pendingPid, so the closure must not read the global (it
         // would call jumpToPassage(null) — the no-op that lost every deep link).
-        const _jumpPid = pendingPid;
+        const _jumpPid = landPid;
         pendingPid = null;
         // 'start': every pendingPid landing is a position restore or a
         // route to a unit head — both want the pid AT the top, where
