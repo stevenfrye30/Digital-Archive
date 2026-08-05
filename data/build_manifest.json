@@ -1,8 +1,8 @@
 {
- "generated": "2026-07-31T21:33:22Z",
+ "generated": "2026-08-05T02:23:13Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "80d29aae0b64459d0854e66731f4098e2c9c94d5",
- "library_fingerprint": "sha256:f81ac816ab5e6cbc024317f35f4daf84a9d6bfab9351be823ce57d92274d2b37",
+ "exporter_rev": "e07b96b0a2d0385a2663480b838b720aa28c53b0",
+ "library_fingerprint": "sha256:b8f524dd6da452523e14fde572013b2f8bae0bfba9421811b732624cc4cad1e8",
  "counts": {
   "entries": 1171,
   "public": 1059,
@@ -447,7 +447,7 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:21Z",
+   "exported": "2026-08-03T02:52:42Z",
    "parts": [
     {
      "data_file": "aquinas-summa-theologica_english-dominicans.rest.json.gz",
@@ -962,7 +962,7 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:24Z",
+   "exported": "2026-08-03T02:52:43Z",
    "parts": [
     {
      "data_file": "babylonian-talmud-rodkinson_rodkinson.rest.json.gz",
@@ -4643,7 +4643,7 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:05:55Z",
+   "exported": "2026-08-03T02:52:44Z",
    "parts": [
     {
      "data_file": "gibbon-decline-fall_gibbon.rest.json.gz",
@@ -5933,15 +5933,15 @@
    "restricted": true,
    "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:30:57Z",
-   "source_note": "no canonical dir (restricted local body)",
+   "exported": "2026-08-03T02:52:45Z",
    "parts": [
     {
      "data_file": "internet-book-shadows_various.rest.json.gz",
      "data_hash": "sha256:44d239246ff3f56b946916c34dbd1265a21c5312be0cbbfe18223ed68685508e",
      "data_bytes": 2624335
     }
-   ]
+   ],
+   "source_note": "no canonical dir (restricted local body)"
   },
   "invasion-india-alexander_mccrindle": {
    "source_hash": "sha256:f5df987c4191618938f1adb8980e0da583f321ec463adab6f4f5ecd88be3bad5",
@@ -7535,7 +7535,7 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:06Z",
+   "exported": "2026-08-03T02:52:46Z",
    "parts": [
     {
      "data_file": "mahabharata_ganguli.rest.json.gz",
@@ -10191,16 +10191,16 @@
    "exported": "2026-07-10T17:31:17Z"
   },
   "ramayana-griffith_griffith": {
-   "source_hash": "sha256:7cc40ab50da4ec88be9d24b412d0ca963d44468262d2df8b5f29676e13ff3f32",
+   "source_hash": "sha256:c6f68c1f29e74db54b766bd16565a34cc796bd536cd8d0b88573b15e56084367",
    "data_file": "ramayana-griffith_griffith.json.gz",
-   "data_hash": "sha256:6c276e06236d38ad563ae9c9aa48bc7bec3306806f80e16e49a5d19c2b35e251",
-   "data_bytes": 946222,
+   "data_hash": "sha256:c5058ce309d071bf467faccbb5984aee576a28509eb4e08dc07760bf4a8644d8",
+   "data_bytes": 951002,
    "passages": 4748,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:17Z"
+   "exported": "2026-08-05T02:22:02Z"
   },
   "rank-myth-hero-birth_robbins-jelliffe": {
    "source_hash": "sha256:9287c119fb522880f641fc38054384afd121ac71c13a8f80e186324c5ecfa115",
@@ -11371,7 +11371,7 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:06:05Z",
+   "exported": "2026-08-03T02:52:47Z",
    "parts": [
     {
      "data_file": "shakespeare-complete_shakespeare.rest.json.gz",
