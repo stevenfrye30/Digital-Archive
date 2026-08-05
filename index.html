@@ -4908,6 +4908,15 @@ details.display-options > summary {
   opacity: 0.35;
 }
 .passage.page-mark::after { order: 3; }
+/* Lemma marks in the SuttaCentral Pali records. These are bilara-data's own
+   text, not scrape debris: `<b>` wraps the root text a commentary quotes
+   before glossing it — `<b>Kathamdassi</b>ti kidisena...` is "the word
+   Kathamdassi means...". Rendered as the offset the source intends, so the
+   boundary between quotation and gloss survives on screen. */
+.passage .lemma {
+  font-weight: 600;
+  color: #3a352c;
+}
 .passage.footnote-body {
   font-size: 0.82em;
   color: #777;
@@ -14580,7 +14589,29 @@ window.addEventListener('popstate', () => {
 // original. Inline marks render as the locator they always were; standalone
 // marks render as a page rule instead of a stray line of markup.
 const PAGE_MARK_RE = /<page\s*([^>]*)>/i;
-const PAGE_SPLIT_RE = /(\[\*?\d+\]|<page\s*[^>]*>)/i;
+// One split for every inline token the body stream can carry: footnote refs,
+// apparatus refs, page marks, and lemma tags. `<page` cannot match the lemma
+// alternative (p is not b), so ordering between them is not load-bearing.
+const INLINE_SPLIT_RE = /(\[\*?\d+\]|<page\s*[^>]*>|<\/?b\b[^>]*>)/i;
+
+// `<b>` in the eleven SuttaCentral Pali records is bilara-data's own text, not
+// a scrape artefact. It marks the LEMMA — the root text a commentary quotes and
+// then glosses. 17,738 tags, matching bilara's root layer tag for tag, so
+// removing them from the data would delete the boundary between quotation and
+// gloss in works that are nothing but quotation and gloss. See
+// plans/survey_b-markup-suttacentral_2026-08-05.md. Display fix, as above.
+const LEMMA_TOKEN_RE = /^<\/?b\b[^>]*>$/i;
+const LEMMA_OPEN_RE = /^<b\b[^>]*>$/i;
+
+// Style only when a passage's tags actually pair up. Two Project Gutenberg
+// records carry unclosed openers glued to a verse number — "45<b>. There is
+// another wonder" — which IS scrape debris; bolding the rest of the passage
+// would be worse than dropping the tag, so unbalanced passages just lose them.
+function _lemmaBalanced(rawText) {
+  const open = (rawText.match(/<b\b[^>]*>/gi) || []).length;
+  if (!open) return false;
+  return open === (rawText.match(/<\/b\s*>/gi) || []).length;
+}
 
 function _pageLocator(part) {
   const m = part.match(/^<page\s*([^>]*)>$/i);
@@ -14596,11 +14627,25 @@ function _appendPageRef(targetNode, loc) {
 }
 
 function _renderInlineText(targetNode, rawText, ownerDiv, p) {
-  const parts = rawText.split(PAGE_SPLIT_RE);
+  const parts = rawText.split(INLINE_SPLIT_RE);
+  const lemmaOk = _lemmaBalanced(rawText);
+  let sink = targetNode;
   for (const part of parts) {
     if (part === undefined) continue;
+    if (LEMMA_TOKEN_RE.test(part)) {
+      if (!lemmaOk) continue;
+      if (LEMMA_OPEN_RE.test(part)) {
+        const b = document.createElement('b');
+        b.className = 'lemma';
+        targetNode.appendChild(b);
+        sink = b;
+      } else {
+        sink = targetNode;
+      }
+      continue;
+    }
     const pgLoc = _pageLocator(part);
-    if (pgLoc !== null) { _appendPageRef(targetNode, pgLoc); continue; }
+    if (pgLoc !== null) { _appendPageRef(sink, pgLoc); continue; }
     const fnMatch = part.match(/^\[(\d+)\]$/);
     const apMatch = part.match(/^\[\*(\d+)\]$/);
     if (fnMatch) {
@@ -14618,7 +14663,7 @@ function _renderInlineText(targetNode, rawText, ownerDiv, p) {
       a.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') _fire(e);
       });
-      targetNode.appendChild(a);
+      sink.appendChild(a);
     } else if (apMatch) {
       const a = document.createElement('a');
       a.className = 'apparatus-ref'; a.href = '#'; a.textContent = part;
@@ -14627,9 +14672,9 @@ function _renderInlineText(targetNode, rawText, ownerDiv, p) {
         e.preventDefault();
         toggleApparatusBody(ownerDiv, p.id, parseInt(apMatch[1], 10));
       });
-      targetNode.appendChild(a);
+      sink.appendChild(a);
     } else {
-      targetNode.appendChild(document.createTextNode(part));
+      sink.appendChild(document.createTextNode(part));
     }
   }
 }
@@ -14760,11 +14805,25 @@ function _renderBatch(passages, query, frag) {
     // [*N] -> apparatus-ref (Müller's footnote bodies stored in currentData.apparatus,
     //                        rendered inline below the passage on click)
     function renderTextWithFnRefs(targetNode, rawText) {
-      const parts = rawText.split(PAGE_SPLIT_RE);
+      const parts = rawText.split(INLINE_SPLIT_RE);
+      const lemmaOk = _lemmaBalanced(rawText);
+      let sink = targetNode;
       for (const part of parts) {
         if (part === undefined) continue;
+        if (LEMMA_TOKEN_RE.test(part)) {
+          if (!lemmaOk) continue;
+          if (LEMMA_OPEN_RE.test(part)) {
+            const b = document.createElement('b');
+            b.className = 'lemma';
+            targetNode.appendChild(b);
+            sink = b;
+          } else {
+            sink = targetNode;
+          }
+          continue;
+        }
         const pgLoc = _pageLocator(part);
-        if (pgLoc !== null) { _appendPageRef(targetNode, pgLoc); continue; }
+        if (pgLoc !== null) { _appendPageRef(sink, pgLoc); continue; }
         const fnMatch = part.match(/^\[(\d+)\]$/);
         const apMatch = part.match(/^\[\*(\d+)\]$/);
         if (fnMatch && !fnBodyMatch) {
@@ -14784,7 +14843,7 @@ function _renderBatch(passages, query, frag) {
           a.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') _fire2(e);
           });
-          targetNode.appendChild(a);
+          sink.appendChild(a);
         } else if (apMatch) {
           const a = document.createElement('a');
           a.className = 'apparatus-ref';
@@ -14795,9 +14854,9 @@ function _renderBatch(passages, query, frag) {
             e.preventDefault();
             toggleApparatusBody(div, p.id, parseInt(apMatch[1], 10));
           });
-          targetNode.appendChild(a);
+          sink.appendChild(a);
         } else {
-          targetNode.appendChild(document.createTextNode(part));
+          sink.appendChild(document.createTextNode(part));
         }
       }
     }
