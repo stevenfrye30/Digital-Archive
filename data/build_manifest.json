@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-05T22:28:47Z",
+ "generated": "2026-08-05T22:37:35Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "2cd5dd12f217996a63606b95d1b2cda5c2ba228e",
- "library_fingerprint": "sha256:67d30b7050dd293ceeeb10cbda4208ee09f99aa0e8955af4ec8572f1fec4bc76",
+ "exporter_rev": "6ae4bd7bc4c32011b48dc3db8abf3fa12e0fc18a",
+ "library_fingerprint": "sha256:44c80951f1000d9aa072489ad228088aef1b91c4c4a30d6c4c08ed152e7ff33b",
  "counts": {
   "entries": 1171,
   "public": 1059,
@@ -2841,16 +2841,16 @@
    "exported": "2026-07-10T17:30:45Z"
   },
   "cicero-tusculan_yonge": {
-   "source_hash": "sha256:f9d2d820330c83fb2954e682f0827aa1e787c2ad73a55b08efa22b548dc781b4",
+   "source_hash": "sha256:9589088c21375c8fd1821a81f0365a73a793e4dede30638b45b0abe557c6f543",
    "data_file": "cicero-tusculan_yonge.json.gz",
-   "data_hash": "sha256:657f16931c865f21a505ef9515dc4b6c8384a1694c1fa23412a89a774447e7ac",
-   "data_bytes": 117810,
+   "data_hash": "sha256:8281cb1cfcbebd8728beae2e28cb93285eed5d0cec3b8bed7eef9aa7ceceb278",
+   "data_bytes": 117806,
    "passages": 880,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:45Z"
+   "exported": "2026-08-05T22:34:18Z"
   },
   "civilization-china-giles_giles-civ": {
    "source_hash": "sha256:9e25ed42fe4ed2f58a1df830bbbd1c76e721b36aa6396dd2362e5e63f963e077",
@@ -5344,16 +5344,16 @@
    "exported": "2026-07-31T03:50:26Z"
   },
   "hesiod-works_evelyn-white": {
-   "source_hash": "sha256:6070e9aab17e19294ccd072517b2ef9de110cb7bd586f3d9dec1613e3f811c64",
+   "source_hash": "sha256:4ae27fc0ed8eb86a78f49697a0376a25d42219d12fbcd4d5c10f3f7c483bf860",
    "data_file": "hesiod-works_evelyn-white.json.gz",
-   "data_hash": "sha256:feccfe809d2eab674ad3966337c632ad04b70dffbcd12494406bf7c8e6b5e70d",
-   "data_bytes": 212455,
+   "data_hash": "sha256:3212c2f16b07c67fc76288855644b63ea0622dc37c1871df9901a49005ec1296",
+   "data_bytes": 212446,
    "passages": 1564,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:55Z"
+   "exported": "2026-08-05T22:34:16Z"
   },
   "hesiodi-carmina-latin-hesiod_anonymous": {
    "source_hash": "sha256:08a75e2e5112a8d30e8267dbdb100816c9dacc0f187e3732c419e09153e7bb0e",
@@ -5980,16 +5980,16 @@
    "exported": "2026-07-10T17:30:57Z"
   },
   "isis-unveiled-vol1-blavatsky_blavatsky": {
-   "source_hash": "sha256:44b94468d6a7bffbafc23f6cc0802f9f9c65937df68c50364d10bd35437c6bb6",
+   "source_hash": "sha256:dd07ebbd89dfb56e4437eac097bc96992e17135373185e382f19b2d613ce1957",
    "data_file": "isis-unveiled-vol1-blavatsky_blavatsky.json.gz",
-   "data_hash": "sha256:503441b4fbef7830cdea258b1c9299a485fd5d5d29418744aab00570539dc6c1",
-   "data_bytes": 889038,
+   "data_hash": "sha256:7d976a503207c405cc0499c5701b4175fae4883675e373a82215c0861e602c91",
+   "data_bytes": 887973,
    "passages": 5788,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:58Z"
+   "exported": "2026-08-05T22:36:04Z"
   },
   "isis-unveiled-vol2-blavatsky_blavatsky": {
    "source_hash": "sha256:dda698b4a1a039fdad831c7973f4ee3b03e22d5b27f29e3193e0f25643b029ac",
@@ -6678,16 +6678,16 @@
    "exported": "2026-07-23T17:08:32Z"
   },
   "key-to-theosophy-blavatsky_blavatsky": {
-   "source_hash": "sha256:3541c88d91f41ec074c5acfe2249a3d04d37c20c0f9db1035f7439d2ba0942ae",
+   "source_hash": "sha256:77ac17ce8fb8509a33d4380a1b4150c74dd51da1c9caf9e0ded7846f0d3e56f8",
    "data_file": "key-to-theosophy-blavatsky_blavatsky.json.gz",
-   "data_hash": "sha256:441d6a5147338d11661f9998cda386b1ccab911956f20f63b1f0f0e1f8d1e84e",
-   "data_bytes": 208997,
+   "data_hash": "sha256:e2cb11cb45f2c35cfa82defa561ede0d62c67af4efb60bb4f9808379ea6bdc2c",
+   "data_bytes": 209111,
    "passages": 1321,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
+   "exported": "2026-08-05T22:36:04Z"
   },
   "khuddakapatha-sujato_pli": {
    "source_hash": "sha256:1fd4d2105d9f89ed2b20151c6c7d98c7e4f2d0e508a77af5dc008cfe0e6a40a8",
@@ -8090,28 +8090,28 @@
    "exported": "2026-07-10T17:31:08Z"
   },
   "montaigne-travels-vol1_waters": {
-   "source_hash": "sha256:2fe577c0c5d77d367849740fd4c930106226fc633b6726fabb5c3ae3f5e06166",
+   "source_hash": "sha256:62127784fdf0b22eea042bd495964e2512159fadd2acbc91dc536ead63e53769",
    "data_file": "montaigne-travels-vol1_waters.json.gz",
-   "data_hash": "sha256:5b3fc3c445de3c54e0a4e5e4ff597b1cdf0eee3e6208ab42e09d7a2ec856bb67",
-   "data_bytes": 80925,
+   "data_hash": "sha256:c1bf2c3d51eacf37fa18c36b59595ff1c982da324c4741fbdf160cf23d51b48d",
+   "data_bytes": 80920,
    "passages": 294,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:08Z"
+   "exported": "2026-08-05T22:34:46Z"
   },
   "montaigne-travels-vol2_waters": {
-   "source_hash": "sha256:62fa466525b8b7e3207185349b342a184fb8c20521341cc9e2423f9dcf3fe4e8",
+   "source_hash": "sha256:17f33799ac110ef5e6f68033e603d9461037dfee9e7f39ef1b29d1c6726daba1",
    "data_file": "montaigne-travels-vol2_waters.json.gz",
-   "data_hash": "sha256:d086a4ada22656a384b3542440be80dfc0d5b657236f2531b5d1cd9d8ad7b6a1",
-   "data_bytes": 90785,
+   "data_hash": "sha256:6a8150584b0be71e00275a095cf0c7dbe95110160382f554f3df434661dee3a0",
+   "data_bytes": 90788,
    "passages": 343,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:30:50Z"
+   "exported": "2026-08-05T22:34:46Z"
   },
   "montaigne-travels-vol3_waters": {
    "source_hash": "sha256:2af17e3f4ab482506785908ae669190e056e959f6918fbdba7f66627cee006ac",
@@ -8509,16 +8509,16 @@
    "source_note": "no canonical dir (derived provider record)"
   },
   "nicholson-literary-arabs_nicholson": {
-   "source_hash": "sha256:aaa96f7d943e00fd9950273e8d7089bd532acb17841c50e6ef329f6ba0836c74",
+   "source_hash": "sha256:3a964910d2c400cf326e02e8b582fe0f1199dbe46de35773681c2a6fad414f6b",
    "data_file": "nicholson-literary-arabs_nicholson.json.gz",
-   "data_hash": "sha256:ee9488fe00de69138476db7a3e5e58aa03e9c2060e4dbd8175b6de2e0d1d1855",
-   "data_bytes": 436391,
+   "data_hash": "sha256:21a8f65f89e44dce93b9995c32a031f603c6272e89fb493c453f069ec77051cd",
+   "data_bytes": 436266,
    "passages": 3880,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:06:11Z"
+   "exported": "2026-08-05T22:34:36Z"
   },
   "nicholson-mystics-islam_nicholson": {
    "source_hash": "sha256:def80eba304221c1c562b08b50b9e04426c8412f37ab1e159a57e4aa153a7027",
@@ -9697,16 +9697,16 @@
    "exported": "2026-07-31T21:06:12Z"
   },
   "plotinos-complete-works-vol-4-plotinos_anonymous": {
-   "source_hash": "sha256:c60800ea5a79e20a8289f1a119553a376eb8f2291793d8c0fef26bfc7de7e467",
+   "source_hash": "sha256:5aff7a8758a46b90657f725befac278d749609d540ee03561c81dfec2d7bf2b4",
    "data_file": "plotinos-complete-works-vol-4-plotinos_anonymous.json.gz",
-   "data_hash": "sha256:a8c71fa3126886626804ca9e96d01713098858c35ef5d679b79e2749bedbd86f",
-   "data_bytes": 325108,
+   "data_hash": "sha256:9cbae793f14df567e185f304179eb2f6b65aadef2aeb9853e11ee93f73e14ae7",
+   "data_bytes": 325097,
    "passages": 5726,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:30:44Z"
+   "exported": "2026-08-05T22:34:37Z"
   },
   "plotinus-complete-vol1_guthrie": {
    "source_hash": "sha256:7f07ad0e7fc0b8e12009bc7b8265ff47590db018a563174af409c8920d335d99",
@@ -9817,16 +9817,16 @@
    "exported": "2026-07-10T17:31:14Z"
   },
   "plutarch-morals-theosophical-king_king": {
-   "source_hash": "sha256:fae47645fba4f45f6660e5b4ef8877feb1c61ed6a4f1e5c95eeba57db6413ed1",
+   "source_hash": "sha256:9d382ae7ee978bc0f32499e212eba8360c05a9da74b6d39bbecc9cd0a81a098f",
    "data_file": "plutarch-morals-theosophical-king_king.json.gz",
-   "data_hash": "sha256:172e263f8f90f4251fa6814ebd5c81f01a358f2c7c765e183453482d69827f38",
-   "data_bytes": 228817,
+   "data_hash": "sha256:acf2941f1fcbc7f7d208bda23831b3dca1b9b79b41a7f6ae42dd3999db2b84d7",
+   "data_bytes": 228742,
    "passages": 1370,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:14Z"
+   "exported": "2026-08-05T22:35:41Z"
   },
   "plutarch-romane-questions_holland": {
    "source_hash": "sha256:d765920f2db4768737382475a7539cf02e0ddf75b5d36d48f7a6c8f3088738ef",
@@ -10916,16 +10916,16 @@
    "exported": "2026-07-10T17:31:21Z"
   },
   "sayce-egypt-hebrews_sayce": {
-   "source_hash": "sha256:ce41778cb66caaa4e3fa67d6648990e6b7b015c3c19ffb3a2b3edb0267761678",
+   "source_hash": "sha256:9b55308ab602d0e4b5c9b6522f1c5368ae4044e123c42e14966935ada3135dda",
    "data_file": "sayce-egypt-hebrews_sayce.json.gz",
-   "data_hash": "sha256:1ab60155f257a9d9bc680dc8c6beadc55f88f03e6b80b7f2df497c28a1916fb1",
-   "data_bytes": 169224,
+   "data_hash": "sha256:e52451678f903ec8d6641014328e663e8fde1c0b89a59365871302fe090a61be",
+   "data_bytes": 169076,
    "passages": 1222,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:21Z"
+   "exported": "2026-08-05T22:35:39Z"
   },
   "sayce-religions-egypt-babylonia_sayce": {
    "source_hash": "sha256:50054f940923b98b499cc725e11d9a58046175aca3d0c5ea9f1de7250076c747",
@@ -11132,16 +11132,16 @@
    "exported": "2026-07-10T17:31:21Z"
   },
   "secret-doctrine-vol1-blavatsky_blavatsky": {
-   "source_hash": "sha256:cc60228af4439b2d3a7e25058ada6cf9e8dbc285da21ab34ddba03c69e15e3f1",
+   "source_hash": "sha256:53d76cfbde5d921d4d83cd420253acc0afddcb9c2ea33995d5524094b4a3c2e9",
    "data_file": "secret-doctrine-vol1-blavatsky_blavatsky.json.gz",
-   "data_hash": "sha256:35c4033cc32fbe070da1e410b4f3203ed9f274caeff3a5f1d23a38d3dd505476",
-   "data_bytes": 770996,
+   "data_hash": "sha256:d97e56efebec46295d8205a3198792a9de9898b6698723e7ffa814ca59a39a6d",
+   "data_bytes": 770816,
    "passages": 3867,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:22Z"
+   "exported": "2026-08-05T22:36:04Z"
   },
   "secret-doctrine-vol2-blavatsky_blavatsky": {
    "source_hash": "sha256:9eaf4941af706f2658e7a6f6a1d4e6d5fde646cb1741c2cdb300dfd18ea166d7",
@@ -11156,16 +11156,16 @@
    "exported": "2026-07-10T17:31:22Z"
   },
   "secret-doctrine-vol3-blavatsky_blavatsky": {
-   "source_hash": "sha256:cde6c1e5bbf268234996c003a792fb3b1038ca5e9d0db4c9e391ccb981cbb100",
+   "source_hash": "sha256:73daa6f34e32f924841895dbc19f89bd5984ab1fba49905af95a166cd6c2b2ac",
    "data_file": "secret-doctrine-vol3-blavatsky_blavatsky.json.gz",
-   "data_hash": "sha256:6d9050324ed9b7311e3ac73de9b80c50aa895833538a3021e28b9215dfc4abfd",
-   "data_bytes": 600370,
+   "data_hash": "sha256:502bedfac2bb6d3e16b5e2a5c782f15015f1dc4482dff804f55b34c75dbd383b",
+   "data_bytes": 600329,
    "passages": 3560,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:22Z"
+   "exported": "2026-08-05T22:36:05Z"
   },
   "secret-doctrine-vol4-blavatsky_blavatsky": {
    "source_hash": "sha256:c712dcbc7aabf3075e434bb1857e4774b24c5c825e8241dc3db2977794bcc249",
@@ -13938,16 +13938,16 @@
    "exported": "2026-07-10T17:31:34Z"
   },
   "woman-position-influence-donaldson_donaldson": {
-   "source_hash": "sha256:b782bb0610bf9f7cc09c2fcc4743ef471004e6c76b1b6d9cb2f85aeb880c4cf1",
+   "source_hash": "sha256:1c8e780002df4db592deedb281441a5df3834799f215a60c47f1ddd64624c97e",
    "data_file": "woman-position-influence-donaldson_donaldson.json.gz",
-   "data_hash": "sha256:fb0f7d85966048ad69518d5f3921c48a0c9680cc164fb87865ca1b265f3db712",
-   "data_bytes": 162134,
+   "data_hash": "sha256:af991ca3bcd5d68e99af9401e705b46939df9d16815ac40508374a7429e21e93",
+   "data_bytes": 162093,
    "passages": 1084,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:34Z"
+   "exported": "2026-08-05T22:35:37Z"
   },
   "womans-mysteries-briffault_talbot": {
    "source_hash": "sha256:0296a4bc7b236db24cfd856452b04cfa6d54f8ebaaedfe324a2a738893f385f4",
