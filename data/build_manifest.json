@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-05T19:15:56Z",
+ "generated": "2026-08-05T22:04:12Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "2938ffe9cbe2ee751b0db2aa8fcf040bc89b1f15",
- "library_fingerprint": "sha256:980bdb730f036c41af9312378f88b7b181be37814f4fb7a0134bb10cfa968857",
+ "exporter_rev": "3bc4379c3723aaaebd57dac346ad86cf477cfce2",
+ "library_fingerprint": "sha256:e93b6654d2383768e3215c70961c6c85e26296ef1a777adea793faa1e30b233b",
  "counts": {
   "entries": 1171,
   "public": 1059,
@@ -9589,76 +9589,76 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "pliny-natural-history-vol1_bostock-riley": {
-   "source_hash": "sha256:bd9aaac0d37dd3c77922b9b304b8a2ab77551d17e9596695fcb745e90babb420",
+   "source_hash": "sha256:7c38de5e390d21d82c3eab01a141e9ffcfbd7e6863b8c96c514e436e857cfb4d",
    "data_file": "pliny-natural-history-vol1_bostock-riley.json.gz",
-   "data_hash": "sha256:7a581cb0a9d5164555349534c51db47b7ed72301abca8258b084d434da18bf98",
-   "data_bytes": 516777,
+   "data_hash": "sha256:09a6d8856890305019c1b2e365d654610c730d98c8413013cd64bdd3510422d5",
+   "data_bytes": 516607,
    "passages": 5483,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:13Z"
+   "exported": "2026-08-05T22:01:55Z"
   },
   "pliny-natural-history-vol2_bostock-riley": {
-   "source_hash": "sha256:4ed8aec9ebbb9ee6ced1bba5a4f095e475afc99087d60f93f57c1c67439e5466",
+   "source_hash": "sha256:5bba5113f38e55d928e1e2c052bef2c6bb25f5c27a8af2e852e84fcb710da95f",
    "data_file": "pliny-natural-history-vol2_bostock-riley.json.gz",
-   "data_hash": "sha256:44fbdc90466ec7f0242dc287616b15709fce8cd750d7cd362d24bcc6ef72a7ac",
-   "data_bytes": 573342,
+   "data_hash": "sha256:aa9176e9d288bcf1114aa906950c18f36e60465a059eb01136ccd508536f730b",
+   "data_bytes": 573301,
    "passages": 4697,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:13Z"
+   "exported": "2026-08-05T22:01:55Z"
   },
   "pliny-natural-history-vol3_bostock-riley": {
-   "source_hash": "sha256:58f9b608fcea6b37429304dbe7aad38f7927d2592a5204dccd2cba4a82bb83a8",
+   "source_hash": "sha256:ca9984009ca9d73cd3923901bf452e3913c21cdea2e9820d28f06604062659e3",
    "data_file": "pliny-natural-history-vol3_bostock-riley.json.gz",
-   "data_hash": "sha256:03f22e03262600d0c026e8db07052cbc44b031bf411f107c2ee2e007439edc6f",
-   "data_bytes": 517298,
+   "data_hash": "sha256:d15176da3d0dff8f1a7be972eda80ac8df83a6ad6aeb7081098a0499ddf73e88",
+   "data_bytes": 517167,
    "passages": 5171,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:13Z"
+   "exported": "2026-08-05T22:01:55Z"
   },
   "pliny-natural-history-vol4_bostock-riley": {
-   "source_hash": "sha256:d36d2d674f8109ea028b9fdf9da6420f0fd4ee6eaae5c3ee1ebe7b7e5d248745",
+   "source_hash": "sha256:3a316659c7aead78bb84c2e362b21e72dc8bc63cf3fbd9880dcd73c65454213b",
    "data_file": "pliny-natural-history-vol4_bostock-riley.json.gz",
-   "data_hash": "sha256:b5feb9cebcc9b9d3ce08b14dc930cf5a8209cf3c676ffc11342e17cbe0ee2f7c",
-   "data_bytes": 493482,
+   "data_hash": "sha256:1cff75b9fcc2db84e52faf014077a1c60eb3dbbe4f9b584f12f5cededd7f770b",
+   "data_bytes": 493463,
    "passages": 5480,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:13Z"
+   "exported": "2026-08-05T22:01:55Z"
   },
   "pliny-natural-history-vol5_bostock-riley": {
-   "source_hash": "sha256:786a6ad899aae96a9dfaed0caec935ae22f94c002209f9a10de781e02438cac5",
+   "source_hash": "sha256:5dbf0f03c1f1cf782dfeb331ce30ba7b05849d29e697a73647c85026b58a3e73",
    "data_file": "pliny-natural-history-vol5_bostock-riley.json.gz",
-   "data_hash": "sha256:b23d6e3b12e6e05e3626294fdb0f2347eb2b2ec856f39997ab08d4bad1563692",
-   "data_bytes": 492893,
+   "data_hash": "sha256:63db0517ad5fe3c08a4ee5a7c0f3395e409e9370a2063bf62178c3fe4ca93280",
+   "data_bytes": 492813,
    "passages": 5884,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:13Z"
+   "exported": "2026-08-05T22:01:56Z"
   },
   "pliny-natural-history-vol6_bostock-riley": {
-   "source_hash": "sha256:6cbeaa7d943ee10fa1c3c8b9cef97bcc93fccc8c4a03b9f1b56978085a531d68",
+   "source_hash": "sha256:23e7b37f92da0b94f540b6bb1d1646a3997d1123919eea715ec1aac36be79d2c",
    "data_file": "pliny-natural-history-vol6_bostock-riley.json.gz",
-   "data_hash": "sha256:8b4b27e441ee01ad9ff77ae24e2572555f380e5997facd8e0b4f16708aa24e7b",
-   "data_bytes": 659264,
+   "data_hash": "sha256:90568227b799d27980fe0415f996f61fcf4b7652584372f25dc3340138c4a007",
+   "data_bytes": 658858,
    "passages": 12901,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:14Z"
+   "exported": "2026-08-05T22:01:56Z"
   },
   "plotinos-complete-works-vol-1-plotinos_anonymous": {
    "source_hash": "sha256:3288ab31a2fddd67e09bf129ef1c13d8af1fae0fd9eef262136e30f4c3cad4c8",
