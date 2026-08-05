@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-05T23:06:50Z",
+ "generated": "2026-08-05T23:34:17Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "998363eee6446264a0d22daf47d4354500a79336",
- "library_fingerprint": "sha256:94f8c40d181c0175f61718211e1d9e92f529eb8ef5add21c8881930938bbe9e7",
+ "exporter_rev": "3659647c474ad1229b287811812235f8ecd18920",
+ "library_fingerprint": "sha256:d08539ce9bbb75393d391d71023c72b54e14cf88239d1fb7651a17a5144fadb3",
  "counts": {
   "entries": 1171,
   "public": 1059,
@@ -870,14 +870,14 @@
   "augustine-city-of-god_dods-volume-2": {
    "source_hash": null,
    "data_file": "augustine-city-of-god_dods-volume-2.json.gz",
-   "data_hash": "sha256:3bdad5fda55631701211ed4ebafbd247497bc79b9d022351906d1230a5205559",
-   "data_bytes": 470234,
+   "data_hash": "sha256:ff33f78c80adc9a0a706265500175dad9e3c288410a20004bc0a3c4b60a693f1",
+   "data_bytes": 470218,
    "passages": 2711,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:23Z",
+   "exported": "2026-08-05T23:22:13Z",
    "source_note": "no canonical dir (derived provider record)"
   },
   "augustine-confessions-enchiridion-ccel_ccel-schaff": {
@@ -1850,16 +1850,16 @@
    "exported": "2026-07-10T17:30:42Z"
   },
   "biography-bible-goodspeed_goodspeed": {
-   "source_hash": "sha256:aa473eb9d4400e7b1841f3fb9e7f18adf93bac40ff508e6eaa04f44450ebb2ab",
+   "source_hash": "sha256:97fa3c521a2199e720ffef4fec231945f0bf8a15620fa7b64ae73503d54fbbfb",
    "data_file": "biography-bible-goodspeed_goodspeed.json.gz",
-   "data_hash": "sha256:0e938fe0efaef54107c8db588967b143fd65f79f89517282922cd1af15eb7c33",
-   "data_bytes": 101438,
+   "data_hash": "sha256:ab94f9827e1bc36f974cfb1041d39bb2904f6fd500210cc99d7f3010fd8f56d9",
+   "data_bytes": 101398,
    "passages": 1104,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:42Z"
+   "exported": "2026-08-05T23:22:39Z"
   },
   "birth-of-tragedy_haussmann": {
    "source_hash": "sha256:99012903cd25b060c499e6495d01dced3ceb7565476b04a87d2bd15a31dfa533",
@@ -2817,16 +2817,16 @@
    "exported": "2026-07-10T17:30:45Z"
   },
   "cicero-letters-atticus-vol3_winstedt": {
-   "source_hash": "sha256:ebcd7c51682ab8e6b3c8b4d4d1b2d3177403e2eb3d2f2f86733ee8fbf8da9bb8",
+   "source_hash": "sha256:59e9c24c6a527b7aa71ba3f67033ac23eb0aef0831ccd2c58f17ff3cc9552c77",
    "data_file": "cicero-letters-atticus-vol3_winstedt.json.gz",
-   "data_hash": "sha256:eddd908b833aa7074b3cd1de591e08849c462cc89a915f23da3478c2e0c63594",
-   "data_bytes": 308882,
+   "data_hash": "sha256:0bacde605b8fd9c7757d4e2e52b49a8c1afc9d2a8d6b9212c82ea2ba5a900833",
+   "data_bytes": 308951,
    "passages": 3741,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:45Z"
+   "exported": "2026-08-05T23:27:49Z"
   },
   "cicero-republic_barham": {
    "source_hash": "sha256:c6cbc25a5b792622ee5cd83aa8ae552163c100b0aa9598334c6fee0ed248a195",
@@ -3155,16 +3155,16 @@
    "exported": "2026-07-10T17:30:46Z"
   },
   "darwin-descent-man-full_darwin": {
-   "source_hash": "sha256:e74042f67fab989fc158b20a13d423c5497684c8e1f93676bd21ff21c1e3bc48",
+   "source_hash": "sha256:bb43d34c5dc4f9424448523e8232fe2a213eb84e25a60e21d9029a772999868a",
    "data_file": "darwin-descent-man-full_darwin.json.gz",
-   "data_hash": "sha256:10b9c59ca099a7de17136d0c07284088059c99d1a3c406870b4ad87ae9dcb401",
-   "data_bytes": 674798,
+   "data_hash": "sha256:fbb86021f481ff38e901b76a2ba5d5cead45584eedb8959daef6fbacaeda0f48",
+   "data_bytes": 674670,
    "passages": 4145,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:46Z"
+   "exported": "2026-08-05T23:21:54Z"
   },
   "darwin-descent-man-vol1_darwin": {
    "source_hash": "sha256:107863a09df7424975a0be70cdcfd176afdcbb0321dcd62057572f40287a801d",
@@ -10395,16 +10395,16 @@
    "exported": "2026-07-31T19:09:33Z"
   },
   "rig-veda-americanus-brinton_brinton": {
-   "source_hash": "sha256:b1058a9a3e5863d22426e0fdb5490374f7c3085a657a37b44f10ac44cb3178a1",
+   "source_hash": "sha256:619b3cafe9b8415e1142e6151fb54627aa5df102431656f3f9efafe72f555a51",
    "data_file": "rig-veda-americanus-brinton_brinton.json.gz",
-   "data_hash": "sha256:390a0d454376ef29da88263c28498084dcd7afee77d5ef406e4c08fa02fdc449",
-   "data_bytes": 48700,
+   "data_hash": "sha256:0db2624760d6cecc32cae94d8108306b5854296854cf02b59bd3918da844b4eb",
+   "data_bytes": 48646,
    "passages": 1100,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:18Z"
+   "exported": "2026-08-05T23:23:11Z"
   },
   "rig-veda-griffith_griffith": {
    "source_hash": "sha256:ead19db02338a2283c086fcdffee7f7926e25c257c99a27f060fb1b4097e30aa",
@@ -12357,40 +12357,40 @@
    "exported": "2026-07-31T03:50:27Z"
   },
   "tacitus-germania-agricola_church-brodribb": {
-   "source_hash": "sha256:3df96ea1dc4e84c0cae54f110252443a2b996a37e9b9145e154dfc6eec86f6d8",
+   "source_hash": "sha256:a5f06633deefd0becafcb8c4bb2c79a159244f5713bbeed56894637c071df36d",
    "data_file": "tacitus-germania-agricola_church-brodribb.json.gz",
-   "data_hash": "sha256:26226e6a7c7c1f5407f2e9a7c6e8fc8eb2ac34b77b65e8875c31ee5bb4a384c3",
-   "data_bytes": 114414,
+   "data_hash": "sha256:e72bfb7b451788d758c5c9a0f32c53569fb8b8073e65f1142b0df90958f968c9",
+   "data_bytes": 113910,
    "passages": 576,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:25Z"
+   "exported": "2026-08-05T23:31:51Z"
   },
   "tacitus-histories_church-brodribb": {
-   "source_hash": "sha256:058febec95d060b7dbc6c06390a89cc3a6095615ba15fa070993c15129edeb95",
+   "source_hash": "sha256:05815bcd3617ff277a131cdc1a51242f5a0bc2085ed0cadc4e00cc1451393518",
    "data_file": "tacitus-histories_church-brodribb.json.gz",
-   "data_hash": "sha256:81ba4f8d0d7ec5e88633d2da72a02a6ed8900f12094383892011faecdde8a646",
-   "data_bytes": 241857,
+   "data_hash": "sha256:e6d297781b8e61ac6ca339ed8a986f9d0e08bbe9711996e40db06247db270149",
+   "data_bytes": 241815,
    "passages": 1376,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:05:52Z"
+   "exported": "2026-08-05T23:21:34Z"
   },
   "tacitus-oratory_anonymous": {
-   "source_hash": "sha256:c1139c5324cfbacdb497b22da9c7de5cb4635cba24e18b003e2f7fdb81abc43c",
+   "source_hash": "sha256:779e8140d4d92e598c03317f8ca85515d13003c7c8ff2d1fdd3c13880a33bfaa",
    "data_file": "tacitus-oratory_anonymous.json.gz",
-   "data_hash": "sha256:a6b76ee3163508218da1dbe505963fcf33796e0fc1701f1d3089bbefb5932af4",
-   "data_bytes": 165033,
+   "data_hash": "sha256:0a5aa462c2aa19e7ed15a5d63aae63453a51e9bae5859d816281a00d856976a0",
+   "data_bytes": 165051,
    "passages": 995,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:05:52Z"
+   "exported": "2026-08-05T23:27:48Z"
   },
   "tacitus-reign-tiberius_anonymous": {
    "source_hash": "sha256:827d6b5616762b9b9d35988b5a14e23083032b4a361f8339b1ad08fa4cc236f2",
@@ -13132,16 +13132,16 @@
    "exported": "2026-07-31T04:10:26Z"
   },
   "thrice-greatest-hermes-vol3_mead": {
-   "source_hash": "sha256:7fb50afe13323747c85996d7e067845ad8d87d5f99295faa0d8b0ff657e1234d",
+   "source_hash": "sha256:22cc2426f56aa2872a54cf608300ad51f6b5bf3b1ad27ca2ca58dc17ec32d6f2",
    "data_file": "thrice-greatest-hermes-vol3_mead.json.gz",
-   "data_hash": "sha256:6536119a90bf1f79b2c16d977f6a277276f633efcd6112f1511c54b4075a56ee",
-   "data_bytes": 284333,
+   "data_hash": "sha256:df29189d526f5d88e04179171b06bb8fd2b134dc3049ef45b0a1d78d6c6b9986",
+   "data_bytes": 284368,
    "passages": 4869,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:10:26Z"
+   "exported": "2026-08-05T23:21:32Z"
   },
   "thucydides-peloponnesian-war_crawley": {
    "source_hash": "sha256:714ecf25d9a5a4d984b23aa6d22eb7e3235c2f136cd9bfd47174268c2f4f9416",
@@ -13562,16 +13562,16 @@
    "source_note": "no canonical dir (derived provider record)"
   },
   "valla-donation-constantine_coleman": {
-   "source_hash": "sha256:8bc291825fb644049d3654f36f4ee0526b4fd31441962ab73d8c5fb45854b44a",
+   "source_hash": "sha256:b0cd05b95f1e569a3b48c0910bb8c4286e22a6629f5341822af94a5118057696",
    "data_file": "valla-donation-constantine_coleman.json.gz",
-   "data_hash": "sha256:cd5f98f4d6300cf98f185a8a4231956588645b4aba1393aa1ce623895f7cdf9b",
-   "data_bytes": 148393,
+   "data_hash": "sha256:2a0e2fa22cd26fb35f55bc8763ca6d9bfb460b5db3d15f00523933ca2c218df7",
+   "data_bytes": 148371,
    "passages": 945,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:32Z"
+   "exported": "2026-08-05T23:29:04Z"
   },
   "vampire-kith-kin-summers_summers": {
    "source_hash": "sha256:8341e1b312dc9d3aec62c06419f8bd264fe30c14a81a29150e6cf868cf0846c2",
