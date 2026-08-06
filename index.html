@@ -23976,7 +23976,11 @@ async function loadText(entry, listItem) {
             ? `${_rr.path[0]}.${_rr.path[1]}` : String(_rr.path[0]);
           $infoBar.style.display = 'flex';
           enterReading();
-          requestAnimationFrame(() => _showRemovedRowNotice(_rpid, _rr));
+          // Synchronous on purpose: enterReading's render is synchronous, and
+          // a rAF here may never fire (throttled/background tabs) — the
+          // notice would silently not exist. Later async re-renders are
+          // covered by the structural re-pin in filterAndRender.
+          _showRemovedRowNotice(_rpid, _rr);
         } else {
           showCover(data, entry);
         }
