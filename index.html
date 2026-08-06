@@ -15993,6 +15993,7 @@ $bookSelect.addEventListener('change', () => {
 document.getElementById('ctrl-unit').addEventListener('change', (ev) => {
   const pid = ev.target.value;
   if (!pid) return;
+  _releaseRemovedNotice();                        // navigating away ends the resolution
   _citationPid = null; _userScrollArmed = 0;      // an explicit jump is user navigation
   if (jumpToPassage(pid, false, 'start')) {
     const el = $passages.querySelector('.passage[data-pid="' + CSS.escape(pid) + '"]');
@@ -17682,6 +17683,7 @@ function _gotoSurvivingRow(nid) {
   }
   _citationPid = null; _userScrollArmed = 0;
   requestAnimationFrame(() => {
+    _releaseRemovedNotice();          // the user chose a surviving row
     jumpToPassage(nid, true, 'start');
     if (typeof setUrlPassage === 'function') setUrlPassage(nid);
   });
@@ -17757,8 +17759,11 @@ function jumpToPassage(pid, highlight, align) {
     }
     if (!el) { _citationPid = null; return false; }    // valid, but not in this section
   }
-  // A successful landing on a real row ends any removed-row resolution.
-  _releaseRemovedNotice();
+  // NOTE: a successful jump does NOT release an active removed-row notice —
+  // the position-restore machinery jumps to the remembered row right after
+  // load (caught live: it released the notice before the citation-chaser
+  // ever saw it). Only USER navigation releases: the book selector, the
+  // unit selector, and the notice's own neighbor links.
   // Programmatic landing on an exact id: protect it from scroll-driven ?p= drift
   // until genuine user input (a new jump here supersedes any prior protected id).
   _citationPid = pid;
