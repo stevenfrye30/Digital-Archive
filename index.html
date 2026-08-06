@@ -17703,6 +17703,20 @@ function _showRemovedRowNotice(pid, rr) {
   $reader.scrollTop = 0;
 }
 
+// The load-time pipeline re-renders $passages after the deep-link frame, so a
+// single-rAF notice gets wiped (verified live: the settled page keeps it, the
+// loading page loses it). Re-pin idempotently for ~2s, then stop — after that
+// only user navigation re-renders, and a user who navigates away is done with
+// the notice.
+function _pinRemovedRowNotice(pid, rr) {
+  let tries = 0;
+  const pin = () => {
+    if (!document.querySelector('.removed-row-notice')) _showRemovedRowNotice(pid, rr);
+    if (++tries < 8) setTimeout(pin, 250);
+  };
+  pin();
+}
+
 function jumpToPassage(pid, highlight, align) {
   let el = $passages.querySelector(`.passage[data-pid="${CSS.escape(pid)}"]`);
   if (!el) {
@@ -23942,7 +23956,7 @@ async function loadText(entry, listItem) {
             ? `${_rr.path[0]}.${_rr.path[1]}` : String(_rr.path[0]);
           $infoBar.style.display = 'flex';
           enterReading();
-          requestAnimationFrame(() => _showRemovedRowNotice(_rpid, _rr));
+          requestAnimationFrame(() => _pinRemovedRowNotice(_rpid, _rr));
         } else {
           showCover(data, entry);
         }
