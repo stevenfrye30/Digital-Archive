@@ -4940,6 +4940,28 @@ details.display-options > summary {
 .passage.footnote-body.fn-visible {
   display: block;
 }
+/* Notes disclosure (2026-08-05). Footnote-body rows are display:none by
+   default, so runs of notes with no surviving inline anchor (origen ×2,
+   calvin vol2 — the ingest lost the [n] markers in the prose) were INVISIBLE
+   AND UNREACHABLE. Consecutive footnote-body rows now collect inside a
+   <details class="notes-group"> whose summary reads "Notes (n)"; opening it
+   shows the run. Colour is inherited, never named — the theme lesson: five
+   themes, and a literal hex fails half of them. Individual fn-ref reveal
+   still works; the reveal path opens the enclosing group first. */
+.notes-group { margin: 0.6em 0 0.6em 8px; }
+.notes-group > summary {
+  cursor: pointer;
+  font-size: 0.82em;
+  color: inherit;
+  /* 0.8 is the measured floor that clears WCAG 4.5 in all five themes
+     (worst case Sepia); 0.62 failed three of them at 3.24-4.49. */
+  opacity: 0.8;
+  list-style-position: inside;
+  user-select: none;
+}
+.notes-group > summary:hover { opacity: 1; }
+.notes-group[open] > summary { opacity: 0.9; margin-bottom: 0.4em; }
+.notes-group[open] .passage.footnote-body { display: block; }
 .passage.footnote-body .fn-return {
   margin-left: 8px;
   font-size: 0.9em;
@@ -14456,22 +14478,48 @@ function _wrapGlossTerm(div, g) {
 // into other sections and no new apparatus framework is introduced.
 let _fnReturn = null;          // prose passage to come back to
 
+// A note inside a CLOSED <details class="notes-group"> has no box: revealing
+// or scrolling to it silently does nothing. Every reveal path opens the
+// enclosing group first. Groups never nest, so one closest() suffices.
+function _openNotesGroup(el) {
+  const d = el && el.closest && el.closest('details.notes-group');
+  if (d) d.open = true;
+}
+
 function _revealFootnoteBody(el) {
   if (!el) return;
+  _openNotesGroup(el);
   el.classList.add('fn-visible');
   el.scrollIntoView({ behavior: 'smooth', block: 'center' });
   el.classList.add('fn-flash');
   setTimeout(() => el.classList.remove('fn-flash'), 1500);
 }
 
+// Memoised footnote index, built ONCE per record. The old path ran a fresh
+// RegExp plus a whole-text normalisation over EVERY passage on EVERY click —
+// on jerome's 8,410 rows a single resolve froze the renderer for tens of
+// seconds. Invalidates itself when currentData is swapped by loadText.
+let _fnIdx = null;
+let _fnIdxRec = null;
+
 function _footnoteBodyPassage(num) {
-  const src = (typeof currentData !== 'undefined' && currentData && currentData.passages)
-    ? currentData.passages : [];
-  // A footnote BODY is "[N] text" (marker + whitespace). A prose passage may legitimately BEGIN
-  // with a marker ("[1398]Ignatius, who is…" — the note is on the epistle's title), and that is
-  // NOT a body: no whitespace follows the bracket. The \s is what keeps the two apart.
-  const re = new RegExp('^\\[' + num + '\\]\\s');
-  return src.find(p => re.test(String(p.text || '').replace(/\n/g, ' '))) || null;
+  const rec = (typeof currentData !== 'undefined' && currentData) ? currentData : null;
+  if (_fnIdxRec !== rec) {
+    _fnIdx = new Map();
+    const src = (rec && rec.passages) ? rec.passages : [];
+    // A footnote BODY is "[N] text" (marker + whitespace). A prose passage may
+    // legitimately BEGIN with a marker ("[1398]Ignatius, who is…" — the note is
+    // on the epistle's title), and that is NOT a body: no whitespace follows
+    // the bracket. The \s is what keeps the two apart. Only the marker region
+    // is inspected — the leading 16 chars cover any plausible note number.
+    const re = /^\[(\d+)\]\s/;
+    for (const p of src) {
+      const m = re.exec(String(p.text || '').slice(0, 16).replace(/\n/g, ' '));
+      if (m && !_fnIdx.has(m[1])) _fnIdx.set(m[1], p);
+    }
+    _fnIdxRec = rec;
+  }
+  return _fnIdx.get(String(num)) || null;
 }
 
 function _addFootnoteReturn(el, fromPid) {
@@ -14529,37 +14577,49 @@ function _gotoPassage(pid, push) {
 }
 
 function _resolveFootnote(num, fromPid, refEl) {
-  // Same section: unchanged behaviour — a plain toggle.
-  const here = $passages.querySelector(`.footnote-body[data-fn-number="${num}"]`);
+  // Same section: unchanged behaviour — a plain toggle. Transient inline
+  // notes (below) also carry footnote-body + the number; exclude them or a
+  // second click toggles the copy instead of dismissing it.
+  const here = $passages.querySelector(
+    `.footnote-body[data-fn-number="${num}"]:not(.fn-inline-note)`);
   if (here) {
     here.classList.toggle('fn-visible');
     const open = here.classList.contains('fn-visible');
     if (refEl) refEl.setAttribute('aria-expanded', open ? 'true' : 'false');
     if (open) {
+      _openNotesGroup(here);
       here.scrollIntoView({ behavior: 'smooth', block: 'center' });
       here.classList.add('fn-flash');
       setTimeout(() => here.classList.remove('fn-flash'), 1500);
     }
     return;
   }
-  // Cross-section: resolve inside THIS record only.
-  const rec = (typeof currentData !== 'undefined') ? currentData : null;
+  // Body not in the rendered DOM: render the note INLINE at the ref.
+  //
+  // The old path navigated the whole stream to the note via _gotoPassage,
+  // whose catch-up loop renders every intermediate 200-row batch
+  // SYNCHRONOUSLY — on jerome's 5,431-row Letters section a single click
+  // froze the renderer for ~45 seconds. The note text is already in memory
+  // (memoised index, O(1)); presenting it at the ref is classic footnote
+  // behaviour, keeps history clean, and costs one element.
   const note = _footnoteBodyPassage(num);
   if (!note) return;                       // unknown number -> no-op, never guesses
-  _fnReturn = fromPid || null;
+  const host = refEl && refEl.closest('.passage');
+  if (!host) return;
+  const existing = host.querySelector(`.fn-inline-note[data-fn-number="${num}"]`);
+  if (existing) {                          // second click: dismiss
+    existing.remove();
+    if (refEl) refEl.setAttribute('aria-expanded', 'false');
+    return;
+  }
+  const el = document.createElement('div');
+  el.className = 'passage footnote-body fn-inline-note fn-visible';
+  el.dataset.fnNumber = num;
+  el.textContent = String(note.text || '').replace(/\n/g, ' ');
+  host.appendChild(el);
   if (refEl) refEl.setAttribute('aria-expanded', 'true');
-  if (!_gotoPassage(note.id, true)) return;
-  requestAnimationFrame(() => {
-    // Same stale-record guard: never reveal a note belonging to a record we have left. Without
-    // this, a rapid text switch could surface another text's footnote with the same number.
-    if (currentData !== rec) return;
-    const el = $passages.querySelector(`.footnote-body[data-fn-number="${num}"]`);
-    if (!el) return;
-    _revealFootnoteBody(el);
-    _addFootnoteReturn(el, _fnReturn);
-    el.setAttribute('tabindex', '-1');     // focus follows the reader to the note
-    el.focus({ preventScroll: true });
-  });
+  el.classList.add('fn-flash');
+  setTimeout(() => el.classList.remove('fn-flash'), 1500);
 }
 
 // Back/forward must return to the originating prose passage. The reader otherwise only ever
@@ -14688,6 +14748,11 @@ function _renderInlineText(targetNode, rawText, ownerDiv, p) {
     }
   }
 }
+
+// The open notes-group collecting consecutive footnote-body rows. Module-level
+// because runs cross render-batch boundaries; any non-note row closes it, and
+// the isConnected check in the render loop self-heals after $passages clears.
+let _notesGroup = null;
 
 function _renderBatch(passages, query, frag) {
   const chapterRoom = _isChapterScopedHierarchy() && document.body.classList.contains('chapter-room');
@@ -14985,8 +15050,45 @@ function _renderBatch(passages, query, frag) {
       row.className = 'cr-row';
       row.dataset.pid = p.id;
       row.appendChild(div);
-      frag.appendChild(row);
+      // Chapter-room gets the notes disclosure too — calvin vol2 renders here,
+      // and it is exactly the record whose anchor-less notes were unreachable.
+      // The group wraps the cr-row (witness alignment is pid-keyed, not
+      // sibling-order-keyed, so the extra ancestor is layout-safe).
+      if (div.classList.contains('footnote-body')) {
+        if (!(_notesGroup && (_notesGroup.parentNode === frag || _notesGroup.isConnected))) {
+          _notesGroup = document.createElement('details');
+          _notesGroup.className = 'notes-group';
+          _notesGroup.appendChild(document.createElement('summary'));
+          _notesGroup._count = 0;
+          frag.appendChild(_notesGroup);
+        }
+        _notesGroup.appendChild(row);
+        _notesGroup._count += 1;
+        _notesGroup.firstChild.textContent = 'Notes (' + _notesGroup._count + ')';
+      } else {
+        _notesGroup = null;
+        frag.appendChild(row);
+      }
+    } else if (div.classList.contains('footnote-body')) {
+      // Notes disclosure: consecutive footnote-body rows collect into one
+      // <details class="notes-group">. The state survives across render
+      // batches (jerome's longest run is 398 rows; a batch is 200) because a
+      // group still connected in the live DOM keeps accepting rows until a
+      // non-note row closes it. The isConnected/parentNode check also
+      // self-heals whenever $passages is cleared. Chapter-room mode (the
+      // cr-row branch above) is deliberately left alone.
+      if (!(_notesGroup && (_notesGroup.parentNode === frag || _notesGroup.isConnected))) {
+        _notesGroup = document.createElement('details');
+        _notesGroup.className = 'notes-group';
+        _notesGroup.appendChild(document.createElement('summary'));
+        _notesGroup._count = 0;
+        frag.appendChild(_notesGroup);
+      }
+      _notesGroup.appendChild(div);
+      _notesGroup._count += 1;
+      _notesGroup.firstChild.textContent = 'Notes (' + _notesGroup._count + ')';
     } else {
+      _notesGroup = null;
       frag.appendChild(div);
 
       // Chapter appendix (prototype): when the rendered passage is
@@ -17518,7 +17620,9 @@ function jumpToPassage(pid, highlight, align) {
   _citationPid = pid;
   // A footnote body is hidden (zero height) until revealed. Landing a deep link, a reload or
   // a Copy Link on one must SHOW it — never scroll silently to an invisible element.
+  // The enclosing notes-group must open first, or the revealed row still has no box.
   if (el.classList.contains('footnote-body')) {
+    _openNotesGroup(el);
     el.classList.add('fn-visible');
   }
   _scrollPassageIntoReader(el, highlight, align);
