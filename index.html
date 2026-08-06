@@ -15932,6 +15932,17 @@ function filterAndRender() {
 
   render(passages, queryLower ? query : '');
 
+  // render() cleared $passages; an ACTIVE removed-row notice survives the
+  // wipe by re-showing here (no scroll — only the first show positions).
+  // Lazily released when the record it belongs to is no longer loaded.
+  if (_pinnedRemovedNotice) {
+    if (_pinnedRemovedNotice.rec !== currentData) {
+      _pinnedRemovedNotice = null;
+    } else {
+      _showRemovedRowNotice(_pinnedRemovedNotice.pid, _pinnedRemovedNotice.rr, true);
+    }
+  }
+
   // Collect all highlight marks
   searchMatches = Array.from($passages.querySelectorAll('mark.search-hl'));
   searchMatchIdx = -1;
@@ -15954,6 +15965,7 @@ function filterAndRender() {
 }
 
 $bookSelect.addEventListener('change', () => {
+  _releaseRemovedNotice();                     // navigating away ends the resolution
   _citationPid = null; _userScrollArmed = 0;   // explicit book/chapter jump is user navigation
   groupIndex  = groupKeys.indexOf($bookSelect.value);
   currentBook = $bookSelect.value;
@@ -17675,7 +17687,16 @@ function _gotoSurvivingRow(nid) {
   });
 }
 
-function _showRemovedRowNotice(pid, rr) {
+// The notice must be STRUCTURAL, not timed: render() clears $passages via
+// innerHTML (traced live: filterAndRender → render), and cold loads re-render
+// asynchronously (font/folio settle) at times no timer can bracket. So the
+// active notice is pinned here and re-shown by filterAndRender after every
+// wipe; it is released by real navigation (a successful jump, a book change)
+// and lazily when currentData swaps (the _fnIdx pattern).
+let _pinnedRemovedNotice = null;
+
+function _showRemovedRowNotice(pid, rr, noScroll) {
+  _pinnedRemovedNotice = { rec: currentData, pid, rr };
   $passages.querySelectorAll('.removed-row-notice').forEach(n => n.remove());
   const div = document.createElement('div');
   div.className = 'removed-row-notice';
@@ -17700,21 +17721,13 @@ function _showRemovedRowNotice(pid, rr) {
   }
   div.append(head, body, quote, nav);
   $passages.prepend(div);
-  $reader.scrollTop = 0;
+  if (!noScroll) $reader.scrollTop = 0;
 }
 
-// The load-time pipeline re-renders $passages after the deep-link frame, so a
-// single-rAF notice gets wiped (verified live: the settled page keeps it, the
-// loading page loses it). Re-pin idempotently for ~2s, then stop — after that
-// only user navigation re-renders, and a user who navigates away is done with
-// the notice.
-function _pinRemovedRowNotice(pid, rr) {
-  let tries = 0;
-  const pin = () => {
-    if (!document.querySelector('.removed-row-notice')) _showRemovedRowNotice(pid, rr);
-    if (++tries < 8) setTimeout(pin, 250);
-  };
-  pin();
+function _releaseRemovedNotice() {
+  if (!_pinnedRemovedNotice) return;
+  _pinnedRemovedNotice = null;
+  document.querySelectorAll('.removed-row-notice').forEach(n => n.remove());
 }
 
 function jumpToPassage(pid, highlight, align) {
@@ -17744,6 +17757,8 @@ function jumpToPassage(pid, highlight, align) {
     }
     if (!el) { _citationPid = null; return false; }    // valid, but not in this section
   }
+  // A successful landing on a real row ends any removed-row resolution.
+  _releaseRemovedNotice();
   // Programmatic landing on an exact id: protect it from scroll-driven ?p= drift
   // until genuine user input (a new jump here supersedes any prior protected id).
   _citationPid = pid;
@@ -23956,7 +23971,7 @@ async function loadText(entry, listItem) {
             ? `${_rr.path[0]}.${_rr.path[1]}` : String(_rr.path[0]);
           $infoBar.style.display = 'flex';
           enterReading();
-          requestAnimationFrame(() => _pinRemovedRowNotice(_rpid, _rr));
+          requestAnimationFrame(() => _showRemovedRowNotice(_rpid, _rr));
         } else {
           showCover(data, entry);
         }
