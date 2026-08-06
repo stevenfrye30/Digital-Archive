@@ -14868,11 +14868,17 @@ function _renderBatch(passages, query, frag) {
       div.dataset.page = pageOnly[1].trim();
     }
 
-    // Detect footnote-body passages: text starting "[N] ..."
+    // Detect footnote-body passages: text starting "[N] ...", OR rows the
+    // marking lane declared (role:"footnote" + fn — cicero ad Atticum vol3
+    // and iamblichus, whose `Footnote n:` shape the bracket regex cannot
+    // see; extents hand-verified in mark_footnote_roles_2026-08.py).
     const fnBodyMatch = flatText.match(/^\[(\d+)\]\s+(.+)$/s);
     if (fnBodyMatch) {
       div.classList.add('footnote-body');
       div.dataset.fnNumber = fnBodyMatch[1];
+    } else if (p.role === 'footnote') {
+      div.classList.add('footnote-body');
+      if (p.fn) div.dataset.fnNumber = p.fn;
     }
 
     // Render text with inline [N] and [*N] references as clickable anchors.
