@@ -4973,6 +4973,28 @@ details.display-options > summary {
   background-color: #fffbcc;
   display: block;
 }
+/* Honest resolution of a citation to a removed row (named-exception
+   deletions, e.g. sikh-vol3 scan debris). Theme-aware: currentColor +
+   opacity, no hardcoded palette — the 0.8 floor clears WCAG in all five
+   themes (same measurement as .notes-group > summary). */
+.removed-row-notice {
+  margin: 0 110px 1.5em;
+  padding: 0.8em 1em;
+  border: 1px solid;
+  border-color: color-mix(in srgb, currentColor 35%, transparent);
+  border-radius: 4px;
+  font-size: 0.88em;
+  opacity: 0.9;
+}
+.removed-row-notice .rr-head { font-weight: 600; margin-bottom: 0.35em; }
+.removed-row-notice .rr-text { opacity: 0.8; font-style: italic; }
+.removed-row-notice .rr-nav { margin-top: 0.5em; }
+.removed-row-notice .rr-nav a {
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 1.4em;
+}
 .passage {
   position: relative;
   padding-left: 110px;
@@ -17615,10 +17637,81 @@ function passageById(pid) {
 //       `$reader.scrollTop = 0`, chapter-heading insertion, folio render, or a
 //       web-font/layout shift — re-assert the position after layout settles.
 // An unknown id keeps the prior behavior: return false (loadText then shows cover).
+// ---- Removed-row citations (named-exception deletions) --------------------
+// A handful of records carry `removed_rows`: a ledger of ids deleted under a
+// steward ruling (sikh-vol3 scan debris, 2026-08-06 — library due-slip,
+// running heads, sheet signatures, a bookseller's label). A citation to one
+// of those ids must resolve to an HONEST notice naming the debris class —
+// never a 404, and never a silent landing on whatever text now sits nearby.
+// The neighbor links below are explicit user choices, not automatic re-points.
+const _RR_CLASS_LABEL = {
+  'library-marking': 'a library marking from the scanned copy',
+  'running-head': 'a printed running head',
+  'signature': "a printer's sheet signature",
+  'bookseller-label': "a bookseller's label from the scanned copy",
+};
+
+function _gotoSurvivingRow(nid) {
+  const t = passageById(nid);
+  if (!t || !t.path || !t.path.length) return;
+  const key = (_isChapterScopedHierarchy() && t.path.length > 1)
+    ? `${t.path[0]}.${t.path[1]}` : String(t.path[0]);
+  if (needsGroupSelector() && String(currentBook) !== key) {
+    groupIndex = groupKeys.indexOf(key);
+    currentBook = key;
+    if ($bookSelect) $bookSelect.value = key;
+    updateNav();
+    filterAndRender();
+    _maybeRetuneFolioToCurrentBook();
+    _stampCanonGenre();
+    _installChapterHeading();
+    _installChapterTraverseTop();
+    buildUnitSelector();
+  }
+  _citationPid = null; _userScrollArmed = 0;
+  requestAnimationFrame(() => {
+    jumpToPassage(nid, true, 'start');
+    if (typeof setUrlPassage === 'function') setUrlPassage(nid);
+  });
+}
+
+function _showRemovedRowNotice(pid, rr) {
+  $passages.querySelectorAll('.removed-row-notice').forEach(n => n.remove());
+  const div = document.createElement('div');
+  div.className = 'removed-row-notice';
+  const head = document.createElement('div');
+  head.className = 'rr-head';
+  head.textContent = `The cited row ${pid} is not part of this text.`;
+  const body = document.createElement('div');
+  body.textContent = `It was ${_RR_CLASS_LABEL[rr.class] || rr.class}, removed `
+    + `as scan debris on ${rr.removed} under a steward ruling. What stood here:`;
+  const quote = document.createElement('div');
+  quote.className = 'rr-text';
+  quote.textContent = `“${rr.text}”`;
+  const nav = document.createElement('div');
+  nav.className = 'rr-nav';
+  for (const [label, nid] of [['← previous surviving row', rr.prev_id],
+                              ['next surviving row →', rr.next_id]]) {
+    if (!nid) continue;
+    const a = document.createElement('a');
+    a.textContent = `${label} (${nid})`;
+    a.addEventListener('click', (ev) => { ev.preventDefault(); _gotoSurvivingRow(nid); });
+    nav.append(a);
+  }
+  div.append(head, body, quote, nav);
+  $passages.prepend(div);
+  $reader.scrollTop = 0;
+}
+
 function jumpToPassage(pid, highlight, align) {
   let el = $passages.querySelector(`.passage[data-pid="${CSS.escape(pid)}"]`);
   if (!el) {
-    if (!passageById(pid)) { _citationPid = null; return false; }   // truly-missing id
+    if (!passageById(pid)) {                                        // truly-missing id
+      const _rr = currentData && currentData.removed_rows
+        && currentData.removed_rows[pid];
+      if (_rr) _showRemovedRowNotice(pid, _rr);
+      _citationPid = null; return false;
+    }
     if (_pendingPassages.length) {
       const btn = $passages.querySelector('.load-more-btn');
       if (btn) btn.remove();
@@ -23838,8 +23931,22 @@ async function loadText(entry, listItem) {
         // the save/anchor semantics put it (Task 33 landing pin).
         requestAnimationFrame(() => jumpToPassage(_jumpPid, true, 'start'));
       } else {
+        // Honest resolution of a deep link to a REMOVED row (named-exception
+        // deletions): open the room the row lived in and pin the ledger
+        // notice with its debris class. Never showCover-and-say-nothing,
+        // never a silent landing on a surviving neighbor.
+        const _rr = data.removed_rows && data.removed_rows[pendingPid];
+        if (_rr && _rr.path && _rr.path.length) {
+          const _rpid = pendingPid;
+          currentBook = (chapterScoped && _rr.path.length > 1)
+            ? `${_rr.path[0]}.${_rr.path[1]}` : String(_rr.path[0]);
+          $infoBar.style.display = 'flex';
+          enterReading();
+          requestAnimationFrame(() => _showRemovedRowNotice(_rpid, _rr));
+        } else {
+          showCover(data, entry);
+        }
         pendingPid = null;
-        showCover(data, entry);
       }
     } else if (pendingSection) {
       const first = allPassages.find(
