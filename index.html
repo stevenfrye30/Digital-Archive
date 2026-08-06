@@ -14859,6 +14859,22 @@ function _renderBatch(passages, query, frag) {
       }
     }
 
+    // Restored footnote anchors (origen vol2, Option C): `fnrefs` holds the
+    // [n, offset] positions of the inline markers the ingest stripped,
+    // recovered from the raw source (restore_origen_fn_anchors_2026-08.py).
+    // Injecting the literal '[n]' back into the DISPLAY string lets the
+    // existing [N] machinery render and link it — the stored text is
+    // untouched. Offsets index p.text, which maps 1:1 onto flatText
+    // (newline→space is length-preserving); a speaker split shifts the
+    // string, so injection is skipped there.
+    if (p.fnrefs && bodyText === flatText) {
+      const _refs = [...p.fnrefs].sort((a, b) => b[1] - a[1]);
+      for (const [n, off] of _refs) {
+        const o = Math.max(0, Math.min(bodyText.length, off));
+        bodyText = bodyText.slice(0, o) + '[' + n + ']' + bodyText.slice(o);
+      }
+    }
+
     // A passage whose whole text is a page mark is a page boundary from the
     // printed source, not a line of prose. Render it as a rule carrying the
     // locator rather than as a stray `<page 5>`.
