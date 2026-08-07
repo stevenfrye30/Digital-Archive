@@ -24030,8 +24030,20 @@ async function loadText(entry, listItem) {
         pendingPid = null;
       }
     } else if (pendingSection) {
-      const first = allPassages.find(
+      let first = allPassages.find(
         p => p.path && String(p.path[0]) === pendingSection);
+      // Split bodies: the same beyond-head race the pid landing above
+      // guards — a section the _index knows may simply not have spliced
+      // in yet (map-chip joins land here). Await the rest rather than
+      // the silent cover below.
+      if (!first && data._split && passageIndex(data).some(
+            p => p.path && String(p.path[0]) === pendingSection)) {
+        const _tok = _restToken;
+        await whenComplete();
+        if (_tok !== _restToken || currentData !== data) return;
+        first = allPassages.find(
+          p => p.path && String(p.path[0]) === pendingSection);
+      }
       if (first) {
         currentBook = chapterScoped
           ? `${first.path[0]}.${first.path[1]}`
