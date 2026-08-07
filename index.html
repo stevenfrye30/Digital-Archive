@@ -15871,6 +15871,22 @@ function scrollToMatch(idx) {
 }
 
 function filterAndRender() {
+  // SPLIT-SAFE (the search guard below states the rule): a section room
+  // computed while the rest is in flight holds only the head's slice of
+  // that section — 199 of the Sonnets' 307 rows, with no Load-more — a
+  // silently truncated room. Render what is here so reading can start,
+  // and re-run once the rest lands if the reader is still in this room;
+  // restoring scrollTop keeps the position (the DOM prefix is identical,
+  // new rows only append below it).
+  if (currentData && currentData._split && currentBook) {
+    const _book = currentBook, _tok = _restToken;
+    whenComplete().then(() => {
+      if (_tok !== _restToken || currentBook !== _book) return;
+      const _sc = $reader.scrollTop;
+      filterAndRender();
+      $reader.scrollTop = _sc;
+    });
+  }
   let passages;
   if (currentBook === '__fm__') {
     // Show only front-matter passages
@@ -23922,7 +23938,21 @@ async function loadText(entry, listItem) {
       if (data.moved_ids && data.moved_ids[pendingPid] && !passageById(pendingPid)) {
         pendingPid = data.moved_ids[pendingPid];
       }
-      const target = passageById(pendingPid);
+      let target = passageById(pendingPid);
+      // Split bodies: the head carries RENDER_BATCH rows and the rest is
+      // already in flight (beginRestFetch above). A pid the _index knows is
+      // a REAL row that has not spliced in yet — await the rest and resolve
+      // again. Without this, every deep link beyond the head died on the
+      // silent showCover below: exactly the resolution the removed-rows
+      // comment forbids, on a row that is not even removed. Token + record
+      // guards cover a text switch happening mid-await.
+      if (!target && data._split
+          && passageIndex(data).some(p => p.id === pendingPid)) {
+        const _tok = _restToken;
+        await whenComplete();
+        if (_tok !== _restToken || currentData !== data) return;
+        target = passageById(pendingPid);
+      }
       if (target) {
         // Jump past the cover, honor the group the passage lives in.
         // For chapter-scoped Bible texts the group is book.chapter
