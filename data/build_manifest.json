@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-07T18:26:35Z",
+ "generated": "2026-08-07T19:11:40Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "11e81b26beeeeebd7e60ed3459dccbd1a05a0c7f",
- "library_fingerprint": "sha256:b691a7e4378084527d83fa5c9ffeabb5b2b484a867ea0760d204ef027a61cc24",
+ "exporter_rev": "518621f956756671da8dd5c74675b7b4822fc4ee",
+ "library_fingerprint": "sha256:3fbb869bc7c5040ba9efaf6810f65f5fbfa41a1220036808daa29f0c4df6b85d",
  "counts": {
   "entries": 1176,
   "public": 1064,
@@ -11326,28 +11326,28 @@
    "exported": "2026-07-31T04:06:02Z"
   },
   "shakespeare-a-midsummer-nights-dream_shakespeare": {
-   "source_hash": "sha256:ee50e55945832418d70638a3eca0f1fed3662b9418334dcbd528bf207fb95c3c",
+   "source_hash": "sha256:6924e9af0a980b652a78a6b7a227e47afa602b35da484c1fdaf6c4b5119011a7",
    "data_file": "shakespeare-a-midsummer-nights-dream_shakespeare.json.gz",
-   "data_hash": "sha256:0a7a23291508671a49a49bff9b60026a63ad617ffe52254e81b908c25086004c",
-   "data_bytes": 105127,
-   "passages": 1722,
+   "data_hash": "sha256:5a8455b87566b097a28c8c16e1844a7872c57553863ee5c1eed4caf3a00bb10d",
+   "data_bytes": 58460,
+   "passages": 625,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:06:02Z"
+   "exported": "2026-08-07T19:09:43Z"
   },
   "shakespeare-alls-well-that-ends-well_shakespeare": {
-   "source_hash": "sha256:10225f00c8b14d7686e6dd1f954576f4ff8fc93bfd6ee1823dc2a13433932c4f",
+   "source_hash": "sha256:c682b7c0307152e233e547599d656f60848ebf7ce0f671825f954c74a241dc40",
    "data_file": "shakespeare-alls-well-that-ends-well_shakespeare.json.gz",
-   "data_hash": "sha256:121e5890f5d6efb18e43627666dc9ca6076f2646e79ee30596ba7d3838df0448",
-   "data_bytes": 65618,
+   "data_hash": "sha256:f75f174b88610671b98c9aaa05705ee4f5b09d7ff0f0c247487e07d4d2a18a63",
+   "data_bytes": 65625,
    "passages": 1077,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-07T15:18:32Z"
+   "exported": "2026-08-07T19:09:43Z"
   },
   "shakespeare-as-you-like-it_shakespeare": {
    "source_hash": "sha256:812433edb824af4b27e5cd2984e1d8e43c269daea46d33a9791947e7c312dd10",
@@ -11490,16 +11490,16 @@
    "exported": "2026-07-31T04:06:03Z"
   },
   "shakespeare-the-first-part-of-king-henry_shakespeare": {
-   "source_hash": "sha256:7cc5e19cc4ba6a5cd68ea0a76a9980561cdc8dd9fd5654ec1f88e7f714997895",
+   "source_hash": "sha256:5483b9fef97399f75d93a73b4a58a3a98ba420650116536b4a3a544ef4ba1cca",
    "data_file": "shakespeare-the-first-part-of-king-henry_shakespeare.json.gz",
-   "data_hash": "sha256:57e259ea8bfbe7eafbcbe921d4bb20712e2464e297d17adc156556d8bf8aa43a",
-   "data_bytes": 139767,
-   "passages": 1993,
+   "data_hash": "sha256:4d075c8808e1b077576ea2da25a39d2a8c0e867ca6dc5def36e5fa3112432fb8",
+   "data_bytes": 78222,
+   "passages": 931,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:06:03Z"
+   "exported": "2026-08-07T19:09:43Z"
   },
   "shakespeare-the-life-and-death-of-king-john_shakespeare": {
    "source_hash": null,
@@ -11661,16 +11661,16 @@
    "exported": "2026-07-31T04:06:03Z"
   },
   "shakespeare-the-tempest_shakespeare": {
-   "source_hash": "sha256:91934231c7b48e61cdce36fc07c69cd2a1898242d43ae5a0923a4f7a02f82bf4",
+   "source_hash": "sha256:a9e0166964ee9f34e4c5e5036f7d3e64988abf4f903abdc90244eab867dbe286",
    "data_file": "shakespeare-the-tempest_shakespeare.json.gz",
-   "data_hash": "sha256:d2cca0dfa22deb11232700ce4ca67a3d9a9aaf9939387eb43d962f06b0f76668",
-   "data_bytes": 104568,
-   "passages": 1694,
+   "data_hash": "sha256:f9cbb9e4709f0a28f87ea8020c848ac58a1e15536017227a2ae7d51d01dccc3e",
+   "data_bytes": 60157,
+   "passages": 746,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:06:03Z"
+   "exported": "2026-08-07T19:09:43Z"
   },
   "shakespeare-the-third-part-of-king-henry_shakespeare": {
    "source_hash": "sha256:87b5c460944a90f6e00cdf5610cf2f64d1af587d3d0bb9e3d79f3ac3dd5e6b1c",
@@ -11781,16 +11781,16 @@
    "exported": "2026-07-31T04:06:03Z"
   },
   "shakespeare-the-tragedy-of-titus-andronicus_shakespeare": {
-   "source_hash": "sha256:6922606f1d85bcd535f57ef511c229451e9506dd4f6888a82c36ed775eb4e932",
+   "source_hash": "sha256:ccdc84a079ff7aa373974bfe80a002da7d942c75c487eb2061eac9ce40ac9762",
    "data_file": "shakespeare-the-tragedy-of-titus-andronicus_shakespeare.json.gz",
-   "data_hash": "sha256:3358658528970f60ad68fc7f1f91c12e34b70f2be080d3896898a624815af6bb",
-   "data_bytes": 134358,
-   "passages": 2057,
+   "data_hash": "sha256:4ca8f2fe414a29ccb234d8d001dc8437c882e8d61015a3802c848b3b4c3192e7",
+   "data_bytes": 69228,
+   "passages": 726,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T04:06:04Z"
+   "exported": "2026-08-07T19:09:44Z"
   },
   "shakespeare-the-two-gentlemen-of-verona_shakespeare": {
    "source_hash": "sha256:ddcf0dbffac21150ee943cb8840ab120a10a088a71ce6e3a15cd732a4696a9ed",
