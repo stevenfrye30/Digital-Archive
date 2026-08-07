@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-07T16:11:14Z",
+ "generated": "2026-08-07T17:14:53Z",
  "exporter": "build_manifest.py",
  "exporter_rev": "252400224a87efccc522b7efb81345a1aa4fef7c",
- "library_fingerprint": "sha256:464d0554028bc4d9d043ae38978115356a967af0a365f049b70c257aca3b7d23",
+ "library_fingerprint": "sha256:b691a7e4378084527d83fa5c9ffeabb5b2b484a867ea0760d204ef027a61cc24",
  "counts": {
   "entries": 1171,
   "public": 1059,
@@ -11362,21 +11362,21 @@
    "exported": "2026-07-31T04:06:02Z"
   },
   "shakespeare-complete_shakespeare": {
-   "source_hash": "sha256:f09201baee175fe78e09d1a1de1798fabaa080a63a688444db4e247787c1f106",
+   "source_hash": "sha256:9663aaccd44a9fb08766171cf63695689b44437d1ae504af4ddbef233855e488",
    "data_file": "shakespeare-complete_shakespeare.json.gz",
-   "data_hash": "sha256:37c713d4be69cde876b3450084278db084f5c8dc71dd68c7a62365633bd225a6",
-   "data_bytes": 171115,
+   "data_hash": "sha256:a2e0078082ae841c06de5fc90efcad29410289042e2491b89d37fa12918730d6",
+   "data_bytes": 214237,
    "passages": 38951,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-03T02:52:47Z",
+   "exported": "2026-08-07T17:11:28Z",
    "parts": [
     {
      "data_file": "shakespeare-complete_shakespeare.rest.json.gz",
-     "data_hash": "sha256:fb95e607e0bdc9f47558ddf84f1f1d1288be429b933ce50033c4823a0753dca6",
-     "data_bytes": 2517793
+     "data_hash": "sha256:8ea7af6fcab401e1cb142ee59328078b6c3b4faba5d7d5cd526d6606a5f67fde",
+     "data_bytes": 2530934
     }
    ]
   },
