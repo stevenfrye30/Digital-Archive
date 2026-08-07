@@ -17735,6 +17735,13 @@ function _releaseRemovedNotice() {
 }
 
 function jumpToPassage(pid, highlight, align) {
+  // Moved-id redirect: containment lanes that re-derive path-derived ids
+  // record old -> new in `moved_ids`. The SAME ROW at a new address is not
+  // a re-point — follow it transparently.
+  if (currentData && currentData.moved_ids && currentData.moved_ids[pid]
+      && !passageById(pid)) {
+    pid = currentData.moved_ids[pid];
+  }
   let el = $passages.querySelector(`.passage[data-pid="${CSS.escape(pid)}"]`);
   if (!el) {
     if (!passageById(pid)) {                                        // truly-missing id
@@ -23911,6 +23918,10 @@ async function loadText(entry, listItem) {
 
     const chapterScoped = _isChapterScopedHier(data.hierarchy);
     if (pendingPid) {
+      // Moved-id redirect at load time (same row, new address)
+      if (data.moved_ids && data.moved_ids[pendingPid] && !passageById(pendingPid)) {
+        pendingPid = data.moved_ids[pendingPid];
+      }
       const target = passageById(pendingPid);
       if (target) {
         // Jump past the cover, honor the group the passage lives in.
