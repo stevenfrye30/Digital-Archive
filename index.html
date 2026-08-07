@@ -13604,6 +13604,21 @@ const _CODEX_L1_WORDS = [
   'canto','act','scene','epistle','letter','discourse',
 ];
 
+// Roman or Arabic numeral string -> integer ('IV' -> 4, '12' -> 12).
+// Used by the Shakespeare-family act labels in groupName().
+function _romanToArabic(s) {
+  const str = String(s).trim().toUpperCase();
+  if (/^\d+$/.test(str)) return parseInt(str, 10);
+  const vals = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+  let total = 0, prev = 0;
+  for (let i = str.length - 1; i >= 0; i--) {
+    const v = vals[str[i]] || 0;
+    total += v < prev ? -v : v;
+    if (v > prev) prev = v;
+  }
+  return total;
+}
+
 // True if `t` is literally just "<L1-word> <number-or-roman>" with no
 // further content — pure placeholder data, never a real title.
 function _isPlaceholderTitle(t) {
@@ -13889,6 +13904,37 @@ function groupName(key) {
     }
     const word = _detectLabelWord(level);
     const raw = titles && (titles[key] || titles[Number(key)]);
+    // Shakespeare play records (ruled 2026-08-07): the button's number
+    // must reflect the act the unit CONTAINS, not its key \u2014 the family's
+    // title-block unit made every key-numbered label off by one or two
+    // ('Act 1' = the title page, 'Act 3' = real Act I). Identity-gated
+    // to the family (the Task 58 rule: identity flags gate family
+    // affordances): the same key/numeral misalignment exists in ~83
+    // non-Shakespeare records where the own-numeral is NOT always
+    // trustworthy ('Chapter 1908' \u2014 a year captured as a numeral), so
+    // the general class awaits its own ruling and this gate must not
+    // annex it.
+    if (word === 'Act' && currentEntry
+        && /^shakespeare-/.test(String(currentEntry.id || ''))) {
+      const s = raw == null ? '' : String(raw).trim();
+      // 'Act V' \u2014 and 'Act V / <next play title>', the merge artifact
+      // whose unit really is the host play's Act V
+      const own = /^Act\s+([IVXLCDM\d]+)\s*(?:$|\/)/i.exec(s);
+      if (own) return `Act ${_romanToArabic(own[1])}`;
+      // speech-fragment titles ('Benedick. Beat\u2014') end with an em-dash \u2014
+      // junk the family's own data mints; never a button label
+      const t = /\u2014$/.test(s) ? null : _refineChapterTitle(raw, key, null);
+      if (t) return t;               // title block, Induction, Prologue, Epilogue
+      // no usable title: front block before the first act, plain chapter after
+      let firstAct = Infinity;
+      for (const [k2, v2] of Object.entries(titles || {})) {
+        if (/^Act\s+[IVXLCDM\d]/i.test(String(v2 || '').trim())) {
+          const kk = Number(k2);
+          if (!Number.isNaN(kk) && kk < firstAct) firstAct = kk;
+        }
+      }
+      return Number(key) < firstAct ? 'Front matter' : `Chapter ${key}`;
+    }
     const t = _refineChapterTitle(raw, key, word);
     const base = `${word} ${key}`;
     return t ? `${base} \u2014 ${t}` : base;
