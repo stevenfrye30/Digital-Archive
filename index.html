@@ -17726,6 +17726,12 @@ const _RR_CLASS_LABEL = {
   'bookseller-label': "a bookseller's label from the scanned copy",
   'plate-reference': "a plate's page-reference line (its caption remains in the text)",
   'page-number': 'a page number the scan separated from its running head',
+  // Shakespeare dedup truncation (2026-08-07): the legacy carver ran
+  // through the omnibus's merged-title seams and four standalones
+  // carried a second complete play. Those rows were deduplicated, not
+  // deleted — each ledger entry's `see` points at the same row in the
+  // play's own record, and the notice renders that link.
+  'duplicate-carve': "a duplicate of a play this record was never meant to carry",
 };
 
 function _gotoSurvivingRow(nid) {
@@ -17770,13 +17776,32 @@ function _showRemovedRowNotice(pid, rr, noScroll) {
   head.className = 'rr-head';
   head.textContent = `The cited row ${pid} is not part of this text.`;
   const body = document.createElement('div');
-  body.textContent = `It was ${_RR_CLASS_LABEL[rr.class] || rr.class}, removed `
-    + `as scan debris on ${rr.removed} under a steward ruling. What stood here:`;
-  const quote = document.createElement('div');
-  quote.className = 'rr-text';
-  quote.textContent = `“${rr.text}”`;
+  if (rr.class === 'duplicate-carve' && rr.see) {
+    // Dedup, not deletion: the row belongs to another play and lives in
+    // that play's own record. No quote — the text is not gone.
+    body.textContent = `It belonged to ${rr.see.title}, which this record was `
+      + `never meant to carry — deduplicated on ${rr.removed} under a steward `
+      + `ruling. Nothing is lost: the play lives in its own record.`;
+  } else {
+    body.textContent = `It was ${_RR_CLASS_LABEL[rr.class] || rr.class}, removed `
+      + `as scan debris on ${rr.removed} under a steward ruling. What stood here:`;
+  }
   const nav = document.createElement('div');
   nav.className = 'rr-nav';
+  if (rr.see && rr.see.data_file) {
+    const a = document.createElement('a');
+    a.textContent = `Read this passage in ${rr.see.title} →`;
+    a.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      const rec = dataFileToEntry[rr.see.data_file];
+      if (rec && rec.entry) {
+        _releaseRemovedNotice();
+        pendingPid = rr.see.pid || null;
+        loadText(rec.entry);
+      }
+    });
+    nav.append(a);
+  }
   for (const [label, nid] of [['← previous surviving row', rr.prev_id],
                               ['next surviving row →', rr.next_id]]) {
     if (!nid) continue;
@@ -17785,7 +17810,14 @@ function _showRemovedRowNotice(pid, rr, noScroll) {
     a.addEventListener('click', (ev) => { ev.preventDefault(); _gotoSurvivingRow(nid); });
     nav.append(a);
   }
-  div.append(head, body, quote, nav);
+  div.append(head, body);
+  if (rr.text) {
+    const quote = document.createElement('div');
+    quote.className = 'rr-text';
+    quote.textContent = `“${rr.text}”`;
+    div.append(quote);
+  }
+  div.append(nav);
   $passages.prepend(div);
   if (!noScroll) $reader.scrollTop = 0;
 }
