@@ -1,11 +1,11 @@
 {
- "generated": "2026-08-07T17:14:53Z",
+ "generated": "2026-08-07T18:26:35Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "252400224a87efccc522b7efb81345a1aa4fef7c",
+ "exporter_rev": "11e81b26beeeeebd7e60ed3459dccbd1a05a0c7f",
  "library_fingerprint": "sha256:b691a7e4378084527d83fa5c9ffeabb5b2b484a867ea0760d204ef027a61cc24",
  "counts": {
-  "entries": 1171,
-  "public": 1059,
+  "entries": 1176,
+  "public": 1064,
   "restricted": 112
  },
  "texts": {
@@ -11440,6 +11440,19 @@
    "apparatus": false,
    "exported": "2026-07-31T04:06:02Z"
   },
+  "shakespeare-much-ado-about-nothing_shakespeare": {
+   "source_hash": null,
+   "data_file": "shakespeare-much-ado-about-nothing_shakespeare.json.gz",
+   "data_hash": "sha256:e24566f28a20ada02fcc0e888fb575a4237181260d6ac25b66617b606cc9dd5c",
+   "data_bytes": 59511,
+   "passages": 1097,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-07T18:25:54Z",
+   "source_note": "no canonical dir (derived provider record)"
+  },
   "shakespeare-pericles-prince-of-tyre_shakespeare": {
    "source_hash": "sha256:e9209c36885825b704f3e7373f2de704b0ac550ac6083140cc754d4ea382b4f2",
    "data_file": "shakespeare-pericles-prince-of-tyre_shakespeare.json.gz",
@@ -11488,6 +11501,19 @@
    "apparatus": false,
    "exported": "2026-07-31T04:06:03Z"
   },
+  "shakespeare-the-life-and-death-of-king-john_shakespeare": {
+   "source_hash": null,
+   "data_file": "shakespeare-the-life-and-death-of-king-john_shakespeare.json.gz",
+   "data_hash": "sha256:173333fed2974644c5c32beb5a76fe963037ff2604ca4965eeee8f3512bbe966",
+   "data_bytes": 57169,
+   "passages": 664,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-07T18:25:54Z",
+   "source_note": "no canonical dir (derived provider record)"
+  },
   "shakespeare-the-life-and-death-of-king_shakespeare": {
    "source_hash": "sha256:5fc797dba5e4f4180d59f4b8490086248c8a0c2e0172d91e33dfba5d4ff69076",
    "data_file": "shakespeare-the-life-and-death-of-king_shakespeare.json.gz",
@@ -11511,6 +11537,19 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-31T04:06:03Z"
+  },
+  "shakespeare-the-life-of-timon-of-athens_shakespeare": {
+   "source_hash": null,
+   "data_file": "shakespeare-the-life-of-timon-of-athens_shakespeare.json.gz",
+   "data_hash": "sha256:3004775c035a91bfd740b7a86253beceb068d4280ae2e8046a39633432ef9d2d",
+   "data_bytes": 55724,
+   "passages": 948,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-07T18:25:54Z",
+   "source_note": "no canonical dir (derived provider record)"
   },
   "shakespeare-the-merchant-of-venice_shakespeare": {
    "source_hash": "sha256:2be0df24737e1cc843a242a24d64422f10cc1cbd8b0a6f9dc484a87be26c26c6",
@@ -11571,6 +11610,19 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-31T04:06:03Z"
+  },
+  "shakespeare-the-second-part-of-king-henry-the-fourth_shakespeare": {
+   "source_hash": null,
+   "data_file": "shakespeare-the-second-part-of-king-henry-the-fourth_shakespeare.json.gz",
+   "data_hash": "sha256:e41bc4fedd3b6379d15d10f9b497902e3d78a55838fb2863659cfafce0886a77",
+   "data_bytes": 73304,
+   "passages": 1062,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-07T18:25:54Z",
+   "source_note": "no canonical dir (derived provider record)"
   },
   "shakespeare-the-second-part-of-king-henry_shakespeare": {
    "source_hash": "sha256:0e8518279973d1d1f3745542804e0782cebe7624c3b5ccec397d33ed8fbc642d",
@@ -11775,6 +11827,19 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-31T04:06:04Z"
+  },
+  "shakespeare-troilus-and-cressida_shakespeare": {
+   "source_hash": null,
+   "data_file": "shakespeare-troilus-and-cressida_shakespeare.json.gz",
+   "data_hash": "sha256:a77271cd61299b7a0cd8f15a8d3bd4f8aed8f5ebd988d93249109da3df006c1f",
+   "data_bytes": 78473,
+   "passages": 1331,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-07T18:25:54Z",
+   "source_note": "no canonical dir (derived provider record)"
   },
   "shakespeare-twelfth-night-or-what-you-will_shakespeare": {
    "source_hash": "sha256:1196d743bff83545e3f531ad19e4e5328a389838c964672178ab91605dbba1d9",

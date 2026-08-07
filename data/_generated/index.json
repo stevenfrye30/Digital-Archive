@@ -18138,7 +18138,15 @@
       "cross_sections": null,
       "cross_traditions": null,
       "reading_status": "pass",
-      "reading_status_certified": true
+      "reading_status_certified": true,
+      "witness_role": "source-volume",
+      "works_covered": [
+        10,
+        16,
+        25,
+        33,
+        35
+      ]
     },
     {
       "id": "shakespeare-the-first-part-of-henry-the",
@@ -34327,6 +34335,186 @@
       "derivation_status": "derived-from-source-volume; wording unchanged",
       "known_limitations": "Structure derived from the collected volume; the source's own citations are retained. Body and translator commentary are not separated beyond the footnote layer.",
       "body_passages": 48
+    },
+    {
+      "id": "shakespeare-the-second-part-of-king-henry-the-fourth",
+      "title": "The Second Part of King Henry the Fourth",
+      "tradition": "English Literature",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "shakespeare-the-second-part-of-king-henry-the-fourth_shakespeare.json",
+      "source": "gutenberg",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "year": 1623,
+      "translation_label": "The Complete Works of William Shakespeare",
+      "translation_short_label": null,
+      "volume_label": "From The Complete Works of William Shakespeare (Project Gutenberg)",
+      "derived_from_volume": "shakespeare-complete",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        10
+      ],
+      "searchable_passages": true,
+      "searchable_metadata": true,
+      "quality": "popular",
+      "language": "en",
+      "script": "Latin",
+      "source_summary": "*The Second Part of King Henry the Fourth* by William Shakespeare. From *The Complete Works of William Shakespeare* (Project Gutenberg #100).",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null
+    },
+    {
+      "id": "shakespeare-the-life-and-death-of-king-john",
+      "title": "The Life and Death of King John",
+      "tradition": "English Literature",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "shakespeare-the-life-and-death-of-king-john_shakespeare.json",
+      "source": "gutenberg",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "year": 1623,
+      "translation_label": "The Complete Works of William Shakespeare",
+      "translation_short_label": null,
+      "volume_label": "From The Complete Works of William Shakespeare (Project Gutenberg)",
+      "derived_from_volume": "shakespeare-complete",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        16
+      ],
+      "searchable_passages": true,
+      "searchable_metadata": true,
+      "quality": "popular",
+      "language": "en",
+      "script": "Latin",
+      "source_summary": "*The Life and Death of King John* by William Shakespeare. From *The Complete Works of William Shakespeare* (Project Gutenberg #100).",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null
+    },
+    {
+      "id": "shakespeare-much-ado-about-nothing",
+      "title": "Much Ado About Nothing",
+      "tradition": "English Literature",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "shakespeare-much-ado-about-nothing_shakespeare.json",
+      "source": "gutenberg",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "year": 1623,
+      "translation_label": "The Complete Works of William Shakespeare",
+      "translation_short_label": null,
+      "volume_label": "From The Complete Works of William Shakespeare (Project Gutenberg)",
+      "derived_from_volume": "shakespeare-complete",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        25
+      ],
+      "searchable_passages": true,
+      "searchable_metadata": true,
+      "quality": "popular",
+      "language": "en",
+      "script": "Latin",
+      "source_summary": "*Much Ado About Nothing* by William Shakespeare. From *The Complete Works of William Shakespeare* (Project Gutenberg #100).",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null
+    },
+    {
+      "id": "shakespeare-the-life-of-timon-of-athens",
+      "title": "The Life of Timon of Athens",
+      "tradition": "English Literature",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "shakespeare-the-life-of-timon-of-athens_shakespeare.json",
+      "source": "gutenberg",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "year": 1623,
+      "translation_label": "The Complete Works of William Shakespeare",
+      "translation_short_label": null,
+      "volume_label": "From The Complete Works of William Shakespeare (Project Gutenberg)",
+      "derived_from_volume": "shakespeare-complete",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        33
+      ],
+      "searchable_passages": true,
+      "searchable_metadata": true,
+      "quality": "popular",
+      "language": "en",
+      "script": "Latin",
+      "source_summary": "*The Life of Timon of Athens* by William Shakespeare. From *The Complete Works of William Shakespeare* (Project Gutenberg #100).",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null
+    },
+    {
+      "id": "shakespeare-troilus-and-cressida",
+      "title": "Troilus and Cressida",
+      "tradition": "English Literature",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "shakespeare-troilus-and-cressida_shakespeare.json",
+      "source": "gutenberg",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "year": 1623,
+      "translation_label": "The Complete Works of William Shakespeare",
+      "translation_short_label": null,
+      "volume_label": "From The Complete Works of William Shakespeare (Project Gutenberg)",
+      "derived_from_volume": "shakespeare-complete",
+      "witness_role": "derived-work-record",
+      "works_covered": [
+        35
+      ],
+      "searchable_passages": true,
+      "searchable_metadata": true,
+      "quality": "popular",
+      "language": "en",
+      "script": "Latin",
+      "source_summary": "*Troilus and Cressida* by William Shakespeare. From *The Complete Works of William Shakespeare* (Project Gutenberg #100).",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null
     }
   ]
 }
