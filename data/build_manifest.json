@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-07T21:49:45Z",
+ "generated": "2026-08-07T22:40:29Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "5f54d6e9a1287dc5614f692ff9478799dc6fdcb2",
- "library_fingerprint": "sha256:06ead1c7837372372223fe2b0c70d2f27fb0d5102de8e0d2025f596a564e2d76",
+ "exporter_rev": "2a357836bab57296097031080270f0338b0c855b",
+ "library_fingerprint": "sha256:028a64d746f0cf6ebb59265bab7fbb3a9908582a83270b0a4c1e5ec061ec6457",
  "counts": {
   "entries": 1176,
   "public": 1064,
@@ -469,16 +469,16 @@
    "exported": "2026-07-10T17:30:21Z"
   },
   "arabian-nights-burton_burton": {
-   "source_hash": "sha256:1c214dcc50e579969776ce9f284fb41d620b0479477453718af45417da105dca",
+   "source_hash": "sha256:0433f110fcf3825193f0e2c5a5bf5166a06fbd59d4c1e328cf7ee94d10227265",
    "data_file": "arabian-nights-burton_burton.json.gz",
-   "data_hash": "sha256:1646e5d80bb2e59d227386d9fc569cdd0a7de6875a433a42362316b4580a8cec",
-   "data_bytes": 535022,
+   "data_hash": "sha256:fadee2f5455968bf3eadc02f96db606b33cb59ec4b8810d9b56b92aaf7c93ea2",
+   "data_bytes": 535026,
    "passages": 2203,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:21Z"
+   "exported": "2026-08-07T22:36:37Z"
   },
   "arabian-poetry-clouston_clouston": {
    "source_hash": "sha256:2e6656e18837c297f97788ba9eda4e1be9f9c3ad756ea52b82e27e4fdf85286c",
@@ -2998,16 +2998,16 @@
    "exported": "2026-07-10T17:30:45Z"
   },
   "cornwall-traditions-vol1-bottrell_bottrell": {
-   "source_hash": "sha256:62bde99256b007a1fbb0f41b66b43a1582df6283063948486610f3c053b675bb",
+   "source_hash": "sha256:181015c07bc0ec1566765d3d5c419b60694b4b0d299b311e89820eca14bf377a",
    "data_file": "cornwall-traditions-vol1-bottrell_bottrell.json.gz",
-   "data_hash": "sha256:0923446a14f7e10a8e2b8d7bfc2e556bb2e58680fd6b718de817834ab8a49072",
-   "data_bytes": 313423,
+   "data_hash": "sha256:7f88e2cc67bf10befd808dbe2e67b742a499c73f81c4f3eff774ff59ebd87fd8",
+   "data_bytes": 313426,
    "passages": 1599,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:46Z"
+   "exported": "2026-08-07T22:37:03Z"
   },
   "cornwall-traditions-vol2-bottrell_bottrell": {
    "source_hash": "sha256:3947a65400fec40e838a6c069a0373de5e395ba4dce3cbc05cb567c084628e2c",
@@ -4333,16 +4333,16 @@
    "exported": "2026-07-10T17:30:50Z"
   },
   "folk-tales-russian_blumenthal": {
-   "source_hash": "sha256:b06ca490206512c6efb6fc61d4f74cfad52ce0ce987c451d7fc486ccf44118d4",
+   "source_hash": "sha256:ab0d9e8b0b4b2038035d175f712e159700e5826f40f751eb03abab600d35d564",
    "data_file": "folk-tales-russian_blumenthal.json.gz",
-   "data_hash": "sha256:5c1aaeb3d0439aec82cd6aa5b012a6cdf2ed9c4b325a22244fe73bbac9811d94",
-   "data_bytes": 51370,
+   "data_hash": "sha256:124c5137de4cefda1ddcc77c45e1bb7f6e84ddddd99ccb925eb8da3aea04f3f3",
+   "data_bytes": 51385,
    "passages": 765,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:50Z"
+   "exported": "2026-08-07T22:38:48Z"
   },
   "folklore-holy-land-hanauer_hanauer": {
    "source_hash": "sha256:1bd7c00b098230b6e63b9d6466fb02e92db7cab73ae202baa0fd8cc0f0c96ecb",
@@ -4634,21 +4634,21 @@
    "exported": "2026-08-05T13:49:05Z"
   },
   "gibbon-decline-fall_gibbon": {
-   "source_hash": "sha256:bab8d512b61eca7d6f12f125520bafd1d2e9f788049d0c251e3c5d7d4c49d686",
+   "source_hash": "sha256:06997f9b9fbd56c89b4a9d81ed7b2dd6b95dbbfe44a97bc43bfc297a1f94aec1",
    "data_file": "gibbon-decline-fall_gibbon.json.gz",
-   "data_hash": "sha256:0090d8dffd8232c4bd6e24e165ab807bfa635441158c5a0f26a77003523c03d4",
-   "data_bytes": 64848,
+   "data_hash": "sha256:255619ab04792be7177b49dd87f31ee81528e48e00f16199afb7097e85b539f6",
+   "data_bytes": 64922,
    "passages": 12099,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-03T02:52:44Z",
+   "exported": "2026-08-07T22:36:10Z",
    "parts": [
     {
      "data_file": "gibbon-decline-fall_gibbon.rest.json.gz",
-     "data_hash": "sha256:42f98469562ffcb654c4b1cd76a8455fe0863fd0a6d85b907237de77e1a4d654",
-     "data_bytes": 3663563
+     "data_hash": "sha256:e3f6e1b9fac231aa9f4766490965311ac32dcef1ee1aed8e6286762bd5f675e5",
+     "data_bytes": 3663565
     }
    ]
   },
@@ -4774,16 +4774,16 @@
    "exported": "2026-07-10T17:30:52Z"
   },
   "gnostics-remains-king_king": {
-   "source_hash": "sha256:4a3e4157a346abb0cd1f18c88821ddbab0a31c731be1dce3c09e5befa7364d6e",
+   "source_hash": "sha256:3b9356d4b1c3f9bb10e07feffc4cc0f2cdc04dcdbc2188a68a2b537e7e38eeca",
    "data_file": "gnostics-remains-king_king.json.gz",
-   "data_hash": "sha256:1a8b966784ba52fffb1de5e7d594075c65e9719b5c392292c846a1b40c53d57a",
-   "data_bytes": 446124,
+   "data_hash": "sha256:49ca02f306ede5142410ba457867e3ba061a48c02965ce0cb0cb48f9eede932d",
+   "data_bytes": 446130,
    "passages": 3095,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:53Z"
+   "exported": "2026-08-07T22:38:11Z"
   },
   "gods-fighting-men-gregory_gregory": {
    "source_hash": "sha256:2f3ea2c10b63f510d6199b9dc927f2890f77ddf2f943d39c5d2980ad0567d224",
@@ -5912,16 +5912,16 @@
    "exported": "2026-07-10T17:30:57Z"
   },
   "intermediate-types-carpenter_carpenter": {
-   "source_hash": "sha256:5c4a44a2a1fda14c12d3eafcf8257f05f2a7271b1ebdec6f28774190d64edad3",
+   "source_hash": "sha256:550aa628cf78cb7fb47f45ecceb4549d7612510cb359628bc151d63e0456156e",
    "data_file": "intermediate-types-carpenter_carpenter.json.gz",
-   "data_hash": "sha256:9085beb61b9ce826c612dbc6de29fc189a76a0a8846adbb52a7d06b737625e17",
-   "data_bytes": 83804,
+   "data_hash": "sha256:ed1e007e211fa4292e4fe1b76b04b12a92f568e6b7933affe6a0856657010ce3",
+   "data_bytes": 83806,
    "passages": 371,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:57Z"
+   "exported": "2026-08-07T22:38:03Z"
   },
   "internet-book-shadows_various": {
    "source_hash": null,
@@ -7800,16 +7800,16 @@
    "exported": "2026-07-10T17:31:07Z"
   },
   "meaning-masonry-wilmshurst_wilmshurst": {
-   "source_hash": "sha256:aefcd6c1533b6ff594e8327cdafe5fc1344040105c568b352d9bf0d3b6ab6ba9",
+   "source_hash": "sha256:f230a5167e40d65c77065d954e586b76afdb910b90f03ebbc3c0021af3135ba2",
    "data_file": "meaning-masonry-wilmshurst_wilmshurst.json.gz",
-   "data_hash": "sha256:046724f9a6524c47000f26bb85e7307df868a3539a34e2b84f623a219a1db4c3",
-   "data_bytes": 127646,
+   "data_hash": "sha256:b73988fcd10a3b8fffb5bdfa2e15319e55479311bd5881526dbcfec575ea451a",
+   "data_bytes": 127645,
    "passages": 506,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:07Z"
+   "exported": "2026-08-07T22:36:00Z"
   },
   "meditations_casaubon": {
    "source_hash": "sha256:3a9e3e0dd7c68acdb6c7c1e218ed05eae40f20d9bf285f12c0b6a8fa827381eb",
@@ -8446,16 +8446,16 @@
    "exported": "2026-07-10T17:31:09Z"
   },
   "new-light-alchymie-sedziwoj_french": {
-   "source_hash": "sha256:dc6e6f4bed82df47bdd9a187cf7655ac76a1c9fc3567a1e10322605a2002f396",
+   "source_hash": "sha256:60f795f8b54e8fe566d7928065394cfb2c276ba965fc7fff2b6866c2312f287c",
    "data_file": "new-light-alchymie-sedziwoj_french.json.gz",
-   "data_hash": "sha256:fee01cdede81310df8eb9a0e59457fafa720c39d97d337d35ee1ad827a1275ca",
-   "data_bytes": 192863,
+   "data_hash": "sha256:f8a496c71f76c0fb76c878777aed985208f0e6d8782fb954392728cd5276fc01",
+   "data_bytes": 192879,
    "passages": 2012,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:09Z"
+   "exported": "2026-08-07T22:36:00Z"
   },
   "newman-apologia_newman": {
    "source_hash": "sha256:129179233e5e5830274a95b7fa80fc49116b51375c377958922c11dae12ba53e",
@@ -11120,16 +11120,16 @@
    "exported": "2026-07-10T17:31:21Z"
   },
   "secret-ages-collier_collier": {
-   "source_hash": "sha256:e68777e354c8138197abf4a828383a4e720eb99edbf396f0225307d7f0d92b9c",
+   "source_hash": "sha256:d541432a7c02f19aa4f876ccb11c47274dc60f2eedd14a88d2cc7783cebe7cd9",
    "data_file": "secret-ages-collier_collier.json.gz",
-   "data_hash": "sha256:eedb295dc642d3cb6f9afbffe0607c933f02cd15646e4e4de2124cae0aa52404",
-   "data_bytes": 211962,
+   "data_hash": "sha256:546300b4a89b9c14ce9b4b4f90629a06600c904a75ff1788e57ee4b376883f0b",
+   "data_bytes": 211977,
    "passages": 2848,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:21Z"
+   "exported": "2026-08-07T22:36:01Z"
   },
   "secret-doctrine-vol1-blavatsky_blavatsky": {
    "source_hash": "sha256:53d76cfbde5d921d4d83cd420253acc0afddcb9c2ea33995d5524094b4a3c2e9",
@@ -11902,16 +11902,16 @@
    "exported": "2026-07-10T17:31:23Z"
   },
   "shibboleth-templar-monitor_steinbrenner": {
-   "source_hash": "sha256:b8fd390881f83c2d3451e8ffc807e94d3dd2bf81fcc6e3d6415e0b9029977d21",
+   "source_hash": "sha256:b3beb2cd7367a69184d4710bf7c2eea8010ead8adb33e1f05861a27064264dd4",
    "data_file": "shibboleth-templar-monitor_steinbrenner.json.gz",
-   "data_hash": "sha256:943dcef83f4392282ecc29d60e5483915427f28fdeb56af4c7581db89e0430db",
-   "data_bytes": 126880,
+   "data_hash": "sha256:a9df7941a747224bf2239ed5468e2478c4238cbc24d389e8584f97409ebc09af",
+   "data_bytes": 126881,
    "passages": 2340,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:23Z"
+   "exported": "2026-08-07T22:36:01Z"
   },
   "shijing-legge_legge": {
    "source_hash": "sha256:cb524f13745b73009f4c089ac1c6f23fc09973c3bd52b4ca329007777508b0af",
@@ -12240,16 +12240,16 @@
    "exported": "2026-07-10T17:31:24Z"
   },
   "steiner-higher-worlds_metcalfe": {
-   "source_hash": "sha256:b8168199a0a2509353f4fdfc702904800698039b7441c65bd054c566708ba33f",
+   "source_hash": "sha256:c71a69c540fb11ce2a497bbec1c32acf0123132d5327ca4ab74467a2f9d58ec8",
    "data_file": "steiner-higher-worlds_metcalfe.json.gz",
-   "data_hash": "sha256:987e8b1c7094f74363520da61050d6585ce66f4a8ae01d977b6bb7f451b622e0",
-   "data_bytes": 113204,
+   "data_hash": "sha256:5141b9407195228a96afb269b2810efe11a9db8fade7d86fd2d276fca8db442f",
+   "data_bytes": 113214,
    "passages": 581,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-05T06:08:15Z"
+   "exported": "2026-08-07T22:36:02Z"
   },
   "stirner-ego-his-own_byington": {
    "source_hash": "sha256:634ed011a4d1cb11dd4377352cc55e51bf3d3ed1b20f0b4792dda3c06b84467a",
@@ -13040,16 +13040,16 @@
    "exported": "2026-07-31T04:07:47Z"
   },
   "theophrastus-characters_jebb": {
-   "source_hash": "sha256:921f9b9b6673381a2519d88d4576820f947144fe34147e604d052dc11444f94e",
+   "source_hash": "sha256:d19870132ef9347be87b752e063bdd402e1191ec886991def0223bbfae0bbc9d",
    "data_file": "theophrastus-characters_jebb.json.gz",
-   "data_hash": "sha256:666c6991f1a08ff1dca007878c722132c931cec4afbf87244d6f61b764237859",
-   "data_bytes": 37767,
+   "data_hash": "sha256:5f73f749b5324e2242f94679e502ba0dbf33bc944bd960648899b2c72ec70663",
+   "data_bytes": 37769,
    "passages": 256,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:30Z"
+   "exported": "2026-08-07T22:36:13Z"
   },
   "theragatha-sujato_pli": {
    "source_hash": "sha256:13ff5d4fcee6064638ed5ead10b4d4b2326d9d599538cb786c1f99d469cdde74",
