@@ -5417,7 +5417,8 @@
       "tradition": "Christian",
       "collection": "sacred",
       "hierarchy": [
-        "paragraph"
+        "book",
+        "chapter"
       ],
       "data_file": "chrysostom-homilies-timothy-hebrews_ccel-schaff.json",
       "source": "ccel",
@@ -14499,7 +14500,8 @@
       "tradition": "Mesoamerican",
       "collection": "sacred",
       "hierarchy": [
-        "passage"
+        "chapter",
+        "verse"
       ],
       "data_file": "creation-myths-america_curtin.json",
       "source": "sacredtexts",
