@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-08T01:59:19Z",
+ "generated": "2026-08-08T02:14:39Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "f4258e3b256332beb50d2a87af2cabd43d772618",
- "library_fingerprint": "sha256:b73711d025dcb63acbcfddad07c8a12cc86caf26f836ad25eefdbfbfd7617470",
+ "exporter_rev": "4a623a9bcd5f41f5644eff0c56f3d9e83a23df95",
+ "library_fingerprint": "sha256:00cee07336ae08a635352c5598f7a60a760f735ba78d102cb5e60ace521af976",
  "counts": {
   "entries": 1176,
   "public": 1064,
@@ -4634,21 +4634,21 @@
    "exported": "2026-08-05T13:49:05Z"
   },
   "gibbon-decline-fall_gibbon": {
-   "source_hash": "sha256:73b5bb790079c6c8b0e9c7d9bf3e98ba94584ea05a6992e3e48054d20249bbe2",
+   "source_hash": "sha256:a34aa521d3e58dd8cb1e7c0d6c7e997246f59936017f5be7359ff5cbb11b97de",
    "data_file": "gibbon-decline-fall_gibbon.json.gz",
-   "data_hash": "sha256:5b88124309fc226e4b40402cf2c577fb7ced1e0f5aaabc1bd0bc181397eeaf4c",
-   "data_bytes": 64304,
+   "data_hash": "sha256:cbb9069af5a43dec2b62727499436a2b3483b6401f4060a7b49854097db8a049",
+   "data_bytes": 44432,
    "passages": 12099,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-08T01:56:02Z",
+   "exported": "2026-08-08T02:12:11Z",
    "parts": [
     {
      "data_file": "gibbon-decline-fall_gibbon.rest.json.gz",
-     "data_hash": "sha256:70355a3b1abc8e1832d10d7a5141456448f00b2bb5c7189b3aaf3e6ec9b2ab10",
-     "data_bytes": 3663219
+     "data_hash": "sha256:18ad322b5a11e6fe0756f913427e074d62e8382e6dd148cbe4746e9d227ea449",
+     "data_bytes": 3651435
     }
    ]
   },
