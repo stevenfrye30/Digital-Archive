@@ -339,6 +339,17 @@ def main():
         line = [l for l in (fin.stdout or "").splitlines()
                 if "UNMIGRATED" in l]
         fin_state = line[0].strip() if line else "OK"
+        # A legacy ledger row that contradicts the deploy is not a
+        # bookkeeping nit: bible_peshitta.json was recorded `removed`
+        # after a rights rejection and a later full export put it back
+        # in the public deploy, where it stayed for seven weeks because
+        # nothing compared the two. The count rides in the guard's own
+        # summary line so it cannot be silent again.
+        contra = [l for l in (fin.stdout or "").splitlines()
+                  if "LEGACY ROWS CONTRADICTING THE DEPLOY" in l]
+        if contra and not contra[0].strip().endswith(": 0"):
+            fin_state += f"; {contra[0].split(':')[-1].strip()} " \
+                         f"LEGACY ROW(S) CONTRADICT THE DEPLOY"
 
     print(f"pre-push guard v2: OK — {actual['entries']} = {actual['public']} "
           f"public + {actual['restricted']} restricted; reasons complete; "
