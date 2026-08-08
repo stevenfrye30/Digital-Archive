@@ -1,0 +1,783 @@
+{
+  "generated_by": "05_scripts/export_reader_data.py",
+  "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
+  "counts": {
+    "total": 110,
+    "retired": 79,
+    "restricted": 31,
+    "relocated": 5,
+    "no_source": 1
+  },
+  "withdrawn": {
+    "analects-legge-1893_legge-1893.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/confucian/analects-legge-1893",
+      "preserved_at": null,
+      "reason": null
+    },
+    "arab-conquests-central-asia-gibb_gibb.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/sufi/arab-conquests-central-asia-gibb",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "aristotle-physics_hardie-gaye.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/greek-philosophy/aristotle-physics",
+      "preserved_at": null,
+      "reason": "uncertain-copyright"
+    },
+    "atharva-veda-hymns-ralph-griffith-1895_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/atharva-veda-hymns-ralph-griffith-1895",
+      "preserved_at": null,
+      "reason": null
+    },
+    "atlantis-the-antediluvian-world-ignatius-donnelly-18_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/atlantis-the-antediluvian-world-ignatius-donnelly-18",
+      "preserved_at": null,
+      "reason": null
+    },
+    "avat-ras-annie-besant_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/hindu/avat-ras-annie-besant",
+      "preserved_at": null,
+      "reason": null
+    },
+    "bhagavad-gita_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/hindu/bhagavad-gita-arnold",
+      "preserved_at": null,
+      "reason": null
+    },
+    "bhagavad-gita_gita_society.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/hindu/bhagavad-gita",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "bible_bible-in-basic-english.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/bible",
+      "preserved_at": "01_library/_restricted/sacred/bible/passages_bible-in-basic-english.json",
+      "reason": "copyrighted"
+    },
+    "bible_douay-rheims.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/bible-douay-rheims",
+      "preserved_at": null,
+      "reason": null
+    },
+    "bible_isaac-leeser-tanakh.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/bible",
+      "preserved_at": "01_library/_restricted/sacred/bible/passages_isaac-leeser-tanakh.json",
+      "reason": null
+    },
+    "bible_jps-tanakh.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/bible",
+      "preserved_at": "01_library/_restricted/sacred/bible/passages_jps-tanakh.json",
+      "reason": null
+    },
+    "bible_masoretic-old-testament.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/bible",
+      "preserved_at": "01_library/_restricted/sacred/bible/passages_masoretic-old-testament.json",
+      "reason": null
+    },
+    "bible_peshitta.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/bible-peshitta",
+      "preserved_at": "01_library/_restricted/sacred/bible/passages_peshitta.json",
+      "reason": "copyrighted"
+    },
+    "bible_westminster-leningrad-codex.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/bible",
+      "preserved_at": "01_library/_restricted/sacred/bible/passages_westminster-leningrad-codex.json",
+      "reason": null
+    },
+    "book-of-knowledge-oahspe_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "relocated",
+      "source_location": "01_library/_retired/dedup-retired-2026-07-02/book-of-knowledge-oahspe",
+      "preserved_at": null,
+      "reason": null
+    },
+    "buddhas-life-a-ferdinand-herold-t_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/buddhas-life-a-ferdinand-herold-t",
+      "preserved_at": null,
+      "reason": null
+    },
+    "bushido-the-soul-of-japan-inazo-nitobe-1905_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/bushido-the-soul-of-japan-inazo-nitobe-1905",
+      "preserved_at": null,
+      "reason": null
+    },
+    "chuang-tzu-mystic-edition_giles-mystic.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/taoist/chuang-tzu-giles-edition",
+      "preserved_at": null,
+      "reason": null
+    },
+    "confucian-canon-bilingual_legge-bilingual.json": {
+      "disposition": "retired",
+      "mechanism": "relocated",
+      "source_location": "01_library/_retired/dedup-retired-2026-07-02/confucian-canon-bilingual",
+      "preserved_at": null,
+      "reason": null
+    },
+    "deuterocanonical-books-of-the-bible-anonymous_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/deuterocanonical-books-of-the-bible-anonymous",
+      "preserved_at": null,
+      "reason": null
+    },
+    "emile-jean-jacques-roussea_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/emile-jean-jacques-roussea",
+      "preserved_at": null,
+      "reason": null
+    },
+    "engels-origin-family_untermann.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/engels-origin-family",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "essay-concerning-humane-understanding-vol-1_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/essay-concerning-humane-understanding-vol-1",
+      "preserved_at": null,
+      "reason": null
+    },
+    "essay-concerning-humane-understanding-vol-2-john-locke_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/essay-concerning-humane-understanding-vol-2-john-locke",
+      "preserved_at": null,
+      "reason": null
+    },
+    "essays-chance-love-logic-charles-peirce_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/essays-chance-love-logic-charles-peirce",
+      "preserved_at": null,
+      "reason": null
+    },
+    "essays-the-will-to-believe-william-james_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/essays-the-will-to-believe-william-james",
+      "preserved_at": null,
+      "reason": null
+    },
+    "folk-tales-japan_smith.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/shinto/folk-tales-japan",
+      "preserved_at": null,
+      "reason": null
+    },
+    "foxglove-and-some-of-its-medical-uses-william-withering_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/foxglove-and-some-of-its-medical-uses-william-withering",
+      "preserved_at": null,
+      "reason": null
+    },
+    "frege-foundations-arithmetic_frege.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/frege-foundations-arithmetic",
+      "preserved_at": null,
+      "reason": null
+    },
+    "gitanjali-tagore_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/hindu/gitanjali-tagore",
+      "preserved_at": null,
+      "reason": null
+    },
+    "gleaings-in-buddha-fields-lafcadio-hearn-1897_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/gleaings-in-buddha-fields-lafcadio-hearn-1897",
+      "preserved_at": null,
+      "reason": null
+    },
+    "history-of-utah-1540-1886-hubert-bancroft-1889_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/history-of-utah-1540-1886-hubert-bancroft-1889",
+      "preserved_at": null,
+      "reason": null
+    },
+    "imitation-of-christ_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/imitation-of-christ",
+      "preserved_at": null,
+      "reason": null
+    },
+    "jaina-sutras-part-2-hermann-jacobi-1884_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "relocated",
+      "source_location": "01_library/_retired/recovered-2026-08-08/jaina-sutras-part-2-hermann-jacobi-1884",
+      "preserved_at": null,
+      "reason": null
+    },
+    "jung-psychology-unconscious_hinkle.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/jung-psychology-unconscious",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "jung-theory-psychoanalysis_jung.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/jung-theory-psychoanalysis",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "latin-vulgate-bible-book-titles-names-anonymous_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/latin-vulgate-bible-book-titles-names-anonymous",
+      "preserved_at": null,
+      "reason": null
+    },
+    "leibniz-monadology_latta.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/leibniz-monadology",
+      "preserved_at": null,
+      "reason": null
+    },
+    "midrash-tanuma-no_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/midrash-tanuma-no",
+      "preserved_at": "01_library/_restricted/other/modern-philosophy/midrash-tanuma-no/passages_anonymous.json",
+      "reason": null
+    },
+    "montaignes-travels-in-italy-by-way-of-switzerland-montaigne_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/montaignes-travels-in-italy-by-way-of-switzerland-montaigne",
+      "preserved_at": null,
+      "reason": null
+    },
+    "moore-philosophical-studies_moore.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/moore-philosophical-studies",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "moore-principia-ethica_moore.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/moore-principia-ethica",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "nietzsche-antichrist_mencken.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/nietzsche-antichrist",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "nietzsche-joyful-wisdom_common.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/nietzsche-joyful-wisdom",
+      "preserved_at": null,
+      "reason": null
+    },
+    "nietzsche-will-to-power-1-2_ludovici.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/nietzsche-will-to-power-1-2",
+      "preserved_at": null,
+      "reason": null
+    },
+    "nietzsche-will-to-power-3-4_ludovici.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/nietzsche-will-to-power-3-4",
+      "preserved_at": null,
+      "reason": null
+    },
+    "nostradamus-roberts_ward.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/esoteric/nostradamus-roberts",
+      "preserved_at": null,
+      "reason": "uncertain-copyright"
+    },
+    "numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19",
+      "preserved_at": null,
+      "reason": null
+    },
+    "outlines-mahayana-suzuki_suzuki.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/outlines-mahayana-suzuki",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "prolegomena-to-the-history-of-israel-julius-wellhausen_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/jewish/prolegomena-to-the-history-of-israel-julius-wellhausen",
+      "preserved_at": null,
+      "reason": null
+    },
+    "quran_abul-aala-maududi.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_abul-aala-maududi.json",
+      "reason": null
+    },
+    "quran_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "no-source",
+      "source_location": null,
+      "preserved_at": null,
+      "reason": null
+    },
+    "quran_arberry.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_arberry.json",
+      "reason": null
+    },
+    "quran_bahasa-indonesia-indonesian.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_bahasa-indonesia-indonesian.json",
+      "reason": null
+    },
+    "quran_elmalili-hamdi-yazir.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_elmalili-hamdi-yazir.json",
+      "reason": null
+    },
+    "quran_hilali-khan.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": null,
+      "reason": null
+    },
+    "quran_ma-jian-chinese.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_ma-jian-chinese.json",
+      "reason": null
+    },
+    "quran_mohammad-mahdi-fooladvand.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_mohammad-mahdi-fooladvand.json",
+      "reason": null
+    },
+    "quran_muhammad-asad.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": null,
+      "reason": null
+    },
+    "quran_rodwell.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran-rodwell",
+      "preserved_at": null,
+      "reason": null
+    },
+    "quran_saheeh.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_saheeh.json",
+      "reason": null
+    },
+    "quran_talal-itani.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_talal-itani.json",
+      "reason": "copyrighted"
+    },
+    "quran_yusuf-ali-pickthall-shakir-gutenberg.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran-yusuf-ali-pickthal-shakir",
+      "preserved_at": null,
+      "reason": null
+    },
+    "quran_yusuf-ali-sacred-texts.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran-yusuf-ali",
+      "preserved_at": null,
+      "reason": null
+    },
+    "quran_yusufali.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/islam/quran",
+      "preserved_at": "01_library/_restricted/sacred/quran/passages_yusufali.json",
+      "reason": null
+    },
+    "records-of-the-past-2nd-series-vol-i-ah-sayce-1888_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/egyptian/records-of-the-past-2nd-series-vol-i-ah-sayce-1888",
+      "preserved_at": null,
+      "reason": null
+    },
+    "records-of-the-past-2nd-series-vol-ii-ah-sayce-1888_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/egyptian/records-of-the-past-2nd-series-vol-ii-ah-sayce-1888",
+      "preserved_at": null,
+      "reason": null
+    },
+    "religious-development-thought-in-ancient-egypt-james-breaste_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/religious-development-thought-in-ancient-egypt-james-breaste",
+      "preserved_at": null,
+      "reason": null
+    },
+    "rousseau-emile_foxley.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/rousseau-emile",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "rousseau-social-contract-discourses_cole.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/political-philosophy/rousseau-social-contract-discourses",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "rumi-masnavi_redhouse.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/sufi/rumi-masnavi",
+      "preserved_at": null,
+      "reason": null
+    },
+    "s-mmtliche-werke-8-vermischte-schriften-und-aufs-johann-fich_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/s-mmtliche-werke-8-vermischte-schriften-und-aufs-johann-fich",
+      "preserved_at": null,
+      "reason": null
+    },
+    "sacred-books-of-the-east-sam-beal_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/sacred-books-of-the-east-sam-beal",
+      "preserved_at": null,
+      "reason": null
+    },
+    "saddharma-pundarika-buddhism_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/saddharma-pundarika-buddhism",
+      "preserved_at": null,
+      "reason": null
+    },
+    "sakoontala-the-lost-ring-an-indian-drama-kalidasa-tr-monier-_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/hindu/sakoontala-the-lost-ring-an-indian-drama-kalidasa-tr-monier-",
+      "preserved_at": null,
+      "reason": null
+    },
+    "select-list-of-books-relating-to-the-far-appleton-griggin_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/select-list-of-books-relating-to-the-far-appleton-griggin",
+      "preserved_at": null,
+      "reason": null
+    },
+    "seneca-minor-dialogues_stewart-gutenberg-dup.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/roman-philosophy/seneca-minor-dialogues",
+      "preserved_at": null,
+      "reason": null
+    },
+    "she-rab-dong-bu-nagarjuna-tr-wl-camp_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "relocated",
+      "source_location": "01_library/_retired/dedup-retired-2026-07-02/she-rab-dong-bu-nagarjuna-tr-wl-camp",
+      "preserved_at": "01_library/_restricted/sacred/buddhist/she-rab-dong-bu-nagarjuna-tr-wl-camp/passages_anonymous.json",
+      "reason": null
+    },
+    "shibboleth-a-templar-monitor-george-connor-1894_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/shibboleth-a-templar-monitor-george-connor-1894",
+      "preserved_at": null,
+      "reason": null
+    },
+    "spinoza-philosophy-selections_ratner.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/spinoza-philosophy-selections",
+      "preserved_at": null,
+      "reason": null
+    },
+    "studies-in-religious-personality-harold-begbie_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/studies-in-religious-personality-harold-begbie",
+      "preserved_at": null,
+      "reason": null
+    },
+    "suzuki-essays-zen_suzuki.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/suzuki-essays-zen",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "the-baltimore-catchecism-1891_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-baltimore-catchecism-1891",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/greek-literature/the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no",
+      "preserved_at": "01_library/_restricted/other/greek-literature/the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no/passages_anonymous.json",
+      "reason": null
+    },
+    "the-kashf-al-mahj-b-oldest-persian-treatise-ali-ibn-usman-hu_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/sufi/the-kashf-al-mahj-b-oldest-persian-treatise-ali-ibn-usman-hu",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-martyrs-of-science-the-lives-of-galileo_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-martyrs-of-science-the-lives-of-galileo",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-mesnevi-rumi_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/sufi/the-mesnevi-rumi",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-r-m-yan-of-v-lm-ki-ralph-griffith_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-r-m-yan-of-v-lm-ki-ralph-griffith",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-seven-great-monarchies-of-the-ancient-eastern-george-raw_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/mesopotamian/the-seven-great-monarchies-of-the-ancient-eastern-george-raw",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-sutta-nipata-v-fausboll-1881-no_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-sutta-nipata-v-fausboll-1881-no",
+      "preserved_at": "01_library/_restricted/other/modern-philosophy/the-sutta-nipata-v-fausboll-1881-no/passages_anonymous.json",
+      "reason": null
+    },
+    "the-upanishads-max-muller-1879_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/hindu/the-upanishads-max-muller-1879",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-varieties-of-religous-experience-william-james-1902_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-varieties-of-religous-experience-william-james-1902",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-writings-of-origen-vol-1-origen_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-writings-of-origen-vol-1-origen",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-writings-of-origen-vol-2-origen_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-writings-of-origen-vol-2-origen",
+      "preserved_at": null,
+      "reason": null
+    },
+    "the-yoga-sutras-charles-johnson-1912_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-yoga-sutras-charles-johnson-1912",
+      "preserved_at": null,
+      "reason": null
+    },
+    "thrice-greatest-hermes-vol-1-grs-mead-1906_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/thrice-greatest-hermes-vol-1-grs-mead-1906",
+      "preserved_at": null,
+      "reason": null
+    },
+    "thrice-greatest-hermes-vol-3-grs-mead-1906_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/thrice-greatest-hermes-vol-3-grs-mead-1906",
+      "preserved_at": null,
+      "reason": null
+    },
+    "twilight-idols_ludovici.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/twilight-idols",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "upanishads_muller.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/hindu/upanishads",
+      "preserved_at": null,
+      "reason": null
+    },
+    "viettelij-n-p-iv-kirja-kierkegaard_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/viettelij-n-p-iv-kirja-kierkegaard",
+      "preserved_at": null,
+      "reason": null
+    },
+    "vishnupuranam-dutt_dutt.json": {
+      "disposition": "retired",
+      "mechanism": "relocated",
+      "source_location": "01_library/_retired/dedup-retired-2026-07-02/vishnupuranam-dutt",
+      "preserved_at": null,
+      "reason": null
+    },
+    "will-to-power-1-2_ludovici.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/will-to-power-1-2",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "will-to-power-3-4_ludovici.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/will-to-power-3-4",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "wissenschaft-der-logik-band-1-hegel_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/wissenschaft-der-logik-band-1-hegel",
+      "preserved_at": null,
+      "reason": null
+    },
+    "wittgenstein-tractatus_ogden.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/wittgenstein-tractatus",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "yajur-veda-black-arthur-keith-1914-no_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/yajur-veda-black-arthur-keith-1914-no",
+      "preserved_at": "01_library/_restricted/other/modern-philosophy/yajur-veda-black-arthur-keith-1914-no/passages_anonymous.json",
+      "reason": null
+    },
+    "zen-buddhism-art-suzuki_suzuki-art.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/zen-buddhism-art-suzuki",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    },
+    "zen-for-americans-suzuki_suzuki.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/zen-for-americans-suzuki",
+      "preserved_at": null,
+      "reason": "copyrighted"
+    }
+  }
+}

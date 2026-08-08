@@ -351,10 +351,48 @@ def main():
             fin_state += f"; {contra[0].split(':')[-1].strip()} " \
                          f"LEGACY ROW(S) CONTRADICT THE DEPLOY"
 
+    # 9. WITHDRAWAL IS DISCOVERABLE FROM THE DEPLOY (2026-08-08). Three
+    #    mechanisms had grown up for one concept and only one was visible
+    #    here: four records had left the archive by relocation alone, with
+    #    nothing the deploy could see to say they had ever existed. A text
+    #    that can be withdrawn invisibly is the Peshitta defect in other
+    #    clothes, so the export now emits data/_generated/withdrawn.json
+    #    and this refuses if it is missing, empty, or fails to name a
+    #    record that is sitting under 01_library/_retired/.
+    wd_state = "n/a"
+    wpath = REPO / "data" / "_generated" / "withdrawn.json"
+    if not wpath.exists():
+        fail("Withdrawal manifest (9) MISSING — data/_generated/withdrawn.json "
+             "is not built; run 05_scripts/build_public.py")
+    wd = json.loads(wpath.read_text(encoding="utf-8"))
+    listed = set(wd.get("withdrawn") or {})
+    if not listed:
+        fail("Withdrawal manifest (9) is EMPTY — this population has never "
+             "legitimately been zero; refusing rather than blessing it")
+    parked = set()
+    retdir = REPO.parent / "01_library" / "_retired"
+    for tj in retdir.rglob("text.json") if retdir.exists() else []:
+        if "bootstrap-fixtures" in tj.parts:
+            continue
+        meta = json.loads(tj.read_text(encoding="utf-8"))
+        for tr in meta.get("translations", []):
+            if tr.get("id"):
+                parked.add(f"{meta.get('id')}_{tr['id']}.json")
+    unrecorded = sorted(parked - listed)
+    if unrecorded:
+        fail("Withdrawal manifest (9) FAILED — record(s) under "
+             "01_library/_retired/ appear in no authority the deploy can "
+             "see:\n  " + "\n  ".join(unrecorded))
+    wd_state = (f"{wd['counts']['total']} withdrawn "
+                f"({wd['counts']['retired']} retired + "
+                f"{wd['counts']['restricted']} restricted), "
+                f"{len(parked)} relocated all recorded")
+
     print(f"pre-push guard v2: OK — {actual['entries']} = {actual['public']} "
           f"public + {actual['restricted']} restricted; reasons complete; "
           f"boundary clean; {hashed} artifact hashes verified; "
           f"reachability OK; separation: {sep_state}; "
+          f"withdrawal: {wd_state}; "
           f"finalization ledger derived [{fin_state}] ({elapsed}).")
 
 
