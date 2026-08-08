@@ -1412,36 +1412,6 @@
       "reading_status_certified": false
     },
     {
-      "id": "upayika-dhammadinna",
-      "title": "Upāyikā Fragments",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "sutta",
-        "section",
-        "verse"
-      ],
-      "data_file": "upayika-dhammadinna_dhammadinna.json",
-      "source": "suttacentral",
-      "author": [
-        "Śamathadeva"
-      ],
-      "translator": [
-        "Sāmaṇerī Dhammadinnā"
-      ],
-      "year": null,
-      "translation_label": "Upāyikā Fragments",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Upāyikā Fragments* Sāmaṇerī Dhammadinnā. Via Suttacentral.",
-      "importance_rank": 16,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "jataka",
       "title": "The Jātaka",
       "tradition": "Buddhist",
@@ -1734,32 +1704,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "patimokkha-tibetan",
-      "title": "Code of Discipline for Monks (Tibetan Mūlasarvāstivāda)",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "patimokkha-tibetan_patimokkha.json",
-      "source": "suttacentral",
-      "author": [],
-      "translator": [
-        "Tibetan Mūlasarvāstivāda tradition"
-      ],
-      "year": null,
-      "translation_label": "Code of Discipline for Monks",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Code of Discipline for Monks* Tibetan Mūlasarvāstivāda tradition. Via Suttacentral.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
-    },
-    {
       "id": "dharmaguptaka-beal",
       "title": "Dharmaguptaka Monks' Code of Discipline",
       "tradition": "Buddhist",
@@ -1809,32 +1753,6 @@
       "volume_label": null,
       "quality": "primary",
       "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "katyayana-jayarava",
-      "title": "Discourse to Kātyāyana",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "katyayana-jayarava_jayarava.json",
-      "source": "suttacentral",
-      "author": [],
-      "translator": [
-        "Jayarava"
-      ],
-      "year": null,
-      "translation_label": "Discourse to Kātyāyana",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Discourse to Kātyāyana* Jayarava. Via Suttacentral.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -1898,33 +1816,6 @@
       "cross_traditions": null,
       "reading_status": "pass",
       "reading_status_certified": true
-    },
-    {
-      "id": "ordination-dharmaguptaka",
-      "title": "Ordination (Dharmaguptaka Vinaya Khandaka)",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "ordination-dharmaguptaka_buddhayasas.json",
-      "source": "suttacentral",
-      "author": [],
-      "translator": [
-        "Tripiṭaka Buddhayaśas of Kaśmīra",
-        "Zhu Fonian"
-      ],
-      "year": null,
-      "translation_label": "Ordination — Dharmaguptaka Vinaya Khandaka",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Ordination — Dharmaguptaka Vinaya Khandaka* Tripiṭaka Buddhayaśas of Kaśmīra, Zhu Fonian. Via Suttacentral.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
     },
     {
       "id": "dipa-sutra-sujato",
@@ -2574,59 +2465,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*The Diamond Sutra* William Gemmell (after Kumarajiva) (1912). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "arthaviniscaya-anandajoti",
-      "title": "The Discourse giving the Analysis of the Topics",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "arthaviniscaya-anandajoti_anandajoti.json",
-      "source": "suttacentral",
-      "author": [],
-      "translator": [
-        "Bhikkhu Ānandajoti"
-      ],
-      "year": null,
-      "translation_label": "The Discourse giving the Analysis of the Topics",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Discourse giving the Analysis of the Topics* Bhikkhu Ānandajoti. Via Suttacentral.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "pratityasamutpada-vaidya",
-      "title": "The Discourse giving the Explanation and Analysis of Conditional Origination from the Beginning",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "pratityasamutpada-vaidya_vaidya.json",
-      "source": "suttacentral",
-      "author": [],
-      "translator": [
-        "P. L. Vaidya"
-      ],
-      "year": null,
-      "translation_label": "The Discourse giving the Explanation and Analysis of Conditional Origination from the Beginning",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Discourse giving the Explanation and Analysis of Conditional Origination from the Beginning* P. L. Vaidya. Via Suttacentral.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -24085,35 +23923,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "treasure-atlantis-taine",
-      "title": "The Treasure of Atlantis",
-      "tradition": "Hermetic",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "treasure-atlantis-taine_dunn.json",
-      "source": "sacredtexts",
-      "author": [
-        "J. Allan Dunn"
-      ],
-      "translator": [
-        "J. Allan Dunn"
-      ],
-      "year": 1916,
-      "translation_label": "The Treasure of Atlantis",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Treasure of Atlantis* J. Allan Dunn (1916). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "vampire-kith-kin-summers",
       "title": "The Vampire: His Kith and Kin",
       "tradition": "Hermetic",
@@ -32028,6 +31837,204 @@
       "restricted": true,
       "reading_status": "restricted",
       "reading_status_certified": true
+    },
+    {
+      "id": "treasure-atlantis-taine",
+      "title": "The Treasure of Atlantis",
+      "tradition": "Hermetic",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "treasure-atlantis-taine_dunn.json",
+      "source": "sacredtexts",
+      "author": [
+        "J. Allan Dunn"
+      ],
+      "translator": [
+        "J. Allan Dunn"
+      ],
+      "year": 1916,
+      "translation_label": "The Treasure of Atlantis",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "The deployed body is the 1970 Centaur Press edition — its own front matter reads \"Source edition: New York: Centaur Press, October 1970. Originally published in All Around, December 1916\", and passage 1.1 is a 1970 publisher's blurb. The 1916 story by J. Allan Dunn (1872-1941) is clear; this EDITION is not. Withdrawn 2026-08-08 on the imprint-vs-metadata pass. Clean replacement: the 1916 All Around printing.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "arthaviniscaya-anandajoti",
+      "title": "The Discourse giving the Analysis of the Topics",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "arthaviniscaya-anandajoti_anandajoti.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "Bhikkhu Ānandajoti"
+      ],
+      "year": null,
+      "translation_label": "The Discourse giving the Analysis of the Topics",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "A modern SuttaCentral translation with NO evidenced licence. SuttaCentral's non-bilara texts carry mixed terms (the PTS/Horner set is CC BY-NC 3.0, and non-commercial fails this archive's worldwide-PD bar); three attempts at SuttaCentral's API returned no per-text licence metadata. The recorded provenance does not even identify the translation — a root-text UID or a bare author path rather than /en/<translator>. Restricted 2026-08-08 pending a confirmed licence.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "katyayana-jayarava",
+      "title": "Discourse to Kātyāyana",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "katyayana-jayarava_jayarava.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "Jayarava"
+      ],
+      "year": null,
+      "translation_label": "Discourse to Kātyāyana",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "A modern SuttaCentral translation with NO evidenced licence. SuttaCentral's non-bilara texts carry mixed terms (the PTS/Horner set is CC BY-NC 3.0, and non-commercial fails this archive's worldwide-PD bar); three attempts at SuttaCentral's API returned no per-text licence metadata. The recorded provenance does not even identify the translation — a root-text UID or a bare author path rather than /en/<translator>. Restricted 2026-08-08 pending a confirmed licence.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "upayika-dhammadinna",
+      "title": "Upāyikā Fragments",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "sutta",
+        "section",
+        "verse"
+      ],
+      "data_file": "upayika-dhammadinna_dhammadinna.json",
+      "source": "suttacentral",
+      "author": [
+        "Śamathadeva"
+      ],
+      "translator": [
+        "Sāmaṇerī Dhammadinnā"
+      ],
+      "year": null,
+      "translation_label": "Upāyikā Fragments",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "A modern SuttaCentral translation with NO evidenced licence. SuttaCentral's non-bilara texts carry mixed terms (the PTS/Horner set is CC BY-NC 3.0, and non-commercial fails this archive's worldwide-PD bar); three attempts at SuttaCentral's API returned no per-text licence metadata. The recorded provenance does not even identify the translation — a root-text UID or a bare author path rather than /en/<translator>. Restricted 2026-08-08 pending a confirmed licence.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "pratityasamutpada-vaidya",
+      "title": "The Discourse giving the Explanation and Analysis of Conditional Origination from the Beginning",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "pratityasamutpada-vaidya_vaidya.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "P. L. Vaidya"
+      ],
+      "year": null,
+      "translation_label": "The Discourse giving the Explanation and Analysis of Conditional Origination from the Beginning",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "Attributed to P. L. Vaidya (d. 1978) — in copyright to roughly 2049 on a life+70 bar. Restricted 2026-08-08 pending a confirmed PD-compatible licence.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "patimokkha-tibetan",
+      "title": "Code of Discipline for Monks (Tibetan Mūlasarvāstivāda)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "patimokkha-tibetan_patimokkha.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "Tibetan Mūlasarvāstivāda tradition"
+      ],
+      "year": null,
+      "translation_label": "Code of Discipline for Monks",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "A modern SuttaCentral translation with NO evidenced licence. SuttaCentral's non-bilara texts carry mixed terms (the PTS/Horner set is CC BY-NC 3.0, and non-commercial fails this archive's worldwide-PD bar); three attempts at SuttaCentral's API returned no per-text licence metadata. The recorded provenance does not even identify the translation — a root-text UID or a bare author path rather than /en/<translator>. Restricted 2026-08-08 pending a confirmed licence.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "ordination-dharmaguptaka",
+      "title": "Ordination (Dharmaguptaka Vinaya Khandaka)",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "ordination-dharmaguptaka_buddhayasas.json",
+      "source": "suttacentral",
+      "author": [],
+      "translator": [
+        "Tripiṭaka Buddhayaśas of Kaśmīra",
+        "Zhu Fonian"
+      ],
+      "year": null,
+      "translation_label": "Ordination — Dharmaguptaka Vinaya Khandaka",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "A modern SuttaCentral translation with NO evidenced licence. SuttaCentral's non-bilara texts carry mixed terms (the PTS/Horner set is CC BY-NC 3.0, and non-commercial fails this archive's worldwide-PD bar); three attempts at SuttaCentral's API returned no per-text licence metadata. The recorded provenance does not even identify the translation — a root-text UID or a bare author path rather than /en/<translator>. Restricted 2026-08-08 pending a confirmed licence.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
     },
     {
       "id": "enchiridion",

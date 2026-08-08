@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 112,
+    "total": 119,
     "retired": 79,
-    "restricted": 33,
+    "restricted": 40,
     "relocated": 5,
     "no_source": 1
   },
@@ -35,6 +35,17 @@
       "disposition": "restricted",
       "mechanism": "suppressed",
       "source_location": "01_library/library/texts/other/greek-philosophy/aristotle-physics",
+      "preserved_at": null,
+      "reason": "uncertain-copyright",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "arthaviniscaya-anandajoti_anandajoti.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/arthaviniscaya-anandajoti",
       "preserved_at": null,
       "reason": "uncertain-copyright",
       "reason_note": null,
@@ -427,6 +438,17 @@
       "pd_year": 2032,
       "pd_year_source": "plans/task85_survey.md"
     },
+    "katyayana-jayarava_jayarava.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/katyayana-jayarava",
+      "preserved_at": null,
+      "reason": "uncertain-copyright",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "latin-vulgate-bible-book-titles-names-anonymous_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -559,10 +581,43 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "ordination-dharmaguptaka_buddhayasas.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/ordination-dharmaguptaka",
+      "preserved_at": null,
+      "reason": "uncertain-copyright",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "outlines-mahayana-suzuki_suzuki.json": {
       "disposition": "restricted",
       "mechanism": "suppressed",
       "source_location": "01_library/library/texts/sacred/buddhist/outlines-mahayana-suzuki",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "patimokkha-tibetan_patimokkha.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/patimokkha-tibetan",
+      "preserved_at": null,
+      "reason": "uncertain-copyright",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "pratityasamutpada-vaidya_vaidya.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/pratityasamutpada-vaidya",
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
@@ -1120,6 +1175,17 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "treasure-atlantis-taine_dunn.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/esoteric/treasure-atlantis-taine",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "twilight-idols_ludovici.json": {
       "disposition": "restricted",
       "mechanism": "suppressed",
@@ -1139,6 +1205,17 @@
       "reason": "duplicate",
       "reason_note": "the 4-way Muller duplication resolved onto the two SBE part witnesses; superseded by upanishads-muller-part1_muller-part1.json, upanishads-muller-part2_muller-part2.json",
       "reason_source": "plans/finalize_upanishads-muller.md",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "upayika-dhammadinna_dhammadinna.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/upayika-dhammadinna",
+      "preserved_at": null,
+      "reason": "uncertain-copyright",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
