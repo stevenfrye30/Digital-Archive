@@ -5412,35 +5412,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "chrysostom-homilies-timothy-hebrews",
-      "title": "Homilies on Timothy, Titus, Philemon, and Hebrews",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter"
-      ],
-      "data_file": "chrysostom-homilies-timothy-hebrews_ccel-schaff.json",
-      "source": "ccel",
-      "author": [
-        "John Chrysostom"
-      ],
-      "translator": [
-        "Multiple translators (ed. Philip Schaff)"
-      ],
-      "year": 1889,
-      "translation_label": "Homilies on Timothy, Titus, Philemon, and Hebrews",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Homilies on Timothy, Titus, Philemon, and Hebrews* by John Chrysostom. Translated by Multiple translators (ed. Philip Schaff) (1889). Via Christian Classics Ethereal Library (CCEL).",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "chrysostom-homilies-matthew",
       "title": "Homilies on the Gospel of Matthew",
       "tradition": "Christian",
@@ -5462,6 +5433,35 @@
       "volume_label": null,
       "quality": "primary",
       "source_summary": "*Homilies on the Gospel of Matthew* by John Chrysostom. Translated by Multiple translators (ed. Philip Schaff) (1888). Via Christian Classics Ethereal Library (CCEL).",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "pass",
+      "reading_status_certified": true
+    },
+    {
+      "id": "chrysostom-homilies-timothy-hebrews",
+      "title": "Homilies on the Gospel of St. John and the Epistle to the Hebrews",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter"
+      ],
+      "data_file": "chrysostom-homilies-timothy-hebrews_ccel-schaff.json",
+      "source": "ccel",
+      "author": [
+        "John Chrysostom"
+      ],
+      "translator": [
+        "Multiple translators (ed. Philip Schaff)"
+      ],
+      "year": 1889,
+      "translation_label": "Homilies on Timothy, Titus, Philemon, and Hebrews",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "*Homilies on Timothy, Titus, Philemon, and Hebrews* by John Chrysostom. Translated by Multiple translators (ed. Philip Schaff) (1889). Via Christian Classics Ethereal Library (CCEL).",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -15189,7 +15189,7 @@
     },
     {
       "id": "kierkegaard-fear-trembling",
-      "title": "Fear and Trembling",
+      "title": "Selections from the Writings of Kierkegaard",
       "tradition": "Modern Philosophy",
       "collection": "sacred",
       "hierarchy": [
@@ -15201,13 +15201,13 @@
         "Søren Kierkegaard"
       ],
       "translator": [
-        "Anonymous"
+        "Lee M. Hollander"
       ],
       "year": 1843,
-      "translation_label": "Fear and Trembling",
+      "translation_label": "Selections from the Writings of Kierkegaard (University of Texas Bulletin No. 2326, 1923)",
       "translation_short_label": null,
       "volume_label": null,
-      "quality": "derivative",
+      "quality": "popular",
       "source_summary": "*Fear and Trembling* by Søren Kierkegaard. Translated by Anonymous (1843). Via Christian Classics Ethereal Library (CCEL). Translator unidentified — provenance under review (Task 85-P2, 2026-07-31). Kept public pending identification; no rights vetting is claimed.",
       "importance_rank": null,
       "cross_sections": null,
@@ -15798,7 +15798,7 @@
     },
     {
       "id": "arabian-nights-burton",
-      "title": "The Book of the Thousand Nights and a Night",
+      "title": "The Thousand and One Nights, Vol. I",
       "tradition": "Persian Literature",
       "collection": "sacred",
       "hierarchy": [
@@ -15810,13 +15810,13 @@
         "Anonymous"
       ],
       "translator": [
-        "Anonymous"
+        "Edward William Lane"
       ],
       "year": 1885,
-      "translation_label": "The Book of the Thousand Nights and a Night",
+      "translation_label": "The Thousand and One Nights, Vol. I (ed. Edward Stanley Poole)",
       "translation_short_label": null,
       "volume_label": null,
-      "quality": "derivative",
+      "quality": "popular",
       "source_summary": "*The Book of the Thousand Nights and a Night* by Anonymous. Translated by Anonymous (1885). Via Christian Classics Ethereal Library (CCEL).",
       "importance_rank": null,
       "cross_sections": null,
@@ -16345,7 +16345,7 @@
     },
     {
       "id": "seneca-morals",
-      "title": "Of a Happy Life, Benefits, Anger, and Clemency",
+      "title": "Seneca's Morals of a Happy Life, Benefits, Anger and Clemency",
       "tradition": "Stoic",
       "collection": "sacred",
       "hierarchy": [
@@ -16357,13 +16357,13 @@
         "Seneca"
       ],
       "translator": [
-        "Anonymous"
+        "Sir Roger L'Estrange"
       ],
       "year": null,
-      "translation_label": "Of a Happy Life, Benefits, Anger, and Clemency",
+      "translation_label": "Seneca's Morals of a Happy Life, Benefits, Anger and Clemency (Chicago: Belford, Clarke & Co., 1882)",
       "translation_short_label": null,
       "volume_label": null,
-      "quality": "derivative",
+      "quality": "popular",
       "source_summary": "*Of a Happy Life, Benefits, Anger, and Clemency* by Seneca. Translated by Anonymous (None). Via Christian Classics Ethereal Library (CCEL).",
       "importance_rank": null,
       "cross_sections": null,
