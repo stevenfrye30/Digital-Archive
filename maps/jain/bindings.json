@@ -3,17 +3,27 @@
  "generated_by": "05_scripts/build_map_bindings.py (derived — never hand-edited)",
  "provisional": true,
  "counts": {
-  "possible": 3,
-  "held": 1,
+  "held": 3,
   "held-several": 1,
-  "none": 13
+  "none": 13,
+  "possible": 1
  },
  "chips": [
   {
    "zone": "ja-svet",
    "chip": "Ācārāṅga Sūtra (1st Aṅga — monastic conduct)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "jaina-sutras-part1_jacobi.json",
+     "work": "Jaina Sūtras, Part I (Ācārāṅga Sūtra, Kalpa Sūtra)",
+     "translator": "Hermann Jacobi",
+     "year": 1884,
+     "url": "?text=jaina-sutras-part1_jacobi.json"
+    }
+   ],
+   "contained_in": "within Jaina Sūtras Part 1, tr. Jacobi (SBE 22)"
   },
   {
    "zone": "ja-svet",
@@ -35,7 +45,17 @@
    "zone": "ja-svet",
    "chip": "Kalpa Sūtra (Bhadrabāhu — the Tīrthaṅkaras)",
    "pd": "g",
-   "state": "possible"
+   "state": "held",
+   "read": [
+    {
+     "df": "jaina-sutras-part1_jacobi.json",
+     "work": "Jaina Sūtras, Part I (Ācārāṅga Sūtra, Kalpa Sūtra)",
+     "translator": "Hermann Jacobi",
+     "year": 1884,
+     "url": "?text=jaina-sutras-part1_jacobi.json"
+    }
+   ],
+   "contained_in": "within Jaina Sūtras Part 1, tr. Jacobi (SBE 22)"
   },
   {
    "zone": "ja-svet",

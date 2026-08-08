@@ -1,11 +1,11 @@
 {
- "generated": "2026-08-08T16:15:12Z",
+ "generated": "2026-08-08T16:43:34Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "7a07f977544d31da3af6553a0bdb2869dee4f039",
- "library_fingerprint": "sha256:7949b043adccc0fe31d1fed911d94296c7fea9f4b4493499b53667f3eb8b5813",
+ "exporter_rev": "1d42620e28d434e0e0dcdde26af18de10393f318",
+ "library_fingerprint": "sha256:f4dcc669d901018a4ac90270b5084e48213b8b4e8542012ad62d717f5a21d1a9",
  "counts": {
-  "entries": 1176,
-  "public": 1063,
+  "entries": 1177,
+  "public": 1064,
   "restricted": 113
  },
  "texts": {
@@ -6026,6 +6026,18 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:58Z"
+  },
+  "jaina-sutras-part1_jacobi": {
+   "source_hash": "sha256:bd50272c77a8ab55a0306096b62c823b5b59a6b986e5240de55e6ee9a839c206",
+   "data_file": "jaina-sutras-part1_jacobi.json.gz",
+   "data_hash": "sha256:2d1dbf4135ba2be729ec3eaf84b9b0ffeffbcc02da5dcb066569bf924cbe43cc",
+   "data_bytes": 216630,
+   "passages": 2715,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-08T16:42:38Z"
   },
   "jaina-sutras-part2_jacobi": {
    "source_hash": "sha256:58fc1cde6bcf0c7dbdeff7a44549fd80e5f90402a9de03c4a000eb0db58cac79",
