@@ -263,7 +263,8 @@ def main():
                        .get("recorded", {}))
     tracked_maps = subprocess.run(
         ["git", "ls-files", "maps/"], cwd=REPO,
-        capture_output=True, text=True).stdout.split()
+        capture_output=True, text=True,
+                             encoding="utf-8", errors="replace").stdout.split()
     map_strays = sorted(
         p for p in tracked_maps
         if p.rsplit("/", 1)[-1] not in served_names and p not in recorded
@@ -296,7 +297,8 @@ def main():
     sep_script = REPO.parent / "05_scripts" / "check_public_private_separation.py"
     if sep_script.exists():
         sep = subprocess.run([sys.executable, str(sep_script)],
-                             capture_output=True, text=True)
+                             capture_output=True, text=True,
+                             encoding="utf-8", errors="replace")
         if sep.returncode != 0:
             tail = (sep.stdout or sep.stderr or "").strip().splitlines()
             fail("Private/public separation (7) FAILED — a local-only record or "
@@ -309,10 +311,40 @@ def main():
              "is present but 05_scripts/check_public_private_separation.py is "
              "missing. Refusing to push an unverified boundary.")
 
+    # 8. the finalization ledger is DERIVED, not asserted (2026-08-08). The
+    #    ledger drifted from its reports for months because it was
+    #    transcribed by hand: 68 entries against 147 reports, 86 of which no
+    #    entry cited. It is now generated from a fenced `finalization` block
+    #    in each report, and this check refuses on a malformed block OR on a
+    #    STALE ledger — a file that quietly says something the reports do not
+    #    is exactly the failure the convention was written to end. Reports
+    #    without a block are reported as unmigrated, not as failures; the
+    #    backlog is expected to shrink, not to block a deploy.
+    fin_state = "SKIPPED (no parent tree)"
+    fin_script = REPO.parent / "05_scripts" / "generate_finalization_ledger.py"
+    if fin_script.exists():
+        fin = subprocess.run([sys.executable, str(fin_script)],
+                             capture_output=True, text=True,
+                             encoding="utf-8", errors="replace")
+        if fin.returncode != 0:
+            # The reason is the REFUSED line, which arrives on stderr; stdout
+            # is the (non-empty) progress report. Taking `stdout or stderr`
+            # would therefore print the summary and hide the cause.
+            lines = ((fin.stderr or "") + "\n" + (fin.stdout or "")).splitlines()
+            why = [l.strip() for l in lines if "REFUSED" in l] \
+                or [l.strip() for l in lines if l.strip()][-4:]
+            fail("Finalization ledger (8) FAILED — a report's finalization "
+                 "block is malformed, or the ledger no longer matches what "
+                 "the reports say:\n  " + "\n  ".join(why[:4]))
+        line = [l for l in (fin.stdout or "").splitlines()
+                if "UNMIGRATED" in l]
+        fin_state = line[0].strip() if line else "OK"
+
     print(f"pre-push guard v2: OK — {actual['entries']} = {actual['public']} "
           f"public + {actual['restricted']} restricted; reasons complete; "
           f"boundary clean; {hashed} artifact hashes verified; "
-          f"reachability OK; separation: {sep_state} ({elapsed}).")
+          f"reachability OK; separation: {sep_state}; "
+          f"finalization ledger derived [{fin_state}] ({elapsed}).")
 
 
 if __name__ == "__main__":
