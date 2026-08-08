@@ -5440,7 +5440,7 @@
       "reading_status_certified": true
     },
     {
-      "id": "chrysostom-homilies-timothy-hebrews",
+      "id": "chrysostom-homilies-john-hebrews",
       "title": "Homilies on the Gospel of St. John and the Epistle to the Hebrews",
       "tradition": "Christian",
       "collection": "sacred",
@@ -5448,7 +5448,7 @@
         "book",
         "chapter"
       ],
-      "data_file": "chrysostom-homilies-timothy-hebrews_ccel-schaff.json",
+      "data_file": "chrysostom-homilies-john-hebrews_ccel-schaff.json",
       "source": "ccel",
       "author": [
         "John Chrysostom"
@@ -5465,8 +5465,8 @@
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
+      "reading_status": "review",
+      "reading_status_certified": false
     },
     {
       "id": "hymns-eastern-church-neale",
@@ -15188,14 +15188,14 @@
       "reading_status_certified": false
     },
     {
-      "id": "kierkegaard-fear-trembling",
+      "id": "kierkegaard-selections-hollander",
       "title": "Selections from the Writings of Kierkegaard",
       "tradition": "Modern Philosophy",
       "collection": "sacred",
       "hierarchy": [
         "paragraph"
       ],
-      "data_file": "kierkegaard-fear-trembling_lowrie.json",
+      "data_file": "kierkegaard-selections-hollander_hollander.json",
       "source": "gutenberg",
       "author": [
         "Søren Kierkegaard"
@@ -15212,7 +15212,7 @@
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "defer",
+      "reading_status": "review",
       "reading_status_certified": false
     },
     {
@@ -15797,14 +15797,14 @@
       "reading_status_certified": true
     },
     {
-      "id": "arabian-nights-burton",
+      "id": "arabian-nights-lane",
       "title": "The Thousand and One Nights, Vol. I",
       "tradition": "Persian Literature",
       "collection": "sacred",
       "hierarchy": [
         "paragraph"
       ],
-      "data_file": "arabian-nights-burton_burton.json",
+      "data_file": "arabian-nights-lane_lane.json",
       "source": "gutenberg",
       "author": [
         "Anonymous"
@@ -15821,7 +15821,7 @@
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "defer",
+      "reading_status": "review",
       "reading_status_certified": false
     },
     {
@@ -16351,7 +16351,7 @@
       "hierarchy": [
         "paragraph"
       ],
-      "data_file": "seneca-morals_aubrey-stewart.json",
+      "data_file": "seneca-morals_lestrange.json",
       "source": "gutenberg",
       "author": [
         "Seneca"
@@ -16368,7 +16368,7 @@
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "defer",
+      "reading_status": "review",
       "reading_status_certified": false
     },
     {

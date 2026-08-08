@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-08T06:00:25Z",
+ "generated": "2026-08-08T13:02:13Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "389ade8efa50b1a30ab4b6b2afda1e44b138bede",
- "library_fingerprint": "sha256:9a467a8c5359f6424f7f9f9c22af0fe60406300601d8516d2111ccd51eec8d6a",
+ "exporter_rev": "741cad65b5388f250e87541dae654c866d51fc11",
+ "library_fingerprint": "sha256:a8ef1c15bbbe15a5dd3685eb729e6878711c33087aca0830a678012ed415553f",
  "counts": {
   "entries": 1176,
   "public": 1064,
@@ -468,17 +468,18 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:21Z"
   },
-  "arabian-nights-burton_burton": {
-   "source_hash": "sha256:b3f623076faae773c100f785901fec77f3a8deac5b9f56a7387d0de7ed7daf9a",
-   "data_file": "arabian-nights-burton_burton.json.gz",
-   "data_hash": "sha256:2e6fd736b59276cfdbc2a930b45824889526b926c791bb004923901fb374a44e",
+  "arabian-nights-lane_lane": {
+   "source_hash": null,
+   "data_file": "arabian-nights-lane_lane.json.gz",
+   "data_hash": "sha256:544a2ffd0498d8b2e6ee4c3f82fdb36c2aaac313c6f655559f828623c4f98af3",
    "data_bytes": 535186,
    "passages": 2203,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-08T05:58:15Z"
+   "exported": "2026-08-08T12:59:39Z",
+   "source_note": "no canonical dir (derived provider record)"
   },
   "arabian-poetry-clouston_clouston": {
    "source_hash": "sha256:2e6656e18837c297f97788ba9eda4e1be9f9c3ad756ea52b82e27e4fdf85286c",
@@ -2708,6 +2709,18 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:44Z"
   },
+  "chrysostom-homilies-john-hebrews_ccel-schaff": {
+   "source_hash": "sha256:a03f982c9c16c945c12d85e3d5e618fd3a1d7cfd9b314333a0b2654f850d57f4",
+   "data_file": "chrysostom-homilies-john-hebrews_ccel-schaff.json.gz",
+   "data_hash": "sha256:1a684e59249f7bac825533336d9c1934ae3d8c4ac335106c02ca9237f76e779b",
+   "data_bytes": 1107407,
+   "passages": 8304,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-08T13:00:21Z"
+  },
   "chrysostom-homilies-matthew_ccel-schaff": {
    "source_hash": "sha256:954f36f6192558813e2da8865ab5f68dee6dda5140d516dd82ef367210da6b93",
    "data_file": "chrysostom-homilies-matthew_ccel-schaff.json.gz",
@@ -2719,18 +2732,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:45Z"
-  },
-  "chrysostom-homilies-timothy-hebrews_ccel-schaff": {
-   "source_hash": "sha256:02e0c340ef3edb4710927f20169b0fcf75b13a5cd157cadf1797dc97cd5ba4c9",
-   "data_file": "chrysostom-homilies-timothy-hebrews_ccel-schaff.json.gz",
-   "data_hash": "sha256:cc8a3b4ea8fa3c054fd1c480da9a86390ba07a7087db9aab0218bf396e3d543a",
-   "data_bytes": 1107405,
-   "passages": 8304,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-08T05:59:05Z"
   },
   "chrysostom-priesthood_stephens": {
    "source_hash": "sha256:2e8f21c2f4faf17064009370a6398b64754e0c3251142be91fa8f07b15ee692a",
@@ -6713,17 +6714,18 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:01Z"
   },
-  "kierkegaard-fear-trembling_lowrie": {
-   "source_hash": "sha256:d840a170406d0a9003f9fcff6b7958b6a57b2bda1477d05f793119292872bb17",
-   "data_file": "kierkegaard-fear-trembling_lowrie.json.gz",
-   "data_hash": "sha256:98998c85be3a784f7c5001225f5d45cf531a1758595dc2bbe3120f9c6a1ab671",
-   "data_bytes": 180043,
+  "kierkegaard-selections-hollander_hollander": {
+   "source_hash": null,
+   "data_file": "kierkegaard-selections-hollander_hollander.json.gz",
+   "data_hash": "sha256:25fae8beb23184828b22df67c9aa30cda8acf81e22dd11ea2f6e16736a777644",
+   "data_bytes": 180036,
    "passages": 688,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-08T05:58:09Z"
+   "exported": "2026-08-08T12:59:35Z",
+   "source_note": "no canonical dir (derived provider record)"
   },
   "kierkegaard-sickness-unto-death_lowrie": {
    "source_hash": null,
@@ -11265,17 +11267,18 @@
    "apparatus": false,
    "exported": "2026-07-11T15:28:35Z"
   },
-  "seneca-morals_aubrey-stewart": {
-   "source_hash": "sha256:8dd061e18038923eeab9af64151490b0329930e4a22017c4b87ff64dbe09ac1a",
-   "data_file": "seneca-morals_aubrey-stewart.json.gz",
-   "data_hash": "sha256:7903b9aec896a87e6dc9ae72cd0140c8f3db135cfee2ac76ae5c2a16b97d50f8",
-   "data_bytes": 225472,
+  "seneca-morals_lestrange": {
+   "source_hash": null,
+   "data_file": "seneca-morals_lestrange.json.gz",
+   "data_hash": "sha256:d97ce3f3039824e1009bd3285b4837578007e51d803be1b6df06f2c6239af828",
+   "data_bytes": 225473,
    "passages": 468,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-08T05:58:18Z"
+   "exported": "2026-08-08T12:59:42Z",
+   "source_note": "no canonical dir (derived provider record)"
   },
   "seneca-physical-science-nero_clarke": {
    "source_hash": "sha256:60838a7118117ba0bf3a21dc4d8e267d622ef2eff1eec0eb8e7429e570c628d9",

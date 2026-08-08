@@ -14692,10 +14692,30 @@ function _resolveFootnote(num, fromPid, refEl) {
 
 // Back/forward must return to the originating prose passage. The reader otherwise only ever
 // calls replaceState, so a pushed footnote entry needs a popstate handler to re-render.
+// v133 — LEGACY DATA_FILE ALIASES. `data_file` is `{text_id}_{translation_id}.json`
+// and it IS the route (`?text=…`), so the 2026-08-08 identity renames would have
+// 404'd every link ever shared to the old names. Four records were renamed after
+// the provenance audit found their catalogued translator or work was wrong; this
+// map keeps the old links alive, and it must never be pruned — a citation printed
+// in 2026 is expected to resolve in 2036. Old name on the left, forever.
+const LEGACY_TEXT_ALIASES = {
+  'chrysostom-homilies-timothy-hebrews_ccel-schaff.json':
+    'chrysostom-homilies-john-hebrews_ccel-schaff.json',
+  'kierkegaard-fear-trembling_lowrie.json':
+    'kierkegaard-selections-hollander_hollander.json',
+  'arabian-nights-burton_burton.json':
+    'arabian-nights-lane_lane.json',
+  'seneca-morals_aubrey-stewart.json':
+    'seneca-morals_lestrange.json',
+};
+function resolveLegacyText(v) {
+  return (v && LEGACY_TEXT_ALIASES[v]) || v;
+}
+
 window.addEventListener('popstate', () => {
   const qs = new URLSearchParams(location.search);
   const pid = qs.get('p');
-  const wantText = qs.get('text');
+  const wantText = resolveLegacyText(qs.get('text'));
   if (typeof currentData === 'undefined' || !currentData) return;
   // Back/forward may cross a TEXT boundary (loadText only replaceState's the URL). Jumping a pid
   // from record A into record B would be nonsense, so re-enter through the normal fresh-load
@@ -24370,7 +24390,7 @@ function renderSidebarTree({ firstLoad = false } = {}) {
   const textGroups = _cachedTextGroups || [];
 
   const params = new URLSearchParams(location.search);
-  const requestedText = firstLoad ? params.get('text') : null;
+  const requestedText = firstLoad ? resolveLegacyText(params.get('text')) : null;
   const requestedPid  = firstLoad ? params.get('p') : null;
   // v132 (H2) — explicit bounded-work context on a shared link. Absent it, a bare ?p= still
   // recovers the work from the pid's section, so no existing link is invalidated.
