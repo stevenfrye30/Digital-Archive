@@ -383,6 +383,20 @@ def main():
         fail("Withdrawal manifest (9) FAILED — record(s) under "
              "01_library/_retired/ appear in no authority the deploy can "
              "see:\n  " + "\n  ".join(unrecorded))
+    # 10. Creator death dates on gated records. REPORTED, never blocking:
+    #     on the day this convention lands the honest number is small, and
+    #     refusing a push over it would be theatre. But it must not be
+    #     silent — every "PD by age" claim without dates rests on the
+    #     publication year, and the 1948 Enchiridion was indexed 1900.
+    cd_state = "n/a"
+    cd_script = REPO.parent / "05_scripts" / "audit_creator_dates.py"
+    if cd_script.exists():
+        cd = subprocess.run([sys.executable, str(cd_script), "--brief"],
+                            capture_output=True, text=True,
+                            encoding="utf-8", errors="replace")
+        if cd.returncode == 0 and cd.stdout.strip():
+            cd_state = cd.stdout.strip().splitlines()[-1]
+
     wd_state = (f"{wd['counts']['total']} withdrawn "
                 f"({wd['counts']['retired']} retired + "
                 f"{wd['counts']['restricted']} restricted), "
@@ -392,7 +406,7 @@ def main():
           f"public + {actual['restricted']} restricted; reasons complete; "
           f"boundary clean; {hashed} artifact hashes verified; "
           f"reachability OK; separation: {sep_state}; "
-          f"withdrawal: {wd_state}; "
+          f"withdrawal: {wd_state}; {cd_state}; "
           f"finalization ledger derived [{fin_state}] ({elapsed}).")
 
 
