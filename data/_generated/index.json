@@ -4198,32 +4198,6 @@
         "chapter",
         "verse"
       ],
-      "data_file": "bible_peshitta.json",
-      "source": "ebible",
-      "author": [],
-      "translator": [],
-      "year": null,
-      "translation_label": "Peshitta Old Testament (Syriac, ETCBC edition)",
-      "translation_short_label": null,
-      "volume_label": "Peshitta (Syriac)",
-      "quality": "derivative",
-      "source_summary": "Peshitta (Syriac). Via eBible.org.",
-      "importance_rank": 1,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "bible",
-      "title": "Bible",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "hierarchy": [
-        "book",
-        "chapter",
-        "verse"
-      ],
       "data_file": "bible_sbl-nt.json",
       "source": "ebible",
       "author": [],
@@ -32085,6 +32059,33 @@
       "restricted": true,
       "reading_status": "restricted",
       "reading_status_certified": true
+    },
+    {
+      "id": "bible",
+      "title": "Bible",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "book",
+        "chapter",
+        "verse"
+      ],
+      "data_file": "bible_peshitta.json",
+      "source": "ebible",
+      "author": [],
+      "translator": [],
+      "year": null,
+      "translation_label": "Peshitta Old Testament (Syriac, ETCBC edition)",
+      "translation_short_label": null,
+      "volume_label": "Peshitta (Syriac)",
+      "quality": "derivative",
+      "source_summary": "The Peshitta Old Testament in Syriac (ETCBC electronic edition): NOT public domain. Its text is the copyrighted Leiden Peshitta Institute Vetus Testamentum Syriace (Brill, 1987) and ETCBC releases the data CC-BY-NC. Source-rejected 2026-06-22; withdrawn at the source 2026-08-08. The ancient Syriac text is PD by age — a clean witness (BFBS/Mosul, 1905-1920) can replace it.",
+      "importance_rank": 1,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
     },
     {
       "id": "bible",
