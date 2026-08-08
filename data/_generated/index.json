@@ -22344,35 +22344,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "the-enchiridion-epictetus",
-      "title": "The Enchiridion",
-      "tradition": "Greek Philosophy",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "the-enchiridion-epictetus_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Epictetus"
-      ],
-      "translator": [
-        "Epictetus"
-      ],
-      "year": 1900,
-      "translation_label": "The Enchiridion",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The Enchiridion* by Epictetus. Translated by Epictetus (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "darwin-expression-emotions",
       "title": "The Expression of the Emotions in Man and Animals",
       "tradition": "Greek Philosophy",
@@ -29459,35 +29430,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "enchiridion",
-      "title": "Enchiridion",
-      "tradition": "Stoic",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "enchiridion_higginson.json",
-      "source": "gutenberg",
-      "author": [
-        "Epictetus"
-      ],
-      "translator": [
-        "Thomas W. Higginson"
-      ],
-      "year": 1948,
-      "translation_label": "The Enchiridion",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*Enchiridion* by Epictetus. Translated by Thomas W. Higginson (1948). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "meditations",
       "title": "Meditations",
       "tradition": "Stoic",
@@ -32086,6 +32028,66 @@
       "restricted": true,
       "reading_status": "restricted",
       "reading_status_certified": true
+    },
+    {
+      "id": "enchiridion",
+      "title": "Enchiridion",
+      "tradition": "Stoic",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "enchiridion_higginson.json",
+      "source": "gutenberg",
+      "author": [
+        "Epictetus"
+      ],
+      "translator": [
+        "Thomas W. Higginson"
+      ],
+      "year": 1948,
+      "translation_label": "The Enchiridion",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "The 1948 Liberal Arts Press edition (copyright 1948, second edition 1955, introduction by Albert Salomon): NOT public domain. Higginson's translation itself is 1865 and PD by age — a clean printing can replace this. Withdrawn 2026-08-08 on the rights triage.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "the-enchiridion-epictetus",
+      "title": "The Enchiridion",
+      "tradition": "Greek Philosophy",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "the-enchiridion-epictetus_anonymous.json",
+      "source": "gutenberg",
+      "author": [
+        "Epictetus"
+      ],
+      "translator": [
+        "Epictetus"
+      ],
+      "year": 1900,
+      "translation_label": "The Enchiridion",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": "The 1948 Liberal Arts Press edition (copyright 1948, second edition 1955, introduction by Albert Salomon): NOT public domain. Higginson's translation itself is 1865 and PD by age — a clean printing can replace this. Withdrawn 2026-08-08 on the rights triage. Indexed 1900, but the body is the same 1948 edition — 99% overlap with enchiridion_higginson.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
     },
     {
       "id": "bible",

@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 110,
+    "total": 112,
     "retired": 79,
-    "restricted": 31,
+    "restricted": 33,
     "relocated": 5,
     "no_source": 1
   },
@@ -16,7 +16,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "arab-conquests-central-asia-gibb_gibb.json": {
       "disposition": "restricted",
@@ -25,7 +27,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2042,
+      "pd_year_source": "plans/finalize_islam-sweep.md"
     },
     "aristotle-physics_hardie-gaye.json": {
       "disposition": "restricted",
@@ -34,7 +38,9 @@
       "preserved_at": null,
       "reason": "uncertain-copyright",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "atharva-veda-hymns-ralph-griffith-1895_anonymous.json": {
       "disposition": "retired",
@@ -43,7 +49,9 @@
       "preserved_at": null,
       "reason": "stub",
       "reason_note": "auto-ingest stub holding hymn titles, not text; superseded by atharva-veda-griffith_griffith.json",
-      "reason_source": "plans/finalize_veda-triage-misfiles-dups.md"
+      "reason_source": "plans/finalize_veda-triage-misfiles-dups.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "atlantis-the-antediluvian-world-ignatius-donnelly-18_anonymous.json": {
       "disposition": "retired",
@@ -52,7 +60,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "avat-ras-annie-besant_anonymous.json": {
       "disposition": "retired",
@@ -61,7 +71,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 hindu supplement lane: 6 content-verified twins retired (100%/89% overlaps; survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md)",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bhagavad-gita_anonymous.json": {
       "disposition": "retired",
@@ -70,7 +82,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "the Arnold 1900 Gutenberg dup of The Song Celestial; retired in the J1 rights lane 2026-07-12; superseded by bhagavad-gita_arnold.json",
-      "reason_source": "plans/finalize_bhagavad-gita_cleanup_gate.md"
+      "reason_source": "plans/finalize_bhagavad-gita_cleanup_gate.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bhagavad-gita_gita_society.json": {
       "disposition": "restricted",
@@ -79,7 +93,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bible_bible-in-basic-english.json": {
       "disposition": "restricted",
@@ -88,7 +104,9 @@
       "preserved_at": "01_library/_restricted/sacred/bible/passages_bible-in-basic-english.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bible_douay-rheims.json": {
       "disposition": "retired",
@@ -97,7 +115,9 @@
       "preserved_at": null,
       "reason": "superseded-rename",
       "reason_note": "witness renamed; the record survives under its full slug; superseded by bible_douay-rheims-bible.json",
-      "reason_source": "plans/finalize_bible_douay-rheims-gutenberg-1900.md"
+      "reason_source": "plans/finalize_bible_douay-rheims-gutenberg-1900.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bible_isaac-leeser-tanakh.json": {
       "disposition": "retired",
@@ -106,7 +126,9 @@
       "preserved_at": "01_library/_restricted/sacred/bible/passages_isaac-leeser-tanakh.json",
       "reason": "superseded-rename",
       "reason_note": "reshelved from the bible id onto the tanakh shelf; superseded by tanakh_leeser.json",
-      "reason_source": "plans/finalize_tanakh_leeser-1853.md"
+      "reason_source": "plans/finalize_tanakh_leeser-1853.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bible_jps-tanakh.json": {
       "disposition": "retired",
@@ -115,7 +137,9 @@
       "preserved_at": "01_library/_restricted/sacred/bible/passages_jps-tanakh.json",
       "reason": "superseded-rename",
       "reason_note": "reshelved from the bible id onto the tanakh shelf; superseded by tanakh_jps.json",
-      "reason_source": "plans/finalize_bible_jps-tanakh-1917.md"
+      "reason_source": "plans/finalize_bible_jps-tanakh-1917.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bible_masoretic-old-testament.json": {
       "disposition": "retired",
@@ -124,7 +148,9 @@
       "preserved_at": "01_library/_restricted/sacred/bible/passages_masoretic-old-testament.json",
       "reason": "superseded-rename",
       "reason_note": "reshelved from the bible id onto the tanakh shelf; superseded by tanakh_masoretic.json",
-      "reason_source": "plans/finalize_bible_masoretic-text.md"
+      "reason_source": "plans/finalize_bible_masoretic-text.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bible_peshitta.json": {
       "disposition": "restricted",
@@ -133,7 +159,9 @@
       "preserved_at": "01_library/_restricted/sacred/bible/passages_peshitta.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bible_westminster-leningrad-codex.json": {
       "disposition": "retired",
@@ -142,7 +170,9 @@
       "preserved_at": "01_library/_restricted/sacred/bible/passages_westminster-leningrad-codex.json",
       "reason": "superseded-rename",
       "reason_note": "reshelved from the bible id onto the tanakh shelf; superseded by tanakh_wlc.json",
-      "reason_source": "plans/finalize_bible_westminster-leningrad-codex.md"
+      "reason_source": "plans/finalize_bible_westminster-leningrad-codex.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "book-of-knowledge-oahspe_anonymous.json": {
       "disposition": "retired",
@@ -151,7 +181,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "retired in the dedup-retired-2026-07-02 lane; source parked at 01_library/_retired/dedup-retired-2026-07-02/",
-      "reason_source": "01_library/_retired/"
+      "reason_source": "01_library/_retired/",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "buddhas-life-a-ferdinand-herold-t_anonymous.json": {
       "disposition": "retired",
@@ -160,7 +192,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 buddhist supplement lane: 5 content-verified twins retired (Hearn 100% · Hérold 100% · Kern Lotus 98% · Morris 100% — the Morris stub was ALSO misfiled under Greek Literature; the Sutta Nipāta stub is the same Weimer transcription of Fausböll SBE X with mangled diacritics, 99% accent-folded — SWAPPED for the clean sutta-nipata-sbe_fausboll.json per the ruled Rāmāyaṇa-swap shape). Surviv",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "bushido-the-soul-of-japan-inazo-nitobe-1905_anonymous.json": {
       "disposition": "retired",
@@ -169,7 +203,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "chuang-tzu-mystic-edition_giles-mystic.json": {
       "disposition": "retired",
@@ -178,7 +214,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "confucian-canon-bilingual_legge-bilingual.json": {
       "disposition": "retired",
@@ -187,7 +225,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "retired in the dedup-retired-2026-07-02 lane; source parked at 01_library/_retired/dedup-retired-2026-07-02/",
-      "reason_source": "01_library/_retired/"
+      "reason_source": "01_library/_retired/",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "deuterocanonical-books-of-the-bible-anonymous_anonymous.json": {
       "disposition": "retired",
@@ -196,7 +236,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "emile-jean-jacques-roussea_anonymous.json": {
       "disposition": "retired",
@@ -205,7 +247,20 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of rousseau-emile (translator field junk; keep Foxley)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "enchiridion_higginson.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/philosophy/enchiridion",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "engels-origin-family_untermann.json": {
       "disposition": "restricted",
@@ -214,7 +269,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2027,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "essay-concerning-humane-understanding-vol-1_anonymous.json": {
       "disposition": "retired",
@@ -223,7 +280,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of locke-essay-vol1; author field broken ('Anonymous' = Locke)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "essay-concerning-humane-understanding-vol-2-john-locke_anonymous.json": {
       "disposition": "retired",
@@ -232,7 +291,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of locke-essay-vol2",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "essays-chance-love-logic-charles-peirce_anonymous.json": {
       "disposition": "retired",
@@ -241,7 +302,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of peirce-chance-love-logic; year 1900 wrong (posthumous 1923)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "essays-the-will-to-believe-william-james_anonymous.json": {
       "disposition": "retired",
@@ -250,7 +313,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of james-will-to-believe (byte-near)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "folk-tales-japan_smith.json": {
       "disposition": "retired",
@@ -259,7 +324,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "foxglove-and-some-of-its-medical-uses-william-withering_anonymous.json": {
       "disposition": "retired",
@@ -268,7 +335,9 @@
       "preserved_at": null,
       "reason": "unclassified",
       "reason_note": "medical botany treatise; 1,051 'chapters' of 266k chars = artifact structure too",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "frege-foundations-arithmetic_frege.json": {
       "disposition": "retired",
@@ -277,7 +346,9 @@
       "preserved_at": null,
       "reason": "wrong-language",
       "reason_note": "GERMAN body (Die Grundlagen der Arithmetik); no PD English exists (Austin 1950)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "gitanjali-tagore_anonymous.json": {
       "disposition": "retired",
@@ -286,7 +357,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 hindu supplement lane: 6 content-verified twins retired (100%/89% overlaps; survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md)",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "gleaings-in-buddha-fields-lafcadio-hearn-1897_anonymous.json": {
       "disposition": "retired",
@@ -295,7 +368,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 buddhist supplement lane: 5 content-verified twins retired (Hearn 100% · Hérold 100% · Kern Lotus 98% · Morris 100% — the Morris stub was ALSO misfiled under Greek Literature; the Sutta Nipāta stub is the same Weimer transcription of Fausböll SBE X with mangled diacritics, 99% accent-folded — SWAPPED for the clean sutta-nipata-sbe_fausboll.json per the ruled Rāmāyaṇa-swap shape). Surviv",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "history-of-utah-1540-1886-hubert-bancroft-1889_anonymous.json": {
       "disposition": "retired",
@@ -304,7 +379,9 @@
       "preserved_at": null,
       "reason": "unclassified",
       "reason_note": "state history, not philosophy",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "imitation-of-christ_anonymous.json": {
       "disposition": "retired",
@@ -313,7 +390,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "jaina-sutras-part-2-hermann-jacobi-1884_anonymous.json": {
       "disposition": "retired",
@@ -322,7 +401,9 @@
       "preserved_at": null,
       "reason": "misidentified",
       "reason_note": "RECOVERED 2026-08-08 as the sweep asked: Jacobi's Acaranga + Kalpa Sutra (SBE 22, 1884), relabelled off the mislabelled 'Part 2 / 1884 / anonymous' identity and reshelved to sacred/jain; superseded by jaina-sutras-part1_jacobi.json",
-      "reason_source": "plans/finalize_jaina-shelf-sweep.md"
+      "reason_source": "plans/finalize_jaina-shelf-sweep.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "jung-psychology-unconscious_hinkle.json": {
       "disposition": "restricted",
@@ -331,7 +412,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2032,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "jung-theory-psychoanalysis_jung.json": {
       "disposition": "restricted",
@@ -340,7 +423,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2032,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "latin-vulgate-bible-book-titles-names-anonymous_anonymous.json": {
       "disposition": "retired",
@@ -349,7 +434,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "leibniz-monadology_latta.json": {
       "disposition": "retired",
@@ -358,7 +445,9 @@
       "preserved_at": null,
       "reason": "misidentified",
       "reason_note": "MISBOUND: labeled 'Monadology, tr Latta 1898' but the body is a 480k-char GERMAN edition (535 sections; opens 'Anmerkungen zur Transkription'). Retire the body; re-acquire the real Latta as a future lane",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "midrash-tanuma-no_anonymous.json": {
       "disposition": "retired",
@@ -367,7 +456,9 @@
       "preserved_at": "01_library/_restricted/other/modern-philosophy/midrash-tanuma-no/passages_anonymous.json",
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "montaignes-travels-in-italy-by-way-of-switzerland-montaigne_anonymous.json": {
       "disposition": "retired",
@@ -376,7 +467,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "byte-near dupe of montaigne-travels-vol3 alone (221,319 vs 221,364 chars), not a combined edition",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "moore-philosophical-studies_moore.json": {
       "disposition": "restricted",
@@ -385,7 +478,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2029,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "moore-principia-ethica_moore.json": {
       "disposition": "restricted",
@@ -394,7 +489,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2029,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "nietzsche-antichrist_mencken.json": {
       "disposition": "restricted",
@@ -403,7 +500,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2027,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "nietzsche-joyful-wisdom_common.json": {
       "disposition": "retired",
@@ -412,7 +511,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of joyful-wisdom (same Common tr; sibling has the richer 68-chapter structure)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "nietzsche-will-to-power-1-2_ludovici.json": {
       "disposition": "retired",
@@ -421,7 +522,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of will-to-power-1-2 (same Ludovici tr; sibling has real labels)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "nietzsche-will-to-power-3-4_ludovici.json": {
       "disposition": "retired",
@@ -430,7 +533,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of will-to-power-3-4 (same Ludovici tr; sibling structured to 199 sections)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "nostradamus-roberts_ward.json": {
       "disposition": "restricted",
@@ -439,7 +544,9 @@
       "preserved_at": null,
       "reason": "uncertain-copyright",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "numbers-their-occult-power-mystic-virtues-w-wynn-westcott-19_anonymous.json": {
       "disposition": "retired",
@@ -448,7 +555,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "outlines-mahayana-suzuki_suzuki.json": {
       "disposition": "restricted",
@@ -457,7 +566,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "prolegomena-to-the-history-of-israel-julius-wellhausen_anonymous.json": {
       "disposition": "retired",
@@ -466,7 +577,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_abul-aala-maududi.json": {
       "disposition": "restricted",
@@ -475,7 +588,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_abul-aala-maududi.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_anonymous.json": {
       "disposition": "retired",
@@ -484,7 +599,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "- quran_anonymous.json is NOT a clean Rodwell text and NOT a simple duplicate: it is a PUBLIC-SAFETY + COPYRIGHT restriction.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_arberry.json": {
       "disposition": "restricted",
@@ -493,7 +610,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_arberry.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_bahasa-indonesia-indonesian.json": {
       "disposition": "restricted",
@@ -502,7 +621,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_bahasa-indonesia-indonesian.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_elmalili-hamdi-yazir.json": {
       "disposition": "restricted",
@@ -511,7 +632,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_elmalili-hamdi-yazir.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_hilali-khan.json": {
       "disposition": "retired",
@@ -520,7 +643,9 @@
       "preserved_at": null,
       "reason": "rights",
       "reason_note": "Hilali-Khan — modern copyrighted translation; a restricted local-only LANE TARGET that was never acquired, so the declared witness must not export",
-      "reason_source": "plans/restricted_quran_lane.md"
+      "reason_source": "plans/restricted_quran_lane.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_ma-jian-chinese.json": {
       "disposition": "restricted",
@@ -529,7 +654,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_ma-jian-chinese.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_mohammad-mahdi-fooladvand.json": {
       "disposition": "restricted",
@@ -538,7 +665,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_mohammad-mahdi-fooladvand.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_muhammad-asad.json": {
       "disposition": "retired",
@@ -547,7 +676,9 @@
       "preserved_at": null,
       "reason": "rights",
       "reason_note": "Muhammad Asad (1980) — modern copyrighted translation; a restricted local-only LANE TARGET that was never acquired, so the declared witness must not export",
-      "reason_source": "plans/restricted_quran_lane.md"
+      "reason_source": "plans/restricted_quran_lane.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_rodwell.json": {
       "disposition": "retired",
@@ -556,7 +687,9 @@
       "preserved_at": null,
       "reason": "disentangled",
       "reason_note": "the entangled three-source dump was withdrawn; no clean standalone Rodwell was ever deployed and the local raw source is unpublished",
-      "reason_source": "plans/finalize_quran_rodwell.md"
+      "reason_source": "plans/finalize_quran_rodwell.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_saheeh.json": {
       "disposition": "restricted",
@@ -565,7 +698,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_saheeh.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_talal-itani.json": {
       "disposition": "restricted",
@@ -574,7 +709,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_talal-itani.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_yusuf-ali-pickthall-shakir-gutenberg.json": {
       "disposition": "retired",
@@ -583,7 +720,9 @@
       "preserved_at": null,
       "reason": "rights",
       "reason_note": "Malformed aggregate re-exposing Yusuf Ali copyright: quarantined.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_yusuf-ali-sacred-texts.json": {
       "disposition": "retired",
@@ -592,7 +731,9 @@
       "preserved_at": null,
       "reason": "rights",
       "reason_note": "Yusuf Ali 1934: quarantined (copyright).",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "quran_yusufali.json": {
       "disposition": "restricted",
@@ -601,7 +742,9 @@
       "preserved_at": "01_library/_restricted/sacred/quran/passages_yusufali.json",
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "records-of-the-past-2nd-series-vol-i-ah-sayce-1888_anonymous.json": {
       "disposition": "retired",
@@ -610,7 +753,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "records-of-the-past-2nd-series-vol-ii-ah-sayce-1888_anonymous.json": {
       "disposition": "retired",
@@ -619,7 +764,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "religious-development-thought-in-ancient-egypt-james-breaste_anonymous.json": {
       "disposition": "retired",
@@ -628,7 +775,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "rousseau-emile_foxley.json": {
       "disposition": "restricted",
@@ -637,7 +786,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2029,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "rousseau-social-contract-discourses_cole.json": {
       "disposition": "restricted",
@@ -646,7 +797,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2030,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "rumi-masnavi_redhouse.json": {
       "disposition": "retired",
@@ -655,7 +808,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 Task 31a: the bound Masnavi df proved a 160-passage EXCERPT (97% folded containment) of the full Redhouse 1881 volume, which took the route (Ramayana swap shape). plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "s-mmtliche-werke-8-vermischte-schriften-und-aufs-johann-fich_anonymous.json": {
       "disposition": "retired",
@@ -664,7 +819,9 @@
       "preserved_at": null,
       "reason": "wrong-language",
       "reason_note": "GERMAN body (Fichte, Sämmtliche Werke 8)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "sacred-books-of-the-east-sam-beal_anonymous.json": {
       "disposition": "retired",
@@ -673,7 +830,9 @@
       "preserved_at": null,
       "reason": "unclassified",
       "reason_note": "1900 Colonial Press ANTHOLOGY (ed. Epiphanius Wilson — 'Sam Beal' is broken metadata) of selections the archive holds canonically (Vedic hymns, Avesta, Dhammapada, Upanishads, Qur'an)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "saddharma-pundarika-buddhism_anonymous.json": {
       "disposition": "retired",
@@ -682,7 +841,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 buddhist supplement lane: 5 content-verified twins retired (Hearn 100% · Hérold 100% · Kern Lotus 98% · Morris 100% — the Morris stub was ALSO misfiled under Greek Literature; the Sutta Nipāta stub is the same Weimer transcription of Fausböll SBE X with mangled diacritics, 99% accent-folded — SWAPPED for the clean sutta-nipata-sbe_fausboll.json per the ruled Rāmāyaṇa-swap shape). Surviv",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "sakoontala-the-lost-ring-an-indian-drama-kalidasa-tr-monier-_anonymous.json": {
       "disposition": "retired",
@@ -691,7 +852,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 hindu supplement lane: 6 content-verified twins retired (100%/89% overlaps; survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md)",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "select-list-of-books-relating-to-the-far-appleton-griggin_anonymous.json": {
       "disposition": "retired",
@@ -700,7 +863,9 @@
       "preserved_at": null,
       "reason": "out-of-scope",
       "reason_note": "Library of Congress bibliography (a book CATALOG); author actually A.P.C. Griffin",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "seneca-minor-dialogues_stewart-gutenberg-dup.json": {
       "disposition": "retired",
@@ -709,7 +874,9 @@
       "preserved_at": null,
       "reason": "disentangled",
       "reason_note": "Phase 0 Stage 0B de-collision (2026-07-10). Rationale in plans/PHASE0_COLLISION_REVIEW.md + PHASE0_STAGE0B_DRYRUN.md. seneca duplicate: weaker provenance, misleading Stoic/patristic classification, Gutenberg header/footer residue, lower-quality 761-passage ingest. Canonical = greek-philosophy Stewart 1889.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "she-rab-dong-bu-nagarjuna-tr-wl-camp_anonymous.json": {
       "disposition": "retired",
@@ -718,7 +885,9 @@
       "preserved_at": "01_library/_restricted/sacred/buddhist/she-rab-dong-bu-nagarjuna-tr-wl-camp/passages_anonymous.json",
       "reason": "duplicate",
       "reason_note": "retired in the dedup-retired-2026-07-02 lane; source parked at 01_library/_retired/dedup-retired-2026-07-02/",
-      "reason_source": "01_library/_retired/"
+      "reason_source": "01_library/_retired/",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "shibboleth-a-templar-monitor-george-connor-1894_anonymous.json": {
       "disposition": "retired",
@@ -727,7 +896,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "spinoza-philosophy-selections_ratner.json": {
       "disposition": "retired",
@@ -736,7 +907,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "Ratner 1927 Modern Library SELECTIONS duplicating the complete Elwes texts held; compilation rights cloud (Ratner d. 1979)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "studies-in-religious-personality-harold-begbie_anonymous.json": {
       "disposition": "retired",
@@ -745,7 +918,9 @@
       "preserved_at": null,
       "reason": "unclassified",
       "reason_note": "devotional journalism/biography, not philosophy (alt: Christian reception if ruled)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "suzuki-essays-zen_suzuki.json": {
       "disposition": "restricted",
@@ -754,7 +929,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-baltimore-catchecism-1891_anonymous.json": {
       "disposition": "retired",
@@ -763,7 +940,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no_anonymous.json": {
       "disposition": "retired",
@@ -772,7 +951,20 @@
       "preserved_at": "01_library/_restricted/other/greek-literature/the-buddhavam-sa-and-the-cariya-pit-aka-richard-morris-no/passages_anonymous.json",
       "reason": "duplicate",
       "reason_note": "2026-07-29 buddhist supplement lane: 5 content-verified twins retired (Hearn 100% · Hérold 100% · Kern Lotus 98% · Morris 100% — the Morris stub was ALSO misfiled under Greek Literature; the Sutta Nipāta stub is the same Weimer transcription of Fausböll SBE X with mangled diacritics, 99% accent-folded — SWAPPED for the clean sutta-nipata-sbe_fausboll.json per the ruled Rāmāyaṇa-swap shape). Surviv",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "the-enchiridion-epictetus_anonymous.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/greek-philosophy/the-enchiridion-epictetus",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-kashf-al-mahj-b-oldest-persian-treatise-ali-ibn-usman-hu_anonymous.json": {
       "disposition": "retired",
@@ -781,7 +973,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-martyrs-of-science-the-lives-of-galileo_anonymous.json": {
       "disposition": "retired",
@@ -790,7 +984,9 @@
       "preserved_at": null,
       "reason": "unclassified",
       "reason_note": "history-of-science biography (author actually Sir David Brewster, 1841); alt KEEP-FIX with author repair if scope ruled in",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-mesnevi-rumi_anonymous.json": {
       "disposition": "retired",
@@ -799,7 +995,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-r-m-yan-of-v-lm-ki-ralph-griffith_anonymous.json": {
       "disposition": "retired",
@@ -808,7 +1006,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 hindu supplement lane: 6 content-verified twins retired (100%/89% overlaps; survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md)",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl_anonymous.json": {
       "disposition": "retired",
@@ -817,7 +1017,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-seven-great-monarchies-of-the-ancient-eastern-george-raw_anonymous.json": {
       "disposition": "retired",
@@ -826,7 +1028,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-sutta-nipata-v-fausboll-1881-no_anonymous.json": {
       "disposition": "retired",
@@ -835,7 +1039,9 @@
       "preserved_at": "01_library/_restricted/other/modern-philosophy/the-sutta-nipata-v-fausboll-1881-no/passages_anonymous.json",
       "reason": "duplicate",
       "reason_note": "2026-07-29 buddhist supplement lane: 5 content-verified twins retired (Hearn 100% · Hérold 100% · Kern Lotus 98% · Morris 100% — the Morris stub was ALSO misfiled under Greek Literature; the Sutta Nipāta stub is the same Weimer transcription of Fausböll SBE X with mangled diacritics, 99% accent-folded — SWAPPED for the clean sutta-nipata-sbe_fausboll.json per the ruled Rāmāyaṇa-swap shape). Surviv",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-upanishads-max-muller-1879_anonymous.json": {
       "disposition": "retired",
@@ -844,7 +1050,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "redundant _anonymous derivative; the cleaner SBE witnesses hold the same content; superseded by upanishads-muller-part1_muller-part1.json, upanishads-muller-part2_muller-part2.json",
-      "reason_source": "plans/finalize_the-upanishads-max-muller-1879-anon_triage.md"
+      "reason_source": "plans/finalize_the-upanishads-max-muller-1879-anon_triage.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-varieties-of-religous-experience-william-james-1902_anonymous.json": {
       "disposition": "retired",
@@ -853,7 +1061,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "dupe of james-varieties-religious (title typo 'Religous'; sacredtext witness)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-writings-of-origen-vol-1-origen_anonymous.json": {
       "disposition": "retired",
@@ -862,7 +1072,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-writings-of-origen-vol-2-origen_anonymous.json": {
       "disposition": "retired",
@@ -871,7 +1083,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "the-yoga-sutras-charles-johnson-1912_anonymous.json": {
       "disposition": "retired",
@@ -880,7 +1094,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "2026-07-29 hindu supplement lane: 6 content-verified twins retired (100%/89% overlaps; survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md)",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "thrice-greatest-hermes-vol-1-grs-mead-1906_anonymous.json": {
       "disposition": "retired",
@@ -889,7 +1105,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "Thrice-Greatest Hermes Vol 1 duplicate ingest (misfiled modern-philosophy, year 1900, missing the Longfellow epigraph); duplicate of thrice-greatest-hermes-vol1_mead (same 1906 Mead witness, 100% overlap). plans/HERMES_DUPLICATE_RETIREMENT_DRYRUN.md",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "thrice-greatest-hermes-vol-3-grs-mead-1906_anonymous.json": {
       "disposition": "retired",
@@ -898,7 +1116,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "Thrice-Greatest Hermes Vol 3 duplicate ingest (misfiled modern-philosophy, year 1900, missing two COMMENTARY/Argument headings); duplicate of thrice-greatest-hermes-vol3_mead (same 1906 Mead witness, 100% overlap). plans/HERMES_VOL3_RETIREMENT_DRYRUN.md",
-      "reason_source": "05_scripts/export_reader_data.py"
+      "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "twilight-idols_ludovici.json": {
       "disposition": "restricted",
@@ -907,7 +1127,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2042,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "upanishads_muller.json": {
       "disposition": "retired",
@@ -916,7 +1138,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "the 4-way Muller duplication resolved onto the two SBE part witnesses; superseded by upanishads-muller-part1_muller-part1.json, upanishads-muller-part2_muller-part2.json",
-      "reason_source": "plans/finalize_upanishads-muller.md"
+      "reason_source": "plans/finalize_upanishads-muller.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "viettelij-n-p-iv-kirja-kierkegaard_anonymous.json": {
       "disposition": "retired",
@@ -925,7 +1149,9 @@
       "preserved_at": null,
       "reason": "wrong-language",
       "reason_note": "FINNISH body (Viettelijän päiväkirja = The Seducer's Diary)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "vishnupuranam-dutt_dutt.json": {
       "disposition": "retired",
@@ -934,7 +1160,9 @@
       "preserved_at": null,
       "reason": "duplicate",
       "reason_note": "retired in the dedup-retired-2026-07-02 lane; source parked at 01_library/_retired/dedup-retired-2026-07-02/",
-      "reason_source": "01_library/_retired/"
+      "reason_source": "01_library/_retired/",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "will-to-power-1-2_ludovici.json": {
       "disposition": "restricted",
@@ -943,7 +1171,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2042,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "will-to-power-3-4_ludovici.json": {
       "disposition": "restricted",
@@ -952,7 +1182,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2042,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "wissenschaft-der-logik-band-1-hegel_anonymous.json": {
       "disposition": "retired",
@@ -961,7 +1193,9 @@
       "preserved_at": null,
       "reason": "wrong-language",
       "reason_note": "GERMAN body (Hegel, Wissenschaft der Logik I)",
-      "reason_source": "plans/task85_survey.md"
+      "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "wittgenstein-tractatus_ogden.json": {
       "disposition": "restricted",
@@ -970,7 +1204,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": 2028,
+      "pd_year_source": "plans/task85_survey.md"
     },
     "yajur-veda-black-arthur-keith-1914-no_anonymous.json": {
       "disposition": "retired",
@@ -979,7 +1215,9 @@
       "preserved_at": "01_library/_restricted/other/modern-philosophy/yajur-veda-black-arthur-keith-1914-no/passages_anonymous.json",
       "reason": "stub",
       "reason_note": "auto-ingest stub holding a contents outline, not anuvaka text; superseded by yajur-veda-keith_keith.json",
-      "reason_source": "plans/finalize_veda-triage-misfiles-dups.md"
+      "reason_source": "plans/finalize_veda-triage-misfiles-dups.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "zen-buddhism-art-suzuki_suzuki-art.json": {
       "disposition": "restricted",
@@ -988,7 +1226,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "zen-for-americans-suzuki_suzuki.json": {
       "disposition": "restricted",
@@ -997,7 +1237,9 @@
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
-      "reason_source": null
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     }
   }
 }

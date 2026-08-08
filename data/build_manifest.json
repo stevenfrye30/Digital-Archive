@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-08T18:50:52Z",
+ "generated": "2026-08-08T19:18:18Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "6ef20d5680a2daa142f24c8d0938618361d43770",
+ "exporter_rev": "a76009036900eb03fc9979500ba49ed62c98784e",
  "library_fingerprint": "sha256:f4dcc669d901018a4ac90270b5084e48213b8b4e8542012ad62d717f5a21d1a9",
  "counts": {
   "entries": 1177,
-  "public": 1064,
-  "restricted": 113
+  "public": 1062,
+  "restricted": 115
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -3835,9 +3835,9 @@
    "data_hash": "sha256:7779e8804a0ac778fa77371917d22e15dcc60333b5c11f304588bec963e5d639",
    "data_bytes": 44460,
    "passages": 90,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:48Z"
   },
@@ -12852,9 +12852,9 @@
    "data_hash": "sha256:9e047a207f02d0ce2f2af389ccd3a1921e8a5970a2f10c09beae962343783dd1",
    "data_bytes": 26597,
    "passages": 155,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:31:29Z"
   },
