@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-07T23:36:58Z",
+ "generated": "2026-08-08T01:17:46Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "8c4c317545785a5146c29e16858ff792702049a9",
- "library_fingerprint": "sha256:3be308b7fd29c35b173932c0a92c5113b18b5615adf5810f1e2e75589d564211",
+ "exporter_rev": "029ee1f9115cc7e04d505215104d145483755316",
+ "library_fingerprint": "sha256:77cb07d49e0c4045701602c6ba1e87a448d80dd5028d8d479d87ce5c0cc626bb",
  "counts": {
   "entries": 1176,
   "public": 1064,
@@ -341,16 +341,16 @@
    "exported": "2026-07-10T17:30:20Z"
   },
   "anf01-early-fathers_ccel-schaff": {
-   "source_hash": "sha256:04bb1fa00890c2a81fc1b9b7dee81c33a3bf95c3594c35531fa79715f53ef44d",
+   "source_hash": "sha256:534fa85ad52166a77af4243efece562c2cf16b309ab2794ece531cfc36259d6c",
    "data_file": "anf01-early-fathers_ccel-schaff.json.gz",
-   "data_hash": "sha256:66d11d6a89e21543509ce3a883a8f0f88eba2d2e0f395728090dcbe78490a963",
-   "data_bytes": 1089361,
+   "data_hash": "sha256:36daca222d6b2899a54b479e70160e1077672874d55437649c9b4fee2412af95",
+   "data_bytes": 1093656,
    "passages": 8175,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:20Z"
+   "exported": "2026-08-08T01:15:36Z"
   },
   "anf04-tertullian-cyprian_ccel-schaff": {
    "source_hash": "sha256:12fc0c5bc47560a3313ccccfdca6151a9977104425c270700998aece21dc1f5c",
@@ -438,21 +438,21 @@
    "exported": "2026-07-10T17:30:20Z"
   },
   "aquinas-summa-theologica_english-dominicans": {
-   "source_hash": "sha256:1f7ae641c5d77a74afd784c5eab64e078a36161abdd2475b13a3457ebdd13174",
+   "source_hash": "sha256:d4f9465e2eb4eab9b039e6c47651d15fb470a97bc7fd630f2db9086b4436cbee",
    "data_file": "aquinas-summa-theologica_english-dominicans.json.gz",
-   "data_hash": "sha256:025e542073ec103be2f82267086f02e26ef271a6f77dc67bba0b4e51a63cf706",
-   "data_bytes": 190863,
+   "data_hash": "sha256:170d5259a5618a538c90b8f49bd40993d353c3f2ccfb2a2b82098e5084fe2306",
+   "data_bytes": 120635,
    "passages": 34334,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-03T02:52:42Z",
+   "exported": "2026-08-08T01:15:39Z",
    "parts": [
     {
      "data_file": "aquinas-summa-theologica_english-dominicans.rest.json.gz",
-     "data_hash": "sha256:b16b87164c89fbf768a2bbfda20f2daa8e7273a9830e98a0b65ab6ef2585a231",
-     "data_bytes": 3866668
+     "data_hash": "sha256:d509c6090442bf2428bc3b92fa75e1c41cf6728f0fb08779d6107375b4abc2af",
+     "data_bytes": 3796556
     }
    ]
   },
