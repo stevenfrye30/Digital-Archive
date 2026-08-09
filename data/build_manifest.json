@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-09T17:56:42Z",
+ "generated": "2026-08-09T20:06:41Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "cbbd4eca4a4045eed0a153df7a441526283dec1a",
- "library_fingerprint": "sha256:501f407dba07c8e0add15f25a76c980ce226e375bb9af31d06793015c9360c53",
+ "exporter_rev": "d199829a49e26a5983f9441c2fa649c24243e669",
+ "library_fingerprint": "sha256:3e271f4ede73f89c22f693aa8e03efa24841b87e83f3db42db0b242729c18db6",
  "counts": {
   "entries": 1112,
   "public": 990,
@@ -1274,7 +1274,7 @@
    "exported": "2026-07-10T17:30:25Z"
   },
   "bible_almeida-1911": {
-   "source_hash": "sha256:8bbdb8b6dbeea8548ff36e3459a4d725234cb76efd5e3137a1e0a6110db0277f",
+   "source_hash": "sha256:fa2ea98123767e65061c72cd74719dc8f71bf35c4b7b99bfad85130498311f73",
    "data_file": "bible_almeida-1911.json.gz",
    "data_hash": "sha256:00ac7e20f6814020693cf36849f9b56ef51b8c6370c98edd1273b67e49d3a065",
    "data_bytes": 1603936,
@@ -1286,7 +1286,7 @@
    "exported": "2026-07-10T17:30:25Z"
   },
   "bible_antoniades-patriarchal-1904": {
-   "source_hash": "sha256:b597abc0df0d48c63ac749dcade46238c7ddd1bcdac38770e034c8fab8398123",
+   "source_hash": "sha256:6d6a9084cf8e608ad8c94d132280f3ba237c235c725f3431fcb9ed5dc922de66",
    "data_file": "bible_antoniades-patriarchal-1904.json.gz",
    "data_hash": "sha256:431110a3e444cfc6e796c26f68ac09d3bf9a8908e6223d6b288116cf62040397",
    "data_bytes": 422906,
@@ -1298,7 +1298,7 @@
    "exported": "2026-07-10T17:30:25Z"
   },
   "bible_arabic-van-dyck-1865": {
-   "source_hash": "sha256:af85b2ea62be831dbe6a9e22ac477af201843eb6b016020f3f0dfdb32abcbfdf",
+   "source_hash": "sha256:add0b1485b7b791ce0dd4651eabb06e7fdde53fde76b1ea00cf8b311448121c6",
    "data_file": "bible_arabic-van-dyck-1865.json.gz",
    "data_hash": "sha256:25ed18090a46b086e19d80a7fdca193bbfab11df0ada8db3d59b4787a5299699",
    "data_bytes": 1838059,
@@ -1322,7 +1322,7 @@
    "exported": "2026-07-10T17:30:27Z"
   },
   "bible_bible-in-basic-english": {
-   "source_hash": "sha256:177f179903c0df61fb4ddd51890fb562e49deb2222f71422be872745503bcd4a",
+   "source_hash": "sha256:4ec3a92703691637f85cd879e2e3478a25b52a010522f60a7b9d6d68c0cd783f",
    "data_file": "bible_bible-in-basic-english.json.gz",
    "data_hash": "sha256:e0144dbf9f9d1adb6bba3f158d44a8d0815617f869a3e87bb09a0cffb1c6be8e",
    "data_bytes": 1544323,
@@ -1334,7 +1334,7 @@
    "exported": "2026-07-01T20:10:53Z"
   },
   "bible_brenton-septuagint-greek": {
-   "source_hash": "sha256:cf6c9154ed0e04437c04537585b26dd114cfec3f11af93e2b125de126619ac43",
+   "source_hash": "sha256:442d5bbf7a6eac1f24917b0bb2f462d760d017182ee16ced95eda6ba878269fa",
    "data_file": "bible_brenton-septuagint-greek.json.gz",
    "data_hash": "sha256:1e8fb502c5e053d834d98f02bc49daaa5d21d8b168978b39d8642cc81feb8045",
    "data_bytes": 1871454,
@@ -1346,7 +1346,7 @@
    "exported": "2026-07-10T17:30:28Z"
   },
   "bible_brenton-septuagint-translation": {
-   "source_hash": "sha256:76a8299c30e29563a4b5c3cbc427298ba57efd95d1e73f8ce160df7403d2e22b",
+   "source_hash": "sha256:8bcaa298899afdf72c19cb9f4ffcfc1cde261d1b181af7c2fc068558894f6fca",
    "data_file": "bible_brenton-septuagint-translation.json.gz",
    "data_hash": "sha256:56ac6b7cafdcb3bd0811f5f78048d93c0060732717bb8415d1487a8b632b7e2b",
    "data_bytes": 1515872,
@@ -1358,7 +1358,7 @@
    "exported": "2026-07-10T17:30:28Z"
   },
   "bible_chinese-union-cunp-traditional": {
-   "source_hash": "sha256:b98fba34dfd69bd81a1399cba68d5a76188a2f56d76332054c370f18288f409a",
+   "source_hash": "sha256:2bff62df69f5b51f45f6cd5140494d1f9fc9c3252b0a88a739d8da004eec9848",
    "data_file": "bible_chinese-union-cunp-traditional.json.gz",
    "data_hash": "sha256:4c192f3e61eb44359547259b3d0be0f3138e20e07b88bde8bdeb9a76fe5169e7",
    "data_bytes": 1518913,
@@ -1382,7 +1382,7 @@
    "exported": "2026-07-10T17:30:29Z"
   },
   "bible_diodati-1649": {
-   "source_hash": "sha256:6b2589695aca6d328571dc7410d457db606326ae02a3d7b48515c4d55aa5aa7d",
+   "source_hash": "sha256:5c328199fe0a124bd2b20c698557a4c7dfa834f9000beb25ab5992a41ecbaf9d",
    "data_file": "bible_diodati-1649.json.gz",
    "data_hash": "sha256:a904e80668d431ccf35f5b2b364b117aee7e238ba7410c1a13b009b4e5be5c89",
    "data_bytes": 1704048,
@@ -1394,7 +1394,7 @@
    "exported": "2026-07-10T17:30:29Z"
   },
   "bible_douay-rheims-bible": {
-   "source_hash": "sha256:0a3bec6ac8966a43d941eaab4c8143553c85dfe188f1e8e0766e3185b743f194",
+   "source_hash": "sha256:2fdebf27c8855789dbda65e0556c920b29554df4cd8e38e2f0ad1dfae6357e4a",
    "data_file": "bible_douay-rheims-bible.json.gz",
    "data_hash": "sha256:fc0cc4a171b820f1bbb817807a3ebabbb1af215c7b45027ad0a82f4e6d6d43a8",
    "data_bytes": 1829467,
@@ -1406,7 +1406,7 @@
    "exported": "2026-07-10T17:30:30Z"
   },
   "bible_elzevir-textus-receptus-1624": {
-   "source_hash": "sha256:bee1f55acb17c3188a6669cd0b5e063f30cf9823e5ca24548894541af73319a5",
+   "source_hash": "sha256:2f0504c317b6ff0eb5b69a245e62163462188f8423547c4f4abf2d8b9471f9b2",
    "data_file": "bible_elzevir-textus-receptus-1624.json.gz",
    "data_hash": "sha256:dd1b70a476c86b32773067702858e2429a826e51dcfdce48fe13c1edb82a0830",
    "data_bytes": 423170,
@@ -1418,7 +1418,7 @@
    "exported": "2026-07-10T17:30:30Z"
   },
   "bible_emphatic-diaglott-interlinear-1864": {
-   "source_hash": "sha256:0fe9aaf339a6fe0375d555305b77fd3c0ee12f43d3c0f3e38d9dd156ca43087f",
+   "source_hash": "sha256:2d12434702e41e1b0deae00b4abec369909e6254377556ab666e80c34923d6d4",
    "data_file": "bible_emphatic-diaglott-interlinear-1864.json.gz",
    "data_hash": "sha256:e55f1588aceeed45c0889f56ff7bc1c27619cd5f460d7440c1b09224b67d8b43",
    "data_bytes": 401426,
@@ -1430,7 +1430,7 @@
    "exported": "2026-07-10T17:30:30Z"
   },
   "bible_etheridge-peshitta-new-testament": {
-   "source_hash": "sha256:fe6ed3962702f5a008b61a3b3b6956397b823468d68e1cc4480be3c8136c5b73",
+   "source_hash": "sha256:8738c58508b0e407087f7f03d48040f2b59cb5124351df67407ff877de86046e",
    "data_file": "bible_etheridge-peshitta-new-testament.json.gz",
    "data_hash": "sha256:28f1f62ccdb2419b0566f1e4d27916561979839c79ea8d2a6792f99443f4392f",
    "data_bytes": 402172,
@@ -1442,7 +1442,7 @@
    "exported": "2026-07-10T17:30:30Z"
   },
   "bible_geneva-bible": {
-   "source_hash": "sha256:72fb7b925598e6ebd60780302397349c9f08f2be17e3ddb567bbe0fc3c51f61a",
+   "source_hash": "sha256:c893d0587d46a9bc46b01d8e4f41a90a3f1c9e0ada4f187408fb8ba4843b08f7",
    "data_file": "bible_geneva-bible.json.gz",
    "data_hash": "sha256:3b20f4424599c1cb52ec08a4e1f7d586ea431c800aae11ec1def9bf85197c9e1",
    "data_bytes": 1609116,
@@ -1454,7 +1454,7 @@
    "exported": "2026-07-10T17:30:30Z"
   },
   "bible_kjv": {
-   "source_hash": "sha256:fe29bf4b95308206d966fe3555b75be6f531515b262c15f842bb8c729d0adc51",
+   "source_hash": "sha256:5eca73117987f1099d499c7cd6b529b864765ad88637d3617d2b8fa99c9b6b12",
    "data_file": "bible_kjv.json.gz",
    "data_hash": "sha256:51eedffebd59b85108817c77204905f9962994c7bdf93c62ef1446a3074a317b",
    "data_bytes": 1899699,
@@ -1466,7 +1466,7 @@
    "exported": "2026-07-10T17:30:31Z"
   },
   "bible_louis-segond-1910": {
-   "source_hash": "sha256:c9d4a7a2ac041370633ebfa252749b30dde6be2ed2ef6228cc84dc3aa614d67a",
+   "source_hash": "sha256:c1d732f7ed8f1b06f16cbde09e4616570c31c5b452da3b8404add554e4c0f678",
    "data_file": "bible_louis-segond-1910.json.gz",
    "data_hash": "sha256:cca95bc22fd11116c04c6df3e651e07f88b11e33ec0f765a28506899efdc7d68",
    "data_bytes": 1686696,
@@ -1478,7 +1478,7 @@
    "exported": "2026-07-10T17:30:31Z"
   },
   "bible_luther-1545": {
-   "source_hash": "sha256:e684d29946fe26080897a75872c9657cd81f2de8f52b43a7009d61f081a43b28",
+   "source_hash": "sha256:3c786b3b1f6576755a96569c81e9cb721ce8347b72142c30275227e5770c4427",
    "data_file": "bible_luther-1545.json.gz",
    "data_hash": "sha256:0188ceed5912849027ecf8a78de454c264870afefc74813c354495f764fcce81",
    "data_bytes": 1658381,
@@ -1490,7 +1490,7 @@
    "exported": "2026-07-10T17:30:32Z"
   },
   "bible_luther-1912": {
-   "source_hash": "sha256:208f9a73c65cacd427f6a01ae41e82240ff222e35bb4d9b0be0a362cba2b7947",
+   "source_hash": "sha256:54be8e8a4cbb0f5353a369a1e435eaff060bcb0e6e94e059fe780eef5a5d7203",
    "data_file": "bible_luther-1912.json.gz",
    "data_hash": "sha256:af35068849033730e2494926bd9f391929f1e63f2e155bd712f3ff5a67e31c59",
    "data_bytes": 1666804,
@@ -1502,7 +1502,7 @@
    "exported": "2026-07-10T17:30:32Z"
   },
   "bible_lxx-septuagint": {
-   "source_hash": "sha256:2ced5da39af21a8f2193870877c23b48d93589e15e9cdfe7ff92b6c742709dcf",
+   "source_hash": "sha256:856e95ff9217b88d0382cd11815024d7e3e1e74edf3c3b5d9f23bee1ffdb44de",
    "data_file": "bible_lxx-septuagint.json.gz",
    "data_hash": "sha256:eb091f203159b25969fc76a474753a1fec1bedaefb49530e5ec08c4a7bf760ae",
    "data_bytes": 1497949,
@@ -1514,7 +1514,7 @@
    "exported": "2026-07-10T17:30:32Z"
   },
   "bible_majority-text-new-testament": {
-   "source_hash": "sha256:84b0338f9b11a122e8fa5c6c54f4abc762209995fe6b3f1c842660dae82ca86e",
+   "source_hash": "sha256:c48154c804731bd245b577f0e3a78e0f4b35063f19b64555ad8a9530d18d0ad8",
    "data_file": "bible_majority-text-new-testament.json.gz",
    "data_hash": "sha256:0cd6f530353d9e409f4022f7a89b789852849a4cddbd9abcf3794bf8cabe64dd",
    "data_bytes": 500480,
@@ -1526,7 +1526,7 @@
    "exported": "2026-07-10T17:30:32Z"
   },
   "bible_murdock-peshitta-new-testament": {
-   "source_hash": "sha256:af0a2558800fbcbc452c785120a8acbfc3f0d45f690726da7249c34a4cfa6e76",
+   "source_hash": "sha256:613a918903ace5a60c06ff65e63261a7035b4c49bc06597928fd7bb15934e6ba",
    "data_file": "bible_murdock-peshitta-new-testament.json.gz",
    "data_hash": "sha256:0d030d989a782d501092d74841498bd293f6d87dfa0c726ab26e3292d7f9a0f2",
    "data_bytes": 402495,
@@ -1538,7 +1538,7 @@
    "exported": "2026-07-10T17:30:33Z"
   },
   "bible_nestle-1904-greek-new-testament": {
-   "source_hash": "sha256:fe4b49a1cb962571f49220c5696982a315aac8c5192e97a2343f82e09029b8fb",
+   "source_hash": "sha256:de28cc8085e86953052f05d7491bce8b24a21fee566c7b7432abacfaae063bc2",
    "data_file": "bible_nestle-1904-greek-new-testament.json.gz",
    "data_hash": "sha256:9e12cc44a826a169538f00e4f2ab3a0f8453a45c6a08eca4fb9b9a664199bbf6",
    "data_bytes": 494183,
@@ -1562,7 +1562,7 @@
    "exported": "2026-07-10T17:30:35Z"
   },
   "bible_reina-valera-1909": {
-   "source_hash": "sha256:dcd1d12b021233a987d354edf2d09598e4bdb6ed92881f189b9d585eef46e82e",
+   "source_hash": "sha256:0785ff35f6f8647d5bc4a45b26db545103e66ec68a2ceb260929f8467511ef6d",
    "data_file": "bible_reina-valera-1909.json.gz",
    "data_hash": "sha256:acbc28cd0852bc77b0e7605d96cebea9f7135c827530e8c65bd11c795f983938",
    "data_bytes": 1615865,
@@ -1574,7 +1574,7 @@
    "exported": "2026-07-10T17:30:35Z"
   },
   "bible_revised-version-with-apocrypha": {
-   "source_hash": "sha256:4a9e78e62f9bb73f7212f65efdbe59304d1b02bf0546b8abc29bf732e492d2f5",
+   "source_hash": "sha256:8e595e887d57862fbe36d2489d6cacc791a7a57d7e1807feaa3b16afb2890366",
    "data_file": "bible_revised-version-with-apocrypha.json.gz",
    "data_hash": "sha256:776ef330a95263a3525aab6247b94e888a0a2cb37d38ffddcf03b776be424112",
    "data_bytes": 1899914,
@@ -1586,7 +1586,7 @@
    "exported": "2026-07-10T17:30:35Z"
   },
   "bible_rotherham-emphasized-bible-1902": {
-   "source_hash": "sha256:b48c440d886ea2230a2997e057bfb50ed275fb9830c51cb4bc5bda50b7a0ca53",
+   "source_hash": "sha256:6c7d71c8c12b46c202bc6daa79bdbee1b65b01b07c101e792135793db6df7742",
    "data_file": "bible_rotherham-emphasized-bible-1902.json.gz",
    "data_hash": "sha256:ba97858a204bb5335a2c1b1c37860b81e9a18b97b2eface9c265b83cbbf4975d",
    "data_bytes": 1717509,
@@ -1598,7 +1598,7 @@
    "exported": "2026-07-10T17:30:36Z"
   },
   "bible_russian-synodal-1876": {
-   "source_hash": "sha256:6373d641ea9955aa2df0892c3ad9179feaa2d363b3c99e2283c9aea91539b341",
+   "source_hash": "sha256:ee2817b387768d8e323dd1d4a4fe882831c3d88dfc2ee1ab72ff7da458bd57b0",
    "data_file": "bible_russian-synodal-1876.json.gz",
    "data_hash": "sha256:7238ca071e1aaf5358cbd9bf9e9388056d9935141cccd499ff89452861f5edd3",
    "data_bytes": 1806031,
@@ -1610,7 +1610,7 @@
    "exported": "2026-07-10T17:30:37Z"
   },
   "bible_salkinson-new-testament": {
-   "source_hash": "sha256:40093c5941a6dcaff4d4b0c0e788c005826d6d797212054a888cc906cfbbf4d9",
+   "source_hash": "sha256:52358b5e6f4453f0d03f786c9a5b0eaa531198fb50b91f58767070abedc45b57",
    "data_file": "bible_salkinson-new-testament.json.gz",
    "data_hash": "sha256:98ccf5bf195e8d25affc93a11f6e0f100400cda2fd390d2bfb5bc48c2b76b473",
    "data_bytes": 466250,
@@ -1634,7 +1634,7 @@
    "exported": "2026-07-10T17:30:37Z"
   },
   "bible_scrivener-textus-receptus-1894": {
-   "source_hash": "sha256:361b9fe6df621cf8e9420dccbb039f92702e50fee8b2eccd0e86bb2e5efb4402",
+   "source_hash": "sha256:13b84cf9c32373fdf31ad9567b2312a6f88ae6e6c41e562ca94232d004cf99cd",
    "data_file": "bible_scrivener-textus-receptus-1894.json.gz",
    "data_hash": "sha256:c8147d444e0ec13fde7e6c8730c321c652918187d777df9eb4e5f3e05fd8158c",
    "data_bytes": 421634,
@@ -1646,7 +1646,7 @@
    "exported": "2026-07-10T17:30:37Z"
   },
   "bible_statenvertaling": {
-   "source_hash": "sha256:76292e82ef387c6dfe68b487315f23b28c1ab3035b5f3e0af2e375a277f5bb00",
+   "source_hash": "sha256:adf746adeb6c37992ff4718cd9a9963325583eb784cca52e6e9c79d585eb58c5",
    "data_file": "bible_statenvertaling.json.gz",
    "data_hash": "sha256:b71d83c96dcf16467e01708e1f6a2fbeb6750daa87cf8a823c2814345917d8d3",
    "data_bytes": 1677052,
@@ -1658,7 +1658,7 @@
    "exported": "2026-07-10T17:30:38Z"
   },
   "bible_stephanus-textus-receptus-1550": {
-   "source_hash": "sha256:2a44aa3042885c665372b8c2e2d15061be0155489d9507a9a56ea96c8aa3f1ca",
+   "source_hash": "sha256:b164a5b41c227c7d58f32dece06a5a3e923021a29801742d1c92277f4144ecc4",
    "data_file": "bible_stephanus-textus-receptus-1550.json.gz",
    "data_hash": "sha256:a8b71cebbce2f62713f900bf7b88933200aa8ea76db69066acdaaa962639e9a4",
    "data_bytes": 422818,
@@ -1670,7 +1670,7 @@
    "exported": "2026-07-10T17:30:38Z"
   },
   "bible_tischendorf-greek-new-testament": {
-   "source_hash": "sha256:e3daf9932af71bef8312b2362198b6f6bdf3bb8763e318bff7bdd92b4a182130",
+   "source_hash": "sha256:9e57c045b3dddfb721390efbdb456b0b5dbdb447e5bbab502bc9cc5ea62f6125",
    "data_file": "bible_tischendorf-greek-new-testament.json.gz",
    "data_hash": "sha256:e585b07eca2eae92fe7e20fc05de118a7b3ce2ae1bb4699d3f737c4a04995e71",
    "data_bytes": 489930,
@@ -1694,19 +1694,19 @@
    "exported": "2026-07-10T17:30:38Z"
   },
   "bible_tregelles-greek-new-testament": {
-   "source_hash": "sha256:00e1b34a9148118f62f95cbd7cf1f0b8c7014a5e00ba3bafca3d91046a4e083a",
+   "source_hash": "sha256:46e9822faeaa4a350429f2165e62a448d7b3e5f9e5960b865a48c41f94563883",
    "data_file": "bible_tregelles-greek-new-testament.json.gz",
-   "data_hash": "sha256:460e44e2903e39eea09b5fc8e3a580dac8f7de72422fe4ebbd9322f4a9800695",
-   "data_bytes": 419923,
+   "data_hash": "sha256:aaf1662140a0d8534a1475f91dfb2301dc1486f68417cbcda57e7db40957d1ba",
+   "data_bytes": 419902,
    "passages": 7947,
-   "license": "Public Domain (text); transcription CC BY-NC-SA 3.0",
+   "license": "Public Domain — this archive's own encoding of Samuel Prideaux Tregelles' public-domain readings (d. 1875; published 1857-1879)",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:39Z"
+   "exported": "2026-08-09T20:04:45Z"
   },
   "bible_twentieth-century-new-testament": {
-   "source_hash": "sha256:b15c55ae0b936dcb0a1eea4cbf0e5a1f912afcafab4e5109d71f445e7ae95c7b",
+   "source_hash": "sha256:bd0003cd977c2862ae0f0ab7315c82d155c38347f1248671329eead5bbf3aced",
    "data_file": "bible_twentieth-century-new-testament.json.gz",
    "data_hash": "sha256:4449a4bc64c5d36c7fb0e4c17436e3feedb3f21a8789da129aaaaf6295c1e4a7",
    "data_bytes": 441741,
@@ -1718,7 +1718,7 @@
    "exported": "2026-07-10T17:30:39Z"
   },
   "bible_tyndale-new-testament": {
-   "source_hash": "sha256:b90d193ca8ea5f3d3bc6f3c11bd1b6ecdf9016133cd0f35f3329876fa878bb63",
+   "source_hash": "sha256:a272d02902347f4485608fb45b4ff8c2922ac9dec9d0f200268bb738312f965b",
    "data_file": "bible_tyndale-new-testament.json.gz",
    "data_hash": "sha256:cb3e99832a13ab57e245df6e88ba97dedab2e6419a43b9279f04100aa65ab59b",
    "data_bytes": 399129,
@@ -1730,7 +1730,7 @@
    "exported": "2026-07-10T17:30:39Z"
   },
   "bible_tyndale-pentateuch": {
-   "source_hash": "sha256:249299c537b1de1ada4c546c7d4b53ada48ccf18c2248ae70be4db24f301ec9e",
+   "source_hash": "sha256:f84be90aca4c48c26602e5b1a9b5f8edda154b3c4bce80eda80c756ca2e29da8",
    "data_file": "bible_tyndale-pentateuch.json.gz",
    "data_hash": "sha256:824b4fa7ee1229523530efcfebd5a660549a49f377bc436a46b3a0c2ffcab42f",
    "data_bytes": 291302,
@@ -1766,7 +1766,7 @@
    "exported": "2026-07-10T17:30:40Z"
   },
   "bible_webster-bible": {
-   "source_hash": "sha256:cf5dbcd5c0cb3c2b1884d14915c422aad0ce2c8140c040641ea4f620d5a10f5d",
+   "source_hash": "sha256:d9ade8c05969ff76f9a8bafa571dd8169b4a63eedfee9ac4fd7aa794e6dee379",
    "data_file": "bible_webster-bible.json.gz",
    "data_hash": "sha256:4915ef00354604828bb07a6fd28af576b2b50deb315891013980567509c0f15c",
    "data_bytes": 1577438,
@@ -1778,7 +1778,7 @@
    "exported": "2026-07-10T17:30:40Z"
   },
   "bible_westcott-hort-greek-new-testament": {
-   "source_hash": "sha256:e9ca3cb3cbf538cb9f41e34a49bf2b1a1ebff81b1f5d5ef1165b65c4ee605b9f",
+   "source_hash": "sha256:aec91f8689655e1cddb1517955c9f22e084f5d46f8953c0e61c71a425d8392ea",
    "data_file": "bible_westcott-hort-greek-new-testament.json.gz",
    "data_hash": "sha256:44202a0ca0a1b86e566cd50e44f0d8bcb9cb2f147dd96e666c1b8f52fcdc1e81",
    "data_bytes": 419223,
@@ -1790,7 +1790,7 @@
    "exported": "2026-07-10T17:30:40Z"
   },
   "bible_weymouth-new-testament": {
-   "source_hash": "sha256:1520382b09aa23d7180f3ad3fbe300ce4a4e9f147de24c51802046ba9611e3f3",
+   "source_hash": "sha256:976d27eceb6aaf0a7e0b4f1a1a436d30f2442b0c575a43cc7ed18b7b210f044e",
    "data_file": "bible_weymouth-new-testament.json.gz",
    "data_hash": "sha256:35cefd994fadd1f6710165a05cb43d14b47d0dbe390b01259589c4d0e38e30a7",
    "data_bytes": 455501,
@@ -1802,7 +1802,7 @@
    "exported": "2026-07-10T17:30:41Z"
   },
   "bible_wycliffe-bible": {
-   "source_hash": "sha256:8785cee0e3fa840833d0f7f2049b1d10e63f11d11233488bc7ffc4ba0090353e",
+   "source_hash": "sha256:84adf6ca43c2a223f452a9f559d87af9ecc948667d5a9996f323444211b72da7",
    "data_file": "bible_wycliffe-bible.json.gz",
    "data_hash": "sha256:3360c3e90b135b0526b24f496e71a6a243d1130d4aa57cb507d041260709da31",
    "data_bytes": 463760,
@@ -1814,7 +1814,7 @@
    "exported": "2026-07-10T17:30:41Z"
   },
   "bible_youngs-literal-translation": {
-   "source_hash": "sha256:673fbb55bc4ca1fe9c153edfdcfa723e6b97360db406d461381168b361730f03",
+   "source_hash": "sha256:998b4c76429018e7fd8de32a51b5d91ba963813dfa2675d65fe49731cb350b00",
    "data_file": "bible_youngs-literal-translation.json.gz",
    "data_hash": "sha256:3dc736ff1bf12b719955d23904c5a2d25cbe9110a80051d01906bc15a20c1b49",
    "data_bytes": 1577672,
@@ -3374,16 +3374,16 @@
    "exported": "2026-07-30T02:04:29Z"
   },
   "diamond-sutra-kumarajiva_anonymous": {
-   "source_hash": "sha256:1cd24f6bca310c5cddf5ad641d6ac40784a78679b7db7868a06d4450409cafa0",
+   "source_hash": "sha256:886e5e9596447e3077b5913833aad925e2d504eae053c8648dfa35b87b2ecbf0",
    "data_file": "diamond-sutra-kumarajiva_anonymous.json.gz",
-   "data_hash": "sha256:857dc474eb10b5e4fda3d17c28a6aca19652a457e6a7b12585034356d2bf9cb9",
-   "data_bytes": 7070,
+   "data_hash": "sha256:11b18a61aefe3134c355921fc1a3f82c22ce0d13e77620c39f121734d5c1224d",
+   "data_bytes": 7111,
    "passages": 65,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:47Z"
+   "exported": "2026-08-09T18:25:15Z"
   },
   "diamond-sutra_kumarajiva": {
    "source_hash": "sha256:02b87ffee484ec5124a5f4368450f4a42dcd0506047f60eebad9a2fed28535ac",

@@ -745,6 +745,25 @@ body.in-reading.cols-dual.chapter-room.companion-mode .cr-row {
   letter-spacing: 0.04em;
   margin-bottom: 0.8em;
 }
+/* Licence credit — renders ONLY where the licence is not public domain.
+   Ruled 2026-08-09: "a licence obligation nobody can see is not
+   satisfied." Rights and attribution already reached the deployed body
+   and were already rendered — but into #text-meta, which is
+   display:none until the ⓘ control opens it. A credit one tap away is
+   a credit the reader never sees.
+
+   Sits in the cover's own apparatus register (.cc-year's size and
+   muted colour), not louder: it is a standing obligation, not a door.
+   The anchor reuses .meta-link, per the ruling — no new components. */
+.cc-licence {
+  font-size: 0.8em;
+  color: var(--chrome-muted);
+  max-width: 520px;
+  margin: 0 auto 0.9em;
+  line-height: 1.5;
+}
+.cc-licence .meta-link { color: inherit; text-decoration: underline; }
+.cc-licence .meta-link:hover { color: var(--chrome-active); }
 .cc-source {
   font-size: 0.8em;
   color: var(--chrome-muted);
@@ -16135,6 +16154,65 @@ const LANG_NAMES = {
 // record must never pretend to be a standalone book — it credits the translator AND the
 // volume it came from, shows the heading the volume actually prints for it, and offers a way
 // back to the complete source volume.
+/* The licence credit on the cover, for records the public domain does
+   not cover. Returns '' for everything else, which is 1,109 of 1,112.
+
+   THE TEST IS ANCHORED AT THE START, deliberately. A substring test for
+   "public domain" would have passed the old Tregelles string, "Public
+   Domain (text); transcription CC BY-NC-SA 3.0" — a string that names a
+   restrictive licence in its second clause. Anchoring means the field
+   must OPEN by declaring the artefact public domain; anything that
+   leads with a licence name gets the credit. Verified against every
+   distinct rights string in the archive: 32 classify PD, 3 get the line
+   (SBLGNT CC BY 4.0, the Tanzil Qur'an, and the restricted
+   CC BY-NC-ND Itani Qur'an, which never renders because a restricted
+   body is not served).
+
+   Attribution text comes from the record itself. It is never
+   synthesised here — an attribution this file invented would be a
+   different claim from the one the archive verified. */
+const _PD_RIGHTS = /^\s*(worldwide\s+)?(public\s+domain|cc0)/i;
+
+function _licenceCreditHTML(data) {
+  const tr = data && data.translation;
+  if (!tr || !tr.rights) return '';
+  if (_PD_RIGHTS.test(tr.rights)) return '';
+  const label = tr.license_url
+    ? `<a class="meta-link" href="${escapeHTML(tr.license_url)}" target="_blank" rel="noopener">${escapeHTML(tr.rights)}</a>`
+    : escapeHTML(tr.rights);
+  /* ONE LINE, per the ruling — so the credit is the licence plus the
+     rights holder, not the whole attribution. SBLGNT's attribution runs
+     ~900 characters because it carries the CC BY changes statement; that
+     belongs in the info panel, which still renders it in full. What must
+     be on the page is the part a reader would otherwise never see: who
+     holds the rights and under what licence.
+
+     The holder is taken as the attribution's leading sentence, never
+     synthesised. If the field has no sentence break the whole string is
+     used, and CSS keeps it to a line. */
+  let holder = '';
+  if (tr.attribution) {
+    const a = String(tr.attribution);
+    /* Prefer the COPYRIGHT NOTICE — under CC BY that is the required
+       element, and it is what a reader must be shown. Naive
+       first-sentence extraction broke SBLGNT at "Michael W." (the
+       initial's full stop) and dropped the notice entirely.
+       The fallback sentence rule therefore refuses to break after a
+       single capital, by requiring a lowercase letter, digit or bracket
+       immediately before the stop. */
+    const c = a.match(/((?:Copyright\s*)?©[^.]*\.)/i);
+    if (c) {
+      holder = c[1].trim();
+    } else {
+      const m = a.match(/^(.*?[a-z0-9)]\.)(?:\s|$)/);
+      holder = (m ? m[1] : a).trim();
+    }
+  }
+  return `<div class="cc-licence"><b>Licence:</b> ${label}`
+       + (holder ? ` &middot; ${escapeHTML(holder)}` : '')
+       + '</div>';
+}
+
 function _derivedSourceHTML(data) {
   const d = data && data.derived_from;
   if (!d) return '';
@@ -16614,6 +16692,7 @@ function showCover(data, entry) {
   if (authorTxt) html += `<div class="cc-author">${escapeHTML(authorTxt)}</div>`;
   if (trTxt)     html += `<div class="cc-translator">${escapeHTML(trTxt)}</div>`;
   if (dateParts.length) html += `<div class="cc-year">${escapeHTML(dateParts.join(' \u00b7 '))}</div>`;
+  html += _licenceCreditHTML(data);
   // Task 33b — the quiet read mark: bookplate register, declaration
   // only. Renders solely where the local-only read_marks.json declares
   // this text finished; the live site never has the file.
