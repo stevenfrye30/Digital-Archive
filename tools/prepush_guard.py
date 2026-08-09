@@ -397,6 +397,25 @@ def main():
         if cd.returncode == 0 and cd.stdout.strip():
             cd_state = cd.stdout.strip().splitlines()[-1]
 
+    # 11. Provenance, resolved through the derived-record convention.
+    #     BLOCKING, unlike 10, and for a reason: check 10 reports a gap in
+    #     evidence nobody has gathered yet, but this one fires only when the
+    #     convention itself has broken — a derived record whose parent volume
+    #     left the index, or whose parent cannot say where IT came from. In
+    #     that state 35 public records silently lose their only source pin,
+    #     and an audit reading text.json alone will report them as
+    #     unprovenanced and propose them for removal. That happened once.
+    pv_state = "provenance: resolver absent"
+    pv_script = REPO.parent / "05_scripts" / "provenance_resolver.py"
+    if pv_script.exists():
+        pv = subprocess.run([sys.executable, "-X", "utf8", str(pv_script), "--brief"],
+                            capture_output=True, text=True,
+                            encoding="utf-8", errors="replace")
+        if pv.returncode != 0:
+            fail("Provenance (11) FAILED — the derived-record convention is "
+                 "broken:\n" + (pv.stdout + pv.stderr).strip())
+        pv_state = pv.stdout.strip().splitlines()[-1] if pv.stdout.strip() else pv_state
+
     wd_state = (f"{wd['counts']['total']} withdrawn "
                 f"({wd['counts']['retired']} retired + "
                 f"{wd['counts']['restricted']} restricted), "
@@ -406,7 +425,7 @@ def main():
           f"public + {actual['restricted']} restricted; reasons complete; "
           f"boundary clean; {hashed} artifact hashes verified; "
           f"reachability OK; separation: {sep_state}; "
-          f"withdrawal: {wd_state}; {cd_state}; "
+          f"withdrawal: {wd_state}; {pv_state}; {cd_state}; "
           f"finalization ledger derived [{fin_state}] ({elapsed}).")
 
 
