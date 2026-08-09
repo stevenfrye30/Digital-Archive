@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Archive · Studies</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem("da-theme");if(!t){t=(localStorage.getItem("da-dark-mode")==="true"||localStorage.getItem("archive_theme")==="dark")?"dark":"light";localStorage.setItem("da-theme",t);}document.documentElement.setAttribute("data-theme",t==="dark"?"dark":"light");}catch(e){}})();</script>
+<style>
+:root {
+  --bg: #faf8f5; --surface: #ffffff; --panel: #eeebe5;
+  --ink: #2c2c2c; --ink-soft: #5a5048; --ink-faint: #8a7a6a;
+  --line: #e6e1d9; --line2: #d8d3cc; --accent: #7a5c3a;
+  --serif: Georgia, 'Times New Roman', serif;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a1e; --surface: #222226; --panel: #2a2a2e;
+  --ink: #d4d0c8; --ink-soft: #c8c4bc; --ink-faint: #8a8680;
+  --line: #3a3a3e; --line2: #4a4a4e; --accent: #c4a060;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink);
+  font: 16px/1.6 var(--serif); }
+#arch-topbar { display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 20px; border-bottom: 1px solid var(--line); background: var(--bg);
+  position: sticky; top: 0; z-index: 60; }
+/* Task 72 — the arrow is a real button; the context label leaves */
+#arch-topbar .tb-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; flex: 0 0 auto; box-sizing: border-box;
+  border: 1px solid var(--line); border-radius: 6px;
+  background: var(--panel); color: var(--ink);
+  font-size: 19px; line-height: 1; text-decoration: none; cursor: pointer;
+  padding: 0;
+}
+#arch-topbar .tb-arrow:hover { color: var(--accent); border-color: var(--accent); }
+#arch-topbar .tb-arrow:active { transform: translateY(1px); }
+#arch-topbar .tb-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#arch-topbar .tb-ctx { display: none; }
+#arch-topbar a, #arch-topbar button {
+  font: 400 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint);
+  text-decoration: none; background: none; border: none; cursor: pointer; padding: 0; }
+#arch-topbar a:hover, #arch-topbar button:hover { color: var(--accent); }
+.page { max-width: 980px; margin: 0 auto; padding: 26px 24px 80px; }
+.mast { text-align: center; margin: 26px 0 8px; }
+.mast h1 { font-size: 2.1em; font-weight: 700; margin: 0 0 6px; }
+.mast .lede { color: var(--ink-soft); font-style: italic; max-width: 40em; margin: 0 auto 6px; }
+.mast .counts { font: 400 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+section.trad { margin: 40px 0 0; }
+section.trad > h2 { font-size: 1.25em; font-weight: 700; margin: 0 0 2px;
+  border-bottom: 1px solid var(--line2); padding-bottom: 6px; }
+.trad-note { font-style: italic; color: var(--ink-faint); font-size: .85em; margin: 4px 0 10px; }
+.trad-count { float: right; font: 400 11px/2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); letter-spacing: .1em; }
+.fam { background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  padding: 10px 16px; margin: 12px 0; }
+.fam > summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 10px; }
+.fam > summary::-webkit-details-marker { display: none; }
+.fam .fname { font-weight: 700; }
+.fam .fcount { font: 400 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink-faint); letter-spacing: .1em; }
+.fam .fhint { margin-left: auto; color: var(--ink-faint); font-size: .8em; }
+.rows { margin: 6px 0 0; padding: 0; list-style: none; }
+.rows li { padding: 7px 4px; border-top: 1px solid var(--line); }
+.rows li:first-child { border-top: none; }
+.rows a.t { color: var(--ink); text-decoration: none; }
+.rows a.t:hover { color: var(--accent); }
+.rows .meta { color: var(--ink-faint); font-size: .82em; margin-left: 8px; }
+.rows a.on-map { font: 400 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint);
+  border: 1px solid var(--line2); border-radius: 999px; padding: 2px 8px;
+  margin-left: 10px; text-decoration: none; white-space: nowrap; }
+.rows a.on-map:hover { color: var(--accent); border-color: var(--accent); }
+footer { margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line);
+  color: var(--ink-faint); font-size: .8em; }
+@media (max-width: 600px) { .trad-count { float: none; display: block; } }
+</style>
+</head>
+<body>
+<div id="arch-topbar"><a class="tb-arrow" href="../" title="Digital Archive">&larr;</a>
+<button id="arch-fav" type="button" class="tb-arrow" data-fav-shelf aria-label="Favorites">☆</button> <button id="arch-dark" type="button" class="tb-arrow" aria-label="Switch theme">☾</button></div>
+<div class="page">
+<header class="mast"><h1>Studies</h1><p class="lede">Works about religion rather than of it — histories, comparative studies, scholarly anthologies, and the folklore collections.</p><p class="counts">24 texts · 8 traditions</p></header><section class="trad"><h2>Egyptian<span class="trad-count">11 texts</span></h2><details class="fam"><summary><span class="fname">Gaston Maspero</span><span class="fcount">9 texts</span><span class="fhint">open the shelf</span></summary><ul class="rows"><li><a class="t" href="../?text=maspero-history-egypt-vol1_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 1</a><span class="meta">Gaston Maspero · 1903</span></li><li><a class="t" href="../?text=maspero-history-egypt-vol2_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 2</a><span class="meta">Gaston Maspero · 1903</span></li><li><a class="t" href="../?text=maspero-history-egypt-vol3_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 3</a><span class="meta">Gaston Maspero · 1903</span></li><li><a class="t" href="../?text=maspero-history-egypt-vol4_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 4</a><span class="meta">Gaston Maspero · 1903</span></li><li><a class="t" href="../?text=maspero-history-egypt-vol5_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 5</a><span class="meta">Gaston Maspero · 1903</span></li><li><a class="t" href="../?text=maspero-history-egypt-vol6_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 6</a><span class="meta">Gaston Maspero · 1903</span></li><li><a class="t" href="../?text=maspero-history-egypt-vol7_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 7</a><span class="meta">Gaston Maspero · 1903</span></li><li><a class="t" href="../?text=maspero-history-egypt-vol8_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 8</a><span class="meta">Gaston Maspero · 1903</span></li><li><a class="t" href="../?text=maspero-history-egypt-vol9_maspero.json">History of Egypt, Chaldea, Syria, Babylonia and Assyria, Vol 9</a><span class="meta">Gaston Maspero · 1903</span></li></ul></details><ul class="rows"><li><a class="t" href="../?text=egypt-religious-development-petrie_petrie.json">Development of Religion and Thought in Ancient Egypt</a><span class="meta">W.M. Flinders Petrie · 1912</span></li><li><a class="t" href="../?text=sayce-religions-egypt-babylonia_sayce.json">The Religions of Ancient Egypt and Babylonia</a><span class="meta">A.H. Sayce · 1902</span></li></ul></section><section class="trad"><h2>Mesopotamian<span class="trad-count">4 texts</span></h2><ul class="rows"><li><a class="t" href="../?text=history-babylon-king_king-babylon.json">A History of Babylon, from the Foundation of the Monarchy to the Persian Conquest</a><span class="meta">Leonard W. King · 1915</span></li><li><a class="t" href="../?text=history-sumer-akkad-king_king-sumer.json">A History of Sumer and Akkad</a><span class="meta">Leonard W. King · 1910</span></li><li><a class="t" href="../?text=history-of-egypt-chaldea-syria-babylonia-assyria-lwking_anonymous.json">History of Egypt &amp; Chaldea &amp; Syria &amp; Babylonia &amp; Assyria</a><span class="meta">LWKing · 1906</span></li><li><a class="t" href="../?text=history-phoenicia-rawlinson_rawlinson.json">History of Phoenicia</a><span class="meta">George Rawlinson · 1889</span></li></ul></section><section class="trad"><h2>Comparative Religion<span class="trad-count">3 texts</span></h2><ul class="rows"><li><a class="t" href="../?text=monier-williams-buddhism_williams.json">Buddhism in Its Connexion with Brahmanism and Hinduism</a><span class="meta">Monier Monier-Williams · 1889</span></li><li><a class="t" href="../?text=folklore-holy-land_hanauer.json">Folk-lore of the Holy Land</a><span class="meta">J.E. Hanauer · 1907</span></li><li><a class="t" href="../?text=sacred-books-east-wilson_wilson.json">Sacred Books of the East (Wilson Anthology)</a><span class="meta">Epiphanius Wilson · 1900</span></li></ul></section><section class="trad"><h2>Hindu<span class="trad-count">2 texts</span></h2><ul class="rows"><li><a class="t" href="../?text=dasgupta-indian-philosophy_dasgupta.json">A History of Indian Philosophy, Volume 1</a><span class="meta">Surendranath Dasgupta · 1922</span></li><li><a class="t" href="../?text=history-sanskrit-literature-macdonell_macdonell.json">A History of Sanskrit Literature</a><span class="meta">Arthur A. Macdonell · 1900</span></li></ul></section><section class="trad"><h2>Chinese<span class="trad-count">1 texts</span></h2><ul class="rows"><li><a class="t" href="../?text=religions-ancient-china-giles_giles-relig.json">The Religions of Ancient China</a><span class="meta">Herbert A. Giles · 1905</span></li></ul></section><section class="trad"><h2>Christian<span class="trad-count">1 texts</span></h2><ul class="rows"><li><a class="t" href="../?text=lake-landmarks-early-christianity_lake.json">Landmarks in the History of Early Christianity</a><span class="meta">Kirsopp Lake · 1920</span></li></ul></section><section class="trad"><h2>Islam<span class="trad-count">1 texts</span></h2><ul class="rows"><li><a class="t" href="../?text=wollaston-religion-koran_wollaston.json">The Religion of the Koran</a><span class="meta">Arthur N. Wollaston · 1911</span></li></ul></section><section class="trad"><h2>Jewish<span class="trad-count">1 texts</span></h2><ul class="rows"><li><a class="t" href="../?text=studies-judaism-schechter_schechter.json">Studies in Judaism</a><span class="meta">Solomon Schechter · 1896</span></li></ul></section><footer>Every count on this page is derived from the archive's index —
+nothing hand-typed. The catalog browse remains available from the
+entrance.</footer>
+</div>
+<script>
+(function () {
+  var KEY = 'da-theme';
+  var b = document.getElementById('arch-dark');
+  function label() { b.textContent =
+    document.documentElement.getAttribute('data-theme') === 'dark' ? '☀︎' : '☾'; }
+  b.addEventListener('click', function () {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    try { localStorage.setItem(KEY, dark ? 'light' : 'dark'); } catch (e) {}
+    label();
+  });
+  label();
+})();
+</script>
+<style>
+/* Task 84b — the star joins the right cluster: the bar's
+   space-between spread three bare children, floating the star
+   mid-bar; the auto margin seats it beside the moon. */
+#arch-fav { margin-left: auto; }
+#arch-dark { margin-left: 10px; }
+</style>
+<script src="../assets/fav-shelf.js" defer></script>
+<style>
+/* Task 98 — every title gold in the dark: the shelf's tradition
+   headings and each author family name. Counts stay muted. */
+[data-theme="dark"] .trad > h2 { color: #c4a060; }
+[data-theme="dark"] .fname { color: #c4a060; }
+</style>
+<style>
+/* Task 106-P2 — the 44px floor, phone widths only. A mouse is precise
+   and a thumb is not, so desktop keeps its 38px squares: a deliberate
+   split, not drift. */
+@media (max-width: 720px) {
+  .tb-arrow, #arch-fav, #arch-dark, #favBtn, #themeBtn, .bar .theme,
+  #back-to-top, .toc-all, .cc-fav, .cc-editions-corner {
+    min-width: 44px !important; min-height: 44px !important;
+    display: inline-flex !important; align-items: center;
+    justify-content: center;
+  }
+  nav.toc a, .bcl-codex-range, .cc-canon-btn, .cc-pager button,
+  .abtn, .home-cat, .fam > summary, .flagship, .room-path,
+  #arch-topnav a, .toggle, #themeBtn, .lg, .keyrow {
+    min-height: 44px;
+  }
+  .rows li a.t, .rows li, details.fam > summary {
+    min-height: 44px; display: flex; align-items: center;
+  }
+  /* Task 126-R — the floor is 44x44, and only the height was ever set.
+     "Ion" measured 24x44 and passed a check named "every visible target
+     >= 44px" because that predicate enforced width at 24 (§8.1d). These
+     are the "36 philosophy-shelf targets" 106-P2 item 4 named. */
+  .rows li a.t { min-width: 44px; justify-content: flex-start; }
+  /* Task 126 §1.11 — the on-map pill is a door to the tradition room and
+     sat at 15px tall, under the ruled floor. The pill keeps its 9px
+     lettering; the BOX grows to the floor. */
+  .rows a.on-map { min-height: 44px; min-width: 44px;
+    display: inline-flex; align-items: center; justify-content: center; }
+  nav.toc a, .bcl-codex-range, #arch-topnav a, .room-path {
+    display: inline-flex; align-items: center;
+  }
+  .cite-corner > summary { min-height: 44px; display: inline-flex;
+    align-items: center; }
+}
+</style>
+</body>
+</html>
