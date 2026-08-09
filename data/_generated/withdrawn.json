@@ -2,13 +2,49 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 120,
+    "total": 187,
     "retired": 80,
     "restricted": 40,
     "relocated": 5,
     "no_source": 1
   },
   "withdrawn": {
+    "a-dweller-on-two-planets-frederick-oliver-189_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/a-dweller-on-two-planets-frederick-oliver-189",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "A Dweller on Two Planets",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "a-wanderer-in-the-sprit-lands-franchezzo-1896_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/a-wanderer-in-the-sprit-lands-franchezzo-1896",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "A Wanderer in the Spirit Lands",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "analects-legge-1893_legge-1893.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -218,6 +254,42 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "celtic-fairy-tales_jacobs.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/celtic/celtic-fairy-tales",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Celtic Fairy Tales",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "cerberus-the-dog-of-hades-the-history-of-maurice-bloomfield_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/cerberus-the-dog-of-hades-the-history-of-maurice-bloomfield",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Cerberus the dog of Hades - The history of an idea",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "bloomfield-cerberus_bloomfield.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "chuang-tzu-mystic-edition_giles-mystic.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -228,6 +300,42 @@
       "reason_source": "05_scripts/export_reader_data.py",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "code-of-the-illuminati-part-iii-of-memoirs-robert-clifford-1_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/code-of-the-illuminati-part-iii-of-memoirs-robert-clifford-1",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Code of the Illuminati Part III of Memoirs Illustrating the History of Jacobinism - A Barruel",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "code-illuminati-barruel_barruel.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "confessiones-saint-augustine-lati_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/confessiones-saint-augustine-lati",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Confessiones",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "confucian-canon-bilingual_legge-bilingual.json": {
       "disposition": "retired",
@@ -240,6 +348,60 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "creation-myths-america_curtin.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/mesoamerican/creation-myths-america",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Creation Myths of Primitive America",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "democracy-in-america-vol-1-tocquevilla_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/democracy-in-america-vol-1-tocquevilla",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Democracy in America - Vol 1",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "tocqueville-democracy-vol1_reeve.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "democracy-in-america-vol-2-tocquevilla_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/democracy-in-america-vol-2-tocquevilla",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Democracy in America - Vol 2",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "tocqueville-democracy-vol2_reeve.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "deuterocanonical-books-of-the-bible-anonymous_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -250,6 +412,42 @@
       "reason_source": "05_scripts/export_reader_data.py",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "die-wahlverwandtschaften-jo_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/die-wahlverwandtschaften-jo",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Die Wahlverwandtschaften",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "egyptian-myth-legend_mackenzie.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/egyptian/egyptian-myth-legend",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Egyptian Myth and Legend",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "emile-jean-jacques-roussea_anonymous.json": {
       "disposition": "retired",
@@ -306,6 +504,24 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "essays-adam-smith_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/essays-adam-smith",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Essays on Philosophical Subjects",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "smith-moral-sentiments_smith.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "essays-chance-love-logic-charles-peirce_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -327,6 +543,42 @@
       "reason_source": "plans/task85_survey.md",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "faust-der-trag-die-erster-teil-johann-goethe_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/faust-der-trag-die-erster-teil-johann-goethe",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Faust - Der Tragödie erster Teil",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "faust-in-original-metres-part-1-johann-goethe_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/faust-in-original-metres-part-1-johann-goethe",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Faust - in Original Metres - Part 1",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "folk-lore-of-the-holy-land-moslem-christian-je-hanauer-1907_anonymous.json": {
       "disposition": "retired",
@@ -350,6 +602,24 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "folk-tales-russian_blumenthal.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/slavic/folk-tales-russian",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Folk Tales From the Russian",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "foxglove-and-some-of-its-medical-uses-william-withering_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -371,6 +641,42 @@
       "reason_source": "plans/task85_survey.md",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "georgian-folk-tales_wardrop.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/slavic/georgian-folk-tales",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Georgian Folk Tales",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "giordano-bruno_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/giordano-bruno",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Giordano Bruno",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "gitanjali-tagore_anonymous.json": {
       "disposition": "retired",
@@ -394,6 +700,114 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "hesiodi-carmina-latin-hesiod_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/greek/hesiodi-carmina-latin-hesiod",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Hesiodi Carmina (Latin)",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "hippolytus-philosophumena_macmahon-volume-1.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/hippolytus-philosophumena-vol1",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Philosophumena",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "hippolytus-philosophumena_macmahon-volume-2.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/hippolytus-philosophumena-vol2",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Philosophumena",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "history-of-egypt-chaldea-syria-babylonia-assyria-lwking_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/mesopotamian/history-of-egypt-chaldea-syria-babylonia-assyria-lwking",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "History of Egypt & Chaldea & Syria & Babylonia & Assyria",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "history-of-herodotus-vol-1-herodotus_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/greek-literature/history-of-herodotus-vol-1-herodotus",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "History of Herodotus - Vol 1",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "herodotus-histories-vol1_macaulay.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "history-of-herodotus-vol-2-herodotus_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/greek-literature/history-of-herodotus-vol-2-herodotus",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "History of Herodotus - Vol 2",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "herodotus-histories-vol2_macaulay.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "history-of-utah-1540-1886-hubert-bancroft-1889_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -404,6 +818,24 @@
       "reason_source": "plans/task85_survey.md",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "iliad-of-homer-samuel-butler-1898_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/greek-literature/iliad-of-homer-samuel-butler-1898",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Iliad of Homer",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "imitation-of-christ_anonymous.json": {
       "disposition": "retired",
@@ -426,6 +858,24 @@
       "reason_source": "plans/finalize_jaina-shelf-sweep.md",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "jataka_rhys-davids.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/jataka-tales-vol-1-rhys-davids",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Jātaka",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "jung-psychology-unconscious_hinkle.json": {
       "disposition": "restricted",
@@ -460,6 +910,42 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "kung-fu-tauist-medical-gymnastics-john-dudgeon-1895_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/kung-fu-tauist-medical-gymnastics-john-dudgeon-1895",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Kung-Fu - Tauist Medical Gymnastics",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "landmarks-of-scientific-socialism-anti-duehring-engels_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/political-philosophy/landmarks-of-scientific-socialism-anti-duehring-engels",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Landmarks of Scientific Socialism (Anti-Duehring)",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "engels-antiduehring_austin-lewis.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "latin-vulgate-bible-book-titles-names-anonymous_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -471,6 +957,24 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "latin-vulgate-esther-liber-esther-anonymous_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/latin-vulgate-esther-liber-esther-anonymous",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Latin Vulgate - Esther (Liber Esther)",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "leibniz-monadology_latta.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -481,6 +985,114 @@
       "reason_source": "plans/task85_survey.md",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "lives-vol-1-plutarch_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/lives-vol-1-plutarch",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Lives - Vol 1",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "lives-vol-2-plutarch_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/lives-vol-2-plutarch",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Lives - Vol 2",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "lives-vol-3-plutarch_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/lives-vol-3-plutarch",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Lives - Vol 3",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "lives-vol-4-plutarch_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/lives-vol-4-plutarch",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Lives - Vol 4",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "mahabharata_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/hindu/mahabharata-dutt",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Mahabharata (condensed into English verse)",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "mazes-and-labyriths-wh-matthews-1922_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/mazes-and-labyriths-wh-matthews-1922",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Mazes and Labyriths",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "mazes-labyrinths-matthews_matthews.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
     },
     "midrash-tanuma-no_anonymous.json": {
       "disposition": "retired",
@@ -526,6 +1138,24 @@
       "pd_year": 2029,
       "pd_year_source": "plans/task85_survey.md"
     },
+    "morals-of-a-happy-life-benefits-anger-and-seneca_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/roman-philosophy/morals-of-a-happy-life-benefits-anger-and-seneca",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Morals of a Happy Life & Benefits & Anger and Clemency",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "seneca-morals_lestrange.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "nietzsche-antichrist_mencken.json": {
       "disposition": "restricted",
       "mechanism": "suppressed",
@@ -570,6 +1200,24 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "nostradamus-nostradamus_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/nostradamus-nostradamus",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Nostradamus",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "nostradamus-roberts_ward.json": {
       "disposition": "restricted",
       "mechanism": "suppressed",
@@ -591,6 +1239,42 @@
       "reason_source": "05_scripts/export_reader_data.py",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "on-airs-waters-and-places-hippocrates_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/on-airs-waters-and-places-hippocrates",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "On Airs Waters and Places",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "hippocrates-airs-waters_adams.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "oracles-of-nostradamus-charles-ward-1891_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/oracles-of-nostradamus-charles-ward-1891",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Oracles of Nostradamus",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "ordination-dharmaguptaka_buddhayasas.json": {
       "disposition": "restricted",
@@ -624,6 +1308,186 @@
       "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
+    },
+    "plato-eryxias_jowett.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/philosophy/plato-eryxias",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Eryxias",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "plato-lesser-hippias_jowett.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/philosophy/plato-lesser-hippias",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Lesser Hippias",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "plotinos-complete-works-vol-1-plotinos_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/plotinos-complete-works-vol-1-plotinos",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Plotinos - Complete Works - Vol 1",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "plotinus-complete-vol1_guthrie.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "plotinos-complete-works-vol-2-plotinos_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/plotinos-complete-works-vol-2-plotinos",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Plotinos - Complete Works - Vol 2",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "plotinus-complete-vol2_guthrie.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "plotinos-complete-works-vol-3-plotinos_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/plotinos-complete-works-vol-3-plotinos",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Plotinos - Complete Works - Vol 3",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "plotinus-complete-vol3_guthrie.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "plotinos-complete-works-vol-4-plotinos_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/plotinos-complete-works-vol-4-plotinos",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Plotinos - Complete Works - Vol 4",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "plotinus-complete-vol4_guthrie.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "poems-1-jonathan-swift_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/poems-1-jonathan-swift",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Poems(1)",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "poems-2-jonathan-swift_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/poems-2-jonathan-swift",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Poems(2)",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "poems-goethe-tr-edgar-bowr_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/poems-goethe-tr-edgar-bowr",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Poems",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "goethe-poems_bowring.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "poems-of-american-patriotism-brander-matthews_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/poems-of-american-patriotism-brander-matthews",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Poems of American Patriotism",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "pratityasamutpada-vaidya_vaidya.json": {
       "disposition": "restricted",
@@ -812,6 +1676,24 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "rataplan-a-rogue-elephant-other-stories_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/rataplan-a-rogue-elephant-other-stories",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Rataplan a Rogue Elephant & Other Stories",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "records-of-the-past-2nd-series-vol-i-ah-sayce-1888_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -933,6 +1815,24 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "selected-writings-kierkegaard_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/selected-writings-kierkegaard",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Selected Writings",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "kierkegaard-selections-hollander_hollander.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "seneca-minor-dialogues_stewart-gutenberg-dup.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -999,6 +1899,42 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "tales-from-chaucer-charles-clarke-1833_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/tales-from-chaucer-charles-clarke-1833",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Tales from Chaucer",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "the-aeneid-virgil-tr-john-dryde_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-aeneid-virgil-tr-john-dryde",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Aeneid",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "aeneid_dryden.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "the-baltimore-catchecism-1891_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -1021,6 +1957,60 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Canterbury Tales & Other Works of Chaucer",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "the-colloquies-of-erasmus-vol-1-erasmus_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-colloquies-of-erasmus-vol-1-erasmus",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Colloquies of Erasmus - Vol 1",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "erasmus-colloquies-vol1_bailey.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "the-discourses-of-epictetus-pe-matheson-1916_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/greek-philosophy/the-discourses-of-epictetus-pe-matheson-1916",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Discourses of Epictetus",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "the-enchiridion-epictetus_anonymous.json": {
       "disposition": "restricted",
       "mechanism": "suppressed",
@@ -1032,6 +2022,42 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "the-gospel-of-ramakrishna-swami-abhedananda-19_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-gospel-of-ramakrishna-swami-abhedananda-19",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Gospel of Ramakrishna",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "the-kama-sutra-vatsyayana_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-kama-sutra-vatsyayana",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Kama Sutra",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "kama-sutra-burton_burton.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
     "the-kashf-al-mahj-b-oldest-persian-treatise-ali-ibn-usman-hu_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -1042,6 +2068,24 @@
       "reason_source": "05_scripts/export_reader_data.py",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "the-lost-continent-cutcliffe-hyne-1900_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-lost-continent-cutcliffe-hyne-1900",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Lost Continent",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "the-martyrs-of-science-the-lives-of-galileo_anonymous.json": {
       "disposition": "retired",
@@ -1065,6 +2109,42 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "the-origin-of-the-family-private-property-the-engels_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/political-philosophy/the-origin-of-the-family-private-property-the-engels",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The origin of the family & private property & the state",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "the-philosophy-and-theology-averroes_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/jewish/the-philosophy-and-theology-averroes",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Philosophy and Theology",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "the-r-m-yan-of-v-lm-ki-ralph-griffith_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -1075,6 +2155,42 @@
       "reason_source": "05_scripts/export_reader_data.py",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "the-republic-cicero_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/roman-philosophy/the-republic-cicero",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The republic",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "cicero-republic_barham.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "the-rubaiyat-omar-khayyam_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-rubaiyat-omar-khayyam",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Rubaiyat",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "rubaiyat-omar-khayyam_fitzgerald.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
     },
     "the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl_anonymous.json": {
       "disposition": "retired",
@@ -1098,6 +2214,60 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "the-seven-plays-in-english-verse-sophocles_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/greek-literature/the-seven-plays-in-english-verse-sophocles",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "redundant — another live record carries all three probe passages verbatim",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Seven Plays in English Verse",
+        "why": "redundant — another live record carries all three probe passages verbatim",
+        "superseded_by": "sophocles-seven-plays_campbell.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
+    },
+    "the-shih-king-book-of-poetry-james-legge_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/confucian/the-shih-king-book-of-poetry-james-legge",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Shih King (Book of Poetry)",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "the-sundering-flood-william-morris-1897_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/greek-literature/the-sundering-flood-william-morris-1897",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Sundering Flood",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "the-sutta-nipata-v-fausboll-1881-no_anonymous.json": {
       "disposition": "retired",
       "mechanism": "suppressed",
@@ -1108,6 +2278,24 @@
       "reason_source": "05_scripts/export_reader_data.py",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "the-udana-gm-strong-1902-no_anonymous.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/the-udana-gm-strong-1902-no",
+      "preserved_at": "01_library/_restricted/other/modern-philosophy/the-udana-gm-strong-1902-no/passages_anonymous.json",
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Udana, or the Solemn Utterances of the Buddha",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "the-upanishads-max-muller-1879_anonymous.json": {
       "disposition": "retired",
@@ -1295,6 +2483,24 @@
       "reason_source": null,
       "pd_year": 2028,
       "pd_year_source": "plans/task85_survey.md"
+    },
+    "woman-position-influence-donaldson_donaldson.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/woman-position-influence-donaldson",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Woman: Her Position and Influence in Ancient Greece and Rome",
+        "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
     },
     "yajur-veda-black-arthur-keith-1914-no_anonymous.json": {
       "disposition": "retired",

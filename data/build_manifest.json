@@ -1,11 +1,11 @@
 {
- "generated": "2026-08-09T15:28:27Z",
+ "generated": "2026-08-09T17:56:42Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "6be5097be04928af9b847a83f08f76f68d2939de",
- "library_fingerprint": "sha256:1e201cbf9554a728cae7d8ededbf9cd204b1e55a3d492b58ae241e556ec68b1e",
+ "exporter_rev": "cbbd4eca4a4045eed0a153df7a441526283dec1a",
+ "library_fingerprint": "sha256:501f407dba07c8e0add15f25a76c980ce226e375bb9af31d06793015c9360c53",
  "counts": {
-  "entries": 1179,
-  "public": 1057,
+  "entries": 1112,
+  "public": 990,
   "restricted": 122
  },
  "texts": {
@@ -35,18 +35,6 @@
    "exported": "2026-07-10T17:30:19Z",
    "source_note": "no canonical dir (restricted local body)"
   },
-  "a-dweller-on-two-planets-frederick-oliver-189_anonymous": {
-   "source_hash": "sha256:8671104d76f401622be3cd6c170f704373806888397e0f6e57285ead03d8d75b",
-   "data_file": "a-dweller-on-two-planets-frederick-oliver-189_anonymous.json.gz",
-   "data_hash": "sha256:f7dde8c286785b184116d09d4e52efa37ed8620b921c181cc4d5bf9c53a6b524",
-   "data_bytes": 361632,
-   "passages": 1874,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:26:24Z"
-  },
   "a-very-pleasaunt-fruitful-diologe-called-the-epicur-erasmus_anonymous": {
    "source_hash": "sha256:0172b7d34ec2b9db4d4d2878cc968036859edef8cf3564e2507c0c419da4e54c",
    "data_file": "a-very-pleasaunt-fruitful-diologe-called-the-epicur-erasmus_anonymous.json.gz",
@@ -58,18 +46,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-08-09T14:13:45Z"
-  },
-  "a-wanderer-in-the-sprit-lands-franchezzo-1896_anonymous": {
-   "source_hash": "sha256:ffb060e8a66a5bf92a83ccd0f7e796108fbf5a8d1da849384ce80388a24b19ff",
-   "data_file": "a-wanderer-in-the-sprit-lands-franchezzo-1896_anonymous.json.gz",
-   "data_hash": "sha256:c2bc7d1a5405487a5c529b87ec73b78d39adc3339261879996b2dc849a191af8",
-   "data_bytes": 186894,
-   "passages": 97,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:16:01Z"
   },
   "abominable-snowmen-ivan-sanderson-1961_anonymous": {
    "source_hash": null,
@@ -2527,18 +2503,6 @@
    "apparatus": false,
    "exported": "2026-08-09T14:14:58Z"
   },
-  "celtic-fairy-tales_jacobs": {
-   "source_hash": "sha256:9ce18e85dc210bc12e57b2cf764662d031eb0a1356dee634202604f547a48877",
-   "data_file": "celtic-fairy-tales_jacobs.json.gz",
-   "data_hash": "sha256:6a634f3f75cab2dcd71e194439334caaf68fc838000f654ce7ce4e34ba5982f6",
-   "data_bytes": 159294,
-   "passages": 1864,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T18:58:01Z"
-  },
   "celtic-twilight-yeats_yeats": {
    "source_hash": "sha256:bbd1a799caba65fd02e13447dc7ee5a42c0aa9c3348896c51f32961eeb1fe2c2",
    "data_file": "celtic-twilight-yeats_yeats.json.gz",
@@ -2550,18 +2514,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:43Z"
-  },
-  "cerberus-the-dog-of-hades-the-history-of-maurice-bloomfield_anonymous": {
-   "source_hash": "sha256:b5892ca0f246ff796f18160ada0193be7ab64927bb7fced7d28b1be5667cc0cd",
-   "data_file": "cerberus-the-dog-of-hades-the-history-of-maurice-bloomfield_anonymous.json.gz",
-   "data_hash": "sha256:8ad598ddb580248499d653fa17eb4c3e255fdd605f904e5916e5b58c1287be53",
-   "data_bytes": 18369,
-   "passages": 95,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T14:13:45Z"
   },
   "chaldean-genesis-smith_smith": {
    "source_hash": "sha256:c757aa1e7f8114601adb5c00dd5d9e35e12c7c0a82bec761a97301a741e9980b",
@@ -2900,18 +2852,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:45Z"
   },
-  "code-of-the-illuminati-part-iii-of-memoirs-robert-clifford-1_anonymous": {
-   "source_hash": "sha256:207a0ea385030f47dfbca2d74e879cffd403961baab890f99282cb49a9faa2d0",
-   "data_file": "code-of-the-illuminati-part-iii-of-memoirs-robert-clifford-1_anonymous.json.gz",
-   "data_hash": "sha256:2fd1f456e1b7a382c42ef27a1e3af7ed306727f6c477e960cb5b69cb4767d5da",
-   "data_bytes": 208123,
-   "passages": 910,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:04Z"
-  },
   "communist-manifesto_moore": {
    "source_hash": "sha256:7176901b04a143d62f299c4b9f5bddbafd59a506023963d26256e5e99076d49d",
    "data_file": "communist-manifesto_moore.json.gz",
@@ -2960,18 +2900,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:45Z",
    "source_note": "no canonical dir (restricted local body)"
-  },
-  "confessiones-saint-augustine-lati_anonymous": {
-   "source_hash": "sha256:bffddb734083a300b4c7eae75f36d7df027ede02204b3939a69a3ed6e3d65eab",
-   "data_file": "confessiones-saint-augustine-lati_anonymous.json.gz",
-   "data_hash": "sha256:ddc8b820ea3da5def09d31b53727d4182e69e92af695863d410e513cbf6df140",
-   "data_bytes": 392292,
-   "passages": 2895,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:45Z"
   },
   "conybeare-historical-christ_conybeare": {
    "source_hash": "sha256:cefa6a102d93b864b6f3dc5072eb93b18727b1177d888d4abd75fe7beced4ac9",
@@ -3032,18 +2960,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:46Z"
-  },
-  "creation-myths-america_curtin": {
-   "source_hash": "sha256:74ea1904f1da6732b8c762d460cd31a8cae0d4b30f7bccf0bceeb6a79fb5bb0d",
-   "data_file": "creation-myths-america_curtin.json.gz",
-   "data_hash": "sha256:fa15f37838eab279e248b65dca4626ae1b54ed409214316adb329a0a8fbaf8df",
-   "data_bytes": 281468,
-   "passages": 4168,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-08T04:23:45Z"
   },
   "creed-of-buddha_holmes": {
    "source_hash": "sha256:44368cffdcfd5ff92bf9917abcf948691c11e18a42d6f01adac2b9840e49bacc",
@@ -3263,30 +3179,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:47Z",
    "source_note": "no canonical dir (restricted local body)"
-  },
-  "democracy-in-america-vol-1-tocquevilla_anonymous": {
-   "source_hash": "sha256:0122a902b8d82dde9875c85202d85ad7a24f07a6b258354cb815d944fabdf495",
-   "data_file": "democracy-in-america-vol-1-tocquevilla_anonymous.json.gz",
-   "data_hash": "sha256:665a94dfc96e314afef7e8f804aebcc8ca19e2961685f7ac0a550696f89f74b0",
-   "data_bytes": 384220,
-   "passages": 1705,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:05Z"
-  },
-  "democracy-in-america-vol-2-tocquevilla_anonymous": {
-   "source_hash": "sha256:a80c5fa8ac44e1d0094886de9cd2381bf7e45823b846862e641e08fd1e5a70df",
-   "data_file": "democracy-in-america-vol-2-tocquevilla_anonymous.json.gz",
-   "data_hash": "sha256:08cb17b8e3a5a44f446f3249035a8452b9d7e3cd92859be2305433219fb30517",
-   "data_bytes": 281680,
-   "passages": 924,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:05Z"
   },
   "demonology-witchcraft-scott_scott": {
    "source_hash": "sha256:c0567520a20bb79bb45cfa08dd212d300b90debb1fe156f13f15d634bb79d0e9",
@@ -3517,18 +3409,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:48Z"
   },
-  "die-wahlverwandtschaften-jo_anonymous": {
-   "source_hash": "sha256:4440e25f3f02947b005906b84cc2e252e500792bab5f1808bcdac8df1b3866f6",
-   "data_file": "die-wahlverwandtschaften-jo_anonymous.json.gz",
-   "data_hash": "sha256:e229919e2c106c0fa468b44e99adfd230140b07e29b35de4ceda64e2b8c30bd3",
-   "data_bytes": 204739,
-   "passages": 1046,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:48Z"
-  },
   "diegueno-waterman_waterman": {
    "source_hash": "sha256:7b58030d309d020dfbfc95e7c1999368d4bfd86c70e02d888446e5e824bc84f1",
    "data_file": "diegueno-waterman_waterman.json.gz",
@@ -3732,18 +3612,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-28T20:46:12Z"
-  },
-  "egyptian-myth-legend_mackenzie": {
-   "source_hash": "sha256:06762dd7e3bbfe77f467cc20cb750d036ca4ea7049e1d65830d260cec3d79796",
-   "data_file": "egyptian-myth-legend_mackenzie.json.gz",
-   "data_hash": "sha256:28ad20136b0eb6a790593932da7d81a29addedf4bfd2a9782d6df20b83976e01",
-   "data_bytes": 287558,
-   "passages": 2170,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-08T04:03:38Z"
   },
   "egyptian-tales-1st-petrie_petrie": {
    "source_hash": "sha256:230973b73183b57cc4bc4bd596494f08d3987cf56a6b8ee66d3c019a7ace7280",
@@ -4033,18 +3901,6 @@
    "apparatus": false,
    "exported": "2026-08-09T14:14:05Z"
   },
-  "essays-adam-smith_anonymous": {
-   "source_hash": "sha256:c9adbcbe5ae2713b10cb7439d5db4ce7717976b5edf8953991ce621ff3844c77",
-   "data_file": "essays-adam-smith_anonymous.json.gz",
-   "data_hash": "sha256:885cb5f434142a0c4d054a4cbada022ab1fcb58a8ae16ba0c3119e517b1e9125",
-   "data_bytes": 458424,
-   "passages": 1256,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T14:13:47Z"
-  },
   "euripides-and-his-age-murray_murray": {
    "source_hash": null,
    "data_file": "euripides-and-his-age-murray_murray.json.gz",
@@ -4210,30 +4066,6 @@
    "exported": "2026-07-10T17:30:50Z",
    "source_note": "no canonical dir (restricted local body)"
   },
-  "faust-der-trag-die-erster-teil-johann-goethe_anonymous": {
-   "source_hash": "sha256:8f173b9c4d5dc49bf95300c21cf5c257f646a5d36707c8cda3ebce25a878ede9",
-   "data_file": "faust-der-trag-die-erster-teil-johann-goethe_anonymous.json.gz",
-   "data_hash": "sha256:01d3d67a7976abd6c7d2be66b47a13008911943fae54508e2c2a3c4f943870fc",
-   "data_bytes": 65711,
-   "passages": 864,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T03:49:01Z"
-  },
-  "faust-in-original-metres-part-1-johann-goethe_anonymous": {
-   "source_hash": "sha256:62cf3770ba4ecfb176c1221e51cb125140742fbd4317c6fa9a3dbd0a22ba0d63",
-   "data_file": "faust-in-original-metres-part-1-johann-goethe_anonymous.json.gz",
-   "data_hash": "sha256:edb4ef3b30f5aaab67d5374517907e4b28af174919c6d6a7a0f9a592afc92b12",
-   "data_bytes": 107650,
-   "passages": 1285,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T03:49:01Z"
-  },
   "faxian-record_legge": {
    "source_hash": "sha256:12ee3da39a7caadb73aaef5bb008622df57953b12ff864b285f08e5b40db2102",
    "data_file": "faxian-record_legge.json.gz",
@@ -4355,18 +4187,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-08-08T01:56:42Z"
-  },
-  "folk-tales-russian_blumenthal": {
-   "source_hash": "sha256:ab0d9e8b0b4b2038035d175f712e159700e5826f40f751eb03abab600d35d564",
-   "data_file": "folk-tales-russian_blumenthal.json.gz",
-   "data_hash": "sha256:124c5137de4cefda1ddcc77c45e1bb7f6e84ddddd99ccb925eb8da3aea04f3f3",
-   "data_bytes": 51385,
-   "passages": 765,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-07T22:38:48Z"
   },
   "folklore-holy-land-hanauer_hanauer": {
    "source_hash": "sha256:1bd7c00b098230b6e63b9d6466fb02e92db7cab73ae202baa0fd8cc0f0c96ecb",
@@ -4633,18 +4453,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:51Z"
   },
-  "georgian-folk-tales_wardrop": {
-   "source_hash": "sha256:dd348adc0413594854e032802fa25505e762995363bb902c27919968206edc91",
-   "data_file": "georgian-folk-tales_wardrop.json.gz",
-   "data_hash": "sha256:4f3daa854c97a2c6bd6e7d491011938d6143f849685ead404a700fc937a0ea1b",
-   "data_bytes": 108004,
-   "passages": 1028,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T18:58:09Z"
-  },
   "ghazzali-confessions_field": {
    "source_hash": "sha256:e66bcc7ef89d2bedaaac30d812d5de8b0558013c470087027f86b55a868ec9d1",
    "data_file": "ghazzali-confessions_field.json.gz",
@@ -4772,18 +4580,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:52Z"
-  },
-  "giordano-bruno_anonymous": {
-   "source_hash": "sha256:5e155a3b8f8cd5d7532b89616816fdab60120fd2b9cb1367e7028f124b2a852f",
-   "data_file": "giordano-bruno_anonymous.json.gz",
-   "data_hash": "sha256:92a751583dceb2691ff0896b0a2d4856da819b18685e28b154e9c45a611e240c",
-   "data_bytes": 232230,
-   "passages": 843,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:30:39Z"
   },
   "gleanings-buddha-fields-hearn_hearn": {
    "source_hash": "sha256:3d13c2408898bc1fe2ccac64244472315cdd54acaa62ed0956edb848f09707f4",
@@ -5379,18 +5175,6 @@
    "apparatus": false,
    "exported": "2026-08-07T15:18:21Z"
   },
-  "hesiodi-carmina-latin-hesiod_anonymous": {
-   "source_hash": "sha256:08a75e2e5112a8d30e8267dbdb100816c9dacc0f187e3732c419e09153e7bb0e",
-   "data_file": "hesiodi-carmina-latin-hesiod_anonymous.json.gz",
-   "data_hash": "sha256:9624eace4234e5f174dfb654e21154f2e2d5cd5ed98170fbfbd8715bd1aff96a",
-   "data_bytes": 52857,
-   "passages": 215,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T03:50:25Z"
-  },
   "hesse-siddhartha_hilda-rosner": {
    "source_hash": null,
    "data_file": "hesse-siddhartha_hilda-rosner.json.gz",
@@ -5488,32 +5272,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:55Z"
   },
-  "hippolytus-philosophumena_macmahon-volume-1": {
-   "source_hash": null,
-   "data_file": "hippolytus-philosophumena_macmahon-volume-1.json.gz",
-   "data_hash": "sha256:7b30b58b738a55f923c81ca8d528f89b79c6b856c1b8b4f4c5d0aed78e1b3e3e",
-   "data_bytes": 129603,
-   "passages": 600,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:55Z",
-   "source_note": "no canonical dir (derived provider record)"
-  },
-  "hippolytus-philosophumena_macmahon-volume-2": {
-   "source_hash": null,
-   "data_file": "hippolytus-philosophumena_macmahon-volume-2.json.gz",
-   "data_hash": "sha256:680dd87bfae0f4a1c55b756da4d49c556c5df7cb564e81701d2ea97274ecff46",
-   "data_bytes": 125279,
-   "passages": 622,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:55Z",
-   "source_note": "no canonical dir (derived provider record)"
-  },
   "history-babylon-king_king-babylon": {
    "source_hash": "sha256:c3d4017af2049382e2941a646d5c15886bf5722427a35d89ff7a3feeb5a30b05",
    "data_file": "history-babylon-king_king-babylon.json.gz",
@@ -5561,42 +5319,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-08-08T01:58:10Z"
-  },
-  "history-of-egypt-chaldea-syria-babylonia-assyria-lwking_anonymous": {
-   "source_hash": "sha256:f0bf93f30f3bf29d8e82e0dedd4a68665337d2f5eda2dcc620ecc807f10bf995",
-   "data_file": "history-of-egypt-chaldea-syria-babylonia-assyria-lwking_anonymous.json.gz",
-   "data_hash": "sha256:6943e075d3aea7b75120eeef2fb9842d1a139ea04905e3f00930827f58b779e8",
-   "data_bytes": 233691,
-   "passages": 722,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:27:48Z"
-  },
-  "history-of-herodotus-vol-1-herodotus_anonymous": {
-   "source_hash": "sha256:28979f009d2a4d5a1d5c657b514337157b3ea10594abcd5be36fa2dc3bb95cd0",
-   "data_file": "history-of-herodotus-vol-1-herodotus_anonymous.json.gz",
-   "data_hash": "sha256:97851b60cc7b1ac66bb888e92db3b73048b9b79edc884b10c5cf3d89a4558af8",
-   "data_bytes": 324015,
-   "passages": 1552,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:56Z"
-  },
-  "history-of-herodotus-vol-2-herodotus_anonymous": {
-   "source_hash": "sha256:bfbe22ac7f0aa54c0081b4e9b3fb46d2bbfb1d36dfb5138f44fd666925070e7b",
-   "data_file": "history-of-herodotus-vol-2-herodotus_anonymous.json.gz",
-   "data_hash": "sha256:e0b632ca8500e1428e588153bdc485ec56abc38583b4a9eb530cfd3cb30fe9dd",
-   "data_bytes": 299886,
-   "passages": 1542,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:56Z"
   },
   "history-phoenicia-rawlinson_rawlinson": {
    "source_hash": "sha256:4a06c8a525df69ceb7766e57748c1587eae941190300329e8ba487d9d2108434",
@@ -5826,18 +5548,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-31T03:49:15Z"
-  },
-  "iliad-of-homer-samuel-butler-1898_anonymous": {
-   "source_hash": "sha256:5dae03dba15f4e600513302e7b0a8180f32054da1e141865e636661de619aab1",
-   "data_file": "iliad-of-homer-samuel-butler-1898_anonymous.json.gz",
-   "data_hash": "sha256:8866688b3bc0f47de8ee6dfd7d19b259d1ff6ddf22a062ee8fdae2147f136807",
-   "data_bytes": 292688,
-   "passages": 1140,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:17:30Z"
   },
   "iliad_derby": {
    "source_hash": "sha256:8a9a0d9452c1edc23f11e79c6de7a086ef1982463d5f525a7b1df6eed9a30ad0",
@@ -6273,18 +5983,6 @@
    "data_hash": "sha256:3cadc313b2ab9bd2e17aeb2985a595560f12cb0e46234ea9ff14b9df1cbb2991",
    "data_bytes": 306773,
    "passages": 2954,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:59Z"
-  },
-  "jataka_rhys-davids": {
-   "source_hash": "sha256:4902aa10240ad99f982c3272e8f8fea26fb187fca4c85b5121dc1efb67da912d",
-   "data_file": "jataka_rhys-davids.json.gz",
-   "data_hash": "sha256:3c0217f516efc9fc23d42930f71664acc7ed963f4132b7613785018b504c0a05",
-   "data_bytes": 307978,
-   "passages": 3862,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
@@ -6837,18 +6535,6 @@
    "exported": "2026-07-10T17:31:01Z",
    "source_note": "no canonical dir (restricted local body)"
   },
-  "kung-fu-tauist-medical-gymnastics-john-dudgeon-1895_anonymous": {
-   "source_hash": "sha256:c5907b9dc5b4fd3169bb381ec9bc495fc09eb1eca39d6d655d083f851b02924c",
-   "data_file": "kung-fu-tauist-medical-gymnastics-john-dudgeon-1895_anonymous.json.gz",
-   "data_hash": "sha256:c2f4eb9d43670d358ffbda3754435d90f0e26a1426d07f2afc0ce6c89603a32b",
-   "data_bytes": 111681,
-   "passages": 937,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:16:08Z"
-  },
   "kybalion-three-initiates_three-initiates": {
    "source_hash": "sha256:2474e44ef8cbd35042009250e8a692c25b13ad56ef416d85c62ff6b6922b56fe",
    "data_file": "kybalion-three-initiates_three-initiates.json.gz",
@@ -6872,18 +6558,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-08-09T14:15:05Z"
-  },
-  "landmarks-of-scientific-socialism-anti-duehring-engels_anonymous": {
-   "source_hash": "sha256:a8895f06bfe2da5b1baf7af3cef125b0fcfd4b4da9d49fe271b86a5db446ad28",
-   "data_file": "landmarks-of-scientific-socialism-anti-duehring-engels_anonymous.json.gz",
-   "data_hash": "sha256:14ca88430d0afaf9c0cb3cc7a5b1f0c48eb1ba3bd3554bd28ad85d80d90a4ca3",
-   "data_bytes": 157170,
-   "passages": 491,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T14:14:02Z"
   },
   "lang-fairy-blue_lang": {
    "source_hash": "sha256:7595952ffba1f064683506cd498f7447afddbec5f41f617b75e38cd720333086",
@@ -7053,18 +6727,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:01Z"
   },
-  "latin-vulgate-esther-liber-esther-anonymous_anonymous": {
-   "source_hash": "sha256:d96f1dfe9797d44fe548ebe5db6129e69c3725e8924659d020c633bb3d40ec05",
-   "data_file": "latin-vulgate-esther-liber-esther-anonymous_anonymous.json.gz",
-   "data_hash": "sha256:7f077fde38a28bd2bfb6d395cf44e86caf6e547db53b6d614e72f067779acf85",
-   "data_bytes": 23098,
-   "passages": 312,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:01Z"
-  },
   "legends-babylon-egypt-king_king-legends": {
    "source_hash": "sha256:720186c9ac9b3db171014fc9c786ed190995e4ec448870bc01bdb51439a6a5f7",
    "data_file": "legends-babylon-egypt-king_king-legends.json.gz",
@@ -7198,54 +6860,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:31:02Z"
-  },
-  "lives-vol-1-plutarch_anonymous": {
-   "source_hash": "sha256:daa4ea95f8a8f3f0b0c395030808a67d8df11f148c7c3b16d200549e48506d57",
-   "data_file": "lives-vol-1-plutarch_anonymous.json.gz",
-   "data_hash": "sha256:5cd1035b9658748f1194bd03e3db89319136345d859b2734415601e02369fcb5",
-   "data_bytes": 390221,
-   "passages": 1106,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-06T04:06:13Z"
-  },
-  "lives-vol-2-plutarch_anonymous": {
-   "source_hash": "sha256:9691dc73507a6fb479f6f7667fe960fa993c8ddc374b9b8c80ff190b47d9d686",
-   "data_file": "lives-vol-2-plutarch_anonymous.json.gz",
-   "data_hash": "sha256:b7b03b3a4984dafaec44b12e7daa5f5ebf7fdfe4e0918ce4d0a053462fe0c749",
-   "data_bytes": 369421,
-   "passages": 764,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:09Z"
-  },
-  "lives-vol-3-plutarch_anonymous": {
-   "source_hash": "sha256:c447a9cd75965cab5d35ba9efface221b3814ef24001fff42de6df7e20fe3500",
-   "data_file": "lives-vol-3-plutarch_anonymous.json.gz",
-   "data_hash": "sha256:f537eaa500784580e001d100f1602960c3dc4f7383dbf69944eece7a059d6c9a",
-   "data_bytes": 430835,
-   "passages": 1066,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:10Z"
-  },
-  "lives-vol-4-plutarch_anonymous": {
-   "source_hash": "sha256:49d54edbc10af81f6dead0b28eedc055af831daf0cdcd02e84dbf0a23719af0c",
-   "data_file": "lives-vol-4-plutarch_anonymous.json.gz",
-   "data_hash": "sha256:2019a7ff729a820d2e43b024a5358c367f24eda53420723023cfc60f8d4451a4",
-   "data_bytes": 588529,
-   "passages": 5853,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-05T22:25:38Z"
   },
   "lloyd-creed-half-japan_lloyd": {
    "source_hash": "sha256:f9742ef3f48d3e189d4aac51ec2d8aebadeb6f23be0fe63f8fd5f8ff0e555fc7",
@@ -7549,18 +7163,6 @@
    "apparatus": false,
    "exported": "2026-08-09T14:15:19Z"
   },
-  "mahabharata_anonymous": {
-   "source_hash": "sha256:d83e5833049f2a4598e0bb39331f399acbb91096df38e97b1f3f7982d40be1ac",
-   "data_file": "mahabharata_anonymous.json.gz",
-   "data_hash": "sha256:402c181975c978d2d2557bf4ccd24c22e4f4a152d9b382631d4d80c8e0cb76c9",
-   "data_bytes": 96346,
-   "passages": 20,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T02:56:14Z"
-  },
   "mahabharata_ganguli": {
    "source_hash": "sha256:4d95eb8b1d355d7b55181055464c087eb1327bce9d2f63092ac94d487de0168e",
    "data_file": "mahabharata_ganguli.json.gz",
@@ -7810,18 +7412,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:31:06Z"
-  },
-  "mazes-and-labyriths-wh-matthews-1922_anonymous": {
-   "source_hash": "sha256:3c808668a2504db3aed151916cbc05043488e88b1d475770ff5e9576efeddf12",
-   "data_file": "mazes-and-labyriths-wh-matthews-1922_anonymous.json.gz",
-   "data_hash": "sha256:c4c0b92a369e553106d66e239f7eed6118683a4eaa493dc0491876a757137b41",
-   "data_bytes": 155377,
-   "passages": 1607,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:30:43Z"
   },
   "mazes-labyrinths-matthews_matthews": {
    "source_hash": "sha256:5dbd72a7037454ecca7fd0290216a89e6e34cdc6f6c0714f212ebb05ea38f280",
@@ -8208,18 +7798,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:31:08Z"
-  },
-  "morals-of-a-happy-life-benefits-anger-and-seneca_anonymous": {
-   "source_hash": "sha256:1829971383e4825c41fba8b802e43de11a70481b6805f67c73ae26cc30989999",
-   "data_file": "morals-of-a-happy-life-benefits-anger-and-seneca_anonymous.json.gz",
-   "data_hash": "sha256:2c627266e91b961347f5d2116588ddbb4171a6e2019bbd8abcfa64edec9e452a",
-   "data_bytes": 226662,
-   "passages": 577,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T14:14:05Z"
   },
   "morals-plutarch_anonymous": {
    "source_hash": "sha256:6a2031a4ee5cc22276f756fb4401f5f6c72dc382badd4c0bf1d7ea1c60bdbe64",
@@ -8642,18 +8220,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:10Z"
   },
-  "nostradamus-nostradamus_anonymous": {
-   "source_hash": "sha256:9c35051a75e2b61f1d5b8f44d44531838d7d88910f0784988de1c829432aa1f9",
-   "data_file": "nostradamus-nostradamus_anonymous.json.gz",
-   "data_hash": "sha256:fbb232753318ec6fd1958045efd82bb23bbe77656f096fa82b82012c86642cf6",
-   "data_bytes": 100725,
-   "passages": 1112,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:10Z"
-  },
   "nostradamus-roberts_ward": {
    "source_hash": "sha256:91734df3df16c49c180a148ff4ee5b2069ca1d3569e89f3579e82d24fafd6854",
    "data_file": "nostradamus-roberts_ward.json.gz",
@@ -8847,18 +8413,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:11Z"
   },
-  "on-airs-waters-and-places-hippocrates_anonymous": {
-   "source_hash": "sha256:de6d06ea74a139a70aa8ff78ebef114a7d548e11bb8529428715b3ead2039c97",
-   "data_file": "on-airs-waters-and-places-hippocrates_anonymous.json.gz",
-   "data_hash": "sha256:a5908c7c05e6a6c255b059dc30c81d15d975927941bfdd56b25c50c20ecf5e8c",
-   "data_bytes": 18900,
-   "passages": 49,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T15:02:29Z"
-  },
   "on-liberty_mill": {
    "source_hash": "sha256:9881ebb26b1a79125b9c2146de1c28bf5f38d73492e3ade176f124bccfa71fc7",
    "data_file": "on-liberty_mill.json.gz",
@@ -8870,18 +8424,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:31:11Z"
-  },
-  "oracles-of-nostradamus-charles-ward-1891_anonymous": {
-   "source_hash": "sha256:c3d57645f2625d3ece9aef284451bbbf47820eba2a149dd6e1808eaaa88b0638",
-   "data_file": "oracles-of-nostradamus-charles-ward-1891_anonymous.json.gz",
-   "data_hash": "sha256:13b8aa4910341adc1f58b6a640ce17459d77a2cdf7f4e97aae1e379934a13001",
-   "data_bytes": 258484,
-   "passages": 1550,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:16:11Z"
   },
   "ordination-dharmaguptaka_buddhayasas": {
    "source_hash": "sha256:c6f689840e683d759ac8161f687c328d139443ed4b27ff269c4a0f5ebf8cbf22",
@@ -9335,18 +8877,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:13Z"
   },
-  "plato-eryxias_jowett": {
-   "source_hash": "sha256:e5a9a589070393799114e23b0d7b7f15786404368eba781d4d2805daedfcf353",
-   "data_file": "plato-eryxias_jowett.json.gz",
-   "data_hash": "sha256:8921a0a3bb56f9144234404a764cdc1b26812c733a8af7fe7174936acd113a77",
-   "data_bytes": 16405,
-   "passages": 172,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:13Z"
-  },
   "plato-euthydemus_jowett": {
    "source_hash": "sha256:244887bf934fe6ad1dd6d2585cd6aef7a836fc4bc9a34f724a8dbae9febf4b90",
    "data_file": "plato-euthydemus_jowett.json.gz",
@@ -9413,18 +8943,6 @@
    "data_hash": "sha256:4d8dee6b912e9aa3b7975ef11d952e923b78c3870bbe1a64c89c618eb0415f60",
    "data_bytes": 307189,
    "passages": 1937,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:13Z"
-  },
-  "plato-lesser-hippias_jowett": {
-   "source_hash": "sha256:368e3ba8c92ff8553865f2889477b435d1396af53dfec748d66b3a4ca233b304",
-   "data_file": "plato-lesser-hippias_jowett.json.gz",
-   "data_hash": "sha256:de9a8795b46ae9e5398c6e5ab3f2cd1b6eb81b43588a1f4b4ef0e4373a573414",
-   "data_bytes": 20920,
-   "passages": 239,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
@@ -9696,54 +9214,6 @@
    "apparatus": false,
    "exported": "2026-08-09T14:14:08Z"
   },
-  "plotinos-complete-works-vol-1-plotinos_anonymous": {
-   "source_hash": "sha256:3288ab31a2fddd67e09bf129ef1c13d8af1fae0fd9eef262136e30f4c3cad4c8",
-   "data_file": "plotinos-complete-works-vol-1-plotinos_anonymous.json.gz",
-   "data_hash": "sha256:b54e7788d28fa7495edfc85d4025f5f4c0211b45dbc3a73f41e8d69aa8d98c28",
-   "data_bytes": 181302,
-   "passages": 1438,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:11Z"
-  },
-  "plotinos-complete-works-vol-2-plotinos_anonymous": {
-   "source_hash": "sha256:4dbffa83ca0188f65f00fa52b6b4604c2203b50365213e04b6e8d08d035557c0",
-   "data_file": "plotinos-complete-works-vol-2-plotinos_anonymous.json.gz",
-   "data_hash": "sha256:c4cc3da08f395ad43cd9c0dc1d947ad53410006bc241aeda5dd51ec1a46aaba3",
-   "data_bytes": 222600,
-   "passages": 1354,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:11Z"
-  },
-  "plotinos-complete-works-vol-3-plotinos_anonymous": {
-   "source_hash": "sha256:cf3d6c18e9ae6547f21caa51171b103c402af156aba85ff94b468597ba1f6c17",
-   "data_file": "plotinos-complete-works-vol-3-plotinos_anonymous.json.gz",
-   "data_hash": "sha256:394cf1f6b9d9227fec1883f6717867d3fbc9beef96a9c0aaf7fe96955031b1e2",
-   "data_bytes": 227743,
-   "passages": 1540,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:12Z"
-  },
-  "plotinos-complete-works-vol-4-plotinos_anonymous": {
-   "source_hash": "sha256:5aff7a8758a46b90657f725befac278d749609d540ee03561c81dfec2d7bf2b4",
-   "data_file": "plotinos-complete-works-vol-4-plotinos_anonymous.json.gz",
-   "data_hash": "sha256:9cbae793f14df567e185f304179eb2f6b65aadef2aeb9853e11ee93f73e14ae7",
-   "data_bytes": 325097,
-   "passages": 5726,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-05T22:34:37Z"
-  },
   "plotinus-complete-vol1_guthrie": {
    "source_hash": "sha256:7f07ad0e7fc0b8e12009bc7b8265ff47590db018a563174af409c8920d335d99",
    "data_file": "plotinus-complete-vol1_guthrie.json.gz",
@@ -9876,30 +9346,6 @@
    "apparatus": false,
    "exported": "2026-08-09T14:13:33Z"
   },
-  "poems-1-jonathan-swift_anonymous": {
-   "source_hash": "sha256:affabd7347a8e8b2977bf95bfa15157b239bc9cf6c17713463dce0fbe4cda489",
-   "data_file": "poems-1-jonathan-swift_anonymous.json.gz",
-   "data_hash": "sha256:f1f26e8aedf9e9d4a742d63339dd5ba136e4bf06e012747bb37412dc06cfb558",
-   "data_bytes": 205259,
-   "passages": 578,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:26:31Z"
-  },
-  "poems-2-jonathan-swift_anonymous": {
-   "source_hash": "sha256:5a4d65eeed484f32d2cedc75937843712d3823c232603c29d6dc0931aec935ba",
-   "data_file": "poems-2-jonathan-swift_anonymous.json.gz",
-   "data_hash": "sha256:c551e915f9fd59fe523b099c7b707668c4f9c80352ccc117fb1bb87976eb8d45",
-   "data_bytes": 239137,
-   "passages": 944,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:14Z"
-  },
   "poems-by-emily-dickinso-emily-dickinson_anonymous": {
    "source_hash": "sha256:23bfc2a40930f96e91470996563e14419e5f53792ee3eaab936de9ecf91c3f9b",
    "data_file": "poems-by-emily-dickinso-emily-dickinson_anonymous.json.gz",
@@ -9923,30 +9369,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-08-09T14:13:54Z"
-  },
-  "poems-goethe-tr-edgar-bowr_anonymous": {
-   "source_hash": "sha256:aa17800a21762a33a90904e02bc1ffc156651b0523f86008097e26d541c9ac87",
-   "data_file": "poems-goethe-tr-edgar-bowr_anonymous.json.gz",
-   "data_hash": "sha256:9057e432d3c2236d2c06d8ad494f9ec1b0f2a57c592e1c3551b9510201a36949",
-   "data_bytes": 300008,
-   "passages": 5912,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-08T01:56:18Z"
-  },
-  "poems-of-american-patriotism-brander-matthews_anonymous": {
-   "source_hash": "sha256:63dd1b6ef5be3851ad3bad81e2508610d10e5f590d6b6915449fa44f958e9cfd",
-   "data_file": "poems-of-american-patriotism-brander-matthews_anonymous.json.gz",
-   "data_hash": "sha256:93f72018afe2f2d48de29360b21182d89952cb29ef3d668f54c74e1e1ae6c5fe",
-   "data_bytes": 79729,
-   "passages": 706,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:15Z"
   },
   "poems-ralph-emerson_anonymous": {
    "source_hash": "sha256:c7ec2664e8fd8a49dafb4c4ed30c08fb71b06911583fd4d3f9b294f859eccc45",
@@ -10244,18 +9666,6 @@
    "data_hash": "sha256:5f869605e4d353555430b9987a89481fc21fe25195a8fc90a36fb6aea3f530a0",
    "data_bytes": 80311,
    "passages": 252,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:17Z"
-  },
-  "rataplan-a-rogue-elephant-other-stories_anonymous": {
-   "source_hash": "sha256:5b2f6363e8ccb36549c76be58c4fd04998ab7b536d18dcca14a8a7cd1ac4a154",
-   "data_file": "rataplan-a-rogue-elephant-other-stories_anonymous.json.gz",
-   "data_hash": "sha256:e8478d2a52ca3047640323f3a3d6027548ab17b9f5184ebbde1ede67903bda21",
-   "data_bytes": 102778,
-   "passages": 812,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
@@ -11251,18 +10661,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:31:22Z"
-  },
-  "selected-writings-kierkegaard_anonymous": {
-   "source_hash": "sha256:01559df7ab21b6330a6f4c56f5b76d6a01ab8ab5c50151aba5678809afeb901c",
-   "data_file": "selected-writings-kierkegaard_anonymous.json.gz",
-   "data_hash": "sha256:942643232cb9583a97a707932e841a5098e79754d0bc298be16e6f541bed356f",
-   "data_bytes": 175375,
-   "passages": 557,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:30:45Z"
   },
   "selestors-men-of-atlantis-clara-iza-von-ravn-1_anonymous": {
    "source_hash": null,
@@ -12589,18 +11987,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:25Z"
   },
-  "tales-from-chaucer-charles-clarke-1833_anonymous": {
-   "source_hash": "sha256:1bb504354a2c26c5af188d56cf99644af96a3e8a31873e4e994ea27fb6e2dfef",
-   "data_file": "tales-from-chaucer-charles-clarke-1833_anonymous.json.gz",
-   "data_hash": "sha256:5aa83594a32c210ba522945a0a31bdaad7d293656e4d6210525ba932fe9bf952",
-   "data_bytes": 130163,
-   "passages": 737,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:16:14Z"
-  },
   "tales-hindu-dramatists_dutt": {
    "source_hash": "sha256:b8ca5dc05ee9b1d6b0cc2feefe1343194efc4982ac870709ede98d4ae544ea90",
    "data_file": "tales-hindu-dramatists_dutt.json.gz",
@@ -12797,18 +12183,6 @@
    "exported": "2026-07-10T17:31:28Z",
    "source_note": "no canonical dir (restricted local body)"
   },
-  "the-aeneid-virgil-tr-john-dryde_anonymous": {
-   "source_hash": "sha256:8834c359c0200af5dbc44b823657110fc313db04a20a5743a3aa37bd51147a06",
-   "data_file": "the-aeneid-virgil-tr-john-dryde_anonymous.json.gz",
-   "data_hash": "sha256:4a9c21017da840c7843d1895064a9bc7168f1aac9da2e7aaca8a03b8f546c082",
-   "data_bytes": 244405,
-   "passages": 124,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:28Z"
-  },
   "the-amish-smith_smith": {
    "source_hash": null,
    "data_file": "the-amish-smith_smith.json.gz",
@@ -12833,42 +12207,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-08-08T16:06:02Z"
-  },
-  "the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer_anonymous": {
-   "source_hash": "sha256:a1a8f348de74669c60c1c40bdad9ca85aef6eaa701e28e66487fedaa1736d92b",
-   "data_file": "the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer_anonymous.json.gz",
-   "data_hash": "sha256:56f27eac1458b6ce9b5a64a61791cb4b7dabc72343b420e4e82e521f9ab4a1ca",
-   "data_bytes": 837649,
-   "passages": 291,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:28Z"
-  },
-  "the-colloquies-of-erasmus-vol-1-erasmus_anonymous": {
-   "source_hash": "sha256:f463bb899b562c56ad165bc570b4cf4804398a1c786c74a95eb1bf8b0d3b1660",
-   "data_file": "the-colloquies-of-erasmus-vol-1-erasmus_anonymous.json.gz",
-   "data_hash": "sha256:e15f36563b28d1907f9e660d03fb50468a7b666c9c917202df1ccf9311c53ff8",
-   "data_bytes": 349881,
-   "passages": 4984,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T14:13:57Z"
-  },
-  "the-discourses-of-epictetus-pe-matheson-1916_anonymous": {
-   "source_hash": "sha256:3e889621c0533f30a410b7c11519dc9b053df8495c29f4f8d379e7910b8997b1",
-   "data_file": "the-discourses-of-epictetus-pe-matheson-1916_anonymous.json.gz",
-   "data_hash": "sha256:8d69f56836bb51ecb2732add46b20a52a46d7f6dc3a89271e70ff9173fb505a3",
-   "data_bytes": 269168,
-   "passages": 2597,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:15:57Z"
   },
   "the-enchiridion-epictetus_anonymous": {
    "source_hash": "sha256:6dad94a2319eb87e66dff182f4de47be3b2a6a1f2ab79a13be8be471bacb8c90",
@@ -12895,66 +12233,6 @@
    "exported": "2026-07-10T17:31:29Z",
    "source_note": "no canonical dir (restricted local body)"
   },
-  "the-gospel-of-ramakrishna-swami-abhedananda-19_anonymous": {
-   "source_hash": "sha256:c8bd01f3a18c957350f3ba90b0b8542916ab32847e5749cc231ed4e10a41d39a",
-   "data_file": "the-gospel-of-ramakrishna-swami-abhedananda-19_anonymous.json.gz",
-   "data_hash": "sha256:20dc05fa063857b2548089ef40fd90821573fa7fa01ae3f96230de4767cec8d2",
-   "data_bytes": 198705,
-   "passages": 1890,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:16:15Z"
-  },
-  "the-kama-sutra-vatsyayana_anonymous": {
-   "source_hash": "sha256:f233427d36504761b595f32767d7bce7c032aa99e944f3d688f6412a3b31a04d",
-   "data_file": "the-kama-sutra-vatsyayana_anonymous.json.gz",
-   "data_hash": "sha256:d75e7be2455f39310914e67230e197d1f58e93d1e938ad253755260e48266714",
-   "data_bytes": 120496,
-   "passages": 1522,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T14:13:58Z"
-  },
-  "the-lost-continent-cutcliffe-hyne-1900_anonymous": {
-   "source_hash": "sha256:c239848d2ab8152aa5a456924a2ed118d28d847c2db90ed623462f0b92f7f375",
-   "data_file": "the-lost-continent-cutcliffe-hyne-1900_anonymous.json.gz",
-   "data_hash": "sha256:a4a6de60b477b1533bd8e07f8300b4692ecbd721ce15d74e4addc29296e97f71",
-   "data_bytes": 220240,
-   "passages": 1758,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T21:06:14Z"
-  },
-  "the-origin-of-the-family-private-property-the-engels_anonymous": {
-   "source_hash": "sha256:cd41a17a212611ac7fbcd8d164eb9b37e152d41a295a9cf708083a3114ba752f",
-   "data_file": "the-origin-of-the-family-private-property-the-engels_anonymous.json.gz",
-   "data_hash": "sha256:4a6c5c19b03c6527bc9d67d726fc0f507985480ef7b167d75c8c23e06e74c8f8",
-   "data_bytes": 142074,
-   "passages": 548,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-31T03:49:16Z"
-  },
-  "the-philosophy-and-theology-averroes_anonymous": {
-   "source_hash": "sha256:b915d06f1415a71cf044cb2a9463fde7547692869ab4c6cb465ffefcc5735d19",
-   "data_file": "the-philosophy-and-theology-averroes_anonymous.json.gz",
-   "data_hash": "sha256:34e775d7bf2c87bfa973bfb3f7306933d8e0624fcdc6ab419bcfbd7c2a67e18d",
-   "data_bytes": 88019,
-   "passages": 159,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-29T23:08:32Z"
-  },
   "the-prince_marriott": {
    "source_hash": "sha256:13fc66f7ab845b19ad9309d8880538f7c3e6a40a31ea0105246846f202fdc0bf",
    "data_file": "the-prince_marriott.json.gz",
@@ -12966,54 +12244,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:31:29Z"
-  },
-  "the-republic-cicero_anonymous": {
-   "source_hash": "sha256:1e174127047855b02d229b253f3c05db6da3526b8e694a597395730b324e8a35",
-   "data_file": "the-republic-cicero_anonymous.json.gz",
-   "data_hash": "sha256:1d918b2efaf3056ca3e26a0337070f44f01aa219458c07174e4d6c3f980f0e08",
-   "data_bytes": 75770,
-   "passages": 360,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T14:14:06Z"
-  },
-  "the-rubaiyat-omar-khayyam_anonymous": {
-   "source_hash": "sha256:18f74aa26f1e7761fa40ccbe4810e12b73af75c0e86296adaed865422e1e2d33",
-   "data_file": "the-rubaiyat-omar-khayyam_anonymous.json.gz",
-   "data_hash": "sha256:36646f86c9840d3b897d380d0cd9bfa52992c3412861fe2878d4f307c96b69aa",
-   "data_bytes": 9888,
-   "passages": 115,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:29Z"
-  },
-  "the-seven-plays-in-english-verse-sophocles_anonymous": {
-   "source_hash": "sha256:ea77869c28decac85a01e7ebf687afba3007403854efa84f2fdf6ea6b3d6b6be",
-   "data_file": "the-seven-plays-in-english-verse-sophocles_anonymous.json.gz",
-   "data_hash": "sha256:103b50298c5736d0a360c9ea7c35246a025fa8139fc5d03162e198749b6ad0c5",
-   "data_bytes": 246266,
-   "passages": 2937,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-09T14:15:12Z"
-  },
-  "the-shih-king-book-of-poetry-james-legge_anonymous": {
-   "source_hash": "sha256:5f687de665e9222250f1ec10707bb9811a90ff1fec26de92b2be7386e1507f58",
-   "data_file": "the-shih-king-book-of-poetry-james-legge_anonymous.json.gz",
-   "data_hash": "sha256:c4dbe1430966372a3343d5d462d6b6ee68da6c06ffb3fe05c615b65ccd55a848",
-   "data_bytes": 127629,
-   "passages": 1234,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T03:27:26Z"
   },
   "the-siksha-patri-of-the-svami-narayana-sect-monier-williams_anonymous": {
    "source_hash": "sha256:13c816a9942628718364019e1050d62f4297367919df0bb8caef7af6e30f6a77",
@@ -13027,18 +12257,6 @@
    "apparatus": false,
    "exported": "2026-08-09T14:13:58Z"
   },
-  "the-sundering-flood-william-morris-1897_anonymous": {
-   "source_hash": "sha256:640ac2e73c9a3dc3dab6a05001f51913762e1574da7ef93a8784bb64dd891fac",
-   "data_file": "the-sundering-flood-william-morris-1897_anonymous.json.gz",
-   "data_hash": "sha256:960206f3e020a04e7528087916dfd45a161d1cdc250c5cd353b70c5cfcde00e0",
-   "data_bytes": 186101,
-   "passages": 916,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-08T01:55:58Z"
-  },
   "the-tragedies-seneca_anonymous": {
    "source_hash": "sha256:0c1a73e4096fcc76f4f21b34422d204e677935361ccd3749ebc86d9a9e1f457c",
    "data_file": "the-tragedies-seneca_anonymous.json.gz",
@@ -13050,18 +12268,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-08-09T14:14:06Z"
-  },
-  "the-udana-gm-strong-1902-no_anonymous": {
-   "source_hash": "sha256:8fe9369474e329bb01f7d4622e7ce4848fef2d25b404dee9e851d0b555f15267",
-   "data_file": "the-udana-gm-strong-1902-no_anonymous.json.gz",
-   "data_hash": "sha256:205cf26e8664115c093b5a57e9e101d40f238e4a5730a7f70f3b0f52b8cc693d",
-   "data_bytes": 58494,
-   "passages": 894,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-30T02:54:52Z"
   },
   "the-works-of-hsuntze-homer-dubs-1928_anonymous": {
    "source_hash": "sha256:ecf1e2f52172a015a5e4201af1bfb41b63d4332c52b35306dc2322f0a8f82d43",
@@ -14037,18 +13243,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-08-09T14:14:04Z"
-  },
-  "woman-position-influence-donaldson_donaldson": {
-   "source_hash": "sha256:1c8e780002df4db592deedb281441a5df3834799f215a60c47f1ddd64624c97e",
-   "data_file": "woman-position-influence-donaldson_donaldson.json.gz",
-   "data_hash": "sha256:af991ca3bcd5d68e99af9401e705b46939df9d16815ac40508374a7429e21e93",
-   "data_bytes": 162093,
-   "passages": 1084,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-05T22:35:37Z"
   },
   "womans-mysteries-briffault_talbot": {
    "source_hash": "sha256:0296a4bc7b236db24cfd856452b04cfa6d54f8ebaaedfe324a2a738893f385f4",
