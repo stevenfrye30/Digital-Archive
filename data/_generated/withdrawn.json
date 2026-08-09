@@ -2,8 +2,8 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 119,
-    "retired": 79,
+    "total": 120,
+    "retired": 80,
     "restricted": 40,
     "relocated": 5,
     "no_source": 1
@@ -325,6 +325,17 @@
       "reason": "duplicate",
       "reason_note": "dupe of james-will-to-believe (byte-near)",
       "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "folk-lore-of-the-holy-land-moslem-christian-je-hanauer-1907_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/folk-lore-of-the-holy-land-moslem-christian-je-hanauer-1907",
+      "preserved_at": null,
+      "reason": "duplicate",
+      "reason_note": "strict-subset duplicate of folklore-holy-land_hanauer.json — 1,165 passages, zero unique after checking the full text stream of the survivor (1,410 passages)",
+      "reason_source": "terminal reader-only lane 2026-08-08",
       "pd_year": null,
       "pd_year_source": null
     },
