@@ -1,11 +1,11 @@
 {
- "generated": "2026-08-09T02:45:50Z",
+ "generated": "2026-08-09T03:45:03Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "81eacd0035d2c7aa3079131c2f347f006b1d2c75",
- "library_fingerprint": "sha256:a2f79b82d1b4e27c9b65b635e705097d756d8e88409a58c180e976f9031d2e9d",
+ "exporter_rev": "c63c85755e5b0676221de2fc321ec1fdcd39c96a",
+ "library_fingerprint": "sha256:29937c94b9cd3070330bca7e3478c72003edec22a0a61aa576fcb5e5268ee645",
  "counts": {
-  "entries": 1178,
-  "public": 1056,
+  "entries": 1180,
+  "public": 1058,
   "restricted": 122
  },
  "texts": {
@@ -3925,6 +3925,18 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:49Z"
   },
+  "epictetus-discourses-higginson_higginson-1866": {
+   "source_hash": "sha256:77e0fdf81360dd7f6b66689972e9a41c45cb7685cef1c3497444bd19ca0ce45a",
+   "data_file": "epictetus-discourses-higginson_higginson-1866.json.gz",
+   "data_hash": "sha256:a9b00c7e49650af346bf153e0bc4240f8cf6a1f182f8628f2c22144ab15dd392",
+   "data_bytes": 219793,
+   "passages": 1124,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-09T03:42:27Z"
+  },
   "epictetus-discourses_long": {
    "source_hash": "sha256:5ed097f80faec5ac90083f344cd539d6d1ae50abd96a0c5f597dc033a6c7901e",
    "data_file": "epictetus-discourses_long.json.gz",
@@ -3936,6 +3948,18 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:49Z"
+  },
+  "epictetus-fragments_higginson-1866": {
+   "source_hash": "sha256:80682d0c712657bd0d7000e9578e8a9b8776dc50f281293abf3be91c267864a7",
+   "data_file": "epictetus-fragments_higginson-1866.json.gz",
+   "data_hash": "sha256:fde6d056e047e5b1d4061142f14e526b55fbdc0abbd3a86c8e2dbea8dd97a63e",
+   "data_bytes": 24021,
+   "passages": 297,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-09T03:42:27Z"
   },
   "epictetus-golden-sayings_crossley": {
    "source_hash": "sha256:73d9f9b286bead2dc6afddb05fb3212826fdacb94c76baf14ec9870eea512cb6",
