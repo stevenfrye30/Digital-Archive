@@ -29239,6 +29239,35 @@
       "reading_status_certified": true
     },
     {
+      "id": "enchiridion",
+      "title": "Enchiridion",
+      "tradition": "Stoic",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "enchiridion_higginson-1866.json",
+      "source": "little,-brown,-and-company-(boston)",
+      "author": [
+        "Epictetus"
+      ],
+      "translator": [
+        "Thomas Wentworth Higginson"
+      ],
+      "year": 1865,
+      "translation_label": "The Works of Epictetus, consisting of his Discourses in four books, the Enchiridion, and Fragments",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "primary",
+      "source_summary": "*Enchiridion* by Epictetus. Translated by Thomas W. Higginson (1948). Via Project Gutenberg.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "meditations",
       "title": "Meditations",
       "tradition": "Stoic",

@@ -1,11 +1,11 @@
 {
- "generated": "2026-08-08T20:00:11Z",
+ "generated": "2026-08-09T02:45:50Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "da525a667438bae2a0e7b70d8c1be13870396ba5",
- "library_fingerprint": "sha256:f4dcc669d901018a4ac90270b5084e48213b8b4e8542012ad62d717f5a21d1a9",
+ "exporter_rev": "81eacd0035d2c7aa3079131c2f347f006b1d2c75",
+ "library_fingerprint": "sha256:a2f79b82d1b4e27c9b65b635e705097d756d8e88409a58c180e976f9031d2e9d",
  "counts": {
-  "entries": 1177,
-  "public": 1055,
+  "entries": 1178,
+  "public": 1056,
   "restricted": 122
  },
  "texts": {
@@ -3830,7 +3830,7 @@
    "exported": "2026-07-31T21:30:38Z"
   },
   "enchiridion_higginson": {
-   "source_hash": "sha256:6633bc4985ec04b4d23293ed62a33b5e57db998cdc3200f87ae465e0bc03b016",
+   "source_hash": "sha256:8f0da104506aef66adca3c8ecd993765487d56821bc41b321256d51948ad74bd",
    "data_file": "enchiridion_higginson.json.gz",
    "data_hash": "sha256:7779e8804a0ac778fa77371917d22e15dcc60333b5c11f304588bec963e5d639",
    "data_bytes": 44460,
@@ -3840,6 +3840,18 @@
    "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:48Z"
+  },
+  "enchiridion_higginson-1866": {
+   "source_hash": "sha256:f1f40e0d9b324afbed078967e4f3efe02f15a83884a9a07e6663c224207a2f4b",
+   "data_file": "enchiridion_higginson-1866.json.gz",
+   "data_hash": "sha256:79137c1362241c42d3a72b433d28971c18b0d24c89162845a3d6d66486cb4468",
+   "data_bytes": 15121,
+   "passages": 70,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-09T02:43:34Z"
   },
   "engels-antiduehring_austin-lewis": {
    "source_hash": "sha256:e24379b023c8850948b51bb59f8ea0002bcea10ae6a1ac09560ed8d0c2acc516",

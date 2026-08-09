@@ -1,8 +1,9 @@
 {
  "note": "Dated reachability baseline — rows reachable ONLY via the reader catalog. Maintained deliberately; ROADMAP phases 2 and 5 burn it down. Guard check 6 fails on any public row that is reader-only and absent from this list.",
  "generated": "2026-07-29 (Task 27 closer; regenerate with --write-ledger)",
- "count": 4,
+ "count": 5,
  "reader_only": [
+  "enchiridion_higginson-1866.json",
   "folk-lore-of-the-holy-land-moslem-christian-je-hanauer-1907_anonymous.json",
   "folklore-holy-land_hanauer.json",
   "monier-williams-buddhism_williams.json",
