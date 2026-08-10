@@ -2,23 +2,23 @@
   "generated_at": "",
   "summary": {
     "targets": 1133,
-    "pass_texts": 641,
-    "partial_texts": 392,
-    "fail_texts": 26,
-    "skip_texts": 70,
-    "passages_checked": 2572799,
-    "passages_verified": 2328378,
-    "overall_pass_rate": 0.905,
+    "pass_texts": 645,
+    "partial_texts": 400,
+    "fail_texts": 18,
+    "skip_texts": 64,
+    "passages_checked": 2720302,
+    "passages_verified": 2672998,
+    "overall_pass_rate": 0.9826,
     "raw_files_hashed": 22672,
     "raw_bytes_hashed": 1037798372,
     "raw_manifest_generated_at": "2026-06-06T18:14:40Z",
     "buckets": {
-      "100%": 641,
-      "99-100%": 322,
+      "100%": 645,
+      "99-100%": 330,
       "95-99%": 70,
-      "80-95%": 12,
-      "50-80%": 3,
-      "<50%": 11
+      "80-95%": 13,
+      "50-80%": 4,
+      "<50%": 1
     }
   },
   "tradition_breakdown": {
@@ -72,11 +72,11 @@
       "passages_pass": 378
     },
     "Christian": {
-      "total": 168,
-      "verified_100": 103,
-      "verified_95": 139,
-      "passages_total": 1061887,
-      "passages_pass": 849142
+      "total": 167,
+      "verified_100": 106,
+      "verified_95": 149,
+      "passages_total": 1203233,
+      "passages_pass": 1181761
     },
     "Comparative Religion": {
       "total": 4,
@@ -100,11 +100,11 @@
       "passages_pass": 23750
     },
     "English Literature": {
-      "total": 64,
-      "verified_100": 26,
-      "verified_95": 64,
-      "passages_total": 107466,
-      "passages_pass": 106385
+      "total": 30,
+      "verified_100": 20,
+      "verified_95": 30,
+      "passages_total": 76155,
+      "passages_pass": 75514
     },
     "Finnish": {
       "total": 1,
@@ -135,11 +135,11 @@
       "passages_pass": 20458
     },
     "Greek Literature": {
-      "total": 43,
-      "verified_100": 34,
-      "verified_95": 43,
-      "passages_total": 50745,
-      "passages_pass": 50701
+      "total": 77,
+      "verified_100": 40,
+      "verified_95": 77,
+      "passages_total": 82056,
+      "passages_pass": 81572
     },
     "Greek Philosophy": {
       "total": 78,
@@ -170,11 +170,11 @@
       "passages_pass": 134966
     },
     "Jain": {
-      "total": 3,
+      "total": 2,
       "verified_100": 0,
-      "verified_95": 3,
-      "passages_total": 11712,
-      "passages_pass": 11706
+      "verified_95": 2,
+      "passages_total": 9357,
+      "passages_pass": 9352
     },
     "Japanese Philosophy": {
       "total": 2,
@@ -186,9 +186,9 @@
     "Jewish": {
       "total": 48,
       "verified_100": 23,
-      "verified_95": 46,
+      "verified_95": 47,
       "passages_total": 142462,
-      "passages_pass": 136371
+      "passages_pass": 142215
     },
     "Latin Literature": {
       "total": 5,
@@ -212,11 +212,11 @@
       "passages_pass": 20905
     },
     "Modern Philosophy": {
-      "total": 126,
-      "verified_100": 83,
-      "verified_95": 125,
-      "passages_total": 115926,
-      "passages_pass": 115731
+      "total": 125,
+      "verified_100": 82,
+      "verified_95": 124,
+      "passages_total": 115256,
+      "passages_pass": 115061
     },
     "Native American": {
       "total": 11,
@@ -233,11 +233,11 @@
       "passages_pass": 13167
     },
     "Persian Literature": {
-      "total": 7,
-      "verified_100": 7,
-      "verified_95": 7,
-      "passages_total": 5370,
-      "passages_pass": 5370
+      "total": 6,
+      "verified_100": 6,
+      "verified_95": 6,
+      "passages_total": 3264,
+      "passages_pass": 3264
     },
     "Political Philosophy": {
       "total": 41,
@@ -296,11 +296,11 @@
       "passages_pass": 4192
     },
     "Stoic": {
-      "total": 6,
-      "verified_100": 4,
-      "verified_95": 6,
-      "passages_total": 6003,
-      "passages_pass": 5997
+      "total": 5,
+      "verified_100": 3,
+      "verified_95": 5,
+      "passages_total": 5539,
+      "passages_pass": 5533
     },
     "Taoist": {
       "total": 9,
@@ -329,6 +329,13 @@
       "verified_95": 3,
       "passages_total": 13813,
       "passages_pass": 13796
+    },
+    "Secular / Other": {
+      "total": 5,
+      "verified_100": 4,
+      "verified_95": 5,
+      "passages_total": 11752,
+      "passages_pass": 11751
     }
   },
   "texts": [
@@ -419,7 +426,7 @@
         "Edgar Allan Poe"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/50852",
       "year": 1900,
       "source_title": "Poems",
       "tradition": "American Literature",
@@ -445,7 +452,7 @@
         "Ralph Emerson"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/12843",
       "year": 1900,
       "source_title": "Poems",
       "tradition": "American Literature",
@@ -471,7 +478,7 @@
         "Robert Frost"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/59824",
       "year": 1923,
       "source_title": "Poems",
       "tradition": "American Literature",
@@ -497,7 +504,7 @@
         "Emily Dickinson"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/12242",
       "year": 1900,
       "source_title": "Poems by Emily Dickinso",
       "tradition": "American Literature",
@@ -789,10 +796,10 @@
       "title": "Code of Discipline for Monks (Tibetan Mūlasarvāstivāda)",
       "author": [],
       "translator": [
-        "Tibetan Mūlasarvāstivāda tradition"
+        "Mahāmahopādhyāya Satis Chandra Vidyabhusana"
       ],
       "publisher": "Suttacentral",
-      "url": "https://suttacentral.net/lzh-mu-bu-pm",
+      "url": "https://suttacentral.net/xct-mu-bu-pm/en/vidyabhusana",
       "year": null,
       "source_title": "Code of Discipline for Monks",
       "tradition": "Buddhist",
@@ -884,7 +891,7 @@
         "Samuel Beal"
       ],
       "publisher": "Suttacentral",
-      "url": "https://suttacentral.net/lzh-dg-bu-pm",
+      "url": "https://suttacentral.net/lzh-dg-bu-pm/en/beal",
       "year": 1871,
       "source_title": "Dharmaguptaka Monks' Code of Discipline",
       "tradition": "Buddhist",
@@ -1516,11 +1523,10 @@
       "title": "Ordination (Dharmaguptaka Vinaya Khandaka)",
       "author": [],
       "translator": [
-        "Tripiṭaka Buddhayaśas of Kaśmīra",
-        "Zhu Fonian"
+        "Bodhi Translation Committee"
       ],
       "publisher": "Suttacentral",
-      "url": "https://suttacentral.net/lzh-dg-bu-vb-pj1",
+      "url": "https://suttacentral.net/lzh-dg-kd1/en/bodhi",
       "year": null,
       "source_title": "Ordination — Dharmaguptaka Vinaya Khandaka",
       "tradition": "Buddhist",
@@ -2394,7 +2400,7 @@
         "William Gemmell (after Kumarajiva)"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/40664",
+      "url": "https://www.gutenberg.org/ebooks/64623",
       "year": 1912,
       "source_title": "The Diamond Sutra",
       "tradition": "Buddhist",
@@ -2828,7 +2834,7 @@
         "Paul Bigandet"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/61270",
+      "url": "https://www.gutenberg.org/ebooks/34578",
       "year": 1880,
       "source_title": "The Life or Legend of Gaudama, the Buddha of the Burmese, Vol 1",
       "tradition": "Buddhist",
@@ -2854,7 +2860,7 @@
         "Paul Bigandet"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/61270",
+      "url": "https://www.gutenberg.org/ebooks/34578",
       "year": 1880,
       "source_title": "The Life or Legend of Gaudama, the Buddha of the Burmese, Vol 2",
       "tradition": "Buddhist",
@@ -2982,7 +2988,7 @@
         "Aurel Stein"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/68421",
+      "url": "https://www.gutenberg.org/ebooks/67358",
       "year": 1921,
       "source_title": "The Thousand Buddhas",
       "tradition": "Buddhist",
@@ -3408,8 +3414,8 @@
         "Kumarajiva"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
-      "year": 1900,
+      "url": "https://www.gutenberg.org/ebooks/24098",
+      "year": null,
       "source_title": "金剛般若波羅蜜經 (Diamond Sutra)",
       "tradition": "Buddhist",
       "collection": "other",
@@ -4347,7 +4353,7 @@
         "Herbert A. Giles"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/65091",
+      "url": "https://www.gutenberg.org/ebooks/43629",
       "year": 1880,
       "source_title": "Strange Stories from a Chinese Studio",
       "tradition": "Chinese",
@@ -4399,7 +4405,7 @@
         "Herbert A. Giles"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/13478",
+      "url": "https://www.gutenberg.org/ebooks/2076",
       "year": 1911,
       "source_title": "The Civilization of China",
       "tradition": "Chinese",
@@ -4425,7 +4431,7 @@
         "Herbert A. Giles"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/26031",
+      "url": "https://www.gutenberg.org/ebooks/2330",
       "year": 1905,
       "source_title": "The Religions of Ancient China",
       "tradition": "Chinese",
@@ -4477,7 +4483,7 @@
         "Anonymous"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/49902",
+      "url": "https://www.gutenberg.org/ebooks/14746",
       "year": 1530,
       "source_title": "A Dialoge or Communication of Two Persons",
       "tradition": "Christian",
@@ -4639,7 +4645,7 @@
         "Thomas Taylor"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/41700",
+      "url": "https://www.gutenberg.org/ebooks/37696",
       "year": 1830,
       "source_title": "Arguments of Celsus, Porphyry, and Julian Against the Christians",
       "tradition": "Christian",
@@ -4692,7 +4698,7 @@
         "H. Mattingly"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/43306",
+      "url": "https://www.gutenberg.org/ebooks/749",
       "year": 1914,
       "source_title": "Barlaam and Ioasaph",
       "tradition": "Christian",
@@ -5170,7 +5176,7 @@
         "J.W. Mackail"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/45527",
+      "url": "https://www.gutenberg.org/ebooks/39487",
       "year": 1907,
       "source_title": "Erasmus Against War",
       "tradition": "Christian",
@@ -5196,7 +5202,7 @@
         "Annie Besant"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/15820",
+      "url": "https://www.gutenberg.org/ebooks/26938",
       "year": 1901,
       "source_title": "Esoteric Christianity",
       "tradition": "Christian",
@@ -5222,7 +5228,7 @@
         "William Boulting"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/47103",
+      "url": "https://www.gutenberg.org/ebooks/63894",
       "year": 1920,
       "source_title": "Four Pilgrims",
       "tradition": "Christian",
@@ -5370,32 +5376,6 @@
       "note": ""
     },
     {
-      "title": "Homilies on Timothy, Titus, Philemon, and Hebrews",
-      "author": [
-        "John Chrysostom"
-      ],
-      "translator": [
-        "Multiple translators (ed. Philip Schaff)"
-      ],
-      "publisher": "CCEL",
-      "url": "https://ccel.org/ccel/schaff/npnf114",
-      "year": 1889,
-      "source_title": "Homilies on Timothy, Titus, Philemon, and Hebrews",
-      "tradition": "Christian",
-      "collection": "sacred",
-      "category": "Theology",
-      "raw_file": "02_raw_sources/Library_/ccel.org/NPNF1-14 Chrysostom - Homilies on Philippians + more_____Philip Schaff ed (1889).txt",
-      "raw_sha256": "e26f55f8d0739c07d73d5b664e42efbd923a43230a22d93d55261c808e9cd458",
-      "text_id": "chrysostom-homilies-timothy-hebrews",
-      "translation_id": "ccel-schaff",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 6157,
-      "passages_checked": 6157,
-      "passages_total": 8318,
-      "note": ""
-    },
-    {
       "title": "Hymns of the Eastern Church",
       "author": [
         "Various"
@@ -5430,7 +5410,7 @@
         "Charles Kingsley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/3438",
+      "url": "https://www.gutenberg.org/ebooks/63054",
       "year": 1853,
       "source_title": "Hypatia, or New Foes with an Old Face",
       "tradition": "Christian",
@@ -5587,7 +5567,7 @@
         "Henry Lee Hargrove"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/23053",
+      "url": "https://www.gutenberg.org/ebooks/40341",
       "year": 1902,
       "source_title": "King Alfred's Old English Version of Augustine's Soliloquies",
       "tradition": "Christian",
@@ -5613,7 +5593,7 @@
         "Kirsopp Lake"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/25530",
+      "url": "https://www.gutenberg.org/ebooks/30194",
       "year": 1920,
       "source_title": "Landmarks in the History of Early Christianity",
       "tradition": "Christian",
@@ -5769,7 +5749,7 @@
         "Jules Bonnet"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/52902",
+      "url": "https://www.gutenberg.org/ebooks/39407",
       "year": 1855,
       "source_title": "Letters of John Calvin, Vol 2",
       "tradition": "Christian",
@@ -5873,7 +5853,7 @@
         "John Henry Newman"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/49003",
+      "url": "https://www.gutenberg.org/ebooks/35110",
       "year": 1845,
       "source_title": "Essay on the Development of Christian Doctrine",
       "tradition": "Christian",
@@ -5899,7 +5879,7 @@
         "John Henry Newman"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55995",
+      "url": "https://www.gutenberg.org/ebooks/34022",
       "year": 1870,
       "source_title": "An Essay in Aid of a Grammar of Assent",
       "tradition": "Christian",
@@ -6003,7 +5983,7 @@
         "W.H. Woodward"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/52483",
+      "url": "https://www.gutenberg.org/ebooks/28338",
       "year": 1904,
       "source_title": "On the Education of Children",
       "tradition": "Christian",
@@ -6995,7 +6975,7 @@
         "William Milligan"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/64825",
+      "url": "https://www.gutenberg.org/ebooks/41893",
       "year": 1889,
       "source_title": "The Expositor's Bible: Revelation",
       "tradition": "Christian",
@@ -7511,12 +7491,12 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "weymouth-new-testament",
-      "status": "SKIP",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
-      "passages_checked": 0,
+      "status": "FAIL",
+      "pass_rate": 0.9180100755667506,
+      "passages_pass": 7289,
+      "passages_checked": 7940,
       "passages_total": 7942,
-      "note": "raw source empty after normalize"
+      "note": ""
     },
     {
       "title": "The Holy Bible",
@@ -7535,9 +7515,9 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "nestle-1904-greek-new-testament",
-      "status": "FAIL",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
+      "status": "PARTIAL",
+      "pass_rate": 0.9994960312460628,
+      "passages_pass": 7933,
       "passages_checked": 7937,
       "passages_total": 7943,
       "note": ""
@@ -7559,12 +7539,12 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "webster-bible",
-      "status": "SKIP",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
-      "passages_checked": 0,
+      "status": "FAIL",
+      "pass_rate": 0.5462087594057495,
+      "passages_pass": 16986,
+      "passages_checked": 31098,
       "passages_total": 31102,
-      "note": "raw source empty after normalize"
+      "note": ""
     },
     {
       "title": "The Holy Bible",
@@ -7583,12 +7563,12 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "etheridge-peshitta-new-testament",
-      "status": "FAIL",
+      "status": "ERROR",
       "pass_rate": 0.0,
       "passages_pass": 0,
-      "passages_checked": 7941,
+      "passages_checked": 0,
       "passages_total": 7942,
-      "note": ""
+      "note": "the reader for this format produced NO text from Bible (English Peshitta NT)_____Etheridge Peshitta New Testament 1849.zip — an unrecognised container or shape, not a corrupted text"
     },
     {
       "title": "The Holy Bible",
@@ -7607,12 +7587,12 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "murdock-peshitta-new-testament",
-      "status": "FAIL",
+      "status": "ERROR",
       "pass_rate": 0.0,
       "passages_pass": 0,
-      "passages_checked": 7947,
+      "passages_checked": 0,
       "passages_total": 7947,
-      "note": ""
+      "note": "the reader for this format produced NO text from Bible (English Peshitta NT)_____Murdock Peshitta New Testament 1851.zip — an unrecognised container or shape, not a corrupted text"
     },
     {
       "title": "The Holy Bible",
@@ -7631,9 +7611,9 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "russian-synodal-1876",
-      "status": "FAIL",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
+      "status": "PARTIAL",
+      "pass_rate": 0.9999357759866414,
+      "passages_pass": 31139,
       "passages_checked": 31141,
       "passages_total": 31169,
       "note": ""
@@ -7656,9 +7636,9 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "arabic-van-dyck-1865",
-      "status": "FAIL",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
+      "status": "PARTIAL",
+      "pass_rate": 0.9997748906611783,
+      "passages_pass": 31089,
       "passages_checked": 31096,
       "passages_total": 31104,
       "note": ""
@@ -7680,9 +7660,9 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "louis-segond-1910",
-      "status": "FAIL",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
+      "status": "PARTIAL",
+      "pass_rate": 0.9995186445029203,
+      "passages_pass": 31147,
       "passages_checked": 31162,
       "passages_total": 31170,
       "note": ""
@@ -7704,9 +7684,9 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "chinese-union-cunp-traditional",
-      "status": "FAIL",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
+      "status": "PARTIAL",
+      "pass_rate": 0.9964524440793159,
+      "passages_pass": 26684,
       "passages_checked": 26779,
       "passages_total": 31021,
       "note": ""
@@ -7729,9 +7709,9 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "reina-valera-1909",
-      "status": "FAIL",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 31075,
       "passages_checked": 31075,
       "passages_total": 31084,
       "note": ""
@@ -7753,9 +7733,9 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "luther-1912",
-      "status": "FAIL",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 31089,
       "passages_checked": 31089,
       "passages_total": 31102,
       "note": ""
@@ -7777,12 +7757,12 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "luther-1545",
-      "status": "SKIP",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
-      "passages_checked": 0,
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 31081,
+      "passages_checked": 31081,
       "passages_total": 31098,
-      "note": "raw source empty after normalize"
+      "note": ""
     },
     {
       "title": "The Holy Bible",
@@ -7801,12 +7781,12 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "diodati-1649",
-      "status": "SKIP",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
-      "passages_checked": 0,
+      "status": "PARTIAL",
+      "pass_rate": 0.9998713164328915,
+      "passages_pass": 31080,
+      "passages_checked": 31084,
       "passages_total": 31102,
-      "note": "raw source empty after normalize"
+      "note": ""
     },
     {
       "title": "The Holy Bible",
@@ -7825,12 +7805,12 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "statenvertaling",
-      "status": "SKIP",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
-      "passages_checked": 0,
+      "status": "PARTIAL",
+      "pass_rate": 0.9998713702286394,
+      "passages_pass": 31093,
+      "passages_checked": 31097,
       "passages_total": 31100,
-      "note": "raw source empty after normalize"
+      "note": ""
     },
     {
       "title": "The Holy Bible",
@@ -7994,12 +7974,12 @@
       "raw_sha256": null,
       "text_id": "bible",
       "translation_id": "almeida-1911",
-      "status": "SKIP",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
-      "passages_checked": 0,
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 31091,
+      "passages_checked": 31091,
       "passages_total": 31101,
-      "note": "raw source empty after normalize"
+      "note": ""
     },
     {
       "title": "The Holy Bible",
@@ -8340,7 +8320,7 @@
         "Anonymous"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55057",
+      "url": "https://www.gutenberg.org/ebooks/273",
       "year": 1537,
       "source_title": "The Smalcald Articles",
       "tradition": "Christian",
@@ -8522,7 +8502,7 @@
         "Frederick Crombie"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/42501",
+      "url": "https://www.gutenberg.org/ebooks/70693",
       "year": 1869,
       "source_title": "The Writings of Origen, Vol 1",
       "tradition": "Christian",
@@ -8548,7 +8528,7 @@
         "Frederick Crombie"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/42502",
+      "url": "https://www.gutenberg.org/ebooks/70693",
       "year": 1869,
       "source_title": "The Writings of Origen, Vol 2",
       "tradition": "Christian",
@@ -8704,7 +8684,7 @@
         "J.R. King"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55997",
+      "url": "https://www.gutenberg.org/ebooks/45843",
       "year": 1872,
       "source_title": "Writings in Connection with the Donatist Controversy",
       "tradition": "Christian",
@@ -9098,7 +9078,7 @@
         "Leonard A. Lyall"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55834",
+      "url": "https://www.gutenberg.org/ebooks/46389",
       "year": 1909,
       "source_title": "The Sayings of Confucius",
       "tradition": "Confucian",
@@ -9592,7 +9572,7 @@
         "E.A. Wallis Budge"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/56354",
+      "url": "https://www.gutenberg.org/ebooks/9411",
       "year": 1912,
       "source_title": "Legends of the Gods",
       "tradition": "Egyptian",
@@ -9688,7 +9668,7 @@
       "note": ""
     },
     {
-      "title": "The Book of the Dead",
+      "title": "The Book of the Dead: Budge's Introduction",
       "author": [
         "E.A. Wallis Budge"
       ],
@@ -9749,7 +9729,7 @@
         "George A. Reisner"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/15932",
+      "url": "https://www.gutenberg.org/ebooks/12255",
       "year": 1912,
       "source_title": "The Egyptian Conception of Immortality",
       "tradition": "Egyptian",
@@ -9853,7 +9833,7 @@
         "A.H. Sayce"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/56011",
+      "url": "https://www.gutenberg.org/ebooks/35856",
       "year": 1902,
       "source_title": "The Religions of Ancient Egypt and Babylonia",
       "tradition": "Egyptian",
@@ -9879,7 +9859,7 @@
         "E.A. Wallis Budge"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/56236",
+      "url": "https://www.gutenberg.org/ebooks/48649",
       "year": 1893,
       "source_title": "The Rosetta Stone",
       "tradition": "Egyptian",
@@ -9975,32 +9955,6 @@
       "note": ""
     },
     {
-      "title": "As You Like It",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-as-you-like-it",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9911699779249448,
-      "passages_pass": 898,
-      "passages_checked": 906,
-      "passages_total": 943,
-      "note": ""
-    },
-    {
       "title": "Bacon's Essays & Wisdom of the Ancients",
       "author": [
         "Francis Bacon"
@@ -10051,32 +10005,6 @@
       "note": ""
     },
     {
-      "title": "Cymbeline",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-cymbeline",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9643584521384929,
-      "passages_pass": 947,
-      "passages_checked": 982,
-      "passages_total": 1039,
-      "note": ""
-    },
-    {
       "title": "Devil Stories: An Anthology",
       "author": [
         "Various"
@@ -10111,7 +10039,7 @@
         "George Lyttelton"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/59909",
+      "url": "https://www.gutenberg.org/ebooks/17667",
       "year": 1760,
       "source_title": "Dialogues of the Dead",
       "tradition": "English Literature",
@@ -10155,58 +10083,6 @@
       "note": ""
     },
     {
-      "title": "King Henry the Eighth",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-king-henry-the-eighth",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9802955665024631,
-      "passages_pass": 796,
-      "passages_checked": 812,
-      "passages_total": 853,
-      "note": ""
-    },
-    {
-      "title": "King Richard the Third",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-king-richard-the-third",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.980722891566265,
-      "passages_pass": 1221,
-      "passages_checked": 1245,
-      "passages_total": 1309,
-      "note": ""
-    },
-    {
       "title": "Love’s Labour’s Lost",
       "author": [
         "William Shakespeare"
@@ -10230,32 +10106,6 @@
       "passages_pass": 1094,
       "passages_checked": 1115,
       "passages_total": 1163,
-      "note": ""
-    },
-    {
-      "title": "Measure for Measure",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-measure-for-measure",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9867075664621677,
-      "passages_pass": 965,
-      "passages_checked": 978,
-      "passages_total": 1045,
       "note": ""
     },
     {
@@ -10334,32 +10184,6 @@
       "passages_pass": 711,
       "passages_checked": 711,
       "passages_total": 711,
-      "note": ""
-    },
-    {
-      "title": "Pericles, Prince of Tyre",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-pericles-prince-of-tyre",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9811574697173621,
-      "passages_pass": 729,
-      "passages_checked": 743,
-      "passages_total": 784,
       "note": ""
     },
     {
@@ -10449,7 +10273,7 @@
         "Moses Gaster"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/43059",
       "year": 1915,
       "source_title": "Rumanian Bird and Beast Stories",
       "tradition": "English Literature",
@@ -10527,7 +10351,7 @@
         "Aldous Huxley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/53844",
+      "url": "https://www.gutenberg.org/ebooks/47912",
       "year": 1916,
       "source_title": "The Burning Wheel",
       "tradition": "English Literature",
@@ -10571,32 +10395,6 @@
       "note": ""
     },
     {
-      "title": "The Comedy of Errors",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-comedy-of-errors",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9955022488755623,
-      "passages_pass": 664,
-      "passages_checked": 667,
-      "passages_total": 683,
-      "note": ""
-    },
-    {
       "title": "The Complete Works of William Shakespeare",
       "author": [
         "William Shakespeare"
@@ -10620,58 +10418,6 @@
       "passages_pass": 36090,
       "passages_checked": 36596,
       "passages_total": 38951,
-      "note": ""
-    },
-    {
-      "title": "The First Part of Henry the Sixth",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-first-part-of-henry-the",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9866989117291415,
-      "passages_pass": 816,
-      "passages_checked": 827,
-      "passages_total": 858,
-      "note": ""
-    },
-    {
-      "title": "The First Part of King Henry the Fourth",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-first-part-of-king-henry",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9973247726056714,
-      "passages_pass": 1864,
-      "passages_checked": 1869,
-      "passages_total": 1993,
       "note": ""
     },
     {
@@ -10701,58 +10447,6 @@
       "note": ""
     },
     {
-      "title": "The Life and Death of King Richard the Second",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-life-and-death-of-king",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.983433734939759,
-      "passages_pass": 653,
-      "passages_checked": 664,
-      "passages_total": 689,
-      "note": ""
-    },
-    {
-      "title": "The Life of King Henry the Fifth",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-life-of-king-henry-the",
-      "translation_id": "shakespeare",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 829,
-      "passages_checked": 829,
-      "passages_total": 879,
-      "note": ""
-    },
-    {
       "title": "The Lost Continent",
       "author": [
         "Cutcliffe Hyne"
@@ -10776,136 +10470,6 @@
       "passages_pass": 1677,
       "passages_checked": 1677,
       "passages_total": 1758,
-      "note": ""
-    },
-    {
-      "title": "The Merchant of Venice",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-merchant-of-venice",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.991701244813278,
-      "passages_pass": 717,
-      "passages_checked": 723,
-      "passages_total": 758,
-      "note": ""
-    },
-    {
-      "title": "The Merry Wives of Windsor",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-merry-wives-of-windsor",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9825935596170583,
-      "passages_pass": 1129,
-      "passages_checked": 1149,
-      "passages_total": 1225,
-      "note": ""
-    },
-    {
-      "title": "The Passionate Pilgrim",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-passionate-pilgrim",
-      "translation_id": "shakespeare",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 45,
-      "passages_checked": 45,
-      "passages_total": 55,
-      "note": ""
-    },
-    {
-      "title": "The Phoenix and the Turtle",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-phoenix-and-the-turtle",
-      "translation_id": "shakespeare",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 18,
-      "passages_checked": 18,
-      "passages_total": 18,
-      "note": ""
-    },
-    {
-      "title": "The Rape of Lucrece",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-rape-of-lucrece",
-      "translation_id": "shakespeare",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 269,
-      "passages_checked": 269,
-      "passages_total": 270,
       "note": ""
     },
     {
@@ -10935,58 +10499,6 @@
       "note": ""
     },
     {
-      "title": "The Second Part of King Henry the Sixth",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-second-part-of-king-henry",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.964516129032258,
-      "passages_pass": 897,
-      "passages_checked": 930,
-      "passages_total": 989,
-      "note": ""
-    },
-    {
-      "title": "The Sonnets",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-sonnets",
-      "translation_id": "shakespeare",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 154,
-      "passages_checked": 154,
-      "passages_total": 308,
-      "note": ""
-    },
-    {
       "title": "The Sundering Flood",
       "author": [
         "William Morris"
@@ -11010,370 +10522,6 @@
       "passages_pass": 911,
       "passages_checked": 911,
       "passages_total": 916,
-      "note": ""
-    },
-    {
-      "title": "The Taming of the Shrew",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-taming-of-the-shrew",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9950932286555446,
-      "passages_pass": 1014,
-      "passages_checked": 1019,
-      "passages_total": 1067,
-      "note": ""
-    },
-    {
-      "title": "The Tempest",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tempest",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9812147777082029,
-      "passages_pass": 1567,
-      "passages_checked": 1597,
-      "passages_total": 1694,
-      "note": ""
-    },
-    {
-      "title": "The Third Part of King Henry the Sixth",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-third-part-of-king-henry",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9897645854657113,
-      "passages_pass": 967,
-      "passages_checked": 977,
-      "passages_total": 1008,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of Antony and Cleopatra",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-antony-and-cleopatra",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9962825278810409,
-      "passages_pass": 1340,
-      "passages_checked": 1345,
-      "passages_total": 1459,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of Coriolanus",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-coriolanus",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9984350547730829,
-      "passages_pass": 1276,
-      "passages_checked": 1278,
-      "passages_total": 1343,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of Hamlet, Prince of Denmark",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-hamlet-prince-of",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9723320158102767,
-      "passages_pass": 1230,
-      "passages_checked": 1265,
-      "passages_total": 1353,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of Julius Caesar",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-julius-caesar",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9898534385569335,
-      "passages_pass": 878,
-      "passages_checked": 887,
-      "passages_total": 949,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of King Lear",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-king-lear",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9803754266211604,
-      "passages_pass": 1149,
-      "passages_checked": 1172,
-      "passages_total": 1274,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of Macbeth",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-macbeth",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.989501312335958,
-      "passages_pass": 754,
-      "passages_checked": 762,
-      "passages_total": 832,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of Othello, the Moor of Venice",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-othello-the-moor",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9840510366826156,
-      "passages_pass": 1234,
-      "passages_checked": 1254,
-      "passages_total": 1359,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of Romeo and Juliet",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-romeo-and-juliet",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9873417721518988,
-      "passages_pass": 936,
-      "passages_checked": 948,
-      "passages_total": 1023,
-      "note": ""
-    },
-    {
-      "title": "The Tragedy of Titus Andronicus",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-tragedy-of-titus-andronicus",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9833679833679834,
-      "passages_pass": 1892,
-      "passages_checked": 1924,
-      "passages_total": 2057,
-      "note": ""
-    },
-    {
-      "title": "The Two Gentlemen of Verona",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-two-gentlemen-of-verona",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9801762114537445,
-      "passages_pass": 890,
-      "passages_checked": 908,
-      "passages_total": 979,
-      "note": ""
-    },
-    {
-      "title": "The Two Noble Kinsmen",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-the-two-noble-kinsmen",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9938208032955715,
-      "passages_pass": 965,
-      "passages_checked": 971,
-      "passages_total": 1052,
       "note": ""
     },
     {
@@ -11437,7 +10585,7 @@
         "Edwin Lester Arnold"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/54091",
+      "url": "https://www.gutenberg.org/ebooks/67345",
       "year": 1890,
       "source_title": "The Wonderful Adventures of Phra the Phoenician",
       "tradition": "English Literature",
@@ -11481,32 +10629,6 @@
       "note": ""
     },
     {
-      "title": "Twelfth Night; or, What You Will",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-twelfth-night-or-what-you-will",
-      "translation_id": "shakespeare",
-      "status": "PARTIAL",
-      "pass_rate": 0.9738693467336683,
-      "passages_pass": 969,
-      "passages_checked": 995,
-      "passages_total": 1055,
-      "note": ""
-    },
-    {
       "title": "Valerius Terminus, of the Interpretation of Nature",
       "author": [
         "Francis Bacon"
@@ -11530,32 +10652,6 @@
       "passages_pass": 104,
       "passages_checked": 104,
       "passages_total": 124,
-      "note": ""
-    },
-    {
-      "title": "Venus and Adonis",
-      "author": [
-        "William Shakespeare"
-      ],
-      "translator": [
-        "William Shakespeare"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/100",
-      "year": 1623,
-      "source_title": "The Complete Works of William Shakespeare",
-      "tradition": "English Literature",
-      "collection": "other",
-      "category": "Poetry",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Complete Works of William Shakespeare_____Shakespeare.txt",
-      "raw_sha256": "041e8f1d7a6aa622268942c5c07a29274fe02311f1547ac43c698ddf1f49c680",
-      "text_id": "shakespeare-venus-and-adonis",
-      "translation_id": "shakespeare",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 199,
-      "passages_checked": 199,
-      "passages_total": 199,
       "note": ""
     },
     {
@@ -11593,7 +10689,7 @@
         "Victor Hugo"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/8775",
       "year": 1888,
       "source_title": "Poems",
       "tradition": "French Literature",
@@ -11775,7 +10871,7 @@
         "Thomas Carlyle"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/50157",
+      "url": "https://www.gutenberg.org/ebooks/36483",
       "year": 1824,
       "source_title": "Wilhelm Meister's Apprenticeship and Travels, Vol 1",
       "tradition": "German Literature",
@@ -11801,7 +10897,7 @@
         "Thomas Carlyle"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/50158",
+      "url": "https://www.gutenberg.org/ebooks/36483",
       "year": 1824,
       "source_title": "Wilhelm Meister's Apprenticeship and Travels, Vol 2",
       "tradition": "German Literature",
@@ -11853,7 +10949,7 @@
         "Various"
       ],
       "publisher": "SacredTexts.com",
-      "url": "",
+      "url": "https://www.sacred-texts.com/chr/thomas.htm",
       "year": null,
       "source_title": "",
       "tradition": "Gnostic",
@@ -12158,6 +11254,32 @@
       "note": ""
     },
     {
+      "title": "As You Like It",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-as-you-like-it",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9911699779249448,
+      "passages_pass": 898,
+      "passages_checked": 906,
+      "passages_total": 943,
+      "note": ""
+    },
+    {
       "title": "Astrology and Religion Among the Greeks and Romans",
       "author": [
         "Franz Cumont"
@@ -12207,6 +11329,32 @@
       "passages_pass": 91,
       "passages_checked": 91,
       "passages_total": 97,
+      "note": ""
+    },
+    {
+      "title": "Cymbeline",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-cymbeline",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9643584521384929,
+      "passages_pass": 947,
+      "passages_checked": 982,
+      "passages_total": 1039,
       "note": ""
     },
     {
@@ -12393,6 +11541,58 @@
       "note": ""
     },
     {
+      "title": "King Henry the Eighth",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-king-henry-the-eighth",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9802955665024631,
+      "passages_pass": 796,
+      "passages_checked": 812,
+      "passages_total": 853,
+      "note": ""
+    },
+    {
+      "title": "King Richard the Third",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-king-richard-the-third",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.980722891566265,
+      "passages_pass": 1221,
+      "passages_checked": 1245,
+      "passages_total": 1309,
+      "note": ""
+    },
+    {
       "title": "Lives - Vol 1",
       "author": [
         "Plutarch"
@@ -12497,6 +11697,32 @@
       "note": ""
     },
     {
+      "title": "Measure for Measure",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-measure-for-measure",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9867075664621677,
+      "passages_pass": 965,
+      "passages_checked": 978,
+      "passages_total": 1045,
+      "note": ""
+    },
+    {
       "title": "Myths of Crete and Pre-Hellenic Europe",
       "author": [
         "Donald A. Mackenzie"
@@ -12557,7 +11783,7 @@
         "Sophocles"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/27673",
       "year": 1900,
       "source_title": "Oedipus King of Thebes",
       "tradition": "Greek Literature",
@@ -12624,6 +11850,32 @@
       "passages_pass": 519,
       "passages_checked": 519,
       "passages_total": 541,
+      "note": ""
+    },
+    {
+      "title": "Pericles, Prince of Tyre",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-pericles-prince-of-tyre",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9811574697173621,
+      "passages_pass": 729,
+      "passages_checked": 743,
+      "passages_total": 784,
       "note": ""
     },
     {
@@ -12817,7 +12069,7 @@
         "Philemon Holland"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/26073",
+      "url": "https://www.gutenberg.org/ebooks/57513",
       "year": 1603,
       "source_title": "Romane Questions",
       "tradition": "Greek Literature",
@@ -12887,6 +12139,32 @@
       "note": ""
     },
     {
+      "title": "The Comedy of Errors",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-comedy-of-errors",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9955022488755623,
+      "passages_pass": 664,
+      "passages_checked": 667,
+      "passages_total": 683,
+      "note": ""
+    },
+    {
       "title": "The Eleusinian and Bacchic Mysteries",
       "author": [
         "Thomas Taylor"
@@ -12936,6 +12214,58 @@
       "passages_pass": 1628,
       "passages_checked": 1635,
       "passages_total": 1658,
+      "note": ""
+    },
+    {
+      "title": "The First Part of Henry the Sixth",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-first-part-of-henry-the",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9866989117291415,
+      "passages_pass": 816,
+      "passages_checked": 827,
+      "passages_total": 858,
+      "note": ""
+    },
+    {
+      "title": "The First Part of King Henry the Fourth",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-first-part-of-king-henry",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9973247726056714,
+      "passages_pass": 1864,
+      "passages_checked": 1869,
+      "passages_total": 1993,
       "note": ""
     },
     {
@@ -13125,6 +12455,110 @@
       "note": ""
     },
     {
+      "title": "The Life and Death of King John",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-life-and-death-of-king",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.983433734939759,
+      "passages_pass": 653,
+      "passages_checked": 664,
+      "passages_total": 689,
+      "note": ""
+    },
+    {
+      "title": "The Life of King Henry the Fifth",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-life-of-king-henry-the",
+      "translation_id": "shakespeare",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 829,
+      "passages_checked": 829,
+      "passages_total": 879,
+      "note": ""
+    },
+    {
+      "title": "The Merchant of Venice",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-merchant-of-venice",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.991701244813278,
+      "passages_pass": 717,
+      "passages_checked": 723,
+      "passages_total": 758,
+      "note": ""
+    },
+    {
+      "title": "The Merry Wives of Windsor",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-merry-wives-of-windsor",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9825935596170583,
+      "passages_pass": 1129,
+      "passages_checked": 1149,
+      "passages_total": 1225,
+      "note": ""
+    },
+    {
       "title": "The Odyssey (Pope)",
       "author": [
         "Homer"
@@ -13148,6 +12582,84 @@
       "passages_pass": 1140,
       "passages_checked": 1140,
       "passages_total": 1171,
+      "note": ""
+    },
+    {
+      "title": "The Passionate Pilgrim",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-passionate-pilgrim",
+      "translation_id": "shakespeare",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 45,
+      "passages_checked": 45,
+      "passages_total": 55,
+      "note": ""
+    },
+    {
+      "title": "The Phoenix and the Turtle",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-phoenix-and-the-turtle",
+      "translation_id": "shakespeare",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 18,
+      "passages_checked": 18,
+      "passages_total": 18,
+      "note": ""
+    },
+    {
+      "title": "The Rape of Lucrece",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-rape-of-lucrece",
+      "translation_id": "shakespeare",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 269,
+      "passages_checked": 269,
+      "passages_total": 270,
       "note": ""
     },
     {
@@ -13177,6 +12689,32 @@
       "note": ""
     },
     {
+      "title": "The Second Part of King Henry the Sixth",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-second-part-of-king-henry",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.964516129032258,
+      "passages_pass": 897,
+      "passages_checked": 930,
+      "passages_total": 989,
+      "note": ""
+    },
+    {
       "title": "The Seven Plays in English Verse",
       "author": [
         "Sophocles"
@@ -13185,7 +12723,7 @@
         "Sophocles"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/14484",
       "year": 1900,
       "source_title": "The Seven Plays in English Verse",
       "tradition": "Greek Literature",
@@ -13211,7 +12749,7 @@
         "Lewis Campbell"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/14483",
+      "url": "https://www.gutenberg.org/ebooks/14484",
       "year": 1906,
       "source_title": "The Seven Plays of Sophocles",
       "tradition": "Greek Literature",
@@ -13226,6 +12764,32 @@
       "passages_pass": 2795,
       "passages_checked": 2795,
       "passages_total": 2938,
+      "note": ""
+    },
+    {
+      "title": "The Sonnets",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-sonnets",
+      "translation_id": "shakespeare",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 154,
+      "passages_checked": 154,
+      "passages_total": 308,
       "note": ""
     },
     {
@@ -13256,6 +12820,84 @@
       "note": ""
     },
     {
+      "title": "The Taming of the Shrew",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-taming-of-the-shrew",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9950932286555446,
+      "passages_pass": 1014,
+      "passages_checked": 1019,
+      "passages_total": 1067,
+      "note": ""
+    },
+    {
+      "title": "The Tempest",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tempest",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9812147777082029,
+      "passages_pass": 1567,
+      "passages_checked": 1597,
+      "passages_total": 1694,
+      "note": ""
+    },
+    {
+      "title": "The Third Part of King Henry the Sixth",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-third-part-of-king-henry",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9897645854657113,
+      "passages_pass": 967,
+      "passages_checked": 977,
+      "passages_total": 1008,
+      "note": ""
+    },
+    {
       "title": "The Tragedies of Euripides, Vol 1",
       "author": [
         "Euripides"
@@ -13264,7 +12906,7 @@
         "Theodore Alois Buckley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/44116",
+      "url": "https://www.gutenberg.org/ebooks/15081",
       "year": 1850,
       "source_title": "The Tragedies of Euripides, Vol 1",
       "tradition": "Greek Literature",
@@ -13279,6 +12921,344 @@
       "passages_pass": 3845,
       "passages_checked": 3854,
       "passages_total": 4007,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of Antony and Cleopatra",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-antony-and-cleopatra",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9962825278810409,
+      "passages_pass": 1340,
+      "passages_checked": 1345,
+      "passages_total": 1459,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of Coriolanus",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-coriolanus",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9984350547730829,
+      "passages_pass": 1276,
+      "passages_checked": 1278,
+      "passages_total": 1343,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of Hamlet, Prince of Denmark",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-hamlet-prince-of",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9723320158102767,
+      "passages_pass": 1230,
+      "passages_checked": 1265,
+      "passages_total": 1353,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of Julius Caesar",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-julius-caesar",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9898534385569335,
+      "passages_pass": 878,
+      "passages_checked": 887,
+      "passages_total": 949,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of King Lear",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-king-lear",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9803754266211604,
+      "passages_pass": 1149,
+      "passages_checked": 1172,
+      "passages_total": 1274,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of Macbeth",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-macbeth",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.989501312335958,
+      "passages_pass": 754,
+      "passages_checked": 762,
+      "passages_total": 832,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of Othello, the Moor of Venice",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-othello-the-moor",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9840510366826156,
+      "passages_pass": 1234,
+      "passages_checked": 1254,
+      "passages_total": 1359,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of Romeo and Juliet",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-romeo-and-juliet",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9873417721518988,
+      "passages_pass": 936,
+      "passages_checked": 948,
+      "passages_total": 1023,
+      "note": ""
+    },
+    {
+      "title": "The Tragedy of Titus Andronicus",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-tragedy-of-titus-andronicus",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9833679833679834,
+      "passages_pass": 1892,
+      "passages_checked": 1924,
+      "passages_total": 2057,
+      "note": ""
+    },
+    {
+      "title": "The Two Gentlemen of Verona",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-two-gentlemen-of-verona",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9801762114537445,
+      "passages_pass": 890,
+      "passages_checked": 908,
+      "passages_total": 979,
+      "note": ""
+    },
+    {
+      "title": "The Two Noble Kinsmen",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-the-two-noble-kinsmen",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9938208032955715,
+      "passages_pass": 965,
+      "passages_checked": 971,
+      "passages_total": 1052,
+      "note": ""
+    },
+    {
+      "title": "Twelfth Night; or, What You Will",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-twelfth-night-or-what-you-will",
+      "translation_id": "shakespeare",
+      "status": "PARTIAL",
+      "pass_rate": 0.9738693467336683,
+      "passages_pass": 969,
+      "passages_checked": 995,
+      "passages_total": 1055,
+      "note": ""
+    },
+    {
+      "title": "Venus and Adonis",
+      "author": [
+        "William Shakespeare"
+      ],
+      "translator": [
+        "William Shakespeare"
+      ],
+      "publisher": "Project Gutenberg",
+      "url": "https://www.gutenberg.org/ebooks/100",
+      "year": 1623,
+      "source_title": "The Complete Works of William Shakespeare",
+      "tradition": "Greek Literature",
+      "collection": "other",
+      "category": "Poetry",
+      "raw_file": "",
+      "raw_sha256": null,
+      "text_id": "shakespeare-venus-and-adonis",
+      "translation_id": "shakespeare",
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 199,
+      "passages_checked": 199,
+      "passages_total": 199,
       "note": ""
     },
     {
@@ -13368,7 +13348,7 @@
         "Thomas Heath"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/56240",
+      "url": "https://www.gutenberg.org/ebooks/58498",
       "year": 1913,
       "source_title": "Aristarchus of Samos: The Copernicus of Antiquity",
       "tradition": "Greek Philosophy",
@@ -13446,7 +13426,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1580",
       "year": 1871,
       "source_title": "Charmides",
       "tradition": "Greek Philosophy",
@@ -13472,7 +13452,7 @@
         "Thomas Taylor"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/60890",
+      "url": "https://www.gutenberg.org/ebooks/74253",
       "year": 1792,
       "source_title": "Commentaries on the First Book of Euclid",
       "tradition": "Greek Philosophy",
@@ -13524,7 +13504,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1571",
       "year": 1871,
       "source_title": "Critias",
       "tradition": "Greek Philosophy",
@@ -13576,7 +13556,7 @@
         "John Burnet"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/46286",
+      "url": "https://www.gutenberg.org/ebooks/67097",
       "year": 1892,
       "source_title": "Early Greek Philosophy",
       "tradition": "Greek Philosophy",
@@ -13628,7 +13608,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1598",
       "year": 1871,
       "source_title": "Euthydemus",
       "tradition": "Greek Philosophy",
@@ -13654,7 +13634,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1642",
       "year": 1871,
       "source_title": "Euthyphro",
       "tradition": "Greek Philosophy",
@@ -13732,7 +13712,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1635",
       "year": 1871,
       "source_title": "Ion",
       "tradition": "Greek Philosophy",
@@ -13758,7 +13738,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1584",
       "year": 1871,
       "source_title": "Laches",
       "tradition": "Greek Philosophy",
@@ -13836,7 +13816,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1579",
       "year": 1871,
       "source_title": "Lysis",
       "tradition": "Greek Philosophy",
@@ -13862,7 +13842,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1682",
       "year": 1871,
       "source_title": "Menexenus",
       "tradition": "Greek Philosophy",
@@ -13888,7 +13868,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1643",
       "year": 1871,
       "source_title": "Meno",
       "tradition": "Greek Philosophy",
@@ -13940,7 +13920,7 @@
         "Plutarch"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/23639",
       "year": 1898,
       "source_title": "Morals",
       "tradition": "Greek Philosophy",
@@ -13992,7 +13972,7 @@
         "Thomas Taylor"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/60890",
+      "url": "https://www.gutenberg.org/ebooks/75391",
       "year": 1831,
       "source_title": "Ocellus Lucanus on the Nature of the Universe",
       "tradition": "Greek Philosophy",
@@ -14018,7 +13998,7 @@
         "Hippocrates"
       ],
       "publisher": "Internet Archive",
-      "url": "",
+      "url": "https://archive.org/details/b29005218",
       "year": 1900,
       "source_title": "On Airs Waters and Places",
       "tradition": "Greek Philosophy",
@@ -14148,7 +14128,7 @@
         "Arthur John Brock"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/41663",
+      "url": "https://www.gutenberg.org/ebooks/43383",
       "year": 1916,
       "source_title": "On the Natural Faculties",
       "tradition": "Greek Philosophy",
@@ -14174,7 +14154,7 @@
         "Thomas Taylor"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/60890",
+      "url": "https://www.gutenberg.org/ebooks/77393",
       "year": 1816,
       "source_title": "On the Theology of Plato",
       "tradition": "Greek Philosophy",
@@ -14200,7 +14180,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1687",
       "year": 1871,
       "source_title": "Parmenides",
       "tradition": "Greek Philosophy",
@@ -14252,7 +14232,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1636",
       "year": 1871,
       "source_title": "Phaedrus",
       "tradition": "Greek Philosophy",
@@ -14278,7 +14258,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1744",
       "year": 1871,
       "source_title": "Philebus",
       "tradition": "Greek Philosophy",
@@ -14331,7 +14311,7 @@
         "George Grote"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/49097",
+      "url": "https://www.gutenberg.org/ebooks/40435",
       "year": 1875,
       "source_title": "Plato and the Other Companions of Sokrates, Vol 1",
       "tradition": "Greek Philosophy",
@@ -14357,7 +14337,7 @@
         "George Grote"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/49097",
+      "url": "https://www.gutenberg.org/ebooks/40435",
       "year": 1875,
       "source_title": "Plato and the Other Companions of Sokrates, Vol 2",
       "tradition": "Greek Philosophy",
@@ -14383,7 +14363,7 @@
         "George Grote"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/49097",
+      "url": "https://www.gutenberg.org/ebooks/40435",
       "year": 1875,
       "source_title": "Plato and the Other Companions of Sokrates, Vol 3",
       "tradition": "Greek Philosophy",
@@ -14409,7 +14389,7 @@
         "George Grote"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/49097",
+      "url": "https://www.gutenberg.org/ebooks/40435",
       "year": 1875,
       "source_title": "Plato and the Other Companions of Sokrates, Vol 4",
       "tradition": "Greek Philosophy",
@@ -14695,7 +14675,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1591",
       "year": 1871,
       "source_title": "Protagoras",
       "tradition": "Greek Philosophy",
@@ -14721,7 +14701,7 @@
         "J.M. Ashmand"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/45010",
+      "url": "https://www.gutenberg.org/ebooks/70850",
       "year": 1822,
       "source_title": "Ptolemy's Tetrabiblos",
       "tradition": "Greek Philosophy",
@@ -14747,7 +14727,7 @@
         "F. Rothwell"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/15016",
+      "url": "https://www.gutenberg.org/ebooks/76522",
       "year": 1906,
       "source_title": "Pythagoras and the Delphic Mysteries",
       "tradition": "Greek Philosophy",
@@ -14851,7 +14831,7 @@
         "Mary Mills Patrick"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/52590",
+      "url": "https://www.gutenberg.org/ebooks/17556",
       "year": 1899,
       "source_title": "Sextus Empiricus and Greek Scepticism",
       "tradition": "Greek Philosophy",
@@ -14877,7 +14857,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1735",
       "year": 1871,
       "source_title": "Sophist",
       "tradition": "Greek Philosophy",
@@ -14903,7 +14883,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1738",
       "year": 1871,
       "source_title": "Statesman",
       "tradition": "Greek Philosophy",
@@ -14955,7 +14935,7 @@
         "R.C. Jebb"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/45713",
+      "url": "https://www.gutenberg.org/ebooks/58242",
       "year": 1870,
       "source_title": "The Characters",
       "tradition": "Greek Philosophy",
@@ -15138,7 +15118,7 @@
         "N. Rowe"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/3361",
+      "url": "https://www.gutenberg.org/ebooks/69174",
       "year": 1707,
       "source_title": "The Golden Verses of Pythagoras",
       "tradition": "Greek Philosophy",
@@ -15164,7 +15144,7 @@
         "Dorothy Stimson"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/53956",
+      "url": "https://www.gutenberg.org/ebooks/35744",
       "year": 1917,
       "source_title": "The Gradual Acceptance of the Copernican Theory of the Universe",
       "tradition": "Greek Philosophy",
@@ -15242,7 +15222,7 @@
         "Thomas L. Heath"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/29721",
+      "url": "https://www.gutenberg.org/ebooks/35550",
       "year": 1897,
       "source_title": "The Works of Archimedes",
       "tradition": "Greek Philosophy",
@@ -15268,7 +15248,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1726",
       "year": 1871,
       "source_title": "Theaetetus",
       "tradition": "Greek Philosophy",
@@ -15294,7 +15274,7 @@
         "Benjamin Jowett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "local",
+      "url": "https://www.gutenberg.org/ebooks/1572",
       "year": 1871,
       "source_title": "Timaeus",
       "tradition": "Greek Philosophy",
@@ -16416,7 +16396,7 @@
         "Mary C. Wadsworth"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/63822",
+      "url": "https://www.gutenberg.org/ebooks/74480",
       "year": 1904,
       "source_title": "The Little Book of Life After Death",
       "tradition": "Hermetic",
@@ -16910,7 +16890,7 @@
         "A. Rama Iyer"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/4949",
+      "url": "https://www.gutenberg.org/ebooks/40373",
       "year": 1921,
       "source_title": "A Guide to Health",
       "tradition": "Hindu",
@@ -16962,7 +16942,7 @@
         "Arthur A. Macdonell"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/15962",
+      "url": "https://www.gutenberg.org/ebooks/41563",
       "year": 1900,
       "source_title": "A History of Sanskrit Literature",
       "tradition": "Hindu",
@@ -16988,7 +16968,7 @@
         "Annie Besant"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55784",
+      "url": "https://www.gutenberg.org/ebooks/4278",
       "year": 1908,
       "source_title": "An Introduction to Yoga",
       "tradition": "Hindu",
@@ -17066,7 +17046,7 @@
         "Annie Besant"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/15891",
+      "url": "https://www.gutenberg.org/ebooks/28262",
       "year": 1900,
       "source_title": "Avatāras",
       "tradition": "Hindu",
@@ -17406,7 +17386,7 @@
         "Edwin Arnold"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/8954",
+      "url": "https://www.gutenberg.org/ebooks/25965",
       "year": 1881,
       "source_title": "Indian Poetry",
       "tradition": "Hindu",
@@ -17484,7 +17464,7 @@
         "Ganguli"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/15474",
       "year": 1900,
       "source_title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 1",
       "tradition": "Hindu",
@@ -17510,7 +17490,7 @@
         "Ganguli"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/15474",
       "year": 1900,
       "source_title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 2",
       "tradition": "Hindu",
@@ -17536,7 +17516,7 @@
         "Ganguli"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/15474",
       "year": 1900,
       "source_title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 3",
       "tradition": "Hindu",
@@ -17562,7 +17542,7 @@
         "Ganguli"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/15474",
       "year": 1900,
       "source_title": "Mahabharata of Krishna-Dwaipayana Vyasa - Vol 4",
       "tradition": "Hindu",
@@ -17614,7 +17594,7 @@
         "Annie Besant"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/16058",
       "year": 1919,
       "source_title": "Occult Chemistry",
       "tradition": "Hindu",
@@ -17796,7 +17776,7 @@
         "Manmatha Nath Dutt"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/45554",
+      "url": "https://www.gutenberg.org/ebooks/18285",
       "year": 1893,
       "source_title": "Tales from the Hindu Dramatists",
       "tradition": "Hindu",
@@ -18077,7 +18057,7 @@
         "Vatsyayana"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/27827",
       "year": 1900,
       "source_title": "The Kama Sutra",
       "tradition": "Hindu",
@@ -18335,7 +18315,7 @@
         "A. Berriedale Keith"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/64831",
+      "url": "https://www.gutenberg.org/ebooks/74314",
       "year": 1924,
       "source_title": "The Sanskrit Drama",
       "tradition": "Hindu",
@@ -18387,7 +18367,7 @@
         "Monier Williams"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/7261",
       "year": 1882,
       "source_title": "The Siksha-Patri of the Svami-Narayana Sect",
       "tradition": "Hindu",
@@ -18673,7 +18653,7 @@
         "Vihārī-Lāla Mitra"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/71326",
       "year": 1891,
       "source_title": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 1",
       "tradition": "Hindu",
@@ -18699,7 +18679,7 @@
         "Vihārī-Lāla Mitra"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/71326",
       "year": 1891,
       "source_title": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 2 pt 1",
       "tradition": "Hindu",
@@ -18725,7 +18705,7 @@
         "Vihārī-Lāla Mitra"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/71326",
       "year": 1891,
       "source_title": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 2 pt 2",
       "tradition": "Hindu",
@@ -18751,7 +18731,7 @@
         "Vihārī-Lāla Mitra"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/71326",
       "year": 1891,
       "source_title": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 3 pt 1",
       "tradition": "Hindu",
@@ -18777,7 +18757,7 @@
         "Vihārī-Lāla Mitra"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/71326",
       "year": 1891,
       "source_title": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 3 pt 2",
       "tradition": "Hindu",
@@ -18803,7 +18783,7 @@
         "Vihārī-Lāla Mitra"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/71326",
       "year": 1891,
       "source_title": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 4 pt 1",
       "tradition": "Hindu",
@@ -18829,7 +18809,7 @@
         "Vihārī-Lāla Mitra"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/71326",
       "year": 1891,
       "source_title": "The Yoga-Vāsiṣṭha Mahā-Rāmāyaṇa, Vol 4 pt 2",
       "tradition": "Hindu",
@@ -19107,7 +19087,7 @@
         "Surendranath Dasgupta"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/64830",
+      "url": "https://www.gutenberg.org/ebooks/74250",
       "year": 1924,
       "source_title": "Yoga as Philosophy and Religion",
       "tradition": "Hindu",
@@ -19393,7 +19373,7 @@
         "Al-Ghazzali"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/73140",
       "year": 1900,
       "source_title": "Some religious and moral teachings",
       "tradition": "Islam",
@@ -20244,32 +20224,6 @@
       "note": ""
     },
     {
-      "title": "Jaina Sutras - Part 2",
-      "author": [
-        "Hermann Jacobi"
-      ],
-      "translator": [
-        "Hermann Jacobi"
-      ],
-      "publisher": "SacredTexts.com",
-      "url": "",
-      "year": 1900,
-      "source_title": "Jaina Sutras - Part 2",
-      "tradition": "Jain",
-      "collection": "other",
-      "category": "Literature",
-      "raw_file": "02_raw_sources/Library_/SacredTexts.com/Jaina Sutras - Part 2_____Hermann Jacobi (1884).txt",
-      "raw_sha256": "3946689aca90a9a5e9af954e088039b29a6a5298c387a6c78e524cb13ea797b1",
-      "text_id": "jaina-sutras-part-2-hermann-jacobi-1884",
-      "translation_id": "anonymous",
-      "status": "PARTIAL",
-      "pass_rate": 0.9995753715498938,
-      "passages_pass": 2354,
-      "passages_checked": 2355,
-      "passages_total": 2715,
-      "note": ""
-    },
-    {
       "title": "Jaina Sutras, Part 2",
       "author": [
         "Anonymous"
@@ -20458,7 +20412,7 @@
         "Israel Abrahams"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/12464",
+      "url": "https://www.gutenberg.org/ebooks/70401",
       "year": 1920,
       "source_title": "By-paths in Hebraic Bookland",
       "tradition": "Jewish",
@@ -20484,7 +20438,7 @@
         "Israel Abrahams"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/12463",
+      "url": "https://www.gutenberg.org/ebooks/13678",
       "year": 1899,
       "source_title": "Chapters on Jewish Literature",
       "tradition": "Jewish",
@@ -20643,7 +20597,7 @@
         "Gustav Karpeles"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55881",
+      "url": "https://www.gutenberg.org/ebooks/27901",
       "year": 1895,
       "source_title": "Jewish Literature and Other Essays",
       "tradition": "Jewish",
@@ -20669,7 +20623,7 @@
         "Israel Abrahams"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55522",
+      "url": "https://www.gutenberg.org/ebooks/6971",
       "year": 1907,
       "source_title": "Judaism",
       "tradition": "Jewish",
@@ -20773,7 +20727,7 @@
         "Russell Martineau"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/54931",
+      "url": "https://www.gutenberg.org/ebooks/48967",
       "year": 1877,
       "source_title": "Mythology among the Hebrews",
       "tradition": "Jewish",
@@ -20825,7 +20779,7 @@
         "F.C. Conybeare"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/49069",
+      "url": "https://www.gutenberg.org/ebooks/14657",
       "year": 1895,
       "source_title": "Philo Judæus of Alexandria",
       "tradition": "Jewish",
@@ -20928,7 +20882,7 @@
         "Solomon Schechter"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/61276",
+      "url": "https://www.gutenberg.org/ebooks/48890",
       "year": 1896,
       "source_title": "Studies in Judaism",
       "tradition": "Jewish",
@@ -20990,9 +20944,9 @@
       "raw_sha256": null,
       "text_id": "targum-onkelos-etheridge",
       "translation_id": "etheridge",
-      "status": "FAIL",
-      "pass_rate": 0.0,
-      "passages_pass": 0,
+      "status": "PARTIAL",
+      "pass_rate": 0.9998289136013687,
+      "passages_pass": 5844,
       "passages_checked": 5845,
       "passages_total": 5848,
       "note": ""
@@ -21032,7 +20986,7 @@
         "Israel Abrahams"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/7459",
+      "url": "https://www.gutenberg.org/ebooks/9886",
       "year": 1912,
       "source_title": "The Book of Delight and Other Papers",
       "tradition": "Jewish",
@@ -21188,7 +21142,7 @@
         "Christian D. Ginsburg"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/40551",
+      "url": "https://www.gutenberg.org/ebooks/69243",
       "year": 1865,
       "source_title": "The Kabbalah",
       "tradition": "Jewish",
@@ -21370,7 +21324,7 @@
         "Theophilus G. Pinches"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/64942",
+      "url": "https://www.gutenberg.org/ebooks/38732",
       "year": 1902,
       "source_title": "The Old Testament in the Light of the Historical Records of Assyria and Babylonia",
       "tradition": "Jewish",
@@ -21622,7 +21576,7 @@
         "Anonymous"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/12010",
+      "url": "https://www.gutenberg.org/ebooks/15017",
       "year": 1811,
       "source_title": "A Dialogue Concerning Oratory",
       "tradition": "Latin Literature",
@@ -22013,7 +21967,7 @@
         "George Rawlinson & Arthur Gilman"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/15663",
       "year": 1886,
       "source_title": "Ancient Egypt",
       "tradition": "Mesopotamian",
@@ -22221,7 +22175,7 @@
         "E.A. Wallis Budge"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/60688",
+      "url": "https://www.gutenberg.org/ebooks/7096",
       "year": 1920,
       "source_title": "The Babylonian Story of the Deluge",
       "tradition": "Mesopotamian",
@@ -22351,7 +22305,7 @@
         "Theophilus G. Pinches"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/16653",
+      "url": "https://www.gutenberg.org/ebooks/2069",
       "year": 1906,
       "source_title": "The Religion of Babylonia and Assyria",
       "tradition": "Mesopotamian",
@@ -22611,7 +22565,7 @@
         "John Stuart Mill"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/27943",
+      "url": "https://www.gutenberg.org/ebooks/27942",
       "year": 1843,
       "source_title": "A System of Logic, Vol 2",
       "tradition": "Modern Philosophy",
@@ -22689,7 +22643,7 @@
         "Erasmus"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/16246",
       "year": 1545,
       "source_title": "A Very Pleasaunt & Fruitful Diologe Called the Epicur",
       "tradition": "Modern Philosophy",
@@ -23261,7 +23215,7 @@
         "Charles Edwardes"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/56635",
+      "url": "https://www.gutenberg.org/ebooks/52356",
       "year": 1882,
       "source_title": "Essays and Dialogues",
       "tradition": "Modern Philosophy",
@@ -23365,7 +23319,7 @@
         "Adam Smith"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/58559",
       "year": 1872,
       "source_title": "Essays",
       "tradition": "Modern Philosophy",
@@ -23484,32 +23438,6 @@
       "passages_pass": 1073,
       "passages_checked": 1073,
       "passages_total": 1092,
-      "note": ""
-    },
-    {
-      "title": "Fear and Trembling",
-      "author": [
-        "Søren Kierkegaard"
-      ],
-      "translator": [
-        "Anonymous"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/60333",
-      "year": 1843,
-      "source_title": "Fear and Trembling",
-      "tradition": "Modern Philosophy",
-      "collection": "sacred",
-      "category": "Philosophy",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Fear and Trembling_____Kierkegaard.txt",
-      "raw_sha256": "f9c50fcaeef5a7f7b01dcd6ce1c5e7299eb79c3f25cd3399f2e5decc05231308",
-      "text_id": "kierkegaard-fear-trembling",
-      "translation_id": "lowrie",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 670,
-      "passages_checked": 670,
-      "passages_total": 688,
       "note": ""
     },
     {
@@ -23756,7 +23684,7 @@
         "William Molyneux"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/23306",
+      "url": "https://www.gutenberg.org/ebooks/70091",
       "year": 1680,
       "source_title": "Meditations on First Philosophy",
       "tradition": "Modern Philosophy",
@@ -23834,7 +23762,7 @@
         "W.G. Waters"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/62001",
+      "url": "https://www.gutenberg.org/ebooks/70838",
       "year": 1903,
       "source_title": "Montaigne's Travels in Italy, Vol 1",
       "tradition": "Modern Philosophy",
@@ -23860,7 +23788,7 @@
         "W.G. Waters"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/62002",
+      "url": "https://www.gutenberg.org/ebooks/70838",
       "year": 1903,
       "source_title": "Montaigne's Travels in Italy, Vol 2",
       "tradition": "Modern Philosophy",
@@ -23886,7 +23814,7 @@
         "W.G. Waters"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/62003",
+      "url": "https://www.gutenberg.org/ebooks/70838",
       "year": 1903,
       "source_title": "Montaigne's Travels in Italy, Vol 3",
       "tradition": "Modern Philosophy",
@@ -24120,7 +24048,7 @@
         "William Wallace"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/68820",
+      "url": "https://www.gutenberg.org/ebooks/39064",
       "year": 1894,
       "source_title": "Philosophy of Mind",
       "tradition": "Modern Philosophy",
@@ -24563,7 +24491,7 @@
         "Erasmus"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/14031",
       "year": 1900,
       "source_title": "The Colloquies of Erasmus - Vol 1",
       "tradition": "Modern Philosophy",
@@ -24693,7 +24621,7 @@
         "L. Williams"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/27484",
+      "url": "https://www.gutenberg.org/ebooks/19817",
       "year": 1887,
       "source_title": "The Heroic Enthusiasts",
       "tradition": "Modern Philosophy",
@@ -24927,7 +24855,7 @@
         "F.P.B. Osmaston"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/42700",
+      "url": "https://www.gutenberg.org/ebooks/55334",
       "year": 1920,
       "source_title": "The Philosophy of Fine Art, Vol 1",
       "tradition": "Modern Philosophy",
@@ -24953,7 +24881,7 @@
         "F.P.B. Osmaston"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/42701",
+      "url": "https://www.gutenberg.org/ebooks/55334",
       "year": 1920,
       "source_title": "The Philosophy of Fine Art, Vol 2",
       "tradition": "Modern Philosophy",
@@ -24979,7 +24907,7 @@
         "F.P.B. Osmaston"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/42702",
+      "url": "https://www.gutenberg.org/ebooks/55334",
       "year": 1920,
       "source_title": "The Philosophy of Fine Art, Vol 3",
       "tradition": "Modern Philosophy",
@@ -25005,7 +24933,7 @@
         "F.P.B. Osmaston"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/42703",
+      "url": "https://www.gutenberg.org/ebooks/55334",
       "year": 1920,
       "source_title": "The Philosophy of Fine Art, Vol 4",
       "tradition": "Modern Philosophy",
@@ -25031,7 +24959,7 @@
         "G.S. Brett"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/77134",
       "year": 1908,
       "source_title": "The Philosophy of Gassendi",
       "tradition": "Modern Philosophy",
@@ -25083,7 +25011,7 @@
         "William James"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/57626",
+      "url": "https://www.gutenberg.org/ebooks/57628",
       "year": 1890,
       "source_title": "The Principles of Psychology, Volume 1",
       "tradition": "Modern Philosophy",
@@ -25109,7 +25037,7 @@
         "William James"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/57627",
+      "url": "https://www.gutenberg.org/ebooks/57628",
       "year": 1890,
       "source_title": "The Principles of Psychology, Volume 2",
       "tradition": "Modern Philosophy",
@@ -25421,7 +25349,7 @@
         "George Berkeley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55795",
+      "url": "https://www.gutenberg.org/ebooks/26849",
       "year": 1734,
       "source_title": "The Works of George Berkeley, Vol 1",
       "tradition": "Modern Philosophy",
@@ -26304,32 +26232,6 @@
       "note": ""
     },
     {
-      "title": "The Book of the Thousand Nights and a Night",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "Anonymous"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/34206",
-      "year": 1885,
-      "source_title": "The Book of the Thousand Nights and a Night",
-      "tradition": "Persian Literature",
-      "collection": "sacred",
-      "category": "Literature",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/The Book of the Thousand Nights and a Night Vol 1_____Richard Burton.txt",
-      "raw_sha256": "48c289d55c645fc9e9ad4062229319538230c96c1a38a26c7c535975693d13d8",
-      "text_id": "arabian-nights-burton",
-      "translation_id": "burton",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 2106,
-      "passages_checked": 2106,
-      "passages_total": 2203,
-      "note": ""
-    },
-    {
       "title": "The Gulistan",
       "author": [
         "Sa'di"
@@ -26468,7 +26370,7 @@
         "George Rawlinson"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/16168",
+      "url": "https://www.gutenberg.org/ebooks/16162",
       "year": 1871,
       "source_title": "The Seven Great Monarchies, Vol 7: The Sassanian (New Persian) Empire",
       "tradition": "Persian Literature",
@@ -26572,7 +26474,7 @@
         "Austin Lewis"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/29973",
+      "url": "https://www.gutenberg.org/ebooks/31933",
       "year": 1907,
       "source_title": "Anti-Dühring",
       "tradition": "Political Philosophy",
@@ -26780,7 +26682,7 @@
         "Machiavelli"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/10827",
       "year": 1900,
       "source_title": "Discourses on the First Decade of Titus Livius",
       "tradition": "Political Philosophy",
@@ -26806,7 +26708,7 @@
         "M.K. Gandhi"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/52186",
+      "url": "https://www.gutenberg.org/ebooks/10366",
       "year": 1922,
       "source_title": "Freedom's Battle",
       "tradition": "Political Philosophy",
@@ -26888,7 +26790,7 @@
         "M.K. Gandhi"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/47132",
+      "url": "https://www.gutenberg.org/ebooks/40461",
       "year": 1909,
       "source_title": "Indian Home Rule (Hind Swaraj)",
       "tradition": "Political Philosophy",
@@ -26914,7 +26816,7 @@
         "Niccolò Machiavelli"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/63572",
+      "url": "https://www.gutenberg.org/ebooks/56498",
       "year": 1518,
       "source_title": "La Mandragola, La Clizia, Belfagor",
       "tradition": "Political Philosophy",
@@ -26940,7 +26842,7 @@
         "Engels"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/31933",
       "year": 1900,
       "source_title": "Landmarks of Scientific Socialism (Anti-Duehring)",
       "tradition": "Political Philosophy",
@@ -26992,7 +26894,7 @@
         "Austin Lewis"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/45225",
+      "url": "https://www.gutenberg.org/ebooks/27814",
       "year": 1903,
       "source_title": "Ludwig Feuerbach and the End of Classical German Philosophy",
       "tradition": "Political Philosophy",
@@ -27201,7 +27103,7 @@
         "Steven T. Byington"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/61969",
+      "url": "https://www.gutenberg.org/ebooks/34580",
       "year": 1907,
       "source_title": "The Ego and His Own",
       "tradition": "Political Philosophy",
@@ -27409,7 +27311,7 @@
         "T. Thomas"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/0",
+      "url": "https://www.gutenberg.org/ebooks/27814",
       "year": 1903,
       "source_title": "The Roots of the Socialist Philosophy",
       "tradition": "Political Philosophy",
@@ -27436,7 +27338,7 @@
         "John Bonner"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/2419",
+      "url": "https://www.gutenberg.org/ebooks/54187",
       "year": 1856,
       "source_title": "The State of Society in France Before the Revolution of 1789",
       "tradition": "Political Philosophy",
@@ -27514,7 +27416,7 @@
         "Mary Wollstonecraft"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/52384",
+      "url": "https://www.gutenberg.org/ebooks/67466",
       "year": 1787,
       "source_title": "Thoughts on the Education of Daughters",
       "tradition": "Political Philosophy",
@@ -27723,7 +27625,7 @@
         "W.J. Brodribb"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/2995",
+      "url": "https://www.gutenberg.org/ebooks/7524",
       "year": 1877,
       "source_title": "Germania and Agricola",
       "tradition": "Roman Philosophy",
@@ -27853,7 +27755,7 @@
         "Seneca"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/56075",
       "year": 1882,
       "source_title": "Morals of a Happy Life & Benefits & Anger and Clemency",
       "tradition": "Roman Philosophy",
@@ -27957,7 +27859,7 @@
         "John Clarke"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55677",
+      "url": "https://www.gutenberg.org/ebooks/76392",
       "year": 1910,
       "source_title": "Physical Science in the Time of Nero",
       "tradition": "Roman Philosophy",
@@ -28011,7 +27913,7 @@
         "H.T. Riley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/57494",
+      "url": "https://www.gutenberg.org/ebooks/59131",
       "year": 1855,
       "source_title": "The Natural History of Pliny, Vol 2",
       "tradition": "Roman Philosophy",
@@ -28038,7 +27940,7 @@
         "H.T. Riley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/57495",
+      "url": "https://www.gutenberg.org/ebooks/59131",
       "year": 1855,
       "source_title": "The Natural History of Pliny, Vol 3",
       "tradition": "Roman Philosophy",
@@ -28065,7 +27967,7 @@
         "H.T. Riley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/57496",
+      "url": "https://www.gutenberg.org/ebooks/59131",
       "year": 1855,
       "source_title": "The Natural History of Pliny, Vol 4",
       "tradition": "Roman Philosophy",
@@ -28092,7 +27994,7 @@
         "H.T. Riley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/57497",
+      "url": "https://www.gutenberg.org/ebooks/59131",
       "year": 1855,
       "source_title": "The Natural History of Pliny, Vol 5",
       "tradition": "Roman Philosophy",
@@ -28119,7 +28021,7 @@
         "H.T. Riley"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/57498",
+      "url": "https://www.gutenberg.org/ebooks/59131",
       "year": 1855,
       "source_title": "The Natural History of Pliny, Vol 6",
       "tradition": "Roman Philosophy",
@@ -28145,7 +28047,7 @@
         "Anonymous"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/16927",
+      "url": "https://www.gutenberg.org/ebooks/7959",
       "year": 1880,
       "source_title": "The Reign of Tiberius (Tacitus)",
       "tradition": "Roman Philosophy",
@@ -28171,7 +28073,7 @@
         "Cicero"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/54161",
       "year": 1829,
       "source_title": "The republic",
       "tradition": "Roman Philosophy",
@@ -28197,7 +28099,7 @@
         "Francis Barham"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/14988",
+      "url": "https://www.gutenberg.org/ebooks/54161",
       "year": 1841,
       "source_title": "The Republic (De Re Publica)",
       "tradition": "Roman Philosophy",
@@ -28223,7 +28125,7 @@
         "Seneca"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/57999",
       "year": 1907,
       "source_title": "The Tragedies",
       "tradition": "Roman Philosophy",
@@ -28775,8 +28677,8 @@
       "tradition": "Stoic",
       "collection": "other",
       "category": "Philosophy",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Meditations_____Marcus Aurelius.txt",
-      "raw_sha256": "b6e3eb0d68f933e61da30e57c64e67c5d907126ee74d5cb7bf02c2d4fa86c833",
+      "raw_file": "",
+      "raw_sha256": null,
       "text_id": "meditations",
       "translation_id": "casaubon",
       "status": "PASS",
@@ -28813,32 +28715,6 @@
       "note": ""
     },
     {
-      "title": "Of a Happy Life, Benefits, Anger, and Clemency",
-      "author": [
-        "Seneca"
-      ],
-      "translator": [
-        "Anonymous"
-      ],
-      "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/",
-      "year": null,
-      "source_title": "Of a Happy Life, Benefits, Anger, and Clemency",
-      "tradition": "Stoic",
-      "collection": "sacred",
-      "category": "Philosophy",
-      "raw_file": "02_raw_sources/Library_/Gutenberg.org/Morals of a Happy Life & Benefits & Anger & Clemency_____Seneca.txt",
-      "raw_sha256": "a8c4ae177f822cd355abe7cbce676f7924d287ed9556ac0a3c2eddc45a317c57",
-      "text_id": "seneca-morals",
-      "translation_id": "aubrey-stewart",
-      "status": "PASS",
-      "pass_rate": 1.0,
-      "passages_pass": 464,
-      "passages_checked": 464,
-      "passages_total": 468,
-      "note": ""
-    },
-    {
       "title": "Roman Stoicism",
       "author": [
         "E. Vernon Arnold"
@@ -28847,7 +28723,7 @@
         "E. Vernon Arnold"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/50512",
+      "url": "https://www.gutenberg.org/ebooks/64488",
       "year": 1911,
       "source_title": "Roman Stoicism",
       "tradition": "Stoic",
@@ -28951,7 +28827,7 @@
         "Paul Carus"
       ],
       "publisher": "Project Gutenberg",
-      "url": "https://www.gutenberg.org/ebooks/55514",
+      "url": "https://www.gutenberg.org/ebooks/63958",
       "year": 1898,
       "source_title": "Lao-tze: A Study in Chinese Philosophy",
       "tradition": "Taoist",
@@ -29394,7 +29270,7 @@
         "Maurice Bloomfield"
       ],
       "publisher": "Project Gutenberg",
-      "url": "",
+      "url": "https://www.gutenberg.org/ebooks/19119",
       "year": 1900,
       "source_title": "Cerberus the dog of Hades - The history of an idea",
       "tradition": "Witchcraft / Folk Religion",
@@ -29516,6 +29392,46 @@
       "passages_pass": 4295,
       "passages_checked": 4302,
       "passages_total": 5333,
+      "note": ""
+    },
+    {
+      "status": "PARTIAL",
+      "pass_rate": 0.9995753715498938,
+      "passages_pass": 2354,
+      "passages_checked": 2355,
+      "passages_total": 2715,
+      "note": ""
+    },
+    {
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 670,
+      "passages_checked": 670,
+      "passages_total": 688,
+      "note": ""
+    },
+    {
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 2106,
+      "passages_checked": 2106,
+      "passages_total": 2203,
+      "note": ""
+    },
+    {
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 464,
+      "passages_checked": 464,
+      "passages_total": 468,
+      "note": ""
+    },
+    {
+      "status": "PASS",
+      "pass_rate": 1.0,
+      "passages_pass": 6157,
+      "passages_checked": 6157,
+      "passages_total": 8318,
       "note": ""
     }
   ]
