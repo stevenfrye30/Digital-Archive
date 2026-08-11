@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 187,
+    "total": 196,
     "retired": 80,
-    "restricted": 40,
+    "restricted": 49,
     "relocated": 5,
     "no_source": 1
   },
@@ -345,6 +345,17 @@
       "reason": "duplicate",
       "reason_note": "retired in the dedup-retired-2026-07-02 lane; source parked at 01_library/_retired/dedup-retired-2026-07-02/",
       "reason_source": "01_library/_retired/",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "copernican-acceptance-stimson_stimson.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/science/copernican-acceptance-stimson",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
@@ -819,6 +830,17 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "huxley-burning-wheel_huxley.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/literature/huxley-burning-wheel",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "iliad-of-homer-samuel-butler-1898_anonymous.json": {
       "disposition": "scope",
       "mechanism": "suppressed",
@@ -845,6 +867,17 @@
       "reason": "duplicate",
       "reason_note": "2026-07-29 abrahamic lane (half B): 11 content-verified retirements — Origen x2 (97% folded vs Crombie) · Baltimore \"Catchecism\" typo stub (100%) · Midrash Tanhuma -no stub (99% vs its twin stub) · Kashf al-Mahjub stub (98% vs Nicholson) · Mesnevi stub (90% vs the Redhouse Acts volume) · Wellhausen stub (92% vs Black-Menzies) · Imitation _anonymous (99% vs Benham) · Vulgate titles-LIST (not a text",
       "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "in-tune-infinite-trine_trine.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/in-tune-infinite-trine",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
@@ -905,6 +938,17 @@
       "source_location": "01_library/library/texts/sacred/buddhist/katyayana-jayarava",
       "preserved_at": null,
       "reason": "uncertain-copyright",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "kierkegaard-selections-hollander_hollander.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/kierkegaard-selections-hollander",
+      "preserved_at": null,
+      "reason": "copyrighted",
       "reason_note": null,
       "reason_source": null,
       "pd_year": null,
@@ -1058,6 +1102,17 @@
         "clean_edition": null
       }
     },
+    "luther-genesis-vol1_mueller.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/luther-genesis-vol1",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "mahabharata_anonymous.json": {
       "disposition": "scope",
       "mechanism": "suppressed",
@@ -1075,6 +1130,17 @@
         "becomes_want": true,
         "clean_edition": null
       }
+    },
+    "marx-critique-political-economy_stone.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/political-philosophy/marx-critique-political-economy",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
     },
     "mazes-and-labyriths-wh-matthews-1922_anonymous.json": {
       "disposition": "scope",
@@ -1489,6 +1555,17 @@
         "clean_edition": null
       }
     },
+    "poems-robert-frost_anonymous.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/modern-philosophy/poems-robert-frost",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "pratityasamutpada-vaidya_vaidya.json": {
       "disposition": "restricted",
       "mechanism": "suppressed",
@@ -1874,6 +1951,17 @@
       "reason": "duplicate",
       "reason_note": "Ratner 1927 Modern Library SELECTIONS duplicating the complete Elwes texts held; compilation rights cloud (Ratner d. 1979)",
       "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "stirner-ego-his-own_byington.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/political-philosophy/stirner-ego-his-own",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
@@ -2316,6 +2404,17 @@
       "reason": "duplicate",
       "reason_note": "dupe of james-varieties-religious (title typo 'Religous'; sacredtext witness)",
       "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "the-works-of-hsuntze-homer-dubs-1928_anonymous.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/greek-literature/the-works-of-hsuntze-homer-dubs-1928",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
