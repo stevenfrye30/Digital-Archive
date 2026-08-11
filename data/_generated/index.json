@@ -10480,36 +10480,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "tamil-saivite-hymns",
-      "title": "Hymns of the Tamil Saivite Saints",
-      "tradition": "Hindu",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "tamil-saivite-hymns_kingsbury-phillips.json",
-      "source": "sacredtexts",
-      "author": [
-        "Nayanars"
-      ],
-      "translator": [
-        "F. Kingsbury",
-        "G.E. Phillips"
-      ],
-      "year": 1921,
-      "translation_label": "Hymns of the Tamil Saivite Saints",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Hymns of the Tamil Saivite Saints* F. Kingsbury, G.E. Phillips (1921). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "arnold-indian-poetry",
       "title": "Indian Poetry",
       "tradition": "Hindu",
@@ -30499,6 +30469,37 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "Steven T. Byington (1868-1958), translator (Tucker, New York 1907). Not worldwide-PD until 2029. The registry had recorded 1957; verification 2026-08-11 corrected it to 1958, which does not change the verdict. CLEAN EDITION POSSIBLE: Stirner (d. 1856) is long PD, so another translator would clear the bar — though Byington is the only established English translation.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "tamil-saivite-hymns",
+      "title": "Hymns of the Tamil Saivite Saints",
+      "tradition": "Hindu",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "tamil-saivite-hymns_kingsbury-phillips.json",
+      "source": "sacredtexts",
+      "author": [
+        "Nayanars"
+      ],
+      "translator": [
+        "F. Kingsbury",
+        "G.E. Phillips"
+      ],
+      "year": 1921,
+      "translation_label": "Hymns of the Tamil Saivite Saints",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "G.E. Phillips — LoC name authority reads \"Phillips, Godfrey E. (Godfrey Edward), 1878-1963\"; an independent check reads 1878-1961. The two disagree by two years and agree on what decides it: he died after 1956, so not worldwide-PD until 2032 or 2034. The registry had recorded 1947, which cleared the bar and was wrong — this record was found by the 2026-08-11 re-derivation of the 543 gutendex-sourced dates, NOT by the suspect sweep, because only the authority crossed the bar. CLEAN EDITION POSSIBLE: the Tēvāram hymns of the Nāyanārs are ancient, so any earlier PD translation clears the bar.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
