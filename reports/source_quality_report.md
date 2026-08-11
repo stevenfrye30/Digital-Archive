@@ -8,12 +8,13 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 
 | Source | Auth | Parse | Texts | Proven | Avg fidelity | @100% | Skipped | Note |
 |---|:--:|---|--:|--:|--:|--:|--:|---|
-| NO_RAW_FILE | ? | n/a | 67 | 11 | 99.30% | 5 | 56 | UNANCHORED: no raw source recorded; this translation is outside the integrity guarantee. |
+| NO_RAW_FILE | ? | n/a | 102 | 46 | 98.92% | 12 | 56 | UNANCHORED: no raw source recorded; this translation is outside the integrity guarantee. |
 | __________Unified | ? | ? | 16 | 15 | 98.92% | 12 | 0 | Unprofiled source. |
 | OTHER | ? | n/a | 8 | 0 | — | 0 | 8 | Unclassified raw path. |
 | ebible.org | ? | ? | 7 | 7 | 99.94% | 2 | 0 | Unprofiled source. |
 | getbible.net | ? | ? | 6 | 6 | 91.07% | 2 | 0 | Unprofiled source. |
 | DERIVED_JSON | ? | n/a | 6 | 6 | 89.80% | 5 | 0 | ANCHOR GAP: raw_file points to a processed web-app JSON, not a hashed raw download in 02_raw_sources/. |
+| OLL.libertyfund.org | ? | ? | 3 | 0 | — | 0 | 0 | Unprofiled source. |
 | crosswire.org | ? | ? | 2 | 0 | — | 0 | 0 | Unprofiled source. |
 | alquran.cloud | ? | ? | 2 | 2 | 67.39% | 0 | 0 | Unprofiled source. |
 | biblicalhumanities.org | ? | ? | 1 | 1 | 99.95% | 0 | 0 | Unprofiled source. |
@@ -21,10 +22,10 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 | wikisource.org | ? | ? | 1 | 1 | 99.93% | 0 | 0 | Unprofiled source. |
 | studybible.info | ? | ? | 1 | 0 | — | 0 | 0 | Unprofiled source. |
 | Suttacentral.net | A | Easy | 22 | 22 | 95.33% | 11 | 0 | Modern curated Buddhist canon; consistent structure, scholarly translators. |
-| ccel.org | A | Easy | 18 | 18 | 99.99% | 15 | 0 | Christian Classics Ethereal Library; clean patristic/Reformation editions. |
+| ccel.org | A | Easy | 18 | 17 | 99.99% | 14 | 0 | Christian Classics Ethereal Library; clean patristic/Reformation editions. |
 | Tanzil.net | A | Easy | 8 | 8 | 99.99% | 7 | 0 | Tanzil Qur'an project; verified Arabic + standard translations. Gold standard. |
-| Gutenberg.org | B | Easy-Medium | 599 | 599 | 99.74% | 385 | 0 | Public-domain editions; clean text, but edition age/quality varies widely. |
-| SacredTexts.com | B | Medium | 332 | 331 | 99.78% | 177 | 0 | Large PD religious-texts archive; mostly 19th-early-20thc editions, some OCR cruft. |
+| Gutenberg.org | B | Easy-Medium | 564 | 561 | 99.80% | 375 | 0 | Public-domain editions; clean text, but edition age/quality varies widely. |
+| SacredTexts.com | B | Medium | 332 | 330 | 99.78% | 177 | 0 | Large PD religious-texts archive; mostly 19th-early-20thc editions, some OCR cruft. |
 | Internetarchive | C | Hard | 34 | 34 | 99.29% | 22 | 0 | OCR scans; lowest text quality, highest cleanup/parse burden. |
 | gnosis.org | C | Medium | 2 | 2 | 100.00% | 2 | 0 | Small esoteric archive; marginal authority. |
 
@@ -39,7 +40,7 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 | bible | web | DERIVED_JSON | 100.0 | Christian |
 | bible | sbl-nt | DERIVED_JSON | 38.79 | Christian |
 
-## Integrity gap: no raw source at all (unanchored) (67)
+## Integrity gap: no raw source at all (unanchored) (102)
 
 | text_id | translation_id | source | fidelity | tradition |
 |---|---|---|---|---|
@@ -99,6 +100,13 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 | satapatha-brahmana-eggeling | eggeling | NO_RAW_FILE |  | Hindu |
 | yajur-veda-keith | keith | NO_RAW_FILE |  | Hindu |
 | babylonian-talmud-rodkinson | rodkinson | NO_RAW_FILE |  | Jewish |
+| shakespeare-the-life-of-king-henry-the | shakespeare | NO_RAW_FILE | 100.0 | Greek Literature |
+| shakespeare-the-passionate-pilgrim | shakespeare | NO_RAW_FILE | 100.0 | Greek Literature |
+| shakespeare-the-phoenix-and-the-turtle | shakespeare | NO_RAW_FILE | 100.0 | Greek Literature |
+| shakespeare-the-rape-of-lucrece | shakespeare | NO_RAW_FILE | 100.0 | Greek Literature |
+| shakespeare-the-sonnets | shakespeare | NO_RAW_FILE | 100.0 | Greek Literature |
+| shakespeare-venus-and-adonis | shakespeare | NO_RAW_FILE | 100.0 | Greek Literature |
+| meditations | casaubon | NO_RAW_FILE | 100.0 | Stoic |
 | bible | kjv | NO_RAW_FILE | 100.0 | Christian |
 | quran | saheeh | NO_RAW_FILE | 100.0 | Islam |
 | quran | pickthall | NO_RAW_FILE | 100.0 | Islam |
@@ -107,14 +115,48 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 | tanakh | jps | NO_RAW_FILE | 100.0 | Jewish |
 | tanakh | wlc | NO_RAW_FILE | 100.0 | Jewish |
 | theravada-vinaya | brahmali | NO_RAW_FILE | 93.86 | Buddhist |
+| shakespeare-cymbeline | shakespeare | NO_RAW_FILE | 96.44 | Greek Literature |
+| shakespeare-the-second-part-of-king-henry | shakespeare | NO_RAW_FILE | 96.45 | Greek Literature |
+| shakespeare-the-tragedy-of-hamlet-prince-of | shakespeare | NO_RAW_FILE | 97.23 | Greek Literature |
+| shakespeare-twelfth-night-or-what-you-will | shakespeare | NO_RAW_FILE | 97.39 | Greek Literature |
+| shakespeare-the-two-gentlemen-of-verona | shakespeare | NO_RAW_FILE | 98.02 | Greek Literature |
+| shakespeare-king-henry-the-eighth | shakespeare | NO_RAW_FILE | 98.03 | Greek Literature |
+| shakespeare-the-tragedy-of-king-lear | shakespeare | NO_RAW_FILE | 98.04 | Greek Literature |
+| shakespeare-king-richard-the-third | shakespeare | NO_RAW_FILE | 98.07 | Greek Literature |
+| shakespeare-pericles-prince-of-tyre | shakespeare | NO_RAW_FILE | 98.12 | Greek Literature |
+| shakespeare-the-tempest | shakespeare | NO_RAW_FILE | 98.12 | Greek Literature |
+| shakespeare-the-merry-wives-of-windsor | shakespeare | NO_RAW_FILE | 98.26 | Greek Literature |
+| shakespeare-the-life-and-death-of-king | shakespeare | NO_RAW_FILE | 98.34 | Greek Literature |
+| shakespeare-the-tragedy-of-titus-andronicus | shakespeare | NO_RAW_FILE | 98.34 | Greek Literature |
+| shakespeare-the-tragedy-of-othello-the-moor | shakespeare | NO_RAW_FILE | 98.41 | Greek Literature |
 | budge-egyptian-future | budge | NO_RAW_FILE | 98.57 | Egyptian |
+| shakespeare-measure-for-measure | shakespeare | NO_RAW_FILE | 98.67 | Greek Literature |
+| shakespeare-the-first-part-of-henry-the | shakespeare | NO_RAW_FILE | 98.67 | Greek Literature |
+| shakespeare-the-tragedy-of-romeo-and-juliet | shakespeare | NO_RAW_FILE | 98.73 | Greek Literature |
+| shakespeare-the-tragedy-of-macbeth | shakespeare | NO_RAW_FILE | 98.95 | Greek Literature |
+| shakespeare-the-third-part-of-king-henry | shakespeare | NO_RAW_FILE | 98.98 | Greek Literature |
+| shakespeare-the-tragedy-of-julius-caesar | shakespeare | NO_RAW_FILE | 98.99 | Greek Literature |
+| shakespeare-as-you-like-it | shakespeare | NO_RAW_FILE | 99.12 | Greek Literature |
+| shakespeare-the-merchant-of-venice | shakespeare | NO_RAW_FILE | 99.17 | Greek Literature |
+| shakespeare-the-two-noble-kinsmen | shakespeare | NO_RAW_FILE | 99.38 | Greek Literature |
+| shakespeare-the-taming-of-the-shrew | shakespeare | NO_RAW_FILE | 99.51 | Greek Literature |
+| shakespeare-the-comedy-of-errors | shakespeare | NO_RAW_FILE | 99.55 | Greek Literature |
+| shakespeare-the-tragedy-of-antony-and-cleopatra | shakespeare | NO_RAW_FILE | 99.63 | Greek Literature |
+| shakespeare-the-first-part-of-king-henry | shakespeare | NO_RAW_FILE | 99.73 | Greek Literature |
+| shakespeare-the-tragedy-of-coriolanus | shakespeare | NO_RAW_FILE | 99.84 | Greek Literature |
 | tanakh | masoretic | NO_RAW_FILE | 99.88 | Jewish |
 | quran | arberry | NO_RAW_FILE | 99.98 | Islam |
 
-## Unverified by proof (skipped / no proof entry) (14)
+## Unverified by proof (skipped / no proof entry) (22)
 
 | text_id | translation_id | source | fidelity | tradition |
 |---|---|---|---|---|
+| epictetus-discourses-higginson | higginson-1866 | OLL.libertyfund.org |  | Stoic |
+| epictetus-fragments | higginson-1866 | OLL.libertyfund.org |  | Stoic |
+| kierkegaard-selections-hollander | hollander | Gutenberg.org |  | Modern Philosophy |
+| arabian-nights-lane | lane | Gutenberg.org |  | Persian Literature |
+| enchiridion | higginson-1866 | OLL.libertyfund.org |  | Stoic |
+| seneca-morals | lestrange | Gutenberg.org |  | Stoic |
 | buddhacarita-cowell | e-b-cowell | OTHER |  | Buddhist |
 | buddhacarita-cowell-book-2 | e-b-cowell | OTHER |  | Buddhist |
 | buddhacarita-cowell-book-3 | e-b-cowell | OTHER |  | Buddhist |
@@ -128,7 +170,9 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 | bible | murdock-peshitta-new-testament | crosswire.org |  | Christian |
 | bible | tischendorf-greek-new-testament | morphgnt.org |  | Christian |
 | bible | emphatic-diaglott-interlinear-1864 | studybible.info |  | Christian |
+| chrysostom-homilies-john-hebrews | ccel-schaff | ccel.org |  | Christian |
 | bhagavad-gita | telang | SacredTexts.com |  | Hindu |
+| jaina-sutras-part1 | jacobi | SacredTexts.com |  | Jain |
 
 ## Needs cleanup: proven below 99% fidelity (88)
 
@@ -161,40 +205,40 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 | tagore-home-world | tagore | Gutenberg.org | 96.23 | Hindu |
 | aristotle-poetics | butcher | Gutenberg.org | 96.43 | Greek Philosophy |
 | prolegomena-to-the-history-of-israel-julius-wellhausen | anonymous | Gutenberg.org | 96.43 | Jewish |
-| shakespeare-cymbeline | shakespeare | Gutenberg.org | 96.44 | English Literature |
-| shakespeare-the-second-part-of-king-henry | shakespeare | Gutenberg.org | 96.45 | English Literature |
+| shakespeare-cymbeline | shakespeare | NO_RAW_FILE | 96.44 | Greek Literature |
+| shakespeare-the-second-part-of-king-henry | shakespeare | NO_RAW_FILE | 96.45 | Greek Literature |
 | book-of-enoch | charles | SacredTexts.com | 96.55 | Jewish |
 | new-light-alchymie-sedziwoj | french | Gutenberg.org | 96.87 | Hermetic |
 | cicero-brutus | jones | Gutenberg.org | 96.96 | Roman Philosophy |
 | spinoza-improvement | elwes | Gutenberg.org | 97.09 | Modern Philosophy |
 | origin-pyramid-staniland-wake | staniland-wake | SacredTexts.com | 97.13 | Hermetic |
 | yajur-veda-white-griffith | griffith-white | SacredTexts.com | 97.18 | Hindu |
-| shakespeare-the-tragedy-of-hamlet-prince-of | shakespeare | Gutenberg.org | 97.23 | English Literature |
+| shakespeare-the-tragedy-of-hamlet-prince-of | shakespeare | NO_RAW_FILE | 97.23 | Greek Literature |
 | jerahmeel-gaster | gaster | SacredTexts.com | 97.25 | Jewish |
 | vedic-hymns-part2 | oldenberg | SacredTexts.com | 97.36 | Hindu |
-| shakespeare-twelfth-night-or-what-you-will | shakespeare | Gutenberg.org | 97.39 | English Literature |
+| shakespeare-twelfth-night-or-what-you-will | shakespeare | NO_RAW_FILE | 97.39 | Greek Literature |
 | demonology-witchcraft-scott | scott | SacredTexts.com | 97.67 | Hermetic |
 | shakespeare-the-winters-tale | shakespeare | Gutenberg.org | 97.96 | English Literature |
 | vedic-hymns-part1 | muller-vedic | SacredTexts.com | 97.97 | Hindu |
 | upayika-dhammadinna | dhammadinna | Suttacentral.net | 98.0 | Buddhist |
-| shakespeare-the-two-gentlemen-of-verona | shakespeare | Gutenberg.org | 98.02 | English Literature |
-| shakespeare-king-henry-the-eighth | shakespeare | Gutenberg.org | 98.03 | English Literature |
+| shakespeare-the-two-gentlemen-of-verona | shakespeare | NO_RAW_FILE | 98.02 | Greek Literature |
+| shakespeare-king-henry-the-eighth | shakespeare | NO_RAW_FILE | 98.03 | Greek Literature |
 | morals-dogma-pike | pike | SacredTexts.com | 98.04 | Hermetic |
-| shakespeare-the-tragedy-of-king-lear | shakespeare | Gutenberg.org | 98.04 | English Literature |
-| shakespeare-king-richard-the-third | shakespeare | Gutenberg.org | 98.07 | English Literature |
+| shakespeare-the-tragedy-of-king-lear | shakespeare | NO_RAW_FILE | 98.04 | Greek Literature |
+| shakespeare-king-richard-the-third | shakespeare | NO_RAW_FILE | 98.07 | Greek Literature |
 | the-canterbury-tales-other-works-of-chaucer-geoffery-chaucer | anonymous | SacredTexts.com | 98.1 | English Literature |
 | shankara-select-works | venkataramanan | SacredTexts.com | 98.11 | Hindu |
 | shakespeare-loves-labours-lost | shakespeare | Gutenberg.org | 98.12 | English Literature |
-| shakespeare-pericles-prince-of-tyre | shakespeare | Gutenberg.org | 98.12 | English Literature |
-| shakespeare-the-tempest | shakespeare | Gutenberg.org | 98.12 | English Literature |
+| shakespeare-pericles-prince-of-tyre | shakespeare | NO_RAW_FILE | 98.12 | Greek Literature |
+| shakespeare-the-tempest | shakespeare | NO_RAW_FILE | 98.12 | Greek Literature |
 | frege-foundations-arithmetic | frege | Gutenberg.org | 98.16 | Modern Philosophy |
 | pirke-avot | gorfinkle | Gutenberg.org | 98.21 | Jewish |
 | the-sayings-of-the-jewish-fathers-pirke-avot-joseph-gorfinkl | anonymous | Gutenberg.org | 98.25 | Jewish |
-| shakespeare-the-merry-wives-of-windsor | shakespeare | Gutenberg.org | 98.26 | English Literature |
+| shakespeare-the-merry-wives-of-windsor | shakespeare | NO_RAW_FILE | 98.26 | Greek Literature |
 | upanishads | muller | SacredTexts.com | 98.29 | Hindu |
-| shakespeare-the-life-and-death-of-king | shakespeare | Gutenberg.org | 98.34 | English Literature |
-| shakespeare-the-tragedy-of-titus-andronicus | shakespeare | Gutenberg.org | 98.34 | English Literature |
-| shakespeare-the-tragedy-of-othello-the-moor | shakespeare | Gutenberg.org | 98.41 | English Literature |
+| shakespeare-the-life-and-death-of-king | shakespeare | NO_RAW_FILE | 98.34 | Greek Literature |
+| shakespeare-the-tragedy-of-titus-andronicus | shakespeare | NO_RAW_FILE | 98.34 | Greek Literature |
+| shakespeare-the-tragedy-of-othello-the-moor | shakespeare | NO_RAW_FILE | 98.41 | Greek Literature |
 | shakespeare-alls-well-that-ends-well | shakespeare | Gutenberg.org | 98.44 | English Literature |
 | studies-in-religious-personality-harold-begbie | anonymous | Gutenberg.org | 98.44 | Modern Philosophy |
 | landmarks-of-scientific-socialism-anti-duehring-engels | anonymous | Gutenberg.org | 98.52 | Political Philosophy |
@@ -203,11 +247,11 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 | shakespeare-complete | shakespeare | Gutenberg.org | 98.62 | English Literature |
 | sacred-books-east-wilson | wilson | Gutenberg.org | 98.63 | Comparative Religion |
 | goldziher-hebrew-mythology | martineau | Gutenberg.org | 98.64 | Jewish |
-| shakespeare-measure-for-measure | shakespeare | Gutenberg.org | 98.67 | English Literature |
-| shakespeare-the-first-part-of-henry-the | shakespeare | Gutenberg.org | 98.67 | English Literature |
+| shakespeare-measure-for-measure | shakespeare | NO_RAW_FILE | 98.67 | Greek Literature |
+| shakespeare-the-first-part-of-henry-the | shakespeare | NO_RAW_FILE | 98.67 | Greek Literature |
 | kojiki-chamberlain | chamberlain | SacredTexts.com | 98.68 | Shinto |
 | kant-critique-practical-reason | abbott | Gutenberg.org | 98.69 | Modern Philosophy |
-| shakespeare-the-tragedy-of-romeo-and-juliet | shakespeare | Gutenberg.org | 98.73 | English Literature |
+| shakespeare-the-tragedy-of-romeo-and-juliet | shakespeare | NO_RAW_FILE | 98.73 | Greek Literature |
 | dasgupta-indian-philosophy | dasgupta | Gutenberg.org | 98.74 | Hindu |
 | georgian-folk-tales | wardrop | SacredTexts.com | 98.76 | Slavic |
 | newman-essays | newman-grammar-of-assent | Gutenberg.org | 98.79 | Christian |
@@ -216,10 +260,10 @@ Two axes: **fidelity** = did ingestion copy the raw faithfully (measured by the 
 | wissenschaft-der-logik-band-1-hegel | anonymous | Gutenberg.org | 98.84 | Modern Philosophy |
 | enchiridion | higginson | Gutenberg.org | 98.85 | Stoic |
 | sherab-dongbu-campbell | campbell | SacredTexts.com | 98.92 | Buddhist |
-| shakespeare-the-tragedy-of-macbeth | shakespeare | Gutenberg.org | 98.95 | English Literature |
+| shakespeare-the-tragedy-of-macbeth | shakespeare | NO_RAW_FILE | 98.95 | Greek Literature |
 | oera-linda-sandbach | sandbach | SacredTexts.com | 98.95 | Norse |
-| shakespeare-the-third-part-of-king-henry | shakespeare | Gutenberg.org | 98.98 | English Literature |
-| shakespeare-the-tragedy-of-julius-caesar | shakespeare | Gutenberg.org | 98.99 | English Literature |
+| shakespeare-the-third-part-of-king-henry | shakespeare | NO_RAW_FILE | 98.98 | Greek Literature |
+| shakespeare-the-tragedy-of-julius-caesar | shakespeare | NO_RAW_FILE | 98.99 | Greek Literature |
 | shinran-lloyd | lloyd | SacredTexts.com | 98.99 | Buddhist |
 | the-works-of-hsuntze-homer-dubs-1928 | anonymous | Internetarchive | 98.99 | Confucian |
 
