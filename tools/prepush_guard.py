@@ -416,6 +416,29 @@ def main():
                  "broken:\n" + (pv.stdout + pv.stderr).strip())
         pv_state = pv.stdout.strip().splitlines()[-1] if pv.stdout.strip() else pv_state
 
+    # 12. citation permanence (2026-08-10). The archive promises that a
+    #     citation keeps resolving. verify_permanence.py checks that promise
+    #     against the live corpus — and it was wired into NOTHING: not this
+    #     guard, not build_public, not rebuild_all. Its last committed run was
+    #     2026-05-14, so when a June cleanup removed the passage a test
+    #     citation pointed at, the failure sat unseen for three months.
+    #     A promise nothing verifies is not a promise. 0.7s, so there is no
+    #     argument for running it anywhere but here.
+    #     --check because a guard that rewrites the tree it gates would leave
+    #     uncommitted report files behind on every push.
+    pm_state = "permanence unchecked"
+    pm_script = REPO.parent / "05_scripts" / "verify_permanence.py"
+    if pm_script.exists():
+        pm = subprocess.run([sys.executable, "-X", "utf8", str(pm_script), "--check"],
+                            capture_output=True, text=True,
+                            encoding="utf-8", errors="replace")
+        out = (pm.stdout + pm.stderr).strip()
+        if pm.returncode != 0:
+            fail("Citation permanence (12) FAILED — a URN the archive promises "
+                 "will keep resolving does not:\n" + out)
+        last = [ln for ln in pm.stdout.strip().splitlines() if ln.startswith("Result:")]
+        pm_state = "permanence " + (last[-1].replace("Result: ", "") if last else "ok")
+
     wd_state = (f"{wd['counts']['total']} withdrawn "
                 f"({wd['counts']['retired']} retired + "
                 f"{wd['counts']['restricted']} restricted), "
@@ -426,6 +449,7 @@ def main():
           f"boundary clean; {hashed} artifact hashes verified; "
           f"reachability OK; separation: {sep_state}; "
           f"withdrawal: {wd_state}; {pv_state}; {cd_state}; "
+          f"{pm_state}; "
           f"finalization ledger derived [{fin_state}] ({elapsed}).")
 
 
