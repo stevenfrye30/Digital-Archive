@@ -2611,35 +2611,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "buddha-life-herold",
-      "title": "The Life of Buddha",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "buddha-life-herold_blum.json",
-      "source": "sacredtexts",
-      "author": [
-        "A. Ferdinand Herold"
-      ],
-      "translator": [
-        "Paul Blum"
-      ],
-      "year": 1922,
-      "translation_label": "The Life of Buddha",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Life of Buddha* Paul Blum (1922). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "gaudama-burmese-vol1",
       "title": "The Life or Legend of Gaudama, the Buddha of the Burmese, Vol 1",
       "tradition": "Buddhist",
@@ -12745,35 +12716,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "ancient-jewish-proverbs",
-      "title": "Ancient Jewish Proverbs",
-      "tradition": "Jewish",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "ancient-jewish-proverbs_cohen.json",
-      "source": "sacredtexts",
-      "author": [
-        "Abraham Cohen"
-      ],
-      "translator": [
-        "Abraham Cohen"
-      ],
-      "year": 1911,
-      "translation_label": "Ancient Jewish Proverbs",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Ancient Jewish Proverbs* Abraham Cohen (1911). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "josephus-antiquities",
       "title": "Antiquities of the Jews",
       "tradition": "Jewish",
@@ -19665,7 +19607,7 @@
         "Plutarch"
       ],
       "translator": [
-        "Plutarch"
+        "A. R. Shilleto"
       ],
       "year": 1898,
       "translation_label": "Morals",
@@ -30500,6 +30442,66 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "G.E. Phillips — LoC name authority reads \"Phillips, Godfrey E. (Godfrey Edward), 1878-1963\"; an independent check reads 1878-1961. The two disagree by two years and agree on what decides it: he died after 1956, so not worldwide-PD until 2032 or 2034. The registry had recorded 1947, which cleared the bar and was wrong — this record was found by the 2026-08-11 re-derivation of the 543 gutendex-sourced dates, NOT by the suspect sweep, because only the authority crossed the bar. CLEAN EDITION POSSIBLE: the Tēvāram hymns of the Nāyanārs are ancient, so any earlier PD translation clears the bar.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "ancient-jewish-proverbs",
+      "title": "Ancient Jewish Proverbs",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "ancient-jewish-proverbs_cohen.json",
+      "source": "sacredtexts",
+      "author": [
+        "Abraham Cohen"
+      ],
+      "translator": [
+        "Abraham Cohen"
+      ],
+      "year": 1911,
+      "translation_label": "Ancient Jewish Proverbs",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "Abraham Cohen (1887-1957), AUTHOR-compiler — the Soncino Books of the Bible editor, whose 1911 Wisdom of the East collection this is (published at 24; the lifespan fits). Not worldwide-PD until 2028. Death year verified 2026-08-16 against the LoC form \"Cohen, A. (Abraham), 1887-1957\" and his standard biography, independently of any catalogue join. A SHORT WANT: the bar lifts in under two years. CLEAN EDITION POSSIBLE: the proverbs are Talmudic; any earlier PD collection would clear the bar.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "buddha-life-herold",
+      "title": "The Life of Buddha",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "buddha-life-herold_blum.json",
+      "source": "sacredtexts",
+      "author": [
+        "A. Ferdinand Herold"
+      ],
+      "translator": [
+        "Paul Blum"
+      ],
+      "year": 1922,
+      "translation_label": "The Life of Buddha",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "Paul C. Blum (1898-1981), translator — the 1927 Boni & Liveright English rendering of A.-Ferdinand Herold\\u2019s 1922 French original. Not worldwide-PD until 2052. Death year verified 2026-08-16 against the LoC form \"Blum, Paul C. (Paul Charles), 1898-1981\" and Wikipedia. CLEAN EDITION POSSIBLE: Herold\\u2019s French (d. 1940, PD 2011) is separate from Blum\\u2019s English — an earlier PD translation of Herold, or any PD life of the Buddha, is the want.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,

@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 197,
+    "total": 199,
     "retired": 80,
-    "restricted": 50,
+    "restricted": 52,
     "relocated": 5,
     "no_source": 1
   },
@@ -53,6 +53,17 @@
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
       "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "ancient-jewish-proverbs_cohen.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/jewish/ancient-jewish-proverbs",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
@@ -229,6 +240,17 @@
       "reason": "duplicate",
       "reason_note": "retired in the dedup-retired-2026-07-02 lane; source parked at 01_library/_retired/dedup-retired-2026-07-02/",
       "reason_source": "01_library/_retired/",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "buddha-life-herold_blum.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/buddha-life-herold",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },

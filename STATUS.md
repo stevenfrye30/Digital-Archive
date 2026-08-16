@@ -30,8 +30,8 @@ generated reader at `03_web_app/`.
 | Measure | Count | Source of truth |
 |---|---:|---|
 | Index entries (web app reader) | **1,112** | `03_web_app/data/_generated/index.json` (entry count) — 2026-08-07: +5 derived Shakespeare play work records (Much Ado, Troilus, Timon, 2H4, King John; provider `shakespeare-complete-plays`) |
-| — of which public | **980** | same (`restricted` ≠ true) |
-| — of which restricted (locked, metadata-only) | **132** | same (`restricted` = true) — incl. nostradamus-roberts (uncertain-copyright, withdrawn 2026-07-28: body does not match its stated Ward 1891 source) |
+| — of which public | **978** | same (`restricted` ≠ true) — 2026-08-16: −2, the rights-queue exposures withdrawn (ancient-jewish-proverbs, Cohen d. 1957 → PD 2028; buddha-life-herold, Blum d. 1981 → PD 2052) |
+| — of which restricted (locked, metadata-only) | **134** | same (`restricted` = true) — incl. nostradamus-roberts (uncertain-copyright, withdrawn 2026-07-28: body does not match its stated Ward 1891 source) |
 | Distinct ids | 1,087 | unique `id` — 31 ids legitimately shared across 120 entries (Jātaka ×8, bilingual pairs, multi-volume works). *(Re-derived 2026-08-07; the previous 1,106 figure predated several retirement lanes and was stale.)* |
 | `text.json` files on disk | 1,055 *(2026-07-27)* | `01_library/library/texts/**/text.json` |
 | Daily-reading whitelist | ~198 | `05_scripts/daily_passage.py` `WHITELIST` |

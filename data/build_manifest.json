@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-16T14:06:16Z",
+ "generated": "2026-08-16T14:22:27Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "9e411c2e84da9bfa4056dc07b4b7d6a1ceb3bb9c",
- "library_fingerprint": "sha256:f626148eb410311b70f43cde35fb9a32771ecab433801cd61a3abe068d7b6e96",
+ "exporter_rev": "efc2893d13639f17fad54cba84cf7e792f740afd",
+ "library_fingerprint": "sha256:bba5b868bac8946af801cb4772f8c49b3be95f4d81586068f9867f2a258635e5",
  "counts": {
   "entries": 1112,
-  "public": 980,
-  "restricted": 132
+  "public": 978,
+  "restricted": 134
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -310,9 +310,9 @@
    "data_hash": "sha256:8b80a39a2876597f0f87a3c1eca60f36ecaefdd56119eee267459ab146c7655f",
    "data_bytes": 66099,
    "passages": 926,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:20Z"
   },
@@ -2073,9 +2073,9 @@
    "data_hash": "sha256:f251106c85a7ce13588f9830838a7c7e0967225be4e2bdf9aa44953761f0b033",
    "data_bytes": 124600,
    "passages": 1478,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:42Z"
   },
@@ -7800,16 +7800,16 @@
    "exported": "2026-07-10T17:31:08Z"
   },
   "morals-plutarch_anonymous": {
-   "source_hash": "sha256:7519d656b2e9d52f10d5afde8c7afc71fd84db5a1b3bc858d56a2441809eef8b",
+   "source_hash": "sha256:26301536f6257943fec860b5450b47f9177f45e1ad51fb0f67d5e94f7a5ca463",
    "data_file": "morals-plutarch_anonymous.json.gz",
-   "data_hash": "sha256:dc30e67dc7f1a8e65dee1cc303626bee68ee86a8e0b4ac20f2b4699a11803042",
-   "data_bytes": 375232,
+   "data_hash": "sha256:86d4ff98c75cb869e35dd3cd8a47168ff698e4e276c8241190c6bfc621eb7a19",
+   "data_bytes": 375244,
    "passages": 2462,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-15T19:37:49Z"
+   "exported": "2026-08-16T14:19:30Z"
   },
   "more-translations-chinese-waley_waley": {
    "source_hash": null,
