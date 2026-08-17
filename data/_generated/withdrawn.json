@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 199,
+    "total": 202,
     "retired": 80,
-    "restricted": 52,
+    "restricted": 55,
     "relocated": 5,
     "no_source": 1
   },
@@ -693,6 +693,28 @@
         "clean_edition": null
       }
     },
+    "ginzberg-legends-vol3_szold.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/jewish/ginzberg-legends-vol3",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "ginzberg-legends-vol4_szold.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/jewish/ginzberg-legends-vol4",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "giordano-bruno_anonymous.json": {
       "disposition": "scope",
       "mechanism": "suppressed",
@@ -1325,6 +1347,17 @@
       "reason": "duplicate",
       "reason_note": "2026-07-28 dedup lane (Task 25 close): 12 duplicate rows retired — survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md.",
       "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "oedipus-king-of-thebes-sophocles_anonymous.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/greek-literature/oedipus-king-of-thebes-sophocles",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },

@@ -9393,35 +9393,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "oedipus-king-of-thebes-sophocles",
-      "title": "Oedipus King of Thebes",
-      "tradition": "Greek Literature",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "oedipus-king-of-thebes-sophocles_anonymous.json",
-      "source": "gutenberg",
-      "author": [
-        "Sophocles"
-      ],
-      "translator": [
-        "Sophocles"
-      ],
-      "year": 1900,
-      "translation_label": "Oedipus King of Thebes",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*Oedipus King of Thebes* by Sophocles. Translated by Sophocles (1900). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "migration-fables-muller",
       "title": "On the Migration of Fables",
       "tradition": "Greek Literature",
@@ -13464,64 +13435,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*The Legends of the Jews, Vol 2* Henrietta Szold (1909). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "ginzberg-legends-vol3",
-      "title": "The Legends of the Jews, Vol 3",
-      "tradition": "Jewish",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "ginzberg-legends-vol3_szold.json",
-      "source": "gutenberg",
-      "author": [
-        "Louis Ginzberg"
-      ],
-      "translator": [
-        "Henrietta Szold"
-      ],
-      "year": 1909,
-      "translation_label": "The Legends of the Jews, Vol 3",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Legends of the Jews, Vol 3* Henrietta Szold (1909). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "ginzberg-legends-vol4",
-      "title": "The Legends of the Jews, Vol 4",
-      "tradition": "Jewish",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "ginzberg-legends-vol4_szold.json",
-      "source": "gutenberg",
-      "author": [
-        "Louis Ginzberg"
-      ],
-      "translator": [
-        "Henrietta Szold"
-      ],
-      "year": 1909,
-      "translation_label": "The Legends of the Jews, Vol 4",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Legends of the Jews, Vol 4* Henrietta Szold (1909). Via Project Gutenberg.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -30502,6 +30415,96 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "Paul C. Blum (1898-1981), translator — the 1927 Boni & Liveright English rendering of A.-Ferdinand Herold\\u2019s 1922 French original. Not worldwide-PD until 2052. Death year verified 2026-08-16 against the LoC form \"Blum, Paul C. (Paul Charles), 1898-1981\" and Wikipedia. CLEAN EDITION POSSIBLE: Herold\\u2019s French (d. 1940, PD 2011) is separate from Blum\\u2019s English — an earlier PD translation of Herold, or any PD life of the Buddha, is the want.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "oedipus-king-of-thebes-sophocles",
+      "title": "Oedipus King of Thebes",
+      "tradition": "Greek Literature",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "oedipus-king-of-thebes-sophocles_anonymous.json",
+      "source": "gutenberg",
+      "author": [
+        "Sophocles"
+      ],
+      "translator": [
+        "Gilbert Murray"
+      ],
+      "year": 1911,
+      "translation_label": "Oedipus King of Thebes",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": "Gilbert Murray (1866-1957), translator — the record\\u2019s own field said \\u2018Sophocles\\u2019, the self-translating shape that hid Shilleto; the PG ebook 27673 bibrec names Murray. Not worldwide-PD until 2028 — A SHORT WANT. Death year verified 2026-08-17 against the PG bibliographic record and LoC. CLEAN EDITION POSSIBLE: Sophocles is ancient — Jebb (d. 1905) and Plumptre (d. 1891) both clear the bar; both are recorded as acquisition wants.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "ginzberg-legends-vol3",
+      "title": "The Legends of the Jews, Vol 3",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "ginzberg-legends-vol3_szold.json",
+      "source": "gutenberg",
+      "author": [
+        "Louis Ginzberg"
+      ],
+      "translator": [
+        "Paul Radin"
+      ],
+      "year": 1911,
+      "translation_label": "The Legends of the Jews, Vol 3",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "Paul Radin (1883-1959), translator — the record\\u2019s own field said \\u2018Szold\\u2019, but the volume\\u2019s title page (JPS 1911) reads \\u2018Translated from the German Manuscript by Paul Radin\\u2019. Not worldwide-PD until 2030. Verified 2026-08-17 against the title page and the LoC form \\u2018Radin, Paul, 1883-1959\\u2019. This record had been FINALIZED on the wrong-person gate; the verdict was corrected at its source before this withdrawal. NO CLEAN EDITION: Radin\\u2019s is the only English of vols 3-4 — the work becomes the want.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "ginzberg-legends-vol4",
+      "title": "The Legends of the Jews, Vol 4",
+      "tradition": "Jewish",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "ginzberg-legends-vol4_szold.json",
+      "source": "gutenberg",
+      "author": [
+        "Louis Ginzberg"
+      ],
+      "translator": [
+        "Paul Radin"
+      ],
+      "year": 1913,
+      "translation_label": "The Legends of the Jews, Vol 4",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "Paul Radin (1883-1959), translator — the record\\u2019s own field said \\u2018Szold\\u2019; the series\\u2019 vols 3-4 title pages read \\u2018Translated from the German Manuscript by Paul Radin\\u2019 and PG ebook 2882 lists Radin. Not worldwide-PD until 2030. Verified 2026-08-17. NO CLEAN EDITION: Radin\\u2019s is the only English of vols 3-4 — the work becomes the want.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,

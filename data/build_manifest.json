@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-17T15:00:23Z",
+ "generated": "2026-08-17T17:35:04Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "edf7850d744648df7f9531d5f84be5688b988864",
- "library_fingerprint": "sha256:425480b13a09f397e117ba36ad53cc551bda9ae1cc28df2a3192b336252a61b2",
+ "exporter_rev": "e6b5b976f9faaf485a00ce147734234f500733ea",
+ "library_fingerprint": "sha256:6f6d39bd29040854fde52bca445cf3b8749080aefb1cabae2de6cc5603aae4f2",
  "counts": {
   "entries": 1112,
-  "public": 978,
-  "restricted": 134
+  "public": 975,
+  "restricted": 137
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -4558,26 +4558,26 @@
    "exported": "2026-07-10T17:30:52Z"
   },
   "ginzberg-legends-vol3_szold": {
-   "source_hash": "sha256:b124b97d80a48624fb4c5e4f66fa7c30d941b4d90da4566ff0c7fa0a8be44ee6",
+   "source_hash": "sha256:712ee5e8d97ab7ea5f548d81b5f611de8e46b635948d7dae6f46facf4b2f9a72",
    "data_file": "ginzberg-legends-vol3_szold.json.gz",
    "data_hash": "sha256:45cecaa2b725639510c604c85f307a2804cf44e13b01aff3005053f754c323a3",
    "data_bytes": 283729,
    "passages": 777,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:52Z"
   },
   "ginzberg-legends-vol4_szold": {
-   "source_hash": "sha256:f973d074eb189dab835e041cdf526f2e493a427376fb8df7489ba1e7cbeeaf84",
+   "source_hash": "sha256:d00beb267e6f800b453dc38ba41b97af1378a2c1b53c8d4bf091fc70fe0ae082",
    "data_file": "ginzberg-legends-vol4_szold.json.gz",
    "data_hash": "sha256:1c36f7d252cd51d9484353df626ec97c7142f68188f5889a7dc44b9d71abe79f",
    "data_bytes": 260381,
    "passages": 913,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:52Z"
   },
@@ -8341,14 +8341,14 @@
    "exported": "2026-07-10T17:31:11Z"
   },
   "oedipus-king-of-thebes-sophocles_anonymous": {
-   "source_hash": "sha256:006485d3d3196b2e223e4f2e51fba8618a5276e7a7f64f08b75c22bed8f5ee36",
+   "source_hash": "sha256:c3879bcfa130f1bec58db2e6d5d83524d798d9415d5b4ecab57d657419f6b9de",
    "data_file": "oedipus-king-of-thebes-sophocles_anonymous.json.gz",
    "data_hash": "sha256:9574b7ad06769b1ea918a1d21c812d738b077fcd5ff8ace3386d11c11b24c7ce",
    "data_bytes": 55213,
    "passages": 1158,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-08-17T14:23:34Z"
   },
@@ -9805,16 +9805,16 @@
    "exported": "2026-08-10T04:34:13Z"
   },
   "religion-babylonia-assyria-jastrow_pinches": {
-   "source_hash": "sha256:366b3019368c924681138a7d65c6fad4ef2a1d90332fa2513b607b57421ebaaa",
+   "source_hash": "sha256:d225b87a0b1ec39203ed07da8072efd9cd3c908b53fd40934b25002319b1f0fb",
    "data_file": "religion-babylonia-assyria-jastrow_pinches.json.gz",
-   "data_hash": "sha256:72effcdce2c901a305572bd615d3cccbcb9c0d1f453cd3c1b25e64cec8deb6d9",
-   "data_bytes": 59296,
+   "data_hash": "sha256:b5ffc52e2c020a73d7abf07db62b8d9ae1055848ea726a3eb4238cc214d05639",
+   "data_bytes": 59289,
    "passages": 335,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-09T14:15:36Z"
+   "exported": "2026-08-17T17:33:05Z"
   },
   "religion-egypt-petrie_petrie": {
    "source_hash": "sha256:5b856e1c3feacbbd17347dc48c35d9de90e6632f96ceacd0ff1ee39252bd6153",
