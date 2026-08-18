@@ -2,11 +2,11 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 202,
-    "retired": 80,
-    "restricted": 55,
+    "total": 204,
+    "retired": 81,
+    "restricted": 56,
     "relocated": 5,
-    "no_source": 1
+    "no_source": 2
   },
   "withdrawn": {
     "a-dweller-on-two-planets-frederick-oliver-189_anonymous.json": {
@@ -672,6 +672,17 @@
       "reason": "wrong-language",
       "reason_note": "GERMAN body (Die Grundlagen der Arithmetik); no PD English exists (Austin 1950)",
       "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "genji-sacred-tree_waley.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/shinto/genji-sacred-tree",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
@@ -1911,6 +1922,17 @@
       "reason": "unclassified",
       "reason_note": "1900 Colonial Press ANTHOLOGY (ed. Epiphanius Wilson — 'Sam Beal' is broken metadata) of selections the archive holds canonically (Vedic hymns, Avesta, Dhammapada, Upanishads, Qur'an)",
       "reason_source": "plans/task85_survey.md",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "sacred-tree-philpot_philpot.json": {
+      "disposition": "retired",
+      "mechanism": "no-source",
+      "source_location": null,
+      "preserved_at": null,
+      "reason": "superseded",
+      "reason_note": "2026-08-17 title-collision withdrawal: the body is Waley's Genji Part Two (PG #67111, 1926), acquired under Philpot's #55502 metadata. Identity corrected to genji-sacred-tree_waley.json (restricted — Waley d. 1966, PD 2037); the old route aliases to the named stub. Chain: plans/SACRED_TREE_IDENTITY_2026-08-17.md, plans/finalize_sacred-tree-withdrawal_2026-08-17.md.",
+      "reason_source": "plans/finalize_sacred-tree-withdrawal_2026-08-17.md",
       "pd_year": null,
       "pd_year_source": null
     },

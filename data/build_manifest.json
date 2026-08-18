@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-17T23:40:49Z",
+ "generated": "2026-08-18T01:39:18Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "b665a06b48a4b095159885dadefa95da7e4cf768",
- "library_fingerprint": "sha256:b30087e2902e6f7b58a4def6f8ffebde33c1df5353218d693805e4e78c9bb967",
+ "exporter_rev": "c8c795bd2310f55029db4242b6e349c4b48416fb",
+ "library_fingerprint": "sha256:9f6e9a9efa1959a4219cedb6914b505312fa843a508ad2ab050a9442ccd55da5",
  "counts": {
   "entries": 1112,
-  "public": 975,
-  "restricted": 137
+  "public": 974,
+  "restricted": 138
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -4452,6 +4452,19 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:51Z"
+  },
+  "genji-sacred-tree_waley": {
+   "source_hash": null,
+   "data_file": "genji-sacred-tree_waley.json.gz",
+   "data_hash": "sha256:f42c9999829ee4f9e4a60f63bb84b45bfb7e1411db737c4f9c9499473bbc10f0",
+   "data_bytes": 208281,
+   "passages": 645,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
+   "apparatus": false,
+   "exported": "2026-07-10T17:31:20Z",
+   "source_note": "no canonical dir (restricted local body)"
   },
   "ghazzali-confessions_field": {
    "source_hash": "sha256:e22b393789bb36d5b0d0e57ab0c9b6a81cdb03d142247e53eeb71f2a2849f618",
@@ -10211,18 +10224,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:20Z",
    "source_note": "no canonical dir (restricted local body)"
-  },
-  "sacred-tree-philpot_philpot": {
-   "source_hash": "sha256:23830a75aafad82028f27b46f6751e95da6fd3653f2ea99b7b32756dca085759",
-   "data_file": "sacred-tree-philpot_philpot.json.gz",
-   "data_hash": "sha256:f42c9999829ee4f9e4a60f63bb84b45bfb7e1411db737c4f9c9499473bbc10f0",
-   "data_bytes": 208281,
-   "passages": 645,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:31:20Z"
   },
   "salaman-absal-fitzgerald_fitzgerald": {
    "source_hash": "sha256:e2f0d84cf870861101820718eca98a2d31c07304156ba3c1309313d05d31bdbb",

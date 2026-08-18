@@ -14726,6 +14726,11 @@ const LEGACY_TEXT_ALIASES = {
     'arabian-nights-lane_lane.json',
   'seneca-morals_aubrey-stewart.json':
     'seneca-morals_lestrange.json',
+  // 2026-08-17: identity corrected — the record acquired under Philpot's
+  // metadata is Waley's Genji Part Two (title collision); the true-identity
+  // record is restricted, so the old route resolves to a NAMED stub.
+  'sacred-tree-philpot_philpot.json':
+    'genji-sacred-tree_waley.json',
 };
 function resolveLegacyText(v) {
   return (v && LEGACY_TEXT_ALIASES[v]) || v;

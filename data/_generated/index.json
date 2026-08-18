@@ -3535,35 +3535,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "sacred-tree-philpot",
-      "title": "The Sacred Tree",
-      "tradition": "Celtic",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "sacred-tree-philpot_philpot.json",
-      "source": "gutenberg",
-      "author": [
-        "J.H. Philpot"
-      ],
-      "translator": [
-        "J.H. Philpot"
-      ],
-      "year": 1897,
-      "translation_label": "The Sacred Tree",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*The Sacred Tree* J.H. Philpot (1897). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "lang-fairy-violet",
       "title": "The Violet Fairy Book",
       "tradition": "Celtic",
@@ -30475,6 +30446,36 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "Paul Radin (1883-1959), translator — the record\\u2019s own field said \\u2018Szold\\u2019, but the volume\\u2019s title page (JPS 1911) reads \\u2018Translated from the German Manuscript by Paul Radin\\u2019. Not worldwide-PD until 2030. Verified 2026-08-17 against the title page and the LoC form \\u2018Radin, Paul, 1883-1959\\u2019. This record had been FINALIZED on the wrong-person gate; the verdict was corrected at its source before this withdrawal. NO CLEAN EDITION: Radin\\u2019s is the only English of vols 3-4 — the work becomes the want.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "genji-sacred-tree",
+      "title": "The Sacred Tree (The Tale of Genji, Part Two)",
+      "tradition": "Shinto",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "genji-sacred-tree_waley.json",
+      "source": "gutenberg",
+      "author": [
+        "Murasaki Shikibu"
+      ],
+      "translator": [
+        "Arthur Waley"
+      ],
+      "year": 1926,
+      "translation_label": "The Sacred Tree (The Tale of Genji, Part Two)",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "Arthur Waley (1889-1966), translator — Houghton Mifflin 1926, PG eBook #67111, the second part of his Tale of Genji. Not worldwide-PD until 2037: the SIXTH member of the Waley HOLD cluster. IDENTITY CORRECTED 2026-08-17: the record was acquired as sacred-tree-philpot under J.H. Philpot’s metadata (‘The Sacred Tree; or, the tree in religion and myth’, PG #55502, 1897) by TITLE COLLISION — the raw’s own PG header names Murasaki and Waley, and the section map matches Waley’s vol-2 chapter sequence. The false metadata is superseded with the error kept; the old route aliases here. The genuine Philpot (1897 imprint, PD by age per the steward’s ruling) is a recorded acquisition want.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
