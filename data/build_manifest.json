@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-18T13:06:59Z",
+ "generated": "2026-08-18T13:56:50Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "2910fe7310e1d9547e09f4df17c31c111c829c18",
- "library_fingerprint": "sha256:3a42dac07c0759c475b4b98024d7135b6d399e817113a43f677f723b094d7266",
+ "exporter_rev": "540905b87fd55e8920247f4c1ef802a68de996ff",
+ "library_fingerprint": "sha256:da3320d702e4f1d3357c3ff575cfd1406d28a1c098457634ca0e9f42710dfee0",
  "counts": {
   "entries": 1112,
-  "public": 972,
-  "restricted": 140
+  "public": 966,
+  "restricted": 146
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -3458,14 +3458,14 @@
    "exported": "2026-08-18T13:04:22Z"
   },
   "diwan-abu-al-ala-nicholson_nicholson-abulala": {
-   "source_hash": "sha256:ca9f785bdf94b3dc5de41960fb8402152f02bca3035e82734cbef892bc4147e4",
+   "source_hash": "sha256:3b113ed2466e688ae742c8f81293a1edf6e220c1e484cabd02a9747268efdb23",
    "data_file": "diwan-abu-al-ala-nicholson_nicholson-abulala.json.gz",
    "data_hash": "sha256:9bd9f980d8b7f3977df3d024d414e8a9e510f6edc45760a9736b33df676c1bb2",
    "data_bytes": 29158,
    "passages": 230,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:48Z"
   },
@@ -4770,9 +4770,9 @@
    "data_hash": "sha256:29d59b09001adf40ec9ecce78d7bdfbc729233af99a327713005a9173170edbd",
    "data_bytes": 17830,
    "passages": 109,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:53Z"
   },
@@ -8037,14 +8037,14 @@
    "exported": "2026-08-11T00:19:14Z"
   },
   "navaho-origin-myths-matthews_matthews": {
-   "source_hash": "sha256:af614011b345da1521bd8635019eee827f90010414fe60dd910ed4c4e3951375",
+   "source_hash": "sha256:ae700803920dda64e8637fb1d858ef389ab7f248f4b27810bcaa9bee157b8d5c",
    "data_file": "navaho-origin-myths-matthews_matthews.json.gz",
    "data_hash": "sha256:1aa6b20983aef72cd4091208181de62fb9b51ec1e20f42ab67c34828de7cad0f",
    "data_bytes": 183328,
    "passages": 1776,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-08-10T03:56:17Z"
   },
@@ -8770,14 +8770,14 @@
    "exported": "2026-08-17T14:39:43Z"
   },
   "philo-judaeus-conybeare_conybeare": {
-   "source_hash": "sha256:18adff7de6ac1a4ef9fc4c273ddd0d7eb70242af8c35cfb08486e9d94e25119b",
+   "source_hash": "sha256:fae78fd098d5b20c857e7bb25987f3600f0415d759ac278b6281af5104f7e572",
    "data_file": "philo-judaeus-conybeare_conybeare.json.gz",
    "data_hash": "sha256:14c0123dd6d8b3e0278361180394e4dd555edcb33dd7fd41e454cf98778d7638",
    "data_bytes": 142451,
    "passages": 388,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-08-17T14:24:02Z"
   },
@@ -10387,14 +10387,14 @@
    "exported": "2026-08-09T14:15:11Z"
   },
   "sayings-confucius-lyall_lyall": {
-   "source_hash": "sha256:e2c4a4264b3a0d3338e625f2647a9b5ae0dc97d37f73faf3ed624490d96f9bbc",
+   "source_hash": "sha256:81256a1142134386ae04542f1022b3ae98fa0a572b5facbde0fa8c3d095f9ecd",
    "data_file": "sayings-confucius-lyall_lyall.json.gz",
    "data_hash": "sha256:0ab3b3c53b866a87b9483fa616f4870486596c7285dd5bc7bc9da45bcf76c522",
    "data_bytes": 70558,
    "passages": 516,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-08-09T14:15:09Z"
   },
@@ -12599,14 +12599,14 @@
    "exported": "2026-07-10T17:31:32Z"
   },
   "trial-christ-cheeseman_cheeseman": {
-   "source_hash": "sha256:783f902585f18705297985139572712a4be0e452a5fbbe154fd48a857a8f983a",
+   "source_hash": "sha256:2a54c55ae1b929e27ce07f050c1b499be3146085c8a677692bdb0a022805e0ee",
    "data_file": "trial-christ-cheeseman_cheeseman.json.gz",
    "data_hash": "sha256:4d2e71f33890e305540d299e9e8ceb0a9c48f91bebaef57d57b33b830f5931cf",
    "data_bytes": 40523,
    "passages": 553,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:31:32Z"
   },

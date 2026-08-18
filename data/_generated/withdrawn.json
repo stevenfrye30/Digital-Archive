@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 208,
+    "total": 214,
     "retired": 83,
-    "restricted": 58,
+    "restricted": 64,
     "relocated": 5,
     "no_source": 4
   },
@@ -475,6 +475,17 @@
         "clean_edition": null
       }
     },
+    "diwan-abu-al-ala-nicholson_nicholson-abulala.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/sufi/diwan-abu-al-ala-nicholson",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "egyptian-myth-legend_mackenzie.json": {
       "disposition": "scope",
       "mechanism": "suppressed",
@@ -774,6 +785,17 @@
       "reason": "duplicate",
       "reason_note": "2026-07-29 buddhist supplement lane: 5 content-verified twins retired (Hearn 100% · Hérold 100% · Kern Lotus 98% · Morris 100% — the Morris stub was ALSO misfiled under Greek Literature; the Sutta Nipāta stub is the same Weimer transcription of Fausböll SBE X with mangled diacritics, 99% accent-folded — SWAPPED for the clean sutta-nipata-sbe_fausboll.json per the ruled Rāmāyaṇa-swap shape). Surviv",
       "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "gospel-of-philip_isenberg.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/gnostic/gospel-of-philip",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
@@ -1299,6 +1321,17 @@
         "clean_edition": null
       }
     },
+    "navaho-origin-myths-matthews_matthews.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/native-american/navaho-origin-myths-matthews",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "nietzsche-antichrist_mencken.json": {
       "disposition": "restricted",
       "mechanism": "suppressed",
@@ -1458,6 +1491,17 @@
       "source_location": "01_library/library/texts/sacred/buddhist/patimokkha-tibetan",
       "preserved_at": null,
       "reason": "uncertain-copyright",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "philo-judaeus-conybeare_conybeare.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/jewish/philo-judaeus-conybeare",
+      "preserved_at": null,
+      "reason": "copyrighted",
       "reason_note": null,
       "reason_source": null,
       "pd_year": null,
@@ -1977,6 +2021,17 @@
       "reason": "duplicate",
       "reason_note": "2026-07-29 hindu supplement lane: 6 content-verified twins retired (100%/89% overlaps; survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md)",
       "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "sayings-confucius-lyall_lyall.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/confucian/sayings-confucius-lyall",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
@@ -2609,6 +2664,17 @@
       "disposition": "restricted",
       "mechanism": "suppressed",
       "source_location": "01_library/library/texts/other/esoteric/treasure-atlantis-taine",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "trial-christ-cheeseman_cheeseman.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/trial-christ-cheeseman",
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,

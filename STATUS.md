@@ -30,8 +30,8 @@ generated reader at `03_web_app/`.
 | Measure | Count | Source of truth |
 |---|---:|---|
 | Index entries (web app reader) | **1,112** | `03_web_app/data/_generated/index.json` (entry count) — 2026-08-07: +5 derived Shakespeare play work records (Much Ado, Troilus, Timon, 2H4, King John; provider `shakespeare-complete-plays`) |
-| — of which public | **972** | same (`restricted` ≠ true) — 2026-08-17: −3, the title-collision withdrawals (sacred-tree = Waley's Genji Part Two, PD 2037, identity corrected; buddhas-life-olcott = the withdrawn Herold/Blum body re-served under a false credit, PD 2052; tacitus-histories = Fyfe's 1912 translation behind a Church & Brodribb credit, PD 2036) |
-| — of which restricted (locked, metadata-only) | **140** | same (`restricted` = true) — incl. nostradamus-roberts (uncertain-copyright, withdrawn 2026-07-28: body does not match its stated Ward 1891 source) |
+| — of which public | **966** | same (`restricted` ≠ true) — 2026-08-18: −6, THE SIX (Giles PD 2029 behind Lyall; Baerlein PD 2031 behind Nicholson; Bentwich PD 2042 behind Conybeare; Isenberg 1977 served beside its restricted siblings; Breed 1948 open-dated behind 'Cheeseman 1915'; O'Bryan 1956 BAE, worldwide bar unresolved) — after the 08-17 title-collision three (Genji/Waley, Herold-Blum/Olcott, Fyfe/Tacitus) |
+| — of which restricted (locked, metadata-only) | **146** | same (`restricted` = true) — incl. nostradamus-roberts (uncertain-copyright, withdrawn 2026-07-28: body does not match its stated Ward 1891 source) |
 | Distinct ids | 1,087 | unique `id` — 31 ids legitimately shared across 120 entries (Jātaka ×8, bilingual pairs, multi-volume works). *(Re-derived 2026-08-07; the previous 1,106 figure predated several retirement lanes and was stale.)* |
 | `text.json` files on disk | 1,055 *(2026-07-27)* | `01_library/library/texts/**/text.json` |
 | Daily-reading whitelist | ~198 | `05_scripts/daily_passage.py` `WHITELIST` |
