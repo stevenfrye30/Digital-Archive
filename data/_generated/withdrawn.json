@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 205,
+    "total": 206,
     "retired": 81,
-    "restricted": 57,
+    "restricted": 58,
     "relocated": 5,
     "no_source": 2
   },
@@ -2068,6 +2068,17 @@
       "disposition": "restricted",
       "mechanism": "suppressed",
       "source_location": "01_library/library/texts/sacred/buddhist/suzuki-essays-zen",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "tacitus-histories_church-brodribb.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/other/greek-literature/tacitus-histories",
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,

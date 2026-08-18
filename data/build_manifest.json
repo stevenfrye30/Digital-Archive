@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-18T02:19:00Z",
+ "generated": "2026-08-18T02:31:51Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "d70e24cc984978ce8db6fd6d13613367205b94d3",
- "library_fingerprint": "sha256:31bc8b8d4151e2d668760607d11a1745cd6d3e51edb090a0585905f30b5619e3",
+ "exporter_rev": "8647110b5a2b8da6855d85a31e7c01fa128c08c9",
+ "library_fingerprint": "sha256:1b236b0a813206519d43e77a1da8d796b3707ab9b5b750cdd96e71cd5eb2e447",
  "counts": {
   "entries": 1112,
-  "public": 973,
-  "restricted": 139
+  "public": 972,
+  "restricted": 140
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -11869,14 +11869,14 @@
    "exported": "2026-08-09T14:13:39Z"
   },
   "tacitus-histories_church-brodribb": {
-   "source_hash": "sha256:f79bae9c57ef618bf88bdaad0f9f5d8f891012af45edbbc1c52a83f56024833a",
+   "source_hash": "sha256:539b56e85a50bdb0f66ee84e97b99913f711fc308ba8615ce9380f67870b3368",
    "data_file": "tacitus-histories_church-brodribb.json.gz",
    "data_hash": "sha256:55c32c68bcc992419a56cf8e3b437399213246bdd43e38bb34976d23c75b4567",
    "data_bytes": 242061,
    "passages": 1376,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-08-17T14:21:17Z"
   },

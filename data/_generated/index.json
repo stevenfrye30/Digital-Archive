@@ -22399,36 +22399,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "tacitus-histories",
-      "title": "Histories",
-      "tradition": "Latin Literature",
-      "collection": "other",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "tacitus-histories_church-brodribb.json",
-      "source": "gutenberg",
-      "author": [
-        "Tacitus"
-      ],
-      "translator": [
-        "Alfred Church",
-        "William Brodribb"
-      ],
-      "year": 1873,
-      "translation_label": "Histories",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Histories* by Tacitus. Translated by Alfred Church and William Brodribb (1873). Via Project Gutenberg.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "ovid-metamorphoses",
       "title": "Metamorphoses",
       "tradition": "Latin Literature",
@@ -30417,6 +30387,36 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "Paul Radin (1883-1959), translator — the record\\u2019s own field said \\u2018Szold\\u2019, but the volume\\u2019s title page (JPS 1911) reads \\u2018Translated from the German Manuscript by Paul Radin\\u2019. Not worldwide-PD until 2030. Verified 2026-08-17 against the title page and the LoC form \\u2018Radin, Paul, 1883-1959\\u2019. This record had been FINALIZED on the wrong-person gate; the verdict was corrected at its source before this withdrawal. NO CLEAN EDITION: Radin\\u2019s is the only English of vols 3-4 — the work becomes the want.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "tacitus-histories",
+      "title": "Histories",
+      "tradition": "Latin Literature",
+      "collection": "other",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "tacitus-histories_church-brodribb.json",
+      "source": "gutenberg",
+      "author": [
+        "Tacitus"
+      ],
+      "translator": [
+        "W. Hamilton Fyfe"
+      ],
+      "year": 1912,
+      "translation_label": "Histories",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "W. Hamilton Fyfe (1878-1965), translator — the record’s own fields said ‘Church & Brodribb, 1873’, but the raw’s own PG #16927 header reads ‘Translator: W. Hamilton Fyfe’ (Oxford 1912) and the body-in-raw probe confirms the deployed body came from that raw. Not worldwide-PD until 2036. This record had been FINALIZED on the Church-Brodribb gate — the 2026-08-11 registry lane trusted the data_file name over the raw; the verdict was corrected at its source with this withdrawal. Found by check_raw_header_identity.py on its first sweep. CLEAN EDITION POSSIBLE: the genuine Church & Brodribb Histories (Church d. 1912, Brodribb d. 1905) is PD by age and is exactly the work the record always claimed to be — recorded as an acquisition want.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
