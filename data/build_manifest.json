@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-18T13:56:50Z",
+ "generated": "2026-08-18T14:20:41Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "540905b87fd55e8920247f4c1ef802a68de996ff",
- "library_fingerprint": "sha256:da3320d702e4f1d3357c3ff575cfd1406d28a1c098457634ca0e9f42710dfee0",
+ "exporter_rev": "af43b30ddd7f853de2eefbd2a032fb7bb2a736b0",
+ "library_fingerprint": "sha256:755c0098027f06432a201eae8de57e7d194442271eb082d8f0dab113b1725f1d",
  "counts": {
   "entries": 1112,
   "public": 966,
@@ -2456,16 +2456,16 @@
    "exported": "2026-07-10T17:30:43Z"
   },
   "carus-laotzu-study_carus": {
-   "source_hash": "sha256:ac350889d6ee5122139f908735a5bc200438b433ee07530a9a9e1a01b871591f",
+   "source_hash": "sha256:dea850d7e5bc76e9467099f674782bf8ccfd4c5f8711bfcacb0e32ccce013e5f",
    "data_file": "carus-laotzu-study_carus.json.gz",
-   "data_hash": "sha256:77a008b2cefc6b41ee79d4139bf492c3c573f82cd9e97bfb52ae597211cebd55",
-   "data_bytes": 74531,
+   "data_hash": "sha256:2c69b7d73d7e5b9f718683e281786b79b2077260b6e8b863a7e5006a3084b833",
+   "data_bytes": 74539,
    "passages": 459,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-10T03:56:20Z"
+   "exported": "2026-08-18T14:19:43Z"
   },
   "catusparisat-sutra-sujato_sujato": {
    "source_hash": "sha256:29c1cfb2e4009ec1f0d394c620b441223e2096f8469861247367dd23b80bb7e8",
@@ -5526,6 +5526,18 @@
    "apparatus": false,
    "exported": "2026-08-11T00:57:14Z"
   },
+  "hypatia-toland_toland": {
+   "source_hash": "sha256:322c9f77aa18100f6067d6ec56951324dc366f2e70db26b8372724b6c51e8c73",
+   "data_file": "hypatia-toland_toland.json.gz",
+   "data_hash": "sha256:212a0f73d5cb88a162c0c16804bfd6d3c4721ad2b9e6c8a72a60679a2b3f53a0",
+   "data_bytes": 22327,
+   "passages": 81,
+   "license": "public-domain",
+   "restricted": false,
+   "restricted_reason": null,
+   "apparatus": false,
+   "exported": "2026-08-18T14:19:17Z"
+  },
   "iamblichus-mysteries_taylor": {
    "source_hash": "sha256:ed9a79943f33b304bbedd87c6c7485875338c2c417ef43fb4dd2ff4378cf2857",
    "data_file": "iamblichus-mysteries_taylor.json.gz",
@@ -6484,18 +6496,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:31:01Z",
    "source_note": "no canonical dir (restricted local body)"
-  },
-  "kingsley-hypatia_kingsley": {
-   "source_hash": "sha256:eadcdbb641c6f81aaf0fed4f8a8c22b639351aebafb05f17ed8bd202f9ae713e",
-   "data_file": "kingsley-hypatia_kingsley.json.gz",
-   "data_hash": "sha256:2ae3238cfcfda4a8c9b2e7cebe543dd8ae49f8297657865ed88ec6c220f942b2",
-   "data_bytes": 22311,
-   "passages": 81,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-15T19:39:07Z"
   },
   "kitab-i-aqdas_uhj": {
    "source_hash": null,
@@ -9578,16 +9578,16 @@
    "exported": "2026-08-15T19:37:37Z"
   },
   "pythagoras-golden-verses-rowe_rowe": {
-   "source_hash": "sha256:c3842b73cab60a591eb1e33ce47eae34d083979a0b5e9513a27c98de68dfba6a",
+   "source_hash": "sha256:8483513e1d48646b8d0bc7436dfc16820bda358d34c606866bfc5b3a1cb838ea",
    "data_file": "pythagoras-golden-verses-rowe_rowe.json.gz",
-   "data_hash": "sha256:72f6e6ad7809c3feb3248b0b8a0eecbc75de4ea01226b7bf42a793614a55a2cd",
-   "data_bytes": 219750,
+   "data_hash": "sha256:04ada6888ee23e31c08627af889acaed8f25fc1cc9aa2d7fec00704429466896",
+   "data_bytes": 219766,
    "passages": 1161,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-15T19:37:37Z"
+   "exported": "2026-08-18T14:18:15Z"
   },
   "quimby-manuscripts_dresser": {
    "source_hash": "sha256:5e8399378a307280182c4bbcce05d0d103f537667526cd9dd8f8d7c14349814e",

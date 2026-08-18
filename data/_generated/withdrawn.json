@@ -2,11 +2,11 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 214,
-    "retired": 83,
+    "total": 215,
+    "retired": 84,
     "restricted": 64,
     "relocated": 5,
-    "no_source": 4
+    "no_source": 5
   },
   "withdrawn": {
     "a-dweller-on-two-planets-frederick-oliver-189_anonymous.json": {
@@ -1039,6 +1039,17 @@
       "reason": "copyrighted",
       "reason_note": null,
       "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "kingsley-hypatia_kingsley.json": {
+      "disposition": "retired",
+      "mechanism": "no-source",
+      "source_location": null,
+      "preserved_at": null,
+      "reason": "superseded",
+      "reason_note": "2026-08-18 identity-only correction (no withdrawal): the body is Toland's 1720 Hypatia essay, acquired under Kingsley's 1853 novel metadata by title collision. PD by centuries; the body stays public as hypatia-toland_toland.json; the old route aliases there. Chain: plans/finalize_four-reads_2026-08-18.md.",
+      "reason_source": "plans/finalize_four-reads_2026-08-18.md",
       "pd_year": null,
       "pd_year_source": null
     },

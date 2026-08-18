@@ -5133,24 +5133,24 @@
       "reading_status_certified": true
     },
     {
-      "id": "kingsley-hypatia",
-      "title": "Hypatia, or New Foes with an Old Face",
+      "id": "hypatia-toland",
+      "title": "Hypatia: or, the History of a Most Beautiful, Most Virtuous, Most Learned Lady",
       "tradition": "Christian",
       "collection": "sacred",
       "hierarchy": [
         "chapter",
         "verse"
       ],
-      "data_file": "kingsley-hypatia_kingsley.json",
+      "data_file": "hypatia-toland_toland.json",
       "source": "gutenberg",
       "author": [
-        "Charles Kingsley"
+        "John Toland"
       ],
       "translator": [
-        "Charles Kingsley"
+        "John Toland"
       ],
-      "year": 1853,
-      "translation_label": "Hypatia, or New Foes with an Old Face",
+      "year": 1720,
+      "translation_label": "Hypatia: or, the History of a most beautiful, most vertuous, most learned, and every way accomplish'd Lady",
       "translation_short_label": null,
       "volume_label": null,
       "quality": "popular",
@@ -5158,8 +5158,8 @@
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
+      "reading_status": "review",
+      "reading_status_certified": false
     },
     {
       "id": "erasmus-folly",
@@ -15326,12 +15326,12 @@
       "data_file": "carus-laotzu-study_carus.json",
       "source": "gutenberg",
       "author": [
-        "Paul Carus"
+        "Thomas Watters"
       ],
       "translator": [
-        "Paul Carus"
+        "Thomas Watters"
       ],
-      "year": 1898,
+      "year": 1870,
       "translation_label": "Lao-tze: A Study in Chinese Philosophy",
       "translation_short_label": null,
       "volume_label": null,
@@ -20355,12 +20355,12 @@
       "data_file": "pythagoras-golden-verses-rowe_rowe.json",
       "source": "gutenberg",
       "author": [
-        "Anonymous (Pythagorean tradition)"
+        "Antoine Fabre d'Olivet"
       ],
       "translator": [
-        "N. Rowe"
+        "Nayán Louise Redfield"
       ],
-      "year": 1707,
+      "year": 1917,
       "translation_label": "The Golden Verses of Pythagoras",
       "translation_short_label": null,
       "volume_label": null,
@@ -28820,17 +28820,17 @@
       ],
       "data_file": "the-amish-smith_smith.json",
       "author": [
-        "Elmer L. Smith"
+        "A. Monroe Aurand, Jr."
       ],
       "translator": [
-        "Elmer L. Smith"
+        "A. Monroe Aurand, Jr."
       ],
-      "year": 1958,
+      "year": 1938,
       "translation_label": "The Amish",
       "translation_short_label": null,
       "volume_label": null,
       "quality": "popular",
-      "source_summary": null,
+      "source_summary": "A. Monroe Aurand, Jr. (1895-1956) — the record was acquired as Elmer L. Smith’s 1958 ‘The Amish’ by TITLE COLLISION; the raw’s own title page reads ‘Little Known Facts About the Amish and the Mennonites… By AMMON MONROE AURAND, Jr.’, [1938], and the body reads verbatim in the Aurand raw. Not worldwide-PD until 2027 — A SHORT HOLD, the horizon this correction shortens. Identity corrected 2026-08-18 by the four-reads lane; no public exposure existed. Found by check_raw_header_identity.py.",
       "source": null,
       "importance_rank": null,
       "restricted": true,
