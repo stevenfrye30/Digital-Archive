@@ -17855,6 +17855,11 @@ const _RR_CLASS_LABEL = {
   // catalogue bound at the back of the scanned copy, incl. the holding
   // library's accession marks.
   'publisher-catalogue': "a page of the publisher's catalogue bound at the back of the scanned copy",
+  // Rights excision (2026-08-18, the Widgery introduction): a unit still
+  // under copyright, excised from the public body by a steward rights
+  // ruling. These entries ship NO text — the notice names the unit and
+  // the year it returns to the worldwide public domain (`returns`).
+  'rights-excision': 'a passage under copyright, excised by a rights ruling',
 };
 
 function _gotoSurvivingRow(nid) {
@@ -17905,6 +17910,14 @@ function _showRemovedRowNotice(pid, rr, noScroll) {
     body.textContent = `It belonged to ${rr.see.title}, which this record was `
       + `never meant to carry — deduplicated on ${rr.removed} under a steward `
       + `ruling. Nothing is lost: the play lives in its own record.`;
+  } else if (rr.class === 'rights-excision') {
+    // Under copyright: never quote (no `text` ships for this class).
+    // Preserved locally, not lost — the notice names the return year.
+    body.textContent = `It belongs to ${rr.unit || 'a unit of this volume'}, `
+      + `which is still under copyright — excised from the public body on `
+      + `${rr.removed} under a steward rights ruling. The text is preserved, `
+      + `not lost: it returns to this record when it enters the worldwide `
+      + `public domain${rr.returns ? ` in ${rr.returns}` : ''}.`;
   } else {
     body.textContent = `It was ${_RR_CLASS_LABEL[rr.class] || rr.class}, removed `
       + `as scan debris on ${rr.removed} under a steward ruling. What stood here:`;
