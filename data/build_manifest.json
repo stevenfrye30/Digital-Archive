@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-18T19:57:20Z",
+ "generated": "2026-08-18T23:48:39Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "a60db5919e7401dac4ff5333e6b6277502c72d96",
- "library_fingerprint": "sha256:1edb648cffe1b09d54ab30897823ea272abefc096c7b2a54c2eb4a0d6b7a551e",
+ "exporter_rev": "9e44dcad58cd6b4c91b4661265eb4a4d91bf50b4",
+ "library_fingerprint": "sha256:c85f892febcd8e55ee6641c40926fde9dfc0f58a121135beabd1b67f7bf384b6",
  "counts": {
   "entries": 1112,
   "public": 966,
@@ -3614,16 +3614,17 @@
    "exported": "2026-08-17T14:23:31Z"
   },
   "egyptian-tales-1st-petrie_petrie": {
-   "source_hash": "sha256:230973b73183b57cc4bc4bd596494f08d3987cf56a6b8ee66d3c019a7ace7280",
+   "source_hash": "sha256:280d78db076a975b406d6b0637849dedca9d7162362625455fafae4d030261dc",
    "data_file": "egyptian-tales-1st-petrie_petrie.json.gz",
-   "data_hash": "sha256:1d31e0de325c2c4bf2fc4254a143b2bd5f82388aa9dba3938157a85bc9d0c862",
-   "data_bytes": 39482,
+   "data_hash": "sha256:206a657ef888a69e088074b466be714cb1aaab6a997dd5d5507b86fa84577122",
+   "data_bytes": 40308,
    "passages": 166,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:48Z"
+   "exported": "2026-08-18T23:47:21Z",
+   "redirects": 160
   },
   "egyptian-tales-2nd-petrie_petrie": {
    "source_hash": "sha256:14f24c8df2d0040c145179c42148afdcc31b86b55f0e7fb5efd6bcfe5aa372f2",
@@ -4836,7 +4837,8 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-11T00:55:49Z"
+   "exported": "2026-08-11T00:55:49Z",
+   "redirects": 2090
   },
   "great-learning_legge": {
    "source_hash": "sha256:b37b5bf02cc4621ce769d0b9bc6c04f352664e5c56fe1c2d59efa512bc6b96ce",
@@ -6969,7 +6971,8 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-11T00:20:48Z"
+   "exported": "2026-08-11T00:20:48Z",
+   "redirects": 4390
   },
   "lotus-sutra-kern_kern": {
    "source_hash": "sha256:46105431dfab44baaf149b7f9d11bbf3227162531cd7f3b122543b35b1ef224a",
@@ -9671,7 +9674,8 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-07T15:41:58Z"
+   "exported": "2026-08-07T15:41:58Z",
+   "redirects": 2126
   },
   "rank-myth-hero-birth_robbins-jelliffe": {
    "source_hash": "sha256:179b1468be4a733755adaad743b9c889ec38f4e64ca429e4600d9cfb5d50aade",
@@ -10770,7 +10774,8 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-17T13:44:17Z"
+   "exported": "2026-08-17T13:44:17Z",
+   "removals": 1097
   },
   "shakespeare-alls-well-that-ends-well_shakespeare": {
    "source_hash": "sha256:c682b7c0307152e233e547599d656f60848ebf7ce0f671825f954c74a241dc40",
@@ -11418,7 +11423,8 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-11T00:21:30Z"
+   "exported": "2026-08-11T00:21:30Z",
+   "removals": 470
   },
   "sikh-religion-vol5-macauliffe_macauliffe": {
    "source_hash": "sha256:a803ef24075635db5f12bc571f524110308b6b1404873524465d9f7183d0a7e8",
@@ -11430,7 +11436,8 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-08T01:58:09Z"
+   "exported": "2026-08-08T01:58:09Z",
+   "removals": 363
   },
   "sikh-religion-vol6-macauliffe_macauliffe": {
    "source_hash": "sha256:73818d2632d2ad376b71c85d73fdebf1a8ca9ae811a1e26232cbf2c74fcbb45a",
@@ -11503,7 +11510,8 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-18T19:56:17Z"
+   "exported": "2026-08-18T19:56:17Z",
+   "removals": 23
   },
   "song-of-songs-translation_anonymous": {
    "source_hash": "sha256:20c7e7d65b343683cb580c8e35b7dcd7487897b4961f0b9fe5f9999354debcba",
@@ -13498,7 +13506,8 @@
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-07T21:48:59Z"
+   "exported": "2026-08-07T21:48:59Z",
+   "removals": 1014
   },
   "zend-avesta-part2_darmesteter": {
    "source_hash": "sha256:fd2960db5cca0800d9ce176c417bb53cefb78ade148fac54198da4fe48d0759a",

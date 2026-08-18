@@ -25,6 +25,7 @@ Run manually: python tools/prepush_guard.py [--fast]   (--fast skips 5's hashing
 """
 
 import argparse
+import gzip
 import hashlib
 import json
 import re
@@ -465,6 +466,77 @@ def main():
                          f"exit {ri.returncode}"))
         print(ri_state)
 
+    # 14. Id-migration integrity (2026-08-18, the redirect survey's ruling).
+    #     Three containment lanes ship `moved_ids` maps (ramayana's alone
+    #     holds 2,126 redirects) and the excision lanes ship bodiless
+    #     `removed_rows` — and nothing verified them: a later data repair
+    #     could silently orphan every redirect and no check would say so.
+    #     Derived from the manifest's per-text redirects/removals stamps
+    #     (build_manifest.py; trustworthy under check 5's data_hash —
+    #     a body edited without a manifest rewrite already fails there).
+    #     For each stamped row the SHIPPED body must prove: map keys DEAD
+    #     (a live key is a collision, the silent-wrong-row failure), map
+    #     values LIVE, no chains, migration and removal key spaces
+    #     disjoint, counts matching the stamps.
+    mi_records = mi_redirects = mi_removals = 0
+    for key, e in mtexts.items():
+        n_mi, n_rr = e.get("redirects", 0), e.get("removals", 0)
+        if not n_mi and not n_rr:
+            continue
+        df = e.get("data_file")
+        art = REPO / "data" / df
+        try:
+            raw = (gzip.decompress(art.read_bytes()).decode("utf-8")
+                   if df.endswith(".gz") else art.read_text(encoding="utf-8"))
+            body = json.loads(raw)
+        except Exception as ex:
+            fail(f"Id-migration integrity (14): {key}: shipped body "
+                 f"unreadable ({ex})")
+        live = {p["id"] for p in body.get("passages", [])}
+        for part in e.get("parts") or []:
+            part_art = REPO / "data" / part["data_file"]
+            praw = (gzip.decompress(part_art.read_bytes()).decode("utf-8")
+                    if part["data_file"].endswith(".gz")
+                    else part_art.read_text(encoding="utf-8"))
+            live |= {p["id"] for p in json.loads(praw).get("passages", [])}
+        mi = body.get("moved_ids") or {}
+        rr = body.get("removed_rows") or {}
+        probs = []
+        if len(mi) != n_mi:
+            probs.append(f"moved_ids count {len(mi)} != manifest "
+                         f"redirects stamp {n_mi}")
+        if len(rr) != n_rr:
+            probs.append(f"removed_rows count {len(rr)} != manifest "
+                         f"removals stamp {n_rr}")
+        alive = [k for k in mi if k in live]
+        if alive:
+            probs.append(f"{len(alive)} moved_ids keys still LIVE "
+                         f"(collision): {alive[:5]}")
+        broken = [k for k, v in mi.items() if v not in live]
+        if broken:
+            probs.append(f"{len(broken)} moved_ids values do not "
+                         f"resolve: {broken[:5]}")
+        chains = [k for k, v in mi.items() if v in mi]
+        if chains:
+            probs.append(f"{len(chains)} chained entries (value is also "
+                         f"a key): {chains[:5]}")
+        rr_alive = [k for k in rr if k in live]
+        if rr_alive:
+            probs.append(f"{len(rr_alive)} removed_rows keys still LIVE: "
+                         f"{rr_alive[:5]}")
+        overlap = sorted(set(mi) & set(rr))
+        if overlap:
+            probs.append(f"{len(overlap)} ids both moved and removed: "
+                         f"{overlap[:5]}")
+        if probs:
+            fail(f"Id-migration integrity (14) FAILED — {key}:\n  "
+                 + "\n  ".join(probs))
+        mi_records += 1
+        mi_redirects += len(mi)
+        mi_removals += len(rr)
+    mi_state = (f"id-migration: {mi_redirects} redirects + {mi_removals} "
+                f"removals across {mi_records} records all resolve")
+
     wd_state = (f"{wd['counts']['total']} withdrawn "
                 f"({wd['counts']['retired']} retired + "
                 f"{wd['counts']['restricted']} restricted), "
@@ -477,6 +549,7 @@ def main():
           f"withdrawal: {wd_state}; {pv_state}; {cd_state}; "
           f"{pm_state}; "
           f"{ri_state}; "
+          f"{mi_state}; "
           f"finalization ledger derived [{fin_state}] ({elapsed}).")
 
 
