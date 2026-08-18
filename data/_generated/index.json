@@ -3039,7 +3039,7 @@
       "reading_status_certified": true
     },
     {
-      "id": "stonehenge-jones",
+      "id": "stonehenge-stukeley",
       "title": "Stonehenge: A Temple Restor'd to the British Druids",
       "tradition": "Celtic",
       "collection": "sacred",
@@ -3047,17 +3047,16 @@
         "chapter",
         "verse"
       ],
-      "data_file": "stonehenge-jones_jones.json",
+      "data_file": "stonehenge-stukeley_stukeley.json",
       "source": "sacredtexts",
       "author": [
-        "Inigo Jones"
+        "William Stukeley"
       ],
       "translator": [
-        "Inigo Jones",
-        "John Webb"
+        "William Stukeley"
       ],
-      "year": 1655,
-      "translation_label": "Stonehenge: A Temple Restor'd to the British Druids",
+      "year": 1740,
+      "translation_label": "Stonehenge, A Temple Restor'd to the British Druids",
       "translation_short_label": null,
       "volume_label": null,
       "quality": "popular",
@@ -3065,8 +3064,8 @@
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
+      "reading_status": "review",
+      "reading_status_certified": false
     },
     {
       "id": "lang-fairy-blue",
@@ -3199,9 +3198,9 @@
         "Anonymous"
       ],
       "translator": [
-        "Joseph Dunn"
+        "L. Winifred Faraday"
       ],
-      "year": 1914,
+      "year": 1904,
       "translation_label": "The Cattle Raid of Cualnge (Táin Bó Cúalnge)",
       "translation_short_label": null,
       "volume_label": null,
@@ -4330,9 +4329,9 @@
         "Anonymous"
       ],
       "translator": [
-        "M.B. Riddle"
+        "Charles H. Hoole"
       ],
-      "year": 1886,
+      "year": 1894,
       "translation_label": "The Didache",
       "translation_short_label": null,
       "volume_label": null,
@@ -5668,9 +5667,9 @@
         "Desiderius Erasmus"
       ],
       "translator": [
-        "W.H. Woodward"
+        "Richard Sherry"
       ],
-      "year": 1904,
+      "year": 1550,
       "translation_label": "On the Education of Children",
       "translation_short_label": null,
       "volume_label": null,
@@ -7638,14 +7637,13 @@
         "Anonymous"
       ],
       "translator": [
-        "Thomas Okey",
-        "Thomas W. Arnold"
+        "W. Heywood"
       ],
-      "year": 1907,
+      "year": 1906,
       "translation_label": "The Little Flowers of St. Francis",
       "translation_short_label": null,
       "volume_label": null,
-      "quality": "primary",
+      "quality": "popular",
       "source_summary": "*The Little Flowers of St. Francis*. Thomas Okey & Thomas W. Arnold trans. (1907). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
@@ -8016,7 +8014,7 @@
         "Martin Luther"
       ],
       "translator": [
-        "W.A. Lambert"
+        "Johann Michael Reu"
       ],
       "year": 1915,
       "translation_label": "Treatise on Good Works",
@@ -8295,7 +8293,7 @@
     },
     {
       "id": "book-of-odes-jennings",
-      "title": "The Book of Odes (Shi Jing, Jennings)",
+      "title": "The Book of Odes (Shi Jing)",
       "tradition": "Confucian",
       "collection": "sacred",
       "hierarchy": [
@@ -8308,9 +8306,9 @@
         "Anonymous"
       ],
       "translator": [
-        "William Jennings"
+        "L. Cranmer-Byng"
       ],
-      "year": 1891,
+      "year": 1908,
       "translation_label": "The Book of Odes (Shi Jing, Jennings)",
       "translation_short_label": null,
       "volume_label": null,
@@ -15331,9 +15329,9 @@
         "Various"
       ],
       "translator": [
-        "Mite Kremnitz"
+        "E.B. Mawr"
       ],
-      "year": 1885,
+      "year": 1881,
       "translation_label": "Roumanian Fairy Tales and Legends",
       "translation_short_label": null,
       "volume_label": null,
@@ -18452,7 +18450,7 @@
         "Aeschylus"
       ],
       "translator": [
-        "E.H. Plumptre"
+        "Theodore Alois Buckley"
       ],
       "year": 1887,
       "translation_label": "Prometheus Bound and The Seven Against Thebes",
@@ -18642,7 +18640,7 @@
     },
     {
       "id": "herodotus-history-rawlinson",
-      "title": "The History of Herodotus (Rawlinson)",
+      "title": "The History of Herodotus (Macaulay)",
       "tradition": "Greek Literature",
       "collection": "other",
       "hierarchy": [
@@ -18655,9 +18653,9 @@
         "Herodotus"
       ],
       "translator": [
-        "George Rawlinson"
+        "G.C. Macaulay"
       ],
-      "year": 1858,
+      "year": 1890,
       "translation_label": "The History of Herodotus (Rawlinson)",
       "translation_short_label": null,
       "volume_label": null,
@@ -20381,9 +20379,10 @@
         "Theophrastus"
       ],
       "translator": [
-        "R.C. Jebb"
+        "Charles E. Bennett",
+        "William A. Hammond"
       ],
-      "year": 1870,
+      "year": 1902,
       "translation_label": "The Characters",
       "translation_short_label": null,
       "volume_label": null,
@@ -20755,16 +20754,16 @@
       "data_file": "chinese-occultism-skinner_prescott.json",
       "source": "sacredtexts",
       "author": [
-        "Perry F. Prescott"
+        "Paul Carus"
       ],
       "translator": [
-        "Perry F. Prescott"
+        "Paul Carus"
       ],
-      "year": 1925,
+      "year": 1907,
       "translation_label": "Chinese Occultism",
       "translation_short_label": null,
       "volume_label": null,
-      "quality": "popular",
+      "quality": "primary",
       "source_summary": "*Chinese Occultism* Perry F. Prescott (1925). Via SacredTexts.com.",
       "importance_rank": null,
       "cross_sections": null,
@@ -21364,12 +21363,12 @@
       "data_file": "shibboleth-templar-monitor_steinbrenner.json",
       "source": "sacredtexts",
       "author": [
-        "G.W. Steinbrenner"
+        "George Cooper Connor"
       ],
       "translator": [
-        "G.W. Steinbrenner"
+        "George Cooper Connor"
       ],
-      "year": 1864,
+      "year": 1894,
       "translation_label": "Shibboleth: A Templar Monitor",
       "translation_short_label": null,
       "volume_label": null,
@@ -23427,10 +23426,9 @@
         "Friedrich Nietzsche"
       ],
       "translator": [
-        "Helen Zimmern",
-        "Paul V. Cohn"
+        "Alexander Harvey"
       ],
-      "year": 1909,
+      "year": 1908,
       "translation_label": "Human, All Too Human",
       "translation_short_label": null,
       "volume_label": null,
@@ -26745,9 +26743,9 @@
         "Cicero"
       ],
       "translator": [
-        "Francis Barham"
+        "George William Featherstonhaugh"
       ],
-      "year": 1841,
+      "year": 1829,
       "translation_label": "The Republic (De Re Publica)",
       "translation_short_label": null,
       "volume_label": null,

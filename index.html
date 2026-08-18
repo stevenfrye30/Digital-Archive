@@ -14736,6 +14736,11 @@ const LEGACY_TEXT_ALIASES = {
   // public under the true identity.
   'love-letters-rumi_anonymous.json':
     'love-letters-abelard-heloise_anonymous.json',
+  // 2026-08-18: identity corrected - the record acquired under Inigo Jones'
+  // name is Stukeley's 1740 Stonehenge treatise (a different work); PD by
+  // centuries, body stays public under the true identity.
+  'stonehenge-jones_jones.json':
+    'stonehenge-stukeley_stukeley.json',
 };
 function resolveLegacyText(v) {
   return (v && LEGACY_TEXT_ALIASES[v]) || v;

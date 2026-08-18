@@ -2,11 +2,11 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 207,
-    "retired": 82,
+    "total": 208,
+    "retired": 83,
     "restricted": 58,
     "relocated": 5,
-    "no_source": 3
+    "no_source": 4
   },
   "withdrawn": {
     "a-dweller-on-two-planets-frederick-oliver-189_anonymous.json": {
@@ -2061,6 +2061,17 @@
       "reason": "copyrighted",
       "reason_note": null,
       "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "stonehenge-jones_jones.json": {
+      "disposition": "retired",
+      "mechanism": "no-source",
+      "source_location": null,
+      "preserved_at": null,
+      "reason": "superseded",
+      "reason_note": "2026-08-18 identity-only correction (no withdrawal): the body is Stukeley's 1740 Stonehenge treatise, acquired under Inigo Jones' 1655 metadata by title collision. PD by centuries; the body stays public as stonehenge-stukeley_stukeley.json; the old route aliases there. Chain: plans/RAW_HEADER_IDENTITY_SWEEP_2026-08-17.md, plans/finalize_identity-class_2026-08-18.md.",
+      "reason_source": "plans/finalize_identity-class_2026-08-18.md",
       "pd_year": null,
       "pd_year_source": null
     },
