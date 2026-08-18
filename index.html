@@ -14731,6 +14731,11 @@ const LEGACY_TEXT_ALIASES = {
   // record is restricted, so the old route resolves to a NAMED stub.
   'sacred-tree-philpot_philpot.json':
     'genji-sacred-tree_waley.json',
+  // 2026-08-18: identity corrected — the record acquired under Rumi's name
+  // is the Abelard & Heloise letters (Dent 1901); rights clear, body stays
+  // public under the true identity.
+  'love-letters-rumi_anonymous.json':
+    'love-letters-abelard-heloise_anonymous.json',
 };
 function resolveLegacyText(v) {
   return (v && LEGACY_TEXT_ALIASES[v]) || v;

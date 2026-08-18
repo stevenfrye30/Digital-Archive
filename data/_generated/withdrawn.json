@@ -2,11 +2,11 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 206,
-    "retired": 81,
+    "total": 207,
+    "retired": 82,
     "restricted": 58,
     "relocated": 5,
-    "no_source": 2
+    "no_source": 3
   },
   "withdrawn": {
     "a-dweller-on-two-planets-frederick-oliver-189_anonymous.json": {
@@ -1167,6 +1167,17 @@
         "becomes_want": true,
         "clean_edition": null
       }
+    },
+    "love-letters-rumi_anonymous.json": {
+      "disposition": "retired",
+      "mechanism": "no-source",
+      "source_location": null,
+      "preserved_at": null,
+      "reason": "superseded",
+      "reason_note": "2026-08-18 identity-only correction (no withdrawal): the body is The Love Letters of Abelard and Heloise (Dent 1901), acquired under Rumi metadata by title collision. Rights ruled clear; the body stays public as love-letters-abelard-heloise_anonymous.json; the old route aliases there. Chain: plans/RAW_HEADER_IDENTITY_SWEEP_2026-08-17.md, plans/finalize_love-letters-identity_2026-08-18.md.",
+      "reason_source": "plans/finalize_love-letters-identity_2026-08-18.md",
+      "pd_year": null,
+      "pd_year_source": null
     },
     "luther-genesis-vol1_mueller.json": {
       "disposition": "restricted",

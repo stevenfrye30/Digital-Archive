@@ -1,6 +1,8 @@
 {
  "note": "Dated reachability baseline — rows reachable ONLY via the reader catalog. Maintained deliberately; ROADMAP phases 2 and 5 burn it down. Guard check 6 fails on any public row that is reader-only and absent from this list.",
  "generated": "2026-07-29 (Task 27 closer; regenerate with --write-ledger)",
- "count": 0,
- "reader_only": []
+ "count": 1,
+ "reader_only": [
+  "love-letters-abelard-heloise_anonymous.json"
+ ]
 }

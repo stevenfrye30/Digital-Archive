@@ -7685,6 +7685,36 @@
       "reading_status_certified": true
     },
     {
+      "id": "love-letters-abelard-heloise",
+      "title": "The Love Letters of Abelard and Heloise",
+      "tradition": "Christian",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "love-letters-abelard-heloise_anonymous.json",
+      "source": "sacredtexts",
+      "author": [
+        "Peter Abelard",
+        "Héloïse"
+      ],
+      "translator": [
+        "Anonymous"
+      ],
+      "year": 1901,
+      "translation_label": "The Love Letters of Abelard and Heloise",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": "*The Love Letters* Anonymous (1905). Via SacredTexts.com.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "review",
+      "reading_status_certified": false
+    },
+    {
       "id": "man-of-sorrows-petrie",
       "title": "The Man of Sorrows",
       "tradition": "Christian",
@@ -12139,35 +12169,6 @@
       "cross_traditions": null,
       "reading_status": "defer",
       "reading_status_certified": false
-    },
-    {
-      "id": "love-letters-rumi",
-      "title": "The Love Letters",
-      "tradition": "Islam",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "love-letters-rumi_anonymous.json",
-      "source": "sacredtexts",
-      "author": [
-        "Rumi"
-      ],
-      "translator": [
-        "Anonymous"
-      ],
-      "year": 1905,
-      "translation_label": "The Love Letters",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": "*The Love Letters* Anonymous (1905). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
     },
     {
       "id": "mesnavi-acts-adepts-redhouse",
