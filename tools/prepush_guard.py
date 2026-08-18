@@ -439,6 +439,32 @@ def main():
         last = [ln for ln in pm.stdout.strip().splitlines() if ln.startswith("Result:")]
         pm_state = "permanence " + (last[-1].replace("Result: ", "") if last else "ok")
 
+    # 13. Raw-header identity (2026-08-17) — ADVISORY, REPORT-ONLY by
+    #     steward ruling. The title-collision shape (metadata from one
+    #     book, body from another, joined at acquisition) was caught by
+    #     hand twice (arabian-nights, sacred-tree) and then found to be
+    #     SYSTEMIC the day this instrument first opened the raws: the
+    #     raw's own header/filename self-declaration disagrees with the
+    #     record's claim on dozens of witnesses. This check REPORTS and
+    #     never blocks — enforcement is a future ruling. A failure to RUN
+    #     is printed loudly, not swallowed: a check must prove it looked.
+    ri_state = "raw-header identity: NOT RUN (checker absent)"
+    ri_script = REPO.parent / "05_scripts" / "check_raw_header_identity.py"
+    if ri_script.exists():
+        ri = subprocess.run([sys.executable, "-X", "utf8", str(ri_script),
+                             "--brief"],
+                            capture_output=True, text=True,
+                            encoding="utf-8", errors="replace")
+        out = (ri.stdout or "").strip().splitlines()
+        if ri.returncode == 0 and out:
+            ri_state = out[-1]
+        else:
+            ri_state = ("raw-header identity: DID NOT RUN (advisory, not "
+                        "blocking) — " +
+                        ((ri.stdout + ri.stderr).strip()[-200:] or
+                         f"exit {ri.returncode}"))
+        print(ri_state)
+
     wd_state = (f"{wd['counts']['total']} withdrawn "
                 f"({wd['counts']['retired']} retired + "
                 f"{wd['counts']['restricted']} restricted), "
@@ -450,6 +476,7 @@ def main():
           f"reachability OK; separation: {sep_state}; "
           f"withdrawal: {wd_state}; {pv_state}; {cd_state}; "
           f"{pm_state}; "
+          f"{ri_state}; "
           f"finalization ledger derived [{fin_state}] ({elapsed}).")
 
 
