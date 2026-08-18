@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 204,
+    "total": 205,
     "retired": 81,
-    "restricted": 56,
+    "restricted": 57,
     "relocated": 5,
     "no_source": 2
   },
@@ -262,6 +262,17 @@
       "reason": "duplicate",
       "reason_note": "2026-07-29 buddhist supplement lane: 5 content-verified twins retired (Hearn 100% · Hérold 100% · Kern Lotus 98% · Morris 100% — the Morris stub was ALSO misfiled under Greek Literature; the Sutta Nipāta stub is the same Weimer transcription of Fausböll SBE X with mangled diacritics, 99% accent-folded — SWAPPED for the clean sutta-nipata-sbe_fausboll.json per the ruled Rāmāyaṇa-swap shape). Surviv",
       "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "buddhas-life-olcott_olcott.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/buddhist/buddhas-life-olcott",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },

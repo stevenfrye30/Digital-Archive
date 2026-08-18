@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-18T01:39:18Z",
+ "generated": "2026-08-18T02:19:00Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "c8c795bd2310f55029db4242b6e349c4b48416fb",
- "library_fingerprint": "sha256:9f6e9a9efa1959a4219cedb6914b505312fa843a508ad2ab050a9442ccd55da5",
+ "exporter_rev": "d70e24cc984978ce8db6fd6d13613367205b94d3",
+ "library_fingerprint": "sha256:31bc8b8d4151e2d668760607d11a1745cd6d3e51edb090a0585905f30b5619e3",
  "counts": {
   "entries": 1112,
-  "public": 974,
-  "restricted": 138
+  "public": 973,
+  "restricted": 139
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -2188,14 +2188,14 @@
    "exported": "2026-07-26T21:25:57Z"
   },
   "buddhas-life-olcott_olcott": {
-   "source_hash": "sha256:cf18f2acfb3bc2f1040b0213908d6bf8ad552765d1b4240f0da1dca328ee8b9e",
+   "source_hash": "sha256:8d7e4e346c14040f556a8d6c4b91306d1aa0c92441f416013f3572bb5315bfbd",
    "data_file": "buddhas-life-olcott_olcott.json.gz",
    "data_hash": "sha256:61f5acfa7de114ddace5b25e3c1d00a36f146e5fd39c22fb3d4f465ddf573cd4",
    "data_bytes": 127378,
    "passages": 1606,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-07-10T17:30:42Z"
   },

@@ -1960,35 +1960,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "buddhas-life-olcott",
-      "title": "The Buddha's Life",
-      "tradition": "Buddhist",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "buddhas-life-olcott_olcott.json",
-      "source": "sacredtexts",
-      "author": [
-        "Henry Steel Olcott"
-      ],
-      "translator": [
-        "Henry Steel Olcott"
-      ],
-      "year": 1881,
-      "translation_label": "The Buddha's Life",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "primary",
-      "source_summary": "*The Buddha's Life* Henry Steel Olcott (1881). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
       "id": "buddha-way-virtue-wagiswara",
       "title": "The Buddha's Way of Virtue",
       "tradition": "Buddhist",
@@ -30446,6 +30417,36 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "Paul Radin (1883-1959), translator — the record\\u2019s own field said \\u2018Szold\\u2019, but the volume\\u2019s title page (JPS 1911) reads \\u2018Translated from the German Manuscript by Paul Radin\\u2019. Not worldwide-PD until 2030. Verified 2026-08-17 against the title page and the LoC form \\u2018Radin, Paul, 1883-1959\\u2019. This record had been FINALIZED on the wrong-person gate; the verdict was corrected at its source before this withdrawal. NO CLEAN EDITION: Radin\\u2019s is the only English of vols 3-4 — the work becomes the want.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "buddhas-life-olcott",
+      "title": "The Buddha's Life",
+      "tradition": "Buddhist",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "buddhas-life-olcott_olcott.json",
+      "source": "sacredtexts",
+      "author": [
+        "A. Ferdinand Herold"
+      ],
+      "translator": [
+        "Paul Blum"
+      ],
+      "year": 1922,
+      "translation_label": "The Buddha's Life",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "Paul C. Blum (1898-1981), translator — the record’s own fields said ‘Henry Steel Olcott, 1881’, a TITLE COLLISION at acquisition: a full-body comparison (2026-08-17) found 1,023 of 1,023 sampled passages IDENTICAL to the withdrawn buddha-life-herold_blum — Herold’s Life of Buddha in Blum’s English (Boni & Liveright 1927, of the 1922 French). Not worldwide-PD until 2052. The archive had re-served, under the false credit, a body it withdrew 2026-08-16; found by check_raw_header_identity.py on its first sweep. CLEAN EDITION POSSIBLE: the want is the one already recorded with the herold withdrawal — an earlier PD translation of Herold, or any PD life of the Buddha.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
