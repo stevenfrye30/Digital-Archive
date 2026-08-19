@@ -1,11 +1,11 @@
 {
- "generated": "2026-08-19T15:18:30Z",
+ "generated": "2026-08-19T15:45:09Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "c127acee7b2a296bd1b2b1be96de377056c1f66e",
- "library_fingerprint": "sha256:a940655a9bc7ee0c654808536053587eedc9fe37c050e15965d04a39ba99a691",
+ "exporter_rev": "aac0cc6083d87ed8e50dc85708dafbcbdea3b899",
+ "library_fingerprint": "sha256:332b7a47bb9ec6ceeee5f64207cd08875d5f9a6bab7376c2cc8cd4123e00bf2c",
  "counts": {
-  "entries": 1112,
-  "public": 965,
+  "entries": 1109,
+  "public": 962,
   "restricted": 147
  },
  "texts": {
@@ -3228,18 +3228,6 @@
    "apparatus": false,
    "exported": "2026-07-10T17:30:47Z"
   },
-  "devil-stories-anthology_rudwin": {
-   "source_hash": "sha256:0807ce7a0c5ff17cdb4d3f0dd143ccc3333fac63e857be5823f036dc0aab9dd1",
-   "data_file": "devil-stories-anthology_rudwin.json.gz",
-   "data_hash": "sha256:0980fd5f4bd3962d4345fb774cd59a4a4f401e19ff49b6e5bf22728c52b56388",
-   "data_bytes": 210647,
-   "passages": 1734,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-19T02:59:47Z"
-  },
   "devil-worship-france-waite_waite": {
    "source_hash": "sha256:24633db86798bc1ac179a77bcb3904d74b96d2bb936c8dd1205503c5929bc3f3",
    "data_file": "devil-worship-france-waite_waite.json.gz",
@@ -5205,18 +5193,6 @@
    "exported": "2026-07-10T17:30:55Z",
    "source_note": "no canonical dir (restricted local body)"
   },
-  "hindu-astrology-seva_seva": {
-   "source_hash": "sha256:505502c017c6f2e4ec61a968a5bc3e72a57c6cc155aba3604818ada9c40651c1",
-   "data_file": "hindu-astrology-seva_seva.json.gz",
-   "data_hash": "sha256:48442398ebd25c5c656df2b97e9958091a17a8a62c241cc95218570887273a0a",
-   "data_bytes": 46477,
-   "passages": 466,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:55Z"
-  },
   "hindu-law-judicature-sastri_roer-montriou": {
    "source_hash": "sha256:b69bb3333e7f3b427549242a65c6cef20e7e7e545c90ecddda43a231f9d55f66",
    "data_file": "hindu-law-judicature-sastri_roer-montriou.json.gz",
@@ -5958,18 +5934,6 @@
    "restricted_reason": null,
    "apparatus": false,
    "exported": "2026-07-10T17:30:59Z"
-  },
-  "jataka_babbit": {
-   "source_hash": "sha256:7dc694227a09b65790a6ee9dd13bfd091bcfcc36749b4d1ac6e877ab44b27c62",
-   "data_file": "jataka_babbit.json.gz",
-   "data_hash": "sha256:e37fe77a8b3b489b15a6f68fc57830672d544341cd26c9b76f01258cec13346e",
-   "data_bytes": 25241,
-   "passages": 398,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-08-11T00:55:55Z"
   },
   "jataka_chalmers-vol1": {
    "source_hash": "sha256:9cca81a208e27d276745471a29721ecf1345bd395aa8731970aa2147003aab86",

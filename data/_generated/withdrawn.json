@@ -2,10 +2,10 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 216,
+    "total": 219,
     "retired": 84,
     "restricted": 65,
-    "relocated": 5,
+    "relocated": 8,
     "no_source": 5
   },
   "withdrawn": {
@@ -457,6 +457,24 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "devil-stories-anthology_rudwin.json": {
+      "disposition": "scope",
+      "mechanism": "relocated",
+      "source_location": "01_library/_retired/devil-stories-anthology",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "OUT OF SCOPE at the shelf's edge (steward ruling 2026-08-19): fiction anthology, per-story rights ungated (Rudwin b. 1885 open-ended), broken byline titles. The byline-restoration project closes with the cut. Not wanted back.",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Devil Stories: An Anthology",
+        "why": "OUT OF SCOPE at the shelf's edge (steward ruling 2026-08-19): fiction anthology, per-story rights ungated (Rudwin b. 1885 open-ended), broken byline titles. The byline-restoration project closes with the cut. Not wanted back.",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "die-wahlverwandtschaften-jo_anonymous.json": {
       "disposition": "scope",
       "mechanism": "suppressed",
@@ -828,6 +846,24 @@
         "clean_edition": null
       }
     },
+    "hindu-astrology-seva_seva.json": {
+      "disposition": "scope",
+      "mechanism": "relocated",
+      "source_location": "01_library/_retired/hindu-astrology-seva",
+      "preserved_at": null,
+      "reason": "scope-unfinishable",
+      "reason_note": "OUT OF SCOPE (steward ruling 2026-08-19, the toss-sheet glance): pseudonymous 1902 astrology manual, no scholarly identity — 'Bhakti Seva' resolves to no authority. Ruled out of scope entirely, not wanted back.",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Hindu Book of Astrology",
+        "why": "OUT OF SCOPE (steward ruling 2026-08-19, the toss-sheet glance): pseudonymous 1902 astrology manual, no scholarly identity — 'Bhakti Seva' resolves to no authority. Ruled out of scope entirely, not wanted back.",
+        "superseded_by": null,
+        "becomes_want": true,
+        "clean_edition": null
+      }
+    },
     "hippolytus-philosophumena_macmahon-volume-1.json": {
       "disposition": "scope",
       "mechanism": "suppressed",
@@ -990,6 +1026,24 @@
       "reason_source": "plans/finalize_jaina-shelf-sweep.md",
       "pd_year": null,
       "pd_year_source": null
+    },
+    "jataka_babbit.json": {
+      "disposition": "scope",
+      "mechanism": "relocated",
+      "source_location": "01_library/_retired/jataka-babbit",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "REDUNDANT (steward ruling 2026-08-19): six finalized scholarly witnesses of the same work remain live (Chalmers vol 1, Rouse vols 2/4, Francis & Neil vol 3, Francis vol 5, Cowell & Rouse vol 6); Babbitt is NOT-IDENTIFIED (b. 1872, open-ended) and the row could never finalize. No want.",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "The Jataka (Babbitt retellings)",
+        "why": "REDUNDANT (steward ruling 2026-08-19): six finalized scholarly witnesses of the same work remain live (Chalmers vol 1, Rouse vols 2/4, Francis & Neil vol 3, Francis vol 5, Cowell & Rouse vol 6); Babbitt is NOT-IDENTIFIED (b. 1872, open-ended) and the row could never finalize. No want.",
+        "superseded_by": "jataka_chalmers-vol1.json",
+        "becomes_want": false,
+        "clean_edition": null
+      }
     },
     "jataka_rhys-davids.json": {
       "disposition": "scope",
