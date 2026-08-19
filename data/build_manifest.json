@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-19T14:56:43Z",
+ "generated": "2026-08-19T15:18:30Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "5c8a3dee33b096a0307d1481b2bc6a2171b13476",
+ "exporter_rev": "c127acee7b2a296bd1b2b1be96de377056c1f66e",
  "library_fingerprint": "sha256:a940655a9bc7ee0c654808536053587eedc9fe37c050e15965d04a39ba99a691",
  "counts": {
   "entries": 1112,
-  "public": 966,
-  "restricted": 146
+  "public": 965,
+  "restricted": 147
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -4401,11 +4401,11 @@
    "data_hash": "sha256:47e203900e3d8a0790f68fd438847794c57b10b46ebefaebc3d208177264ed3d",
    "data_bytes": 88816,
    "passages": 1354,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:30:51Z"
+   "exported": "2026-08-19T15:18:21Z"
   },
   "gaudama-burmese-vol1_bigandet": {
    "source_hash": "sha256:d50ca642d14f0f77ecbf56b8ba4631c55c9d97b4634417f0e51f89e8e522df99",
