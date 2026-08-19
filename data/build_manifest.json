@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-19T15:45:09Z",
+ "generated": "2026-08-19T16:48:49Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "aac0cc6083d87ed8e50dc85708dafbcbdea3b899",
- "library_fingerprint": "sha256:332b7a47bb9ec6ceeee5f64207cd08875d5f9a6bab7376c2cc8cd4123e00bf2c",
+ "exporter_rev": "7f92d810b7d7b5d304a0c98a9801ac0f80bbc181",
+ "library_fingerprint": "sha256:613651853442e2d9eb73f6dff05701fc6c74450c214a5da20b9f1cae32ef0aca",
  "counts": {
   "entries": 1109,
   "public": 962,
@@ -857,16 +857,16 @@
    "source_note": "no canonical dir (derived provider record)"
   },
   "augustine-confessions-enchiridion-ccel_ccel-schaff": {
-   "source_hash": "sha256:498ae363b7d97dd435ee2d1cb393d8675dde3cd2a39a4a97eb40fe0f8c69aad3",
+   "source_hash": "sha256:57ae4a5a690b56d9908e79b9c52efec6594fd2843964e9b28366d663e6defb39",
    "data_file": "augustine-confessions-enchiridion-ccel_ccel-schaff.json.gz",
-   "data_hash": "sha256:7aa6a68966cb3a13e0deaa7b79eb0629c738b0decf2964193340aed554d41e69",
-   "data_bytes": 1320431,
+   "data_hash": "sha256:e2c5dfcb84f3d07674a9f317c0d46c631de7dd7e509ae05146883bd8f0488200",
+   "data_bytes": 1320444,
    "passages": 9689,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-05T07:50:57Z"
+   "exported": "2026-08-19T16:32:21Z"
   },
   "augustine-confessions_pusey": {
    "source_hash": "sha256:0eb647d3ee592cc33473af32d35470ba681c28f5599f75f9beb6fda4ea8143e0",
@@ -881,16 +881,16 @@
    "exported": "2026-07-10T17:30:23Z"
   },
   "augustine-donatist-controversy_king": {
-   "source_hash": "sha256:0fec9c3369aeb603f439b5c3a8c3053edbb9b35503f1db5e6c112fc408eea5fe",
+   "source_hash": "sha256:9d204db61d7e8375a80326f22711408e499232700a9fd181d67f901eb5f4541c",
    "data_file": "augustine-donatist-controversy_king.json.gz",
-   "data_hash": "sha256:1ae6e2c93c1e8770d10d9da666ad483adbcc701847ecaa3190f40a3891c928a2",
-   "data_bytes": 421182,
+   "data_hash": "sha256:145e0aa0e7fc8c559d16354fe702eb3f4ee9b182fe2064b14cec80fc34e4ee86",
+   "data_bytes": 421183,
    "passages": 2555,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T14:54:08Z"
+   "exported": "2026-08-19T16:32:21Z"
   },
   "avicenna-soul_berg": {
    "source_hash": "sha256:46f6ca45e828c40b6e039d6a151368327702af247017f022d52f816960220f6a",
@@ -6335,16 +6335,17 @@
    "exported": "2026-08-17T14:31:04Z"
   },
   "kant-metaphysical-ethics_abbott": {
-   "source_hash": "sha256:a7c0f9154187e51803367b12d2ab5f41674c99423b458e2984c694474968365e",
+   "source_hash": "sha256:681f40fcf5ab0779bd4ae0c9bfb19404984925fa732254ffd9596882a0ba7379",
    "data_file": "kant-metaphysical-ethics_abbott.json.gz",
-   "data_hash": "sha256:d45093ce8edd5400f38285c379cb60378f132440b705552debf690bfaafe4925",
-   "data_bytes": 27253,
-   "passages": 169,
+   "data_hash": "sha256:46d349cc9de94e5229b1c2b08c812080ac82397fdbe8f0edcaebba938b081c5e",
+   "data_bytes": 27528,
+   "passages": 127,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:30:42Z"
+   "exported": "2026-08-19T16:31:57Z",
+   "removals": 42
   },
   "kant-perpetual-peace_campbell-smith": {
    "source_hash": "sha256:e8d6531114f9c35524733efb49e0ef94125c0a261cdb7f0dfdff99e435349d5b",
@@ -8451,14 +8452,14 @@
   "origen-writings_crombie-volume-2": {
    "source_hash": null,
    "data_file": "origen-writings_crombie-volume-2.json.gz",
-   "data_hash": "sha256:ffddaa5fae548269a5434d361cfa64fd6d8d86a6a4d93c2cdcba61bffbe48e7e",
-   "data_bytes": 545176,
+   "data_hash": "sha256:1375eff7dc76de46535cc53a76ed515e8bf750f82a2eebd0dea99cc54837ebd0",
+   "data_bytes": 545177,
    "passages": 3353,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-09T14:15:07Z",
+   "exported": "2026-08-19T16:32:51Z",
    "source_note": "no canonical dir (derived provider record)"
   },
   "origin-pyramid-staniland-wake_staniland-wake": {
@@ -9648,16 +9649,16 @@
    "redirects": 2126
   },
   "rank-myth-hero-birth_robbins-jelliffe": {
-   "source_hash": "sha256:179b1468be4a733755adaad743b9c889ec38f4e64ca429e4600d9cfb5d50aade",
+   "source_hash": "sha256:7277bad52a1156480f648879c972a0ba066a0ec0ee231fe0152452f91a5b16b6",
    "data_file": "rank-myth-hero-birth_robbins-jelliffe.json.gz",
-   "data_hash": "sha256:102d293eee8f5c7a8836626eb207c7dca5ca6af88187e9d69db7ec1268c3769a",
-   "data_bytes": 80315,
+   "data_hash": "sha256:08fdefbde40958cbc8f5ff68b982886a9e7028508516ed912ef1d0d0bc89af14",
+   "data_bytes": 80319,
    "passages": 252,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-17T14:21:45Z"
+   "exported": "2026-08-19T16:31:58Z"
   },
   "rawlinson-monarchy-vol1_rawlinson": {
    "source_hash": "sha256:336ec9879eb010aff4403a721a7c1e3fda46b043b4695a1aab9986080f01947d",
@@ -10469,28 +10470,28 @@
    "exported": "2026-07-10T17:31:21Z"
   },
   "schopenhauer-world-will-vol1_haldane-kemp": {
-   "source_hash": "sha256:11c8aa5fc41c84fb8e9d8694bd0f4cf6af6b99a80d872fc7ae6bdf3aa3cd98f8",
+   "source_hash": "sha256:ef36c9acb0f4f5ed0baa019c9984f89b1ffaed7b80829e666dc8b5b9e19ef900",
    "data_file": "schopenhauer-world-will-vol1_haldane-kemp.json.gz",
-   "data_hash": "sha256:a0030c8de16438b937129842b5d8d381bf93b57f852d300879a86d0afcf7968b",
-   "data_bytes": 372777,
+   "data_hash": "sha256:105df344120d659699646de94aa79be3d539f567beb65b392e18f0677920a624",
+   "data_bytes": 372779,
    "passages": 617,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:30:45Z"
+   "exported": "2026-08-19T16:31:59Z"
   },
   "schopenhauer-world-will-vol2_haldane-kemp": {
-   "source_hash": "sha256:919c2617a0f04626dae2b129ea56b876234ecbd7fd232f96ee0090445e93c45a",
+   "source_hash": "sha256:fb5fa7e314ce317615da377b8d247bab9aaa88484dbc118ba2ba229f0d132cc8",
    "data_file": "schopenhauer-world-will-vol2_haldane-kemp.json.gz",
-   "data_hash": "sha256:95e393081bce31d355cbb99c35e9e174e8bb3cb90e96ebd36fb1bfe5f42f9827",
-   "data_bytes": 342813,
+   "data_hash": "sha256:4607edaafd6df72e480d270ffef7947bad4c220725bb3956999a7510c8ba4ce9",
+   "data_bytes": 342814,
    "passages": 615,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-31T21:30:45Z"
+   "exported": "2026-08-19T16:31:59Z"
   },
   "schopenhauer-world-will-vol3_haldane-kemp": {
    "source_hash": "sha256:26596ac573a8671d84d99bb279b32a7bae85400da98487792ccae8889151048d",
@@ -11471,16 +11472,16 @@
    "exported": "2026-08-11T00:55:09Z"
   },
   "some-religious-and-moral-teachings-al-ghazzali_anonymous": {
-   "source_hash": "sha256:eade2717860804aae5f6b2029a840c749bb3fae6f040f09856206657127ce187",
+   "source_hash": "sha256:fcc9d5bdbaca84725f1a82ba248ab0ae1365b09eb1f5f66d2226c4dd7922c8a8",
    "data_file": "some-religious-and-moral-teachings-al-ghazzali_anonymous.json.gz",
-   "data_hash": "sha256:ac212f9b46d7046e3555de7da663e0b55029466c86a0e0a7e920366a98cd38b7",
-   "data_bytes": 59976,
+   "data_hash": "sha256:525574ca2c769f91e3d690e15573fd1a998be2f0a0dee5e0709f5c2d89fdef29",
+   "data_bytes": 59988,
    "passages": 446,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-18T19:56:17Z",
+   "exported": "2026-08-19T16:33:15Z",
    "removals": 23
   },
   "song-of-songs-translation_anonymous": {
@@ -13043,16 +13044,16 @@
    "exported": "2026-07-10T17:31:33Z"
   },
   "volsunga-saga_magnusson": {
-   "source_hash": "sha256:01642392207c04117078a6ba0fefd6dfd1be6597ff4fd4260db49485118b9cab",
+   "source_hash": "sha256:0fc73276293b7219f23aba38d9f504027231035a609ed9deac31c3d15d9a249b",
    "data_file": "volsunga-saga_magnusson.json.gz",
-   "data_hash": "sha256:936efa1254b83d216268cab09e9aa72b6e412e2a2cd59211bdd0e80e0db197ee",
-   "data_bytes": 131376,
+   "data_hash": "sha256:0bcd9a8fb9488ea914f82eac204617e7ae15d6ce6b1b8f544af22417fe1cc297",
+   "data_bytes": 131382,
    "passages": 1297,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:33Z"
+   "exported": "2026-08-19T16:33:13Z"
   },
   "vrksa-sutra-sujato_sujato": {
    "source_hash": "sha256:e2ee13c89878892ee943f42232bad96f688af6cf2f04ac922428e726870076ea",
