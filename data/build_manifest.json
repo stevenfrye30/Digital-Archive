@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-19T18:27:12Z",
+ "generated": "2026-08-19T19:19:31Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "b571aee0c6db406c26303f2e2806637a89e97064",
- "library_fingerprint": "sha256:2178864278a06a9c69e9ba53f180b04b376ae399015b802d7e3101b12a4e57da",
+ "exporter_rev": "7d70e5c60d9a79d34ea01378c254b2baaceb6ad4",
+ "library_fingerprint": "sha256:ed989a23dae6d4d947582000d788d82fe0bcc3bc066305ff25f3fb427e3e5baf",
  "counts": {
   "entries": 1109,
   "public": 962,
@@ -2320,16 +2320,16 @@
    "exported": "2026-08-11T00:58:05Z"
   },
   "butler-lives-saints_butler": {
-   "source_hash": "sha256:a9fb6f0fa173c263fef0b8b76f5db00d8ee1ea7da194686abcbf4d808dd049bd",
+   "source_hash": "sha256:831414ce5fabf7e7027dfd6d273b037836b283664fa60c70814f2437c62db585",
    "data_file": "butler-lives-saints_butler.json.gz",
-   "data_hash": "sha256:a36bb422ab7d3a16a7d831bbe47705ea165ff543603fa62e9d74b1b3448b5d98",
-   "data_bytes": 316814,
+   "data_hash": "sha256:590582da3f258fa7d87932cfeb0093432a5b3b0ebe4f32b64be1303787cf3844",
+   "data_bytes": 316889,
    "passages": 1980,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:43Z"
+   "exported": "2026-08-19T19:15:16Z"
   },
   "calvin-institutes_allen-volume-1": {
    "source_hash": null,
@@ -4880,52 +4880,52 @@
    "exported": "2026-08-05T07:21:01Z"
   },
   "grote-plato-companions-vol1_grote": {
-   "source_hash": "sha256:62bcf6a566b185b344b43523f39e0c7bdf54e905e4d46165248e2a13a9fcb709",
+   "source_hash": "sha256:4909960226d98de34025a39685ca778138106ea491c7b3afa50a97fd95f2e717",
    "data_file": "grote-plato-companions-vol1_grote.json.gz",
-   "data_hash": "sha256:8cf5aa9bf129a32c66c0d71f8dbb4a3aea9da16fbc509d7a584ae16701b6e1aa",
-   "data_bytes": 520215,
+   "data_hash": "sha256:014dca2b5a1444d339425f9ba8c7285fc06b8e6e7e5e8cf4edd5220f66139104",
+   "data_bytes": 520036,
    "passages": 2800,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-10T03:54:31Z"
+   "exported": "2026-08-19T19:00:51Z"
   },
   "grote-plato-companions-vol2_grote": {
-   "source_hash": "sha256:5424ebadcca543effccb3b1a6ead11de5572dbbea48f1c17cdffd3f63ea2b83d",
+   "source_hash": "sha256:9e1d4128e73ad3d0a0fad8aeb74251b80102dd902f90d4281861b2815fa55dec",
    "data_file": "grote-plato-companions-vol2_grote.json.gz",
-   "data_hash": "sha256:2c2b41eb4a032e71613a33c67ecf780a10647c73d299e4c97c9ae8f768b1b49e",
-   "data_bytes": 435682,
+   "data_hash": "sha256:0a6f1cb53b1e0eaac21c52275d0767a6cc1000f204f401e35a4927d37065c426",
+   "data_bytes": 435410,
    "passages": 2361,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-09T14:13:37Z"
+   "exported": "2026-08-19T18:57:22Z"
   },
   "grote-plato-companions-vol3_grote": {
-   "source_hash": "sha256:657b5ec0bde017652f87028b9e979a38675fc15decc172739b9faf057baf8c6d",
+   "source_hash": "sha256:11bd1538a43973afffcabd7d9ec64378036d94cbda94d4335faf5d374e223174",
    "data_file": "grote-plato-companions-vol3_grote.json.gz",
-   "data_hash": "sha256:c0a6874a4646223fc92144c7d226e6017036869c6cafc6dfa14db7d79714e649",
-   "data_bytes": 463741,
+   "data_hash": "sha256:e392cedb6da417b494908e931b6f50a31df969ce8fc190aaac3801443334e63f",
+   "data_bytes": 463389,
    "passages": 2551,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-09T14:13:37Z"
+   "exported": "2026-08-19T18:57:22Z"
   },
   "grote-plato-companions-vol4_grote": {
-   "source_hash": "sha256:d86b8d516e8cf863e05a18c64927208b736e5c471c52598533944ef85b10c245",
+   "source_hash": "sha256:4cf4a89c3947a0b5a587d70457395395f9e3ff1a628932f4cc45d75254afe6f7",
    "data_file": "grote-plato-companions-vol4_grote.json.gz",
-   "data_hash": "sha256:d00e47105689c26a011e75a57533d418f753124904b47ebd5666aeeda02e5f41",
-   "data_bytes": 550244,
+   "data_hash": "sha256:b6816210c481f9e298ff256efbb868575c5653f0a9e6ef3c77193382c58bbd42",
+   "data_bytes": 550403,
    "passages": 3203,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-09T14:13:37Z"
+   "exported": "2026-08-19T19:03:40Z"
   },
   "gulistan-sadi_rehatsek": {
    "source_hash": "sha256:285d8b339c9604cfe6ffd5779c38e2aeb378d1df55f21dff1d49fe567808cc17",
@@ -5121,16 +5121,16 @@
    "exported": "2026-07-31T04:10:31Z"
   },
   "herodotus-histories-vol1_macaulay": {
-   "source_hash": "sha256:7c1f85fd3c9b75a49bb02f13612110800cdba56ab965d36996eeea3ac6644f6d",
+   "source_hash": "sha256:81ff99629447e675afef3f251a22e37e502020749a1450424d39087fa5ca0153",
    "data_file": "herodotus-histories-vol1_macaulay.json.gz",
-   "data_hash": "sha256:889e09999d15a3461775b5bf04aa3b8f7cfd174b3d8acf18fa0632c9ddfd0d1d",
-   "data_bytes": 324145,
+   "data_hash": "sha256:9b8d12fa499cce1bc948db1b97e54c1edf4da0af9082ece8a5d8c09f552e0614",
+   "data_bytes": 324036,
    "passages": 1540,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:55Z"
+   "exported": "2026-08-19T18:57:18Z"
   },
   "herodotus-histories-vol2_macaulay": {
    "source_hash": "sha256:ba5680163bba69bfbad3189dcaad96484f42ed49a5fc58e7df0372e5db7b5168",
@@ -7689,16 +7689,16 @@
    "exported": "2026-08-17T23:32:11Z"
   },
   "montaigne-essays_cotton": {
-   "source_hash": "sha256:2fd87945a6c73e58d1df41ba9ee04c064d8ca01701c56320803bcbc531a4a595",
+   "source_hash": "sha256:dd0624865e2be35bdeb6dc02bca1abd522c334d2f067b9a11fdb085be9ddce14",
    "data_file": "montaigne-essays_cotton.json.gz",
-   "data_hash": "sha256:9dbbbf339c9347798bfa2c4f449bc5131a71f8e6b522029706b06999d9d0712c",
-   "data_bytes": 1207123,
+   "data_hash": "sha256:93ff41c4f7f1b63c46fa18197aa68c9c77530e70783e9d5ef94916fa31247796",
+   "data_bytes": 1208392,
    "passages": 5268,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:08Z"
+   "exported": "2026-08-19T19:08:51Z"
   },
   "montaigne-travels-vol1_waters": {
    "source_hash": "sha256:cd48ae0e991bc0866a46287e9a202672df5faeb55ff12ef01c7746988fd70498",
@@ -12373,16 +12373,16 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "thoreau-walden_thoreau": {
-   "source_hash": "sha256:f2cf7baab4948e14b2f86de8957669bc1465de86145b19c8ba1fb2abb103b3c5",
+   "source_hash": "sha256:62c81efffb2ad358b335e8a02cb050a7bd06b59039b8496c2a0cc2eb260daf9d",
    "data_file": "thoreau-walden_thoreau.json.gz",
-   "data_hash": "sha256:00dc6eebc85c0837f7360091908a01c4a280c2c71793308d003d1a9ef64b6af0",
-   "data_bytes": 253089,
+   "data_hash": "sha256:1fd0dd18ac07a512758b1abe6ba1fe5511258ca6389d383b448eebdbd98e6f7c",
+   "data_bytes": 253229,
    "passages": 576,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:31Z"
+   "exported": "2026-08-19T19:17:32Z"
   },
   "thousand-buddhas-stein_stein": {
    "source_hash": "sha256:b1e3caae0bd46a8e03fc04398a93b2baf19cdd214fec02cdd2e2b7a695bb5d58",
