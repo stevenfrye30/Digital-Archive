@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-19T20:33:46Z",
+ "generated": "2026-08-19T20:51:15Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "0339df0752d88954bc080332198066310d1631e4",
- "library_fingerprint": "sha256:ac7cecab835dae8898dbeb358ec6a307be2a22e8cd43c0b0380daa458fbcee0b",
+ "exporter_rev": "9c65616eb36ea2edd4fe81f8dab8fd8182da91a9",
+ "library_fingerprint": "sha256:ae2988c617e0063c6069ee248b3fa077eb5a516b154dc7863c5e2afb1db1daa5",
  "counts": {
   "entries": 1109,
   "public": 962,
@@ -625,16 +625,16 @@
    "exported": "2026-07-10T17:30:21Z"
   },
   "arnold-essence-buddhism_arnold": {
-   "source_hash": "sha256:a0edd1dc4cb57101d330f5104bdb8553730dac708c7b7e7c22716f70c9e1fe7e",
+   "source_hash": "sha256:6a895c3359f11f4d6ff38d8590719bc06cf8ac6285b2effefb77ce5421cb4fd4",
    "data_file": "arnold-essence-buddhism_arnold.json.gz",
-   "data_hash": "sha256:3d1f46c81020eab7a3d8650ee9de0993731bfabbd6a269a4f576bac40ca05fe0",
-   "data_bytes": 35945,
+   "data_hash": "sha256:b9110985b782888d212254edfe007781c06c633901aa2a6615ff5f88f77de24b",
+   "data_bytes": 35942,
    "passages": 819,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T20:31:51Z"
+   "exported": "2026-08-19T20:49:15Z"
   },
   "arnold-hindu-literature_arnold": {
    "source_hash": "sha256:9ca7335c6bfb650edccd03dda3251e818e5a0076c9f9fe114f01bf3a3bb8dcdf",
@@ -5519,16 +5519,16 @@
    "exported": "2026-08-18T14:19:17Z"
   },
   "iamblichus-mysteries_taylor": {
-   "source_hash": "sha256:0656b17232752b65373956508f41bc313f4bbaa486f1480e47ef758e29dc625f",
+   "source_hash": "sha256:5221276d3a366b9590540f43f46f97ba71c08fcde2569646fdc2b7f96a57676e",
    "data_file": "iamblichus-mysteries_taylor.json.gz",
-   "data_hash": "sha256:4ac926241ad4fe1e4753df6e6fc3a461d7e6d048c690efb66b73b4f0b0bc53da",
-   "data_bytes": 185029,
+   "data_hash": "sha256:6ceb7db27a891414ac0e1079326019f06acfe17d6fed5d8a74f6eb2f0ff1de41",
+   "data_bytes": 184978,
    "passages": 897,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T20:14:33Z"
+   "exported": "2026-08-19T20:49:01Z"
   },
   "icelandic-sagas-vol3-dasent_dasent": {
    "source_hash": "sha256:1476a14839348f94fbeb312c37bdfacb3a02c07672f58d19373769f1a9ccce6a",
@@ -6117,16 +6117,16 @@
    "exported": "2026-07-10T17:31:00Z"
   },
   "josephus-wars-jews_whiston": {
-   "source_hash": "sha256:253daac132b8381b98a755c956ffce6efbaf0a6c1867c95ef51ef2d2946b3ba0",
+   "source_hash": "sha256:a1f3283318d3cc76a843527c3c0bc4bb78fd2aa69205dc08396a55e0711e5f6e",
    "data_file": "josephus-wars-jews_whiston.json.gz",
-   "data_hash": "sha256:c5caad5e04a4aa2f11e8997628301b82d079da13b34421c03b95bf59c1fcf3a1",
-   "data_bytes": 451168,
+   "data_hash": "sha256:45ae096405ee3f71994d70191f0633c631917999c6e0cd9ff2496d5b56322486",
+   "data_bytes": 451192,
    "passages": 1016,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:00Z"
+   "exported": "2026-08-19T20:41:28Z"
   },
   "journey-siberia-curtin_curtin": {
    "source_hash": "sha256:40a98c156972b4c14ff53d3c9bcf091ba9cc7ea0c6814ab99a2a1ecce20b1906",
@@ -8453,14 +8453,14 @@
   "origen-writings_crombie-volume-2": {
    "source_hash": null,
    "data_file": "origen-writings_crombie-volume-2.json.gz",
-   "data_hash": "sha256:1375eff7dc76de46535cc53a76ed515e8bf750f82a2eebd0dea99cc54837ebd0",
-   "data_bytes": 545177,
+   "data_hash": "sha256:b35b7073ef86d4ff5ab94a1dc514ddc16d3172a85bbee54cde24e1d81e73f67b",
+   "data_bytes": 545276,
    "passages": 3353,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T16:32:51Z",
+   "exported": "2026-08-19T20:49:57Z",
    "source_note": "no canonical dir (derived provider record)"
   },
   "origin-pyramid-staniland-wake_staniland-wake": {
@@ -9323,16 +9323,16 @@
    "exported": "2026-08-19T03:09:51Z"
   },
   "plutarch-romane-questions_holland": {
-   "source_hash": "sha256:ffe1caeb90311a966dd30295f302e346bfa7392270e970bb3c391d66e85a11cc",
+   "source_hash": "sha256:59a8651acc55cede650d7da8d4573c017f4d2adb7f5587257203f7fc7f6d2d05",
    "data_file": "plutarch-romane-questions_holland.json.gz",
-   "data_hash": "sha256:09814ee22a3563fc2b56f8813b8a22281334f25b6a7beb1ca1fa0558bce66a2d",
-   "data_bytes": 113408,
+   "data_hash": "sha256:77e010e7a2baa913b7bc4375103cd6362300f54814f72b0c973f520e52bbff9d",
+   "data_bytes": 113379,
    "passages": 541,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T19:33:54Z"
+   "exported": "2026-08-19T20:48:58Z"
   },
   "poems-by-emily-dickinso-emily-dickinson_anonymous": {
    "source_hash": "sha256:bb9cf253e5e423a1cc1b3ef322d9aae08e35796d1138bb234dc0854b64733915",
@@ -12852,16 +12852,16 @@
    "source_note": "no canonical dir (derived provider record)"
   },
   "valla-donation-constantine_coleman": {
-   "source_hash": "sha256:950b7435de29f8eb0c49428e254796ebfb0783d67a54108a53adce70df90299c",
+   "source_hash": "sha256:69cda0c65bc96b13709bf4683c2cb58edeb63d2a2a22292734b0cc185b953ad3",
    "data_file": "valla-donation-constantine_coleman.json.gz",
-   "data_hash": "sha256:efa39062a8fa8e7f482d46be6c74b76eb2ac9410f7fcea1ccab253f1a8bd0d80",
+   "data_hash": "sha256:fd61123166a41518d53f28614e607f2d171b1155852a91f6ea1b18c6bb37cf5d",
    "data_bytes": 148283,
    "passages": 945,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T19:37:33Z"
+   "exported": "2026-08-19T20:49:58Z"
   },
   "vampire-kith-kin-summers_summers": {
    "source_hash": "sha256:ea5a16ec17a632a74d398d12c6deb9f46c21a42ef6791d4806bf029bded45bfa",
