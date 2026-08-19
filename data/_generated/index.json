@@ -4579,7 +4579,7 @@
       "tradition": "Christian",
       "collection": "sacred",
       "hierarchy": [
-        "book",
+        "work",
         "paragraph"
       ],
       "data_file": "anf01-early-fathers_ccel-schaff.json",
@@ -4937,6 +4937,7 @@
       "tradition": "Christian",
       "collection": "sacred",
       "hierarchy": [
+        "homily",
         "paragraph"
       ],
       "data_file": "chrysostom-homilies-acts-romans_ccel-schaff.json",
@@ -4965,7 +4966,6 @@
       "tradition": "Christian",
       "collection": "sacred",
       "hierarchy": [
-        "work",
         "homily",
         "paragraph"
       ],
@@ -5860,6 +5860,7 @@
       "tradition": "Christian",
       "collection": "sacred",
       "hierarchy": [
+        "division",
         "paragraph"
       ],
       "data_file": "cyril-nazianzus-select-works_ccel-schaff.json",

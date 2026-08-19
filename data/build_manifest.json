@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-19T17:01:28Z",
+ "generated": "2026-08-19T17:26:50Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "09ee5c8058fe78012b05bc1371803b31a26caf3e",
- "library_fingerprint": "sha256:6f643868eead07d5595f66b21877a4a15f9310927b0f8c23df7347af65327c31",
+ "exporter_rev": "9f51a9f3748ff1f0d5d1dbeadc438b5b34ebef5c",
+ "library_fingerprint": "sha256:69a1380dfe362d382afc552a896f49021e2e87f3d619f57a5c85db8d07b24e28",
  "counts": {
   "entries": 1109,
   "public": 962,
@@ -317,16 +317,16 @@
    "exported": "2026-07-10T17:30:20Z"
   },
   "anf01-early-fathers_ccel-schaff": {
-   "source_hash": "sha256:9d55d56f1553ee82fad9a2a37da2b63246d6c00b68a6aadd267565fe4be5de0a",
+   "source_hash": "sha256:be2cae7515547f0790ba835358f9b2060e4b1813cd1d68f03df2d13bacd83140",
    "data_file": "anf01-early-fathers_ccel-schaff.json.gz",
-   "data_hash": "sha256:32e6f33f14255602731a8955c29218b5ac840f7e5d03a6e2f438bbfa50700c5a",
-   "data_bytes": 1095336,
+   "data_hash": "sha256:5ebb41d8e4183f85f726b87f3d71d46b83489d46fe09a6214d13e5259a60ef09",
+   "data_bytes": 1098249,
    "passages": 8175,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-08T02:26:13Z"
+   "exported": "2026-08-19T17:24:28Z"
   },
   "anf04-tertullian-cyprian_ccel-schaff": {
    "source_hash": "sha256:a33caaae478c26d4bf078dcf6c44027a94efd42276957ca06d7c6b00707c004e",
@@ -2625,28 +2625,28 @@
    "exported": "2026-08-18T12:51:01Z"
   },
   "chrysostom-homilies-acts-romans_ccel-schaff": {
-   "source_hash": "sha256:5d3e29b9e892dba61416c2fcbfc0a96ca886d985304d4654021eea9da928220c",
+   "source_hash": "sha256:6ec64c93f1e5d6548c33b67a363edea8576b5338d739e226eefd0a3f931a7222",
    "data_file": "chrysostom-homilies-acts-romans_ccel-schaff.json.gz",
-   "data_hash": "sha256:dfcb4866d0e24ed97795a61ed38247dc3151d9a04fa8c34088610efb5d766ad2",
-   "data_bytes": 1223254,
+   "data_hash": "sha256:e7aa9fb19e8519dc94454f16b1c63ae0bc8958db865e8d268f28224d0f41bc6d",
+   "data_bytes": 1230096,
    "passages": 3565,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:44Z"
+   "exported": "2026-08-19T17:25:03Z"
   },
   "chrysostom-homilies-corinthians_ccel-schaff": {
-   "source_hash": "sha256:0d8486ed34b53b1d13a108cc2a261580bd45491932f3d1ca4e4a0da2c437fdad",
+   "source_hash": "sha256:fd672662f12ee9934d90a009692eca06974bd9366672a7599f6f2f4c184c315a",
    "data_file": "chrysostom-homilies-corinthians_ccel-schaff.json.gz",
-   "data_hash": "sha256:11c7a8f94aa5c27dd86d3ef98286e3a5606cb7e6f68ce46b9a9da0f62a8d40c6",
-   "data_bytes": 907269,
+   "data_hash": "sha256:dab4b924c94b141153afd1834a8b1d2fa71a0d6b5ca993e028fd29e39e5e72e9",
+   "data_bytes": 899246,
    "passages": 5419,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-05T07:51:23Z"
+   "exported": "2026-08-19T17:14:17Z"
   },
   "chrysostom-homilies-galatians-ephesians_ccel-schaff": {
    "source_hash": "sha256:186dd0fdec17f50871a74cf658a311a6f6acf8eeffd149863bb01d1cae085da2",
@@ -3022,16 +3022,16 @@
    "exported": "2026-07-10T17:30:46Z"
   },
   "cyril-nazianzus-select-works_ccel-schaff": {
-   "source_hash": "sha256:75a9f6c9ef9e980350353ddbb5415c89bb12e970fae2edd6ec16a35a98f23ed7",
+   "source_hash": "sha256:ff14d831f4adf3e6afba3a541950d104f0109c837f3e59197c71774cecc66d00",
    "data_file": "cyril-nazianzus-select-works_ccel-schaff.json.gz",
-   "data_hash": "sha256:3f5690cc40f8b044359d17d0d9c27c04b92a488f1dc81d41df2f28f58d839506",
-   "data_bytes": 1076632,
+   "data_hash": "sha256:c2e9dabecafb25efb88406031da63874a450d7f8d440006a10a988e854789e12",
+   "data_bytes": 1090029,
    "passages": 7271,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:30:46Z"
+   "exported": "2026-08-19T17:25:05Z"
   },
   "dakshinamurti-stotra_sastri": {
    "source_hash": "sha256:c456a38514c4212946092f0a0ecacb899a83cef60bbdb1eae5100ce1a7a78bba",
