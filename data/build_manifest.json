@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-19T21:09:42Z",
+ "generated": "2026-08-19T21:21:57Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "670edea06ebe53d19622bedcf24c77eee3b7e297",
- "library_fingerprint": "sha256:dff37d5420f97f6383337cca6fc21a35e80b74e5a4d009f33cc5501421b17310",
+ "exporter_rev": "b5f56a305d81c0904055efdc375894a3784cee57",
+ "library_fingerprint": "sha256:e1a55a31267c507f11467c1041d81ebae082af6718c8493b31fc5e54d7672b30",
  "counts": {
   "entries": 1109,
   "public": 962,
@@ -673,16 +673,16 @@
    "exported": "2026-08-09T14:13:41Z"
   },
   "arnold-roman-stoicism_arnold": {
-   "source_hash": "sha256:57554b4e30f50f465ac764377a655ba0eb18a8ed0a761005571f35339c7304b8",
+   "source_hash": "sha256:51f42fbe4325ac06b808f9a73c720920bee5ae93e2093b3542f8a91afa66efbe",
    "data_file": "arnold-roman-stoicism_arnold.json.gz",
-   "data_hash": "sha256:528c8032c4c340a872446c437ce97f37e0d2aa74a3ec3069e66699d430dd64cd",
-   "data_bytes": 521879,
+   "data_hash": "sha256:e12a715e9f9e3056d2a5635cf69a05c7fb6810d0718b0dd3cc79fe3a2a6160d0",
+   "data_bytes": 521745,
    "passages": 5256,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-10T03:54:28Z"
+   "exported": "2026-08-19T21:15:37Z"
   },
   "art-of-war_giles": {
    "source_hash": "sha256:356c7a0e039e6bf349e7956b7a5816ca90c8815bb433431e4b936b58feba514d",
@@ -1081,16 +1081,16 @@
    "exported": "2026-07-10T17:30:24Z"
   },
   "barlaam-ioasaph_woodward": {
-   "source_hash": "sha256:820d723821cc97c573e3847f5a85f13322d2d7484a744513a252a11a59bd2b1f",
+   "source_hash": "sha256:27ccd6ad84989278e8fd4525505939d2fa21065ad1c1ba34f12ba66f79fc5388",
    "data_file": "barlaam-ioasaph_woodward.json.gz",
-   "data_hash": "sha256:481488369cfab7e6b4b6e07a7891a9fb298af9a48ed5fe9b5148588254a26325",
-   "data_bytes": 170512,
+   "data_hash": "sha256:7041327bd867ea2426e957c7b400639e0c3048bc1860f075b3baf9ef9e8caa8f",
+   "data_bytes": 170566,
    "passages": 431,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-09T14:14:30Z"
+   "exported": "2026-08-19T21:16:08Z"
   },
   "basil-letters-works_ccel-schaff": {
    "source_hash": "sha256:00e0f4b3792d2c1329973f4f585dce97c440db9af254645e9e0c80b64acc9da8",
@@ -5037,16 +5037,16 @@
    "exported": "2026-08-19T03:08:33Z"
   },
   "hegel-logic_wallace": {
-   "source_hash": "sha256:e29dd72858fd3be9eee2b4f2238f5b6e8f09426e40f881e4c5aa1846cd09ad9b",
+   "source_hash": "sha256:359f3958f966980e51f41c327c11ca2d9fc27b25a274871fa79e13cd29e6d261",
    "data_file": "hegel-logic_wallace.json.gz",
-   "data_hash": "sha256:4169e467fb8ce9cd1c41e1cbf1fedfbcc3102454e18799eb5d8512f5df661f11",
-   "data_bytes": 315868,
+   "data_hash": "sha256:583df36c6f916510719abd47c0af86b6f8adbd324298303c3488298b081377cd",
+   "data_bytes": 315776,
    "passages": 1150,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-10T04:32:47Z"
+   "exported": "2026-08-19T21:15:45Z"
   },
   "hegel-philosophy-fine-art-vol1_osmaston": {
    "source_hash": "sha256:eafa70981384b3c820f3ce45bba27006d2d674c01b983037b6a8bbfc4a70b94e",
@@ -6044,16 +6044,16 @@
    "exported": "2026-08-07T14:47:15Z"
   },
   "jerusalem-herod-saladin-besant_besant-palmer": {
-   "source_hash": "sha256:3d4ce6b73f0a560da37de2beb754ced6463fb60360fd33f53fff7aff24118e38",
+   "source_hash": "sha256:37f63582db4e0b0c021e624b5a00a6181fc2ef29955a3af2afe173dcaddfdbe0",
    "data_file": "jerusalem-herod-saladin-besant_besant-palmer.json.gz",
-   "data_hash": "sha256:7c01867e54690eb8cbbc9350491f36ed6aaa4e6601bfc020ad2ae6ef258ab7e5",
-   "data_bytes": 370542,
+   "data_hash": "sha256:e4f2a052d7b7916fb4b9a5bac3da04657e783d861de18158e225158e62014d49",
+   "data_bytes": 370716,
    "passages": 1184,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T01:14:34Z",
+   "exported": "2026-08-19T21:20:49Z",
    "redirects": 1169
   },
   "jesus-essene-hartmann_hartmann": {
@@ -11742,16 +11742,16 @@
    "source_note": "no canonical dir (derived provider record)"
   },
   "sun-lore-olcott_olcott": {
-   "source_hash": "sha256:559a1f7ca94d0496a48595aed95a01e475acc3f80881f0b98ce8c53ed7daca4c",
+   "source_hash": "sha256:06b3ef8fbfb882178597f3c47657be81d275031744df5d3a51f7d69f8d8305a3",
    "data_file": "sun-lore-olcott_olcott.json.gz",
-   "data_hash": "sha256:35999291b6281d91aecdb7be5847139bccadfe2154bab06bc364de107b5fa28b",
-   "data_bytes": 143800,
+   "data_hash": "sha256:fc2af3607207d460bcfdc0fa6249080ea068747e95d1bccfb648fd42c2c19b9f",
+   "data_bytes": 143650,
    "passages": 1106,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-10T04:45:55Z"
+   "exported": "2026-08-19T21:15:35Z"
   },
   "sutta-nipata-sbe_fausboll": {
    "source_hash": "sha256:5b8a0912cfdf353193d9f5165c89113b063440286f6da8beb27eb964dba631cb",
