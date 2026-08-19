@@ -913,7 +913,6 @@
       "collection": "sacred",
       "hierarchy": [
         "division",
-        "section",
         "segment"
       ],
       "data_file": "dhammasangani-pali_pli.json",
@@ -10983,7 +10982,6 @@
       "tradition": "Hindu",
       "collection": "sacred",
       "hierarchy": [
-        "part",
         "book",
         "verse"
       ],
@@ -11394,7 +11392,6 @@
       "tradition": "Hindu",
       "collection": "sacred",
       "hierarchy": [
-        "mandala",
         "hymn",
         "verse"
       ],
@@ -12928,7 +12925,7 @@
       "collection": "sacred",
       "hierarchy": [
         "chapter",
-        "verse"
+        "paragraph"
       ],
       "data_file": "jerahmeel-gaster_gaster.json",
       "source": "sacredtexts",
@@ -13185,7 +13182,8 @@
       "tradition": "Jewish",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "chapter",
+        "paragraph"
       ],
       "data_file": "ot-historical-records-king_pinches.json",
       "source": "gutenberg",
@@ -13213,7 +13211,8 @@
       "tradition": "Jewish",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "section",
+        "paragraph"
       ],
       "data_file": "song-of-songs-translation_anonymous.json",
       "source": "gutenberg",
@@ -13904,7 +13903,7 @@
       "collection": "sacred",
       "hierarchy": [
         "chapter",
-        "verse"
+        "paragraph"
       ],
       "data_file": "chaldean-genesis-smith_smith.json",
       "source": "sacredtexts",
@@ -20987,7 +20986,7 @@
       "collection": "other",
       "hierarchy": [
         "chapter",
-        "verse"
+        "paragraph"
       ],
       "data_file": "proofs-conspiracy-robison_robison.json",
       "source": "sacredtexts",
@@ -23915,8 +23914,9 @@
       "tradition": "Modern Philosophy",
       "collection": "other",
       "hierarchy": [
-        "chapter",
-        "verse"
+        "essay",
+        "aphorism",
+        "paragraph"
       ],
       "data_file": "genealogy-of-morals_samuel.json",
       "source": "gutenberg",
