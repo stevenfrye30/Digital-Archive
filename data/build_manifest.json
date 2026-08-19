@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-19T19:19:31Z",
+ "generated": "2026-08-19T20:06:49Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "7d70e5c60d9a79d34ea01378c254b2baaceb6ad4",
- "library_fingerprint": "sha256:ed989a23dae6d4d947582000d788d82fe0bcc3bc066305ff25f3fb427e3e5baf",
+ "exporter_rev": "7fe2961cf4aa15e51af48eb7841c84d7d1f91900",
+ "library_fingerprint": "sha256:5d55a7556832d38b42ad5c3f4bfe142e5eb6598efcc2812b82359c67bb882980",
  "counts": {
   "entries": 1109,
   "public": 962,
@@ -457,16 +457,16 @@
    "exported": "2026-08-10T16:36:47Z"
   },
   "arabian-poetry-clouston_clouston": {
-   "source_hash": "sha256:c3a090264c55acd22e9207769160f46e10cb08f063903cce6b7b644f08b9ba90",
+   "source_hash": "sha256:7510e6c477f75f4930c4023d518067348a55cee330a62f6fd006c6d5207dac24",
    "data_file": "arabian-poetry-clouston_clouston.json.gz",
-   "data_hash": "sha256:c188ef202a3a8c8a9892f7594c82164bc4e7c775785019a0f512b661592b8e90",
-   "data_bytes": 350714,
+   "data_hash": "sha256:9eb07eea9c48fd2fc08671de29c7121d301ec48c2679344941199b313c149955",
+   "data_bytes": 350711,
    "passages": 3589,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T03:02:09Z"
+   "exported": "2026-08-19T20:02:44Z"
   },
   "arabian-wisdom-wortabet_wortabet": {
    "source_hash": "sha256:d0deabc13aedafde65925b532e815421a99e4c3c5d70340d0756872409e836e3",
@@ -6250,16 +6250,16 @@
    "exported": "2026-08-17T14:32:04Z"
   },
   "kalidasa-sakoontala_monier-williams": {
-   "source_hash": "sha256:6e88caaf225cfac7605f91955f8850f99dce926d6bca73facd4126026ad4e277",
+   "source_hash": "sha256:9897039e5131318a832a348f582a5c772f538783c80ad1dee0add028430c42b1",
    "data_file": "kalidasa-sakoontala_monier-williams.json.gz",
-   "data_hash": "sha256:73255f3f2ab36fb823914905715c5f024b3c1d21f5b024d313d3e9331ac15916",
-   "data_bytes": 143261,
+   "data_hash": "sha256:148fb238a5ec3019bf9951a5441e662eb0ea7d20463d2cec504f751ecb13dd0c",
+   "data_bytes": 143273,
    "passages": 2730,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T03:01:38Z"
+   "exported": "2026-08-19T20:02:26Z"
   },
   "kalisantarana-upanishad-aiyar-1914_aiyar": {
    "source_hash": null,
@@ -6299,16 +6299,17 @@
    "exported": "2026-08-19T02:59:59Z"
   },
   "kant-critique-practical-reason_abbott": {
-   "source_hash": "sha256:fac074d2b109b4c2a607b385b563efc770d9fcd964071692f90f35a309006736",
+   "source_hash": "sha256:ff6553471b5a7d415743964ff9bf3ee3bc0e29bc6cd969b56dfd5635325e68cc",
    "data_file": "kant-critique-practical-reason_abbott.json.gz",
-   "data_hash": "sha256:ff658ce14ec19e6d6f74136914cfd53db37bd6166dca0c7af462d3c991c5f850",
-   "data_bytes": 117677,
-   "passages": 416,
+   "data_hash": "sha256:5efadd6ec7cabe2db64d35d5603c35595c4beef98d6bec5cbf16e2b3569fb6e7",
+   "data_bytes": 117956,
+   "passages": 409,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:00Z"
+   "exported": "2026-08-19T19:24:29Z",
+   "removals": 7
   },
   "kant-critique-pure-reason_meiklejohn": {
    "source_hash": "sha256:8a1ecbcd6b36ec5cde74844f32e5ee823ef4c802beac9ff9ed85d90afb14323b",
@@ -8781,16 +8782,16 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "pirke-avot_gorfinkle": {
-   "source_hash": "sha256:970c3db57e6276365fe53eaac71a38b8c3a994f387e4a24ea5399c335d8c5f29",
+   "source_hash": "sha256:2f866f3b27c49676cd622a9e4edb8e2d0b84902054122d5995dab8ed81058857",
    "data_file": "pirke-avot_gorfinkle.json.gz",
-   "data_hash": "sha256:b8f6261ae15ddaf12640c3e60108d10bb217a94cbb758e582b41ba404eb1189b",
-   "data_bytes": 64196,
+   "data_hash": "sha256:881d191d3bb714fc71f58f8c25e94e7cb7793379e8b8fa88044d74070f435c18",
+   "data_bytes": 64209,
    "passages": 615,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:12Z"
+   "exported": "2026-08-19T19:35:06Z"
   },
   "pistis-sophia-mead_mead": {
    "source_hash": "sha256:cc5807d5708000cf80873c35ea5d7991fe5336a5cf1bb10ab71a49b042d5290b",
@@ -9033,16 +9034,16 @@
    "exported": "2026-08-09T14:14:00Z"
   },
   "plato-republic_jowett": {
-   "source_hash": "sha256:51a387112e0c8303a45d022a4474692f1672db350c411d0c08c21658f0772869",
+   "source_hash": "sha256:7b9f3e88b784ba493aea45d9b8a9d8b13a71efada08b4e5ed7a6b81789765653",
    "data_file": "plato-republic_jowett.json.gz",
-   "data_hash": "sha256:ed93fb7442326ba190a4b18ad30b00889875e8876b5e038a9e2fbdeb1bfdcb0a",
-   "data_bytes": 482607,
+   "data_hash": "sha256:33a1c27b41d5ad401b94905130bed3935abb22543f1ca7be0f448e8a8444b86a",
+   "data_bytes": 482611,
    "passages": 4703,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:13Z"
+   "exported": "2026-08-19T19:34:07Z"
   },
   "plato-seventh-letter_harward": {
    "source_hash": "sha256:a5bf12c94dda7f0e24f546c9a4795656aff7ed40f92616f131d00a5286bbfac2",
@@ -9322,16 +9323,16 @@
    "exported": "2026-08-19T03:09:51Z"
   },
   "plutarch-romane-questions_holland": {
-   "source_hash": "sha256:1eaa29e78ea8919df98743e4d0c96726b75a3c910823f320c50ea79b3742c52f",
+   "source_hash": "sha256:ffe1caeb90311a966dd30295f302e346bfa7392270e970bb3c391d66e85a11cc",
    "data_file": "plutarch-romane-questions_holland.json.gz",
-   "data_hash": "sha256:90fea3fac91502a9b49efcae16410b530ba757b3b2ce96fc590c6fd3f2aa3e21",
-   "data_bytes": 113401,
+   "data_hash": "sha256:09814ee22a3563fc2b56f8813b8a22281334f25b6a7beb1ca1fa0558bce66a2d",
+   "data_bytes": 113408,
    "passages": 541,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-10T16:36:16Z"
+   "exported": "2026-08-19T19:33:54Z"
   },
   "poems-by-emily-dickinso-emily-dickinson_anonymous": {
    "source_hash": "sha256:bb9cf253e5e423a1cc1b3ef322d9aae08e35796d1138bb234dc0854b64733915",
@@ -9382,16 +9383,16 @@
    "exported": "2026-08-09T14:13:55Z"
   },
   "poems-victor-hugo_anonymous": {
-   "source_hash": "sha256:5f73fba911c7da8b2774bd1439277b7ddb77f9c877e4d4d37fb429c6065f0b23",
+   "source_hash": "sha256:aea4982b59e0d0809c0cbfc05588bded1176dcab6a8698ba4617d11192f97abe",
    "data_file": "poems-victor-hugo_anonymous.json.gz",
-   "data_hash": "sha256:06e7d9df6641c3fc38c5f34c2a8fb99118541739df53d94e0a27f6c5432a3b3f",
-   "data_bytes": 200896,
+   "data_hash": "sha256:6e9908921aad2242e0ac8b19384e22b7ef8a55c46825fbf6bed177be8c4e1e02",
+   "data_bytes": 201529,
    "passages": 1812,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T03:08:38Z"
+   "exported": "2026-08-19T20:04:49Z"
   },
   "poetic-edda_bellows": {
    "source_hash": null,
@@ -11521,16 +11522,16 @@
    "exported": "2026-08-19T03:09:51Z"
   },
   "sophocles-three-plays_storr": {
-   "source_hash": "sha256:f82e10539445e2715f27d8b89668e9f28d3b34ae3b3e3f8bb0308825541c29ef",
+   "source_hash": "sha256:30830552a8ad84517975b7aa2443fdbd678331b849ae8d4778a77a3c57669f6a",
    "data_file": "sophocles-three-plays_storr.json.gz",
-   "data_hash": "sha256:b7abce31c75bd6cae53465b406a29234ad854b5c58dbc297d237547ab8e8e607",
-   "data_bytes": 100752,
+   "data_hash": "sha256:d96d350f4f559211cce7926c02a1a1f70c52551e2f0792180becf7832bd35218",
+   "data_bytes": 100574,
    "passages": 1310,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T03:01:36Z"
+   "exported": "2026-08-19T20:02:25Z"
   },
   "sorceress-michelet_allinson": {
    "source_hash": "sha256:94a97b4f839e9dc69e9a6e55c2ce82709b043c41f7177691830f6194e6a1d946",
@@ -12851,16 +12852,16 @@
    "source_note": "no canonical dir (derived provider record)"
   },
   "valla-donation-constantine_coleman": {
-   "source_hash": "sha256:b0cd05b95f1e569a3b48c0910bb8c4286e22a6629f5341822af94a5118057696",
+   "source_hash": "sha256:950b7435de29f8eb0c49428e254796ebfb0783d67a54108a53adce70df90299c",
    "data_file": "valla-donation-constantine_coleman.json.gz",
-   "data_hash": "sha256:2a0e2fa22cd26fb35f55bc8763ca6d9bfb460b5db3d15f00523933ca2c218df7",
-   "data_bytes": 148371,
+   "data_hash": "sha256:efa39062a8fa8e7f482d46be6c74b76eb2ac9410f7fcea1ccab253f1a8bd0d80",
+   "data_bytes": 148283,
    "passages": 945,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-05T23:29:04Z"
+   "exported": "2026-08-19T19:37:33Z"
   },
   "vampire-kith-kin-summers_summers": {
    "source_hash": "sha256:ea5a16ec17a632a74d398d12c6deb9f46c21a42ef6791d4806bf029bded45bfa",
