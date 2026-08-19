@@ -15349,7 +15349,8 @@
       "tradition": "Theosophy",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "chapter",
+        "paragraph"
       ],
       "data_file": "caves-jungles-hindostan-blavatsky_blavatsky.json",
       "source": "gutenberg",
@@ -15461,7 +15462,8 @@
       "tradition": "Theosophy",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "division",
+        "paragraph"
       ],
       "data_file": "secret-doctrine-vol1-blavatsky_blavatsky.json",
       "source": "gutenberg",
@@ -15489,7 +15491,8 @@
       "tradition": "Theosophy",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "division",
+        "paragraph"
       ],
       "data_file": "secret-doctrine-vol2-blavatsky_blavatsky.json",
       "source": "gutenberg",
@@ -15517,7 +15520,8 @@
       "tradition": "Theosophy",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "division",
+        "paragraph"
       ],
       "data_file": "secret-doctrine-vol3-blavatsky_blavatsky.json",
       "source": "gutenberg",
@@ -15718,8 +15722,8 @@
       "tradition": "American Literature",
       "collection": "other",
       "hierarchy": [
-        "chapter",
-        "verse"
+        "poem",
+        "stanza"
       ],
       "data_file": "poems-by-emily-dickinso-emily-dickinson_anonymous.json",
       "source": "gutenberg",
