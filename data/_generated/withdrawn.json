@@ -2,7 +2,7 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 220,
+    "total": 221,
     "retired": 84,
     "restricted": 66,
     "relocated": 8,
@@ -701,6 +701,24 @@
         "why": "no provenance pointer and no live record carries its text: it cannot pass gate 1 as it stands, so it is permanent backlog rather than work in progress",
         "superseded_by": null,
         "becomes_want": true,
+        "clean_edition": null
+      }
+    },
+    "folklore-holy-land_hanauer.json": {
+      "disposition": "scope",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/comparative religion/folklore-holy-land",
+      "preserved_at": null,
+      "reason": "scope-redundant",
+      "reason_note": "REDUNDANT (steward ruling 2026-08-20: mine the footnotes first, then retire): the SAME 1907 Duckworth edition as the finalized folklore-holy-land-hanauer witness — 100% of the finalized record's substantive rows appear verbatim in this flat copy. Its ONE unique contribution, the 171-note footnote apparatus, was ported into the finalized witness FIRST as stand-off apparatus (apparatus_hanauer.json, every anchored entry resolution-proven; port_folklore_footnotes_2026-08.py). Nothing lost; one witness remains. No want.",
+      "reason_source": "05_scripts/configs/scope_cuts.json",
+      "pd_year": null,
+      "pd_year_source": null,
+      "scope_cut": {
+        "was": "Folk-lore of the Holy Land (flat duplicate ingest)",
+        "why": "REDUNDANT (steward ruling 2026-08-20: mine the footnotes first, then retire): the SAME 1907 Duckworth edition as the finalized folklore-holy-land-hanauer witness — 100% of the finalized record's substantive rows appear verbatim in this flat copy. Its ONE unique contribution, the 171-note footnote apparatus, was ported into the finalized witness FIRST as stand-off apparatus (apparatus_hanauer.json, every anchored entry resolution-proven; port_folklore_footnotes_2026-08.py). Nothing lost; one witness remains. No want.",
+        "superseded_by": "folklore-holy-land-hanauer_hanauer.json",
+        "becomes_want": false,
         "clean_edition": null
       }
     },

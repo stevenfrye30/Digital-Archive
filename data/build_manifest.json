@@ -1,11 +1,11 @@
 {
- "generated": "2026-08-20T11:42:13Z",
+ "generated": "2026-08-20T12:13:21Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "d3032ee735ab756616d023665c1f9df39b826607",
- "library_fingerprint": "sha256:bdbdda1c2adf486e4bcd07cddb26ab3ee63d9b77ed62334334d4242dc4438c96",
+ "exporter_rev": "af08b57aa9b11350c2f678b533673edb5667d33f",
+ "library_fingerprint": "sha256:e191041436da54942fdf7fdf90439cffe26ddbcc913aa8939bec34bd154550d9",
  "counts": {
-  "entries": 1109,
-  "public": 961,
+  "entries": 1108,
+  "public": 960,
   "restricted": 148
  },
  "texts": {
@@ -4180,28 +4180,16 @@
    "exported": "2026-08-08T01:56:42Z"
   },
   "folklore-holy-land-hanauer_hanauer": {
-   "source_hash": "sha256:1bd7c00b098230b6e63b9d6466fb02e92db7cab73ae202baa0fd8cc0f0c96ecb",
+   "source_hash": "sha256:eeac6b1892d1ad885c753f3a9c40e118c708ceba3899b9fcbb0a2b915a685a67",
    "data_file": "folklore-holy-land-hanauer_hanauer.json.gz",
-   "data_hash": "sha256:562aa94f24680c1e086fc713b41c0c9914bed4a36e00df9ee7e404024a19b869",
-   "data_bytes": 215387,
+   "data_hash": "sha256:75e6f445cafb13fdc5521a5682fef4339f5554fbd7d003307ea1a2f5a7dc7adc",
+   "data_bytes": 227082,
    "passages": 1166,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:50Z"
-  },
-  "folklore-holy-land_hanauer": {
-   "source_hash": "sha256:b0ba28a21c8fbf3e3f9aea522a7664d7e75181a85ea1325a7a6200639efef044",
-   "data_file": "folklore-holy-land_hanauer.json.gz",
-   "data_hash": "sha256:3e6f5b0c389cdc6ec685f3248cd9822cf89989808647adaee9dd4fbd311205ec",
-   "data_bytes": 214159,
-   "passages": 1410,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
-   "apparatus": false,
-   "exported": "2026-07-10T17:30:50Z"
+   "apparatus": true,
+   "exported": "2026-08-20T12:06:20Z"
   },
   "folklore-shakespeare-dyer_dyer": {
    "source_hash": "sha256:2dc69829160002c54b956c615a1544a7fb8c859d564c0e0a89df507ac1426b2d",
