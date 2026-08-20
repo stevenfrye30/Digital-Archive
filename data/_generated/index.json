@@ -6072,7 +6072,7 @@
       "collection": "sacred",
       "hierarchy": [
         "chapter",
-        "verse"
+        "paragraph"
       ],
       "data_file": "biography-bible-goodspeed_goodspeed.json",
       "source": "sacredtexts",
@@ -9792,7 +9792,7 @@
       "collection": "sacred",
       "hierarchy": [
         "chapter",
-        "verse"
+        "paragraph"
       ],
       "data_file": "vedanta-sutras-sankara_thibaut-s.json",
       "source": "gutenberg",
@@ -12064,7 +12064,8 @@
       "tradition": "Jain",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "chapter",
+        "paragraph"
       ],
       "data_file": "uttaradhyayana-sutra_jacobi.json",
       "source": "internet-archive",
@@ -15448,7 +15449,8 @@
       "tradition": "Zoroastrian",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "chapter",
+        "paragraph"
       ],
       "data_file": "zend-avesta-part1_darmesteter.json",
       "source": "internet-archive",
@@ -15477,7 +15479,8 @@
       "tradition": "Zoroastrian",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "chapter",
+        "paragraph"
       ],
       "data_file": "zend-avesta-part2_darmesteter.json",
       "source": "internet-archive",
@@ -15506,7 +15509,8 @@
       "tradition": "Zoroastrian",
       "collection": "sacred",
       "hierarchy": [
-        "section"
+        "chapter",
+        "paragraph"
       ],
       "data_file": "zend-avesta-part3_mills.json",
       "source": "internet-archive",

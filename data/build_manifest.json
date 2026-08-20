@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-20T16:36:17Z",
+ "generated": "2026-08-20T17:24:05Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "b937a16dad5926c60581a005b662b59ef65e3fc3",
- "library_fingerprint": "sha256:b549568b87a87a687a71d88e5ec4499b82a09161d9aa227ff3a0788c05a3299e",
+ "exporter_rev": "9ad1d1ba36d61239b10ad4e60ec097ed72b5fcf7",
+ "library_fingerprint": "sha256:aa3719de6f083f9d921391ac5a3eb95b52e6e44cbdf5ee4a0664e002e4693205",
  "counts": {
   "entries": 1108,
   "public": 957,
@@ -638,16 +638,16 @@
    "exported": "2026-08-19T20:49:15Z"
   },
   "arnold-hindu-literature_arnold": {
-   "source_hash": "sha256:39251e1daf6cdf0dbcdaed4c5acae1d1cf6c321df9c91d209bae087d11fc70f5",
+   "source_hash": "sha256:b11f33b7483912f13e9a03e133d39d757ea342d0d9335a5881a2ea34419638c3",
    "data_file": "arnold-hindu-literature_arnold.json.gz",
-   "data_hash": "sha256:6382d1f0a167f96daf1198054097a9486af7560b653cbeee639385072e952bc7",
-   "data_bytes": 312755,
+   "data_hash": "sha256:38db00876300c4580d2ac4fa3db3c53b5156df6495fa700c420968c0a5ea64c6",
+   "data_bytes": 312758,
    "passages": 2478,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-20T15:33:51Z"
+   "exported": "2026-08-20T17:02:04Z"
   },
   "arnold-indian-poetry_arnold": {
    "source_hash": "sha256:d259b14ce97cccf8bc7192d8f21e6b9d78ee4b69738161eee8257152772aae34",
@@ -1827,16 +1827,16 @@
    "exported": "2026-07-10T17:30:42Z"
   },
   "biography-bible-goodspeed_goodspeed": {
-   "source_hash": "sha256:c5ce53fe73622e59cdd1a8fbae7c6fe2bece5323b743f7ed7ce5e6bef562ba5e",
+   "source_hash": "sha256:389b945f0fd7b562c278bebb7ff3d8459d07b6355448459682e4c383bb01a766",
    "data_file": "biography-bible-goodspeed_goodspeed.json.gz",
-   "data_hash": "sha256:35bd660efbb84ef8b756062120d1466f97daf8fe3760a91c5396ff09cc30a06c",
-   "data_bytes": 101409,
+   "data_hash": "sha256:3fe8308edd0c8610022b4c83f24f1709ba3c73c584dcbb74df93a3359dd042ff",
+   "data_bytes": 101703,
    "passages": 1104,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-18T12:40:12Z"
+   "exported": "2026-08-20T17:11:46Z"
   },
   "birth-of-tragedy_haussmann": {
    "source_hash": "sha256:99012903cd25b060c499e6495d01dced3ceb7565476b04a87d2bd15a31dfa533",
@@ -5376,16 +5376,16 @@
    "exported": "2026-07-10T17:30:56Z"
   },
   "hujviri-kashf_nicholson": {
-   "source_hash": "sha256:664a2239172bc7406c0355c28138370b55d539634cc8702ecadba11ae7770101",
+   "source_hash": "sha256:46cd31cdf625f66b19a4d35ebebd07ab3c4c8243a9c926f68582a87a5bf72def",
    "data_file": "hujviri-kashf_nicholson.json.gz",
-   "data_hash": "sha256:88430e67713452f6467bbde50caf478f67cb9884385326524246ce2be6605e99",
-   "data_bytes": 339360,
+   "data_hash": "sha256:9193272e47bf8c7831a912d098f148c91b93fe2d2c37423c9666c2da86fa9360",
+   "data_bytes": 339418,
    "passages": 899,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-20T15:34:11Z"
+   "exported": "2026-08-20T17:18:56Z"
   },
   "human-all-too-human_zimmern": {
    "source_hash": "sha256:337bf7dad5e4b2b7dedfd008639738d3ba30c7678db1d2a63f30489b2780d5ec",
@@ -8652,16 +8652,16 @@
    "exported": "2026-07-10T17:31:12Z"
   },
   "patisambhidamagga-pali_pli": {
-   "source_hash": "sha256:d01b363d1feb7f8537c59a3aedadafb2007ba8aba3a036fdd9f2897cd312418d",
+   "source_hash": "sha256:15f95ccecba221663c47ad65e7f5cbe60a47e9c8777d235725a8168d804de4a3",
    "data_file": "patisambhidamagga-pali_pli.json.gz",
-   "data_hash": "sha256:e70ed6f729ebc468812a3629a4431c3cf1358d30b216b2ff387b2d598d630b6e",
-   "data_bytes": 262941,
+   "data_hash": "sha256:c7413049ef2f2d8ec90de52b63f5c1917ae5b388267f2ff1191d1a202a1435ed",
+   "data_bytes": 269001,
    "passages": 14489,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:12Z"
+   "exported": "2026-08-20T17:01:20Z"
   },
   "patthana-pali_pli": {
    "source_hash": "sha256:261179122f6079bf7675dd1b8da5414b2634c11ff9946c59eab30cd30571d2fd",
@@ -9616,16 +9616,16 @@
    "exported": "2026-07-10T17:31:17Z"
   },
   "ramayana-dutt_dutt": {
-   "source_hash": "sha256:55a03f1a5552060518e300405dcba6f379224b486255422a4ebc5b50c1b9a111",
+   "source_hash": "sha256:e5afbd7e06cdc13080180c144526b27e677471706f40fc635cc828924974f43c",
    "data_file": "ramayana-dutt_dutt.json.gz",
-   "data_hash": "sha256:f64c1838259adbe7bb2860300e9df49664ad68b9eaefa01b07ad8807c39ccd56",
-   "data_bytes": 139221,
+   "data_hash": "sha256:ceda60855acfebc83cdc7a849273acf1acce45fcb4e1bbd7ecdd86abcc3c3987",
+   "data_bytes": 139233,
    "passages": 2163,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:17Z"
+   "exported": "2026-08-20T17:02:09Z"
   },
   "ramayana-griffith_griffith": {
    "source_hash": "sha256:c8a16bfbbc997d4b1818969c79ca98ca29a4ab350c559a59bc720a3e9d106ec9",
@@ -12293,28 +12293,28 @@
    "exported": "2026-08-05T16:14:40Z"
   },
   "theravada-vinaya_brahmali": {
-   "source_hash": "sha256:5d6ef619afee3af9093b3a6695b81b539634bbb6ff93849f08d92a547f257117",
+   "source_hash": "sha256:8b7ba889712e120f1b434b8eef6fe50f61359db5c53a85e3afa88c593f83145a",
    "data_file": "theravada-vinaya_brahmali.json.gz",
-   "data_hash": "sha256:de3604046c185e1b287263c9a9f0daa052d29fba3f8bdd84e652be9f7fe3162c",
-   "data_bytes": 1435600,
+   "data_hash": "sha256:ffec27c2d2d57dfdfbb4f5126bd95c656b14bf1184fdaf14ef78f0678d21038c",
+   "data_bytes": 1438037,
    "passages": 66207,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:30Z"
+   "exported": "2026-08-20T17:01:22Z"
   },
   "theravada-vinaya_pli": {
-   "source_hash": "sha256:af013ba393e1c24f0e5851a34627a6ceb31b784cb25c2a6dce8801d98d0743c3",
+   "source_hash": "sha256:b880a797487b07de01278f8c61cee9e2168e845169e4ebb39921a1a615ce6102",
    "data_file": "theravada-vinaya_pli.json.gz",
-   "data_hash": "sha256:32fe1c593c27b9dd961e571ab453602db9d4172b3e7e7ef6415821df8263a864",
-   "data_bytes": 1399546,
+   "data_hash": "sha256:f0143c6a341955d1ba502b4eec1935a0bb5b366c849036531832e26fffe2c3ba",
+   "data_bytes": 1402052,
    "passages": 69865,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:30Z"
+   "exported": "2026-08-20T17:01:22Z"
   },
   "therigatha-davids_rhys-davids": {
    "source_hash": "sha256:b806cf3e35111428aec563e4b4db540fd3d026053e9ad0e3f1d0db18b1f60b5c",
@@ -12820,16 +12820,16 @@
    "exported": "2026-07-10T17:31:32Z"
   },
   "uttaradhyayana-sutra_jacobi": {
-   "source_hash": "sha256:cfb4e5fb13ad82f7e6a52cec014f09b43d43a5173994318d5ed357951b5bc6d1",
+   "source_hash": "sha256:726c59a714e2e1d63a80125f77ff36d3e2557fdffc39e5864e77191cf90e0157",
    "data_file": "uttaradhyayana-sutra_jacobi.json.gz",
-   "data_hash": "sha256:5783625d875f0c8bf6a24ce1feebdcfbe7d45837accc5ae6f9327b071f574e54",
-   "data_bytes": 374261,
+   "data_hash": "sha256:05652f85a4ee0e721e87549dfb8cf23c5341afe4ed593b55b8a639d8663742d4",
+   "data_bytes": 374089,
    "passages": 6485,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T17:00:27Z"
+   "exported": "2026-08-20T17:02:14Z"
   },
   "vajrasuchi-upanishad-aiyar-1914_aiyar": {
    "source_hash": null,
@@ -12894,16 +12894,16 @@
    "exported": "2026-08-20T15:33:57Z"
   },
   "vedanta-sutras-sankara_thibaut-s": {
-   "source_hash": "sha256:b7fad2cb4bcf06c5deffe8085d33f698cffd0586061f521c9b880f345f73765e",
+   "source_hash": "sha256:c2e1cc88d6b5c91b65a3c3347b2a6e2a3beca34bf6b25382a296184d6fb2f143",
    "data_file": "vedanta-sutras-sankara_thibaut-s.json.gz",
-   "data_hash": "sha256:1288dc52b91ec0797ed417052bf51d2e4f810acc8bd25ec16dc7f5ff2a1e9326",
-   "data_bytes": 342857,
+   "data_hash": "sha256:360a7813928e05bc57e7b1d6532f8d30e57005a008f919d0b490a286450b9ffa",
+   "data_bytes": 342871,
    "passages": 1008,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:32Z"
+   "exported": "2026-08-20T17:02:11Z"
   },
   "vedic-hymns-part1_muller-vedic": {
    "source_hash": "sha256:4b6e264200cdf4d0cb9d2ad8fadf3b911978d445d2738da30017f7135f652502",
@@ -12990,7 +12990,7 @@
    "exported": "2026-08-19T21:01:36Z"
   },
   "vishnu-purana_dutt": {
-   "source_hash": "sha256:3c48d30c26cce8862c2074667b9d9be20effa55ec89815f90c1cd0a7fc7dd965",
+   "source_hash": "sha256:00ccddb43e0eaea889c9e4fa29de4ad727d39abdfe5e53b90b4790dfb8e2c31f",
    "data_file": "vishnu-purana_dutt.json.gz",
    "data_hash": "sha256:1faa6b837ca27ff0e449858fd53f21ec01af087a5554937d527c84c223f9d045",
    "data_bytes": 295491,
@@ -13002,16 +13002,16 @@
    "exported": "2026-07-10T17:31:33Z"
   },
   "vishnu-purana_wilson": {
-   "source_hash": "sha256:416ac05537dcfd6e83c467d6e0b5a16dbefde54d33a190473399a9befc2e81ec",
+   "source_hash": "sha256:2f898ae5e46d3c23b2712bf00ea4460527582320f57f1542a5fecb090e3bf7d7",
    "data_file": "vishnu-purana_wilson.json.gz",
-   "data_hash": "sha256:03f52a747c9a3af266fbfc9d64bd1821e33c7bc411aaf06205f4f28deb746d2b",
-   "data_bytes": 686959,
+   "data_hash": "sha256:ac4c7e32ad7b41ca1947196b371cf3e8e3b7036017554e0796b2e01f0d7ce126",
+   "data_bytes": 688241,
    "passages": 5409,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:33Z"
+   "exported": "2026-08-20T17:02:11Z"
   },
   "vivekananda-jnana-yoga_vivekananda": {
    "source_hash": "sha256:490f95bfb77619c3fb0b615c65178ac1f830c09f97c575d588505fa087770d0f",
@@ -13466,41 +13466,41 @@
    "exported": "2026-07-10T17:31:35Z"
   },
   "zend-avesta-part1_darmesteter": {
-   "source_hash": "sha256:6a56c34a4b681c351fd37cdca8e72e43276deab98c1491439c6bcbdfcd471d39",
+   "source_hash": "sha256:532e51b31b916627829e191e1107dbe92a4f77687df639b878c9fa82339936ff",
    "data_file": "zend-avesta-part1_darmesteter.json.gz",
-   "data_hash": "sha256:69c95f5a7feadb726fb6797eb38a4566e7d781bcdb34a42f20e140a66dc0cc04",
-   "data_bytes": 262563,
+   "data_hash": "sha256:2de82e6f50e54e92496b79d546bdf90a8bbeced4be0835884cead3ee15a0c7cd",
+   "data_bytes": 271156,
    "passages": 3640,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-07T21:48:59Z",
+   "exported": "2026-08-20T17:02:28Z",
    "removals": 1014
   },
   "zend-avesta-part2_darmesteter": {
-   "source_hash": "sha256:fd2960db5cca0800d9ce176c417bb53cefb78ade148fac54198da4fe48d0759a",
+   "source_hash": "sha256:ffc044dbc7ab32dd7e35ca76cb14d33d76d2d9f5be3bc2cf6744d4c0ae0057ec",
    "data_file": "zend-avesta-part2_darmesteter.json.gz",
-   "data_hash": "sha256:5669936c479e8c6855add4c23012370b4782740350e3f9262dcd84fb4700c9ce",
-   "data_bytes": 266197,
+   "data_hash": "sha256:bd46564fc1dd9fc2cf6bf45e9bde6f510bb391f6773322fde7e279fddd834d3a",
+   "data_bytes": 285884,
    "passages": 6742,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:35Z"
+   "exported": "2026-08-20T17:12:18Z"
   },
   "zend-avesta-part3_mills": {
-   "source_hash": "sha256:ea9712ea60e98c7e2d537a903b49f0d1554d498bce6330ae71e4963611ac430e",
+   "source_hash": "sha256:6696c6bcf9172d252af8f88d79e851494d2bf27d97607bf68d45f10cd39f11af",
    "data_file": "zend-avesta-part3_mills.json.gz",
-   "data_hash": "sha256:1e1f95fe14254ea5730a6303f2b46616208d50649897dac67b11e3542c7efe8b",
-   "data_bytes": 371803,
+   "data_hash": "sha256:da9d5b719e04954702fb9d8f39784a956905ed65985de728408a6051aad30ffa",
+   "data_bytes": 386524,
    "passages": 5333,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:35Z"
+   "exported": "2026-08-20T17:02:28Z"
   },
   "zhuangzi_giles": {
    "source_hash": "sha256:968b26a4c96f62612072b2589fb9c2eb8f318a65528e49d7226f413cf6e32089",
