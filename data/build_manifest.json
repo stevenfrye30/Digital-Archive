@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-20T03:36:31Z",
+ "generated": "2026-08-20T10:36:22Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "0bdfeee5adc7cf1bd7e3df0d2cb9de13aa0eba6f",
- "library_fingerprint": "sha256:ea406abf41e1ba70a69a7eec321c267e0a9ee5c0df209c861cd315d9e8fa2119",
+ "exporter_rev": "a1bb30a0a3b29f27faad7f6fd1df4c72b2ea4368",
+ "library_fingerprint": "sha256:1c42ad1b70448680da730c6428a1d4153eddad606ee2620d564c715fe98c59b9",
  "counts": {
   "entries": 1109,
-  "public": 962,
-  "restricted": 147
+  "public": 961,
+  "restricted": 148
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -1086,9 +1086,9 @@
    "data_hash": "sha256:7041327bd867ea2426e957c7b400639e0c3048bc1860f075b3baf9ef9e8caa8f",
    "data_bytes": 170566,
    "passages": 431,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
    "exported": "2026-08-19T21:16:08Z"
   },
@@ -1910,16 +1910,16 @@
    "exported": "2026-07-10T17:30:42Z"
   },
   "book-of-dead-renouf_renouf": {
-   "source_hash": "sha256:4c52076ff2461cc63f07ed3e35da23df1c98c9b3cfa3bf33eb2828ab5fa22f8a",
+   "source_hash": "sha256:f75887876102b6b25acf7be853fc3ed5259bb6b88b28a6efc7c2efb9afd3e679",
    "data_file": "book-of-dead-renouf_renouf.json.gz",
-   "data_hash": "sha256:e8eae0e4e76099b85ed1f748f960d3048ab964cc054ea8ea1e29eb17a8fe3b05",
-   "data_bytes": 321907,
+   "data_hash": "sha256:86e301ad311b220c0c5622f424bd2164add9bc39aeb69352159a32db429160ba",
+   "data_bytes": 321802,
    "passages": 4558,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-17T23:33:21Z"
+   "exported": "2026-08-20T10:30:00Z"
   },
   "book-of-delight-abrahams_abrahams": {
    "source_hash": "sha256:68fd6f25fcc30cb4ac56607ccadfc66abb3d0dc60e53e94f276b18ef65e27e8c",
@@ -4130,16 +4130,16 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "first-book-adam-eve_platt": {
-   "source_hash": "sha256:28876b8530f289f89712bb2c7b9cff26eb5ba52c1cd1157bc0178d5619accd6e",
+   "source_hash": "sha256:b43a7f28beb6d8b5a27a558992bb901c6c7171bdc4baf3bf6fe5370d8b82b63f",
    "data_file": "first-book-adam-eve_platt.json.gz",
-   "data_hash": "sha256:0ae0e48dd52cff03031e93ab13b1f046dc2c4dbac8631bf9defca3886eb63aa9",
-   "data_bytes": 67476,
+   "data_hash": "sha256:c44e1a17f8efe4e0f739125ad0b1cbbcf78ee5bdf4072d46538efd2a2289716b",
+   "data_bytes": 66432,
    "passages": 996,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-17T23:38:12Z"
+   "exported": "2026-08-20T10:29:56Z"
   },
   "fjort-folklore-dennett_dennett": {
    "source_hash": "sha256:e693c3f03ef2b977911665b5cbf8e7d8e1c38903d99a229782abea8c33940ff2",
@@ -4720,16 +4720,16 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "goldziher-hebrew-mythology_martineau": {
-   "source_hash": "sha256:ad8592fcceddec5e3f8396fe44d4eda344fec6abb799d7911f16859cb3ed3d7d",
+   "source_hash": "sha256:929ac9158a9ec6385d25bad4621fa0cb45316b4328c4e3549a7e78b6ef0513c8",
    "data_file": "goldziher-hebrew-mythology_martineau.json.gz",
-   "data_hash": "sha256:29cabfadc5e53ebba8f9b1ac00c6a24eadf54655f31818dc103a39c73e75c4a2",
+   "data_hash": "sha256:ce1005eebd307ff5fcd4917f9ba03a7d79c6154e0f4c65bb07043f594bcf065b",
    "data_bytes": 454017,
    "passages": 3691,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T03:01:55Z"
+   "exported": "2026-08-20T10:30:15Z"
   },
   "gospel-of-buddha_carus": {
    "source_hash": "sha256:7a91d5760ef1ece970e7734c58f3dabb02165f1c1922b02641145cfd27babe10",
@@ -7114,16 +7114,16 @@
    "exported": "2026-08-09T14:15:18Z"
   },
   "mahabharata-of-krishna-dwaipayana-vyasa-vol-2-ganguli_anonymous": {
-   "source_hash": "sha256:aaf615b91529b9bf02e8fe35441f7de9aa38df967bc6945917dec3406e3244e2",
+   "source_hash": "sha256:d6257bd16666e158c30c05fbf3829c009a6660161195dce3725ef5dda6ca4d6b",
    "data_file": "mahabharata-of-krishna-dwaipayana-vyasa-vol-2-ganguli_anonymous.json.gz",
-   "data_hash": "sha256:b111676a1f339f8d898d7102a8c2868dc6d28584edeabd2467af64b8a8bf0333",
-   "data_bytes": 1283261,
+   "data_hash": "sha256:b6f62ee6c79c149101ecc5fccf792b2606a746c02eab48793dab9d6fcd247467",
+   "data_bytes": 1283253,
    "passages": 2460,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T03:01:43Z"
+   "exported": "2026-08-20T10:30:07Z"
   },
   "mahabharata-of-krishna-dwaipayana-vyasa-vol-3-ganguli_anonymous": {
    "source_hash": "sha256:c5eaa8be2b4704f5bc39919e2cd6cf38959b4961f43add52893e7fcabd3ca846",
@@ -12118,14 +12118,14 @@
   "tejobindu-upanishad-aiyar-1914_aiyar": {
    "source_hash": null,
    "data_file": "tejobindu-upanishad-aiyar-1914_aiyar.json.gz",
-   "data_hash": "sha256:cdf431b10d60185c96e547145621564f506021eb272a861d1c49717e342a3bcd",
-   "data_bytes": 20320,
+   "data_hash": "sha256:dadf5ebff5fb491c1e1b637681381f8c145486d42979ecc052ee131a4a0e26df",
+   "data_bytes": 20288,
    "passages": 47,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-13T19:47:50Z",
+   "exported": "2026-08-20T10:35:33Z",
    "source_note": "no canonical dir (derived provider record)"
   },
   "tertullian-volume-1_ccel-schaff": {
@@ -12459,16 +12459,17 @@
    "source_note": "no canonical dir (restricted local body)"
   },
   "thus-spake-zarathustra_common": {
-   "source_hash": "sha256:977d858f3d110e7d45a8eefb124d9bc49d2633112d34866f5bddda0e28e12aa0",
+   "source_hash": "sha256:25a5389b0b0892689408f9da4f006f30c1b448da5b722a9a49dfbae97bc0ff98",
    "data_file": "thus-spake-zarathustra_common.json.gz",
-   "data_hash": "sha256:104ea6a3659df4ec17448a7c4ea00c4aeed4936cef12310bddc385caae2efccf",
-   "data_bytes": 283202,
-   "passages": 3776,
+   "data_hash": "sha256:7e708b360851f5d3ea140cdde98ba73edf7b747e44b67996cdb54562ef91503e",
+   "data_bytes": 246948,
+   "passages": 3552,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-19T20:14:42Z"
+   "exported": "2026-08-20T10:18:55Z",
+   "removals": 224
   },
   "tibetan-folk-tales_shelton": {
    "source_hash": "sha256:9c948137f287b225ce2c69220f7f9fbf4a22830ebc313582ee682b6fb113fe4b",
@@ -12521,16 +12522,16 @@
    "exported": "2026-08-19T03:00:10Z"
   },
   "tocqueville-democracy-vol2_reeve": {
-   "source_hash": "sha256:f1e8066c90af5de86b9edabbce69f9599fd338083efd51ad89463772ff61a8c0",
+   "source_hash": "sha256:61cfb68ac02f10b249783272e73dc4e6a03f363dbf0253e11b863f82e4e9e1e6",
    "data_file": "tocqueville-democracy-vol2_reeve.json.gz",
-   "data_hash": "sha256:00e0d0fb1c0a998490dd1ce03625d6bd0e447e2e7f1487f521d1e4086c87ce05",
-   "data_bytes": 282172,
+   "data_hash": "sha256:5916c7875c817a2390588a2cd39f11f11d81a64877a960f2befd1c0fb2871a49",
+   "data_bytes": 282178,
    "passages": 875,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-17T14:31:09Z"
+   "exported": "2026-08-20T10:29:04Z"
   },
   "tocqueville-old-regime_bonner": {
    "source_hash": "sha256:724afb101ffc5a32e84903de5f390eb2ea0c153f96f1d4ada324eecee704f98a",
@@ -12665,16 +12666,16 @@
    "exported": "2026-08-19T14:55:25Z"
   },
   "upanishads-30-minor-aiyar_aiyar": {
-   "source_hash": "sha256:aee23b2fd88610f36affb772879bf1fbee6705452569894cf6737992d361194f",
+   "source_hash": "sha256:167774fa440b21563e84ea77485ab7ef8d5096a1eacd350ce88b059376ff3502",
    "data_file": "upanishads-30-minor-aiyar_aiyar.json.gz",
-   "data_hash": "sha256:8513360cee6190505b9039574da961f824cf6a331568b97f07845617d61a28e6",
-   "data_bytes": 193731,
+   "data_hash": "sha256:a40854e618c865d06067c426a794838b2b3503d5f7aca323c72220d7a4f278ad",
+   "data_bytes": 193700,
    "passages": 761,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:32Z"
+   "exported": "2026-08-20T10:30:09Z"
   },
   "upanishads-brihadaranyaka-roer": {
    "source_hash": null,

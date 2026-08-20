@@ -13954,6 +13954,18 @@ function groupName(key) {
       }
       return Number(key) < firstAct ? 'Front matter' : `Chapter ${key}`;
     }
+    // THE OFF-BY-ONE LABEL RULING (steward, 2026-08-20): the reader must
+    // not renumber. Where a record's chapter_titles carries its OWN
+    // '<Word> <enumerator>' prefix ("Chapter IX \u2014 \u2026", "Lecture I",
+    // "Book II \u2014 Chapter III"), the label is the record's own statement
+    // and is shown verbatim \u2014 never re-derived from the section key,
+    // which is off by one wherever key 1 is a front-matter division.
+    if (raw != null) {
+      const rs = String(raw).trim();
+      if (/^(Chapter|Section|Part|Book|Lecture|Act|Canto|Volume|Homily|Degree|Story|Hymn|Division|Letter|Oration|Essay|Aphorism|Stanza)\s+([IVXLCDM]+|\d+)\b/i.test(rs)) {
+        return rs;
+      }
+    }
     const t = _refineChapterTitle(raw, key, word);
     const base = `${word} ${key}`;
     return t ? `${base} \u2014 ${t}` : base;

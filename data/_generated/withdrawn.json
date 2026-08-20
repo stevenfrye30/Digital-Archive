@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 219,
+    "total": 220,
     "retired": 84,
-    "restricted": 65,
+    "restricted": 66,
     "relocated": 8,
     "no_source": 5
   },
@@ -130,6 +130,17 @@
       "reason": "duplicate",
       "reason_note": "2026-07-29 hindu supplement lane: 6 content-verified twins retired (100%/89% overlaps; survivors + rationale in plans/CORRECTIONS_dedup_2026-07.md)",
       "reason_source": "05_scripts/export_reader_data.py",
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "barlaam-ioasaph_woodward.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/christian/barlaam-ioasaph",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
       "pd_year": null,
       "pd_year_source": null
     },
