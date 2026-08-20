@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-20T12:13:21Z",
+ "generated": "2026-08-20T12:34:37Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "af08b57aa9b11350c2f678b533673edb5667d33f",
- "library_fingerprint": "sha256:e191041436da54942fdf7fdf90439cffe26ddbcc913aa8939bec34bd154550d9",
+ "exporter_rev": "ba37712b2597e8a336d82ccda2e361e3833458ab",
+ "library_fingerprint": "sha256:6bc5fc569ba3dadb2eda858093f60c31997d39b54e16c31f041ace7f9bbd58de",
  "counts": {
   "entries": 1108,
   "public": 960,
@@ -445,16 +445,16 @@
    "exported": "2026-07-10T17:30:21Z"
   },
   "arabian-nights-lane_lane": {
-   "source_hash": "sha256:a36e550e8739014606339318200d4d8ab64971a8659987ae17be4d234762bf1e",
+   "source_hash": "sha256:5b404aaf8cb5b3d14c3d43c8b9e2db798192c1d681a1b3d8b9c3acb792615257",
    "data_file": "arabian-nights-lane_lane.json.gz",
-   "data_hash": "sha256:5516527fdf83d274611dcdb4afaae69a53bfdbd6cd5567b24e957a3ab714fc55",
-   "data_bytes": 535371,
+   "data_hash": "sha256:b99e77a6caf3b5ee301793b96821e4805ac807ea7e2dfaedbdfc9e98a010d8cc",
+   "data_bytes": 542362,
    "passages": 2190,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-20T11:27:13Z",
+   "exported": "2026-08-20T12:32:29Z",
    "removals": 13
   },
   "arabian-poetry-clouston_clouston": {
@@ -3507,16 +3507,16 @@
    "exported": "2026-08-07T13:04:35Z"
   },
   "don-quixote_ormsby": {
-   "source_hash": "sha256:4d3d375a9ef38f0808e25ae529506b7a3b7e8205f84a825f98abf10c81480b42",
+   "source_hash": "sha256:5a77afe208244adf3408293a6cb5abba3e4878df10ad8c00def7f05ab92e9b5e",
    "data_file": "don-quixote_ormsby.json.gz",
-   "data_hash": "sha256:34696e66bce8d27371ec7ea31bfc420a73a01351f85b55dfd73ab13426a1e921",
-   "data_bytes": 915871,
+   "data_hash": "sha256:6948e6df83865add70d2f71577a33fe7d80f28854c1b287bdfe745402bfbf075",
+   "data_bytes": 915429,
    "passages": 4862,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-10T16:36:27Z"
+   "exported": "2026-08-20T12:32:21Z"
   },
   "dore-lectures-troward_troward": {
    "source_hash": "sha256:28c119d4658b17558c580f0b37622e803976c8e2f6da2c20399a7b2a0fa42eec",
@@ -3653,16 +3653,17 @@
    "exported": "2026-07-10T17:30:48Z"
   },
   "emerson-essays-first_emerson": {
-   "source_hash": "sha256:b31b95d2d39173e0c096362b49f05bc4b204e4acb8ab8c14675cf12a53eafeb4",
+   "source_hash": "sha256:7c0d1ec4ca760f8bd87b1cb7d0083d11c4e338cb9d0b82ffcf6c647a87aab6ee",
    "data_file": "emerson-essays-first_emerson.json.gz",
-   "data_hash": "sha256:7f374bd9d288b679b8d1986798bc8649b8170cf927d5b463cbfecc817a37ba70",
-   "data_bytes": 166164,
-   "passages": 453,
+   "data_hash": "sha256:e143d3beb329fbe10fbf87fc52e1f76dd5cd1fafa7d284874212ae720a62149e",
+   "data_bytes": 167807,
+   "passages": 444,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-08-10T16:36:33Z"
+   "exported": "2026-08-20T12:32:24Z",
+   "removals": 9
   },
   "emerson-nature_emerson": {
    "source_hash": "sha256:045f9d5c73f5e51a96ecaedc1100199510e8bc177fa1d3d23ec1aed349706dd6",
@@ -6154,16 +6155,17 @@
    "exported": "2026-08-19T14:55:15Z"
   },
   "julian-revelations_warrack": {
-   "source_hash": "sha256:d6daa6c0bc5916141d4eb183ac606ef9678d65cb6bf17df67afa8e3cb527f39f",
+   "source_hash": "sha256:217504a835e0fcab0d89960649623e868394aecfa18bc9ed377c05b85c8f4972",
    "data_file": "julian-revelations_warrack.json.gz",
-   "data_hash": "sha256:3c5d29ed5f2a0ca4782c5941b2fdcdf2ca26661e5c35d2033cdce309daabe319",
-   "data_bytes": 162897,
-   "passages": 1251,
+   "data_hash": "sha256:aaa7f22015c74e14f3a2a1f7f205b1a45e1b32796dc69849badbb7c8e4737668",
+   "data_bytes": 166799,
+   "passages": 1242,
    "license": "public-domain",
    "restricted": false,
    "restricted_reason": null,
    "apparatus": false,
-   "exported": "2026-07-10T17:31:00Z"
+   "exported": "2026-08-20T12:33:17Z",
+   "removals": 9
   },
   "jung-psychology-unconscious_hinkle": {
    "source_hash": "sha256:d00003317f012509d5367a5de0bb3b16f53078d8ffdf5edef6ea96444e487e64",
