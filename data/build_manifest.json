@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-20T15:54:32Z",
+ "generated": "2026-08-20T16:36:17Z",
  "exporter": "build_manifest.py",
- "exporter_rev": "31913db3ba3118e1e35c77807ef19e3033202eeb",
+ "exporter_rev": "b937a16dad5926c60581a005b662b59ef65e3fc3",
  "library_fingerprint": "sha256:b549568b87a87a687a71d88e5ec4499b82a09161d9aa227ff3a0788c05a3299e",
  "counts": {
   "entries": 1108,
-  "public": 960,
-  "restricted": 148
+  "public": 957,
+  "restricted": 151
  },
  "texts": {
   "170-chinese-poems-waley_waley-170": {
@@ -4739,11 +4739,11 @@
    "data_hash": "sha256:7ad70013f9d09bb06a9763a746a36e5d99b0e766b757128bc9596f06edb87e2e",
    "data_bytes": 3632,
    "passages": 58,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:30:53Z"
+   "exported": "2026-08-20T16:32:04Z"
   },
   "gospel-of-philip_isenberg": {
    "source_hash": "sha256:4e5ceb0f464da8f2533e8f02f91f7a287453804d178dc94675bb3511f4d53731",
@@ -4776,11 +4776,11 @@
    "data_hash": "sha256:0d80078648279a584609166d6e890ae2af9f989d2c06a388342e96b31ccd1fd7",
    "data_bytes": 15841,
    "passages": 148,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-08-09T15:27:19Z"
+   "exported": "2026-08-20T16:32:04Z"
   },
   "gospel-of-truth_grant": {
    "source_hash": "sha256:7513829f3453d72412984d84eebb81fa29b34c5178729743abd4764d1745bb5e",
@@ -4788,11 +4788,11 @@
    "data_hash": "sha256:8bbf94f81c30bc33020c785f9dc608dd97a2bfe483804d9313e6caa52c719bc3",
    "data_bytes": 10907,
    "passages": 30,
-   "license": "public-domain",
-   "restricted": false,
-   "restricted_reason": null,
+   "license": null,
+   "restricted": true,
+   "restricted_reason": "copyrighted",
    "apparatus": false,
-   "exported": "2026-07-10T17:30:53Z"
+   "exported": "2026-08-20T16:32:04Z"
   },
   "gospel-ramakrishna-nikhilananda_nikhilananda": {
    "source_hash": null,

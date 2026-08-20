@@ -8964,34 +8964,6 @@
       "reading_status_certified": true
     },
     {
-      "id": "gospel-of-thomas",
-      "title": "Gospel of Thomas",
-      "tradition": "Gnostic",
-      "collection": "sacred",
-      "hierarchy": [
-        "passage"
-      ],
-      "data_file": "gospel-of-thomas_various.json",
-      "source": "sacredtexts",
-      "author": [
-        "Various"
-      ],
-      "translator": [
-        "Various"
-      ],
-      "year": null,
-      "translation_label": "Various",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": "*Gospel of Thomas* by Various. Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "defer",
-      "reading_status_certified": false
-    },
-    {
       "id": "pistis-sophia-mead",
       "title": "Pistis Sophia",
       "tradition": "Gnostic",
@@ -9043,63 +9015,6 @@
       "volume_label": null,
       "quality": "popular",
       "source_summary": "*The Gnostics and Their Remains* C.W. King (1887). Via SacredTexts.com.",
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "gospel-of-mary",
-      "title": "The Gospel of Mary",
-      "tradition": "Gnostic",
-      "collection": "sacred",
-      "hierarchy": [
-        "chapter",
-        "verse"
-      ],
-      "data_file": "gospel-of-mary_anonymous.json",
-      "source": "early-christian-writings",
-      "author": [
-        "Anonymous"
-      ],
-      "translator": [
-        "Anonymous"
-      ],
-      "year": null,
-      "translation_label": "The Gospel of Mary",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "derivative",
-      "source_summary": null,
-      "importance_rank": null,
-      "cross_sections": null,
-      "cross_traditions": null,
-      "reading_status": "pass",
-      "reading_status_certified": true
-    },
-    {
-      "id": "gospel-of-truth",
-      "title": "The Gospel of Truth",
-      "tradition": "Gnostic",
-      "collection": "sacred",
-      "hierarchy": [
-        "section"
-      ],
-      "data_file": "gospel-of-truth_grant.json",
-      "source": "early-christian-writings",
-      "author": [
-        "Valentinus (attributed)"
-      ],
-      "translator": [
-        "Robert M. Grant"
-      ],
-      "year": null,
-      "translation_label": "The Gospel of Truth",
-      "translation_short_label": null,
-      "volume_label": null,
-      "quality": "popular",
-      "source_summary": null,
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,
@@ -30330,6 +30245,95 @@
       "volume_label": null,
       "quality": "scholarly",
       "source_summary": "The 1914 Loeb translation, credited by its own opening row to G.R. Woodward AND H. Mattingly — LoC ‘Mattingly, Harold, 1884-1964’: worldwide PD 2035, and Mattingly is woven through the whole translation, so no excision can separate him. Withdrawn 2026-08-20 on the steward’s ruling (the Peshitta grammar) after the G6-remainder lane reported the exposure; the prior entry’s 1905 was a wrong-person namesake, corrected the same day (the real G.R. Woodward, 1848-1934, clears — but not the record). CLEAN EDITION POSSIBLE: an earlier PD English witness — named findable candidate: Joseph Jacobs’s ‘Barlaam and Josaphat: English Lives of Buddha’ (1896; Jacobs d. 1916), an EDITION of the mediaeval English version rather than a fresh Greek translation (the caveat rides with the want). The G6 structural repair (41 chapter divisions, the bare-‘X’ head recovered) survives in the preserved body for the day a clean witness arrives.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "gospel-of-truth",
+      "title": "The Gospel of Truth",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "hierarchy": [
+        "section"
+      ],
+      "data_file": "gospel-of-truth_grant.json",
+      "source": "early-christian-writings",
+      "author": [
+        "Valentinus (attributed)"
+      ],
+      "translator": [
+        "Robert M. Grant"
+      ],
+      "year": null,
+      "translation_label": "The Gospel of Truth",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "A modern scholarly rendering of the Nag Hammadi Gospel of Truth (Coptic text found 1945, Jung Codex published 1956+). The prior 1940 rights clear bound PG contributor Grant, Robert — the NOVELIST Robert Grant (1852-1940), a wrong person; the scholarly translator Robert M. Grant died 2014 (worldwide bar ~2084). Withdrawn 2026-08-20 on the steward ruling (the finishing sweep; the Peshitta grammar). NO PRE-1956 ENGLISH WITNESS CAN EXIST — the want is long-dated by the world itself.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "gospel-of-mary",
+      "title": "The Gospel of Mary",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "hierarchy": [
+        "chapter",
+        "verse"
+      ],
+      "data_file": "gospel-of-mary_anonymous.json",
+      "source": "early-christian-writings",
+      "author": [
+        "Anonymous"
+      ],
+      "translator": [
+        "Anonymous (modern)"
+      ],
+      "year": null,
+      "translation_label": "The Gospel of Mary",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "derivative",
+      "source_summary": "The Berlin Codex (BG 8502) Gospel of Mary was FIRST PUBLISHED by Till in 1955; no pre-1956 English translation can exist, so the anonymous modern rendering served here is necessarily under copyright. Withdrawn 2026-08-20 on the steward ruling (the finishing sweep; the Peshitta grammar). The want is long-dated by the world itself.",
+      "importance_rank": null,
+      "cross_sections": null,
+      "cross_traditions": null,
+      "reading_status": "restricted",
+      "reading_status_certified": true,
+      "restricted": true
+    },
+    {
+      "id": "gospel-of-thomas",
+      "title": "Gospel of Thomas",
+      "tradition": "Gnostic",
+      "collection": "sacred",
+      "hierarchy": [
+        "passage"
+      ],
+      "data_file": "gospel-of-thomas_various.json",
+      "source": "sacredtexts",
+      "author": [
+        "Various"
+      ],
+      "translator": [
+        "Thomas O. Lambdin (Coptic)",
+        "B.P. Grenfell & A.S. Hunt (Greek fragments)"
+      ],
+      "year": null,
+      "translation_label": "Various",
+      "translation_short_label": null,
+      "volume_label": null,
+      "quality": "popular",
+      "source_summary": "The record's own credit row names its hands: Thomas O. Lambdin (Coptic version) — Lambdin (1927-2018) bars the Coptic translation to ~2088; Grenfell (d. 1926) and Hunt (d. 1934) clear only the Greek-fragment portions. The full Coptic text was found 1945 and published after 1956. Withdrawn 2026-08-20 on the steward ruling (the finishing sweep; the Peshitta grammar). A PD partial want exists: the Grenfell-Hunt Oxyrhynchus sayings alone (1897/1904) are worldwide-PD and could return as a fragment witness.",
       "importance_rank": null,
       "cross_sections": null,
       "cross_traditions": null,

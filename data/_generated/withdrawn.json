@@ -2,9 +2,9 @@
   "generated_by": "05_scripts/export_reader_data.py",
   "purpose": "Every data_file withdrawn from the public reading room, with how and where. Derived — do not hand-edit. See plans/archive_doctrine.md 8.8.",
   "counts": {
-    "total": 221,
+    "total": 224,
     "retired": 84,
-    "restricted": 66,
+    "restricted": 69,
     "relocated": 8,
     "no_source": 5
   },
@@ -846,10 +846,43 @@
       "pd_year": null,
       "pd_year_source": null
     },
+    "gospel-of-mary_anonymous.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/gnostic/gospel-of-mary",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
     "gospel-of-philip_isenberg.json": {
       "disposition": "restricted",
       "mechanism": "suppressed",
       "source_location": "01_library/library/texts/sacred/gnostic/gospel-of-philip",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "gospel-of-thomas_various.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/gnostic/gospel-of-thomas",
+      "preserved_at": null,
+      "reason": "copyrighted",
+      "reason_note": null,
+      "reason_source": null,
+      "pd_year": null,
+      "pd_year_source": null
+    },
+    "gospel-of-truth_grant.json": {
+      "disposition": "restricted",
+      "mechanism": "suppressed",
+      "source_location": "01_library/library/texts/sacred/gnostic/gospel-of-truth",
       "preserved_at": null,
       "reason": "copyrighted",
       "reason_note": null,
