@@ -13834,6 +13834,17 @@ function groupName(key) {
     if (mapped) return mapped;
     const titles = currentData && currentData.chapter_titles;
     const raw = titles && (titles[key] || titles[Number(key)]);
+    // THE OFF-BY-ONE LABEL RULING (steward, 2026-08-20) applies to the
+    // book branch too (2026-08-30, found via vishnu-wilson): a title that
+    // carries its own '<Word> <enumerator>' prefix is the record's own
+    // statement — show it verbatim rather than re-deriving 'Book <key>',
+    // whose key numbers the flat division, not the work's own book.
+    if (raw != null) {
+      const rs = String(raw).trim();
+      if (/^(Chapter|Section|Part|Book|Lecture|Act|Canto|Volume|Homily|Degree|Story|Hymn|Division|Letter|Oration|Essay|Aphorism|Stanza)\s+([IVXLCDM]+|\d+)\b/i.test(rs)) {
+        return rs;
+      }
+    }
     const t = _refineChapterTitle(raw, key, 'Book');
     if (/^\d+$/.test(String(key))) {
       return t ? `Book ${key} — ${t}` : `Book ${key}`;
@@ -24254,7 +24265,16 @@ async function loadText(entry, listItem) {
           // covered by the structural re-pin in filterAndRender.
           _showRemovedRowNotice(_rpid, _rr);
         } else {
+          // A pid this text has never known (mistyped or stale link):
+          // say so instead of silently landing on the contents page
+          // (2026-08-30; a shared link must explain itself). Deferred a
+          // tick — loadText's tail calls clearStatus() after this branch.
           showCover(data, entry);
+          const _missPid = pendingPid;
+          setTimeout(() => {
+            setStatus(`Passage "${_missPid}" was not found in this text — showing its contents.`, '');
+            setTimeout(clearStatus, 8000);
+          }, 0);
         }
         pendingPid = null;
       }
@@ -24533,9 +24553,21 @@ function renderSidebarTree({ firstLoad = false } = {}) {
       if (requestedText && entry.data_file && entry.data_file === requestedText
           && !autoLoaded) {
         autoLoaded = true;
-        if (requestedPid) pendingPid = requestedPid;
-        if (requestedWork) pendingWorkKey = requestedWork;
-        loadText(entry);
+        // A restricted record's body is deliberately absent from the deploy
+        // (gitignored gz) — fetching it can only 404. Land on the withheld
+        // state, which explains the lock, instead of a bare error banner
+        // (2026-08-30; found via the withdrawn gospels' direct routes).
+        if (entry.restricted) {
+          pendingPid = null;
+          const u2 = new URL(location);
+          u2.searchParams.delete('p');
+          history.replaceState(null, '', u2);
+          openWithheld(entry.id);
+        } else {
+          if (requestedPid) pendingPid = requestedPid;
+          if (requestedWork) pendingWorkKey = requestedWork;
+          loadText(entry);
+        }
       }
       // A metadata-only record has no data_file, so a ?text= deep link can only name it
       // by id. Land on the withheld state — a shared or guessed link must EXPLAIN itself,
@@ -29788,6 +29820,15 @@ function _withheldReasonHTML(e) {
       + '<div class="wh-body">The archive holds only part of this edition, so it is listed '
       + 'but not served as a reading witness.</div>';
   }
+  // Restricted records (2026-08-30): the withdrawal stubs carry their whole
+  // story — the identity, the rights wall, any PD want — in source_summary.
+  // Show it rather than the generic pending-review fallback.
+  if (e.restricted) {
+    return '<div class="wh-headline">Reading unavailable — restricted by copyright</div>'
+      + '<div class="wh-body">' + (e.source_summary ? escH(e.source_summary)
+        : 'This edition is under copyright, so the archive records it but cannot '
+        + 'serve its text.') + '</div>';
+  }
   return '<div class="wh-headline">Reading unavailable — pending review</div>'
     + '<div class="wh-body">This edition is listed but has not yet been reviewed for '
     + 'reading.</div>';
@@ -30075,7 +30116,16 @@ function updateHomeCounts() {
         </li>`).join('');
       results.innerHTML = matches.map(e => {
         const author = (e.author||[]).filter(a=>a&&a!=='Anonymous').join(', ');
-        const meta = [author, e.tradition, e.year].filter(Boolean).join(' · ');
+        // Locked groups (all editions restricted or metadata-only) are honest
+        // records with no readable body — say so IN the dropdown, before the
+        // click, instead of letting the row read like a readable text
+        // (2026-08-30; found via the withdrawn gospels in search).
+        const _g = indexGroups[e.id] || [];
+        const _locked = _g.length && _g.every(x => x.restricted || _isMetadataOnly(x));
+        const _lockWord = _locked
+          ? (_g.some(x => x.restricted) ? 'restricted' : 'metadata only') : null;
+        const meta = [author, e.tradition, e.year, _lockWord && ('🔒 ' + _lockWord)]
+          .filter(Boolean).join(' · ');
         const cat = bucketFor(e.tradition);
         const trd = e.tradition || 'Other';
         return `<li data-cat="${escapeHTML(cat)}" data-trd="${escapeHTML(trd)}" data-id="${escapeHTML(e.id)}">
@@ -30098,10 +30148,14 @@ function updateHomeCounts() {
           input.value = '';
           results.classList.remove('open');
           results.innerHTML = '';
-          // Metadata search MAY surface a metadata-only record (title, translator, year).
-          // Selecting it opens the withheld state — never a reading route.
+          // Metadata search MAY surface a metadata-only OR fully-restricted
+          // record (title, translator, year). Selecting it opens the withheld
+          // state — never a reading route, never a body fetch that can only
+          // 404 (2026-08-30 widening: restricted groups too).
           const grp = (typeof indexGroups !== 'undefined' && indexGroups[id]) || [];
-          if (grp.length && grp.every(_isMetadataOnly)) { openWithheld(id); return; }
+          if (grp.length && grp.every(x => _isMetadataOnly(x) || x.restricted)) {
+            openWithheld(id); return;
+          }
           browseText(cat, trd, id);
         });
       });

@@ -118,7 +118,11 @@
         '<span class="m-l1">' +
           door.sub.replace(/ texts$/, ' texts in the tradition') +
         '</span>' +
-        '<span class="m-l2">' + held + ' readable in the archive</span>';
+        // 2026-08-30 — "62 readable in the archive" beside "browse the 60
+        // held editions" read as a contradiction (works vs deduped edition
+        // files, both true, neither anchored). "of them" ties this count to
+        // the tradition line above it: works from the 332, not editions.
+        '<span class="m-l2">' + held + ' of them readable in the archive</span>';
       mast.appendChild(p);
     });
   });
